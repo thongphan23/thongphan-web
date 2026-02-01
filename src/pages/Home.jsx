@@ -5,16 +5,15 @@ import MagneticButton from '../components/MagneticButton';
 
 const rotatingValues = [
     'xây dựng thương hiệu cá nhân',
-    'tạo thu nhập từ kiến thức',
-    'phát triển sự nghiệp bền vững',
-    'kết nối cộng đồng'
+    'gia tăng thu nhập',
+    'nâng tầm năng lực lõi'
 ];
 
 const pathways = [
     {
         number: '01',
-        title: 'Học tập',
-        description: 'Nâng cao năng lực với các khóa học được thiết kế bài bản.',
+        title: 'Tôi muốn tự học',
+        description: 'Nền tảng học tập tương tác miễn phí, giúp bạn phát triển năng lực theo lộ trình bài bản.',
         cta: 'Vào Tensai',
         href: 'https://learn.thongphan.com',
         highlight: true,
@@ -22,16 +21,16 @@ const pathways = [
     },
     {
         number: '02',
-        title: 'Kết nối',
-        description: 'Tham gia cộng đồng những người muốn phát triển bản thân.',
-        cta: 'Conan School',
-        href: 'https://www.facebook.com/groups/conanschool',
+        title: 'Tôi muốn được hướng dẫn',
+        description: 'Trường học "hút khách" đầu tiên tại Việt Nam - Học kinh doanh hiệu quả cùng Thông Phan.',
+        cta: 'Khám phá Conan School',
+        href: 'https://www.conan.school',
     },
     {
         number: '03',
-        title: 'Đọc Blog',
-        description: 'Khám phá các bài viết về tư duy, kỹ năng và kinh nghiệm.',
-        cta: 'Xem Blog',
+        title: 'Tôi muốn xem thử',
+        description: 'Khám phá các bài viết viral về xây dựng thương hiệu, tư duy và chiến lược.',
+        cta: 'Đọc Blog',
         to: '/blog',
     },
 ];
@@ -51,11 +50,6 @@ export default function Home() {
             {/* Hero Section */}
             <section className="hero">
                 <div className="hero-background">
-                    <img
-                        src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80"
-                        alt=""
-                        className="hero-bg-image"
-                    />
                     <div className="hero-overlay" />
                 </div>
 
@@ -74,12 +68,12 @@ export default function Home() {
 
                 <div className="hero-content container">
                     <div className="hero-text">
-                        <p className="hero-tagline">Xin chào, mình là</p>
+                        <p className="hero-tagline">Doanh nhân · Nhà đào tạo · Người chia sẻ</p>
                         <h1 className="hero-title">
                             <span className="hero-name">Thông Phan</span>
                         </h1>
                         <p className="hero-subtitle">
-                            <span className="subtitle-prefix">Mình giúp bạn</span>
+                            <span className="subtitle-prefix">Giúp bạn</span>
                             <span className="value-rotator">
                                 <span className="text-rotate-container">
                                     <span className="text-rotate-item">
@@ -92,17 +86,16 @@ export default function Home() {
                             <MagneticButton
                                 variant="primary"
                                 size="large"
-                                href="https://learn.thongphan.com"
+                                to="/about"
                             >
-                                <GraduationCap size={20} />
-                                Bắt đầu học
+                                Tìm hiểu về tôi
                             </MagneticButton>
                             <MagneticButton
                                 variant="ghost"
                                 size="large"
-                                to="/about"
+                                to="/blog"
                             >
-                                Về tôi
+                                Đọc bài viết
                                 <ArrowRight size={20} />
                             </MagneticButton>
                         </div>
@@ -110,12 +103,12 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Journey Section */}
+            {/* Intent Gateway Section */}
             <section className="journey-section section">
                 <div className="container">
-                    <h2 className="text-center">Hành trình của bạn</h2>
+                    <h2 className="text-center">Bắt đầu ở đây</h2>
                     <p className="text-center text-secondary" style={{ marginBottom: 'var(--space-12)', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                        Chọn điểm bắt đầu phù hợp với bạn
+                        Chọn lộ trình phù hợp với bạn
                     </p>
 
                     <div className="pathways-stack">
@@ -124,19 +117,19 @@ export default function Home() {
                         ))}
                     </div>
 
-                    {/* Connect Section */}
+                    {/* Direct Connection Section */}
                     <div className="connect-section">
-                        <span className="connect-label">Kết nối với mình</span>
-                        <h3 className="connect-title">Nhận cập nhật mới nhất</h3>
+                        <span className="connect-label">Bạn có vấn đề cụ thể?</span>
+                        <h3 className="connect-title">Hãy kết nối với tôi</h3>
                         <div className="connect-buttons">
                             <a
-                                href="https://www.facebook.com/thongphanblog"
+                                href="https://m.me/thongphanblog"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="connect-btn connect-btn-fb"
                             >
                                 <Facebook size={18} />
-                                Facebook
+                                Facebook Messenger
                             </a>
                             <a
                                 href="https://zalo.me/0397887749"
@@ -150,16 +143,16 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* Portfolio CTA */}
+                    {/* Năng Lực Bridge CTA */}
                     <Link to="/products" className="portfolio-featured-cta">
                         <div className="portfolio-cta-content">
-                            <h3 className="portfolio-cta-title">Khám phá các sản phẩm</h3>
+                            <h3 className="portfolio-cta-title">Khám phá Năng Lực</h3>
                             <p className="portfolio-cta-desc">
-                                Tensai LMS, Content Factory và những dự án mình đang xây dựng
+                                Chuỗi bài viral, Case cho ngành F&B, AI ứng dụng thực tế
                             </p>
                         </div>
                         <span className="portfolio-cta-btn">
-                            Xem sản phẩm
+                            Xem Năng Lực
                             <ArrowRight size={20} />
                         </span>
                     </Link>
