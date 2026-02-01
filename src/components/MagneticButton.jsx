@@ -4,27 +4,23 @@ import { Link } from 'react-router-dom';
 export default function MagneticButton({
     children,
     variant = 'primary',
-    size = 'medium',
+    size = 'default',
     href,
     to,
     onClick,
     className = '',
-    disabled = false,
     ...props
 }) {
     const buttonRef = useRef(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e) => {
-        if (!buttonRef.current || disabled) return;
-
+        if (!buttonRef.current) return;
         const rect = buttonRef.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-
-        const deltaX = (e.clientX - centerX) * 0.15;
-        const deltaY = (e.clientY - centerY) * 0.15;
-
+        const deltaX = (e.clientX - centerX) * 0.2;
+        const deltaY = (e.clientY - centerY) * 0.2;
         setPosition({ x: deltaX, y: deltaY });
     };
 
@@ -34,33 +30,31 @@ export default function MagneticButton({
 
     const variantClass = `magnetic-btn-${variant}`;
     const sizeClass = size === 'large' ? 'magnetic-btn-large' : size === 'small' ? 'magnetic-btn-small' : '';
-    const combinedClassName = `magnetic-btn ${variantClass} ${sizeClass} ${className}`.trim();
+    const buttonClass = `magnetic-btn ${variantClass} ${sizeClass} ${className}`.trim();
 
     const style = {
         transform: `translate(${position.x}px, ${position.y}px)`,
-        transition: position.x === 0 && position.y === 0 ? 'transform 0.3s ease-out' : 'none',
     };
 
     const content = (
         <>
-            <span className="magnetic-btn-text">{children}</span>
             <span className="magnetic-btn-glow" />
+            <span className="magnetic-btn-text">{children}</span>
         </>
     );
 
-    // External link
     if (href) {
         return (
             <div className="magnetic-wrapper">
                 <a
                     ref={buttonRef}
                     href={href}
-                    className={combinedClassName}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonClass}
                     style={style}
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     {...props}
                 >
                     {content}
@@ -69,14 +63,13 @@ export default function MagneticButton({
         );
     }
 
-    // Internal link
     if (to) {
         return (
             <div className="magnetic-wrapper">
                 <Link
                     ref={buttonRef}
                     to={to}
-                    className={combinedClassName}
+                    className={buttonClass}
                     style={style}
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
@@ -88,17 +81,15 @@ export default function MagneticButton({
         );
     }
 
-    // Button
     return (
         <div className="magnetic-wrapper">
             <button
                 ref={buttonRef}
-                className={combinedClassName}
+                className={buttonClass}
                 style={style}
+                onClick={onClick}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                onClick={onClick}
-                disabled={disabled}
                 {...props}
             >
                 {content}

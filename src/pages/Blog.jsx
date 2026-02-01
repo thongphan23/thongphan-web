@@ -1,98 +1,162 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
+import { Clock, ArrowRight, Star, Mail } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
-import './Blog.css';
+import MagneticButton from '../components/MagneticButton';
+
+const categories = ['Tất cả', 'Thương hiệu cá nhân', 'Tư duy', 'Chiến lược'];
 
 export default function Blog() {
-    const featuredPost = blogPosts.find((post) => post.featured);
-    const recentPosts = blogPosts
-        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+    const [activeCategory, setActiveCategory] = useState('Tất cả');
+
+    const filteredPosts = activeCategory === 'Tất cả'
+        ? blogPosts
+        : blogPosts.filter(post => post.category === activeCategory);
+
+    const featuredPost = blogPosts[0];
+    const sidePosts = blogPosts.slice(1, 3);
+    const restPosts = blogPosts.slice(3);
 
     return (
         <main className="blog-page">
+            {/* Hero */}
             <section className="blog-hero">
-                <div className="container">
-                    <h1 className="blog-hero-title">Blog</h1>
-                    <p className="blog-hero-description">
-                        Chia sẻ về xây dựng thương hiệu cá nhân, tạo thu nhập từ kiến thức và phát triển bản thân.
+                <div className="blog-hero-bg" />
+                <div className="container blog-hero-content">
+                    <span className="blog-hero-label">Blog</span>
+                    <h1 className="blog-hero-title">Bài viết</h1>
+                    <p className="blog-hero-subtitle">
+                        Chia sẻ về xây dựng thương hiệu cá nhân, phát triển bản thân và tạo thu nhập từ kiến thức
                     </p>
                 </div>
             </section>
 
-            {/* Featured Post */}
-            {featuredPost && (
-                <section className="blog-featured">
-                    <div className="container">
-                        <Link to={`/blog/${featuredPost.slug}`} className="featured-card">
-                            <div className="featured-content">
-                                <span className="featured-badge">Nổi bật</span>
-                                <h2 className="featured-title">{featuredPost.title}</h2>
-                                <p className="featured-excerpt">{featuredPost.excerpt}</p>
-                                <div className="featured-meta">
-                                    <span className="meta-item">
-                                        <Calendar size={16} />
-                                        {formatDate(featuredPost.publishedAt)}
-                                    </span>
-                                    <span className="meta-item">
-                                        <Clock size={16} />
-                                        {featuredPost.readingTime} phút đọc
-                                    </span>
-                                    <span className="meta-item">
-                                        <Tag size={16} />
-                                        {featuredPost.category}
-                                    </span>
+            {/* Subscribe */}
+            <section className="blog-subscribe-section">
+                <div className="container">
+                    <div className="subscribe-card">
+                        <div className="subscribe-content">
+                            <Mail size={32} className="subscribe-icon" />
+                            <div>
+                                <h3>Đăng ký nhận bài viết mới</h3>
+                                <p>Nhận thông báo khi có bài viết mới</p>
+                            </div>
+                        </div>
+                        <form className="subscribe-form" onSubmit={(e) => e.preventDefault()}>
+                            <input
+                                type="email"
+                                placeholder="Email của bạn"
+                                className="subscribe-input"
+                            />
+                            <MagneticButton variant="primary">
+                                Đăng ký
+                            </MagneticButton>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            {/* Categories */}
+            <section className="blog-categories-section">
+                <div className="container">
+                    <div className="categories-menu">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                className={`category-btn ${activeCategory === cat ? 'active' : ''}`}
+                                onClick={() => setActiveCategory(cat)}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Featured */}
+            <section className="featured-section">
+                <div className="container">
+                    <div className="featured-header">
+                        <Star size={20} />
+                        <h2>Nổi bật</h2>
+                    </div>
+
+                    <div className="featured-grid">
+                        {/* Main Featured */}
+                        <Link to={`/blog/${featuredPost.slug}`} className="featured-main">
+                            <div className="featured-main-overlay" />
+                            <div className="featured-main-link">
+                                <div className="featured-main-content">
+                                    <span className="featured-badge">Nổi bật</span>
+                                    <span className="featured-category">{featuredPost.category}</span>
+                                    <h3>{featuredPost.title}</h3>
+                                    <p>{featuredPost.excerpt}</p>
+                                    <div className="featured-meta">
+                                        <Clock size={14} />
+                                        <span>{featuredPost.readingTime} phút đọc</span>
+                                        <span>•</span>
+                                        <span>{featuredPost.date}</span>
+                                    </div>
                                 </div>
-                                <span className="featured-link">
-                                    Đọc bài viết <ArrowRight size={16} />
-                                </span>
                             </div>
                         </Link>
+
+                        {/* Side Featured */}
+                        <div className="featured-side">
+                            {sidePosts.map((post) => (
+                                <Link
+                                    key={post.slug}
+                                    to={`/blog/${post.slug}`}
+                                    className="featured-side-card"
+                                >
+                                    <div className="featured-side-link">
+                                        <span className="featured-category">{post.category}</span>
+                                        <h4>{post.title}</h4>
+                                        <div className="featured-meta">
+                                            <Clock size={12} />
+                                            <span>{post.readingTime} phút</span>
+                                            <span>•</span>
+                                            <span>{post.date}</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                </section>
-            )}
+                </div>
+            </section>
 
             {/* All Posts */}
-            <section className="blog-list section">
+            <section className="blog-posts-section">
                 <div className="container">
-                    <h2 className="section-title">Tất cả bài viết</h2>
+                    <h2 className="posts-section-title">Tất cả bài viết</h2>
+
                     <div className="posts-grid">
-                        {recentPosts.map((post) => (
-                            <PostCard key={post.id} post={post} />
+                        {filteredPosts.map((post) => (
+                            <article key={post.slug} className="post-card">
+                                <Link to={`/blog/${post.slug}`} className="post-card-link">
+                                    <div className="post-meta">
+                                        <span className="post-category">{post.category}</span>
+                                        <span className="post-date">{post.date}</span>
+                                    </div>
+                                    <h3 className="post-title">{post.title}</h3>
+                                    <p className="post-excerpt">{post.excerpt}</p>
+                                    <div className="post-footer">
+                                        <span className="post-reading-time">
+                                            <Clock size={14} />
+                                            {post.readingTime} phút đọc
+                                        </span>
+                                        <span className="post-read-more">
+                                            Đọc thêm
+                                            <ArrowRight size={16} />
+                                        </span>
+                                    </div>
+                                </Link>
+                            </article>
                         ))}
                     </div>
                 </div>
             </section>
         </main>
     );
-}
-
-function PostCard({ post }) {
-    return (
-        <Link to={`/blog/${post.slug}`} className="post-card">
-            <div className="post-card-content">
-                <div className="post-category">{post.category}</div>
-                <h3 className="post-title">{post.title}</h3>
-                <p className="post-excerpt">{post.excerpt}</p>
-                <div className="post-meta">
-                    <span className="meta-item">
-                        <Calendar size={14} />
-                        {formatDate(post.publishedAt)}
-                    </span>
-                    <span className="meta-item">
-                        <Clock size={14} />
-                        {post.readingTime} phút
-                    </span>
-                </div>
-            </div>
-        </Link>
-    );
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('vi-VN', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-    });
 }

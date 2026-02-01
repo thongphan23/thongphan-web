@@ -1,38 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Mail, BookOpen, GraduationCap } from 'lucide-react';
-import './Footer.css';
+import { ExternalLink, Facebook, Mail } from 'lucide-react';
 
 const quickLinks = [
-    { path: '/about', label: 'Về Thông' },
-    { path: '/blog', label: 'Blog' },
-    { path: '/products', label: 'Sản phẩm' },
-    { path: '/courses', label: 'Khóa học' },
+    { to: '/about', label: 'Về tôi' },
+    { to: '/blog', label: 'Blog' },
+    { to: '/products', label: 'Sản phẩm' },
+    { to: '/courses', label: 'Khóa học' },
 ];
 
-const socialLinks = [
-    {
-        href: 'https://www.facebook.com/thongphanblog',
-        icon: Facebook,
-        label: 'Facebook'
-    },
-    {
-        href: 'mailto:thongphan.sales@gmail.com',
-        icon: Mail,
-        label: 'Email'
-    },
-];
-
-const productLinks = [
-    {
-        href: 'https://learn.thongphan.com',
-        icon: GraduationCap,
-        label: 'Tensai Learning'
-    },
-    {
-        href: '/blog',
-        icon: BookOpen,
-        label: 'Thông Phan Blog'
-    },
+const externalLinks = [
+    { href: 'https://learn.thongphan.com', label: 'Tensai LMS', icon: ExternalLink },
+    { href: 'https://www.facebook.com/groups/conanschool', label: 'Conan School', icon: Facebook },
 ];
 
 export default function Footer() {
@@ -40,76 +18,56 @@ export default function Footer() {
 
     return (
         <footer className="footer">
-            <div className="footer-container">
+            <div className="container">
                 <div className="footer-grid">
                     {/* Brand Column */}
-                    <div className="footer-brand">
-                        <Link to="/" className="footer-logo">
-                            <span className="footer-logo-text">Thông Phan</span>
-                        </Link>
+                    <div className="footer-brand-col">
+                        <div className="footer-logo">Thông Phan</div>
                         <p className="footer-tagline">
-                            Giúp bạn xây dựng thương hiệu cá nhân và thu nhập bền vững từ chuyên môn của mình.
+                            Xây dựng sản phẩm, chia sẻ kiến thức và giúp mọi người tăng tốc hành trình thành công.
                         </p>
-                        <div className="footer-social">
-                            {socialLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className="footer-social-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={link.label}
-                                >
-                                    <link.icon size={20} />
-                                </a>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="footer-links-col">
+                        <h4 className="footer-heading">Liên kết</h4>
+                        <div className="footer-links">
+                            {quickLinks.map((link) => (
+                                <Link key={link.to} to={link.to} className="footer-link">
+                                    {link.label}
+                                </Link>
                             ))}
                         </div>
                     </div>
 
-                    {/* Quick Links Column */}
-                    <div className="footer-column">
-                        <h4 className="footer-column-title">Điều hướng</h4>
-                        <nav className="footer-nav">
-                            {quickLinks.map((link) => (
-                                <Link key={link.path} to={link.path} className="footer-link">
-                                    {link.label}
-                                </Link>
-                            ))}
-                        </nav>
-                    </div>
-
-                    {/* Products Column */}
-                    <div className="footer-column">
-                        <h4 className="footer-column-title">Sản phẩm</h4>
-                        <nav className="footer-nav">
-                            {productLinks.map((link) => (
+                    {/* External Links */}
+                    <div className="footer-links-col">
+                        <h4 className="footer-heading">Nền tảng</h4>
+                        <div className="footer-links">
+                            {externalLinks.map((link) => (
                                 <a
-                                    key={link.label}
+                                    key={link.href}
                                     href={link.href}
-                                    className="footer-link footer-link-with-icon"
-                                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="footer-link footer-link-external"
                                 >
-                                    <link.icon size={16} />
-                                    <span>{link.label}</span>
+                                    {link.label}
+                                    <link.icon size={14} />
                                 </a>
                             ))}
-                        </nav>
-                    </div>
-
-                    {/* Contact Column */}
-                    <div className="footer-column">
-                        <h4 className="footer-column-title">Liên hệ</h4>
-                        <div className="footer-contact">
-                            <p className="footer-contact-item">
-                                <Mail size={16} />
-                                <a href="mailto:thongphan.sales@gmail.com">thongphan.sales@gmail.com</a>
-                            </p>
+                            <a
+                                href="mailto:thong@thongphan.com"
+                                className="footer-link footer-link-external"
+                            >
+                                Liên hệ
+                                <Mail size={14} />
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
+                {/* Bottom */}
                 <div className="footer-bottom">
                     <p className="footer-copyright">
                         © {currentYear} Thông Phan. Tất cả quyền được bảo lưu.

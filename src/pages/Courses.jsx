@@ -1,47 +1,38 @@
-import { ArrowRight, ExternalLink, GraduationCap, Brain, MessageCircle, Lightbulb } from 'lucide-react';
+import { ArrowRight, ExternalLink, GraduationCap, Brain, MessageCircle, Lightbulb, Users } from 'lucide-react';
 import MagneticButton from '../components/MagneticButton';
-import './Courses.css';
 
-const courses = [
+const conanCourses = [
     {
-        id: 'learning-how-to-learn',
-        name: 'Learning How to Learn',
-        tagline: 'Học cách học - Nền tảng của mọi sự phát triển',
-        description: 'Khóa học giúp bạn nắm vững các phương pháp học tập hiệu quả, từ đó tối ưu thời gian và nâng cao khả năng tiếp thu kiến thức.',
+        id: 'learning',
+        title: 'Learning How to Learn',
+        subtitle: 'Nền tảng',
+        description: 'Học cách học - kỹ năng nền tảng để tiếp thu mọi kiến thức hiệu quả',
         icon: Brain,
-        duration: '4 tuần',
-        lessons: '65+ bài',
-        level: 'Cơ bản',
         href: 'https://learn.thongphan.com',
-        color: 'primary',
-        featured: true,
     },
     {
-        id: 'critical-thinking',
-        name: 'Tư Duy Phản Biện',
-        tagline: 'Phân tích và đánh giá thông tin chính xác',
-        description: 'Phát triển khả năng tư duy logic, phân tích vấn đề và đưa ra quyết định sáng suốt trong công việc và cuộc sống.',
+        id: 'thinking',
+        title: 'Tư Duy Phản Biện',
+        subtitle: '195 bài',
+        description: 'Phân tích và đánh giá thông tin chính xác',
         icon: Lightbulb,
-        duration: '6 tuần',
-        lessons: '195 bài',
-        level: 'Trung cấp',
         href: 'https://learn.thongphan.com',
-        color: 'secondary',
-        featured: false,
     },
     {
         id: 'communication',
-        name: 'Giao Tiếp Không Bạo Lực',
-        tagline: 'Kết nối sâu sắc qua giao tiếp',
-        description: 'Học cách giao tiếp hiệu quả, xây dựng mối quan hệ lành mạnh và giải quyết xung đột một cách hòa bình.',
+        title: 'Giao Tiếp Không Bạo Lực',
+        subtitle: '65 bài',
+        description: 'Kết nối sâu sắc qua giao tiếp',
         icon: MessageCircle,
-        duration: '5 tuần',
-        lessons: '65 bài',
-        level: 'Cơ bản',
         href: 'https://learn.thongphan.com',
-        color: 'accent',
-        featured: false,
     },
+];
+
+const tensaiPillars = [
+    { nameEn: 'THINKING', nameVi: 'Tư duy', value: 'Suy nghĩ sắc bén' },
+    { nameEn: 'COMMUNICATION', nameVi: 'Giao tiếp', value: 'Kết nối hiệu quả' },
+    { nameEn: 'LEARNING', nameVi: 'Học tập', value: 'Tiếp thu nhanh' },
+    { nameEn: 'SELF-MANAGEMENT', nameVi: 'Tự quản', value: 'Kiểm soát bản thân' },
 ];
 
 export default function Courses() {
@@ -49,85 +40,106 @@ export default function Courses() {
         <main className="courses-page">
             {/* Hero */}
             <section className="courses-hero">
-                <div className="container">
-                    <h1 className="courses-hero-title">Khóa học</h1>
-                    <p className="courses-hero-description">
-                        Các khóa học được thiết kế để giúp bạn phát triển năng lực cá nhân một cách toàn diện
+                <div className="courses-hero-bg" />
+                <div className="container courses-hero-content">
+                    <span className="courses-hero-label">Khóa học</span>
+                    <h1 className="courses-hero-title">Nâng cao năng lực</h1>
+                    <p className="courses-hero-subtitle">
+                        Các khóa học được thiết kế bài bản, giúp bạn phát triển năng lực cá nhân một cách có hệ thống
                     </p>
                 </div>
             </section>
 
-            {/* Courses Grid */}
-            <section className="courses-list section">
-                <div className="container">
-                    <div className="courses-grid">
-                        {courses.map((course) => (
-                            <CourseCard key={course.id} course={course} />
+            {/* Conan School Section */}
+            <section className="conan-section">
+                <div className="container text-center">
+                    <div className="conan-brand">
+                        <h2 className="conan-title">Conan School</h2>
+                        <span className="conan-tagline">Học để thay đổi, không phải để biết</span>
+                    </div>
+                    <p className="conan-description">
+                        Cộng đồng học tập với các khóa học thực chiến, giúp bạn áp dụng kiến thức vào cuộc sống ngay lập tức
+                    </p>
+
+                    <div className="conan-courses-stack">
+                        {conanCourses.map((course) => (
+                            <a
+                                key={course.id}
+                                href={course.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="conan-course-row"
+                            >
+                                <div className="conan-course-icon">
+                                    <course.icon size={24} />
+                                </div>
+                                <div className="conan-course-content">
+                                    <div className="conan-course-header">
+                                        <span className="conan-course-title">{course.title}</span>
+                                        <span className="conan-course-subtitle">{course.subtitle}</span>
+                                    </div>
+                                    <p className="conan-course-desc">{course.description}</p>
+                                </div>
+                                <span className="conan-course-link">
+                                    Xem chi tiết
+                                    <ArrowRight size={16} />
+                                </span>
+                            </a>
                         ))}
+                    </div>
+
+                    <div className="conan-cta">
+                        <MagneticButton
+                            variant="accent"
+                            size="large"
+                            href="https://www.facebook.com/groups/conanschool"
+                        >
+                            <Users size={20} />
+                            Tham gia Conan School
+                        </MagneticButton>
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="courses-cta section">
+            {/* Tensai Section */}
+            <section className="tensai-section">
                 <div className="container text-center">
-                    <h2 className="section-title">Bắt đầu hành trình học tập</h2>
-                    <p className="section-description">
-                        Truy cập Tensai Learning để khám phá tất cả các khóa học và bắt đầu phát triển bản thân ngay hôm nay
+                    <div className="tensai-brand">
+                        <h2 className="tensai-title">Tensai</h2>
+                        <span className="tensai-badge">LMS</span>
+                    </div>
+                    <p className="tensai-tagline">
+                        Nền tảng học tập với <strong>4 trụ cột năng lực</strong> giúp bạn phát triển toàn diện
                     </p>
-                    <MagneticButton
-                        variant="primary"
-                        size="large"
-                        href="https://learn.thongphan.com"
-                    >
-                        <GraduationCap size={20} />
-                        Vào Tensai Learning
-                    </MagneticButton>
+
+                    <div className="tensai-pillars-grid">
+                        {tensaiPillars.map((pillar) => (
+                            <a
+                                key={pillar.nameEn}
+                                href="https://learn.thongphan.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="tensai-pillar-card"
+                            >
+                                <span className="pillar-name-en">{pillar.nameEn}</span>
+                                <span className="pillar-name-vi">{pillar.nameVi}</span>
+                                <span className="pillar-value">{pillar.value}</span>
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="tensai-cta">
+                        <MagneticButton
+                            variant="primary"
+                            size="large"
+                            href="https://learn.thongphan.com"
+                        >
+                            <GraduationCap size={20} />
+                            Vào Tensai Learning
+                        </MagneticButton>
+                    </div>
                 </div>
             </section>
         </main>
-    );
-}
-
-function CourseCard({ course }) {
-    const Icon = course.icon;
-
-    return (
-        <div className={`course-card course-card-${course.color} ${course.featured ? 'course-card-featured' : ''}`}>
-            {course.featured && <div className="course-badge">Phổ biến</div>}
-
-            <div className="course-icon">
-                <Icon size={32} />
-            </div>
-
-            <h2 className="course-name">{course.name}</h2>
-            <p className="course-tagline">{course.tagline}</p>
-            <p className="course-description">{course.description}</p>
-
-            <div className="course-meta">
-                <div className="course-meta-item">
-                    <span className="meta-label">Thời lượng</span>
-                    <span className="meta-value">{course.duration}</span>
-                </div>
-                <div className="course-meta-item">
-                    <span className="meta-label">Bài học</span>
-                    <span className="meta-value">{course.lessons}</span>
-                </div>
-                <div className="course-meta-item">
-                    <span className="meta-label">Cấp độ</span>
-                    <span className="meta-value">{course.level}</span>
-                </div>
-            </div>
-
-            <div className="course-cta">
-                <MagneticButton
-                    variant={course.color === 'primary' ? 'primary' : 'secondary'}
-                    href={course.href}
-                >
-                    Xem khóa học
-                    <ExternalLink size={16} />
-                </MagneticButton>
-            </div>
-        </div>
     );
 }

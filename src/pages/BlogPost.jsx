@@ -1,94 +1,120 @@
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
-import { getPostBySlug, getRecentPosts } from '../data/blogPosts';
-import './BlogPost.css';
+import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft, Clock, Share2, Mail } from 'lucide-react';
+import { blogPosts } from '../data/blogPosts';
+import MagneticButton from '../components/MagneticButton';
 
 export default function BlogPost() {
     const { slug } = useParams();
-    const post = getPostBySlug(slug);
+    const post = blogPosts.find(p => p.slug === slug);
 
     if (!post) {
-        return <Navigate to="/404" replace />;
+        return (
+            <main className="blog-post-page">
+                <div className="container">
+                    <div className="post-not-found">
+                        <h1>Không tìm thấy bài viết</h1>
+                        <p>Bài viết bạn đang tìm không tồn tại hoặc đã bị xóa.</p>
+                        <MagneticButton variant="primary" to="/blog">
+                            <ArrowLeft size={18} />
+                            Quay lại Blog
+                        </MagneticButton>
+                    </div>
+                </div>
+            </main>
+        );
     }
 
-    const relatedPosts = getRecentPosts(3).filter((p) => p.id !== post.id);
+    const relatedPosts = blogPosts
+        .filter(p => p.slug !== slug && p.category === post.category)
+        .slice(0, 2);
 
     return (
         <main className="blog-post-page">
+            {/* Reading Progress */}
+            <div className="reading-progress-bar" style={{ width: '0%' }} />
+
             {/* Header */}
-            <header className="post-header">
-                <div className="container container-narrow">
+            <header className="blog-post-header">
+                <div className="blog-post-header-bg" />
+                <div className="container">
                     <Link to="/blog" className="back-link">
-                        <ArrowLeft size={20} />
+                        <ArrowLeft size={18} />
                         Quay lại Blog
                     </Link>
 
-                    <div className="post-category-badge">{post.category}</div>
-
-                    <h1 className="post-page-title">{post.title}</h1>
-
                     <div className="post-header-meta">
-                        <span className="meta-item">
-                            <User size={16} />
-                            {post.author}
-                        </span>
-                        <span className="meta-item">
-                            <Calendar size={16} />
-                            {formatDate(post.publishedAt)}
-                        </span>
-                        <span className="meta-item">
-                            <Clock size={16} />
+                        <span className="post-category">{post.category}</span>
+                        <span className="post-date">{post.date}</span>
+                        <span className="post-reading-time">
+                            <Clock size={14} />
                             {post.readingTime} phút đọc
                         </span>
+                    </div>
+
+                    <h1 className="post-header-title">{post.title}</h1>
+                    <p className="post-header-excerpt">{post.excerpt}</p>
+
+                    <div className="post-author">
+                        <div className="testimonial-avatar">TP</div>
+                        <span className="author-name">Thông Phan</span>
                     </div>
                 </div>
             </header>
 
             {/* Content */}
-            <article className="post-content">
-                <div className="container container-narrow">
-                    <div
-                        className="post-body"
-                        dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
-                    />
+            <article className="blog-post-content">
+                <div className="container-narrow">
+                    <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
             </article>
 
-            {/* Author */}
-            <section className="post-author">
-                <div className="container container-narrow">
-                    <div className="author-card">
-                        <div className="author-avatar">
-                            <span>TP</span>
-                        </div>
-                        <div className="author-info">
-                            <h3 className="author-name">{post.author}</h3>
-                            <p className="author-bio">
-                                Giúp chuyên gia xây dựng thương hiệu cá nhân và kiếm tiền từ kiến thức.
-                            </p>
-                        </div>
+            {/* Footer */}
+            <footer className="blog-post-footer">
+                <div className="container-narrow">
+                    {/* Share */}
+                    <div className="share-section">
+                        <button className="share-button">
+                            <Share2 size={18} />
+                            Chia sẻ bài viết
+                        </button>
+                    </div>
+
+                    {/* Subscribe CTA */}
+                    <div className="subscribe-cta">
+                        <Mail size={32} className="subscribe-icon" />
+                        <h3>Đừng bỏ lỡ bài viết mới</h3>
+                        <p>Đăng ký để nhận thông báo khi có nội dung mới</p>
+                        <form className="subscribe-form-inline" onSubmit={(e) => e.preventDefault()}>
+                            <input
+                                type="email"
+                                placeholder="Email của bạn"
+                                className="subscribe-input"
+                            />
+                            <MagneticButton variant="primary">
+                                Đăng ký
+                            </MagneticButton>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </footer>
 
             {/* Related Posts */}
             {relatedPosts.length > 0 && (
-                <section className="related-posts section">
-                    <div className="container">
-                        <h2 className="section-title text-center">Bài viết liên quan</h2>
-                        <div className="related-grid">
-                            {relatedPosts.map((relatedPost) => (
+                <section className="related-posts-section">
+                    <div className="container-narrow">
+                        <h3>Bài viết liên quan</h3>
+                        <div className="related-posts-grid">
+                            {relatedPosts.map((related) => (
                                 <Link
-                                    key={relatedPost.id}
-                                    to={`/blog/${relatedPost.slug}`}
-                                    className="related-card"
+                                    key={related.slug}
+                                    to={`/blog/${related.slug}`}
+                                    className="related-post-card"
                                 >
-                                    <div className="related-category">{relatedPost.category}</div>
-                                    <h3 className="related-title">{relatedPost.title}</h3>
-                                    <div className="related-meta">
-                                        <span>{formatDate(relatedPost.publishedAt)}</span>
-                                        <span>{relatedPost.readingTime} phút</span>
-                                    </div>
+                                    <span className="related-category">{related.category}</span>
+                                    <h4>{related.title}</h4>
+                                    <span className="related-reading-time">
+                                        {related.readingTime} phút đọc
+                                    </span>
                                 </Link>
                             ))}
                         </div>
@@ -97,46 +123,4 @@ export default function BlogPost() {
             )}
         </main>
     );
-}
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('vi-VN', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-    });
-}
-
-function formatContent(content) {
-    // Convert markdown-like content to HTML
-    return content
-        // Headers
-        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-        // Bold
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        // Italic
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        // Blockquotes
-        .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-        // Horizontal rules
-        .replace(/^---$/gm, '<hr />')
-        // Lists
-        .replace(/^- (.+)$/gm, '<li>$1</li>')
-        // Wrap consecutive li in ul
-        .replace(/(<li>.*<\/li>\n)+/g, '<ul>$&</ul>')
-        // Line breaks and paragraphs
-        .split('\n\n')
-        .map(paragraph => {
-            if (paragraph.startsWith('<h') ||
-                paragraph.startsWith('<blockquote') ||
-                paragraph.startsWith('<ul') ||
-                paragraph.startsWith('<hr')) {
-                return paragraph;
-            }
-            return `<p>${paragraph.replace(/\n/g, '<br />')}</p>`;
-        })
-        .join('\n');
 }
