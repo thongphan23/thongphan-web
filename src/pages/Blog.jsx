@@ -1,57 +1,98 @@
 import { Link } from 'react-router-dom';
-import { posts, getFeaturedPosts } from '../data/posts';
-import { Clock, ArrowRight } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
+import { blogPosts } from '../data/blogPosts';
 import './Blog.css';
 
 export default function Blog() {
-    const featuredPosts = getFeaturedPosts();
+    const featuredPost = blogPosts.find((post) => post.featured);
+    const recentPosts = blogPosts
+        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
     return (
-        <>
-            {/* Hero */}
+        <main className="blog-page">
             <section className="blog-hero">
-                <div className="blog-hero-bg" />
-                <div className="container blog-hero-content">
-                    <span className="blog-hero-label">Blog</span>
-                    <h1 className="blog-hero-title">Góc suy ngẫm</h1>
-                    <p className="blog-hero-subtitle">
-                        Những bài viết chia sẻ về xây dựng thương hiệu cá nhân, học tập và phát triển bản thân.
+                <div className="container">
+                    <h1 className="blog-hero-title">Blog</h1>
+                    <p className="blog-hero-description">
+                        Chia sẻ về xây dựng thương hiệu cá nhân, tạo thu nhập từ kiến thức và phát triển bản thân.
                     </p>
                 </div>
             </section>
 
-            {/* Posts List */}
-            <section className="blog-posts-section">
+            {/* Featured Post */}
+            {featuredPost && (
+                <section className="blog-featured">
+                    <div className="container">
+                        <Link to={`/blog/${featuredPost.slug}`} className="featured-card">
+                            <div className="featured-content">
+                                <span className="featured-badge">Nổi bật</span>
+                                <h2 className="featured-title">{featuredPost.title}</h2>
+                                <p className="featured-excerpt">{featuredPost.excerpt}</p>
+                                <div className="featured-meta">
+                                    <span className="meta-item">
+                                        <Calendar size={16} />
+                                        {formatDate(featuredPost.publishedAt)}
+                                    </span>
+                                    <span className="meta-item">
+                                        <Clock size={16} />
+                                        {featuredPost.readingTime} phút đọc
+                                    </span>
+                                    <span className="meta-item">
+                                        <Tag size={16} />
+                                        {featuredPost.category}
+                                    </span>
+                                </div>
+                                <span className="featured-link">
+                                    Đọc bài viết <ArrowRight size={16} />
+                                </span>
+                            </div>
+                        </Link>
+                    </div>
+                </section>
+            )}
+
+            {/* All Posts */}
+            <section className="blog-list section">
                 <div className="container">
-                    <h2 className="posts-section-title">Tất cả bài viết</h2>
-
+                    <h2 className="section-title">Tất cả bài viết</h2>
                     <div className="posts-grid">
-                        {posts.map(post => (
-                            <article key={post.id} className="post-card">
-                                <Link to={`/blog/${post.slug}`} className="post-card-link">
-                                    <div className="post-meta">
-                                        <span className="post-category">{post.category}</span>
-                                        <span className="post-date">{post.date}</span>
-                                    </div>
-
-                                    <h3 className="post-title">{post.title}</h3>
-                                    <p className="post-excerpt">{post.excerpt}</p>
-
-                                    <div className="post-footer">
-                                        <span className="post-reading-time">
-                                            <Clock size={14} />
-                                            {post.readingTime}
-                                        </span>
-                                        <span className="post-read-more">
-                                            Đọc tiếp <ArrowRight size={14} />
-                                        </span>
-                                    </div>
-                                </Link>
-                            </article>
+                        {recentPosts.map((post) => (
+                            <PostCard key={post.id} post={post} />
                         ))}
                     </div>
                 </div>
             </section>
-        </>
+        </main>
     );
+}
+
+function PostCard({ post }) {
+    return (
+        <Link to={`/blog/${post.slug}`} className="post-card">
+            <div className="post-card-content">
+                <div className="post-category">{post.category}</div>
+                <h3 className="post-title">{post.title}</h3>
+                <p className="post-excerpt">{post.excerpt}</p>
+                <div className="post-meta">
+                    <span className="meta-item">
+                        <Calendar size={14} />
+                        {formatDate(post.publishedAt)}
+                    </span>
+                    <span className="meta-item">
+                        <Clock size={14} />
+                        {post.readingTime} phút
+                    </span>
+                </div>
+            </div>
+        </Link>
+    );
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
 }

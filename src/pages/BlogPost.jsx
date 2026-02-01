@@ -1,95 +1,142 @@
-import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Clock, Share2 } from 'lucide-react';
-import { getPostBySlug, getRelatedPosts } from '../data/posts';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { ArrowLeft, Calendar, Clock, Tag, User } from 'lucide-react';
+import { getPostBySlug, getRecentPosts } from '../data/blogPosts';
 import './BlogPost.css';
 
 export default function BlogPost() {
     const { slug } = useParams();
     const post = getPostBySlug(slug);
-    const relatedPosts = post ? getRelatedPosts(slug, 2) : [];
 
     if (!post) {
-        return (
-            <section className="section post-not-found">
-                <div className="container">
-                    <h1>Bài viết không tìm thấy</h1>
-                    <p>Xin lỗi, bài viết bạn tìm không tồn tại.</p>
-                    <Link to="/blog" className="btn btn-primary">
-                        <ArrowLeft size={16} /> Quay lại Blog
-                    </Link>
-                </div>
-            </section>
-        );
+        return <Navigate to="/404" replace />;
     }
 
+    const relatedPosts = getRecentPosts(3).filter((p) => p.id !== post.id);
+
     return (
-        <article className="blog-post-page">
+        <main className="blog-post-page">
             {/* Header */}
-            <header className="blog-post-header">
-                <div className="blog-post-header-bg" />
-                <div className="container">
+            <header className="post-header">
+                <div className="container container-narrow">
                     <Link to="/blog" className="back-link">
-                        <ArrowLeft size={18} />
+                        <ArrowLeft size={20} />
                         Quay lại Blog
                     </Link>
 
+                    <div className="post-category-badge">{post.category}</div>
+
+                    <h1 className="post-page-title">{post.title}</h1>
+
                     <div className="post-header-meta">
-                        <span className="post-category">{post.category}</span>
-                        <span className="post-date">{post.date}</span>
-                        <span className="post-reading-time">
-                            <Clock size={14} />
-                            {post.readingTime}
+                        <span className="meta-item">
+                            <User size={16} />
+                            {post.author}
                         </span>
-                    </div>
-
-                    <h1 className="post-header-title">{post.title}</h1>
-                    <p className="post-header-excerpt">{post.excerpt}</p>
-
-                    <div className="post-author">
-                        <span className="author-name">Thông Phan</span>
+                        <span className="meta-item">
+                            <Calendar size={16} />
+                            {formatDate(post.publishedAt)}
+                        </span>
+                        <span className="meta-item">
+                            <Clock size={16} />
+                            {post.readingTime} phút đọc
+                        </span>
                     </div>
                 </div>
             </header>
 
             {/* Content */}
-            <section className="blog-post-content">
-                <div className="container-narrow">
+            <article className="post-content">
+                <div className="container container-narrow">
                     <div
-                        className="prose"
-                        dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br/>').replace(/## /g, '<h2>').replace(/### /g, '<h3>') }}
+                        className="post-body"
+                        dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
                     />
                 </div>
-            </section>
+            </article>
 
-            {/* Footer */}
-            <section className="blog-post-footer">
-                <div className="container-narrow">
-                    <div className="share-section">
-                        <button className="share-button">
-                            <Share2 size={18} />
-                            Chia sẻ bài viết
-                        </button>
+            {/* Author */}
+            <section className="post-author">
+                <div className="container container-narrow">
+                    <div className="author-card">
+                        <div className="author-avatar">
+                            <span>TP</span>
+                        </div>
+                        <div className="author-info">
+                            <h3 className="author-name">{post.author}</h3>
+                            <p className="author-bio">
+                                Giúp chuyên gia xây dựng thương hiệu cá nhân và kiếm tiền từ kiến thức.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Related Posts */}
             {relatedPosts.length > 0 && (
-                <section className="related-posts-section">
-                    <div className="container-narrow">
-                        <h3>Bài viết liên quan</h3>
-                        <div className="related-posts-grid">
-                            {relatedPosts.map(related => (
-                                <Link key={related.id} to={`/blog/${related.slug}`} className="related-post-card">
-                                    <span className="related-category">{related.category}</span>
-                                    <h4>{related.title}</h4>
-                                    <span className="related-reading-time">{related.readingTime}</span>
+                <section className="related-posts section">
+                    <div className="container">
+                        <h2 className="section-title text-center">Bài viết liên quan</h2>
+                        <div className="related-grid">
+                            {relatedPosts.map((relatedPost) => (
+                                <Link
+                                    key={relatedPost.id}
+                                    to={`/blog/${relatedPost.slug}`}
+                                    className="related-card"
+                                >
+                                    <div className="related-category">{relatedPost.category}</div>
+                                    <h3 className="related-title">{relatedPost.title}</h3>
+                                    <div className="related-meta">
+                                        <span>{formatDate(relatedPost.publishedAt)}</span>
+                                        <span>{relatedPost.readingTime} phút</span>
+                                    </div>
                                 </Link>
                             ))}
                         </div>
                     </div>
                 </section>
             )}
-        </article>
+        </main>
     );
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+}
+
+function formatContent(content) {
+    // Convert markdown-like content to HTML
+    return content
+        // Headers
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+        // Bold
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        // Italic
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        // Blockquotes
+        .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+        // Horizontal rules
+        .replace(/^---$/gm, '<hr />')
+        // Lists
+        .replace(/^- (.+)$/gm, '<li>$1</li>')
+        // Wrap consecutive li in ul
+        .replace(/(<li>.*<\/li>\n)+/g, '<ul>$&</ul>')
+        // Line breaks and paragraphs
+        .split('\n\n')
+        .map(paragraph => {
+            if (paragraph.startsWith('<h') ||
+                paragraph.startsWith('<blockquote') ||
+                paragraph.startsWith('<ul') ||
+                paragraph.startsWith('<hr')) {
+                return paragraph;
+            }
+            return `<p>${paragraph.replace(/\n/g, '<br />')}</p>`;
+        })
+        .join('\n');
 }
