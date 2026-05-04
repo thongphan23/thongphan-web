@@ -1,0 +1,105 @@
+name = "thongphan-com"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Main site (Next.js on Cloudflare Pages)
+# Deploy via: npx @cloudflare/next-on-pages
+pages_build_output_dir = ".vercel/output/static"
+
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler d1 create thongphan-db
+
+# KV Namespace (for caching)
+[[kv_namespaces]]
+binding = "KV"
+id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler kv:namespace create KV
+preview_id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler kv:namespace create KV --preview
+
+# R2 Bucket (for media storage)
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "thongphan-media"
+preview_bucket_name = "thongphan-media-preview"
+
+# Vectorize Index (for AI Chat RAG)
+[[vectorize]]
+binding = "BRAIN2_INDEX"
+index_name = "brain2-vault"
+
+# AI binding (Workers AI)
+[ai]
+binding = "AI"
+
+# Environment variables
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://thongphan.com"
+
+# ============================================
+# WORKER: challenges API
+# ============================================
+[[workers]]
+name = "thongphan-challenges-api"
+main = "workers/api/challenges.ts"
+compatibility_date = "2025-01-01"
+
+[[workers.d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+[[workers.kv_namespaces]]
+binding = "KV"
+id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+[workers.routes]
+pattern = "thongphan.com/api/challenges*"
+zone_name = "thongphan.com"
+
+# ============================================
+# WORKER: signup API
+# ============================================
+[[workers]]
+name = "thongphan-signup-api"
+main = "workers/api/signup.ts"
+compatibility_date = "2025-01-01"
+
+[[workers.d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+[[workers.kv_namespaces]]
+binding = "KV"
+id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+[workers.routes]
+pattern = "thongphan.com/api/signup"
+zone_name = "thongphan.com"
+
+# ============================================
+# WORKER: email-drip (cron)
+# ============================================
+[[workers]]
+name = "thongphan-email-drip"
+main = "workers/api/email-drip.ts"
+compatibility_date = "2025-01-01"
+
+[[workers.d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+[[workers.kv_namespaces]]
+binding = "KV"
+id = "PLACEHOLDER_SET_AFTER_CREATE"
+
+# Cron trigger: run every hour
+[workers.triggers]
+crons = ["0 * * * *"]  # Every hour at minute 0
+
+[workers.routes]
+pattern = "thongphan.com/api/email-drip/trigger"
+zone_name = "thongphan.com"

@@ -1,0 +1,218 @@
+.challengeDetail {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--space-24) 0 var(--space-16);
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.duration {
+  display: inline-block;
+  background: var(--bg-elevated);
+  color: var(--accent-gold);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-6);
+}
+
+.hero h1 {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.tagline {
+  font-size: var(--text-2xl);
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-bottom: var(--space-6);
+}
+
+.description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNumber {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--accent-gold);
+  font-family: var(--font-heading);
+}
+
+.statLabel {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+/* Benefits Section */
+.benefits {
+  padding: var(--space-16) 0;
+}
+
+.benefits h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.benefitsList {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s;
+}
+
+.benefitItem:hover {
+  border-color: var(--border-gold);
+}
+
+.benefitIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.benefitContent h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.benefitContent p {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Signup Section */
+.signup {
+  padding: var(--space-16) 0;
+  background: var(--bg-secondary);
+}
+
+.signupContent {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.signup p {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+/* Social Proof Section */
+.socialProof {
+  padding: var(--space-16) 0;
+}
+
+.socialProof h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+}
+
+.testimonial {
+  padding: var(--space-6);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.testimonialText {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  font-style: italic;
+}
+
+.testimonialAuthor {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .tagline {
+    font-size: var(--text-xl);
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .benefits h2,
+  .signup h2,
+  .socialProof h2 {
+    font-size: var(--text-3xl);
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,142 @@
+.homepage {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--space-24) 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: var(--text-hero);
+  line-height: 1.1;
+  margin-bottom: var(--space-6);
+}
+
+.subheadline {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.ctas {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Track Record */
+.trackRecord {
+  padding: var(--space-16) 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  text-align: center;
+}
+
+.stat {
+  padding: var(--space-6);
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-bottom: var(--space-2);
+}
+
+.statLabel {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+
+/* Modules */
+.modules {
+  padding: var(--space-24) 0;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-12);
+}
+
+.moduleIcon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-4);
+}
+
+/* Featured Posts */
+.featured {
+  padding: var(--space-24) 0;
+  background: var(--bg-secondary);
+}
+
+.featured h2 {
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+.postMeta {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Philosophy */
+.philosophy {
+  padding: var(--space-24) 0;
+}
+
+.quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  color: var(--accent-gold);
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .ctas {
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .moduleGrid,
+  .postGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote {
+    font-size: var(--text-2xl);
+  }
+}

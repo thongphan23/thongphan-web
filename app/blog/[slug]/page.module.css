@@ -1,0 +1,135 @@
+.article {
+  padding: var(--space-16) 0;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.header h1 {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--space-4);
+}
+
+.description {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  margin-top: var(--space-4);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.content {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  margin-bottom: var(--space-16);
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
+.content p {
+  margin-bottom: var(--space-6);
+}
+
+.content ul,
+.content ol {
+  margin-left: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.content li {
+  margin-bottom: var(--space-3);
+}
+
+.content strong {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.content code {
+  background: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+.authorCard {
+  margin-bottom: var(--space-16);
+}
+
+.authorInfo {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.authorAvatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  flex-shrink: 0;
+}
+
+.related {
+  margin-top: var(--space-16);
+}
+
+.related h3 {
+  margin-bottom: var(--space-8);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .description {
+    font-size: var(--text-lg);
+  }
+
+  .content {
+    font-size: var(--text-base);
+  }
+
+  .authorInfo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+}

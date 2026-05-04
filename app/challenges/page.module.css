@@ -1,0 +1,128 @@
+.challengesPage {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  padding: var(--space-24) 0 var(--space-16);
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.hero h1 {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Challenge Grid */
+.challengeGrid {
+  padding: var(--space-16) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: var(--space-8);
+}
+
+.challengeCard {
+  position: relative;
+  padding: var(--space-8);
+}
+
+.duration {
+  display: inline-block;
+  background: var(--bg-elevated);
+  color: var(--accent-gold);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-6);
+}
+
+.challengeCard h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.tagline {
+  font-size: var(--text-lg);
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-bottom: var(--space-4);
+}
+
+.description {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.challengeCard .btn-primary {
+  width: 100%;
+  text-align: center;
+  margin-top: var(--space-6);
+}
+
+/* Info Section */
+.info {
+  padding: var(--space-16) 0;
+  background: var(--bg-secondary);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+}
+
+.infoCard {
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.infoIcon {
+  font-size: 3rem;
+  margin-bottom: var(--space-4);
+}
+
+.infoCard h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.infoCard p {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: var(--text-4xl);
+  }
+
+  .subtitle {
+    font-size: var(--text-lg);
+  }
+}
