@@ -4,6 +4,7 @@ compatibility_date = "2025-01-01"
 
 [ai]
 binding = "AI"
+remote = true
 
 [[vectorize]]
 binding = "BRAIN2_INDEX"
