@@ -8,29 +8,23 @@ interface Challenge {
   description: string | null
   duration_days: number
   is_active: number
-  created_at: string
 }
 
-async function getChallenges(): Promise<Challenge[]> {
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/challenges`, {
-      cache: 'no-store' // Always fetch fresh data
-    })
-
-    if (!response.ok) {
-      console.error('Failed to fetch challenges:', response.status)
-      return []
-    }
-
-    return await response.json()
-  } catch (error) {
-    console.error('Error fetching challenges:', error)
-    return []
+// Static data - no HTTP fetch during build
+const CHALLENGES: Challenge[] = [
+  {
+    id: '1',
+    slug: 'brain2-21-ngay',
+    title: '21 Ngày Brain2 — Xây Bộ Não Thứ 2',
+    tagline: 'Từ 0 đến hệ thống tri thức cá nhân hoạt động trong 21 ngày',
+    description: 'Mỗi sáng 1 email. 15 phút thực hành. Sau 21 ngày bạn có vault Obsidian chạy được và kết nối AI.',
+    duration_days: 21,
+    is_active: 1,
   }
-}
+]
 
-export default async function ChallengesPage() {
-  const challenges = await getChallenges()
+export default function ChallengesPage() {
+  const challenges = CHALLENGES
   return (
     <div className={styles.challengesPage}>
       {/* Hero Section */}

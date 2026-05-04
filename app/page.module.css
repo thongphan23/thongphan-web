@@ -76,6 +76,62 @@
   margin-bottom: var(--space-4);
 }
 
+.moduleCta {
+  margin-top: var(--space-4);
+  color: var(--accent-gold);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+/* Topics */
+.topics {
+  padding: var(--space-24) 0;
+  background: var(--bg-secondary);
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+}
+
+.topicIcon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-4);
+}
+
+/* Ecosystem */
+.ecosystem {
+  padding: var(--space-24) 0;
+}
+
+.ecosystemHeader {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.ecosystemHeader h2 {
+  margin-bottom: var(--space-4);
+}
+
+.ecosystemSub {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+}
+
+.ecosystemGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ecosystemIcon {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-4);
+}
+
 /* Featured Posts */
 .featured {
   padding: var(--space-24) 0;
@@ -113,7 +169,13 @@
   color: var(--accent-gold);
   font-style: italic;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 auto var(--space-4);
+}
+
+.quoteAuthor {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 /* Responsive */
@@ -131,7 +193,9 @@
     gap: var(--space-6);
   }
 
+  .topicGrid,
   .moduleGrid,
+  .ecosystemGrid,
   .postGrid {
     grid-template-columns: 1fr;
   }

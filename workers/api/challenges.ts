@@ -20,7 +20,9 @@ interface Challenge {
 }
 
 const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production'
+    ? 'https://thongphan.com'
+    : '*',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Content-Type': 'application/json',

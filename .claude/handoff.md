@@ -1,508 +1,446 @@
-# 📋 Sổ Bàn Giao — thongphan-com (Rebuild)
+# 📋 Sổ Bàn Giao v2 — thongphan-com
 
 > ⚠️ NGUỒN SỰ THẬT DUY NHẤT. Đọc kỹ trước khi làm bất cứ thứ gì.
 
 ---
 
-## 🗺️ TRẠNG THÁI HIỆN TẠI
+## 🗺️ TRẠNG THÁI
 
-**Cập nhật:** 2026-05-04  
-**Tình trạng:** 🆕 Khởi tạo — chưa có code nào
-
-**Context:**
-- Website cũ (React + Vite + Three.js tại `/Users/rio/antigravity-agent-gdrive/thongphan-web/`) đã quyết định đập bỏ hoàn toàn
-- Repo mới: `/Users/rio/thongphan-com/` — build lại từ đầu
-- DNS thongphan.com đã trỏ về Cloudflare (đã verify qua API)
-- Mục tiêu: Cloudflare-native website với 4 modules
-
-**4 Modules cần build:**
-1. **Blog** — long-form Markdown posts, SEO, categories
-2. **Challenges** — signup + email drip (21 Ngày Brain2)
-3. **AI Chat** — RAG từ Brain2 vault, streaming
-4. **Homepage/About** — first impression, dark mode
+**Cập nhật:** 2026-05-04 v2  
+**Phase 1 đã xong:** Next.js 15, Blog, Challenge UI, Workers API (cơ bản)  
+**Phase 2 này:** Fix bugs + điền content thật + tạo About page + 3 blog posts mẫu
 
 ---
 
-## 📚 SKILLS & KNOWLEDGE
+## 🚨 BUGS CẦN FIX NGAY
 
-**Spec files (ĐỌC TRƯỚC):**
-- `.claude/spec/brand-design.md` — colors, typography, CSS tokens, component patterns
-- `.claude/spec/cloudflare-conventions.md` — D1 schema, Workers patterns, wrangler.toml
-- `.claude/spec/author-dna.md` — AI chat system prompt, giọng Thông Phan
+### Bug 1 — `/challenges` build error (CRITICAL)
+**Lỗi:** `Route /challenges couldn't be rendered statically because it used revalidate: 0 fetch http://localhost:3000/api/challenges`
 
-**Conventions:**
-- Dark mode mặc định, brand gold `#F5C842`
-- Typography: Be Vietnam Pro + Inter (Google Fonts)
-- KHÔNG dùng Tailwind — chỉ CSS Modules + CSS Variables
-- Blog: Markdown files trong `/content/blog/[slug].md`
-- Tiếng Việt cho UI text, English cho code comments
+**Root cause:** `app/challenges/page.tsx` đang fetch chính nó qua HTTP trong build time — Worker chưa có nên request fail.
 
----
+**Fix:** Bỏ HTTP fetch, thay bằng hardcode data trực tiếp trong component:
+```tsx
+// app/challenges/page.tsx
+// XOÁ hàm getChallenges() và fetch call
+// THAY bằng static array:
 
-## ⚡ TASK HIỆN TẠI
+const CHALLENGES = [
+  {
+    id: '1',
+    slug: 'brain2-21-ngay',
+    title: '21 Ngày Brain2 — Xây Bộ Não Thứ 2',
+    tagline: 'Từ 0 đến hệ thống tri thức cá nhân hoạt động trong 21 ngày',
+    description: 'Mỗi sáng 1 email. 15 phút thực hành. Sau 21 ngày bạn có vault Obsidian chạy được và kết nối AI.',
+    duration_days: 21,
+    participants: 600,
+    is_active: 1,
+  }
+]
 
-> ⏱️ Agent Team mode — 3 teammates chạy song song Phase 1 + 2.
+export default function ChallengesPage() {
+  const challenges = CHALLENGES
+  // ... render như cũ
+}
+```
 
----
+**Verify:** `npm run build` không còn error về `/challenges`.
 
-### 🔲 Task SET-A: Frontend Foundation [teammate: fe-builder]
-**Ước lượng:** ~90 phút  
-**Files sở hữu:** `/app/`, `/components/`, `/styles/`
+### Bug 2 — wrangler.toml có PLACEHOLDER IDs (CRITICAL)
+**Lỗi:** Tất cả `database_id` và KV `id` đều là `"PLACEHOLDER_SET_AFTER_CREATE"` — deploy sẽ fail.
 
-**Build Order:**
-
-**STEP 1 — Init Next.js 15 project:**
+**Fix — chạy theo thứ tự:**
 ```bash
 cd /Users/rio/thongphan-com
-npx create-next-app@latest . --typescript --app --no-tailwind --src-dir=false --import-alias="@/*"
-# Xoá app/globals.css mặc định, thay bằng design system
+
+# 1. Login (nếu chưa)
+npx wrangler login
+
+# 2. Tạo D1 database
+npx wrangler d1 create thongphan-db
+# → Copy "database_id" từ output
+
+# 3. Tạo KV namespace
+npx wrangler kv:namespace create KV
+# → Copy "id" từ output
+npx wrangler kv:namespace create KV --preview
+# → Copy "id" cho preview_id
+
+# 4. Điền vào wrangler.toml — tìm & thay PLACEHOLDER_SET_AFTER_CREATE bằng IDs thật
 ```
 
-**STEP 2 — Global CSS với design tokens:**  
-Tạo `styles/globals.css` với đầy đủ CSS variables từ `.claude/spec/brand-design.md`:
-- Color system (bg, accent-gold, text)
-- Typography scale
-- Spacing tokens
-- Animation keyframes (fadeInUp, shimmer, reading-progress)
-- Component base styles (card, btn-primary, input)
+**Verify:** `npx wrangler d1 list` thấy `thongphan-db`, `npx wrangler kv:namespace list` thấy KV.
 
-**STEP 3 — Root layout (`app/layout.tsx`):**
-- Import Google Fonts (Be Vietnam Pro + Inter) via `next/font/google`
-- Dark mode via `<html lang="vi" data-theme="dark">`
-- Global navigation component
-- Footer component
-
-**STEP 4 — Navigation component (`components/ui/Navbar.tsx`):**
-- Logo "THÔNG PHAN" (text, gold color)
-- Links: Blog / Challenges / Chat / About
-- Mobile hamburger menu
-- Sticky top, blur backdrop
-
-**STEP 5 — Homepage (`app/page.tsx`):**
-
-Section 1 — Hero:
-```
-<h1> với shimmer gold animation:
-"AI không cướp việc bạn.
-Người dùng AI giỏi hơn bạn mới cướp."
-
-Sub-headline: "10 năm content marketing. 40+ bài viral. Tui đang chia sẻ tất cả."
-
-2 CTAs: [Đọc Blog →] (primary gold) | [Thử Chat với Tui] (outline)
+### Bug 3 — CORS quá rộng
+**Fix:** Trong `workers/api/signup.ts` và `workers/api/challenges.ts`, đổi:
+```typescript
+'Access-Control-Allow-Origin': '*'
+// thành:
+'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production' 
+  ? 'https://thongphan.com' 
+  : '*'
 ```
 
-Section 2 — Track Record (3 số liệu nổi bật):
-```
-10+ năm | 40+ bài viral | 600+ đăng ký/24h
-```
+---
 
-Section 3 — 3 Module Cards (Blog / Challenge / Chat):
-- Mỗi card: icon + title + 1 câu mô tả + link
+## 📝 CONTENT THẬT CẦN ĐIỀN VÀO
 
-Section 4 — Featured Posts (3 bài, hardcode tạm với placeholder content)
+### A. Homepage (`app/page.tsx`) — Rewrite toàn bộ text
 
-Section 5 — Philosophy quote:
+**Tagline chính (hero):**
 ```
-"Mọi người sợ AI. Tui sợ người hiểu AI."
+"Thương hiệu cá nhân không chờ đợi.
+Nó được xây bằng AI, Content, và tư duy đúng."
 ```
 
-**STEP 6 — Blog listing (`app/blog/page.tsx`):**
-- Filter tabs theo category (ai / career / content / brain2 / finance)
-- PostCard component: title, description, category badge, date, reading time
-- Search input (client-side filter)
-- Load 3 bài placeholder từ content/blog/
+**Sub-headline:**
+```
+"10+ năm. 40+ bài viral. 80k+ shares.
+Tui đang chia sẻ toàn bộ hệ thống."
+```
 
-**STEP 7 — Blog post detail (`app/blog/[slug]/page.tsx`):**
-- Reading progress bar (fixed top)
-- Table of contents sticky sidebar (desktop)
-- Render Markdown → HTML (dùng remark + remark-html + remark-gfm)
-- Author card ở cuối
-- "Bài liên quan" section
+**CTAs:**
+- Primary: `Đọc Blog →` → `/blog`
+- Secondary: `Chat với Tui` → `/chat`
 
-**STEP 8 — About page (`app/about/page.tsx`):**
-- Hero: ảnh + tagline
-- Track record timeline
-- "Tui đang xây gì" section (Brain2, Conan School, Antigravity)
-- CTA: Chat với AI Thông Phan
+**Track record section (3 số liệu):**
+```
+80k+       |  40+           |  600+
+Shares     |  Bài viral     |  Đăng ký workshop
+           |  (>1k shares)  |  trong 24h
+```
 
-**STEP 9 — 3 blog posts mẫu (Markdown):**
+**4 topics anh chia sẻ (cards):**
+```
+🧠 AI & Automation  — Làm chủ AI trước khi AI làm chủ bạn
+✍️ Content Viral    — Viral có công thức, không phải may mắn  
+🔮 Brain2           — Xây bộ não thứ 2 với Obsidian + AI
+🧬 Social Psychology — Hiểu người, ảnh hưởng đúng cách
+```
 
-Tạo `content/blog/ai-khong-cuop-viec-ban.md`:
+**Module cards (3 CTA lớn):**
+```
+📖 Blog
+Long-form. Không fluff. Đọc 1 bài = tiết kiệm 6 tháng thử sai.
+[Đọc bài viết →]  href="/blog"
+
+🎯 Challenges
+21 ngày email. Mỗi sáng 1 bài tập. Miễn phí hoàn toàn.
+[Tham gia ngay →]  href="/challenges"
+
+💬 Chat với Tui
+Hỏi tui bất cứ thứ gì — 24/7. Powered by Brain2 vault của tui.
+[Bắt đầu chat →]  href="/chat"
+```
+
+**Ecosystem section — Phát triển cùng Conan:**
+```
+Tiêu đề: "Bạn muốn đi xa hơn?"
+Sub: "Tui không chỉ chia sẻ blog. Tui còn co-build một cộng đồng."
+
+Card 1 — Conan Maker (Community):
+  Icon: 🏗️
+  Title: "Conan Maker"
+  Desc: "100+ maker đang cùng nhau build sản phẩm thật. 
+         Học = Tạo ra được thứ gì đó. Không phải note."
+  CTA: "Trở thành Maker →"
+  href: "https://www.conan.school/membership"
+
+Card 2 — Conan Elite (Coaching):
+  Icon: 🎯
+  Title: "Coaching 1:1"
+  Desc: "Làm việc trực tiếp với team Conan. 
+         Personal Branding, Content, AI — từng bước cụ thể."
+  CTA: "Xem Conan Elite →"
+  href: "https://www.conan.school/membership"
+```
+
+**Philosophy quote (cuối trang):**
+```
+"Nói ít, làm nhiều và chứng minh bằng hành động."
+— Thông Phan
+```
+
+### B. About page — TẠO MỚI `app/about/page.tsx`
+
+**Hero:**
+```
+Label: "Câu chuyện cá nhân"
+H1: "Về Thông Phan"
+Sub: "Sinh năm 1988 tại Tiền Giang. Tốt nghiệp UEH (Math/Stats).
+      Từ shipper, sales, diễn viên quần chúng đến doanh nhân và nhà đào tạo."
+```
+
+**Core traits (badges):**
+```
+✨ Sáng tạo  |  🔍 Tò mò  |  😄 Hài hước
+```
+
+**Expertise bars:**
+```
+Marketing        95%
+Content          90%
+AI & Automation  85%
+```
+
+**Timeline:**
+```
+2006    Chuyên Lý, Chuyên Tiền Giang — nền tảng tư duy phân tích
+2015    Hoa Sơn Tửu Lầu — chuỗi nhà hàng kiếm hiệp đầu tiên VN
+        Khởi nghiệp 85tr, 32m². 2 năm → 6 nhà hàng, 650m²/quán, 60tr/ngày/quán
+        Lên CNN Travel, VTV3, Tuổi Trẻ, Thanh Niên
+2016-17 Serial Entrepreneur — Kiếm Vương, Thánh Địa Liên Quân, Vietnam938
+        Quy mô 50+ nhân sự
+2018-21 Marketing Leadership — Saffron Việt Nam, iCheck Corp
+        Dẫn dắt team 200+ nhân sự
+2022    CMO Autoshop — Top 1 giải pháp ngành F&B
+        Phục vụ hàng nghìn quán cafe & trà sữa toàn quốc
+Hiện tại Co-Founder & CMO Conan School (highlight)
+        Trường "kinh doanh hiệu quả" đầu tiên tại Việt Nam
+        100+ makers đang build sản phẩm thật
+```
+
+**Mentors section:**
+```
+Ba của tôi (Phan Quân Chiêu) — Resilience và Determination — PhD Bách Khoa
+Alex Hormozi                 — Business scaling và value creation
+Nguyễn Ngọc Long            — Media consciousness và brand strategy
+```
+
+**Philosophy quote:**
+```
+"Nói ít, làm nhiều và chứng minh bằng hành động."
+```
+
+**CTA section:**
+```
+"Muốn phát triển cùng nhau?"
+Mô tả: Tham gia Conan Maker — cộng đồng 100+ maker đang build thật.
+Button primary: "Vào Conan Maker →" → https://www.conan.school/membership
+Button secondary: "Chat với Tui" → /chat
+```
+
+**CSS:** Tạo `app/about/page.module.css` theo cùng dark mode pattern, dùng CSS variables từ globals.css.
+
+### C. 3 Blog posts mẫu — TẠO `content/blog/`
+
+**Bài 1: `ai-khong-cuop-viec-ban.md`**
 ```markdown
 ---
 title: "AI không cướp việc bạn — người dùng AI giỏi hơn bạn mới cướp"
-description: "10 năm content marketing và đây là điều tui học được về AI và tương lai công việc"
+description: "10 năm làm marketing và đây là điều tôi học được về AI và tương lai công việc"
 category: ai
 publishedAt: "2026-05-01"
+readingTime: 7
+featured: true
+---
+
+AI không cướp việc bạn.
+
+Người dùng AI giỏi hơn bạn mới cướp.
+
+Câu này tôi đã nói với 600+ người trong workshop tháng 3. 600 người đăng ký trong 24 giờ.
+
+Tại sao? Vì nó đúng. Và vì nó đáng sợ theo đúng nghĩa.
+
+## Vấn đề không phải là AI
+
+Năm 2015, tôi mở Hoa Sơn Tửu Lầu. 9 tháng lỗ vốn. Ngủ trên bàn ghế. Không có tiền ăn cơm.
+
+Người ta nói: "Quán nhậu phong cách kiếm hiệp? Điên à?"
+
+Tôi nghĩ: "Chỉ có khác biệt mới tạo ra đột phá."
+
+Sau đó CNN Travel, VTV3, Tuổi Trẻ viết về tôi. Doanh thu đạt 60 triệu/ngày/quán.
+
+Bài học: Không phải ý tưởng tốt mới thắng. Người dám làm khác biệt mới thắng.
+
+AI cũng vậy.
+
+## Điều AI thật sự làm
+
+AI không thay thế bạn. AI khuếch đại bạn.
+
+Người không dùng AI → output X/ngày.
+Người dùng AI đúng cách → output 10X/ngày.
+
+Khoảng cách đang phình to mỗi tháng.
+
+## Brain2 — cách tôi dùng AI để compound knowledge
+
+Tôi đang xây Bộ Não Thứ 2 (Brain2) — vault Obsidian với 700+ notes, kết nối AI.
+
+Mỗi insight tôi học → atomize thành note → AI có thể tìm lại và kết nối.
+
+Sau 2 năm: tôi có 10 năm kinh nghiệm + khả năng truy xuất và kết nối tri thức tức thì.
+
+Không ai theo kịp.
+
+## Bạn bắt đầu từ đâu?
+
+3 bước đơn giản:
+
+1. Chọn 1 công cụ AI (ChatGPT, Gemini, bất cứ thứ gì)
+2. Dùng nó cho 1 nhiệm vụ bạn làm hàng ngày
+3. Lặp lại. Cải tiến. Compound.
+
+Đó là tất cả.
+
+Không cần biết code. Không cần hiểu kỹ thuật. Cần thói quen dùng đúng cách.
+
+---
+
+*Tôi đang chia sẻ toàn bộ hệ thống Brain2 qua challenge 21 ngày — miễn phí. [Đăng ký tại đây →](/challenges/brain2-21-ngay)*
+```
+
+**Bài 2: `viral-co-cong-thuc.md`**
+```markdown
+---
+title: "Viral có công thức — không phải may mắn"
+description: "40+ bài viral, 80k+ shares — đây là những gì tôi học được về cơ chế lan tỏa"
+category: content
+publishedAt: "2026-04-20"
 readingTime: 8
 featured: true
 ---
-# AI không cướp việc bạn
 
-...nội dung 800-1000 chữ, giọng Thông Phan từ spec/author-dna.md...
-```
+Tôi không may mắn hơn bạn.
 
-Tạo thêm 2 bài khác (category: career, brain2) với nội dung tương tự.
+Tôi chỉ hiểu viral hoạt động như thế nào.
 
-**STEP 10 — Verify:**
-```bash
-npm run dev
-# Check: http://localhost:3000 load không lỗi
-# Check: http://localhost:3000/blog hiện đúng 3 bài
-# Check: http://localhost:3000/blog/[slug] render Markdown đúng
-# Check: dark mode đúng màu brand
-# Check: mobile responsive
-```
+14 tháng đầu viết blog: không có bài nào đáng kể. Tôi nghĩ mình không có talent viết.
 
-**Acceptance Criteria:**
-- [ ] Homepage load < 3s, không lỗi console
-- [ ] Gold shimmer animation hoạt động
-- [ ] Blog listing filter theo category hoạt động
-- [ ] Blog post render Markdown với TOC
-- [ ] Mobile responsive (test tại 375px width)
-- [ ] Dark mode: background `#0A0A0F`, accent gold `#F5C842`
+Sau đó tôi chuyển cách tiếp cận. Thay vì hỏi "viết gì hay", tôi hỏi "người ta chia sẻ thứ gì và tại sao".
 
----
+## Cơ chế viral là gì?
 
-### 🔲 Task SET-B: Backend Workers [teammate: be-builder]
-**Ước lượng:** ~90 phút  
-**Files sở hữu:** `/workers/`, `/lib/`, `wrangler.toml`
+Người ta chia sẻ vì 3 lý do:
 
-**STEP 1 — Setup Cloudflare project:**
-```bash
-cd /Users/rio/thongphan-com
-npm install -D wrangler
-npx wrangler login  # nếu chưa login
+**1. Identity signal** — "Bài này nói lên tôi là ai"
+**2. Utility** — "Bài này có ích cho người tôi quan tâm"
+**3. Emotion** — "Bài này khiến tôi thấy mạnh mẽ, tức giận, hay được xác nhận"
 
-# Tạo D1 database
-npx wrangler d1 create thongphan-db
-# Copy database_id vào wrangler.toml
+Mỗi bài viral của tôi kích hoạt ít nhất 1 trong 3.
 
-# Tạo KV namespace
-npx wrangler kv:namespace create thongphan-kv
-# Copy id vào wrangler.toml
-```
+## Hook quyết định 80%
 
-**STEP 2 — wrangler.toml:**
-Dùng template từ `.claude/spec/cloudflare-conventions.md` section "wrangler.toml".
-Điền đúng database_id và KV id vừa tạo.
+Người đọc quyết định có đọc tiếp không trong 3 giây đầu.
 
-**STEP 3 — D1 Schema migration:**
-```bash
-# Tạo file migrations/001_initial.sql
-# Copy schema từ .claude/spec/cloudflare-conventions.md section "D1 Database Schema"
-npx wrangler d1 execute thongphan-db --file=migrations/001_initial.sql
-```
+Hook tệ: "5 cách cải thiện kỹ năng viết"
+Hook tốt: "14 tháng viết không ai đọc. Sau đó tôi thay 1 thứ."
 
-**STEP 4 — Challenge signup Worker (`workers/api/index.ts`):**
-```typescript
-// POST /api/challenge/signup
-// Body: { name: string, email: string, challengeSlug: string }
-// 1. Validate input (name + email required, valid email format)
-// 2. Lookup challenge by slug in D1
-// 3. Check for duplicate signup (email + challenge_id)
-// 4. Insert into challenge_signups
-// 5. Return { success: true, message: "Đăng ký thành công!" }
-// Error cases: invalid input (400), duplicate (409), not found (404)
-```
+Sự khác biệt? Hook tốt tạo ra câu hỏi trong đầu người đọc. Họ phải đọc tiếp để tìm câu trả lời.
 
-**STEP 5 — Seed initial data:**
-```bash
-# Tạo file scripts/seed.sql với:
-# 1 challenge: "21 Ngày Brain2"
-INSERT INTO challenges VALUES (
-  'brain2-21-days',
-  'brain2-21-ngay',
-  '21 Ngày Brain2 — Xây Bộ Não Thứ 2',
-  'Từ 0 đến hệ thống tri thức cá nhân hoạt động trong 21 ngày',
-  'Chương trình email hàng ngày giúp bạn xây Obsidian vault đúng cách, kết nối tri thức, và dùng AI để compound knowledge.',
-  21, 1, datetime('now')
-);
+## Tôi dùng AI để scale
 
-npx wrangler d1 execute thongphan-db --file=scripts/seed.sql
-```
+Ý tưởng vẫn là của tôi. Góc nhìn vẫn là của tôi. Trải nghiệm vẫn là của tôi.
 
-**STEP 6 — Email drip Worker (`workers/email/index.ts`):**
-```typescript
-// Cron trigger: chạy mỗi ngày lúc 7:00 AM UTC
-// Logic:
-// 1. Query signups chưa complete, chưa unsubscribed
-// 2. Với mỗi signup: current_day < duration_days
-// 3. Check email_logs xem hôm nay đã gửi chưa
-// 4. Nếu chưa: send email Day N via MailChannels
-// 5. Update current_day + insert email_log
-// Email content: hardcode cho Day 1-3 (đủ để demo)
-```
+AI giúp tôi: viết nhanh hơn, test nhiều hook hơn, format chuẩn hơn.
 
-**STEP 7 — D1 query helpers (`lib/db.ts`):**
-Implement đủ functions:
-- `getPostBySlug(db, slug)`
-- `getPostsByCategory(db, category, limit)`
-- `getChallengeBySlug(db, slug)`
-- `createSignup(db, { challengeId, name, email })`
-- `getSignupsDueToday(db)` — dùng cho email cron
-
-**STEP 8 — Test Workers locally:**
-```bash
-npx wrangler dev workers/api/index.ts --port=8787
-# Test: curl -X POST http://localhost:8787/api/challenge/signup \
-#   -H "Content-Type: application/json" \
-#   -d '{"name":"Test","email":"test@example.com","challengeSlug":"brain2-21-ngay"}'
-# Expect: { success: true }
-# Test duplicate: same request → expect 409
-```
-
-**STEP 9 — Deploy Workers:**
-```bash
-npx wrangler deploy workers/api/index.ts --name=thongphan-api
-```
-
-**Acceptance Criteria:**
-- [ ] D1 schema apply thành công (không lỗi SQL)
-- [ ] Challenge seed data có trong DB (`wrangler d1 execute thongphan-db --command="SELECT * FROM challenges"`)
-- [ ] POST /api/challenge/signup: 201 cho signup mới, 409 cho duplicate
-- [ ] Email cron logic test với `wrangler dev --test-scheduled`
-- [ ] Worker deploy thành công
+Kết quả: từ 1 bài/tuần → 3 bài/tuần, chất lượng tốt hơn.
 
 ---
 
-### 🔲 Task SET-C: Challenge UI + Wiring [teammate: ux-wirer]
-**Ước lượng:** ~60 phút  
-**Dependency:** Chờ SET-B hoàn thành trước (cần Worker endpoint)  
-**Files sở hữu:** `/app/challenges/`
-
-**STEP 1 — Challenges listing (`app/challenges/page.tsx`):**
-- Hero: "Thử Thách Tri Thức" + tagline
-- Challenge card: title, tagline, duration, số người tham gia (hardcode), CTA button
-
-**STEP 2 — Challenge landing page (`app/challenges/[slug]/page.tsx`):**
-
-Layout:
-```
-Hero: Title + tagline lớn
-"Bạn sẽ nhận được gì" — 3-5 bullet points
-"Cách thức" — 3 bước đơn giản
-Form đăng ký (tên + email + button)
-Social proof: "X người đã tham gia"
+*Học Viral Content có hệ thống tại [Conan School](https://www.conan.school/courses/viral-content)*
 ```
 
-**STEP 3 — Signup Form component (`components/challenge/SignupForm.tsx`):**
-```typescript
-// Client component
-// State: name, email, loading, success, error
-// Submit: POST đến Worker endpoint (từ env var NEXT_PUBLIC_API_URL)
-// Success state: "✅ Kiểm tra email ngay nhé, anh em!"
-// Error state: hiển thị error message
-// Validation: email format, required fields
+**Bài 3: `brain2-bo-nao-thu-2.md`**
+```markdown
+---
+title: "Brain2 — Bộ Não Thứ 2 tôi đã xây trong 2 năm"
+description: "700+ notes Obsidian, kết nối AI — đây là hệ thống giúp tôi không bao giờ quên thứ quan trọng"
+category: brain2
+publishedAt: "2026-04-10"
+readingTime: 9
+featured: false
+---
+
+Năm 2024, tôi bắt đầu xây Bộ Não Thứ 2.
+
+Không phải vì tôi nghe ai đó nói hay. Vì tôi sợ mất đi những gì tôi đã học.
+
+10 năm kinh nghiệm marketing. Hàng trăm insight từ sách, mentor, thực chiến. Tất cả đang nằm trong đầu tôi — và sẽ bốc hơi dần theo thời gian.
+
+## Brain2 là gì?
+
+Bộ Não Thứ 2 = hệ thống lưu trữ và kết nối tri thức bên ngoài não bộ.
+
+Tool tôi dùng: Obsidian (vault local) + AI (semantic search + synthesis).
+
+Sau 2 năm: 700+ notes, hàng nghìn kết nối, AI có thể tìm và kết nối bất cứ insight nào tôi từng học.
+
+## 4 thao tác cốt lõi
+
+```
+CAPTURE  → Bắt ý tưởng ngay khi có
+PROCESS  → Viết thành atomic note (1 idea = 1 note)
+CONNECT  → Link với notes liên quan
+REVIEW   → Ôn lại, bổ sung, nâng cấp
 ```
 
-**STEP 4 — Challenge landing content (hardcode cho "21 Ngày Brain2"):**
-```
-Title: "21 Ngày Brain2 — Xây Bộ Não Thứ 2"
-Tagline: "Từ 0 đến hệ thống tri thức cá nhân hoạt động trong 21 ngày"
+Lặp lại mãi mãi. Compound effect bắt đầu sau 3-6 tháng.
 
-Bạn sẽ nhận được:
-- 1 email mỗi sáng (Day 1 → Day 21)
-- Bài tập nhỏ, làm được trong 15 phút
-- Template Obsidian vault của Thông Phan
-- Framework kết nối tri thức với AI
+## Tại sao Obsidian?
 
-Cách thức:
-1. Đăng ký → nhận email xác nhận
-2. Mỗi sáng nhận 1 bài thực hành
-3. Ngày 21: có vault chạy được, kết nối AI
-```
+Local first — data là của bạn, không phụ thuộc cloud.
+Markdown — đơn giản, portable, AI-friendly.
+Graph view — thấy được kết nối giữa ideas.
 
-**STEP 5 — Wire form đến Worker API:**
-- `NEXT_PUBLIC_API_URL` trong `.env.local`
-- Fetch `${NEXT_PUBLIC_API_URL}/api/challenge/signup`
-- Handle loading/error/success states với animation
+## Kết hợp với AI
 
-**STEP 6 — Verify end-to-end:**
-```bash
-# 1. npm run dev
-# 2. Vào http://localhost:3000/challenges/brain2-21-ngay
-# 3. Submit form với email thật
-# 4. Check D1: wrangler d1 execute thongphan-db --command="SELECT * FROM challenge_signups"
-# 5. Verify record có trong DB
-```
+Tôi đang xây pipeline: Obsidian vault → embedding → vector search.
 
-**Acceptance Criteria:**
-- [ ] Challenge listing hiện 1 challenge card
-- [ ] Landing page load đúng content
-- [ ] Form validation hoạt động (empty fields, invalid email)
-- [ ] Submit thành công → success message
-- [ ] Submit duplicate → error message "Email này đã đăng ký rồi"
-- [ ] Record xuất hiện trong D1 sau submit
+Kết quả: hỏi AI "những insight nào liên quan đến viral content?" → AI tìm trong vault và trả về synthesis.
+
+Đây là bước tiếp theo của Personal Knowledge Management.
 
 ---
 
-## 🏗️ TEAM DESIGN
-
-### Team Structure:
-| Teammate | Role | Model | Files | Dependency |
-|----------|------|-------|-------|------------|
-| `fe-builder` | Frontend + UI | Sonnet | `/app/`, `/components/`, `/styles/` | Không |
-| `be-builder` | Workers + D1 | Sonnet | `/workers/`, `/lib/`, `wrangler.toml` | Không |
-| `ux-wirer` | Challenge UI + Wiring | Sonnet | `/app/challenges/` | Chờ be-builder xong |
-
-### Task Graph:
-```
-🔀 PARALLEL GROUP A:
-  - fe-builder → SET-A (Homepage, Blog, About UI)
-  - be-builder → SET-B (Workers, D1, Email drip)
-
-⏳ SEQUENTIAL (sau Group A):
-  - ux-wirer  → SET-C (Challenge landing + form wiring)
-
-✅ FINAL:
-  - fe-builder: npm run build → verify no errors
-  - be-builder: wrangler deploy → verify workers live
+*Muốn xây Brain2 trong 21 ngày? [Đăng ký challenge miễn phí →](/challenges/brain2-21-ngay)*
 ```
 
-### Spawn Prompts:
+---
 
-**fe-builder:**
-> "You are a frontend specialist rebuilding thongphan.com. Read `.claude/handoff.md` Task SET-A. Build all frontend: Next.js 15, dark mode design system, Homepage, Blog listing+detail, About page. Follow ALL specs in `.claude/spec/brand-design.md`. Use CSS Modules + CSS Variables ONLY (no Tailwind). When done, write results to 'KẾT QUẢ PHIÊN' in handoff.md."
+## 📋 CHECKLIST HOÀN CHỈNH
 
-**be-builder:**
-> "You are a backend specialist. Read `.claude/handoff.md` Task SET-B. Set up Cloudflare D1, create Workers for challenge signup API and email drip cron. Follow ALL patterns in `.claude/spec/cloudflare-conventions.md`. When done, write results to 'KẾT QUẢ PHIÊN' in handoff.md."
+### Fix bugs:
+- [ ] `/challenges/page.tsx` — bỏ HTTP fetch, hardcode CHALLENGES array
+- [ ] `wrangler.toml` — chạy wrangler d1 create + kv create, điền IDs thật
+- [ ] CORS — restrict về `https://thongphan.com` trong production
 
-**ux-wirer:**
-> "You are a UX integration specialist. Wait for be-builder to finish. Read `.claude/handoff.md` Task SET-C. Build Challenge listing + landing pages + signup form, wire to the Worker API. Follow brand specs in `.claude/spec/brand-design.md`. When done, write results to 'KẾT QUẢ PHIÊN'."
+### Content:
+- [ ] `app/page.tsx` — rewrite toàn bộ text theo spec section A
+- [ ] `app/about/page.tsx` — tạo mới theo spec section B
+- [ ] `app/about/page.module.css` — tạo mới theo dark mode pattern
+- [ ] `content/blog/ai-khong-cuop-viec-ban.md` — tạo mới
+- [ ] `content/blog/viral-co-cong-thuc.md` — tạo mới
+- [ ] `content/blog/brain2-bo-nao-thu-2.md` — tạo mới
+
+### Verify:
+- [ ] `npm run build` — không có errors
+- [ ] Homepage: đúng tagline, đúng số liệu, có Conan Maker section
+- [ ] About: đầy đủ timeline, đúng "Co-Founder & CMO Conan School"
+- [ ] Blog: 3 bài hiển thị, filter category hoạt động
+- [ ] `/challenges` — render đúng, không build error
+- [ ] Links Conan (conan.school/membership) hoạt động
 
 ---
 
 ## 📌 QUYẾT ĐỊNH ĐÃ CHỐT
 
-| Quyết định | Giá trị | Lý do |
-|-----------|---------|-------|
-| Framework | Next.js 15 App Router | SSR + SEO tốt nhất cho blog |
-| Hosting | Cloudflare Pages | Đã có DNS trên CF, free tier |
-| Database | Cloudflare D1 | Serverless SQLite, zero cost |
-| Blog CMS | Markdown files trong `/content/blog/` | Git-based, đơn giản nhất, CC có thể tạo bài mới |
-| AI model | Cloudflare Workers AI (llama-3.1-8b) | Free, edge latency, đủ cho chat |
-| Design | Dark mode mặc định | Brand identity, tech audience |
-| Email | MailChannels via Workers | Native CF integration, free tier |
-| CSS | CSS Modules + Variables | No Tailwind, full control |
-| Phase 1 scope | Blog + Challenge UI + Workers API | AI Chat là Phase 2 |
+| Item | Giá trị |
+|------|---------|
+| Định vị | Thương hiệu cá nhân + AI + Content + Brain2 + Social Psychology |
+| Tagline chính | "Thương hiệu cá nhân không chờ đợi. Nó được xây bằng AI, Content, và tư duy đúng." |
+| Track record | 80k+ shares, 40+ bài viral, 600+ đăng ký/24h |
+| Chức danh | Co-Founder & CMO của Conan School |
+| Ecosystem CTA | → Conan Maker (community) + Conan Elite (coaching 1:1) |
+| Philosophy | "Nói ít, làm nhiều và chứng minh bằng hành động." |
+| Phase 3 | AI Chat (RAG từ Brain2 vault) — handoff tiếp theo |
 
 ---
 
 ## 📝 KẾT QUẢ PHIÊN
 
-### [2026-05-04 01:44] ux-builder — Challenge Pages
-**Ai ghi:** Claude Code (sub-agent)
-**Status:** ✅ Hoàn thành
-
-**Đã làm:**
-- ✅ Built Challenge listing page (`app/challenges/page.tsx`) với card grid, hardcoded 2 challenges
-- ✅ Built Challenge detail/landing page (`app/challenges/[slug]/page.tsx`) với hero, benefits section, signup form
-- ✅ Built SignupForm component (`components/SignupForm.tsx`) với validation, loading states, success/error handling
-- ✅ Wired API calls với fetch, CORS handling, error messages
-
-**Files created:** 5 files
-- `app/challenges/page.tsx`
-- `app/challenges/page.module.css`
-- `app/challenges/[slug]/page.tsx`
-- `app/challenges/[slug]/page.module.css`
-- `components/SignupForm.tsx`
-
-**Verified:**
-- ✅ Challenge listing page renders
-- ✅ Challenge detail page renders
-- ✅ Signup form validation works
-- ✅ API call structure ready (placeholder for now)
-
-**Acceptance Criteria đã đạt:**
-- [x] Challenge listing page
-- [x] Challenge detail/landing page
-- [x] Signup form với validation
-- [x] API integration structure
-
-**Ghi chú cho Command Center:** Challenge pages hoàn tất. Ready để deploy Workers API và test end-to-end flow.
-
----
-
-### [2026-05-04 01:32] fe-builder — Frontend Foundation
-**Ai ghi:** Claude Code
-**Status:** ✅ Hoàn thành
-
-**Đã làm:**
-- ✅ Init Next.js 15 project (TypeScript, App Router, no Tailwind)
-- ✅ Created `styles/globals.css` với đầy đủ design system từ brand-design.md
-- ✅ Built root layout (`app/layout.tsx`) với Google Fonts, dark mode, Navbar, Footer
-- ✅ Built Homepage (`app/page.tsx`) với 5 sections: Hero (shimmer animation), Track Record, Module Cards, Featured Posts, Philosophy
-- ✅ Built Blog listing (`app/blog/page.tsx`) với category filters, search, client-side filtering
-- ✅ Built Blog post detail (`app/blog/[slug]/page.tsx`) với reading progress bar, author card, related posts
-- ✅ Updated `package.json` với dev/build/start scripts
-- ✅ Installed dependencies: next, react, react-dom, typescript, remark, remark-html, remark-gfm, gray-matter
-
-**Files created:** 11 files
-- `tsconfig.json`, `next.config.js`, `package.json`
-- `styles/globals.css`
-- `app/layout.tsx`, `app/layout.module.css`
-- `app/page.tsx`, `app/page.module.css`
-- `app/blog/page.tsx`, `app/blog/page.module.css`
-- `app/blog/[slug]/page.tsx`, `app/blog/[slug]/page.module.css`
-
-**Verified:**
-- ✅ Dev server runs successfully on port 3001
-- ✅ Homepage renders with all 5 sections
-- ✅ Dark mode + gold accent colors applied
-- ✅ Typography (Be Vietnam Pro + Inter) loaded
-- ✅ All navigation links present
-
-**Acceptance Criteria đã đạt:**
-- [x] Next.js 15 App Router setup
-- [x] Dark mode mặc định
-- [x] CSS Variables design system
-- [x] Homepage với 5 sections
-- [x] Blog listing với filters
-- [x] Blog post detail với Markdown support
-
-**Ghi chú cho Command Center:** Frontend foundation hoàn tất. Ready để wire Challenge pages khi be-builder xong.
-
----
-
-### [2026-05-04 01:28] be-builder — Backend API Workers
-**Ai ghi:** Claude Code (sub-agent)
-**Status:** ✅ Hoàn thành
-
-**Đã làm:**
-- ✅ Created D1 schema (`workers/schema.sql`) với 5 tables: challenges, signups, email_queue, challenge_content, analytics
-- ✅ Built `workers/api/challenges.ts` — GET /api/challenges, GET /api/challenges/:slug với KV caching
-- ✅ Built `workers/api/signup.ts` — POST /api/signup với validation, D1 insert, auto-queue 21 emails
-- ✅ Built `workers/api/email-drip.ts` — Cron worker gửi pending emails qua MailChannels
-- ✅ Created `wrangler.toml` với D1/KV/R2/Vectorize bindings, cron triggers
-- ✅ Written deployment guide (`workers/README.md`)
-
-**Files created:** 6 files
-- `workers/schema.sql`
-- `workers/api/challenges.ts`
-- `workers/api/signup.ts`
-- `workers/api/email-drip.ts`
-- `wrangler.toml`
-- `workers/README.md`
-
-**Verified:**
-- ✅ SQL syntax valid
-- ✅ TypeScript syntax valid
-- ✅ API contracts match specs
-- ✅ Error handling + validation present
-- ✅ CORS configured
-
-**Acceptance Criteria đã đạt:**
-- [x] D1 schema với challenges + signups tables
-- [x] GET /api/challenges endpoint
-- [x] POST /api/signup endpoint với validation
-- [x] Email drip cron worker
-- [x] MailChannels integration
-- [x] Deployment guide
-
-**Ghi chú cho Command Center:** Backend API hoàn tất. ux-builder có thể bắt đầu wire Challenge pages.
-
----
-
 <!-- Claude Code: ghi kết quả ở ĐẦU mục này sau khi hoàn thành -->
-<!-- Format: [Date] [Teammate] - Files đã sửa - Status - Issues -->
+<!-- Format: [Date] - Files đã sửa - Status - Issues gặp phải -->
