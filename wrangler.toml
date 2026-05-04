@@ -103,3 +103,22 @@ crons = ["0 * * * *"]  # Every hour at minute 0
 [workers.routes]
 pattern = "thongphan.com/api/email-drip/trigger"
 zone_name = "thongphan.com"
+
+# ============================================
+# WORKER: chat API (AI RAG)
+# ============================================
+[[workers]]
+name = "thongphan-chat-api"
+main = "workers/api/chat.ts"
+compatibility_date = "2025-01-01"
+
+[workers.ai]
+binding = "AI"
+
+[[workers.vectorize]]
+binding = "BRAIN2_INDEX"
+index_name = "brain2-vault"
+
+[workers.routes]
+pattern = "thongphan.com/api/chat"
+zone_name = "thongphan.com"
