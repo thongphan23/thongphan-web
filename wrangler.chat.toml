@@ -2,6 +2,8 @@ name = "thongphan-chat-api"
 main = "workers/api/chat.ts"
 compatibility_date = "2025-01-01"
 
+workers_dev = true
+
 [ai]
 binding = "AI"
 remote = true
@@ -10,3 +12,7 @@ remote = true
 binding = "BRAIN2_INDEX"
 index_name = "brain2-vault"
 remote = true
+
+[[routes]]
+pattern = "thongphan.com/api/chat"
+zone_name = "thongphan.com"
