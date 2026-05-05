@@ -37,6 +37,14 @@ async function getChallenge(slug: string): Promise<Challenge | null> {
   }
 }
 
+export async function generateStaticParams() {
+  // For static export, generate params for known challenges
+  return [
+    { slug: 'brain2-21-ngay' },
+    { slug: '21-ngay-brain2' },
+  ]
+}
+
 export default async function ChallengeDetailPage({ params }: PageProps) {
   const challenge = await getChallenge(params.slug)
 

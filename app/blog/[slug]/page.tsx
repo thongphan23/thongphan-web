@@ -1,7 +1,5 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import styles from './page.module.css'
+import BlogPostClient from './BlogPostClient'
 
 // Placeholder post data
 const POST = {
@@ -33,81 +31,15 @@ Tui dùng AI để:
   `,
 }
 
+export async function generateStaticParams() {
+  // For static export, generate params for known blog posts
+  return [
+    { slug: 'ai-khong-cuop-viec-ban' },
+  ]
+}
+
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
-      const scrollTop = window.scrollY
-      const progress = (scrollTop / (documentHeight - windowHeight)) * 100
-      setScrollProgress(Math.min(progress, 100))
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <>
-      {/* Reading Progress Bar */}
-      <div
-        className="reading-progress"
-        style={{ width: `${scrollProgress}%` }}
-      />
-
-      <article className={styles.article}>
-        <div className="container-blog">
-          {/* Header */}
-          <header className={styles.header}>
-            <span className="badge gold">{POST.category.toUpperCase()}</span>
-            <h1 className="mt-4">{POST.title}</h1>
-            <p className={styles.description}>{POST.description}</p>
-            <div className={styles.meta}>
-              <span>{POST.readingTime}</span>
-              <span>•</span>
-              <span>{POST.date}</span>
-            </div>
-          </header>
-
-          {/* Content */}
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: POST.content.replace(/\n/g, '<br/>') }}
-          />
-
-          {/* Author Card */}
-          <div className={`card ${styles.authorCard}`}>
-            <div className={styles.authorInfo}>
-              <div className={styles.authorAvatar}>TP</div>
-              <div>
-                <h4>Thông Phan</h4>
-                <p className="text-muted">
-                  10 năm content marketing. 40+ bài viral. Founder Conan School & Autoshop.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Related Posts */}
-          <section className={styles.related}>
-            <h3>Bài liên quan</h3>
-            <div className={styles.relatedGrid}>
-              <a href="/blog/xay-brain2-voi-obsidian" className="card">
-                <span className="badge">Brain2</span>
-                <h4 className="mt-4">Xây Brain2 với Obsidian</h4>
-                <p className="text-muted mt-4">Bộ não thứ 2 giúp tui nhớ mọi thứ.</p>
-              </a>
-              <a href="/blog/40-bai-viral-tui-hoc-duoc-gi" className="card">
-                <span className="badge">Content</span>
-                <h4 className="mt-4">40 bài viral, tui học được gì</h4>
-                <p className="text-muted mt-4">10 năm content marketing.</p>
-              </a>
-            </div>
-          </section>
-        </div>
-      </article>
-    </>
+    <BlogPostClient post={POST} />
   )
 }

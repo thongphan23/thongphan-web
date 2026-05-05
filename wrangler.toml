@@ -1,124 +1,15 @@
 name = "thongphan-com"
 compatibility_date = "2025-01-01"
-compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "out"
 
-# Main site (Next.js on Cloudflare Pages)
-# Deploy via: npx @cloudflare/next-on-pages
-pages_build_output_dir = ".vercel/output/static"
-
-# D1 Database
+# D1 Database binding for Pages Functions
 [[d1_databases]]
 binding = "DB"
 database_name = "thongphan-db"
-database_id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler d1 create thongphan-db
+database_id = "7cffb7f5-c48b-49c2-b215-9611abd734a5"
 
-# KV Namespace (for caching)
+# KV Namespace binding for Pages Functions
 [[kv_namespaces]]
 binding = "KV"
-id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler kv:namespace create KV
-preview_id = "PLACEHOLDER_SET_AFTER_CREATE"  # Run: wrangler kv:namespace create KV --preview
-
-# R2 Bucket (for media storage)
-[[r2_buckets]]
-binding = "R2"
-bucket_name = "thongphan-media"
-preview_bucket_name = "thongphan-media-preview"
-
-# Vectorize Index (for AI Chat RAG)
-[[vectorize]]
-binding = "BRAIN2_INDEX"
-index_name = "brain2-vault"
-
-# AI binding (Workers AI)
-[ai]
-binding = "AI"
-
-# Environment variables
-[vars]
-NEXT_PUBLIC_SITE_URL = "https://thongphan.com"
-
-# ============================================
-# WORKER: challenges API
-# ============================================
-[[workers]]
-name = "thongphan-challenges-api"
-main = "workers/api/challenges.ts"
-compatibility_date = "2025-01-01"
-
-[[workers.d1_databases]]
-binding = "DB"
-database_name = "thongphan-db"
-database_id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-[[workers.kv_namespaces]]
-binding = "KV"
-id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-[workers.routes]
-pattern = "thongphan.com/api/challenges*"
-zone_name = "thongphan.com"
-
-# ============================================
-# WORKER: signup API
-# ============================================
-[[workers]]
-name = "thongphan-signup-api"
-main = "workers/api/signup.ts"
-compatibility_date = "2025-01-01"
-
-[[workers.d1_databases]]
-binding = "DB"
-database_name = "thongphan-db"
-database_id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-[[workers.kv_namespaces]]
-binding = "KV"
-id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-[workers.routes]
-pattern = "thongphan.com/api/signup"
-zone_name = "thongphan.com"
-
-# ============================================
-# WORKER: email-drip (cron)
-# ============================================
-[[workers]]
-name = "thongphan-email-drip"
-main = "workers/api/email-drip.ts"
-compatibility_date = "2025-01-01"
-
-[[workers.d1_databases]]
-binding = "DB"
-database_name = "thongphan-db"
-database_id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-[[workers.kv_namespaces]]
-binding = "KV"
-id = "PLACEHOLDER_SET_AFTER_CREATE"
-
-# Cron trigger: run every hour
-[workers.triggers]
-crons = ["0 * * * *"]  # Every hour at minute 0
-
-[workers.routes]
-pattern = "thongphan.com/api/email-drip/trigger"
-zone_name = "thongphan.com"
-
-# ============================================
-# WORKER: chat API (AI RAG)
-# ============================================
-[[workers]]
-name = "thongphan-chat-api"
-main = "workers/api/chat.ts"
-compatibility_date = "2025-01-01"
-
-[workers.ai]
-binding = "AI"
-
-[[workers.vectorize]]
-binding = "BRAIN2_INDEX"
-index_name = "brain2-vault"
-
-[workers.routes]
-pattern = "thongphan.com/api/chat"
-zone_name = "thongphan.com"
+id = "18e5b3dde1924e659dd536794f1d2ce2"
+preview_id = "e676e1ad29844b24a18fb4c8241b6992"

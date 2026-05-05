@@ -3,6 +3,7 @@
 
 import fs from 'fs'
 import path from 'path'
+import crypto from 'crypto'
 
 const VAULT_PATH = '/Users/rio/obsidian'
 const CHUNK_SIZE = 800  // chars per chunk
@@ -52,6 +53,9 @@ async function embedChunk(text: string, apiToken: string): Promise<number[]> {
     }
   )
   const data = await res.json() as any
+  if (!data.result?.data?.[0]) {
+    throw new Error(`Embedding failed: ${JSON.stringify(data)}`)
+  }
   return data.result.data[0]
 }
 
@@ -83,8 +87,17 @@ async function main() {
         if (chunk.length < 50) continue  // skip tiny chunks
 
         const embedding = await embedChunk(chunk, apiToken)
+
+        // Generate short ID using hash if path is too long
+        const relPathClean = relPath.replace(/[^a-zA-Z0-9]/g, '-')
+        let vectorId = `${relPathClean}-${i}`
+        if (vectorId.length > 64) {
+          const hash = crypto.createHash('md5').update(relPath).digest('hex').slice(0, 16)
+          vectorId = `${hash}-${i}`
+        }
+
         vectors.push({
-          id: `${relPath.replace(/[^a-zA-Z0-9]/g, '-')}-${i}`,
+          id: vectorId,
           values: embedding,
           metadata: {
             file: relPath,

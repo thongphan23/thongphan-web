@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 import './layout.module.css'
 
 export const metadata: Metadata = {
-  title: 'Thông Phan — AI không cướp việc bạn',
+  title: 'Thông Phan — Thương hiệu cá nhân thời đại AI',
   description: '10 năm content marketing. 40+ bài viral. Tui đang chia sẻ tất cả về cách dùng AI đúng để giữ và +1 thu nhập.',
   keywords: ['AI', 'content marketing', 'career', 'Brain2', 'Thông Phan'],
 }
