@@ -11,7 +11,7 @@ Upgrade `thongphan.com` from a text-and-panel cinematic homepage into a high-imp
 - First impression must feel "wow" and memorable.
 - Thong Phan must become the visual focal point, not a small supporting portrait.
 - The site must show real AI-native technology: Brain2, Codex/Open Design/Hermes style systems, Conan platform/proof, and live workflow energy.
-- The homepage must use cinematic scroll where each scroll step transforms the story, not just fades in static cards.
+- The homepage must use 2.5D cinematic scroll where each scroll step transforms the story, not just fades in static cards.
 - The experience must still preserve authority, clarity, trust, and conversion to the right next step.
 
 ## Brain2 Alignment
@@ -39,9 +39,9 @@ Observed current repo and live site:
 Use a hybrid direction:
 
 1. Game-card reveal for the first 3-5 seconds.
-2. Premium AI control-room cinematic scroll for the rest of the homepage.
+2. Premium 2.5D AI control-room cinematic scroll for the rest of the homepage.
 
-This gives the dopamine of opening a card without turning the brand into a game/NFT/crypto visual language.
+This gives the dopamine of opening a card without turning the brand into a game/NFT/crypto visual language. The scroll direction is specifically 2.5D: layered foreground, midground, and background elements move on different depth planes, appearing/disappearing in sequence as if the viewer is entering a deeper system space.
 
 ## Default Decisions If Anh Thong Wants Prototype First
 
@@ -88,9 +88,59 @@ Sequence:
 
 The hero must not start with a small portrait inside a UI panel.
 
+## Supplied Photo Assessment
+
+Anh Thong supplied six reference photos on 2026-05-24:
+
+1. `/Users/rio/Downloads/532021428_10228239041740651_5386335204067042707_n.jpg` — `1365x2048`
+   - Best current real-site asset.
+   - Strongest proof/authority image because Thong is teaching on stage.
+   - Usable for final homepage proof/hero prototype after crop, cleanup, and optional cutout.
+   - Not ideal as the final "AI control room" hero because the background is event/stage, but it is excellent proof.
+2. `/Users/rio/Downloads/371887253_10222409756052152_4952009922951296823_n.jpg` — `1440x1920`
+   - Good lifestyle / human warmth asset.
+   - Useful for softer trust beats or visual reference.
+   - Not the core tech/AI hero.
+3. `/Users/rio/Downloads/81556652_10214914650919208_3473636765795876864_n.jpg` — `960x960`
+   - Good face/cross-arm reference.
+   - Useful as identity reference for generated/cutout/stylized card concepts.
+   - Resolution and background make it weaker for final hero.
+4. `/Users/rio/Downloads/81009325_10214937466369580_3113759725192216576_n.jpg` — `935x935`
+   - Good "knowledge/book" personality reference.
+   - Useful for memory/story beats, not hero.
+5. `/Users/rio/Downloads/45691308_10212278889746826_1685812425032466432_n.jpg` — `802x802`
+   - Fun historical/character reference.
+   - Good for visual identity experimentation, not final homepage hero.
+6. `/Users/rio/Downloads/515365902_10227695610075199_3613936416844658069_n.jpg` — `459x459`
+   - Too small for production hero.
+   - Useful only as face-angle reference.
+
+Conclusion:
+
+- Yes, the supplied photos are useful.
+- For immediate prototype, use the stage teaching photo as the primary real image and the cross-arm/face photos as identity references.
+- For final launch, still prefer one new high-resolution hero portrait or generated/stylized scene approved by Anh Thong, because none of the supplied photos fully combine current face, tech setting, clean crop, and hero-scale composition.
+
+## Generated Image Policy
+
+The supplied photos can be used as visual references to create new cinematic images of Thong doing AI-native work, but use generated images carefully:
+
+- Generated images are suitable for stylized hero/key-art, card reveal, AI control-room scene, and abstract 2.5D compositions.
+- Real photos should still carry proof moments: teaching, workshops, posts, Brain2 screenshots, Conan screenshots.
+- Do not use generated images as fake proof of events or workflows that did not happen.
+- Generated scenes should look like premium editorial/key-art, not fake documentary photography pretending to be proof.
+
 ## Cinematic Scroll Scenes
 
 The homepage should use six scroll scenes.
+
+2.5D structure:
+
+- Background plane: dark/clean system environment, grid, distant graph, light field.
+- Midground plane: Brain2 nodes, proof cards, system panels, scan surfaces.
+- Foreground plane: Thong cutout/card, signature quote, CTA, selected proof fragments.
+- Depth motion: foreground moves slightly faster, background slower; elements can pass behind or in front of Thong to create dimensionality.
+- Sequencing: elements should appear, transform, and disappear one layer at a time, not all at once.
 
 ### Scene 1: Chaos
 
@@ -246,12 +296,14 @@ Use motion to transform meaning.
 Allowed:
 
 - Card flip/reveal/scan.
+- 2.5D layered parallax with foreground/midground/background depth.
 - Scroll scrub.
 - Controlled pinning.
 - Proof fragments flying into place.
 - Graph nodes connecting.
 - Scan bars progressing.
 - CTA portal reveal.
+- Soft depth-of-field / blur only when it clarifies focus.
 
 Avoid:
 
@@ -259,6 +311,7 @@ Avoid:
 - Motion that makes reading harder.
 - Pinning that clips sections or creates layout instability.
 - Heavy smooth-scroll dependency unless it measurably improves feel.
+- Deep parallax that feels like a gimmick rather than a guided transformation.
 
 Implementation preference:
 

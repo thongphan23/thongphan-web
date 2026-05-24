@@ -15,6 +15,45 @@ The goal is not to collect random pretty images. Each asset must support one of 
 - Turn proof into trust.
 - Help the scroll story transform from chaos to clarity to action.
 
+## Supplied Photos — 2026-05-24
+
+Anh Thong supplied six photos for reference and possible production use.
+
+| File | Size | Best Use | Production Verdict |
+|---|---:|---|---|
+| `/Users/rio/Downloads/532021428_10228239041740651_5386335204067042707_n.jpg` | `1365x2048` | Teaching/proof, homepage prototype hero, cutout test | Strongest current asset; usable after crop/cleanup |
+| `/Users/rio/Downloads/371887253_10222409756052152_4952009922951296823_n.jpg` | `1440x1920` | Lifestyle trust, human warmth, depth background | Useful supporting asset |
+| `/Users/rio/Downloads/81556652_10214914650919208_3473636765795876864_n.jpg` | `960x960` | Face/cross-arm identity reference, card mood | Useful reference; weak final hero |
+| `/Users/rio/Downloads/81009325_10214937466369580_3113759725192216576_n.jpg` | `935x935` | Knowledge/book personality reference | Useful support/reference |
+| `/Users/rio/Downloads/45691308_10212278889746826_1685812425032466432_n.jpg` | `802x802` | Fun character/history reference | Reference only |
+| `/Users/rio/Downloads/515365902_10227695610075199_3613936416844658069_n.jpg` | `459x459` | Face angle reference | Too small for production |
+
+Immediate recommendation:
+
+- Use the stage teaching photo as the main real-image anchor for prototype and proof.
+- Use the cross-arm and face photos as reference for generated/stylized card concepts.
+- Use the lifestyle Đà Lạt photo as a warmth/trust beat, not the tech hero.
+- Still request or generate a dedicated hero image for final signoff.
+
+## 2.5D Scroll Asset Needs
+
+The desired scrolling direction is 2.5D: layered elements fly in, pass behind/in front of each other, and disappear in sequence.
+
+To build that well, assets should be separable into layers:
+
+- Thong cutout layer: transparent PNG from a hero/teaching/photo source.
+- Background plane: dark/clean AI control room, abstract Brain2 field, or sanitized system screenshot.
+- Midground plane: Brain2 nodes, proof cards, code panels, terminal scan surfaces.
+- Foreground plane: signature quote, proof fragments, CTA card, active scan UI.
+
+Useful deliverables:
+
+- One transparent cutout of Thong from the teaching photo.
+- One stylized/generated key-art image of Thong in an AI/Brain2 control-room environment.
+- Three to six proof fragments as independent PNG/WebP cards.
+- One sanitized Brain2 graph screenshot.
+- One sanitized Codex/Open Design/Hermes screenshot.
+
 ## Priority 1: Hero Character Assets
 
 These assets determine whether the opening card reveal can feel premium.
@@ -266,4 +305,3 @@ For final homepage quality:
 - One Brain2/system screenshot.
 - One Conan/platform or community proof screenshot.
 - Optional but preferred: one short hero/workflow video clip.
-
