@@ -671,12 +671,39 @@ Các câu này cần anh chốt trước khi build payment thật:
 
 -----
 
-## 20. Recommended Next Step
+## 20. Decision Update — 2026-06-07
+
+Anh Thông chốt hướng sản phẩm đầu tiên không phải workbook chung, mà là nhóm sản phẩm nhỏ cho người đi làm/người dạy học mới bắt đầu dùng AI.
+
+Định vị sản phẩm đầu tiên:
+
+> AI Starter Kit Cho Người Đi Làm — chuẩn hoá cách dùng AI theo từng nghề, đi từ use case cụ thể thay vì học tool lan man.
+
+### Product pivot
+
+Ưu tiên catalog theo nghề:
+
+- Nhân viên văn phòng.
+- Giáo viên / giảng viên.
+- Marketing / content.
+- Sales / tư vấn.
+- Quản lý / team lead.
+- Future: HR, kế toán, vận hành, freelancer, chủ shop nhỏ.
+
+Mỗi nghề phải có:
+
+- Nỗi đau cụ thể trong công việc.
+- 3-5 use case AI sát ngành.
+- Workflow đầu tiên.
+- Prompt mẫu.
+- Checklist kiểm chứng output để không bị AI làm sai.
+
+### Updated Recommended Next Step
 
 Em đề xuất build theo thứ tự:
 
-1. Chốt tên public: `Kho tài sản nhỏ`.
-2. Build static `/assets` + 5 product detail pages bằng data file.
-3. CTA mua tạm thời là `Nhận thông báo khi mở bán` hoặc external checkout nếu anh đã có payment.
-4. Sản phẩm đầu tiên nên là `100 Câu Hỏi Biến Kinh Nghiệm Thành Tài Sản` vì dễ sản xuất nhanh, không conflict Conan, và rất đúng với pain của người có chuyên môn.
-5. Sau khi có 1 sản phẩm thật, mới mở payment và đo conversion.
+1. Dùng tên public: `Kho tài sản nhỏ`.
+2. Build static `/assets` và `/assets/ai-starter-kit-nguoi-di-lam`.
+3. CTA mua tạm thời là `Nhận thông báo khi mở bán` để validate trước khi bật payment.
+4. Sản phẩm đầu tiên: `AI Starter Kit Cho Người Đi Làm` giá dự kiến 149k.
+5. Sau khi trang có người đăng ký/mua thử, mới sản xuất bản PDF/checklist/prompt pack hoàn chỉnh và mở thanh toán.

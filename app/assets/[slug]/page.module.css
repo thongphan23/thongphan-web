@@ -1,0 +1,221 @@
+.assetDetailPage {
+  padding: var(--space-12) 0 var(--space-24);
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: var(--space-5);
+  color: var(--text-secondary);
+  font-weight: 800;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: var(--space-8);
+  align-items: stretch;
+  padding: var(--space-10);
+  border: 1px solid var(--border-subtle);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 198, 41, 0.22), transparent 34%),
+    radial-gradient(circle at 90% 18%, rgba(17, 103, 255, 0.16), transparent 32%),
+    #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.eyebrow,
+.sectionHeader span,
+.nextStep span,
+.outcomeBox span,
+.workflowBox span,
+.purchaseCard span {
+  color: var(--accent-blue);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 860px;
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  letter-spacing: -0.08em;
+}
+
+.hero p {
+  max-width: 720px;
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+}
+
+.outcomeBox {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 760px;
+  padding: var(--space-5);
+  border-left: 6px solid var(--accent-gold);
+  background: var(--accent-gold-soft);
+}
+
+.outcomeBox strong {
+  font-size: var(--text-xl);
+  line-height: 1.45;
+}
+
+.purchaseCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  border: 1px solid var(--border-medium);
+  background: rgba(247, 249, 251, 0.92);
+  box-shadow: 8px 8px 0 rgba(16, 24, 38, 0.08);
+}
+
+.purchaseCard strong {
+  display: block;
+  margin-top: var(--space-2);
+  color: var(--accent-blue);
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+}
+
+.purchaseCard small {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.gridSection,
+.fitSection {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+.panel,
+.fitSection article,
+.professionCard,
+.nextStep {
+  border: 1px solid var(--border-subtle);
+  background: #ffffff;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel h2,
+.fitSection h2 {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-3xl);
+}
+
+.panel p,
+.nextStep p {
+  color: var(--text-secondary);
+}
+
+.panel ul,
+.fitSection ul,
+.professionCard ul {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: var(--space-5);
+  color: var(--text-secondary);
+}
+
+.professionSection,
+.nextStep {
+  margin-top: var(--space-12);
+}
+
+.sectionHeader {
+  max-width: 920px;
+  margin-bottom: var(--space-6);
+}
+
+.sectionHeader h2,
+.nextStep h2 {
+  margin-top: var(--space-2);
+  font-size: clamp(2rem, 4.6vw, 3.8rem);
+  letter-spacing: -0.06em;
+}
+
+.professionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.professionCard {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.professionCard h3 {
+  font-size: var(--text-2xl);
+}
+
+.professionCard h4 {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+}
+
+.professionCard p {
+  margin-top: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.workflowBox {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--accent-blue-soft);
+  border: 1px solid var(--border-blue);
+}
+
+.workflowBox strong {
+  line-height: 1.45;
+}
+
+.fitSection article:first-child {
+  border-color: var(--border-blue);
+}
+
+.fitSection article:last-child {
+  border-color: rgba(255, 107, 74, 0.35);
+}
+
+.nextStep {
+  display: grid;
+  gap: var(--space-4);
+  background:
+    linear-gradient(135deg, rgba(17, 103, 255, 0.08), rgba(255, 198, 41, 0.14)),
+    #ffffff;
+}
+
+.nextStep div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 920px) {
+  .hero,
+  .gridSection,
+  .fitSection,
+  .professionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: var(--space-6);
+  }
+}
