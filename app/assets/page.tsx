@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {
   CATEGORY_LABELS,
   formatVnd,
+  getAiStarterAssets,
   getAllMicroAssets,
   getFeaturedMicroAsset,
 } from '@/lib/micro-assets'
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 export default function AssetsPage() {
   const assets = getAllMicroAssets()
   const featured = getFeaturedMicroAsset()
-  const professionCount = featured.professions.length
+  const starterAssets = getAiStarterAssets()
 
   return (
     <div className={styles.assetsPage}>
@@ -37,9 +38,9 @@ export default function AssetsPage() {
             <span className={styles.eyebrow}>Kho tài sản nhỏ · dưới 200k</span>
             <h1>Bắt đầu dùng AI theo nghề, không học tool lan man.</h1>
             <p>
-              Đây là nơi anh em mua những bộ công cụ nhỏ để tạo output đầu tiên: checklist,
-              prompt pack, workbook và playbook theo từng công việc cụ thể. Muốn feedback,
-              cộng đồng và roadmap sâu hơn thì sang Conan Maker.
+              Mỗi nghề có một bộ riêng: workbook, video ngắn, prompt pack và checklist kiểm
+              chứng output. Anh em chọn đúng công việc mình đang làm, làm ra một output nhỏ,
+              rồi mới quyết định có cần đi sâu hơn với Conan Maker không.
             </p>
             <div className={styles.heroActions}>
               <Link href={`/assets/${featured.slug}`} className="btn-primary">
@@ -60,9 +61,9 @@ export default function AssetsPage() {
               <span>{featured.format}</span>
             </div>
             <ul>
-              <li>{professionCount} nhóm nghề cụ thể</li>
+              <li>{starterAssets.length} sản phẩm AI Starter tách riêng theo nghề</li>
               <li>{featured.estimatedTimeMinutes} phút để đi hết vòng đầu</li>
-              <li>Self-serve, không cần học chương trình dài</li>
+              <li>Có video ngắn + workbook + prompt pack</li>
             </ul>
             <Link href={`/assets/${featured.slug}`}>Mở chi tiết →</Link>
           </aside>
@@ -88,16 +89,20 @@ export default function AssetsPage() {
         <section className={styles.professionStrip} data-reveal aria-labelledby="profession-title">
           <div className={styles.sectionHeader}>
             <span>Use case theo nghề</span>
-            <h2 id="profession-title">Sản phẩm đầu tiên đi từ nghề thật, việc thật.</h2>
+            <h2 id="profession-title">5 nghề tách thành 5 sản phẩm riêng, để người mua chọn đúng tình huống của họ.</h2>
           </div>
           <div className={styles.professionGrid}>
-            {featured.professions.map((profession) => (
-              <article key={profession.name} className={styles.professionCard}>
-                <h3>{profession.name}</h3>
-                <p>{profession.pain}</p>
-                <small>{profession.firstWorkflow}</small>
-              </article>
-            ))}
+            {starterAssets.map((asset) => {
+              const profession = asset.professions[0]
+
+              return (
+                <Link href={`/assets/${asset.slug}`} key={asset.slug} className={styles.professionCard}>
+                  <h3>{profession.name}</h3>
+                  <p>{profession.pain}</p>
+                  <small>{profession.firstWorkflow}</small>
+                </Link>
+              )
+            })}
           </div>
         </section>
 

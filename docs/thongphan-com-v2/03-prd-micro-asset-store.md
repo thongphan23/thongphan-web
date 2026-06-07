@@ -259,7 +259,26 @@ Không nên đề xuất toàn bộ sản phẩm cùng lúc.
 
 ## 10. Product Taxonomy
 
-### 10.1 Brain2 Starter
+### 10.1 AI Starter theo nghề
+
+Cho người mới bắt đầu dùng AI trong công việc thật, cần một hướng dẫn tự học gọn, có workbook, video ngắn và prompt pack theo đúng nghề của họ.
+
+Sản phẩm phù hợp:
+
+- AI Starter Cho Nhân Viên Văn Phòng.
+- AI Starter Cho Giáo Viên / Giảng Viên.
+- AI Starter Cho Marketing / Content.
+- AI Starter Cho Sales / Tư Vấn.
+- AI Starter Cho Quản Lý / Team Lead.
+
+Luật tách sản phẩm:
+
+- Không gom 5 nghề thành một sản phẩm chung trong MVP.
+- Mỗi nghề là một SKU riêng để người mua tự chọn đúng bối cảnh.
+- Mỗi SKU có workbook riêng, video riêng, prompt pack riêng và checklist kiểm output riêng.
+- Có thể tái sử dụng cùng khung sản xuất, nhưng ví dụ, prompt và bài tập phải theo nghề cụ thể.
+
+### 10.2 Brain2 Starter
 
 Cho người muốn xây bộ não thứ 2 và hệ thống tri thức cá nhân.
 
@@ -270,7 +289,7 @@ Sản phẩm phù hợp:
 - 100 câu hỏi đào tri thức cá nhân.
 - Atomic Note Prompt Pack.
 
-### 10.2 Content Leverage
+### 10.3 Content Leverage
 
 Cho người muốn biến chuyên môn thành nội dung kéo khách.
 
@@ -280,17 +299,6 @@ Sản phẩm phù hợp:
 - Content Pillar Workbook.
 - Bộ prompt viết bài từ trải nghiệm thật.
 - 30 ngày ý tưởng content cho Invisible Experts.
-
-### 10.3 AI Workflow
-
-Cho người muốn dùng AI đúng cách trong công việc tri thức.
-
-Sản phẩm phù hợp:
-
-- AI Workflow Starter.
-- Prompt Pack xây trợ lý cá nhân.
-- Checklist tự động hóa công việc tri thức.
-- Claude/Codex/Rio workflow mini guide.
 
 ### 10.4 Digital Asset / Offer
 
@@ -307,97 +315,108 @@ Sản phẩm phù hợp:
 
 ## 11. MVP Product Catalog
 
-### P1 — Brain2 Starter Kit
-
-Giá đề xuất: 199k  
-Loại: Kit + template + hướng dẫn  
-Outcome: Người mua có cấu trúc Brain2 đầu tiên cho chuyên môn của mình.
-
-Bao gồm:
-
-- Folder structure mẫu.
-- Atomic note template.
-- MOC template.
-- 7 ngày nhập liệu đầu tiên.
-- Prompt biến ghi chú thô thành note atomic.
-
-Boundary:
-
-- Không setup vault giúp người mua.
-- Không feedback note.
-- Nếu muốn đi sâu → Conan Maker.
-
-### P2 — 100 Câu Hỏi Biến Kinh Nghiệm Thành Tài Sản
-
-Giá đề xuất: 99k  
-Loại: Workbook  
-Outcome: Người mua đào được kinh nghiệm, câu chuyện, framework, insight, case study từ chính mình.
-
-Bao gồm:
-
-- 100 câu hỏi theo nhóm: nghề, trải nghiệm, thất bại, case, quan điểm, cơ chế, công thức.
-- Bảng chấm điểm câu trả lời nào có thể thành content/tài sản/offer.
-- Prompt chuyển câu trả lời thành outline.
-
-Boundary:
-
-- Không viết content hộ.
-- Không review câu trả lời.
-
-### P3 — Hook Pack Cho Người Có Chuyên Môn
-
-Giá đề xuất: 99k  
-Loại: Prompt pack + ví dụ  
-Outcome: Người mua có hook phù hợp với chuyên gia thật, không phải hook giật tít rẻ tiền.
-
-Bao gồm:
-
-- 50 hook theo persona Invisible Experts.
-- 15 công thức hook theo tension.
-- Ví dụ trước/sau.
-- Prompt biến trải nghiệm thành hook.
-
-Boundary:
-
-- Không promise viral.
-- Không thay thế content strategy sâu trong Conan.
-
-### P4 — AI Workflow Starter Cho Người Đi Làm
+### P1 — AI Starter Cho Nhân Viên Văn Phòng
 
 Giá đề xuất: 149k  
-Loại: Playbook ngắn  
-Outcome: Người mua có 3 workflow AI dùng được ngay cho công việc tri thức.
+Loại: Workbook + video ngắn + prompt pack  
+Outcome: Người mua có workflow rõ để biến ghi chú, tài liệu và việc lặp lại thành output gửi được trong môi trường công sở.
 
 Bao gồm:
 
-- Workflow đọc/tóm tắt/nghĩ sâu.
-- Workflow biến ghi chú thành output.
-- Workflow viết draft không mất giọng.
-- Checklist chọn tool theo việc cần làm.
+- Workbook 20-30 trang hướng dẫn vòng làm việc đầu tiên.
+- Video 8-15 phút: cách giao việc cho AI, kiểm output, sửa bản nháp.
+- Prompt pack cho email, biên bản họp, tóm tắt tài liệu, checklist công việc.
+- Checklist 7 ngày chuẩn hóa thói quen dùng AI.
 
 Boundary:
 
 - Không dạy toàn bộ AI system.
-- Không trở thành khóa học AI tool.
+- Không setup trợ lý riêng.
+- Không feedback tài liệu của người mua.
+- Nếu muốn đi sâu → Conan Maker.
 
-### P5 — Digital Asset Canvas
+### P2 — AI Starter Cho Giáo Viên / Giảng Viên
 
-Giá đề xuất: 99k  
-Loại: Canvas + worksheet  
-Outcome: Người mua đóng gói được một tài sản số nhỏ từ chuyên môn của mình.
+Giá đề xuất: 149k  
+Loại: Workbook + video ngắn + prompt pack  
+Outcome: Người mua biết dùng AI để biến mục tiêu bài học thành hoạt động lớp, câu hỏi kiểm tra và worksheet thực hành.
 
 Bao gồm:
 
-- Canvas 1 trang.
-- 5 dạng tài sản số nhỏ.
-- Bảng chọn format theo audience/pain/outcome.
-- Prompt tạo bản nháp sản phẩm.
+- Workbook thiết kế bài học từ mục tiêu đến hoạt động.
+- Video 8-15 phút: cách biến bài giảng thô thành trải nghiệm học tập.
+- Prompt pack cho outline bài dạy, ví dụ gần đời sống, câu hỏi kiểm tra, worksheet.
+- Checklist chống bài dạy generic.
 
 Boundary:
 
-- Không setup payment/funnel.
-- Không feedback offer.
-- Nếu muốn build cả hệ thống → Conan Maker.
+- Không thay thế giáo án chính thức của trường/tổ chức.
+- Không feedback bài giảng cá nhân.
+- Không biến thành khóa học AI cho giáo viên.
+
+### P3 — AI Starter Cho Marketing / Content
+
+Giá đề xuất: 149k  
+Loại: Workbook + video ngắn + prompt pack  
+Outcome: Người mua có workflow biến trải nghiệm, feedback và quan điểm chuyên môn thành bài nháp có chất riêng hơn.
+
+Bao gồm:
+
+- Workbook đào insight từ trải nghiệm thật.
+- Video 8-15 phút: cách dùng AI để nghĩ cùng mình thay vì viết thay mình.
+- Prompt pack cho insight, hook, outline, rewrite và kiểm giọng.
+- Checklist giữ trải nghiệm thật, tránh nội dung AI nhạt.
+
+Boundary:
+
+- Không promise viral.
+- Không thay thế chiến lược nội dung sâu trong Conan.
+- Không viết bài hoàn chỉnh hộ người mua.
+
+### P4 — AI Starter Cho Sales / Tư Vấn
+
+Giá đề xuất: 149k  
+Loại: Workbook + video ngắn + prompt pack  
+Outcome: Người mua biết dùng AI sau mỗi cuộc gọi để tóm tắt nhu cầu, cá nhân hóa phản hồi và chọn proof phù hợp.
+
+Bao gồm:
+
+- Workbook chuẩn hóa vòng sau cuộc gọi/tin nhắn.
+- Video 8-15 phút: cách biến hội thoại khách thành follow-up có chất lượng.
+- Prompt pack cho tóm tắt nhu cầu, follow-up, phản biện, proof/case gửi khách.
+- Checklist bảo vệ dữ liệu khách và tránh để AI bịa thông tin bán hàng.
+
+Boundary:
+
+- Không tạo kịch bản thao túng khách.
+- Không thay thế CRM hoặc quy trình bán hàng của công ty.
+- Không feedback từng case khách cụ thể.
+
+### P5 — AI Starter Cho Quản Lý / Team Lead
+
+Giá đề xuất: 149k  
+Loại: Workbook + video ngắn + prompt pack  
+Outcome: Người mua có workflow biến mục tiêu mơ hồ thành task, rubric review và SOP để team làm đồng đều hơn.
+
+Bao gồm:
+
+- Workbook chuyển mục tiêu thành tiêu chí tốt/xấu, task, rubric và SOP.
+- Video 8-15 phút: cách dùng AI để giảm mơ hồ vận hành thay vì tạo thêm nhiễu.
+- Prompt pack cho giao việc, tóm tắt báo cáo, review output, tạo SOP.
+- Checklist kiểm quyền riêng tư, trách nhiệm con người và chất lượng output.
+
+Boundary:
+
+- Không thay thế quản trị đội nhóm thật.
+- Không feedback quy trình riêng của từng công ty.
+- Không tạo hệ thống vận hành dài hạn như Conan/TP-OS.
+
+### Backlog — Sau 5 AI Starter đầu tiên
+
+- Brain2 Starter Kit — 199k.
+- 100 Câu Hỏi Biến Kinh Nghiệm Thành Tài Sản — 99k.
+- Hook Pack Cho Người Có Chuyên Môn — 99k.
+- Digital Asset Canvas — 99k.
 
 -----
 
@@ -587,22 +606,33 @@ MVP có thể log vào D1 hoặc analytics đơn giản.
 ## 16. Data Model Draft
 
 ```ts
+type MicroAssetCategory = 'ai-starter' | 'brain2' | 'content' | 'digital-asset';
+
+type ProfessionTrack = {
+  name: string;
+  pain: string;
+  useCases: string[];
+  firstWorkflow: string;
+};
+
 type MicroAsset = {
   slug: string;
   title: string;
   subtitle: string;
-  category: 'brain2' | 'content' | 'ai-workflow' | 'digital-asset';
+  category: MicroAssetCategory;
   priceVnd: number;
-  format: 'pdf' | 'template' | 'workbook' | 'prompt-pack' | 'kit' | 'playbook';
+  format: string; // ví dụ: 'Workbook + video + prompt pack'
   estimatedTimeMinutes: number;
   outcome: string;
+  status: 'available-soon' | 'draft' | 'planned';
+  featured?: boolean;
   includes: string[];
+  professions: ProfessionTrack[];
   whoShouldBuy: string[];
   whoShouldNotBuy: string[];
   conanBoundary: string;
-  deliveryType: 'download' | 'external-link' | 'email';
-  checkoutUrl?: string;
-  isActive: boolean;
+  checkoutLabel: string;
+  checkoutUrl: string;
 };
 ```
 
@@ -621,7 +651,8 @@ Validation rules:
 
 - Create `/assets` listing page.
 - Create `/assets/[slug]` static detail pages.
-- Define 5 MVP products as markdown/JSON data.
+- Define 5 AI Starter products as separate SKUs in data.
+- Each AI Starter page must show workbook + video + prompt pack, not only PDF.
 - Add homepage section.
 - Add blog CTA mapping manually.
 - Use external checkout/waitlist links.
@@ -675,20 +706,22 @@ Các câu này cần anh chốt trước khi build payment thật:
 
 Anh Thông chốt hướng sản phẩm đầu tiên không phải workbook chung, mà là nhóm sản phẩm nhỏ cho người đi làm/người dạy học mới bắt đầu dùng AI.
 
-Định vị sản phẩm đầu tiên:
-
-> AI Starter Kit Cho Người Đi Làm — chuẩn hoá cách dùng AI theo từng nghề, đi từ use case cụ thể thay vì học tool lan man.
-
 ### Product pivot
 
-Ưu tiên catalog theo nghề:
+Quyết định mới:
 
-- Nhân viên văn phòng.
-- Giáo viên / giảng viên.
-- Marketing / content.
-- Sales / tư vấn.
-- Quản lý / team lead.
-- Future: HR, kế toán, vận hành, freelancer, chủ shop nhỏ.
+- 5 nghề tách thành 5 sản phẩm riêng, không gom thành một kit chung.
+- Mỗi nghề có workbook + video ngắn + prompt pack + checklist kiểm output.
+- Người mua chọn đúng nghề của họ để giảm cảm giác học AI chung chung.
+- Giá từng sản phẩm giữ ở 149k trong MVP.
+
+5 SKU đầu tiên:
+
+1. `AI Starter Cho Nhân Viên Văn Phòng`.
+2. `AI Starter Cho Giáo Viên / Giảng Viên`.
+3. `AI Starter Cho Marketing / Content`.
+4. `AI Starter Cho Sales / Tư Vấn`.
+5. `AI Starter Cho Quản Lý / Team Lead`.
 
 Mỗi nghề phải có:
 
@@ -697,13 +730,64 @@ Mỗi nghề phải có:
 - Workflow đầu tiên.
 - Prompt mẫu.
 - Checklist kiểm chứng output để không bị AI làm sai.
+- Video walkthrough 8-15 phút để người mới thấy cách nghĩ và cách kiểm bản nháp.
+
+### Rà soát workflow `/ebook` cũ trong Codex
+
+Nguồn đã rà soát:
+
+- `/Users/rio/.codex/skills/ebook/SKILL.md`.
+- `/Users/rio/.codex/skills/ebook/references/workflow.md`.
+- `/Users/rio/.codex/skills/ebook/references/project-scaffold.md`.
+- `/Users/rio/obsidian/00-System/book-production/codex-opendesign-ebook-production-workflow.md`.
+- `/Users/rio/.codex/skills/video-html/SKILL.md`.
+
+Kết luận:
+
+- `/ebook` rất phù hợp làm lõi sản xuất workbook/PDF vì đã có Brain2-first, blueprint, outline, style guide, HTML/PDF render, screenshot QA và voice/anti-AI gate.
+- Nhưng `/ebook` gốc hơi nặng cho micro product 149k nếu chạy full 8.000-12.000 từ và quá nhiều QA như ebook chiến lược dài.
+- Với AI Starter theo nghề, nên dùng phiên bản rút gọn: workbook 20-30 trang, 3-5 workflow/use case, 1 video walkthrough, prompt pack, checklist 7 ngày.
+- `/video-html` phù hợp để dựng file HTML 16:9 cho video đi kèm. Không cần làm video production phức tạp; chỉ cần một artifact record-ready có stepped navigation, speaker notes và QA không tràn chữ.
+
+### Production workflow đề xuất cho mỗi nghề
+
+Mỗi sản phẩm tạo project riêng tại:
+
+```txt
+/Users/rio/ebooks/ai-starter-{profession-slug}/
+├── blueprint.md
+├── workbook.md
+├── prompt-pack.md
+├── checklist-7-ngay.md
+├── scripts/build-ebook.mjs
+├── scripts/render-ebook.mjs
+├── ebook.html
+├── ebook.pdf
+├── video/
+│   ├── brief.yaml
+│   ├── index.html
+│   ├── recording-notes.md
+│   └── qa-report.md
+└── qa/
+    ├── qa-report.md
+    ├── source-trace.md
+    └── anti-ai-pass.md
+```
+
+Luồng sản xuất:
+
+1. Dùng `/ebook` rút gọn để tạo workbook/PDF.
+2. Dùng cùng blueprint để viết prompt pack và checklist.
+3. Dùng `/video-html` để tạo deck HTML 16:9 cho video walkthrough.
+4. Screen-record video từ HTML deck, không cần LMS.
+5. Đóng gói delivery: PDF + prompt pack + checklist + link video.
 
 ### Updated Recommended Next Step
 
 Em đề xuất build theo thứ tự:
 
 1. Dùng tên public: `Kho tài sản nhỏ`.
-2. Build static `/assets` và `/assets/ai-starter-kit-nguoi-di-lam`.
+2. Storefront `/assets` hiển thị 5 AI Starter SKU riêng.
 3. CTA mua tạm thời là `Nhận thông báo khi mở bán` để validate trước khi bật payment.
-4. Sản phẩm đầu tiên: `AI Starter Kit Cho Người Đi Làm` giá dự kiến 149k.
-5. Sau khi trang có người đăng ký/mua thử, mới sản xuất bản PDF/checklist/prompt pack hoàn chỉnh và mở thanh toán.
+4. Sản xuất thử bản đầu tiên: `AI Starter Cho Nhân Viên Văn Phòng` vì use case rộng, dễ validate nhất.
+5. Sau khi có bản mẫu workbook + video đầu tiên, nhân bản workflow sang 4 nghề còn lại bằng cùng scaffold.

@@ -100,7 +100,7 @@ export default async function AssetDetailPage({ params }: Props) {
         {asset.professions.length > 0 && (
           <section className={styles.professionSection} data-reveal aria-labelledby="profession-title">
             <div className={styles.sectionHeader}>
-              <span>Chia theo nghề cụ thể</span>
+              <span>Use case của nghề này</span>
               <h2 id="profession-title">Không bắt người mới học AI chung chung. Đi từ việc họ đang làm mỗi ngày.</h2>
             </div>
             <div className={styles.professionGrid}>
