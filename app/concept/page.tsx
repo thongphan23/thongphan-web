@@ -4,15 +4,15 @@ import Link from 'next/link'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Thông Phan — Knowledge Garden',
-  description: 'Thông Phan giúp người có chuyên môn biến kinh nghiệm thật thành Brain2, tài sản số và dòng tiền thứ hai bằng AI.' ,
+  title: 'Knowledge Garden Concept — Thông Phan',
+  description: 'Prototype cinematic cho thongphan.com: kinh nghiệm thật mọc thành Brain2, tài sản số và dòng tiền thứ hai.',
 }
 
 const layers = [
-  ['KINH NGHIỆM', 'Kinh nghiệm thật', 'Ca thật, lỗi thật, trải nghiệm nghề nghiệp và câu chuyện cá nhân chưa được đóng gói.'],
+  ['Experience', 'Kinh nghiệm thật', 'Ca thật, lỗi thật, trải nghiệm nghề nghiệp và câu chuyện cá nhân chưa được đóng gói.'],
   ['Brain2', 'Bộ rễ tri thức', 'Ghi chú, liên kết, nguyên lý và ngữ cảnh riêng để AI hiểu cách anh nghĩ.'],
-  ['TÀI SẢN', 'Tài sản nhỏ', 'Workbook, prompt pack, bài chẩn đoán, mini kit và hệ thống nội dung tự phục vụ.'],
-  ['DÒNG TIỀN', 'Dòng tiền thứ hai', 'Nguồn thu mới mọc lên từ chuyên môn, không đốt cầu việc chính.'],
+  ['Asset', 'Tài sản nhỏ', 'Workbook, prompt pack, bài chẩn đoán, mini kit và hệ thống nội dung tự phục vụ.'],
+  ['Income', 'Dòng tiền thứ hai', 'Nguồn thu mới mọc lên từ chuyên môn, không đốt cầu việc chính.'],
 ]
 
 const fruits = [
@@ -30,7 +30,7 @@ const signals = [
   ['Thu nhập chính còn rủi ro', '38%', '72%', '-12deg', '-7deg', '-6.4s'],
 ]
 
-export default function HomePage() {
+export default function KnowledgeGardenConceptPage() {
   return (
     <div className={styles.conceptPage}>
       <section className={styles.hero} data-cinematic-hero>
@@ -51,26 +51,26 @@ export default function HomePage() {
         </div>
 
         <div className={styles.topRail}>
-          <span>THONGPHAN.COM / KNOWLEDGE GARDEN</span>
+          <span>THONGPHAN.COM / CONCEPT PROTOTYPE</span>
           <span>Knowledge Garden</span>
-          <span>Rõ trong hỗn độn / 2026</span>
+          <span>Clarity in Chaos / 2026</span>
         </div>
 
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy} data-reveal>
             <div className={styles.loadingPill}>
               <span className={styles.loadingDot} />
-              <span>Đang nạp lớp trải nghiệm</span>
+              <span>Rendering experience layer</span>
               <b>58% → 100%</b>
             </div>
 
-            <p className={styles.eyebrow}>Hướng thị giác</p>
+            <p className={styles.eyebrow}>Prototype visual direction</p>
             <h1>
               Mỗi trải nghiệm thật
               <em> mọc thành tài sản.</em>
             </h1>
             <p className={styles.lead}>
-              Đây là khu vườn tri thức sống của Thông Phan: nơi kinh nghiệm thật được hệ thống hóa thành Brain2, đóng gói thành tài sản số và mở ra dòng tiền thứ hai bằng AI.
+              Đây là lát cắt mới cho thongphan.com: không phải trang bán hàng tĩnh, mà là một khu vườn tri thức sống — nơi kinh nghiệm thật mọc thành Brain2, tài sản số và dòng tiền thứ hai bằng AI.
             </p>
 
             <div className={styles.heroActions}>
@@ -122,7 +122,7 @@ export default function HomePage() {
       </section>
 
       <section className={styles.layerSection} data-cinematic-scene>
-        <div className={styles.sectionIntro}>
+        <div className={styles.sectionIntro} data-reveal>
           <span>Kể chuyện theo lớp</span>
           <h2>Không kể bằng section. Kể bằng từng lớp được mở ra.</h2>
           <p>Mỗi lớp là một trạng thái chuyển hóa: từ kinh nghiệm thô → bộ rễ Brain2 → tài sản nhỏ → dòng tiền mới.</p>
@@ -148,7 +148,7 @@ export default function HomePage() {
             <span />
           </div>
           <div className={styles.showcaseCopy}>
-            <span>Kho tài sản nhỏ</span>
+            <span>Asset fruit picker</span>
             <h2>Người xem không “mua sản phẩm”. Họ hái một tài sản nhỏ để bắt đầu.</h2>
             <p>Kho tài sản nên được trình bày như những quả chín trên hệ tri thức: nhỏ, rõ đầu ra, tự làm được ngay, không cạnh tranh với Conan Maker.</p>
           </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
           <p>Homepage mới nên kết thúc bằng một cánh cổng, không phải một nút bán hàng. Người đọc đi qua kinh nghiệm, Brain2, tài sản nhỏ rồi mới thấy Conan là bước sâu hơn.</p>
           <div className={styles.heroActions}>
             <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-primary">Bước vào Conan</a>
-            <Link href="/classic" className="btn-outline">Xem bản cũ</Link>
+            <Link href="/" className="btn-outline">Về trang chủ hiện tại</Link>
           </div>
         </div>
       </section>

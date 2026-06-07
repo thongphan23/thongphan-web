@@ -705,13 +705,8 @@
   color: rgba(239,252,255,0.82);
 }
 
-.gateCard h2 {
-  color: rgba(248, 253, 255, 0.96);
-  text-shadow: 0 2px 0 rgba(255,255,255,0.05), 0 24px 70px rgba(36,193,129,0.22);
-}
-
 .gateCard p {
-  color: rgba(239,252,255,0.78);
+  color: rgba(239,252,255,0.68);
 }
 
 .gateCard .heroActions {

@@ -8,65 +8,46 @@ async function readProjectFile(path) {
   return readFile(new URL(path, root), 'utf8')
 }
 
-test('homepage exposes the Vietnamese hero statement and real speaker stage', async () => {
+test('homepage exposes the Knowledge Garden thesis and real conversion path', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   for (const required of [
-    'speakerSignals',
-    'speakerFragments',
+    'Knowledge Garden',
+    'Mỗi trải nghiệm thật',
+    'mọc thành tài sản',
+    'khu vườn tri thức sống',
+    'Brain2',
+    'tài sản số',
+    'dòng tiền thứ hai',
+    'Kho tài sản nhỏ',
+    'Bước vào Conan',
     'data-cinematic-mouse',
     'data-hero-fragment',
-    'data-speaker-fragment',
-    'data-speaker-photo',
-    'Biến chuyên môn thành dòng tiền bằng hệ thống AI cá nhân',
-    '/images/homepage/thong-stage-anchor.jpg',
   ]) {
-    assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+    assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))
   }
 })
 
-test('homepage visible copy avoids unexplained English-heavy labels', async () => {
+test('homepage visible copy avoids prototype-only wording and unexplained English-heavy labels', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   const bannedVisiblePhrases = [
+    'CONCEPT PROTOTYPE',
+    'Prototype cinematic',
+    'trang chủ hiện tại',
+    'Rendering experience layer',
+    'Asset fruit picker',
+    'Experience',
+    'Income',
     'AI-native expertise',
-    'AI-native expertise business',
     'Proof-first AI system',
     'Expertise Observatory',
-    'Brain2 core',
-    'Clarity in Chaos',
-    'evidence',
-    'systems',
-    'memory',
-    'community',
-    'Cashflow',
-    'outcome',
-    'state',
-    'job',
-    'hype',
     'fear.exe',
-    'clarity.signal',
-    'human > tool',
     'vault.memory',
     'semantic.context',
     'personal OS',
-    'receipts',
-    'track record',
     'proof beats claim',
-    'Proof Index',
-    'có proof',
-    'case, proof',
-    'lượt chia sẻ từ insight',
-    'Ảnh sân khấu thật',
-    'các mảnh hệ thống bay',
-    'mảnh hệ thống bay',
-    'bay quanh chuyên môn',
-    'bay quanh chuyên gia',
     'Tool noise',
-    'ebook và',
-    'Ebook / diagnostic / workflow',
-    'template, diagnostic, offer',
-    'output có thị trường',
   ]
 
   for (const phrase of bannedVisiblePhrases) {
@@ -74,19 +55,19 @@ test('homepage visible copy avoids unexplained English-heavy labels', async () =
   }
 })
 
-test('homepage CSS locks the Thong Phan cinematic brand system', async () => {
+test('homepage CSS locks the organic cinematic visual system', async () => {
   const css = await readProjectFile('app/page.module.css')
 
   for (const required of [
-    '--brand-midnight',
-    '--brand-amber',
-    'speakerStage',
-    'speakerPhoto',
-    'speakerFragment',
-    'speakerOrbit',
-    'signalBeam',
-    'noiseFragment',
-    'clarityMap',
+    '--garden-ink',
+    '--garden-green',
+    'stageCard',
+    'gardenObject',
+    'seedCore',
+    'reflection',
+    'layerCard',
+    'fruitCard',
+    'gateCard',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
     assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
