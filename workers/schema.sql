@@ -76,9 +76,9 @@ CREATE INDEX IF NOT EXISTS idx_email_logs_signup ON email_logs(signup_id);
 -- Seed data: 21 Ngày Brain2 Challenge
 INSERT OR IGNORE INTO challenges (id, slug, title, tagline, description, duration_days) VALUES (
   'brain2-21',
-  '21-ngay-brain2',
-  '21 Ngày Brain2',
-  'Xây bộ não thứ hai trong 3 tuần',
-  'Challenge 21 ngày giúp bạn xây dựng hệ thống Brain2 (bộ não thứ hai) bằng Obsidian + AI. Mỗi ngày 1 email với bài tập thực hành, template, và insight từ Thông Phan.',
+  'brain2-21-ngay',
+  '21 Ngày Brain2 - Kích hoạt kho kiến thức của bạn',
+  'Điểm bắt đầu để biến chuyên môn thành tài sản số bằng AI',
+  'Mỗi ngày 15 phút để gom kinh nghiệm, case, góc nhìn và proof thật vào một hệ thống. Sau 21 ngày, bạn có nền để vào Conan Trial và bắt đầu tạo output thật.',
   21
 );

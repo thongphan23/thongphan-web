@@ -10,18 +10,48 @@
 }
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   gap: var(--space-8);
   align-items: stretch;
-  padding: var(--space-10);
+  padding: calc(var(--space-10) + 42px) var(--space-10) var(--space-10);
   border: 1px solid var(--border-subtle);
   background:
     radial-gradient(circle at 12% 10%, rgba(255, 198, 41, 0.22), transparent 34%),
     radial-gradient(circle at 90% 18%, rgba(17, 103, 255, 0.16), transparent 32%),
     #ffffff;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 34px 90px rgba(16, 24, 38, 0.08);
 }
+
+.assetHud {
+  position: absolute;
+  left: var(--space-5);
+  right: var(--space-5);
+  top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.assetHud span {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 24, 38, 0.12);
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.assetHud b { color: var(--accent-blue); }
 
 .heroCopy {
   display: flex;
@@ -70,6 +100,8 @@
 }
 
 .purchaseCard {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -77,7 +109,41 @@
   padding: var(--space-6);
   border: 1px solid var(--border-medium);
   background: rgba(247, 249, 251, 0.92);
-  box-shadow: 8px 8px 0 rgba(16, 24, 38, 0.08);
+  box-shadow: 12px 12px 0 rgba(17, 103, 255, 0.12), 0 28px 70px rgba(16, 24, 38, 0.1);
+}
+
+.purchaseBeacon {
+  position: relative;
+  height: 142px;
+  display: grid;
+  place-items: center;
+}
+
+.purchaseBeacon span {
+  position: absolute;
+  width: var(--beacon-size, 96px);
+  height: var(--beacon-size, 96px);
+  border-radius: 50%;
+  border: 1px solid rgba(17, 103, 255, 0.24);
+  animation: beaconBreath 4.4s ease-in-out infinite;
+}
+
+.purchaseBeacon span:nth-child(2) { --beacon-size: 136px; animation-delay: 0.45s; }
+
+.purchaseBeacon strong {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: #fff;
+  box-shadow: 0 0 0 12px rgba(17, 103, 255, 0.1), 0 18px 50px rgba(17, 103, 255, 0.24);
+}
+
+@keyframes beaconBreath {
+  0%, 100% { opacity: 0.48; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); }
 }
 
 .purchaseCard strong {
@@ -105,10 +171,21 @@
 .fitSection article,
 .professionCard,
 .nextStep {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--border-subtle);
   background: #ffffff;
   padding: var(--space-6);
   box-shadow: var(--shadow-sm);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.panel:hover,
+.fitSection article:hover,
+.professionCard:hover {
+  transform: translate(-2px, -2px);
+  border-color: rgba(17, 103, 255, 0.28);
+  box-shadow: 8px 8px 0 rgba(255, 198, 41, 0.2);
 }
 
 .panel h2,
@@ -217,5 +294,19 @@
 
   .hero {
     padding: var(--space-6);
+  }
+
+  .assetHud {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+  }
+
+  .assetHud span {
+    justify-content: flex-start;
+    padding: 0 var(--space-3);
   }
 }

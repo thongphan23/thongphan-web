@@ -1,0 +1,14 @@
+name = "thongphan-signup-api"
+main = "signup.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "7cffb7f5-c48b-49c2-b215-9611abd734a5"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "18e5b3dde1924e659dd536794f1d2ce2"

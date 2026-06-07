@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cơ chế Tệp Mồi — Conan Maker</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#050508;font-family:'Space Grotesk',sans-serif;color:#fff}
+
+/* ═══ SLIDES ═══ */
+.slide{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:1}
+.slide.active{opacity:1;pointer-events:all;z-index:2}
+.scontent{position:relative;z-index:5;width:100%;max-width:1060px;padding:0 52px;display:flex;flex-direction:column;align-items:center}
+.srow{display:flex;align-items:center;gap:clamp(30px,4vw,70px);width:100%}
+.srow-rev{flex-direction:row-reverse}
+.srow .text-col{flex:1}
+.srow .vis-col{flex:0 0 auto;width:clamp(240px,22vw,340px)}
+
+/* ═══ KINETIC BG ═══ */
+.bg-text{position:absolute;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(100px,15vw,220px);color:rgba(255,255,255,0.018);white-space:nowrap;text-transform:uppercase;letter-spacing:-3px;pointer-events:none;z-index:0;user-select:none}
+.bg-text.top{top:8%}.bg-text.bot{bottom:8%}
+.drift-r{animation:dR 28s linear infinite}
+.drift-l{animation:dL 32s linear infinite}
+@keyframes dR{from{transform:translateX(-25%)}to{transform:translateX(10%)}}
+@keyframes dL{from{transform:translateX(10%)}to{transform:translateX(-25%)}}
+
+/* ═══ AMBIENT ═══ */
+.spot{position:absolute;border-radius:50%;pointer-events:none;z-index:0;width:550px;height:550px}
+.spot-w{background:radial-gradient(circle,rgba(245,197,24,0.04),transparent 60%)}
+.spot-c{background:radial-gradient(circle,rgba(79,142,247,0.035),transparent 60%)}
+.spot-r{background:radial-gradient(circle,rgba(255,68,85,0.025),transparent 60%)}
+.pt{position:absolute;border-radius:50%;pointer-events:none;z-index:3;animation:ptF var(--d,9s) ease-in-out infinite var(--dl,0s)}
+@keyframes ptF{0%,100%{transform:translate(0,0);opacity:.3}25%{transform:translate(var(--tx),var(--ty));opacity:.7}75%{transform:translate(var(--tx2),var(--ty2));opacity:.5}}
+
+/* ═══ CHIPS ═══ */
+.chip{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:6px 18px;border-radius:20px;display:inline-block;margin-bottom:22px}
+.chip-b{color:#6da3f7;border:1px solid rgba(79,142,247,.3);background:rgba(79,142,247,.06)}
+.chip-r{color:#ff6b7a;border:1px solid rgba(255,68,85,.3);background:rgba(255,68,85,.06)}
+.chip-gold{color:#f5c518;border:1px solid rgba(245,197,24,.3);background:rgba(245,197,24,.06)}
+.chip-g{color:#4ade80;border:1px solid rgba(34,197,94,.3);background:rgba(34,197,94,.06)}
+
+/* ═══ TYPOGRAPHY — Fraunces + Space Grotesk + Syne ═══ */
+.hero-h{font-family:'Fraunces',serif;font-size:clamp(44px,6.5vw,82px);font-weight:900;line-height:1.04;text-align:center;letter-spacing:-2px}
+.h2{font-family:'Fraunces',serif;font-size:clamp(34px,4.8vw,60px);font-weight:900;line-height:1.06;margin-bottom:10px;letter-spacing:-1.5px}
+.sub{font-family:'Space Grotesk',sans-serif;font-size:17px;line-height:1.8;color:rgba(255,255,255,.5);text-align:center;max-width:580px;margin-top:16px;font-weight:300}
+.g-blue{background:linear-gradient(135deg,#fff 25%,#4f8ef7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.g-gold{background:linear-gradient(135deg,#fff 15%,#f5c518);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.g-green{background:linear-gradient(135deg,#fff 25%,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.g-red{background:linear-gradient(135deg,#fff 25%,#ff4455);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.t-red{-webkit-text-fill-color:#ff4455}
+
+/* ═══ TEXT ANIMATION ATOMS ═══ */
+.word{display:inline-block;opacity:0}
+.char{display:inline-block;opacity:0}
+
+/* ═══ BEAT FOCUS/DIM ═══ */
+.beat{opacity:0;transform:translateY(22px) scale(0.9);pointer-events:none;transition:transform .6s cubic-bezier(.22,1,.36,1),filter .6s,box-shadow .6s,opacity .5s}
+.beat.on{opacity:1;pointer-events:all}
+.beat.dimmed{opacity:1;transform:scale(0.86);filter:brightness(0.18) saturate(0.2) blur(1px)}
+.beat.focused{opacity:1;transform:scale(1.03);filter:brightness(1) saturate(1)}
+.beat.no-dim.dimmed{transform:scale(1);filter:brightness(0.85) saturate(0.8) blur(0px)}
+.beat.revealed{opacity:1;transform:scale(1);filter:brightness(1) saturate(1) blur(0px)}
+
+/* ═══ FLIP CARDS — 3D ═══ */
+.flip-wrap{perspective:1200px;width:100%;position:relative}
+.flip-inner{position:relative;width:100%;transition:transform .7s cubic-bezier(.22,1,.36,1);transform-style:preserve-3d}
+.flip-wrap.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;overflow:hidden}
+.flip-back{position:absolute;inset:0;transform:rotateY(180deg)}
+
+/* Front: teaser */
+.flip-front{display:flex;align-items:center;padding:24px 28px;gap:18px;min-height:90px}
+.flip-front .f-num{font-family:'Fraunces',serif;font-size:38px;font-weight:900;line-height:1;flex-shrink:0;width:56px;text-align:center}
+.flip-front .f-title{font-family:'Fraunces',serif;font-size:19px;font-weight:700;line-height:1.3;color:#fff}
+.flip-front .f-hint{font-family:'Syne',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin-top:5px;opacity:.35}
+
+/* Back: full content */
+.flip-back{display:flex;align-items:stretch}
+.flip-back::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:2;border-radius:16px 16px 0 0}
+.flip-back .card-left{
+  flex-shrink:0;width:72px;display:flex;align-items:center;justify-content:center;
+  border-right:1px solid rgba(255,255,255,.06)
+}
+.flip-back .card-left .big-num{font-family:'Fraunces',serif;font-size:32px;font-weight:900;opacity:.6}
+.flip-back .card-right{flex:1;padding:22px 24px 18px;display:flex;flex-direction:column;justify-content:center}
+.flip-back .card-tag{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;opacity:.6}
+.flip-back .card-title{font-family:'Fraunces',serif;font-size:17px;font-weight:700;line-height:1.3;margin-bottom:6px;color:#fff}
+.flip-back .card-divider{width:30px;height:1px;margin-bottom:8px}
+.flip-back .card-body{font-family:'Space Grotesk',sans-serif;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.65);font-weight:400}
+.flip-back .card-body strong{color:#fff;font-weight:600}
+/* Glow on flip */
+.flip-wrap.flipped .flip-back{box-shadow:0 4px 30px var(--glow,rgba(255,255,255,.06))}
+
+/* Color variants */
+.c-red{background:linear-gradient(145deg,rgba(255,68,85,0.10) 0%,rgba(255,68,85,0.03) 40%,rgba(10,10,18,0.7) 100%);border:1px solid rgba(255,68,85,0.15)}
+.c-red::after{background:linear-gradient(90deg,rgba(255,68,85,.7),rgba(255,68,85,.05))}
+.c-red::before{background:radial-gradient(ellipse at 20% 30%,rgba(255,68,85,.1),transparent 60%)}
+.c-red.focused{box-shadow:0 0 60px rgba(255,68,85,.12),0 8px 32px rgba(0,0,0,.5);border-color:rgba(255,68,85,.35)}
+.c-red .big-num{color:#ff6b7a}.c-red .card-tag{color:#ff6b7a}.c-red .card-divider{background:rgba(255,68,85,.3)}
+.c-red .card-left{border-right-color:rgba(255,68,85,.1);background:rgba(255,68,85,.04)}
+
+.c-blue{background:linear-gradient(145deg,rgba(79,142,247,0.10) 0%,rgba(79,142,247,0.03) 40%,rgba(10,10,18,0.7) 100%);border:1px solid rgba(79,142,247,0.15)}
+.c-blue::after{background:linear-gradient(90deg,rgba(79,142,247,.7),rgba(79,142,247,.05))}
+.c-blue::before{background:radial-gradient(ellipse at 20% 30%,rgba(79,142,247,.1),transparent 60%)}
+.c-blue.focused{box-shadow:0 0 60px rgba(79,142,247,.12),0 8px 32px rgba(0,0,0,.5);border-color:rgba(79,142,247,.35)}
+.c-blue .big-num{color:#6da3f7}.c-blue .card-tag{color:#6da3f7}.c-blue .card-divider{background:rgba(79,142,247,.3)}
+.c-blue .card-left{border-right-color:rgba(79,142,247,.1);background:rgba(79,142,247,.04)}
+
+.c-gold{background:linear-gradient(145deg,rgba(245,197,24,0.10) 0%,rgba(245,197,24,0.03) 40%,rgba(10,10,18,0.7) 100%);border:1px solid rgba(245,197,24,0.15)}
+.c-gold::after{background:linear-gradient(90deg,rgba(245,197,24,.7),rgba(245,197,24,.05))}
+.c-gold::before{background:radial-gradient(ellipse at 20% 30%,rgba(245,197,24,.1),transparent 60%)}
+.c-gold.focused{box-shadow:0 0 60px rgba(245,197,24,.12),0 8px 32px rgba(0,0,0,.5);border-color:rgba(245,197,24,.35)}
+.c-gold .big-num{color:#f5c518}.c-gold .card-tag{color:#f5c518}.c-gold .card-divider{background:rgba(245,197,24,.3)}
+.c-gold .card-left{border-right-color:rgba(245,197,24,.1);background:rgba(245,197,24,.04)}
+
+/* ═══ QUOTE CARD ═══ */
+.qcard{flex-direction:column;text-align:center;padding:36px 40px;border-radius:20px;backdrop-filter:blur(24px)}
+.qcard .qmark{font-family:'Fraunces',serif;font-size:80px;line-height:.4;opacity:.12;display:block;margin-bottom:18px}
+.qcard .qtext{font-family:'Fraunces',serif;font-style:italic;font-size:20px;line-height:1.65;color:rgba(255,255,255,.9)}
+
+/* ═══ FLOW ═══ */
+.flow{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px;width:100%;max-width:720px}
+.frow{display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
+.fnode{padding:18px 32px;border-radius:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(14px,1.4vw,16px);text-align:center;min-width:160px;transition:all .6s cubic-bezier(.22,1,.36,1);backdrop-filter:blur(12px);letter-spacing:.2px}
+.fn-n{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.fn-bad{background:rgba(255,68,85,.06);border:1px solid rgba(255,68,85,.18);color:#fca5a5;position:relative;overflow:hidden}
+.fn-bad::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,68,85,.4),transparent)}
+.fn-bad.focused{box-shadow:0 0 40px rgba(255,68,85,.15),inset 0 0 30px rgba(255,68,85,.03);border-color:rgba(255,68,85,.5)}
+.fn-final{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(15px,1.6vw,18px);min-width:260px;padding:20px 36px;letter-spacing:-.3px}
+.fdown{color:rgba(255,255,255,.12);font-size:18px;display:block;text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:300}
+
+/* ═══ INSIGHT BOX (Editorial Takeaway) ═══ */
+.ibox{margin-top:24px;padding:22px 28px;border-radius:14px;font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,16px);line-height:1.65;max-width:640px;text-align:center;backdrop-filter:blur(20px);color:rgba(255,255,255,.7);transition:all .6s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
+.ibox::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+.ibox strong{color:#fff;font-weight:600}
+.ib-red{background:rgba(255,68,85,.04);border:1px solid rgba(255,68,85,.12)}
+.ib-red::before{background:#ff4455}
+.ib-red.focused{box-shadow:0 0 50px rgba(255,68,85,.1);border-color:rgba(255,68,85,.35)}
+.ib-blue{background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.12)}
+.ib-blue::before{background:#4f8ef7}
+.ib-blue.focused{box-shadow:0 0 50px rgba(79,142,247,.1);border-color:rgba(79,142,247,.35)}
+.ibox .ii{display:inline-flex;width:24px;height:24px;border-radius:6px;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-right:10px;vertical-align:middle;font-family:'Space Grotesk',sans-serif}
+.ib-red .ii{background:rgba(255,68,85,.15);color:#ff6b7a}
+.ib-blue .ii{background:rgba(79,142,247,.15);color:#6da3f7}
+
+/* ═══ FORMULA ═══ */
+.formula{display:flex;align-items:stretch;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.fbox{padding:28px;border-radius:18px;text-align:center;min-width:170px;flex:1;max-width:230px;backdrop-filter:blur(16px);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.fbox .lbl{font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.fbox p{font-size:20px;font-weight:800;line-height:1.3;margin-bottom:8px;color:#fff}
+.fbox small{font-size:12px;color:rgba(255,255,255,.5)}
+.fb-gold{background:linear-gradient(145deg,rgba(245,197,24,.12),rgba(10,10,15,.5));border:1px solid rgba(245,197,24,.25)}.fb-gold .lbl{color:#f5c518}
+.fb-gold.focused{box-shadow:0 0 50px rgba(245,197,24,.15);border-color:rgba(245,197,24,.5)}
+.fb-blue{background:linear-gradient(145deg,rgba(79,142,247,.12),rgba(10,10,15,.5));border:1px solid rgba(79,142,247,.25)}.fb-blue .lbl{color:#4f8ef7}
+.fb-blue.focused{box-shadow:0 0 50px rgba(79,142,247,.15);border-color:rgba(79,142,247,.5)}
+.fb-n{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(10,10,15,.5));border:1px solid rgba(255,255,255,.12)}.fb-n .lbl{color:rgba(255,255,255,.6)}
+.fb-n.focused{box-shadow:0 0 40px rgba(255,255,255,.08);border-color:rgba(255,255,255,.3)}
+.fop{font-size:28px;color:rgba(255,255,255,.2);display:flex;align-items:center;font-weight:300}
+
+/* ═══ STEP CARDS ═══ */
+.exlist{display:flex;flex-direction:column;gap:16px;margin-top:22px;width:100%;max-width:680px}
+.ex{display:flex;align-items:stretch;border-radius:18px;backdrop-filter:blur(14px);transition:all .6s cubic-bezier(.22,1,.36,1);overflow:hidden}
+.ex-gold{background:linear-gradient(145deg,rgba(245,197,24,.08),rgba(10,10,15,.5));border:1px solid rgba(245,197,24,.15)}
+.ex-gold.focused{box-shadow:0 0 45px rgba(245,197,24,.1);border-color:rgba(245,197,24,.35)}
+.ex-blue{background:linear-gradient(145deg,rgba(79,142,247,.08),rgba(10,10,15,.5));border:1px solid rgba(79,142,247,.15)}
+.ex-blue.focused{box-shadow:0 0 45px rgba(79,142,247,.1);border-color:rgba(79,142,247,.35)}
+.ex-wh{background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(10,10,15,.5));border:1px solid rgba(255,255,255,.1)}
+.ex-wh.focused{box-shadow:0 0 35px rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}
+.ex .ex-num{flex-shrink:0;width:70px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:28px;font-weight:900}
+.ex-gold .ex-num{color:#f5c518;background:rgba(245,197,24,.06);border-right:1px solid rgba(245,197,24,.1)}
+.ex-blue .ex-num{color:#4f8ef7;background:rgba(79,142,247,.06);border-right:1px solid rgba(79,142,247,.1)}
+.ex-wh .ex-num{color:rgba(255,255,255,.6);background:rgba(255,255,255,.03);border-right:1px solid rgba(255,255,255,.08)}
+.ex .ex-body{padding:22px 26px;flex:1}
+.ex .et{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-bottom:8px}
+.et-gold{color:#f5c518}.et-blue{color:#4f8ef7}
+.ex .ex-divider{width:30px;height:1px;margin-bottom:10px}
+.ex-gold .ex-divider{background:rgba(245,197,24,.3)}
+.ex-blue .ex-divider{background:rgba(79,142,247,.3)}
+.ex-wh .ex-divider{background:rgba(255,255,255,.15)}
+.ex p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.6);font-weight:300}
+
+/* ═══ ILLUSTRATION ═══ */
+.illust{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;perspective:800px}
+.ill-stage{transform-style:preserve-3d;position:relative;width:100%;transition:transform .1s linear}
+.ill-stage .ill-glow{position:absolute;inset:-30%;border-radius:50%;filter:blur(60px);opacity:.25;transform:translateZ(-60px)}
+.ill-stage img.ill-img{width:100%;object-fit:contain;filter:drop-shadow(0 20px 50px rgba(0,0,0,.6));animation:illFloat 7s ease-in-out infinite;transform:translateZ(0)}
+@keyframes illFloat{0%,100%{transform:translateZ(0) translateY(0)}50%{transform:translateZ(0) translateY(-10px)}}
+.ill-stage .ill-hi{position:absolute;inset:-2%;transform:translateZ(40px);mix-blend-mode:screen;pointer-events:none}
+.ill-stage .ill-hi img{width:100%;object-fit:contain;opacity:.1;filter:contrast(2) brightness(2) blur(1px)}
+
+/* ═══ TRANSITION OVERLAY — stronger ═══ */
+#trans{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:0;background:#050508}
+#trans .streak{position:absolute;top:50%;left:-100%;width:200%;height:3px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.1) 15%,rgba(245,197,24,.35) 45%,rgba(79,142,247,.3) 75%,transparent 100%);transform:translateY(-50%);filter:blur(1px)}
+#trans .flash{position:absolute;top:50%;left:50%;width:400px;height:400px;border-radius:50%;transform:translate(-50%,-50%) scale(0);background:radial-gradient(circle,rgba(255,255,255,.12),transparent 65%)}
+
+/* ═══ CHROME ═══ */
+#progress{position:fixed;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,.05);z-index:50}
+#pfill{height:100%;background:linear-gradient(90deg,#4f8ef7,#f5c518);width:0;transition:width .5s}
+#dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:50}
+.dot{width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
+.dot.on{background:#f5c518;border-color:#f5c518;transform:scale(1.6);box-shadow:0 0 14px rgba(245,197,24,.4)}
+#counter{position:fixed;bottom:18px;right:26px;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:2px;z-index:50}
+
+/* ═══ 16:9 RECORDING LOCK ═══ */
+.lock-16-9{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;z-index:0}
+.lock-16-9 .stage{position:relative;width:100%;max-width:177.78vh;aspect-ratio:16/9;overflow:hidden;background:#050508}
+
+/* ═══ HOVER MICRO-INTERACTIONS ═══ */
+.flip-wrap:hover{transform:translateY(-2px)}
+.flip-wrap:hover .flip-front{box-shadow:0 8px 30px rgba(0,0,0,.4)}
+.fbox:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.ex:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(0,0,0,.3)}
+.fnode:hover{transform:scale(1.04);box-shadow:0 0 25px rgba(255,255,255,.05)}
+
+/* ═══ FLIP CARD COLOR VARIANTS ═══ */
+.flip-wrap.c-red .flip-front{background:linear-gradient(145deg,rgba(255,68,85,.06),rgba(10,10,18,.65));border:1px solid rgba(255,68,85,.12)}
+.flip-wrap.c-red .flip-back{background:linear-gradient(145deg,rgba(255,68,85,.08) 0%,rgba(10,10,18,0.75) 100%);border:1px solid rgba(255,68,85,0.12)}
+.flip-wrap.c-red .flip-back::before{background:linear-gradient(90deg,rgba(255,68,85,.5),transparent)}
+.flip-wrap.c-red .f-num{color:#ff6b7a}
+.flip-wrap.c-red .flip-back .card-left{background:rgba(255,68,85,.03);border-right-color:rgba(255,68,85,.08)}
+.flip-wrap.c-red .flip-back .big-num{color:#ff6b7a}
+.flip-wrap.c-red .flip-back .card-tag{color:#ff6b7a}
+.flip-wrap.c-red .flip-back .card-divider{background:rgba(255,68,85,.25)}
+
+.flip-wrap.c-gold .flip-front{background:linear-gradient(145deg,rgba(245,197,24,.06),rgba(10,10,18,.65));border:1px solid rgba(245,197,24,.12)}
+.flip-wrap.c-gold .flip-back{background:linear-gradient(145deg,rgba(245,197,24,.08) 0%,rgba(10,10,18,0.75) 100%);border:1px solid rgba(245,197,24,0.12)}
+.flip-wrap.c-gold .flip-back::before{background:linear-gradient(90deg,rgba(245,197,24,.5),transparent)}
+.flip-wrap.c-gold .f-num{color:#f5c518}
+.flip-wrap.c-gold .flip-back .card-left{background:rgba(245,197,24,.03);border-right-color:rgba(245,197,24,.08)}
+.flip-wrap.c-gold .flip-back .big-num{color:#f5c518}
+.flip-wrap.c-gold .flip-back .card-tag{color:#f5c518}
+.flip-wrap.c-gold .flip-back .card-divider{background:rgba(245,197,24,.25)}
+
+.flip-wrap.c-blue .flip-front{background:linear-gradient(145deg,rgba(79,142,247,.06),rgba(10,10,18,.65));border:1px solid rgba(79,142,247,.12)}
+.flip-wrap.c-blue .flip-back{background:linear-gradient(145deg,rgba(79,142,247,.08) 0%,rgba(10,10,18,0.75) 100%);border:1px solid rgba(79,142,247,0.12)}
+.flip-wrap.c-blue .flip-back::before{background:linear-gradient(90deg,rgba(79,142,247,.5),transparent)}
+.flip-wrap.c-blue .f-num{color:#6da3f7}
+.flip-wrap.c-blue .flip-back .card-left{background:rgba(79,142,247,.03);border-right-color:rgba(79,142,247,.08)}
+.flip-wrap.c-blue .flip-back .big-num{color:#6da3f7}
+.flip-wrap.c-blue .flip-back .card-tag{color:#6da3f7}
+.flip-wrap.c-blue .flip-back .card-divider{background:rgba(79,142,247,.25)}
+
+/* ═══ PRESENTER GUIDE ═══ */
+#presenter-guide{position:fixed;bottom:18px;left:26px;z-index:50;display:flex;gap:8px;opacity:0;transition:opacity .3s}
+#presenter-guide.show{opacity:1}
+#presenter-guide kbd{font-family:'Syne',sans-serif;font-size:9px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);letter-spacing:1px}
+
+/* ═══ KEYWORD SPOTLIGHT ═══ */
+.kw-spot{width:100%;text-align:center;padding:20px 0;overflow:visible;position:relative}
+.kw-spot .kw-term{font-family:'Syne',sans-serif;font-size:clamp(44px,7vw,100px);font-weight:800;letter-spacing:clamp(3px,1vw,8px);text-transform:uppercase;line-height:1.05;color:#fff;text-shadow:0 0 80px rgba(255,255,255,.08);max-width:100%;display:block}
+.kw-spot .kw-sub{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,2.5vw,32px);font-weight:400;margin-top:16px;line-height:1.4}
+.kw-spot .kw-sub-muted{color:rgba(255,255,255,.4)}
+.kw-spot .kw-sub-accent{color:#f5c518}
+.kw-spot .kw-sub-blue{color:#6da3f7}
+.kw-spot .kw-sub-red{color:#ff6b7a}
+.kw-spot .kw-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none;z-index:-1}
+
+/* ═══ BIG NUMBER / STAT ═══ */
+.big-stat{width:100%;text-align:center;padding:10px 0}
+.big-stat .stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(100px,16vw,220px);line-height:.85;letter-spacing:-6px;position:relative;display:inline-block}
+.big-stat .stat-num .stat-glow{position:absolute;inset:-40%;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none;z-index:-1}
+.big-stat .stat-unit{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,80px);font-weight:800;vertical-align:super;margin-left:4px;opacity:.7}
+.big-stat .stat-label{font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,2vw,24px);font-weight:300;color:rgba(255,255,255,.45);margin-top:14px;line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* ═══ VS SPLIT (Premium Comparison) ═══ */
+.vs-split{display:flex;align-items:stretch;width:100%;max-width:960px;margin:0 auto;gap:0}
+.vs-panel{flex:1;padding:36px 32px;position:relative;overflow:hidden;border-radius:16px}
+.vs-panel .vs-glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+.vs-left{background:rgba(255,68,85,.03);border:1px solid rgba(255,68,85,.08)}
+.vs-right{background:rgba(74,222,128,.03);border:1px solid rgba(74,222,128,.08)}
+.vs-marker{font-family:'Fraunces',serif;font-size:clamp(36px,4vw,52px);font-weight:900;opacity:.15;position:absolute;top:18px;right:24px;z-index:1}
+.vs-left .vs-marker{color:#ff4455}
+.vs-marker-good{color:#4ade80 !important}
+.vs-title{font-family:'Fraunces',serif;font-size:clamp(22px,2.5vw,32px);font-weight:800;margin:0 0 20px;position:relative;z-index:2;letter-spacing:-.5px}
+.vs-title-bad{color:#ff6b7a}
+.vs-title-good{color:#4ade80}
+.vs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;position:relative;z-index:2}
+.vs-list li{font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.5vw,17px);line-height:1.6;color:rgba(255,255,255,.65);padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.02);border-left:2px solid rgba(255,68,85,.2);transition:all .4s}
+.vs-list-good li{border-left-color:rgba(74,222,128,.25)}
+.vs-list li:hover{background:rgba(255,255,255,.04);transform:translateX(4px)}
+
+/* VS Divider */
+.vs-divider{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 12px;gap:0;flex-shrink:0}
+.vs-line{width:1px;flex:1;background:linear-gradient(180deg,transparent,rgba(255,255,255,.1),transparent)}
+.vs-badge{font-family:'Syne',sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.25);padding:8px 6px;writing-mode:vertical-lr;text-orientation:upright}
+
+/* VS Takeaway */
+.vs-takeaway{width:100%;text-align:center;margin-top:28px;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(18px,2.2vw,28px);font-weight:400;color:rgba(255,255,255,.5);letter-spacing:-.3px}
+
+/* ═══ CALLOUT / ALERT ═══ */
+.callout{width:100%;max-width:680px;margin:0 auto;padding:24px 28px;border-radius:14px;display:flex;align-items:center;gap:16px;backdrop-filter:blur(20px);position:relative;overflow:hidden}
+.callout::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+.callout .co-icon{flex-shrink:0;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.callout .co-content{flex:1}
+.callout .co-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-bottom:6px;color:#fff}
+.callout .co-body{font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.7;color:rgba(255,255,255,.65)}
+.callout .co-body strong{color:#fff;font-weight:600}
+
+/* Callout color variants */
+.co-warn{background:rgba(245,197,24,.05);border:1px solid rgba(245,197,24,.12)}
+.co-warn::before{background:#f5c518}
+.co-warn .co-icon{background:rgba(245,197,24,.12);color:#f5c518}
+.co-warn .co-title{color:#f5c518}
+
+.co-danger{background:rgba(255,68,85,.05);border:1px solid rgba(255,68,85,.12)}
+.co-danger::before{background:#ff4455}
+.co-danger .co-icon{background:rgba(255,68,85,.12);color:#ff6b7a}
+.co-danger .co-title{color:#ff6b7a}
+
+.co-info{background:rgba(79,142,247,.05);border:1px solid rgba(79,142,247,.12)}
+.co-info::before{background:#4f8ef7}
+.co-info .co-icon{background:rgba(79,142,247,.12);color:#6da3f7}
+.co-info .co-title{color:#6da3f7}
+
+.co-success{background:rgba(74,222,128,.05);border:1px solid rgba(74,222,128,.12)}
+.co-success::before{background:#4ade80}
+.co-success .co-icon{background:rgba(74,222,128,.12);color:#4ade80}
+.co-success .co-title{color:#4ade80}
+
+/* ═══ CLOSING SLIDE ═══ */
+.closing{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0}
+.closing-mark{font-size:clamp(28px,3vw,42px);color:#f5c518;margin-bottom:16px;opacity:.6}
+.closing-title{font-family:'Syne',sans-serif;font-size:clamp(42px,6vw,80px);font-weight:800;letter-spacing:clamp(4px,1vw,10px);text-transform:uppercase;line-height:1.05;color:#fff;text-shadow:0 0 80px rgba(255,255,255,.08);margin:0}
+.closing-sub{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(16px,2vw,24px);font-weight:400;color:rgba(255,255,255,.35);margin-top:14px;letter-spacing:-.3px}
+.closing-cta{margin-top:36px;padding:14px 36px;border:1px solid rgba(255,255,255,.12);border-radius:100px;font-family:'Space Grotesk',sans-serif;font-size:clamp(12px,1.2vw,15px);font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);transition:all .5s;cursor:default}
+.closing-cta:hover{border-color:rgba(245,197,24,.35);color:rgba(245,197,24,.7);box-shadow:0 0 40px rgba(245,197,24,.06)}
+
+/* ═══ VISUAL-FIRST OVERRIDES — Hướng A ═══ */
+
+/* ═══ GLOBAL 16:9 SPACE ═══ */
+.scontent{max-width:1200px;padding:0 56px}
+.srow .text-col{flex:1.15}
+
+/* ═══ HERO NUMBER — giant stat ═══ */
+.hero-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(72px,12vw,150px);line-height:1;letter-spacing:-4px;text-align:center}
+.hero-label{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(14px,1.6vw,20px);color:rgba(255,255,255,.3);text-align:center;margin-top:10px;letter-spacing:1px}
+
+/* ═══ HERO COMPARE — side by side stats ═══ */
+.hero-compare{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px);width:100%;margin-top:24px}
+.hc-item{text-align:center;flex:1;max-width:400px}
+.hc-op{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(28px,4vw,52px);color:rgba(255,255,255,.1);flex-shrink:0}
+
+/* ═══ SPLIT VS — Before/After full width ═══ */
+.split-vs{display:flex;width:100%;max-width:1100px;gap:2px;border-radius:18px;overflow:hidden;margin-top:12px}
+.split-side{flex:1;padding:24px 28px;border-radius:14px}
+.split-bad{background:rgba(255,68,85,.04);border:1px solid rgba(255,68,85,.08)}
+.split-good{background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.08)}
+.split-tag{font-family:'Syne',sans-serif;font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.split-bad .split-tag{color:rgba(255,68,85,.45)}
+.split-good .split-tag{color:rgba(34,197,94,.55)}
+.split-quote{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(15px,1.7vw,21px);line-height:1.6}
+.split-bad .split-quote{color:rgba(255,255,255,.4)}
+.split-good .split-quote{color:rgba(255,255,255,.85)}
+.split-industry{font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#6da3f7;margin-bottom:8px;opacity:.7}
+
+/* ═══ STAT TRIO — 3 stats in a row ═══ */
+.stat-trio{display:flex;gap:20px;justify-content:center;width:100%;max-width:1000px;margin-top:24px}
+.stat-card{flex:1;text-align:center;padding:28px 20px;border-radius:18px;backdrop-filter:blur(14px);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.stat-card .snum{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1;letter-spacing:-2px}
+.stat-card .slabel{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.35);margin-top:10px;line-height:1.4}
+.sc-red{background:rgba(255,68,85,.04);border:1px solid rgba(255,68,85,.1)}
+.sc-red .snum{color:#ff6b7a}
+.sc-red.focused{box-shadow:0 0 40px rgba(255,68,85,.1);border-color:rgba(255,68,85,.3)}
+.sc-gold{background:rgba(245,197,24,.04);border:1px solid rgba(245,197,24,.1)}
+.sc-gold .snum{color:#f5c518}
+.sc-gold.focused{box-shadow:0 0 40px rgba(245,197,24,.1);border-color:rgba(245,197,24,.3)}
+.sc-blue{background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.1)}
+.sc-blue .snum{color:#6da3f7}
+.sc-blue.focused{box-shadow:0 0 40px rgba(79,142,247,.1);border-color:rgba(79,142,247,.3)}
+
+/* ═══ HORIZONTAL FLOW ═══ */
+.hflow{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:1100px;flex-wrap:wrap;margin-top:24px}
+.hf-node{padding:18px 28px;border-radius:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(13px,1.3vw,16px);text-align:center;backdrop-filter:blur(12px);min-width:120px;position:relative;overflow:hidden}
+.hf-node::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.hf-n{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.hf-bad{background:rgba(255,68,85,.05);border:1px solid rgba(255,68,85,.12);color:#fca5a5}
+.hf-bad::before{background:linear-gradient(90deg,transparent,rgba(255,68,85,.3),transparent)}
+.hf-bad.focused{box-shadow:0 0 35px rgba(255,68,85,.1);border-color:rgba(255,68,85,.4)}
+.hf-good{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.12);color:#86efac}
+.hf-good::before{background:linear-gradient(90deg,transparent,rgba(34,197,94,.3),transparent)}
+.hf-good.focused{box-shadow:0 0 35px rgba(34,197,94,.1);border-color:rgba(34,197,94,.4)}
+.hf-blue{background:rgba(79,142,247,.05);border:1px solid rgba(79,142,247,.12);color:#93c5fd}
+.hf-blue::before{background:linear-gradient(90deg,transparent,rgba(79,142,247,.3),transparent)}
+.hf-arrow{font-family:'Space Grotesk',sans-serif;font-size:22px;color:rgba(255,255,255,.1);font-weight:300;flex-shrink:0}
+
+/* ═══ CONCEPT SPOTLIGHT ═══ */
+.concept-spot{text-align:center;position:relative;padding:24px 0}
+.concept-glow{position:absolute;width:400px;height:400px;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(100px);opacity:.2;pointer-events:none;z-index:-1}
+.concept-term{font-family:'Syne',sans-serif;font-size:clamp(48px,8vw,110px);font-weight:800;letter-spacing:clamp(4px,1.2vw,10px);text-transform:uppercase;line-height:1.05}
+.concept-explain{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(18px,2.2vw,28px);font-weight:400;color:rgba(255,255,255,.35);margin-top:16px}
+
+/* ═══ PROMPT BOX ═══ */
+.prompt-box{background:linear-gradient(145deg,rgba(245,197,24,.05),rgba(10,10,18,.65));border:1px solid rgba(245,197,24,.12);border-radius:20px;padding:28px 34px;max-width:900px;width:100%;margin-top:22px;position:relative;backdrop-filter:blur(16px);transition:all .6s cubic-bezier(.22,1,.36,1)}
+.prompt-box.focused{box-shadow:0 0 50px rgba(245,197,24,.1);border-color:rgba(245,197,24,.35)}
+.prompt-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:rgba(245,197,24,.6);margin-bottom:14px}
+.prompt-text{font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.8;color:rgba(255,255,255,.6);font-weight:300}
+.prompt-copy{position:absolute;top:18px;right:20px;font-family:'Syne',sans-serif;font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,.35);cursor:pointer;transition:color .3s}
+.prompt-copy:hover{color:#f5c518}
+
+/* ═══ ILLUSTRATION MASK ═══ */
+.ill-stage img.ill-img{border-radius:20px;-webkit-mask-image:radial-gradient(ellipse 85% 85% at center,black 50%,transparent 100%);mask-image:radial-gradient(ellipse 85% 85% at center,black 50%,transparent 100%)}
+.ill-stage .ill-hi img{border-radius:20px}
+
+/* ═══ CLOSING ═══ */
+.closing{text-align:center;max-width:700px}
+.closing-mark{font-family:'Fraunces',serif;font-size:48px;color:rgba(245,197,24,.25);margin-bottom:16px}
+.closing-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,5vw,60px);letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,#fff,rgba(255,255,255,.6));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.closing-sub{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(17px,2vw,24px);color:rgba(255,255,255,.35);line-height:1.5;margin-bottom:24px}
+.closing-cta{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(245,197,24,.4);padding:14px 28px;border:1px solid rgba(245,197,24,.1);border-radius:40px;display:inline-block}
+
+/* ═══ INSIGHT LINE — single line takeaway ═══ */
+.insight-line{font-family:'Space Grotesk',sans-serif;font-size:clamp(14px,1.4vw,17px);color:rgba(255,255,255,.4);text-align:center;margin-top:20px;font-weight:300;max-width:700px}
+.insight-line strong{color:rgba(255,255,255,.7);font-weight:600}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px){
+  .scontent{padding:0 20px}
+  .hero-compare{flex-direction:column;gap:16px}
+  .split-vs{flex-direction:column}
+  .stat-trio{flex-direction:column}
+  .hflow{flex-direction:column}
+}
+
+</style>
+</head>
+<body>
+
+<!-- S0: HOOK -->
+<div class="slide active" id="s0" data-beats="3">
+  <div class="spot spot-c" style="top:-12%;left:30%"></div>
+  <div class="spot spot-w" style="bottom:2%;right:10%"></div>
+  <div class="bg-text top drift-r">SEED · AUDIENCE · TỆP MỒI</div>
+  <div class="bg-text bot drift-l">CƠ CHẾ · PHÂN PHỐI</div>
+  <div class="pt" style="--d:9s;--tx:18px;--ty:-30px;--tx2:-10px;--ty2:-50px;width:6px;height:6px;background:#f5c518;box-shadow:0 0 16px #f5c518;top:25%;left:15%"></div>
+  <div class="pt" style="--d:12s;--dl:3s;--tx:-12px;--ty:20px;--tx2:15px;--ty2:-18px;width:5px;height:5px;background:#4f8ef7;box-shadow:0 0 12px #4f8ef7;top:65%;right:22%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0"><span class="chip chip-b">Video · Conan Maker</span></div>
+    <div class="beat" data-b="1" data-fx="blur-sweep">
+      <h1 class="anim-t" style="font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(34px,4.5vw,56px);line-height:1.15;text-align:center;letter-spacing:-1px;color:rgba(255,255,255,.5)">Học bài bản, viết đúng kỹ thuật</h1>
+      <h1 class="anim-t" style="font-family:'Fraunces',serif;font-weight:900;font-size:clamp(48px,7vw,90px);line-height:1;text-align:center;letter-spacing:-3px;color:#ff4455;margin-top:4px">vẫn flop.</h1>
+    </div>
+    <div class="beat" data-b="2" data-fx="blur-sweep"><p class="anim-t sub">11 like, 0 share. Vấn đề không nằm ở năng lực viết.</p></div>
+  </div>
+</div>
+
+<!-- S1: CONTEXT — Hero Number -->
+<div class="slide" id="s1" data-beats="4">
+  <div class="spot spot-w" style="top:-8%;right:20%"></div>
+  <div class="spot spot-c" style="bottom:5%;left:15%"></div>
+  <div class="bg-text top drift-l">CONTEXT · BỐI CẢNH</div>
+  <div class="pt" style="--d:11s;--dl:1s;--tx:14px;--ty:-22px;--tx2:-8px;--ty2:16px;width:6px;height:6px;background:#f5c518;box-shadow:0 0 14px #f5c518;top:40%;right:12%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="scale-pop" style="width:100%;text-align:center">
+      <span class="chip chip-gold">Bối cảnh</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:-1px"><span class="g-gold">Cuộc chiến giành newsfeed</span></h2>
+    </div>
+    <div class="srow" style="margin-top:28px">
+      <div class="text-col" style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div class="beat" data-b="1" style="text-align:center">
+          <div class="hero-num" style="color:#6da3f7">3 TỶ</div>
+          <div class="hero-label">người dùng Facebook</div>
+        </div>
+        <div class="beat insight-line" data-b="2">Mỗi lần mở app — <strong>hàng nghìn bài</strong> tranh nhau</div>
+        <div class="beat insight-line" data-b="3">Thuật toán phải chọn. Nhưng <strong>nó không đọc nội dung.</strong></div>
+      </div>
+      <div class="vis-col beat no-dim" data-b="1">
+        <div class="illust"><div class="ill-stage" data-tilt>
+          <div class="ill-glow" style="background:radial-gradient(circle,rgba(79,142,247,.4),transparent 70%)"></div>
+          
+          <div class="ill-hi"></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S2: SYMPTOM — Hero Compare -->
+<div class="slide" id="s2" data-beats="4">
+  <div class="spot spot-r" style="top:-10%;left:25%;width:600px;height:600px"></div>
+  <div class="spot spot-w" style="bottom:-5%;right:18%"></div>
+  <div class="bg-text top drift-r">SYMPTOMS · TRIỆU CHỨNG</div>
+  <div class="bg-text bot drift-l">FLOP · THẤ T BẠI</div>
+  <div class="pt" style="--d:10s;--tx:-14px;--ty:18px;--tx2:10px;--ty2:-14px;width:5px;height:5px;background:#ff4455;box-shadow:0 0 12px #ff4455;top:30%;right:15%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="clip-reveal" style="width:100%;text-align:center">
+      <span class="chip chip-r">Triệu chứng</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(28px,3.5vw,48px);line-height:1.1;letter-spacing:-1px"><span class="g-red">Viết kỹ vẫn thua</span></h2>
+    </div>
+    <div class="beat hero-compare" data-b="1">
+      <div class="hc-item">
+        <div class="hero-num g-red">2000 từ</div>
+        <div class="hero-label">chuyên môn, viết cả ngày</div>
+      </div>
+      <div class="hc-op">&lt;</div>
+      <div class="hc-item">
+        <div class="hero-num g-green">1 ảnh</div>
+        <div class="hero-label">đồ ăn, đăng 30 giây</div>
+      </div>
+    </div>
+    <div class="beat stat-trio" data-b="2">
+      <div class="stat-card sc-red"><div class="snum">x100</div><div class="slabel">Người khác hơn bạn<br>cùng chủ đề</div></div>
+      <div class="stat-card sc-gold"><div class="snum">14</div><div class="slabel">tháng thử sai<br>liên tục</div></div>
+      <div class="stat-card sc-red"><div class="snum">20</div><div class="slabel">like — 1 comment<br>"rảnh quá"</div></div>
+    </div>
+    <div class="beat insight-line" data-b="3">Năng lực không đổi. <strong>Vậy cái gì sai?</strong></div>
+  </div>
+</div>
+
+<!-- S3: PARADOX — Split Up/Down -->
+<div class="slide" id="s3" data-beats="3">
+  <div class="spot spot-c" style="top:10%;right:20%"></div>
+  <div class="spot spot-w" style="bottom:-5%;left:18%"></div>
+  <div class="bg-text top drift-r">PARADOX · NGHỊCH LÝ</div>
+  <div class="bg-text bot drift-l">CÁ NHÂN · CHUYÊN MÔN</div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="blur-sweep" style="width:100%;text-align:center">
+      <span class="chip chip-r">Nghịch lý</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(28px,3.5vw,48px);line-height:1.1;letter-spacing:-1px"><span class="g-red">Post cá nhân ngon hơn bài chuyên môn</span></h2>
+    </div>
+    <div class="beat hero-compare" data-b="1">
+      <div class="hc-item" style="padding:32px;border-radius:18px;background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.1)">
+        <div class="hero-num" style="font-size:clamp(48px,8vw,100px);color:#4ade80">Cá nhân</div>
+        <div class="hero-label" style="font-size:18px;color:rgba(34,197,94,.6);margin-top:14px">tương tác cao</div>
+      </div>
+      <div class="hc-op">vs</div>
+      <div class="hc-item" style="padding:32px;border-radius:18px;background:rgba(255,68,85,.04);border:1px solid rgba(255,68,85,.1)">
+        <div class="hero-num" style="font-size:clamp(48px,8vw,100px);color:#ff4455">Chuyên môn</div>
+        <div class="hero-label" style="font-size:18px;color:rgba(255,68,85,.5);margin-top:14px">chìm nghỉm</div>
+      </div>
+    </div>
+    <div class="beat insight-line" data-b="2">Cùng 1 người, năng lực không đổi — <strong>vậy cái gì thay đổi?</strong></div>
+  </div>
+</div>
+
+<!-- S4: WRONG MODEL — Horizontal Flow RED -->
+<div class="slide" id="s4" data-beats="4">
+  <div class="spot spot-r" style="top:-5%;right:25%"></div>
+  <div class="spot spot-w" style="bottom:-8%;left:20%"></div>
+  <div class="bg-text top drift-r">WRONG · MÔ HÌNH SAI</div>
+  <div class="bg-text bot drift-l">DEAD END · NGÕ CỤT</div>
+  <div class="pt" style="--d:8s;--tx:-14px;--ty:16px;--tx2:10px;--ty2:-12px;width:5px;height:5px;background:#ff4455;box-shadow:0 0 12px #ff4455;top:35%;left:25%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="typing" style="width:100%;text-align:center">
+      <span class="chip chip-r">Mô hình sai</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(32px,4.5vw,58px);line-height:1.05;letter-spacing:-1.5px"><span class="g-red">Nội dung hay = Tự viral</span></h2>
+    </div>
+    <div class="beat hflow" data-b="1">
+      <div class="hf-node hf-n">Viết hay</div>
+      <div class="hf-arrow">→</div>
+      <div class="hf-node hf-n">Đăng lên</div>
+      <div class="hf-arrow">→</div>
+      <div class="hf-node hf-bad" style="min-width:200px">Thuật toán thấy hay?</div>
+      <div class="hf-arrow">→</div>
+      <div class="hf-node hf-bad" style="min-width:180px;border-width:2px">Chôn vùi</div>
+    </div>
+    <div class="beat" data-b="2" style="text-align:center;margin-top:20px">
+      <div class="hero-num" style="font-size:clamp(48px,7vw,90px);color:rgba(255,68,85,.2);letter-spacing:-2px">KHÔNG</div>
+      <div class="hero-label" style="color:rgba(255,255,255,.35)">Thuật toán không đọc nội dung</div>
+    </div>
+    <div class="beat insight-line" data-b="3">Nó chỉ đo 1 thứ: <strong>nhóm đầu tiên có tương tác không.</strong></div>
+  </div>
+</div>
+
+<!-- S5: ROOT CAUSE — Tệp Mồi -->
+<div class="slide" id="s5" data-beats="4">
+  <div class="spot spot-w" style="top:-10%;left:28%"></div>
+  <div class="spot spot-c" style="bottom:5%;right:15%"></div>
+  <div class="bg-text top drift-l">SEED · AUDIENCE</div>
+  <div class="bg-text bot drift-r">TỆP MỒI · ROOT</div>
+  <div class="pt" style="--d:10s;--dl:2s;--tx:20px;--ty:-15px;--tx2:-12px;--ty2:22px;width:6px;height:6px;background:#f5c518;box-shadow:0 0 14px #f5c518;top:30%;left:10%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="clip-reveal" style="width:100%;text-align:center">
+      <span class="chip chip-gold">Nguyên nhân gốc</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-2px;margin-top:6px"><span class="g-gold">Cơ chế Tệp Mồi</span></h2>
+    </div>
+    <div class="srow srow-rev" style="margin-top:28px">
+      <div class="text-col" style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <div class="beat" data-b="1" style="text-align:center">
+          <div class="hero-num" style="font-size:clamp(42px,6vw,80px);color:#f5c518">Nhóm gần nhất</div>
+          <div class="hero-label">bạn bè, gia đình, người hay inbox</div>
+        </div>
+        <div class="beat hflow" data-b="2" style="margin-top:8px">
+          <div class="hf-node hf-n">Chuyên môn</div>
+          <div class="hf-arrow">→</div>
+          <div class="hf-node hf-bad">Tệp mồi lướt qua</div>
+          <div class="hf-arrow">→</div>
+          <div class="hf-node hf-bad" style="border-width:2px">Chôn vùi</div>
+        </div>
+      </div>
+      <div class="vis-col beat no-dim" data-b="1">
+        <div class="illust"><div class="ill-stage" data-tilt>
+          <div class="ill-glow" style="background:radial-gradient(circle,rgba(245,197,24,.35),transparent 70%)"></div>
+          
+          <div class="ill-hi"></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="beat" data-b="3" style="text-align:center;margin-top:16px">
+      <div class="hero-num" style="font-size:clamp(56px,9vw,120px);color:#ff4455">0%</div>
+      <div class="hero-label">công chúng nhìn thấy bài viết</div>
+    </div>
+  </div>
+</div>
+
+<!-- S6: REFRAME -->
+<div class="slide" id="s6" data-beats="2">
+  <div class="spot spot-w" style="top:15%;left:25%"></div>
+  <div class="spot spot-c" style="bottom:10%;right:20%"></div>
+  <div class="bg-text top drift-r">REFRAME · LẬT KHUNG</div>
+  <div class="bg-text bot drift-l">KHÔNG PHẢI · CONTENT DỞ</div>
+  <div class="scontent" style="justify-content:center">
+    <div class="beat" data-b="0"><span class="chip chip-gold">Lật khung</span></div>
+    <div class="beat" data-b="1" data-fx="scale-pop" style="width:100%;text-align:center">
+      <h2 class="anim-t" style="text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(26px,3vw,42px);line-height:1.3;color:rgba(255,255,255,.45)">Không phải content dở</h2>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-style:italic;font-size:clamp(42px,6vw,80px);line-height:1.05;letter-spacing:-3px;margin-top:8px"><span class="g-gold">mà tệp mồi không match.</span></h2>
+    </div>
+  </div>
+</div>
+
+<!-- S7: CORRECT MODEL — Horizontal Flow GREEN -->
+<div class="slide" id="s7" data-beats="4">
+  <div class="spot spot-c" style="top:-5%;left:20%"></div>
+  <div class="spot spot-w" style="bottom:0%;right:15%"></div>
+  <div class="bg-text top drift-l">CORRECT · ĐÚNG HƯỚNG</div>
+  <div class="bg-text bot drift-r">MERGE · KẾT HỢP</div>
+  <div class="pt" style="--d:9s;--tx:12px;--ty:-18px;--tx2:-10px;--ty2:14px;width:6px;height:6px;background:#4ade80;box-shadow:0 0 14px #4ade80;top:28%;right:30%"></div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="blur-sweep" style="width:100%;text-align:center">
+      <span class="chip chip-g">Mô hình đúng</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(32px,4.5vw,58px);line-height:1.05;letter-spacing:-1.5px"><span class="g-green">Đan xen Cá nhân + Chuyên môn</span></h2>
+    </div>
+    <div class="srow" style="margin-top:24px">
+      <div class="text-col" style="display:flex;flex-direction:column;gap:12px">
+        <div class="beat hflow" data-b="1" style="flex-wrap:nowrap;max-width:600px">
+          <div class="hf-node hf-good">Cá nhân</div>
+          <div class="hf-arrow">+</div>
+          <div class="hf-node hf-blue">Chuyên môn</div>
+        </div>
+        <div class="beat hflow" data-b="2" style="flex-wrap:nowrap;max-width:600px">
+          <div class="hf-arrow">→</div>
+          <div class="hf-node hf-good">Tệp mồi giữ chân</div>
+          <div class="hf-arrow">→</div>
+          <div class="hf-node hf-good" style="border-width:2px">Viral</div>
+        </div>
+      </div>
+      <div class="vis-col beat no-dim" data-b="1">
+        <div class="illust"><div class="ill-stage" data-tilt>
+          <div class="ill-glow" style="background:radial-gradient(circle,rgba(34,197,94,.4),transparent 70%)"></div>
+          
+          <div class="ill-hi"></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="beat stat-trio" data-b="3">
+      <div class="stat-card sc-red"><div class="snum">20</div><div class="slabel">share trước</div></div>
+      <div class="stat-card sc-gold"><div class="snum">300</div><div class="slabel">share sau 1 tháng</div></div>
+      <div class="stat-card sc-blue"><div class="snum">12K</div><div class="slabel">share — cùng 1 người</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S8: EXAMPLES + PROMPT -->
+<div class="slide" id="s8" data-beats="5">
+  <div class="spot spot-c" style="top:-8%;right:20%"></div>
+  <div class="spot spot-w" style="bottom:5%;left:15%"></div>
+  <div class="bg-text top drift-r">EXAMPLES · VÍ DỤ</div>
+  <div class="scontent">
+    <div class="beat" data-b="0" data-fx="blur-sweep" style="width:100%;text-align:center">
+      <span class="chip chip-b">Ví dụ thực tế</span>
+      <h2 class="anim-t" style="text-align:center;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:-1px"><span class="g-blue">Cùng chủ đề — Khác cách viết</span></h2>
+    </div>
+    <div class="beat split-vs" data-b="1">
+      <div class="split-side split-bad"><div class="split-industry">Ngành Marketing</div><div class="split-tag">TRƯỚC</div><div class="split-quote">"5 chiến lược marketing hiệu quả nhất cho doanh nghiệp nhỏ"</div></div>
+      <div class="split-side split-good"><div class="split-tag">SAU</div><div class="split-quote">"Mình đốt 50 triệu quảng cáo để hiểu: Marketing giỏi không phải biết chạy ads"</div></div>
+    </div>
+    <div class="beat split-vs" data-b="2">
+      <div class="split-side split-bad"><div class="split-industry">Ngành Sức khoẻ</div><div class="split-tag">TRƯỚC</div><div class="split-quote">"7 thói quen giảm cân hiệu quả không cần ăn kiêng"</div></div>
+      <div class="split-side split-good"><div class="split-tag">SAU</div><div class="split-quote">"Sáng nay mẹ mình nhắn: 'Con gầy quá'. Bà không biết mình đã tăng 8kg cơ"</div></div>
+    </div>
+    <div class="beat split-vs" data-b="3">
+      <div class="split-side split-bad"><div class="split-industry">Ngành Công nghệ</div><div class="split-tag">TRƯỚC</div><div class="split-quote">"AI sẽ thay thế 80% công việc trong 5 năm tới"</div></div>
+      <div class="split-side split-good"><div class="split-tag">SAU</div><div class="split-quote">"Team mình vừa sa thải 1 bạn designer. Không phải vì AI — mà vì bạn ấy không chịu dùng AI"</div></div>
+    </div>
+    <div class="beat prompt-box" data-b="4">
+      <div class="prompt-label">PROMPT — COPY VÀO AI CỦA BẠN</div>
+      <div class="prompt-text">"Phân tích bài viết này. Seed audience chủ yếu là bạn bè/gia đình. Họ không quan tâm chuyên môn mà quan tâm cuộc sống cá nhân. Gợi ý cách mở đầu bằng câu chuyện cá nhân để giữ chân nhóm này, rồi chuyển sang chuyên môn."</div>
+      <div class="prompt-copy">COPY</div>
+    </div>
+  </div>
+</div>
+
+<!-- S9: CLOSING -->
+<div class="slide" id="s9" data-beats="2">
+  <div class="spot spot-c" style="top:20%;left:40%"></div>
+  <div class="spot spot-w" style="bottom:10%;right:25%"></div>
+  <div class="bg-text top drift-r">CONAN · MAKER</div>
+  <div class="bg-text bot drift-l">NỘI DUNG · CẤU TRÚC</div>
+  <div class="pt" style="--d:8s;--tx:16px;--ty:-20px;--tx2:-14px;--ty2:18px;width:5px;height:5px;background:#f5c518;box-shadow:0 0 14px #f5c518;top:35%;left:20%"></div>
+  <div class="scontent" style="justify-content:center">
+    <div class="beat closing" data-b="0" data-fx="scale-pop">
+      <div class="closing-mark anim-t">—</div>
+      <h2 class="closing-title anim-t">Conan Maker</h2>
+      <p class="closing-sub">Content không cần hay — cần match đúng tệp mồi.</p>
+      <div class="closing-cta">Theo dõi kênh để nhận thêm framework</div>
+    </div>
+    <div class="beat" data-b="1" data-reveal="1" style="display:none"></div>
+  </div>
+</div>
+
+<div id="trans"><div class="streak"></div><div class="flash"></div></div>
+<div id="progress"><div id="pfill"></div></div>
+<nav id="dots"></nav>
+<div id="counter">1 / 10</div>
+<div id="presenter-guide" class="show"><kbd>↓ NEXT</kbd><kbd>↑ PREV</kbd><kbd>R RESET</kbd><kbd>H HIDE</kbd></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')],N=slides.length;
+let cur=0,cBeat=-1,busy=false;
+const dotsEl=document.getElementById('dots');
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>{if(!busy&&i!==cur)jumpSlide(i);};dotsEl.appendChild(d);});
+function chrome(){document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));document.getElementById('pfill').style.width=((cur/(N-1))*100)+'%';document.getElementById('counter').textContent=`${cur+1} / ${N}`;}
+function beats(s){return[...s.querySelectorAll('[data-b]')];}
+function mb(s){return parseInt(s.dataset.beats)-1;}
+
+/* ═══ TEXT FX ENGINE ═══ */
+function splitAllInSlide(slide){
+  slide.querySelectorAll('[data-fx]').forEach(el=>{
+    if(el.dataset.split)return;el.dataset.split='1';
+    el.querySelectorAll('.anim-t').forEach(t=>{
+      const f=document.createElement('div');f.innerHTML=t.innerHTML;
+      function walk(n){
+        if(n.nodeType===3){const ws=n.textContent.split(/(\s+)/);const fr=document.createDocumentFragment();ws.forEach(w=>{if(/^\s+$/.test(w)){fr.appendChild(document.createTextNode(w));return;}if(!w)return;const s=document.createElement('span');s.className='word';s.textContent=w;fr.appendChild(s);});n.parentNode.replaceChild(fr,n);}
+        else if(n.nodeType===1&&!n.classList.contains('word')){[...n.childNodes].forEach(walk);}
+      }
+      [...f.childNodes].forEach(walk);t.innerHTML=f.innerHTML;
+    });
+  });
+}
+function runFx(el){
+  const fx=el.dataset.fx;if(!fx)return;
+  const words=el.querySelectorAll('.word');if(!words.length)return;
+  switch(fx){
+    case 'blur-sweep':words.forEach((w,i)=>{gsap.fromTo(w,{opacity:0,filter:'blur(10px)',x:-15},{opacity:1,filter:'blur(0px)',x:0,duration:.55,ease:'power2.out',delay:i*.08});});break;
+    case 'scale-pop':words.forEach((w,i)=>{gsap.fromTo(w,{opacity:0,scale:0,y:25},{opacity:1,scale:1,y:0,duration:.5,ease:'back.out(2.5)',delay:i*.06});});break;
+    case 'typing':words.forEach((w,i)=>{gsap.set(w,{opacity:0});gsap.to(w,{opacity:1,duration:.01,delay:i*.1});});break;
+    case 'clip-reveal':words.forEach((w,i)=>{gsap.fromTo(w,{opacity:0,y:50,rotationX:-60},{opacity:1,y:0,rotationX:0,duration:.65,ease:'power3.out',delay:i*.07});});break;
+  }
+}
+
+/* Mouse tilt */
+document.addEventListener('mousemove',e=>{
+  const mx=(e.clientX/innerWidth-.5)*2,my=(e.clientY/innerHeight-.5)*2;
+  document.querySelectorAll('.slide.active [data-tilt]').forEach(s=>{gsap.to(s,{rotateY:mx*14,rotateX:-my*10,duration:.6,ease:'power2.out',overwrite:'auto'});});
+});
+
+/* ═══ FOCUS/DIM ═══ */
+function focusDim(slide,bi){
+  const bs=beats(slide);const rev=bs.find(b=>parseInt(b.dataset.b)===bi&&b.dataset.reveal);
+  bs.forEach(b=>{
+    const idx=parseInt(b.dataset.b);b.classList.remove('focused','dimmed','revealed');
+    if(rev){if(idx<=bi){b.classList.add('on','revealed');gsap.to(b,{scale:1,filter:'brightness(1) saturate(1) blur(0px)',duration:.6,ease:'power3.out'});}}
+    else{if(idx===bi)b.classList.add('on','focused');else if(idx<bi)b.classList.add('on','dimmed');else b.classList.remove('on');}
+  });
+}
+function animBeat(slide,bi){
+  const bs=beats(slide);const grp=bs.filter(b=>parseInt(b.dataset.b)===bi);
+  if(grp.some(b=>b.dataset.reveal)){
+    bs.filter(b=>b.classList.contains('on')).forEach((el,i)=>{
+      gsap.to(el,{scale:1,filter:'brightness(1) saturate(1) blur(0px)',opacity:1,duration:.7,delay:i*.04,ease:'power3.out'});
+      if(el.classList.contains('flip-wrap'))el.classList.add('flipped');
+    });
+    return;
+  }
+  grp.forEach((el,i)=>{
+    let fy=25,fx=0,fs=.88;
+    if(el.classList.contains('flip-wrap')||el.classList.contains('card')){fx=i%2===0?-40:40;fy=0;fs=.85;}
+    if(el.classList.contains('ex')){fx=-50;fy=0;fs=.9;}
+    if(el.classList.contains('fbox')){fs=.8;}
+    if(el.classList.contains('no-dim')){fx=60;fy=0;fs=.85;}
+    if(el.classList.contains('ba-card')){fx=0;fy=40;fs=.92;}
+    if(el.classList.contains('concept-spot')){fx=0;fy=0;fs=.7;}
+    if(el.classList.contains('prompt-box')){fx=0;fy=30;fs=.95;}
+    const stagger=el.classList.contains('flip-wrap')?i*.3:i*.1;
+    gsap.fromTo(el,{opacity:0,y:fy,x:fx,scale:fs},{opacity:1,y:0,x:0,scale:1.03,duration:.7,ease:'power3.out',delay:stagger,
+      onComplete:()=>{
+        if(el.dataset.fx)runFx(el);
+        if(el.classList.contains('flip-wrap'))setTimeout(()=>el.classList.add('flipped'),300);
+      }
+    });
+  });
+  bs.filter(b=>parseInt(b.dataset.b)<bi&&b.classList.contains('on')&&!b.classList.contains('no-dim')).forEach(el=>{
+    gsap.to(el,{scale:.86,filter:'brightness(0.18) saturate(0.2) blur(1px)',duration:.6,ease:'power2.out'});
+    if(el.classList.contains('flip-wrap'))el.classList.remove('flipped');
+  });
+  bs.filter(b=>parseInt(b.dataset.b)<bi&&b.classList.contains('no-dim')&&b.classList.contains('on')).forEach(el=>{gsap.to(el,{scale:1,filter:'brightness(0.85) saturate(0.8)',duration:.6});});
+}
+
+function next(){if(busy)return;const s=slides[cur],m=mb(s);if(cBeat<m){cBeat++;focusDim(s,cBeat);animBeat(s,cBeat);}else{if(cur<N-1)go(cur+1);}}
+function prev(){if(busy)return;const s=slides[cur];if(cBeat>0){const bs=beats(s);
+  if(!bs.filter(b=>parseInt(b.dataset.b)===cBeat).some(b=>b.dataset.reveal)){
+    bs.filter(b=>parseInt(b.dataset.b)===cBeat).forEach(el=>{
+      gsap.to(el,{opacity:0,y:15,scale:.9,duration:.3});el.classList.remove('on','focused');
+      if(el.classList.contains('flip-wrap'))el.classList.remove('flipped');
+    });
+  }
+  cBeat--;focusDim(s,cBeat);
+  bs.filter(b=>parseInt(b.dataset.b)===cBeat).forEach(el=>{
+    gsap.to(el,{scale:1.03,filter:'brightness(1) saturate(1) blur(0px)',duration:.5,ease:'power3.out'});
+    if(el.classList.contains('flip-wrap'))setTimeout(()=>el.classList.add('flipped'),100);
+  });
+}else{if(cur>0)go(cur-1,true);}}
+
+async function go(nx,fromEnd){
+  if(busy||nx===cur)return;busy=true;const dir=nx>cur?1:-1;const cs=slides[cur];
+  const tr=document.getElementById('trans');
+  beats(cs).forEach((el,i)=>{gsap.to(el,{opacity:0,y:dir*-30,scale:.85,duration:.35,delay:i*.012,ease:'power2.in'});});
+  cs.querySelectorAll('.bg-text,.pt').forEach(el=>gsap.to(el,{opacity:0,duration:.3}));
+  gsap.to(tr,{opacity:1,duration:.3,delay:.2});
+  gsap.fromTo(tr.querySelector('.streak'),{x:'-100%'},{x:'100%',duration:.7,delay:.3,ease:'power2.inOut'});
+  gsap.fromTo(tr.querySelector('.flash'),{scale:0,opacity:0},{scale:1.5,opacity:1,duration:.4,delay:.5,ease:'power2.out'});
+  gsap.to(tr.querySelector('.flash'),{scale:3,opacity:0,duration:.4,delay:.7});
+  await new Promise(r=>setTimeout(r,650));
+  cs.classList.remove('active');beats(cs).forEach(el=>{el.classList.remove('on','focused','dimmed','revealed','flipped');gsap.set(el,{clearProps:'all'});el.style.opacity=0;});
+  cur=nx;cBeat=-1;const ns=slides[cur];
+  splitAllInSlide(ns);
+  ns.classList.add('active');
+  ns.querySelectorAll('.bg-text,.pt').forEach(el=>gsap.fromTo(el,{opacity:0},{opacity:1,duration:.9}));
+  gsap.to(tr,{opacity:0,duration:.4,delay:.1});chrome();
+  if(fromEnd){const m=mb(ns);for(let i=0;i<=m;i++){cBeat=i;focusDim(ns,i);beats(ns).filter(b=>parseInt(b.dataset.b)===i).forEach(el=>{gsap.set(el,{opacity:1,y:0,x:0,scale:1});el.querySelectorAll('.word').forEach(w=>gsap.set(w,{opacity:1,y:0,scale:1,filter:'blur(0px)',rotationX:0}));if(el.classList.contains('flip-wrap'))el.classList.add('flipped');});}}
+  else{setTimeout(()=>next(),300);}
+  setTimeout(()=>busy=false,700);
+}
+function jumpSlide(i){go(i,i<cur);}
+
+// Init
+splitAllInSlide(slides[0]);
+chrome();setTimeout(()=>next(),400);
+
+let lw=0;
+window.addEventListener('wheel',e=>{const n=Date.now();if(n-lw<350)return;lw=n;if(Math.abs(e.deltaY)<10)return;e.deltaY>0?next():prev();},{passive:true});
+window.addEventListener('keydown',e=>{
+  if(['ArrowDown','ArrowRight',' '].includes(e.key)){e.preventDefault();next();}
+  if(['ArrowUp','ArrowLeft'].includes(e.key)){e.preventDefault();prev();}
+  if(e.key==='r'||e.key==='R'){
+    if(busy)return;const s=slides[cur];
+    beats(s).forEach(el=>{el.classList.remove('on','focused','dimmed','revealed','flipped');gsap.set(el,{clearProps:'all'});el.style.opacity=0;});
+    s.querySelectorAll('.bg-text,.pt').forEach(el=>gsap.set(el,{opacity:1}));
+    cBeat=-1;setTimeout(()=>next(),200);
+  }
+  if(e.key==='h'||e.key==='H'){document.getElementById('presenter-guide').classList.toggle('show');}
+});
+let ty0=0;window.addEventListener('touchstart',e=>ty0=e.touches[0].clientY,{passive:true});
+window.addEventListener('touchend',e=>{const dy=ty0-e.changedTouches[0].clientY;if(Math.abs(dy)>30)dy>0?next():prev();},{passive:true});
+</script>
+</body>
+</html>

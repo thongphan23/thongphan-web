@@ -1,45 +1,127 @@
-import styles from './page.module.css'
-import BlogPostClient from './BlogPostClient'
+import { getAllPosts, getAllSlugs, getPostBySlug, type PostMeta } from '@/lib/blog'
+import type { Metadata } from 'next'
+import BlogArticle from './BlogArticle'
 
-// Placeholder post data
-const POST = {
-  title: 'AI không cướp việc bạn',
-  description: 'Người dùng AI giỏi hơn bạn mới cướp. Đây là cách tui dùng AI để tăng năng suất 10x.',
-  category: 'ai',
-  date: '2026-05-01',
-  readingTime: '5 phút đọc',
-  content: `
-# AI không cướp việc bạn
+const JOURNEY_ORDER = [
+  'Sợ AI',
+  'Dùng AI đúng cách',
+  'Brain2',
+  'Content kéo khách',
+  'Tài sản số',
+  'Conan',
+]
 
-Người dùng AI giỏi hơn bạn mới cướp.
+function getRelatedPosts(current: PostMeta, posts: PostMeta[]) {
+  const currentIndex = JOURNEY_ORDER.indexOf(current.journey || '')
+  const journeyPriority =
+    currentIndex >= 0
+      ? [...JOURNEY_ORDER.slice(currentIndex + 1), ...JOURNEY_ORDER.slice(0, currentIndex + 1)]
+      : JOURNEY_ORDER
 
-## Tại sao mọi người sợ AI?
-
-Vì họ nghĩ AI sẽ thay thế con người. Nhưng sự thật là: **AI không cướp việc bạn. Người dùng AI giỏi hơn bạn mới cướp.**
-
-## Cách tui dùng AI
-
-Tui dùng AI để:
-
-1. **Viết nhanh hơn 5x** — Claude Code giúp tui viết code, content, và tài liệu
-2. **Nghiên cứu sâu hơn** — RAG từ Brain2 vault giúp tui tìm insights nhanh
-3. **Tự động hóa** — Workflows giúp tui focus vào creative work
-
-## Kết luận
-
-Đừng sợ AI. Hãy học cách dùng AI đúng cách.
-  `,
+  return posts
+    .filter((post) => post.slug !== current.slug)
+    .sort((a, b) => {
+      const journeyA = journeyPriority.indexOf(a.journey || '')
+      const journeyB = journeyPriority.indexOf(b.journey || '')
+      const rankA = journeyA === -1 ? 99 : journeyA
+      const rankB = journeyB === -1 ? 99 : journeyB
+      if (rankA !== rankB) return rankA - rankB
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    })
+    .slice(0, 2)
+    .map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      journey: post.journey,
+      readerState: post.readerState,
+      readingTime: post.calculatedReadingTime,
+    }))
 }
 
 export async function generateStaticParams() {
-  // For static export, generate params for known blog posts
-  return [
-    { slug: 'ai-khong-cuop-viec-ban' },
-  ]
+  const slugs = getAllSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  if (!post) return { title: 'Không tìm thấy bài viết' }
+
+  return {
+    title: `${post.title} — Thông Phan`,
+    description: post.description,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    authors: [{ name: 'Thông Phan', url: 'https://thongphan.com/about' }],
+    category: post.journey || post.category,
+    keywords: post.tags,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `/blog/${post.slug}`,
+      type: 'article',
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
+      authors: ['Thông Phan'],
+      section: post.journey || post.category,
+      tags: post.tags,
+      images:
+        post.ogImage || post.coverImage
+          ? [{ url: post.ogImage || post.coverImage || '' }]
+          : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+  }
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const post = await getPostBySlug(slug)
+  const allPosts = getAllPosts()
+
+  if (!post) {
+    return (
+      <div style={{ textAlign: 'center', padding: '8rem 2rem' }}>
+        <h1>404 — Không tìm thấy bài viết</h1>
+        <p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>
+          Bài viết này không tồn tại hoặc đã bị xóa.
+        </p>
+      </div>
+    )
+  }
+
   return (
-    <BlogPostClient post={POST} />
+    <BlogArticle
+      title={post.title}
+      description={post.description}
+      category={post.category}
+      journey={post.journey}
+      readerState={post.readerState}
+      promise={post.promise}
+      proof={post.proof}
+      publishedAt={post.publishedAt}
+      readingTime={post.calculatedReadingTime}
+      coverImage={post.coverImage}
+      contentHtml={post.contentHtml}
+      headings={post.headings}
+      slug={post.slug}
+      endCta={post.endCta}
+      relatedPosts={getRelatedPosts(post, allPosts)}
+    />
   )
 }

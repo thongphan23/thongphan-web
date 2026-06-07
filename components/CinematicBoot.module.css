@@ -1,0 +1,253 @@
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #f7fbff;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 198, 41, 0.22), transparent 18rem),
+    radial-gradient(circle at 70% 26%, rgba(59, 200, 255, 0.18), transparent 24rem),
+    linear-gradient(135deg, #050b14 0%, #07111f 54%, #101826 100%);
+  animation: bootHold 2.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.boot::before,
+.boot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.boot::before {
+  opacity: 0.16;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at 50% 48%, black, transparent 76%);
+}
+
+.boot::after {
+  opacity: 0.36;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 15px, rgba(255, 255, 255, 0.05) 16px 17px),
+    linear-gradient(90deg, rgba(5, 11, 20, 0.78), transparent 28%, transparent 72%, rgba(5, 11, 20, 0.78));
+  mix-blend-mode: screen;
+}
+
+.bootExit {
+  opacity: 0;
+  transform: scale(1.045);
+  filter: blur(16px);
+  transition: opacity 0.58s cubic-bezier(0.16, 1, 0.3, 1), transform 0.58s cubic-bezier(0.16, 1, 0.3, 1), filter 0.58s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frame span {
+  position: absolute;
+  z-index: 2;
+  border-color: rgba(255, 198, 41, 0.46);
+  border-style: solid;
+  width: clamp(52px, 8vw, 92px);
+  height: clamp(52px, 8vw, 92px);
+}
+
+.frame span:nth-child(1) { left: 22px; top: 22px; border-width: 1px 0 0 1px; }
+.frame span:nth-child(2) { right: 22px; top: 22px; border-width: 1px 1px 0 0; }
+.frame span:nth-child(3) { right: 22px; bottom: 22px; border-width: 0 1px 1px 0; }
+.frame span:nth-child(4) { left: 22px; bottom: 22px; border-width: 0 0 1px 1px; }
+
+.portal {
+  position: relative;
+  z-index: 4;
+  width: min(720px, calc(100% - 40px));
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(28px, 6vw, 58px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  background: rgba(7, 17, 31, 0.54);
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(120%);
+  animation: portalIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.kicker {
+  color: rgba(255, 198, 41, 0.9);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.core {
+  position: relative;
+  width: clamp(126px, 18vw, 172px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: 8px 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 45% 32%, rgba(255, 255, 255, 0.36), transparent 19%),
+    radial-gradient(circle, rgba(255, 198, 41, 0.42), rgba(17, 103, 255, 0.22) 46%, rgba(7, 17, 31, 0.84) 70%);
+  box-shadow:
+    0 0 0 18px rgba(255, 198, 41, 0.08),
+    0 0 0 54px rgba(17, 103, 255, 0.08),
+    0 0 96px rgba(255, 198, 41, 0.42);
+}
+
+.core strong {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  font-weight: 950;
+  letter-spacing: -0.08em;
+}
+
+.orbit {
+  position: absolute;
+  inset: -18%;
+  border: 1px solid rgba(255, 198, 41, 0.36);
+  border-radius: 50%;
+  transform: rotateX(66deg) rotateZ(12deg);
+  animation: orbit 2.7s linear infinite;
+}
+
+.orbit:nth-child(2) {
+  inset: -4%;
+  border-color: rgba(59, 200, 255, 0.34);
+  animation-duration: 3.3s;
+  animation-direction: reverse;
+}
+
+.orbit:nth-child(3) {
+  inset: 14%;
+  border-color: rgba(255, 255, 255, 0.22);
+  animation-duration: 2.1s;
+}
+
+.portal h1 {
+  max-width: 680px;
+  color: #ffffff;
+  font-size: clamp(2.45rem, 7vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.portal p {
+  color: rgba(247, 251, 255, 0.72);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.28rem);
+}
+
+.sequence {
+  width: min(520px, 100%);
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sequence span {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 12px;
+  color: rgba(247, 251, 255, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(255, 255, 255, 0.045);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: stepIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.56s + var(--step) * 0.18s);
+}
+
+.sequence span::after {
+  content: 'OK';
+  color: rgba(255, 198, 41, 0.92);
+}
+
+.progress {
+  width: min(520px, 100%);
+  height: 4px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #1167ff, #3bc8ff, #ffc629);
+  transform-origin: left center;
+  animation: load 2.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skip {
+  position: absolute;
+  right: clamp(18px, 3vw, 32px);
+  bottom: clamp(18px, 3vw, 32px);
+  z-index: 5;
+  min-height: 42px;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.skip:hover {
+  border-color: rgba(255, 198, 41, 0.62);
+  background: rgba(255, 198, 41, 0.14);
+}
+
+@keyframes portalIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); filter: blur(14px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes orbit {
+  to { transform: rotateX(66deg) rotateZ(372deg); }
+}
+
+@keyframes stepIn {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes load {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes bootHold {
+  0% { clip-path: inset(50% 0 50% 0); }
+  18% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@media (max-width: 680px) {
+  .portal {
+    gap: 14px;
+    padding: 26px 18px;
+  }
+
+  .sequence span {
+    font-size: 0.58rem;
+  }
+}

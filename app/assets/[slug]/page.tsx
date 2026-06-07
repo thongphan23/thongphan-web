@@ -55,7 +55,11 @@ export default async function AssetDetailPage({ params }: Props) {
       <div className="container">
         <Link href="/assets" className={styles.backLink}>← Về kho tài sản nhỏ</Link>
 
-        <header className={styles.hero} data-reveal>
+        <header className={styles.hero} data-reveal data-cinematic-mouse>
+          <div className={styles.assetHud} aria-label="Trạng thái sản phẩm nhỏ">
+            <span><b>MICRO ASSET</b> tự làm trong một buổi</span>
+            <span><b>NO COURSE TRAP</b> không thay Conan</span>
+          </div>
           <div className={styles.heroCopy}>
             <span className={styles.eyebrow}>{CATEGORY_LABELS[asset.category]} · dưới 200k</span>
             <h1>{asset.title}</h1>
@@ -67,6 +71,7 @@ export default async function AssetDetailPage({ params }: Props) {
           </div>
 
           <aside className={styles.purchaseCard}>
+            <div className={styles.purchaseBeacon} aria-hidden="true"><span /> <span /> <strong>TP</strong></div>
             <div>
               <span>Giá dự kiến</span>
               <strong>{formatVnd(asset.priceVnd)}</strong>

@@ -1,0 +1,17 @@
+name = "thongphan-signup-api"
+main = "workers/api/signup.ts"
+compatibility_date = "2025-01-01"
+
+[[routes]]
+pattern = "thongphan.com/api/signup"
+zone_name = "thongphan.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "7cffb7f5-c48b-49c2-b215-9611abd734a5"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "18e5b3dde1924e659dd536794f1d2ce2"
+preview_id = "e676e1ad29844b24a18fb4c8241b6992"

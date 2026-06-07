@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run generate-blog && npm run generate-library && next dev --webpack",
+    "build": "npm run generate-blog && npm run generate-library && TURBOPACK=0 next build",
+    "generate-blog": "node scripts/generate-blog-data.mjs",
+    "generate-library": "node scripts/generate-library-data.mjs",
     "start": "next start",
+    "test": "node --test scripts/generate-library-data.test.mjs scripts/homepage-cinematic-contract.test.mjs",
     "lint": "next lint"
   },
   "keywords": [],
@@ -16,13 +19,22 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.15.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
+    "remark-directive": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "remark-html": "^16.0.1",
-    "typescript": "^6.0.3"
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "typescript": "^6.0.3",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "tsx": "^4.21.0"

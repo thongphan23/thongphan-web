@@ -1,178 +1,176 @@
+import type { Metadata } from 'next'
+import Link from 'next/link'
 import styles from './page.module.css'
+
+const proofArcs = [
+  {
+    year: 'Flop',
+    title: '14 tháng nội dung không mở được cửa',
+    body: 'Có giai đoạn tui làm, thử, sửa, đăng, rồi vẫn flop. Đoạn đó dạy tui một chuyện: nếu không có insight và hệ thống, chăm chỉ chỉ làm mình mệt hơn.',
+  },
+  {
+    year: '10 năm',
+    title: 'Content, marketing và CMO thực chiến',
+    body: 'Tui đi qua F&B, content, đội marketing, thương hiệu và doanh thu thật. AI tới sau, nhưng nền hiểu khách hàng, thông điệp và trust đã được rèn trước đó.',
+  },
+  {
+    year: '40+',
+    title: 'Bài viral, 80k+ shares, 600+ comment',
+    body: 'Những con số này không phải huy chương. Nó là bằng chứng rằng tri thức thật, nói đúng nỗi đau và có hệ thống phân phối sẽ kéo được người đúng.',
+  },
+  {
+    year: '2026',
+    title: 'Brain2 + Conan',
+    body: 'Brain2 là hệ tri thức tui đang vận hành thật. Conan là môi trường thực hành để biến tri thức đó thành nội dung, tài sản, AI workflow và cộng đồng.',
+  },
+]
+
+const proofIndex = [
+  ['14 tháng', 'flop đủ lâu để hiểu hỗn loạn không tự hết nếu thiếu bản đồ'],
+  ['10 năm', 'content, marketing, CMO và thị trường thật trước khi nói về AI'],
+  ['40+ bài', 'viral vì có insight, không phải vì nhảy theo tool mới'],
+  ['80k+', 'lượt chia sẻ từ những bài có proof và góc nhìn rõ'],
+  ['600+', 'comment đăng ký workshop trong 24h, tín hiệu nhu cầu thật'],
+  ['100+', 'Conan Makers đang thực hành trong cộng đồng riêng'],
+]
+
+const proofSignals = [
+  ['origin', '10 năm thị trường thật'],
+  ['signal', '40+ bài viral có proof'],
+  ['system', 'Brain2 + Conan Maker'],
+]
+
+export const metadata: Metadata = {
+  title: 'Về Thông Phan — Proof sống, không phải CV',
+  description: 'Thông Phan giúp người có chuyên môn biến kiến thức thành tài sản, hệ thống AI và dòng tiền thứ 2 từ nền Brain2 và kinh nghiệm thật.',
+}
 
 export default function AboutPage() {
   return (
     <div className={styles.aboutPage}>
-      {/* Hero */}
       <section className={styles.hero}>
-        <div className="container-blog">
-          <div className={styles.label}>Câu chuyện cá nhân</div>
-          <h1>Về Thông Phan</h1>
-          <p className={styles.subtitle}>
-            Sinh năm 1988 tại Tiền Giang. Tốt nghiệp UEH (Math/Stats).<br />
-            Từ shipper, sales, diễn viên quần chúng đến doanh nhân và nhà đào tạo.
-          </p>
+        <div className="container">
+          <div className={styles.heroShell} data-reveal>
+            <div className={styles.heroInner}>
+              <span className={styles.label}>Bằng chứng sống</span>
+              <h1>Tui không đến từ thế giới guru AI tool. Tui đến từ 10 năm làm thật.</h1>
+              <p>
+                Tui là Thông Phan. Việc của tui là giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính cho đến khi dòng tiền mới đủ vững.
+              </p>
+            </div>
 
-          {/* Core Traits */}
-          <div className={styles.traits}>
-            <span className="badge">✨ Sáng tạo</span>
-            <span className="badge">🔍 Tò mò</span>
-            <span className="badge">😄 Hài hước</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Expertise */}
-      <section className={styles.expertise}>
-        <div className="container-blog">
-          <h2>Chuyên môn</h2>
-          <div className={styles.expertiseBar}>
-            <div className={styles.barLabel}>
-              <span>Marketing</span>
-              <span>95%</span>
-            </div>
-            <div className={styles.barTrack}>
-              <div className={styles.barFill} style={{ width: '95%' }}></div>
-            </div>
-          </div>
-          <div className={styles.expertiseBar}>
-            <div className={styles.barLabel}>
-              <span>Content</span>
-              <span>90%</span>
-            </div>
-            <div className={styles.barTrack}>
-              <div className={styles.barFill} style={{ width: '90%' }}></div>
-            </div>
-          </div>
-          <div className={styles.expertiseBar}>
-            <div className={styles.barLabel}>
-              <span>AI & Automation</span>
-              <span>85%</span>
-            </div>
-            <div className={styles.barTrack}>
-              <div className={styles.barFill} style={{ width: '85%' }}></div>
+            <div className={styles.proofStage} aria-label="Proof stage của Thông Phan">
+              <div className={styles.stageHalo} />
+              <div className={styles.stageFrame}>
+                <img
+                  src="/images/homepage/thong-stage-anchor.jpg"
+                  alt="Thông Phan chia sẻ trên sân khấu"
+                  className={styles.stagePhoto}
+                />
+                <div className={styles.stageScan} />
+              </div>
+              <div className={styles.proofConsole}>
+                {proofSignals.map(([label, value]) => (
+                  <div key={label}>
+                    <span>{label}</span>
+                    <strong>{value}</strong>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.stageOrbit}>
+                <span>AI-native expertise</span>
+                <span>Brain2</span>
+                <span>Proof-first content</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
+      <section className={styles.principle}>
+        <div className="container">
+          <div className={styles.principleGrid} data-reveal>
+            <div>
+              <span className={styles.label}>Quan điểm</span>
+              <h2>AI không thay chuyên môn. AI khuếch đại chuyên môn đã được đóng gói.</h2>
+            </div>
+            <div className={styles.principleText}>
+              <p>
+                Người có kinh nghiệm thường thua không phải vì họ kém. Họ thua vì tri thức nằm trong đầu, trong vài tài liệu cũ, trong kinh nghiệm xử lý khách hàng, nhưng chưa được biến thành tài sản có thể phân phối.
+              </p>
+              <p>
+                Tui xây trang này để chỉ ra một con đường thực tế hơn: giữ công việc chính, xây tài sản bên cạnh, tạo dòng tiền thứ 2, rồi chỉ chuyển hướng khi đã đủ an toàn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.timeline}>
-        <div className="container-blog">
-          <h2>Hành trình</h2>
-          <div className={styles.timelineList}>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineYear}>2006</div>
-              <div className={styles.timelineContent}>
-                <h3>Chuyên Lý, Chuyên Tiền Giang</h3>
-                <p>Nền tảng tư duy phân tích</p>
-              </div>
-            </div>
-
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineYear}>2015</div>
-              <div className={styles.timelineContent}>
-                <h3>Hoa Sơn Tửu Lầu</h3>
-                <p>
-                  Chuỗi nhà hàng kiếm hiệp đầu tiên VN.<br />
-                  Khởi nghiệp 85tr, 32m². 2 năm → 6 nhà hàng, 650m²/quán, 60tr/ngày/quán.<br />
-                  Lên CNN Travel, VTV3, Tuổi Trẻ, Thanh Niên.
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineYear}>2016-17</div>
-              <div className={styles.timelineContent}>
-                <h3>Serial Entrepreneur</h3>
-                <p>
-                  Kiếm Vương, Thánh Địa Liên Quân, Vietnam938.<br />
-                  Quy mô 50+ nhân sự.
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineYear}>2018-21</div>
-              <div className={styles.timelineContent}>
-                <h3>Marketing Leadership</h3>
-                <p>
-                  Saffron Việt Nam, iCheck Corp.<br />
-                  Dẫn dắt team 200+ nhân sự.
-                </p>
-              </div>
-            </div>
-
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineYear}>2022</div>
-              <div className={styles.timelineContent}>
-                <h3>CMO Autoshop</h3>
-                <p>
-                  Top 1 giải pháp ngành F&B.<br />
-                  Phục vụ hàng nghìn quán cafe & trà sữa toàn quốc.
-                </p>
-              </div>
-            </div>
-
-            <div className={`${styles.timelineItem} ${styles.highlight}`}>
-              <div className={styles.timelineYear}>Hiện tại</div>
-              <div className={styles.timelineContent}>
-                <h3>Co-Founder & CMO Conan School</h3>
-                <p>
-                  Trường "kinh doanh hiệu quả" đầu tiên tại Việt Nam.<br />
-                  100+ makers đang build sản phẩm thật.
-                </p>
-              </div>
-            </div>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.label}>Hành trình</span>
+            <h2>Từ hỗn loạn, thử sai, tới hệ thống đang chạy thật</h2>
+          </div>
+          <div className={styles.timelineGrid} data-reveal>
+            {proofArcs.map((item) => (
+              <article key={item.title} className={styles.timelineItem} data-stagger>
+                <span>{item.year}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Mentors */}
-      <section className={styles.mentors}>
-        <div className="container-blog">
-          <h2>Những người định hình tư duy tui</h2>
-          <div className={styles.mentorGrid}>
-            <div className="card">
-              <h3>Ba của tôi (Phan Quân Chiêu)</h3>
-              <p className={styles.mentorTrait}>Resilience và Determination</p>
-              <p className="text-muted">PhD Bách Khoa</p>
-            </div>
-            <div className="card">
-              <h3>Alex Hormozi</h3>
-              <p className={styles.mentorTrait}>Business scaling và value creation</p>
-            </div>
-            <div className="card">
-              <h3>Nguyễn Ngọc Long</h3>
-              <p className={styles.mentorTrait}>Media consciousness và brand strategy</p>
-            </div>
+      <section className={styles.proofIndex}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.label}>Proof Index</span>
+            <h2>Mỗi con số phải trả lời một câu: vì sao anh em nên tin con đường này?</h2>
+          </div>
+          <div className={styles.proofGrid} data-reveal>
+            {proofIndex.map(([value, body]) => (
+              <article key={value} className={styles.proofItem} data-stagger>
+                <strong>{value}</strong>
+                <span>{body}</span>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Philosophy */}
-      <section className={styles.philosophy}>
-        <div className="container-blog text-center">
-          <blockquote className={styles.quote}>
-            "Nói ít, làm nhiều và chứng minh bằng hành động."
-          </blockquote>
+      <section className={styles.capabilities}>
+        <div className="container">
+          <div className={styles.capabilityGrid} data-reveal>
+            <article data-stagger>
+              <strong>Bằng chứng nội dung</strong>
+              <span>40+ bài viral, 80k+ lượt chia sẻ, 600+ đăng ký buổi thực hành trong 24h.</span>
+            </article>
+            <article data-stagger>
+              <strong>Bằng chứng tri thức</strong>
+              <span>Brain2 cá nhân, hệ thống hóa tri thức, dùng AI như người cùng suy nghĩ.</span>
+            </article>
+            <article data-stagger>
+              <strong>Bằng chứng cộng đồng</strong>
+              <span>Đồng sáng lập & CMO Conan School, cùng đội ngũ xây Conan Maker.</span>
+            </article>
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className={styles.cta}>
-        <div className="container-blog text-center">
-          <h2>Muốn phát triển cùng nhau?</h2>
-          <p className={styles.ctaDesc}>
-            Tham gia Conan Maker — cộng đồng 100+ maker đang build thật.
-          </p>
-          <div className={styles.ctaButtons}>
-            <a href="https://www.conan.school/membership" target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Vào Conan Maker →
-            </a>
-            <a href="/chat" className="btn-outline">
-              Chat với Tui
-            </a>
+        <div className="container">
+          <div className={styles.ctaInner} data-reveal>
+            <h2>Không cần tin tui ngay. Tự chẩn đoán trước.</h2>
+            <p>
+              Biết mình đang ở tầng nào trong hành trình dùng AI sẽ giúp bạn chọn đúng bước: đọc, hỏi Brain2, xây Brain2 hay vào Conan Maker.
+            </p>
+            <div className={styles.ctaButtons}>
+              <Link href="/diagnostic" className="btn-primary">Tự chẩn đoán năng lực AI</Link>
+              <Link href="/chat" className="btn-outline">Hỏi Brain2</Link>
+            </div>
           </div>
         </div>
       </section>

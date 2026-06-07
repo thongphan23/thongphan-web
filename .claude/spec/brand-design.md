@@ -8,7 +8,7 @@
 
 **Tagline chính:** "AI không cướp việc bạn. Người dùng AI giỏi hơn bạn mới cướp."
 **Tagline phụ (sub-headline):** "10 năm content marketing. 40+ bài viral. Tui đang chia sẻ tất cả."
-**Brand statement:** Giúp người đi làm giữ và +1 thu nhập nhờ dùng AI đúng cách, bất chấp mọi nghề.
+**Brand statement:** Giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính cho đến khi dòng tiền mới đủ vững.
 
 **Tone:** Provocative Truth-teller. Giọng cà phê, KHÔNG giáo trình. Bình tĩnh + authority.
 **NOT:** Motivational speaker, giáo sư lý thuyết, guru trên bục giảng.
@@ -229,7 +229,7 @@
 | Key | Label | Icon | Description |
 |-----|-------|------|-------------|
 | `ai` | AI & Công cụ | 🤖 | Dùng AI đúng cách trong công việc |
-| `career` | Sự nghiệp | 🎯 | Chiến lược giữ và +1 thu nhập |
+| `career` | Tài sản số | 🎯 | Biến chuyên môn thành tài sản và dòng tiền thứ 2 |
 | `content` | Content Marketing | ✍️ | 10 năm kinh nghiệm thực chiến |
 | `brain2` | Brain2 & Tư duy | 🧠 | Xây bộ não thứ 2, quản lý tri thức |
 | `finance` | Tài chính cá nhân | 💰 | Tiền bạc, đầu tư, bài học khó |

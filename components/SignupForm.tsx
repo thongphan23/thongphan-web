@@ -102,12 +102,15 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
     return (
       <div className={styles.signupForm}>
         <div className={styles.successMessage}>
-          <h3>🎉 Đăng ký thành công!</h3>
+          <h3>Đăng ký thành công!</h3>
           <p>
             Email đầu tiên sẽ đến hộp thư của bạn trong vòng 5 phút.
             <br />
-            Nhớ check cả thư mục Spam nhé!
+            Khi hoàn thành 21 ngày, bước tiếp theo là vào Conan Maker để biến Brain2 thành đầu ra thật.
           </p>
+          <a href="https://com.conan.school" target="_blank" rel="noopener noreferrer" className="btn-outline">
+            Xem Conan Maker
+          </a>
         </div>
       </div>
     )

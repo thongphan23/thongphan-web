@@ -33,7 +33,12 @@ export default function AssetsPage() {
   return (
     <div className={styles.assetsPage}>
       <div className="container">
-        <header className={styles.hero} data-reveal>
+        <header className={styles.hero} data-reveal data-cinematic-mouse>
+          <div className={styles.marketHud} aria-label="Trạng thái kho tài sản nhỏ">
+            <span><b>ASSET OS</b> Micro Store</span>
+            <span><b>PRICE CAP</b> dưới 200k</span>
+            <span><b>MODE</b> chọn theo nghề</span>
+          </div>
           <div className={styles.heroCopy}>
             <span className={styles.eyebrow}>Kho tài sản nhỏ · dưới 200k</span>
             <h1>Bắt đầu dùng AI theo nghề, không học tool lan man.</h1>
@@ -53,6 +58,12 @@ export default function AssetsPage() {
           </div>
 
           <aside className={styles.featuredCard} aria-label="Sản phẩm nổi bật">
+            <div className={styles.assetRadar} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <strong>{starterAssets.length}</strong>
+            </div>
             <span className={styles.badge}>Đang ưu tiên build</span>
             <h2>{featured.title}</h2>
             <p>{featured.subtitle}</p>

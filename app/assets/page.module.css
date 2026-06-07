@@ -1,13 +1,19 @@
 .assetsPage {
-  padding: var(--space-16) 0 var(--space-24);
+  padding: var(--space-12) 0 var(--space-24);
 }
 
+.assetsPage :global(.container) {
+  position: relative;
+}
+
+
 .hero {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.75fr);
   gap: var(--space-8);
   align-items: stretch;
-  padding: var(--space-10);
+  padding: calc(var(--space-10) + 44px) var(--space-10) var(--space-10);
   border: 1px solid var(--border-subtle);
   background:
     radial-gradient(circle at 20% 20%, rgba(255, 198, 41, 0.24), transparent 32%),
@@ -54,13 +60,87 @@
 }
 
 .featuredCard {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
   padding: var(--space-6);
   border: 1px solid var(--border-medium);
   background: rgba(247, 249, 251, 0.88);
-  box-shadow: 8px 8px 0 rgba(16, 24, 38, 0.08);
+  box-shadow: 10px 10px 0 rgba(17, 103, 255, 0.12), 0 28px 70px rgba(16, 24, 38, 0.1);
+}
+
+.marketHud {
+  position: absolute;
+  left: var(--space-5);
+  right: var(--space-5);
+  top: var(--space-5);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  z-index: 2;
+}
+
+.marketHud span {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(16, 24, 38, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.marketHud b {
+  color: var(--accent-blue);
+}
+
+.assetRadar {
+  position: relative;
+  height: 170px;
+  display: grid;
+  place-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.assetRadar span {
+  position: absolute;
+  width: var(--radar-size, 102px);
+  height: var(--radar-size, 102px);
+  border: 1px solid rgba(17, 103, 255, 0.22);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 198, 41, 0.14) inset;
+  animation: radarPulse 4.8s ease-in-out infinite;
+}
+
+.assetRadar span:nth-child(1) { --radar-size: 102px; }
+.assetRadar span:nth-child(2) { --radar-size: 140px; animation-delay: 0.45s; }
+.assetRadar span:nth-child(3) { --radar-size: 178px; animation-delay: 0.9s; }
+
+.assetRadar strong {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  box-shadow: 0 0 0 14px rgba(17, 103, 255, 0.1), 0 18px 50px rgba(17, 103, 255, 0.28);
+}
+
+@keyframes radarPulse {
+  0%, 100% { transform: scale(0.96); opacity: 0.56; }
+  50% { transform: scale(1.04); opacity: 1; }
 }
 
 .badge {
@@ -140,10 +220,32 @@
 .boundaryGrid article,
 .professionCard,
 .assetCard {
+  position: relative;
+  overflow: hidden;
   border: 1px solid var(--border-subtle);
   background: #ffffff;
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
+}
+
+.boundaryGrid article::after,
+.professionCard::after,
+.assetCard::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% 0 -20%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), var(--accent-blue), transparent);
+  transform: translateX(-42%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.25s ease;
+}
+
+.boundaryGrid article:hover::after,
+.professionCard:hover::after,
+.assetCard:hover::after {
+  transform: translateX(42%);
+  opacity: 1;
 }
 
 .boundaryGrid p,
@@ -163,6 +265,7 @@
   grid-template-columns: repeat(5, minmax(180px, 1fr));
   gap: var(--space-4);
   overflow-x: auto;
+  scroll-snap-type: x proximity;
   padding-bottom: var(--space-2);
 }
 
@@ -249,6 +352,15 @@
     padding: var(--space-6);
   }
 
+  .marketHud {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+  }
+
   .catalogGrid {
     grid-template-columns: 1fr;
   }
@@ -257,6 +369,11 @@
 @media (max-width: 720px) {
   .assetsPage {
     padding-top: var(--space-8);
+  }
+
+  .marketHud span {
+    justify-content: flex-start;
+    padding: 0 var(--space-3);
   }
 
   .boundaryGrid {

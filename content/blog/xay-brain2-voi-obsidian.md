@@ -1,32 +1,50 @@
 ---
-title: "Xây Brain2 với Obsidian — Bộ não thứ 2 của tôi"
-description: "Sau 2 năm dùng Obsidian + AI, đây là hệ thống giúp tôi nhớ mọi thứ và viết nhanh hơn 5x"
+title: "Xây Brain2 với Obsidian, bộ não thứ 2 của tui"
+description: "Brain2 không phải app ghi chú cho đẹp. Nó là nền để AI hiểu chuyên môn, câu chuyện và cách nghĩ thật của anh em."
 category: brain2
+journey: "Brain2"
+readerState: "Sáng tỏ"
+promise: "Đọc xong, anh em sẽ hiểu vì sao Brain2 là nền cho AI dùng đúng cách, không phải thêm một app để quản lý đời mình."
+proof: "Brain2 đang chạy thật bằng Obsidian, pgvector và kho ghi chú được dùng mỗi ngày để viết, hỏi, nối ý."
 publishedAt: "2026-04-28"
+updatedAt: "2026-05-21"
 readingTime: 8
-featured: true
+featured: false
+coverImage: /images/blog/cover-brain2-obsidian.png
+midCta:
+  label: "Làm nhỏ trước"
+  title: "Nếu Brain2 nghe lớn quá, bắt đầu bằng 21 ngày gom lại thứ anh em đã biết."
+  body: "Không cần xây một thư viện hoàn hảo. Cần một hệ thống đủ sống để ngày mai tìm lại được ý hôm nay."
+  href: "/challenges/brain2-21-ngay"
+  cta: "Bắt đầu 21 ngày Brain2"
+endCta:
+  label: "Sau bài này"
+  title: "Khi Brain2 đã có nền, bước tiếp là dùng nó để tạo nội dung và tài sản số."
+  body: "Conan Maker là nơi thực hành nhịp đó: viết, đóng gói, nhận góp ý và biến tri thức thành đầu ra thật."
+  href: "https://com.conan.school"
+  cta: "Vào Conan Maker"
 ---
 
-Tôi quên mọi thứ.
+Tui quên mọi thứ.
 
 Đọc sách xong → quên 90% sau 1 tuần.
-Học course → quên hết sau 1 tháng.
-Có ý tưởng hay → quên mất vì không note lại.
+Học khóa học → quên hết sau 1 tháng.
+Có ý tưởng hay → quên mất vì không ghi lại.
 
-Đến năm 2022, tôi nhận ra: **Não người không được thiết kế để nhớ. Não được thiết kế để suy nghĩ.**
+Đến năm 2022, tui nhận ra: **Não người không được thiết kế để nhớ. Não được thiết kế để suy nghĩ.**
 
-Vậy nên tôi build Brain2 — bộ não thứ 2 bằng Obsidian + AI.
+Vậy nên tui xây Brain2, bộ não thứ 2 bằng Obsidian + AI.
 
 ## Brain2 là gì?
 
-Brain2 = Second Brain = Bộ não thứ 2.
+Brain2 = bộ não thứ 2.
 
-**Não thứ nhất (biological brain):**
+**Não thứ nhất, bộ não sinh học:**
 - Suy nghĩ
 - Sáng tạo
 - Ra quyết định
 
-**Não thứ 2 (digital brain):**
+**Não thứ 2, bộ não số:**
 - Lưu trữ
 - Kết nối
 - Gợi ý
@@ -35,166 +53,166 @@ Não 1 + Não 2 = Siêu năng lực.
 
 ## Tại sao Obsidian?
 
-Tôi đã thử:
+Tui đã thử:
 - Notion → Quá phức tạp, chậm
-- Evernote → Không có linking tốt
-- Google Docs → Không có graph view
-- Roam Research → Đắt, proprietary format
+- Evernote → Không nối ý tốt
+- Google Docs → Không có sơ đồ liên kết
+- Roam Research → Đắt, định dạng không thật sự thuộc về mình
 
 **Obsidian thắng vì:**
-1. **Plain text Markdown** — Files của bạn, mãi mãi
-2. **Bidirectional links** — Kết nối ý tưởng tự động
-3. **Graph view** — Nhìn thấy cách ý tưởng kết nối
-4. **Local-first** — Data ở máy bạn, không phụ thuộc cloud
-5. **Plugin ecosystem** — Customize vô hạn
+1. **File Markdown dạng chữ thuần**, tài liệu của anh em, mãi mãi
+2. **Liên kết hai chiều**, kết nối ý tưởng tự động
+3. **Sơ đồ liên kết**, nhìn thấy cách ý tưởng nối với nhau
+4. **Lưu ở máy trước**, dữ liệu ở máy anh em, không phụ thuộc cloud
+5. **Hệ plugin rộng**, tùy biến được rất nhiều
 
-## Hệ thống Brain2 của tôi
+## Hệ thống Brain2 của tui
 
-### 1. Capture — Ghi lại mọi thứ
+### 1. Ghi lại mọi thứ
 
-**Inbox note** — Mỗi ngày 1 note:
+**Ghi chú đầu vào**, mỗi ngày 1 ghi chú:
 ```
 # 2026-05-04
 
 ## Ý tưởng
-- AI workflow cho content marketing
-- Case study Hoa Sơn Tửu Lầu
+- Quy trình AI cho nội dung marketing
+- Ca thật Hoa Sơn Tửu Lầu
 
 ## Học được
-- Prompt engineering: Few-shot > Zero-shot
+- Viết câu lệnh: cho ví dụ trước tốt hơn hỏi trống
 - [[Alex Hormozi]] nói về value ladder
 
-## Todo
+## Việc cần làm
 - [ ] Viết blog về Brain2
-- [ ] Review challenge emails
+- [ ] Rà lại email của 21 ngày Brain2
 ```
 
-**Quy tắc:** Ghi mọi thứ vào Inbox. Xử lý sau.
+**Quy tắc:** Ghi mọi thứ vào hộp đầu vào. Xử lý sau.
 
-### 2. Process — Chuyển thành atomic notes
+### 2. Xử lý, chuyển thành ghi chú một ý
 
 Mỗi ý tưởng = 1 note riêng.
 
 **Ví dụ:**
 ```markdown
-# Prompt Engineering - Few-shot Learning
+# Viết câu lệnh, cho ví dụ trước khi hỏi
 
-Few-shot learning = Cho AI ví dụ trước khi hỏi.
+Cho ví dụ trước khi hỏi = đưa AI vài mẫu đúng trước khi yêu cầu nó làm.
 
 ## Tại sao hiệu quả?
-- AI học pattern từ examples
-- Output consistent hơn
+- AI học mẫu từ ví dụ
+- Đầu ra nhất quán hơn
 - Ít hallucination hơn
 
 ## Khi nào dùng?
-- Task phức tạp
-- Cần format cụ thể
-- Domain-specific knowledge
+- Việc phức tạp
+- Cần định dạng cụ thể
+- Cần kiến thức riêng của ngành
 
-## Example
-[Code example here]
+## Ví dụ
+[Ví dụ đặt ở đây]
 
-## Related
-- [[Zero-shot Learning]]
-- [[Prompt Engineering]]
-- [[AI Workflows]]
+## Liên quan
+- [[Hỏi trống không đưa ví dụ]]
+- [[Viết câu lệnh]]
+- [[Quy trình AI]]
 ```
 
-**Quy tắc:** 1 note = 1 concept. Dễ link, dễ tìm.
+**Quy tắc:** 1 ghi chú = 1 ý. Dễ nối, dễ tìm.
 
-### 3. Connect — Kết nối ý tưởng
+### 3. Kết nối ý tưởng
 
-**Bidirectional links:**
+**Liên kết hai chiều:**
 ```markdown
 [[Alex Hormozi]] nói về [[Value Ladder]]
-→ Apply cho [[Content Marketing]]
-→ Liên quan đến [[Customer Journey]]
+→ Áp dụng cho [[Nội dung marketing]]
+→ Liên quan đến [[Hành trình khách hàng]]
 ```
 
-**Tags:**
+**Thẻ:**
 ```markdown
-#ai #content #marketing #framework
+#ai #noi-dung #marketing #khung-tu-duy
 ```
 
-**Graph view:** Nhìn thấy cách ý tưởng kết nối.
+**Sơ đồ liên kết:** Nhìn thấy cách ý tưởng kết nối.
 
-### 4. Create — Tạo content từ vault
+### 4. Tạo nội dung từ kho tri thức
 
 **Khi viết blog:**
-1. Search vault: "AI + content marketing"
-2. AI gợi ý related notes
-3. Kéo examples từ vault
-4. Viết draft với AI
-5. Edit + publish
+1. Tìm trong kho: "AI + nội dung marketing"
+2. AI gợi ý ghi chú liên quan
+3. Kéo ví dụ từ kho tri thức
+4. Viết nháp với AI
+5. Sửa và đăng
 
-**Kết quả:** Viết nhanh hơn 5x vì không phải research lại từ đầu.
+**Kết quả:** Viết nhanh hơn 5x vì không phải nghiên cứu lại từ đầu.
 
-## AI + Brain2 = Magic
+## AI + Brain2 = dễ tìm lại thứ mình biết
 
 **Trước AI:**
-- Search thủ công trong vault
-- Đọc từng note để tìm info
-- Copy-paste examples
+- Tìm thủ công trong kho
+- Đọc từng ghi chú để tìm thông tin
+- Sao chép ví dụ qua lại
 
 **Với AI:**
-- Semantic search: "Tìm mọi thứ về viral content"
-- AI summarize 10 notes thành 1 paragraph
-- AI suggest connections giữa notes
+- Tìm theo nghĩa: "Tìm mọi thứ về nội dung viral"
+- AI tóm tắt 10 ghi chú thành 1 đoạn
+- AI gợi ý kết nối giữa các ghi chú
 
-**Tools tôi dùng:**
-- **Obsidian + Copilot plugin** — AI chat với vault
-- **Supabase pgvector** — Semantic search
-- **Claude API** — Generate + summarize
+**Công cụ tui dùng:**
+- **Obsidian + plugin Copilot**, AI hỏi đáp với kho tri thức
+- **Supabase pgvector**, tìm kiếm theo nghĩa
+- **Claude API**, tạo nháp và tóm tắt
 
 ## Kết quả sau 2 năm
 
-**Metrics:**
-- 2,000+ notes trong vault
-- 5,000+ connections giữa notes
-- 10x nhanh hơn khi research
-- 5x nhanh hơn khi viết content
+**Số liệu:**
+- 2,000+ ghi chú trong kho
+- 5,000+ kết nối giữa ghi chú
+- 10x nhanh hơn khi nghiên cứu
+- 5x nhanh hơn khi viết nội dung
 
 **Nhưng quan trọng hơn:**
-- Tôi không còn quên ý tưởng
-- Tôi thấy patterns mà trước không thấy
-- Tôi viết tốt hơn vì có context đầy đủ
+- Tui không còn quên ý tưởng
+- Tui thấy mẫu lặp lại mà trước không thấy
+- Tui viết tốt hơn vì có ngữ cảnh đầy đủ
 
 ## Bắt đầu như thế nào?
 
-**Week 1: Setup**
-- Download Obsidian
-- Tạo vault đầu tiên
-- Viết 1 note/ngày
+**Tuần 1: Cài nền**
+- Tải Obsidian
+- Tạo kho Obsidian đầu tiên
+- Viết 1 ghi chú/ngày
 
-**Week 2: Capture**
-- Inbox note mỗi ngày
+**Tuần 2: Ghi lại**
+- Ghi chú đầu vào mỗi ngày
 - Ghi mọi thứ học được
-- Chưa cần organize
+- Chưa cần tổ chức
 
-**Week 3: Process**
-- Chuyển inbox thành atomic notes
-- Practice viết 1 concept = 1 note
-- Bắt đầu dùng links
+**Tuần 3: Xử lý**
+- Chuyển hộp đầu vào thành ghi chú một ý
+- Tập viết 1 ý = 1 ghi chú
+- Bắt đầu dùng liên kết
 
-**Week 4: Connect**
-- Link notes với nhau
-- Thêm tags
-- Xem graph view
+**Tuần 4: Kết nối**
+- Nối ghi chú với nhau
+- Thêm thẻ
+- Xem sơ đồ liên kết
 
-**Sau 21 ngày:** Bạn có Brain2 hoạt động được.
+**Sau 21 ngày:** Anh em có Brain2 hoạt động được.
 
-## Kết luận
+## Chỗ đáng giữ lại
 
-Brain2 không phải về tool.
+Brain2 không phải về công cụ.
 
-Brain2 là về **mindset**: Não bạn để suy nghĩ, không phải để nhớ.
+Brain2 là về **cách nghĩ**: não anh em để suy nghĩ, không phải để nhớ.
 
-Build Brain2 = Đầu tư vào tương lai.
+Xây Brain2 = đầu tư vào tương lai.
 
-Mỗi note bạn viết hôm nay = Compound interest cho 10 năm sau.
+Mỗi ghi chú anh em viết hôm nay = lãi kép cho 10 năm sau.
 
 ---
 
-**P/S:** Muốn build Brain2 trong 21 ngày? Tham gia challenge của tôi. Mỗi sáng 1 email. 15 phút thực hành. Miễn phí.
+**P/S:** Muốn xây Brain2 trong 21 ngày? Bắt đầu activation product này trước. Mỗi ngày 15 phút để gom tri thức thật, rồi bước tiếp sang Conan Maker khi có nền.
 
 → [Tham gia "21 Ngày Brain2"](/challenges/brain2-21-ngay)

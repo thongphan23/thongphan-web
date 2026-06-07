@@ -1,0 +1,18 @@
+name = "brain2-embedder"
+main = "workers/embed-vault.ts"
+compatibility_date = "2025-01-01"
+
+workers_dev = false
+
+[ai]
+binding = "AI"
+remote = true
+
+[[vectorize]]
+binding = "BRAIN2_INDEX"
+index_name = "brain2-vault"
+remote = true
+
+[[routes]]
+pattern = "thongphan.com/api/embed"
+zone_name = "thongphan.com"

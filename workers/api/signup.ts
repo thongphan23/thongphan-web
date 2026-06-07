@@ -3,6 +3,8 @@
  * Handle challenge signup with validation, D1 insert, and email queue
  */
 
+import { getEmailContent } from './email-content';
+
 export interface Env {
   DB: D1Database;
   KV: KVNamespace;
@@ -15,9 +17,7 @@ interface SignupRequest {
 }
 
 const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': process.env.NODE_ENV === 'production'
-    ? 'https://thongphan.com'
-    : '*',
+  'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   'Content-Type': 'application/json',
@@ -166,8 +166,7 @@ async function queueDripEmails(
 
     const scheduledAt = scheduledDate.toISOString();
 
-    const subject = `[Brain2] Ngày ${day}/${durationDays}`;
-    const body = `Placeholder email content for day ${day}. Will be replaced with actual content.`;
+    const { subject, body } = getEmailContent(day, durationDays);
 
     statements.push(
       env.DB.prepare(
