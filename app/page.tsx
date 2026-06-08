@@ -171,7 +171,7 @@ export default function HomePage() {
           <p>Homepage mới nên kết thúc bằng một cánh cổng, không phải một nút bán hàng. Người đọc đi qua kinh nghiệm, Brain2, tài sản nhỏ rồi mới thấy Conan là bước sâu hơn.</p>
           <div className={styles.heroActions}>
             <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-primary">Bước vào Conan</a>
-            <Link href="/classic" className="btn-outline">Xem bản cũ</Link>
+            <Link href="/diagnostic" className="btn-outline">Quét năng lực AI</Link>
           </div>
         </div>
       </section>
