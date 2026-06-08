@@ -55,21 +55,28 @@ test('homepage visible copy avoids prototype-only wording and unexplained Englis
   }
 })
 
-test('homepage CSS locks the organic cinematic visual system', async () => {
+test('homepage locks the cinematic Knowledge Garden key visual system', async () => {
+  const page = await readProjectFile('app/page.tsx')
   const css = await readProjectFile('app/page.module.css')
 
   for (const required of [
+    'knowledge-garden-hero-wide-2400.webp',
+    'knowledge-garden-hero-wide-3200.png',
+    'Cây tri thức dạng hệ sinh thái',
     '--garden-ink',
     '--garden-green',
     'stageCard',
     'gardenObject',
-    'seedCore',
+    'gardenImage',
     'reflection',
     'layerCard',
     'fruitCard',
     'gateCard',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
-    assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+    const source = required.startsWith('knowledge-') || required.startsWith('Cây') ? page : css
+    assert.match(source, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
   }
+
+  assert.doesNotMatch(page, /seedCore|rootA|branchA|fruitA/, 'homepage should use the rendered premium image, not CSS-only tree shapes')
 })

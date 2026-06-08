@@ -30,6 +30,22 @@ const signals = [
   ['Thu nhập chính còn rủi ro', '38%', '72%', '-12deg', '-7deg', '-6.4s'],
 ]
 
+function GardenKeyVisual() {
+  return (
+    <picture className={styles.gardenPicture}>
+      <source srcSet="/images/homepage/knowledge-garden-hero-wide-2400.webp" type="image/webp" />
+      <img
+        className={styles.gardenImage}
+        src="/images/homepage/knowledge-garden-hero-wide-3200.png"
+        alt="Cây tri thức dạng hệ sinh thái: thân cây mạch vàng, rễ mạng nơ-ron xanh và các nhánh tài sản số trong Knowledge Garden của Thông Phan"
+        width="3200"
+        height="1800"
+        fetchPriority="high"
+      />
+    </picture>
+  )
+}
+
 export default function HomePage() {
   return (
     <div className={styles.conceptPage}>
@@ -86,24 +102,8 @@ export default function HomePage() {
                 <b>HỆ ĐANG CHẠY</b>
               </div>
 
-              <div className={styles.gardenObject} aria-hidden="true">
-                <span className={styles.seedCore} />
-                <span className={styles.innerGlow} />
-                <span className={`${styles.root} ${styles.rootA}`} />
-                <span className={`${styles.root} ${styles.rootB}`} />
-                <span className={`${styles.root} ${styles.rootC}`} />
-                <span className={`${styles.root} ${styles.rootD}`} />
-                <span className={`${styles.root} ${styles.rootE}`} />
-                <span className={`${styles.root} ${styles.rootF}`} />
-                <span className={styles.trunk} />
-                <span className={`${styles.branch} ${styles.branchA}`} />
-                <span className={`${styles.branch} ${styles.branchB}`} />
-                <span className={`${styles.branch} ${styles.branchC}`} />
-                <span className={`${styles.fruit} ${styles.fruitA}`} />
-                <span className={`${styles.fruit} ${styles.fruitB}`} />
-                <span className={`${styles.fruit} ${styles.fruitC}`} />
-                <span className={`${styles.orbit} ${styles.orbitA}`} />
-                <span className={`${styles.orbit} ${styles.orbitB}`} />
+              <div className={styles.gardenObject}>
+                <GardenKeyVisual />
               </div>
 
               <div className={styles.nodePanel} data-hero-fragment>

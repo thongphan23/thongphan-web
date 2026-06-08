@@ -237,16 +237,15 @@
   position: relative;
   height: clamp(520px, 66vw, 720px);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(226, 190, 99, 0.34);
   border-radius: 38px;
   background:
-    radial-gradient(circle at var(--cursor-x, 50%) var(--cursor-y, 36%), rgba(255, 255, 255, 0.74), transparent 12rem),
-    radial-gradient(circle at 50% 45%, rgba(178, 232, 210, 0.92), transparent 20rem),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(230, 246, 239, 0.74) 52%, rgba(22, 46, 36, 0.92));
+    radial-gradient(circle at var(--cursor-x, 70%) var(--cursor-y, 40%), rgba(246, 203, 101, 0.20), transparent 16rem),
+    linear-gradient(135deg, rgba(3, 10, 16, 0.96), rgba(7, 24, 36, 0.88) 48%, rgba(2, 7, 12, 0.96));
   box-shadow:
-    0 56px 130px rgba(15, 43, 62, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    inset 0 -80px 120px rgba(5, 18, 29, 0.22);
+    0 56px 130px rgba(2, 7, 12, 0.42),
+    inset 0 1px 0 rgba(255, 231, 168, 0.22),
+    inset 0 -80px 120px rgba(0, 0, 0, 0.34);
   transform: rotateX(calc(var(--pointer-y, 0) * -3deg)) rotateY(calc(var(--pointer-x, 0) * 4deg));
   transform-style: preserve-3d;
   transition: transform 160ms ease-out;
@@ -276,144 +275,134 @@
 
 .cardChrome {
   position: relative;
-  z-index: 4;
+  z-index: 6;
   display: flex;
   justify-content: space-between;
   gap: 16px;
   padding: 18px 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
-  color: rgba(17, 33, 49, 0.62);
+  border-bottom: 1px solid rgba(226, 190, 99, 0.18);
+  color: rgba(246, 220, 153, 0.62);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.09em;
   text-transform: uppercase;
+  background: linear-gradient(180deg, rgba(2, 8, 13, 0.72), rgba(2, 8, 13, 0));
 }
 
 .cardChrome b {
-  color: var(--garden-green);
+  color: #f2c968;
 }
 
 .gardenObject {
   position: absolute;
-  inset: 9% 6% 8%;
-  transform: translateZ(80px);
-}
-
-.gardenObject span {
-  position: absolute;
-  display: block;
-}
-
-.seedCore {
-  left: 50%;
-  top: 43%;
-  z-index: 6;
-  width: 118px;
-  height: 118px;
-  border-radius: 48% 52% 45% 55% / 54% 48% 52% 46%;
-  background:
-    radial-gradient(circle at 34% 26%, #fff7d7, transparent 16%),
-    radial-gradient(circle at 70% 70%, rgba(14, 73, 45, 0.42), transparent 42%),
-    linear-gradient(135deg, #8fb56f, #284f32 72%);
-  box-shadow:
-    inset 14px 18px 22px rgba(255, 255, 255, 0.22),
-    inset -18px -20px 30px rgba(4, 18, 12, 0.36),
-    0 0 0 16px rgba(255, 255, 255, 0.08),
-    0 26px 90px rgba(36, 193, 129, 0.46);
-  transform: translate(-50%, -50%) rotate(-17deg);
-  animation: breathe 4s ease-in-out infinite;
-}
-
-.innerGlow {
-  left: 50%;
-  top: 43%;
-  z-index: 1;
-  width: 390px;
-  height: 390px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 246, 187, 0.42), rgba(36, 193, 129, 0.28) 30%, transparent 70%);
-  filter: blur(8px);
-  transform: translate(-50%, -50%);
-}
-
-.root,
-.branch,
-.trunk {
+  inset: 0;
   z-index: 3;
-  left: 50%;
-  top: 45%;
-  width: 230px;
-  height: 28px;
-  border-radius: 999px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.32), transparent 22%),
-    linear-gradient(90deg, #4d6f3d, #18331f);
-  box-shadow: 0 18px 40px rgba(12, 38, 24, 0.2), inset 0 1px rgba(255,255,255,0.25);
-  transform-origin: left center;
+  display: grid;
+  place-items: stretch;
+  transform: translateZ(70px);
 }
 
-.root::after,
-.branch::after,
-.trunk::after {
-  content: '';
-  position: absolute;
-  inset: 6px 12px auto 18px;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.26);
+.gardenPicture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.trunk {
-  top: 36%;
-  width: 250px;
-  transform: translateX(-18px) rotate(-90deg) scaleX(0.78);
-  background: linear-gradient(90deg, #8b6746, #3f2d1d 72%);
+.gardenImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+  filter: saturate(1.06) contrast(1.04) drop-shadow(0 34px 70px rgba(0, 0, 0, 0.35));
 }
 
-.rootA { transform: translate(4px, 24px) rotate(18deg) scaleX(1.02); }
-.rootB { transform: translate(0, 50px) rotate(49deg) scaleX(0.94); }
-.rootC { transform: translate(-4px, 72px) rotate(86deg) scaleX(0.72); }
-.rootD { transform: translate(-8px, 48px) rotate(132deg) scaleX(0.86); }
-.rootE { transform: translate(-10px, 18px) rotate(165deg) scaleX(0.92); }
-.rootF { transform: translate(-2px, 94px) rotate(112deg) scaleX(0.56); }
-
-.branch {
-  top: 26%;
-  width: 210px;
-  background: linear-gradient(90deg, #8b6746, #324421 74%);
+.svgMist {
+  fill: rgba(114, 227, 167, 0.18);
+  filter: blur(10px);
 }
 
-.branchA { transform: translate(-12px, 8px) rotate(-36deg) scaleX(0.86); }
-.branchB { transform: translate(-10px, -18px) rotate(-146deg) scaleX(0.74); }
-.branchC { transform: translate(-2px, -54px) rotate(-88deg) scaleX(0.66); }
-
-.fruit {
-  z-index: 7;
-  width: 54px;
-  height: 54px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 34% 28%, #ffffff, transparent 18%),
-    linear-gradient(135deg, #ffdd5b, #ff8f49 72%);
-  box-shadow: 0 18px 42px rgba(255, 143, 73, 0.38), 0 0 0 10px rgba(255, 255, 255, 0.12);
+.svgOrbit ellipse {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.2;
+  stroke-dasharray: 7 11;
 }
 
-.fruitA { left: 67%; top: 17%; }
-.fruitB { left: 28%; top: 21%; width: 42px; height: 42px; background: linear-gradient(135deg, #bfffee, #24c181); }
-.fruitC { left: 53%; top: 9%; width: 38px; height: 38px; background: linear-gradient(135deg, #e8f6ff, #3bc8ff); }
-
-.orbit {
-  z-index: 2;
-  left: 50%;
-  top: 43%;
-  border: 1px solid rgba(255, 255, 255, 0.48);
-  border-radius: 50%;
-  transform: translate(-50%, -50%) rotateX(68deg) rotateZ(-12deg);
+.svgRoots path {
+  fill: none;
+  stroke: url(#rootGradient);
+  stroke-width: 9;
+  stroke-linecap: round;
+  opacity: 0.86;
 }
 
-.orbitA { width: 520px; height: 520px; }
-.orbitB { width: 370px; height: 370px; transform: translate(-50%, -50%) rotateX(70deg) rotateZ(28deg); }
+.svgRootNodes circle {
+  fill: #c7ffe4;
+  stroke: rgba(255, 255, 255, 0.76);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 16px rgba(52, 211, 153, 0.85));
+}
+
+.svgTrunk {
+  fill: url(#trunkGradient);
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 2;
+}
+
+.svgBranch {
+  fill: none;
+  stroke: url(#trunkGradient);
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svgCanopyBack {
+  fill: rgba(37, 99, 64, 0.72);
+  opacity: 0.82;
+}
+
+.svgCanopyMain {
+  fill: url(#canopyGlow);
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-width: 2;
+}
+
+.svgHighlight {
+  fill: rgba(255, 255, 255, 0.36);
+  filter: blur(10px);
+}
+
+.svgFruits circle {
+  fill: url(#fruitGradient);
+  stroke: rgba(255, 255, 255, 0.86);
+  stroke-width: 3;
+  filter: drop-shadow(0 14px 22px rgba(249, 115, 22, 0.32));
+}
+
+.svgLabels rect {
+  fill: rgba(255, 255, 255, 0.68);
+  stroke: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(18px);
+}
+
+.svgLabels text {
+  fill: #112131;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.svgLabels text:nth-of-type(2) {
+  fill: rgba(17, 33, 49, 0.58);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
 
 .nodePanel,
 .assetPanel {
@@ -421,10 +410,10 @@
   z-index: 8;
   max-width: 245px;
   padding: 14px 15px;
-  border: 1px solid rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(226, 190, 99, 0.24);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 26px 70px rgba(5, 18, 29, 0.16);
+  background: rgba(2, 8, 13, 0.50);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(18px) saturate(130%);
 }
 
@@ -452,6 +441,7 @@
 
 .nodePanel strong,
 .assetPanel strong {
+  color: rgba(255, 246, 218, 0.88);
   font-size: 0.9rem;
   line-height: 1.45;
 }
@@ -774,33 +764,44 @@
   }
 
   .stageWrap {
-    min-height: 500px;
+    min-height: 560px;
   }
 
   .stageCard {
-    height: 500px;
+    height: 560px;
     border-radius: 28px;
   }
 
   .gardenObject {
-    inset: 12% -10% 8%;
-    transform: scale(0.8) translateZ(40px);
+    inset: 8% -18% 4%;
+    transform: translateZ(40px);
+  }
+
+  .gardenImage {
+    object-position: 58% 48%;
   }
 
   .nodePanel,
   .assetPanel {
-    max-width: 210px;
-    padding: 12px;
+    max-width: 188px;
+    padding: 11px 12px;
+    border-radius: 16px;
+  }
+
+  .nodePanel strong,
+  .assetPanel strong {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 
   .nodePanel {
     left: 5%;
-    bottom: 16%;
+    bottom: 14%;
   }
 
   .assetPanel {
     right: 5%;
-    top: 18%;
+    top: 16%;
   }
 
   .layerGrid,
