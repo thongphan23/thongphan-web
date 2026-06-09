@@ -5,39 +5,39 @@ import { BrandGlyph } from '@/components/BrandGlyph'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Thông Phan — Cinematic Knowledge Garden',
-  description: 'Thông Phan giúp Invisible Experts biến tri thức sống thành thương hiệu cá nhân, Brain2, tài sản số và cơ hội xứng đáng bằng AI.',
+  title: 'Thông Phan — Biến chuyên môn thành tài sản',
+  description: 'Nếu bạn giỏi nghề nhưng chưa được thị trường nhìn thấy đúng, đây là nơi bắt đầu biến chuyên môn thành nội dung, tài sản số và cơ hội xứng đáng.',
 }
 
 const proofSignals = [
-  ['ACV', 'Authenticity · Consistency · Visibility'],
-  ['Brain2', 'Bộ rễ tri thức cá nhân'],
-  ['Invisible Experts', 'Người giỏi nhưng chưa được biết đến'],
+  ['ACV', 'Thật · nhất quán · được nhìn thấy'],
+  ['Brain2', 'Kho tri thức riêng để AI hiểu bạn'],
+  ['Người giỏi nhưng ít ai biết', 'Có năng lực thật, nhưng chưa được thị trường nhìn thấy đúng'],
 ]
 
 const painPoints = [
-  ['Giỏi nhưng ít người biết', 'Cơ hội không tự đến với người có năng lực. Nó đến với người được nhìn thấy đúng cách.'],
-  ['AI làm noise dày hơn', 'Nếu không có bộ rễ tri thức riêng, AI chỉ giúp tạo thêm nội dung giống người khác.'],
-  ['Thu nhập chưa xứng năng lực', 'Nỗi đau không nằm ở thiếu chăm chỉ. Nó nằm ở việc chuyên môn chưa thành tài sản có thể phân phối.'],
+  ['Bạn giỏi, nhưng thị trường chưa hiểu bạn giỏi ở đâu', 'Cơ hội hiếm khi tự tìm đến người im lặng. Nó đến khi người khác hiểu rõ bạn giải quyết vấn đề gì.'],
+  ['AI làm thế giới ồn hơn, không tự làm bạn khác biệt hơn', 'Nếu trong đầu chưa rõ, AI chỉ giúp bạn tạo thêm những thứ nghe giống tất cả mọi người.'],
+  ['Thu nhập chưa xứng với năng lực thật', 'Vấn đề không phải bạn lười. Vấn đề là kinh nghiệm của bạn chưa được đóng gói thành thứ người khác thấy, tin và muốn mua.'],
 ]
 
 const acv = [
-  ['Authenticity', 'Có gốc thật', 'Kinh nghiệm, tài năng, góc nhìn và trách nhiệm cá nhân — thứ AI không thể fake bền vững.'],
-  ['Consistency', 'Có hệ thống', 'Mỗi bài viết, sản phẩm và quyết định đều đi ra từ cùng một bộ rễ tư duy.'],
-  ['Visibility', 'Có phân phối', 'Không chỉ giỏi trong im lặng, mà xuất hiện đủ rõ để thị trường hiểu giá trị của anh.'],
+  ['Authenticity', 'Có gốc thật', 'Không phải diễn cho giống chuyên gia. Là nói từ kinh nghiệm, kết quả, sai lầm và trách nhiệm của chính bạn.'],
+  ['Consistency', 'Có hệ thống', 'Người ta tin bạn hơn khi mỗi bài viết, sản phẩm và quyết định đều cùng một mạch tư duy.'],
+  ['Visibility', 'Được nhìn thấy đúng cách', 'Không phải ồn ào hơn. Là xuất hiện đủ rõ để người cần bạn hiểu bạn giúp được gì.'],
 ]
 
 const gardenLayers = [
-  ['Đất', 'Trải nghiệm thật', 'Câu chuyện, case, lỗi, bài học, câu hỏi sống.'],
-  ['Rễ', 'Brain2', 'Ghi chú liên kết, framework, nguyên lý, context riêng.'],
-  ['Tán', 'Content', 'Bài viết, video, lớp học, luận điểm có chiều sâu.'],
-  ['Quả', 'Tài sản số', 'Diagnostic, workbook, mini kit, productized knowledge.'],
+  ['Đất', 'Trải nghiệm thật', 'Những ca bạn từng xử lý, lỗi từng trả giá, bài học từng tự rút ra.'],
+  ['Rễ', 'Brain2', 'Kho tri thức riêng để AI hiểu bối cảnh, giọng và cách nghĩ của bạn.'],
+  ['Tán', 'Nội dung', 'Bài viết, video, buổi chia sẻ và luận điểm giúp người khác hiểu bạn.'],
+  ['Quả', 'Tài sản số', 'Bài chẩn đoán, workbook, bộ công cụ nhỏ, sản phẩm tri thức có thể bán hoặc tặng.'],
 ]
 
 const assets = [
-  ['Diagnostic', 'Chẩn đoán năng lực AI cá nhân', 'Bắt đầu bằng việc biết mình đang thiếu lớp nào.'],
-  ['Library', 'Thư viện sống', 'Các bài viết/framework được tổ chức như một bản đồ tri thức.'],
-  ['Assets', 'Kho tài sản nhỏ', 'Những sản phẩm nhỏ để thử năng lực hệ thống trước khi đi sâu.'],
+  ['Chẩn đoán', 'Biết mình nên bắt đầu từ đâu', 'Trả lời vài câu để khỏi học lan man.'],
+  ['Thư viện', 'Đọc theo đúng vấn đề của bạn', 'Không phải lướt thêm bài. Là tìm đúng mảnh đang thiếu.'],
+  ['Tài sản nhỏ', 'Làm thử một đầu ra thật', 'Một workbook, checklist hoặc bộ câu hỏi đủ nhỏ để dùng ngay.'],
 ]
 
 export default function HomePage() {
@@ -46,14 +46,14 @@ export default function HomePage() {
       <section className={styles.hero} data-cinematic-hero>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy} data-reveal>
-            <p className={styles.kicker}>Cinematic Knowledge Garden</p>
-            <h1>Biến tri thức sống thành tài sản số.</h1>
+            <p className={styles.kicker}>Cho người giỏi nhưng chưa được nhìn thấy đúng</p>
+            <h1>Biến chuyên môn của bạn thành tài sản người khác muốn dùng.</h1>
             <p className={styles.lead}>
-              Anh Thông giúp những người giỏi nhưng chưa được biết đến xây thương hiệu cá nhân bằng Brain2, ACV và AI — để kinh nghiệm thật mọc thành nội dung, sản phẩm và cơ hội xứng đáng.
+              Nếu bạn có năng lực thật nhưng vẫn bị thị trường bỏ qua, vấn đề không nằm ở việc bạn chưa giỏi. Vấn đề là chuyên môn của bạn chưa được biến thành nội dung, bằng chứng và tài sản đủ rõ để người khác tin.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/diagnostic" className="btn-primary">Chẩn đoán năng lực AI</Link>
-              <Link href="/library" className="btn-outline">Khám phá thư viện</Link>
+              <Link href="/diagnostic" className="btn-primary">Tự chẩn đoán trước</Link>
+              <Link href="/library" className="btn-outline">Đọc thư viện</Link>
             </div>
             <div className={styles.proofStrip} aria-label="Tín hiệu thương hiệu">
               {proofSignals.map(([label, body]) => (
@@ -65,18 +65,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className={styles.heroVisual} data-cinematic-mouse aria-label="Cây tri thức 3D đại diện cho Brain2 và tài sản số">
+          <div className={styles.heroVisual} data-cinematic-mouse aria-label="Hệ tri thức riêng giúp chuyên môn mọc thành nội dung và tài sản số">
             <div className={styles.visualPlate}>
               <img
                 src="/images/hero-premium-mist-knowledge-garden-chatgpt.png"
-                alt="Cây tri thức 3D trên những lớp sách và ghi chú, ánh sáng cinematic, đại diện cho Brain2 và tài sản số"
+                alt="Hệ tri thức được xây từ sách, ghi chú và kinh nghiệm thật"
                 width="1680"
                 height="960"
                 fetchPriority="high"
               />
               <div className={styles.visualCaption}>
                 <span>Brain2</span>
-                <strong>Kinh nghiệm thật có rễ. AI chỉ khuếch đại thứ đã có rễ.</strong>
+                <strong>AI chỉ khuếch đại thứ đã có gốc. Nếu gốc rỗng, đầu ra cũng rỗng.</strong>
               </div>
             </div>
             <span className={styles.orbOne} aria-hidden="true" />
@@ -87,8 +87,8 @@ export default function HomePage() {
 
       <section className={styles.scene}>
         <div className={styles.sceneHeader} data-reveal>
-          <p className={styles.kicker}>Invisible Experts</p>
-          <h2>Vấn đề không phải là anh chưa giỏi. Vấn đề là thị trường chưa nhìn thấy đúng giá trị của anh.</h2>
+          <p className={styles.kicker}>Nếu bạn đang thấy bất công</p>
+          <h2>Bạn không thiếu năng lực. Bạn thiếu một hệ thống để người khác nhìn thấy năng lực đó.</h2>
         </div>
         <div className={styles.painGrid}>
           {painPoints.map(([title, body], index) => (
@@ -104,10 +104,10 @@ export default function HomePage() {
       <section className={`${styles.scene} ${styles.acvScene}`}>
         <div className={styles.split}>
           <div className={styles.splitCopy} data-reveal>
-            <p className={styles.kicker}>ACV Framework</p>
-            <h2>Thương hiệu cá nhân bền vững cần ba lớp: thật, nhất quán, và được nhìn thấy.</h2>
+            <p className={styles.kicker}>Cách xây niềm tin</p>
+            <h2>Muốn người khác tin bạn lâu dài, bạn cần ba thứ: thật, nhất quán và được nhìn thấy đúng cách.</h2>
             <p>
-              ACV không phải công thức đăng bài. Nó là hệ điều hành giúp chuyên môn của anh có gốc, có nhịp và có đường ra thị trường.
+              ACV không phải lịch đăng bài. Nó là cách biến kinh nghiệm trong đầu bạn thành niềm tin, nội dung và cơ hội ngoài thị trường.
             </p>
           </div>
           <div className={styles.acvStack}>
@@ -125,9 +125,9 @@ export default function HomePage() {
 
       <section className={styles.gardenScene}>
         <div className={styles.sceneHeader} data-reveal>
-          <p className={styles.kicker}>Brain2 as Garden</p>
-          <h2>Brain2 là bộ rễ. Content và sản phẩm chỉ là phần mọc lên trên mặt đất.</h2>
-          <p>Nếu chỉ nhìn vào bài viết, người ta thấy output. Nếu nhìn vào Brain2, họ thấy moat.</p>
+          <p className={styles.kicker}>Bắt đầu từ bộ rễ</p>
+          <h2>Muốn nội dung có chiều sâu, bạn phải chăm bộ rễ trước.</h2>
+          <p>Bài viết là phần nổi. Brain2 mới là nơi giữ case, góc nhìn, nguyên lý và giọng riêng của bạn.</p>
         </div>
         <div className={styles.layerMap}>
           {gardenLayers.map(([label, title, body], index) => (
@@ -145,7 +145,7 @@ export default function HomePage() {
         <div className={`${styles.split} ${styles.reverse}`}>
           <div className={styles.assetGarden} data-reveal>
             {assets.map(([title, label, body], index) => (
-              <Link href={title === 'Diagnostic' ? '/diagnostic' : title === 'Library' ? '/library' : '/assets'} className={styles.assetFruit} key={title}>
+              <Link href={title === 'Chẩn đoán' ? '/diagnostic' : title === 'Thư viện' ? '/library' : '/assets'} className={styles.assetFruit} key={title}>
                 <BrandGlyph name={index === 0 ? 'leafNote' : index === 1 ? 'brainTree' : 'fruit'} className={styles.glyph} />
                 <span>{title}</span>
                 <h3>{label}</h3>
@@ -154,10 +154,10 @@ export default function HomePage() {
             ))}
           </div>
           <div className={styles.splitCopy} data-reveal>
-            <p className={styles.kicker}>Digital Assets</p>
-            <h2>Tài sản số là quả chín của một hệ tri thức được chăm sóc lâu dài.</h2>
+            <p className={styles.kicker}>Tài sản nhỏ, làm được ngay</p>
+            <h2>Tài sản số không nên là template rỗng. Nó nên mọc ra từ thứ bạn thật sự biết.</h2>
             <p>
-              Website không nên bán ồn ào. Nó nên cho người xem hái một tài sản nhỏ, trải nghiệm chất lượng tư duy, rồi tự muốn đi sâu hơn.
+              Bạn có thể bắt đầu rất nhỏ: một bài chẩn đoán, một workbook, một bộ câu hỏi, một thư viện ý tưởng. Miễn là nó giúp người khác tiến thêm một bước thật.
             </p>
           </div>
         </div>
@@ -165,14 +165,14 @@ export default function HomePage() {
 
       <section className={styles.gate}>
         <div className={styles.gateCard} data-reveal>
-          <p className={styles.kicker}>Garden Gate</p>
-          <h2>Nếu anh có chuyên môn thật, bước tiếp theo là biến nó thành hệ thống có thể tăng trưởng.</h2>
+          <p className={styles.kicker}>Nếu muốn bắt đầu</p>
+          <h2>Nếu bạn có chuyên môn thật, bước tiếp theo là biến nó thành hệ thống có thể tăng trưởng.</h2>
           <p>
-            Bắt đầu bằng chẩn đoán năng lực AI cá nhân, đọc thư viện sống, hoặc đi sâu hơn trong hệ sinh thái Conan.
+            Bắt đầu bằng việc biết mình đang ở tầng nào. Sau đó đọc đúng thứ cần đọc, hỏi đúng câu cần hỏi, rồi mới đi sâu hơn.
           </p>
           <div className={styles.heroActions}>
-            <Link href="/diagnostic" className="btn-primary">Chẩn đoán ngay</Link>
-            <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-outline">Bước vào Conan</a>
+            <Link href="/diagnostic" className="btn-primary">Làm bài chẩn đoán</Link>
+            <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-outline">Tìm hiểu Conan</a>
           </div>
         </div>
       </section>

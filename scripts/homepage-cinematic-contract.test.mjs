@@ -8,37 +8,48 @@ async function readProjectFile(path) {
   return readFile(new URL(path, root), 'utf8')
 }
 
-test('homepage exposes the Cinematic Knowledge Garden thesis and real conversion path', async () => {
+function escaped(phrase) {
+  return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i')
+}
+
+test('homepage speaks directly to the reader and keeps the real conversion path', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   for (const required of [
-    'Cinematic Knowledge Garden',
-    'Biến tri thức sống thành tài sản số',
-    'Invisible Experts',
-    'người giỏi nhưng chưa được biết đến',
+    'Biến chuyên môn của bạn thành tài sản người khác muốn dùng',
+    'Nếu bạn có năng lực thật',
+    'Bạn không thiếu năng lực',
+    'thị trường chưa hiểu bạn giỏi ở đâu',
     'Brain2',
     'ACV',
     'Authenticity',
     'Consistency',
     'Visibility',
-    'Chẩn đoán năng lực AI',
-    'Khám phá thư viện',
-    'Bước vào Conan',
+    'Tự chẩn đoán trước',
+    'Đọc thư viện',
+    'Tìm hiểu Conan',
     'data-cinematic-mouse',
   ]) {
-    assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))
+    assert.match(page, escaped(required))
   }
 })
 
-test('homepage visible copy avoids prototype-only wording and cheap AI landing-page labels', async () => {
+test('homepage visible copy avoids internal art-direction labels and cheap AI landing-page wording', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   const bannedVisiblePhrases = [
+    'Cinematic Knowledge Garden',
+    'Invisible Experts',
     'CONCEPT PROTOTYPE',
     'Prototype cinematic',
     'trang chủ hiện tại',
     'Rendering experience layer',
     'Asset fruit picker',
+    'Garden Gate',
+    'Digital Assets',
+    'Brain2 as Garden',
+    'ACV Framework',
+    'Cây tri thức 3D',
     'fear.exe',
     'vault.memory',
     'semantic.context',
@@ -47,10 +58,13 @@ test('homepage visible copy avoids prototype-only wording and cheap AI landing-p
     'AI-native expertise',
     'Proof-first AI system',
     'Expertise Observatory',
+    'Anh Thông giúp',
+    'người mua',
+    'người xem',
   ]
 
   for (const phrase of bannedVisiblePhrases) {
-    assert.doesNotMatch(page, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))
+    assert.doesNotMatch(page, escaped(phrase))
   }
 })
 
@@ -61,10 +75,10 @@ test('homepage locks the premium visual system and readable typography gates', a
 
   for (const required of [
     'hero-premium-mist-knowledge-garden-chatgpt.png',
-    'Cây tri thức 3D',
+    'Hệ tri thức được xây từ sách, ghi chú và kinh nghiệm thật',
     'BrandGlyph',
   ]) {
-    assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+    assert.match(page, escaped(required))
   }
 
   for (const required of [
@@ -77,7 +91,7 @@ test('homepage locks the premium visual system and readable typography gates', a
     'gateCard',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
-    assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+    assert.match(css, escaped(required))
   }
 
   assert.match(globals, /--text-hero:\s*clamp\(3rem, 5\.4vw, 4\.05rem\)/)

@@ -35,7 +35,7 @@ const JOURNEY_CONTEXT: Record<string, { label: string; state: string; context: s
   '10-nam-lam-marketing-toi-hoc-duoc-gi': {
     label: 'Tài sản số',
     state: 'Sáng tỏ',
-    context: 'Bài này đặt proof sống phía sau hệ thống: 10 năm thị trường, trust và chuyên môn trước khi dùng AI.',
+    context: 'Bài này đặt bằng chứng sống phía sau hệ thống: 10 năm thị trường, niềm tin và chuyên môn trước khi dùng AI.',
   },
 }
 
@@ -66,8 +66,8 @@ function getJourney(post: { slug: string; category: string; journey?: string; re
 }
 
 export const metadata: Metadata = {
-  title: 'Blog Thông Phan — Sáng tỏ giữa hỗn loạn AI',
-  description: 'Thư viện bài viết giúp người có chuyên môn đi từ sợ AI, dùng AI đúng cách, xây Brain2, viết content kéo khách tới tài sản số và Conan.',
+  title: 'Bài viết — Sáng tỏ hơn giữa thời AI quá ồn',
+  description: 'Bài viết cho người có chuyên môn muốn bớt sợ AI, dùng AI đúng cách, xây Brain2, viết nội dung kéo khách và tạo tài sản số.',
 }
 
 export default function BlogPage() {
@@ -83,20 +83,20 @@ export default function BlogPage() {
         <header className={styles.header} data-reveal>
           <div className={styles.headerShell}>
             <div className={styles.headerCopy}>
-              <span className={styles.eyebrow}>Thư viện thực chiến</span>
-              <h1>Biến kiến thức thành tài sản bắt đầu từ cách nghĩ đúng.</h1>
+              <span className={styles.eyebrow}>Đọc để sáng tỏ hơn</span>
+              <h1>Trước khi dùng AI nhanh hơn, hãy nghĩ đúng hơn.</h1>
               <p className={styles.subtitle}>
-                Một publication hub cho người có chuyên môn muốn đi từ hoang mang vì AI tới nhẹ nhõm, sáng tỏ, rồi kiểm soát bằng Brain2 và hệ thống thật.
+                Nếu bạn đang vừa tò mò vừa lo vì AI, bắt đầu ở đây. Mục tiêu không phải biết thêm công cụ, mà là hiểu mình nên dùng AI vào đâu để chuyên môn có lực hơn.
               </p>
-              <div className={styles.postCount}>{posts.length} bài viết · đọc theo trạng thái</div>
-              <GardenSignature variant="seed" eyebrow="Reading path" title="Mỗi bài là một hạt giống giúp người đọc chuyển trạng thái, không phải bài lẻ." compact />
+              <div className={styles.postCount}>{posts.length} bài viết · đọc theo trạng thái của bạn</div>
+              <GardenSignature variant="seed" eyebrow="Reading path" title="Mỗi bài nên giúp bạn chuyển trạng thái: bớt sợ, sáng hơn, làm được một bước rõ hơn." compact />
             </div>
 
             <div className={styles.readingCompass} aria-label="Reading compass">
               <div className={styles.compassGrid} />
               <div className={styles.compassCore}>
                 <span>Start</span>
-                <strong>Đọc theo trạng thái</strong>
+                <strong>Bắt đầu từ trạng thái của bạn</strong>
               </div>
               <div className={styles.compassPath}>
                 {readingJourney.map(([label, state], index) => (

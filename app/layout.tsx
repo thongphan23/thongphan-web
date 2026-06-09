@@ -36,7 +36,7 @@ const lora = Lora({
 export const metadata: Metadata = {
   metadataBase: new URL('https://thongphan.com'),
   title: 'Thông Phan — Biến kiến thức thành tài sản và dòng tiền',
-  description: 'Thông Phan giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính.',
+  description: 'Nếu bạn có chuyên môn thật nhưng chưa được nhìn thấy đúng, hãy bắt đầu biến kinh nghiệm của mình thành nội dung, tài sản số và cơ hội xứng đáng.',
   keywords: ['AI', 'chuyên môn', 'tài sản số', 'dòng tiền thứ 2', 'Brain2', 'Thông Phan', 'Conan School'],
   authors: [{ name: 'Thông Phan' }],
   openGraph: {
@@ -84,18 +84,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className={styles.footerBrand}>
               <Link href="/" className={styles.footerLogo}><span className={styles.logoMark} aria-hidden="true" /> THÔNG PHAN</Link>
               <p className={styles.footerTagline}>
-                Giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính.
+                Nếu bạn có chuyên môn thật nhưng chưa được nhìn thấy đúng, hãy bắt đầu biến kinh nghiệm của mình thành nội dung, tài sản số và cơ hội xứng đáng.
               </p>
             </div>
 
             <div className={styles.footerCol}>
               <h4>Khám phá</h4>
-              <Link href="/diagnostic">Tự chẩn đoán năng lực AI</Link>
+              <Link href="/diagnostic">Làm bài chẩn đoán</Link>
               <Link href="/blog">Bài viết</Link>
               <Link href="/library">Thư viện sống</Link>
               <Link href="/assets">Kho tài sản nhỏ</Link>
               <Link href="/challenges">21 ngày Brain2</Link>
-              <Link href="/chat">Hỏi Brain2</Link>
+              <Link href="/chat">Hỏi thử Brain2</Link>
               <Link href="/about">Về tui</Link>
             </div>
 
@@ -114,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           <div className={styles.footerBottom}>
-            <span>© 2026 Thông Phan. Kiến thức không tự tạo tiền. Hệ thống mới tạo tiền.</span>
+            <span>© 2026 Thông Phan. Chuyên môn không tự tạo cơ hội. Hệ thống mới giúp người khác nhìn thấy và tin bạn.</span>
             <span>Đồng sáng lập & giám đốc marketing (CMO) · <a href="https://conan.school" target="_blank" rel="noopener">Conan School</a></span>
           </div>
         </footer>

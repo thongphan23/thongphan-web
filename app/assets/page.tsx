@@ -11,16 +11,16 @@ import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Kho tài sản nhỏ — AI Starter cho người đi làm | Thông Phan',
+  title: 'Kho tài sản nhỏ — Bắt đầu dùng AI theo đúng việc của bạn | Thông Phan',
   description:
-    'Các bộ công cụ nhỏ dưới 200k giúp người đi làm, giáo viên, marketer, sales và quản lý bắt đầu dùng AI đúng cách theo nghề.',
+    'Các bộ công cụ nhỏ giúp bạn dùng AI vào đúng công việc trước mắt: email, bài dạy, nội dung, tư vấn, quản lý và đóng gói chuyên môn.',
   alternates: {
     canonical: '/assets',
   },
   openGraph: {
-    title: 'Kho tài sản nhỏ của Thông Phan',
+    title: 'Kho tài sản nhỏ để bạn bắt đầu làm thật',
     description:
-      'Micro assets dưới 200k: AI starter kit theo nghề, workbook, prompt pack và canvas để bắt đầu biến kiến thức thành tài sản.',
+      'Workbook, prompt pack và canvas nhỏ để bạn tạo một đầu ra thật trước khi học sâu hơn.',
     url: '/assets',
     type: 'website',
   },
@@ -36,27 +36,25 @@ export default function AssetsPage() {
       <div className="container">
         <header className={styles.hero} data-reveal data-cinematic-mouse>
           <div className={styles.marketHud} aria-label="Trạng thái kho tài sản nhỏ">
-            <span><b>ASSET OS</b> Micro Store</span>
-            <span><b>PRICE CAP</b> dưới 200k</span>
-            <span><b>MODE</b> chọn theo nghề</span>
+            <span><b>BỘ NHỎ</b> Bắt đầu nhỏ</span>
+            <span><b>GIÁ</b> dưới 200k</span>
+            <span><b>CÁCH CHỌN</b> đúng việc đang làm</span>
           </div>
           <div className={styles.heroCopy}>
             <span className={styles.eyebrow}>Kho tài sản nhỏ · dưới 200k</span>
-            <h1>Bắt đầu dùng AI theo nghề, không học tool lan man.</h1>
+            <h1>Đừng học thêm công cụ nữa. Hãy dùng AI vào đúng việc bạn đang làm.</h1>
             <p>
-              Mỗi nghề có một bộ riêng: workbook, video ngắn, prompt pack và checklist kiểm
-              chứng output. Anh em chọn đúng công việc mình đang làm, làm ra một output nhỏ,
-              rồi mới quyết định có cần đi sâu hơn với Conan Maker không.
+              Mỗi bộ được thiết kế cho một tình huống cụ thể: soạn email, chuẩn bị bài dạy, viết nội dung, theo dõi sau tư vấn, giao việc cho đội nhóm. Bạn làm ra một đầu ra nhỏ trước, rồi mới quyết định có cần đi sâu hơn không.
             </p>
             <div className={styles.heroActions}>
               <Link href={`/assets/${featured.slug}`} className="btn-primary">
-                Xem sản phẩm đầu tiên
+                Xem bộ đầu tiên
               </Link>
               <Link href="/diagnostic" className="btn-outline">
-                Làm diagnostic trước
+                Chẩn đoán trước
               </Link>
             </div>
-            <GardenSignature variant="fruit" eyebrow="Asset như quả chín" title="Mỗi sản phẩm là một quả nhỏ hái được từ hệ tri thức, không phải template bán lẻ." compact />
+            <GardenSignature variant="fruit" eyebrow="Tài sản nhỏ, dùng được ngay" title="Mỗi bộ nhỏ phải giúp bạn làm được một việc thật, không phải tải thêm một đống template để đó." compact />
           </div>
 
           <aside className={styles.featuredCard} aria-label="Sản phẩm nổi bật">
@@ -66,7 +64,7 @@ export default function AssetsPage() {
               <span />
               <strong>{starterAssets.length}</strong>
             </div>
-            <span className={styles.badge}>Đang ưu tiên build</span>
+            <span className={styles.badge}>Đang hoàn thiện</span>
             <h2>{featured.title}</h2>
             <p>{featured.subtitle}</p>
             <div className={styles.priceRow}>
@@ -74,35 +72,35 @@ export default function AssetsPage() {
               <span>{featured.format}</span>
             </div>
             <ul>
-              <li>{starterAssets.length} sản phẩm AI Starter tách riêng theo nghề</li>
-              <li>{featured.estimatedTimeMinutes} phút để đi hết vòng đầu</li>
-              <li>Có video ngắn + workbook + prompt pack</li>
+              <li>{starterAssets.length} bộ AI cho công việc theo từng việc cụ thể</li>
+              <li>{featured.estimatedTimeMinutes} phút để làm xong vòng đầu</li>
+              <li>Có video ngắn, workbook và prompt pack</li>
             </ul>
-            <Link href={`/assets/${featured.slug}`}>Mở chi tiết →</Link>
+            <Link href={`/assets/${featured.slug}`}>Xem chi tiết →</Link>
           </aside>
         </header>
 
         <section className={styles.boundary} data-reveal aria-labelledby="boundary-title">
           <div>
             <span>Ranh giới rõ</span>
-            <h2 id="boundary-title">thongphan.com bán mảnh ghép nhỏ. Conan Maker giữ phần chuyển hóa sâu.</h2>
+            <h2 id="boundary-title">Ở đây bạn lấy mảnh ghép nhỏ để làm ngay. Conan Maker dành cho phần thực hành sâu hơn.</h2>
           </div>
           <div className={styles.boundaryGrid}>
             <article>
-              <h3>Ở đây anh em mua</h3>
-              <p>Kit, checklist, workbook, prompt pack, canvas. Dùng ngay cho một output nhỏ trong công việc.</p>
+              <h3>Ở đây bạn lấy</h3>
+              <p>Kit, checklist, workbook, prompt pack, canvas — đủ nhỏ để dùng ngay cho một đầu ra trong công việc.</p>
             </article>
             <article>
-              <h3>Ở Conan anh em làm sâu</h3>
-              <p>Cộng đồng, feedback, accountability, roadmap 21-90 ngày và hệ thống biến chuyên môn thành dòng tiền.</p>
+              <h3>Ở Conan bạn làm sâu hơn</h3>
+              <p>Cộng đồng, phản hồi, trách nhiệm thực hành, roadmap 21-90 ngày và hệ thống biến chuyên môn thành dòng tiền.</p>
             </article>
           </div>
         </section>
 
         <section className={styles.professionStrip} data-reveal aria-labelledby="profession-title">
           <div className={styles.sectionHeader}>
-            <span>Use case theo nghề</span>
-            <h2 id="profession-title">5 nghề tách thành 5 sản phẩm riêng, để người mua chọn đúng tình huống của họ.</h2>
+            <span>Tình huống theo nghề</span>
+            <h2 id="profession-title">Chọn đúng tình huống của bạn trước. Đừng học một bộ AI chung chung cho mọi nghề.</h2>
           </div>
           <div className={styles.professionGrid}>
             {starterAssets.map((asset) => {
@@ -121,8 +119,8 @@ export default function AssetsPage() {
 
         <section className={styles.catalog} data-reveal aria-labelledby="catalog-title">
           <div className={styles.sectionHeader}>
-            <span>Catalog MVP</span>
-            <h2 id="catalog-title">Nhỏ, rõ, dưới 200k — không phải khóa học thay Conan.</h2>
+            <span>Các bộ đang làm</span>
+            <h2 id="catalog-title">Nhỏ, rõ, làm được ngay — không phải khóa học dài trá hình.</h2>
           </div>
           <div className={styles.catalogGrid}>
             {assets.map((asset) => (

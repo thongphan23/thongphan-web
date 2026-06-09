@@ -21,7 +21,7 @@ const SUGGESTED_QUESTIONS = [
 const BRAIN_SIGNALS = [
   ['context', 'AI · Brain2 · content'],
   ['route', 'diagnose → system → asset'],
-  ['source', 'Thong Phan living library'],
+  ['source', 'thư viện sống'],
 ]
 
 const CHAT_API_URL = process.env.NEXT_PUBLIC_CHAT_API_URL
@@ -30,7 +30,7 @@ function getMockResponse(message: string) {
   const mockResponses: Record<string, string> = {
     brain2: 'Brain2 là hệ thống quản lý tri thức cá nhân của tui. Nó dùng Obsidian, kho ghi chú và các ghi chú một ý. Mỗi ghi chú là một ý tưởng độc lập, liên kết với nhau tạo thành mạng lưới kiến thức. Nghe ghê vậy thôi chứ thực ra là cách tui làm cho AI hiểu mình hơn.',
     ai: 'AI không cướp việc bạn đâu. Người dùng AI giỏi hơn bạn mới cướp. 10 năm kinh nghiệm cộng với AI là một lợi thế rất lớn, miễn là kinh nghiệm đó được hệ thống hóa thành dữ liệu, tiêu chuẩn và quy trình.',
-    conan: 'Conan School là nơi tui và anh Đắc xây để người đi làm dùng AI đúng cách. Không phải học công cụ cho vui, mà học cách nghĩ, xây hệ thống và tạo output thật từ chuyên môn của mình.',
+    conan: 'Conan School là nơi tui và anh Đắc xây để người đi làm dùng AI đúng cách. Không phải học công cụ cho vui, mà học cách nghĩ, xây hệ thống và tạo đầu ra thật từ chuyên môn của mình.',
     default: 'Tui là Thông Phan, làm nội dung và marketing hơn 10 năm, đồng sáng lập Conan School. Tui giúp người có chuyên môn biến kiến thức thành tài sản, hệ thống AI và dòng tiền thứ 2. Hỏi tui về AI, nội dung, Brain2, tài sản số hoặc Conan nhé.',
   }
 
@@ -144,8 +144,8 @@ export default function ChatPage() {
         <div className={styles.headerCopy}>
           <div className={styles.avatar}><BrandGlyph name="brainTree" /></div>
           <div>
-            <h1 className={styles.chatTitle}>Hỏi Brain2 của Thông</h1>
-            <p className={styles.chatSub}>Bản thử sống: chuyên môn được hệ thống hóa thành người cùng nghĩ bằng AI</p>
+            <h1 className={styles.chatTitle}>Hỏi thử Brain2</h1>
+            <p className={styles.chatSub}>Một cách hỏi để bạn thấy: khi tri thức có hệ thống, AI trả lời khác hẳn.</p>
           </div>
         </div>
         <div className={styles.brainPanel} aria-label="Brain2 context signals">
@@ -156,14 +156,14 @@ export default function ChatPage() {
             </div>
           ))}
         </div>
-        <GardenSignature variant="tree" eyebrow="Brain2 companion" title="Chat là một nhánh hội thoại mọc từ thư viện sống, không phải bot hỏi đáp chung chung." compact />
+        <GardenSignature variant="tree" eyebrow="Hỏi bằng bối cảnh thật" title="Hãy hỏi về tình huống thật của bạn. Càng có bối cảnh, câu trả lời càng bớt chung chung." compact />
       </div>
 
       <div className={styles.messages}>
         {messages.length === 0 && (
           <div className={styles.welcome} data-reveal>
             <p>
-              Hỏi về AI, Brain2, nội dung, tài sản số, hoặc cách biến kiến thức chuyên môn thành dòng tiền thứ 2.
+              Bạn có thể hỏi về AI, Brain2, nội dung, tài sản số, hoặc cách biến kinh nghiệm của mình thành dòng tiền thứ hai.
             </p>
             <div className={styles.suggestions}>
               {SUGGESTED_QUESTIONS.map((q, i) => (
@@ -179,7 +179,7 @@ export default function ChatPage() {
               ))}
             </div>
             <a href="/diagnostic" className={styles.diagnosticLink}>
-              Chưa biết hỏi gì? Tự chẩn đoán năng lực AI trước →
+              Chưa biết hỏi gì? Làm bài chẩn đoán trước →
             </a>
           </div>
         )}
@@ -200,7 +200,7 @@ export default function ChatPage() {
           className={styles.input}
           value={input}
           onChange={e => setInput(e.target.value)}
-          placeholder="Hỏi Thông Phan..."
+          placeholder="Nhập tình huống của bạn..."
           disabled={loading}
         />
         <button type="submit" className="btn-primary" disabled={loading || !input.trim()}>

@@ -79,7 +79,7 @@ const questions = [
 
 const scanSignals = [
   ['01', 'Task AI', 'prompt lẻ'],
-  ['02', 'Content', 'output bắt đầu có lực'],
+  ['02', 'Nội dung', 'đầu ra bắt đầu có lực'],
   ['03', 'Brain2', 'tri thức được nối lại'],
   ['04', 'Asset', 'đóng gói thành tài sản'],
   ['05', 'Conan', 'thực hành có phản hồi'],
@@ -106,7 +106,7 @@ const levels: DiagnosticLevel[] = [
     title: 'Tầng 2, Content Leverage',
     diagnosis: 'Bạn đã bắt đầu dùng AI để tạo nội dung hoặc đầu ra. Đây là bước tốt, nhưng chưa đủ để tạo tài sản.',
     stuck: 'Bạn đang kẹt ở chỗ có nội dung nhưng chưa có hệ thống chứng minh chuyên môn, kéo khách và tái sử dụng tri thức.',
-    next: 'Chọn 3 chủ đề bạn có trải nghiệm thật, rồi biến mỗi chủ đề thành một bài có proof, câu chuyện và lời mời rõ.',
+    next: 'Chọn 3 chủ đề bạn có trải nghiệm thật, rồi biến mỗi chủ đề thành một bài có bằng chứng, câu chuyện và lời mời rõ.',
     ctas: [
       { label: 'Đọc cách content kéo khách', href: '/blog/40-bai-viral-tui-hoc-duoc-gi', primary: true },
       { label: 'Bắt đầu 21 ngày Brain2', href: '/challenges/brain2-21-ngay' },
@@ -172,24 +172,24 @@ export default function DiagnosticClient() {
         <div className="container">
           <div className={styles.heroShell}>
             <div className={styles.heroInner} data-reveal>
-              <span className={styles.eyebrow}>Bảng chẩn đoán năng lực AI</span>
-              <h1>Bạn đang ở tầng nào trong hành trình biến kiến thức thành dòng tiền?</h1>
+              <span className={styles.eyebrow}>Tự chẩn đoán trước khi học thêm AI</span>
+              <h1>Bạn đang dùng AI ở tầng nào — và nên làm gì tiếp theo?</h1>
               <p>
-                Trả lời 5 câu. Tui sẽ cho bạn biết nên bắt đầu từ việc vặt, nội dung, Brain2, tài sản số hay Conan Maker.
+                Trả lời 5 câu thật nhanh. Bạn sẽ biết mình nên bắt đầu từ việc vặt, nội dung, Brain2, tài sản số hay một môi trường thực hành sâu hơn.
               </p>
-              <GardenSignature variant="gate" eyebrow="Diagnostic gate" title="Bài quét là cánh cổng xác định nên tưới phần rễ nào trước." compact />
+              <GardenSignature variant="gate" eyebrow="Biết tầng của mình trước" title="Bài này không chấm điểm bạn giỏi hay dở. Nó chỉ giúp bạn biết nên tưới phần rễ nào trước." compact />
             </div>
 
             <div className={styles.diagnosticStage} aria-hidden="true" data-reveal="right">
               <div className={styles.scanHalo} />
               <div className={styles.scanPanel}>
                 <div className={styles.scanTop}>
-                  <span>AI Expertise Scan</span>
+                  <span>AI Readiness Scan</span>
                   <span>{completed ? level.name : `${answeredCount}/5 tín hiệu`}</span>
                 </div>
                 <div className={styles.scanCore}>
                   <strong>{completed ? level.no : '??'}</strong>
-                  <span>{completed ? level.name : 'Đang quét nền chuyên môn'}</span>
+                  <span>{completed ? level.name : 'Đang xem nền hiện tại'}</span>
                 </div>
                 <div className={styles.scanSignals}>
                   {scanSignals.map(([no, label, meta], index) => (
@@ -267,7 +267,7 @@ export default function DiagnosticClient() {
                   <h2>{level.title}</h2>
                   <p>{level.diagnosis}</p>
                   <div className={styles.stuckBox}>
-                    <strong>Đang kẹt ở đâu:</strong>
+                    <strong>Bạn đang kẹt ở đâu:</strong>
                     <span>{level.stuck}</span>
                   </div>
                   <div className={styles.nextBox}>
@@ -300,7 +300,7 @@ export default function DiagnosticClient() {
                 </>
               ) : (
                 <p>
-                  Chọn câu trả lời gần nhất với hiện trạng thật. Đừng chọn câu nghe hay nhất, vì mục tiêu là biết nên bắt đầu ở đâu.
+                  Chọn câu gần với hiện trạng thật nhất. Đừng chọn câu nghe hay nhất — chọn đúng thì bước tiếp theo mới đúng.
                 </p>
               )}
             </aside>
