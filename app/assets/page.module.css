@@ -19,8 +19,9 @@
   background:
     radial-gradient(circle at 20% 20%, rgba(215, 168, 66, 0.18), transparent 34%),
     radial-gradient(circle at 86% 12%, rgba(93, 204, 141, 0.16), transparent 32%),
-    rgba(7, 18, 14, 0.88);
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.28);
+    linear-gradient(145deg, rgba(255, 250, 240, 0.92), rgba(239, 225, 197, 0.74));
+  color: var(--text-primary);
+  box-shadow: 0 30px 90px rgba(78, 54, 18, 0.14);
 }
 
 .heroCopy {
@@ -43,8 +44,9 @@
 
 .hero h1 {
   max-width: 780px;
-  font-size: clamp(2.7rem, 7vw, 5.8rem);
-  letter-spacing: -0.08em;
+  font-size: clamp(2.3rem, 5.3vw, 4.35rem);
+  letter-spacing: -0.06em;
+  line-height: 1.04;
 }
 
 .hero p {
@@ -71,8 +73,9 @@
   border-radius: var(--radius-lg);
   background:
     radial-gradient(circle at 50% 0%, rgba(93, 204, 141, 0.18), transparent 42%),
-    rgba(9, 24, 19, 0.80);
-  box-shadow: 0 22px 62px rgba(0, 0, 0, 0.24);
+    rgba(255, 250, 240, 0.84);
+  color: var(--text-primary);
+  box-shadow: 0 22px 62px rgba(78, 54, 18, 0.14);
 }
 
 .marketHud {
@@ -93,8 +96,8 @@
   justify-content: center;
   gap: 8px;
   border: 1px solid rgba(215, 168, 66, 0.18);
-  background: rgba(7, 18, 14, 0.76);
-  color: rgba(247, 242, 230, 0.68);
+  background: rgba(255, 250, 240, 0.78);
+  color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 850;
@@ -230,9 +233,10 @@
   border-radius: var(--radius-lg);
   background:
     radial-gradient(circle at 88% 86%, rgba(93, 204, 141, 0.18), transparent 42%),
-    rgba(9, 24, 19, 0.82);
+    linear-gradient(145deg, rgba(255, 250, 240, 0.92), rgba(239, 225, 197, 0.68));
   padding: var(--space-5);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.20);
+  color: var(--text-primary);
+  box-shadow: 0 18px 44px rgba(78, 54, 18, 0.12);
 }
 
 .boundaryGrid article::after,
@@ -259,6 +263,22 @@
 .professionCard p,
 .assetCard p {
   margin-top: var(--space-3);
+  color: var(--text-secondary);
+}
+
+
+.boundaryGrid article h3,
+.professionCard h3,
+.assetCard h3,
+.featuredCard h2 {
+  color: var(--text-primary);
+}
+
+.boundaryGrid article p,
+.professionCard p,
+.assetCard p,
+.featuredCard p,
+.featuredCard li {
   color: var(--text-secondary);
 }
 
@@ -373,7 +393,25 @@
   }
 }
 
+
 @media (max-width: 720px) {
+  .hero {
+    border-radius: 28px;
+    padding: var(--space-5);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.06;
+  }
+
+  .featuredCard,
+  .assetCard,
+  .professionCard,
+  .boundaryGrid article {
+    background: linear-gradient(145deg, rgba(255, 250, 240, 0.94), rgba(239, 225, 197, 0.74));
+  }
+
   .assetsPage {
     padding-top: var(--space-8);
   }

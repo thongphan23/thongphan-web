@@ -4,7 +4,6 @@ import { Be_Vietnam_Pro, Inter, JetBrains_Mono, Lora } from 'next/font/google'
 import '@/styles/globals.css'
 import styles from './layout.module.css'
 import ScrollAnimations from '@/components/ScrollAnimations'
-import CinematicBoot from '@/components/CinematicBoot'
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['latin', 'vietnamese'],
@@ -55,7 +54,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="vi" data-theme="premium-garden">
       <body className={`${beVietnamPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${lora.variable}`}>
-        <CinematicBoot />
         <ScrollAnimations />
         <div className={styles.scrollProgress} data-scroll-progress aria-hidden="true" />
         <div className={styles.siteAtmosphere} aria-hidden="true">

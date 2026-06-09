@@ -5,139 +5,95 @@ import { BrandGlyph } from '@/components/BrandGlyph'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Thông Phan — Knowledge Garden',
-  description: 'Thông Phan giúp người có chuyên môn biến kinh nghiệm thật thành Brain2, tài sản số và dòng tiền thứ hai bằng AI.' ,
+  title: 'Thông Phan — Cinematic Knowledge Garden',
+  description: 'Thông Phan giúp Invisible Experts biến tri thức sống thành thương hiệu cá nhân, Brain2, tài sản số và cơ hội xứng đáng bằng AI.',
 }
 
-const layers = [
-  ['KINH NGHIỆM', 'Kinh nghiệm thật', 'Ca thật, lỗi thật, trải nghiệm nghề nghiệp và câu chuyện cá nhân chưa được đóng gói.'],
-  ['Brain2', 'Bộ rễ tri thức', 'Ghi chú, liên kết, nguyên lý và ngữ cảnh riêng để AI hiểu cách anh nghĩ.'],
-  ['TÀI SẢN', 'Tài sản nhỏ', 'Workbook, prompt pack, bài chẩn đoán, mini kit và hệ thống nội dung tự phục vụ.'],
-  ['DÒNG TIỀN', 'Dòng tiền thứ hai', 'Nguồn thu mới mọc lên từ chuyên môn, không đốt cầu việc chính.'],
+const proofSignals = [
+  ['ACV', 'Authenticity · Consistency · Visibility'],
+  ['Brain2', 'Bộ rễ tri thức cá nhân'],
+  ['Invisible Experts', 'Người giỏi nhưng chưa được biết đến'],
 ]
 
-const fruits = [
-  ['AI Starter', 'Cho nhân viên văn phòng', '149k'],
-  ['Brain2 Canvas', 'Biến tri thức rời rạc thành hệ thống', '199k'],
-  ['Hook Pack', 'Cho người có chuyên môn', '99k'],
-  ['Digital Asset', 'Bản đồ tạo tài sản nhỏ đầu tiên', '99k'],
+const painPoints = [
+  ['Giỏi nhưng ít người biết', 'Cơ hội không tự đến với người có năng lực. Nó đến với người được nhìn thấy đúng cách.'],
+  ['AI làm noise dày hơn', 'Nếu không có bộ rễ tri thức riêng, AI chỉ giúp tạo thêm nội dung giống người khác.'],
+  ['Thu nhập chưa xứng năng lực', 'Nỗi đau không nằm ở thiếu chăm chỉ. Nó nằm ở việc chuyên môn chưa thành tài sản có thể phân phối.'],
 ]
 
-const signals = [
-  ['Tool mới mỗi ngày', '8%', '16%', '-8deg', '-2deg', '0s'],
-  ['Prompt không có ngữ cảnh', '68%', '19%', '-2deg', '3deg', '-1.6s'],
-  ['Nội dung giống nhau', '14%', '48%', '6deg', '9deg', '-3.2s'],
-  ['Kinh nghiệm thật bị chôn', '74%', '54%', '10deg', '12deg', '-4.8s'],
-  ['Thu nhập chính còn rủi ro', '38%', '72%', '-12deg', '-7deg', '-6.4s'],
+const acv = [
+  ['Authenticity', 'Có gốc thật', 'Kinh nghiệm, tài năng, góc nhìn và trách nhiệm cá nhân — thứ AI không thể fake bền vững.'],
+  ['Consistency', 'Có hệ thống', 'Mỗi bài viết, sản phẩm và quyết định đều đi ra từ cùng một bộ rễ tư duy.'],
+  ['Visibility', 'Có phân phối', 'Không chỉ giỏi trong im lặng, mà xuất hiện đủ rõ để thị trường hiểu giá trị của anh.'],
 ]
 
-function GardenKeyVisual() {
-  return (
-    <div className={styles.treeObjectShell} data-hero-card>
-      <span className={styles.treeAura} aria-hidden="true" />
-      <img
-        className={styles.treeObjectImage}
-        src="/images/hero-lush-knowledge-tree-object.png"
-        alt="Cây cổ thụ tri thức xanh mướt bay lơ lửng, có rễ, tán lá xum xuê và các ghi chú tri thức tích hợp tinh tế"
-        width="1070"
-        height="903"
-        fetchPriority="high"
-      />
-      <span className={styles.treeShadow} aria-hidden="true" />
-      <span className={styles.treeParticleOne} data-hero-fragment aria-hidden="true"><BrandGlyph name="seed" /></span>
-      <span className={styles.treeParticleTwo} data-hero-fragment aria-hidden="true"><BrandGlyph name="leafNote" /></span>
-      <span className={styles.treeParticleThree} data-hero-fragment aria-hidden="true"><BrandGlyph name="fruit" /></span>
-    </div>
-  )
-}
+const gardenLayers = [
+  ['Đất', 'Trải nghiệm thật', 'Câu chuyện, case, lỗi, bài học, câu hỏi sống.'],
+  ['Rễ', 'Brain2', 'Ghi chú liên kết, framework, nguyên lý, context riêng.'],
+  ['Tán', 'Content', 'Bài viết, video, lớp học, luận điểm có chiều sâu.'],
+  ['Quả', 'Tài sản số', 'Diagnostic, workbook, mini kit, productized knowledge.'],
+]
+
+const assets = [
+  ['Diagnostic', 'Chẩn đoán năng lực AI cá nhân', 'Bắt đầu bằng việc biết mình đang thiếu lớp nào.'],
+  ['Library', 'Thư viện sống', 'Các bài viết/framework được tổ chức như một bản đồ tri thức.'],
+  ['Assets', 'Kho tài sản nhỏ', 'Những sản phẩm nhỏ để thử năng lực hệ thống trước khi đi sâu.'],
+]
 
 export default function HomePage() {
   return (
-    <div className={styles.conceptPage}>
+    <div className={styles.page}>
       <section className={styles.hero} data-cinematic-hero>
-        <div className={styles.depthLayers} aria-hidden="true">
-          <span data-depth-layer="back" />
-          <span data-depth-layer="mid" />
-          <span data-depth-layer="front" />
-        </div>
-        <div className={styles.noiseField} aria-hidden="true">
-          {signals.map(([signal, x, y, rotFrom, rotTo, delay], index) => (
-            <span
-              key={signal}
-              style={{ '--i': index, '--x': x, '--y': y, '--rot-from': rotFrom, '--rot-to': rotTo, '--delay': delay } as CSSProperties}
-            >
-              {signal}
-            </span>
-          ))}
-        </div>
-
-        <div className={styles.topRail}>
-          <span>THONGPHAN.COM / KNOWLEDGE GARDEN</span>
-          <span>Knowledge Garden</span>
-          <span>Rõ trong hỗn độn / 2026</span>
-        </div>
-
-        <div className={styles.heroGrid}>
+        <div className={styles.heroInner}>
           <div className={styles.heroCopy} data-reveal>
-            <div className={styles.loadingPill}>
-              <span className={styles.loadingDot} />
-              <span>Đang nạp lớp trải nghiệm</span>
-              <b>58% → 100%</b>
-            </div>
-
-            <p className={styles.eyebrow}>Hướng thị giác</p>
-            <h1>
-              Mỗi trải nghiệm thật
-              <em> mọc thành tài sản.</em>
-            </h1>
+            <p className={styles.kicker}>Cinematic Knowledge Garden</p>
+            <h1>Biến tri thức sống thành tài sản số.</h1>
             <p className={styles.lead}>
-              Đây là khu vườn tri thức sống của Thông Phan: nơi kinh nghiệm thật được hệ thống hóa thành Brain2, đóng gói thành tài sản số và mở ra dòng tiền thứ hai bằng AI.
+              Anh Thông giúp những người giỏi nhưng chưa được biết đến xây thương hiệu cá nhân bằng Brain2, ACV và AI — để kinh nghiệm thật mọc thành nội dung, sản phẩm và cơ hội xứng đáng.
             </p>
-
             <div className={styles.heroActions}>
-              <Link href="/diagnostic" className="btn-primary">Quét năng lực AI</Link>
-              <Link href="/assets" className="btn-outline">Xem kho tài sản nhỏ</Link>
+              <Link href="/diagnostic" className="btn-primary">Chẩn đoán năng lực AI</Link>
+              <Link href="/library" className="btn-outline">Khám phá thư viện</Link>
+            </div>
+            <div className={styles.proofStrip} aria-label="Tín hiệu thương hiệu">
+              {proofSignals.map(([label, body]) => (
+                <span key={label}>
+                  <strong>{label}</strong>
+                  {body}
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className={styles.stageWrap} data-cinematic-mouse aria-label="Knowledge Garden cinematic object">
-            <div className={styles.stageCard} data-hero-card>
-              <div className={styles.cardChrome}>
-                <span>Mỗi lớp kể một câu chuyện</span>
-                <b>HỆ ĐANG CHẠY</b>
-              </div>
-
-              <div className={styles.gardenObject}>
-                <GardenKeyVisual />
-              </div>
-
-              <div className={styles.nodePanel} data-hero-fragment>
-                <span>Rễ Brain2</span>
-                <strong>AI cần bộ rễ tri thức thật, không cần thêm prompt rỗng.</strong>
-              </div>
-
-              <div className={styles.assetPanel} data-hero-fragment>
-                <span>Tài sản nhỏ</span>
-                <strong>Prompt pack · workbook · diagnostic · mini kit</strong>
+          <div className={styles.heroVisual} data-cinematic-mouse aria-label="Cây tri thức 3D đại diện cho Brain2 và tài sản số">
+            <div className={styles.visualPlate}>
+              <img
+                src="/images/hero-premium-mist-knowledge-garden-chatgpt.png"
+                alt="Cây tri thức 3D trên những lớp sách và ghi chú, ánh sáng cinematic, đại diện cho Brain2 và tài sản số"
+                width="1680"
+                height="960"
+                fetchPriority="high"
+              />
+              <div className={styles.visualCaption}>
+                <span>Brain2</span>
+                <strong>Kinh nghiệm thật có rễ. AI chỉ khuếch đại thứ đã có rễ.</strong>
               </div>
             </div>
-            <div className={styles.reflection} aria-hidden="true" />
+            <span className={styles.orbOne} aria-hidden="true" />
+            <span className={styles.orbTwo} aria-hidden="true" />
           </div>
         </div>
       </section>
 
-      <section className={styles.layerSection} data-cinematic-scene>
-        <div className={styles.sectionIntro}>
-          <span>Kể chuyện theo lớp</span>
-          <h2>Không kể bằng section. Kể bằng từng lớp được mở ra.</h2>
-          <p>Mỗi lớp là một trạng thái chuyển hóa: từ kinh nghiệm thô → bộ rễ Brain2 → tài sản nhỏ → dòng tiền mới.</p>
+      <section className={styles.scene}>
+        <div className={styles.sceneHeader} data-reveal>
+          <p className={styles.kicker}>Invisible Experts</p>
+          <h2>Vấn đề không phải là anh chưa giỏi. Vấn đề là thị trường chưa nhìn thấy đúng giá trị của anh.</h2>
         </div>
-
-        <div className={styles.layerGrid} data-stage-inner>
-          {layers.map(([kicker, title, body], index) => (
-            <article className={styles.layerCard} key={title} data-scrub-item style={{ '--index': index } as CSSProperties}>
-              <BrandGlyph className={styles.cardGlyph} name={index === 0 ? 'seed' : index === 1 ? 'root' : index === 2 ? 'fruit' : 'gate'} />
-              <span>{kicker}</span>
+        <div className={styles.painGrid}>
+          {painPoints.map(([title, body], index) => (
+            <article className={styles.editorialCard} key={title} data-reveal>
+              <span className={styles.cardIndex}>0{index + 1}</span>
               <h3>{title}</h3>
               <p>{body}</p>
             </article>
@@ -145,40 +101,78 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.showcase} data-cinematic-scene>
-        <div className={styles.showcaseVisual} data-stage-inner>
-          <div className={styles.verticalRoot} aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
+      <section className={`${styles.scene} ${styles.acvScene}`}>
+        <div className={styles.split}>
+          <div className={styles.splitCopy} data-reveal>
+            <p className={styles.kicker}>ACV Framework</p>
+            <h2>Thương hiệu cá nhân bền vững cần ba lớp: thật, nhất quán, và được nhìn thấy.</h2>
+            <p>
+              ACV không phải công thức đăng bài. Nó là hệ điều hành giúp chuyên môn của anh có gốc, có nhịp và có đường ra thị trường.
+            </p>
           </div>
-          <div className={styles.showcaseCopy}>
-            <span>Kho tài sản nhỏ</span>
-            <h2>Người xem không “mua sản phẩm”. Họ hái một tài sản nhỏ để bắt đầu.</h2>
-            <p>Kho tài sản nên được trình bày như những quả chín trên hệ tri thức: nhỏ, rõ đầu ra, tự làm được ngay, không cạnh tranh với Conan Maker.</p>
-          </div>
-          <div className={styles.fruitGrid}>
-            {fruits.map(([title, desc, price], index) => (
-              <article className={styles.fruitCard} key={title}>
-                <BrandGlyph className={styles.fruitGlyph} name={index === 0 ? 'leafNote' : index === 1 ? 'brainTree' : index === 2 ? 'fruit' : 'growthRing'} />
-                <span>{price}</span>
+          <div className={styles.acvStack}>
+            {acv.map(([label, title, body], index) => (
+              <article className={styles.acvCard} key={label} data-reveal>
+                <BrandGlyph name={index === 0 ? 'seed' : index === 1 ? 'growthRing' : 'gate'} className={styles.glyph} />
+                <span>{label}</span>
                 <h3>{title}</h3>
-                <p>{desc}</p>
+                <p>{body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.gateSection}>
-        <div className={styles.gateCard}>
-          <span>Cổng Conan</span>
-          <h2>Nếu tài sản nhỏ giúp bắt đầu, Conan là nơi hệ thống này được thực hành mỗi tuần.</h2>
-          <p>Homepage mới nên kết thúc bằng một cánh cổng, không phải một nút bán hàng. Người đọc đi qua kinh nghiệm, Brain2, tài sản nhỏ rồi mới thấy Conan là bước sâu hơn.</p>
+      <section className={styles.gardenScene}>
+        <div className={styles.sceneHeader} data-reveal>
+          <p className={styles.kicker}>Brain2 as Garden</p>
+          <h2>Brain2 là bộ rễ. Content và sản phẩm chỉ là phần mọc lên trên mặt đất.</h2>
+          <p>Nếu chỉ nhìn vào bài viết, người ta thấy output. Nếu nhìn vào Brain2, họ thấy moat.</p>
+        </div>
+        <div className={styles.layerMap}>
+          {gardenLayers.map(([label, title, body], index) => (
+            <article className={styles.layerCard} key={label} data-reveal>
+              <span>{label}</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+              <i aria-hidden="true" style={{ '--i': index } as CSSProperties} />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.scene}>
+        <div className={`${styles.split} ${styles.reverse}`}>
+          <div className={styles.assetGarden} data-reveal>
+            {assets.map(([title, label, body], index) => (
+              <Link href={title === 'Diagnostic' ? '/diagnostic' : title === 'Library' ? '/library' : '/assets'} className={styles.assetFruit} key={title}>
+                <BrandGlyph name={index === 0 ? 'leafNote' : index === 1 ? 'brainTree' : 'fruit'} className={styles.glyph} />
+                <span>{title}</span>
+                <h3>{label}</h3>
+                <p>{body}</p>
+              </Link>
+            ))}
+          </div>
+          <div className={styles.splitCopy} data-reveal>
+            <p className={styles.kicker}>Digital Assets</p>
+            <h2>Tài sản số là quả chín của một hệ tri thức được chăm sóc lâu dài.</h2>
+            <p>
+              Website không nên bán ồn ào. Nó nên cho người xem hái một tài sản nhỏ, trải nghiệm chất lượng tư duy, rồi tự muốn đi sâu hơn.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.gate}>
+        <div className={styles.gateCard} data-reveal>
+          <p className={styles.kicker}>Garden Gate</p>
+          <h2>Nếu anh có chuyên môn thật, bước tiếp theo là biến nó thành hệ thống có thể tăng trưởng.</h2>
+          <p>
+            Bắt đầu bằng chẩn đoán năng lực AI cá nhân, đọc thư viện sống, hoặc đi sâu hơn trong hệ sinh thái Conan.
+          </p>
           <div className={styles.heroActions}>
-            <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-primary">Bước vào Conan</a>
-            <Link href="/diagnostic" className="btn-outline">Quét năng lực AI</Link>
+            <Link href="/diagnostic" className="btn-primary">Chẩn đoán ngay</Link>
+            <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-outline">Bước vào Conan</a>
           </div>
         </div>
       </section>

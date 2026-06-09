@@ -8,27 +8,29 @@ async function readProjectFile(path) {
   return readFile(new URL(path, root), 'utf8')
 }
 
-test('homepage exposes the Knowledge Garden thesis and real conversion path', async () => {
+test('homepage exposes the Cinematic Knowledge Garden thesis and real conversion path', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   for (const required of [
-    'Knowledge Garden',
-    'Mỗi trải nghiệm thật',
-    'mọc thành tài sản',
-    'khu vườn tri thức sống',
+    'Cinematic Knowledge Garden',
+    'Biến tri thức sống thành tài sản số',
+    'Invisible Experts',
+    'người giỏi nhưng chưa được biết đến',
     'Brain2',
-    'tài sản số',
-    'dòng tiền thứ hai',
-    'Kho tài sản nhỏ',
+    'ACV',
+    'Authenticity',
+    'Consistency',
+    'Visibility',
+    'Chẩn đoán năng lực AI',
+    'Khám phá thư viện',
     'Bước vào Conan',
     'data-cinematic-mouse',
-    'data-hero-fragment',
   ]) {
     assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'))
   }
 })
 
-test('homepage visible copy avoids prototype-only wording and unexplained English-heavy labels', async () => {
+test('homepage visible copy avoids prototype-only wording and cheap AI landing-page labels', async () => {
   const page = await readProjectFile('app/page.tsx')
 
   const bannedVisiblePhrases = [
@@ -37,17 +39,14 @@ test('homepage visible copy avoids prototype-only wording and unexplained Englis
     'trang chủ hiện tại',
     'Rendering experience layer',
     'Asset fruit picker',
-    'Experience',
-    'Income',
-    'AI-native expertise',
-    'Proof-first AI system',
-    'Expertise Observatory',
     'fear.exe',
     'vault.memory',
     'semantic.context',
-    'personal OS',
     'proof beats claim',
     'Tool noise',
+    'AI-native expertise',
+    'Proof-first AI system',
+    'Expertise Observatory',
   ]
 
   for (const phrase of bannedVisiblePhrases) {
@@ -55,31 +54,33 @@ test('homepage visible copy avoids prototype-only wording and unexplained Englis
   }
 })
 
-test('homepage locks the cinematic Knowledge Garden key visual system', async () => {
+test('homepage locks the premium visual system and readable typography gates', async () => {
   const page = await readProjectFile('app/page.tsx')
   const css = await readProjectFile('app/page.module.css')
+  const globals = await readProjectFile('styles/globals.css')
 
   for (const required of [
-    'hero-lush-knowledge-tree-object.png',
-    'Cây cổ thụ tri thức xanh mướt bay lơ lửng',
+    'hero-premium-mist-knowledge-garden-chatgpt.png',
+    'Cây tri thức 3D',
     'BrandGlyph',
-    '--garden-ink',
-    '--garden-green',
-    'stageCard',
-    'gardenObject',
-    'treeObjectShell',
-    'treeObjectImage',
-    'treeParticleOne',
-    'treeBreath',
-    'reflection',
+  ]) {
+    assert.match(page, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+  }
+
+  for (const required of [
+    'visualPlate',
+    'visualCaption',
+    'editorialCard',
+    'acvCard',
     'layerCard',
-    'fruitCard',
+    'assetFruit',
     'gateCard',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
-    const source = required.startsWith('hero-') || required.startsWith('knowledge-') || required.startsWith('Cây') || required.startsWith('Khu') || required === 'BrandGlyph' ? page : css
-    assert.match(source, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
+    assert.match(css, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
   }
 
-  assert.doesNotMatch(page, /seedCore|rootA|branchA|fruitA/, 'homepage should use the rendered premium image, not CSS-only tree shapes')
+  assert.match(globals, /--text-hero:\s*clamp\(3rem, 5\.4vw, 4\.05rem\)/)
+  assert.doesNotMatch(css, /font-size:\s*(9|10|11|12)rem/, 'homepage must not use unreadable oversized hero typography')
+  assert.doesNotMatch(page, /seedCore|rootA|branchA|fruitA/, 'homepage should use rendered premium imagery, not CSS-only tree shapes')
 })
