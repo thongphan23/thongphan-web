@@ -51,7 +51,7 @@ export default function CinematicBoot() {
           <span className={styles.orbit} />
           <strong>TP</strong>
         </div>
-        <h1>Mở hệ thống AI cá nhân</h1>
+        <div className={styles.bootTitle}>Mở hệ thống AI cá nhân</div>
         <p>Brain2 → tài sản số → dòng tiền thứ hai</p>
 
         <div className={styles.sequence}>

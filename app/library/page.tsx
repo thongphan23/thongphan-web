@@ -11,6 +11,7 @@ import {
   type LibraryNoteMeta,
 } from '@/lib/library'
 import LibraryFiltersClient from './LibraryFiltersClient'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -68,6 +69,7 @@ export default function LibraryPage() {
                 <span>{SECTION_ORDER.length} section</span>
                 <span>Typed links, không chỉ tag</span>
               </div>
+              <GardenSignature variant="tree" eyebrow="Public Brain2" title="Thư viện là tán cây công khai mọc từ bộ rễ Brain2 riêng." compact />
             </div>
 
             <div className={styles.graphStage} aria-label="Knowledge graph preview">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 const proofArcs = [
@@ -57,6 +58,7 @@ export default function AboutPage() {
               <p>
                 Tui là Thông Phan. Việc của tui là giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính cho đến khi dòng tiền mới đủ vững.
               </p>
+              <GardenSignature variant="tree" eyebrow="Proof có rễ" title="10 năm làm thật là bộ rễ, AI chỉ là lớp tăng trưởng phía trên." compact />
             </div>
 
             <div className={styles.proofStage} aria-label="Proof stage của Thông Phan">

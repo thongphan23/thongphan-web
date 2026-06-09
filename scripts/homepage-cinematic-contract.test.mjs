@@ -60,21 +60,24 @@ test('homepage locks the cinematic Knowledge Garden key visual system', async ()
   const css = await readProjectFile('app/page.module.css')
 
   for (const required of [
-    'knowledge-garden-hero-wide-2400.webp',
-    'knowledge-garden-hero-wide-3200.png',
-    'Cây tri thức dạng hệ sinh thái',
+    'hero-lush-knowledge-tree-object.png',
+    'Cây cổ thụ tri thức xanh mướt bay lơ lửng',
+    'BrandGlyph',
     '--garden-ink',
     '--garden-green',
     'stageCard',
     'gardenObject',
-    'gardenImage',
+    'treeObjectShell',
+    'treeObjectImage',
+    'treeParticleOne',
+    'treeBreath',
     'reflection',
     'layerCard',
     'fruitCard',
     'gateCard',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
-    const source = required.startsWith('knowledge-') || required.startsWith('Cây') ? page : css
+    const source = required.startsWith('hero-') || required.startsWith('knowledge-') || required.startsWith('Cây') || required.startsWith('Khu') || required === 'BrandGlyph' ? page : css
     assert.match(source, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
   }
 

@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi" data-theme="light">
+    <html lang="vi" data-theme="premium-garden">
       <body className={`${beVietnamPro.variable} ${inter.variable} ${jetBrainsMono.variable} ${lora.variable}`}>
         <CinematicBoot />
         <ScrollAnimations />
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <nav className={styles.navbar}>
           <div className={styles.navInner}>
-            <Link href="/" className={styles.logo}><span className={styles.logoMark}>TP</span> THÔNG PHAN</Link>
+            <Link href="/" className={styles.logo}><span className={styles.logoMark} aria-hidden="true" /> THÔNG PHAN</Link>
             <ul className={styles.navLinks}>
               <li><Link href="/diagnostic">Chẩn đoán AI</Link></li>
               <li><Link href="/blog">Bài viết</Link></li>
@@ -84,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className={styles.footer}>
           <div className={styles.footerInner}>
             <div className={styles.footerBrand}>
-              <Link href="/" className={styles.footerLogo}><span className={styles.logoMark}>TP</span> THÔNG PHAN</Link>
+              <Link href="/" className={styles.footerLogo}><span className={styles.logoMark} aria-hidden="true" /> THÔNG PHAN</Link>
               <p className={styles.footerTagline}>
                 Giúp người có chuyên môn biến kiến thức thành tài sản và tạo dòng tiền thứ 2 bằng AI, trong khi vẫn giữ an toàn công việc chính.
               </p>

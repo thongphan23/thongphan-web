@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { BrandGlyph } from '@/components/BrandGlyph'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 interface Message {
@@ -140,7 +142,7 @@ export default function ChatPage() {
     <main className={styles.chatPage}>
       <div className={styles.chatHeader} data-reveal>
         <div className={styles.headerCopy}>
-          <div className={styles.avatar}>TP</div>
+          <div className={styles.avatar}><BrandGlyph name="brainTree" /></div>
           <div>
             <h1 className={styles.chatTitle}>Hỏi Brain2 của Thông</h1>
             <p className={styles.chatSub}>Bản thử sống: chuyên môn được hệ thống hóa thành người cùng nghĩ bằng AI</p>
@@ -154,6 +156,7 @@ export default function ChatPage() {
             </div>
           ))}
         </div>
+        <GardenSignature variant="tree" eyebrow="Brain2 companion" title="Chat là một nhánh hội thoại mọc từ thư viện sống, không phải bot hỏi đáp chung chung." compact />
       </div>
 
       <div className={styles.messages}>

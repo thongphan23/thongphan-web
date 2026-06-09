@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { BrandGlyph } from '@/components/BrandGlyph'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -32,17 +33,21 @@ const signals = [
 
 function GardenKeyVisual() {
   return (
-    <picture className={styles.gardenPicture}>
-      <source srcSet="/images/homepage/knowledge-garden-hero-wide-2400.webp" type="image/webp" />
+    <div className={styles.treeObjectShell} data-hero-card>
+      <span className={styles.treeAura} aria-hidden="true" />
       <img
-        className={styles.gardenImage}
-        src="/images/homepage/knowledge-garden-hero-wide-3200.png"
-        alt="Cây tri thức dạng hệ sinh thái: thân cây mạch vàng, rễ mạng nơ-ron xanh và các nhánh tài sản số trong Knowledge Garden của Thông Phan"
-        width="3200"
-        height="1800"
+        className={styles.treeObjectImage}
+        src="/images/hero-lush-knowledge-tree-object.png"
+        alt="Cây cổ thụ tri thức xanh mướt bay lơ lửng, có rễ, tán lá xum xuê và các ghi chú tri thức tích hợp tinh tế"
+        width="1070"
+        height="903"
         fetchPriority="high"
       />
-    </picture>
+      <span className={styles.treeShadow} aria-hidden="true" />
+      <span className={styles.treeParticleOne} data-hero-fragment aria-hidden="true"><BrandGlyph name="seed" /></span>
+      <span className={styles.treeParticleTwo} data-hero-fragment aria-hidden="true"><BrandGlyph name="leafNote" /></span>
+      <span className={styles.treeParticleThree} data-hero-fragment aria-hidden="true"><BrandGlyph name="fruit" /></span>
+    </div>
   )
 }
 
@@ -131,6 +136,7 @@ export default function HomePage() {
         <div className={styles.layerGrid} data-stage-inner>
           {layers.map(([kicker, title, body], index) => (
             <article className={styles.layerCard} key={title} data-scrub-item style={{ '--index': index } as CSSProperties}>
+              <BrandGlyph className={styles.cardGlyph} name={index === 0 ? 'seed' : index === 1 ? 'root' : index === 2 ? 'fruit' : 'gate'} />
               <span>{kicker}</span>
               <h3>{title}</h3>
               <p>{body}</p>
@@ -153,8 +159,9 @@ export default function HomePage() {
             <p>Kho tài sản nên được trình bày như những quả chín trên hệ tri thức: nhỏ, rõ đầu ra, tự làm được ngay, không cạnh tranh với Conan Maker.</p>
           </div>
           <div className={styles.fruitGrid}>
-            {fruits.map(([title, desc, price]) => (
+            {fruits.map(([title, desc, price], index) => (
               <article className={styles.fruitCard} key={title}>
+                <BrandGlyph className={styles.fruitGlyph} name={index === 0 ? 'leafNote' : index === 1 ? 'brainTree' : index === 2 ? 'fruit' : 'growthRing'} />
                 <span>{price}</span>
                 <h3>{title}</h3>
                 <p>{desc}</p>

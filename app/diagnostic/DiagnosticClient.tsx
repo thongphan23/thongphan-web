@@ -3,6 +3,7 @@
 import type { CSSProperties } from 'react'
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 type DiagnosticCta = {
@@ -176,6 +177,7 @@ export default function DiagnosticClient() {
               <p>
                 Trả lời 5 câu. Tui sẽ cho bạn biết nên bắt đầu từ việc vặt, nội dung, Brain2, tài sản số hay Conan Maker.
               </p>
+              <GardenSignature variant="gate" eyebrow="Diagnostic gate" title="Bài quét là cánh cổng xác định nên tưới phần rễ nào trước." compact />
             </div>
 
             <div className={styles.diagnosticStage} aria-hidden="true" data-reveal="right">

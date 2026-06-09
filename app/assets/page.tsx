@@ -7,6 +7,7 @@ import {
   getAllMicroAssets,
   getFeaturedMicroAsset,
 } from '@/lib/micro-assets'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default function AssetsPage() {
                 Làm diagnostic trước
               </Link>
             </div>
+            <GardenSignature variant="fruit" eyebrow="Asset như quả chín" title="Mỗi sản phẩm là một quả nhỏ hái được từ hệ tri thức, không phải template bán lẻ." compact />
           </div>
 
           <aside className={styles.featuredCard} aria-label="Sản phẩm nổi bật">

@@ -1,6 +1,6 @@
 .conceptPage {
-  --garden-ink: #112131;
-  --garden-muted: #607080;
+  --garden-ink: #f6f1e6;
+  --garden-muted: rgba(237, 230, 211, 0.72);
   --garden-sky: #bfe9ff;
   --garden-blue: #1167ff;
   --garden-green: #24c181;
@@ -11,9 +11,9 @@
   overflow: hidden;
   color: var(--garden-ink);
   background:
-    radial-gradient(circle at 50% 0%, rgba(191, 233, 255, 0.95), transparent 34rem),
-    radial-gradient(circle at 14% 18%, rgba(255, 198, 41, 0.28), transparent 24rem),
-    linear-gradient(180deg, #f9fcff 0%, #eff8f2 48%, #071522 100%);
+    radial-gradient(circle at 70% 10%, rgba(255, 199, 84, 0.16), transparent 26rem),
+    radial-gradient(circle at 18% 22%, rgba(38, 91, 78, 0.38), transparent 28rem),
+    linear-gradient(180deg, #071017 0%, #0b161b 42%, #071522 100%);
 }
 
 .hero {
@@ -35,16 +35,17 @@
 
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(17, 103, 255, 0.075) 1px, transparent 1px),
-    linear-gradient(rgba(17, 103, 255, 0.055) 1px, transparent 1px);
-  background-size: 46px 46px;
-  mask-image: radial-gradient(circle at 50% 32%, black 0 38%, transparent 76%);
+    linear-gradient(90deg, rgba(246, 226, 166, 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(246, 226, 166, 0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 64%);
 }
 
 .hero::after {
   background:
-    radial-gradient(ellipse at 53% 76%, rgba(36, 193, 129, 0.24), transparent 30rem),
-    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.64) 52%, rgba(5, 18, 29, 0.12) 100%);
+    radial-gradient(ellipse at 70% 54%, rgba(233, 173, 79, 0.18), transparent 28rem),
+    linear-gradient(90deg, rgba(7, 16, 23, 0.92) 0%, rgba(7, 16, 23, 0.62) 42%, transparent 72%),
+    linear-gradient(180deg, rgba(7,16,23,0.18) 0%, rgba(7,16,23,0.78) 100%);
 }
 
 .depthLayers {
@@ -92,6 +93,7 @@
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  display: none;
 }
 
 .noiseField span {
@@ -122,9 +124,9 @@
   max-width: 1240px;
   margin: 0 auto clamp(36px, 5vw, 64px);
   padding: 12px 0;
-  border-top: 1px solid rgba(17, 33, 49, 0.12);
-  border-bottom: 1px solid rgba(17, 33, 49, 0.12);
-  color: rgba(17, 33, 49, 0.62);
+  border-top: 1px solid rgba(246, 226, 166, 0.14);
+  border-bottom: 1px solid rgba(246, 226, 166, 0.14);
+  color: rgba(246, 226, 166, 0.54);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 900;
@@ -133,7 +135,7 @@
 }
 
 .topRail span:nth-child(2) {
-  color: var(--garden-ink);
+  color: rgba(246, 241, 230, 0.72);
 }
 
 .topRail span:last-child {
@@ -168,16 +170,16 @@
   gap: 10px;
   width: fit-content;
   padding: 9px 13px;
-  border: 1px solid rgba(17, 33, 49, 0.12);
+  border: 1px solid rgba(246, 226, 166, 0.2);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.74);
-  color: rgba(17, 33, 49, 0.74);
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(246, 241, 230, 0.7);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 20px 60px rgba(17, 33, 49, 0.06);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(18px);
 }
 
@@ -190,7 +192,7 @@
 }
 
 .loadingPill b {
-  color: var(--garden-blue);
+  color: #f6ca65;
 }
 
 .heroCopy h1 {
@@ -209,8 +211,8 @@
   font-weight: 600;
   font-style: italic;
   letter-spacing: -0.08em;
-  color: #31592f;
-  text-shadow: 0 18px 70px rgba(36, 193, 129, 0.24);
+  color: #d9b65f;
+  text-shadow: 0 18px 70px rgba(216, 174, 79, 0.3);
 }
 
 .lead {
@@ -236,16 +238,17 @@
 .stageCard {
   position: relative;
   height: clamp(520px, 66vw, 720px);
-  overflow: hidden;
-  border: 1px solid rgba(226, 190, 99, 0.34);
-  border-radius: 38px;
+  overflow: visible;
+  border: 1px solid rgba(226, 190, 99, 0.16);
+  border-radius: 48px;
   background:
-    radial-gradient(circle at var(--cursor-x, 70%) var(--cursor-y, 40%), rgba(246, 203, 101, 0.20), transparent 16rem),
-    linear-gradient(135deg, rgba(3, 10, 16, 0.96), rgba(7, 24, 36, 0.88) 48%, rgba(2, 7, 12, 0.96));
+    radial-gradient(circle at var(--cursor-x, 70%) var(--cursor-y, 40%), rgba(141, 207, 106, 0.18), transparent 16rem),
+    radial-gradient(circle at 68% 42%, rgba(229, 193, 106, 0.12), transparent 20rem),
+    linear-gradient(135deg, rgba(3, 8, 6, 0.72), rgba(10, 24, 18, 0.5) 54%, rgba(3, 8, 6, 0.78));
   box-shadow:
-    0 56px 130px rgba(2, 7, 12, 0.42),
-    inset 0 1px 0 rgba(255, 231, 168, 0.22),
-    inset 0 -80px 120px rgba(0, 0, 0, 0.34);
+    0 56px 150px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 231, 168, 0.16),
+    inset 0 -80px 120px rgba(0, 0, 0, 0.26);
   transform: rotateX(calc(var(--pointer-y, 0) * -3deg)) rotateY(calc(var(--pointer-x, 0) * 4deg));
   transform-style: preserve-3d;
   transition: transform 160ms ease-out;
@@ -256,10 +259,10 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-  background-size: 38px 38px;
-  mask-image: linear-gradient(to bottom, black, transparent 72%);
+    radial-gradient(circle at 68% 42%, rgba(255, 205, 97, 0.12), transparent 18rem),
+    linear-gradient(90deg, rgba(2, 8, 13, 0.34), transparent 46%, rgba(2, 8, 13, 0.18)),
+    linear-gradient(180deg, rgba(2, 8, 13, 0.24), transparent 38%, rgba(2, 8, 13, 0.42));
+  z-index: 5;
 }
 
 .stageCard::after {
@@ -299,23 +302,106 @@
   inset: 0;
   z-index: 3;
   display: grid;
-  place-items: stretch;
-  transform: translateZ(70px);
+  place-items: center;
+  transform: translateZ(92px);
+  pointer-events: none;
 }
 
-.gardenPicture {
-  display: block;
-  width: 100%;
-  height: 100%;
+.treeObjectShell {
+  position: relative;
+  width: min(650px, 96%);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  transform: translate3d(calc(var(--pointer-x, 0) * 10px), calc(var(--pointer-y, 0) * 8px), 0) rotateY(calc(var(--pointer-x, 0) * 6deg));
+  transform-style: preserve-3d;
+  animation: treeBreath 7s ease-in-out infinite;
 }
 
-.gardenImage {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 62% 50%;
-  filter: saturate(1.06) contrast(1.04) drop-shadow(0 34px 70px rgba(0, 0, 0, 0.35));
+.treeAura {
+  position: absolute;
+  inset: 11% 6% 2%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 55% 34%, rgba(141, 207, 106, 0.30), transparent 20rem),
+    radial-gradient(circle at 42% 62%, rgba(229, 193, 106, 0.18), transparent 18rem);
+  filter: blur(26px);
+  transform: translateZ(-60px);
+}
+
+.treeObjectImage {
+  position: relative;
+  z-index: 2;
+  width: 122%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  filter: saturate(1.18) contrast(1.08) brightness(0.98) drop-shadow(0 46px 62px rgba(0, 0, 0, 0.34));
+  transform: translate3d(5%, 0, 60px);
+  mix-blend-mode: normal;
+}
+
+.treeShadow {
+  position: absolute;
+  left: 20%;
+  right: 16%;
+  bottom: 2%;
+  height: 18%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.58), rgba(64, 107, 63, 0.22) 44%, transparent 72%);
+  filter: blur(18px);
+  transform: translateZ(-90px) rotateX(68deg);
+}
+
+.treeParticleOne,
+.treeParticleTwo,
+.treeParticleThree {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(229, 193, 106, 0.35);
+  border-radius: 50%;
+  color: #f5dfa3;
+  background: rgba(3, 8, 6, 0.46);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+}
+
+.treeParticleOne svg,
+.treeParticleTwo svg,
+.treeParticleThree svg {
+  width: 30px;
+  height: 30px;
+}
+
+.treeParticleOne {
+  left: 5%;
+  top: 56%;
+  transform: translateZ(120px) rotate(-7deg);
+}
+
+.treeParticleTwo {
+  right: 8%;
+  top: 22%;
+  color: #c9f4b0;
+  transform: translateZ(140px) rotate(9deg);
+}
+
+.treeParticleThree {
+  right: 16%;
+  bottom: 13%;
+  transform: translateZ(160px) rotate(-3deg);
+}
+
+@keyframes treeBreath {
+  0%, 100% { transform: translate3d(calc(var(--pointer-x, 0) * 10px), calc(var(--pointer-y, 0) * 8px), 0) rotateY(calc(var(--pointer-x, 0) * 6deg)) translateY(0); }
+  50% { transform: translate3d(calc(var(--pointer-x, 0) * 10px), calc(var(--pointer-y, 0) * 8px), 0) rotateY(calc(var(--pointer-x, 0) * 6deg)) translateY(-10px); }
 }
 
 .svgMist {
@@ -408,6 +494,7 @@
 .assetPanel {
   position: absolute;
   z-index: 8;
+  display: none;
   max-width: 245px;
   padding: 14px 15px;
   border: 1px solid rgba(226, 190, 99, 0.24);
@@ -492,7 +579,7 @@
 .gateCard p {
   max-width: 760px;
   margin: 18px auto 0;
-  color: rgba(17, 33, 49, 0.66);
+  color: rgba(247, 242, 230, 0.72);
   font-size: 1.05rem;
   line-height: 1.78;
 }
@@ -510,12 +597,12 @@
   min-height: 300px;
   overflow: hidden;
   padding: 24px;
-  border: 1px solid rgba(17, 33, 49, 0.1);
+  border: 1px solid rgba(246, 241, 230, 0.13);
   border-radius: 28px;
   background:
-    radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.92), transparent 12rem),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.44));
-  box-shadow: 0 30px 90px rgba(17, 33, 49, 0.09);
+    radial-gradient(circle at 30% 10%, rgba(229, 193, 106, 0.16), transparent 12rem),
+    linear-gradient(180deg, rgba(255, 253, 238, 0.09), rgba(93, 204, 141, 0.045));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255,255,255,0.05);
   backdrop-filter: blur(18px);
 }
 
@@ -527,13 +614,30 @@
   right: -52px;
   bottom: -52px;
   border-radius: 999px;
-  background: conic-gradient(from 120deg, rgba(36,193,129,0.28), rgba(17,103,255,0.24), rgba(255,198,41,0.32), rgba(36,193,129,0.28));
+  background: conic-gradient(from 120deg, rgba(93,204,141,0.28), rgba(229,193,106,0.24), rgba(140,207,106,0.32), rgba(93,204,141,0.28));
   filter: blur(8px);
+}
+
+.cardGlyph,
+.fruitGlyph {
+  position: relative;
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  padding: 8px;
+  color: #f5dfa3;
+  border: 1px solid rgba(229, 193, 106, 0.34);
+  border-radius: 16px;
+  background: rgba(3, 8, 6, 0.26);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .layerCard span,
 .fruitCard span {
-  color: var(--garden-blue);
+  position: relative;
+  z-index: 1;
+  color: var(--accent-gold);
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 900;
@@ -552,8 +656,9 @@
 .layerCard p,
 .fruitCard p {
   position: relative;
+  z-index: 1;
   margin-top: 14px;
-  color: rgba(17, 33, 49, 0.66);
+  color: rgba(247, 242, 230, 0.68);
   line-height: 1.68;
 }
 

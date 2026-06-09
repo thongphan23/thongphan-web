@@ -134,7 +134,7 @@
   animation-duration: 2.1s;
 }
 
-.portal h1 {
+.bootTitle {
   max-width: 680px;
   color: #ffffff;
   font-size: clamp(2.45rem, 7vw, 5rem);

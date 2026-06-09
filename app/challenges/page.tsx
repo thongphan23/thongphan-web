@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import styles from './page.module.css'
+import { GardenSignature } from '@/components/GardenSignature'
 
 interface Challenge {
   id: string
@@ -55,6 +56,7 @@ export default function ChallengesPage() {
               <p className={styles.subtitle}>
                 Không phải challenge email cho vui. Đây là activation product để kiến thức của bạn đủ sạch, đủ rõ và đủ dùng với AI.
               </p>
+              <GardenSignature variant="seed" eyebrow="21 ngày gieo rễ" title="Challenge là nghi thức biến kinh nghiệm rời rạc thành bộ rễ dùng được với AI." compact />
             </div>
 
             <div className={styles.challengeStage} aria-label="21 ngày Brain2 activation">

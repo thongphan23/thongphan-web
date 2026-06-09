@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react'
 import { getAllPosts } from '@/lib/blog'
 import BlogFiltersClient from './BlogFiltersClient'
 import Link from 'next/link'
+import { GardenSignature } from '@/components/GardenSignature'
 import styles from './page.module.css'
 
 const CATEGORIES = [
@@ -88,6 +89,7 @@ export default function BlogPage() {
                 Một publication hub cho người có chuyên môn muốn đi từ hoang mang vì AI tới nhẹ nhõm, sáng tỏ, rồi kiểm soát bằng Brain2 và hệ thống thật.
               </p>
               <div className={styles.postCount}>{posts.length} bài viết · đọc theo trạng thái</div>
+              <GardenSignature variant="seed" eyebrow="Reading path" title="Mỗi bài là một hạt giống giúp người đọc chuyển trạng thái, không phải bài lẻ." compact />
             </div>
 
             <div className={styles.readingCompass} aria-label="Reading compass">
