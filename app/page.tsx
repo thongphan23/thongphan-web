@@ -44,43 +44,42 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       <section className={styles.hero} data-cinematic-hero>
-        <div className={styles.heroInner}>
+        <div className={styles.heroBackdrop} aria-hidden="true">
+          <img
+            src="/images/homepage/thong-stage-anchor.jpg"
+            alt=""
+            width="1365"
+            height="2048"
+            fetchPriority="high"
+          />
+        </div>
+
+        <div className={styles.heroFrame}>
           <div className={styles.heroCopy} data-reveal>
-            <p className={styles.kicker}>Cho người giỏi nhưng chưa được nhìn thấy đúng</p>
-            <h1>Biến chuyên môn của bạn thành tài sản người khác muốn dùng.</h1>
+            <p className={styles.kicker}>Không dạy thêm vài công cụ AI</p>
+            <h1>Người giỏi không cần ồn hơn. Họ cần được nhìn thấy đúng.</h1>
             <p className={styles.lead}>
-              Nếu bạn có năng lực thật nhưng vẫn bị thị trường bỏ qua, vấn đề không nằm ở việc bạn chưa giỏi. Vấn đề là chuyên môn của bạn chưa được biến thành nội dung, bằng chứng và tài sản đủ rõ để người khác tin.
+              Tui xây nơi này cho anh em có chuyên môn thật nhưng vẫn bị thị trường bỏ qua, để biến kinh nghiệm trong đầu thành nội dung, bằng chứng và tài sản người khác muốn dùng.
             </p>
             <div className={styles.heroActions}>
-              <Link href="/diagnostic" className="btn-primary">Tự chẩn đoán trước</Link>
-              <Link href="/library" className="btn-outline">Đọc thư viện</Link>
-            </div>
-            <div className={styles.proofStrip} aria-label="Tín hiệu thương hiệu">
-              {proofSignals.map(([label, body]) => (
-                <span key={label}>
-                  <strong>{label}</strong>
-                  {body}
-                </span>
-              ))}
+              <Link href="/diagnostic" className="btn-primary">Biết mình đang kẹt ở đâu</Link>
+              <Link href="/library" className="btn-outline">Đọc thứ đang cần</Link>
             </div>
           </div>
 
-          <div className={styles.heroVisual} data-cinematic-mouse aria-label="Hệ tri thức riêng giúp chuyên môn mọc thành nội dung và tài sản số">
-            <div className={styles.visualPlate}>
-              <img
-                src="/images/hero-premium-mist-knowledge-garden-chatgpt.png"
-                alt="Hệ tri thức được xây từ sách, ghi chú và kinh nghiệm thật"
-                width="1680"
-                height="960"
-                fetchPriority="high"
-              />
-              <div className={styles.visualCaption}>
-                <span>Brain2</span>
-                <strong>AI chỉ khuếch đại thứ đã có gốc. Nếu gốc rỗng, đầu ra cũng rỗng.</strong>
-              </div>
-            </div>
-            <span className={styles.orbOne} aria-hidden="true" />
-            <span className={styles.orbTwo} aria-hidden="true" />
+          <div className={styles.heroProof} aria-label="Bằng chứng và hệ tư duy">
+            {proofSignals.map(([label, body]) => (
+              <span key={label}>
+                <strong>{label}</strong>
+                {body}
+              </span>
+            ))}
+          </div>
+
+          <div className={styles.heroStatement} aria-hidden="true">
+            <span>Brain2</span>
+            <span>ACV</span>
+            <span>Conan</span>
           </div>
         </div>
       </section>

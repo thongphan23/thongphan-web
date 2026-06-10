@@ -16,8 +16,10 @@ test('homepage speaks directly to the reader and keeps the real conversion path'
   const page = await readProjectFile('app/page.tsx')
 
   for (const required of [
-    'Biến chuyên môn của bạn thành tài sản người khác muốn dùng',
-    'Nếu bạn có năng lực thật',
+    'Người giỏi không cần ồn hơn',
+    'Họ cần được nhìn thấy đúng',
+    'Tui xây nơi này cho anh em có chuyên môn thật',
+    'tài sản người khác muốn dùng',
     'Bạn không thiếu năng lực',
     'thị trường chưa hiểu bạn giỏi ở đâu',
     'Brain2',
@@ -25,10 +27,9 @@ test('homepage speaks directly to the reader and keeps the real conversion path'
     'Authenticity',
     'Consistency',
     'Visibility',
-    'Tự chẩn đoán trước',
-    'Đọc thư viện',
+    'Biết mình đang kẹt ở đâu',
+    'Đọc thứ đang cần',
     'Tìm hiểu Conan',
-    'data-cinematic-mouse',
   ]) {
     assert.match(page, escaped(required))
   }
@@ -74,16 +75,18 @@ test('homepage locks the premium visual system and readable typography gates', a
   const globals = await readProjectFile('styles/globals.css')
 
   for (const required of [
-    'hero-premium-mist-knowledge-garden-chatgpt.png',
-    'Hệ tri thức được xây từ sách, ghi chú và kinh nghiệm thật',
+    'thong-stage-anchor.jpg',
+    'heroBackdrop',
+    'heroFrame',
     'BrandGlyph',
   ]) {
     assert.match(page, escaped(required))
   }
 
   for (const required of [
-    'visualPlate',
-    'visualCaption',
+    'heroBackdrop',
+    'heroProof',
+    'heroStatement',
     'editorialCard',
     'acvCard',
     'layerCard',
