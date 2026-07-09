@@ -1,0 +1,248 @@
+.cinemaProgress {
+  background: var(--cinema-lacquer, #b3231b);
+  height: 2px;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  width: 100%;
+  z-index: 500;
+}
+
+.cinemaMain {
+  background: var(--cinema-ink, #070706);
+  overflow: clip;
+  position: relative;
+  z-index: 1;
+}
+
+.cinemaHeader {
+  background: rgba(7, 7, 6, 0.9);
+  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+  color: #e8dfcf;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 400;
+}
+
+.cinemaHeaderInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 72px;
+  padding: 0 clamp(1rem, 4vw, 4rem);
+}
+
+.cinemaWordmark {
+  color: inherit;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.desktopNav {
+  align-items: center;
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+}
+
+.desktopNav a {
+  align-items: center;
+  color: #a69e92;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-height: 44px;
+  position: relative;
+  text-decoration: none;
+}
+
+.desktopNav a::after {
+  background: #b3231b;
+  bottom: -1px;
+  content: '';
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 180ms ease;
+  width: 1rem;
+}
+
+.desktopNav a:hover,
+.desktopNav a:focus-visible,
+.desktopNav .activeLink {
+  color: #e8dfcf;
+}
+
+.desktopNav .activeLink::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.desktopNav a:focus-visible,
+.menuTrigger:focus-visible,
+.menuTopline button:focus-visible,
+.menuDialog nav a:focus-visible {
+  outline: 2px solid #e04b43;
+  outline-offset: 4px;
+}
+
+.menuTrigger {
+  background: transparent;
+  border: 1px solid rgba(232, 223, 207, 0.42);
+  color: #e8dfcf;
+  display: none;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+}
+
+.menuBackdrop {
+  background: rgba(7, 7, 6, 0.78);
+  inset: 0;
+  position: fixed;
+  z-index: 510;
+}
+
+.menuDialog {
+  background: #070706;
+  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+  color: #e8dfcf;
+  left: 0;
+  padding: 1rem clamp(1rem, 5vw, 2rem) 2.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.menuTopline {
+  align-items: center;
+  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+  display: flex;
+  justify-content: space-between;
+  min-height: 56px;
+}
+
+.menuTopline span {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: 0.08em;
+}
+
+.menuTopline button {
+  background: transparent;
+  border: 0;
+  color: #e8dfcf;
+  font: inherit;
+  min-height: 44px;
+}
+
+.menuDialog nav {
+  display: grid;
+}
+
+.menuDialog nav a {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+  color: #e8dfcf;
+  display: flex;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.3rem, 12vw, 4rem);
+  gap: 1rem;
+  min-height: 72px;
+  padding: 0.75rem 0;
+  text-decoration: none;
+}
+
+.menuDialog nav a span {
+  color: #e04b43;
+  font-family: var(--font-be-vietnam), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+
+.menuDialog > p {
+  color: #a69e92;
+  font-size: 0.82rem;
+  margin-top: 1.5rem;
+}
+
+.cinemaFooter {
+  align-items: end;
+  background: #070706;
+  border-top: 1px solid rgba(232, 223, 207, 0.2);
+  color: #a69e92;
+  display: grid;
+  font-family: var(--font-be-vietnam), sans-serif;
+  gap: 2rem;
+  grid-template-columns: 1fr auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 4vw, 4rem) 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footerName {
+  color: #e8dfcf;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.cinemaFooter nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.cinemaFooter a {
+  color: #e8dfcf;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.copyright {
+  border-top: 1px solid rgba(232, 223, 207, 0.2);
+  font-size: 0.72rem;
+  grid-column: 1 / -1;
+  padding-top: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .cinemaHeaderInner {
+    min-height: 64px;
+  }
+
+  .desktopNav {
+    display: none;
+  }
+
+  .menuTrigger {
+    display: inline-flex;
+  }
+
+  .cinemaFooter {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .cinemaFooter nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktopNav a::after {
+    transition: none;
+  }
+}
