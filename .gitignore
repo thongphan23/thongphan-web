@@ -11,3 +11,4 @@ dist/
 .wrangler/
 .dev.vars
 artifacts/
+.worktrees/
