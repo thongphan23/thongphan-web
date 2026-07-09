@@ -1,6 +1,6 @@
 # thongphan.com Evidence Cinema Homepage — Design Specification
 
-**Status:** Selected visual direction, awaiting written-spec approval
+**Status:** Approved and implemented as a verified local release candidate
 
 **Date:** 2026-07-10
 
@@ -496,3 +496,15 @@ Before editing homepage implementation files, the implementation plan must begin
 5. create new fingerprinted assets and verify returning visitors no longer receive mismatched CSS.
 
 Implementation must not proceed by blindly overwriting the live experience from the stale repo state.
+
+## 21. Implementation outcome
+
+Completed on 2026-07-10 in the `feature/evidence-cinema-homepage` worktree.
+
+- the current live `/conanmaker/` bundle was captured and imported with new fingerprinted JS/CSS filenames;
+- the homepage now implements all six acts with route-specific cinema chrome;
+- the mirror, mobile menu and proof rail have verified keyboard behavior;
+- the hero uses 102 KB desktop and 39 KB mobile WebP sources;
+- homepage-only interaction JavaScript is 8.2 KB gzip in the verified build;
+- automated contracts, TypeScript, static export, asset integrity and Browser/IAB QA pass;
+- production deployment remains intentionally separate and requires an explicit deploy request.
