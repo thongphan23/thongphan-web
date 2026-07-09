@@ -1,6 +1,6 @@
 # Thông Phan Evidence Cinema Homepage Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Replace the current Knowledge Garden homepage with the approved Evidence Cinema experience while preserving all non-homepage routes and making the static `/conanmaker` route reproducible.
 
@@ -64,7 +64,7 @@
 - Consumes: current live `https://thongphan.com/conanmaker/` HTML and the existing untracked local bundle.
 - Produces: a committed local static route whose referenced asset paths are complete; test `static Conan Maker bundle references only present local assets`.
 
-- [ ] **Step 1: Capture and preserve the current inputs**
+- [x] **Step 1: Capture and preserve the current inputs**
 
 Run:
 
@@ -77,7 +77,7 @@ curl -fsSL https://thongphan.com/conanmaker/ -o "/tmp/thongphan-com-$stamp/live-
 
 Expected: backup directory contains the two local inputs and the current live HTML. No repo file changes.
 
-- [ ] **Step 2: Write the failing static-route integrity test**
+- [x] **Step 2: Write the failing static-route integrity test**
 
 Create `scripts/static-route-contract.test.mjs`:
 
@@ -109,17 +109,17 @@ Modify `package.json` test script to:
 "test": "tsx --test scripts/generate-library-data.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts"
 ```
 
-- [ ] **Step 3: Run the static route test and verify RED if live and local inputs differ**
+- [x] **Step 3: Run the static route test and verify RED if live and local inputs differ**
 
 Run: `npx tsx --test scripts/static-route-contract.test.mjs`
 
 Expected: either the captured local bundle passes unchanged, or FAIL names a missing referenced asset. A passing test is acceptable only after confirming the live HTML references the same fingerprinted names as local with `diff -u`.
 
-- [ ] **Step 4: Import only the current live HTML and referenced fingerprinted assets**
+- [x] **Step 4: Import only the current live HTML and referenced fingerprinted assets**
 
 Parse `live-conanmaker.html`, download only its local `/conanmaker/assets/*` JS/CSS/image files, keep old unreferenced user files in the backup, and ensure the committed `index.html` points at new immutable filenames. Never replace bytes under an existing fingerprint.
 
-- [ ] **Step 5: Verify GREEN and commit the source reconciliation**
+- [x] **Step 5: Verify GREEN and commit the source reconciliation**
 
 Run:
 
@@ -141,7 +141,7 @@ Expected: 2 tests pass; `git status --short` contains no loss of the backed-up u
 **Interfaces:**
 - Produces: `resolveMirrorResult(answers: MirrorAnswers): MirrorResult`, `proofItems`, `pathItems`, and source-level visual/accessibility contracts.
 
-- [ ] **Step 1: Replace the old garden contract with the approved homepage contract**
+- [x] **Step 1: Replace the old garden contract with the approved homepage contract**
 
 The contract must read `app/page.tsx`, `app/layout.tsx`, `components/home-cinema/HomeCinema.tsx`, `components/home-cinema/HomeCinema.module.css`, `components/site-chrome/SiteChrome.tsx`, and `styles/globals.css`; assert the exact hero promise, CTA, six act IDs, approved asset paths, mobile menu semantics, reduced-motion query, and palette; ban `Knowledge Garden`, `garden`, `Brain2`, `ACV`, hero `<video>`, unsupported numeric proof, and the old `data-theme="premium-garden"`.
 
@@ -166,7 +166,7 @@ assert.match(chrome, /aria-expanded/)
 assert.match(chrome, /Escape/)
 ```
 
-- [ ] **Step 2: Write mirror behavior tests before the implementation exists**
+- [x] **Step 2: Write mirror behavior tests before the implementation exists**
 
 Create `scripts/home-cinema-content.test.ts`:
 
@@ -195,7 +195,7 @@ test('question one personalizes the explanation without changing the category', 
 })
 ```
 
-- [ ] **Step 3: Run and verify RED**
+- [x] **Step 3: Run and verify RED**
 
 Run: `npx tsx --test scripts/home-cinema-content.test.ts scripts/homepage-cinematic-contract.test.mjs`
 
@@ -213,21 +213,21 @@ Expected: FAIL because the new modules, selected copy and cinema CSS do not exis
 - Produces: `MirrorAnswers`, `MirrorResult`, `resolveMirrorResult`, `proofItems`, `methodSteps`, `pathItems`, `questions`.
 - `HomeMirror` emits `CustomEvent('homepage_mirror_completed', { detail: { resultCategory } })` only after all three answers exist.
 
-- [ ] **Step 1: Implement the minimal pure result resolver**
+- [x] **Step 1: Implement the minimal pure result resolver**
 
 Use literal unions for `experience`, `stuck`, and `start`; three result records with titles `Cần làm rõ bằng chứng`, `Cần đóng gói tài sản đầu tiên`, and `Sẵn sàng thiết kế offer/cộng đồng`; and destination map `{ content: '/library', asset: '/diagnostic', community: '/conanmaker' }`. The experience map must alter only the explanatory sentence.
 
-- [ ] **Step 2: Run the mirror tests and verify GREEN**
+- [x] **Step 2: Run the mirror tests and verify GREEN**
 
 Run: `npx tsx --test scripts/home-cinema-content.test.ts`
 
 Expected: 3 tests pass.
 
-- [ ] **Step 3: Build the progressively enhanced mirror**
+- [x] **Step 3: Build the progressively enhanced mirror**
 
 Render three `fieldset`/`legend` groups with native radio inputs and visible labels. Do not persist state. Before completion, show a normal `/diagnostic` link so the no-JS path remains useful. On completion, render the resolved title, explanation and destination link in an `aria-live="polite"` result region.
 
-- [ ] **Step 4: Commit the independently testable mirror slice**
+- [x] **Step 4: Commit the independently testable mirror slice**
 
 Run:
 
@@ -250,25 +250,25 @@ git commit -m "feat: add Evidence Cinema mirror journey"
 - `SiteChrome({ children }: { children: React.ReactNode })` consumes `usePathname()` and renders either homepage chrome or the preserved existing chrome.
 - `CinemaHeader` links to `#story`, `#proof`, `#method`, and `/conanmaker`.
 
-- [ ] **Step 1: Add chrome assertions and verify RED**
+- [x] **Step 1: Add chrome assertions and verify RED**
 
 Assert that the source includes `usePathname`, `Mục lục`, `aria-modal="true"`, `role="dialog"`, `Escape`, trigger focus restoration, and a 44px minimum control height. Run the focused contract and confirm failure before code.
 
-- [ ] **Step 2: Move the existing subpage nav/footer markup into `SiteChrome` unchanged**
+- [x] **Step 2: Move the existing subpage nav/footer markup into `SiteChrome` unchanged**
 
 Keep current subpage links, labels and external destinations. Route `/` to `CinemaHeader` + reduced editorial footer; route every other pathname to the preserved functional header/footer.
 
-- [ ] **Step 3: Implement native focus management**
+- [x] **Step 3: Implement native focus management**
 
 When the mobile sheet opens, remember the trigger, focus the first link, trap Tab/Shift+Tab inside the sheet, close on Escape, close on link activation, and restore trigger focus. Lock only document body overflow while open and restore it in cleanup.
 
-- [ ] **Step 4: Run contract and TypeScript build checks**
+- [x] **Step 4: Run contract and TypeScript build checks**
 
 Run: `npx tsx --test scripts/homepage-cinematic-contract.test.mjs && npx tsc --noEmit`
 
 Expected: chrome assertions pass; TypeScript exits 0.
 
-- [ ] **Step 5: Commit chrome**
+- [x] **Step 5: Commit chrome**
 
 ```bash
 git add app/layout.tsx app/layout.module.css components/site-chrome scripts/homepage-cinematic-contract.test.mjs
@@ -290,23 +290,23 @@ git commit -m "feat: add route-aware cinema site chrome"
 - `HomeCinema()` composes `Hero`, `Mirror`, `ProofRail`, `MethodSequence`, `PathList`, and `ConanHandoff` as server-rendered markup, embedding only `HomeMirror` as a client island.
 - Sections expose IDs `story`, `proof`, `method`, `paths`, and `conan` and scoped motion markers `data-cinema-reveal`, `data-focus-pull`, and `data-evidence-stamp`.
 
-- [ ] **Step 1: Implement the first viewport from the approved mock**
+- [x] **Step 1: Implement the first viewport from the approved mock**
 
 Use semantic `h1` for the promise and an `aria-hidden` `THÔNG PHAN` display name. Use `next/image` with `priority`, accurate intrinsic dimensions, and responsive `sizes`. Preserve the left 45–50% copy / right 50–55% portrait tension, lacquer CTA, evidence stamp and first proof-frame preview. No hero video and no invented label above the promise.
 
-- [ ] **Step 2: Implement acts 2–6 using open editorial bands and rails**
+- [x] **Step 2: Implement acts 2–6 using open editorial bands and rails**
 
 Render the mirror, two real proof items, linear method sequence, three editorial path rows and compact Conan handoff. Proof captions must state what each existing image literally supports; no public metric, third-party verification language or fake Hoa Sơn visual.
 
-- [ ] **Step 3: Implement the visual token system and responsive modes**
+- [x] **Step 3: Implement the visual token system and responsive modes**
 
 Define the exact cinema custom properties. Desktop follows the selected mock; tablet removes overlap and pinning; mobile uses a controlled portrait field, two-line name lockup, single-column sections and native horizontal proof scroll snap. All primary actions are at least 44px and body copy at least 0.94rem on mobile.
 
-- [ ] **Step 4: Add asset failure fallback and analytics event emission**
+- [x] **Step 4: Add asset failure fallback and analytics event emission**
 
 Use a small image wrapper only where needed to mark a failed image and reveal the neutral paper fallback. For CTA/proof/path/handoff events, call `window.dispatchEvent(new CustomEvent(name, { detail }))` without adding a provider or recording free text.
 
-- [ ] **Step 5: Run contract, mirror and TypeScript checks**
+- [x] **Step 5: Run contract, mirror and TypeScript checks**
 
 Run:
 
@@ -317,7 +317,7 @@ npx tsc --noEmit
 
 Expected: all focused tests pass and TypeScript exits 0.
 
-- [ ] **Step 6: Commit the page slice**
+- [x] **Step 6: Commit the page slice**
 
 ```bash
 git add app/page.tsx app/page.module.css app/layout.tsx styles/globals.css components/home-cinema
@@ -335,21 +335,21 @@ git commit -m "feat: build Evidence Cinema homepage"
 - GSAP initializes only when cinema data attributes exist.
 - Reduced motion skips all animation setup and leaves final visible states.
 
-- [ ] **Step 1: Add failing motion-scope assertions**
+- [x] **Step 1: Add failing motion-scope assertions**
 
 Assert `matchMedia('(prefers-reduced-motion: reduce)')`, scoped selector checks, cleanup, and no cursor follower/pointer listener. Run focused test and verify RED.
 
-- [ ] **Step 2: Replace global pointer effects with scoped reveal setup**
+- [x] **Step 2: Replace global pointer effects with scoped reveal setup**
 
 Use one `gsap.context`, one `IntersectionObserver` for reveal/focus/stamp markers, animate only `opacity`, `transform`, and bounded media `filter`, and disconnect/revert in cleanup. If reduced motion matches, return without changing visibility.
 
-- [ ] **Step 3: Run tests and verify GREEN**
+- [x] **Step 3: Run tests and verify GREEN**
 
 Run: `npm test`
 
 Expected: every Node/TS test passes with 0 failures.
 
-- [ ] **Step 4: Commit motion**
+- [x] **Step 4: Commit motion**
 
 ```bash
 git add components/ScrollAnimations.tsx components/home-cinema/HomeCinema.module.css scripts/homepage-cinematic-contract.test.mjs
@@ -367,17 +367,17 @@ git commit -m "feat: add accessible Evidence Cinema motion"
 **Interfaces:**
 - Build contract consumes `out/index.html`, `out/_next/static/*`, and `out/conanmaker/index.html` after `npm run build`.
 
-- [ ] **Step 1: Write the post-build contract before implementing its helpers**
+- [x] **Step 1: Write the post-build contract before implementing its helpers**
 
 Assert that `out/index.html` exists, contains the hero promise, has no `<video>`, contains exactly one `<h1`, and every local `src`/`href` beginning `/_next/` or `/conanmaker/assets/` resolves inside `out/`. Assert the largest homepage-priority raster is no more than 350KB; record a mobile derivative exception only if Next static export cannot create one.
 
-- [ ] **Step 2: Run test before build and verify RED**
+- [x] **Step 2: Run test before build and verify RED**
 
 Run: `npx tsx --test scripts/homepage-build-contract.test.mjs`
 
 Expected: FAIL because the current `out/` is absent or stale.
 
-- [ ] **Step 3: Build and run all contracts**
+- [x] **Step 3: Build and run all contracts**
 
 Run:
 
@@ -390,7 +390,7 @@ du -h out/_next/static/chunks/*.js | sort -h | tail
 
 Expected: all tests and build exit 0; every asset reference resolves. If the hero source exceeds budget, produce a new fingerprinted optimized source file and update the content path rather than replacing the existing bytes.
 
-- [ ] **Step 4: Commit guardrails**
+- [x] **Step 4: Commit guardrails**
 
 ```bash
 git add package.json scripts/homepage-build-contract.test.mjs scripts/static-route-contract.test.mjs next.config.js public/images/homepage
@@ -406,25 +406,25 @@ git commit -m "test: guard homepage build and static assets"
 **Interfaces:**
 - Flow under test: `/` loads → cinema hero renders → anchors/mirror/menu/proof/path/handoff respond → destination/state is correct with no console error.
 
-- [ ] **Step 1: Start the local production build**
+- [x] **Step 1: Start the local production build**
 
 Run: `npm run build && npm run start -- -H 127.0.0.1 -p 4173`
 
 Expected: server listens on `http://127.0.0.1:4173` and remains running.
 
-- [ ] **Step 2: Verify page identity, console health and primary flow in Browser/IAB**
+- [x] **Step 2: Verify page identity, console health and primary flow in Browser/IAB**
 
 Check URL/title, meaningful DOM, no framework overlay, no relevant error/warning, and screenshot evidence. Complete the mirror with keyboard, verify its result and CTA. Open/close mobile menu with keyboard, Escape and focus restoration. Open a proof source and verify destination.
 
-- [ ] **Step 3: Verify all required viewports**
+- [x] **Step 3: Verify all required viewports**
 
 Capture 1440×1024, 1280×720, 834×1194, 390×844 and 375×812. For each, confirm no horizontal overflow, no clipped promise/CTA, correct portrait crop, readable proof rail and visible focus state. Verify `prefers-reduced-motion: reduce` separately.
 
-- [ ] **Step 4: Compare the approved mock and implementation through `view_image`**
+- [x] **Step 4: Compare the approved mock and implementation through `view_image`**
 
 Inspect both images at native dimensions. Maintain a fidelity ledger covering at least: name/promise hierarchy, portrait crop, lacquer CTA, palette, film rail, typography, open editorial container model, responsive collapse, motion and above-the-fold copy. Fix every P0/P1/P2 mismatch and recapture.
 
-- [ ] **Step 5: Write and pass `design-qa.md`**
+- [x] **Step 5: Write and pass `design-qa.md`**
 
 The report must include source target, rendered screenshots, five-or-more comparison points, above-the-fold copy diff, interaction evidence, responsive evidence, remaining intentional deviations and the terminal line `final result: passed`.
 
@@ -439,11 +439,11 @@ The report must include source target, rendered screenshots, five-or-more compar
 **Interfaces:**
 - Produces a local release candidate and a deployment contract that forbids overwriting immutable asset URLs.
 
-- [ ] **Step 1: Mark the spec approved/implemented and document the deploy contract**
+- [x] **Step 1: Mark the spec approved/implemented and document the deploy contract**
 
 Record: build command, output directory, Conan Maker static-route ownership, fingerprint rule, asset integrity command, and rollback source. State clearly that production deployment remains a separate explicit action.
 
-- [ ] **Step 2: Run fresh full verification**
+- [x] **Step 2: Run fresh full verification**
 
 Run:
 
@@ -458,17 +458,17 @@ git status --short
 
 Expected: all commands exit 0; only intended tracked changes and any explicitly preserved user-owned obsolete static files remain.
 
-- [ ] **Step 3: Re-read spec and plan, close every checkbox with evidence**
+- [x] **Step 3: Re-read spec and plan, close every checkbox with evidence**
 
 Verify line-by-line: six acts, truthful proof, route-aware chrome, mirror mapping, motion fallback, responsive targets, asset budget, static route integrity, Browser flow and passed design QA.
 
-- [ ] **Step 4: Commit documentation and QA artifacts**
+- [x] **Step 4: Commit documentation and QA artifacts**
 
 ```bash
 git add docs design-qa.md
 git commit -m "docs: record Evidence Cinema release candidate"
 ```
 
-- [ ] **Step 5: Finish the development branch**
+- [x] **Step 5: Finish the development branch**
 
 Use `superpowers:finishing-a-development-branch`, rerun the full verification suite, and present the exact local integration state. Do not push or deploy unless the user explicitly requests it.
