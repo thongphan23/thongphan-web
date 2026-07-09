@@ -24,7 +24,6 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
   const source = `${page}\n${home}\n${content}`
 
   for (const required of [
-    'Biến chuyên môn thật thành tài sản có người muốn dùng.',
     'Từ trải nghiệm thật đến cộng đồng trả phí',
     'Khám phá lộ trình của bạn',
     'THÔNG PHAN',
@@ -39,6 +38,8 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
   ]) {
     assert.match(source, escaped(required))
   }
+
+  assert.match(source, /Biến chuyên môn thật thành\s*<em>tài sản<\/em>\s*có người muốn dùng\./i)
 
   for (const banned of [
     'Knowledge Garden',
@@ -118,4 +119,27 @@ test('homepage motion is scoped, reversible and reduced-motion safe', async () =
   }
 
   assert.doesNotMatch(motion, /pointermove|cursor follower|data-cursor/i)
+})
+
+test('homepage conversion links emit only the approved analytics events', async () => {
+  const trackedLink = await readProjectFile('components/home-cinema/HomeTrackedLink.tsx')
+
+  for (const eventName of [
+    'homepage_primary_cta_clicked',
+    'homepage_proof_opened',
+    'homepage_path_selected',
+    'homepage_conan_handoff_clicked',
+  ]) {
+    assert.match(trackedLink, escaped(eventName))
+  }
+
+  assert.doesNotMatch(trackedLink, /localStorage|sessionStorage|freeText|answer/i)
+})
+
+test('proof media has a readable image failure fallback', async () => {
+  const proofImage = await readProjectFile('components/home-cinema/ProofImage.tsx')
+
+  assert.match(proofImage, /onError=/)
+  assert.match(proofImage, escaped('Không tải được ảnh tư liệu'))
+  assert.match(proofImage, /aria-live="polite"/)
 })
