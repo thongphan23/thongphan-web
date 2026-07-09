@@ -10,13 +10,18 @@ export default function HomeCinema() {
     <div className={styles.page} data-cinema-root>
       <section id="story" className={styles.hero} data-home-section>
         <div className={styles.heroPhoto} data-focus-pull>
-          <Image
-            src="/images/homepage/thong-stage-anchor.jpg"
-            alt="Thông Phan đang cầm micro chia sẻ trên sân khấu."
-            fill
-            priority
-            sizes="(max-width: 767px) 100vw, 62vw"
-          />
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/homepage/thong-stage-anchor-cinema-mobile.webp" />
+            <img
+              src="/images/homepage/thong-stage-anchor-cinema.webp"
+              alt="Thông Phan đang cầm micro chia sẻ trên sân khấu."
+              width="1200"
+              height="1800"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </div>
         <div className={styles.heroEdgeFade} aria-hidden="true" />
 

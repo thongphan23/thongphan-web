@@ -55,7 +55,8 @@ export function resolveMirrorResult(answers: MirrorAnswers): MirrorResult {
 export const proofItems = [
   {
     slug: 'thuc-chien-tren-san-khau',
-    image: '/images/homepage/thong-stage-anchor.jpg',
+    image: '/images/homepage/thong-stage-anchor-cinema.webp',
+    sourceImage: '/images/homepage/thong-stage-anchor.jpg',
     alt: 'Thông Phan cầm micro chia sẻ trước khán giả tại một sự kiện kinh doanh.',
     frame: '01',
     title: 'Chuyên môn phải đi qua thực chiến',
@@ -67,6 +68,7 @@ export const proofItems = [
   {
     slug: 'tri-thuc-thanh-cuon-sach',
     image: '/images/homepage/thong-library-author.jpg',
+    sourceImage: '/images/homepage/thong-library-author.jpg',
     alt: 'Thông Phan cầm cuốn sách Thần thoại Hy Lạp của mình tại một hiệu sách.',
     frame: '02',
     title: 'Tri thức phải thành thứ cầm được trên tay',

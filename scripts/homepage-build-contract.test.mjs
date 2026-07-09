@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict'
+import { access, readFile, stat } from 'node:fs/promises'
+import { gzipSync } from 'node:zlib'
+import test from 'node:test'
+
+const root = new URL('../', import.meta.url)
+const out = new URL('out/', root)
+
+async function requireBuildFile(path) {
+  try {
+    await access(new URL(path, out))
+  } catch {
+    assert.fail(`build output missing: out/${path}`)
+  }
+}
+
+test('static homepage build keeps one promise, one h1 and no hero video', async () => {
+  await requireBuildFile('index.html')
+  const html = await readFile(new URL('index.html', out), 'utf8')
+
+  assert.match(html, /Biến chuyên môn thật thành/)
+  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1)
+  assert.doesNotMatch(html, /<video(?:\s|>)/i)
+})
+
+test('static build contains every local Next and Conan Maker asset reference', async () => {
+  await requireBuildFile('index.html')
+  await requireBuildFile('conanmaker/index.html')
+  const pages = ['index.html', 'conanmaker/index.html']
+
+  for (const page of pages) {
+    const html = await readFile(new URL(page, out), 'utf8')
+    const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
+      .map(([, ref]) => ref.split('?')[0])
+      .filter((ref) => ref.startsWith('/_next/') || ref.startsWith('/conanmaker/assets/'))
+
+    assert.ok(refs.length > 0, `${page} should reference local fingerprinted assets`)
+    for (const ref of refs) await requireBuildFile(ref.slice(1))
+  }
+})
+
+test('homepage ships fingerprinted hero sources under desktop and mobile budgets', async () => {
+  const budgets = [
+    ['images/homepage/thong-stage-anchor-cinema.webp', 350 * 1024],
+    ['images/homepage/thong-stage-anchor-cinema-mobile.webp', 180 * 1024],
+  ]
+
+  for (const [path, budget] of budgets) {
+    await requireBuildFile(path)
+    const info = await stat(new URL(path, out))
+    assert.ok(info.size <= budget, `${path} is ${info.size} bytes; budget is ${budget}`)
+  }
+})
+
+test('homepage route JavaScript stays within the interaction budget', async () => {
+  const scriptRefs = (html) => [...html.matchAll(/<script[^>]+src="([^"]+\.js)"/g)].map(([, ref]) => ref)
+  const homepageRefs = scriptRefs(await readFile(new URL('index.html', out), 'utf8'))
+  const sharedRefs = new Set(scriptRefs(await readFile(new URL('about.html', out), 'utf8')))
+  const pageChunks = homepageRefs.filter((ref) => !sharedRefs.has(ref))
+  assert.ok(pageChunks.length > 0, 'homepage-only interaction chunk not found')
+
+  let gzipBytes = 0
+  for (const ref of pageChunks) {
+    const source = await readFile(new URL(ref.slice(1), out))
+    gzipBytes += gzipSync(source).byteLength
+  }
+  assert.ok(gzipBytes <= 35 * 1024, `homepage route JS is ${gzipBytes} gzip bytes; budget is 35840`)
+})

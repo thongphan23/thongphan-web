@@ -10,6 +10,7 @@
     "generate-library": "node scripts/generate-library-data.mjs",
     "start": "next start",
     "test": "tsx --test scripts/generate-library-data.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts",
+    "test:build": "tsx --test scripts/homepage-build-contract.test.mjs",
     "lint": "next lint"
   },
   "keywords": [],
