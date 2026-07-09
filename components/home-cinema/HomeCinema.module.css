@@ -13,6 +13,7 @@
 }
 
 .hero {
+  --hero-film-height: clamp(218px, 27vh, 288px);
   background: var(--cinema-ink);
   isolation: isolate;
   min-height: max(780px, 100svh);
@@ -21,12 +22,12 @@
 }
 
 .heroPhoto {
-  bottom: 218px;
+  bottom: var(--hero-film-height);
   left: 40%;
   overflow: hidden;
   position: absolute;
   right: 0;
-  top: 48px;
+  top: 24px;
   z-index: -1;
 }
 
@@ -40,15 +41,18 @@
   filter: grayscale(1) sepia(0.15) contrast(1.2) brightness(0.67);
   height: 100%;
   object-fit: cover;
-  object-position: 53% 22%;
+  object-position: 56% 62%;
+  transform: translateY(8%) scale(1.38);
+  transform-origin: 59% 42%;
   width: 100%;
 }
 
 .heroEdgeFade {
   background:
     linear-gradient(90deg, var(--cinema-ink) 0%, var(--cinema-ink) 22%, transparent 58%),
+    linear-gradient(270deg, var(--cinema-ink) 0%, transparent 11%),
     linear-gradient(180deg, rgba(7, 7, 6, 0.28) 0%, transparent 42%, var(--cinema-ink) 100%);
-  inset: 0 0 200px;
+  inset: 0 0 var(--hero-film-height);
   pointer-events: none;
   position: absolute;
   z-index: 0;
@@ -117,7 +121,7 @@
   left: clamp(1.5rem, 6.7vw, 6.7rem);
   max-width: min(38rem, 43vw);
   position: absolute;
-  top: clamp(27rem, 51vh, 33rem);
+  top: clamp(25rem, 44vh, 29rem);
   z-index: 4;
 }
 
@@ -194,7 +198,7 @@
   display: grid;
   gap: 0.6rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  height: 218px;
+  height: var(--hero-film-height);
   left: clamp(1rem, 3vw, 3rem);
   padding: 1.2rem 0.65rem 0.65rem;
   position: absolute;
@@ -625,11 +629,11 @@
 
 @media (max-width: 900px) {
   .hero {
-    min-height: 980px;
+    min-height: 1040px;
   }
 
   .heroPhoto {
-    bottom: 220px;
+    bottom: var(--hero-film-height);
     left: 30%;
   }
 
@@ -661,6 +665,12 @@
   }
 }
 
+@media (min-width: 768px) and (max-height: 800px) {
+  .hero {
+    min-height: 885px;
+  }
+}
+
 @media (max-width: 767px) {
   .hero {
     min-height: 1040px;
@@ -676,11 +686,15 @@
 
   .heroPhoto img {
     filter: grayscale(1) sepia(0.12) contrast(1.18) brightness(0.62);
-    object-position: 52% 16%;
+    object-position: 50% 20%;
+    transform: scale(1.25);
+    transform-origin: 46% 36%;
   }
 
   .heroEdgeFade {
-    background: linear-gradient(180deg, transparent 0%, rgba(7, 7, 6, 0.08) 38%, var(--cinema-ink) 72%);
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(7, 7, 6, 0.12) 36%, var(--cinema-ink) 72%),
+      linear-gradient(90deg, rgba(7, 7, 6, 0.72) 0%, rgba(7, 7, 6, 0.08) 76%);
     inset: 64px 0 auto;
     height: 64svh;
   }

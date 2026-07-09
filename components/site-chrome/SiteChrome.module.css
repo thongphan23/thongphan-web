@@ -32,7 +32,7 @@
 .cinemaHeaderInner {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 auto;
   max-width: 1440px;
   min-height: 72px;
@@ -46,12 +46,13 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-decoration: none;
+  display: none;
 }
 
 .desktopNav {
   align-items: center;
   display: flex;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
+  gap: clamp(2rem, 4vw, 4.5rem);
 }
 
 .desktopNav a {
@@ -219,7 +220,12 @@
 
 @media (max-width: 767px) {
   .cinemaHeaderInner {
+    justify-content: space-between;
     min-height: 64px;
+  }
+
+  .cinemaWordmark {
+    display: inline-flex;
   }
 
   .desktopNav {

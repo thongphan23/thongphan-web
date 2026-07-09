@@ -2,6 +2,7 @@ import Image from 'next/image'
 import HomeMirror from './HomeMirror'
 import HomeTrackedLink, { homepageEvents } from './HomeTrackedLink'
 import ProofImage from './ProofImage'
+import ProofRail from './ProofRail'
 import { methodSteps, pathItems, proofItems } from './home-cinema-content'
 import styles from './HomeCinema.module.css'
 
@@ -77,7 +78,7 @@ export default function HomeCinema() {
           <p>Hai hình ảnh dưới đây không kể hết hành trình. Chúng chỉ nói điều có thể kiểm chứng từ chính những gì đang thấy.</p>
         </header>
 
-        <div className={styles.proofRail} tabIndex={0} aria-label="Dải bằng chứng, có thể cuộn ngang">
+        <ProofRail>
           {proofItems.map((item) => (
             <article key={item.slug} className={styles.proofItem} data-focus-pull>
               <div className={styles.proofFrameTop} aria-hidden="true"><span>{item.frame}</span><span>TP · ARCHIVE</span></div>
@@ -96,7 +97,7 @@ export default function HomeCinema() {
               </div>
             </article>
           ))}
-        </div>
+        </ProofRail>
       </section>
 
       <section id="method" className={`${styles.act} ${styles.methodAct}`} data-home-section>

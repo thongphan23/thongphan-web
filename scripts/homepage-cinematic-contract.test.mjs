@@ -143,3 +143,27 @@ test('proof media has a readable image failure fallback', async () => {
   assert.match(proofImage, escaped('Không tải được ảnh tư liệu'))
   assert.match(proofImage, /aria-live="polite"/)
 })
+
+test('short laptop view keeps the primary CTA clear of the evidence rail', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  assert.match(css, /@media \(min-width: 768px\) and \(max-height: 800px\)/)
+  assert.match(css, /min-height:\s*885px/)
+})
+
+test('tablet hero leaves room for the CTA and proof microcopy above the rail', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*1040px/)
+  assert.doesNotMatch(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*980px/)
+})
+
+test('proof rail exposes explicit keyboard scrolling', async () => {
+  const proofRail = await readProjectFile('components/home-cinema/ProofRail.tsx')
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+
+  for (const required of ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'scrollBy', 'tabIndex={0}']) {
+    assert.match(proofRail, escaped(required))
+  }
+  assert.match(home, /<ProofRail>/)
+})
