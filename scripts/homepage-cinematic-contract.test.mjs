@@ -5,99 +5,117 @@ import test from 'node:test'
 const root = new URL('../', import.meta.url)
 
 async function readProjectFile(path) {
-  return readFile(new URL(path, root), 'utf8')
+  try {
+    return await readFile(new URL(path, root), 'utf8')
+  } catch (error) {
+    if (error?.code === 'ENOENT') return ''
+    throw error
+  }
 }
 
 function escaped(phrase) {
   return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i')
 }
 
-test('homepage speaks directly to the reader and keeps the real conversion path', async () => {
+test('homepage locks the approved Evidence Cinema story and truthful assets', async () => {
   const page = await readProjectFile('app/page.tsx')
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const content = await readProjectFile('components/home-cinema/home-cinema-content.ts')
+  const source = `${page}\n${home}\n${content}`
 
   for (const required of [
-    'Người giỏi không cần ồn hơn',
-    'Họ cần được nhìn thấy đúng',
-    'Tui xây nơi này cho anh em có chuyên môn thật',
-    'tài sản người khác muốn dùng',
-    'Bạn không thiếu năng lực',
-    'thị trường chưa hiểu bạn giỏi ở đâu',
-    'Brain2',
-    'ACV',
-    'Authenticity',
-    'Consistency',
-    'Visibility',
-    'Biết mình đang kẹt ở đâu',
-    'Đọc thứ đang cần',
-    'Tìm hiểu Conan',
-  ]) {
-    assert.match(page, escaped(required))
-  }
-})
-
-test('homepage visible copy avoids internal art-direction labels and cheap AI landing-page wording', async () => {
-  const page = await readProjectFile('app/page.tsx')
-
-  const bannedVisiblePhrases = [
-    'Cinematic Knowledge Garden',
-    'Invisible Experts',
-    'CONCEPT PROTOTYPE',
-    'Prototype cinematic',
-    'trang chủ hiện tại',
-    'Rendering experience layer',
-    'Asset fruit picker',
-    'Garden Gate',
-    'Digital Assets',
-    'Brain2 as Garden',
-    'ACV Framework',
-    'Cây tri thức 3D',
-    'fear.exe',
-    'vault.memory',
-    'semantic.context',
-    'proof beats claim',
-    'Tool noise',
-    'AI-native expertise',
-    'Proof-first AI system',
-    'Expertise Observatory',
-    'Anh Thông giúp',
-    'người mua',
-    'người xem',
-  ]
-
-  for (const phrase of bannedVisiblePhrases) {
-    assert.doesNotMatch(page, escaped(phrase))
-  }
-})
-
-test('homepage locks the premium visual system and readable typography gates', async () => {
-  const page = await readProjectFile('app/page.tsx')
-  const css = await readProjectFile('app/page.module.css')
-  const globals = await readProjectFile('styles/globals.css')
-
-  for (const required of [
+    'Biến chuyên môn thật thành tài sản có người muốn dùng.',
+    'Từ trải nghiệm thật đến cộng đồng trả phí',
+    'Khám phá lộ trình của bạn',
+    'THÔNG PHAN',
+    'id="story"',
+    'id="proof"',
+    'id="method"',
+    'id="paths"',
+    'id="conan"',
     'thong-stage-anchor.jpg',
-    'heroBackdrop',
-    'heroFrame',
-    'BrandGlyph',
+    'thong-library-author.jpg',
+    'LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT',
   ]) {
-    assert.match(page, escaped(required))
+    assert.match(source, escaped(required))
   }
+
+  for (const banned of [
+    'Knowledge Garden',
+    'premium-garden',
+    'Brain2',
+    'ACV Framework',
+    '<video',
+    'verified',
+    '10,000',
+    '10000',
+  ]) {
+    assert.doesNotMatch(source, escaped(banned))
+  }
+})
+
+test('homepage source exposes the selected cinema visual and responsive contract', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const globals = await readProjectFile('styles/globals.css')
+  const layout = await readProjectFile('app/layout.tsx')
+  const combined = `${css}\n${globals}\n${layout}`
 
   for (const required of [
-    'heroBackdrop',
-    'heroProof',
-    'heroStatement',
-    'editorialCard',
-    'acvCard',
-    'layerCard',
-    'assetFruit',
-    'gateCard',
+    '--cinema-ink: #070706',
+    '--cinema-ink-raised: #12100f',
+    '--cinema-paper: #e8dfcf',
+    '--cinema-paper-muted: #a69e92',
+    '--cinema-lacquer: #b3231b',
+    '--cinema-lacquer-bright: #e04b43',
     '@media (prefers-reduced-motion: reduce)',
+    '@media (max-width: 767px)',
+    'scroll-snap-type: x mandatory',
+    'Cormorant_Garamond',
+    'Be_Vietnam_Pro',
   ]) {
-    assert.match(css, escaped(required))
+    assert.match(combined, escaped(required))
   }
 
-  assert.match(globals, /--text-hero:\s*clamp\(3rem, 5\.4vw, 4\.05rem\)/)
-  assert.doesNotMatch(css, /font-size:\s*(9|10|11|12)rem/, 'homepage must not use unreadable oversized hero typography')
-  assert.doesNotMatch(page, /seedCore|rootA|branchA|fruitA/, 'homepage should use rendered premium imagery, not CSS-only tree shapes')
+  assert.doesNotMatch(combined, /data-theme=["']premium-garden["']/i)
+  assert.doesNotMatch(css, /#[0-9a-f]{3,8}[^\n]*(gold|green|blue)/i)
+})
+
+test('route-aware chrome includes an accessible mobile cinema menu', async () => {
+  const chrome = await readProjectFile('components/site-chrome/SiteChrome.tsx')
+  const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
+
+  for (const required of [
+    'usePathname',
+    'Mục lục',
+    'aria-expanded',
+    'aria-modal="true"',
+    'role="dialog"',
+    'Escape',
+    'triggerRef.current?.focus()',
+    'Câu chuyện',
+    'Bằng chứng',
+    'Phương pháp',
+    'Conan Maker',
+  ]) {
+    assert.match(chrome, escaped(required))
+  }
+
+  assert.match(css, /min-height:\s*44px/i)
+})
+
+test('homepage motion is scoped, reversible and reduced-motion safe', async () => {
+  const motion = await readProjectFile('components/ScrollAnimations.tsx')
+
+  for (const required of [
+    "matchMedia('(prefers-reduced-motion: reduce)')",
+    '[data-cinema-root]',
+    '[data-cinema-reveal]',
+    '[data-focus-pull]',
+    '[data-evidence-stamp]',
+    'observer.disconnect()',
+  ]) {
+    assert.match(motion, escaped(required))
+  }
+
+  assert.doesNotMatch(motion, /pointermove|cursor follower|data-cursor/i)
 })
