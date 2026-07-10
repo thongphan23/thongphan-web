@@ -41,8 +41,14 @@ test('static build contains every local Next and Conan Maker asset reference', a
 
 test('homepage ships fingerprinted hero sources under desktop and mobile budgets', async () => {
   const budgets = [
-    ['images/homepage/thong-stage-anchor-cinema.webp', 350 * 1024],
-    ['images/homepage/thong-stage-anchor-cinema-mobile.webp', 180 * 1024],
+    ['images/homepage/evidence-cinema-hero-v3.webp', 180 * 1024],
+    ['images/homepage/evidence-cinema-hero-v3-mobile.webp', 180 * 1024],
+    ['images/homepage/evidence-cinema-film-texture-v2.webp', 60 * 1024],
+    ['images/homepage/evidence-cinema-stamp-v3.png', 80 * 1024],
+    ['images/homepage/evidence-cinema-signature-v3.png', 40 * 1024],
+    ['images/homepage/evidence-cinema-arrow-v2.png', 20 * 1024],
+    ['images/homepage/evidence-cinema-outer-frame-v2.png', 350 * 1024],
+    ['images/homepage/evidence-cinema-conan-portrait-v2.webp', 300 * 1024],
   ]
 
   for (const [path, budget] of budgets) {

@@ -39,7 +39,7 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
     assert.match(source, escaped(required))
   }
 
-  assert.match(source, /Biến chuyên môn thật thành\s*<em>tài sản<\/em>\s*có người muốn dùng\./i)
+  assert.match(source, /Biến chuyên môn thật\s*<br\s*\/?>(?:\s*)thành\s*<em>tài sản<\/em>\s*có người muốn dùng\./i)
 
   for (const banned of [
     'Knowledge Garden',
@@ -79,6 +79,40 @@ test('homepage source exposes the selected cinema visual and responsive contract
 
   assert.doesNotMatch(combined, /data-theme=["']premium-garden["']/i)
   assert.doesNotMatch(css, /#[0-9a-f]{3,8}[^\n]*(gold|green|blue)/i)
+})
+
+test('homepage recreates the selected hero from separated fidelity assets', async () => {
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const content = await readProjectFile('components/home-cinema/home-cinema-content.ts')
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const chromeCss = await readProjectFile('components/site-chrome/SiteChrome.module.css')
+  const layout = await readProjectFile('app/layout.tsx')
+  const source = `${home}\n${content}\n${css}\n${chromeCss}\n${layout}`
+
+  for (const required of [
+    'evidence-cinema-hero-v3.webp',
+    'evidence-cinema-hero-v3-mobile.webp',
+    'evidence-cinema-film-texture-v2.webp',
+    'evidence-cinema-stamp-v3.png',
+    'evidence-cinema-signature-v3.png',
+    'evidence-cinema-arrow-v2.png',
+    'evidence-cinema-outer-frame-v2.png',
+    'evidence-cinema-conan-portrait-v2.webp',
+    'heroFilmItems',
+    'data-frame-count="3"',
+    'data-cinema-frame',
+    '--font-cormorant',
+  ]) {
+    assert.match(source, escaped(required))
+  }
+
+  assert.match(content, /export const heroFilmItems\s*=\s*\[[\s\S]*?\]\s*as const/)
+  assert.equal((content.match(/heroFrame:\s*'/g) ?? []).length, 3)
+  assert.match(content, /label:\s*'NGƯỜI XÂY HỆ'/)
+  assert.doesNotMatch(content, /label:\s*'CONAN MAKER'/)
+  assert.match(css, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
+  assert.match(chromeCss, /\.cinemaHeader\s*\{[\s\S]*?position:\s*absolute/)
+  assert.doesNotMatch(css, /\.evidenceStamp::before|\.evidenceStamp::after/)
 })
 
 test('route-aware chrome includes an accessible mobile cinema menu', async () => {
@@ -148,13 +182,14 @@ test('short laptop view keeps the primary CTA clear of the evidence rail', async
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
   assert.match(css, /@media \(min-width: 768px\) and \(max-height: 800px\)/)
-  assert.match(css, /min-height:\s*885px/)
+  assert.match(css, /min-height:\s*980px/)
 })
 
-test('tablet hero leaves room for the CTA and proof microcopy above the rail', async () => {
+test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
-  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*1040px/)
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*1100px/)
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,420}max-width:\s*72vw/)
   assert.doesNotMatch(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*980px/)
 })
 

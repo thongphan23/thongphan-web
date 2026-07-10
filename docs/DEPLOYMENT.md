@@ -36,9 +36,11 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 
 ## Current performance budgets
 
-- Desktop hero: at most 350 KB; current source is about 102 KB.
-- Mobile hero: at most 180 KB; current source is about 39 KB.
-- Homepage-only interaction JavaScript: at most 35 KB gzip; current build is about 8.2 KB gzip.
+- Desktop hero plate: at most 180 KB; current source is about 92 KB.
+- Mobile hero plate: at most 180 KB; current source is about 81 KB.
+- Outer film frame: at most 350 KB; current source is about 286 KB.
+- Each remaining hero decoration stays below 80 KB; the current film texture, stamp, signature and arrow all pass.
+- Homepage-only interaction JavaScript: at most 35 KB gzip; current build is about 8.3 KB gzip.
 - No hero video.
 
 ## Pre-deploy smoke checks
