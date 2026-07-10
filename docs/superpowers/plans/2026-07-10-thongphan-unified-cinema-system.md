@@ -75,6 +75,10 @@ Commit only main-repo tests/report/package changes as `test: lock unified Cinema
 **Files:**
 - Create: `styles/brand-tokens.css`
 - Create: `lib/site-route-mode.ts`
+- Create: `components/site-chrome/site-navigation.ts`
+- Create: `components/site-chrome/SiteHeader.tsx`
+- Create: `components/site-chrome/MobileMenu.tsx`
+- Create: `components/site-chrome/SiteFooter.tsx`
 - Create: `scripts/site-route-mode.test.ts`
 - Replace: `components/site-chrome/SiteChrome.tsx`
 - Replace: `components/site-chrome/SiteChrome.module.css`
@@ -85,7 +89,7 @@ Commit only main-repo tests/report/package changes as `test: lock unified Cinema
 
 **Interfaces:**
 - `type SiteRouteMode = 'standalone' | 'cinema-dark' | 'evidence-dossier' | 'editorial-light' | 'legacy' | 'default'`.
-- `routeModeForPath(pathname)` uses exact matching before prefix matching.
+- `routeModeForPath(pathname)` uses exact matching before prefix matching. `isUnifiedRouteEnabled(pathname)` keeps old consumers isolated until their route slice passes.
 - `SiteChrome` exposes one main landmark, a complete primary menu, a homepage-only chapter nav, and one footer.
 
 - [ ] **Step 1: TDD the route matcher**
@@ -268,10 +272,16 @@ Commit as `feat: refine Cinema proof experience`.
 
 **Files:**
 - Replace styling/markup as needed: `app/about/page.tsx`, `app/about/page.module.css`
+- Create: `content/proof/about-proof.json`
+- Create: `lib/about-proof.ts`
 - Modify: `app/diagnostic/page.tsx`, `app/diagnostic/DiagnosticClient.tsx`, `app/diagnostic/page.module.css`
+- Create: `app/diagnostic/diagnostic-model.ts`
 - Modify: `app/assets/page.tsx`, `app/assets/page.module.css`, `app/assets/[slug]/page.tsx`, `app/assets/[slug]/page.module.css`
 - Modify: `app/challenges/page.tsx`, `app/challenges/page.module.css`, `app/challenges/[slug]/page.tsx`, `app/challenges/[slug]/page.module.css`
+- Create: `lib/challenges.ts`
 - Modify: `app/chat/page.tsx`, `app/chat/page.module.css`
+- Create: `app/chat/ChatClient.tsx`
+- Create: `app/chat/chat-model.ts`
 - Create: `components/dossier/DossierHeader.tsx`
 - Create: `components/dossier/DossierFolio.tsx`
 - Create: `components/dossier/Dossier.module.css`
@@ -287,11 +297,11 @@ Lock one h1/main, banned Garden/CSS-art motifs/imports, palette, primary CTA cou
 
 - [ ] **Step 2: Migrate `/about`, `/diagnostic`, and direct-entry blog surfaces**
 
-Build the Cinema origin story and Dossier diagnostic shell while preserving content/logic. Remove rotated 3D console, radar, halo, and nested main. Browser-test diagnostic completion and CTA.
+Build the Cinema origin story and Dossier diagnostic shell while preserving content/logic. Source every public About metric through `about-proof.json`; omit unsupported claims. Extract and unit-test the diagnostic model with its existing five questions and score thresholds `0/9/13/17/19`. Remove rotated 3D console, radar, halo, and nested main. Browser-test diagnostic completion and CTA.
 
 - [ ] **Step 3: Migrate `/assets/*`, `/challenges/*`, and `/chat`**
 
-Apply physical dossier/calendar/evidence-desk composition with shared primitives and Lucide controls. Preserve catalog/product data, challenge activation, chat submission, empty/loading/error states, and all current links.
+Apply physical dossier/calendar/evidence-desk composition with shared primitives and Lucide controls. Preserve catalog/product data, challenge activation, chat submission, empty/loading/error states, and all current links. Centralize duplicated challenge data, remove nested interactive controls, and split Chat into a metadata-capable server wrapper plus client runtime.
 
 - [ ] **Step 4: Remove old shared Garden system only after all consumers pass**
 
@@ -335,6 +345,11 @@ Run the plugin validator, sync marketplace/cache using the established local pac
 - Create: `scripts/bundle-budget.test.mjs`
 - Create: `app/sitemap.ts`
 - Create: `app/robots.ts`
+- Create: `lib/seo.ts`
+- Create: `components/seo/JsonLd.tsx`
+- Create: `app/not-found.tsx`
+- Create: `app/not-found.module.css`
+- Create: `public/_headers`
 - Create or modify legacy route metadata for noindex
 - Update: `design-qa.md`
 - Update: `docs/DEPLOYMENT.md`
@@ -346,7 +361,7 @@ Run the plugin validator, sync marketplace/cache using the established local pac
 
 - [ ] **Step 1: Make route/SEO/budget tests reproducible**
 
-Test sitemap URLs, robots/legacy exclusions, canonical/OG/JSON-LD, Cloudflare 404 output, per-route JS/CSS sizes, first-view font requests, and image budgets. Run against `out/` after production build.
+Test sitemap URLs from posts, notes, public readings, assets, and challenges; robots/legacy exclusions; canonical/OG/JSON-LD; Cloudflare 404 output; per-route JS/CSS sizes; first-view font requests; and image budgets. Keep `public/_redirects` limited to the Conan trailing-slash rule and explicitly ban Read redirects. Run against `out/` after production build.
 
 - [ ] **Step 2: Run the complete local release gate**
 
