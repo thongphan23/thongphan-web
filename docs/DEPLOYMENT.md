@@ -6,9 +6,12 @@
 - Frontend build command: `npm run build`.
 - Cloudflare Pages output: `out/`, as declared by `pages_build_output_dir = "out"` in `wrangler.toml`.
 - Static Conan Maker route source: `public/conanmaker/`.
+- Static Crown & Citadel route source: `public/game/`, built from the `crown-and-citadel` repository with `npm run build:site`.
 - Canonical redirect source: `public/_redirects`.
 
 Do not patch the generated production output or upload a manual homepage build that is absent from this repository.
+
+The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
 ## Required release gate
 
@@ -33,6 +36,7 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 4. `scripts/static-route-contract.test.mjs` locks the captured `/conanmaker/` JS/CSS fingerprints and checks local references.
 5. `scripts/homepage-build-contract.test.mjs` checks the built homepage, local asset references, hero budgets and homepage-only JavaScript budget.
 6. The release artifact must retain `out/conanmaker/index.html`, its referenced assets and the canonical trailing-slash redirect.
+7. The release artifact must retain `out/game/index.html`, all 65 generated runtime PNGs, `/game/`-scoped JS/CSS references and the `/game` → `/game/` redirect.
 
 ## Current performance budgets
 
@@ -49,6 +53,7 @@ Serve `out/` with clean-URL support and verify:
 
 - `/` renders one semantic `h1` and no framework overlay;
 - `/diagnostic`, `/library`, `/about` and `/conanmaker/` resolve;
+- `/game/` loads the title screen, all runtime assets resolve below `/game/assets/`, and `/game` redirects canonically;
 - homepage mobile menu opens, traps focus, closes on Escape and restores focus;
 - the three-question mirror returns a result and correct destination;
 - the proof rail scrolls with ArrowLeft/ArrowRight;

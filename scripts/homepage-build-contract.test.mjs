@@ -23,16 +23,17 @@ test('static homepage build keeps one promise, one h1 and no hero video', async 
   assert.doesNotMatch(html, /<video(?:\s|>)/i)
 })
 
-test('static build contains every local Next and Conan Maker asset reference', async () => {
+test('static build contains every local Next, Conan Maker and Crown game asset reference', async () => {
   await requireBuildFile('index.html')
   await requireBuildFile('conanmaker/index.html')
-  const pages = ['index.html', 'conanmaker/index.html']
+  await requireBuildFile('game/index.html')
+  const pages = ['index.html', 'conanmaker/index.html', 'game/index.html']
 
   for (const page of pages) {
     const html = await readFile(new URL(page, out), 'utf8')
     const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
       .map(([, ref]) => ref.split('?')[0])
-      .filter((ref) => ref.startsWith('/_next/') || ref.startsWith('/conanmaker/assets/'))
+      .filter((ref) => ref.startsWith('/_next/') || ref.startsWith('/conanmaker/assets/') || ref.startsWith('/game/assets/'))
 
     assert.ok(refs.length > 0, `${page} should reference local fingerprinted assets`)
     for (const ref of refs) await requireBuildFile(ref.slice(1))
