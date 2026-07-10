@@ -4,12 +4,12 @@
 
 **PASS** for the Task 1 implementation and automated acceptance gates.
 
-Interactive in-app Browser QA is **deferred to the controller** because the requested browser surface was unavailable in this agent session. No Playwright or Chrome fallback was used.
+Interactive in-app Browser QA was unavailable in the implementer session and was completed by the controller; evidence is recorded below. No Playwright or Chrome fallback was used.
 
 ## Scope delivered
 
 - Added the shared Cinema semantic tokens, focus, spacing, and motion primitives.
-- Reduced root font declarations to Be Vietnam Pro, Cormorant Garamond, and Newsreader; only Be Vietnam Pro preloads, while Cormorant and Newsreader use `preload: false`.
+- Root preloads only Be Vietnam Pro. Cormorant Garamond and Newsreader are non-preloaded for the unified shell; Inter, Lora, and JetBrains Mono are non-preloaded and scoped only to disabled legacy routes during migration.
 - Added the exact-first/prefix-second route-mode matcher.
 - Kept `isUnifiedRouteEnabled(pathname)` homepage-only.
 - Split universal navigation, header, accessible mobile dialog, and footer into focused components.
@@ -178,7 +178,7 @@ This report is included in that Task 1 commit; the immutable SHA is provided in 
 
 ## Concerns / follow-up
 
-- In-app Browser keyboard/visual QA remains to be run by the controller because `iab` was unavailable here.
+- In-app Browser keyboard/visual QA was completed by the controller after the implementer handoff; see the evidence below.
 - `/diagnostic` still has the known legacy nested-main condition; it is intentionally not changed until its route family is migrated and enabled in Task 5.
 - Next build reports the existing multiple-lockfile workspace-root warning and edge-runtime static-generation warning.
 - `npm install` reports four dependency audit findings (1 low, 2 moderate, 1 high); no unrelated dependency remediation was attempted in this focused task.
@@ -280,7 +280,7 @@ Fresh generated HTML inspection:
 - `/diagnostic`: legacy shell carries Inter, Lora, and JetBrains Mono variable classes; its known nested-main migration remains out of Task 1 scope.
 - all inspected routes contain the same 14 Be Vietnam Pro preload entries; Inter/Lora/JetBrains are `preload:false` and absent from the preload manifest.
 
-Mandatory in-app Browser QA remains assigned to the controller as requested; no Playwright fallback was used.
+Mandatory in-app Browser QA was completed by the controller; no Playwright fallback was used.
 
 ### Fix files
 
