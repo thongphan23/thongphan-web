@@ -13,6 +13,16 @@ Do not patch the generated production output or upload a manual homepage build t
 
 The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
+## Current Crown & Citadel release
+
+- Production URL: `https://thongphan.com/game`
+- Website release commit: `d49a20e704fa09620d8a0728c6fb0ed4aee13ef2`
+- Game source commit: `a0e31a7bffc119abb99eec68d7e30d95c6863169`
+- Cloudflare Pages production deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`
+- Production verification on 2026-07-10: 69/69 game files returned HTTP 200 after canonical resolution; the release manifest hash matched; homepage, diagnostic, library, about and Conan Maker stayed available; Playwright completed the first-turn build and save/restore flow with no application or generated-asset errors.
+
+The Pages origin applies `/game` → `/game/` as a 301. The custom `thongphan.com` router currently serves the same game index directly at `/game` with HTTP 200; both public forms are valid and load assets from `/game/assets/`.
+
 ## Required release gate
 
 Run from the repository root:
