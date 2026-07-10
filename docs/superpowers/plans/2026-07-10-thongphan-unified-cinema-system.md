@@ -153,72 +153,91 @@ Add `generate-readings` before Next dev/build and include the generator tests in
 
 Commit as `feat: ingest validated reading packages` with the rights report and permitted localized assets.
 
-### Task 3: Build the Unified Library hub, discovery, and long-form reader
+### Task 3: Build the Unified Library in three route-gated slices
+
+The original Task 3 is split so no route receives the new shell before its content surface is migrated and verified. Static segments take precedence over `app/library/[slug]`, but the living-note generator must permanently reserve the slug `read`.
+
+**Shared interfaces:**
+- One normalized `LibraryEntrySummary` adapter unifies reading summaries, blog summaries, and living-note summaries without flattening any body schema.
+- Discovery URL state is exactly `q`, `type`, `topic`, `duration`, and `intent`.
+- Local storage keys are `tp:library:saved:v1` and `tp:library:completed:v1`.
+- Build metadata is deterministic; never use the current build time as `lastModified`.
+- `source-link-only` records are indexable summaries, never presented as full translations.
+
+#### Task 3A: Library hub, discovery, and SEO foundation
 
 **Files:**
-- Replace: `app/library/page.tsx`
-- Replace: `app/library/page.module.css`
-- Replace: `app/library/LibraryFiltersClient.tsx`
-- Create: `components/library/LibraryDiscovery.tsx`
-- Create: `components/library/LibraryDiscovery.module.css`
-- Create: `components/editorial/EditorialMasthead.tsx`
-- Create: `components/editorial/EditorialHero.tsx`
-- Create: `components/editorial/ArticleHeader.tsx`
-- Create: `components/editorial/ArticleMeta.tsx`
-- Create: `components/editorial/ArticleBody.tsx`
-- Create: `components/editorial/ArticleTOC.tsx`
-- Create: `components/editorial/EditorialFigure.tsx`
-- Create: `components/editorial/EditorialCallout.tsx`
-- Create: `components/editorial/SourceDisclosure.tsx`
-- Create: `components/editorial/ReadNext.tsx`
-- Create: `components/editorial/CompletionReward.tsx`
-- Create: `components/editorial/Editorial.module.css`
-- Create: `components/library/ReadingToolbar.tsx`
-- Create: `components/library/ReadingToolbar.module.css`
-- Create: `app/library/read/page.tsx`
-- Create: `app/library/read/page.module.css`
-- Create: `app/library/read/[slug]/page.tsx`
-- Create: `app/library/read/[slug]/page.module.css`
+- Create: `lib/library-discovery.ts`, `lib/structured-data.ts`
+- Create: `components/library/LibraryDiscovery.tsx`, `components/library/LibraryDiscovery.module.css`
+- Create: `components/editorial/EditorialMasthead.tsx`, `components/editorial/EditorialHero.tsx`, `components/editorial/Editorial.module.css`
+- Replace: `app/library/page.tsx`, `app/library/page.module.css`
+- Delete after replacement: `app/library/LibraryFiltersClient.tsx`
+- Create: `app/sitemap.ts`, `app/robots.ts`
+- Modify: `lib/site-route-mode.ts`, `scripts/site-route-mode.test.ts`
+- Modify: `scripts/generate-library-data.mjs`, `scripts/generate-library-data.test.mjs`
+- Create: `scripts/library-discovery.test.ts`, `scripts/editorial-contract.test.mjs`
+- Modify: `package.json`
+
+- [ ] **Step 1: TDD the adapter and exact URL contract**
+
+Test all three summary types, exact params, deterministic duration/topic/intent adapters, query matching, clear/serialize behavior, and rejection of living-note slug `read`. Keep `useSearchParams()` below `<Suspense>` for static export.
+
+- [ ] **Step 2: Recreate the approved first viewport**
+
+Match the selected `1487×1058` Film Archive reference: black masthead, warm paper, exact headline `Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị.`, concise support copy, Steve Jobs featured record, the two primary lanes, a thin real film raster, and the Blog lane immediately after. The CTA is exactly `/library/read/steve-jobs-2005-stanford-commencement-address`. Do not use Garden/graph/fake metrics/CSS art/generated people. Because current reading media is uncleared, keep the featured record typography-first rather than inventing a portrait.
+
+- [ ] **Step 3: Add library-owned discovery and SEO**
+
+Pass summary-only data to the client. Use native controls and router replacement while preserving focus. Add canonical `/library`, safe `CollectionPage`/`ItemList`, deterministic sitemap/robots for routes that already exist, and no unapproved OG image. Enable the unified shell for exact `/library` only.
+
+- [ ] **Step 4: Verify and commit 3A**
+
+Run focused tests, `npm test`, TypeScript, build, HTML/structured-data scans, and Browser QA at desktop/mobile. Compare the implementation and selected reference at the same viewport. Commit as `feat: build Film Archive library hub` only after review is clean.
+
+#### Task 3B: Reading index, static reader, and truthful toolbar
+
+**Files:**
+- Create: `app/library/read/page.tsx`, `app/library/read/page.module.css`
+- Create: `app/library/read/[slug]/page.tsx`, `app/library/read/[slug]/page.module.css`
+- Create editorial primitives: `ArticleHeader`, `ArticleMeta`, `ArticleBody`, `ArticleTOC`, `EditorialFigure`, `EditorialCallout`, `SourceDisclosure`, `ReadNext`, `CompletionReward`
+- Create: `components/library/ReadingToolbar.tsx`, `components/library/ReadingToolbar.module.css`
+- Create: `lib/reader-state.ts`; modify `lib/readings.ts`
+- Create: `scripts/reader-state.test.ts`; extend `scripts/editorial-contract.test.mjs`
+- Modify: `app/sitemap.ts`, `lib/site-route-mode.ts`, `scripts/site-route-mode.test.ts`, `package.json`
+
+- [ ] **Step 1: TDD static routing, reader state, and structured data**
+
+Cover all 13 static params, `dynamicParams = false`, real `notFound()`, canonical/JSON-LD, source disclosure, bookmark/completion storage, focus/progress/audio states, and client bundle boundaries.
+
+- [ ] **Step 2: Build the truthful summary reader**
+
+For the current 13 `source-link-only` packages, render only editorial summary/context, rights/source disclosure, related summaries, and the source CTA. Do not render translation bodies, images, audio, fake progress, or fake completion. Article JSON-LD omits `articleBody` and points to the source through `isBasedOn`. Full-reader controls exist only for a future package whose `publicationMode` is truly `full`.
+
+- [ ] **Step 3: Activate and verify reading routes**
+
+Enable exact `/library/read` and prefix `/library/read/`; keep `/library/<living-note>` legacy. Update sitemap with non-blocked summaries, run focused/full tests, TypeScript, build, output/body-bundle scans, keyboard/mobile Browser QA, and preview-level 404 verification later. Commit as `feat: add truthful Film Archive reader` after clean review.
+
+#### Task 3C: Living notes and Blog index in the shared Editorial system
+
+**Files:**
 - Modify: `app/library/[slug]/page.tsx`
-- Modify: `app/library/[slug]/LibraryArticle.tsx`
-- Modify: `app/library/[slug]/page.module.css`
-- Modify: `app/blog/page.tsx`, `app/blog/page.module.css`
-- Create: `scripts/library-discovery.test.ts`
-- Create: `scripts/editorial-contract.test.mjs`
+- Replace: `app/library/[slug]/LibraryArticle.tsx`, `app/library/[slug]/page.module.css`
+- Replace: `app/blog/page.tsx`, `app/blog/page.module.css`
+- Modify as needed: `app/blog/BlogFiltersClient.tsx`
+- Extend: `components/editorial/Editorial.module.css`, `scripts/editorial-contract.test.mjs`
+- Modify: `lib/site-route-mode.ts`, `scripts/site-route-mode.test.ts`
 
-**Interfaces:**
-- One normalized `LibraryEntrySummary` adapter unifies readings, blog posts, and living notes for discovery without flattening their body schemas.
-- URL state is exactly `q`, `type`, `topic`, `duration`, and `intent`.
-- Local storage keys are `tp:library:saved:v1` and `tp:library:completed:v1`.
-- `dynamicParams = false` and `generateStaticParams()` cover every public reading slug.
+- [ ] **Step 1: TDD living-note and Blog-index contracts**
 
-- [ ] **Step 1: TDD the normalized discovery adapter**
+Lock all existing canonical URLs, 14 living-note static params, real note 404, Markdown/body preservation, typed relations/backlinks, Blog search/filter behavior, one main/h1, and absence of Garden/graph/icon-box motifs.
 
-Test the three content types, exact four filter groups, three intent labels, deterministic duration buckets, topic normalization, query matching, URL serialization, and clear behavior. Expected RED before adapter/client changes.
+- [ ] **Step 2: Migrate the two remaining editorial surfaces**
 
-- [ ] **Step 2: Implement the selected first viewport**
+Render notes with shared article header, metadata, TOC, body, typed relation lists, source disclosure, and ReadNext. Render `/blog` as the `Bài của Thông` lane in the same paper/serif/rule system while retaining real cover assets and search/filter behavior. Do not edit or enable `/blog/[slug]/**`; that direct-entry surface remains Task 5.
 
-Recreate the approved Film Archive Editorial proportions: black masthead, archival paper, exact headline, concise support copy, featured Steve Jobs record, two primary lanes, thin real film raster, then the Blog summary lane immediately below. Use actual catalog counts/content only; no fake metrics or graph. In the same GREEN commit, add library-owned canonical/CollectionPage JSON-LD, `app/sitemap.ts`, `app/robots.ts`, and enable `/library*` in `isUnifiedRouteEnabled`.
+- [ ] **Step 3: Activate, verify, and commit 3C**
 
-- [ ] **Step 3: Implement URL-backed discovery**
-
-Use native inputs/buttons and `useSearchParams`/router replacement. Search/filter updates the URL, preserves keyboard focus, and clears all five params. Do not render internal labels such as Catalog, Status, Growing, or Section.
-
-- [ ] **Step 4: Implement static reader and client toolbar**
-
-Before implementation, write focused tests for Article JSON-LD/canonical/real 404 and a pure reader-state module covering elapsed reading time, progress, ready-audio state, `tp:library:saved:v1`, `tp:library:completed:v1`, and completion-related recommendations. Build metadata, source disclosure, TOC, article blocks/figures, related readings, and source-link-only state on the server. Keep only progress, elapsed time, focus, ready audio, bookmark, and completion in the client toolbar. Focus mode must not hide source attribution or essential controls irreversibly.
-
-- [ ] **Step 5: Bring living notes and blog into the shared editorial system**
-
-Preserve all existing canonical URLs and content generation. Replace the living-note decorative graph with typed relation lists. This task migrates living-note readers only. Blog detail shell remains owned by Task 5 direct-entry migration; Task 3 uses blog summaries for discovery without editing `app/blog/[slug]/**`.
-
-- [ ] **Step 6: Verify library slice**
-
-Run focused tests, `npm test`, `npx tsc --noEmit`, and `npm run build`. Check generated HTML per reading, absence of all-body client bundle, real local 404, metadata/canonical/JSON-LD, filter URL round trip, toolbar keyboard flow, localStorage keys, and target viewports in Browser.
-
-- [ ] **Step 7: Commit library slice**
-
-Commit as `feat: unite the Film Archive library`.
+Enable all `/library/*` only now, plus exact `/blog`. Run focused/full tests, TypeScript, build, direct-entry/404 scans, target-viewport Browser QA, and cross-route visual consistency review. Commit as `feat: unify living library editorial surfaces` after clean review.
 
 ### Task 4: Refine homepage assets, reel, hero, and ACT 03
 
