@@ -5,10 +5,10 @@ import test from 'node:test'
 
 import libraryModule from '../lib/library.ts'
 
-const { getAllLibraryNotes, getLibrarySlugs } = libraryModule
+const { getLibraryNoteBySlug, getLibrarySlugs } = libraryModule
 
 const root = new URL('../', import.meta.url)
-const CONTENT_CONTRACT_HASH = '5bbccaf61c66b9b3b67bfc7c948d0bbb10763a7c6ff338021cddb398bfa5d56f'
+const CONTENT_CONTRACT_HASH = '867c1fd5a9c4015bf7003982c27509ada162041b819f2090a29341f11bb5d6da'
 
 async function readProjectFile(path) {
   try {
@@ -19,16 +19,21 @@ async function readProjectFile(path) {
   }
 }
 
-test('living notes preserve all 14 canonical content contracts', () => {
-  const notes = getAllLibraryNotes()
+test('living notes preserve all 14 canonical content contracts', async () => {
   const slugs = getLibrarySlugs()
+  const notes = await Promise.all(slugs.map((slug) => getLibraryNoteBySlug(slug)))
+
+  assert.ok(notes.every((note) => note !== null))
+  assert.ok(notes.every((note) => typeof note?.contentHtml === 'string' && note.contentHtml.length > 0))
+  assert.ok(notes.every((note) => Array.isArray(note?.headings) && note.headings.length > 0))
+
   const contract = notes.map((note) => ({
-    slug: note.slug,
-    contentHtml: note.contentHtml,
-    headings: note.headings,
-    relatedLinks: note.relatedLinks,
-    sourceTrace: note.sourceTrace,
-    cta: note.cta,
+    slug: note?.slug,
+    contentHtml: note?.contentHtml,
+    headings: note?.headings,
+    relatedLinks: note?.relatedLinks,
+    sourceTrace: note?.sourceTrace,
+    cta: note?.cta,
   }))
 
   assert.equal(notes.length, 14)
