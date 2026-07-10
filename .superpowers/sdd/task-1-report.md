@@ -183,6 +183,19 @@ This report is included in that Task 1 commit; the immutable SHA is provided in 
 - Next build reports the existing multiple-lockfile workspace-root warning and edge-runtime static-generation warning.
 - `npm install` reports four dependency audit findings (1 low, 2 moderate, 1 high); no unrelated dependency remediation was attempted in this focused task.
 
+## Controller in-app Browser verification
+
+The controller completed the deferred keyboard and rendered-state checks in the Codex in-app Browser against `http://127.0.0.1:3002` after commit `10af9d2`.
+
+- Mobile viewport override `390 × 844`: the menu trigger opened the dialog and initial focus landed on `Đóng menu`.
+- `Shift+Tab` from the first control wrapped to the last chapter link `Conan`; `Tab` from that link wrapped back to `Đóng menu`.
+- `Escape` closed the dialog and restored focus to `Mở mục lục`.
+- Body inline overflow changed from `''` to `hidden` while open, then restored exactly to `''` after close.
+- Every dialog control measured at least `44 × 44px`; the shortest chapter links `Mở đầu` and `Conan` measured exactly `44 × 44px`.
+- Mobile document had no horizontal overflow (`scrollWidth === clientWidth`).
+- Desktop `1440 × 900`: unified homepage rendered one `<main>`, all five primary links including `/conanmaker/`, `data-site-shell="unified"`, and `data-route-mode="cinema-dark"`, with no horizontal overflow.
+- `/library` and `/diagnostic` remained `data-site-shell="legacy"`; their main content computed to the isolated Inter stack. The known diagnostic nested main remains intentionally deferred until its route activation slice.
+
 ---
 
 ## Reviewer fix pass — 2026-07-10
