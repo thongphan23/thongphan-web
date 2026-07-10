@@ -13,62 +13,89 @@
 }
 
 .hero {
-  --hero-film-height: clamp(218px, 27vh, 288px);
+  --hero-film-height: clamp(240px, 26.5vh, 280px);
   background: var(--cinema-ink);
+  border: 1px solid rgba(232, 223, 207, 0.12);
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.7);
   isolation: isolate;
   min-height: max(780px, 100svh);
   overflow: hidden;
   position: relative;
 }
 
+.hero::before {
+  border: 1px solid rgba(224, 75, 67, 0.12);
+  content: '';
+  inset: 14px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 7;
+}
+
 .heroPhoto {
   bottom: var(--hero-film-height);
-  left: 40%;
+  left: 0;
   overflow: hidden;
   position: absolute;
   right: 0;
-  top: 24px;
+  top: 0;
   z-index: -1;
 }
 
 .heroPhoto picture {
+  background: #000;
   display: block;
   height: 100%;
+  position: relative;
   width: 100%;
 }
 
 .heroPhoto img {
-  filter: grayscale(1) sepia(0.15) contrast(1.2) brightness(0.67);
-  height: 100%;
-  object-fit: cover;
-  object-position: 56% 62%;
-  transform: translateY(8%) scale(1.38);
-  transform-origin: 59% 42%;
-  width: 100%;
+  filter: contrast(1.04) saturate(0.82) brightness(0.98);
+  height: auto;
+  left: 12.7%;
+  object-fit: unset;
+  position: absolute;
+  top: -2%;
+  transform: none;
+  width: 86.4%;
 }
 
 .heroEdgeFade {
   background:
-    linear-gradient(90deg, var(--cinema-ink) 0%, var(--cinema-ink) 22%, transparent 58%),
-    linear-gradient(270deg, var(--cinema-ink) 0%, transparent 11%),
-    linear-gradient(180deg, rgba(7, 7, 6, 0.28) 0%, transparent 42%, var(--cinema-ink) 100%);
+    linear-gradient(90deg, rgba(7, 7, 6, 0.3) 0%, transparent 48%),
+    linear-gradient(270deg, rgba(7, 7, 6, 0.62) 0%, transparent 8%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.12) 0%, transparent 58%, rgba(7, 7, 6, 0.28) 100%);
   inset: 0 0 var(--hero-film-height);
   pointer-events: none;
   position: absolute;
   z-index: 0;
 }
 
+.heroFrameOverlay {
+  height: 100%;
+  inset: 0;
+  mix-blend-mode: screen;
+  object-fit: fill;
+  opacity: 0.72;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  z-index: 6;
+}
+
 .displayName {
   color: var(--cinema-paper);
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(8.5rem, 13.1vw, 12.3rem);
+  font-size: clamp(8.3rem, 11.55vw, 10.8rem);
   font-weight: 500;
   left: clamp(1.5rem, 6.5vw, 6.5rem);
-  letter-spacing: -0.075em;
-  line-height: 0.66;
+  letter-spacing: -0.058em;
+  line-height: 0.78;
   margin: 0;
   position: absolute;
-  top: clamp(9rem, 16vh, 10.6rem);
+  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.35);
+  top: clamp(9.75rem, 15.4vh, 10.2rem);
   z-index: 1;
 }
 
@@ -76,58 +103,47 @@
   display: block;
 }
 
-.evidenceStamp {
-  align-items: center;
-  border: 2px solid var(--cinema-lacquer-bright);
-  border-radius: 50%;
-  color: var(--cinema-lacquer-bright);
-  display: flex;
-  flex-direction: column;
-  font-size: clamp(0.58rem, 0.78vw, 0.75rem);
-  font-weight: 700;
-  height: clamp(8rem, 12vw, 11rem);
-  justify-content: center;
-  letter-spacing: 0.08em;
-  line-height: 1.8;
+.displayName img {
+  filter: brightness(2.2) saturate(1.18);
+  height: auto;
+  mix-blend-mode: normal;
   position: absolute;
-  right: clamp(1.5rem, 6vw, 6rem);
-  text-align: center;
-  top: clamp(8rem, 14vh, 10rem);
-  transform: rotate(-8deg);
-  width: clamp(8rem, 12vw, 11rem);
+  right: -1.8rem;
+  top: 66%;
+  transform: rotate(-6deg);
+  width: clamp(8.5rem, 11vw, 10.5rem);
+}
+
+.evidenceStamp {
+  height: clamp(11.5rem, 18vw, 16.8rem);
+  overflow: hidden;
+  position: absolute;
+  right: clamp(2.2rem, 3vw, 3rem);
+  top: clamp(4.8rem, 8.8vh, 5.9rem);
+  transform: rotate(-4deg);
+  width: clamp(11.5rem, 18vw, 16.8rem);
   z-index: 3;
 }
 
-.evidenceStamp::before,
-.evidenceStamp::after {
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  content: '';
-  inset: 0.4rem;
-  pointer-events: none;
-  position: absolute;
-}
-
-.evidenceStamp::after {
-  inset: 0.72rem;
-  opacity: 0.45;
-}
-
-.evidenceStamp > span {
-  max-width: 8.2em;
+.evidenceStamp img {
+  filter: brightness(1.16) saturate(1.1);
+  height: 100%;
+  mix-blend-mode: normal;
+  object-fit: contain;
+  width: 100%;
 }
 
 .heroCopy {
   left: clamp(1.5rem, 6.7vw, 6.7rem);
-  max-width: min(38rem, 43vw);
+  max-width: min(39rem, 43vw);
   position: absolute;
-  top: clamp(25rem, 44vh, 29rem);
+  top: clamp(28.4rem, 43.9vh, 29.1rem);
   z-index: 4;
 }
 
 .heroCopy h1 {
   color: var(--cinema-paper);
-  font-size: clamp(1.8rem, 2.45vw, 2.6rem);
+  font-size: clamp(1.9rem, 2.5vw, 2.62rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.12;
@@ -143,9 +159,9 @@
 .heroLead {
   color: var(--cinema-paper-muted);
   font-size: clamp(0.95rem, 1.25vw, 1.16rem);
-  line-height: 1.65;
-  margin: 1.15rem 0 1.4rem;
-  max-width: 46ch;
+  line-height: 1.5;
+  margin: 1.2rem 0 1.55rem;
+  max-width: 36ch;
 }
 
 .primaryButton {
@@ -156,15 +172,24 @@
   display: inline-flex;
   font-size: 0.88rem;
   font-weight: 700;
-  justify-content: center;
-  min-height: 50px;
-  padding: 0.8rem 1.4rem;
+  gap: 1.5rem;
+  justify-content: space-between;
+  min-height: 60px;
+  min-width: min(19.75rem, 100%);
+  padding: 0 0.75rem 0 1.65rem;
   text-decoration: none;
   transition: background-color 180ms ease, transform 180ms ease;
 }
 
+.primaryButton img {
+  display: block;
+  height: 2.25rem;
+  mix-blend-mode: normal;
+  object-fit: cover;
+  width: 2.25rem;
+}
+
 .primaryButton:hover {
-  background: var(--cinema-lacquer-bright);
   transform: translateY(-2px);
 }
 
@@ -179,7 +204,7 @@
   align-items: center;
   color: var(--cinema-paper-muted);
   display: flex;
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   gap: 0.75rem;
   margin-top: 1.15rem;
 }
@@ -192,31 +217,26 @@
 }
 
 .heroFilm {
-  background: var(--cinema-ink-raised);
-  border: 1px solid var(--cinema-line);
+  background-color: var(--cinema-ink-raised);
+  background-image: url('/images/homepage/evidence-cinema-film-texture-v2.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   bottom: 0;
   display: grid;
-  gap: 0.6rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.55rem, 1vw, 0.95rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   height: var(--hero-film-height);
-  left: clamp(1rem, 3vw, 3rem);
-  padding: 1.2rem 0.65rem 0.65rem;
+  left: clamp(1rem, 3.5vw, 3.25rem);
+  padding: 1.75rem 0.9rem 1.6rem;
   position: absolute;
-  right: clamp(1rem, 3vw, 3rem);
+  right: clamp(1rem, 3.5vw, 3.25rem);
   z-index: 5;
 }
 
-.filmEdge {
-  background-image: repeating-linear-gradient(90deg, transparent 0 1.9rem, rgba(232, 223, 207, 0.42) 1.9rem 2.3rem, transparent 2.3rem 3rem);
-  height: 0.35rem;
-  left: 0;
-  opacity: 0.65;
-  position: absolute;
-  right: 0;
-  top: 0.3rem;
-}
-
 .heroFrame {
+  background: var(--cinema-ink);
+  border: 1px solid rgba(232, 223, 207, 0.14);
   min-width: 0;
   overflow: hidden;
   position: relative;
@@ -227,29 +247,47 @@
 }
 
 .heroFrameCaption {
-  align-items: center;
-  background: rgba(7, 7, 6, 0.86);
+  align-items: flex-start;
+  background: linear-gradient(180deg, transparent 0%, rgba(7, 7, 6, 0.94) 48%);
   bottom: 0;
   display: flex;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.32rem;
   left: 0;
-  padding: 0.65rem 0.8rem;
+  padding: 2.8rem 0.7rem 0.55rem;
   position: absolute;
   right: 0;
 }
 
 .heroFrameCaption span {
-  color: var(--cinema-lacquer-bright);
-  font-size: 0.67rem;
-  letter-spacing: 0.14em;
+  background: rgba(163, 32, 26, 0.92);
+  color: var(--cinema-paper);
+  font-family: var(--font-jetbrains), monospace;
+  font-size: clamp(0.52rem, 0.63vw, 0.65rem);
+  letter-spacing: 0.11em;
+  padding: 0.28rem 0.45rem;
 }
 
 .heroFrameCaption strong {
-  font-size: clamp(0.72rem, 1vw, 0.86rem);
-  letter-spacing: 0.03em;
+  color: var(--cinema-paper-muted);
+  font-size: clamp(0.56rem, 0.7vw, 0.72rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.heroFrame[data-frame='01'] .proofImage {
+  object-position: center 25%;
+}
+
+.heroFrame[data-frame='02'] .proofImage {
+  object-position: center 43%;
+}
+
+.heroFrame[data-frame='03'] .proofImage {
+  object-position: center 24%;
 }
 
 .act {
@@ -629,12 +667,12 @@
 
 @media (max-width: 900px) {
   .hero {
-    min-height: 1040px;
+    min-height: 1100px;
   }
 
   .heroPhoto {
     bottom: var(--hero-film-height);
-    left: 30%;
+    left: 0;
   }
 
   .displayName {
@@ -644,7 +682,7 @@
 
   .heroCopy {
     left: 2rem;
-    max-width: 58vw;
+    max-width: 72vw;
     top: 31rem;
   }
 
@@ -667,7 +705,7 @@
 
 @media (min-width: 768px) and (max-height: 800px) {
   .hero {
-    min-height: 885px;
+    min-height: 980px;
   }
 }
 
@@ -678,17 +716,21 @@
 
   .heroPhoto {
     bottom: auto;
-    height: 57svh;
+    height: 61svh;
     left: 0;
-    min-height: 430px;
+    min-height: 460px;
     top: 64px;
   }
 
   .heroPhoto img {
-    filter: grayscale(1) sepia(0.12) contrast(1.18) brightness(0.62);
-    object-position: 50% 20%;
-    transform: scale(1.25);
-    transform-origin: 46% 36%;
+    filter: contrast(1.04) saturate(0.84) brightness(0.84);
+    height: 100%;
+    left: 0;
+    object-fit: contain;
+    object-position: 50% 30%;
+    top: 0;
+    transform: none;
+    width: 100%;
   }
 
   .heroEdgeFade {
@@ -699,6 +741,10 @@
     height: 64svh;
   }
 
+  .heroFrameOverlay {
+    opacity: 0.42;
+  }
+
   .displayName {
     font-size: clamp(5.7rem, 27vw, 8rem);
     left: 1rem;
@@ -707,14 +753,10 @@
   }
 
   .evidenceStamp {
-    height: 6.6rem;
+    height: 8.2rem;
     right: 0.8rem;
-    top: 20rem;
-    width: 6.6rem;
-  }
-
-  .evidenceStamp span {
-    font-size: 0.48rem;
+    top: 18rem;
+    width: 8.2rem;
   }
 
   .heroCopy {
@@ -743,11 +785,13 @@
   }
 
   .heroFilm {
+    background-size: auto 100%;
     bottom: 1rem;
     display: flex;
     height: 250px;
     left: 1rem;
     overflow-x: auto;
+    padding: 1.55rem 0.75rem 1.35rem;
     right: 0;
     scroll-snap-type: x mandatory;
   }

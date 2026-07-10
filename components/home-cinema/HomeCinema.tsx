@@ -3,7 +3,7 @@ import HomeMirror from './HomeMirror'
 import HomeTrackedLink, { homepageEvents } from './HomeTrackedLink'
 import ProofImage from './ProofImage'
 import ProofRail from './ProofRail'
-import { methodSteps, pathItems, proofItems } from './home-cinema-content'
+import { heroFilmItems, methodSteps, pathItems, proofItems } from './home-cinema-content'
 import styles from './HomeCinema.module.css'
 
 export default function HomeCinema() {
@@ -12,12 +12,12 @@ export default function HomeCinema() {
       <section id="story" className={styles.hero} data-home-section>
         <div className={styles.heroPhoto} data-focus-pull>
           <picture>
-            <source media="(max-width: 767px)" srcSet="/images/homepage/thong-stage-anchor-cinema-mobile.webp" />
+            <source media="(max-width: 767px)" srcSet="/images/homepage/evidence-cinema-hero-v3-mobile.webp" />
             <img
-              src="/images/homepage/thong-stage-anchor-cinema.webp"
+              src="/images/homepage/evidence-cinema-hero-v3.webp"
               alt="Thông Phan đang cầm micro chia sẻ trên sân khấu."
-              width="1200"
-              height="1800"
+              width="1536"
+              height="1024"
               fetchPriority="high"
               loading="eager"
               decoding="async"
@@ -25,42 +25,62 @@ export default function HomeCinema() {
           </picture>
         </div>
         <div className={styles.heroEdgeFade} aria-hidden="true" />
+        <img
+          className={styles.heroFrameOverlay}
+          src="/images/homepage/evidence-cinema-outer-frame-v2.png"
+          alt=""
+          aria-hidden="true"
+          data-cinema-frame
+        />
 
         <p className={styles.displayName} aria-hidden="true" data-cinema-reveal>
           <span>THÔNG</span>
           <span>PHAN</span>
+          <img src="/images/homepage/evidence-cinema-signature-v3.png" alt="" />
         </p>
 
-        <div className={styles.evidenceStamp} aria-hidden="true" data-evidence-stamp>
-          <span>LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT</span>
+        <div
+          className={styles.evidenceStamp}
+          aria-hidden="true"
+          data-evidence-stamp
+          data-stamp-copy="LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT"
+        >
+          <img src="/images/homepage/evidence-cinema-stamp-v3.png" alt="" />
         </div>
 
         <div className={styles.heroCopy} data-cinema-reveal>
-          <h1>Biến chuyên môn thật thành <em>tài sản</em> có người muốn dùng.</h1>
+          <h1>
+            Biến chuyên môn thật<br />
+            thành <em>tài sản</em> có người muốn dùng.
+          </h1>
           <p className={styles.heroLead}>Từ trải nghiệm thật đến cộng đồng trả phí — không cần rời bỏ công việc hiện tại.</p>
           <HomeTrackedLink
             href="/diagnostic"
             className={styles.primaryButton}
             eventName={homepageEvents.primary}
           >
-            Khám phá lộ trình của bạn
+            <span>Khám phá lộ trình của bạn</span>
+            <img src="/images/homepage/evidence-cinema-arrow-v2.png" alt="" aria-hidden="true" />
           </HomeTrackedLink>
           <p className={styles.proofMicrocopy}>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
         </div>
 
-        <div className={styles.heroFilm} aria-label="Hai khung bằng chứng mở đầu">
-          <div className={styles.filmEdge} aria-hidden="true" />
-          {proofItems.map((item) => (
-            <article key={item.slug} className={styles.heroFrame}>
+        <div
+          className={styles.heroFilm}
+          data-frame-count="3"
+          aria-label="Ba khung bằng chứng mở đầu"
+        >
+          {heroFilmItems.map((item) => (
+            <article key={item.slug} className={styles.heroFrame} data-frame={item.heroFrame}>
               <ProofImage
                 src={item.image}
                 alt={item.alt}
-                sizes="(max-width: 767px) 86vw, 46vw"
+                sizes="(max-width: 767px) 86vw, 31vw"
                 priority
               />
               <div className={styles.heroFrameCaption}>
-                <span>{item.frame}</span>
-                <strong>{item.title}</strong>
+                <span>{item.label}</span>
+                <strong>{item.caption}</strong>
               </div>
             </article>
           ))}
@@ -145,8 +165,8 @@ export default function HomeCinema() {
       <section id="conan" className={styles.conanAct} data-home-section>
         <div className={styles.conanPortrait} data-focus-pull>
           <Image
-            src="/thong-phan.jpg"
-            alt="Chân dung Thông Phan."
+            src="/images/homepage/evidence-cinema-conan-portrait-v2.webp"
+            alt="Chân dung Thông Phan khoanh tay trước bản đồ thế giới."
             fill
             sizes="(max-width: 767px) 100vw, 38vw"
           />

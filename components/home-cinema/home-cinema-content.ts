@@ -79,6 +79,33 @@ export const proofItems = [
   },
 ] as const
 
+export const heroFilmItems = [
+  {
+    heroFrame: '01',
+    slug: 'tri-thuc-thanh-tai-san',
+    image: '/images/homepage/thong-library-author.jpg',
+    alt: 'Thông Phan cầm cuốn sách Thần thoại Hy Lạp của mình tại một hiệu sách.',
+    label: 'TÁC GIẢ THỰC CHIẾN',
+    caption: 'Tri thức đã thành một sản phẩm thật',
+  },
+  {
+    heroFrame: '02',
+    slug: 'noi-dung-chung-minh',
+    image: '/images/homepage/thong-stage-anchor-cinema.webp',
+    alt: 'Thông Phan cầm micro chia sẻ trên sân khấu tại một sự kiện kinh doanh.',
+    label: 'NỘI DUNG CHỨNG MINH',
+    caption: 'Workshop, đào tạo, chia sẻ thực chiến',
+  },
+  {
+    heroFrame: '03',
+    slug: 'tu-tai-san-den-he-thong',
+    image: '/thong-phan.jpg',
+    alt: 'Chân dung Thông Phan trước một bảng đồ họa.',
+    label: 'NGƯỜI XÂY HỆ',
+    caption: 'Từ chuyên môn đến một hệ thống triển khai',
+  },
+] as const
+
 export const methodSteps = [
   ['01', 'Chuyên môn', 'Chọn phần kinh nghiệm bạn đã thật sự trả giá để có.'],
   ['02', 'Bằng chứng', 'Đưa ca thật, quyết định thật và kết quả thật ra ánh sáng.'],
