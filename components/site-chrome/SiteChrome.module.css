@@ -88,7 +88,7 @@
 
 .libraryWordmark span {
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.14em;
 }
@@ -176,7 +176,7 @@
   color: var(--brand-paper);
   display: none;
   font: inherit;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   gap: 0.45rem;
   justify-content: center;
   min-height: 44px;
@@ -249,7 +249,7 @@
 .mobileNav a span {
   color: var(--brand-lacquer-bright);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.16em;
 }
 
@@ -264,7 +264,7 @@
   align-items: center;
   color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
   display: inline-flex;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   min-height: 44px;
   min-width: 44px;
   text-decoration: none;
@@ -333,7 +333,8 @@
   }
 
   .libraryWordmark {
-    gap: 0.45rem;
+    gap: 0.35rem;
+    min-width: 0;
   }
 
   .libraryWordmark strong {
@@ -341,10 +342,11 @@
   }
 
   .libraryWordmark span {
-    font-size: 0.54rem;
+    font-size: 0.75rem;
   }
 
   .cinemaHeaderInner {
+    gap: 0.5rem;
     min-height: 64px;
     padding: 0 1rem;
   }

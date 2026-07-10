@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
+import { getAllPosts } from '../lib/blog'
+import { getAllLibraryNotes } from '../lib/library'
+import { getAllReadingSummaries } from '../lib/readings'
+
 import {
   DISCOVERY_PARAM_KEYS,
   adaptBlogPost,
@@ -13,6 +17,7 @@ import {
   mergeDiscoveryState,
   parseDiscoveryParams,
   serializeDiscoveryParams,
+  topicLabel,
 } from '../lib/library-discovery'
 
 const reading = {
@@ -157,6 +162,21 @@ test('query and four filter groups compose deterministically', () => {
   )
 })
 
+test('Vietnamese search treats đ and d as equivalent', () => {
+  const entries = [adaptReadingSummary(reading)]
+
+  assert.deepEqual(
+    filterLibraryEntries(entries, {
+      q: 'dieu ban yeu',
+      type: '',
+      topic: '',
+      duration: '',
+      intent: '',
+    }).map(({ slug }) => slug),
+    ['steve-jobs-2005-stanford-commencement-address'],
+  )
+})
+
 test('duration bands have stable inclusive boundaries', () => {
   assert.equal(durationBandForMinutes(9), 'under-10')
   assert.equal(durationBandForMinutes(10), '10-20')
@@ -170,4 +190,71 @@ test('rapid cross-control updates compose from the optimistic state', () => {
   current = mergeDiscoveryState(current, 'type', 'reading')
 
   assert.equal(serializeDiscoveryParams(current).toString(), 'type=reading')
+})
+
+test('the complete current catalog has an approved Vietnamese label for all 55 topics', () => {
+  const entries = [
+    ...getAllReadingSummaries().map(adaptReadingSummary),
+    ...getAllPosts().map(adaptBlogPost),
+    ...getAllLibraryNotes().map(adaptLivingNote),
+  ]
+
+  assert.deepEqual(Object.fromEntries(getDiscoveryTopics(entries).map(({ value, label }) => [value, label])), {
+    '21-days': 'Thử thách 21 ngày',
+    ai: 'AI',
+    'ai-fear': 'Nỗi sợ AI',
+    'ai-system': 'Hệ thống AI',
+    audit: 'Rà soát',
+    brain2: 'Brain2',
+    'cam-xuc': 'Cảm xúc',
+    'chinh-tri': 'Chính trị',
+    clarity: 'Sáng tỏ',
+    conan: 'Conan',
+    content: 'Nội dung',
+    'content-pattern': 'Mẫu nội dung',
+    'dao-duc': 'Đạo đức',
+    data: 'Dữ liệu',
+    'digital-assets': 'Tài sản số',
+    expertise: 'Chuyên môn',
+    failure: 'Thất bại',
+    'giong-rieng': 'Giọng riêng',
+    'global-development': 'Phát triển toàn cầu',
+    'hanh-phuc': 'Hạnh phúc',
+    'he-gia-tri': 'Hệ giá trị',
+    hook: 'Câu mở đầu',
+    'khiem-nhuong': 'Khiêm nhường',
+    'khung-nhin': 'Khung nhìn',
+    'knowledge-os': 'Hệ tri thức',
+    map: 'Bản đồ',
+    'market-data': 'Dữ liệu thị trường',
+    marketing: 'Marketing',
+    mortality: 'Cái chết',
+    'nghe-thuat': 'Nghệ thuật',
+    'noi-tam': 'Nội tâm',
+    notes: 'Ghi chú',
+    obsidian: 'Obsidian',
+    'personal-brand': 'Thương hiệu cá nhân',
+    'phan-doan': 'Phán đoán',
+    pluralism: 'Đa nguyên',
+    positioning: 'Định vị',
+    proof: 'Bằng chứng',
+    'reading-path': 'Lộ trình đọc',
+    reframing: 'Đổi khung nhìn',
+    revenue: 'Doanh thu',
+    'sang-tao': 'Sáng tạo',
+    'scout-mindset': 'Tư duy trinh sát',
+    'state-change': 'Chuyển trạng thái',
+    structure: 'Cấu trúc',
+    taste: 'Gu thẩm định',
+    template: 'Mẫu dùng lại',
+    'thien-kien': 'Thiên kiến',
+    'ton-giao': 'Tôn giáo',
+    trust: 'Niềm tin',
+    'truyen-thong': 'Truyền thông',
+    viral: 'Lan truyền',
+    work: 'Công việc',
+    worldview: 'Thế giới quan',
+    writing: 'Viết',
+  })
+  assert.throws(() => topicLabel('unapproved-internal-tag'), /Missing approved topic label/)
 })

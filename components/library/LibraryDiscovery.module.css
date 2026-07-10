@@ -28,7 +28,7 @@
 .index {
   color: var(--brand-lacquer);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -54,7 +54,7 @@
 .filterLabel {
   color: var(--brand-muted-on-paper);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
 }
@@ -116,7 +116,7 @@
   color: var(--brand-text-on-paper);
   cursor: pointer;
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   min-height: 44px;
   padding: 0.55rem 0.8rem;
 }
@@ -137,7 +137,7 @@
 
 .resultBar p {
   color: var(--brand-muted-on-paper);
-  font-size: 0.82rem;
+  font-size: 0.875rem;
 }
 
 .resultBar button {
@@ -172,7 +172,7 @@
 .resultCopy small {
   color: var(--brand-muted-on-paper);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
 }
 
@@ -191,7 +191,7 @@
 .resultCopy > span {
   color: var(--brand-muted-on-paper);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   max-width: 70ch;
 }

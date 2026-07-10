@@ -108,3 +108,18 @@ test('library visual uses the approved raster rather than a fabricated portrait 
   assert.match(siteHeader, /pathname\.startsWith\(['"]\/library['"]\)/)
   assert.match(siteHeader, /THƯ VIỆN/)
 })
+
+test('migrated library typography respects public minimum sizes', async () => {
+  const sources = await Promise.all([
+    readProjectFile('app/library/page.module.css'),
+    readProjectFile('components/library/LibraryDiscovery.module.css'),
+    readProjectFile('components/site-chrome/SiteChrome.module.css'),
+  ])
+  const combined = sources.join('\n')
+  const remSizes = [...combined.matchAll(/font-size:\s*(0?\.\d+)rem/g)].map((match) => Number(match[1]))
+
+  assert.ok(remSizes.length > 0)
+  assert.ok(remSizes.every((size) => size >= 0.75), `found sub-12px rem size: ${remSizes}`)
+  assert.doesNotMatch(sources[1], /(?:filterButtons button|searchRow label|filterLabel)[\s\S]{0,500}?font-size:\s*(?:0\.(?:7\d|8[0-6]))rem/)
+  assert.match(sources[2], /\.libraryWordmark span[\s\S]*?font-size:\s*0\.75rem/)
+})

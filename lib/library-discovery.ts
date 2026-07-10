@@ -43,36 +43,63 @@ const DURATION_BANDS = new Set<LibraryEntryDuration>(['under-10', '10-20', 'over
 const INTENTS = new Set<LibraryEntryIntent>(['clarity', 'taste', 'asset'])
 
 const TOPIC_LABELS: Readonly<Record<string, string>> = {
+  '21-days': 'Thử thách 21 ngày',
   ai: 'AI',
+  'ai-fear': 'Nỗi sợ AI',
+  'ai-system': 'Hệ thống AI',
+  audit: 'Rà soát',
   brain2: 'Brain2',
   'cam-xuc': 'Cảm xúc',
   'chinh-tri': 'Chính trị',
   'chuyen-mon': 'Chuyên môn',
+  clarity: 'Sáng tỏ',
+  conan: 'Conan',
+  content: 'Nội dung',
+  'content-pattern': 'Mẫu nội dung',
   'dao-duc': 'Đạo đức',
   data: 'Dữ liệu',
+  'digital-assets': 'Tài sản số',
+  expertise: 'Chuyên môn',
+  failure: 'Thất bại',
   'giong-rieng': 'Giọng riêng',
   'global-development': 'Phát triển toàn cầu',
   'hanh-phuc': 'Hạnh phúc',
   'he-gia-tri': 'Hệ giá trị',
+  hook: 'Câu mở đầu',
   'khiem-nhuong': 'Khiêm nhường',
   'khung-nhin': 'Khung nhìn',
+  'knowledge-os': 'Hệ tri thức',
+  map: 'Bản đồ',
+  'market-data': 'Dữ liệu thị trường',
   marketing: 'Marketing',
   mortality: 'Cái chết',
   'nghe-thuat': 'Nghệ thuật',
   'noi-tam': 'Nội tâm',
+  notes: 'Ghi chú',
   obsidian: 'Obsidian',
+  'personal-brand': 'Thương hiệu cá nhân',
   'phan-doan': 'Phán đoán',
   pluralism: 'Đa nguyên',
+  positioning: 'Định vị',
+  proof: 'Bằng chứng',
+  'reading-path': 'Lộ trình đọc',
   reframing: 'Đổi khung nhìn',
+  revenue: 'Doanh thu',
   'sang-tao': 'Sáng tạo',
   'scout-mindset': 'Tư duy trinh sát',
+  'state-change': 'Chuyển trạng thái',
+  structure: 'Cấu trúc',
   taste: 'Gu thẩm định',
   'tai-san-so': 'Tài sản số',
+  template: 'Mẫu dùng lại',
   'thien-kien': 'Thiên kiến',
   'ton-giao': 'Tôn giáo',
+  trust: 'Niềm tin',
   'truyen-thong': 'Truyền thông',
+  viral: 'Lan truyền',
   work: 'Công việc',
   worldview: 'Thế giới quan',
+  writing: 'Viết',
 }
 
 function uniqueSorted(values: Array<string | undefined>): string[] {
@@ -211,6 +238,7 @@ export function clearDiscoveryParams(params: URLSearchParams): URLSearchParams {
 function normalizeSearchValue(value: string): string {
   return value
     .normalize('NFD')
+    .replace(/[đĐ]/g, 'd')
     .replace(/\p{Diacritic}/gu, '')
     .toLocaleLowerCase('vi')
 }
@@ -243,10 +271,9 @@ export function filterLibraryEntries(
 }
 
 export function topicLabel(topic: string): string {
-  return TOPIC_LABELS[topic] ?? topic.split('-').map((part) => {
-    if (!part) return part
-    return `${part[0].toLocaleUpperCase('vi')}${part.slice(1)}`
-  }).join(' ')
+  const label = TOPIC_LABELS[topic]
+  if (!label) throw new Error(`Missing approved topic label: ${topic}`)
+  return label
 }
 
 export function getDiscoveryTopics(entries: LibraryEntrySummary[]) {
