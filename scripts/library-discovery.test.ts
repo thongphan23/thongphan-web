@@ -10,6 +10,7 @@ import {
   durationBandForMinutes,
   filterLibraryEntries,
   getDiscoveryTopics,
+  mergeDiscoveryState,
   parseDiscoveryParams,
   serializeDiscoveryParams,
 } from '../lib/library-discovery'
@@ -161,4 +162,12 @@ test('duration bands have stable inclusive boundaries', () => {
   assert.equal(durationBandForMinutes(10), '10-20')
   assert.equal(durationBandForMinutes(20), '10-20')
   assert.equal(durationBandForMinutes(21), 'over-20')
+})
+
+test('rapid cross-control updates compose from the optimistic state', () => {
+  let current = parseDiscoveryParams(new URLSearchParams('q=Steve+Jobs'))
+  current = mergeDiscoveryState(current, 'q', '')
+  current = mergeDiscoveryState(current, 'type', 'reading')
+
+  assert.equal(serializeDiscoveryParams(current).toString(), 'type=reading')
 })

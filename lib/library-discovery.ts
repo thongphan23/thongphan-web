@@ -194,6 +194,14 @@ export function serializeDiscoveryParams(state: LibraryDiscoveryState): URLSearc
   return params
 }
 
+export function mergeDiscoveryState<Key extends keyof LibraryDiscoveryState>(
+  state: LibraryDiscoveryState,
+  key: Key,
+  value: LibraryDiscoveryState[Key],
+): LibraryDiscoveryState {
+  return { ...state, [key]: value }
+}
+
 export function clearDiscoveryParams(params: URLSearchParams): URLSearchParams {
   const next = new URLSearchParams(params)
   for (const key of DISCOVERY_PARAM_KEYS) next.delete(key)

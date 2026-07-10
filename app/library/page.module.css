@@ -55,6 +55,11 @@
   text-wrap: balance;
 }
 
+.headlineLine {
+  display: block;
+  white-space: nowrap;
+}
+
 .lead {
   font-size: clamp(0.9rem, 1.05vw, 1rem);
   line-height: 1.55;
@@ -363,6 +368,11 @@
   .hero h1 {
     font-size: clamp(3rem, 15vw, 4.8rem);
     line-height: 0.92;
+  }
+
+  .headlineLine {
+    display: inline;
+    white-space: normal;
   }
 
   .featured {

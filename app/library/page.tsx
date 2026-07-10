@@ -16,6 +16,7 @@ import styles from './page.module.css'
 
 const FEATURED_SLUG = 'steve-jobs-2005-stanford-commencement-address'
 const FEATURED_HREF = `/library/read/${FEATURED_SLUG}`
+const LIBRARY_HEADLINE = 'Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị.'
 
 const PAGE_DESCRIPTION =
   'Thư viện chọn lọc những bài đọc đáng tin, bài viết và ghi chú sống để bạn đọc sâu, nghĩ rõ và làm ra thứ có giá trị.'
@@ -117,7 +118,12 @@ export default function LibraryPage() {
         <header className={styles.hero}>
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>Thư viện chọn lọc · Thông Phan</p>
-            <h1 id="library-title">Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị.</h1>
+            <h1 id="library-title" aria-label={LIBRARY_HEADLINE}>
+              <span className={styles.headlineLine}>Một thư viện{' '}</span>
+              <span className={styles.headlineLine}>để đọc sâu,{' '}</span>
+              <span className={styles.headlineLine}>nghĩ rõ và làm ra{' '}</span>
+              <span className={styles.headlineLine}>thứ có giá trị.</span>
+            </h1>
             <p className={styles.lead}>
               Những bài đọc đáng tin, ghi chú đang sống và trải nghiệm đã được trả giá —
               được xếp lại để bạn nhìn rõ hơn trước khi làm nhanh hơn.
@@ -159,7 +165,7 @@ export default function LibraryPage() {
 
         <div className={styles.filmRaster}>
           <img
-            src="/images/homepage/evidence-cinema-film-texture-v2.webp"
+            src="/images/library/library-film-archive-v1.webp"
             alt=""
             aria-hidden="true"
             width="2048"

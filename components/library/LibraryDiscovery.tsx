@@ -2,11 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import {
   clearDiscoveryParams,
   filterLibraryEntries,
   getDiscoveryTopics,
+  mergeDiscoveryState,
   parseDiscoveryParams,
   serializeDiscoveryParams,
   type LibraryDiscoveryState,
@@ -90,10 +91,16 @@ export default function LibraryDiscovery({ entries }: { entries: LibraryEntrySum
     () => parseDiscoveryParams(new URLSearchParams(searchParams.toString())),
     [searchParams],
   )
+  const optimisticStateRef = useRef(state)
   const topics = useMemo(() => getDiscoveryTopics(entries), [entries])
   const results = useMemo(() => filterLibraryEntries(entries, state), [entries, state])
 
+  useEffect(() => {
+    optimisticStateRef.current = state
+  }, [state])
+
   const replaceState = useCallback((nextState: LibraryDiscoveryState) => {
+    optimisticStateRef.current = nextState
     const nextParams = serializeDiscoveryParams(nextState)
     const nextUrl = nextParams.size ? `${pathname}?${nextParams.toString()}` : pathname
     router.replace(nextUrl, { scroll: false })
@@ -103,11 +110,12 @@ export default function LibraryDiscovery({ entries }: { entries: LibraryEntrySum
     key: Key,
     value: LibraryDiscoveryState[Key],
   ) => {
-    replaceState({ ...state, [key]: value })
-  }, [replaceState, state])
+    replaceState(mergeDiscoveryState(optimisticStateRef.current, key, value))
+  }, [replaceState])
 
   const clearFilters = useCallback(() => {
     const cleared = clearDiscoveryParams(new URLSearchParams(searchParams.toString()))
+    optimisticStateRef.current = parseDiscoveryParams(cleared)
     const nextUrl = cleared.size ? `${pathname}?${cleared.toString()}` : pathname
     router.replace(nextUrl, { scroll: false })
   }, [pathname, router, searchParams])

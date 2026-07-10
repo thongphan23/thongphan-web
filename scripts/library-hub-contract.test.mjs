@@ -20,6 +20,7 @@ test('library hub locks the approved headline, CTA, lanes, and summary-only data
   ])
 
   assert.match(page, /Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị\./)
+  assert.equal((page.match(/className=\{styles\.headlineLine\}/g) ?? []).length, 4)
   assert.match(
     page,
     /href=["'{`]\/library\/read\/steve-jobs-2005-stanford-commencement-address/,
@@ -37,6 +38,7 @@ test('library hub locks the approved headline, CTA, lanes, and summary-only data
 
   assert.match(discovery, /useSearchParams\(\)/)
   assert.match(discovery, /router\.replace\(/)
+  assert.match(discovery, /mergeDiscoveryState\(optimisticStateRef\.current/)
   assert.match(discovery, /Loại nội dung/)
   assert.match(discovery, /Chủ đề/)
   assert.match(discovery, /Thời lượng/)
@@ -99,7 +101,8 @@ test('library visual uses the approved raster rather than a fabricated portrait 
     readProjectFile('components/site-chrome/SiteHeader.tsx'),
   ])
 
-  assert.match(page, /evidence-cinema-film-texture-v2\.webp/)
+  assert.match(page, /\/images\/library\/library-film-archive-v1\.webp/)
+  assert.doesNotMatch(page, /evidence-cinema-film-texture-v2\.webp/)
   assert.doesNotMatch(page, /Steve Jobs[^\n]*<img|steve[^\n]*(?:png|jpe?g|webp)/i)
   assert.doesNotMatch(css, /filter:\s*(?:brightness|saturate)|box-shadow:\s*[^;]*(?:green|blue|gold)/i)
   assert.match(siteHeader, /pathname\.startsWith\(['"]\/library['"]\)/)
