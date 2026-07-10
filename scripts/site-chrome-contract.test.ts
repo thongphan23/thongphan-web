@@ -17,6 +17,7 @@ test('primary and homepage chapter navigation expose the complete route contract
   const { primaryNavigation, homepageChapterNavigation } = await import(
     '../components/site-chrome/site-navigation'
   )
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
 
   assert.deepEqual(primaryNavigation, [
     { href: '/about', label: 'Câu chuyện' },
@@ -29,6 +30,13 @@ test('primary and homepage chapter navigation expose the complete route contract
     homepageChapterNavigation.map(({ href }) => href),
     ['#story', '#mirror', '#proof', '#method', '#paths', '#conan'],
   )
+  for (const { section } of homepageChapterNavigation) {
+    assert.match(
+      home,
+      new RegExp(`<section[^>]*id=["']${section}["'][^>]*data-home-section`),
+      section,
+    )
+  }
 })
 
 test('unified shell is route-mode themed while legacy routes keep their old shell', async () => {
@@ -58,13 +66,11 @@ test('mobile menu traps focus, closes with Escape, locks scroll, and restores fo
   for (const required of [
     'role="dialog"',
     'aria-modal="true"',
-    "event.key === 'Escape'",
-    "event.key !== 'Tab'",
-    'event.shiftKey',
     "document.body.style.overflow = 'hidden'",
     'document.body.style.overflow = previousOverflow',
     'triggerRef.current?.focus()',
     "querySelectorAll<HTMLElement>('a[href], button:not([disabled])')",
+    'resolveMenuKeyAction',
   ]) {
     assert.match(menu, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
   }
@@ -78,7 +84,7 @@ test('mobile menu traps focus, closes with Escape, locks scroll, and restores fo
 test('every mobile menu control has a 44 by 44 pixel minimum target', async () => {
   const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
 
-  for (const selector of ['menuTrigger', 'menuClose', 'mobileNav a']) {
+  for (const selector of ['menuTrigger', 'menuClose', 'mobileNav a', 'mobileChapterNav a']) {
     const escapedSelector = selector.replace('.', '\\.').replace(' ', '\\s+')
     const rule = new RegExp(`\\.${escapedSelector}\\s*\\{[\\s\\S]*?\\}`, 'i')
     const match = css.match(rule)?.[0] ?? ''
@@ -93,14 +99,32 @@ test('root fonts and shared brand primitives follow the unified contract', async
   const layout = await readProjectFile('app/layout.tsx')
   const globals = await readProjectFile('styles/globals.css')
   const tokens = await readProjectFile('styles/brand-tokens.css')
+  const chrome = await readProjectFile('components/site-chrome/SiteChrome.tsx')
+  const chromeCss = await readProjectFile('components/site-chrome/SiteChrome.module.css')
 
-  for (const font of ['Be_Vietnam_Pro', 'Cormorant_Garamond', 'Newsreader']) {
+  for (const font of [
+    'Be_Vietnam_Pro',
+    'Cormorant_Garamond',
+    'Newsreader',
+    'Inter',
+    'Lora',
+    'JetBrains_Mono',
+  ]) {
     assert.match(layout, new RegExp(font))
   }
-  for (const retiredFont of ['Inter', 'JetBrains_Mono', 'Lora']) {
-    assert.doesNotMatch(layout, new RegExp(`\\b${retiredFont}\\b`))
+  assert.equal((layout.match(/preload:\s*false/g) ?? []).length, 5)
+  const rootBodyClass = layout.match(/<body className=\{`([^`]+)`\}/)?.[1] ?? ''
+  for (const rootFont of ['beVietnamPro.variable', 'cormorantGaramond.variable', 'newsreader.variable']) {
+    assert.match(rootBodyClass, new RegExp(rootFont.replace('.', '\\.')))
   }
-  assert.equal((layout.match(/preload:\s*false/g) ?? []).length, 2)
+  assert.doesNotMatch(rootBodyClass, /inter\.variable|lora\.variable|jetBrainsMono\.variable/)
+  assert.match(layout, /const legacyFontClassName\s*=/)
+  assert.match(layout, /<SiteChrome legacyFontClassName=\{legacyFontClassName\}>/)
+  assert.match(chrome, /isUnified \? '' : legacyFontClassName/)
+  assert.match(chromeCss, /\.siteShell\[data-site-shell=['"]legacy['"]\][\s\S]*?--font-body:\s*var\(--font-inter\)/)
+  assert.match(chromeCss, /\.siteShell\[data-site-shell=['"]legacy['"]\][\s\S]*?--font-serif:\s*var\(--font-lora\)/)
+  assert.match(chromeCss, /\.siteShell\[data-site-shell=['"]legacy['"]\][\s\S]*?--font-mono:\s*var\(--font-jetbrains\)/)
+  assert.match(chromeCss, /\.siteShell\[data-site-shell=['"]legacy['"]\][\s\S]*?font-family:\s*var\(--font-body\)/)
   assert.match(globals, /@import ['"]\.\/brand-tokens\.css['"];?/)
 
   const semanticTokens = [

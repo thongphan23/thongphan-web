@@ -9,7 +9,7 @@
     "generate-blog": "node scripts/generate-blog-data.mjs",
     "generate-library": "node scripts/generate-library-data.mjs",
     "start": "next start",
-    "test": "tsx --test scripts/generate-library-data.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts",
+    "test": "tsx --test scripts/generate-library-data.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts",
     "test:build": "tsx --test scripts/homepage-build-contract.test.mjs",
     "test:read-release-safety": "node --test scripts/read-release-safety.test.mjs",
     "audit:reading-rights": "node scripts/reading-rights-audit.mjs",

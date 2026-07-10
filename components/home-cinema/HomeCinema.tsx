@@ -87,7 +87,7 @@ export default function HomeCinema() {
         </div>
       </section>
 
-      <section id="mirror" className={`${styles.act} ${styles.mirrorAct}`} data-cinema-reveal>
+      <section id="mirror" className={`${styles.act} ${styles.mirrorAct}`} data-home-section data-cinema-reveal>
         <HomeMirror />
       </section>
 

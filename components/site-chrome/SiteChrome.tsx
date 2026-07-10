@@ -72,14 +72,19 @@ function DefaultFooter() {
   )
 }
 
-export default function SiteChrome({ children }: { children: ReactNode }) {
+type SiteChromeProps = {
+  children: ReactNode
+  legacyFontClassName: string
+}
+
+export default function SiteChrome({ children, legacyFontClassName }: SiteChromeProps) {
   const pathname = usePathname()
   const mode = routeModeForPath(pathname)
   const isUnified = isUnifiedRouteEnabled(pathname)
 
   return (
     <div
-      className={styles.siteShell}
+      className={`${styles.siteShell} ${isUnified ? '' : legacyFontClassName}`}
       data-route-mode={mode}
       data-site-shell={isUnified ? 'unified' : 'legacy'}
     >

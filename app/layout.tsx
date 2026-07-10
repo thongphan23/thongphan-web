@@ -1,5 +1,12 @@
 import type { Metadata } from 'next'
-import { Be_Vietnam_Pro, Cormorant_Garamond, Newsreader } from 'next/font/google'
+import {
+  Be_Vietnam_Pro,
+  Cormorant_Garamond,
+  Inter,
+  JetBrains_Mono,
+  Lora,
+  Newsreader,
+} from 'next/font/google'
 import '@/styles/globals.css'
 import ScrollAnimations from '@/components/ScrollAnimations'
 import SiteChrome from '@/components/site-chrome/SiteChrome'
@@ -28,6 +35,32 @@ const newsreader = Newsreader({
   preload: false,
 })
 
+const inter = Inter({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-inter',
+  display: 'swap',
+  preload: false,
+})
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '700', '800'],
+  variable: '--font-jetbrains',
+  display: 'swap',
+  preload: false,
+})
+
+const lora = Lora({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-lora',
+  display: 'swap',
+  preload: false,
+})
+
+const legacyFontClassName = `${inter.variable} ${lora.variable} ${jetBrainsMono.variable}`
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://thongphan.com'),
   title: 'Thông Phan — Biến kiến thức thành tài sản và dòng tiền',
@@ -50,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="vi">
       <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}>
         <ScrollAnimations />
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome legacyFontClassName={legacyFontClassName}>{children}</SiteChrome>
       </body>
     </html>
   )

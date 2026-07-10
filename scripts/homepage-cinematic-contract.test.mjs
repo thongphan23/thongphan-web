@@ -119,9 +119,10 @@ test('route-aware chrome includes an accessible mobile cinema menu', async () =>
   const chrome = await readProjectFile('components/site-chrome/SiteChrome.tsx')
   const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
   const menu = await readProjectFile('components/site-chrome/MobileMenu.tsx')
+  const focus = await readProjectFile('components/site-chrome/mobile-menu-focus.ts')
   const navigation = await readProjectFile('components/site-chrome/site-navigation.ts')
   const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
-  const source = `${chrome}\n${header}\n${menu}\n${navigation}`
+  const source = `${chrome}\n${header}\n${menu}\n${focus}\n${navigation}`
 
   for (const required of [
     'usePathname',

@@ -182,3 +182,111 @@ This report is included in that Task 1 commit; the immutable SHA is provided in 
 - `/diagnostic` still has the known legacy nested-main condition; it is intentionally not changed until its route family is migrated and enabled in Task 5.
 - Next build reports the existing multiple-lockfile workspace-root warning and edge-runtime static-generation warning.
 - `npm install` reports four dependency audit findings (1 low, 2 moderate, 1 high); no unrelated dependency remediation was attempted in this focused task.
+
+---
+
+## Reviewer fix pass — 2026-07-10
+
+### Findings resolved
+
+1. Restored Inter, Lora, and JetBrains Mono for disabled legacy routes without preloading them. Their Next font variable classes are passed from the server layout and applied only when `isUnified` is false. The legacy wrapper restores `--font-body`, `--font-serif`, `--font-mono`, and inherited body typography. Unified `/` retains only Be Vietnam Pro, Cormorant, and Newsreader classes.
+2. Added `min-width: 44px` to `.mobileChapterNav a`, completing the 44 × 44px target contract.
+3. Added the pure `resolveMenuKeyAction` helper and Node tests for Escape, Tab, Shift+Tab, first/middle/last/outside/empty/one-item cases. `MobileMenu` calls the helper against a fresh focusable-element list on every keydown.
+4. Added `data-home-section` to the real `#mirror` section and locked every homepage chapter destination to an observable section contract.
+
+### Reviewer-fix RED evidence
+
+Command:
+
+```text
+npx tsx --test scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts
+```
+
+Observed RED:
+
+- exit code `1`;
+- 3 tests passed and 5 failed for the intended reasons;
+- missing pure helper module;
+- `#mirror` lacked `data-home-section`;
+- `MobileMenu` did not call the helper;
+- `.mobileChapterNav a` reported `min-width is 0px`;
+- Inter/Lora/JetBrains and their isolated legacy wrapper contract were absent.
+
+Self-review found one additional inheritance gap and added a failing contract before the fix:
+
+```text
+npx tsx --test scripts/site-chrome-contract.test.ts
+```
+
+- exit code `1`;
+- 6 tests passed and 1 failed because the legacy wrapper had not yet applied `font-family: var(--font-body)`.
+
+### Reviewer-fix GREEN evidence
+
+Focused command:
+
+```text
+npx tsx --test scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts scripts/homepage-cinematic-contract.test.mjs
+```
+
+- exit code `0`;
+- 23/23 tests passed.
+
+Final verification:
+
+```text
+npm test
+```
+
+- exit code `0`;
+- 33/33 tests passed.
+
+```text
+npx tsc --noEmit
+```
+
+- exit code `0`;
+- no diagnostics.
+
+```text
+npm run build
+```
+
+- exit code `0`;
+- production compilation and TypeScript passed;
+- 38 static pages generated.
+
+`git diff --check` passed with no whitespace errors.
+
+### Export font isolation evidence
+
+Fresh generated HTML inspection:
+
+- `/`: body carries Be Vietnam Pro, Cormorant, and Newsreader variable classes; the unified shell carries no Inter/Lora/JetBrains class; one `<main>`.
+- `/library`: legacy shell carries Inter, Lora, and JetBrains Mono variable classes.
+- `/diagnostic`: legacy shell carries Inter, Lora, and JetBrains Mono variable classes; its known nested-main migration remains out of Task 1 scope.
+- all inspected routes contain the same 14 Be Vietnam Pro preload entries; Inter/Lora/JetBrains are `preload:false` and absent from the preload manifest.
+
+Mandatory in-app Browser QA remains assigned to the controller as requested; no Playwright fallback was used.
+
+### Fix files
+
+Created:
+
+- `components/site-chrome/mobile-menu-focus.ts`
+- `scripts/mobile-menu-focus.test.ts`
+
+Modified:
+
+- `app/layout.tsx`
+- `components/home-cinema/HomeCinema.tsx`
+- `components/site-chrome/MobileMenu.tsx`
+- `components/site-chrome/SiteChrome.module.css`
+- `components/site-chrome/SiteChrome.tsx`
+- `scripts/homepage-cinematic-contract.test.mjs`
+- `scripts/site-chrome-contract.test.ts`
+- `package.json`
+
+`tsconfig.tsbuildinfo` remains deliberately unstaged.
+
+Fix commit subject: `fix: preserve legacy shell contracts` (immutable SHA reported in handoff).

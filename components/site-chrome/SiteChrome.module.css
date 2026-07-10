@@ -2,6 +2,13 @@
   min-height: 100vh;
 }
 
+.siteShell[data-site-shell='legacy'] {
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-body);
+}
+
 .cinemaProgress {
   background: var(--brand-lacquer);
   height: 2px;
@@ -218,6 +225,7 @@
   display: inline-flex;
   font-size: 0.8rem;
   min-height: 44px;
+  min-width: 44px;
   text-decoration: none;
 }
 

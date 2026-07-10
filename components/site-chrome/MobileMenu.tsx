@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { X } from 'lucide-react'
 import { useCallback, useEffect, useRef, type RefObject } from 'react'
+import { resolveMenuKeyAction } from './mobile-menu-focus'
 import { homepageChapterNavigation, primaryNavigation } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
@@ -38,26 +39,21 @@ export default function MobileMenu({
     requestAnimationFrame(() => focusable[0]?.focus())
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault()
-        closeMenu()
-        return
-      }
+      const currentFocusable = Array.from(
+        dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [],
+      )
+      const action = resolveMenuKeyAction({
+        key: event.key,
+        shiftKey: event.shiftKey,
+        activeIndex: currentFocusable.indexOf(document.activeElement as HTMLElement),
+        itemCount: currentFocusable.length,
+      })
 
-      if (event.key !== 'Tab' || focusable.length === 0) return
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-
-      if (!dialog?.contains(document.activeElement)) {
-        event.preventDefault()
-        ;(event.shiftKey ? last : first).focus()
-      } else if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault()
-        last.focus()
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault()
-        first.focus()
-      }
+      if (action === 'none') return
+      event.preventDefault()
+      if (action === 'close') closeMenu()
+      if (action === 'focus-first') currentFocusable[0]?.focus()
+      if (action === 'focus-last') currentFocusable[currentFocusable.length - 1]?.focus()
     }
 
     document.addEventListener('keydown', handleKeyDown)
