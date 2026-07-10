@@ -63,6 +63,16 @@ No actionable P0, P1 or P2 mismatch remains in the final comparison.
 - Broken images: none.
 - Static build contract: all referenced assets exist; hero/decorative assets and homepage-only JavaScript pass their budgets.
 
+## Production verification
+
+- Production URL: `https://thongphan.com/`
+- Cloudflare deployment: `https://33f2615c.thongphan-com.pages.dev`
+- Deployed source commit: `278c18d`
+- Production captures: `/tmp/thongphan-evidence-cinema-rework/48-production-desktop.png`, `/tmp/thongphan-evidence-cinema-rework/49-production-mobile.png`, `/tmp/thongphan-evidence-cinema-rework/50-production-tablet.png`
+- Live route checks: `/`, `/diagnostic`, `/library`, `/about` and `/conanmaker/` returned successfully with no broken image or relevant console warning/error.
+- Live responsive checks: no horizontal overflow at `1490 × 1060`, `1280 × 720`, `834 × 1194` or `390 × 844`; the short-laptop CTA stack clears the film rail by about `20px`.
+- Live interaction check: the primary CTA reaches `/diagnostic`; the mobile menu opens, closes with Escape and restores focus to `Mục lục`.
+
 ## Follow-up polish
 
 - P3 accepted deviation: the three proof frames use available real repository photographs rather than synthesizing the mock's exact scenes. This preserves the approved real-proof/no-invented-evidence rule while retaining the source's composition, density and film treatment.

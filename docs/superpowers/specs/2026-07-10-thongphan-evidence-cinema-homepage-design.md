@@ -507,4 +507,4 @@ Completed on 2026-07-10 in the `feature/evidence-cinema-homepage` worktree.
 - the fidelity-v2 hero uses 92 KB desktop and 81 KB mobile WebP plates plus separate film, stamp, signature, arrow and outer-frame assets;
 - homepage-only interaction JavaScript is 8.3 KB gzip in the verified build;
 - automated contracts, TypeScript, static export, asset integrity and Browser/IAB QA pass;
-- production deployment remains intentionally separate and requires an explicit deploy request.
+- fidelity-v2 was deployed from commit `278c18d` to Cloudflare Pages and verified on `https://thongphan.com/` on 2026-07-10.
