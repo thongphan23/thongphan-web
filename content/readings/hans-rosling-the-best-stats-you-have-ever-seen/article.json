@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "hans-rosling-the-best-stats-you-have-ever-seen",
+  "title": "Những thống kê hay nhất bạn từng thấy",
+  "description": "Thế giới không còn chia gọn thành “phương Tây” và “thế giới thứ ba”; dữ liệu động, chi tiết và dễ nhìn giúp ta sửa những mô hình thế giới đã lỗi thời.",
+  "author": "Hans Rosling",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 20,
+  "topics": [
+    "worldview",
+    "data",
+    "global-development"
+  ],
+  "intent": "clarity",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/hans-rosling-the-best-stats-you-have-ever-seen",
+  "coreIdea": "Thế giới không còn chia gọn thành “phương Tây” và “thế giới thứ ba”; dữ liệu động, chi tiết và dễ nhìn giúp ta sửa những mô hình thế giới đã lỗi thời.",
+  "whyRead": "Bài này rèn năng lực dùng dữ liệu để phá định kiến: không chỉ tin vào cảm giác chung, mà học cách nhìn chuyển động, phân phối và khác biệt bên trong từng nhóm.",
+  "reflection": "Mô hình thế giới nào trong đầu mình có thể đã quá cũ vì thiếu dữ liệu chuyển động?",
+  "authorProfile": {
+    "title": "Hans Rosling là ai?",
+    "summary": "Hans Rosling (1948-2017) là bác sĩ, giáo sư sức khỏe toàn cầu người Thụy Điển, đồng sáng lập Gapminder và một trong những nhà truyền thông dữ liệu có ảnh hưởng nhất thế giới.",
+    "bullets": [
+      "Giáo sư sức khỏe toàn cầu tại Karolinska Institute, chuyên dùng dữ liệu để sửa những ngộ nhận về phát triển, dân số và y tế.",
+      "Đồng sáng lập Gapminder năm 2005 cùng Ola Rosling và Anna Rosling Rönnlund để biến dữ liệu toàn cầu thành tri thức công chúng.",
+      "Bài TED 2006 The Best Stats You've Ever Seen trở thành một trong những bài TED được xem nhiều nhất và định hình cách trình bày dữ liệu hiện đại."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Đây là bài TED năm 2006, nơi Rosling dùng phần mềm dữ liệu động của Gapminder để phản biện cách nhìn cũ về “phương Tây” và “thế giới thứ ba”.",
+    "bullets": [
+      "Bài nói xuất hiện đúng lúc dữ liệu công đã nhiều hơn, nhưng vẫn khó tiếp cận và khó hiểu với công chúng.",
+      "Rosling dùng biểu đồ bong bóng chuyển động để cho thấy quốc gia, khu vực và nhóm thu nhập thay đổi theo thời gian.",
+      "Nó quan trọng với thư viện vì dạy người đọc không chỉ đọc kết luận, mà đọc cấu trúc dữ liệu phía sau kết luận."
+    ]
+  },
+  "legacySectionCount": 7,
+  "legacyBlockCount": 304,
+  "legacyBodyChecksum": "sha256:0e04f0ced0070d6278351e31b08648b3536a4a64f782eeffb7ea47d763528ecd",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:eaea966d3f3a5434373ebf4ac3dc987950506ff01a7f5fb8ac584d1d55b6170a"
+}

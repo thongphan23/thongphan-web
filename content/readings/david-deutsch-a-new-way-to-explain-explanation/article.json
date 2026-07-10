@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "slug": "david-deutsch-a-new-way-to-explain-explanation",
+  "title": "Giải thích tốt là thứ khó bị thay đổi tùy tiện",
+  "description": "Giải thích tốt không chỉ khớp dữ kiện mà còn khó bị biến đổi tùy tiện mà vẫn giữ sức giải thích.",
+  "author": "David Deutsch",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 16,
+  "topics": [
+    "worldview",
+    "reframing",
+    "pluralism"
+  ],
+  "intent": "clarity",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/david-deutsch-a-new-way-to-explain-explanation",
+  "coreIdea": "Giải thích tốt không chỉ khớp dữ kiện mà còn khó bị biến đổi tùy tiện mà vẫn giữ sức giải thích.",
+  "whyRead": "Nội dung này tạo một khe nứt trong cách nhìn quen thuộc và buộc người đọc kiểm tra lại điều mình xem là hiển nhiên.",
+  "reflection": "Một người ở nền văn hóa khác sẽ đọc vấn đề này khác anh ở điểm nào?",
+  "authorProfile": {
+    "title": "David Deutsch là ai?",
+    "summary": "David Deutsch là nhà vật lý tại University of Oxford, một trong những người đặt nền móng cho tính toán lượng tử và là tác giả có ảnh hưởng trong triết học khoa học.",
+    "bullets": [
+      "Được xem là một trong những người khai sinh lý thuyết tính toán lượng tử và là Fellow of the Royal Society.",
+      "Tác giả The Fabric of Reality và The Beginning of Infinity, hai cuốn sách nối vật lý, tri thức luận, tiến hóa, tính toán và văn minh nhân loại.",
+      "Bài nói này cô đọng tiêu chuẩn của một lời giải thích tốt: không dễ bị biến đổi tùy tiện mà vẫn giữ sức giải thích."
+    ]
+  },
+  "contentContext": {
+    "title": "Bối cảnh bài viết này là gì?",
+    "summary": "Bài TED này được trình bày năm 2009, trong mạch các bài nói về khoa học, tri thức và cách con người tạo ra giải thích để hiểu thế giới không nhìn thấy.",
+    "bullets": [
+      "Nó phù hợp với thư viện vì giúp người đọc nâng tiêu chuẩn thẩm định ý tưởng.",
+      "Trọng tâm không phải biết nhiều dữ kiện hơn, mà là phân biệt lời giải thích bền với câu chuyện có thể sửa tùy tiện."
+    ]
+  },
+  "legacySectionCount": 5,
+  "legacyBlockCount": 170,
+  "legacyBodyChecksum": "sha256:dc2a4e8c00e4f8de2ad8873b5089eaa19d896bdac529e48cf3a5a68ca448f926",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:e882ee93e73243941cac70498e100259768b34e6c3bd683a0cb9f069442266eb"
+}

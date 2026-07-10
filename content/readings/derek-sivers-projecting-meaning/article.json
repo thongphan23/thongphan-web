@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "derek-sivers-projecting-meaning",
+  "title": "Gán ý nghĩa",
+  "description": "Ý nghĩa không phải lúc nào cũng nằm sẵn trong sự vật; rất nhiều khi chính ta là người gán ý nghĩa, rồi sống như thể ý nghĩa đó là thật.",
+  "author": "Derek Sivers",
+  "source": "Derek Sivers",
+  "sourceUrl": "https://sive.rs/meaning",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 8,
+  "topics": [
+    "worldview",
+    "reframing",
+    "pluralism"
+  ],
+  "intent": "clarity",
+  "durationBand": "under-10",
+  "readingPath": "/library/read/derek-sivers-projecting-meaning",
+  "coreIdea": "Ý nghĩa không phải lúc nào cũng nằm sẵn trong sự vật; rất nhiều khi chính ta là người gán ý nghĩa, rồi sống như thể ý nghĩa đó là thật.",
+  "whyRead": "Bài ngắn này rèn một năng lực rất quan trọng của Taste: biết phân biệt giữa điều đang xảy ra và câu chuyện mình đang đặt lên điều đó.",
+  "reflection": "Mình đang gán ý nghĩa nào lên một việc vốn chỉ đang là chính nó?",
+  "authorProfile": {
+    "title": "Derek Sivers là ai?",
+    "summary": "Derek Sivers là doanh nhân, nhạc sĩ, lập trình viên và tác giả nổi tiếng với lối viết ngắn, sắc và thực dụng về đời sống, lựa chọn và tư duy độc lập.",
+    "bullets": [
+      "Sáng lập CD Baby, một trong những nền tảng quan trọng giúp nhạc sĩ độc lập bán nhạc trực tuyến, sau đó bán công ty và dành phần lớn tiền cho quỹ từ thiện.",
+      "Tác giả Anything You Want, Hell Yeah or No, How to Live và Useful Not True.",
+      "Văn của Sivers thường không cố thuyết phục bằng độ dài, mà bằng một cú xoay góc nhìn rất gọn."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Bài được Derek Sivers đăng ngày 23/06/2011 trên website cá nhân, trong mạch các ghi chú ngắn về cách con người tạo ra câu chuyện để hiểu đời sống.",
+    "bullets": [
+      "Sivers bắt đầu từ việc học chữ Hán và những câu chuyện ông tự tưởng tượng phía sau từng chữ.",
+      "Sau đó bài chuyển sang Talking Heads, sự ngẫu nhiên trong ca từ và cách người nghe tự tạo kết nối.",
+      "Điểm đáng giữ là câu hỏi: nếu ý nghĩa do mình đặt vào, mình có thể lấy một ý nghĩa đang làm mình khổ ra khỏi sự việc không?"
+    ]
+  },
+  "legacySectionCount": 4,
+  "legacyBlockCount": 26,
+  "legacyBodyChecksum": "sha256:c7897cb51b4abe970f8ae72cbf6b0f1c7c3478d7779d20bfeda093d056ce2e74",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:254cd3776839075ec17ee08b08e459c4c572caecbcd6a66807ade8b46a46773b"
+}

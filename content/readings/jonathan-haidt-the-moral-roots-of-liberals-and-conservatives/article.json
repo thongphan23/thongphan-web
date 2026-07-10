@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+  "title": "Gốc rễ đạo đức của tự do và bảo thủ",
+  "description": "Các nền tảng đạo đức khác nhau khiến người tử tế vẫn bất đồng sâu sắc; muốn hiểu xã hội phải bước ra khỏi ma trận đạo đức của phe mình.",
+  "author": "Jonathan Haidt",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 18,
+  "topics": [
+    "dao-duc",
+    "chinh-tri",
+    "khiem-nhuong"
+  ],
+  "intent": "taste",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+  "coreIdea": "Các nền tảng đạo đức khác nhau khiến người tử tế vẫn bất đồng sâu sắc; muốn hiểu xã hội phải bước ra khỏi ma trận đạo đức của phe mình.",
+  "whyRead": "Bài này rèn gu phán đoán trong thời đại phân cực: thay vì hỏi phe nào ngu hoặc xấu, người đọc học cách nhận ra hệ giá trị nào đang vận hành phía sau một lập trường.",
+  "reflection": "Khi bất đồng với ai đó, mình đang nhìn họ bằng hệ đạo đức hai kênh hay năm kênh?",
+  "authorProfile": {
+    "title": "Jonathan Haidt là ai?",
+    "summary": "Jonathan Haidt là nhà tâm lý học xã hội người Mỹ, giáo sư tại NYU Stern, nổi tiếng với nghiên cứu về đạo đức, cảm xúc, chính trị và sự phân cực văn hóa.",
+    "bullets": [
+      "Tác giả The Righteous Mind, The Coddling of the American Mind và The Anxious Generation, các cuốn sách có ảnh hưởng lớn về đạo đức, tự do học thuật, công nghệ và sức khỏe tinh thần.",
+      "Giữ vị trí Thomas Cooley Professor of Ethical Leadership tại NYU Stern School of Business.",
+      "Công trình moral foundations của ông giúp người đọc hiểu vì sao người tử tế vẫn có thể bất đồng sâu sắc về các vấn đề đạo đức và chính trị."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Bài TED này được trình bày trong bối cảnh sau các cuộc bầu cử Mỹ đầu thập niên 2000, khi phân cực chính trị và định kiến phe nhóm trở thành một vấn đề nổi bật.",
+    "bullets": [
+      "Haidt nói trước một khán phòng TED có khuynh hướng tự do, nên bài nói cũng là một lời mời tự soi lại phe của chính người nghe.",
+      "Bài nói giới thiệu cách hiểu đạo đức như một bộ chỉnh âm nhiều kênh, thay vì một thước đo đúng sai duy nhất.",
+      "Điểm đáng đọc là nó biến bất đồng chính trị thành bài học về gu phán đoán và khiêm nhường đạo đức."
+    ]
+  },
+  "legacySectionCount": 6,
+  "legacyBlockCount": 329,
+  "legacyBodyChecksum": "sha256:d04e017a79a3ac4ebffb5c9663e6940019f38b57362778de50222c597198d0f1",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:e42f769e8e42f760d124b0bdf8db946c543e58bb9ff2a73851c1d56cb425c2a3"
+}

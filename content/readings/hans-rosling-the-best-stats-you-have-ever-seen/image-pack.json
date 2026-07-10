@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "slug": "hans-rosling-the-best-stats-you-have-ever-seen",
+  "candidates": [
+    {
+      "id": "image-01",
+      "sourceLocation": "/images/articles/hans-rosling-best-stats/hans-rosling.jpg",
+      "sourceUrl": null,
+      "alt": "Hans Rosling đứng trên sân khấu, cầm micro trong một sự kiện năm 2007.",
+      "caption": "Hans Rosling, người biến dữ liệu phát triển toàn cầu thành một trải nghiệm trực quan dễ nhớ.",
+      "credit": "Wikimedia Commons / Joi Ito, CC BY 2.0",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "hans-rosling-the-best-stats-you-have-ever-seen",
+        "legacyLocation": "/images/articles/hans-rosling-best-stats/hans-rosling.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-02",
+      "sourceLocation": "/images/articles/hans-rosling-best-stats/gapminder-sample.png",
+      "sourceUrl": null,
+      "alt": "Ảnh chụp màn hình một biểu đồ bong bóng Gapminder với nhiều quốc gia được biểu diễn bằng vòng tròn màu.",
+      "caption": "Biểu đồ bong bóng Gapminder cho thấy cách Rosling biến dữ liệu quốc gia thành chuyển động có thể nhìn và so sánh.",
+      "credit": "Wikimedia Commons / Gapminder sample",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "hans-rosling-the-best-stats-you-have-ever-seen",
+        "legacyLocation": "/images/articles/hans-rosling-best-stats/gapminder-sample.png",
+        "articleSourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-03",
+      "sourceLocation": "/images/articles/hans-rosling-best-stats/hans-rosling-2016.jpg",
+      "sourceUrl": null,
+      "alt": "Chân dung Hans Rosling trong năm 2016.",
+      "caption": "Hans Rosling trong giai đoạn cuối sự nghiệp, khi công trình phổ biến dữ liệu của ông đã có ảnh hưởng rộng.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "hans-rosling-the-best-stats-you-have-ever-seen",
+        "legacyLocation": "/images/articles/hans-rosling-best-stats/hans-rosling-2016.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-04",
+      "sourceLocation": "/images/articles/hans-rosling-best-stats/gapminder-world-2015.png",
+      "sourceUrl": null,
+      "alt": "Poster Gapminder World 2015 biểu diễn sức khỏe và thu nhập của các quốc gia bằng biểu đồ bong bóng.",
+      "caption": "Gapminder World Poster cho thấy cùng một tinh thần của bài nói: biến dữ liệu quốc gia thành một bản đồ trực quan để so sánh.",
+      "credit": "Gapminder / CC BY 4.0",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "hans-rosling-the-best-stats-you-have-ever-seen",
+        "legacyLocation": "/images/articles/hans-rosling-best-stats/gapminder-world-2015.png",
+        "articleSourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-05",
+      "sourceLocation": "/images/articles/hans-rosling-best-stats/factfulness-authors.jpg",
+      "sourceUrl": null,
+      "alt": "Anna Rosling Rönnlund, Hans Rosling và Ola Rosling trong một khung hình về Factfulness.",
+      "caption": "Hans Rosling cùng Anna Rosling Rönnlund và Ola Rosling trong dự án Factfulness, phần tiếp nối của nỗ lực chống hiểu sai bằng dữ kiện.",
+      "credit": "Wikimedia Commons / Gapminder Foundation, CC BY 4.0",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "hans-rosling-the-best-stats-you-have-ever-seen",
+        "legacyLocation": "/images/articles/hans-rosling-best-stats/factfulness-authors.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen"
+      },
+      "status": "pending-rights"
+    }
+  ],
+  "mediaChecksum": "sha256:93b23c4ba3ece5484bbd42d3c3b66a5af9e7cd3a7bc3cf03ae8d0cd4bc7d4063"
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "slug": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+  "candidates": [
+    {
+      "id": "image-01",
+      "sourceLocation": "/images/articles/jonathan-haidt-moral-roots/jonathan-haidt-2012.jpg",
+      "sourceUrl": null,
+      "alt": "Jonathan Haidt trong một buổi thảo luận năm 2012.",
+      "caption": "Jonathan Haidt, người đưa người nghe vào khung moral psychology để hiểu bất đồng chính trị.",
+      "credit": "Wikimedia Commons / Miller Center",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+        "legacyLocation": "/images/articles/jonathan-haidt-moral-roots/jonathan-haidt-2012.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-02",
+      "sourceLocation": "/images/articles/jonathan-haidt-moral-roots/michelangelo-david.jpg",
+      "sourceUrl": null,
+      "alt": "Tượng David của Michelangelo tại Galleria dell’Accademia, Florence.",
+      "caption": "Tượng David là ví dụ mở đầu bài nói: cùng một hình ảnh nhưng hai người có thể phản ứng đạo đức rất khác nhau.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+        "legacyLocation": "/images/articles/jonathan-haidt-moral-roots/michelangelo-david.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-03",
+      "sourceLocation": "/images/articles/jonathan-haidt-moral-roots/moral-foundations-chart.png",
+      "sourceUrl": null,
+      "alt": "Biểu đồ minh họa khác biệt phản hồi giữa các nhóm chính trị trên các nền tảng đạo đức.",
+      "caption": "Biểu đồ moral foundations giúp nhìn thấy điều Haidt mô tả: các hệ giá trị không được chỉnh ở cùng một mức.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+        "legacyLocation": "/images/articles/jonathan-haidt-moral-roots/moral-foundations-chart.png",
+        "articleSourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-04",
+      "sourceLocation": "/images/articles/jonathan-haidt-moral-roots/garden-earthly-delights.jpg",
+      "sourceUrl": null,
+      "alt": "Bộ ba tranh The Garden of Earthly Delights của Hieronymus Bosch.",
+      "caption": "Bosch xuất hiện trong bài như một hình ảnh về trật tự, khoái lạc và sự suy tàn của trật tự xã hội.",
+      "credit": "Wikimedia Commons / Museo del Prado",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+        "legacyLocation": "/images/articles/jonathan-haidt-moral-roots/garden-earthly-delights.jpg",
+        "articleSourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-05",
+      "sourceLocation": "/images/articles/jonathan-haidt-moral-roots/yin-yang.svg",
+      "sourceUrl": null,
+      "alt": "Biểu tượng âm dương đen trắng.",
+      "caption": "Âm dương gợi lại đoạn Haidt dùng triết học châu Á để nói về cân bằng giữa thay đổi và ổn định.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+        "legacyLocation": "/images/articles/jonathan-haidt-moral-roots/yin-yang.svg",
+        "articleSourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives"
+      },
+      "status": "pending-rights"
+    }
+  ],
+  "mediaChecksum": "sha256:94f2f7a1b1005d163fcce099ea0737e90525557c95b9c434327e210b08b75576"
+}

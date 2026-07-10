@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "paul-graham-what-you-cant-say",
+  "title": "Điều gì bạn không thể nói?",
+  "description": "Cách phát hiện những điều cấm kỵ của thời đại bằng việc tìm xem điều gì không thể nói ra.",
+  "author": "Paul Graham",
+  "source": "Paul Graham",
+  "sourceUrl": "https://paulgraham.com/say.html",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 18,
+  "topics": [
+    "worldview",
+    "reframing",
+    "pluralism"
+  ],
+  "intent": "clarity",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/paul-graham-what-you-cant-say",
+  "coreIdea": "Cách phát hiện những điều cấm kỵ của thời đại bằng việc tìm xem điều gì không thể nói ra.",
+  "whyRead": "Nội dung này tạo một khe nứt trong cách nhìn quen thuộc và buộc người đọc kiểm tra lại điều mình xem là hiển nhiên.",
+  "reflection": "Khung mặc định nào trong đầu anh bị nội dung này làm lung lay?",
+  "authorProfile": {
+    "title": "Paul Graham là ai?",
+    "summary": "Paul Graham là lập trình viên, nhà đầu tư, đồng sáng lập Y Combinator và một trong những cây bút essay có ảnh hưởng nhất trong giới startup và công nghệ.",
+    "bullets": [
+      "Đồng sáng lập Y Combinator năm 2005 cùng Jessica Livingston, Robert Morris và Trevor Blackwell; YC đã định hình mô hình startup accelerator hiện đại.",
+      "Trước đó ông đồng sáng lập Viaweb, một trong những công ty phần mềm dạng dịch vụ đầu tiên, bán cho Yahoo và trở thành Yahoo Store.",
+      "Các essay trên paulgraham.com trở thành tài liệu nền của nhiều thế hệ founder nhờ cách kết hợp lập trình, startup, lịch sử và tư duy độc lập.",
+      "What You Can't Say là một bài tập rèn năng lực phát hiện điều cấm kỵ của thời đại."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Paul Graham viết bài này vào tháng 1/2004, trước thời mạng xã hội đại chúng, nhưng câu hỏi về điều không thể nói ngày càng quan trọng trong thời đại AI và đám đông số.",
+    "bullets": [
+      "Bài không cổ vũ nói bừa; nó rèn khả năng tách suy nghĩ riêng khỏi thời trang đạo đức của thời đại.",
+      "Điểm đáng giữ là năng lực nhìn ra vùng cấm trong tư duy trước khi biến nó thành lập trường công khai."
+    ]
+  },
+  "legacySectionCount": 12,
+  "legacyBlockCount": 431,
+  "legacyBodyChecksum": "sha256:69fab938db2786cef11a0199f2323f45874665f89e501b032ac2e04a394a7710",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:2a36f9f3aad73ab7a197ec853039bc0919552a8012bb177b670d5d1eb4668a31"
+}

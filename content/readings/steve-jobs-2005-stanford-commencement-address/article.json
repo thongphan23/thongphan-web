@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "steve-jobs-2005-stanford-commencement-address",
+  "title": "Hãy tìm điều bạn yêu",
+  "description": "Ba câu chuyện về kết nối những dấu chấm, tình yêu và mất mát, cùng cái chết như bộ lọc cho những lựa chọn quan trọng.",
+  "author": "Steve Jobs",
+  "source": "Stanford University",
+  "sourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 24,
+  "topics": [
+    "taste",
+    "work",
+    "mortality"
+  ],
+  "intent": "taste",
+  "durationBand": "over-20",
+  "readingPath": "/library/read/steve-jobs-2005-stanford-commencement-address",
+  "coreIdea": "Ba câu chuyện về kết nối những dấu chấm, tình yêu và mất mát, cùng cái chết như bộ lọc cho những lựa chọn quan trọng.",
+  "whyRead": "Một bài mở đầu tốt cho thư viện vì nó dạy người đọc nhìn lại đời mình bằng tiêu chuẩn của sự tò mò, tình yêu công việc và ý thức về thời gian hữu hạn.",
+  "reflection": "Nếu nhìn lại từ tương lai, những dấu chấm nào trong đời bạn có thể đang chờ được kết nối?",
+  "authorProfile": {
+    "title": "Steve Jobs là ai?",
+    "summary": "Steve Jobs (1955-2011) là doanh nhân, nhà sáng lập Apple và một trong những nhân vật có ảnh hưởng lớn nhất tới công nghệ tiêu dùng hiện đại.",
+    "bullets": [
+      "Đồng sáng lập Apple năm 1976, sau đó dẫn dắt sự ra đời của Macintosh, iMac, iPod, iPhone và iPad.",
+      "Sáng lập NeXT và góp phần đưa Pixar trở thành hãng phim hoạt hình máy tính có ảnh hưởng toàn cầu.",
+      "Được nhớ đến bởi khả năng kết hợp công nghệ, thiết kế, trải nghiệm người dùng và kể chuyện sản phẩm."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Đây là bài phát biểu của Steve Jobs tại lễ tốt nghiệp Stanford University ngày 12/06/2005, sáu năm trước khi ông qua đời.",
+    "bullets": [
+      "Ông không giảng một bài lý thuyết về thành công, mà kể ba câu chuyện cá nhân: kết nối những dấu chấm, tình yêu và mất mát, cái chết.",
+      "Thời điểm đó Jobs đã trở lại Apple, Pixar đang ở đỉnh cao, và iPhone vẫn chưa được công bố.",
+      "Vì vậy bài nói có sức nặng đặc biệt: nó vừa là lời nhắn cho sinh viên tốt nghiệp, vừa là bản tóm lược triết lý sống của ông."
+    ]
+  },
+  "legacySectionCount": 5,
+  "legacyBlockCount": 118,
+  "legacyBodyChecksum": "sha256:cf7e9f725c608190b899a03eee4a14ba3ba0c5c672bab4f4233b7791549748c3",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:1afda9d789dd93c84a5e7d2ca73befc454f777935aad01051e4187e0578adedb"
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "george-orwell-politics-and-the-english-language",
+  "title": "Ngôn ngữ mục ruỗng làm tư duy mục ruỗng",
+  "description": "Ngôn ngữ mơ hồ vừa là sản phẩm vừa là công cụ của tư duy chính trị cẩu thả.",
+  "author": "George Orwell",
+  "source": "The Orwell Foundation",
+  "sourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 30,
+  "topics": [
+    "worldview",
+    "reframing",
+    "pluralism"
+  ],
+  "intent": "clarity",
+  "durationBand": "over-20",
+  "readingPath": "/library/read/george-orwell-politics-and-the-english-language",
+  "coreIdea": "Ngôn ngữ mơ hồ vừa là sản phẩm vừa là công cụ của tư duy chính trị cẩu thả.",
+  "whyRead": "Nội dung này tạo một khe nứt trong cách nhìn quen thuộc và buộc người đọc kiểm tra lại điều mình xem là hiển nhiên.",
+  "reflection": "Nếu tin ngược lại, anh sẽ nhìn thế giới khác đi ra sao?",
+  "authorProfile": {
+    "title": "George Orwell là ai?",
+    "summary": "George Orwell là nhà văn, nhà báo và nhà phê bình chính trị người Anh, nổi tiếng với Animal Farm, Nineteen Eighty-Four và các bài luận về quyền lực, ngôn ngữ, tự do.",
+    "bullets": [
+      "Animal Farm và Nineteen Eighty-Four trở thành hai tác phẩm kinh điển toàn cầu về tuyên truyền, toàn trị và kiểm soát tư duy.",
+      "Từng trải qua đời sống thuộc địa, nghèo đói và chiến tranh; những trải nghiệm đó đi vào Homage to Catalonia, The Road to Wigan Pier và nhiều bài luận chính trị.",
+      "Văn của Orwell nổi bật bởi sự trong sáng, nghi ngờ quyền lực và chống lại ngôn ngữ che đậy sự thật.",
+      "Politics and the English Language là một chuẩn mực để rèn gu viết rõ, nghĩ rõ và đọc chính trị tỉnh táo hơn."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Bài luận xuất hiện trên Horizon năm 1946, ngay sau Thế chiến II, khi Orwell quan sát cách chính trị hiện đại làm mục ruỗng ngôn ngữ.",
+    "bullets": [
+      "Orwell không chỉ dạy viết tốt hơn, mà chỉ ra quan hệ giữa câu chữ, tư duy và quyền lực.",
+      "Bài này nên được đọc như một công cụ vệ sinh trí óc trước mọi diễn ngôn chính trị."
+    ]
+  },
+  "legacySectionCount": 12,
+  "legacyBlockCount": 276,
+  "legacyBodyChecksum": "sha256:af752d044c3bc126902c842dd8994b3138fdd94a04bef10efc9741ceffed672c",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:f24ff95cf605f9e4e5263e2fe56e6a77f053154ff54f08e3bc250d36df818568"
+}

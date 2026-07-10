@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "slug": "richard-feynman-cargo-cult-science",
+  "title": "Đừng tự lừa mình",
+  "description": "Tính liêm chính khoa học đòi hỏi chủ động nêu các dữ kiện có thể khiến chính mình sai.",
+  "author": "Richard Feynman",
+  "source": "Caltech",
+  "sourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 25,
+  "topics": [
+    "worldview",
+    "reframing",
+    "pluralism"
+  ],
+  "intent": "clarity",
+  "durationBand": "over-20",
+  "readingPath": "/library/read/richard-feynman-cargo-cult-science",
+  "coreIdea": "Tính liêm chính khoa học đòi hỏi chủ động nêu các dữ kiện có thể khiến chính mình sai.",
+  "whyRead": "Nội dung này tạo một khe nứt trong cách nhìn quen thuộc và buộc người đọc kiểm tra lại điều mình xem là hiển nhiên.",
+  "reflection": "Điều gì ở đây là dữ kiện, điều gì chỉ là câu chuyện diễn giải?",
+  "authorProfile": {
+    "title": "Richard Feynman là ai?",
+    "summary": "Richard Feynman là nhà vật lý lý thuyết người Mỹ, đoạt Nobel Vật lý năm 1965 và nổi tiếng vì khả năng giải thích khoa học sắc bén, trực diện.",
+    "bullets": [
+      "Nhận Nobel Vật lý cho công trình về điện động lực học lượng tử (QED), một nền tảng của vật lý hiện đại.",
+      "Được nhớ đến qua Feynman Lectures on Physics, các sơ đồ Feynman và tinh thần tò mò cực kỳ thực nghiệm.",
+      "Cargo Cult Science là bài nói kinh điển về chính trực khoa học và nguy cơ tự lừa mình."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Đây là bài phát biểu tốt nghiệp tại Caltech năm 1974, nơi Feynman nói với sinh viên khoa học về chính trực trí tuệ trước khi bước vào đời nghề nghiệp.",
+    "bullets": [
+      "Bối cảnh tốt nghiệp khiến bài nói có sắc thái di chúc nghề nghiệp hơn là bài giảng kỹ thuật.",
+      "Bài này đặc biệt quan trọng với người muốn có gu đánh giá: biết nghi ngờ cả điều mình muốn tin."
+    ]
+  },
+  "legacySectionCount": 5,
+  "legacyBlockCount": 273,
+  "legacyBodyChecksum": "sha256:450fb0d79dd01ff3e7ee25d5973d746de8e63298901a0cad6968f26113b90286",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:03485a7171e9da35aaff129fd4ff8d397875ab20fe73e2cc3abf6c02ea71333b"
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "slug": "paul-graham-what-you-cant-say",
+  "candidates": [
+    {
+      "id": "image-01",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
+      "alt": "Paul Graham đang làm việc với máy tính.",
+      "caption": "Paul Graham tiếp cận câu hỏi cấm kỵ bằng thói quen của một hacker: tìm nơi hệ thống bị lỗi.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "paul-graham-what-you-cant-say",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
+        "articleSourceUrl": "https://paulgraham.com/say.html"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-02",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
+      "alt": "Paul Graham nói chuyện tại Prototype Day của Y Combinator năm 2009.",
+      "caption": "Bối cảnh startup khiến bài essay mang màu thực dụng: nghĩ độc lập để tìm điều người khác né tránh.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "paul-graham-what-you-cant-say",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
+        "articleSourceUrl": "https://paulgraham.com/say.html"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-03",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
+      "alt": "Chân dung Paul Graham.",
+      "caption": "Paul Graham ở tư cách tác giả của những bài essay đã ảnh hưởng sâu tới cách nhiều founder suy nghĩ về startup và tư duy độc lập.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "paul-graham-what-you-cant-say",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
+        "articleSourceUrl": "https://paulgraham.com/say.html"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-04",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
+      "alt": "Chân dung Galileo Galilei.",
+      "caption": "Galileo là ví dụ kinh điển trong bài về ý tưởng từng không thể nói công khai.",
+      "credit": "Wikimedia Commons / Public domain",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "paul-graham-what-you-cant-say",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
+        "articleSourceUrl": "https://paulgraham.com/say.html"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-05",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
+      "alt": "Paul Graham và Mark Zuckerberg trong một sự kiện công nghệ.",
+      "caption": "Bài viết nằm trong hệ sinh thái tư duy công nghệ, nơi câu hỏi khác thường thường tạo lợi thế.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "paul-graham-what-you-cant-say",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
+        "articleSourceUrl": "https://paulgraham.com/say.html"
+      },
+      "status": "pending-rights"
+    }
+  ],
+  "mediaChecksum": "sha256:2a6438bc148c5054a826f834eff71710b09e547ae31a41d397e110814bb3c818"
+}

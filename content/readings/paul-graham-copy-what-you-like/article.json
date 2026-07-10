@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "paul-graham-copy-what-you-like",
+  "title": "Bắt chước thứ mình thật sự thích",
+  "description": "Bắt chước không xấu; cái nguy hiểm là bắt chước thứ mình chỉ thấy ấn tượng, thay vì thứ mình thật sự thích.",
+  "author": "Paul Graham",
+  "source": "Paul Graham",
+  "sourceUrl": "https://paulgraham.com/copy.html",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 10,
+  "topics": [
+    "sang-tao",
+    "nghe-thuat",
+    "giong-rieng"
+  ],
+  "intent": "taste",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/paul-graham-copy-what-you-like",
+  "coreIdea": "Bắt chước không xấu; cái nguy hiểm là bắt chước thứ mình chỉ thấy ấn tượng, thay vì thứ mình thật sự thích.",
+  "whyRead": "Bài này rất hợp với định vị rèn gu cá nhân: muốn có giọng riêng, trước hết phải biết tiêu chuẩn nào trong mình là thật, tiêu chuẩn nào chỉ là sự phục tùng thẩm quyền.",
+  "reflection": "Mình đang bắt chước điều mình thật sự thích, hay điều mình nghĩ là mình nên thích để trông có gu?",
+  "authorProfile": {
+    "title": "Paul Graham là ai?",
+    "summary": "Paul Graham là lập trình viên, nhà đầu tư, đồng sáng lập Y Combinator và một trong những cây bút essay có ảnh hưởng nhất trong giới startup và công nghệ.",
+    "bullets": [
+      "Đồng sáng lập Y Combinator năm 2005 cùng Jessica Livingston, Robert Morris và Trevor Blackwell; YC đã định hình mô hình startup accelerator hiện đại.",
+      "Trước đó ông đồng sáng lập Viaweb, một trong những công ty phần mềm dạng dịch vụ đầu tiên, bán cho Yahoo và trở thành Yahoo Store.",
+      "Các essay trên paulgraham.com trở thành tài liệu nền của nhiều thế hệ founder nhờ cách kết hợp lập trình, startup, lịch sử và tư duy độc lập."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Paul Graham viết bài này vào tháng 7/2006, trong mạch các essay về taste, nghệ thuật, lập trình và cách một người tìm ra tiêu chuẩn chất lượng của riêng mình.",
+    "bullets": [
+      "Bài không cổ vũ sao chép bề mặt; nó phân biệt giữa bắt chước điều tốt thật và bắt chước thứ chỉ có uy tín xã hội.",
+      "Graham đi qua viết văn, triết học, hệ chuyên gia và hội họa để chỉ ra một lỗi chung: nhầm sự ngưỡng mộ với gu thật.",
+      "Điểm đáng giữ là câu cuối: trong chuyện chất lượng, anh phải tự mình tìm ra điều gì là tốt."
+    ]
+  },
+  "legacySectionCount": 6,
+  "legacyBlockCount": 44,
+  "legacyBodyChecksum": "sha256:1690e97abe1ab0151bec30084ae0ca9668fab355ecace2de7827a0aca106b23a",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:66a2e1ff58035a7299b62bcc5775adabbb4205a4aab6c778ec90132d4864e1a5"
+}

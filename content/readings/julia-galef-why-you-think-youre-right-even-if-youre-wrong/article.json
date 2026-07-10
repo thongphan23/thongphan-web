@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
+  "title": "Vì sao bạn nghĩ mình đúng, ngay cả khi bạn sai",
+  "description": "Phán đoán tốt không chỉ đến từ IQ hay kiến thức, mà từ động cơ cảm xúc: ta muốn bảo vệ niềm tin, hay muốn nhìn thế giới rõ nhất có thể.",
+  "author": "Julia Galef",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 12,
+  "topics": [
+    "phan-doan",
+    "thien-kien",
+    "scout-mindset"
+  ],
+  "intent": "taste",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/julia-galef-why-you-think-youre-right-even-if-youre-wrong",
+  "coreIdea": "Phán đoán tốt không chỉ đến từ IQ hay kiến thức, mà từ động cơ cảm xúc: ta muốn bảo vệ niềm tin, hay muốn nhìn thế giới rõ nhất có thể.",
+  "whyRead": "Bài này rèn gu thẩm định trong thời đại AI vì nó chạm vào lỗi nền của người đọc: dùng trí thông minh để thắng tranh luận thay vì để thấy sự thật rõ hơn.",
+  "reflection": "Lần gần nhất mình bảo vệ một niềm tin như người lính là khi nào? Nếu đổi sang tư duy người trinh sát, mình sẽ hỏi câu gì khác?",
+  "authorProfile": {
+    "title": "Julia Galef là ai?",
+    "summary": "Julia Galef là tác giả, diễn giả và người phổ biến tư duy duy lý, nổi tiếng với khái niệm scout mindset - tư duy người trinh sát.",
+    "bullets": [
+      "Tác giả The Scout Mindset, cuốn sách bàn về cách nhìn sự thật rõ hơn thay vì bảo vệ niềm tin hiện có.",
+      "Đồng sáng lập Center for Applied Rationality và từng dẫn Rationally Speaking, một podcast phổ biến về khoa học, triết học và tư duy duy lý.",
+      "Bài TED 2016 của cô đưa cặp khái niệm soldier mindset và scout mindset đến công chúng rộng hơn."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Bài TED này dùng vụ Dreyfus ở Pháp thế kỷ 19 để minh họa lý luận có động cơ và cách một người có thể vượt qua thiên kiến phe mình để bảo vệ sự thật.",
+    "bullets": [
+      "Galef đối chiếu hai trạng thái tâm trí: người lính muốn bảo vệ phe mình, người trinh sát muốn biết địa hình thật sự ra sao.",
+      "Bài nói đặc biệt phù hợp với người viết và người làm tri thức vì nó tách sự thông minh khỏi khả năng nhìn đúng.",
+      "Câu hỏi cuối của bài biến tư duy phản biện thành một câu hỏi về khao khát: mình muốn đúng, hay muốn thấy rõ?"
+    ]
+  },
+  "legacySectionCount": 5,
+  "legacyBlockCount": 149,
+  "legacyBodyChecksum": "sha256:01b819ae8e90df98d42dc8729ebd19bcde01f304c853beae1a555b8c2e506ea3",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:83712777e8de1fac46f4d5b0df311a14d73ac1aa1884a738dd66cdba8ab22eab"
+}

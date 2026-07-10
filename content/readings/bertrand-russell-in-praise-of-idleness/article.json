@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "slug": "bertrand-russell-in-praise-of-idleness",
+  "title": "Ca ngợi sự nhàn rỗi",
+  "description": "Phản biện đạo đức tôn sùng lao động và bảo vệ nhàn rỗi như điều kiện của văn minh.",
+  "author": "Bertrand Russell",
+  "source": "Harper's Magazine",
+  "sourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 35,
+  "topics": [
+    "ton-giao",
+    "he-gia-tri"
+  ],
+  "intent": "clarity",
+  "durationBand": "over-20",
+  "readingPath": "/library/read/bertrand-russell-in-praise-of-idleness",
+  "coreIdea": "Phản biện đạo đức tôn sùng lao động và bảo vệ nhàn rỗi như điều kiện của văn minh.",
+  "whyRead": "Nội dung này tạo một khe nứt trong cách nhìn quen thuộc và buộc người đọc kiểm tra lại điều mình xem là hiển nhiên.",
+  "reflection": "Điều gì ở đây là dữ kiện, điều gì chỉ là câu chuyện diễn giải?",
+  "authorProfile": {
+    "title": "Bertrand Russell là ai?",
+    "summary": "Bertrand Russell là triết gia, nhà logic học, nhà hoạt động xã hội người Anh và một trong những trí thức công chúng quan trọng nhất thế kỷ 20.",
+    "bullets": [
+      "Đồng tác giả Principia Mathematica, một công trình nền tảng của logic hiện đại, và đoạt Nobel Văn học năm 1950.",
+      "Là một trong những gương mặt lớn của triết học phân tích, đồng thời là trí thức công chúng viết nhiều về giáo dục, chiến tranh, tự do và đời sống tốt đẹp.",
+      "In Praise of Idleness phản biện đạo đức tôn sùng lao động, đặt nhàn rỗi như điều kiện của văn minh."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài này ra đời trong bối cảnh nào?",
+    "summary": "Bertrand Russell viết bài luận này năm 1932, giữa bối cảnh công nghiệp hóa, thất nghiệp và đạo đức lao động đang được xem như điều hiển nhiên.",
+    "bullets": [
+      "Bài đặt lại câu hỏi: lao động là phương tiện hay mục đích của đời sống?",
+      "Nó rất hợp với định vị rèn Taste vì buộc người đọc phân biệt đạo đức thật với thói quen xã hội được thần thánh hóa."
+    ]
+  },
+  "legacySectionCount": 4,
+  "legacyBlockCount": 278,
+  "legacyBodyChecksum": "sha256:f9fb7839b5d7b49a0659eebc5ead31982ed430b3744b62bb84c3a13b5fd92be4",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:bfdcbdb78a745da8d44c7bc584c8633cc4c92064daea16b52ce68d6b35d0f617"
+}

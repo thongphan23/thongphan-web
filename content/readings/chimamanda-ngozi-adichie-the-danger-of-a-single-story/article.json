@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "slug": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
+  "title": "Sự nguy hiểm của một câu chuyện duy nhất",
+  "description": "Một câu chuyện duy nhất có thể làm phẳng con người, nơi chốn và văn hóa; nhiều câu chuyện hơn là điều kiện để nhìn người khác có phẩm giá và chiều sâu.",
+  "author": "Chimamanda Ngozi Adichie",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 18,
+  "topics": [
+    "truyen-thong",
+    "khung-nhin"
+  ],
+  "intent": "clarity",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/chimamanda-ngozi-adichie-the-danger-of-a-single-story",
+  "coreIdea": "Một câu chuyện duy nhất có thể làm phẳng con người, nơi chốn và văn hóa; nhiều câu chuyện hơn là điều kiện để nhìn người khác có phẩm giá và chiều sâu.",
+  "whyRead": "Bài này rèn gu thẩm định câu chuyện: biết hỏi ai đang kể, kể từ đâu, bỏ qua điều gì và quyền lực nào khiến một phiên bản trở thành sự thật cuối cùng trong đầu người nghe.",
+  "reflection": "Mình đang nhìn ai, nhóm nào hoặc nơi nào bằng một câu chuyện duy nhất?",
+  "authorProfile": {
+    "title": "Chimamanda Ngozi Adichie là ai?",
+    "summary": "Chimamanda Ngozi Adichie là nhà văn Nigeria, một trong những tiếng nói văn chương và diễn thuyết có ảnh hưởng lớn về căn tính, giới, hậu thuộc địa và quyền lực của câu chuyện.",
+    "bullets": [
+      "Tác giả của Purple Hibiscus, Half of a Yellow Sun và Americanah; Half of a Yellow Sun thắng Orange Prize, Americanah thắng National Book Critics Circle Award.",
+      "Nhận MacArthur Fellowship năm 2008; tác phẩm của bà được dịch ra hơn 30 ngôn ngữ.",
+      "Bài TED The Danger of a Single Story năm 2009 là một trong những bài nói phổ biến nhất của TED về truyền thông, căn tính và định kiến."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Bài nói được trình bày tại TEDGlobal 2009, trong bối cảnh các cuộc đối thoại toàn cầu về văn hóa, truyền thông và quyền đại diện đang trở nên nổi bật hơn.",
+    "bullets": [
+      "Adichie dùng chính trải nghiệm đọc, viết và sống giữa Nigeria - Hoa Kỳ để cho thấy cách câu chuyện định hình nhận thức.",
+      "Bài nói không phủ nhận những câu chuyện tiêu cực, mà phản đối việc biến chúng thành câu chuyện duy nhất.",
+      "Nó đặc biệt phù hợp với thư viện này vì rèn năng lực nhìn nhiều lớp trước khi đánh giá một con người, cộng đồng hay nền văn hóa."
+    ]
+  },
+  "legacySectionCount": 6,
+  "legacyBlockCount": 198,
+  "legacyBodyChecksum": "sha256:a3f5aec524b4ca039b1ee22bd07c284650dc7542ac75f5844af025423a764593",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:3caed1f9021416ac8722d86ca7774935382ab8ddd93fcfaa30196b8c697aff38"
+}

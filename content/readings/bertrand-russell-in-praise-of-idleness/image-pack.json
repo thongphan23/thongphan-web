@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "slug": "bertrand-russell-in-praise-of-idleness",
+  "candidates": [
+    {
+      "id": "image-01",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
+      "alt": "Bertrand Russell trong một ảnh chân dung.",
+      "caption": "Russell dùng sự sắc bén triết học để chất vấn đạo đức tôn sùng lao động.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "bertrand-russell-in-praise-of-idleness",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
+        "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-02",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
+      "alt": "Chân dung Bertrand Russell do J. F. Horrabin thực hiện.",
+      "caption": "Một hình ảnh Russell ở tư cách trí thức công chúng, gần với giọng văn tranh luận của bài.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "bertrand-russell-in-praise-of-idleness",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
+        "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-03",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
+      "alt": "Bertrand Russell năm 1907.",
+      "caption": "Russell trẻ hơn, trước khi trở thành một trong những biểu tượng trí thức của thế kỷ 20.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "bertrand-russell-in-praise-of-idleness",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
+        "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-04",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
+      "alt": "Tượng bán thân Bertrand Russell ở Red Lion Square, London.",
+      "caption": "Di sản của Russell gắn với tự do tư tưởng và việc đặt lại những điều xã hội cho là hiển nhiên.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "bertrand-russell-in-praise-of-idleness",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
+        "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
+      },
+      "status": "pending-rights"
+    },
+    {
+      "id": "image-05",
+      "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
+      "alt": "Ảnh Bertrand Russell được tách nền.",
+      "caption": "Russell trong một chân dung giản lược, gợi đúng chất của bài luận: bình tĩnh, sắc lạnh và không dễ bị cuốn theo đạo đức đám đông.",
+      "credit": "Wikimedia Commons",
+      "license": null,
+      "derivative": null,
+      "checksum": null,
+      "rightsEvidence": [],
+      "provenance": {
+        "legacyArticle": "bertrand-russell-in-praise-of-idleness",
+        "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
+        "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
+      },
+      "status": "pending-rights"
+    }
+  ],
+  "mediaChecksum": "sha256:790803350172a5b97f2b4b3426a322758f2aa1f7c1aed7b1dc01e985c52fa1f8"
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "slug": "tim-urban-inside-the-mind-of-a-master-procrastinator",
+  "title": "Bên trong tâm trí của một bậc thầy trì hoãn",
+  "description": "Trì hoãn không chỉ là lười; đó là một hệ thống tâm lý nơi phần thích dễ-vui chiếm tay lái, còn phần lý trí chỉ lấy lại quyền khi hoảng loạn xuất hiện.",
+  "author": "Tim Urban",
+  "source": "TED",
+  "sourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator",
+  "sourcePublishedAt": null,
+  "translator": null,
+  "editor": null,
+  "translatedAt": null,
+  "lastReviewedAt": "2026-07-10",
+  "rightsStatus": "source-link-only",
+  "minutes": 14,
+  "topics": [
+    "cam-xuc",
+    "hanh-phuc",
+    "noi-tam"
+  ],
+  "intent": "clarity",
+  "durationBand": "10-20",
+  "readingPath": "/library/read/tim-urban-inside-the-mind-of-a-master-procrastinator",
+  "coreIdea": "Trì hoãn không chỉ là lười; đó là một hệ thống tâm lý nơi phần thích dễ-vui chiếm tay lái, còn phần lý trí chỉ lấy lại quyền khi hoảng loạn xuất hiện.",
+  "whyRead": "Bài này giúp người đọc nhìn sự trì hoãn bằng một mô hình dễ nhớ, đủ hài hước để không phòng thủ nhưng đủ sắc để nhận ra mình đang né điều gì.",
+  "reflection": "Mình đang trì hoãn điều gì không có deadline nên không ai đánh thức Quái Vật Hoảng Loạn giúp mình?",
+  "authorProfile": {
+    "title": "Tim Urban là ai?",
+    "summary": "Tim Urban là tác giả, blogger và illustrator người Mỹ, đồng sáng lập Wait But Why, nổi tiếng với các bài viết dài dùng hình vẽ đơn giản để giải thích những vấn đề lớn của đời sống.",
+    "bullets": [
+      "Wait But Why trở thành một trong những blog long-form có ảnh hưởng lớn nhờ cách kết hợp hài hước, sơ đồ trực quan và phân tích sâu.",
+      "Bài TED 2016 của Urban về trì hoãn là một trong những TED Talk được xem nhiều nhất.",
+      "Các mô hình như Instant Gratification Monkey, Panic Monster và Life Calendar giúp người đọc gọi tên những cơ chế tâm lý rất quen mà trước đó khó nắm bắt."
+    ]
+  },
+  "contentContext": {
+    "title": "Bài nói này ra đời trong bối cảnh nào?",
+    "summary": "Bài nói được trình bày tại TED2016, dựa trên bài viết nổi tiếng của Tim Urban trên Wait But Why về vì sao người trì hoãn trì hoãn.",
+    "bullets": [
+      "Urban dùng chính câu chuyện luận văn đại học và quá trình chuẩn bị TED Talk để biến sự trì hoãn thành một mô hình dễ nhớ.",
+      "Bài nói quan trọng vì nó chuyển chủ đề từ deadline ngắn hạn sang những việc lớn không có deadline: sức khỏe, quan hệ, nghệ thuật, sự nghiệp và đời sống chưa bắt đầu.",
+      "Với thư viện này, bài giúp người đọc rèn năng lực tự quan sát thay vì chỉ tự trách."
+    ]
+  },
+  "legacySectionCount": 6,
+  "legacyBlockCount": 54,
+  "legacyBodyChecksum": "sha256:28555e7275a6f398b88614424e943d56edf8fae22341b08ed8a60956d92ce019",
+  "contentVersion": 1,
+  "contentChecksum": "sha256:ba4b45c5df13f808e7edae0f5e433ee9a30abb0288502dc6f19a13ee3a4a74e5"
+}
