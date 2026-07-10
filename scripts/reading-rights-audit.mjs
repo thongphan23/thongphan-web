@@ -16,6 +16,16 @@ export const APPROVED_RIGHTS_STATUSES = new Set([
 ])
 
 const FULL_BODY_STATUSES = new Set(['public-domain', 'permission-confirmed', 'licensed'])
+const NON_EVIDENCE_VALUES = new Set([
+  'missing',
+  'n/a',
+  'none',
+  'not recorded',
+  'not verified',
+  'tbd',
+  'todo',
+  'unknown',
+])
 const REPORT_HEADERS = [
   'slug',
   'author',
@@ -29,10 +39,23 @@ const REPORT_HEADERS = [
   'remediation',
 ]
 
-export const publicModeForRightsStatus = (rightsStatus) => {
-  if (FULL_BODY_STATUSES.has(rightsStatus)) return 'full'
-  if (rightsStatus === 'blocked') return 'blocked'
-  return 'source-link-only'
+export const publicationDecisionForSourceRights = (sourceRights = {}) => {
+  const rightsStatus = sourceRights?.rightsStatus
+  if (rightsStatus === 'blocked') return { rightsStatus, publicMode: 'blocked' }
+  if (rightsStatus === 'source-link-only') {
+    return { rightsStatus, publicMode: 'source-link-only' }
+  }
+
+  const rightsEvidence =
+    typeof sourceRights?.rightsEvidence === 'string' ? sourceRights.rightsEvidence.trim() : ''
+  const hasRetainedEvidence =
+    rightsEvidence.length > 0 && !NON_EVIDENCE_VALUES.has(rightsEvidence.toLowerCase())
+
+  if (FULL_BODY_STATUSES.has(rightsStatus) && hasRetainedEvidence) {
+    return { rightsStatus, publicMode: 'full' }
+  }
+
+  return { rightsStatus: 'source-link-only', publicMode: 'source-link-only' }
 }
 
 const parseTableRow = (line) =>
@@ -95,7 +118,8 @@ export const extractSourceArticles = (source) => {
       localMedia: media.filter((sourceUrl) => sourceUrl.startsWith('/')).length,
       hotlinkedMedia: media.filter((sourceUrl) => /^https?:\/\//.test(sourceUrl)).length,
       mediaCreditCount,
-      hasRightsMetadata: /^ {4}(?:"rightsStatus"|rightsStatus):/m.test(segment),
+      sourceRightsStatus: topLevelString(segment, 'rightsStatus'),
+      sourceRightsEvidence: topLevelString(segment, 'rightsEvidence'),
     }
   })
 }
@@ -159,11 +183,25 @@ export const auditReadingRights = async ({
     if (!APPROVED_RIGHTS_STATUSES.has(row.rightsStatus)) {
       errors.push(`${row.slug}: invalid rightsStatus ${row.rightsStatus}`)
     }
-    if (!sourceRow.hasRightsMetadata && row.rightsStatus !== 'source-link-only') {
-      errors.push(`${row.slug}: no rights evidence in source, so status must fail closed`)
+    const expectedPublication = publicationDecisionForSourceRights({
+      rightsStatus: sourceRow.sourceRightsStatus,
+      rightsEvidence: sourceRow.sourceRightsEvidence,
+    })
+    if (row.rightsStatus !== expectedPublication.rightsStatus) {
+      errors.push(
+        `${row.slug}: report rightsStatus ${row.rightsStatus} does not match evidence-gated source status ${expectedPublication.rightsStatus}`,
+      )
     }
-    if (row.publicMode !== publicModeForRightsStatus(row.rightsStatus)) {
-      errors.push(`${row.slug}: public mode does not match rightsStatus`)
+    if (row.publicMode !== expectedPublication.publicMode) {
+      errors.push(
+        `${row.slug}: report public mode ${row.publicMode} does not match evidence-gated source mode ${expectedPublication.publicMode}`,
+      )
+    }
+    if (
+      expectedPublication.publicMode === 'full' &&
+      row.rightsEvidence !== sourceRow.sourceRightsEvidence
+    ) {
+      errors.push(`${row.slug}: full-publication evidence must exactly match the retained source evidence`)
     }
     if (!row.rightsEvidence) errors.push(`${row.slug}: rights evidence is empty`)
     if (!row.remediation) errors.push(`${row.slug}: remediation is empty`)

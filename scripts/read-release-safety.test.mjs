@@ -53,18 +53,44 @@ const parseRightsRows = (report) => {
   )
 }
 
-test('publication mode resolver fails closed for missing or unknown rights', async () => {
+test('source rights gate rejects missing, unknown, or evidence-free full-publication claims', async () => {
   const auditModule = await import(
     pathToFileURL(join(root, 'scripts/reading-rights-audit.mjs')).href
   )
+  const failClosed = {
+    rightsStatus: 'source-link-only',
+    publicMode: 'source-link-only',
+  }
 
-  assert.equal(auditModule.publicModeForRightsStatus(), 'source-link-only')
-  assert.equal(auditModule.publicModeForRightsStatus('unknown'), 'source-link-only')
-  assert.equal(auditModule.publicModeForRightsStatus('source-link-only'), 'source-link-only')
-  assert.equal(auditModule.publicModeForRightsStatus('blocked'), 'blocked')
-  assert.equal(auditModule.publicModeForRightsStatus('public-domain'), 'full')
-  assert.equal(auditModule.publicModeForRightsStatus('permission-confirmed'), 'full')
-  assert.equal(auditModule.publicModeForRightsStatus('licensed'), 'full')
+  assert.deepEqual(auditModule.publicationDecisionForSourceRights(), failClosed)
+  assert.deepEqual(
+    auditModule.publicationDecisionForSourceRights({
+      rightsStatus: 'unknown',
+      rightsEvidence: 'License record 123',
+    }),
+    failClosed,
+  )
+  assert.deepEqual(
+    auditModule.publicationDecisionForSourceRights({
+      rightsStatus: 'licensed',
+      rightsEvidence: '',
+    }),
+    failClosed,
+  )
+  assert.deepEqual(
+    auditModule.publicationDecisionForSourceRights({
+      rightsStatus: 'permission-confirmed',
+      rightsEvidence: 'unknown',
+    }),
+    failClosed,
+  )
+  assert.deepEqual(
+    auditModule.publicationDecisionForSourceRights({
+      rightsStatus: 'licensed',
+      rightsEvidence: 'License record 123',
+    }),
+    { rightsStatus: 'licensed', publicMode: 'full' },
+  )
 })
 
 test('rights report locks exactly 13 fail-closed reading rows', async () => {
