@@ -1,71 +1,51 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
+import { ArrowUpRight, Search } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import {
+  filterBlogPosts,
+  type BlogCategory,
+  type BlogPostItem,
+} from './blog-filtering'
 import styles from './page.module.css'
-
-interface Category {
-  key: string
-  label: string
-  icon: string
-  journeys?: string[]
-  categories?: string[]
-  slugs?: string[]
-}
-
-interface PostItem {
-  slug: string
-  title: string
-  description: string
-  category: string
-  publishedAt: string
-  readingTime: number
-  coverImage?: string
-  journeyLabel: string
-  readerState: string
-  journeyContext: string
-}
 
 export default function BlogFiltersClient({
   categories,
+  featuredSlug,
   posts,
 }: {
-  categories: Category[]
-  posts: PostItem[]
+  categories: BlogCategory[]
+  featuredSlug?: string
+  posts: BlogPostItem[]
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const filteredPosts = posts.filter((post) => {
-    const selectedFilter = categories.find((cat) => cat.key === selectedCategory)
-    const matchesCategory =
-      selectedCategory === 'all' ||
-      selectedFilter?.slugs?.includes(post.slug) ||
-      selectedFilter?.journeys?.includes(post.journeyLabel) ||
-      selectedFilter?.categories?.includes(post.category) ||
-      post.category === selectedCategory
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
+  const filteredPosts = useMemo(
+    () => filterBlogPosts(posts, categories, selectedCategory, searchQuery),
+    [categories, posts, searchQuery, selectedCategory],
+  )
+  const showFeatured = selectedCategory === 'all' && searchQuery.trim() === ''
+  const featuredPost = showFeatured ? posts.find((post) => post.slug === featuredSlug) : undefined
+  const listPosts = featuredPost
+    ? filteredPosts.filter((post) => post.slug !== featuredPost.slug)
+    : filteredPosts
 
   return (
-    <>
-      {/* Search */}
-      <div className={styles.search} data-reveal>
+    <div className={styles.discovery}>
+      <div className={styles.search}>
+        <Search aria-hidden="true" size={18} strokeWidth={1.7} />
         <input
           type="text"
-          className="input"
-          placeholder="Tìm bài theo AI, Brain2, nội dung..."
+          placeholder="Tìm theo AI, Brain2, nội dung, tài sản số..."
           value={searchQuery}
           aria-label="Tìm bài viết"
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      {/* Category Filters */}
-      <div className={styles.filters} data-reveal>
+      <div className={styles.filters} role="group" aria-label="Lọc bài theo chủ đề">
         {categories.map((cat) => (
           <button
             key={cat.key}
@@ -74,57 +54,69 @@ export default function BlogFiltersClient({
             aria-pressed={selectedCategory === cat.key}
             onClick={() => setSelectedCategory(cat.key)}
           >
-            <span className={styles.filterIcon}>{cat.icon}</span>
             {cat.label}
           </button>
         ))}
       </div>
 
-      {/* Posts Grid */}
-      <div className={styles.resultMeta} data-reveal>
+      <div className={styles.resultMeta} aria-live="polite">
         <span>{filteredPosts.length} bài phù hợp</span>
       </div>
 
-      <div className={styles.postsGrid} data-reveal>
-        {filteredPosts.map((post) => (
+      {featuredPost ? (
+        <Link href={`/blog/${featuredPost.slug}`} className={styles.featuredCard}>
+          {featuredPost.coverImage ? (
+            <div className={styles.featuredImageWrap}>
+              <img
+                src={featuredPost.coverImage}
+                alt=""
+                className={styles.featuredImage}
+                loading="eager"
+              />
+            </div>
+          ) : null}
+          <div className={styles.featuredContent}>
+            <p>Nổi bật · {featuredPost.journeyLabel} · {featuredPost.readerState}</p>
+            <h3>{featuredPost.title}</h3>
+            <p>{featuredPost.description}</p>
+            <span>{featuredPost.journeyContext}</span>
+            <small>{featuredPost.readingTime} phút đọc · {new Date(featuredPost.publishedAt ?? '').toLocaleDateString('vi-VN')}</small>
+          </div>
+        </Link>
+      ) : null}
+
+      <div className={styles.postsList}>
+        {listPosts.map((post, index) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className={styles.postCard}
-            data-stagger
+            className={styles.postRow}
+            data-has-cover={post.coverImage ? 'true' : 'false'}
           >
-            {post.coverImage && (
-              <div className={styles.postImageWrap}>
-                <img
-                  src={post.coverImage}
-                  alt={post.title}
-                  className={styles.postImage}
-                  loading="lazy"
-                />
-              </div>
-            )}
-            <div className={styles.postBody}>
-              <span className={`badge ${post.category === 'ai' ? 'gold' : ''}`}>
-                {post.journeyLabel} · {post.readerState}
-              </span>
-              <h3 className={styles.postTitle}>{post.title}</h3>
-              <p className={styles.postDesc}>{post.description}</p>
-              <p className={styles.postContext}>{post.journeyContext}</p>
-              <div className={styles.postMeta}>
-                <span>{post.readingTime} phút đọc</span>
-                <span>·</span>
-                <span>{new Date(post.publishedAt).toLocaleDateString('vi-VN')}</span>
-              </div>
-            </div>
+            <span className={styles.rowIndex}>{String(index + 1).padStart(2, '0')}</span>
+            {post.coverImage ? <img src={post.coverImage} alt="" loading="lazy" /> : null}
+            <span className={styles.rowCopy}>
+              <small>{post.journeyLabel} · {post.readerState}</small>
+              <strong>{post.title}</strong>
+              <span>{post.description}</span>
+            </span>
+            <span className={styles.rowMeta}>
+              <small>{post.readingTime} phút</small>
+              <small>{new Date(post.publishedAt ?? '').toLocaleDateString('vi-VN')}</small>
+            </span>
+            <ArrowUpRight aria-hidden="true" size={21} strokeWidth={1.6} />
           </Link>
         ))}
       </div>
 
       {filteredPosts.length === 0 && (
         <div className={styles.empty}>
-          <p>Không tìm thấy bài viết nào.</p>
+          <p>Chưa có bài phù hợp với lựa chọn này.</p>
+          <button type="button" onClick={() => { setSelectedCategory('all'); setSearchQuery('') }}>
+            Xem lại tất cả bài
+          </button>
         </div>
       )}
-    </>
+    </div>
   )
 }

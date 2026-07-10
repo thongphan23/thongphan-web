@@ -14,7 +14,7 @@
     "materialize-reading-assets": "node scripts/materialize-reading-assets.mjs",
     "test:readings-live-parity": "node --import tsx scripts/verify-readings-live-parity.mjs",
     "start": "next start",
-    "test": "tsx --test scripts/generate-library-data.test.mjs scripts/generate-readings-data.test.mjs scripts/library-discovery.test.ts scripts/library-hub-contract.test.mjs scripts/reader-state.test.ts scripts/reading-routes-contract.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts",
+    "test": "tsx --test scripts/generate-library-data.test.mjs scripts/generate-readings-data.test.mjs scripts/library-discovery.test.ts scripts/library-hub-contract.test.mjs scripts/reader-state.test.ts scripts/reading-routes-contract.test.mjs scripts/editorial-contract.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts",
     "test:build": "tsx --test scripts/homepage-build-contract.test.mjs",
     "test:read-release-safety": "node --test scripts/read-release-safety.test.mjs",
     "audit:reading-rights": "node scripts/reading-rights-audit.mjs",

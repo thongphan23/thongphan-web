@@ -1,5 +1,7 @@
 import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
 import type { LibraryNote, LibraryNoteMeta, LibraryRelatedLink, LibraryRelation } from '@/lib/library'
+import { topicLabel } from '@/lib/library-discovery'
 import styles from './page.module.css'
 
 interface HydratedLink extends LibraryRelatedLink {
@@ -14,20 +16,36 @@ interface LibraryArticleProps {
     section: string
     journey: string
     readerState: string
-    status: string
     relations: Record<LibraryRelation, string>
   }
 }
 
-function groupByRelation(links: HydratedLink[]) {
-  return links.reduce<Partial<Record<LibraryRelation, HydratedLink[]>>>((groups, link) => {
-    groups[link.relation] = [...(groups[link.relation] || []), link]
-    return groups
-  }, {})
-}
-
 function isExternalHref(href: string) {
   return href.startsWith('http')
+}
+
+function RelationList({
+  links,
+  relationLabels,
+}: {
+  links: HydratedLink[]
+  relationLabels: Record<LibraryRelation, string>
+}) {
+  if (!links.length) return <p className={styles.emptyRelation}>Chưa có liên kết ở chiều này.</p>
+
+  return (
+    <ul className={styles.relationList}>
+      {links.map((link) => (
+        <li key={`${link.relation}-${link.note.slug}`}>
+          <Link href={`/library/${link.note.slug}`}>
+            <span>{relationLabels[link.relation]}</span>
+            <strong>{link.note.title}</strong>
+            <ArrowUpRight aria-hidden="true" size={18} strokeWidth={1.6} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 export default function LibraryArticle({
@@ -36,195 +54,123 @@ export default function LibraryArticle({
   backlinks,
   labels,
 }: LibraryArticleProps) {
-  const groupedLinks = groupByRelation(relatedLinks)
-  const groupedBacklinks = groupByRelation(backlinks)
-  const hasGraph = relatedLinks.length > 0 || backlinks.length > 0
-
   return (
     <article className={styles.article}>
-      <header className={styles.header}>
-        <div className={styles.headerShell}>
-          <div className={styles.authorLine}>
-            <img src="/thong-phan.jpg" alt="Thông Phan" className={styles.authorPhoto} />
+      <div className={styles.pageFrame}>
+        <header className={styles.masthead}>
+          <Link href="/library" className={styles.backLink}>Ghi chú sống</Link>
+          <p className={styles.eyebrow}>Ghi chú sống · {labels.section}</p>
+
+          <div className={styles.heroGrid}>
             <div>
-              <span>{note.author}</span>
-              <p>Brain2 đang chạy thật. Conan là nơi thực hành tiếp, không phải nơi lấn át personal brand.</p>
+              <h1>{note.title}</h1>
+              <p className={styles.promise}>{note.promise}</p>
+              <p className={styles.description}>{note.description}</p>
             </div>
+            <aside className={styles.proofNote} aria-label="Bằng chứng và bối cảnh">
+              <p>Bằng chứng / bối cảnh</p>
+              <strong>{note.proof}</strong>
+            </aside>
           </div>
 
-          <div className={styles.kickerRow}>
-            <span>{labels.section}</span>
-            <span>{labels.journey}</span>
-            <span>{labels.readerState}</span>
-            <span>{labels.status}</span>
-            <span>Cập nhật {new Date(note.updatedAt).toLocaleDateString('vi-VN')}</span>
-          </div>
+          <dl className={styles.articleMeta}>
+            <div><dt>Tác giả</dt><dd>{note.author}</dd></div>
+            <div><dt>Hành trình</dt><dd>{labels.journey} · {labels.readerState}</dd></div>
+            <div><dt>Thời lượng</dt><dd>{note.readTime} phút đọc</dd></div>
+            <div><dt>Cập nhật</dt><dd>{new Date(note.updatedAt).toLocaleDateString('vi-VN')}</dd></div>
+          </dl>
 
-          <h1>{note.title}</h1>
-          <p className={styles.promise}>{note.promise}</p>
-          <p className={styles.description}>{note.description}</p>
+          <ul className={styles.tagList} aria-label="Chủ đề">
+            {note.tags.map((tag) => <li key={tag}>{topicLabel(tag)}</li>)}
+          </ul>
+        </header>
 
-          <div className={styles.headerProof}>
-            <span>Proof / context</span>
-            <p>{note.proof}</p>
-          </div>
-        </div>
-      </header>
+        <div className={styles.readingLayout}>
+          <aside className={styles.readingRail}>
+            {note.headings.length ? (
+              <nav className={styles.toc} aria-label="Mục lục ghi chú">
+                <p>Mục lục</p>
+                <ol>
+                  {note.headings.map((heading) => (
+                    <li key={heading.id} data-level={heading.level}>
+                      <a href={`#${heading.id}`}>{heading.text}</a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            ) : null}
 
-      {hasGraph && (
-        <section className={styles.graphSection} aria-labelledby="local-graph-title">
-          <div className={styles.graphInner}>
-            <div>
-              <span className={styles.graphEyebrow}>Local graph</span>
-              <h2 id="local-graph-title">Liên kết trong hệ tri thức</h2>
-              <p>
-                Đây là graph quanh note hiện tại. Không render toàn bộ mạng lưới để tránh rối,
-                chỉ giữ những link có quan hệ rõ.
-              </p>
-            </div>
-            <div className={styles.graphColumns}>
-              <GraphGroups title="Note này trỏ tới" groups={groupedLinks} relationLabels={labels.relations} />
-              <GraphGroups title="Note khác trỏ về đây" groups={groupedBacklinks} relationLabels={labels.relations} />
-            </div>
-          </div>
-        </section>
-      )}
-
-      <div className={styles.contentLayout}>
-        <div className={styles.articleColumn}>
-          <div className={styles.articleBody} dangerouslySetInnerHTML={{ __html: note.contentHtml }} />
-        </div>
-
-        <aside className={styles.readingRail} aria-label="Thông tin note">
-          <div className={styles.railCard}>
-            <span>Reader state</span>
-            <strong>{labels.readerState}</strong>
-            <p>{note.readTime} phút đọc · {labels.status}</p>
-          </div>
-
-          {note.headings.length >= 3 && (
-            <nav className={styles.railCard} aria-label="Mục lục note">
-              <span>Mục lục</span>
-              <ul className={styles.tocList}>
-                {note.headings.map((heading) => (
-                  <li key={heading.id} className={heading.level === 3 ? styles.tocSub : ''}>
-                    <a href={`#${heading.id}`}>{heading.text}</a>
-                  </li>
-                ))}
+            <section className={styles.sourceTrace} aria-labelledby="source-trace-title">
+              <p id="source-trace-title">Nguồn tạo nên ghi chú này</p>
+              <ul>
+                {note.sourceTrace.map((source) => <li key={source}>{source}</li>)}
               </ul>
-            </nav>
-          )}
+            </section>
+          </aside>
 
-          <div className={styles.railCard}>
-            <span>Source trace</span>
-            <ul className={styles.sourceList}>
-              {note.sourceTrace.map((source) => (
-                <li key={source}>{source}</li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-      </div>
+          <div className={styles.articleColumn}>
+            <div className={styles.articleBody} dangerouslySetInnerHTML={{ __html: note.contentHtml }} />
 
-      <section className={styles.closeSection} aria-label="End of note">
-        <div className={styles.closeInner}>
-          <div className={styles.closeEyebrow}>End of note</div>
-          <div className={styles.closeGrid}>
-            <div className={styles.authorCard}>
-              <img src="/thong-phan.jpg" alt="Thông Phan" className={styles.authorAvatar} />
+            <section className={styles.connections} aria-labelledby="connections-title">
+              <p className={styles.sectionLabel}>Các mối nối</p>
+              <h2 id="connections-title">Một ghi chú sống nhờ những đường dẫn có nghĩa.</h2>
+              <div className={styles.connectionGrid}>
+                <section aria-labelledby="outbound-title">
+                  <h3 id="outbound-title">Note này mở ra</h3>
+                  <RelationList links={relatedLinks} relationLabels={labels.relations} />
+                </section>
+                <section aria-labelledby="backlinks-title">
+                  <h3 id="backlinks-title">Các note dẫn về đây</h3>
+                  <RelationList links={backlinks} relationLabels={labels.relations} />
+                </section>
+              </div>
+            </section>
+
+            <section className={styles.authorClose} aria-labelledby="author-close-title">
+              <img src="/thong-phan.jpg" alt="" width="320" height="400" />
               <div>
-                <h2>Thông Phan</h2>
+                <p className={styles.sectionLabel}>Người giữ thư viện</p>
+                <h2 id="author-close-title">Thông Phan</h2>
                 <p>
-                  Tui xây thư viện này như một lớp public của Brain2: đủ rõ để anh em đọc,
-                  đủ có proof để tin, đủ có link để đi tiếp mà không bị ngợp.
+                  Tui xây thư viện này như một lớp công khai của hệ tri thức đang vận hành:
+                  đủ rõ để đọc, đủ bằng chứng để tin và đủ đường dẫn để đi tiếp mà không bị ngợp.
                 </p>
                 <div className={styles.authorLinks}>
-                  <Link href="/diagnostic">Tự chẩn đoán AI</Link>
-                  <Link href="/library/ban-do-xay-brain2-trong-21-ngay">21 ngày Brain2</Link>
-                  <a href="https://m.me/thongphan.88" target="_blank" rel="noopener noreferrer">Messenger</a>
+                  <Link href="/diagnostic">Tự chẩn đoán</Link>
+                  <Link href="/library/read">Tuyển đọc thế giới</Link>
+                  <a href="https://m.me/thongphan.88" target="_blank" rel="noopener noreferrer">
+                    Rời thongphan.com để nhắn qua Messenger (mở thẻ mới)
+                  </a>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className={styles.nextPanel}>
-              <h2>Đọc tiếp theo link trong graph</h2>
-              <div className={styles.nextList}>
-                {relatedLinks.slice(0, 4).map((link) => (
-                  <Link href={`/library/${link.note.slug}`} key={`${link.relation}-${link.note.slug}`}>
-                    <span>{labels.relations[link.relation]}</span>
-                    <h3>{link.note.title}</h3>
-                    <p>{link.note.description}</p>
+            {note.cta ? (
+              <section className={styles.endCta} aria-labelledby="note-cta-title">
+                <p>{note.cta.label || 'Bước tiếp theo'}</p>
+                <h2 id="note-cta-title">{note.cta.title}</h2>
+                {note.cta.body ? <span>{note.cta.body}</span> : null}
+                {isExternalHref(note.cta.href) ? (
+                  <a href={note.cta.href} target="_blank" rel="noopener noreferrer">
+                    {note.cta.cta} — rời thongphan.com, mở thẻ mới
+                    <ArrowUpRight aria-hidden="true" size={18} strokeWidth={1.6} />
+                  </a>
+                ) : (
+                  <Link href={note.cta.href}>
+                    {note.cta.cta}
+                    <ArrowUpRight aria-hidden="true" size={18} strokeWidth={1.6} />
                   </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+                )}
+              </section>
+            ) : null}
 
-          {note.cta && (
-            <div className={styles.endCta}>
-              <span>{note.cta.label || 'Bước tiếp theo'}</span>
-              <h2>{note.cta.title}</h2>
-              {note.cta.body && <p>{note.cta.body}</p>}
-              {isExternalHref(note.cta.href) ? (
-                <a href={note.cta.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  {note.cta.cta}
-                </a>
-              ) : (
-                <Link href={note.cta.href} className="btn-primary">
-                  {note.cta.cta}
-                </Link>
-              )}
-            </div>
-          )}
-
-          <div className={styles.timestamp}>
-            <span>Published {new Date(note.publishedAt).toLocaleDateString('vi-VN')}</span>
-            <span>Updated {new Date(note.updatedAt).toLocaleDateString('vi-VN')}</span>
-            <span>Status {labels.status}</span>
+            <footer className={styles.noteFooter}>
+              <Link href="/library">Trở lại toàn bộ thư viện</Link>
+              <span>Đăng {new Date(note.publishedAt).toLocaleDateString('vi-VN')} · Cập nhật {new Date(note.updatedAt).toLocaleDateString('vi-VN')}</span>
+            </footer>
           </div>
         </div>
-      </section>
-
-      <div className={styles.backWrap}>
-        <Link href="/library" className="btn-outline">← Tất cả note</Link>
       </div>
     </article>
-  )
-}
-
-function GraphGroups({
-  title,
-  groups,
-  relationLabels,
-}: {
-  title: string
-  groups: Partial<Record<LibraryRelation, HydratedLink[]>>
-  relationLabels: Record<LibraryRelation, string>
-}) {
-  const entries = Object.entries(groups) as [LibraryRelation, HydratedLink[]][]
-
-  if (entries.length === 0) {
-    return (
-      <div className={styles.graphGroup}>
-        <h3>{title}</h3>
-        <p className={styles.graphEmpty}>Chưa có link ở chiều này.</p>
-      </div>
-    )
-  }
-
-  return (
-    <div className={styles.graphGroup}>
-      <h3>{title}</h3>
-      {entries.map(([relation, links]) => (
-        <div className={styles.relationGroup} key={relation}>
-          <span>{relationLabels[relation]}</span>
-          {links.map((link) => (
-            <Link href={`/library/${link.note.slug}`} key={`${relation}-${link.note.slug}`}>
-              {link.note.title}
-            </Link>
-          ))}
-        </div>
-      ))}
-    </div>
   )
 }

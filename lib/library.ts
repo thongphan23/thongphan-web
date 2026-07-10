@@ -22,13 +22,13 @@ export {
 } from './library-data.generated'
 
 export const SECTION_LABELS = {
-  concepts: 'Concept',
+  concepts: 'Khái niệm',
   materials: 'Nguyên liệu',
   patterns: 'Mẫu',
   structures: 'Cấu trúc',
-  templates: 'Template',
+  templates: 'Khung thực hành',
   maps: 'Bản đồ',
-  proof: 'Proof',
+  proof: 'Bằng chứng',
 } as const
 
 export const SECTION_DESCRIPTIONS = {

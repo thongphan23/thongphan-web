@@ -1,19 +1,16 @@
 import type { Metadata } from 'next'
-import type { CSSProperties } from 'react'
 import { getAllPosts } from '@/lib/blog'
 import BlogFiltersClient from './BlogFiltersClient'
-import Link from 'next/link'
-import { GardenSignature } from '@/components/GardenSignature'
+import type { BlogCategory } from './blog-filtering'
 import styles from './page.module.css'
 
-const CATEGORIES = [
-  { key: 'all', label: 'Tất cả', icon: 'TẤT' },
-  { key: 'fear-ai', label: 'Sợ AI', icon: 'SỢ', journeys: ['Sợ AI'], slugs: ['ai-khong-cuop-viec-ban'] },
-  { key: 'right-ai', label: 'Dùng AI đúng cách', icon: 'AI', journeys: ['Dùng AI đúng cách'], slugs: ['ai-khong-cuop-viec-ban'] },
-  { key: 'brain2', label: 'Brain2', icon: 'B2', journeys: ['Brain2'], categories: ['brain2'] },
-  { key: 'content', label: 'Content kéo khách', icon: 'ND', journeys: ['Content kéo khách'], categories: ['content'] },
-  { key: 'assets', label: 'Tài sản số', icon: 'TS', journeys: ['Tài sản số'], categories: ['career', 'finance'] },
-  { key: 'conan', label: 'Conan', icon: 'CN', journeys: ['Conan'], categories: ['conan'] },
+const CATEGORIES: BlogCategory[] = [
+  { key: 'all', label: 'Tất cả' },
+  { key: 'fear-ai', label: 'Sợ AI', journeys: ['Sợ AI'], slugs: ['ai-khong-cuop-viec-ban'] },
+  { key: 'right-ai', label: 'Dùng AI đúng cách', journeys: ['Dùng AI đúng cách'], slugs: ['ai-khong-cuop-viec-ban'] },
+  { key: 'brain2', label: 'Brain2', journeys: ['Brain2'], categories: ['brain2'] },
+  { key: 'content', label: 'Nội dung kéo khách', journeys: ['Content kéo khách'], categories: ['content'] },
+  { key: 'assets', label: 'Tài sản số', journeys: ['Tài sản số'], categories: ['career', 'finance'] },
 ]
 
 const JOURNEY_CONTEXT: Record<string, { label: string; state: string; context: string }> = {
@@ -39,13 +36,6 @@ const JOURNEY_CONTEXT: Record<string, { label: string; state: string; context: s
   },
 }
 
-const readingJourney = [
-  ['Sợ AI', 'Nhẹ nhõm'],
-  ['Brain2', 'Sáng tỏ'],
-  ['Content', 'Kiểm soát'],
-  ['Conan', 'Thực hành'],
-]
-
 function getJourney(post: { slug: string; category: string; journey?: string; readerState?: string; promise?: string }) {
   if (post.journey || post.readerState || post.promise) {
     return {
@@ -66,97 +56,60 @@ function getJourney(post: { slug: string; category: string; journey?: string; re
 }
 
 export const metadata: Metadata = {
-  title: 'Bài viết — Sáng tỏ hơn giữa thời AI quá ồn',
-  description: 'Bài viết cho người có chuyên môn muốn bớt sợ AI, dùng AI đúng cách, xây Brain2, viết nội dung kéo khách và tạo tài sản số.',
+  title: 'Bài của Thông — Thư viện Thông Phan',
+  description: 'Bốn bài viết đi ra từ trải nghiệm thật về AI, Brain2, nội dung kéo khách và cách biến chuyên môn thành tài sản.',
+  alternates: { canonical: '/blog' },
 }
 
 export default function BlogPage() {
   const posts = getAllPosts()
   const featuredPost = posts.find((p) => p.featured)
-  const regularPosts = posts.filter((p) => p !== featuredPost)
-  const featuredJourney = featuredPost ? getJourney(featuredPost) : null
 
   return (
     <div className={styles.blogPage}>
-      <div className="container">
-        {/* Header */}
-        <header className={styles.header} data-reveal>
-          <div className={styles.headerShell}>
-            <div className={styles.headerCopy}>
-              <span className={styles.eyebrow}>Đọc để sáng tỏ hơn</span>
-              <h1>Trước khi dùng AI nhanh hơn, hãy nghĩ đúng hơn.</h1>
-              <p className={styles.subtitle}>
-                Nếu bạn đang vừa tò mò vừa lo vì AI, bắt đầu ở đây. Mục tiêu không phải biết thêm công cụ, mà là hiểu mình nên dùng AI vào đâu để chuyên môn có lực hơn.
-              </p>
-              <div className={styles.postCount}>{posts.length} bài viết · đọc theo trạng thái của bạn</div>
-              <GardenSignature variant="seed" eyebrow="Reading path" title="Mỗi bài nên giúp bạn chuyển trạng thái: bớt sợ, sáng hơn, làm được một bước rõ hơn." compact />
-            </div>
+      <header className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>Thư viện · Bài của Thông · {posts.length} hồ sơ</p>
+          <h1>Những bài viết đi ra từ trải nghiệm thật.</h1>
+          <p className={styles.subtitle}>
+            Không chạy theo tiếng ồn công cụ. Mỗi bài bắt đầu từ một va chạm thật, một bằng chứng
+            đủ rõ và một câu hỏi đáng nghĩ tiếp.
+          </p>
+        </div>
+        <aside className={styles.editorialNote} aria-label="Nguyên tắc viết">
+          <p>Nguyên tắc viết</p>
+          <strong>Chỉ nói điều mình đã sống đủ lâu để chịu trách nhiệm.</strong>
+          <span>Đọc để bớt sợ, nhìn rõ hơn và làm được một bước có thật.</span>
+        </aside>
+      </header>
 
-            <div className={styles.readingCompass} aria-label="Reading compass">
-              <div className={styles.compassGrid} />
-              <div className={styles.compassCore}>
-                <span>Start</span>
-                <strong>Bắt đầu từ trạng thái của bạn</strong>
-              </div>
-              <div className={styles.compassPath}>
-                {readingJourney.map(([label, state], index) => (
-                  <div key={label} className={styles.pathNode} style={{ '--node': index } as CSSProperties}>
-                    <span>{label}</span>
-                    <strong>{state}</strong>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <div className={styles.filmRaster} aria-hidden="true">
+        <img src="/images/library/library-film-archive-v1.webp" alt="" width="2048" height="320" />
+      </div>
+
+      <section className={styles.archive} aria-labelledby="blog-archive-title">
+        <header className={styles.archiveHeader}>
+          <p>04 hồ sơ biên tập</p>
+          <h2 id="blog-archive-title">Chọn bài theo điều bạn đang cần nhìn rõ.</h2>
         </header>
 
-        {/* Featured Post */}
-        {featuredPost && (
-          <Link href={`/blog/${featuredPost.slug}`} className={styles.featuredCard} data-reveal>
-            {featuredPost.coverImage && (
-              <div className={styles.featuredImageWrap}>
-                <img
-                  src={featuredPost.coverImage}
-                  alt={featuredPost.title}
-                  className={styles.featuredImage}
-                  loading="eager"
-                />
-                <div className={styles.featuredImageOverlay} />
-              </div>
-            )}
-            <div className={styles.featuredContent}>
-              <span className="badge gold">
-                Nổi bật · {featuredJourney?.label} · {featuredJourney?.state}
-              </span>
-              <h2 className={styles.featuredTitle}>{featuredPost.title}</h2>
-              <p className={styles.featuredDesc}>{featuredPost.description}</p>
-              {featuredJourney && <p className={styles.featuredContext}>{featuredJourney.context}</p>}
-              <div className={styles.featuredMeta}>
-                <span>{featuredPost.calculatedReadingTime} phút đọc</span>
-                <span>·</span>
-                <span>{new Date(featuredPost.publishedAt).toLocaleDateString('vi-VN')}</span>
-              </div>
-            </div>
-          </Link>
-        )}
-
-        {/* Category Filters + Post Grid (client-side interactivity) */}
         <BlogFiltersClient
           categories={CATEGORIES}
-          posts={regularPosts.map((p) => ({
-            slug: p.slug,
-            title: p.title,
-            description: p.description,
-            category: p.category,
-            publishedAt: p.publishedAt,
-            readingTime: p.calculatedReadingTime,
-            coverImage: p.coverImage,
-            journeyLabel: getJourney(p).label,
-            readerState: getJourney(p).state,
-            journeyContext: getJourney(p).context,
+          featuredSlug={featuredPost?.slug}
+          posts={posts.map((post) => ({
+            slug: post.slug,
+            title: post.title,
+            description: post.description,
+            category: post.category,
+            publishedAt: post.publishedAt,
+            readingTime: post.calculatedReadingTime,
+            coverImage: post.coverImage,
+            journeyLabel: getJourney(post).label,
+            readerState: getJourney(post).state,
+            journeyContext: getJourney(post).context,
           }))}
         />
-      </div>
+      </section>
     </div>
   )
 }

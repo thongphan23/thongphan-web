@@ -9,7 +9,6 @@ import {
   READER_STATE_LABELS,
   RELATION_LABELS,
   SECTION_LABELS,
-  STATUS_LABELS,
   type LibraryNoteMeta,
   type LibraryRelatedLink,
 } from '@/lib/library'
@@ -18,6 +17,8 @@ import LibraryArticle from './LibraryArticle'
 interface HydratedLink extends LibraryRelatedLink {
   note: LibraryNoteMeta
 }
+
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   return getLibrarySlugs().map((slug) => ({ slug }))
@@ -34,7 +35,7 @@ export async function generateMetadata({
   if (!note) return { title: 'Không tìm thấy note' }
 
   return {
-    title: `${note.title} — Living Library Thông Phan`,
+    title: `${note.title} — Ghi chú sống Thông Phan`,
     description: note.description,
     alternates: {
       canonical: `/library/${note.slug}`,
@@ -91,7 +92,6 @@ export default async function LibraryNotePage({
         section: SECTION_LABELS[note.section],
         journey: JOURNEY_LABELS[note.journey],
         readerState: READER_STATE_LABELS[note.readerState],
-        status: STATUS_LABELS[note.status],
         relations: RELATION_LABELS,
       }}
     />

@@ -41,7 +41,7 @@ export function isUnifiedRouteEnabled(pathname: string): boolean {
   return (
     pathname === '/' ||
     pathname === '/library' ||
-    pathname === '/library/read' ||
-    pathname.startsWith('/library/read/')
+    pathname.startsWith('/library/') ||
+    pathname === '/blog'
   )
 }
