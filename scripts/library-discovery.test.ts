@@ -10,6 +10,7 @@ import {
   adaptBlogPost,
   adaptLivingNote,
   adaptReadingSummary,
+  canonicalTopic,
   clearDiscoveryParams,
   durationBandForMinutes,
   filterLibraryEntries,
@@ -126,6 +127,10 @@ test('discovery params are exactly q, type, topic, duration, and intent', () => 
     serializeDiscoveryParams(parsed).toString(),
     'q=Brain2&type=post&topic=obsidian&duration=under-10&intent=clarity',
   )
+  assert.equal(
+    parseDiscoveryParams(new URLSearchParams('topic=digital-assets')).topic,
+    'tai-san-so',
+  )
 
   const cleared = clearDiscoveryParams(
     new URLSearchParams('keep=1&q=Brain2&type=post&topic=obsidian&duration=under-10&intent=clarity'),
@@ -192,14 +197,18 @@ test('rapid cross-control updates compose from the optimistic state', () => {
   assert.equal(serializeDiscoveryParams(current).toString(), 'type=reading')
 })
 
-test('the complete current catalog has an approved Vietnamese label for all 55 topics', () => {
+test('the complete current catalog has unique canonical values and approved Vietnamese labels', () => {
   const entries = [
     ...getAllReadingSummaries().map(adaptReadingSummary),
     ...getAllPosts().map(adaptBlogPost),
     ...getAllLibraryNotes().map(adaptLivingNote),
   ]
 
-  assert.deepEqual(Object.fromEntries(getDiscoveryTopics(entries).map(({ value, label }) => [value, label])), {
+  const topics = getDiscoveryTopics(entries)
+  assert.equal(topics.length, 55)
+  assert.equal(new Set(topics.map(({ value }) => value)).size, topics.length)
+  assert.equal(new Set(topics.map(({ label }) => label)).size, topics.length)
+  assert.deepEqual(Object.fromEntries(topics.map(({ value, label }) => [value, label])), {
     '21-days': 'Thử thách 21 ngày',
     ai: 'AI',
     'ai-fear': 'Nỗi sợ AI',
@@ -208,14 +217,13 @@ test('the complete current catalog has an approved Vietnamese label for all 55 t
     brain2: 'Brain2',
     'cam-xuc': 'Cảm xúc',
     'chinh-tri': 'Chính trị',
+    'chuyen-mon': 'Chuyên môn',
     clarity: 'Sáng tỏ',
     conan: 'Conan',
     content: 'Nội dung',
     'content-pattern': 'Mẫu nội dung',
     'dao-duc': 'Đạo đức',
     data: 'Dữ liệu',
-    'digital-assets': 'Tài sản số',
-    expertise: 'Chuyên môn',
     failure: 'Thất bại',
     'giong-rieng': 'Giọng riêng',
     'global-development': 'Phát triển toàn cầu',
@@ -245,6 +253,7 @@ test('the complete current catalog has an approved Vietnamese label for all 55 t
     'scout-mindset': 'Tư duy trinh sát',
     'state-change': 'Chuyển trạng thái',
     structure: 'Cấu trúc',
+    'tai-san-so': 'Tài sản số',
     taste: 'Gu thẩm định',
     template: 'Mẫu dùng lại',
     'thien-kien': 'Thiên kiến',
@@ -256,5 +265,7 @@ test('the complete current catalog has an approved Vietnamese label for all 55 t
     worldview: 'Thế giới quan',
     writing: 'Viết',
   })
+  assert.equal(canonicalTopic('digital-assets'), 'tai-san-so')
+  assert.equal(canonicalTopic('expertise'), 'chuyen-mon')
   assert.throws(() => topicLabel('unapproved-internal-tag'), /Missing approved topic label/)
 })

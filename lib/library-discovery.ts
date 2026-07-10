@@ -42,6 +42,11 @@ const ENTRY_TYPES = new Set<LibraryEntryType>(['reading', 'post', 'note'])
 const DURATION_BANDS = new Set<LibraryEntryDuration>(['under-10', '10-20', 'over-20'])
 const INTENTS = new Set<LibraryEntryIntent>(['clarity', 'taste', 'asset'])
 
+const TOPIC_ALIASES: Readonly<Record<string, string>> = {
+  'digital-assets': 'tai-san-so',
+  expertise: 'chuyen-mon',
+}
+
 const TOPIC_LABELS: Readonly<Record<string, string>> = {
   '21-days': 'Thử thách 21 ngày',
   ai: 'AI',
@@ -58,8 +63,6 @@ const TOPIC_LABELS: Readonly<Record<string, string>> = {
   'content-pattern': 'Mẫu nội dung',
   'dao-duc': 'Đạo đức',
   data: 'Dữ liệu',
-  'digital-assets': 'Tài sản số',
-  expertise: 'Chuyên môn',
   failure: 'Thất bại',
   'giong-rieng': 'Giọng riêng',
   'global-development': 'Phát triển toàn cầu',
@@ -107,6 +110,15 @@ function uniqueSorted(values: Array<string | undefined>): string[] {
     .sort((a, b) => a.localeCompare(b, 'vi'))
 }
 
+export function canonicalTopic(topic: string): string {
+  const normalized = topic.trim()
+  return TOPIC_ALIASES[normalized] ?? normalized
+}
+
+function normalizeTopics(values: Array<string | undefined>): string[] {
+  return uniqueSorted(values.map((value) => (value ? canonicalTopic(value) : value)))
+}
+
 function intentForPost(post: PostMeta): LibraryEntryIntent {
   if (
     post.readerState === 'Kiểm soát' ||
@@ -149,7 +161,7 @@ export function adaptReadingSummary(reading: ReadingSummary): LibraryEntrySummar
     minutes: reading.minutes,
     duration: reading.durationBand,
     intent: reading.intent,
-    topics: uniqueSorted(reading.topics),
+    topics: normalizeTopics(reading.topics),
     publishedAt: reading.sourcePublishedAt ?? undefined,
     updatedAt: reading.lastReviewedAt,
   }
@@ -168,7 +180,7 @@ export function adaptBlogPost(post: PostMeta): LibraryEntrySummary {
     minutes: post.calculatedReadingTime,
     duration: durationBandForMinutes(post.calculatedReadingTime),
     intent: intentForPost(post),
-    topics: uniqueSorted(post.tags ?? []),
+    topics: normalizeTopics(post.tags ?? []),
     publishedAt: post.publishedAt,
     updatedAt: post.updatedAt ?? post.publishedAt,
     image: post.coverImage,
@@ -188,7 +200,7 @@ export function adaptLivingNote(note: LibraryNoteMeta): LibraryEntrySummary {
     minutes: note.readTime,
     duration: durationBandForMinutes(note.readTime),
     intent: intentForNote(note),
-    topics: uniqueSorted(note.tags),
+    topics: normalizeTopics(note.tags),
     publishedAt: note.publishedAt,
     updatedAt: note.updatedAt,
   }
@@ -202,7 +214,7 @@ export function parseDiscoveryParams(params: URLSearchParams): LibraryDiscoveryS
   return {
     q: (params.get('q') ?? '').trim(),
     type: ENTRY_TYPES.has(type as LibraryEntryType) ? (type as LibraryEntryType) : '',
-    topic: (params.get('topic') ?? '').trim(),
+    topic: canonicalTopic(params.get('topic') ?? ''),
     duration: DURATION_BANDS.has(duration as LibraryEntryDuration)
       ? (duration as LibraryEntryDuration)
       : '',
@@ -251,7 +263,7 @@ export function filterLibraryEntries(
 
   return entries.filter((entry) => {
     if (state.type && entry.type !== state.type) return false
-    if (state.topic && !entry.topics.includes(state.topic)) return false
+    if (state.topic && !entry.topics.includes(canonicalTopic(state.topic))) return false
     if (state.duration && entry.duration !== state.duration) return false
     if (state.intent && entry.intent !== state.intent) return false
 
@@ -271,13 +283,14 @@ export function filterLibraryEntries(
 }
 
 export function topicLabel(topic: string): string {
-  const label = TOPIC_LABELS[topic]
+  const canonical = canonicalTopic(topic)
+  const label = TOPIC_LABELS[canonical]
   if (!label) throw new Error(`Missing approved topic label: ${topic}`)
   return label
 }
 
 export function getDiscoveryTopics(entries: LibraryEntrySummary[]) {
-  return uniqueSorted(entries.flatMap((entry) => entry.topics)).map((value) => ({
+  return normalizeTopics(entries.flatMap((entry) => entry.topics)).map((value) => ({
     value,
     label: topicLabel(value),
   }))
