@@ -36,17 +36,16 @@
 ### Task 0: Lock release safety, rights gates, and current route contracts
 
 **Files:**
-- Create: `scripts/unified-cinema-contract.test.mjs`
+- Create: `scripts/read-release-safety.test.mjs`
 - Create: `scripts/reading-rights-audit.mjs`
 - Create: `docs/reading-rights-report-2026-07-10.md`
 - Modify: `package.json`
 - Modify in Read source: `/Users/rio/Projects/thongphan-read/index.html`
 - Create in Read source: `/Users/rio/Projects/thongphan-read/public/robots.txt`
-- Create in Read source: `/Users/rio/Projects/thongphan-read/public/_headers`
+- Create in Read source: `/Users/rio/Projects/thongphan-read/public/_headers` (Workers Static Assets header rules)
 - Preserve: `public/conanmaker/**`
 
 **Interfaces:**
-- `routeModeForPath(pathname): SiteRouteMode` is specified by tests before implementation.
 - Rights report lists all 13 slugs and one of the five approved `rightsStatus` values with source evidence.
 - Read preview returns `noindex, nofollow` in markup, robots, and response headers until retirement.
 
@@ -54,9 +53,9 @@
 
 Run `git status --short`, `git rev-parse HEAD`, `shasum -a 256 public/conanmaker/index.html public/conanmaker/assets/index-fF5i7DFq.js public/conanmaker/assets/index-DPgHELtg.css`, and save output under `/tmp/thongphan-unified-cinema-rollback-20260710/`. Expected: current commit and referenced Conan fingerprint are captured; user-owned untracked files remain visible and untouched.
 
-- [ ] **Step 2: Write the failing system contract**
+- [ ] **Step 2: Write the failing Slice 0 safety contract**
 
-Assert the exact path-to-mode table, shared primary navigation, no nested `<main>` on diagnostic/chat, banned Garden imports on migrated routes, legacy noindex, library/read routes, sitemap/robots presence, rights enum, and the exact four filter labels/URL params. Add the test to `npm test` and run it. Expected: RED because the route map, reading routes, shared tokens, and metadata files do not exist.
+Assert exactly 13 rights rows, approved enum values, fail-closed default publication, Read meta robots, disallow-all robots file, and an `_headers` rule that yields `X-Robots-Tag: noindex, nofollow`. Run the focused test and confirm RED because the report/safety files are absent. Do not add a cross-slice RED test to `npm test`; every committed slice must be GREEN.
 
 - [ ] **Step 3: Audit all 13 reading rights and media truthfully**
 
@@ -64,11 +63,11 @@ Generate `docs/reading-rights-report-2026-07-10.md` from the Read source data. E
 
 - [ ] **Step 4: Put the old Read runtime behind noindex**
 
-Add `<meta name="robots" content="noindex, nofollow">`, a disallow-all `robots.txt`, and `_headers` with `X-Robots-Tag: noindex, nofollow`. Build Read and verify the generated `dist` contains all three controls. Deploy the temporary safety release only after local verification, then use `curl -I` and `curl` to confirm header + meta.
+Add `<meta name="robots" content="noindex, nofollow">`, a disallow-all `robots.txt`, and `_headers` with `X-Robots-Tag: noindex, nofollow`. Cloudflare Workers Static Assets officially supports `_headers`; keep `wrangler.jsonc` asset-only and verify the rule is copied into `dist`. Run the focused safety test GREEN, build Read, deploy with `npm run deploy`, then use `curl -I https://read.thongphan.com/` and `curl -fsSL https://read.thongphan.com/` to confirm header + meta.
 
 - [ ] **Step 5: Commit safety contracts**
 
-Commit only main-repo tests/report/package changes as `test: lock unified Cinema release contracts`. Record the independent Read safety deploy in its `docs/STATUS.md` because that directory is not a Git worktree.
+Commit only a GREEN main-repo safety test/report/package change as `test: lock reading release safety`. Record the independent Read safety deploy in its `docs/STATUS.md` because that directory is not a Git worktree.
 
 ### Task 1: Build shared brand tokens, route modes, fonts, and universal chrome
 
@@ -89,7 +88,7 @@ Commit only main-repo tests/report/package changes as `test: lock unified Cinema
 
 **Interfaces:**
 - `type SiteRouteMode = 'standalone' | 'cinema-dark' | 'evidence-dossier' | 'editorial-light' | 'legacy' | 'default'`.
-- `routeModeForPath(pathname)` uses exact matching before prefix matching. `isUnifiedRouteEnabled(pathname)` keeps old consumers isolated until their route slice passes.
+- `routeModeForPath(pathname)` uses exact matching before prefix matching. `isUnifiedRouteEnabled(pathname)` initially returns true only for `/`; each later slice enables its own route family in the same commit that makes that family GREEN. After Task 5 passes, the map becomes the default for all in-scope Next routes.
 - `SiteChrome` exposes one main landmark, a complete primary menu, a homepage-only chapter nav, and one footer.
 
 - [ ] **Step 1: TDD the route matcher**
@@ -102,7 +101,7 @@ Define only the approved ink, paper, lacquer, line, focus, spacing, and motion p
 
 - [ ] **Step 3: Replace dual chrome with the universal shell**
 
-Implement the five-link primary nav, route-themed header, one accessible mobile dialog, one footer, and homepage chapter nav. Preserve focus trap, Escape, body lock, and focus restoration. Use Lucide icons for menu/close/arrows only. Remove the CSS logo mark and default Garden atmosphere.
+Implement the five-link primary nav, route-themed header, one accessible mobile dialog, one footer, and homepage chapter nav. Write and watch a focused mobile-menu source/behavior contract fail before implementation; it covers focus trap, Escape, body lock, 44px targets, and focus restoration. Preserve the old shell behind `isUnifiedRouteEnabled` for all routes except `/`. Use Lucide icons for menu/close/arrows only. Remove the CSS logo mark and default Garden atmosphere only from the unified shell.
 
 - [ ] **Step 4: Verify foundation**
 
@@ -163,13 +162,16 @@ Commit as `feat: ingest validated reading packages` with the rights report and p
 - Create: `components/library/LibraryDiscovery.tsx`
 - Create: `components/library/LibraryDiscovery.module.css`
 - Create: `components/editorial/EditorialMasthead.tsx`
+- Create: `components/editorial/EditorialHero.tsx`
 - Create: `components/editorial/ArticleHeader.tsx`
 - Create: `components/editorial/ArticleMeta.tsx`
 - Create: `components/editorial/ArticleBody.tsx`
 - Create: `components/editorial/ArticleTOC.tsx`
 - Create: `components/editorial/EditorialFigure.tsx`
+- Create: `components/editorial/EditorialCallout.tsx`
 - Create: `components/editorial/SourceDisclosure.tsx`
 - Create: `components/editorial/ReadNext.tsx`
+- Create: `components/editorial/CompletionReward.tsx`
 - Create: `components/editorial/Editorial.module.css`
 - Create: `components/library/ReadingToolbar.tsx`
 - Create: `components/library/ReadingToolbar.module.css`
@@ -181,7 +183,6 @@ Commit as `feat: ingest validated reading packages` with the rights report and p
 - Modify: `app/library/[slug]/LibraryArticle.tsx`
 - Modify: `app/library/[slug]/page.module.css`
 - Modify: `app/blog/page.tsx`, `app/blog/page.module.css`
-- Modify: `app/blog/[slug]/page.tsx`, `app/blog/[slug]/BlogArticle.tsx`, `app/blog/[slug]/BlogPostClient.tsx`, `app/blog/[slug]/page.module.css`
 - Create: `scripts/library-discovery.test.ts`
 - Create: `scripts/editorial-contract.test.mjs`
 
@@ -197,7 +198,7 @@ Test the three content types, exact four filter groups, three intent labels, det
 
 - [ ] **Step 2: Implement the selected first viewport**
 
-Recreate the approved Film Archive Editorial proportions: black masthead, archival paper, exact headline, concise support copy, featured Steve Jobs record, two primary lanes, thin real film raster, then the Blog lane immediately below. Use actual catalog counts/content only; no fake metrics or graph.
+Recreate the approved Film Archive Editorial proportions: black masthead, archival paper, exact headline, concise support copy, featured Steve Jobs record, two primary lanes, thin real film raster, then the Blog summary lane immediately below. Use actual catalog counts/content only; no fake metrics or graph. In the same GREEN commit, add library-owned canonical/CollectionPage JSON-LD, `app/sitemap.ts`, `app/robots.ts`, and enable `/library*` in `isUnifiedRouteEnabled`.
 
 - [ ] **Step 3: Implement URL-backed discovery**
 
@@ -205,11 +206,11 @@ Use native inputs/buttons and `useSearchParams`/router replacement. Search/filte
 
 - [ ] **Step 4: Implement static reader and client toolbar**
 
-Build metadata, JSON-LD, source disclosure, TOC, article blocks/figures, related readings, and source-link-only state on the server. Keep only progress, focus, ready audio, bookmark, and completion in the client toolbar. Focus mode must not hide source attribution or essential controls irreversibly.
+Before implementation, write focused tests for Article JSON-LD/canonical/real 404 and a pure reader-state module covering elapsed reading time, progress, ready-audio state, `tp:library:saved:v1`, `tp:library:completed:v1`, and completion-related recommendations. Build metadata, source disclosure, TOC, article blocks/figures, related readings, and source-link-only state on the server. Keep only progress, elapsed time, focus, ready audio, bookmark, and completion in the client toolbar. Focus mode must not hide source attribution or essential controls irreversibly.
 
 - [ ] **Step 5: Bring living notes and blog into the shared editorial system**
 
-Preserve all existing canonical URLs and content generation. Replace decorative graph with typed relation lists. Keep note/blog reading functionality while eliminating Garden styling and duplicate article-shell CSS.
+Preserve all existing canonical URLs and content generation. Replace the living-note decorative graph with typed relation lists. This task migrates living-note readers only. Blog detail shell remains owned by Task 5 direct-entry migration; Task 3 uses blog summaries for discovery without editing `app/blog/[slug]/**`.
 
 - [ ] **Step 6: Verify library slice**
 
@@ -250,15 +251,15 @@ Use ImageGen for distressed ink texture only, composite the exact Vietnamese wor
 
 - [ ] **Step 2: Inventory real proof photos and create derivatives**
 
-Search approved local source assets first. Create face-safe 16:9 and 3:2 derivatives without altering people/evidence. The manifest test must fail if fewer than six reel or three proof assets meet source, rights, checksum, aspect, focal point, and size budgets.
+Search approved local source assets first. Create face-safe 16:9 and 3:2 derivatives without altering people/evidence. The manifest blocks release when fewer than three ACT 03 proof assets pass. Fewer than six valid reel assets is a valid static fallback: integrity tests stay GREEN and `canRunReel` returns false.
 
 - [ ] **Step 3: Implement the reel with the specified gate**
 
-If and only if six assets pass, ship the 30–45s loop, hover/focus pause, lazy loading, touch static mode, and reduced-motion static mode. If the gate fails, retain the approved static contact sheet and record the blocker without faking the missing evidence.
+Write focused RED tests for hover/focus pause, duplicate `aria-hidden`, touch/reduced-motion static behavior, and `canRunReel`. If and only if six assets pass, ship the 30–45s loop, hover/focus pause, lazy loading, touch static mode, and reduced-motion static mode. If the gate is below six, retain the approved static contact sheet and record the accepted fallback without faking evidence.
 
 - [ ] **Step 4: Compact hero and ACT 03**
 
-Anchor hero copy above the reel with `bottom`, accept per-image focal points, and render ACT 03 within the exact desktop dimensions. Add manual rail controls and evidence detail dialog/drawer with focus trap, Escape, and focus restore.
+Anchor hero copy above the reel with `bottom`, accept per-image focal points, and render ACT 03 within the exact desktop dimensions. Add RED geometry/source contracts for CTA-versus-film placement and 3-up dimensions, then add manual rail controls and evidence detail dialog/drawer with focus trap, Escape, and focus restore.
 
 - [ ] **Step 5: Verify homepage**
 
@@ -286,6 +287,7 @@ Commit as `feat: refine Cinema proof experience`.
 - Create: `components/dossier/DossierFolio.tsx`
 - Create: `components/dossier/Dossier.module.css`
 - Create: `scripts/subpage-cinema-contract.test.mjs`
+- Modify: `app/blog/[slug]/page.tsx`, `app/blog/[slug]/BlogArticle.tsx`, `app/blog/[slug]/page.module.css`
 
 **Interfaces:**
 - Business logic, question order, result mapping, prices, offers, challenge steps, and chat API contract remain unchanged.
@@ -297,11 +299,11 @@ Lock one h1/main, banned Garden/CSS-art motifs/imports, palette, primary CTA cou
 
 - [ ] **Step 2: Migrate `/about`, `/diagnostic`, and direct-entry blog surfaces**
 
-Build the Cinema origin story and Dossier diagnostic shell while preserving content/logic. Source every public About metric through `about-proof.json`; omit unsupported claims. Extract and unit-test the diagnostic model with its existing five questions and score thresholds `0/9/13/17/19`. Remove rotated 3D console, radar, halo, and nested main. Browser-test diagnostic completion and CTA.
+Build the Cinema origin story, Dossier diagnostic shell, and shared Editorial blog detail shell while preserving content/logic/canonical URLs. Source every public About metric through `about-proof.json`; omit unsupported claims. Extract and unit-test the diagnostic model with its existing five questions and score thresholds `0/9/13/17/19`. Remove rotated 3D console, radar, halo, and nested main. Enable `/about`, `/diagnostic`, and `/blog*` in the route feature map only after their focused tests pass. Browser-test diagnostic completion, blog 404, and CTA.
 
 - [ ] **Step 3: Migrate `/assets/*`, `/challenges/*`, and `/chat`**
 
-Apply physical dossier/calendar/evidence-desk composition with shared primitives and Lucide controls. Preserve catalog/product data, challenge activation, chat submission, empty/loading/error states, and all current links. Centralize duplicated challenge data, remove nested interactive controls, and split Chat into a metadata-capable server wrapper plus client runtime.
+Apply physical dossier/calendar/evidence-desk composition with shared primitives and Lucide controls. Preserve catalog/product data, challenge activation, chat submission, empty/loading/error states, and all current links. Centralize duplicated challenge data, remove nested interactive controls, and split Chat into a metadata-capable server wrapper plus client runtime. Enable `/assets*`, `/challenges*`, and `/chat` only in the commit where their focused contracts pass; then switch the feature map to the final in-scope default.
 
 - [ ] **Step 4: Remove old shared Garden system only after all consumers pass**
 
@@ -314,7 +316,10 @@ Run all tests/build, then Browser QA every index/detail route at desktop/mobile 
 ### Task 6: Upgrade the Thông Phan Read publishing plugin contract
 
 **Files:**
-- Modify under `/Users/rio/plugins/thong-phan-read`: router/skills/scripts/validators/README/AGENTS files that still encode `read.thongphan.com/doc/`
+- Modify: `/Users/rio/plugins/thong-phan-read/references/editorial-image-pack.md`
+- Modify: `/Users/rio/plugins/thong-phan-read/scripts/update_read_link.py`
+- Modify: `/Users/rio/plugins/thong-phan-read/skills/article-image-pack/SKILL.md`
+- Modify: `/Users/rio/plugins/thong-phan-read/skills/publish-translated-articles/SKILL.md`
 - Sync the active marketplace/cache package after source validation
 - Add/update plugin contract tests according to the plugin's own validator
 
@@ -340,7 +345,7 @@ Run the plugin validator, sync marketplace/cache using the established local pac
 ### Task 7: Full QA, bundle audit, preview, production promotion, and Read retirement
 
 **Files:**
-- Modify: `scripts/qa-site.mjs`
+- Preserve but do not use as release gate: `scripts/qa-site.mjs` (Playwright is not declared and the user's selected verifier is in-app Browser)
 - Create: `scripts/seo-contract.test.mjs`
 - Create: `scripts/bundle-budget.test.mjs`
 - Create: `app/sitemap.ts`
@@ -365,7 +370,7 @@ Test sitemap URLs from posts, notes, public readings, assets, and challenges; ro
 
 - [ ] **Step 2: Run the complete local release gate**
 
-Run `npm test`, `npx tsc --noEmit`, `npm run build`, `npm run test:build`, SEO/bundle tests, `git diff --check`, and the full Browser matrix. Any failure returns to the owning slice; do not waive acceptance silently.
+Run `npm test`, `npx tsc --noEmit`, `npm run build`, `npm run test:build`, SEO/bundle tests, `git diff --check`, and the full in-app Browser matrix. Do not install or invoke Playwright CLI. Any failure returns to the owning slice; do not waive acceptance silently.
 
 - [ ] **Step 3: Perform visual comparison, not screenshot-only QA**
 
