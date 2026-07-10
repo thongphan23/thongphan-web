@@ -1,0 +1,29 @@
+:root {
+  --brand-ink: #070706;
+  --brand-ink-raised: #12100f;
+  --brand-paper: #e8dfcf;
+  --brand-reading-paper: #f3efe6;
+  --brand-reading-paper-deep: #e8decf;
+  --brand-text-on-paper: #171410;
+  --brand-muted-on-paper: #756d62;
+  --brand-lacquer: #b3231b;
+  --brand-lacquer-bright: #e04b43;
+  --brand-line-dark: rgba(232, 223, 207, 0.2);
+  --brand-line-paper: rgba(23, 20, 16, 0.16);
+
+  --brand-focus-ring-dark: 2px solid var(--brand-paper);
+  --brand-focus-ring-paper: 2px solid var(--brand-lacquer);
+  --brand-focus-offset: 4px;
+
+  --brand-space-inline: clamp(1rem, 4vw, 4rem);
+  --brand-space-section: clamp(4rem, 9vw, 8rem);
+
+  --brand-motion-fast: 180ms;
+  --brand-motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --brand-motion-fast: 0.01ms;
+  }
+}

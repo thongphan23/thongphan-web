@@ -1,3 +1,5 @@
+@import './brand-tokens.css';
+
 /* thongphan.com — Cinematic Knowledge Garden v2 */
 
 html {
@@ -45,10 +47,13 @@ html {
   --warning: #f59e0b;
   --error: #ef4444;
 
-  --font-heading: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Lora', Georgia, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-be-vietnam), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: var(--font-be-vietnam), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-inter: var(--font-be-vietnam);
+  --font-lora: var(--font-newsreader);
+  --font-jetbrains: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;

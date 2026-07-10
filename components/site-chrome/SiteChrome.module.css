@@ -1,5 +1,9 @@
+.siteShell {
+  min-height: 100vh;
+}
+
 .cinemaProgress {
-  background: var(--cinema-lacquer, #b3231b);
+  background: var(--brand-lacquer);
   height: 2px;
   left: 0;
   pointer-events: none;
@@ -12,16 +16,16 @@
 }
 
 .cinemaMain {
-  background: var(--cinema-ink, #070706);
+  background: var(--brand-ink);
+  font-family: var(--font-be-vietnam), Arial, sans-serif;
   overflow: clip;
   position: relative;
   z-index: 1;
 }
 
 .cinemaHeader {
-  background: transparent;
-  border-bottom: 0;
-  color: #e8dfcf;
+  background: linear-gradient(180deg, rgba(7, 7, 6, 0.86), transparent);
+  color: var(--brand-paper);
   left: 0;
   position: absolute;
   right: 0;
@@ -32,98 +36,121 @@
 .cinemaHeaderInner {
   align-items: center;
   display: flex;
-  justify-content: flex-start;
-  margin: 0;
-  max-width: none;
-  min-height: 92px;
-  padding: 1rem clamp(1.25rem, 6.6vw, 6.6rem) 0;
+  gap: 2rem;
+  justify-content: space-between;
+  min-height: 82px;
+  padding: 0 var(--brand-space-inline);
 }
 
 .cinemaWordmark {
   color: inherit;
+  flex: 0 0 auto;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: 1.2rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-decoration: none;
-  display: none;
 }
 
-.desktopNav {
+.desktopNav ul {
   align-items: center;
-  border-bottom: 1px solid rgba(232, 223, 207, 0.48);
   display: flex;
-  gap: 0;
-  justify-content: space-between;
-  width: min(38.5rem, 42vw);
+  gap: clamp(1.1rem, 2.4vw, 2.4rem);
+  list-style: none;
+}
+
+.desktopNav a,
+.chapterNav a {
+  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
+  display: inline-flex;
+  font-size: 0.875rem;
+  min-height: 44px;
+  text-decoration: none;
 }
 
 .desktopNav a {
   align-items: center;
-  color: #a69e92;
-  display: inline-flex;
-  font-size: clamp(0.78rem, 1vw, 0.96rem);
-  font-weight: 400;
-  min-height: 58px;
-  position: relative;
-  text-decoration: none;
+  white-space: nowrap;
 }
 
-.desktopNav a::after {
-  background: #b3231b;
+.desktopNav a:hover,
+.desktopNav a:focus-visible,
+.chapterNav a:hover,
+.chapterNav a:focus-visible,
+.chapterNav .activeLink {
+  color: var(--brand-paper);
+}
+
+.chapterNav {
+  align-items: center;
+  border-bottom: 1px solid var(--brand-line-dark);
+  border-top: 1px solid var(--brand-line-dark);
+  display: flex;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  margin: 0 var(--brand-space-inline);
+}
+
+.chapterNav a {
+  align-items: center;
+  position: relative;
+}
+
+.chapterNav a::after {
+  background: var(--brand-lacquer-bright);
   bottom: -1px;
   content: '';
   height: 2px;
   left: 50%;
   position: absolute;
   transform: translateX(-50%) scaleX(0);
-  transition: transform 180ms ease;
+  transition: transform var(--brand-motion-fast) var(--brand-motion-ease);
   width: 0.9rem;
 }
 
-.desktopNav a:hover,
-.desktopNav a:focus-visible,
-.desktopNav .activeLink {
-  color: #e8dfcf;
-}
-
-.desktopNav .activeLink::after {
+.chapterNav .activeLink::after {
   transform: translateX(-50%) scaleX(1);
 }
 
 .desktopNav a:focus-visible,
+.chapterNav a:focus-visible,
 .menuTrigger:focus-visible,
-.menuTopline button:focus-visible,
-.menuDialog nav a:focus-visible {
-  outline: 2px solid #e04b43;
-  outline-offset: 4px;
+.menuClose:focus-visible,
+.mobileNav a:focus-visible,
+.mobileChapterNav a:focus-visible {
+  outline: var(--brand-focus-ring-dark);
+  outline-offset: var(--brand-focus-offset);
 }
 
 .menuTrigger {
+  align-items: center;
   background: transparent;
-  border: 1px solid rgba(232, 223, 207, 0.42);
-  color: #e8dfcf;
+  border: 1px solid var(--brand-line-dark);
+  color: var(--brand-paper);
   display: none;
   font: inherit;
   font-size: 0.78rem;
-  font-weight: 600;
+  gap: 0.45rem;
+  justify-content: center;
   min-height: 44px;
-  padding: 0.5rem 0.85rem;
+  min-width: 44px;
+  padding: 0.5rem 0.75rem;
 }
 
 .menuBackdrop {
-  background: rgba(7, 7, 6, 0.78);
+  background: rgba(7, 7, 6, 0.8);
   inset: 0;
   position: fixed;
   z-index: 510;
 }
 
 .menuDialog {
-  background: #070706;
-  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
-  color: #e8dfcf;
+  background: var(--brand-ink);
+  border-bottom: 1px solid var(--brand-line-dark);
+  color: var(--brand-paper);
   left: 0;
-  padding: 1rem clamp(1rem, 5vw, 2rem) 2.5rem;
+  max-height: 100dvh;
+  overflow-y: auto;
+  padding: 0 clamp(1rem, 5vw, 2rem) 2.5rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -131,10 +158,10 @@
 
 .menuTopline {
   align-items: center;
-  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+  border-bottom: 1px solid var(--brand-line-dark);
   display: flex;
   justify-content: space-between;
-  min-height: 56px;
+  min-height: 64px;
 }
 
 .menuTopline span {
@@ -142,60 +169,74 @@
   letter-spacing: 0.08em;
 }
 
-.menuTopline button {
+.menuClose {
+  align-items: center;
   background: transparent;
   border: 0;
-  color: #e8dfcf;
-  font: inherit;
+  color: var(--brand-paper);
+  display: inline-flex;
+  justify-content: center;
   min-height: 44px;
+  min-width: 44px;
 }
 
-.menuDialog nav {
+.mobileNav {
   display: grid;
 }
 
-.menuDialog nav a {
+.mobileNav a {
   align-items: baseline;
-  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
-  color: #e8dfcf;
+  border-bottom: 1px solid var(--brand-line-dark);
+  color: var(--brand-paper);
   display: flex;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.3rem, 12vw, 4rem);
+  font-size: clamp(2.1rem, 10vw, 4rem);
   gap: 1rem;
   min-height: 72px;
+  min-width: 44px;
   padding: 0.75rem 0;
   text-decoration: none;
 }
 
-.menuDialog nav a span {
-  color: #e04b43;
+.mobileNav a span {
+  color: var(--brand-lacquer-bright);
   font-family: var(--font-be-vietnam), sans-serif;
   font-size: 0.7rem;
   letter-spacing: 0.16em;
 }
 
-.menuDialog > p {
-  color: #a69e92;
-  font-size: 0.82rem;
-  margin-top: 1.5rem;
+.mobileChapterNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding-top: 1.25rem;
+}
+
+.mobileChapterNav a {
+  align-items: center;
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  display: inline-flex;
+  font-size: 0.8rem;
+  min-height: 44px;
+  text-decoration: none;
 }
 
 .cinemaFooter {
   align-items: end;
-  background: #070706;
-  border-top: 1px solid rgba(232, 223, 207, 0.2);
-  color: #a69e92;
+  background: var(--brand-ink);
+  border-top: 1px solid var(--brand-line-dark);
+  color: color-mix(in srgb, var(--brand-paper) 68%, transparent);
   display: grid;
   font-family: var(--font-be-vietnam), sans-serif;
   gap: 2rem;
-  grid-template-columns: 1fr auto;
-  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 4vw, 4rem) 2rem;
+  grid-template-columns: 1fr minmax(18rem, 0.75fr);
+  padding: var(--brand-space-section) var(--brand-space-inline) 2rem;
   position: relative;
   z-index: 2;
 }
 
 .footerName {
-  color: #e8dfcf;
+  color: var(--brand-paper);
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(2.5rem, 5vw, 5rem);
   letter-spacing: -0.03em;
@@ -204,41 +245,43 @@
 }
 
 .cinemaFooter nav {
-  display: flex;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .cinemaFooter a {
-  color: #e8dfcf;
+  align-items: center;
+  border-bottom: 1px solid var(--brand-line-dark);
+  color: var(--brand-paper);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
   min-height: 44px;
+  padding-right: 0.5rem;
   text-decoration: none;
 }
 
 .copyright {
-  border-top: 1px solid rgba(232, 223, 207, 0.2);
-  font-size: 0.72rem;
+  border-top: 1px solid var(--brand-line-dark);
+  font-size: 0.75rem;
   grid-column: 1 / -1;
   padding-top: 1.25rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .cinemaHeader {
-    background: rgba(7, 7, 6, 0.92);
-    border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+    background: rgba(7, 7, 6, 0.94);
+    border-bottom: 1px solid var(--brand-line-dark);
     position: fixed;
   }
 
   .cinemaHeaderInner {
-    justify-content: space-between;
     min-height: 64px;
     padding: 0 1rem;
   }
 
-  .cinemaWordmark {
-    display: inline-flex;
-  }
-
-  .desktopNav {
+  .desktopNav,
+  .chapterNav {
     display: none;
   }
 
@@ -252,13 +295,12 @@
   }
 
   .cinemaFooter nav {
-    flex-direction: column;
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .desktopNav a::after {
+  .chapterNav a::after {
     transition: none;
   }
 }

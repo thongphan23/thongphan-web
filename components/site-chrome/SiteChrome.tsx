@@ -2,142 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import defaultStyles from '@/app/layout.module.css'
+import { isUnifiedRouteEnabled, routeModeForPath } from '@/lib/site-route-mode'
+import SiteFooter from './SiteFooter'
+import SiteHeader from './SiteHeader'
 import styles from './SiteChrome.module.css'
-
-const cinemaLinks = [
-  { href: '#story', label: 'Câu chuyện', section: 'story' },
-  { href: '#proof', label: 'Bằng chứng', section: 'proof' },
-  { href: '#method', label: 'Phương pháp', section: 'method' },
-  { href: '/conanmaker', label: 'Conan Maker', section: 'conanmaker' },
-] as const
-
-function CinemaHeader() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('story')
-  const triggerRef = useRef<HTMLButtonElement>(null)
-  const dialogRef = useRef<HTMLDivElement>(null)
-
-  const closeMenu = () => {
-    setMenuOpen(false)
-    requestAnimationFrame(() => triggerRef.current?.focus())
-  }
-
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-home-section]'))
-    if (!sections.length) return
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      if (visible?.target.id) setActiveSection(visible.target.id)
-    }, { rootMargin: '-18% 0px -68%', threshold: [0, 0.2, 0.55] })
-
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!menuOpen) return
-
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    const dialog = dialogRef.current
-    const focusable = Array.from(dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])
-    requestAnimationFrame(() => focusable[0]?.focus())
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault()
-        closeMenu()
-        return
-      }
-
-      if (event.key !== 'Tab' || focusable.length === 0) return
-      const first = focusable[0]
-      const last = focusable[focusable.length - 1]
-
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault()
-        last.focus()
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault()
-        first.focus()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.style.overflow = previousOverflow
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [menuOpen])
-
-  return (
-    <header className={styles.cinemaHeader}>
-      <div className={styles.cinemaHeaderInner}>
-        <Link href="/" className={styles.cinemaWordmark} aria-label="Thông Phan — Trang chủ">
-          THÔNG PHAN
-        </Link>
-
-        <nav className={styles.desktopNav} aria-label="Mục lục trang chủ">
-          {cinemaLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={activeSection === link.section ? styles.activeLink : undefined}
-              aria-current={activeSection === link.section ? 'location' : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <button
-          ref={triggerRef}
-          type="button"
-          className={styles.menuTrigger}
-          aria-expanded={menuOpen}
-          aria-controls="cinema-menu"
-          onClick={() => setMenuOpen(true)}
-        >
-          Mục lục
-        </button>
-      </div>
-
-      {menuOpen ? (
-        <div className={styles.menuBackdrop} onMouseDown={(event) => {
-          if (event.target === event.currentTarget) closeMenu()
-        }}>
-          <div
-            id="cinema-menu"
-            ref={dialogRef}
-            className={styles.menuDialog}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Mục lục trang chủ"
-          >
-            <div className={styles.menuTopline}>
-              <span>THÔNG PHAN</span>
-              <button type="button" onClick={closeMenu}>Đóng</button>
-            </div>
-            <nav aria-label="Mục lục di động">
-              {cinemaLinks.map((link, index) => (
-                <Link key={link.href} href={link.href} onClick={closeMenu}>
-                  <span>0{index + 1}</span>
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-            <p>Chuyên môn thật. Bằng chứng thật. Một bước tiếp theo rõ ràng.</p>
-          </div>
-        </div>
-      ) : null}
-    </header>
-  )
-}
 
 function DefaultHeader() {
   return (
@@ -202,44 +72,32 @@ function DefaultFooter() {
   )
 }
 
-function CinemaFooter() {
-  return (
-    <footer className={styles.cinemaFooter}>
-      <div>
-        <p className={styles.footerName}>THÔNG PHAN</p>
-        <p>Biến chuyên môn thật thành tài sản có người muốn dùng.</p>
-      </div>
-      <nav aria-label="Liên kết cuối trang">
-        <Link href="/diagnostic">Chẩn đoán</Link>
-        <Link href="/library">Thư viện</Link>
-        <Link href="/conanmaker">Conan Maker</Link>
-      </nav>
-      <p className={styles.copyright}>© 2026 · Làm thật, trả giá thật, hệ thống thật.</p>
-    </footer>
-  )
-}
-
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const isHomepage = pathname === '/'
+  const mode = routeModeForPath(pathname)
+  const isUnified = isUnifiedRouteEnabled(pathname)
 
   return (
-    <>
+    <div
+      className={styles.siteShell}
+      data-route-mode={mode}
+      data-site-shell={isUnified ? 'unified' : 'legacy'}
+    >
       <div
-        className={isHomepage ? styles.cinemaProgress : defaultStyles.scrollProgress}
+        className={isUnified ? styles.cinemaProgress : defaultStyles.scrollProgress}
         data-scroll-progress
         aria-hidden="true"
       />
-      {isHomepage ? null : (
+      {!isUnified ? (
         <div className={defaultStyles.siteAtmosphere} aria-hidden="true">
           <span className={defaultStyles.siteGrid} />
           <span className={defaultStyles.siteGlow} />
           <span className={defaultStyles.siteScanline} />
         </div>
-      )}
-      {isHomepage ? <CinemaHeader /> : <DefaultHeader />}
-      <main className={isHomepage ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
-      {isHomepage ? <CinemaFooter /> : <DefaultFooter />}
-    </>
+      ) : null}
+      {isUnified ? <SiteHeader mode={mode} pathname={pathname} /> : <DefaultHeader />}
+      <main className={isUnified ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
+      {isUnified ? <SiteFooter mode={mode} /> : <DefaultFooter />}
+    </div>
   )
 }

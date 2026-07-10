@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Be_Vietnam_Pro, Cormorant_Garamond, Inter, JetBrains_Mono, Lora } from 'next/font/google'
+import { Be_Vietnam_Pro, Cormorant_Garamond, Newsreader } from 'next/font/google'
 import '@/styles/globals.css'
 import ScrollAnimations from '@/components/ScrollAnimations'
 import SiteChrome from '@/components/site-chrome/SiteChrome'
@@ -16,27 +16,16 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ['400', '500', '600', '700'],
   variable: '--font-cormorant',
   display: 'swap',
+  preload: false,
 })
 
-const inter = Inter({
-  subsets: ['latin', 'vietnamese'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '700', '800'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-})
-
-const lora = Lora({
+const newsreader = Newsreader({
   subsets: ['latin', 'vietnamese'],
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-lora',
+  variable: '--font-newsreader',
   display: 'swap',
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -59,7 +48,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
-      <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${inter.variable} ${jetBrainsMono.variable} ${lora.variable}`}>
+      <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}>
         <ScrollAnimations />
         <SiteChrome>{children}</SiteChrome>
       </body>

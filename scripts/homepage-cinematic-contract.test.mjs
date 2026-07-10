@@ -117,7 +117,11 @@ test('homepage recreates the selected hero from separated fidelity assets', asyn
 
 test('route-aware chrome includes an accessible mobile cinema menu', async () => {
   const chrome = await readProjectFile('components/site-chrome/SiteChrome.tsx')
+  const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
+  const menu = await readProjectFile('components/site-chrome/MobileMenu.tsx')
+  const navigation = await readProjectFile('components/site-chrome/site-navigation.ts')
   const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
+  const source = `${chrome}\n${header}\n${menu}\n${navigation}`
 
   for (const required of [
     'usePathname',
@@ -132,7 +136,7 @@ test('route-aware chrome includes an accessible mobile cinema menu', async () =>
     'Phương pháp',
     'Conan Maker',
   ]) {
-    assert.match(chrome, escaped(required))
+    assert.match(source, escaped(required))
   }
 
   assert.match(css, /min-height:\s*44px/i)
