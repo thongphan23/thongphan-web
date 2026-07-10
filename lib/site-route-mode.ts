@@ -38,5 +38,10 @@ export function routeModeForPath(pathname: string): SiteRouteMode {
 }
 
 export function isUnifiedRouteEnabled(pathname: string): boolean {
-  return pathname === '/' || pathname === '/library'
+  return (
+    pathname === '/' ||
+    pathname === '/library' ||
+    pathname === '/library/read' ||
+    pathname.startsWith('/library/read/')
+  )
 }

@@ -98,3 +98,26 @@ export function getReadingBySlug(slug: string): ReadingArticle | null {
 export function getReadingSlugs(): string[] {
   return publicReadings.map((reading) => reading.slug)
 }
+
+export function getRelatedReadingSummaries(slug: string, limit = 3): ReadingSummary[] {
+  const current = getReadingBySlug(slug)
+  if (!current || limit <= 0) return []
+
+  const currentTopics = new Set(current.topics)
+
+  return publicReadings
+    .filter((reading) => reading.slug !== slug)
+    .map((reading) => ({
+      reading,
+      score:
+        reading.topics.filter((topic) => currentTopics.has(topic)).length * 3 +
+        Number(reading.intent === current.intent) +
+        Number(reading.durationBand === current.durationBand),
+    }))
+    .sort((a, b) =>
+      b.score - a.score ||
+      a.reading.title.localeCompare(b.reading.title, 'vi'),
+    )
+    .slice(0, limit)
+    .map(({ reading }) => toSummary(reading))
+}

@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 import { getAllLibraryNotes } from '@/lib/library'
 import { getAllMicroAssets } from '@/lib/micro-assets'
+import { getAllReadingSummaries } from '@/lib/readings'
 
 const BASE_URL = 'https://thongphan.com'
 const RELEASE_DATE = '2026-07-10'
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/challenges/brain2-21-ngay',
     '/chat',
     '/library',
+    '/library/read',
     '/blog',
   ].map((pathname) => entry(pathname, RELEASE_DATE))
 
@@ -34,9 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const noteRoutes = getAllLibraryNotes().map((note) =>
     entry(`/library/${note.slug}`, note.updatedAt),
   )
+  const readingRoutes = getAllReadingSummaries().map((reading) =>
+    entry(reading.readingPath, reading.lastReviewedAt),
+  )
   const assetRoutes = getAllMicroAssets().map((asset) =>
     entry(`/assets/${asset.slug}`, RELEASE_DATE),
   )
 
-  return [...staticRoutes, ...blogRoutes, ...noteRoutes, ...assetRoutes]
+  return [...staticRoutes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
 }

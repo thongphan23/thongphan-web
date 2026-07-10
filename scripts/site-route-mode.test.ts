@@ -36,15 +36,19 @@ test('routeModeForPath honors every exact and prefix route contract', () => {
   }
 })
 
-test('the unified shell enables exact library hub without leaking into its legacy descendants', () => {
+test('the unified shell enables the hub and reading routes without leaking into living notes', () => {
   assert.equal(isUnifiedRouteEnabled('/'), true)
   assert.equal(isUnifiedRouteEnabled('/library'), true)
-  assert.equal(isUnifiedRouteEnabled('/library/read'), false)
-  assert.equal(isUnifiedRouteEnabled('/library/read/deep-work'), false)
+  assert.equal(isUnifiedRouteEnabled('/library/read'), true)
+  assert.equal(isUnifiedRouteEnabled('/library/read/deep-work'), true)
   assert.equal(isUnifiedRouteEnabled('/library/a-living-note'), false)
 
   for (const [pathname] of routeModeCases) {
-    if (pathname !== '/' && pathname !== '/library') {
+    if (
+      pathname !== '/' &&
+      pathname !== '/library' &&
+      pathname !== '/library/read/deep-work'
+    ) {
       assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
     }
   }

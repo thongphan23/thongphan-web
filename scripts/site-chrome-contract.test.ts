@@ -95,6 +95,13 @@ test('every mobile menu control has a 44 by 44 pixel minimum target', async () =
   }
 })
 
+test('the 320px header keeps the menu control compact without wrapping its label', async () => {
+  const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
+
+  assert.match(css, /@media\s*\(max-width:\s*340px\)[\s\S]*?\.menuTrigger span\s*\{[\s\S]*?display:\s*none/)
+  assert.match(css, /@media\s*\(max-width:\s*340px\)[\s\S]*?\.menuTrigger\s*\{[\s\S]*?padding:\s*0\.5rem/)
+})
+
 test('root fonts and shared brand primitives follow the unified contract', async () => {
   const layout = await readProjectFile('app/layout.tsx')
   const globals = await readProjectFile('styles/globals.css')

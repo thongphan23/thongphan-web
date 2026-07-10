@@ -370,6 +370,16 @@
   }
 }
 
+@media (max-width: 340px) {
+  .menuTrigger {
+    padding: 0.5rem;
+  }
+
+  .menuTrigger span {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chapterNav a::after {
     transition: none;

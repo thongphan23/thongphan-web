@@ -1,0 +1,225 @@
+.readingIndexPage {
+  background: var(--brand-reading-paper);
+  color: var(--brand-text-on-paper);
+  min-height: 100vh;
+}
+
+.hero {
+  display: grid;
+  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.6fr);
+  padding: clamp(3rem, 7vw, 7rem) var(--brand-space-inline) clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.heroCopy {
+  max-width: 66rem;
+}
+
+.backLink {
+  align-items: center;
+  color: var(--brand-lacquer);
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.eyebrow,
+.catalogHeader > p,
+.heroNote > p {
+  color: var(--brand-lacquer);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.hero h1 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(3.6rem, 7.5vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.88;
+  margin: 0.8rem 0 1.4rem;
+  max-width: 11ch;
+  text-wrap: balance;
+}
+
+.heroCopy > p:last-child {
+  color: var(--brand-muted-on-paper);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  line-height: 1.7;
+  max-width: 62ch;
+}
+
+.heroNote {
+  align-self: end;
+  border-left: 1px solid var(--brand-line-paper);
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.heroNote strong {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(1.75rem, 3vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.heroNote span {
+  color: var(--brand-muted-on-paper);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.filmRaster {
+  background: var(--brand-ink);
+  height: clamp(5rem, 9vw, 8rem);
+  overflow: hidden;
+}
+
+.filmRaster img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.catalog {
+  padding: clamp(4rem, 8vw, 8rem) var(--brand-space-inline);
+}
+
+.catalogHeader {
+  border-bottom: 1px solid var(--brand-line-paper);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr);
+  padding-bottom: 2rem;
+}
+
+.catalogHeader h2 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(2.3rem, 4.5vw, 4.6rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  max-width: 17ch;
+}
+
+.readingList {
+  border-top: 1px solid var(--brand-line-paper);
+  margin-top: 2rem;
+}
+
+.readingRow {
+  align-items: start;
+  border-bottom: 1px solid var(--brand-line-paper);
+  color: inherit;
+  display: grid;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  grid-template-columns: 2rem minmax(0, 1fr) minmax(10rem, 0.3fr) auto;
+  min-height: 92px;
+  padding: 1.2rem 0;
+  text-decoration: none;
+}
+
+.index,
+.rowCopy small,
+.rowSource small,
+.rowSource span {
+  color: var(--brand-muted-on-paper);
+  font-size: 0.75rem;
+}
+
+.rowCopy,
+.rowSource {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.rowCopy strong {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(1.3rem, 2.3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.rowCopy > span {
+  color: var(--brand-muted-on-paper);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  max-width: 70ch;
+}
+
+.rowSource {
+  justify-self: end;
+  text-align: right;
+}
+
+.rowSource > strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.readingRow > svg {
+  color: var(--brand-lacquer);
+}
+
+.readingRow:hover .rowCopy strong {
+  color: var(--brand-lacquer);
+}
+
+.backLink:focus-visible,
+.readingRow:focus-visible {
+  outline: var(--brand-focus-ring-paper);
+  outline-offset: var(--brand-focus-offset);
+}
+
+@media (max-width: 820px) {
+  .hero,
+  .catalogHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .heroNote {
+    border-left: 0;
+    border-top: 1px solid var(--brand-line-paper);
+    padding-left: 0;
+  }
+
+  .readingRow {
+    grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+  }
+
+  .rowSource {
+    grid-column: 2 / -1;
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero,
+  .catalog {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 15vw, 4.4rem);
+  }
+
+  .readingRow {
+    gap: 0.75rem;
+  }
+}

@@ -1,0 +1,52 @@
+.toolbar {
+  align-items: center;
+  border-bottom: 1px solid var(--brand-line-paper);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  min-height: 72px;
+  padding: 0.75rem 0;
+}
+
+.toolbar button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--brand-text-on-paper);
+  border-radius: 4px;
+  color: var(--brand-text-on-paper);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.875rem;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.55rem 0.85rem;
+}
+
+.toolbar button[aria-pressed='true'] {
+  background: var(--brand-text-on-paper);
+  color: var(--brand-reading-paper);
+}
+
+.toolbar button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.toolbar button:focus-visible {
+  outline: var(--brand-focus-ring-paper);
+  outline-offset: var(--brand-focus-offset);
+}
+
+.toolbar p,
+.fullReaderReady {
+  color: var(--brand-muted-on-paper);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 560px) {
+  .toolbar {
+    align-items: start;
+    flex-direction: column;
+  }
+}
