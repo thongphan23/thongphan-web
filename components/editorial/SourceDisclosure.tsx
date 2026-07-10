@@ -16,7 +16,7 @@ export default function SourceDisclosure({ source, sourceUrl }: SourceDisclosure
         thuộc về tác giả và đơn vị xuất bản; vì vậy phần đọc đầy đủ được mở tại nguồn.
       </p>
       <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-        Rời Thư viện để đọc bài gốc tại {source}
+        Rời thongphan.com để đọc bài gốc tại {source} (mở trong thẻ mới)
         <ExternalLink aria-hidden="true" size={18} strokeWidth={1.7} />
       </a>
     </aside>

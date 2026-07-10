@@ -38,6 +38,19 @@ export function toggleStoredSlug(slugs: string[], slug: string): string[] {
   return [...current].sort((a, b) => a.localeCompare(b))
 }
 
+type BookmarkStorageWriter = {
+  setItem: (key: string, value: string) => void
+}
+
+export function writeStoredSlugs(storage: BookmarkStorageWriter, slugs: string[]): boolean {
+  try {
+    storage.setItem(SAVED_STORAGE_KEY, JSON.stringify(slugs))
+    return true
+  } catch {
+    return false
+  }
+}
+
 export function capabilitiesForPublication(
   publicationMode: ReaderPublicationMode,
   readyAudioCount: number,

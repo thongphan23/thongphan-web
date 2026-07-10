@@ -7,6 +7,7 @@ import {
   capabilitiesForPublication,
   parseStoredSlugs,
   toggleStoredSlug,
+  writeStoredSlugs,
 } from '../lib/reader-state'
 
 test('reader storage uses the approved local-only keys', () => {
@@ -26,6 +27,24 @@ test('bookmark toggle is deterministic and immutable', () => {
   assert.deepEqual(toggleStoredSlug(initial, 'beta'), ['alpha', 'beta'])
   assert.deepEqual(toggleStoredSlug(initial, 'alpha'), [])
   assert.deepEqual(initial, ['alpha'])
+})
+
+test('storage writes fail closed without forcing a false bookmark state', () => {
+  const values: string[] = []
+  const availableStorage = {
+    setItem(_key: string, value: string) {
+      values.push(value)
+    },
+  }
+  const blockedStorage = {
+    setItem() {
+      throw new Error('storage unavailable')
+    },
+  }
+
+  assert.equal(writeStoredSlugs(availableStorage, ['saved-note']), true)
+  assert.deepEqual(values, ['["saved-note"]'])
+  assert.equal(writeStoredSlugs(blockedStorage, []), false)
 })
 
 test('source-link summaries never expose full-reader capabilities', () => {

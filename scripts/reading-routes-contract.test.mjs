@@ -62,12 +62,17 @@ test('current source-link pages expose only editorial guidance and the original 
   assert.doesNotMatch(detailPage, /articleBody|dangerouslySetInnerHTML|<audio|sections\.map|images\.map/)
 
   assert.match(sourceDisclosure, /bài gốc/)
+  assert.match(sourceDisclosure, /thongphan\.com/)
+  assert.match(sourceDisclosure, /thẻ mới/)
   assert.match(sourceDisclosure, /target=["']_blank["']/)
   assert.match(sourceDisclosure, /noopener noreferrer/)
   assert.doesNotMatch(sourceDisclosure, /source-link-only|rightsStatus/)
 
   assert.match(toolbar, /SAVED_STORAGE_KEY/)
   assert.match(toolbar, /capabilitiesForPublication/)
+  assert.match(toolbar, /role=["']group["']/)
+  assert.match(toolbar, /storageError/)
+  assert.match(toolbar, /writeStoredSlugs/)
   assert.doesNotMatch(toolbar, /contentHtml|sections|images|sourceTrace|rightsStatus|evidence|<audio|audio\.map/)
   assert.match(readings, /getRelatedReadingSummaries/)
 })
