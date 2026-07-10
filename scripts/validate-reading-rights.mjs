@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import { readFile, readdir } from 'node:fs/promises'
-import { dirname, join, resolve } from 'node:path'
+import { dirname, join, posix, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -15,6 +15,8 @@ export const APPROVED_RIGHTS_STATUSES = new Set([
 ])
 
 const FULL_RIGHTS_STATUSES = new Set(['public-domain', 'permission-confirmed', 'licensed'])
+const APPROVED_EVIDENCE_TYPES = new Set(['license', 'permission', 'public-domain'])
+const APPROVED_PUBLICATION_MODES = new Set(['summary', 'full', 'blocked'])
 const BODY_FIELDS = new Set([
   'body',
   'bodyHtml',
@@ -55,6 +57,19 @@ const REQUIRED_ARTICLE_FIELDS = [
 const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
 const isSha256 = (value) => /^sha256:[a-f0-9]{64}$/.test(value ?? '')
 const hasOwn = (value, key) => Object.prototype.hasOwnProperty.call(value, key)
+const isPlaceholder = (value) =>
+  typeof value !== 'string' || value.trim().length === 0 || PLACEHOLDER_EVIDENCE.test(value.trim())
+
+const isIsoDate = (value) => {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false
+  const [year, month, day] = value.split('-').map(Number)
+  const date = new Date(Date.UTC(year, month - 1, day))
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day
+  )
+}
 
 const collectBodyFields = (value, found = new Set()) => {
   if (!value || typeof value !== 'object') return found
@@ -65,28 +80,48 @@ const collectBodyFields = (value, found = new Set()) => {
   return found
 }
 
-const hasRealEvidence = (evidence) =>
-  Array.isArray(evidence) &&
-  evidence.some((entry) => {
-    if (!entry || typeof entry !== 'object') return false
-    const reference = typeof entry.reference === 'string' ? entry.reference.trim() : ''
-    return (
-      typeof entry.type === 'string' &&
-      entry.type.trim().length > 0 &&
-      reference.length > 0 &&
-      !PLACEHOLDER_EVIDENCE.test(reference) &&
-      typeof entry.verifiedAt === 'string' &&
-      entry.verifiedAt.trim().length > 0
-    )
+const validateEvidenceEntries = (evidence, label) => {
+  if (!Array.isArray(evidence)) return [`${label} must be an array`]
+
+  return evidence.flatMap((entry, index) => {
+    if (!entry || typeof entry !== 'object') return [`${label}[${index}] must be an object`]
+    const errors = []
+    if (!APPROVED_EVIDENCE_TYPES.has(entry.type)) {
+      errors.push(`${label}[${index}] evidence type must be license, permission, or public-domain`)
+    }
+    if (isPlaceholder(entry.reference)) {
+      errors.push(`${label}[${index}] reference must be non-placeholder evidence`)
+    }
+    if (!isIsoDate(entry.verifiedAt)) {
+      errors.push(`${label}[${index}] verifiedAt must be a valid ISO date (YYYY-MM-DD)`)
+    }
+    return errors
   })
+}
+
+export function readingAssetRelativePath(publicPath, slug) {
+  if (typeof publicPath !== 'string' || publicPath.includes('\\')) return null
+  const expectedRoot = `/images/readings/${slug}`
+  const normalized = posix.normalize(publicPath)
+  const relativePath = posix.relative(expectedRoot, normalized)
+  if (
+    normalized !== publicPath ||
+    !normalized.startsWith(`${expectedRoot}/`) ||
+    !relativePath ||
+    relativePath.startsWith('../') ||
+    posix.isAbsolute(relativePath)
+  ) {
+    return null
+  }
+  return relativePath
+}
 
 const validateReadyCandidate = (candidate, slug) => {
   const errors = []
-  if (!candidate.publicPath?.startsWith(`/images/readings/${slug}/`)) {
-    errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a local publicPath`)
-  }
-  if (/^https?:\/\//.test(candidate.publicPath ?? '')) {
-    errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} cannot hotlink`)
+  if (!readingAssetRelativePath(candidate.publicPath, slug)) {
+    errors.push(
+      `${slug}: ready media ${candidate.id ?? 'unknown'} publicPath must stay within public/images/readings/${slug}/`,
+    )
   }
   if (!isSha256(candidate.checksum)) {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a checksum`)
@@ -94,12 +129,17 @@ const validateReadyCandidate = (candidate, slug) => {
   if (!/^https:\/\//.test(candidate.sourceUrl ?? '')) {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a source URL`)
   }
-  if (!candidate.license || PLACEHOLDER_EVIDENCE.test(String(candidate.license).trim())) {
+  if (isPlaceholder(candidate.license)) {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a verified license`)
   }
-  if (!hasRealEvidence(candidate.rightsEvidence)) {
+  const evidenceErrors = validateEvidenceEntries(
+    candidate.rightsEvidence,
+    `${slug}: ready media ${candidate.id ?? 'unknown'} rights evidence`,
+  )
+  if (!Array.isArray(candidate.rightsEvidence) || candidate.rightsEvidence.length === 0 || evidenceErrors.length > 0) {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs rights evidence`)
   }
+  errors.push(...evidenceErrors)
   return errors
 }
 
@@ -129,6 +169,9 @@ export function validateReadingPackage({ article, rights, imagePack }) {
   }
   if (article.rightsStatus !== rights.rightsStatus) {
     errors.push(`${slug}: article and rights.json rightsStatus differ`)
+  }
+  if (!APPROVED_PUBLICATION_MODES.has(rights.publicationMode)) {
+    errors.push(`${slug}: invalid publicationMode ${rights.publicationMode}`)
   }
   if (!/^https:\/\//.test(article.sourceUrl ?? '')) errors.push(`${slug}: sourceUrl must use https`)
   if (article.readingPath !== `/library/read/${article.slug}`) {
@@ -170,7 +213,8 @@ export function validateReadingPackage({ article, rights, imagePack }) {
   if (!rights.textRights || typeof rights.textRights !== 'object') {
     errors.push(`${slug}: rights.json needs textRights`)
   }
-  if (!Array.isArray(rights.evidence)) errors.push(`${slug}: rights evidence must be an array`)
+  const evidenceErrors = validateEvidenceEntries(rights.evidence, `${slug}: rights evidence`)
+  errors.push(...evidenceErrors)
 
   if (rights.rightsStatus === 'source-link-only' && rights.publicationMode !== 'summary') {
     errors.push(`${slug}: source-link-only must use summary publication mode`)
@@ -185,7 +229,7 @@ export function validateReadingPackage({ article, rights, imagePack }) {
     for (const field of ['translation', 'publicWeb', 'commercialContext']) {
       if (rights.textRights?.[field] !== true) errors.push(`${slug}: full publication needs ${field} rights`)
     }
-    if (!hasRealEvidence(rights.evidence)) {
+    if (!Array.isArray(rights.evidence) || rights.evidence.length === 0 || evidenceErrors.length > 0) {
       errors.push(`${slug}: full publication needs non-placeholder evidence`)
     }
   }

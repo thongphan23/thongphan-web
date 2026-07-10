@@ -12,6 +12,7 @@
     "migrate-readings": "node --import tsx scripts/migrate-readings.mjs",
     "validate-reading-rights": "node scripts/validate-reading-rights.mjs",
     "materialize-reading-assets": "node scripts/materialize-reading-assets.mjs",
+    "test:readings-live-parity": "node --import tsx scripts/verify-readings-live-parity.mjs",
     "start": "next start",
     "test": "tsx --test scripts/generate-library-data.test.mjs scripts/generate-readings-data.test.mjs scripts/homepage-cinematic-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts",
     "test:build": "tsx --test scripts/homepage-build-contract.test.mjs",

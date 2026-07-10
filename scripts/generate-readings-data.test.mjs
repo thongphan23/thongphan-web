@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { mkdtemp, readFile, readdir, rm, stat } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import test from 'node:test'
@@ -13,7 +13,8 @@ const validatorPath = join(root, 'scripts/validate-reading-rights.mjs')
 const materializerPath = join(root, 'scripts/materialize-reading-assets.mjs')
 const migrationPath = join(root, 'scripts/migrate-readings.mjs')
 const generatedPath = join(root, 'lib/readings-data.generated.ts')
-const legacyRoot = process.env.THONGPHAN_READ_ROOT ?? '/Users/rio/Projects/thongphan-read'
+const legacyManifestPath = join(root, 'scripts/fixtures/readings-legacy-manifest.json')
+const testFilePath = fileURLToPath(import.meta.url)
 
 const exists = async (path) => stat(path).then(() => true, () => false)
 const artifactsReady =
@@ -25,26 +26,68 @@ const artifactsReady =
 
 const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
 const signArticle = (article) => ({ ...article, contentChecksum: sha256(JSON.stringify(article)) })
+const signImagePack = (candidates) => ({
+  schemaVersion: 1,
+  slug: 'test-reading',
+  candidates,
+  mediaChecksum: sha256(JSON.stringify(candidates)),
+})
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'))
-const blockCount = (item) =>
-  (item.sections ?? []).reduce(
-    (count, section) => count + (section.blocks?.length ?? section.paragraphs?.length ?? 0),
-    0,
-  )
+
+const articleFixture = {
+  schemaVersion: 1,
+  slug: 'test-reading',
+  title: 'Test',
+  description: 'Safe summary',
+  author: 'Author',
+  source: 'Source',
+  sourceUrl: 'https://example.com/source',
+  sourcePublishedAt: null,
+  translator: null,
+  editor: null,
+  translatedAt: null,
+  lastReviewedAt: '2026-07-10',
+  rightsStatus: 'source-link-only',
+  minutes: 10,
+  topics: ['thinking'],
+  intent: 'clarity',
+  durationBand: '10-20',
+  readingPath: '/library/read/test-reading',
+  legacySectionCount: 1,
+  legacyBlockCount: 1,
+  legacyBodyChecksum: `sha256:${'a'.repeat(64)}`,
+  contentVersion: 1,
+}
+
+const sourceLinkRightsFixture = {
+  schemaVersion: 1,
+  slug: 'test-reading',
+  rightsStatus: 'source-link-only',
+  publicationMode: 'summary',
+  textRights: { translation: false, publicWeb: false, commercialContext: false },
+  evidence: [],
+}
+
+const createPackageFixture = ({ article = {}, rights = {}, candidates = [] } = {}) => ({
+  article: signArticle({ ...articleFixture, ...article }),
+  rights: { ...sourceLinkRightsFixture, ...rights },
+  imagePack: signImagePack(candidates),
+})
 
 test('reading ingestion artifacts exist before package validation', () => {
   assert.ok(artifactsReady, 'expected reading packages, generator, validator, and materializer')
 })
 
-test('13 committed packages preserve safe legacy parity without translated bodies', { skip: !artifactsReady }, async () => {
-  const { libraryItems } = await import(pathToFileURL(join(legacyRoot, 'src/library.ts')).href)
+test('13 committed packages preserve the safe legacy manifest without translated bodies', { skip: !artifactsReady }, async () => {
+  const legacyManifest = await readJson(legacyManifestPath)
   const slugs = (await readdir(contentRoot)).sort()
 
-  assert.equal(libraryItems.length, 13)
+  assert.equal(legacyManifest.length, 13)
   assert.equal(slugs.length, 13)
   assert.equal(new Set(slugs).size, 13)
+  assert.deepEqual(slugs, legacyManifest.map((item) => item.slug).sort())
 
-  for (const item of libraryItems) {
+  for (const item of legacyManifest) {
     const packageRoot = join(contentRoot, item.slug)
     const [article, rights, imagePack] = await Promise.all([
       readJson(join(packageRoot, 'article.json')),
@@ -55,11 +98,11 @@ test('13 committed packages preserve safe legacy parity without translated bodie
     assert.equal(article.slug, item.slug)
     assert.equal(article.title, item.title)
     assert.equal(article.author, item.author)
-    assert.equal(article.sourceUrl, item.url)
+    assert.equal(article.sourceUrl, item.sourceUrl)
     assert.equal(article.readingPath, `/library/read/${item.slug}`)
-    assert.equal(article.legacySectionCount, item.sections?.length ?? 0)
-    assert.equal(article.legacyBlockCount, blockCount(item))
-    assert.equal(article.legacyBodyChecksum, sha256(JSON.stringify(item.sections ?? [])))
+    assert.equal(article.legacySectionCount, item.legacySectionCount)
+    assert.equal(article.legacyBlockCount, item.legacyBlockCount)
+    assert.equal(article.legacyBodyChecksum, item.legacyBodyChecksum)
     const { contentChecksum, ...unsignedArticle } = article
     assert.equal(contentChecksum, sha256(JSON.stringify(unsignedArticle)))
     assert.ok(Array.isArray(article.topics) && article.topics.length > 0)
@@ -81,7 +124,7 @@ test('13 committed packages preserve safe legacy parity without translated bodie
     assert.deepEqual(rights.evidence, [])
 
     assert.equal(imagePack.slug, item.slug)
-    assert.equal(imagePack.candidates.length, item.images?.length ?? 0)
+    assert.equal(imagePack.candidates.length, 5)
     assert.equal(imagePack.mediaChecksum, sha256(JSON.stringify(imagePack.candidates)))
     for (const candidate of imagePack.candidates) {
       assert.equal(candidate.status, 'pending-rights')
@@ -94,81 +137,135 @@ test('13 committed packages preserve safe legacy parity without translated bodie
   }
 })
 
+test('default tests are self-contained and live-source parity is manual only', async () => {
+  const [testSource, packageJson] = await Promise.all([
+    readFile(testFilePath, 'utf8'),
+    readJson(join(root, 'package.json')),
+  ])
+  const absoluteLegacyRoot = ['', 'Users', 'rio', 'Projects', 'thongphan-read'].join('/')
+  const legacyRootVariable = ['THONGPHAN', 'READ', 'ROOT'].join('_')
+
+  assert.equal(testSource.includes(absoluteLegacyRoot), false)
+  assert.equal(testSource.includes(legacyRootVariable), false)
+  assert.equal(packageJson.scripts.test.includes('verify-readings-live-parity'), false)
+  assert.equal(
+    packageJson.scripts['test:readings-live-parity'],
+    'node --import tsx scripts/verify-readings-live-parity.mjs',
+  )
+})
+
 test('rights validator rejects bodies outside full mode and requires complete full-text evidence', { skip: !artifactsReady }, async () => {
   const { validateReadingPackage } = await import(pathToFileURL(validatorPath).href)
-  const article = {
-    schemaVersion: 1,
-    slug: 'test-reading',
-    title: 'Test',
-    description: 'Safe summary',
-    author: 'Author',
-    source: 'Source',
-    sourceUrl: 'https://example.com/source',
-    sourcePublishedAt: null,
-    translator: null,
-    editor: null,
-    translatedAt: null,
-    lastReviewedAt: '2026-07-10',
-    rightsStatus: 'source-link-only',
-    minutes: 10,
-    topics: ['thinking'],
-    intent: 'clarity',
-    durationBand: '10-20',
-    readingPath: '/library/read/test-reading',
-    legacySectionCount: 1,
-    legacyBlockCount: 1,
-    legacyBodyChecksum: `sha256:${'a'.repeat(64)}`,
-    contentVersion: 1,
-  }
-  const imagePack = {
-    schemaVersion: 1,
-    slug: 'test-reading',
-    candidates: [],
-    mediaChecksum: sha256('[]'),
-  }
-  const sourceLinkRights = {
-    schemaVersion: 1,
-    slug: 'test-reading',
-    rightsStatus: 'source-link-only',
-    publicationMode: 'summary',
-    textRights: { translation: false, publicWeb: false, commercialContext: false },
-    evidence: [],
-  }
 
   assert.match(
-    validateReadingPackage({ article: signArticle({ ...article, sections: [] }), rights: sourceLinkRights, imagePack }).join('\n'),
+    validateReadingPackage(createPackageFixture({ article: { sections: [] } })).join('\n'),
     /must not contain body field "sections"/,
   )
   assert.match(
-    validateReadingPackage({ article: signArticle({ ...article, rightsStatus: 'blocked', blocks: [] }), rights: { ...sourceLinkRights, rightsStatus: 'blocked', publicationMode: 'blocked' }, imagePack: { ...imagePack, slug: 'test-reading' } }).join('\n'),
+    validateReadingPackage(createPackageFixture({
+      article: { rightsStatus: 'blocked', blocks: [] },
+      rights: { rightsStatus: 'blocked', publicationMode: 'blocked' },
+    })).join('\n'),
     /must not contain body field "blocks"/,
   )
 
-  const fullArticle = signArticle({ ...article, rightsStatus: 'licensed', sections: [] })
+  const fullPackage = {
+    article: { rightsStatus: 'licensed', sections: [] },
+    rights: {
+      rightsStatus: 'licensed',
+      publicationMode: 'full',
+      textRights: { translation: true, publicWeb: true, commercialContext: true },
+    },
+  }
+  assert.match(
+    validateReadingPackage(createPackageFixture(fullPackage)).join('\n'),
+    /non-placeholder evidence/,
+  )
+  assert.match(
+    validateReadingPackage(createPackageFixture({
+      ...fullPackage,
+      rights: { ...fullPackage.rights, evidence: [{ reference: 'TBD' }] },
+    })).join('\n'),
+    /non-placeholder evidence/,
+  )
+  assert.deepEqual(
+    validateReadingPackage(createPackageFixture({
+      ...fullPackage,
+      rights: {
+        ...fullPackage.rights,
+        evidence: [{ type: 'license', reference: 'License agreement 2026-07-10', verifiedAt: '2026-07-10' }],
+      },
+    })),
+    [],
+  )
+})
+
+test('full publication evidence rejects placeholder types and invalid verification dates', { skip: !artifactsReady }, async () => {
+  const { validateReadingPackage } = await import(pathToFileURL(validatorPath).href)
   const fullRights = {
-    ...sourceLinkRights,
     rightsStatus: 'licensed',
     publicationMode: 'full',
     textRights: { translation: true, publicWeb: true, commercialContext: true },
   }
+  const invalidEvidence = [
+    {
+      evidence: [{ type: 'TBD', reference: 'License agreement 2026-07-10', verifiedAt: '2026-07-10' }],
+      expected: /evidence type/,
+    },
+    {
+      evidence: [{ type: 'license', reference: 'License agreement 2026-07-10', verifiedAt: 'TBD' }],
+      expected: /verifiedAt.*ISO date/,
+    },
+    {
+      evidence: [{ type: 'license', reference: 'License agreement 2026-07-10', verifiedAt: '2026-13-40' }],
+      expected: /verifiedAt.*ISO date/,
+    },
+  ]
+
+  for (const { evidence, expected } of invalidEvidence) {
+    const errors = validateReadingPackage(createPackageFixture({
+      article: { rightsStatus: 'licensed', sections: [] },
+      rights: { ...fullRights, evidence },
+    }))
+    assert.match(errors.join('\n'), expected)
+  }
+})
+
+test('publication mode must be an explicit approved enum before status compatibility', { skip: !artifactsReady }, async () => {
+  const { validateReadingPackage } = await import(pathToFileURL(validatorPath).href)
+  const missingMode = createPackageFixture()
+  delete missingMode.rights.publicationMode
+
+  for (const fixture of [missingMode, createPackageFixture({ rights: { publicationMode: 'summry' } })]) {
+    const errors = validateReadingPackage(fixture)
+    const enumError = errors.findIndex((error) => error.includes('invalid publicationMode'))
+    const compatibilityError = errors.findIndex((error) => error.includes('must use summary publication mode'))
+    assert.ok(enumError >= 0, errors.join('\n'))
+    assert.ok(enumError < compatibilityError, errors.join('\n'))
+  }
+})
+
+test('ready media validator rejects normalized traversal outside its slug directory', { skip: !artifactsReady }, async () => {
+  const { validateReadingPackage } = await import(pathToFileURL(validatorPath).href)
+  const candidate = {
+    id: 'image-01',
+    sourceLocation: 'https://example.com/image.jpg',
+    sourceUrl: 'https://example.com/image.jpg',
+    publicPath: '/images/readings/test-reading/../../escape.jpg',
+    alt: 'Test image',
+    caption: 'Test caption',
+    credit: 'Example',
+    license: 'CC BY 4.0',
+    checksum: `sha256:${'c'.repeat(64)}`,
+    rightsEvidence: [
+      { type: 'license', reference: 'CC BY 4.0 license page', verifiedAt: '2026-07-10' },
+    ],
+    status: 'ready',
+  }
+
   assert.match(
-    validateReadingPackage({ article: fullArticle, rights: fullRights, imagePack }).join('\n'),
-    /non-placeholder evidence/,
-  )
-  assert.match(
-    validateReadingPackage({ article: fullArticle, rights: { ...fullRights, evidence: [{ reference: 'TBD' }] }, imagePack }).join('\n'),
-    /non-placeholder evidence/,
-  )
-  assert.deepEqual(
-    validateReadingPackage({
-      article: fullArticle,
-      rights: {
-        ...fullRights,
-        evidence: [{ type: 'license', reference: 'License agreement 2026-07-10', verifiedAt: '2026-07-10' }],
-      },
-      imagePack,
-    }),
-    [],
+    validateReadingPackage(createPackageFixture({ candidates: [candidate] })).join('\n'),
+    /must stay within.*test-reading/,
   )
 })
 
@@ -230,4 +327,34 @@ test('materializer treats zero ready assets as a successful no-op', { skip: !art
     ready: 0,
     validated: 0,
   })
+})
+
+test('materializer rejects traversal before reading a ready asset', { skip: !artifactsReady }, async () => {
+  const { materializeReadingAssets } = await import(pathToFileURL(materializerPath).href)
+  const temporaryRoot = await mkdtemp(join(tmpdir(), 'readings-assets-'))
+  const contentDir = join(temporaryRoot, 'content/readings')
+  const packageRoot = join(contentDir, 'test-reading')
+
+  try {
+    await mkdir(packageRoot, { recursive: true })
+    await writeFile(
+      join(packageRoot, 'image-pack.json'),
+      JSON.stringify({
+        slug: 'test-reading',
+        candidates: [{
+          id: 'image-01',
+          status: 'ready',
+          publicPath: '/images/readings/test-reading/../../escape.jpg',
+          checksum: `sha256:${'c'.repeat(64)}`,
+        }],
+      }),
+    )
+
+    await assert.rejects(
+      materializeReadingAssets({ contentDir, publicDir: join(temporaryRoot, 'public') }),
+      /must stay within.*test-reading/,
+    )
+  } finally {
+    await rm(temporaryRoot, { recursive: true, force: true })
+  }
 })

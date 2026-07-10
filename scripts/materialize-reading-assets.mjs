@@ -1,7 +1,9 @@
 import { createHash } from 'node:crypto'
 import { readFile, readdir } from 'node:fs/promises'
-import { dirname, join, resolve, sep } from 'node:path'
+import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+
+import { readingAssetRelativePath } from './validate-reading-rights.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const defaultContentDir = join(root, 'content/readings')
@@ -18,17 +20,29 @@ export async function materializeReadingAssets({
 
   for (const entry of entries) {
     const imagePack = JSON.parse(await readFile(join(contentDir, entry.name, 'image-pack.json'), 'utf8'))
-    readyCandidates.push(...imagePack.candidates.filter((candidate) => candidate.status === 'ready'))
+    readyCandidates.push(
+      ...imagePack.candidates
+        .filter((candidate) => candidate.status === 'ready')
+        .map((candidate) => ({ candidate, slug: imagePack.slug })),
+    )
   }
 
   let validated = 0
-  const publicRoot = `${resolve(publicDir)}${sep}`
-  for (const candidate of readyCandidates) {
-    if (!candidate.publicPath?.startsWith('/images/readings/')) {
-      throw new Error(`Ready asset ${candidate.id ?? 'unknown'} needs a local reading publicPath`)
+  for (const { candidate, slug } of readyCandidates) {
+    const relativeAssetPath = readingAssetRelativePath(candidate.publicPath, slug)
+    if (!relativeAssetPath) {
+      throw new Error(
+        `Ready asset ${candidate.id ?? 'unknown'} publicPath must stay within public/images/readings/${slug}/`,
+      )
     }
-    const assetPath = resolve(publicDir, candidate.publicPath.replace(/^\/+/, ''))
-    if (!assetPath.startsWith(publicRoot)) throw new Error(`Ready asset escapes public directory: ${assetPath}`)
+    const assetRoot = resolve(publicDir, 'images/readings', slug)
+    const assetPath = resolve(assetRoot, relativeAssetPath)
+    const containedPath = relative(assetRoot, assetPath)
+    if (containedPath.startsWith('..') || isAbsolute(containedPath)) {
+      throw new Error(
+        `Ready asset ${candidate.id ?? 'unknown'} publicPath must stay within public/images/readings/${slug}/`,
+      )
+    }
     const asset = await readFile(assetPath)
     if (sha256(asset) !== candidate.checksum) {
       throw new Error(`Ready asset checksum mismatch: ${candidate.publicPath}`)

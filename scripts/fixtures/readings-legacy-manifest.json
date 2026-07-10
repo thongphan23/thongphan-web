@@ -1,0 +1,119 @@
+[
+  {
+    "slug": "bertrand-russell-in-praise-of-idleness",
+    "title": "Ca ngợi sự nhàn rỗi",
+    "author": "Bertrand Russell",
+    "sourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/",
+    "legacySectionCount": 4,
+    "legacyBlockCount": 278,
+    "legacyBodyChecksum": "sha256:f9fb7839b5d7b49a0659eebc5ead31982ed430b3744b62bb84c3a13b5fd92be4"
+  },
+  {
+    "slug": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
+    "title": "Sự nguy hiểm của một câu chuyện duy nhất",
+    "author": "Chimamanda Ngozi Adichie",
+    "sourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story",
+    "legacySectionCount": 6,
+    "legacyBlockCount": 198,
+    "legacyBodyChecksum": "sha256:a3f5aec524b4ca039b1ee22bd07c284650dc7542ac75f5844af025423a764593"
+  },
+  {
+    "slug": "david-deutsch-a-new-way-to-explain-explanation",
+    "title": "Giải thích tốt là thứ khó bị thay đổi tùy tiện",
+    "author": "David Deutsch",
+    "sourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation",
+    "legacySectionCount": 5,
+    "legacyBlockCount": 170,
+    "legacyBodyChecksum": "sha256:dc2a4e8c00e4f8de2ad8873b5089eaa19d896bdac529e48cf3a5a68ca448f926"
+  },
+  {
+    "slug": "derek-sivers-projecting-meaning",
+    "title": "Gán ý nghĩa",
+    "author": "Derek Sivers",
+    "sourceUrl": "https://sive.rs/meaning",
+    "legacySectionCount": 4,
+    "legacyBlockCount": 26,
+    "legacyBodyChecksum": "sha256:c7897cb51b4abe970f8ae72cbf6b0f1c7c3478d7779d20bfeda093d056ce2e74"
+  },
+  {
+    "slug": "george-orwell-politics-and-the-english-language",
+    "title": "Ngôn ngữ mục ruỗng làm tư duy mục ruỗng",
+    "author": "George Orwell",
+    "sourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/",
+    "legacySectionCount": 12,
+    "legacyBlockCount": 276,
+    "legacyBodyChecksum": "sha256:af752d044c3bc126902c842dd8994b3138fdd94a04bef10efc9741ceffed672c"
+  },
+  {
+    "slug": "hans-rosling-the-best-stats-you-have-ever-seen",
+    "title": "Những thống kê hay nhất bạn từng thấy",
+    "author": "Hans Rosling",
+    "sourceUrl": "https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen",
+    "legacySectionCount": 7,
+    "legacyBlockCount": 304,
+    "legacyBodyChecksum": "sha256:0e04f0ced0070d6278351e31b08648b3536a4a64f782eeffb7ea47d763528ecd"
+  },
+  {
+    "slug": "jonathan-haidt-the-moral-roots-of-liberals-and-conservatives",
+    "title": "Gốc rễ đạo đức của tự do và bảo thủ",
+    "author": "Jonathan Haidt",
+    "sourceUrl": "https://www.ted.com/talks/jonathan_haidt_the_moral_roots_of_liberals_and_conservatives",
+    "legacySectionCount": 6,
+    "legacyBlockCount": 329,
+    "legacyBodyChecksum": "sha256:d04e017a79a3ac4ebffb5c9663e6940019f38b57362778de50222c597198d0f1"
+  },
+  {
+    "slug": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
+    "title": "Vì sao bạn nghĩ mình đúng, ngay cả khi bạn sai",
+    "author": "Julia Galef",
+    "sourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong",
+    "legacySectionCount": 5,
+    "legacyBlockCount": 149,
+    "legacyBodyChecksum": "sha256:01b819ae8e90df98d42dc8729ebd19bcde01f304c853beae1a555b8c2e506ea3"
+  },
+  {
+    "slug": "paul-graham-copy-what-you-like",
+    "title": "Bắt chước thứ mình thật sự thích",
+    "author": "Paul Graham",
+    "sourceUrl": "https://paulgraham.com/copy.html",
+    "legacySectionCount": 6,
+    "legacyBlockCount": 44,
+    "legacyBodyChecksum": "sha256:1690e97abe1ab0151bec30084ae0ca9668fab355ecace2de7827a0aca106b23a"
+  },
+  {
+    "slug": "paul-graham-what-you-cant-say",
+    "title": "Điều gì bạn không thể nói?",
+    "author": "Paul Graham",
+    "sourceUrl": "https://paulgraham.com/say.html",
+    "legacySectionCount": 12,
+    "legacyBlockCount": 431,
+    "legacyBodyChecksum": "sha256:69fab938db2786cef11a0199f2323f45874665f89e501b032ac2e04a394a7710"
+  },
+  {
+    "slug": "richard-feynman-cargo-cult-science",
+    "title": "Đừng tự lừa mình",
+    "author": "Richard Feynman",
+    "sourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm",
+    "legacySectionCount": 5,
+    "legacyBlockCount": 273,
+    "legacyBodyChecksum": "sha256:450fb0d79dd01ff3e7ee25d5973d746de8e63298901a0cad6968f26113b90286"
+  },
+  {
+    "slug": "steve-jobs-2005-stanford-commencement-address",
+    "title": "Hãy tìm điều bạn yêu",
+    "author": "Steve Jobs",
+    "sourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says",
+    "legacySectionCount": 5,
+    "legacyBlockCount": 118,
+    "legacyBodyChecksum": "sha256:cf7e9f725c608190b899a03eee4a14ba3ba0c5c672bab4f4233b7791549748c3"
+  },
+  {
+    "slug": "tim-urban-inside-the-mind-of-a-master-procrastinator",
+    "title": "Bên trong tâm trí của một bậc thầy trì hoãn",
+    "author": "Tim Urban",
+    "sourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator",
+    "legacySectionCount": 6,
+    "legacyBlockCount": 54,
+    "legacyBodyChecksum": "sha256:28555e7275a6f398b88614424e943d56edf8fae22341b08ed8a60956d92ce019"
+  }
+]

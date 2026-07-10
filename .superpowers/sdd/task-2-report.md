@@ -155,12 +155,74 @@ The build emitted the pre-existing Next.js multiple-lockfile workspace-root warn
 
 - **Rights boundary:** PASS. `source-link-only` and `blocked` packages are rejected if any body key appears recursively. Full publication requires an approved full-text rights status, all three text-right booleans, and retained non-placeholder evidence.
 - **Public API boundary:** PASS. Blocked records are omitted; unknown slugs return `null`; summaries explicitly strip body/media fields; no pending candidate/provenance data is generated publicly.
-- **Source parity:** PASS. Tests compare all 13 titles, authors, source URLs, section counts, block counts, and body checksums against runtime-imported legacy data without copying the bodies.
+- **Source parity:** PASS. Default tests compare all 13 packages against a committed safe manifest; optional live-source parity remains available as an explicit manual command without copying the bodies.
 - **Determinism:** PASS. Package and media checksums are regenerated from stable JSON inputs; topic, intent, and duration adapters are deterministic; package directories and generated records are sorted.
-- **Runtime independence:** PASS. Only the manual migration imports the external Read repo. Dev/build execute the committed-package generator only.
+- **Runtime independence:** PASS. Only manual migration/parity commands import the external Read repo. Default tests, dev, and build use committed files only.
 - **Asset safety:** PASS. Pending candidates cannot have `publicPath`; ready records require a local reading path, checksum, source URL, license, and rights evidence. Materialization only reads and verifies ready local files.
 - **Scope:** PASS. No Task 3 UI, Conan files, images, audio, `next-env.d.ts`, or `tsconfig.tsbuildinfo` are included in the intended commit.
 
 ## Final verdict
 
 **PASS.** Task 2 acceptance criteria are met with 13 committed fail-closed reading packages, deterministic generation, no translated body publication, no media/audio publication, and fresh test/type/build evidence.
+
+## Independent review remediation
+
+Review verdict received after commit `56ad83a`: **Needs fixes**. All four findings were addressed in a focused follow-up.
+
+### Fixes
+
+1. **Portable default tests**
+   - Replaced the default-suite import of the external Read repo with `scripts/fixtures/readings-legacy-manifest.json`.
+   - Added a regression assertion that the default test file contains neither the absolute legacy path nor the legacy-root environment variable.
+   - Added `npm run test:readings-live-parity` as an explicit optional/manual check. It is not referenced by `npm test`, dev, or build.
+2. **Complete rights-evidence validation**
+   - Allowed evidence types are now `license`, `permission`, and `public-domain`.
+   - Every retained evidence record requires a non-placeholder `reference` and a real calendar date in `YYYY-MM-DD` form.
+   - Invalid `type`, placeholder/unverified `verifiedAt`, and impossible dates cannot unlock full publication.
+3. **Explicit publication mode**
+   - `publicationMode` must be one of `summary`, `full`, or `blocked` before status compatibility is evaluated.
+   - Missing and misspelled modes are rejected explicitly.
+4. **Ready-media containment**
+   - Validator and materializer now share normalized path logic.
+   - A ready asset must remain beneath `public/images/readings/<slug>/`; traversal and non-canonical paths are rejected before any file read.
+
+### Follow-up TDD evidence
+
+RED command:
+
+```text
+npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```
+
+Observed before the fixes:
+
+```text
+tests 11, pass 6, fail 5
+```
+
+The five expected failures were: missing manual live-parity command, placeholder evidence type accepted, missing publication-mode enum validation, validator traversal accepted, and materializer traversal reaching `ENOENT` instead of being rejected.
+
+GREEN command:
+
+```text
+npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```
+
+Observed after the fixes:
+
+```text
+tests 11, pass 11, fail 0
+```
+
+### Follow-up verification
+
+| Command | Result |
+| --- | --- |
+| `npm run test:readings-live-parity` | PASS — optional/manual parity for 13 readings |
+| `npm run validate-reading-rights` | PASS — 13 packages; 0 full, 13 source-link-only, 0 blocked |
+| `npm run materialize-reading-assets` | PASS — 0 ready, 0 validated |
+| `npm test` | PASS — 44/44 tests |
+| `npx tsc --noEmit` | PASS — exit 0 |
+| `npm run build` | PASS — production build and 38 static pages generated |
+
+Follow-up verdict: **PASS**. The default release gate is portable and all rights/publication/path findings are closed.
