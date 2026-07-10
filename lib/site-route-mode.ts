@@ -38,5 +38,5 @@ export function routeModeForPath(pathname: string): SiteRouteMode {
 }
 
 export function isUnifiedRouteEnabled(pathname: string): boolean {
-  return pathname === '/'
+  return pathname === '/' || pathname === '/library'
 }

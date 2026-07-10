@@ -51,6 +51,7 @@ export const JOURNEYS = [
 
 export const READER_STATES = ['nhe-nhom', 'sang-to', 'kiem-soat']
 export const STATUSES = ['seed', 'growing', 'permanent', 'evergreen']
+export const RESERVED_SLUGS = ['read']
 
 export const RELATIONS = [
   'supports',
@@ -114,6 +115,9 @@ export function validateLibraryNote(note) {
     errors.push(`${note.slug} has invalid readerState: ${note.readerState}`)
   }
   if (!STATUSES.includes(note.status)) errors.push(`${note.slug} has invalid status: ${note.status}`)
+  if (RESERVED_SLUGS.includes(note.slug)) {
+    errors.push(`${note.slug} uses reserved route slug: ${note.slug}`)
+  }
 
   const links = flattenRelatedLinks(note.related)
   if (links.length < 3) errors.push(`${note.slug} must have at least 3 related links`)

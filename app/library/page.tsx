@@ -1,148 +1,203 @@
 import type { Metadata } from 'next'
-import type { CSSProperties } from 'react'
 import Link from 'next/link'
+import { Suspense } from 'react'
+import LibraryDiscovery from '@/components/library/LibraryDiscovery'
+import { getAllPosts } from '@/lib/blog'
 import {
-  getAllLibraryNotes,
-  JOURNEY_LABELS,
-  READER_STATE_LABELS,
-  SECTION_DESCRIPTIONS,
-  SECTION_LABELS,
-  STATUS_LABELS,
-  type LibraryNoteMeta,
-} from '@/lib/library'
-import LibraryFiltersClient from './LibraryFiltersClient'
-import { GardenSignature } from '@/components/GardenSignature'
+  adaptBlogPost,
+  adaptLivingNote,
+  adaptReadingSummary,
+  type LibraryEntrySummary,
+} from '@/lib/library-discovery'
+import { getAllLibraryNotes } from '@/lib/library'
+import { getAllReadingSummaries } from '@/lib/readings'
+import { serializeStructuredData } from '@/lib/structured-data'
 import styles from './page.module.css'
 
+const FEATURED_SLUG = 'steve-jobs-2005-stanford-commencement-address'
+const FEATURED_HREF = `/library/read/${FEATURED_SLUG}`
+
+const PAGE_DESCRIPTION =
+  'Thư viện chọn lọc những bài đọc đáng tin, bài viết và ghi chú sống để bạn đọc sâu, nghĩ rõ và làm ra thứ có giá trị.'
+
 export const metadata: Metadata = {
-  title: 'Thư viện sống — Đọc để bớt hoang mang giữa thời AI',
-  description:
-    'Thư viện sống về AI, Brain2, nội dung kéo khách và tài sản số cho người có chuyên môn muốn đi sâu hơn.',
+  title: 'Thư viện — Đọc sâu, nghĩ rõ, làm ra thứ có giá trị',
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: '/library',
   },
   openGraph: {
-    title: 'Living Library Thông Phan',
-    description:
-      'Một thư viện đọc theo hành trình để biến kiến thức thật thành nội dung, tài sản số và hệ thống AI.',
+    title: 'Thư viện Thông Phan',
+    description: PAGE_DESCRIPTION,
     url: '/library',
     type: 'website',
   },
 }
 
-const SECTION_ORDER = ['concepts', 'materials', 'patterns', 'structures', 'templates', 'maps', 'proof'] as const
+const ENTRY_TYPE_LABELS = {
+  reading: 'Tuyển đọc',
+  post: 'Bài của Thông',
+  note: 'Ghi chú sống',
+} as const
 
-const graphNodes = [
-  ['Brain2', 'raw material'],
-  ['Concept', 'đóng gói'],
-  ['Template', 'tái dùng'],
-  ['Bằng chứng', 'tạo niềm tin'],
-  ['Conan', 'thực hành'],
-]
+function byRecentThenTitle(a: LibraryEntrySummary, b: LibraryEntrySummary) {
+  const dateA = a.updatedAt ?? a.publishedAt ?? ''
+  const dateB = b.updatedAt ?? b.publishedAt ?? ''
+  return dateB.localeCompare(dateA) || a.title.localeCompare(b.title, 'vi')
+}
 
-function newest(notes: LibraryNoteMeta[]) {
-  return [...notes]
-    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
-    .slice(0, 6)
+function ArchiveLane({
+  index,
+  title,
+  description,
+  href,
+  entries,
+}: {
+  index: string
+  title: string
+  description: string
+  href: string
+  entries: LibraryEntrySummary[]
+}) {
+  return (
+    <section className={styles.archiveLane} aria-labelledby={`lane-${index}`}>
+      <header className={styles.laneHeader}>
+        <div>
+          <span>{index}</span>
+          <h2 id={`lane-${index}`}>{title}</h2>
+        </div>
+        <Link href={href}>Xem tất cả <span aria-hidden="true">→</span></Link>
+      </header>
+      <p className={styles.laneDescription}>{description}</p>
+      <div className={styles.laneList}>
+        {entries.map((entry) => (
+          <Link href={entry.href} key={`${entry.type}-${entry.slug}`} className={styles.laneItem}>
+            <span className={styles.laneType}>{ENTRY_TYPE_LABELS[entry.type]}</span>
+            <span className={styles.laneCopy}>
+              <strong>{entry.title}</strong>
+              <small>{entry.author}{entry.source ? ` · ${entry.source}` : ''} · {entry.minutes} phút</small>
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
 }
 
 export default function LibraryPage() {
-  const notes = getAllLibraryNotes()
-  const mapNotes = notes.filter((note) => note.section === 'maps')
-  const recentNotes = newest(notes)
+  const readingEntries = getAllReadingSummaries().map(adaptReadingSummary)
+  const postEntries = getAllPosts().map(adaptBlogPost).sort(byRecentThenTitle)
+  const noteEntries = getAllLibraryNotes().map(adaptLivingNote).sort(byRecentThenTitle)
+  const entries = [...readingEntries, ...postEntries, ...noteEntries]
+  const featured = readingEntries.find((entry) => entry.slug === FEATURED_SLUG)
+  const readingLane = readingEntries.filter((entry) => entry.slug !== FEATURED_SLUG).slice(0, 3)
+  const noteLane = noteEntries.slice(0, 3)
+
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Thư viện Thông Phan',
+    description: PAGE_DESCRIPTION,
+    url: 'https://thongphan.com/library',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: entries.length,
+      itemListElement: entries.map((entry, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: entry.title,
+        url: `https://thongphan.com${entry.href}`,
+      })),
+    },
+  }
 
   return (
     <div className={styles.libraryPage}>
-      <div className="container">
-        <header className={styles.hero} data-reveal>
-          <div className={styles.heroShell}>
-            <div className={styles.heroCopy}>
-              <span className={styles.eyebrow}>Thư viện sống · đọc theo hành trình</span>
-              <h1>Nếu ngoài kia quá ồn, bắt đầu đọc từ đây.</h1>
-              <p>
-                Đây không phải nơi cập nhật công cụ mới. Đây là nơi gom các khái niệm, ví dụ, mẫu, bản đồ đọc và bằng chứng để bạn đi từ hoang mang tới sáng tỏ, rồi mới tạo tài sản số có gốc.
-              </p>
-              <div className={styles.heroStats} aria-label="Thống kê thư viện">
-                <span>{notes.length} ghi chú sống</span>
-                <span>{SECTION_ORDER.length} section</span>
-                <span>Liên kết theo ý, không chỉ tag</span>
-              </div>
-              <GardenSignature variant="tree" eyebrow="Public Brain2" title="Những gì bạn đọc ở đây là phần công khai. Phần rễ nằm ở cách tri thức được nối lại và dùng thật." compact />
-            </div>
-
-            <div className={styles.graphStage} aria-label="Knowledge graph preview">
-              <div className={styles.graphPlane} />
-              <div className={styles.graphCore}>
-                <span>Brain2</span>
-                <strong>Lớp công khai</strong>
-              </div>
-              <div className={styles.graphNodes}>
-                {graphNodes.map(([title, detail], index) => (
-                  <div key={title} className={styles.graphNode} style={{ '--node': index } as CSSProperties}>
-                    <span>{title}</span>
-                    <strong>{detail}</strong>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.graphTrace} />
-            </div>
+      <section className={styles.archiveFrame} aria-labelledby="library-title">
+        <header className={styles.hero}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Thư viện chọn lọc · Thông Phan</p>
+            <h1 id="library-title">Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị.</h1>
+            <p className={styles.lead}>
+              Những bài đọc đáng tin, ghi chú đang sống và trải nghiệm đã được trả giá —
+              được xếp lại để bạn nhìn rõ hơn trước khi làm nhanh hơn.
+            </p>
+            <Link href="/library/read/steve-jobs-2005-stanford-commencement-address" className={styles.primaryCta}>Bắt đầu đọc</Link>
           </div>
+
+          {featured ? (
+            <article className={styles.featured} aria-labelledby="featured-title">
+              <p className={styles.featuredLabel}>Bài đọc nổi bật · Stanford 2005</p>
+              <h2 id="featured-title">{featured.title}</h2>
+              <p>{featured.description}</p>
+              <dl className={styles.featuredMeta}>
+                <div><dt>Tác giả</dt><dd>{featured.author}</dd></div>
+                <div><dt>Nguồn</dt><dd>{featured.source}</dd></div>
+                <div><dt>Thời lượng</dt><dd>{featured.minutes} phút</dd></div>
+              </dl>
+              <Link href={FEATURED_HREF} className={styles.featuredLink}>Đọc ghi chú tuyển chọn <span aria-hidden="true">→</span></Link>
+            </article>
+          ) : null}
         </header>
 
-        <section className={styles.sectionGrid} aria-label="Các section thư viện" data-reveal>
-          {SECTION_ORDER.map((section) => (
-            <a key={section} href={`#library-notes`} className={styles.sectionCard}>
-              <span>{SECTION_LABELS[section]}</span>
-              <p>{SECTION_DESCRIPTIONS[section]}</p>
-            </a>
+        <div className={styles.primaryLanes}>
+          <ArchiveLane
+            index="01"
+            title="Tuyển đọc thế giới"
+            description="Bài viết và bài nói từ những tác giả, nhà tư tưởng và tổ chức đáng đọc."
+            href="/library?type=reading"
+            entries={readingLane}
+          />
+          <ArchiveLane
+            index="02"
+            title="Ghi chú sống của Thông"
+            description="Những ghi chú, đúc kết và quan sát từ hành trình học, làm và xây hệ thống."
+            href="/library?type=note"
+            entries={noteLane}
+          />
+        </div>
+
+        <div className={styles.filmRaster}>
+          <img
+            src="/images/homepage/evidence-cinema-film-texture-v2.webp"
+            alt=""
+            aria-hidden="true"
+            width="2048"
+            height="320"
+          />
+        </div>
+      </section>
+
+      <section className={styles.blogLane} aria-labelledby="blog-lane-title">
+        <header className={styles.blogHeader}>
+          <div>
+            <span>03</span>
+            <h2 id="blog-lane-title">Bài của Thông</h2>
+          </div>
+          <Link href="/blog">Đi tới trang bài viết <span aria-hidden="true">→</span></Link>
+        </header>
+        <p className={styles.blogIntro}>
+          Những bài dài đi từ trải nghiệm thật tới một góc nhìn có thể dùng trong công việc và cuộc sống.
+        </p>
+        <div className={styles.blogList}>
+          {postEntries.map((post) => (
+            <Link href={post.href} key={post.slug} className={styles.blogItem}>
+              <span>{post.minutes} phút</span>
+              <strong>{post.title}</strong>
+              <p>{post.promise}</p>
+            </Link>
           ))}
-        </section>
+        </div>
+      </section>
 
-        <section className={styles.startMaps} aria-labelledby="start-maps-title" data-reveal>
-          <div className={styles.sectionHeader}>
-            <span>Bản đồ nên bắt đầu</span>
-            <h2 id="start-maps-title">Đừng tự mò trong một đống bài. Hãy đi theo một đường đọc trước.</h2>
-          </div>
-          <div className={styles.mapGrid}>
-            {mapNotes.map((note) => (
-              <Link href={`/library/${note.slug}`} className={styles.mapCard} key={note.slug}>
-                <span>{JOURNEY_LABELS[note.journey]} · {READER_STATE_LABELS[note.readerState]}</span>
-                <h3>{note.title}</h3>
-                <p>{note.promise}</p>
-                <small>{note.readTime} phút đọc · {STATUS_LABELS[note.status]}</small>
-              </Link>
-            ))}
-          </div>
-        </section>
+      <Suspense fallback={<div className={styles.discoveryFallback}>Đang mở mục lục thư viện…</div>}>
+        <LibraryDiscovery entries={entries} />
+      </Suspense>
 
-        <LibraryFiltersClient
-          notes={notes}
-          labels={{
-            sections: SECTION_LABELS,
-            journeys: JOURNEY_LABELS,
-            readerStates: READER_STATE_LABELS,
-            statuses: STATUS_LABELS,
-          }}
-        />
-
-        <section className={styles.recentSection} aria-labelledby="recent-title" data-reveal>
-          <div className={styles.sectionHeader}>
-            <span>Note mới cập nhật</span>
-            <h2 id="recent-title">Những mảnh vừa được cập nhật gần đây.</h2>
-          </div>
-          <div className={styles.recentList}>
-            {recentNotes.map((note) => (
-              <Link href={`/library/${note.slug}`} className={styles.recentItem} key={note.slug}>
-                <div>
-                  <span>{SECTION_LABELS[note.section]} · {STATUS_LABELS[note.status]}</span>
-                  <h3>{note.title}</h3>
-                </div>
-                <small>{new Date(note.updatedAt).toLocaleDateString('vi-VN')}</small>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(collectionJsonLd) }}
+      />
     </div>
   )
 }

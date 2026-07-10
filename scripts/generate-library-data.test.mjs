@@ -64,3 +64,31 @@ test('validateLibraryNote rejects notes without at least three typed content lin
 
   assert.ok(errors.some((error) => error.includes('at least 3 related links')))
 })
+
+test('validateLibraryNote reserves read for the static reading route', () => {
+  const errors = validateLibraryNote({
+    slug: 'read',
+    title: 'Reserved route',
+    description: 'Would collide with /library/read.',
+    section: 'concepts',
+    type: 'concept',
+    journey: 'brain2',
+    readerState: 'sang-to',
+    status: 'seed',
+    author: 'Thông Phan',
+    publishedAt: '2026-05-21',
+    updatedAt: '2026-05-21',
+    readTime: 3,
+    promise: 'Promise',
+    proof: 'Proof',
+    sourceTrace: ['Brain2'],
+    related: {
+      supports: ['one'],
+      examples: ['two'],
+      next: ['three'],
+    },
+    tags: ['brain2'],
+  })
+
+  assert.ok(errors.some((error) => error.includes('reserved route slug: read')))
+})

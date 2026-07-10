@@ -36,10 +36,16 @@ test('routeModeForPath honors every exact and prefix route contract', () => {
   }
 })
 
-test('the unified shell is initially enabled for the homepage only', () => {
+test('the unified shell enables exact library hub without leaking into its legacy descendants', () => {
   assert.equal(isUnifiedRouteEnabled('/'), true)
+  assert.equal(isUnifiedRouteEnabled('/library'), true)
+  assert.equal(isUnifiedRouteEnabled('/library/read'), false)
+  assert.equal(isUnifiedRouteEnabled('/library/read/deep-work'), false)
+  assert.equal(isUnifiedRouteEnabled('/library/a-living-note'), false)
 
   for (const [pathname] of routeModeCases) {
-    if (pathname !== '/') assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
+    if (pathname !== '/' && pathname !== '/library') {
+      assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
+    }
   }
 })

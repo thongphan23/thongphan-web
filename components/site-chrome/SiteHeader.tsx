@@ -18,6 +18,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const [activeSection, setActiveSection] = useState('story')
   const triggerRef = useRef<HTMLButtonElement>(null)
   const isHomepage = pathname === '/'
+  const isLibrary = pathname.startsWith('/library')
 
   useEffect(() => {
     if (!isHomepage) return
@@ -42,8 +43,17 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   return (
     <header className={styles.cinemaHeader} data-route-mode={mode}>
       <div className={styles.cinemaHeaderInner}>
-        <Link href="/" className={styles.cinemaWordmark} aria-label="Thông Phan — Trang chủ">
-          THÔNG PHAN
+        <Link
+          href={isLibrary ? '/library' : '/'}
+          className={`${styles.cinemaWordmark} ${isLibrary ? styles.libraryWordmark : ''}`}
+          aria-label={isLibrary ? 'Thư viện Thông Phan' : 'Thông Phan — Trang chủ'}
+        >
+          {isLibrary ? (
+            <>
+              <span>THƯ VIỆN</span>
+              <strong>THÔNG PHAN</strong>
+            </>
+          ) : 'THÔNG PHAN'}
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Điều hướng chính">
