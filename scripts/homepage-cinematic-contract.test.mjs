@@ -195,6 +195,13 @@ test('short laptop view keeps the hero compact while clearing the evidence rail'
   assert.match(css, /min-height:\s*820px/)
 })
 
+test('desktop hero keeps the explicit two-line promise below the display name', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  assert.match(css, /\.heroCopy h1\s*\{[\s\S]*?max-width:\s*100%/)
+  assert.doesNotMatch(css, /\.heroCopy h1\s*\{[\s\S]*?max-width:\s*24ch/)
+})
+
 test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 

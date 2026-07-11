@@ -147,7 +147,7 @@
   letter-spacing: -0.035em;
   line-height: 1.12;
   margin: 0;
-  max-width: 24ch;
+  max-width: 100%;
 }
 
 .heroCopy h1 em {
