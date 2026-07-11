@@ -1,29 +1,8 @@
 import type { Metadata } from 'next'
 import styles from './page.module.css'
-import { GardenSignature } from '@/components/GardenSignature'
-
-interface Challenge {
-  id: string
-  slug: string
-  title: string
-  tagline: string | null
-  description: string | null
-  duration_days: number
-  is_active: number
-}
-
-// Static data - no HTTP fetch during build
-const CHALLENGES: Challenge[] = [
-  {
-    id: '1',
-    slug: 'brain2-21-ngay',
-    title: '21 ngày Brain2, kích hoạt kho kiến thức của bạn',
-    tagline: 'Điểm bắt đầu để biến chuyên môn thành tài sản số bằng AI',
-    description: 'Mỗi ngày 15 phút gom kinh nghiệm, ca thật, góc nhìn và bằng chứng thật vào một hệ thống, rồi tiếp tục thực hành trong Conan Maker.',
-    duration_days: 21,
-    is_active: 1,
-  }
-]
+import { challenges } from '@/lib/challenges'
+import { DossierHeader } from '@/components/dossier/DossierHeader'
+import Image from 'next/image'
 
 const beforeAfter = [
   ['Before', 'Kiến thức rời rạc, AI dùng lẻ tẻ, nội dung nghe đúng nhưng generic.'],
@@ -36,15 +15,13 @@ const weekStructure = [
   ['Tuần 3', 'Biến thành output', 'Dùng Brain2 tạo bài viết, tài liệu kéo khách, góc chẩn đoán hoặc lời mời thử.'],
 ]
 
-const stageDays = Array.from({ length: 21 }, (_, index) => index + 1)
-
 export const metadata: Metadata = {
   title: '21 ngày Brain2 — Thông Phan',
   description: 'Activation product giúp người có chuyên môn gom tri thức rời rạc thành nền Brain2 để AI hiểu chuyên môn và tạo tài sản số.',
+  alternates: { canonical: '/challenges' },
 }
 
 export default function ChallengesPage() {
-  const challenges = CHALLENGES
   return (
     <div className={styles.challengesPage}>
       {/* Hero Section */}
@@ -52,32 +29,13 @@ export default function ChallengesPage() {
         <div className="container">
           <div className={styles.heroShell} data-reveal>
             <div className={styles.heroCopy}>
-              <h1>Thử thách kích hoạt chuyên môn</h1>
-              <p className={styles.subtitle}>
-                Không phải challenge email cho vui. Đây là activation product để kiến thức của bạn đủ sạch, đủ rõ và đủ dùng với AI.
-              </p>
-              <GardenSignature variant="seed" eyebrow="21 ngày gieo rễ" title="Challenge là nghi thức biến kinh nghiệm rời rạc thành bộ rễ dùng được với AI." compact />
+              <DossierHeader eyebrow="Lịch thực hành" folio="TP / 21 DAYS / 01" title="Kích hoạt chuyên môn bằng một nhịp đủ nhỏ." description="Không phải chuỗi email cho vui. Đây là 21 ngày gom nguyên liệu thật, nối thành Brain2 và tạo đầu ra đầu tiên." />
             </div>
 
-            <div className={styles.challengeStage} aria-label="21 ngày Brain2 activation">
-              <div className={styles.stageGrid} />
-              <div className={styles.stageCore}>
-                <span>Brain2</span>
-                <strong>21 ngày</strong>
-              </div>
-              <div className={styles.dayDeck}>
-                {stageDays.map((day) => (
-                  <span key={day} className={day <= 7 ? styles.dayActive : day <= 14 ? styles.dayMid : ''}>
-                    {String(day).padStart(2, '0')}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.stageLanes}>
-                <span>Gom tri thức</span>
-                <span>Kết nối graph</span>
-                <span>Xuất bản output</span>
-              </div>
-            </div>
+            <figure className={styles.challengeStage}>
+              <Image src="/images/challenges/brain2-21-day-editorial-slate-v1.webp" width={1200} height={675} alt="Lịch thực hành giấy, bút chì và bảng slate phim tượng trưng cho 21 ngày Brain2" priority />
+              <figcaption><span>21 ngày</span> Gom tri thức · Kết nối · Tạo đầu ra</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -95,7 +53,7 @@ export default function ChallengesPage() {
               <a
                 key={challenge.id}
                 href={`/challenges/${challenge.slug}`}
-                className="card"
+                className={styles.challengeLink}
               >
                 <div className={styles.challengeCard} data-reveal>
                   <div className={styles.duration}>
@@ -108,9 +66,9 @@ export default function ChallengesPage() {
                   {challenge.description && (
                     <p className={styles.description}>{challenge.description}</p>
                   )}
-                  <button className="btn-primary">
+                  <span className="btn-primary">
                     Tham gia ngay →
-                  </button>
+                  </span>
                 </div>
               </a>
               ))}

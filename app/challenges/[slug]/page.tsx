@@ -3,35 +3,12 @@ import type { CSSProperties } from 'react'
 import styles from './page.module.css'
 import SignupForm from '@/components/SignupForm'
 import { notFound } from 'next/navigation'
-
-interface Challenge {
-  id: string
-  slug: string
-  title: string
-  tagline: string | null
-  description: string | null
-  duration_days: number
-  is_active: number
-  created_at: string
-}
+import { challenges, getChallenge } from '@/lib/challenges'
+import Image from 'next/image'
 
 interface PageProps {
   params: Promise<{ slug: string }>
 }
-
-// Static data — no HTTP fetch during build
-const CHALLENGES: Challenge[] = [
-  {
-    id: 'brain2-21-days',
-    slug: 'brain2-21-ngay',
-    title: '21 ngày Brain2, kích hoạt kho kiến thức của bạn',
-    tagline: 'Điểm bắt đầu để biến chuyên môn thành tài sản số bằng AI',
-    description: 'Mỗi ngày 15 phút để gom kinh nghiệm, ca thật, góc nhìn và bằng chứng thật vào một hệ thống. Sau 21 ngày, bạn có nền để vào Conan Maker và bắt đầu tạo đầu ra thật.',
-    duration_days: 21,
-    is_active: 1,
-    created_at: '2026-05-01',
-  },
-]
 
 const beforeAfter = [
   ['Before', 'Kiến thức nằm rời rạc trong đầu, AI dùng theo hứng, content càng viết càng dễ giống người khác.'],
@@ -50,12 +27,8 @@ const activationLanes = [
   ['First output', 'Đầu ra đầu tiên', 'Một bài viết, tài liệu kéo khách hoặc góc chẩn đoán có dấu vân tay riêng.'],
 ]
 
-function getChallenge(slug: string): Challenge | null {
-  return CHALLENGES.find(c => c.slug === slug) ?? null
-}
-
 export async function generateStaticParams() {
-  return CHALLENGES.map(c => ({ slug: c.slug }))
+  return challenges.map(c => ({ slug: c.slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -71,6 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${challenge.title} — Thông Phan`,
     description: challenge.description ?? '21 ngày xây nền Brain2 để biến chuyên môn thật thành tài sản số bằng AI.',
+    alternates: { canonical: `/challenges/${challenge.slug}` },
   }
 }
 
@@ -117,27 +91,10 @@ export default async function ChallengeDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className={styles.activationDeck} aria-hidden="true" data-reveal="right">
-              <div className={styles.deckRing} />
-              <div className={styles.deckCard}>
-                <div className={styles.deckTop}>
-                  <span>Brain2 activation</span>
-                  <span>Day 01 → 21</span>
-                </div>
-                <div className={styles.dayStack}>
-                  {Array.from({ length: 21 }).map((_, index) => (
-                    <span key={index} style={{ '--i': index } as CSSProperties}>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.deckCore}>
-                  <strong>21</strong>
-                  <span>nhịp kéo chuyên môn ra khỏi đầu</span>
-                </div>
-              </div>
-              <div className={styles.deckShadow} />
-            </div>
+            <figure className={styles.activationDeck} data-reveal="right">
+              <Image src="/images/challenges/brain2-21-day-editorial-slate-v1.webp" width={1200} height={675} alt="Bàn biên tập với lịch giấy và bảng slate cho hành trình 21 ngày Brain2" priority />
+              <figcaption>Day 01 → 21 · kéo chuyên môn ra khỏi đầu</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -232,24 +189,18 @@ export default async function ChallengeDetailPage({ params }: PageProps) {
       <section className={styles.socialProof}>
         <div className="container">
           <h2>Dấu hiệu bạn đang đi đúng hướng</h2>
-          <div className={styles.testimonials} data-reveal>
-            <div className={styles.testimonial} data-stagger>
-              <p className={styles.testimonialText}>
-                "Tui không còn hỏi AI kiểu ngẫu hứng nữa. Tui bắt đầu đưa ca thật, góc nhìn và trải nghiệm của mình vào câu lệnh."
-              </p>
-              <p className={styles.testimonialAuthor}>Tầng 2: bắt đầu tạo nội dung</p>
+          <div className={styles.signalsGrid} data-reveal>
+            <div className={styles.signalCard} data-stagger>
+              <p className={styles.signalText}>Câu hỏi cho AI bắt đầu có ca thật, góc nhìn và trải nghiệm của chính bạn.</p>
+              <p className={styles.signalLabel}>Tín hiệu 01 · bớt ngẫu hứng</p>
             </div>
-            <div className={styles.testimonial} data-stagger>
-              <p className={styles.testimonialText}>
-                "Tui nhận ra mình có nhiều kiến thức hơn mình nghĩ, chỉ là trước giờ chưa đóng gói lại thành tài sản."
-              </p>
-              <p className={styles.testimonialAuthor}>Tầng 3: xây hệ thống chuyên môn</p>
+            <div className={styles.signalCard} data-stagger>
+              <p className={styles.signalText}>Bạn nhìn thấy những mảnh chuyên môn có thể đóng gói thành nội dung hoặc tài sản.</p>
+              <p className={styles.signalLabel}>Tín hiệu 02 · thấy bản đồ</p>
             </div>
-            <div className={styles.testimonial} data-stagger>
-              <p className={styles.testimonialText}>
-                "Tui thấy đường đi rõ hơn: giữ công việc chính, xây tài sản bên cạnh, đo tín hiệu thị trường rồi mới tính bước lớn."
-              </p>
-              <p className={styles.testimonialAuthor}>Tầng 4: xây tài sản bằng AI</p>
+            <div className={styles.signalCard} data-stagger>
+              <p className={styles.signalText}>Bước tiếp theo đủ rõ: giữ việc chính, xây bên cạnh và đo phản hồi thật.</p>
+              <p className={styles.signalLabel}>Tín hiệu 03 · có nhịp tiếp</p>
             </div>
           </div>
         </div>

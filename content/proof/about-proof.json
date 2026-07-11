@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "metrics": [
+    { "value": "14 tháng", "label": "thử sai nội dung trước khi nhìn ra mẫu lặp", "sourceHref": "/library/proof-stack-thong-phan-2026", "sourceLabel": "Proof stack Thông Phan 2026" },
+    { "value": "10 năm", "label": "làm content, marketing và thị trường thật", "sourceHref": "/library/proof-stack-thong-phan-2026", "sourceLabel": "Proof stack Thông Phan 2026" },
+    { "value": "40+ bài", "label": "viral được ghi nhận như dữ liệu phản hồi thị trường", "sourceHref": "/library/proof-stack-thong-phan-2026", "sourceLabel": "Proof stack Thông Phan 2026" },
+    { "value": "80k+", "label": "lượt chia sẻ trên các bài có bằng chứng và góc nhìn rõ", "sourceHref": "/library/proof-stack-thong-phan-2026", "sourceLabel": "Proof stack Thông Phan 2026" },
+    { "value": "600+", "label": "bình luận đăng ký workshop trong 24 giờ", "sourceHref": "/library/proof-stack-thong-phan-2026", "sourceLabel": "Proof stack Thông Phan 2026" }
+  ]
+}

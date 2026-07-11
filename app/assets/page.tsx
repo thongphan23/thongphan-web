@@ -7,7 +7,7 @@ import {
   getAllMicroAssets,
   getFeaturedMicroAsset,
 } from '@/lib/micro-assets'
-import { GardenSignature } from '@/components/GardenSignature'
+import { DossierHeader } from '@/components/dossier/DossierHeader'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -34,18 +34,14 @@ export default function AssetsPage() {
   return (
     <div className={styles.assetsPage}>
       <div className="container">
-        <header className={styles.hero} data-reveal data-cinematic-mouse>
+        <div className={styles.hero} data-reveal>
           <div className={styles.marketHud} aria-label="Trạng thái kho tài sản nhỏ">
             <span><b>BỘ NHỎ</b> Bắt đầu nhỏ</span>
             <span><b>GIÁ</b> dưới 200k</span>
             <span><b>CÁCH CHỌN</b> đúng việc đang làm</span>
           </div>
           <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}>Kho tài sản nhỏ · dưới 200k</span>
-            <h1>Đừng học thêm công cụ nữa. Hãy dùng AI vào đúng việc bạn đang làm.</h1>
-            <p>
-              Mỗi bộ được thiết kế cho một tình huống cụ thể: soạn email, chuẩn bị bài dạy, viết nội dung, theo dõi sau tư vấn, giao việc cho đội nhóm. Bạn làm ra một đầu ra nhỏ trước, rồi mới quyết định có cần đi sâu hơn không.
-            </p>
+            <DossierHeader eyebrow="Kho tài sản nhỏ · dưới 200k" folio="TP / ASSET / 01" title="Dùng AI vào đúng việc bạn đang làm." description="Mỗi bộ giải quyết một tình huống cụ thể. Làm ra một đầu ra nhỏ trước, rồi mới quyết định có cần đi sâu hơn không.">
             <div className={styles.heroActions}>
               <Link href={`/assets/${featured.slug}`} className="btn-primary">
                 Xem bộ đầu tiên
@@ -54,11 +50,11 @@ export default function AssetsPage() {
                 Chẩn đoán trước
               </Link>
             </div>
-            <GardenSignature variant="fruit" eyebrow="Tài sản nhỏ, dùng được ngay" title="Mỗi bộ nhỏ phải giúp bạn làm được một việc thật, không phải tải thêm một đống template để đó." compact />
+            </DossierHeader>
           </div>
 
           <aside className={styles.featuredCard} aria-label="Sản phẩm nổi bật">
-            <div className={styles.assetRadar} aria-hidden="true">
+            <div className={styles.featuredMark} aria-hidden="true">
               <span />
               <span />
               <span />
@@ -78,7 +74,7 @@ export default function AssetsPage() {
             </ul>
             <Link href={`/assets/${featured.slug}`}>Xem chi tiết →</Link>
           </aside>
-        </header>
+        </div>
 
         <section className={styles.boundary} data-reveal aria-labelledby="boundary-title">
           <div>

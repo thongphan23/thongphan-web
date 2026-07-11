@@ -1,0 +1,15 @@
+.header { border-bottom: 1px solid var(--cinema-line); display: grid; grid-template-columns: 150px minmax(0, 1fr); padding: clamp(2.5rem, 7vw, 6.5rem) 0; }
+.folio, .eyebrow, .sectionLabel { color: var(--cinema-oxblood); font-family: var(--font-mono); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.folio { writing-mode: vertical-rl; }
+.headerCopy { max-width: 960px; }
+.headerCopy h1 { color: var(--cinema-ink); font-family: var(--font-display); font-size: clamp(2.7rem, 6vw, 5.8rem); letter-spacing: -.055em; line-height: .94; margin: 1rem 0 1.35rem; }
+.headerCopy p { color: var(--cinema-muted); font-size: clamp(1rem, 1.7vw, 1.25rem); line-height: 1.7; max-width: 720px; }
+.header[data-tone='dark'] { border-color: var(--brand-line-dark); }
+.header[data-tone='dark'] .folio, .header[data-tone='dark'] .eyebrow, .section[data-tone='dark'] .sectionLabel { color: var(--brand-lacquer-bright); }
+.header[data-tone='dark'] .headerCopy h1 { color: var(--brand-paper); }
+.header[data-tone='dark'] .headerCopy p { color: color-mix(in srgb, var(--brand-paper) 68%, transparent); }
+.section { border-bottom: 1px solid var(--cinema-line); padding: clamp(3rem, 7vw, 6rem) 0; }
+.section[data-tone='dark'] { border-color: var(--brand-line-dark); }
+.sectionLabel { align-items: center; display: flex; gap: .75rem; margin-bottom: 2rem; }
+.sectionLabel span { border: 1px solid currentColor; display: grid; height: 2rem; place-items: center; width: 2rem; }
+@media (max-width: 680px) { .header { grid-template-columns: 1fr; } .folio { margin-bottom: 1.5rem; writing-mode: initial; } }

@@ -2,6 +2,60 @@
   min-height: 100vh;
 }
 
+.siteShell[data-site-shell='unified'] {
+  --cinema-ink: var(--brand-ink);
+  --cinema-ink-raised: var(--brand-ink-raised);
+  --cinema-paper: var(--brand-reading-paper);
+  --cinema-paper-muted: var(--brand-muted-on-paper);
+  --cinema-muted: var(--brand-muted-on-paper);
+  --cinema-line: var(--brand-line-paper);
+  --cinema-oxblood: #7b2d1c;
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-reading: var(--font-newsreader), Georgia, serif;
+}
+
+.siteShell[data-site-shell='unified'] :global(a) {
+  color: inherit;
+}
+
+.siteShell[data-site-shell='unified'] :global(.btn-primary),
+.siteShell[data-site-shell='unified'] :global(.btn-outline),
+.siteShell[data-site-shell='unified'] :global(.btn-ghost) {
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 48px;
+  padding: 0.8rem 1.2rem;
+}
+
+.siteShell[data-site-shell='unified'] :global(.btn-primary) {
+  background: var(--brand-lacquer);
+  border: 1px solid var(--brand-lacquer);
+  color: var(--brand-paper);
+}
+
+.siteShell[data-site-shell='unified'] :global(.btn-primary:hover) {
+  background: var(--brand-lacquer-bright);
+  box-shadow: none;
+  color: var(--brand-paper);
+  transform: translateY(-1px);
+}
+
+.siteShell[data-site-shell='unified'] :global(.btn-outline),
+.siteShell[data-site-shell='unified'] :global(.btn-ghost) {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+
+.siteShell[data-site-shell='unified'] :global(.btn-primary:focus-visible),
+.siteShell[data-site-shell='unified'] :global(.btn-outline:focus-visible),
+.siteShell[data-site-shell='unified'] :global(.btn-ghost:focus-visible),
+.siteShell[data-site-shell='unified'] :global(a:focus-visible),
+.siteShell[data-site-shell='unified'] :global(button:focus-visible) {
+  outline: 3px solid var(--brand-lacquer-bright);
+  outline-offset: var(--brand-focus-offset);
+}
+
 .siteShell[data-site-shell='legacy'] {
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: var(--font-lora), Georgia, serif;
@@ -41,6 +95,12 @@
 }
 
 .cinemaHeader[data-route-mode='editorial-light'] {
+  background: var(--brand-ink);
+  border-bottom: 1px solid var(--brand-line-dark);
+  position: relative;
+}
+
+.cinemaHeader[data-route-mode='evidence-dossier'] {
   background: var(--brand-ink);
   border-bottom: 1px solid var(--brand-line-dark);
   position: relative;
@@ -318,6 +378,10 @@
 }
 
 @media (max-width: 900px) {
+  .siteShell[data-route-mode='evidence-dossier'] .cinemaMain {
+    padding-top: 64px;
+  }
+
   .cinemaHeader {
     background: rgba(7, 7, 6, 0.94);
     border-bottom: 1px solid var(--brand-line-dark);

@@ -40,8 +40,16 @@ export function routeModeForPath(pathname: string): SiteRouteMode {
 export function isUnifiedRouteEnabled(pathname: string): boolean {
   return (
     pathname === '/' ||
+    pathname === '/about' ||
+    pathname === '/diagnostic' ||
+    pathname === '/assets' ||
+    pathname.startsWith('/assets/') ||
+    pathname === '/challenges' ||
+    pathname.startsWith('/challenges/') ||
+    pathname === '/chat' ||
     pathname === '/library' ||
     pathname.startsWith('/library/') ||
-    pathname === '/blog'
+    pathname === '/blog' ||
+    pathname.startsWith('/blog/')
   )
 }

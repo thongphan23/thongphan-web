@@ -6,6 +6,8 @@ Date: 2026-07-11
 
 - Production `next build` verification for the current Task 4 diff.
 - Local rendered QA through the in-app Browser.
+- Rendered QA for the Task 5 direct-entry route migration (`/about`, `/diagnostic`, `/blog/*`, `/assets/*`, `/challenges/*`, `/chat`).
+- The repository's stale `next lint` script: Next.js 16 treats `lint` as a project directory and no ESLint package/config is installed locally; restricted network prevents adding the missing toolchain in this session.
 
 ## Reproduction
 
@@ -21,6 +23,7 @@ The current managed sandbox forbids both outbound font requests and local socket
 ## Evidence already green
 
 - `npm test`: 76 passed, 0 failed after the final Task 4 review fixes.
+- Task 5 final suite: 82 passed, 0 failed; independent spec and engineering reviews passed.
 - `npx tsc --noEmit`: exit 0.
 - Focused homepage proof/cinema contracts: 20 passed, 0 failed.
 - `git diff --check`: exit 0.
@@ -36,4 +39,4 @@ npm run build
 npm run test:build
 ```
 
-After the build succeeds, complete in-app Browser QA at all target viewports, keyboard/modal, touch, and reduced-motion states before deployment. The Task 4 source slice may be committed independently because its contract, type, asset-integrity and review gates are green; this report must remain attached until the rendered gate passes.
+After the build succeeds, complete in-app Browser QA at all target viewports, keyboard/modal, touch, and reduced-motion states before deployment. The Task 4 and Task 5 source slices may be committed independently when their contract, type, asset-integrity and review gates are green; this report must remain attached until the rendered gate passes.

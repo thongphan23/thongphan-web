@@ -36,26 +36,10 @@ test('routeModeForPath honors every exact and prefix route contract', () => {
   }
 })
 
-test('the unified shell enables every library surface and exact blog index only', () => {
-  assert.equal(isUnifiedRouteEnabled('/'), true)
-  assert.equal(isUnifiedRouteEnabled('/library'), true)
-  assert.equal(isUnifiedRouteEnabled('/library/read'), true)
-  assert.equal(isUnifiedRouteEnabled('/library/read/deep-work'), true)
-  assert.equal(isUnifiedRouteEnabled('/library/a-living-note'), true)
-  assert.equal(isUnifiedRouteEnabled('/blog'), true)
-  assert.equal(isUnifiedRouteEnabled('/blog/a-legacy-detail'), false)
-  assert.equal(isUnifiedRouteEnabled('/blog/'), false)
-  assert.equal(isUnifiedRouteEnabled('/libraryish'), false)
+test('the unified shell enables every migrated Cinema and editorial surface only', () => {
+  const enabled = ['/', '/about', '/diagnostic', '/assets', '/assets/offer-map', '/challenges', '/challenges/brain2', '/chat', '/library', '/library/read', '/library/read/deep-work', '/library/a-living-note', '/blog', '/blog/a-field-note']
+  const disabled = ['/about/team', '/diagnostic/results', '/chat/thread', '/classic', '/classic/notes', '/conanmaker', '/conanmakerish', '/libraryish', '/unknown']
 
-  for (const [pathname] of routeModeCases) {
-    if (
-      pathname !== '/' &&
-      pathname !== '/library' &&
-      pathname !== '/blog' &&
-      pathname !== '/library/read/deep-work' &&
-      pathname !== '/library/a-living-note'
-    ) {
-      assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
-    }
-  }
+  for (const pathname of enabled) assert.equal(isUnifiedRouteEnabled(pathname), true, pathname)
+  for (const pathname of disabled) assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
 })

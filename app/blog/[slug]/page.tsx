@@ -1,6 +1,7 @@
 import { getAllPosts, getAllSlugs, getPostBySlug, type PostMeta } from '@/lib/blog'
 import type { Metadata } from 'next'
 import BlogArticle from './BlogArticle'
+import { notFound } from 'next/navigation'
 
 const JOURNEY_ORDER = [
   'Sợ AI',
@@ -95,14 +96,7 @@ export default async function BlogPostPage({
   const allPosts = getAllPosts()
 
   if (!post) {
-    return (
-      <div style={{ textAlign: 'center', padding: '8rem 2rem' }}>
-        <h1>404 — Không tìm thấy bài viết</h1>
-        <p style={{ color: 'var(--text-secondary)', marginTop: '1rem' }}>
-          Bài viết này không tồn tại hoặc đã bị xóa.
-        </p>
-      </div>
-    )
+    notFound()
   }
 
   return (

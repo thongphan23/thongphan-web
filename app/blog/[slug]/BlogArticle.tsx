@@ -197,7 +197,7 @@ export default function BlogArticle({
   }
 
   return (
-    <>
+    <div className={styles.page}>
       <div
         className={styles.progressBar}
         style={{ width: `${scrollProgress}%` }}
@@ -408,6 +408,6 @@ export default function BlogArticle({
         </div>
       </article>
 
-    </>
+    </div>
   )
 }
