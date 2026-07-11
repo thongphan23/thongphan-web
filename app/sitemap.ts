@@ -3,6 +3,7 @@ import { getAllPosts } from '@/lib/blog'
 import { getAllLibraryNotes } from '@/lib/library'
 import { getAllMicroAssets } from '@/lib/micro-assets'
 import { getAllReadingSummaries } from '@/lib/readings'
+import { learnCourses } from '@/lib/learn-catalog'
 
 const BASE_URL = 'https://thongphan.com'
 const RELEASE_DATE = '2026-07-10'
@@ -21,6 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/',
     '/about',
     '/diagnostic',
+    '/learn',
+    '/learn/free',
+    '/learn/diagnostic',
     '/assets',
     '/challenges',
     '/challenges/brain2-21-ngay',
@@ -42,6 +46,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const assetRoutes = getAllMicroAssets().map((asset) =>
     entry(`/assets/${asset.slug}`, RELEASE_DATE),
   )
+  const learnRoutes = learnCourses.map((course) =>
+    entry(`/learn/courses/${course.slug}`, RELEASE_DATE),
+  )
 
-  return [...staticRoutes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
+  return [...staticRoutes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes, ...learnRoutes]
 }

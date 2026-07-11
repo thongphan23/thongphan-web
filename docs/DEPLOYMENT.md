@@ -27,6 +27,20 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 
 `read.thongphan.com` is retired. Worker `thongphan-read` was deleted only after the main production smoke passed. The subdomain now returns HTTP 530 and no redirect; never recreate it as a 301/302 migration layer.
 
+## Pending Learn public release candidate
+
+- Local routes: `/learn`, `/learn/free`, `/learn/diagnostic` and
+  `/learn/courses/{ai-foundation,prompt-thinking,evaluate-verify}`.
+- Static export: 60/60 pages; 88/88 functional contracts; TypeScript passed.
+- Production dependency audit: zero finding.
+- Browser evidence: `docs/qa/screenshots/learn-*.png` at 1440x900, 390x844
+  and 320x568 with no eager-image failure or horizontal overflow.
+- Public Learn must not be promoted until the learner PWA has an approved
+  deployment and `learn.thongphan.com` resolves. The build defaults to that domain
+  in production and accepts `NEXT_PUBLIC_LEARN_APP_URL` for an approved target.
+- Prompt Thinking and Evaluate & Verify remain non-purchasable until immutable
+  content packages and active offers exist in Learning Core.
+
 ## Current Crown & Citadel release
 
 - Production URL: `https://thongphan.com/game`
@@ -79,7 +93,8 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 Serve `out/` with clean-URL support and verify:
 
 - `/` renders one semantic `h1` and no framework overlay;
-- `/diagnostic`, `/library`, `/about` and `/conanmaker/` resolve;
+- `/diagnostic`, `/learn`, `/learn/diagnostic`, `/learn/free`, `/library`, `/about`
+  and `/conanmaker/` resolve;
 - `/game/` loads the title screen, all runtime assets resolve below `/game/assets/`, and `/game` redirects canonically;
 - homepage mobile menu opens, traps focus, closes on Escape and restores focus;
 - the three-question mirror returns a result and correct destination;

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { SiteRouteMode } from '@/lib/site-route-mode'
-import { primaryNavigation } from './site-navigation'
+import { primaryNavigation, secondaryNavigation } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
 export default function SiteFooter({ mode }: { mode: SiteRouteMode }) {
@@ -12,7 +12,7 @@ export default function SiteFooter({ mode }: { mode: SiteRouteMode }) {
         <p>Biến chuyên môn thật thành tài sản có người muốn dùng.</p>
       </div>
       <nav aria-label="Liên kết cuối trang">
-        {primaryNavigation.map((link) =>
+        {[...primaryNavigation, ...secondaryNavigation].map((link) =>
           link.href === '/conanmaker/' ? (
             <a key={link.href} href={link.href}>
               {link.label}

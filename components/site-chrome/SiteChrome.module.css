@@ -106,6 +106,12 @@
   position: relative;
 }
 
+.cinemaHeader[data-route-mode='learning-dossier'] {
+  background: var(--brand-ink);
+  border-bottom: 1px solid var(--brand-line-dark);
+  position: relative;
+}
+
 .cinemaHeader[data-route-mode='editorial-light'] .cinemaHeaderInner {
   min-height: 96px;
 }
@@ -382,6 +388,10 @@
     padding-top: 64px;
   }
 
+  .siteShell[data-route-mode='learning-dossier'] .cinemaMain {
+    padding-top: 64px;
+  }
+
   .cinemaHeader {
     background: rgba(7, 7, 6, 0.94);
     border-bottom: 1px solid var(--brand-line-dark);
@@ -389,6 +399,11 @@
   }
 
   .cinemaHeader[data-route-mode='editorial-light'] {
+    position: fixed;
+  }
+
+  .cinemaHeader[data-route-mode='evidence-dossier'],
+  .cinemaHeader[data-route-mode='learning-dossier'] {
     position: fixed;
   }
 

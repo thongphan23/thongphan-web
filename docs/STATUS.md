@@ -4,7 +4,9 @@ Last updated: 2026-07-11
 
 ## Current phase
 
-**Production released and verified.** Unified Cinema is live across the in-scope site, the integrated library is canonical at `/library`, and the old `read.thongphan.com` Worker has been retired without a redirect.
+**Production baseline remains released and verified.** Unified Cinema is live across
+the in-scope site. The new public Learn slice is complete and verified locally but
+has not been deployed; the existing production deployment remains unchanged.
 
 ## Production release
 
@@ -14,6 +16,36 @@ Last updated: 2026-07-11
 - Production origin: `https://802dbe32.thongphan-com.pages.dev`
 - Public URL: `https://thongphan.com`
 - Rollback artifact retained: `cde8137c-c82d-4f36-9f67-d849da739902`
+
+## Learn public integration - local release candidate
+
+- Added `/learn`, `/learn/free`, `/learn/diagnostic` and three static course detail
+  routes under `/learn/courses/*`.
+- Universal navigation now has exactly five primary destinations: Câu chuyện,
+  Thư viện, Học, Chẩn đoán and Conan Maker. Tài sản remains available in the footer.
+- Public Learn inherits Unified Cinema while using the approved original Cat World
+  assets as product objects; it does not copy the learner app shell into a sales page.
+- AI Foundation is truthfully free. Prompt Thinking and Evaluate & Verify are shown
+  as locked paid courses that are not purchasable until content and offers exist.
+- The placement flow has eight one-screen work challenges, anonymous session resume,
+  deterministic scoring, confidence and a parameterized handoff to the learner app.
+- Development handoff resolves to `http://127.0.0.1:5174`; production static builds
+  resolve to `https://learn.thongphan.com` or an explicit
+  `NEXT_PUBLIC_LEARN_APP_URL`.
+- Browser QA passed at `1440x900`, `390x844` and `320x568`: no horizontal overflow,
+  no broken eager image, all heroes reveal the next section, mobile menu exposes
+  Học as item 03, and the complete 8/8 diagnostic returns 90% confidence.
+- Local evidence: `docs/qa/screenshots/learn-*.png`.
+
+### Learn verification
+
+- `npm test`: 88/88 passed.
+- `npx tsc --noEmit`: passed.
+- `npm run build`: 60/60 static pages generated, including all Learn routes.
+- `npm audit --omit=dev`: zero production vulnerability after upgrading Next to
+  16.2.10 and overriding PostCSS to 8.5.10.
+- Production deployment is intentionally pending because `learn.thongphan.com` and
+  its Cloudflare resources have not passed an explicit release decision.
 
 ## Verification evidence
 

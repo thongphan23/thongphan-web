@@ -77,6 +77,84 @@ No actionable P0, P1 or P2 mismatch remains in the final comparison.
 - Short-laptop geometry: about `42px` from display name to headline and `16px` from the copy stack to the film rail.
 - Live interaction checks: mobile menu, proof dialog, diagnostic, library filter, reader bookmark/source, chat fallback and custom 404 all passed.
 
+## Learn public slice QA
+
+### Comparison target
+
+- Public shell source visual truth:
+  `docs/superpowers/specs/assets/2026-07-10-evidence-cinema-selected.png`.
+- Cat product source visual truth:
+  `/Users/rio/Projects/learn-conan-school/.worktrees/platform-foundation/docs/design/visual-targets/cat-world-3d-toon-approved.png`.
+- Browser-rendered implementation:
+  `docs/qa/screenshots/learn-public-1440x900-final.png`.
+- Combined source/render comparison:
+  `docs/qa/screenshots/learn-public-source-comparison-final.jpg`.
+- Viewport and state: `1440 × 900`, `/learn`, initial hero, fonts and eager images
+  settled, no hover or input.
+
+The Learn page is intentionally a compositional blend rather than a literal clone:
+Evidence Cinema owns the public trust shell, while the approved Cat target owns the
+product object, palette accents and handoff identity.
+
+### Findings
+
+No actionable P0, P1 or P2 issue remains.
+
+- Fonts and typography: the public shell retains Newsreader/Cormorant and Be
+  Vietnam Pro. Cat World's rounded display type is confined to the learner app and
+  diagnostic, preventing the sales surface from becoming childish. Vietnamese
+  headings wrap cleanly at 320, 390 and 1440px with zero negative tracking added by
+  the Learn modules.
+- Spacing and layout: the desktop and mobile heroes keep H1, value proposition and
+  both actions inside the first viewport while revealing the next full-width band.
+  At `320 × 568`, the Learn and Course heroes end at y=544; at `390 × 844`, they end
+  at y=766/764.
+- Colors and tokens: public pages use ink, paper and lacquer from Unified Cinema.
+  Blue/coral Cat colors appear only in the product image and focused diagnostic,
+  preserving the hybrid boundary.
+- Image fidelity: the public page uses the approved real Cat island, app screenshot,
+  profile and major reward raster assets. No emoji, CSS illustration, placeholder
+  or handcrafted SVG replaces a visible product asset.
+- Copy and content: AI Foundation is explicitly free; Prompt Thinking and Evaluate
+  & Verify are truthfully marked `sắp mở`. No fabricated testimonial, paid checkout
+  or unsupported learner claim is shown.
+- Icons and controls: Lucide is limited to familiar action/status controls. Mobile
+  menu, diagnostic options and CTA controls remain semantic with at least 44/48px
+  targets and visible focus styles.
+
+### Focused evidence
+
+- Public mobile: `docs/qa/screenshots/learn-public-390x844-final.png`.
+- Short mobile: `docs/qa/screenshots/learn-public-320x568-final.png`.
+- Mobile menu: `docs/qa/screenshots/learn-public-menu-320x568-final.png`.
+- Diagnostic initial: `docs/qa/screenshots/learn-diagnostic-390x844-final.png`.
+- Diagnostic short viewport: `docs/qa/screenshots/learn-diagnostic-320x568-final.png`.
+- Diagnostic result: `docs/qa/screenshots/learn-diagnostic-result-390x844-final.png`.
+- AI Foundation course: `docs/qa/screenshots/learn-course-ai-foundation-390x844-final.png`
+  and `learn-course-ai-foundation-320x568-final.png` in the same directory.
+
+### Comparison history
+
+1. Pass 1 found a P2 double mobile header offset: `learning-dossier` kept a relative
+   header while the mobile main also reserved 64px. The header is now fixed and the
+   public hero reveals the next section.
+2. Pass 2 found a P2 diagnostic overflow at `320 × 568` and stale scroll position on
+   the result screen. Short-viewport typography/options were tightened without
+   going below 48px targets, and completion/reset now restore scroll position.
+3. Pass 3 found a P2 course breadcrumb collision and hero extending below the first
+   viewport. The breadcrumb became a block, mobile spacing was normalized and a
+   truthful short-viewport content hierarchy was added.
+4. Final Browser pass found no broken eager image, horizontal overflow or console
+   warning/error in a fresh tab. Navigation, all 8 diagnostic challenges, 90%
+   confidence result, free local handoff and locked paid-course state were tested.
+
+### Learn verification
+
+- `npm test`: 88/88 passed.
+- `npx tsc --noEmit`: passed.
+- `npm run build`: 60/60 pages generated.
+- `npm audit --omit=dev`: zero production vulnerability.
+
 ## Follow-up polish
 
 - P3 accepted deviation: the three proof frames use available real repository photographs rather than synthesizing the mock's exact scenes. This preserves the approved real-proof/no-invented-evidence rule while retaining the source's composition, density and film treatment.
