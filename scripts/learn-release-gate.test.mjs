@@ -32,3 +32,10 @@ test('disabled Learn is absent from discovery and recommendations', () => {
   assert.doesNotMatch(journey, /href: ['"]\/learn['"]/)
   assert.doesNotMatch(diagnostic, /href: ['"]\/learn['"]/)
 })
+
+test('Cloudflare returns a real noindex 404 for every disabled Learn path', () => {
+  const handler = read('functions/learn/[[path]].ts')
+  assert.match(handler, /status:\s*404/)
+  assert.match(handler, /X-Robots-Tag['"]?:\s*['"]noindex, nofollow['"]/)
+  assert.match(handler, /Content-Type['"]?:\s*['"]text\/html; charset=utf-8['"]/)
+})
