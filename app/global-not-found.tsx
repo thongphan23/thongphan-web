@@ -38,7 +38,7 @@ export default function GlobalNotFound() {
   return (
     <html lang="vi">
       <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}>
-        <SiteChrome legacyFontClassName="">
+        <SiteChrome legacyFontClassName="" pathnameOverride="/">
           <NotFound />
         </SiteChrome>
       </body>

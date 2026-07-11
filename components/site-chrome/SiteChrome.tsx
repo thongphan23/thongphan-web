@@ -75,10 +75,12 @@ function DefaultFooter() {
 type SiteChromeProps = {
   children: ReactNode
   legacyFontClassName: string
+  pathnameOverride?: string
 }
 
-export default function SiteChrome({ children, legacyFontClassName }: SiteChromeProps) {
-  const pathname = usePathname()
+export default function SiteChrome({ children, legacyFontClassName, pathnameOverride }: SiteChromeProps) {
+  const detectedPathname = usePathname()
+  const pathname = pathnameOverride ?? detectedPathname
   const mode = routeModeForPath(pathname)
   const isUnified = isUnifiedRouteEnabled(pathname)
 

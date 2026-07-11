@@ -86,7 +86,7 @@ test('robots, canonical metadata, structured data and custom 404 survive export'
   ])
   assert.match(nextConfig, /globalNotFound:\s*true/)
   assert.match(globalNotFound, /<html\s+lang="vi"/)
-  assert.match(globalNotFound, /<SiteChrome/)
+  assert.match(globalNotFound, /<SiteChrome\s+legacyFontClassName=""\s+pathnameOverride="\/"/)
 
   const robots = await built('robots.txt')
   assert.match(robots, /Disallow:\s*\/classic/i)
