@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import { createLocalChatTurn, splitSseEvents } from '../app/chat/chat-model'
 
@@ -18,4 +19,10 @@ test('stream parser preserves complete server-sent events', () => {
     events: ['data: {"response":"xin"}', 'data: [DONE]'],
     remainder: '',
   })
+})
+
+test('chat renders standalone Conan recommendations without Next prefetch', () => {
+  const source = readFileSync(new URL('../app/chat/ChatClient.tsx', import.meta.url), 'utf8')
+  assert.match(source, /action\.href === '\/conanmaker\/'/)
+  assert.match(source, /<a href=\{action\.href\}/)
 })

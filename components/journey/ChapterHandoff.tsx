@@ -13,6 +13,14 @@ type ChapterHandoffProps = {
 }
 
 function ActionLink({ action }: { action: JourneyAction }) {
+  if (action.href === '/conanmaker/') {
+    return (
+      <a href={action.href}>
+        {action.label} <span aria-hidden="true">→</span>
+      </a>
+    )
+  }
+
   if (action.external) {
     return (
       <a href={action.href} target="_blank" rel="noopener noreferrer">

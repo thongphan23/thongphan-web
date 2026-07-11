@@ -85,7 +85,7 @@ const actions = {
   },
   chat: {
     href: '/chat',
-    label: 'Đem tình huống vào bàn hỏi',
+    label: 'Mở bàn hỏi',
     reason: 'Nói rõ việc đang làm, điều đã thử và chỗ đang kẹt để được chỉ đúng đường.',
     eyebrow: 'Gỡ một ca cụ thể',
   },

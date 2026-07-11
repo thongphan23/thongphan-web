@@ -15,6 +15,7 @@ test('every handoff has one primary and no duplicate destinations', () => {
 
     for (const action of actions) {
       assert.ok(action.label.trim().length > 3)
+      assert.ok(action.label.trim().length <= 24, `${action.label} is too long for a route handoff`)
       assert.ok(action.reason.trim().length > 12)
       assert.match(action.href, /^(?:\/|https:\/\/)/)
     }

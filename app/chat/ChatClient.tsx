@@ -105,7 +105,11 @@ export default function ChatClient() {
                         <article key={action.href} data-primary={actionIndex === 0}>
                           <span>{action.eyebrow}</span>
                           <p>{action.reason}</p>
-                          <Link href={action.href}>{action.label} <span aria-hidden="true">→</span></Link>
+                          {action.href === '/conanmaker/' ? (
+                            <a href={action.href}>{action.label} <span aria-hidden="true">→</span></a>
+                          ) : (
+                            <Link href={action.href}>{action.label} <span aria-hidden="true">→</span></Link>
+                          )}
                         </article>
                       ))}
                     </nav>

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 import {
   diagnosticLevels,
@@ -26,4 +27,10 @@ test('advanced levels use the local Conan bridge', () => {
   assert.equal(diagnosticLevels[3].recommendations[0].href, '/conanmaker/')
   assert.equal(diagnosticLevels[4].recommendations[0].href, '/conanmaker/')
   assert.ok(diagnosticLevels.flatMap((level) => level.recommendations).every((action) => action.href !== 'https://com.conan.school'))
+})
+
+test('diagnostic renders the standalone Conan bridge without Next prefetch', () => {
+  const source = readFileSync(new URL('../app/diagnostic/DiagnosticClient.tsx', import.meta.url), 'utf8')
+  assert.match(source, /action\.href === '\/conanmaker\/'/)
+  assert.match(source, /<a href=\{action\.href\}/)
 })

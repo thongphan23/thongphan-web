@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { DossierFolio } from '@/components/dossier/DossierFolio'
 import { DossierHeader } from '@/components/dossier/DossierHeader'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import { aboutProof } from '@/lib/about-proof'
 import styles from './page.module.css'
 
@@ -14,7 +15,7 @@ const chapters = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Về Thông Phan — Vì sao tôi làm việc này',
+  title: 'Về Thông Phan: Vì sao tôi làm việc này',
   description: 'Tôi giúp người có chuyên môn biến kiến thức thật thành nội dung, tài sản số và dòng tiền thứ hai bằng AI và hệ thống thực hành.',
   alternates: { canonical: '/about' },
 }
@@ -32,7 +33,7 @@ export default function AboutPage() {
             <figure className={styles.portrait}>
               <Image src="/images/homepage/proof/thong-stage-3x2-v1.webp" width={1200} height={800} alt="Thông Phan chia sẻ trên sân khấu" priority />
               <Image className={styles.stamp} src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" aria-hidden="true" />
-              <figcaption>Thông Phan trên sân khấu — ảnh gốc được lưu cùng hồ sơ bằng chứng.</figcaption>
+              <figcaption>Thông Phan trên sân khấu. Ảnh gốc được lưu cùng hồ sơ bằng chứng.</figcaption>
             </figure>
             <blockquote>
               <p>“AI không thay chuyên môn của bạn. Nó khuếch đại thứ bạn đã biết cách đóng gói.”</p>
@@ -54,10 +55,7 @@ export default function AboutPage() {
           </div>
         </DossierFolio>
 
-        <section className={styles.closing}>
-          <p>Đừng tin tui vội.</p><h2>Biết mình đang ở đâu trước khi học thêm.</h2>
-          <div><Link href="/diagnostic">Làm bài chẩn đoán <ArrowRight aria-hidden="true" size={18} /></Link><Link href="/library">Mở thư viện sống</Link></div>
-        </section>
+        <ChapterHandoff journeyKey="about" tone="dark" />
       </div>
     </div>
   )

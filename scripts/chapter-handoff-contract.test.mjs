@@ -12,6 +12,7 @@ test('chapter handoff renders reasoned internal and external actions', () => {
   assert.match(source, /data-tone=\{tone\}/)
   assert.match(source, /<span>\{action\.reason\}<\/span>[\s\S]*<ActionLink/)
   assert.match(source, /if \(action\.external\)[\s\S]*<a[\s\S]*<Link/)
+  assert.match(source, /action\.href === '\/conanmaker\/'/)
   assert.match(source, /getJourneyHandoff\(journeyKey\)/)
 })
 
@@ -38,4 +39,19 @@ test('unified routes load a real mono font and semantic oxblood token', () => {
   assert.match(chrome, /--font-mono:\s*var\(--font-ibm-plex-mono\)/)
   assert.match(chrome, /--cinema-oxblood:\s*var\(--brand-oxblood\)/)
   assert.match(tokens, /--brand-oxblood:\s*#7b2d1c/)
+})
+
+test('About closes with the shared dark chapter handoff', () => {
+  const source = read('app/about/page.tsx')
+
+  assert.match(source, /import ChapterHandoff from '@\/components\/journey\/ChapterHandoff'/)
+  assert.match(source, /<ChapterHandoff journeyKey="about" tone="dark"\s*\/>/)
+  assert.doesNotMatch(source, /styles\.closing/)
+})
+
+test('the physical brand stamp provides a bounded browser icon', () => {
+  const iconUrl = new URL('../app/icon.png', import.meta.url)
+  assert.ok(existsSync(iconUrl), 'app/icon.png must exist')
+  const size = readFileSync(iconUrl).byteLength
+  assert.ok(size > 0 && size <= 20_000, `favicon must stay below 20KB, received ${size}`)
 })

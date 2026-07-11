@@ -1,6 +1,6 @@
 # Cinema Chapters Journey Spine Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Ship the first complete Cinema Chapters slice: a shared, typed next-step system plus contextual Chat and Diagnostic recommendations that keep visitors inside the canonical thongphan.com journey.
 
@@ -31,7 +31,7 @@
 - Produces: `JourneyKey`, `JourneyAction`, `JourneyHandoff`, `getJourneyHandoff(key)`, `getRecommendationsForPrompt(prompt)`.
 - Internal route inventory: `/`, `/about`, `/diagnostic`, `/library`, `/library/read`, `/assets`, `/challenges`, `/chat`, `/learn`, `/conanmaker/`.
 
-- [ ] **Step 1: Write the failing registry contract**
+- [x] **Step 1: Write the failing registry contract**
 
 ```ts
 import assert from 'node:assert/strict'
@@ -69,13 +69,13 @@ test('known keys return stable handoffs', () => {
 })
 ```
 
-- [ ] **Step 2: Run the focused test and verify RED**
+- [x] **Step 2: Run the focused test and verify RED**
 
 Run: `npx tsx --test scripts/site-journey.test.ts`
 
 Expected: FAIL because `lib/site-journey.ts` does not exist.
 
-- [ ] **Step 3: Implement the pure registry**
+- [x] **Step 3: Implement the pure registry**
 
 Create the exported types exactly as follows:
 
@@ -106,7 +106,7 @@ Define `journeyHandoffs` as `satisfies Record<JourneyKey, JourneyHandoff>`. Use 
 
 Implement prompt priority in this order: community/conan → `/conanmaker/`; course/learn/học → `/learn`; asset/product/offer/tài sản/sản phẩm → `/assets`; Brain2/note/ghi chú → `/challenges/brain2-21-ngay`; content/proof/bài viết → `/library`; default → `/diagnostic`. Return the matching primary plus two non-duplicate fallback actions.
 
-- [ ] **Step 4: Add the test to `npm test` and verify GREEN**
+- [x] **Step 4: Add the test to `npm test` and verify GREEN**
 
 Add `scripts/site-journey.test.ts` to the existing `node --import tsx --test` list.
 
@@ -114,7 +114,7 @@ Run: `npx tsx --test scripts/site-journey.test.ts && npm test`
 
 Expected: focused tests pass and the full suite remains green.
 
-- [ ] **Step 5: Commit the pure model**
+- [x] **Step 5: Commit the pure model**
 
 ```bash
 git add lib/site-journey.ts scripts/site-journey.test.ts package.json
@@ -136,17 +136,17 @@ git commit -m "feat: add Cinema journey registry"
 - Consumes: `JourneyHandoff`, `getJourneyHandoff` from Task 1.
 - Produces: `<ChapterHandoff journeyKey tone="dark|paper" />`.
 
-- [ ] **Step 1: Write the failing source contract**
+- [x] **Step 1: Write the failing source contract**
 
 Assert that the component imports `next/link`, renders the action reason before the label, branches internal/external links, exposes `data-tone`, and has CSS rules for 44px targets, lacquer focus, asymmetric layout, and reduced motion. Assert `app/layout.tsx` loads `IBM_Plex_Mono` with `preload: false`, root body includes its variable, and unified shell maps `--font-mono` to it.
 
-- [ ] **Step 2: Run the contract and verify RED**
+- [x] **Step 2: Run the contract and verify RED**
 
 Run: `node --test scripts/chapter-handoff-contract.test.mjs`
 
 Expected: FAIL because the component and unified mono variable are absent.
 
-- [ ] **Step 3: Implement the component**
+- [x] **Step 3: Implement the component**
 
 Use this public signature:
 
@@ -187,17 +187,17 @@ export default function ChapterHandoff({ journeyKey, tone, className = '' }: Cha
 
 The CSS uses a 0.82fr/1.18fr grid at desktop; the primary action spans the full first row of the action grid; mobile collapses to one column. No decorative gradient or generic equal three-card dashboard.
 
-- [ ] **Step 4: Load IBM Plex Mono and semantic oxblood**
+- [x] **Step 4: Load IBM Plex Mono and semantic oxblood**
 
 Add `IBM_Plex_Mono({ subsets: ['latin', 'vietnamese'], weight: ['500', '600'], variable: '--font-ibm-plex-mono', preload: false })`. Add its variable to the root body class. Set unified `--font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace` and add `--brand-oxblood: #7b2d1c`; replace the hard-coded unified oxblood value with the token.
 
-- [ ] **Step 5: Run focused and full verification**
+- [x] **Step 5: Run focused and full verification**
 
 Run: `node --test scripts/chapter-handoff-contract.test.mjs && npm test && npx tsc --noEmit`
 
 Expected: all pass.
 
-- [ ] **Step 6: Commit the shared visual primitive**
+- [x] **Step 6: Commit the shared visual primitive**
 
 ```bash
 git add components/journey app/layout.tsx components/site-chrome/SiteChrome.module.css styles/brand-tokens.css scripts/chapter-handoff-contract.test.mjs package.json
@@ -217,17 +217,17 @@ git commit -m "feat: add shared chapter handoff"
 - Consumes: `JourneyAction[]` from `getRecommendationsForPrompt`.
 - Produces: `ChatTurn` with `content` and `recommendations`.
 
-- [ ] **Step 1: Write the failing chat model tests**
+- [x] **Step 1: Write the failing chat model tests**
 
 Test that `createLocalChatTurn('Tui muốn tạo sản phẩm nhỏ')` returns non-empty content, primary `/assets`, two unique alternatives, and no external route. Preserve the existing `splitSseEvents` assertion.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `npx tsx --test scripts/chat-journey.test.ts`
 
 Expected: FAIL because `createLocalChatTurn` is absent.
 
-- [ ] **Step 3: Add structured chat turns without changing the API payload**
+- [x] **Step 3: Add structured chat turns without changing the API payload**
 
 Define:
 
@@ -247,17 +247,17 @@ export function createLocalChatTurn(message: string): ChatTurn {
 
 Keep `JSON.stringify({ message: text })` unchanged. Store recommendations on assistant messages after local streaming completes, after remote streaming completes, and after network failure. Render a `nav` labelled `Ba bước có thể đi tiếp` below the assistant copy; each card shows reason then link label.
 
-- [ ] **Step 4: Style route recommendations and loading states**
+- [x] **Step 4: Style route recommendations and loading states**
 
 Use paper/oxblood framing, stagger-free CSS reveal, 44px links, visible focus, and one-column mobile layout. Under reduced motion, disable smooth autoscroll and all recommendation transitions.
 
-- [ ] **Step 5: Verify Chat**
+- [x] **Step 5: Verify Chat**
 
 Run: `npx tsx --test scripts/chat-journey.test.ts scripts/subpage-cinema-contract.test.mjs && npm test && npx tsc --noEmit`
 
 Expected: all pass and existing API/source contracts remain intact.
 
-- [ ] **Step 6: Commit Chat**
+- [x] **Step 6: Commit Chat**
 
 ```bash
 git add app/chat scripts/chat-journey.test.ts package.json
@@ -277,31 +277,31 @@ git commit -m "feat: direct chat into useful next steps"
 - Each `DiagnosticLevel` exposes exactly three `JourneyAction` recommendations.
 - No diagnostic result links directly to `https://com.conan.school`.
 
-- [ ] **Step 1: Write the failing model contract**
+- [x] **Step 1: Write the failing model contract**
 
 Assert the existing boundaries `[0, 9, 13, 17, 19]`, exactly three unique recommendations per level, a non-empty reason on every action, and local `/conanmaker/` for levels 4 and 5.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `npx tsx --test scripts/diagnostic-journey.test.ts`
 
 Expected: FAIL because levels expose the old `ctas` shape and external Conan URLs.
 
-- [ ] **Step 3: Replace `ctas` with reasoned recommendations**
+- [x] **Step 3: Replace `ctas` with reasoned recommendations**
 
 Change `DiagnosticLevel.ctas` to `DiagnosticLevel.recommendations: [JourneyAction, JourneyAction, JourneyAction]`. Preserve all existing questions, scores, names, diagnoses, blockage text, and next-step text. Level 1 leads to `/blog/ai-khong-cuop-viec-ban`; level 2 to `/blog/40-bai-viral-tui-hoc-duoc-gi`; level 3 to `/challenges/brain2-21-ngay`; levels 4 and 5 to `/conanmaker/`.
 
-- [ ] **Step 4: Render the recommendation dossier**
+- [x] **Step 4: Render the recommendation dossier**
 
 Replace the two-button row with an ordered recommendation list. Each item renders its index, eyebrow, reason, and label; the first item carries `data-primary="true"`. Keep the reset button and `aria-live` result behavior.
 
-- [ ] **Step 5: Verify Diagnostic**
+- [x] **Step 5: Verify Diagnostic**
 
 Run: `npx tsx --test scripts/diagnostic-journey.test.ts scripts/subpage-cinema-contract.test.mjs && npm test && npx tsc --noEmit`
 
 Expected: all pass.
 
-- [ ] **Step 6: Commit Diagnostic**
+- [x] **Step 6: Commit Diagnostic**
 
 ```bash
 git add app/diagnostic scripts/diagnostic-journey.test.ts package.json
@@ -321,21 +321,21 @@ git commit -m "feat: make diagnostic results actionable"
 - About ends with `<ChapterHandoff journeyKey="about" tone="dark" />`.
 - Existing sourced proof manifest remains the only source of public metrics.
 
-- [ ] **Step 1: Extend the failing source contract**
+- [x] **Step 1: Extend the failing source contract**
 
 Assert About imports and renders the shared handoff after its proof/story content and no longer duplicates the old generic two-link close.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test scripts/chapter-handoff-contract.test.mjs`
 
 Expected: FAIL because About still owns its old CTA section.
 
-- [ ] **Step 3: Integrate the dark handoff**
+- [x] **Step 3: Integrate the dark handoff**
 
 Remove the old closing CTA section and its dead CSS. Add the shared handoff without changing sourced proof content, portrait crop, or dossier chapters.
 
-- [ ] **Step 4: Run release verification**
+- [x] **Step 4: Run release verification**
 
 Run:
 
@@ -350,15 +350,15 @@ git status --short
 
 Expected: every command exits 0; only intended tracked files plus the four preserved Conan files are present.
 
-- [ ] **Step 5: Browser QA the slice**
+- [x] **Step 5: Browser QA the slice**
 
 At `1440x900`, `1280x720`, `390x844`, and `320x568`, verify `/about`, `/chat`, and `/diagnostic`: no overflow, no clipped primary link, one clear primary action, visible focus, useful recommendation reasons, correct local routes, and reduced-motion behavior. Save evidence outside the repo under `/tmp/thongphan-cinema-chapters-qa/`.
 
-- [ ] **Step 6: Update status and plan evidence**
+- [x] **Step 6: Update status and plan evidence**
 
 Record exact test totals, build page count, QA viewports, intentional deviations, and the next planned slice: Library/Reader plus remaining subpage handoffs.
 
-- [ ] **Step 7: Commit release evidence**
+- [x] **Step 7: Commit release evidence**
 
 ```bash
 git add app/about docs/STATUS.md docs/superpowers/plans/2026-07-12-cinema-chapters-journey-spine.md scripts/chapter-handoff-contract.test.mjs

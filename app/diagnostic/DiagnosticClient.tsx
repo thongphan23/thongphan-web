@@ -51,7 +51,11 @@ export default function DiagnosticClient() {
                       <div>
                         <small>{action.eyebrow}</small>
                         <p>{action.reason}</p>
-                        <Link href={action.href}>{action.label}<ArrowRight aria-hidden="true" size={16} /></Link>
+                        {action.href === '/conanmaker/' ? (
+                          <a href={action.href}>{action.label}<ArrowRight aria-hidden="true" size={16} /></a>
+                        ) : (
+                          <Link href={action.href}>{action.label}<ArrowRight aria-hidden="true" size={16} /></Link>
+                        )}
                       </div>
                     </li>
                   ))}
