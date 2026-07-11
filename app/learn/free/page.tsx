@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { getLearnCourse } from '@/lib/learn-catalog'
+import { learnPublicEnabled } from '@/lib/learn-release'
 import CourseDetail from '../courses/CourseDetail'
 
 export const metadata: Metadata = {
@@ -9,6 +11,8 @@ export const metadata: Metadata = {
 }
 
 export default function LearnFreePage() {
+  if (!learnPublicEnabled) notFound()
+
   const course = getLearnCourse('ai-foundation')
   if (!course) return null
   return <CourseDetail course={course} />

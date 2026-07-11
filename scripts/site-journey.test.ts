@@ -26,7 +26,7 @@ test('prompt intent selects a reasoned canonical route', () => {
   assert.equal(getRecommendationsForPrompt('Tui chưa biết bắt đầu từ đâu')[0].href, '/diagnostic')
   assert.equal(getRecommendationsForPrompt('Tui muốn xây Brain2 từ ghi chú')[0].href, '/challenges/brain2-21-ngay')
   assert.equal(getRecommendationsForPrompt('Tui muốn đóng gói một sản phẩm nhỏ')[0].href, '/assets')
-  assert.equal(getRecommendationsForPrompt('Tui cần học AI có lộ trình')[0].href, '/learn')
+  assert.equal(getRecommendationsForPrompt('Tui cần học AI có lộ trình')[0].href, '/diagnostic')
   assert.equal(getRecommendationsForPrompt('Tui cần cộng đồng cùng làm')[0].href, '/conanmaker/')
 })
 

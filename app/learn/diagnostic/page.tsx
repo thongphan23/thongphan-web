@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { learnPublicEnabled } from '@/lib/learn-release'
 import LearnPlacementClient from './LearnPlacementClient'
 import styles from './page.module.css'
 
@@ -9,6 +11,8 @@ export const metadata: Metadata = {
 }
 
 export default function LearnDiagnosticPage() {
+  if (!learnPublicEnabled) notFound()
+
   return (
     <div className={styles.page}>
       <LearnPlacementClient />

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getLearnCourse, learnCourses } from '@/lib/learn-catalog'
+import { learnPublicEnabled } from '@/lib/learn-release'
 import CourseDetail from '../CourseDetail'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -28,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function LearnCoursePage({ params }: Props) {
+  if (!learnPublicEnabled) notFound()
+
   const { slug } = await params
   const course = getLearnCourse(slug)
   if (!course) notFound()

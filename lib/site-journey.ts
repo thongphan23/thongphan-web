@@ -89,12 +89,6 @@ const actions = {
     reason: 'Nói rõ việc đang làm, điều đã thử và chỗ đang kẹt để được chỉ đúng đường.',
     eyebrow: 'Gỡ một ca cụ thể',
   },
-  learn: {
-    href: '/learn',
-    label: 'Xem chương trình học',
-    reason: 'Học theo năng lực và đầu ra thay vì chạy theo danh sách công cụ.',
-    eyebrow: 'Học có lộ trình',
-  },
   conan: {
     href: '/conanmaker/',
     label: 'Vào Conan Maker',
@@ -192,7 +186,6 @@ export const journeyHandoffs = {
 
 const intentPatterns = [
   { pattern: /cộng đồng|conan|cùng làm|accountability/i, action: actions.conan },
-  { pattern: /khóa|khoá|course|học|lộ trình học/i, action: actions.learn },
   { pattern: /tài sản|sản phẩm|product|offer|đóng gói|bán/i, action: actions.assets },
   { pattern: /brain2|ghi chú|note|obsidian|tri thức/i, action: actions.brain2Challenge },
   { pattern: /content|nội dung|bài viết|proof|bằng chứng/i, action: actions.library },

@@ -65,7 +65,7 @@ test('Learn routes ship discovery, diagnostic, free entry and three static cours
   assert.match(course, /notFound\(\)/)
 })
 
-test('Learn owns the learning-dossier route mode and the primary navigation replaces Tài sản with Học', async () => {
+test('Learn keeps its route mode while primary navigation hides it until release', async () => {
   const [{ routeModeForPath }, { primaryNavigation, secondaryNavigation }] = await Promise.all([
     import('../lib/site-route-mode'),
     import('../components/site-chrome/site-navigation'),
@@ -76,7 +76,6 @@ test('Learn owns the learning-dossier route mode and the primary navigation repl
   assert.deepEqual(primaryNavigation, [
     { href: '/about', label: 'Câu chuyện' },
     { href: '/library', label: 'Thư viện' },
-    { href: '/learn', label: 'Học' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
     { href: '/conanmaker/', label: 'Conan Maker' },
   ])

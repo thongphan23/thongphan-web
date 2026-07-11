@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { ArrowRight, CheckCircle2, Clock3, LockKeyhole, MousePointer2 } from 'lucide-react'
 import JsonLd from '@/components/seo/JsonLd'
 import { buildCourseStructuredData, buildLearnAppUrl, learnCourses } from '@/lib/learn-catalog'
+import { learnPublicEnabled } from '@/lib/learn-release'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -22,6 +24,8 @@ export const metadata: Metadata = {
 const freeStartUrl = buildLearnAppUrl({ source: 'thongphan-learn', course: 'ai-foundation' })
 
 export default function LearnPage() {
+  if (!learnPublicEnabled) notFound()
+
   const itemList = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',

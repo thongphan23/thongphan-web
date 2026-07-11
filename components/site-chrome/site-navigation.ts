@@ -1,7 +1,6 @@
 export const primaryNavigation = [
   { href: '/about', label: 'Câu chuyện' },
   { href: '/library', label: 'Thư viện' },
-  { href: '/learn', label: 'Học' },
   { href: '/diagnostic', label: 'Chẩn đoán' },
   { href: '/conanmaker/', label: 'Conan Maker' },
 ] as const

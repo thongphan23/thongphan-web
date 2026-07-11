@@ -67,7 +67,7 @@ export const diagnosticLevels: DiagnosticLevel[] = [
   ] },
   { min: 19, no: '05', name: 'Conan Ready', title: 'Tầng 5, Conan Ready', diagnosis: 'Bạn đã có nền đủ rõ để bước vào môi trường thực hành sâu. Lúc này học thêm một mình sẽ chậm.', stuck: 'Bạn không còn kẹt ở kiến thức. Bạn kẹt ở nhịp thực thi, phản hồi, tiêu chuẩn đầu ra và cộng đồng cùng làm thật.', next: 'Vào Conan Maker để tiếp tục nhịp thực hành, nhận góp ý và giữ accountability dài hạn.', recommendations: [
     { eyebrow: 'Bước vào chương mới', label: 'Vào Conan Maker', href: '/conanmaker/', reason: 'Đưa năng lực hiện có vào một môi trường thực thi và phản hồi dài hạn.' },
-    { eyebrow: 'Bổ sung năng lực', label: 'Xem chương trình học', href: '/learn', reason: 'Chọn đúng phần năng lực còn thiếu thay vì học lại từ đầu.' },
+    { eyebrow: 'Củng cố nền', label: 'Mở lộ trình đọc', href: '/library', reason: 'Đối chiếu phần năng lực còn thiếu trước khi chọn thứ cần học thêm.' },
     { eyebrow: 'Kiểm tra quyết định', label: 'Hỏi Brain2 trước khi vào', href: '/chat', reason: 'Làm rõ mục tiêu, thời gian và đầu ra mong muốn trước khi cam kết.' },
   ] },
 ]
