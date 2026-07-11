@@ -13,17 +13,18 @@ Do not patch the generated production output or upload a manual homepage build t
 
 The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
-## Current Unified Cinema release
+## Current Cinema Chapters release
 
 - Public URL: `https://thongphan.com`
-- Source commit: `17b82c3`
-- Preview deployment: `a34fada0-02d7-4f1b-841e-a57bceeeb707`
-- Preview URL: `https://a34fada0.thongphan-com.pages.dev`
-- Production deployment: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
-- Production origin: `https://802dbe32.thongphan-com.pages.dev`
-- Pre-release rollback deployment: `cde8137c-c82d-4f36-9f67-d849da739902`
-- Homepage HTML SHA-256: `63411f0c1b29e8c84a153905f5f7a87d88879b8f9cae50597c3808fb544040df`
-- Release verification: 84 functional contracts, TypeScript, 54-page export, release budgets, preview Browser QA and production Browser smoke all pass.
+- Source commit: `5f684d132b3d9fb77f08aa27e890f98cb1868fe8`
+- Preview deployment: `2b34c806-3e46-4a64-bdb6-500ca46470a6`
+- Preview URL: `https://2b34c806.thongphan-com.pages.dev`
+- Production deployment: `f6370989-798d-49a4-9ff7-f4716f12bb78`
+- Production origin: `https://f6370989.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
+- Homepage HTML SHA-256: `c96f8c17ccc1e46fde4ae5c77063c5c052691a264c7b81c35a0fa784abc1a987`
+- Release verification: 109 functional contracts, TypeScript, 61-page export,
+  10 release contracts, preview Browser QA and production Browser smoke all pass.
 
 `read.thongphan.com` is retired. Worker `thongphan-read` was deleted only after the main production smoke passed. The subdomain now returns HTTP 530 and no redirect; never recreate it as a 301/302 migration layer.
 
@@ -40,8 +41,11 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
   in production and accepts `NEXT_PUBLIC_LEARN_APP_URL` for an approved target.
 - Prompt Thinking and Evaluate & Verify remain non-purchasable until immutable
   content packages and active offers exist in Learning Core.
+- Public navigation, sitemap and journey recommendations exclude Learn while the
+  release flag is off. Cloudflare returns HTTP 404 with `noindex, nofollow` for all
+  `/learn` paths.
 
-## Cinema Chapters preview candidate
+## Cinema Chapters release history
 
 - Source commit: `29bcb9d2d212753065e3c8838875be694718d66e`.
 - Preview deployment: `601a9129-8e2e-4736-a0e9-35049a911f6f`.
@@ -49,10 +53,11 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 - Branch alias: `https://preview-29bcb9d.thongphan-com.pages.dev`.
 - Previous production deployment retained for rollback:
   `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`.
-- Production was not promoted because `learn.thongphan.com` does not resolve and
-  the learner PWA has not passed its approved deployment gate.
-- Verification report:
-  `docs/releases/CINEMA_CHAPTERS_PREVIEW_RELEASE_REPORT.md`.
+- This first preview exposed the unavailable Learn dependency. The final release
+  fail-closes Learn and was promoted through preview `2b34c806` to production
+  `f6370989`.
+- Verification reports: `docs/releases/CINEMA_CHAPTERS_PREVIEW_RELEASE_REPORT.md`
+  and `docs/releases/CINEMA_CHAPTERS_PRODUCTION_RELEASE_REPORT.md`.
 
 ## Current Crown & Citadel release
 

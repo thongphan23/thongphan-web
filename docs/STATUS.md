@@ -4,12 +4,11 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Production baseline remains released and verified.** Unified Cinema is live across
-the in-scope site. The new public Learn slice and the first Cinema Chapters journey
-slice are complete and verified locally but have not been deployed; the existing
-production deployment remains unchanged.
+**Cinema Chapters is released and verified in production.** The connected journey
+is live across the in-scope site. Learn remains preserved in source but fail-closed
+until the independent learner PWA and `learn.thongphan.com` are ready.
 
-## Cinema Chapters journey system - local release candidate
+## Cinema Chapters journey system - production release
 
 - Added one typed route-intent registry for 12 journey contexts and a shared,
   asymmetric chapter handoff that works on both dark cinema and light editorial
@@ -34,10 +33,10 @@ production deployment remains unchanged.
 
 ### Cinema Chapters verification
 
-- `npm test`: 106/106 passed.
+- `npm test`: 109/109 passed.
 - `npx tsc --noEmit`: passed.
 - `npm run build`: 61/61 static pages generated.
-- `npm run test:release`: 9/9 passed.
+- `npm run test:release`: 10/10 passed.
 - Browser QA passed at `1440x900`, `390x844`, and `320x568`: one H1 per page,
   no horizontal overflow, correct canonical destinations, no relevant console errors,
   and reduced-motion transitions collapse to effectively zero duration.
@@ -51,29 +50,28 @@ production deployment remains unchanged.
   targets, reduced motion, and no self-link on the world-reading index.
 - All nine unique internal handoff destinations returned HTTP 200. Keyboard focus
   is retained with a visible 2px solid focus ring.
-- Production deployment remains intentionally pending.
-- Cloudflare preview `601a9129-8e2e-4736-a0e9-35049a911f6f` is live at
-  `https://601a9129.thongphan-com.pages.dev` from source `29bcb9d`; all 26
-  core/subpage Browser checks and the extended route smoke passed.
-- Production promotion is blocked because `learn.thongphan.com` does not resolve
-  and the independent learner PWA is still design-gated. See
-  `docs/releases/CINEMA_CHAPTERS_PREVIEW_RELEASE_REPORT.md`.
+- Final preview `2b34c806-3e46-4a64-bdb6-500ca46470a6` and production
+  `f6370989-798d-49a4-9ff7-f4716f12bb78` passed the same journey smoke matrix.
+- `/learn`, `/learn/free`, `/learn/diagnostic`, and course paths return real HTTP
+  404 responses with `noindex, nofollow` until the Learn release flag is enabled.
+- Production report: `docs/releases/CINEMA_CHAPTERS_PRODUCTION_RELEASE_REPORT.md`.
 
 ## Production release
 
-- Source commit: `17b82c3`
-- Preview: `https://a34fada0.thongphan-com.pages.dev`
-- Production deployment: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
-- Production origin: `https://802dbe32.thongphan-com.pages.dev`
+- Source commit: `5f684d132b3d9fb77f08aa27e890f98cb1868fe8`
+- Preview: `https://2b34c806.thongphan-com.pages.dev`
+- Production deployment: `f6370989-798d-49a4-9ff7-f4716f12bb78`
+- Production origin: `https://f6370989.thongphan-com.pages.dev`
 - Public URL: `https://thongphan.com`
-- Rollback artifact retained: `cde8137c-c82d-4f36-9f67-d849da739902`
+- Rollback artifact retained: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
 
 ## Learn public integration - local release candidate
 
 - Added `/learn`, `/learn/free`, `/learn/diagnostic` and three static course detail
   routes under `/learn/courses/*`.
-- Universal navigation now has exactly five primary destinations: Câu chuyện,
-  Thư viện, Học, Chẩn đoán and Conan Maker. Tài sản remains available in the footer.
+- Learn source remains ready behind `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED=true`.
+- Until its PWA is ready, navigation exposes four verified destinations: Câu chuyện,
+  Thư viện, Chẩn đoán and Conan Maker. Tài sản remains available in the footer.
 - Public Learn inherits Unified Cinema while using the approved original Cat World
   assets as product objects; it does not copy the learner app shell into a sales page.
 - AI Foundation is truthfully free. Prompt Thinking and Evaluate & Verify are shown
@@ -95,7 +93,7 @@ production deployment remains unchanged.
 - `npm run build`: 60/60 static pages generated, including all Learn routes.
 - `npm audit --omit=dev`: zero production vulnerability after upgrading Next to
   16.2.10 and overriding PostCSS to 8.5.10.
-- Production deployment is intentionally pending because `learn.thongphan.com` and
+- Production paths are intentionally fail-closed because `learn.thongphan.com` and
   its Cloudflare resources have not passed an explicit release decision.
 
 ## Verification evidence
