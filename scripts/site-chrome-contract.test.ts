@@ -119,9 +119,9 @@ test('root fonts and shared brand primitives follow the unified contract', async
   ]) {
     assert.match(layout, new RegExp(font))
   }
-  assert.equal((layout.match(/preload:\s*false/g) ?? []).length, 6)
+  assert.equal((layout.match(/preload:\s*false/g) ?? []).length, 7)
   const rootBodyClass = layout.match(/<body className=\{`([^`]+)`\}/)?.[1] ?? ''
-  for (const rootFont of ['beVietnamPro.variable', 'cormorantGaramond.variable', 'newsreader.variable']) {
+  for (const rootFont of ['beVietnamPro.variable', 'cormorantGaramond.variable', 'newsreader.variable', 'ibmPlexMono.variable']) {
     assert.match(rootBodyClass, new RegExp(rootFont.replace('.', '\\.')))
   }
   assert.doesNotMatch(rootBodyClass, /inter\.variable|lora\.variable|jetBrainsMono\.variable/)

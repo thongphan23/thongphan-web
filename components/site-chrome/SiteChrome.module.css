@@ -9,8 +9,9 @@
   --cinema-paper-muted: var(--brand-muted-on-paper);
   --cinema-muted: var(--brand-muted-on-paper);
   --cinema-line: var(--brand-line-paper);
-  --cinema-oxblood: #7b2d1c;
+  --cinema-oxblood: var(--brand-oxblood);
   --font-display: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-reading: var(--font-newsreader), Georgia, serif;
 }
 

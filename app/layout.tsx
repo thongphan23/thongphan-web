@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import {
   Be_Vietnam_Pro,
   Cormorant_Garamond,
+  IBM_Plex_Mono,
   Inter,
   JetBrains_Mono,
   Lora,
@@ -34,6 +35,14 @@ const newsreader = Newsreader({
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-newsreader',
+  display: 'swap',
+  preload: false,
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['500', '600'],
+  variable: '--font-ibm-plex-mono',
   display: 'swap',
   preload: false,
 })
@@ -84,7 +93,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi">
-      <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}>
+      <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}>
         <ScrollAnimations />
         <SiteChrome legacyFontClassName={legacyFontClassName}>{children}</SiteChrome>
         <JsonLd data={buildWebsiteStructuredData()} />
