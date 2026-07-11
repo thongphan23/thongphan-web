@@ -13,7 +13,8 @@ Release candidate source complete; production promotion blocked on rendered Brow
 - Main Read publishing plugin source now targets only `https://thongphan.com/library/read/<slug>` and passes 6/6 source-contract tests.
 - Static export now uses explicit Webpack and generated 54/54 pages.
 - SEO primitives, website JSON-LD, custom Cinema 404, sitemap/robots contracts, legacy noindex headers and per-route bundle budgets are implemented.
-- Current local release gates: 82/82 functional, 4/4 build, 3/3 SEO, 2/2 bundle, TypeScript and diff check pass.
+- Merged the current `main` branch at `105c8f6`, preserving the latest Crown & Citadel `/game/` release, its 65 runtime PNGs and canonical redirect.
+- Current local release gates after that merge: 83/83 functional, 4/4 build, 3/3 SEO, 2/2 bundle, 4/4 static-route checks, TypeScript and diff check pass.
 
 ## Blocked external gates
 

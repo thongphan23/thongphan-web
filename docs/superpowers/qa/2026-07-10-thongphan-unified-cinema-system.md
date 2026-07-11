@@ -8,7 +8,7 @@ Verdict: **BLOCKED — automated artifact green; rendered and external gates pen
 
 | Gate | Result | Evidence |
 | --- | --- | --- |
-| Functional contracts | PASS | `npm test`: 82 passed, 0 failed |
+| Functional contracts | PASS | `npm test`: 83 passed, 0 failed after merging current `main` |
 | TypeScript | PASS | `npx tsc --noEmit`: exit 0 |
 | Static export | PASS | Webpack generated 54/54 pages |
 | Homepage build | PASS | 4 passed, 0 failed |
@@ -16,6 +16,7 @@ Verdict: **BLOCKED — automated artifact green; rendered and external gates pen
 | Bundle/image budgets | PASS | 2 passed, 0 failed |
 | Diff hygiene | PASS | `git diff --check`: exit 0 |
 | Legacy indexing safety | PASS | robots exclusions, route metadata and `_headers` noindex contracts |
+| Static game preservation | PASS | 4/4 static-route checks; `/game/` bundle and 65 runtime PNGs retained |
 
 The export contains `404.html`, `robots.txt`, `sitemap.xml`, `_headers`, `_redirects`, all 13 reading routes, 14 living notes, 4 blog posts, 7 asset details, the challenge detail and standalone Conan Maker bundle.
 
@@ -42,7 +43,8 @@ The historical homepage comparison in `design-qa.md` is the visual baseline. The
 
 ## Deployment and rollback
 
-- Previous deployment identifier: **not captured — Cloudflare CLI unavailable**.
+- Latest repository-recorded production deployment: `cde8137c-c82d-4f36-9f67-d849da739902` (Crown & Citadel release; not live-reconfirmed because Cloudflare CLI is unavailable).
+- Repository-recorded rollback deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`.
 - Preview URL: **not deployed**.
 - Production URL: `https://thongphan.com` (existing release; not modified in this session).
 - Rollback command: redeploy the complete artifact for the captured previous deployment/known-good commit; never mix old HTML with new immutable assets.
