@@ -1,12 +1,24 @@
 import Image from 'next/image'
 import HomeMirror from './HomeMirror'
+import HomeFilmReel from './HomeFilmReel'
 import HomeTrackedLink, { homepageEvents } from './HomeTrackedLink'
-import ProofImage from './ProofImage'
-import ProofRail from './ProofRail'
-import { heroFilmItems, methodSteps, pathItems, proofItems } from './home-cinema-content'
+import ProofContactSheet from './ProofContactSheet'
+import { heroFilmItems, methodSteps, pathItems } from './home-cinema-content'
+import { homepageCanRunReel, homepageProofPublicAssets, homepageReelPublicAssets } from '@/lib/homepage-proof-assets'
 import styles from './HomeCinema.module.css'
 
 export default function HomeCinema() {
+  const filmItems = homepageCanRunReel
+    ? homepageReelPublicAssets.map((asset, index) => ({
+        heroFrame: String(index + 1).padStart(2, '0'),
+        slug: asset.id,
+        image: asset.derivativeUrl,
+        alt: asset.alt,
+        label: 'EVIDENCE ARCHIVE',
+        caption: asset.caption,
+      }))
+    : heroFilmItems
+
   return (
     <div className={styles.page} data-cinema-root>
       <section id="story" className={styles.hero} data-home-section>
@@ -45,7 +57,7 @@ export default function HomeCinema() {
           data-evidence-stamp
           data-stamp-copy="LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT"
         >
-          <img src="/images/homepage/evidence-cinema-stamp-v3.png" alt="" />
+          <img src="/images/homepage/evidence-cinema-stamp-v4.png" alt="" />
         </div>
 
         <div className={styles.heroCopy} data-cinema-reveal>
@@ -65,26 +77,7 @@ export default function HomeCinema() {
           <p className={styles.proofMicrocopy}>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
         </div>
 
-        <div
-          className={styles.heroFilm}
-          data-frame-count="3"
-          aria-label="Ba khung bằng chứng mở đầu"
-        >
-          {heroFilmItems.map((item) => (
-            <article key={item.slug} className={styles.heroFrame} data-frame={item.heroFrame}>
-              <ProofImage
-                src={item.image}
-                alt={item.alt}
-                sizes="(max-width: 767px) 86vw, 31vw"
-                priority
-              />
-              <div className={styles.heroFrameCaption}>
-                <span>{item.label}</span>
-                <strong>{item.caption}</strong>
-              </div>
-            </article>
-          ))}
-        </div>
+        <HomeFilmReel items={filmItems} canRun={homepageCanRunReel} />
       </section>
 
       <section id="mirror" className={`${styles.act} ${styles.mirrorAct}`} data-home-section data-cinema-reveal>
@@ -95,29 +88,9 @@ export default function HomeCinema() {
         <header className={styles.actHeader} data-cinema-reveal>
           <span>ACT 03 · BẰNG CHỨNG</span>
           <h2>Đừng tin một lời hứa. Hãy nhìn dấu vết công việc.</h2>
-          <p>Hai hình ảnh dưới đây không kể hết hành trình. Chúng chỉ nói điều có thể kiểm chứng từ chính những gì đang thấy.</p>
+          <p>Ba dấu vết thật. Mở từng khung để xem nguồn, bối cảnh và điều nó thực sự chứng minh.</p>
         </header>
-
-        <ProofRail>
-          {proofItems.map((item) => (
-            <article key={item.slug} className={styles.proofItem} data-focus-pull>
-              <div className={styles.proofFrameTop} aria-hidden="true"><span>{item.frame}</span><span>TP · ARCHIVE</span></div>
-              <ProofImage src={item.image} alt={item.alt} sizes="(max-width: 767px) 88vw, 62vw" />
-              <div className={styles.proofBody}>
-                <p className={styles.proofSource}>{item.source}</p>
-                <h3>{item.title}</h3>
-                <p>{item.proof}</p>
-                <HomeTrackedLink
-                  href={item.href}
-                  eventName={homepageEvents.proof}
-                  eventDetail={{ slug: item.slug }}
-                >
-                  {item.linkLabel}
-                </HomeTrackedLink>
-              </div>
-            </article>
-          ))}
-        </ProofRail>
+        <ProofContactSheet assets={homepageProofPublicAssets} />
       </section>
 
       <section id="method" className={`${styles.act} ${styles.methodAct}`} data-home-section>

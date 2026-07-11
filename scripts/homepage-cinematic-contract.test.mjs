@@ -21,7 +21,8 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
   const page = await readProjectFile('app/page.tsx')
   const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
   const content = await readProjectFile('components/home-cinema/home-cinema-content.ts')
-  const source = `${page}\n${home}\n${content}`
+  const proofManifest = await readProjectFile('content/homepage/homepage-proof-assets.json')
+  const source = `${page}\n${home}\n${content}\n${proofManifest}`
 
   for (const required of [
     'Từ trải nghiệm thật đến cộng đồng trả phí',
@@ -32,7 +33,9 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
     'id="method"',
     'id="paths"',
     'id="conan"',
-    'thong-stage-anchor.jpg',
+    'thongphan-speaker-hires.jpg',
+    'thong-library-author.jpg',
+    'preview-first-90s-natural-inspect-20260629-021025/contact-sheet.jpg',
     'thong-library-author.jpg',
     'LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT',
   ]) {
@@ -83,23 +86,24 @@ test('homepage source exposes the selected cinema visual and responsive contract
 
 test('homepage recreates the selected hero from separated fidelity assets', async () => {
   const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const reel = await readProjectFile('components/home-cinema/HomeFilmReel.tsx')
   const content = await readProjectFile('components/home-cinema/home-cinema-content.ts')
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
   const chromeCss = await readProjectFile('components/site-chrome/SiteChrome.module.css')
   const layout = await readProjectFile('app/layout.tsx')
-  const source = `${home}\n${content}\n${css}\n${chromeCss}\n${layout}`
+  const source = `${home}\n${reel}\n${content}\n${css}\n${chromeCss}\n${layout}`
 
   for (const required of [
     'evidence-cinema-hero-v3.webp',
     'evidence-cinema-hero-v3-mobile.webp',
     'evidence-cinema-film-texture-v2.webp',
-    'evidence-cinema-stamp-v3.png',
+    'evidence-cinema-stamp-v4.png',
     'evidence-cinema-signature-v3.png',
     'evidence-cinema-arrow-v2.png',
     'evidence-cinema-outer-frame-v2.png',
     'evidence-cinema-conan-portrait-v2.webp',
     'heroFilmItems',
-    'data-frame-count="3"',
+    'data-frame-count={items.length}',
     'data-cinema-frame',
     '--font-cormorant',
   ]) {
@@ -113,6 +117,7 @@ test('homepage recreates the selected hero from separated fidelity assets', asyn
   assert.match(css, /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
   assert.match(chromeCss, /\.cinemaHeader\s*\{[\s\S]*?position:\s*absolute/)
   assert.doesNotMatch(css, /\.evidenceStamp::before|\.evidenceStamp::after/)
+  assert.doesNotMatch(css, /\.evidenceStamp img\s*\{[\s\S]{0,180}filter:/)
 })
 
 test('route-aware chrome includes an accessible mobile cinema menu', async () => {
@@ -183,27 +188,68 @@ test('proof media has a readable image failure fallback', async () => {
   assert.match(proofImage, /aria-live="polite"/)
 })
 
-test('short laptop view keeps the primary CTA clear of the evidence rail', async () => {
+test('short laptop view keeps the hero compact while clearing the evidence rail', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
   assert.match(css, /@media \(min-width: 768px\) and \(max-height: 800px\)/)
-  assert.match(css, /min-height:\s*980px/)
+  assert.match(css, /min-height:\s*820px/)
 })
 
 test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
-  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*1100px/)
+  assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*920px/)
   assert.match(css, /@media \(max-width: 900px\)[\s\S]{0,420}max-width:\s*72vw/)
-  assert.doesNotMatch(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*980px/)
+  assert.doesNotMatch(css, /@media \(max-width: 900px\)[\s\S]{0,180}min-height:\s*1100px/)
 })
 
-test('proof rail exposes explicit keyboard scrolling', async () => {
-  const proofRail = await readProjectFile('components/home-cinema/ProofRail.tsx')
+test('proof contact sheet exposes manual scrolling and an accessible evidence dialog', async () => {
+  const proofSheet = await readProjectFile('components/home-cinema/ProofContactSheet.tsx')
   const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
 
-  for (const required of ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'scrollBy', 'tabIndex={0}']) {
-    assert.match(proofRail, escaped(required))
+  for (const required of [
+    'scrollBy',
+    'Xem bằng chứng trước',
+    'Xem bằng chứng tiếp theo',
+    'role="dialog"',
+    'aria-modal="true"',
+    'resolveMenuKeyAction',
+    'triggerRef.current?.focus()',
+    'HomepageProofPublicAsset',
+  ]) {
+    assert.match(proofSheet, escaped(required))
   }
-  assert.match(home, /<ProofRail>/)
+  assert.match(home, /<ProofContactSheet/)
+  assert.doesNotMatch(home, /<ProofRail>/)
+  assert.doesNotMatch(proofSheet, /sourcePath|sourceSha256|derivativeSha256|sourceRight/)
+})
+
+test('film reel is gated and remains static until six approved frames exist', async () => {
+  const reel = await readProjectFile('components/home-cinema/HomeFilmReel.tsx')
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  for (const required of [
+    'items.length >= 6',
+    'aria-hidden',
+    'data-reel-duplicate',
+    'HomeFilmReel',
+    'homepageCanRunReel',
+    'aria-pressed',
+    'Tạm dừng thước phim',
+    'priority={!duplicate && index < 3}',
+  ]) {
+    assert.match(`${reel}\n${home}`, escaped(required))
+  }
+  assert.match(css, /animation-play-state:\s*paused/)
+  assert.match(css, /@media \(hover:\s*none\),\s*\(pointer:\s*coarse\)/)
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.reelTrackDuplicate\s*\{[\s\S]*?display:\s*none/)
+})
+
+test('homepage keeps hero copy above film and ACT 03 visible as a compact three-up sheet', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  assert.match(css, /\.heroCopy\s*\{[\s\S]{0,260}bottom:\s*calc\(var\(--hero-film-height\)/)
+  assert.match(css, /\.proofGrid\s*\{[\s\S]{0,240}grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
+  assert.match(css, /\.proofAct\s*\{[\s\S]{0,240}padding-top:\s*clamp\(3rem,\s*5vw,\s*5rem\)/)
 })

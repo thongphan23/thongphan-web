@@ -126,7 +126,6 @@
 }
 
 .evidenceStamp img {
-  filter: brightness(1.16) saturate(1.1);
   height: 100%;
   mix-blend-mode: normal;
   object-fit: contain;
@@ -134,10 +133,10 @@
 }
 
 .heroCopy {
+  bottom: calc(var(--hero-film-height) + clamp(2.5rem, 4.5vh, 4rem));
   left: clamp(1.5rem, 6.7vw, 6.7rem);
   max-width: min(39rem, 43vw);
   position: absolute;
-  top: clamp(28.4rem, 43.9vh, 29.1rem);
   z-index: 4;
 }
 
@@ -194,7 +193,10 @@
 }
 
 .primaryButton:focus-visible,
-.proofBody a:focus-visible,
+.proofCard:focus-visible,
+.proofControls button:focus-visible,
+.proofDialogClose:focus-visible,
+.proofDialogCopy a:focus-visible,
 .pathRow:focus-visible {
   outline: 2px solid var(--cinema-paper);
   outline-offset: 4px;
@@ -223,15 +225,69 @@
   background-repeat: no-repeat;
   background-size: 100% 100%;
   bottom: 0;
-  display: grid;
-  gap: clamp(0.55rem, 1vw, 0.95rem);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: block;
   height: var(--hero-film-height);
   left: clamp(1rem, 3.5vw, 3.25rem);
   padding: 1.75rem 0.9rem 1.6rem;
   position: absolute;
   right: clamp(1rem, 3.5vw, 3.25rem);
   z-index: 5;
+}
+
+.reelTrack {
+  display: grid;
+  gap: clamp(0.55rem, 1vw, 0.95rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  height: 100%;
+}
+
+.heroFilm[data-reel-running] {
+  display: flex;
+  overflow: hidden;
+}
+
+.heroFilm[data-reel-running] .reelTrack {
+  animation: evidenceReel 38s linear infinite;
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 100%;
+  padding-right: clamp(0.55rem, 1vw, 0.95rem);
+}
+
+.heroFilm[data-reel-running] .heroFrame {
+  flex: 0 0 min(30vw, 430px);
+}
+
+.heroFilm[data-reel-running]:hover .reelTrack,
+.heroFilm[data-reel-paused] .reelTrack {
+  animation-play-state: paused;
+}
+
+.reelControl {
+  align-items: center;
+  background: rgba(7, 7, 6, 0.9);
+  border: 1px solid var(--cinema-line);
+  bottom: 1.85rem;
+  color: var(--cinema-paper);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.72rem;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.55rem 0.8rem;
+  position: absolute;
+  right: 1.2rem;
+  z-index: 2;
+}
+
+.reelControl:focus-visible {
+  outline: 2px solid var(--cinema-paper);
+  outline-offset: 3px;
+}
+
+.reelControl svg {
+  height: 16px;
+  width: 16px;
 }
 
 .heroFrame {
@@ -339,6 +395,8 @@
   background: var(--cinema-ink-raised);
   max-width: none;
   overflow: hidden;
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  padding-top: clamp(3rem, 5vw, 5rem);
 }
 
 .proofAct > * {
@@ -347,25 +405,52 @@
   max-width: 1268px;
 }
 
-.proofRail {
-  display: flex;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  overflow-x: auto;
-  padding: 0.25rem 0 1.5rem;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: var(--cinema-lacquer) transparent;
+.proofAct .actHeader {
+  display: grid;
+  gap: 0.65rem 2rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 0.6fr);
+  margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
 }
 
-.proofRail:focus-visible {
-  outline: 2px solid var(--cinema-lacquer-bright);
-  outline-offset: 6px;
+.proofAct .actHeader > span {
+  grid-column: 1 / -1;
 }
 
-.proofItem {
+.proofAct .actHeader h2 {
+  font-size: clamp(2.9rem, 5.2vw, 5.4rem);
+  margin: 0;
+}
+
+.proofAct .actHeader > p {
+  align-self: end;
+  margin: 0;
+}
+
+.proofSheetShell {
+  position: relative;
+}
+
+.proofGrid {
+  display: grid;
+  gap: clamp(0.85rem, 1.4vw, 1.35rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.proofCard {
+  appearance: none;
   background: var(--cinema-ink);
   border: 1px solid var(--cinema-line);
-  flex: 0 0 min(65rem, 78vw);
-  scroll-snap-align: start;
+  color: inherit;
+  cursor: pointer;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.proofCard:hover {
+  border-color: rgba(224, 75, 67, 0.7);
+  transform: translateY(-3px);
 }
 
 .proofFrameTop {
@@ -380,12 +465,13 @@
   padding: 0 0.8rem;
 }
 
-.proofItem .proofImageFrame {
-  aspect-ratio: 16 / 8.2;
+.proofCard .proofImageFrame {
+  aspect-ratio: 3 / 2;
 }
 
 .proofImageFrame {
   background: var(--cinema-paper);
+  display: block;
   overflow: hidden;
   position: relative;
 }
@@ -397,7 +483,7 @@
   transition: filter 700ms ease, opacity 700ms ease, transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.proofItem:hover .proofImage {
+.proofCard:hover .proofImage {
   filter: grayscale(0.78) sepia(0.08) contrast(1.08);
   transform: scale(1.015);
 }
@@ -415,49 +501,146 @@
   text-transform: uppercase;
 }
 
-.proofBody {
+.proofCardCopy {
   display: grid;
-  gap: 0.9rem;
-  grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr);
-  padding: clamp(1.5rem, 4vw, 3.5rem);
+  gap: 0.5rem;
+  min-height: 8.6rem;
+  padding: 1rem 1.05rem 1.1rem;
 }
 
-.proofSource {
-  color: var(--cinema-lacquer-bright) !important;
-  font-size: 0.7rem !important;
-  font-weight: 700;
-  grid-column: 1 / -1;
+.proofCardCopy small {
+  color: var(--cinema-lacquer-bright);
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
   letter-spacing: 0.13em;
-  text-transform: uppercase;
 }
 
-.proofBody h3 {
-  color: var(--cinema-paper);
+.proofCardCopy strong {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+.proofCardCopy > span {
+  align-self: end;
+  color: var(--cinema-paper-muted);
+  font-size: 0.72rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.proofControls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.proofControls button,
+.proofDialogClose {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--cinema-line);
+  color: var(--cinema-paper);
+  cursor: pointer;
+  display: inline-flex;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+.proofControls svg,
+.proofDialogClose svg {
+  height: 18px;
+  width: 18px;
+}
+
+.proofDialogBackdrop {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.86);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  position: fixed;
+  z-index: 90;
+}
+
+.proofDialog {
+  background: var(--cinema-ink-raised);
+  border: 1px solid rgba(232, 223, 207, 0.28);
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.65fr);
+  max-height: calc(100svh - 2rem);
+  max-width: 1180px;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+.proofDialogClose {
+  background: var(--cinema-ink);
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  z-index: 2;
+}
+
+.proofDialogImage {
+  min-height: min(70svh, 690px);
+}
+
+.proofDialogImage .proofImageFrame {
+  height: 100%;
+}
+
+.proofDialogCopy {
+  align-content: center;
+  display: grid;
+  gap: 1.15rem;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+
+.proofDialogCopy p {
+  color: var(--cinema-lacquer-bright);
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  margin: 0;
+}
+
+.proofDialogCopy h3 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2.3rem, 4vw, 4rem);
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 0.95;
   margin: 0;
 }
 
-.proofBody p {
+.proofDialogCopy strong,
+.proofDialogCopy small {
   color: var(--cinema-paper-muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.65;
 }
 
-.proofBody a {
-  border-bottom: 1px solid var(--cinema-paper-muted);
+.proofDialogCopy small {
+  border-top: 1px solid var(--cinema-line);
+  padding-top: 1rem;
+}
+
+.proofDialogCopy a {
   color: var(--cinema-paper);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  grid-column: 2;
   justify-self: start;
   min-height: 44px;
   padding-top: 0.7rem;
-  text-decoration: none;
+  text-underline-offset: 0.35rem;
 }
 
 .methodAct {
@@ -656,18 +839,23 @@
     right: 2rem;
   }
 
-  .proofBody {
-    grid-template-columns: 1fr;
+  .proofGrid {
+    grid-auto-columns: calc((100% - 1rem) / 2);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    overflow-x: auto;
+    padding: 0.2rem 0.2rem 1rem;
+    scroll-snap-type: x mandatory;
   }
 
-  .proofBody a {
-    grid-column: 1;
+  .proofCard {
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 900px) {
   .hero {
-    min-height: 1100px;
+    min-height: 920px;
   }
 
   .heroPhoto {
@@ -681,9 +869,9 @@
   }
 
   .heroCopy {
+    bottom: calc(var(--hero-film-height) + 3.25rem);
     left: 2rem;
     max-width: 72vw;
-    top: 31rem;
   }
 
   .evidenceStamp {
@@ -701,17 +889,33 @@
   .conanAct {
     grid-template-columns: 0.8fr 1.2fr;
   }
+
+  .proofAct .actHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .proofAct .actHeader > span {
+    grid-column: 1;
+  }
+
+  .proofDialog {
+    grid-template-columns: 1fr;
+  }
+
+  .proofDialogImage {
+    min-height: min(48svh, 520px);
+  }
 }
 
 @media (min-width: 768px) and (max-height: 800px) {
   .hero {
-    min-height: 980px;
+    min-height: 820px;
   }
 }
 
 @media (max-width: 767px) {
   .hero {
-    min-height: 1040px;
+    min-height: 980px;
   }
 
   .heroPhoto {
@@ -760,10 +964,10 @@
   }
 
   .heroCopy {
+    bottom: 282px;
     left: 1.1rem;
     max-width: calc(100% - 2.2rem);
     right: 1.1rem;
-    top: 29rem;
   }
 
   .heroCopy h1 {
@@ -787,7 +991,6 @@
   .heroFilm {
     background-size: auto 100%;
     bottom: 1rem;
-    display: flex;
     height: 250px;
     left: 1rem;
     overflow-x: auto;
@@ -799,6 +1002,13 @@
   .heroFrame {
     flex: 0 0 84vw;
     scroll-snap-align: start;
+  }
+
+  .reelTrack {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
   }
 
   .act {
@@ -819,20 +1029,36 @@
     padding-right: 1.1rem;
   }
 
-  .proofItem {
-    flex-basis: 88vw;
+  .proofGrid {
+    grid-auto-columns: 86vw;
   }
 
-  .proofItem .proofImageFrame {
-    aspect-ratio: 4 / 3;
+  .proofCardCopy {
+    min-height: 7.8rem;
   }
 
-  .proofBody {
+  .proofDialog {
     grid-template-columns: 1fr;
   }
 
-  .proofBody h3 {
-    font-size: 2.5rem;
+  .proofDialogBackdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .proofDialog {
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    max-height: 92svh;
+  }
+
+  .proofDialogImage {
+    min-height: min(42svh, 390px);
+  }
+
+  .proofDialogCopy {
+    padding: 1.75rem 1.1rem 2.25rem;
   }
 
   .methodAct {
@@ -888,8 +1114,50 @@
   }
 
   .primaryButton:hover,
-  .proofItem:hover .proofImage,
+  .proofCard:hover,
+  .proofCard:hover .proofImage,
   .pathRow:hover {
     transform: none;
   }
+
+  .reelTrackDuplicate {
+    display: none;
+  }
+
+  .heroFilm[data-reel-running] .reelTrack {
+    animation: none;
+    min-width: max-content;
+  }
+
+  .heroFilm[data-reel-running] {
+    overflow-x: auto;
+  }
+
+  .reelControl {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .reelTrackDuplicate {
+    display: none;
+  }
+
+  .heroFilm[data-reel-running] .reelTrack {
+    animation: none;
+    min-width: max-content;
+  }
+
+  .heroFilm[data-reel-running] {
+    overflow-x: auto;
+  }
+
+  .reelControl {
+    display: none;
+  }
+}
+
+@keyframes evidenceReel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }

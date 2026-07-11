@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "thong-stage",
+      "kind": "proof",
+      "sourcePath": "/Users/rio/assets/branding/thongphan-speaker-hires.jpg",
+      "sourceSha256": "18cacee64696a70485f4422ebab68fd9973fdbe7361329ad43d1262a0bcd8b6e",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Ảnh thương hiệu gốc do Thông Phan lưu trong kho branding local."
+      },
+      "derivativePath": "/public/images/homepage/proof/thong-stage-3x2-v1.webp",
+      "derivativeSha256": "519456366a8798b9e8e7645c04188d60cb329a8dadb2021feaa54e58678e3705",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 55, "y": 50 },
+      "alt": "Thông Phan cầm micro chia sẻ trên sân khấu tại một sự kiện kinh doanh.",
+      "caption": "Một khoảnh khắc đứng lớp trong ảnh tư liệu sự kiện.",
+      "proof": "Chuyên môn trên website được nối với công việc đã trực tiếp chia sẻ và giải quyết trước người học.",
+      "href": "/about"
+    },
+    {
+      "id": "thong-author-book",
+      "kind": "proof",
+      "sourcePath": "/Users/rio/thongphan-com/public/images/homepage/thong-library-author.jpg",
+      "sourceSha256": "a1c30edef0bb599bc3d48c668ad3af104d3470ffb68cf52d24e31e2e94ede9de",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Ảnh tác giả do Thông Phan sở hữu và đã công khai trên chính thongphan.com."
+      },
+      "derivativePath": "/public/images/homepage/proof/thong-author-book-3x2-v1.webp",
+      "derivativeSha256": "860975dcc87cd521023475fd629809add36e37e160fdee3ab013b05635d0e648",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Thông Phan cầm cuốn sách Thần thoại Hy Lạp tại một hiệu sách.",
+      "caption": "Một mảng nghiên cứu đã được viết, in và cầm được trên tay.",
+      "proof": "Tri thức không dừng ở ghi chú hay bài đăng; nó đã được hệ thống hóa thành một sản phẩm xuất bản thật.",
+      "href": "/library"
+    },
+    {
+      "id": "screenforge-production",
+      "kind": "proof",
+      "sourcePath": "/Users/rio/Movies/screenforge-thong-phan-runs/preview-first-90s-natural-inspect-20260629-021025/contact-sheet.jpg",
+      "sourceSha256": "c6b6c95811f8b9d61917011b95c643ae5c4a3c7e021fcb7c985b208fa84783e6",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Contact sheet QA được tạo từ quy trình sản xuất video và phần ghi hình của chính Thông Phan."
+      },
+      "derivativePath": "/public/images/homepage/proof/screenforge-production-3x2-v1.webp",
+      "derivativeSha256": "685c9ba396d512a2960b10b1e0d8d2211b885ce194cb81bec8d5390c44f571e9",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Contact sheet nhiều khung hình từ quy trình sản xuất một video hướng dẫn của Thông Phan.",
+      "caption": "Một nội dung đã đi qua ghi hình, dựng, kiểm tra từng khung và hoàn thiện.",
+      "proof": "Nội dung không chỉ được viết ra; nó đi qua một quy trình sản xuất, kiểm tra hình ảnh và đóng gói thành video có thể xem lại.",
+      "href": "/blog"
+    }
+  ]
+}

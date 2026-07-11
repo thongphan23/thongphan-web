@@ -10,15 +10,16 @@ type ProofImageProps = {
   sizes: string
   className?: string
   priority?: boolean
+  focalPoint?: { x: number; y: number }
 }
 
-export default function ProofImage({ src, alt, sizes, className, priority = false }: ProofImageProps) {
+export default function ProofImage({ src, alt, sizes, className, priority = false, focalPoint }: ProofImageProps) {
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className={`${styles.proofImageFrame} ${className ?? ''}`} data-image-failed={failed || undefined}>
+    <span className={`${styles.proofImageFrame} ${className ?? ''}`} data-image-failed={failed || undefined}>
       {failed ? (
-        <p className={styles.imageFallback} aria-live="polite">Không tải được ảnh tư liệu</p>
+        <span className={styles.imageFallback} aria-live="polite">Không tải được ảnh tư liệu</span>
       ) : (
         <Image
           src={src}
@@ -27,9 +28,10 @@ export default function ProofImage({ src, alt, sizes, className, priority = fals
           sizes={sizes}
           priority={priority}
           className={styles.proofImage}
+          style={focalPoint ? { objectPosition: `${focalPoint.x}% ${focalPoint.y}%` } : undefined}
           onError={() => setFailed(true)}
         />
       )}
-    </div>
+    </span>
   )
 }
