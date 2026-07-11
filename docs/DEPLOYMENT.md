@@ -13,6 +13,20 @@ Do not patch the generated production output or upload a manual homepage build t
 
 The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
+## Current Unified Cinema release
+
+- Public URL: `https://thongphan.com`
+- Source commit: `17b82c3`
+- Preview deployment: `a34fada0-02d7-4f1b-841e-a57bceeeb707`
+- Preview URL: `https://a34fada0.thongphan-com.pages.dev`
+- Production deployment: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
+- Production origin: `https://802dbe32.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `cde8137c-c82d-4f36-9f67-d849da739902`
+- Homepage HTML SHA-256: `63411f0c1b29e8c84a153905f5f7a87d88879b8f9cae50597c3808fb544040df`
+- Release verification: 84 functional contracts, TypeScript, 54-page export, release budgets, preview Browser QA and production Browser smoke all pass.
+
+`read.thongphan.com` is retired. Worker `thongphan-read` was deleted only after the main production smoke passed. The subdomain now returns HTTP 530 and no redirect; never recreate it as a 301/302 migration layer.
+
 ## Current Crown & Citadel release
 
 - Production URL: `https://thongphan.com/game`
@@ -84,13 +98,13 @@ npx wrangler pages deployment list --project-name thongphan-com
 Deploy the verified `out/` directory to a preview branch named after the release commit:
 
 ```bash
-npx wrangler pages deploy out --project-name thongphan-com --branch preview-<commit>
+npx wrangler pages deploy out --project-name thongphan-com --branch preview-<commit> --commit-hash <commit>
 ```
 
 Run the complete Browser smoke matrix against the returned preview URL. Promote the exact same source commit and rebuilt artifact only after preview passes:
 
 ```bash
-npx wrangler pages deploy out --project-name thongphan-com --branch main
+npx wrangler pages deploy out --project-name thongphan-com --branch main --commit-hash <commit>
 ```
 
 Record the preview URL, production URL, source commit, deployment identifiers and served asset fingerprints in the release QA report.

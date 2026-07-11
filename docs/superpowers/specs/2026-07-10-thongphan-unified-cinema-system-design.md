@@ -1,6 +1,6 @@
 # thongphan.com Unified Cinema System — Design Specification
 
-**Status:** Approved — anh Thông duyệt triển khai trọn vẹn ngày 2026-07-10  
+**Status:** Implemented and production-verified — release `17b82c3`, 2026-07-11
 **Ngày:** 2026-07-10  
 **Repo triển khai:** `/Users/rio/thongphan-com`  
 **Visual target đã chọn:** [Film Archive Editorial](./assets/2026-07-10-unified-library-film-archive-selected.png)  

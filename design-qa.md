@@ -1,11 +1,11 @@
 # Evidence Cinema Fidelity v2 — Design QA
 
-> Current Unified Cinema release note (2026-07-11): the historical homepage fidelity evidence below remains the approved visual baseline. The new full-site source/build gates pass, but the current subpage/404 artifact has not yet completed in-app Browser comparison because this managed session cannot bind a local server and exposes no Browser control tool. See `docs/superpowers/qa/2026-07-10-thongphan-unified-cinema-system.md`. Do not treat the historical `passed` verdict below as production approval for the new full-site release.
+> Unified Cinema production release (2026-07-11): full-site Browser comparison, responsive QA, interaction smoke, preview promotion and production verification are complete. Release `17b82c3` is live at `https://thongphan.com`; see `docs/superpowers/qa/2026-07-10-thongphan-unified-cinema-system.md`.
 
 ## Comparison target
 
 - Source visual truth: `/Users/rio/thongphan-com/docs/superpowers/specs/assets/2026-07-10-evidence-cinema-selected.png`
-- Implemented production build screenshot: `/tmp/thongphan-evidence-cinema-rework/42-final-build-v6-desktop.png`
+- Final production screenshot: `/tmp/unified-cinema-production-17b82c3-1490x1060.png`
 - Final full-view comparison: `/tmp/thongphan-evidence-cinema-rework/45-final-reference-vs-build-v6.png`
 - Focused hero-copy comparison: `/tmp/thongphan-evidence-cinema-rework/46-final-focus-hero-copy.png`
 - Focused film-strip comparison: `/tmp/thongphan-evidence-cinema-rework/47-final-focus-film-strip.png`
@@ -68,12 +68,14 @@ No actionable P0, P1 or P2 mismatch remains in the final comparison.
 ## Production verification
 
 - Production URL: `https://thongphan.com/`
-- Cloudflare deployment: `https://33f2615c.thongphan-com.pages.dev`
-- Deployed source commit: `278c18d`
-- Production captures: `/tmp/thongphan-evidence-cinema-rework/48-production-desktop.png`, `/tmp/thongphan-evidence-cinema-rework/49-production-mobile.png`, `/tmp/thongphan-evidence-cinema-rework/50-production-tablet.png`
-- Live route checks: `/`, `/diagnostic`, `/library`, `/about` and `/conanmaker/` returned successfully with no broken image or relevant console warning/error.
-- Live responsive checks: no horizontal overflow at `1490 × 1060`, `1280 × 720`, `834 × 1194` or `390 × 844`; the short-laptop CTA stack clears the film rail by about `20px`.
-- Live interaction check: the primary CTA reaches `/diagnostic`; the mobile menu opens, closes with Escape and restores focus to `Mục lục`.
+- Cloudflare deployment: `https://802dbe32.thongphan-com.pages.dev`
+- Deployed source commit: `17b82c3`
+- Production captures: `/tmp/unified-cinema-production-17b82c3-1490x1060.png`, `/tmp/unified-cinema-production-17b82c3-390x844.png`
+- Short-laptop capture: `/tmp/unified-cinema-preview-17b82c3-1280x720.png`
+- Live route checks: 16 representative production routes, including nested 404, `/conanmaker/` and `/game/`, passed with no broken image, overflow or relevant console warning/error.
+- Live responsive checks: no horizontal overflow at `1490 × 1060`, `1440 × 900`, `1280 × 800`, `1280 × 720`, `834 × 1194`, `390 × 844` or `320 × 568`.
+- Short-laptop geometry: about `42px` from display name to headline and `16px` from the copy stack to the film rail.
+- Live interaction checks: mobile menu, proof dialog, diagnostic, library filter, reader bookmark/source, chat fallback and custom 404 all passed.
 
 ## Follow-up polish
 

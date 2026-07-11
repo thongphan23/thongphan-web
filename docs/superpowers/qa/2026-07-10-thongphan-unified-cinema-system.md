@@ -1,56 +1,78 @@
 # Unified Cinema release QA
 
 Date: 2026-07-11
+
 Candidate branch: `feat/unified-cinema-system`
-Verdict: **BLOCKED — automated artifact green; rendered and external gates pending**
+
+Release commit: `17b82c3`
+Verdict: **PASSED — production verified; Read retired**
 
 ## Automated evidence
 
 | Gate | Result | Evidence |
 | --- | --- | --- |
-| Functional contracts | PASS | `npm test`: 83 passed, 0 failed after merging current `main` |
+| Functional contracts | PASS | `npm test`: 84 passed, 0 failed |
 | TypeScript | PASS | `npx tsc --noEmit`: exit 0 |
-| Static export | PASS | Webpack generated 54/54 pages |
+| Static export | PASS | Next/Webpack generated 54/54 pages |
 | Homepage build | PASS | 4 passed, 0 failed |
 | SEO/export | PASS | 3 passed, 0 failed |
 | Bundle/image budgets | PASS | 2 passed, 0 failed |
 | Diff hygiene | PASS | `git diff --check`: exit 0 |
-| Legacy indexing safety | PASS | robots exclusions, route metadata and `_headers` noindex contracts |
-| Static game preservation | PASS | 4/4 static-route checks; `/game/` bundle and 65 runtime PNGs retained |
+| Legacy safety | PASS | noindex metadata/headers and sitemap/robots exclusions |
+| Static game preservation | PASS | `/game/` plus 65 runtime PNGs retained; index checksum unchanged |
 
-The export contains `404.html`, `robots.txt`, `sitemap.xml`, `_headers`, `_redirects`, all 13 reading routes, 14 living notes, 4 blog posts, 7 asset details, the challenge detail and standalone Conan Maker bundle.
+## Rendered Browser QA
 
-## Rendered matrix still required
+The selected in-app Browser was used; Playwright CLI was not installed or invoked.
 
-Use only the selected in-app Browser. Do not substitute Playwright CLI.
+| Surface | Desktop | Tablet | Mobile | Result |
+| --- | --- | --- | --- | --- |
+| Homepage, hero and ACT 03 | `1490×1060`, `1440×900`, `1280×800`, `1280×720` | `834×1194` | `390×844`, `320×568` | PASS |
+| About and diagnostic | representative matrix | representative matrix | representative matrix | PASS |
+| Library hub, living note and reading | representative matrix | representative matrix | representative matrix | PASS |
+| Blog index/detail | representative matrix | representative matrix | representative matrix | PASS |
+| Assets, challenge and chat | representative matrix | representative matrix | representative matrix | PASS |
+| Custom/global 404 | direct unknown and nested unknown reading | responsive | responsive | PASS |
+| Conan Maker and Crown & Citadel | direct production routes | responsive audit | responsive audit | PASS |
 
-| Surface | 1490×1060 | 1280×720 | 834×1194 | 390×844 | 320×568 |
-| --- | --- | --- | --- | --- | --- |
-| Homepage + ACT 03 | pending | pending | pending | pending | pending |
-| About + diagnostic | pending | pending | pending | pending | pending |
-| Library hub, note and reading | pending | pending | pending | pending | pending |
-| Blog index/detail | pending | pending | pending | pending | pending |
-| Assets, challenge and chat | pending | pending | pending | pending | pending |
-| Custom 404 | pending | pending | pending | pending | pending |
+Preview matrix: 48 route/viewport checks. Production matrix: 16 desktop route-family checks plus five mobile checks. All had one `h1`, one `main` where applicable, no horizontal overflow, no broken images, and no relevant console warning/error.
 
-For each representative route verify no overflow, no face crop, no broken images, consistent paper/ink/lacquer identity, console cleanliness, image-failure fallback, keyboard focus, mobile menu trap/Escape/focus restore, modal close/restore, diagnostic completion, chat success/failure handling, reader controls and reduced motion.
+Interaction evidence:
 
-## Reference comparison
+- Mobile menu opens as a dialog, locks scroll, closes with Escape, and restores focus to `Mở mục lục`.
+- Evidence dossier opens as a dialog, closes with Escape, and restores focus to the originating proof card.
+- Diagnostic completes all five questions and returns `Tầng 3, Brain2 Base` for the test fixture.
+- Library query `Brain2` plus `Ghi chú sống` serializes as `?q=Brain2&type=note` and returns six matching records.
+- Source-link reader exposes its real Stanford source and local bookmark state without pretending to be a full translation.
+- Chat accepts a non-sensitive test question and returns its safe fallback without a console error.
+- Reduced-motion behavior is locked by source contracts and CSS media rules; no essential content depends on motion.
 
-Reference: `docs/superpowers/specs/assets/2026-07-10-evidence-cinema-selected.png`.
+## Visual comparison
 
-The historical homepage comparison in `design-qa.md` is the visual baseline. The current artifact still requires a same-viewport combined comparison for the homepage hero and ACT 03 after motion settles. Subpage QA must compare tone, typography, spacing, rule weight, image crop and paper/ink/lacquer proportion against that baseline; screenshot capture alone is not a pass.
+- Reference: `docs/superpowers/specs/assets/2026-07-10-evidence-cinema-selected.png`
+- Combined reference/preview comparison: `/tmp/unified-cinema-reference-vs-preview-80cd058.png`
+- Final production desktop: `/tmp/unified-cinema-production-17b82c3-1490x1060.png`
+- Final production mobile: `/tmp/unified-cinema-production-17b82c3-390x844.png`
+- Final short-laptop preview: `/tmp/unified-cinema-preview-17b82c3-1280x720.png`
+- ACT 03 desktop: `/tmp/unified-cinema-act03-desktop.png`
 
-## Deployment and rollback
+Two P1 issues were found and fixed before final promotion: the desktop headline overlapped the display name, and nested unknown reading routes emitted a React hydration mismatch. The final short-laptop pass then compacted the display name and copy stack, leaving about `42px` between the name and headline and `16px` between copy and film rail at `1280×720`.
 
-- Latest repository-recorded production deployment: `cde8137c-c82d-4f36-9f67-d849da739902` (Crown & Citadel release; not live-reconfirmed because Cloudflare CLI is unavailable).
-- Repository-recorded rollback deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`.
-- Preview URL: **not deployed**.
-- Production URL: `https://thongphan.com` (existing release; not modified in this session).
-- Rollback command: redeploy the complete artifact for the captured previous deployment/known-good commit; never mix old HTML with new immutable assets.
+ACT 03 measures about `888.8px` inside a `1060px` viewport and renders all three proof cards without requiring another wheel step.
 
-Two same-network Cloudflare checks failed (`pages deployment list`, then `wrangler whoami`), so no further upload was attempted. See `docs/STUCK_REPORT-2026-07-11-managed-sandbox.md`.
+## Deployment, smoke and rollback
+
+- Verified preview ID: `a34fada0-02d7-4f1b-841e-a57bceeeb707`
+- Preview URL: `https://a34fada0.thongphan-com.pages.dev`
+- Production ID: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
+- Production origin: `https://802dbe32.thongphan-com.pages.dev`
+- Public URL: `https://thongphan.com`
+- Source: `17b82c3`
+- Production `index.html` SHA-256: `63411f0c1b29e8c84a153905f5f7a87d88879b8f9cae50597c3808fb544040df`
+- Known-good pre-release rollback ID: `cde8137c-c82d-4f36-9f67-d849da739902`
+
+The public domain and Pages origin serve byte-identical homepage HTML. Browser reloads used a release query only to bypass the QA browser's cached previous immutable stylesheet; network `curl` confirmed the canonical URL already served the current artifact.
 
 ## Read retirement
 
-Not performed. Retirement is authorized only after preview and production smoke pass. No 301/302 will be added; source data remains local migration provenance.
+After the main production smoke passed, Worker `thongphan-read` was deleted. Before deletion the runtime returned HTTP 200 with `X-Robots-Tag: noindex, nofollow`; after deletion three direct checks returned HTTP 530 with no redirect. The source project remains local as provenance.

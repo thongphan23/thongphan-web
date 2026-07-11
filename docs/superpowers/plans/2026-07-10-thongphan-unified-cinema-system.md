@@ -1,6 +1,6 @@
 # Thông Phan Unified Cinema System Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Ship the approved Unified Cinema system across every in-scope `thongphan.com` route, merge the Read catalog into `/library`, refine the homepage, verify the complete experience, and promote the coherent result to production.
 
@@ -49,23 +49,23 @@
 - Rights report lists all 13 slugs and one of the five approved `rightsStatus` values with source evidence.
 - Read preview returns `noindex, nofollow` in markup, robots, and response headers until retirement.
 
-- [ ] **Step 1: Capture rollback evidence and current checksums**
+- [x] **Step 1: Capture rollback evidence and current checksums**
 
 Run `git status --short`, `git rev-parse HEAD`, `shasum -a 256 public/conanmaker/index.html public/conanmaker/assets/index-fF5i7DFq.js public/conanmaker/assets/index-DPgHELtg.css`, and save output under `/tmp/thongphan-unified-cinema-rollback-20260710/`. Expected: current commit and referenced Conan fingerprint are captured; user-owned untracked files remain visible and untouched.
 
-- [ ] **Step 2: Write the failing Slice 0 safety contract**
+- [x] **Step 2: Write the failing Slice 0 safety contract**
 
 Assert exactly 13 rights rows, approved enum values, fail-closed default publication, Read meta robots, disallow-all robots file, and an `_headers` rule that yields `X-Robots-Tag: noindex, nofollow`. Run the focused test and confirm RED because the report/safety files are absent. Do not add a cross-slice RED test to `npm test`; every committed slice must be GREEN.
 
-- [ ] **Step 3: Audit all 13 reading rights and media truthfully**
+- [x] **Step 3: Audit all 13 reading rights and media truthfully**
 
 Generate `docs/reading-rights-report-2026-07-10.md` from the Read source data. Every row contains slug, author, original URL, translation/body status, media count, local/hotlinked media, rights evidence, public mode, and remediation. Unknown or ordinary copyrighted sources default to `source-link-only`; no optimistic inference is allowed. Run `node scripts/reading-rights-audit.mjs`; expected: 13 unique rows and zero invalid enum values.
 
-- [ ] **Step 4: Put the old Read runtime behind noindex**
+- [x] **Step 4: Put the old Read runtime behind noindex**
 
 Add `<meta name="robots" content="noindex, nofollow">`, a disallow-all `robots.txt`, and `_headers` with `X-Robots-Tag: noindex, nofollow`. Cloudflare Workers Static Assets officially supports `_headers`; keep `wrangler.jsonc` asset-only and verify the rule is copied into `dist`. Run the focused safety test GREEN, build Read, deploy with `npm run deploy`, then use `curl -I https://read.thongphan.com/` and `curl -fsSL https://read.thongphan.com/` to confirm header + meta.
 
-- [ ] **Step 5: Commit safety contracts**
+- [x] **Step 5: Commit safety contracts**
 
 Commit only a GREEN main-repo safety test/report/package change as `test: lock reading release safety`. Record the independent Read safety deploy in its `docs/STATUS.md` because that directory is not a Git worktree.
 
@@ -91,23 +91,23 @@ Commit only a GREEN main-repo safety test/report/package change as `test: lock r
 - `routeModeForPath(pathname)` uses exact matching before prefix matching. `isUnifiedRouteEnabled(pathname)` initially returns true only for `/`; each later slice enables its own route family in the same commit that makes that family GREEN. After Task 5 passes, the map becomes the default for all in-scope Next routes.
 - `SiteChrome` exposes one main landmark, a complete primary menu, a homepage-only chapter nav, and one footer.
 
-- [ ] **Step 1: TDD the route matcher**
+- [x] **Step 1: TDD the route matcher**
 
 Write table tests for every specified exact/prefix route plus unknown paths. Run `npx tsx --test scripts/site-route-mode.test.ts`; expected RED because the module is absent. Implement the smallest pure matcher and rerun; expected GREEN.
 
-- [ ] **Step 2: Add semantic tokens and route-scoped typography**
+- [x] **Step 2: Add semantic tokens and route-scoped typography**
 
 Define only the approved ink, paper, lacquer, line, focus, spacing, and motion primitives. Replace root font declarations with Be Vietnam Pro plus non-preloaded Cormorant and Newsreader variables. Do not globally flip old route consumers until their feature-map flag is active.
 
-- [ ] **Step 3: Replace dual chrome with the universal shell**
+- [x] **Step 3: Replace dual chrome with the universal shell**
 
 Implement the five-link primary nav, route-themed header, one accessible mobile dialog, one footer, and homepage chapter nav. Write and watch a focused mobile-menu source/behavior contract fail before implementation; it covers focus trap, Escape, body lock, 44px targets, and focus restoration. Preserve the old shell behind `isUnifiedRouteEnabled` for all routes except `/`. Use Lucide icons for menu/close/arrows only. Remove the CSS logo mark and default Garden atmosphere only from the unified shell.
 
-- [ ] **Step 4: Verify foundation**
+- [x] **Step 4: Verify foundation**
 
 Run `npm test`, `npx tsc --noEmit`, and `npm run build`. Browser-check menu keyboard behavior on `/`, `/library`, and `/diagnostic` at desktop/mobile. Expected: one `main`, complete nav, correct theme, zero console errors.
 
-- [ ] **Step 5: Commit foundation**
+- [x] **Step 5: Commit foundation**
 
 Commit as `feat: establish unified Cinema foundation` without staging any Conan Maker untracked file.
 
@@ -133,23 +133,23 @@ Commit as `feat: establish unified Cinema foundation` without staging any Conan 
 - `getAllReadingSummaries()`, `getPublicReadings()`, `getReadingBySlug(slug)`, and `getReadingSlugs()` never expose a blocked package or a forbidden full body.
 - Packages include content/media checksums and exact canonical `/library/read/<slug>`. `rights.json` defaults to summary/source-link mode and can only move to full text when translation, public-web, and commercial-context rights all pass.
 
-- [ ] **Step 1: Write validation tests before migration**
+- [x] **Step 1: Write validation tests before migration**
 
 Test 13 unique slugs, approved enum values, required source/credit fields, deterministic topic/intent/duration adapters, checksum stability, local-only media URLs, no full sections for source-link-only/blocked packages, and no hotlinks. Add parity assertions for title, author, source URL, section count, and block count against the old source without exposing those bodies in generated public data. Expected RED before packages and generator exist.
 
-- [ ] **Step 2: Implement one-package migration and prove the schema**
+- [x] **Step 2: Implement one-package migration and prove the schema**
 
 Migrate Steve Jobs first from Read into the normalized package. Apply the rights report literally. Run the focused generator test and inspect the generated TypeScript to ensure full body stays server/static data and is absent when not rights-cleared.
 
-- [ ] **Step 3: Migrate the remaining 12 packages**
+- [x] **Step 3: Migrate the remaining 12 packages**
 
 Use the migration script for structured data; do not hand-copy 13,000 lines into a client source file. Create all 13 packages in fail-closed summary/source-link mode because the current audit found zero full-text-cleared records. Localize only media that passes source/license rules. Add checksums and credit/source records. Run the validator after each batch of three packages.
 
-- [ ] **Step 4: Integrate generation into dev/build/test**
+- [x] **Step 4: Integrate generation into dev/build/test**
 
 Add `generate-readings` before Next dev/build and include the generator tests in `npm test`. Run two consecutive generations and assert `git diff --exit-code lib/readings-data.generated.ts` on the second run.
 
-- [ ] **Step 5: Commit content ingestion**
+- [x] **Step 5: Commit content ingestion**
 
 Commit as `feat: ingest validated reading packages` with the rights report and permitted localized assets.
 
@@ -178,19 +178,19 @@ The original Task 3 is split so no route receives the new shell before its conte
 - Create: `scripts/library-discovery.test.ts`, `scripts/editorial-contract.test.mjs`
 - Modify: `package.json`
 
-- [ ] **Step 1: TDD the adapter and exact URL contract**
+- [x] **Step 1: TDD the adapter and exact URL contract**
 
 Test all three summary types, exact params, deterministic duration/topic/intent adapters, query matching, clear/serialize behavior, and rejection of living-note slug `read`. Keep `useSearchParams()` below `<Suspense>` for static export.
 
-- [ ] **Step 2: Recreate the approved first viewport**
+- [x] **Step 2: Recreate the approved first viewport**
 
 Match the selected `1487×1058` Film Archive reference: black masthead, warm paper, exact headline `Một thư viện để đọc sâu, nghĩ rõ và làm ra thứ có giá trị.`, concise support copy, Steve Jobs featured record, the two primary lanes, a thin real film raster, and the Blog lane immediately after. The CTA is exactly `/library/read/steve-jobs-2005-stanford-commencement-address`. Do not use Garden/graph/fake metrics/CSS art/generated people. Because current reading media is uncleared, keep the featured record typography-first rather than inventing a portrait.
 
-- [ ] **Step 3: Add library-owned discovery and SEO**
+- [x] **Step 3: Add library-owned discovery and SEO**
 
 Pass summary-only data to the client. Use native controls and router replacement while preserving focus. Add canonical `/library`, safe `CollectionPage`/`ItemList`, deterministic sitemap/robots for routes that already exist, and no unapproved OG image. Enable the unified shell for exact `/library` only.
 
-- [ ] **Step 4: Verify and commit 3A**
+- [x] **Step 4: Verify and commit 3A**
 
 Run focused tests, `npm test`, TypeScript, build, HTML/structured-data scans, and Browser QA at desktop/mobile. Compare the implementation and selected reference at the same viewport. Commit as `feat: build Film Archive library hub` only after review is clean.
 
@@ -205,15 +205,15 @@ Run focused tests, `npm test`, TypeScript, build, HTML/structured-data scans, an
 - Create: `scripts/reader-state.test.ts`; extend `scripts/editorial-contract.test.mjs`
 - Modify: `app/sitemap.ts`, `lib/site-route-mode.ts`, `scripts/site-route-mode.test.ts`, `package.json`
 
-- [ ] **Step 1: TDD static routing, reader state, and structured data**
+- [x] **Step 1: TDD static routing, reader state, and structured data**
 
 Cover all 13 static params, `dynamicParams = false`, real `notFound()`, canonical/JSON-LD, source disclosure, bookmark/completion storage, focus/progress/audio states, and client bundle boundaries.
 
-- [ ] **Step 2: Build the truthful summary reader**
+- [x] **Step 2: Build the truthful summary reader**
 
 For the current 13 `source-link-only` packages, render only editorial summary/context, rights/source disclosure, related summaries, and the source CTA. Do not render translation bodies, images, audio, fake progress, or fake completion. Article JSON-LD omits `articleBody` and points to the source through `isBasedOn`. Full-reader controls exist only for a future package whose `publicationMode` is truly `full`.
 
-- [ ] **Step 3: Activate and verify reading routes**
+- [x] **Step 3: Activate and verify reading routes**
 
 Enable exact `/library/read` and prefix `/library/read/`; keep `/library/<living-note>` legacy. Update sitemap with non-blocked summaries, run focused/full tests, TypeScript, build, output/body-bundle scans, keyboard/mobile Browser QA, and preview-level 404 verification later. Commit as `feat: add truthful Film Archive reader` after clean review.
 
@@ -227,15 +227,15 @@ Enable exact `/library/read` and prefix `/library/read/`; keep `/library/<living
 - Extend: `components/editorial/Editorial.module.css`, `scripts/editorial-contract.test.mjs`
 - Modify: `lib/site-route-mode.ts`, `scripts/site-route-mode.test.ts`
 
-- [ ] **Step 1: TDD living-note and Blog-index contracts**
+- [x] **Step 1: TDD living-note and Blog-index contracts**
 
 Lock all existing canonical URLs, 14 living-note static params, real note 404, Markdown/body preservation, typed relations/backlinks, Blog search/filter behavior, one main/h1, and absence of Garden/graph/icon-box motifs.
 
-- [ ] **Step 2: Migrate the two remaining editorial surfaces**
+- [x] **Step 2: Migrate the two remaining editorial surfaces**
 
 Render notes with shared article header, metadata, TOC, body, typed relation lists, source disclosure, and ReadNext. Render `/blog` as the `Bài của Thông` lane in the same paper/serif/rule system while retaining real cover assets and search/filter behavior. Do not edit or enable `/blog/[slug]/**`; that direct-entry surface remains Task 5.
 
-- [ ] **Step 3: Activate, verify, and commit 3C**
+- [x] **Step 3: Activate, verify, and commit 3C**
 
 Enable all `/library/*` only now, plus exact `/blog`. Run focused/full tests, TypeScript, build, direct-entry/404 scans, target-viewport Browser QA, and cross-route visual consistency review. Commit as `feat: unify living library editorial surfaces` after clean review.
 
@@ -264,27 +264,27 @@ Enable all `/library/*` only now, plus exact `/blog`. Run focused/full tests, Ty
 - `HomeFilmReel` duplicates the visual track with the duplicate `aria-hidden` and disables autoplay for touch/reduced motion.
 - `ProofContactSheet` is 3-up desktop, 2-plus tablet, 1.1-up mobile, and opens an accessible evidence dialog/drawer.
 
-- [ ] **Step 1: Generate and QA the physical stamp asset**
+- [x] **Step 1: Generate and QA the physical stamp asset**
 
 Use ImageGen for distressed ink texture only, composite the exact Vietnamese wording if necessary, export RGBA at least `1024×1024`, verify spelling at render size, and remove every CSS brightness/saturate filter. Run image dimension/alpha/budget tests.
 
-- [ ] **Step 2: Inventory real proof photos and create derivatives**
+- [x] **Step 2: Inventory real proof photos and create derivatives**
 
 Search approved local source assets first. Create face-safe 16:9 and 3:2 derivatives without altering people/evidence. The manifest blocks release when fewer than three ACT 03 proof assets pass. Fewer than six valid reel assets is a valid static fallback: integrity tests stay GREEN and `canRunReel` returns false.
 
-- [ ] **Step 3: Implement the reel with the specified gate**
+- [x] **Step 3: Implement the reel with the specified gate**
 
 Write focused RED tests for hover/focus pause, duplicate `aria-hidden`, touch/reduced-motion static behavior, and `canRunReel`. If and only if six assets pass, ship the 30–45s loop, hover/focus pause, lazy loading, touch static mode, and reduced-motion static mode. If the gate is below six, retain the approved static contact sheet and record the accepted fallback without faking evidence.
 
-- [ ] **Step 4: Compact hero and ACT 03**
+- [x] **Step 4: Compact hero and ACT 03**
 
 Anchor hero copy above the reel with `bottom`, accept per-image focal points, and render ACT 03 within the exact desktop dimensions. Add RED geometry/source contracts for CTA-versus-film placement and 3-up dimensions, then add manual rail controls and evidence detail dialog/drawer with focus trap, Escape, and focus restore.
 
-- [ ] **Step 5: Verify homepage**
+- [x] **Step 5: Verify homepage**
 
 Run manifest, content, cinematic, build-budget, TypeScript, and production-build tests. In Browser measure CTA/reel separation and ACT 03 section/card dimensions at all specified viewports; test keyboard/touch/reduced motion and visually inspect face crops.
 
-- [ ] **Step 6: Commit homepage refinement**
+- [x] **Step 6: Commit homepage refinement**
 
 Commit as `feat: refine Cinema proof experience`.
 
@@ -312,23 +312,23 @@ Commit as `feat: refine Cinema proof experience`.
 - Business logic, question order, result mapping, prices, offers, challenge steps, and chat API contract remain unchanged.
 - All pages use the shared mode tokens and one outer main landmark.
 
-- [ ] **Step 1: Add failing route-by-route visual/semantic contracts**
+- [x] **Step 1: Add failing route-by-route visual/semantic contracts**
 
 Lock one h1/main, banned Garden/CSS-art motifs/imports, palette, primary CTA count, and required functionality for each route. Expected RED before migration.
 
-- [ ] **Step 2: Migrate `/about`, `/diagnostic`, and direct-entry blog surfaces**
+- [x] **Step 2: Migrate `/about`, `/diagnostic`, and direct-entry blog surfaces**
 
 Build the Cinema origin story, Dossier diagnostic shell, and shared Editorial blog detail shell while preserving content/logic/canonical URLs. Source every public About metric through `about-proof.json`; omit unsupported claims. Extract and unit-test the diagnostic model with its existing five questions and score thresholds `0/9/13/17/19`. Remove rotated 3D console, radar, halo, and nested main. Enable `/about`, `/diagnostic`, and `/blog*` in the route feature map only after their focused tests pass. Browser-test diagnostic completion, blog 404, and CTA.
 
-- [ ] **Step 3: Migrate `/assets/*`, `/challenges/*`, and `/chat`**
+- [x] **Step 3: Migrate `/assets/*`, `/challenges/*`, and `/chat`**
 
 Apply physical dossier/calendar/evidence-desk composition with shared primitives and Lucide controls. Preserve catalog/product data, challenge activation, chat submission, empty/loading/error states, and all current links. Centralize duplicated challenge data, remove nested interactive controls, and split Chat into a metadata-capable server wrapper plus client runtime. Enable `/assets*`, `/challenges*`, and `/chat` only in the commit where their focused contracts pass; then switch the feature map to the final in-scope default.
 
-- [ ] **Step 4: Remove old shared Garden system only after all consumers pass**
+- [x] **Step 4: Remove old shared Garden system only after all consumers pass**
 
 Delete `GardenSignature`, `BrandGlyph`, old atmosphere/logo CSS, and dead green/gold variables/imports. Confirm `rg` finds no banned visual dependency on migrated public routes; legacy routes may retain isolated CSS but cannot load it globally.
 
-- [ ] **Step 5: Verify and commit route migration**
+- [x] **Step 5: Verify and commit route migration**
 
 Run all tests/build, then Browser QA every index/detail route at desktop/mobile including form/chat behavior. Commit as `feat: unify Cinema subpage experience`.
 
@@ -355,7 +355,7 @@ Search every hardcoded old domain/path, then add validator assertions for the ma
 
 Change routing, package creation, validation, deployment handoff, backlink target, and docs. Preserve Google Sheet as operational input and the existing writeback/readback gate. Do not claim Sheet write success if credentials still return 403.
 
-- [ ] **Step 3: Validate, sync active cache, and fresh-invoke**
+- [x] **Step 3: Validate, sync active cache, and fresh-invoke**
 
 Run the plugin validator, sync marketplace/cache using the established local packaging flow, start a fresh invocation, and verify one dry package points into the main repo with the new canonical. Record exact active version and evidence.
 
@@ -387,35 +387,35 @@ Run the plugin validator, sync marketplace/cache using the established local pac
 
 Test sitemap URLs from posts, notes, public readings, assets, and challenges; robots/legacy exclusions; canonical/OG/JSON-LD; Cloudflare 404 output; per-route JS/CSS sizes; first-view font requests; and image budgets. Keep `public/_redirects` limited to the Conan trailing-slash rule and explicitly ban Read redirects. Run against `out/` after production build.
 
-- [ ] **Step 2: Run the complete local release gate**
+- [x] **Step 2: Run the complete local release gate**
 
 Run `npm test`, `npx tsc --noEmit`, `npm run build`, `npm run test:build`, SEO/bundle tests, `git diff --check`, and the full in-app Browser matrix. Do not install or invoke Playwright CLI. Any failure returns to the owning slice; do not waive acceptance silently.
 
-- [ ] **Step 3: Perform visual comparison, not screenshot-only QA**
+- [x] **Step 3: Perform visual comparison, not screenshot-only QA**
 
 At `1490×1060`, combine the selected reference and implementation screenshot in one comparison input, inspect typography, spacing, rules, image crops, paper/ink/lacquer proportions, fix visible mismatches, and repeat until documented pass. Repeat focused comparisons for homepage hero and ACT 03.
 
-- [ ] **Step 4: Deploy a Cloudflare Pages preview and smoke it**
+- [x] **Step 4: Deploy a Cloudflare Pages preview and smoke it**
 
 Deploy `out/` to `thongphan-com` preview with the release commit hash. Verify every route family, unknown reading 404, menu, library filters, reader controls, diagnostic, chat failure/success handling, Conan static route, cache-fingerprinted assets, and no broken images/console errors.
 
-- [ ] **Step 5: Promote the coherent release to production**
+- [x] **Step 5: Promote the coherent release to production**
 
 Deploy the exact verified output to branch `main`, smoke `https://thongphan.com`, record deployment URL/hash, and compare the served asset fingerprints with the preview.
 
-- [ ] **Step 6: Retire Read without redirects**
+- [x] **Step 6: Retire Read without redirects**
 
 Only after main production passes, remove the `read.thongphan.com` custom domain/Worker route and verify the subdomain no longer serves the old content. Do not add 301/302. Preserve source data locally as migration provenance.
 
-- [ ] **Step 7: Close documentation and commit**
+- [x] **Step 7: Close documentation and commit**
 
 Set `design-qa.md` final result to `passed`, update deployment/QA evidence and spec implementation status, commit as `docs: record Unified Cinema production verification`, and confirm `git status --short` contains only the four untouched user-owned Conan files.
 
 ## Self-review Checklist
 
-- [ ] Every requirement in spec sections 6–22 maps to at least one task and verification step.
-- [ ] Every new behavior starts with a failing automated contract or pure-function test.
-- [ ] No step contains a placeholder, fabricated asset, or permission assumption.
-- [ ] Rights, source truth, legacy exclusions, standalone Conan, and rollback boundaries are explicit.
-- [ ] Plan preserves static export, build-time content, progressive enhancement, and route-specific performance budgets.
-- [ ] Final release includes production evidence rather than a local-only completion claim.
+- [x] Every requirement in spec sections 6–22 maps to at least one task and verification step.
+- [x] Every new behavior starts with a failing automated contract or pure-function test.
+- [x] No step contains a placeholder, fabricated asset, or permission assumption.
+- [x] Rights, source truth, legacy exclusions, standalone Conan, and rollback boundaries are explicit.
+- [x] Plan preserves static export, build-time content, progressive enhancement, and route-specific performance budgets.
+- [x] Final release includes production evidence rather than a local-only completion claim.
