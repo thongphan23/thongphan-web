@@ -6,9 +6,24 @@
 - Frontend build command: `npm run build`.
 - Cloudflare Pages output: `out/`, as declared by `pages_build_output_dir = "out"` in `wrangler.toml`.
 - Static Conan Maker route source: `public/conanmaker/`.
+- Static Crown & Citadel route source: `public/game/`, built from the `crown-and-citadel` repository with `npm run build:site`.
 - Canonical redirect source: `public/_redirects`.
 
 Do not patch the generated production output or upload a manual homepage build that is absent from this repository.
+
+The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
+
+## Current Crown & Citadel release
+
+- Production URL: `https://thongphan.com/game`
+- Website release commit: `9fbe8293180c73bd958d057bf2c97a6154c6b1b4`
+- Game source commit: `4b3730fa3c70de86848ed3caf503ab5e4debfb7c`
+- Cloudflare Pages production deployment: `cde8137c-c82d-4f36-9f67-d849da739902`
+- Previous rollback deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`
+- Preview deployment: `83022506-856e-467a-b17f-9bf7261cced8`
+- Production verification on 2026-07-11: 69/69 game files returned HTTP 200; release manifest and fingerprinted CSS/JS matched the verified artifact; homepage, diagnostic, library, about and Conan Maker returned HTTP 200; Playwright completed policy change, food trade, road/house construction, first-turn resolution and schema 2 save/restore with no application or generated-asset errors.
+
+The Pages origin applies `/game` → `/game/` as a 301. The custom `thongphan.com` router currently serves the same game index directly at `/game` with HTTP 200; both public forms are valid and load assets from `/game/assets/`.
 
 ## Required release gate
 
@@ -34,6 +49,7 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 5. `scripts/homepage-build-contract.test.mjs` checks the built homepage, local asset references, hero budgets and homepage-only JavaScript budget.
 6. The release artifact must retain `out/conanmaker/index.html`, its referenced assets and the canonical trailing-slash redirect.
 7. `public/_headers` must ship immutable caching for fingerprinted Next assets and fail-closed noindex headers for the three legacy surfaces.
+8. The release artifact must retain `out/game/index.html`, all 65 generated runtime PNGs, `/game/`-scoped JS/CSS references and the `/game` → `/game/` redirect.
 
 ## Current performance budgets
 
@@ -50,6 +66,7 @@ Serve `out/` with clean-URL support and verify:
 
 - `/` renders one semantic `h1` and no framework overlay;
 - `/diagnostic`, `/library`, `/about` and `/conanmaker/` resolve;
+- `/game/` loads the title screen, all runtime assets resolve below `/game/assets/`, and `/game` redirects canonically;
 - homepage mobile menu opens, traps focus, closes on Escape and restores focus;
 - the three-question mirror returns a result and correct destination;
 - the proof rail scrolls with ArrowLeft/ArrowRight;

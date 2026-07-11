@@ -58,7 +58,10 @@ test('SEO primitives and fail-closed legacy metadata exist', async () => {
   }
   assert.match(headers, /X-Robots-Tag:\s*noindex, nofollow/i)
   assert.match(headers, /Cache-Control:.*immutable/i)
-  assert.equal(redirects.trim(), '/conanmaker /conanmaker/ 301')
+  assert.deepEqual(
+    redirects.trim().split(/\r?\n/).sort(),
+    ['/conanmaker /conanmaker/ 301', '/game /game/ 301'].sort(),
+  )
   assert.doesNotMatch(redirects, /read\.thongphan\.com|\/library\/read/i)
 })
 
