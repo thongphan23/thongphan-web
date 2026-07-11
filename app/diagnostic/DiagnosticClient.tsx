@@ -44,7 +44,18 @@ export default function DiagnosticClient() {
               <div className={styles.resultBody}>
                 <span className={styles.resultNo}>{level.no}</span><h2>{level.title}</h2><p>{level.diagnosis}</p>
                 <dl><div><dt>Điểm đang kẹt</dt><dd>{level.stuck}</dd></div><div><dt>Bước tiếp theo</dt><dd>{level.next}</dd></div></dl>
-                <div className={styles.actions}>{level.ctas.map((cta) => cta.external ? <a key={cta.href} href={cta.href} target="_blank" rel="noopener noreferrer" data-primary={cta.primary}>{cta.label}<ArrowRight aria-hidden="true" size={16} /></a> : <Link key={cta.href} href={cta.href} data-primary={cta.primary}>{cta.label}<ArrowRight aria-hidden="true" size={16} /></Link>)}</div>
+                <ol className={styles.actions} aria-label="Ba bước phù hợp với kết quả này">
+                  {level.recommendations.map((action, index) => (
+                    <li key={action.href} data-primary={index === 0}>
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <div>
+                        <small>{action.eyebrow}</small>
+                        <p>{action.reason}</p>
+                        <Link href={action.href}>{action.label}<ArrowRight aria-hidden="true" size={16} /></Link>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
                 <button type="button" className={styles.reset} onClick={() => setAnswers({})}>Làm lại hồ sơ</button>
               </div>
             ) : <p className={styles.pending}>Chọn một phương án ở mỗi câu. Kết quả chỉ xuất hiện sau khi đủ năm tín hiệu.</p>}
