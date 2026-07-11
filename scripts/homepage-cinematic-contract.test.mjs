@@ -190,9 +190,15 @@ test('proof media has a readable image failure fallback', async () => {
 
 test('short laptop view keeps the hero compact while clearing the evidence rail', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const shortLaptop = css.match(
+    /@media \(min-width: 768px\) and \(max-height: 800px\)[\s\S]*?(?=@media \(max-width: 767px\))/,
+  )?.[0] ?? ''
 
-  assert.match(css, /@media \(min-width: 768px\) and \(max-height: 800px\)/)
-  assert.match(css, /min-height:\s*820px/)
+  assert.match(shortLaptop, /min-height:\s*820px/)
+  assert.match(shortLaptop, /\.displayName\s*\{[\s\S]*?font-size:\s*6\.6rem/)
+  assert.match(shortLaptop, /\.heroCopy\s*\{[\s\S]*?bottom:\s*calc\(var\(--hero-film-height\) \+ 1rem\)/)
+  assert.match(shortLaptop, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*1\.8rem/)
+  assert.match(shortLaptop, /\.primaryButton\s*\{[\s\S]*?min-height:\s*52px/)
 })
 
 test('desktop hero keeps the explicit two-line promise below the display name', async () => {

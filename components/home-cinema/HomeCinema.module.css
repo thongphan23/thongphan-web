@@ -911,6 +911,34 @@
   .hero {
     min-height: 820px;
   }
+
+  .displayName {
+    font-size: 6.6rem;
+    top: 7.5rem;
+  }
+
+  .heroCopy {
+    bottom: calc(var(--hero-film-height) + 1rem);
+  }
+
+  .heroCopy h1 {
+    font-size: 1.8rem;
+  }
+
+  .heroLead {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .primaryButton {
+    min-height: 52px;
+  }
+
+  .proofMicrocopy {
+    font-size: 0.72rem;
+    margin-top: 0.65rem;
+  }
 }
 
 @media (max-width: 767px) {
