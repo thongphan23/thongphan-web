@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  experimental: {
+    globalNotFound: true,
+  },
   images: {
     unoptimized: true,
   },

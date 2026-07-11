@@ -80,6 +80,14 @@ test('built sitemap includes every public content family and excludes legacy rou
 })
 
 test('robots, canonical metadata, structured data and custom 404 survive export', async () => {
+  const [nextConfig, globalNotFound] = await Promise.all([
+    source('next.config.js'),
+    source('app/global-not-found.tsx'),
+  ])
+  assert.match(nextConfig, /globalNotFound:\s*true/)
+  assert.match(globalNotFound, /<html\s+lang="vi"/)
+  assert.match(globalNotFound, /<SiteChrome/)
+
   const robots = await built('robots.txt')
   assert.match(robots, /Disallow:\s*\/classic/i)
   assert.match(robots, /Disallow:\s*\/concept/i)
