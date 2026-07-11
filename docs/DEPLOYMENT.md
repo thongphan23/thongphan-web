@@ -41,6 +41,19 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 - Prompt Thinking and Evaluate & Verify remain non-purchasable until immutable
   content packages and active offers exist in Learning Core.
 
+## Cinema Chapters preview candidate
+
+- Source commit: `29bcb9d2d212753065e3c8838875be694718d66e`.
+- Preview deployment: `601a9129-8e2e-4736-a0e9-35049a911f6f`.
+- Preview URL: `https://601a9129.thongphan-com.pages.dev`.
+- Branch alias: `https://preview-29bcb9d.thongphan-com.pages.dev`.
+- Previous production deployment retained for rollback:
+  `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`.
+- Production was not promoted because `learn.thongphan.com` does not resolve and
+  the learner PWA has not passed its approved deployment gate.
+- Verification report:
+  `docs/releases/CINEMA_CHAPTERS_PREVIEW_RELEASE_REPORT.md`.
+
 ## Current Crown & Citadel release
 
 - Production URL: `https://thongphan.com/game`

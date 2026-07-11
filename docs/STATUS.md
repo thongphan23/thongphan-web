@@ -52,6 +52,12 @@ production deployment remains unchanged.
 - All nine unique internal handoff destinations returned HTTP 200. Keyboard focus
   is retained with a visible 2px solid focus ring.
 - Production deployment remains intentionally pending.
+- Cloudflare preview `601a9129-8e2e-4736-a0e9-35049a911f6f` is live at
+  `https://601a9129.thongphan-com.pages.dev` from source `29bcb9d`; all 26
+  core/subpage Browser checks and the extended route smoke passed.
+- Production promotion is blocked because `learn.thongphan.com` does not resolve
+  and the independent learner PWA is still design-gated. See
+  `docs/releases/CINEMA_CHAPTERS_PREVIEW_RELEASE_REPORT.md`.
 
 ## Production release
 
