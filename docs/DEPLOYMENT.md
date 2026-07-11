@@ -16,10 +16,12 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 ## Current Crown & Citadel release
 
 - Production URL: `https://thongphan.com/game`
-- Website release commit: `d49a20e704fa09620d8a0728c6fb0ed4aee13ef2`
-- Game source commit: `a0e31a7bffc119abb99eec68d7e30d95c6863169`
-- Cloudflare Pages production deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`
-- Production verification on 2026-07-10: 69/69 game files returned HTTP 200 after canonical resolution; the release manifest hash matched; homepage, diagnostic, library, about and Conan Maker stayed available; Playwright completed the first-turn build and save/restore flow with no application or generated-asset errors.
+- Website release commit: `9fbe8293180c73bd958d057bf2c97a6154c6b1b4`
+- Game source commit: `4b3730fa3c70de86848ed3caf503ab5e4debfb7c`
+- Cloudflare Pages production deployment: `cde8137c-c82d-4f36-9f67-d849da739902`
+- Previous rollback deployment: `9d4a1172-1a9d-4c23-b622-088a41d110b7`
+- Preview deployment: `83022506-856e-467a-b17f-9bf7261cced8`
+- Production verification on 2026-07-11: 69/69 game files returned HTTP 200; release manifest and fingerprinted CSS/JS matched the verified artifact; homepage, diagnostic, library, about and Conan Maker returned HTTP 200; Playwright completed policy change, food trade, road/house construction, first-turn resolution and schema 2 save/restore with no application or generated-asset errors.
 
 The Pages origin applies `/game` → `/game/` as a 301. The custom `thongphan.com` router currently serves the same game index directly at `/game` with HTTP 200; both public forms are valid and load assets from `/game/assets/`.
 
