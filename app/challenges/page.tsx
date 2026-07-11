@@ -3,6 +3,7 @@ import styles from './page.module.css'
 import { challenges } from '@/lib/challenges'
 import { DossierHeader } from '@/components/dossier/DossierHeader'
 import Image from 'next/image'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 
 const beforeAfter = [
   ['Before', 'Kiến thức rời rạc, AI dùng lẻ tẻ, nội dung nghe đúng nhưng generic.'],
@@ -126,6 +127,7 @@ export default function ChallengesPage() {
           </div>
         </div>
       </section>
+      <ChapterHandoff journeyKey="challenges" tone="dark" />
     </div>
   )
 }

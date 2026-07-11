@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import {
   CATEGORY_LABELS,
   formatVnd,
@@ -160,7 +161,7 @@ export default async function AssetDetailPage({ params }: Props) {
             anh em đi sang Conan. Ở đây chỉ bán mảnh ghép tự làm.
           </p>
           <div>
-            <a href="https://com.conan.school" target="_blank" rel="noopener" className="btn-outline">
+            <a href="/conanmaker/" className="btn-outline">
               Tìm hiểu Conan Maker
             </a>
             <Link href="/diagnostic" className="btn-ghost">
@@ -169,6 +170,7 @@ export default async function AssetDetailPage({ params }: Props) {
           </div>
         </section>
       </div>
+      <ChapterHandoff journeyKey="asset-detail" tone="dark" />
     </div>
   )
 }

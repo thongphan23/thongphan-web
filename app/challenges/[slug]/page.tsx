@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { CSSProperties } from 'react'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import styles from './page.module.css'
 import SignupForm from '@/components/SignupForm'
 import { notFound } from 'next/navigation'
@@ -205,6 +206,7 @@ export default async function ChallengeDetailPage({ params }: PageProps) {
           </div>
         </div>
       </section>
+      <ChapterHandoff journeyKey="challenge-detail" tone="dark" />
     </div>
   )
 }

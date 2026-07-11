@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import ArticleHeader from '@/components/editorial/ArticleHeader'
 import ReadNext from '@/components/editorial/ReadNext'
 import SourceDisclosure from '@/components/editorial/SourceDisclosure'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import ReadingToolbar from '@/components/library/ReadingToolbar'
 import { buildReadingStructuredData } from '@/lib/reading-structured-data'
 import {
@@ -130,6 +131,8 @@ export default async function ReadingDetailPage({
           <SourceDisclosure source={reading.source} sourceUrl={reading.sourceUrl} />
           <ReadNext readings={related} />
         </article>
+
+        <ChapterHandoff journeyKey="reader" tone="paper" />
       </div>
 
       <script type="application/ld+json">{serializeStructuredData(jsonLd)}</script>

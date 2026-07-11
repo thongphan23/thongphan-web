@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import type { LibraryNote, LibraryNoteMeta, LibraryRelatedLink, LibraryRelation } from '@/lib/library'
 import { topicLabel } from '@/lib/library-discovery'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import styles from './page.module.css'
 
 interface HydratedLink extends LibraryRelatedLink {
@@ -170,6 +171,8 @@ export default function LibraryArticle({
             </footer>
           </div>
         </div>
+
+        <ChapterHandoff journeyKey="reader" tone="paper" />
       </div>
     </article>
   )

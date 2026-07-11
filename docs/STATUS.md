@@ -9,7 +9,7 @@ the in-scope site. The new public Learn slice and the first Cinema Chapters jour
 slice are complete and verified locally but have not been deployed; the existing
 production deployment remains unchanged.
 
-## Cinema Chapters journey spine - local release candidate
+## Cinema Chapters journey system - local release candidate
 
 - Added one typed route-intent registry for 12 journey contexts and a shared,
   asymmetric chapter handoff that works on both dark cinema and light editorial
@@ -24,10 +24,17 @@ production deployment remains unchanged.
   trailing slash.
 - Unified routes now use IBM Plex Mono for operational labels, a semantic oxblood
   token, and a physical brand-stamp browser icon.
+- Library now starts from three concrete visitor states: clarify the blockage,
+  turn expertise into an output, or begin a 21-day practice rhythm.
+- Library, world readings, living notes, reading detail, Assets, Challenges, and
+  Blog index/detail routes now close with contextual chapter handoffs. Reading
+  surfaces stay paper-light; action surfaces stay cinema-dark.
+- The stale external Conan link on asset detail now resolves to the verified local
+  `/conanmaker/` bridge.
 
 ### Cinema Chapters verification
 
-- `npm test`: 103/103 passed.
+- `npm test`: 106/106 passed.
 - `npx tsc --noEmit`: passed.
 - `npm run build`: 61/61 static pages generated.
 - `npm run test:release`: 9/9 passed.
@@ -39,6 +46,11 @@ production deployment remains unchanged.
   returned the top of the document after a programmatic scroll.
 - Local evidence: `/tmp/thongphan-cinema-chapters-qa/report.json` and
   `/tmp/thongphan-cinema-chapters-qa/*.png`.
+- Expanded subpage QA covered 10 representative index/detail routes at desktop
+  and mobile (20 checks): zero overflow, zero console/network error, 44px minimum
+  targets, reduced motion, and no self-link on the world-reading index.
+- All nine unique internal handoff destinations returned HTTP 200. Keyboard focus
+  is retained with a visible 2px solid focus ring.
 - Production deployment remains intentionally pending.
 
 ## Production release

@@ -147,6 +147,85 @@
   text-decoration: none;
 }
 
+.currentState {
+  border-top: 1px solid var(--brand-line-paper);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+  margin: 0 var(--brand-space-inline);
+  padding: clamp(1.6rem, 3vw, 2.75rem) 0;
+}
+
+.currentState > header > p,
+.currentStateGrid article > span {
+  color: var(--brand-oxblood);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.currentState > header h2 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0.75rem 0 0;
+  max-width: 11ch;
+}
+
+.currentStateGrid {
+  border-top: 1px solid var(--brand-line-paper);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.currentStateGrid article {
+  border-bottom: 1px solid var(--brand-line-paper);
+  border-right: 1px solid var(--brand-line-paper);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.25rem clamp(1rem, 2vw, 1.5rem);
+}
+
+.currentStateGrid article:last-child {
+  border-right: 0;
+}
+
+.currentStateGrid h3 {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(1.2rem, 1.65vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0.8rem 0 0.65rem;
+}
+
+.currentStateGrid p {
+  color: var(--brand-muted-on-paper);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.currentStateGrid a {
+  align-items: center;
+  color: var(--brand-text-on-paper);
+  display: inline-flex;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.05rem;
+  gap: 0.45rem;
+  margin-top: auto;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.currentStateGrid a:hover {
+  color: var(--brand-lacquer);
+}
+
 .primaryLanes {
   border-top: 1px solid var(--brand-line-paper);
   display: grid;
@@ -323,6 +402,11 @@
   outline-offset: var(--brand-focus-offset);
 }
 
+.currentStateGrid a:focus-visible {
+  outline: var(--brand-focus-ring-paper);
+  outline-offset: var(--brand-focus-offset);
+}
+
 .discoveryFallback {
   background: var(--brand-reading-paper-deep);
   color: var(--brand-muted-on-paper);
@@ -388,6 +472,27 @@
   .primaryLanes {
     grid-template-columns: 1fr;
     margin: 0 1rem;
+  }
+
+  .currentState {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    margin: 0 1rem;
+  }
+
+  .currentState > header h2 {
+    max-width: 15ch;
+  }
+
+  .currentStateGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .currentStateGrid article,
+  .currentStateGrid article:last-child {
+    border-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .archiveLane:first-child,

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import { topicLabel } from '@/lib/library-discovery'
 import { getPublicReadings } from '@/lib/readings'
 import { serializeStructuredData } from '@/lib/structured-data'
@@ -97,6 +98,8 @@ export default function ReadingIndexPage() {
           ))}
         </div>
       </section>
+
+      <ChapterHandoff journeyKey="reader" tone="paper" />
 
       <script
         type="application/ld+json"

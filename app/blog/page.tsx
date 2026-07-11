@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { getAllPosts } from '@/lib/blog'
 import BlogFiltersClient from './BlogFiltersClient'
 import type { BlogCategory } from './blog-filtering'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import styles from './page.module.css'
 
 const CATEGORIES: BlogCategory[] = [
@@ -110,6 +111,7 @@ export default function BlogPage() {
           }))}
         />
       </section>
+      <ChapterHandoff journeyKey="blog" tone="paper" />
     </div>
   )
 }

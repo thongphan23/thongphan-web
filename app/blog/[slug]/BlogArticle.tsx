@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import styles from './page.module.css'
 
 interface TOCHeading {
@@ -406,6 +407,7 @@ export default function BlogArticle({
         <div className={styles.backWrap}>
           <Link href="/blog" className="btn-outline">← Tất cả bài viết</Link>
         </div>
+        <ChapterHandoff journeyKey="blog-detail" tone="paper" />
       </article>
 
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import LibraryDiscovery from '@/components/library/LibraryDiscovery'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import { getAllPosts } from '@/lib/blog'
 import {
   adaptBlogPost,
@@ -146,6 +147,33 @@ export default function LibraryPage() {
           ) : null}
         </header>
 
+        <section className={styles.currentState} aria-labelledby="current-state-title">
+          <header>
+            <p>Đừng bắt đầu từ định dạng</p>
+            <h2 id="current-state-title">Bắt đầu từ điều bạn đang cần nhìn rõ.</h2>
+          </header>
+          <div className={styles.currentStateGrid}>
+            <article>
+              <span>01 · Gọi đúng vấn đề</span>
+              <h3>Làm rõ điều đang vướng</h3>
+              <p>Năm câu hỏi giúp xác định điểm kẹt trước khi chọn thứ để đọc hoặc công cụ để dùng.</p>
+              <Link href="/diagnostic">Mở bản đồ chuyên môn <span aria-hidden="true">→</span></Link>
+            </article>
+            <article>
+              <span>02 · Làm ra một vật thể</span>
+              <h3>Biến chuyên môn thành đầu ra</h3>
+              <p>Chọn một bộ nhỏ để biến điều vừa hiểu thành thứ có thể dùng và nhận phản hồi.</p>
+              <Link href="/assets">Xem kho tài sản nhỏ <span aria-hidden="true">→</span></Link>
+            </article>
+            <article>
+              <span>03 · Tạo nhịp làm</span>
+              <h3>Bắt đầu một nhịp thực hành</h3>
+              <p>Gom nguyên liệu thật trong 21 ngày thay vì tiếp tục lưu thêm kiến thức rời rạc.</p>
+              <Link href="/challenges/brain2-21-ngay">Mở lịch 21 ngày <span aria-hidden="true">→</span></Link>
+            </article>
+          </div>
+        </section>
+
         <div className={styles.primaryLanes}>
           <ArchiveLane
             index="01"
@@ -199,6 +227,8 @@ export default function LibraryPage() {
       <Suspense fallback={<div className={styles.discoveryFallback}>Đang mở mục lục thư viện…</div>}>
         <LibraryDiscovery entries={entries} />
       </Suspense>
+
+      <ChapterHandoff journeyKey="library" tone="paper" />
 
       <script
         type="application/ld+json"

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import Link from 'next/link'
 import {
   CATEGORY_LABELS,
@@ -136,6 +137,7 @@ export default function AssetsPage() {
           </div>
         </section>
       </div>
+      <ChapterHandoff journeyKey="assets" tone="dark" />
     </div>
   )
 }
