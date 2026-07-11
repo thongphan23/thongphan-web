@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUp, MessageCircle } from 'lucide-react'
 import { DossierHeader } from '@/components/dossier/DossierHeader'
-import { getMockResponse, splitSseEvents, suggestedQuestions, type ChatMessage } from './chat-model'
+import { getRecommendationsForPrompt } from '@/lib/site-journey'
+import { createLocalChatTurn, splitSseEvents, suggestedQuestions, type ChatMessage } from './chat-model'
 import styles from './page.module.css'
 
 const CHAT_API_URL = process.env.NEXT_PUBLIC_CHAT_API_URL
@@ -15,11 +16,14 @@ export default function ChatClient() {
   const [loading, setLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => { messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [messages])
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    messagesEndRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' })
+  }, [messages])
 
-  const updateLastAssistant = (content: string) => setMessages((current) => {
+  const updateLastAssistant = (content: string, recommendations?: ChatMessage['recommendations']) => setMessages((current) => {
     const next = [...current]
-    next[next.length - 1] = { role: 'assistant', content }
+    next[next.length - 1] = { role: 'assistant', content, recommendations }
     return next
   })
 
@@ -30,12 +34,14 @@ export default function ChatClient() {
     setLoading(true)
     try {
       if (!CHAT_API_URL) {
+        const turn = createLocalChatTurn(text)
         let response = ''
-        for (const word of getMockResponse(text).split(' ')) {
+        for (const word of turn.content.split(' ')) {
           response += `${word} `
           updateLastAssistant(response)
           await new Promise((resolve) => setTimeout(resolve, 24))
         }
+        updateLastAssistant(response.trim(), turn.recommendations)
         return
       }
       const response = await fetch(CHAT_API_URL, {
@@ -63,9 +69,13 @@ export default function ChatClient() {
       const finalSplit = splitSseEvents(remainder, `${decoder.decode()}\n\n`)
       finalSplit.events.forEach(consumeEvent)
       if (!assistantMessage.trim()) throw new Error('Response stream completed without an answer')
+      updateLastAssistant(assistantMessage, getRecommendationsForPrompt(text))
     } catch (error) {
       console.error('Chat error:', error)
-      updateLastAssistant('Xin lỗi, có lỗi xảy ra. Thử lại nhé!')
+      updateLastAssistant(
+        'Kết nối vừa bị gián đoạn. Bạn vẫn có thể chọn một bước phù hợp bên dưới.',
+        getRecommendationsForPrompt(text),
+      )
     } finally { setLoading(false) }
   }
 
@@ -87,7 +97,20 @@ export default function ChatClient() {
             ) : messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`${styles.message} ${styles[message.role]}`}>
                 <span>{message.role === 'assistant' ? 'TP' : 'Bạn'}</span>
-                <p>{message.content || (loading && index === messages.length - 1 ? 'Đang đọc bối cảnh…' : '')}</p>
+                <div className={styles.messageBody}>
+                  <p>{message.content || (loading && index === messages.length - 1 ? 'Đang đọc bối cảnh…' : '')}</p>
+                  {message.role === 'assistant' && message.recommendations?.length ? (
+                    <nav className={styles.recommendations} aria-label="Ba bước có thể đi tiếp">
+                      {message.recommendations.map((action, actionIndex) => (
+                        <article key={action.href} data-primary={actionIndex === 0}>
+                          <span>{action.eyebrow}</span>
+                          <p>{action.reason}</p>
+                          <Link href={action.href}>{action.label} <span aria-hidden="true">→</span></Link>
+                        </article>
+                      ))}
+                    </nav>
+                  ) : null}
+                </div>
               </div>
             ))}
             <div ref={messagesEndRef} />
