@@ -34,22 +34,10 @@ export function routeModeForPath(pathname: string): SiteRouteMode {
   if (exactMode) return exactMode
 
   const prefixMatch = prefixRouteModes.find(([prefix]) => pathname.startsWith(`${prefix}/`))
-  return prefixMatch?.[1] ?? 'default'
+  return prefixMatch?.[1] ?? 'cinema-dark'
 }
 
 export function isUnifiedRouteEnabled(pathname: string): boolean {
-  return (
-    pathname === '/' ||
-    pathname === '/about' ||
-    pathname === '/diagnostic' ||
-    pathname === '/assets' ||
-    pathname.startsWith('/assets/') ||
-    pathname === '/challenges' ||
-    pathname.startsWith('/challenges/') ||
-    pathname === '/chat' ||
-    pathname === '/library' ||
-    pathname.startsWith('/library/') ||
-    pathname === '/blog' ||
-    pathname.startsWith('/blog/')
-  )
+  const mode = routeModeForPath(pathname)
+  return mode !== 'legacy' && mode !== 'standalone'
 }

@@ -6,6 +6,7 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Knowledge Garden Concept — Thông Phan',
   description: 'Prototype cinematic cho thongphan.com: kinh nghiệm thật mọc thành Brain2, tài sản số và dòng tiền thứ hai.',
+  robots: { index: false, follow: false },
 }
 
 const layers = [

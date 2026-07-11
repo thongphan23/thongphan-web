@@ -1,0 +1,14 @@
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=86400
+
+/classic
+  X-Robots-Tag: noindex, nofollow
+
+/concept
+  X-Robots-Tag: noindex, nofollow
+
+/co-che-tep-moi.html
+  X-Robots-Tag: noindex, nofollow

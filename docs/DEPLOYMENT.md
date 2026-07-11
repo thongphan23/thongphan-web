@@ -19,7 +19,7 @@ npm ci
 npm test
 npx tsc --noEmit
 npm run build
-npm run test:build
+npm run test:release
 git diff --check
 ```
 
@@ -33,6 +33,7 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 4. `scripts/static-route-contract.test.mjs` locks the captured `/conanmaker/` JS/CSS fingerprints and checks local references.
 5. `scripts/homepage-build-contract.test.mjs` checks the built homepage, local asset references, hero budgets and homepage-only JavaScript budget.
 6. The release artifact must retain `out/conanmaker/index.html`, its referenced assets and the canonical trailing-slash redirect.
+7. `public/_headers` must ship immutable caching for fingerprinted Next assets and fail-closed noindex headers for the three legacy surfaces.
 
 ## Current performance budgets
 
@@ -55,9 +56,33 @@ Serve `out/` with clean-URL support and verify:
 - browser console has no relevant errors or warnings;
 - desktop and mobile have no horizontal overflow.
 
+## Preview and production promotion
+
+Capture the current production deployment before uploading anything:
+
+```bash
+npx wrangler pages deployment list --project-name thongphan-com
+```
+
+Deploy the verified `out/` directory to a preview branch named after the release commit:
+
+```bash
+npx wrangler pages deploy out --project-name thongphan-com --branch preview-<commit>
+```
+
+Run the complete Browser smoke matrix against the returned preview URL. Promote the exact same source commit and rebuilt artifact only after preview passes:
+
+```bash
+npx wrangler pages deploy out --project-name thongphan-com --branch main
+```
+
+Record the preview URL, production URL, source commit, deployment identifiers and served asset fingerprints in the release QA report.
+
 ## Rollback
 
 Rollback means redeploying the complete previous Cloudflare Pages artifact or previous known-good commit. Do not restore only HTML while keeping a mismatched collection of mutable assets.
+
+The release report must contain the previous deployment identifier before production promotion. If it cannot be captured, production promotion is blocked.
 
 ## Authorization boundary
 

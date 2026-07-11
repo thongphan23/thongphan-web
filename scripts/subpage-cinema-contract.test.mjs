@@ -37,11 +37,12 @@ test('shared dossier primitives exist and migrated routes enable the unified she
 
   const routeMode = read('lib/site-route-mode.ts')
   for (const path of ['/about', '/diagnostic', '/assets', '/challenges', '/chat']) {
-    assert.match(routeMode, new RegExp(`pathname === ['"]${path}['"]`), `${path} must enable the unified shell`)
+    assert.match(routeMode, new RegExp(`['"]${path}['"]:\\s*['"](?:cinema-dark|evidence-dossier)['"]`), `${path} must enable the unified shell`)
   }
-  assert.match(routeMode, /pathname\.startsWith\(['"]\/blog\/['"]\)/)
-  assert.match(routeMode, /pathname\.startsWith\(['"]\/assets\/['"]\)/)
-  assert.match(routeMode, /pathname\.startsWith\(['"]\/challenges\/['"]\)/)
+  assert.match(routeMode, /\['\/blog',\s*'editorial-light'\]/)
+  assert.match(routeMode, /\['\/assets',\s*'evidence-dossier'\]/)
+  assert.match(routeMode, /\['\/challenges',\s*'evidence-dossier'\]/)
+  assert.match(routeMode, /mode !== 'legacy' && mode !== 'standalone'/)
 })
 
 test('about metrics are released only through the proof manifest', () => {

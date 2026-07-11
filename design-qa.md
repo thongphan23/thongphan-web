@@ -1,5 +1,7 @@
 # Evidence Cinema Fidelity v2 — Design QA
 
+> Current Unified Cinema release note (2026-07-11): the historical homepage fidelity evidence below remains the approved visual baseline. The new full-site source/build gates pass, but the current subpage/404 artifact has not yet completed in-app Browser comparison because this managed session cannot bind a local server and exposes no Browser control tool. See `docs/superpowers/qa/2026-07-10-thongphan-unified-cinema-system.md`. Do not treat the historical `passed` verdict below as production approval for the new full-site release.
+
 ## Comparison target
 
 - Source visual truth: `/Users/rio/thongphan-com/docs/superpowers/specs/assets/2026-07-10-evidence-cinema-selected.png`

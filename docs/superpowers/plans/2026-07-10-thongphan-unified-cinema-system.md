@@ -347,11 +347,11 @@ Run all tests/build, then Browser QA every index/detail route at desktop/mobile 
 - Generated package target is `/Users/rio/thongphan-com/content/readings/<slug>/article.json` with localized media folders.
 - No command deploys the old Vite Read runtime after main release.
 
-- [ ] **Step 1: Write a failing canonical/output-path contract in the source plugin**
+- [x] **Step 1: Write a failing canonical/output-path contract in the source plugin**
 
 Search every hardcoded old domain/path, then add validator assertions for the main canonical and package output. Run the source validator and confirm RED.
 
-- [ ] **Step 2: Update the smallest coherent plugin flow**
+- [x] **Step 2: Update the smallest coherent plugin flow**
 
 Change routing, package creation, validation, deployment handoff, backlink target, and docs. Preserve Google Sheet as operational input and the existing writeback/readback gate. Do not claim Sheet write success if credentials still return 403.
 
@@ -359,7 +359,7 @@ Change routing, package creation, validation, deployment handoff, backlink targe
 
 Run the plugin validator, sync marketplace/cache using the established local packaging flow, start a fresh invocation, and verify one dry package points into the main repo with the new canonical. Record exact active version and evidence.
 
-- [ ] **Step 4: Commit plugin source separately if it is a Git worktree; otherwise record an explicit file-level handoff**
+- [x] **Step 4: Commit plugin source separately if it is a Git worktree; otherwise record an explicit file-level handoff**
 
 ### Task 7: Full QA, bundle audit, preview, production promotion, and Read retirement
 
@@ -383,7 +383,7 @@ Run the plugin validator, sync marketplace/cache using the established local pac
 - QA matrix covers the five approved viewport sizes, all public route families, keyboard journeys, reduced motion, structured data, image failures, console, overflow, and bundle budgets.
 - Production release has a captured previous deployment identifier and a verified rollback command.
 
-- [ ] **Step 1: Make route/SEO/budget tests reproducible**
+- [x] **Step 1: Make route/SEO/budget tests reproducible**
 
 Test sitemap URLs from posts, notes, public readings, assets, and challenges; robots/legacy exclusions; canonical/OG/JSON-LD; Cloudflare 404 output; per-route JS/CSS sizes; first-view font requests; and image budgets. Keep `public/_redirects` limited to the Conan trailing-slash rule and explicitly ban Read redirects. Run against `out/` after production build.
 

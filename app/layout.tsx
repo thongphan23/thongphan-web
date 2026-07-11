@@ -10,12 +10,15 @@ import {
 import '@/styles/globals.css'
 import ScrollAnimations from '@/components/ScrollAnimations'
 import SiteChrome from '@/components/site-chrome/SiteChrome'
+import JsonLd from '@/components/seo/JsonLd'
+import { buildWebsiteStructuredData, DEFAULT_DESCRIPTION, SITE_URL } from '@/lib/seo'
 
 const beVietnamPro = Be_Vietnam_Pro({
   subsets: ['latin', 'vietnamese'],
   weight: ['300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-be-vietnam',
   display: 'swap',
+  preload: false,
 })
 
 const cormorantGaramond = Cormorant_Garamond({
@@ -62,9 +65,9 @@ const lora = Lora({
 const legacyFontClassName = `${inter.variable} ${lora.variable} ${jetBrainsMono.variable}`
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://thongphan.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Thông Phan — Biến kiến thức thành tài sản và dòng tiền',
-  description: 'Nếu bạn có chuyên môn thật nhưng chưa được nhìn thấy đúng, hãy bắt đầu biến kinh nghiệm của mình thành nội dung, tài sản số và cơ hội xứng đáng.',
+  description: DEFAULT_DESCRIPTION,
   keywords: ['AI', 'chuyên môn', 'tài sản số', 'dòng tiền thứ 2', 'Brain2', 'Thông Phan', 'Conan School'],
   authors: [{ name: 'Thông Phan' }],
   openGraph: {
@@ -84,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable}`}>
         <ScrollAnimations />
         <SiteChrome legacyFontClassName={legacyFontClassName}>{children}</SiteChrome>
+        <JsonLd data={buildWebsiteStructuredData()} />
       </body>
     </html>
   )

@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import type { Metadata } from 'next'
 import styles from './page.module.css'
+
+export const metadata: Metadata = {
+  title: 'Trang thử nghiệm lưu trữ — Thông Phan',
+  robots: { index: false, follow: false },
+}
 
 const heroStats = [
   ['40+', 'bài viral có dữ liệu thật'],

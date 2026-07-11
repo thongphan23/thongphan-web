@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run generate-blog && npm run generate-library && npm run generate-readings && next dev --webpack",
-    "build": "npm run generate-blog && npm run generate-library && npm run generate-readings && TURBOPACK=0 next build",
+    "build": "npm run generate-blog && npm run generate-library && npm run generate-readings && next build --webpack",
     "generate-blog": "node scripts/generate-blog-data.mjs",
     "generate-library": "node scripts/generate-library-data.mjs",
     "generate-readings": "node scripts/generate-readings-data.mjs",
@@ -16,6 +16,9 @@
     "start": "next start",
     "test": "node --import tsx --test scripts/generate-library-data.test.mjs scripts/generate-readings-data.test.mjs scripts/library-discovery.test.ts scripts/library-hub-contract.test.mjs scripts/reader-state.test.ts scripts/reading-routes-contract.test.mjs scripts/editorial-contract.test.mjs scripts/homepage-proof-assets.test.ts scripts/homepage-cinematic-contract.test.mjs scripts/subpage-cinema-contract.test.mjs scripts/static-route-contract.test.mjs scripts/home-cinema-content.test.ts scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts",
     "test:build": "node --import tsx --test scripts/homepage-build-contract.test.mjs",
+    "test:seo": "node --import tsx --test scripts/seo-contract.test.mjs",
+    "test:bundle": "node --test scripts/bundle-budget.test.mjs",
+    "test:release": "npm run test:build && npm run test:seo && npm run test:bundle",
     "test:read-release-safety": "node --test scripts/read-release-safety.test.mjs",
     "audit:reading-rights": "node scripts/reading-rights-audit.mjs",
     "lint": "next lint"

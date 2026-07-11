@@ -22,12 +22,12 @@ const routeModeCases: Array<[pathname: string, expected: SiteRouteMode]> = [
   ['/classic', 'legacy'],
   ['/concept', 'legacy'],
   ['/co-che-tep-moi.html', 'legacy'],
-  ['/about/team', 'default'],
-  ['/diagnostic/results', 'default'],
-  ['/chat/thread', 'default'],
-  ['/classic/notes', 'default'],
-  ['/conanmakerish', 'default'],
-  ['/unknown', 'default'],
+  ['/about/team', 'cinema-dark'],
+  ['/diagnostic/results', 'cinema-dark'],
+  ['/chat/thread', 'cinema-dark'],
+  ['/classic/notes', 'cinema-dark'],
+  ['/conanmakerish', 'cinema-dark'],
+  ['/unknown', 'cinema-dark'],
 ]
 
 test('routeModeForPath honors every exact and prefix route contract', () => {
@@ -36,9 +36,9 @@ test('routeModeForPath honors every exact and prefix route contract', () => {
   }
 })
 
-test('the unified shell enables every migrated Cinema and editorial surface only', () => {
-  const enabled = ['/', '/about', '/diagnostic', '/assets', '/assets/offer-map', '/challenges', '/challenges/brain2', '/chat', '/library', '/library/read', '/library/read/deep-work', '/library/a-living-note', '/blog', '/blog/a-field-note']
-  const disabled = ['/about/team', '/diagnostic/results', '/chat/thread', '/classic', '/classic/notes', '/conanmaker', '/conanmakerish', '/libraryish', '/unknown']
+test('the unified shell is the safe default while explicit legacy and standalone routes stay isolated', () => {
+  const enabled = ['/', '/about', '/diagnostic', '/assets', '/assets/offer-map', '/challenges', '/challenges/brain2', '/chat', '/library', '/library/read', '/library/read/deep-work', '/library/a-living-note', '/blog', '/blog/a-field-note', '/about/team', '/diagnostic/results', '/chat/thread', '/unknown']
+  const disabled = ['/classic', '/concept', '/co-che-tep-moi.html', '/conanmaker', '/conanmaker/']
 
   for (const pathname of enabled) assert.equal(isUnifiedRouteEnabled(pathname), true, pathname)
   for (const pathname of disabled) assert.equal(isUnifiedRouteEnabled(pathname), false, pathname)
