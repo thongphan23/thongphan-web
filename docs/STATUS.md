@@ -4,11 +4,28 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Motion Atmosphere is complete and live.** The balanced system now
-adds persistent navigation, route-aware projector light, one fine-pointer runtime,
-opt-in hover/focus depth and varied GSAP choreography while keeping reading surfaces
-calm. Local and production functional, visual, accessibility, reduced-motion, bundle
-and content-safety gates pass on the Pages origin and the public domain.
+**Origin Story + 21 ngày Brain2 is in written-spec review.** The approved direction
+adds a five-act personal origin story and consolidates only the public 21-day Brain2
+challenge under `/brain2/21-ngay`; it explicitly excludes the private Brain2 vault,
+chat and standalone app. Motion Atmosphere remains complete and live with its local
+and production gates passing.
+
+## Origin Story + 21 ngày Brain2 — design review — 2026-07-12
+
+- Approved story arc: difference → success → collapse → rebuilding → system. The HSTL
+  consequence may be stated plainly as more than VND 2 billion of debt and close to
+  ten years of recovery, without pity or clickbait treatment.
+- Homepage receives a compact origin bridge inside the existing proof chapter; `/about`
+  carries the full five-act narrative and ends at the 21-day practice.
+- Canonical challenge routes are `/brain2/21-ngay` and
+  `/brain2/21-ngay/ngay-01` through `ngay-21`.
+- Week 1 is public. Weeks 2–3 stay Conan Maker-only behind a server-validated access
+  session. The public GitHub repo and static output may contain no protected lesson.
+- Because the legacy subdomain has been public, retirement uses a permanent redirect
+  only after canonical content, signup, access and production parity pass.
+- Written design:
+  `docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md`.
+- No implementation has started; the written-spec review gate remains open.
 
 ## Motion Atmosphere production release — 2026-07-12
 
