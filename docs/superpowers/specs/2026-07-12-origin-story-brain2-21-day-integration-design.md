@@ -50,6 +50,37 @@ hard-earned lessons.
   production parity passes.
 - Do not touch the private Brain2 chat/vault application in this release.
 
+## Post-approval implementation audit amendments
+
+The implementation audit found three pieces of production state that were not visible
+from the frontend and therefore refine the approved architecture without changing the
+product boundary:
+
+1. The Cloudflare account has not enabled R2. The protected curriculum is only about
+   171 KB and the account already uses Workers KV. Create a dedicated namespace bound
+   only to the Brain2 access Worker; do not reuse the shared Pages/signup KV binding.
+   Days 08–21 use immutable values under
+   `brain2:21:2026-07-12.1:day:08` through `day:21`, while the public
+   repository retains metadata and checksums only. This avoids activating R2 and
+   preserves the same no-public-bytes security boundary.
+2. A global `thongphan-com-router` Worker owns `thongphan.com/*` and overwrites cache
+   control as public. Protected lesson APIs will not use Pages Functions. A dedicated
+   Worker on the more-specific `/brain2/21-ngay/api/*` route owns authentication and
+   protected responses with `private, no-store` and `Vary: Cookie` headers.
+3. Production D1 contains 210 overdue legacy email rows for ten signups; most rows
+   contain placeholder content and no email-drip Worker is active. Schema versioning
+   must classify these rows as `legacy-v0`, and a new sender may select only
+   `brain2-2026-v1`. No legacy row may be sent automatically.
+
+The legacy Pages project also retains immutable deployments containing the exposed
+client passcode and public reflection API. After a private snapshot and successful
+canonical release, replace the project with a redirect-only artifact and delete every
+old content-bearing deployment. Rollback is the private source/checksum archive plus
+the canonical release, not continued public access to the insecure legacy runtime.
+Because weeks 2–3 were historically reachable on that runtime, release copy and the
+final report must not claim they were never public; the new boundary prevents continued
+unauthenticated delivery but cannot revoke copies already downloaded elsewhere.
+
 ## Current-state diagnosis
 
 ### Legacy Brain2 challenge
@@ -199,7 +230,7 @@ separate learning-management system.
 
 - full instructions, prompts, templates, resources and deliverables for days 08–21.
 
-Protected bytes are stored behind a Pages Function/API boundary. A static locked-day
+Protected bytes are stored behind a dedicated Worker/API boundary. A static locked-day
 shell may render public metadata, but the protected body is never emitted at build
 time.
 
@@ -238,6 +269,15 @@ payment and Conan account integration remain future work.
 - Preserve unsubscribe behavior and existing signup deduplication.
 - A production test signup may use only an explicitly controlled QA address; automated
   tests use fixtures and may not enqueue real email.
+- Add `campaign_version` to the queue. Existing rows become `legacy-v0`; new rows are
+  `brain2-2026-v1`; the sender selects only the latter.
+- Replace placeholder email bodies with public metadata and canonical lesson links.
+  Protected lesson bodies never appear in email.
+- Remove the unauthenticated manual-send endpoint. A sender is cron-only or requires
+  an explicit admin secret for a controlled smoke.
+- Build the sender from the versioned canonical campaign contract. It may reuse the
+  existing Brevo account only after a no-send credential health check; it must not
+  copy the legacy Brevo runtime, its public trigger or any plaintext secret.
 
 ### 8. Reflection handling
 
@@ -262,18 +302,19 @@ extractor / normalizer
         ├─ days 01–07 → public repo content packages
         └─ days 08–21 → gitignored private staging directory
                               ↓ validate + checksum
-                         private R2 content objects
+                         private versioned KV values
         ↓
 tracked public manifest + protected metadata/checksum manifest
         ↓
-static public pages + authenticated Pages Function/R2 response
+static public pages + authenticated dedicated-Worker/KV response
 ```
 
 The private staging directory is supplied through `BRAIN2_PRIVATE_CONTENT_DIR`, must
 resolve outside the public repository, and is never uploaded as a build artifact. The
-canonical protected objects are versioned JSON documents in a private R2 bucket bound
-only to the lesson Pages Function. The public repository tracks their schema, day/title
-metadata and checksums, not their body, prompts, templates or resource notes.
+canonical protected objects are versioned JSON values in a dedicated private KV
+namespace bound only to the Brain2 access Worker. The public repository
+tracks their schema, day/title metadata and checksums, not their body, prompts,
+templates or resource notes.
 
 Automated tests use synthetic protected fixtures. They never copy real days 08–21
 into the repository or CI artifacts.
@@ -369,12 +410,14 @@ Release order:
 3. deploy canonical routes as noindex preview;
 4. run content parity, access, visual, signup and production smoke;
 5. make canonical routes indexable and update sitemap/email links;
-6. replace the legacy frontend with a redirect-only Worker/domain rule;
+6. replace the legacy frontend with a redirect-only Pages artifact;
 7. verify root, query strings and known campaign links reach `/brain2/21-ngay`;
-8. retain source and rollback metadata locally.
+8. delete all older immutable content-bearing deployments after snapshot verification;
+9. retain source and rollback metadata locally.
 
-The legacy origin must not serve a second copy after release. Do not delete its source
-or Cloudflare rollback reference until the canonical release and redirect have passed.
+The legacy origin must not serve a second copy after release. Do not delete its local
+source/checksum archive. The insecure public deployments are deleted only after the
+canonical release and redirect-only artifact have passed.
 
 ## Claims and asset provenance
 
@@ -500,18 +543,23 @@ No prompt text, lesson answer, email or access code is included in analytics.
     success/error states without sending real email during automated tests.
 16. Progress, prompt copy, previous/next navigation and resume work with keyboard and
     at mobile widths.
+17. The sender selects only `brain2-2026-v1`; all 210 audited legacy queue rows remain
+    unsent and classified as `legacy-v0`.
 
 ### Release
 
-17. `/challenges/brain2-21-ngay` and `/brain2` redirect permanently to the canonical hub.
-18. All internal journey links resolve to canonical URLs with no duplicate content.
-19. Main test, typecheck, static build, release, SEO, bundle and Read-safety gates pass.
-20. Visual QA covers `/`, `/about`, hub, a public lesson and a protected lesson at
+18. `/challenges/brain2-21-ngay` and `/brain2` redirect permanently to the canonical hub.
+19. All internal journey links resolve to canonical URLs with no duplicate content.
+20. Main test, typecheck, static build, release, SEO, bundle and Read-safety gates pass.
+21. Visual QA covers `/`, `/about`, hub, a public lesson and a protected lesson at
     `1440x900`, `1280x720`, `390x844` and `320x568`, including reduced motion.
-21. Production origin and `https://thongphan.com` pass the same core story/challenge
+22. Production origin and `https://thongphan.com` pass the same core story/challenge
     smoke before legacy-domain redirect.
-22. `brain2.thongphan.com` returns a permanent redirect to `/brain2/21-ngay` only after
-    canonical production passes, and rollback metadata is recorded in `docs/STATUS.md`.
+23. `brain2.thongphan.com` returns a permanent redirect to `/brain2/21-ngay` only after
+    canonical production passes.
+24. Every old immutable content-bearing `brain2-platform.pages.dev` deployment is no
+    longer publicly reachable, while the private source/checksum archive and release
+    evidence are recorded in `docs/STATUS.md`.
 
 ## Non-goals
 
