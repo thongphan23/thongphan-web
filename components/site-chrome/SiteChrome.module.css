@@ -163,6 +163,12 @@
   --motion-ambient-opacity: 0;
 }
 
+.motionAtmosphere[data-ambient='none'] > span,
+.motionAtmosphere[data-ambient='none'] > span:first-child,
+.motionAtmosphere[data-ambient='none'] > span:nth-child(2) {
+  animation: none !important;
+}
+
 .motionAtmosphere[data-motion-active='true'][data-pointer='full'] {
   --motion-pointer-opacity: 1;
 }
@@ -633,8 +639,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .motionAtmosphere > span {
-    animation: none;
+  .motionAtmosphere > span,
+  .motionAtmosphere > span:first-child,
+  .motionAtmosphere > span:nth-child(2) {
+    animation: none !important;
   }
 
   .motionAtmosphere::after {

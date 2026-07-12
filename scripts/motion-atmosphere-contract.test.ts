@@ -40,7 +40,10 @@ test('motion profiles keep reading calm and dark cinema alive', () => {
 })
 
 test('motion atmosphere has one guarded pointer runtime with teardown', async () => {
-  const source = await readProjectFile('components/site-chrome/MotionAtmosphere.tsx')
+  const [source, css] = await Promise.all([
+    readProjectFile('components/site-chrome/MotionAtmosphere.tsx'),
+    readProjectFile('components/site-chrome/SiteChrome.module.css'),
+  ])
 
   assert.match(source, /matchMedia\('\(prefers-reduced-motion:\s*reduce\)'\)/)
   assert.match(source, /matchMedia\('\(hover:\s*hover\) and \(pointer:\s*fine\)'\)/)
@@ -49,6 +52,14 @@ test('motion atmosphere has one guarded pointer runtime with teardown', async ()
   assert.match(source, /removeEventListener\('pointermove'/)
   assert.match(source, /aria-hidden="true"/)
   assert.match(source, /data-page-visible/)
+  assert.match(
+    css,
+    /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.motionAtmosphere > span:first-child[\s\S]*?animation:\s*none !important/,
+  )
+  assert.match(
+    css,
+    /\.motionAtmosphere\[data-ambient='none'\] > span:first-child[\s\S]*?animation:\s*none !important/,
+  )
 })
 
 test('approved actions and surfaces opt into bounded hover and focus physics', async () => {
