@@ -11,7 +11,7 @@ publishedAt: "2026-05-21"
 updatedAt: "2026-05-21"
 readTime: 5
 promise: "Đọc xong, anh em sẽ bớt muốn chạy theo công cụ mới và thấy vì sao hệ thống suy nghĩ mới là thứ giữ mình lại."
-proof: "Brand positioning Brain2 chốt signature state là nhẹ nhõm, sáng tỏ, kiểm soát. Proof sống nằm ở Brain2, 40+ bài viral và Conan thực hành."
+proof: "Brand positioning Brain2 chốt signature state là nhẹ nhõm, sáng tỏ, kiểm soát. Proof sống nằm ở Brain2 đang vận hành, quãng 14 tháng flop và Conan thực hành."
 sourceTrace:
   - "01-Atomic/Strategies/strategy-brand-positioning-thongphan-2026.md"
   - "00-System/brain2-architecture-documentation.md"
@@ -86,7 +86,7 @@ Thông Phan không đứng ở vai guru công cụ. Nếu thương hiệu chỉ 
 
 Điểm khác nằm ở proof sống.
 
-14 tháng flop không phải câu chuyện "tui từng khổ". Nó là nguyên liệu để hiểu vì sao content không nổ nếu thiếu trust, proof và góc nhìn. 40+ bài viral, 80k+ shares không phải để khoe số. Nó là dữ liệu để đọc thị trường. Brain2 không phải màn hình đẹp trong Obsidian. Nó là hệ thống được dùng để viết, hỏi, nối ý và giữ dấu vân tay tri thức.
+14 tháng flop không phải câu chuyện "tui từng khổ". Nó là nguyên liệu để hiểu vì sao content không nổ nếu thiếu trust, proof và góc nhìn. Những bài từng được chia sẻ rộng cũng không phải huy chương; chúng là dữ liệu để đọc thị trường. Brain2 không phải màn hình đẹp trong Obsidian. Nó là hệ thống được dùng để viết, hỏi, nối ý và giữ dấu vân tay tri thức.
 
 Khi ba lớp đó đi chung, người đọc cảm thấy: "Ổng không bán sự hưng phấn. Ổng chỉ cho mình cách đứng vững hơn."
 
@@ -103,4 +103,3 @@ Khi ba lớp đó đi chung, người đọc cảm thấy: "Ổng không bán s�
 - [Bản đồ bắt đầu nếu anh em đang sợ AI](/library/ban-do-bat-dau-neu-anh-em-dang-so-ai)
 - [Tài sản số của người có chuyên môn](/library/tai-san-so-cua-nguoi-co-chuyen-mon)
 - [Brain2 đang chạy thật](/library/brain2-dang-chay-that)
-

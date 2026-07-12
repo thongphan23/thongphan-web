@@ -126,6 +126,22 @@ Atmosphere remains complete and live.
   remote state or provider call was changed in this slice. Brevo credential health,
   secret provisioning and cron activation remain Task 15 release gates. Independent
   final review ended at 0 Critical/0 Important/0 Minor.
+- The typed origin-story evidence layer is now locally complete. Five ordered acts are
+  built only from reviewed press, personal-account, owned-archive and system-record
+  claims; canonical act titles are allowlisted, unknown fields fail closed, generated
+  history is rejected and the public DTO has a second private-data postcondition.
+- The related public article/note chain now separates press evidence from first-person
+  consequence, uses the approved three-week Brain2 rhythm and no longer repeats the
+  unsupported changing counts that previously leaked through author cards and related
+  metadata. The former numeric viral cover is replaced by a text-free Cinema editorial
+  asset with tracked rights, dimensions and hash.
+- Task 9 verification: focused origin/editorial contracts 11/11, full 192/192,
+  TypeScript pass, static build 83/83, npm audit zero vulnerabilities and private scan
+  1,756 files/6,882 fingerprints/zero hits. Rendered QA passed 22/22 desktop/mobile
+  reduced-motion cases across eleven changed article/note routes with complete body
+  copy, one H1 and zero overflow, broken images, audited stale strings or relevant
+  console errors. Independent final review ended at 0 Critical/0 Important. A proposed
+  Kênh14 date-label minor was rejected after the live page confirmed `21/05/2015`.
 
 ## Motion Atmosphere production release — 2026-07-12
 

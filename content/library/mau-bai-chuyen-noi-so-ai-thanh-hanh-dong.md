@@ -82,7 +82,7 @@ Nói "hãy xây hệ thống" thì ai cũng nói được.
 
 Đưa proof mới khác.
 
-Proof có thể là [Brain2 đang chạy thật](/library/brain2-dang-chay-that), nơi tri thức gốc nằm trong Obsidian và được truy xuất bằng semantic search. Proof có thể là [40 bài viral, 80k shares đọc như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu), nơi thị trường đã phản hồi với các mẫu nội dung cụ thể. Proof có thể là 14 tháng flop, vì không có đoạn đó thì lời khuyên nghe sạch quá.
+Proof có thể là [Brain2 đang chạy thật](/library/brain2-dang-chay-that), nơi tri thức gốc nằm trong Obsidian và được tìm theo nghĩa. Proof có thể là [đọc bài lan rộng như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu), nơi phản hồi của người đọc được tách thành căng thẳng, bằng chứng, góc nhìn và hành động. Proof có thể là 14 tháng flop, vì không có đoạn đó thì lời khuyên nghe sạch quá.
 
 Proof làm bài viết có trọng lượng mà không cần la lớn.
 
@@ -112,4 +112,3 @@ Hành động nhỏ tạo cảm giác kiểm soát. Khi reader làm được m�
 - [Bản đồ bắt đầu nếu anh em đang sợ AI](/library/ban-do-bat-dau-neu-anh-em-dang-so-ai)
 - [Sáng tỏ giữa hỗn loạn AI](/library/sang-to-giua-hon-loan-ai)
 - [Template bài viết proof-first](/library/template-bai-viet-proof-first)
-

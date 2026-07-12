@@ -7,15 +7,15 @@ readerState: "Sáng tỏ"
 promise: "Đọc xong, anh em sẽ hiểu vì sao Brain2 là nền cho AI dùng đúng cách, không phải thêm một app để quản lý đời mình."
 proof: "Brain2 đang chạy thật bằng Obsidian, pgvector và kho ghi chú được dùng mỗi ngày để viết, hỏi, nối ý."
 publishedAt: "2026-04-28"
-updatedAt: "2026-05-21"
+updatedAt: "2026-07-12"
 readingTime: 8
 featured: false
 coverImage: /images/blog/cover-brain2-obsidian.png
 midCta:
   label: "Làm nhỏ trước"
   title: "Nếu Brain2 nghe lớn quá, bắt đầu bằng 21 ngày gom lại thứ anh em đã biết."
-  body: "Không cần xây một thư viện hoàn hảo. Cần một hệ thống đủ sống để ngày mai tìm lại được ý hôm nay."
-  href: "/challenges/brain2-21-ngay"
+  body: "Không cần xây một thư viện trọn vẹn ngay. Cần một hệ thống đủ sống để ngày mai tìm lại được ý hôm nay."
+  href: "/brain2/21-ngay"
   cta: "Bắt đầu 21 ngày Brain2"
 endCta:
   label: "Sau bài này"
@@ -27,8 +27,8 @@ endCta:
 
 Tui quên mọi thứ.
 
-Đọc sách xong → quên 90% sau 1 tuần.
-Học khóa học → quên hết sau 1 tháng.
+Đọc sách xong → vài hôm sau chỉ còn nhớ một cảm giác mơ hồ.
+Học khóa học → tới lúc cần dùng lại không biết nằm ở đâu.
 Có ý tưởng hay → quên mất vì không ghi lại.
 
 Đến năm 2022, tui nhận ra: **Não người không được thiết kế để nhớ. Não được thiết kế để suy nghĩ.**
@@ -60,11 +60,11 @@ Tui đã thử:
 - Roam Research → Đắt, định dạng không thật sự thuộc về mình
 
 **Obsidian thắng vì:**
-1. **File Markdown dạng chữ thuần**, tài liệu của anh em, mãi mãi
+1. **File Markdown (tệp chữ thuần)**, dễ đọc và dễ mang sang công cụ khác
 2. **Liên kết hai chiều**, kết nối ý tưởng tự động
 3. **Sơ đồ liên kết**, nhìn thấy cách ý tưởng nối với nhau
-4. **Lưu ở máy trước**, dữ liệu ở máy anh em, không phụ thuộc cloud
-5. **Hệ plugin rộng**, tùy biến được rất nhiều
+4. **Lưu ở máy trước**, dữ liệu ở máy anh em trước khi phụ thuộc cloud (đám mây)
+5. **Hệ plugin (tiện ích mở rộng) rộng**, tùy biến được nhiều
 
 ## Hệ thống Brain2 của tui
 
@@ -145,7 +145,7 @@ Cho ví dụ trước khi hỏi = đưa AI vài mẫu đúng trước khi yêu c
 4. Viết nháp với AI
 5. Sửa và đăng
 
-**Kết quả:** Viết nhanh hơn 5x vì không phải nghiên cứu lại từ đầu.
+**Kết quả:** Tui không phải nghiên cứu lại từ đầu cho mỗi bài. Thời gian được dành cho việc chọn, nối và kiểm tra.
 
 ## AI + Brain2 = dễ tìm lại thứ mình biết
 
@@ -161,45 +161,28 @@ Cho ví dụ trước khi hỏi = đưa AI vài mẫu đúng trước khi yêu c
 
 **Công cụ tui dùng:**
 - **Obsidian + plugin Copilot**, AI hỏi đáp với kho tri thức
-- **Supabase pgvector**, tìm kiếm theo nghĩa
-- **Claude API**, tạo nháp và tóm tắt
+- **Supabase pgvector**, phần tìm kiếm theo nghĩa
+- **Claude API (giao diện lập trình)**, tạo nháp và tóm tắt
 
-## Kết quả sau 2 năm
+## Hệ thống thay đổi cách tui làm việc ra sao?
 
-**Số liệu:**
-- 2,000+ ghi chú trong kho
-- 5,000+ kết nối giữa ghi chú
-- 10x nhanh hơn khi nghiên cứu
-- 5x nhanh hơn khi viết nội dung
+Thứ tui giữ lại không phải một bộ đếm ghi chú. Là ba thay đổi có thể quan sát được:
 
-**Nhưng quan trọng hơn:**
 - Tui không còn quên ý tưởng
 - Tui thấy mẫu lặp lại mà trước không thấy
 - Tui viết tốt hơn vì có ngữ cảnh đầy đủ
 
-## Bắt đầu như thế nào?
+## Lộ trình 21 ngày đi qua ba tuần
 
-**Tuần 1: Cài nền**
-- Tải Obsidian
-- Tạo kho Obsidian đầu tiên
-- Viết 1 ghi chú/ngày
+Đây không phải bốn tuần nén lại cho vừa một lời quảng cáo. Lộ trình có đúng ba tuần, mỗi ngày hoàn thành một đầu ra quan sát được:
 
-**Tuần 2: Ghi lại**
-- Ghi chú đầu vào mỗi ngày
-- Ghi mọi thứ học được
-- Chưa cần tổ chức
+1. **Tuần 1 — Cài nền:** Dựng một Brain2 đủ nhỏ để bắt đầu lưu lại con người, dự án, bài học, góc nhìn và câu chuyện của anh em.
+2. **Tuần 2 — Nối:** Đưa những phần đã lưu vào cùng ngữ cảnh, để một ý có thể gặp đúng câu chuyện, bằng chứng và việc đang làm.
+3. **Tuần 3 — Dùng:** Lấy tri thức trong Brain2 ra làm đầu vào cho công việc thật, rồi nhìn lại phần nào đáng giữ và phần nào cần xây tiếp.
 
-**Tuần 3: Xử lý**
-- Chuyển hộp đầu vào thành ghi chú một ý
-- Tập viết 1 ý = 1 ghi chú
-- Bắt đầu dùng liên kết
+Thời lượng thay đổi theo độ sâu của từng bài. Điều không đổi là sau mỗi ngày phải có một thứ anh em nhìn thấy và dùng lại được.
 
-**Tuần 4: Kết nối**
-- Nối ghi chú với nhau
-- Thêm thẻ
-- Xem sơ đồ liên kết
-
-**Sau 21 ngày:** Anh em có Brain2 hoạt động được.
+**Sau 21 ngày:** Anh em có một nền Brain2 nhỏ, đủ để tìm lại thứ đã ghi và biết mình cần xây tiếp phần nào.
 
 ## Chỗ đáng giữ lại
 
@@ -211,8 +194,6 @@ Xây Brain2 = đầu tư vào tương lai.
 
 Mỗi ghi chú anh em viết hôm nay = lãi kép cho 10 năm sau.
 
----
+**P/S:** Muốn xây Brain2 trong 21 ngày? Bắt đầu lộ trình này trước. Mỗi ngày làm một đầu ra nhỏ; thời lượng thay đổi theo độ sâu của từng bài. Có nền rồi mới bước tiếp sang Conan Maker.
 
-**P/S:** Muốn xây Brain2 trong 21 ngày? Bắt đầu activation product này trước. Mỗi ngày 15 phút để gom tri thức thật, rồi bước tiếp sang Conan Maker khi có nền.
-
-→ [Tham gia "21 Ngày Brain2"](/challenges/brain2-21-ngay)
+→ [Tham gia "21 Ngày Brain2"](/brain2/21-ngay)

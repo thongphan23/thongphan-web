@@ -69,7 +69,7 @@ Ví dụ:
 
 "Tui mất 14 tháng viết hơn 100 bài trước khi thấy mẫu lặp lại."
 
-"40+ bài viral và 80k+ shares cho tui một bộ dữ liệu về cách thị trường phản hồi."
+"Những bài từng lan rộng cho tui một bộ dữ liệu về cách thị trường phản hồi."
 
 "Brain2 hiện là hệ thống được dùng để truy xuất note, nối ý và viết bài, không phải concept để trang trí."
 
@@ -79,7 +79,7 @@ Proof chỉ là vật liệu. Tension mới làm người đọc dừng.
 
 Hỏi: proof này đập vào niềm tin nào?
 
-14 tháng flop đập vào niềm tin "người viết giỏi thì bài sẽ nổ sớm". 40 bài viral đập vào niềm tin "viral là may rủi hoàn toàn". Brain2 đập vào niềm tin "AI mạnh là đủ".
+14 tháng flop đập vào niềm tin "người viết giỏi thì bài sẽ nổ sớm". Những bài từng lan rộng đập vào niềm tin "viral là may rủi hoàn toàn". Brain2 đập vào niềm tin "AI mạnh là đủ".
 
 Tension càng gần người đọc, bài càng có lực.
 

@@ -8,10 +8,10 @@ readerState: nhe-nhom
 status: growing
 author: "Thông Phan"
 publishedAt: "2026-05-21"
-updatedAt: "2026-05-21"
+updatedAt: "2026-07-12"
 readTime: 5
 promise: "Đọc xong, anh em sẽ bớt coi giai đoạn flop là bằng chứng mình dở và bắt đầu đọc nó như dữ liệu."
-proof: "Proof library Brain2 ưu tiên timeline 14 tháng, 100+ bài, 80k+ shares như proof công sức, không phải lời khoe."
+proof: "Đây là lời kể cá nhân về 14 tháng làm nội dung gần như không ai đọc, được dùng để nhìn lại cách làm chứ không làm thành tích."
 sourceTrace:
   - "01-Atomic/Libraries/library-proof-of-work-evidence-collection.md"
   - "01-Atomic/Frameworks/content-framework-three-proofs-personal-content.md"
@@ -24,7 +24,7 @@ related:
     - mau-hook-tu-trai-nghiem-that
     - template-bai-viet-proof-first
   next:
-    - 40-bai-viral-80k-shares-doc-nhu-du-lieu
+    - mau-hook-tu-trai-nghiem-that
 tags:
   - proof
   - content
@@ -57,7 +57,7 @@ Một bài flop có thể nói nhiều hơn một bài nổ.
 
 Bài nổ làm mình vui, nhưng dễ khiến mình tưởng mình hiểu hết. Bài flop thì khó chịu hơn. Nó bắt mình hỏi: người đọc có thấy mình đang nói về họ không? Claim có proof không? Câu mở có căng thẳng thật không? Nội dung có giúp họ nhẹ hơn, rõ hơn, kiểm soát hơn không?
 
-Nếu 100 bài đều trượt, khả năng cao vấn đề không nằm ở một tiêu đề. Nó nằm ở hệ thống đọc thị trường.
+Nếu nhiều bài liên tiếp đều trượt, khả năng cao vấn đề không nằm ở một tiêu đề. Nó nằm ở cách mình đọc thị trường.
 
 Đây là chỗ [mẫu hook từ trải nghiệm thật](/library/mau-hook-tu-trai-nghiem-that) xuất hiện. Hook không phải câu đánh lừa sự chú ý. Hook tốt là chỗ căng thẳng thật được nén lại đủ sắc để người đúng tự thấy mình trong đó.
 
@@ -73,8 +73,8 @@ Khi Brain2 nói về content, nó không chỉ nói "viết gì". Nó hỏi th�
 
 Một bài hay sai thời điểm vẫn chìm. Một bài đúng thời điểm, đúng proof, đúng tension, tự nhiên có lực.
 
-:::proof{label="Proof / context"}
-Trong proof library, timeline `14 tháng, 100+ bài, 80k+ shares` được xếp là Result Proof và Process Proof. Sức mạnh của nó nằm ở quãng cày dài, không phải ở một cú nổ may mắn.
+:::proof{label="Bằng chứng / bối cảnh"}
+Mốc 14 tháng là lời kể cá nhân của tui về một quãng làm nội dung gần như không ai đọc. Điều đáng giữ không phải con số để khoe, mà là lượng dữ liệu đủ dày để tui nhìn ra mẫu lặp lại và hiểu niềm tin được xây chậm như thế nào.
 :::
 
 ## Flop là kho câu hỏi
@@ -98,7 +98,6 @@ Những câu hỏi này biến flop thành nguyên liệu cho [template bài vi�
 
 ## Đọc tiếp
 
-- [40 bài viral, 80k shares đọc như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu)
+- [Đọc bài lan rộng như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu)
 - [Mẫu hook từ trải nghiệm thật](/library/mau-hook-tu-trai-nghiem-that)
 - [Proof stack Thông Phan 2026](/library/proof-stack-thong-phan-2026)
-

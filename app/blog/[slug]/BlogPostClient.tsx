@@ -63,7 +63,7 @@ export default function BlogPostClient({ post }: { post: Post }) {
               <div>
                 <h4>Thông Phan</h4>
                 <p className="text-muted">
-                  10 năm làm nội dung và marketing. 40+ bài viral. Đồng sáng lập Conan School & Autoshop.
+                  Viết từ những gì tui đã làm, đã trả giá và đang thực hành.
                 </p>
               </div>
             </div>

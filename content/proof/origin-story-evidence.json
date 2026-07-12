@@ -1,0 +1,250 @@
+{
+  "version": 1,
+  "storyId": "thong-phan-origin-2026",
+  "claims": [
+    {
+      "id": "hstl-press-experience",
+      "text": "Hoa Sơn Tửu Lầu được báo chí mô tả như một quán ăn nhập vai kiếm hiệp, từ cách xưng hô, trang phục tới thực đơn tính bằng “quan”.",
+      "category": "event",
+      "sourceType": "public-press",
+      "sourceLocation": "press-ledger:hstl-2015-2017",
+      "publicHref": "https://vnexpress.net/quan-an-phong-cach-kiem-hiep-o-sai-gon-3287251.html",
+      "sourceLabel": "VnExpress · 30/09/2015",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "hstl-nine-months-living",
+      "text": "Trong chín tháng đầu liên tục thua lỗ, tui ngủ trên những chiếc bàn ghép lại và ăn cùng anh em nhân viên tại quán.",
+      "category": "personal-consequence",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Lời kể trực tiếp của Thông Phan",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "hstl-attention-opportunities",
+      "text": "Theo trải nghiệm của tui, sự chú ý ấy mở ra thêm cơ hội, các mối quan hệ và sự tự tin.",
+      "category": "personal-interpretation",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Lời kể và diễn giải của Thông Phan",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "hstl-communication-outpaced-product",
+      "text": "Nhìn lại, phần truyền thông đáng nhớ đã đi nhanh hơn sức mạnh của sản phẩm cốt lõi.",
+      "category": "personal-interpretation",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Lời kể và diễn giải của Thông Phan",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "hstl-transfer",
+      "text": "Hoa Sơn Tửu Lầu sau đó được chuyển nhượng; tui không kể lại đoạn này như một cuộc rút lui đúng lúc hay một chiến thắng đã được tính sẵn.",
+      "category": "event",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Lời kể trực tiếp của Thông Phan",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "hstl-debt",
+      "text": "Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.",
+      "category": "personal-consequence",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Lời kể cá nhân, không phải dữ liệu kiểm toán",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "rebuild-fourteen-months",
+      "text": "Tui đã đi qua 14 tháng làm nội dung gần như không ai đọc; chính giai đoạn đó trở thành dữ liệu để nhìn lại cách mình làm.",
+      "category": "personal-consequence",
+      "sourceType": "personal-account",
+      "sourceLocation": "content/library/14-thang-flop-la-nguyen-lieu.md",
+      "publicHref": "/library/14-thang-flop-la-nguyen-lieu",
+      "sourceLabel": "14 tháng flop là nguyên liệu",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "rebuild-twelve-thousand-shares",
+      "text": "Một bài viết sau đó vượt 12.000 lượt chia sẻ theo tài khoản cá nhân của tui; con số này được dùng như dấu mốc học lại, không phải thước đo giá trị con người.",
+      "category": "personal-account-metric",
+      "sourceType": "personal-account",
+      "sourceLocation": "docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md",
+      "publicHref": "/library/proof-stack-thong-phan-2026",
+      "sourceLabel": "Tài khoản cá nhân của Thông Phan",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "rebuild-pattern-and-trust",
+      "text": "Những lần làm gần như không ai đọc dần trở thành dữ liệu; từ đó tui nhận ra các mẫu có thể lặp lại và xây niềm tin bền hơn.",
+      "category": "personal-interpretation",
+      "sourceType": "personal-account",
+      "sourceLocation": "content/library/14-thang-flop-la-nguyen-lieu.md",
+      "publicHref": "/library/14-thang-flop-la-nguyen-lieu",
+      "sourceLabel": "14 tháng flop là nguyên liệu",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "brain2-running-system",
+      "text": "Brain2 không chỉ là ý tưởng; hệ thống đang được dùng để lưu, nối và tìm lại tri thức phục vụ công việc thật.",
+      "category": "system-state",
+      "sourceType": "system-record",
+      "sourceLocation": "content/library/brain2-dang-chay-that.md",
+      "publicHref": "/library/brain2-dang-chay-that",
+      "sourceLabel": "Brain2 đang chạy thật",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "brain2-twenty-one-outputs",
+      "text": "Lộ trình 21 ngày biến cách làm đó thành 21 đầu ra quan sát được; thời lượng thay đổi theo độ sâu của từng bài.",
+      "category": "system-state",
+      "sourceType": "system-record",
+      "sourceLocation": "content/brain2/manifest.json",
+      "publicHref": "/brain2/21-ngay",
+      "sourceLabel": "Manifest công khai của lộ trình 21 ngày",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    },
+    {
+      "id": "conan-maker-handoff",
+      "text": "Sau nền Brain2, Conan Maker là nơi tiếp tục biến tri thức thành những đầu ra có thể dùng và nhận góp ý.",
+      "category": "system-state",
+      "sourceType": "system-record",
+      "sourceLocation": "public/conanmaker/index.html",
+      "publicHref": "/conanmaker/",
+      "sourceLabel": "Conan Maker trên thongphan.com",
+      "reviewedAt": "2026-07-12",
+      "reviewStatus": "approved",
+      "displayPermission": "public-summary"
+    }
+  ],
+  "assets": [
+    {
+      "id": "press-kenh14-hstl",
+      "kind": "press-card",
+      "historical": true,
+      "generated": false,
+      "sourceType": "public-press",
+      "publicHref": "https://kenh14.vn/xa-hoi/vao-tuu-lau-du-dai-hoi-vo-lam-o-quan-kiem-hiep-doc-dao-nhat-sai-gon-2015052008464959.chn",
+      "sourceLabel": "Kênh14 · 21/05/2015",
+      "headline": "Vào ‘tửu lầu’ dự ‘đại hội võ lâm’ ở quán kiếm hiệp độc đáo nhất Sài Gòn"
+    },
+    {
+      "id": "press-vnexpress-hstl",
+      "kind": "press-card",
+      "historical": true,
+      "generated": false,
+      "sourceType": "public-press",
+      "publicHref": "https://vnexpress.net/quan-an-phong-cach-kiem-hiep-o-sai-gon-3287251.html",
+      "sourceLabel": "VnExpress · 30/09/2015",
+      "headline": "Quán ăn phong cách kiếm hiệp ở Sài Gòn"
+    },
+    {
+      "id": "press-vietnam-news-hstl",
+      "kind": "press-card",
+      "historical": true,
+      "generated": false,
+      "sourceType": "public-press",
+      "publicHref": "https://ovietnam.vietnamnews.vn/a-weird-spot-for-beer-and-wuxia-style-chat-post283518.html",
+      "sourceLabel": "Viet Nam News · 09/01/2017",
+      "headline": "A weird spot for beer and wuxia-style chat"
+    },
+    {
+      "id": "present-day-stage",
+      "kind": "owned-image",
+      "historical": false,
+      "generated": false,
+      "sourceType": "owned-archive",
+      "sourceLocation": "/Users/rio/assets/branding/thongphan-speaker-hires.jpg",
+      "derivativePath": "/public/images/homepage/proof/thong-stage-3x2-v1.webp",
+      "sha256": "519456366a8798b9e8e7645c04188d60cb329a8dadb2021feaa54e58678e3705",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 55, "y": 50 },
+      "alt": "Thông Phan cầm micro chia sẻ trên sân khấu tại một sự kiện kinh doanh.",
+      "caption": "Hình ảnh hiện tại từ kho thương hiệu do Thông Phan sở hữu."
+    },
+    {
+      "id": "brain2-challenge-metaphor",
+      "kind": "generated-metaphor",
+      "historical": false,
+      "generated": true,
+      "sourceType": "system-record",
+      "sourceLocation": "content/proof/challenge-visual.json",
+      "derivativePath": "/public/images/challenges/brain2-21-day-editorial-slate-v1.webp",
+      "sha256": "e9517db970f5cc078e3a52a480a5195348ad4b404feb05d08dbc4e8c7a29494f",
+      "width": 1200,
+      "height": 675,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Bảng slate phim, sổ giấy và bút chì tượng trưng cho lộ trình thực hành 21 ngày Brain2.",
+      "caption": "Một hình ảnh tượng trưng cho nhịp thực hành 21 ngày.",
+      "disclosure": "Ẩn dụ biên tập do ImageGen tạo, không phải ảnh tư liệu lịch sử."
+    }
+  ],
+  "acts": [
+    {
+      "id": "difference",
+      "label": "Hồi 01",
+      "title": "Dám khác biệt.",
+      "claimIds": ["hstl-press-experience", "hstl-nine-months-living"],
+      "assetIds": ["press-kenh14-hstl", "press-vnexpress-hstl"]
+    },
+    {
+      "id": "attention",
+      "label": "Hồi 02",
+      "title": "Khi sự chú ý mở cửa.",
+      "claimIds": ["hstl-press-experience", "hstl-attention-opportunities"],
+      "assetIds": ["press-vietnam-news-hstl"]
+    },
+    {
+      "id": "core-product",
+      "label": "Hồi 03",
+      "title": "Thắng truyền thông, thua sản phẩm.",
+      "claimIds": ["hstl-communication-outpaced-product", "hstl-transfer", "hstl-debt"],
+      "assetIds": ["press-vnexpress-hstl"]
+    },
+    {
+      "id": "rebuilding",
+      "label": "Hồi 04",
+      "title": "Học lại bằng những lần flop.",
+      "claimIds": ["rebuild-fourteen-months", "rebuild-pattern-and-trust", "rebuild-twelve-thousand-shares"],
+      "assetIds": ["present-day-stage"]
+    },
+    {
+      "id": "system",
+      "label": "Hồi 05",
+      "title": "Không bỏ phí thêm một bài học nào.",
+      "claimIds": ["brain2-running-system", "brain2-twenty-one-outputs", "conan-maker-handoff"],
+      "assetIds": ["present-day-stage", "brain2-challenge-metaphor"]
+    }
+  ]
+}

@@ -60,7 +60,7 @@ Hỏi:
 3. Có con số, timeline hoặc hành động nào làm proof đứng được không?
 4. Nếu chỉ được nói một câu, câu nào làm người cùng nghề dừng lại?
 
-Ví dụ, "14 tháng flop" mạnh hơn "tui từng thất bại" vì nó có thời gian, có sức nặng và có cảm giác cày thật. "40+ bài viral, 80k shares" mạnh hơn "tui viết content tốt" vì nó cho người đọc một vật thể để cầm.
+Ví dụ, "14 tháng flop" mạnh hơn "tui từng thất bại" vì nó có thời gian, có sức nặng và có cảm giác cày thật. "Một bài vượt 12.000 lượt chia sẻ theo lời kể cá nhân" mạnh hơn "tui viết content tốt" vì nó cho người đọc một dấu mốc để kiểm tra, đồng thời nói rõ con số đến từ đâu.
 
 ## Bước 2: Gắn proof trước khi claim
 
@@ -116,6 +116,5 @@ Nếu câu trả lời yếu, quay lại material. Đừng tô chữ lên một 
 ## Đọc tiếp
 
 - [14 tháng flop là nguyên liệu](/library/14-thang-flop-la-nguyen-lieu)
-- [40 bài viral, 80k shares đọc như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu)
+- [Đọc bài lan rộng như dữ liệu](/library/40-bai-viral-80k-shares-doc-nhu-du-lieu)
 - [Template bài viết proof-first](/library/template-bai-viet-proof-first)
-

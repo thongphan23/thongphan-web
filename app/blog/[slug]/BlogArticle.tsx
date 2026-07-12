@@ -365,12 +365,13 @@ export default function BlogArticle({
                     mà bằng Brain2, proof sống và nhịp thực hành đủ lâu.
                   </p>
                   <ul className={styles.proofList}>
-                    <li>14 tháng flop trước khi thấy mẫu lặp lại.</li>
-                    <li>40+ bài viral, 80k+ shares tổng cộng.</li>
-                    <li>600+ comment đăng ký workshop trong 24 giờ.</li>
-                    <li>100+ Conan Makers đang thực hành.</li>
+                    <li>Trải nghiệm thật trước, kết luận sau.</li>
+                    <li>Báo chí, lời kể cá nhân và bản ghi hệ thống được phân biệt rõ.</li>
+                    <li>Mốc quan trọng có sổ nguồn để bạn tự kiểm tra.</li>
                   </ul>
                   <div className={styles.authorLinks}>
+                    <Link href="/about">Câu chuyện của tui</Link>
+                    <Link href="/library/proof-stack-thong-phan-2026">Sổ nguồn</Link>
                     <Link href="/diagnostic">Tự chẩn đoán AI</Link>
                     <a href="https://facebook.com/thongphan23" target="_blank" rel="noopener noreferrer">Facebook</a>
                     <a href="https://m.me/thongphan.88" target="_blank" rel="noopener noreferrer">Messenger</a>

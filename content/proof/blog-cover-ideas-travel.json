@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "id": "blog-cover-ideas-travel-editorial-v1",
+  "kind": "generated-editorial-asset",
+  "generator": "OpenAI ImageGen built-in",
+  "generatedAt": "2026-07-12",
+  "promptSummary": "A cinematic physical evidence desk where paper fragments, film frames and an oxblood thread suggest one useful idea travelling through many people; no readable text, numbers, logos or faces.",
+  "derivativePath": "/public/images/blog/cover-ideas-travel-editorial-v1.png",
+  "derivativeSha256": "19f3f876182feab7dd7373031aad7b64f8343c429563a3448f954aefef11bd2f",
+  "width": 1200,
+  "height": 630,
+  "rights": {
+    "status": "approved-project-generated",
+    "basis": "Generated specifically for thongphan.com in the authorized Codex task."
+  }
+}
