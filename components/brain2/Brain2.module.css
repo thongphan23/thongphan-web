@@ -1,4 +1,8 @@
 .roadmap { display: grid; gap: 1rem; margin-top: clamp(3rem, 6vw, 5rem); }
+.progressSummary { align-items: center; background: var(--brand-lacquer); color: var(--brand-paper); display: flex; gap: 1rem; justify-content: space-between; padding: 1rem 1.25rem; }
+.progressSummary span { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; }
+.progressSummary strong { font-size: .86rem; font-weight: 600; line-height: 1.5; max-width: 32rem; text-align: right; }
+.progressSummary a { align-items: center; border: 1px solid color-mix(in srgb, var(--brand-paper) 56%, transparent); color: var(--brand-paper) !important; display: inline-flex; font-weight: 700; min-height: 44px; padding: .6rem .8rem; text-decoration: none; }
 .week { background: var(--hub-paper); color: var(--brand-ink); display: grid; grid-template-columns: minmax(15rem, .72fr) minmax(0, 2.28fr); }
 .week > header { border-right: 1px solid rgba(20, 18, 16, .2); padding: clamp(1.5rem, 3vw, 2.5rem); }
 .week > header > p,
@@ -86,12 +90,39 @@
 .checklist ul { display: grid; gap: .75rem; list-style: none; padding: 0; }
 .checklist li { align-items: center; border: 1px solid var(--brand-line-paper); display: flex; min-height: 44px; padding: .8rem 1rem; }
 .checklist li::before { border: 1px solid var(--brand-oxblood); content: ''; height: 1rem; margin-right: .8rem; width: 1rem; }
+.completionControl { align-items: center; border-top: 1px solid var(--brand-line-paper); display: flex; gap: 1rem; justify-content: space-between; padding: 2rem 0; }
+.completionControl button,
+.gateTrigger,
+.retryAccess,
+.accessToolbar button { background: var(--brand-ink); border: 1px solid var(--brand-ink); color: var(--brand-paper); cursor: pointer; font: inherit; font-weight: 700; min-height: 48px; padding: .75rem 1rem; }
+.completionControl button[aria-pressed='true'] { background: transparent; border-color: var(--brand-oxblood); color: var(--brand-oxblood); }
+.completionControl span { color: var(--brand-muted-on-paper); font-size: .82rem; line-height: 1.5; max-width: 24rem; }
 .weekBoundary,
 .lockedSheet { background: rgba(123,45,28,.07); margin: 1rem calc(clamp(1.25rem, 6vw, 5rem) * -1) 0; padding-left: clamp(1.25rem, 6vw, 5rem); padding-right: clamp(1.25rem, 6vw, 5rem); }
 .weekBoundary a,
 .lockedSheet a { align-items: center; background: var(--brand-ink); color: var(--brand-paper) !important; display: inline-flex; font-weight: 700; margin-top: 1.25rem; min-height: 48px; padding: .85rem 1rem; text-decoration: none; }
 .lessonNavigation { border-top: 1px solid var(--brand-line-paper); display: flex; gap: 1rem; justify-content: space-between; margin-top: 1rem; padding-top: 2rem; }
 .lessonNavigation a { align-items: center; display: inline-flex; font-family: var(--font-mono); font-size: .72rem; min-height: 44px; text-decoration: none; text-transform: uppercase; }
+.accessStatus { color: var(--brand-muted-on-paper); line-height: 1.6; margin-top: 1rem; }
+.gateTrigger,
+.retryAccess { display: block; margin-top: 1.25rem; }
+.authorizedLesson { position: relative; }
+.accessToolbar { align-items: center; background: var(--brand-ink); color: var(--brand-paper); display: flex; gap: 1rem; justify-content: space-between; padding: .85rem clamp(1.25rem, 6vw, 5rem); }
+.accessToolbar span { font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; }
+.accessToolbar p { color: #f2c6b5; font-size: .78rem; line-height: 1.5; margin: .35rem 0 0; max-width: 42rem; }
+.accessToolbar button { border-color: color-mix(in srgb, var(--brand-paper) 42%, transparent); min-height: 44px; padding: .55rem .75rem; }
+
+.dialogBackdrop { align-items: center; background: rgba(7, 7, 6, .82); display: flex; inset: 0; justify-content: center; padding: 1rem; position: fixed; z-index: 1000; }
+.accessDialog { background: var(--brand-reading-paper); border: 1px solid var(--brand-line-paper); box-shadow: 0 2rem 6rem rgba(0,0,0,.48); color: var(--brand-ink); max-width: 34rem; padding: clamp(1.5rem, 5vw, 3rem); position: relative; width: 100%; }
+.accessDialog > p:first-of-type { color: var(--brand-oxblood); font-family: var(--font-mono); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+.accessDialog h2 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 500; line-height: 1; margin: .8rem 0 1rem; }
+.accessDialog > span { color: var(--brand-muted-on-paper); display: block; line-height: 1.65; }
+.dialogClose { background: transparent; border: 0; cursor: pointer; font: inherit; min-height: 44px; padding: .5rem; position: absolute; right: .75rem; top: .5rem; }
+.accessDialog form { display: grid; gap: .65rem; margin-top: 1.5rem; }
+.accessDialog label { font-family: var(--font-mono); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+.accessDialog input { background: #fffaf0; border: 1px solid var(--brand-line-paper); color: var(--brand-ink); font: inherit; min-height: 48px; padding: .75rem; }
+.accessDialog form button { background: var(--brand-lacquer); border: 1px solid var(--brand-lacquer); color: var(--brand-paper); cursor: pointer; font: inherit; font-weight: 700; min-height: 48px; padding: .75rem 1rem; }
+.gateError { color: var(--brand-oxblood); font-size: .82rem; min-height: 1.4em; }
 
 @media (max-width: 1050px) {
   .week { grid-template-columns: 1fr; }
@@ -109,10 +140,18 @@
   .workingDocument { box-shadow: none; margin-left: -.5rem; margin-right: -.5rem; }
   .lessonNavigation { align-items: stretch; flex-direction: column; }
   .lessonNavigation a { border: 1px solid var(--brand-line-paper); justify-content: center; padding: .65rem; }
+  .progressSummary,
+  .completionControl,
+  .accessToolbar { align-items: stretch; flex-direction: column; }
+  .progressSummary a,
+  .completionControl button,
+  .accessToolbar button { justify-content: center; width: 100%; }
+  .progressSummary strong { max-width: none; text-align: left; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .week li,
   .workingDocument button { transition: none; }
   .week li:hover { transform: none; }
+  .dialogBackdrop { scroll-behavior: auto; }
 }

@@ -80,7 +80,7 @@ test('render-time href classification rejects escape paths and accepts canonical
   assert.equal(isInternalLessonHref('relative/path'), false)
 })
 
-test('analytics union is anonymous and protected shells stay metadata-only', () => {
+test('analytics union is anonymous and protected shells import no static lesson body', () => {
   const analytics = read('components/brain2/Brain2Analytics.tsx')
   const locked = read('components/brain2/Brain2ProtectedLesson.tsx')
   const route = read('app/brain2/21-ngay/[day]/page.tsx')
@@ -103,7 +103,7 @@ test('analytics union is anonymous and protected shells stay metadata-only', () 
   assert.doesNotMatch(locked, /@\/lib\/brain2\/lessons/)
   assert.match(locked, /meta\.day === 21[\s\S]*<Brain2ConanLink placement="day-21"/)
   assert.doesNotMatch(locked, /placement=\{meta\.day === 21 \? 'day-21' : 'hub'\}/)
-  assert.doesNotMatch(locked, /getPublicBrain2Lesson|reason|deliverable|checklist|prompt/i)
+  assert.doesNotMatch(locked, /getPublicBrain2Lesson|brain2-data\.generated|content\/brain2/i)
   assert.match(route, /robots:[\s\S]*index: meta\.access === 'public'[\s\S]*follow: true/)
 })
 

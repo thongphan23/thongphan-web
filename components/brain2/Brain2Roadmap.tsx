@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { brain2LessonHref, brain2LessonMetadata } from '@/lib/brain2/lessons'
+import Brain2ProgressClient from './Brain2ProgressClient'
 import styles from './Brain2.module.css'
 
 const weekCopy = [
@@ -12,6 +13,7 @@ const weekCopy = [
 export default function Brain2Roadmap() {
   return (
     <div className={styles.roadmap}>
+      <Brain2ProgressClient variant="hub" />
       {weekCopy.map(([title, description], index) => {
         const week = index + 1
         const lessons = brain2LessonMetadata.filter((lesson) => lesson.week === week)

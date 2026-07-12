@@ -1,9 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 
 import type { Brain2LessonBlock, Brain2LessonPackage } from '@/lib/brain2/lesson-contract'
 import { brain2LessonHref } from '@/lib/brain2/routes'
 import { Brain2ConanLink } from './Brain2Analytics'
 import Brain2PromptCopy from './Brain2PromptCopy'
+import Brain2ProgressClient from './Brain2ProgressClient'
 import Brain2RichText, { Brain2SafeLink } from './Brain2RichText'
 import styles from './Brain2.module.css'
 
@@ -64,7 +67,10 @@ export default function Brain2LessonDocument({ lesson }: { lesson: Brain2LessonP
     <article className={styles.lessonDocument}>
       <header className={styles.lessonHeader}>
         <Link href="/brain2/21-ngay" className={styles.backLink}>Bản đồ 21 ngày</Link>
-        <p>Ngày {String(meta.day).padStart(2, '0')} · Tuần {meta.week} · Miễn phí công khai</p>
+        <p>
+          Ngày {String(meta.day).padStart(2, '0')} · Tuần {meta.week} ·{' '}
+          {meta.access === 'public' ? 'Miễn phí công khai' : 'Dành cho Conan Maker'}
+        </p>
         <h1>{meta.title}</h1>
         <strong>{meta.promise}</strong>
         <dl>
@@ -92,6 +98,8 @@ export default function Brain2LessonDocument({ lesson }: { lesson: Brain2LessonP
         <h2 id="brain2-checklist">Tự kiểm tra trước khi khép ngày</h2>
         <ul>{lesson.checklist.map((item) => <li key={item.id}>{item.label}</li>)}</ul>
       </section>
+
+      <Brain2ProgressClient variant="lesson" slug={meta.slug} day={meta.day} />
 
       <LessonNavigation day={meta.day} />
 
