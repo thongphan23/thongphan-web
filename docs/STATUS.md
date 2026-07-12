@@ -10,7 +10,7 @@ opt-in hover/focus depth and varied GSAP choreography while keeping reading surf
 calm. Local and production functional, visual, accessibility, reduced-motion, bundle
 and content-safety gates pass on the Pages origin and the public domain.
 
-## Motion Atmosphere local release candidate — 2026-07-12
+## Motion Atmosphere production release — 2026-07-12
 
 - Unified navigation is fixed on desktop/mobile. It compacts after `24px` of scroll;
   the homepage chapter bar remains directly below it and active-section tracking is
