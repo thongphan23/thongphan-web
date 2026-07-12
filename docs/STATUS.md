@@ -48,7 +48,15 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
 - The public-data generator now revalidates every tracked public checksum before
   emitting a deterministic module with metadata for 21 days and bodies for days
   01–07 only. Route theming is locked to a dark evidence hub and calm paper-light
-  lesson pages; focused contracts, the 121-test suite and TypeScript all pass locally.
+  lesson pages.
+- The canonical hub and all 21 static lesson shells now build locally. Days 01–07
+  render the complete typed working documents; days 08–21 emit metadata-only locked
+  shells with `noindex, follow`. The locked client chunk is 5,091 bytes and contains
+  no public or protected lesson body. Stale pricing/access claims discovered during
+  rendered QA were removed at the migration layer; retained external links are now 60.
+- Task 4 verification: focused route/static contracts 12/12, full suite 129/129,
+  TypeScript pass and static build 83/83. Desktop/mobile browser checks show no
+  horizontal overflow; the hub hero is three lines at 1440px and four at 390px.
 
 ## Motion Atmosphere production release — 2026-07-12
 

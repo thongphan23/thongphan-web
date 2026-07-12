@@ -1,0 +1,26 @@
+.lessonPage {
+  background: #171411;
+  min-height: 100vh;
+  padding: clamp(1rem, 4vw, 3.5rem);
+}
+
+.paperFrame {
+  background:
+    linear-gradient(90deg, rgba(123, 45, 28, .035) 1px, transparent 1px),
+    var(--brand-reading-paper);
+  background-size: 2.5rem 100%;
+  border: 1px solid rgba(237, 225, 201, .24);
+  box-shadow: 0 2.5rem 7rem rgba(0, 0, 0, .36);
+  margin: 0 auto;
+  max-width: 1160px;
+  min-height: 70vh;
+}
+
+@media (max-width: 760px) {
+  .lessonPage { padding: 0; }
+  .paperFrame { border: 0; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paperFrame { scroll-behavior: auto; }
+}

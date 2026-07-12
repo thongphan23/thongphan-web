@@ -7,6 +7,8 @@ import type {
   Brain2LessonPackage,
 } from './lesson-contract'
 
+export { brain2LessonHref } from './routes'
+
 const metaBySlug = new Map<string, Brain2LessonMeta>(
   BRAIN2_LESSON_METADATA.map((meta) => [meta.slug, meta]),
 )
@@ -22,13 +24,6 @@ export function getPublicBrain2Lesson(slug: string): Brain2LessonPackage | null 
 
 export function getBrain2LessonParams(): Array<{ day: string }> {
   return BRAIN2_LESSON_METADATA.map(({ slug }) => ({ day: slug }))
-}
-
-export function brain2LessonHref(day: number): string {
-  if (!Number.isInteger(day) || day < 1 || day > 21) {
-    throw new RangeError('Brain2 lesson day must be an integer from 1 through 21')
-  }
-  return `/brain2/21-ngay/ngay-${String(day).padStart(2, '0')}`
 }
 
 export const brain2LessonMetadata: readonly Brain2LessonMeta[] = BRAIN2_LESSON_METADATA

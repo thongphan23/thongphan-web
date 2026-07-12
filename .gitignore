@@ -16,4 +16,6 @@ brain2-private/
 private-content/
 *.brain2-private.json
 artifacts/
+.playwright-cli/
+output/playwright/
 .worktrees/
