@@ -2,6 +2,20 @@
 
 Date: 2026-07-13
 
+## Resolution — 2026-07-13
+
+Anh Thông approved the stronger retirement architecture. A dedicated Worker now owns
+the proxied route `brain2.thongphan.com/*`; response header
+`X-TP-Legacy-Redirect: worker-v1` proves the Worker serves the domain independently
+of Pages. After root/path/API POST smoke passed, the Pages custom-domain association
+and then the complete `brain2-platform` project were deleted.
+
+Wrangler project inventory no longer contains `brain2-platform`. A post-delete scan
+made 128 requests: the exact 64 snapshot URLs plus 64 independently cache-busted
+variants. All 128 failed at the retired hostname boundary, with zero body bytes and
+zero legacy-content fingerprints. This report is resolved; the project snapshot
+remains private only as rollback evidence and must not be redeployed.
+
 ## Scope
 
 Finish the approved retirement of 64 content-bearing `brain2-platform` Pages

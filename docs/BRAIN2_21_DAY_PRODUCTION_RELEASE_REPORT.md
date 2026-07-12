@@ -13,13 +13,12 @@ Last updated: 2026-07-13
 
 ## Production verdict
 
-**CANONICAL PRODUCTION PASS; LEGACY IMMUTABLE CACHE CLEANUP BLOCKED.** The canonical
-Pages release, signup v2, protected access, 21 lesson shells and redirect-only legacy
-domain are live and smoked. Cloudflare's deployment API accepted deletion of all 64
-content-bearing legacy deployments and now lists only the redirect deployment, but
-the 64 deleted hash URLs still serve cached legacy HTML. The email Worker remains
-inert because the available Brevo credential failed provider health validation and no
-replacement was found.
+**CANONICAL PRODUCTION AND LEGACY RETIREMENT PASS.** The canonical Pages release,
+signup v2, protected access, 21 lesson shells and dedicated legacy redirect Worker
+are live and smoked. The complete `brain2-platform` Pages project is deleted. All 64
+former immutable deployment URLs and 64 cache-busted variants are unreachable with
+zero legacy-content hits. The email Worker remains inert because the available Brevo
+credential failed provider health validation and no replacement was found.
 
 No protected lesson body, raw access code, session secret, subscriber identity or authorized lesson screenshot is recorded in this report.
 
@@ -28,14 +27,14 @@ No protected lesson body, raw access code, session secret, subscriber identity o
 | Gate | Result | Evidence |
 | --- | --- | --- |
 | Main functional suite | PASS | `211/211` tests |
-| Brain2 release suite with authoritative source/private package paths | PASS | `145/145` tests |
+| Brain2 release suite with authoritative source/private package paths | PASS | `143/143` tests |
 | Read safety | PASS | `3/3` tests |
 | ESLint | PASS | zero warnings/errors |
 | Frontend TypeScript | PASS | `npx tsc --noEmit --incremental false` |
 | Brain2 Worker TypeScript | PASS | `npm run typecheck:brain2-workers` |
 | Static production build | PASS | `82/82` generated routes |
 | SEO/build/bundle release gates | PASS | build `6/6`, SEO `4/4`, bundle `3/3` |
-| Protected fingerprint boundary | PASS | 2,689 files / 6,882 fingerprints / zero hits |
+| Protected fingerprint boundary | PASS | 2,692 files / 6,882 fingerprints / two Keychain secrets / zero hits / zero symlinks |
 | Production dependency audit | PASS | zero vulnerabilities from `npm audit --omit=dev` |
 | Diff hygiene | PASS | `git diff --check` |
 
@@ -100,11 +99,11 @@ Evidence is outside the repository:
 - [x] Deploy signup v2 before the first controlled signup.
 - [x] Deploy Pages preview read-only, then production and smoke public/protected journeys.
 - [x] Evaluate Brevo health; credential is invalid, so keep cron and email routes undeployed.
-- [x] Replace the legacy site with redirect-only content and remove legacy secret/bindings.
-- [ ] Confirm all 64 API-deleted immutable legacy URLs stop serving cached content.
-- [ ] Record deployment IDs, production screenshots, rollback point and final pass/fail here.
+- [x] Replace the legacy site with a dedicated redirect Worker and remove legacy secret/bindings.
+- [x] Delete the complete legacy Pages project and confirm all 64 immutable URLs stop serving content.
+- [x] Record deployment IDs, production screenshots, rollback point and final pass/fail here.
 
-## Task 15 partial production evidence
+## Task 15 production evidence
 
 - Dedicated KV namespace provisioned and bound only as `BRAIN2_CONTENT`.
 - D1 migration applied once. Readback found all four new email columns, the access
@@ -113,7 +112,7 @@ Evidence is outside the repository:
 - Two raw credentials exist only as Keychain accounts under
   `thongphan-brain2-access`; encrypted Worker secrets were created without printing
   either value.
-- Strict scan: `2,691` files / `6,882` fingerprints / `2` Keychain secrets / zero
+- Final strict scan: `2,692` files / `6,882` fingerprints / `2` Keychain secrets / zero
   hits / zero symlinks.
 - Protected KV release: all 14 immutable day keys uploaded and byte/checksum-read back.
 - Access Worker version `524eacb7-4b1f-4f97-9e28-af2b4b6802ec` is live on exact apex/www
@@ -154,6 +153,17 @@ Evidence is outside the repository:
   the production inventory now contains only the redirect. The sorted 64-ID deletion
   allowlist has SHA-256
   `e1b2a23138ff562c48a212a7b1cae56b6bc4e5cfcaf3f8032720ac82029def55`. The deleted hash URLs
-  nevertheless continue to return cached legacy HTML after five cache-busted checks;
-  final retirement verification therefore remains blocked. See
+  initially continued to return cached legacy HTML after five cache-busted checks;
+  this triggered the now-resolved escalation in
   `docs/STUCK_REPORT-2026-07-13-brain2-immutable-cache.md`.
+- Anh Thông approved replacing the remaining Pages redirect with a dedicated Worker.
+  Worker version `41583ee4-53c1-47df-bbea-bc021c955920` on route
+  `brain2.thongphan.com/*` has no bindings, dev hostname or preview URL;
+  root, old path and API POST smoke each return body-free `301`, preserve query strings
+  and expose `X-TP-Legacy-Redirect: worker-v1`. The Pages custom-domain association
+  was removed only after that fingerprint passed on production.
+- The complete `brain2-platform` project was then deleted and disappeared from
+  Wrangler project inventory. A final 128-request sweep covered the exact 64 private
+  snapshot URLs plus 64 cache-busted variants: every request failed at the retired
+  hostname boundary, with zero response bytes and zero legacy fingerprints. The
+  earlier immutable-cache STUCK report is resolved.

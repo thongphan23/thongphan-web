@@ -13,6 +13,7 @@ const redirectWorker = {
         Location: `${CANONICAL_HUB}${source.search}`,
         'Referrer-Policy': 'no-referrer',
         'X-Content-Type-Options': 'nosniff',
+        'X-TP-Legacy-Redirect': 'worker-v1',
       },
     })
   },

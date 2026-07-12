@@ -18,6 +18,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const repoRoot = fileURLToPath(new URL('..', import.meta.url))
 const snapshotScriptPath = path.join(repoRoot, 'scripts/snapshot-brain2-legacy.mjs')
 const redirectWorkerPath = path.join(repoRoot, 'ops/brain2-legacy-redirect/_worker.js')
+const redirectWorkerConfigPath = path.join(repoRoot, 'wrangler.brain2-legacy-redirect.jsonc')
 
 const expectedDeploymentId = '8d400ccd-3357-4c51-9a0f-87bd2648b9ff'
 const expectedSourceAllowlist = [
@@ -146,6 +147,7 @@ test('legacy redirect always returns a short-cached 301 to the canonical hub', a
     )
     assert.equal(await response.text(), '')
     assert.equal(response.headers.get('set-cookie'), null)
+    assert.equal(response.headers.get('x-tp-legacy-redirect'), 'worker-v1')
 
     const cacheControl = response.headers.get('cache-control') ?? ''
     const maxAge = Number(cacheControl.match(/(?:^|,\s*)max-age=(\d+)/)?.[1])
@@ -169,18 +171,33 @@ test('redirect artifact contains no legacy content, API, passcode or reflected p
   }
 })
 
-test('retirement runbook stages the Worker outside the repo before invoking Wrangler', async () => {
+test('legacy redirect Worker config owns only the exact subdomain route', async () => {
+  const configSource = await readFile(redirectWorkerConfigPath, 'utf8').catch(() => null)
+  assert.notEqual(configSource, null, 'tracked legacy redirect Worker config is required')
+  const config = JSON.parse(configSource)
+
+  assert.equal(config.name, 'thongphan-brain2-legacy-redirect')
+  assert.equal(config.main, 'ops/brain2-legacy-redirect/_worker.js')
+  assert.equal(config.workers_dev, false)
+  assert.equal(config.preview_urls, false)
+  assert.deepEqual(config.routes, [{ pattern: 'brain2.thongphan.com/*', zone_name: 'thongphan.com' }])
+  for (const forbidden of ['kv_namespaces', 'd1_databases', 'vars', 'r2_buckets', 'services']) {
+    assert.equal(Object.hasOwn(config, forbidden), false, `redirect config contains ${forbidden}`)
+  }
+})
+
+test('retirement runbook moves the redirect to Worker before deleting the Pages project', async () => {
   const readme = await readFile(
     path.join(repoRoot, 'ops/brain2-legacy-redirect/README.md'),
     'utf8',
   )
 
   assert.match(readme, /set -euo pipefail/)
-  assert.match(readme, /STAGING_DIR="\$\(mktemp -d \/tmp\/brain2-legacy-redirect\.XXXXXX\)"/)
-  assert.match(readme, /cd "\$STAGING_DIR" && \\\n\s+"\$WRANGLER_BIN" pages deploy/)
-  assert.match(readme, /"\$WRANGLER_BIN" pages deploy \. \\/)
-  assert.doesNotMatch(readme, /wrangler pages deploy ops\/brain2-legacy-redirect/)
-  assert.doesNotMatch(readme, /--cwd ops\/brain2-legacy-redirect/)
+  assert.match(readme, /wrangler deploy --config wrangler\.brain2-legacy-redirect\.jsonc --strict/)
+  assert.match(readme, /brain2\.thongphan\.com\/.*301/)
+  assert.match(readme, /wrangler pages project delete brain2-platform/)
+  assert.match(readme, /chỉ xóa project sau khi/i)
+  assert.doesNotMatch(readme, /pages deploy \.|pages deploy ops\/brain2-legacy-redirect/)
 })
 
 test('snapshot source is a closed allowlist that excludes dotenv, Wrangler cache and unrelated scripts', async () => {

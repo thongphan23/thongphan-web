@@ -1115,7 +1115,7 @@ return 301 to canonical hub and no reflection/passcode/content body. Then explic
 remove the legacy `REFLECTIONS` KV binding and encrypted Brevo secret bindings from
 the Pages project and read back the project configuration before deleting deployments.
 
-- [ ] **Step 7: Remove immutable insecure deployments**
+- [x] **Step 7: Remove immutable insecure deployments**
 
 Using the complete three-page private snapshot inventory, delete all 64 old
 `brain2-platform` deployments that serve content, including audited deployment
@@ -1123,15 +1123,23 @@ Using the complete three-page private snapshot inventory, delete all 64 old
 Do not derive the allowlist from Wrangler's default 25-row first page. Verify every
 former immutable URL is no longer publicly reachable.
 
-The 64-ID API deletion completed and readback contains only the redirect deployment,
-but the deleted hash URLs still serve cached legacy HTML. Keep this step open until
-the CDN no longer serves those bodies or a separately approved Worker/project-delete
-architecture revokes the project hostname. See
+The 64-ID API deletion completed first, but deleted hash URLs remained cached. Anh
+Thông then approved a dedicated Worker route plus complete Pages-project deletion.
+Production fingerprint smoke passed before the custom-domain association and project
+were removed. A 128-request exact/cache-busted sweep now finds all 64 retired URLs
+unreachable and zero legacy fingerprints. See the resolved
 `docs/STUCK_REPORT-2026-07-13-brain2-immutable-cache.md`.
 
-- [ ] **Step 8: Final production verification and documentation**
+- [x] **Step 8: Final production verification and documentation**
 
 Repeat automated production smoke at desktop/mobile/reduced-motion, access/no-store, email-v1-only and redirect/deployment cleanup. Record Pages IDs, Worker versions, KV release prefix, D1 migration result, legacy deletion inventory, screenshots and rollback procedure in `docs/STATUS.md` and release report.
+
+Final read-only smoke returns `200` for the canonical hub, public day 01 and locked
+day 08 shell; the exact access endpoint returns unauthenticated `401`, signup GET
+fails closed with `405`, and the dedicated legacy Worker returns fingerprinted,
+body-free `301` for root/path/API. Main tests pass `211/211`, Brain2 `143/143`, Read
+`3/3`, strict private scan covers `2,692` files with zero hits/symlinks, and the
+production build still exports `82/82` routes.
 
 - [ ] **Step 9: Commit, integrate and push production evidence**
 

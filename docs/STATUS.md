@@ -9,21 +9,21 @@ hub, 21 lesson shells, seven complete public lessons, anonymous progress/access 
 the dedicated protected-content Worker, its private release gate, the inert email v2
 release candidate, the five-act `/about` origin film, the compact homepage bridge,
 canonical cross-site journey and fail-closed legacy-retirement artifacts are locally
-complete. Task 14 release QA and the canonical Task 15 production cutover are
-complete. Only the legacy
-21-day challenge is being consolidated;
+complete. Task 14 release QA, canonical Task 15 production cutover and legacy Pages
+retirement are complete. The consolidation includes only the legacy 21-day challenge;
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
 Task 15 provisioned the isolated KV, D1 migration, two Keychain/Worker secrets, all
 14 protected packages, access Worker `524eacb7`, signup Worker `e0b86041`, preview
 `8452a6ae` and canonical Pages production `a0554edc`. Public, protected and signup
-production smoke passes. `brain2.thongphan.com` is redirect-only through deployment
-`5ec622ea`; its `REFLECTIONS` and two Brevo bindings are removed. Cloudflare's API
-accepted all 64 audited legacy deployment deletions and lists only the redirect, but
-every deleted immutable hash URL still serves cached legacy HTML. Final cleanup is
-therefore blocked at the CDN boundary, not the application. Email remains undeployed
-because the available Brevo credential returns 401.
+production smoke passes. `brain2.thongphan.com` is redirect-only through dedicated
+Worker `thongphan-brain2-legacy-redirect` version `41583ee4`; the response fingerprint
+`worker-v1` proves Pages is not serving the domain. The complete `brain2-platform`
+Pages project, its `REFLECTIONS`/Brevo bindings and all 64 audited deployments are
+gone. Post-delete verification made 128 requests across all 64 immutable URLs and
+their cache-busted variants: all were unreachable with zero legacy body hits. Email
+remains undeployed because the available Brevo credential returns 401.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 

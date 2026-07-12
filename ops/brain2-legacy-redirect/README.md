@@ -1,82 +1,46 @@
 # Nghỉ hưu `brain2.thongphan.com`
 
-Thư mục này là bản triển khai Cloudflare Pages ở chế độ nâng cao (Advanced Mode)
-chỉ để chuyển hướng. Mọi phương thức và mọi đường dẫn cũ trả `301` về
-`https://thongphan.com/brain2/21-ngay`, giữ nguyên chuỗi truy vấn và không trả lại
-nội dung, passcode hay API cũ.
+Subdomain legacy được một Cloudflare Worker độc lập trên route proxied chuyển hướng về
+`https://thongphan.com/brain2/21-ngay`. Mọi phương thức và đường dẫn cũ đều trả
+`301`, giữ nguyên query string, body rỗng và không còn phụ thuộc project Pages
+`brain2-platform`.
 
-Cloudflare Pages có API danh sách deployment hỗ trợ `page` và `per_page`. Công cụ
-snapshot dùng trực tiếp API có phân trang để giữ đủ 64 deployment production đã
-audit; không dùng kết quả 25 dòng mặc định của Wrangler làm danh sách xóa.
+Response có `X-TP-Legacy-Redirect: worker-v1` để chứng minh Worker đã tiếp quản
+route trước khi xóa project Pages. Worker không có KV, D1, secret, service binding
+hay quyền truy cập nội dung legacy.
 
-Tài liệu API chính thức:
-<https://developers.cloudflare.com/api/resources/pages/subresources/projects/subresources/deployments/methods/list/>
+## 1. Cổng snapshot và canonical
 
-## 1. Tạo và xác minh snapshot riêng tư
-
-Chạy từ gốc repo công khai:
+Chạy snapshot từ gốc repo công khai nếu chưa có bản đã xác minh:
 
 ```bash
 node scripts/snapshot-brain2-legacy.mjs \
   --output /Users/rio/Private/thongphan-brain2-legacy-2026-07-12
 ```
 
-Công cụ chỉ đọc tám file nằm trong allowlist. Nó không duyệt cây nguồn, không mở
-`.env.local`, `.wrangler`, `.claude`, Google Apps Script hoặc tệp bí mật. Credential
-Cloudflare được Wrangler cấp trong bộ nhớ để gọi API đọc; credential không được ghi
-vào snapshot hay terminal. Thư mục kết quả có mode `700`, mọi file có mode `600`.
-Đầu ra terminal chỉ gồm tên tương đối, số byte và SHA-256.
+Chỉ tiếp tục khi:
 
-Trước khi triển khai chuyển hướng, kiểm tra riêng các trường không chứa nội dung
-người dùng:
+1. canonical `https://thongphan.com/brain2/21-ngay` đã qua kiểm thử production;
+2. snapshot riêng tư có đủ 64 production deployment, đúng checksum và permission;
+3. binding và secret của Pages đã được gỡ và đọc lại là rỗng;
+4. có thủ tục rollback canonical trong báo cáo phát hành.
 
-```bash
-jq '{deployment_count, audited_production_deployment_id, api_pages}' \
-  /Users/rio/Private/thongphan-brain2-legacy-2026-07-12/cloudflare/deployments.json
-```
+Không log nội dung `live/reflections.json`, secret hay passcode.
 
-Kết quả bắt buộc là `deployment_count: 64`, ba trang API và có deployment
-`8d400ccd-3357-4c51-9a0f-87bd2648b9ff`. Không `cat`, log hoặc chụp màn hình
-`live/reflections.json`.
-
-## 2. Cổng bắt buộc trước khi thay frontend cũ
-
-Chỉ tiếp tục khi tất cả điều sau đã đạt:
-
-1. Bản production chính tại `https://thongphan.com/brain2/21-ngay` đã vượt qua
-   kiểm thử nội dung, quyền truy cập, đăng ký, desktop, mobile và reduced motion.
-2. Snapshot riêng tư ở trên đã tự xác minh hash và permission.
-3. Báo cáo phát hành đã ghi lại deployment canonical và thủ tục khôi phục.
-4. Chưa xóa bất kỳ deployment cũ, KV binding hoặc encrypted secret nào.
-
-## 3. Triển khai chuyển hướng
-
-Lệnh này làm thay đổi production nên chỉ chạy trong Task 15, sau cổng ở trên:
+## 2. Triển khai Worker chuyển hướng
 
 ```bash
 (
   set -euo pipefail
-  REPO_ROOT="$(pwd)"
-  WRANGLER_BIN="$REPO_ROOT/node_modules/.bin/wrangler"
-  STAGING_DIR="$(mktemp -d /tmp/brain2-legacy-redirect.XXXXXX)"
-  test -n "$STAGING_DIR"
-  trap 'rm -rf "$STAGING_DIR"' EXIT
-
-  install -m 600 ops/brain2-legacy-redirect/_worker.js "$STAGING_DIR/_worker.js"
-  cd "$STAGING_DIR" && \
-  "$WRANGLER_BIN" pages deploy . \
-    --project-name brain2-platform \
-    --branch main
+  npx wrangler deploy --config wrangler.brain2-legacy-redirect.jsonc --strict
 )
 ```
 
-Thư mục tạm nằm ngoài repo ngăn Wrangler tự tìm ngược lên và nạp `wrangler.toml` của
-website canonical vào project legacy. Không thêm asset, HTML hoặc Pages Function nào
-khác vào artifact này.
+Config chỉ sở hữu route `brain2.thongphan.com/*`; DNS của subdomain phải tiếp tục
+proxied để Worker nhận request. `workers_dev` và preview URL đều tắt. Không gắn thêm
+asset, binding hoặc biến môi trường.
 
-## 4. Smoke chuyển hướng
-
-Kiểm tra cả gốc, đường dẫn cũ, API cũ, query string và POST:
+## 3. Smoke trước khi xóa Pages
 
 ```bash
 curl -sS -D /tmp/brain2-root.headers \
@@ -94,37 +58,39 @@ curl -sS -X POST -D /tmp/brain2-api.headers \
 wc -c /tmp/brain2-root.body /tmp/brain2-path.body /tmp/brain2-api.body
 ```
 
-Mỗi phản hồi phải có:
+`https://brain2.thongphan.com/` phải trả `301`. Cả ba phản hồi phải có:
 
-- status `301`;
-- `Location: https://thongphan.com/brain2/21-ngay` cộng đúng query string nguồn;
-- `Cache-Control` với `max-age=300` ở lần phát hành đầu;
-- body `0` byte;
-- không cookie, passcode, reflection, signup response hay nội dung bài học.
+- đúng `Location: https://thongphan.com/brain2/21-ngay` và query string nguồn;
+- `X-TP-Legacy-Redirect: worker-v1`;
+- body `0` byte, không cookie và không nội dung legacy;
+- cache ban đầu ngắn, `max-age=300`.
 
-## 5. Dọn binding và deployment cũ
+## 4. Xóa project Pages legacy
 
-Chỉ sau khi smoke chuyển hướng đạt:
+**Chỉ xóa project sau khi** cả ba smoke ở trên đạt và header dấu vân tay xác nhận
+Worker đang phục vụ domain thật. Lệnh destructive đã được duyệt trong Task 15:
 
-1. Gỡ rõ ràng binding `REFLECTIONS` và encrypted Brevo secret khỏi project Pages.
-2. Đọc lại cấu hình project để xác minh các binding đã biến mất.
-3. Dùng đúng 64 ID trong
-   `cloudflare/deployments.json` của snapshot làm allowlist xóa; không dùng
-   `wrangler pages deployment list`, vì lệnh đó chỉ trả trang đầu 25 dòng.
-4. Giữ lại deployment redirect-only mới, xóa từng deployment content-bearing cũ,
-   rồi xác minh mọi immutable URL cũ không còn truy cập được.
-5. Ghi ID, kết quả và thời điểm của từng thao tác vào báo cáo production.
+```bash
+npx wrangler pages project delete brain2-platform
+```
 
-Không chạy thao tác xóa tự động nếu số lượng, ID audited hoặc deployment
-redirect-only không khớp chính xác.
+Sau khi xóa:
 
-## 6. Khôi phục
+1. xác minh `brain2-platform` không còn trong `wrangler pages project list`;
+2. xác minh DNS `brain2.thongphan.com` vẫn resolve và proxied bằng chính header
+   `worker-v1`; nếu record bị gỡ thì tạo lại record proxied dành cho Worker route;
+3. chạy lại toàn bộ smoke và kiểm tra header `worker-v1`;
+4. kiểm tra đủ 64 immutable URL từ snapshot, bao gồm cache-busted request, không URL
+   nào còn trả HTML, API hoặc nội dung bài học legacy;
+5. ghi Worker version, trạng thái DNS và phân bố status của 64 URL vào báo cáo.
 
-Snapshot là bằng chứng nguồn và checksum riêng tư, không phải artifact để đưa website
-không an toàn trở lại public. Nếu canonical hoặc chuyển hướng gặp sự cố:
+## 5. Khôi phục
 
-1. giữ nguyên domain legacy ở trạng thái redirect-only;
-2. sửa hoặc rollback bản canonical bằng deployment đã ghi trong báo cáo;
-3. triển khai lại chính `_worker.js` này nếu cần;
-4. không tái triển khai passcode phía client, reflection API, Brevo Function hay bất
-   kỳ deployment content-bearing cũ nào.
+Snapshot chỉ là bằng chứng riêng tư, không phải artifact để đưa frontend cũ lên lại.
+Nếu chuyển hướng lỗi:
+
+1. giữ hoặc phục hồi DNS proxied của `brain2.thongphan.com`;
+2. triển khai lại Worker bằng config đã track;
+3. rollback canonical bằng deployment đã ghi trong báo cáo nếu lỗi nằm ở canonical;
+4. không tái tạo Pages project, passcode phía client, reflection API hay deployment
+   content-bearing cũ.
