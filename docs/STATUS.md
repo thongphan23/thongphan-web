@@ -13,8 +13,9 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
 - Approved story arc: difference → success → collapse → rebuilding → system. The HSTL
-  consequence may be stated plainly as more than VND 2 billion of debt and close to
-  ten years of recovery, without pity or clickbait treatment.
+  consequence is a first-person account: the event left more than VND 2 billion of
+  debt and, ten years later, it still had not been fully repaid. Do not rewrite that
+  as a completed “ten-year recovery” or treat it as audited financial data.
 - Homepage receives a compact origin bridge inside the existing proof chapter; `/about`
   carries the full five-act narrative and ends at the 21-day practice.
 - Canonical challenge routes are `/brain2/21-ngay` and
@@ -24,11 +25,16 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
 - Because the legacy subdomain has been public, retirement uses a permanent redirect
   only after canonical content, signup, access and production parity pass.
 - The production audit found R2 disabled, a global router that rewrites cache headers,
-  210 overdue legacy email rows and 25 content-bearing legacy Pages deployments. The
+  210 overdue legacy email rows and 64 content-serving legacy Pages deployments across
+  three API pages. The
   approved implementation therefore uses a dedicated private KV namespace instead of
   R2 plus a more-specific access Worker, quarantines all old queue rows as `legacy-v0`
   so the new sender selects only `brain2-2026-v1`, and removes old immutable
   deployments only after the redirect-only replacement passes.
+- Pages preview shares production D1/KV bindings, so release-preview QA is read-only;
+  real signup/access mutations run only on the apex after production deployment and
+  before legacy retirement. Redirect retirement must also remove the legacy
+  `REFLECTIONS` and Brevo secret bindings explicitly.
 - Written design:
   `docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md`.
 - Implementation plan:
@@ -57,6 +63,18 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
 - Task 4 verification: focused route/static contracts 12/12, full suite 129/129,
   TypeScript pass and static build 83/83. Desktop/mobile browser checks show no
   horizontal overflow; the hub hero is three lines at 1440px and four at 390px.
+- Anonymous progress, resume and protected access UI are now complete in commit
+  `3a03f00`. Protected packages are checked against an exact browser-safe schema,
+  canonical metadata and SHA-256 body checksum before rendering; stale requests are
+  invalidated with generation guards and `AbortController`.
+- The access dialog portals to `body`, covers the viewport, locks both document
+  scrollers, traps/restores focus and sends only `{ code }`. A failed server logout
+  keeps the lesson visible and reports the failure; only a confirmed DELETE clears
+  content. The complete 21/21 state no longer offers a contradictory resume action.
+- Task 5 verification: focused 27/27, full 149/149, TypeScript pass, static build
+  83/83, npm audit zero vulnerabilities, final rendered QA at 1440×900 and 390×844,
+  and re-review with 0 Critical/0 Important. The hub/lesson route chunks measure
+  2,967/7,919 bytes gzip and the sensitive-string scan reports zero hits.
 
 ## Motion Atmosphere production release — 2026-07-12
 

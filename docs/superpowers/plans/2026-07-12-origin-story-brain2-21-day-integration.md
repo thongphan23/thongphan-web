@@ -1087,19 +1087,41 @@ Upload all 14 immutable keys, read back checksums, run the real-private leak sca
 
 - [ ] **Step 4: Deploy email v2 without sending legacy rows**
 
-Set existing Brevo key as encrypted Worker secret, deploy the versioned sender while tracked config has `crons = []`, perform one controlled QA signup/email through the authenticated admin path, and confirm only a v1 row is selected and unsubscribe works. Then change tracked config to `[triggers] crons = ["*/5 * * * *"]`, redeploy, verify the trigger, and re-query D1: all 210 legacy-v0 remain unsent.
+Recover the existing Brevo key from an authorized source such as Keychain/password
+manager; the encrypted legacy Pages value cannot be read back and must never be
+printed or guessed. Set it as an encrypted Worker secret, deploy the versioned sender
+while tracked config has `crons = []`, perform one controlled QA signup/email through
+the authenticated admin path, and confirm only a v1 row is selected and unsubscribe
+works. Then change tracked config to `[triggers] crons = ["*/5 * * * *"]`, redeploy,
+verify the trigger, and re-query D1: all 210 legacy-v0 remain unsent. If the credential
+cannot be recovered, leave the sender and cron undeployed and record the external
+credential blocker rather than weakening the release boundary.
 
 - [ ] **Step 5: Deploy canonical Pages preview and production**
 
-Deploy `out` to a non-production branch of `thongphan-com`, verify Cloudflare's default `X-Robots-Tag: noindex` preview header, run the full route/visual/access/signup matrix, then deploy branch `main` production. Smoke Pages origin and `https://thongphan.com`; verify canonical redirects, SEO, no protected bytes, and route-specific Worker bypass.
+Deploy `out` to a non-production branch of `thongphan-com` and verify Cloudflare's
+default `X-Robots-Tag: noindex` preview header. Because preview shares production
+D1/KV and is outside the exact access-Worker routes, run only static/read-only route,
+SEO, visual and leak QA there—never a real signup or other mutation. Then deploy
+branch `main` production and run the full access/signup matrix on
+`https://thongphan.com` before retiring legacy. Smoke the Pages origin and apex;
+verify canonical redirects, SEO, no protected bytes, and route-specific Worker bypass.
 
 - [ ] **Step 6: Retire the legacy frontend**
 
-Only after canonical production passes, deploy `ops/brain2-legacy-redirect` to Pages project `brain2-platform`. Verify root, old paths, API paths and query strings all return 301 to canonical hub and no reflection/passcode/content body.
+Only after canonical production passes, deploy `ops/brain2-legacy-redirect` to Pages
+project `brain2-platform`. Verify root, old paths, API paths and query strings all
+return 301 to canonical hub and no reflection/passcode/content body. Then explicitly
+remove the legacy `REFLECTIONS` KV binding and encrypted Brevo secret bindings from
+the Pages project and read back the project configuration before deleting deployments.
 
 - [ ] **Step 7: Remove immutable insecure deployments**
 
-Using the private snapshot inventory, delete every old `brain2-platform` deployment that serves content, including audited deployment `8d400ccd-3357-4c51-9a0f-87bd2648b9ff`. Keep only the redirect-only deployment. Verify each former immutable URL is no longer publicly reachable.
+Using the complete three-page private snapshot inventory, delete all 64 old
+`brain2-platform` deployments that serve content, including audited deployment
+`8d400ccd-3357-4c51-9a0f-87bd2648b9ff`. Keep only the redirect-only deployment.
+Do not derive the allowlist from Wrangler's default 25-row first page. Verify every
+former immutable URL is no longer publicly reachable.
 
 - [ ] **Step 8: Final production verification and documentation**
 

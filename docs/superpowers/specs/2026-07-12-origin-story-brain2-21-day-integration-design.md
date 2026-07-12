@@ -21,7 +21,7 @@ The story and the challenge are one causal sequence:
 
 1. Thông learned that difference can create attention.
 2. He also learned that attention cannot rescue a weak core product.
-3. The resulting debt and long recovery changed how he builds.
+3. The resulting debt and long effort to repay it changed how he builds.
 4. Later content failures taught him to treat failed attempts as data.
 5. Brain2 became the system for retaining those lessons, connecting them and turning
    them into better decisions and useful outputs.
@@ -35,8 +35,10 @@ hard-earned lessons.
 ## Approved decisions
 
 - Use the full narrative arc: difference → success → collapse → rebuilding → system.
-- State the Hoa Sơn Tửu Lầu consequence plainly: the business was transferred, it
-  left more than VND 2 billion of debt, and the recovery took close to ten years.
+- State the Hoa Sơn Tửu Lầu consequence plainly as a first-person account: the
+  business was transferred, the event left more than VND 2 billion of debt, and ten
+  years later that debt still had not been fully repaid. Do not imply that recovery
+  was completed in ten years or that the amount is third-party audited.
 - Tell this without pity, spectacle or a redemption-guru posture.
 - Canonical challenge URL: `/brain2/21-ngay`.
 - Canonical lesson URLs: `/brain2/21-ngay/ngay-01` through
@@ -71,6 +73,16 @@ product boundary:
    contain placeholder content and no email-drip Worker is active. Schema versioning
    must classify these rows as `legacy-v0`, and a new sender may select only
    `brain2-2026-v1`. No legacy row may be sent automatically.
+4. The legacy Pages inventory is 64 deployments across three API pages, not the 25
+   visible in Wrangler's default first page. Retirement must use the complete private
+   allowlist and verify all 64 immutable URLs after deletion. The canonical Pages
+   preview shares production D1/KV bindings, so preview QA is read-only: no real
+   signup, unsubscribe or other mutating smoke may run there.
+5. A redirect-only deployment does not automatically remove the legacy `REFLECTIONS`
+   binding or encrypted Brevo secret bindings. After redirect smoke passes, explicitly
+   remove those bindings before deleting content deployments. An encrypted Pages
+   secret cannot be read back; the email Worker may deploy only if the existing Brevo
+   credential is recovered from its authorized source, never reconstructed or printed.
 
 The legacy Pages project also retains immutable deployments containing the exposed
 client passcode and public reflection API. After a private snapshot and successful
@@ -130,7 +142,7 @@ The bridge contains:
 
 - one real archival image or press artifact;
 - one causal line, not a résumé claim: `Thắng sự chú ý. Thua sản phẩm cốt lõi.`;
-- one consequence line: `Hơn 2 tỷ nợ và gần 10 năm làm lại.`;
+- one consequence line: `Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.`;
 - one present-day line: `Brain2 bắt đầu từ quyết định không bỏ phí bài học đó.`;
 - one action: `Đọc câu chuyện thật` → `/about`.
 
@@ -145,23 +157,26 @@ separate dossier sections.
 
 #### Act 1 — Dám khác biệt
 
-- 2015, Hoa Sơn Tửu Lầu and the decision to build a distinctly different experience.
+- By 2015, public press documented Hoa Sơn Tửu Lầu as a distinctly different
+  experience. Do not claim an exact opening year while owned sources conflict.
 - Nine months of losses, sleeping on arranged restaurant tables and eating with the
   staff.
 - Emotional purpose: show hunger and conviction, not nostalgia.
 
 #### Act 2 — Khi sự chú ý mở cửa
 
-- Press attention and public recognition changed the business trajectory.
-- Difference created opportunities, relationships and confidence.
+- Kênh14, VnExpress and Vietnam News documented the different experience.
+- According to the personal account, that attention opened opportunities,
+  relationships and confidence; do not present the causal effect as press-verified.
 - Emotional purpose: let the rise feel real enough that the later mistake matters.
 
 #### Act 3 — Thắng truyền thông, thua sản phẩm
 
-- The experience was memorable, but the food/product core was not strong enough for
-  repeat demand.
-- The business was transferred, leaving more than VND 2 billion of debt and a recovery
-  lasting close to ten years.
+- In first-person hindsight, the memorable communication outpaced the strength of the
+  core product; do not present this as an objective press verdict.
+- The business was transferred. According to the personal account, the event left
+  more than VND 2 billion of debt and, ten years later, it still had not been fully
+  repaid.
 - The number is presented once, as consequence, never enlarged into clickbait.
 - Core lesson: communication can open the door; only substance keeps it open.
 
