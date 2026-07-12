@@ -22,7 +22,7 @@ export default function HomeCinema() {
   return (
     <div className={styles.page} data-cinema-root>
       <section id="story" className={styles.hero} data-home-section>
-        <div className={styles.heroPhoto} data-focus-pull>
+        <div className={styles.heroPhoto} data-focus-pull data-motion-parallax data-parallax-max="18">
           <picture>
             <source media="(max-width: 767px)" srcSet="/images/homepage/evidence-cinema-hero-v3-mobile.webp" />
             <img
@@ -46,13 +46,13 @@ export default function HomeCinema() {
         />
 
         <div className={styles.heroTextStack}>
-          <p className={styles.displayName} aria-hidden="true" data-cinema-reveal>
+          <p className={styles.displayName} aria-hidden="true" data-cinema-reveal data-motion-reveal="mask">
             <span>THÔNG</span>
             <span>PHAN</span>
             <img src="/images/homepage/evidence-cinema-signature-v3.png" alt="" />
           </p>
 
-          <div className={styles.heroCopy} data-cinema-reveal>
+          <div className={styles.heroCopy} data-cinema-reveal data-motion-reveal="fade">
             <h1>
               Biến chuyên môn thật<br />
               thành <em>tài sản</em> có người muốn dùng.
@@ -88,7 +88,7 @@ export default function HomeCinema() {
       </section>
 
       <section id="proof" className={`${styles.act} ${styles.proofAct}`} data-home-section>
-        <header className={styles.actHeader} data-cinema-reveal>
+        <header className={styles.actHeader} data-cinema-reveal data-motion-reveal="mask">
           <span>ACT 03 · BẰNG CHỨNG</span>
           <h2>Đừng tin một lời hứa. Hãy nhìn dấu vết công việc.</h2>
           <p>Ba dấu vết thật. Mở từng khung để xem nguồn, bối cảnh và điều nó thực sự chứng minh.</p>
@@ -97,7 +97,7 @@ export default function HomeCinema() {
       </section>
 
       <section id="method" className={`${styles.act} ${styles.methodAct}`} data-home-section>
-        <header className={`${styles.actHeader} ${styles.methodHeader}`} data-cinema-reveal>
+        <header className={`${styles.actHeader} ${styles.methodHeader}`} data-cinema-reveal data-motion-reveal="mask">
           <span>ACT 04 · PHƯƠNG PHÁP</span>
           <h2>Một đường thẳng từ thứ bạn biết đến nơi người khác cùng làm.</h2>
         </header>
@@ -127,6 +127,7 @@ export default function HomeCinema() {
                   eventDetail={{ slug: item.slug }}
                   data-cinema-reveal
                   data-motion-surface
+                  data-motion-reveal="drift"
             >
               <span className={styles.pathIndex}>{item.index}</span>
               <span className={styles.pathCopy}>
@@ -140,7 +141,7 @@ export default function HomeCinema() {
       </section>
 
       <section id="conan" className={styles.conanAct} data-home-section>
-        <div className={styles.conanPortrait} data-focus-pull>
+          <div className={styles.conanPortrait} data-focus-pull data-motion-parallax data-parallax-max="12">
           <Image
             src="/images/homepage/evidence-cinema-conan-portrait-v2.webp"
             alt="Chân dung Thông Phan khoanh tay trước bản đồ thế giới."
@@ -148,7 +149,7 @@ export default function HomeCinema() {
             sizes="(max-width: 767px) 100vw, 38vw"
           />
         </div>
-        <div className={styles.conanCopy} data-cinema-reveal>
+          <div className={styles.conanCopy} data-cinema-reveal data-motion-reveal="drift">
           <span>ACT 06 · CONAN HANDOFF</span>
           <h2>Khi đã sẵn sàng làm thật, đừng đi một mình.</h2>
           <p>Conan Maker thêm vào điều một trang web không thể cho bạn: môi trường triển khai dài hạn, phản hồi và những người đang cùng xây.</p>

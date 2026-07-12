@@ -62,7 +62,7 @@ function ArchiveLane({
   entries: LibraryEntrySummary[]
 }) {
   return (
-    <section className={styles.archiveLane} aria-labelledby={`lane-${index}`}>
+    <section className={styles.archiveLane} aria-labelledby={`lane-${index}`} data-motion-reveal="drift">
       <header className={styles.laneHeader}>
         <div>
           <span>{index}</span>
@@ -117,7 +117,7 @@ export default function LibraryPage() {
     <div className={styles.libraryPage}>
       <section className={styles.archiveFrame} aria-labelledby="library-title">
         <header className={styles.hero}>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroCopy} data-motion-reveal="mask">
             <p className={styles.eyebrow}>Thư viện chọn lọc · Thông Phan</p>
             <h1 id="library-title" aria-label={LIBRARY_HEADLINE}>
               <span className={styles.headlineLine}>Một thư viện{' '}</span>
@@ -133,7 +133,7 @@ export default function LibraryPage() {
           </div>
 
           {featured ? (
-            <article className={styles.featured} aria-labelledby="featured-title" data-motion-surface>
+            <article className={styles.featured} aria-labelledby="featured-title" data-motion-surface data-motion-reveal="drift">
               <p className={styles.featuredLabel}>Bài đọc nổi bật · Stanford 2005</p>
               <h2 id="featured-title">{featured.title}</h2>
               <p>{featured.description}</p>
@@ -147,7 +147,7 @@ export default function LibraryPage() {
           ) : null}
         </header>
 
-        <section className={styles.currentState} aria-labelledby="current-state-title">
+        <section className={styles.currentState} aria-labelledby="current-state-title" data-motion-reveal="fade">
           <header>
             <p>Đừng bắt đầu từ định dạng</p>
             <h2 id="current-state-title">Bắt đầu từ điều bạn đang cần nhìn rõ.</h2>
@@ -203,7 +203,7 @@ export default function LibraryPage() {
       </section>
 
       <section className={styles.blogLane} aria-labelledby="blog-lane-title">
-        <header className={styles.blogHeader}>
+        <header className={styles.blogHeader} data-motion-reveal="mask">
           <div>
             <span>03</span>
             <h2 id="blog-lane-title">Bài của Thông</h2>

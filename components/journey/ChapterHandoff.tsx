@@ -48,6 +48,7 @@ export default function ChapterHandoff({
     <section
       className={`${styles.handoff} ${className}`.trim()}
       data-tone={tone}
+      data-motion-reveal="fade"
       aria-labelledby={`handoff-${journeyKey}`}
     >
       <header className={styles.intro}>

@@ -29,7 +29,7 @@ export default function AboutPage() {
         </DossierHeader>
 
         <DossierFolio tone="dark" index="01" label="Chân dung và nguyên tắc">
-          <div className={styles.portraitGrid}>
+          <div className={styles.portraitGrid} data-motion-reveal="fade">
             <figure className={styles.portrait} data-motion-surface>
               <Image src="/images/homepage/proof/thong-stage-3x2-v1.webp" width={1200} height={800} alt="Thông Phan chia sẻ trên sân khấu" priority />
               <Image className={styles.stamp} src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" aria-hidden="true" />
@@ -43,14 +43,14 @@ export default function AboutPage() {
         </DossierFolio>
 
         <DossierFolio tone="dark" index="02" label="Ba chương đã đi qua">
-          <div className={styles.chapterGrid}>
+          <div className={styles.chapterGrid} data-motion-reveal="drift">
             {chapters.map((chapter) => <article key={chapter.marker} data-motion-surface><span>{chapter.marker}</span><h2>{chapter.title}</h2><p>{chapter.body}</p></article>)}
           </div>
         </DossierFolio>
 
         <DossierFolio tone="dark" index="03" label="Sổ bằng chứng công khai">
-          <div className={styles.proofIntro}><h2>Không cần tin một câu định vị. Hãy xem nguồn.</h2><p>Mỗi con số xuất hiện ở đây được nối về một note bằng chứng công khai. Chỉ những claim có nguồn mới được render.</p></div>
-          <div className={styles.proofGrid}>
+          <div className={styles.proofIntro} data-motion-reveal="mask"><h2>Không cần tin một câu định vị. Hãy xem nguồn.</h2><p>Mỗi con số xuất hiện ở đây được nối về một note bằng chứng công khai. Chỉ những claim có nguồn mới được render.</p></div>
+          <div className={styles.proofGrid} data-motion-reveal="fade">
             {aboutProof.map((metric) => <article key={metric.value} data-motion-surface><strong>{metric.value}</strong><p>{metric.label}</p><Link href={metric.sourceHref} data-motion-action>Nguồn: {metric.sourceLabel}</Link></article>)}
           </div>
         </DossierFolio>

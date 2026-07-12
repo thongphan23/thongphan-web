@@ -75,3 +75,26 @@ test('approved actions and surfaces opt into bounded hover and focus physics', a
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/)
   assert.match(css, /\[data-motion-surface\]:hover img\s*\{[\s\S]*?scale\(1\.02\)/)
 })
+
+test('GSAP scroll choreography is lazy, bounded, varied and reversible', async () => {
+  const [scrollSource, homeSource, librarySource, aboutSource, handoffSource] = await Promise.all([
+    readProjectFile('components/ScrollAnimations.tsx'),
+    readProjectFile('components/home-cinema/HomeCinema.tsx'),
+    readProjectFile('app/library/page.tsx'),
+    readProjectFile('app/about/page.tsx'),
+    readProjectFile('components/journey/ChapterHandoff.tsx'),
+  ])
+
+  assert.match(scrollSource, /import\('gsap'\)/)
+  assert.match(scrollSource, /import\('gsap\/ScrollTrigger'\)/)
+  assert.match(scrollSource, /ScrollTrigger\.create/)
+  assert.match(scrollSource, /context\.revert\(\)/)
+  assert.match(scrollSource, /trigger\.kill\(\)/)
+  assert.match(scrollSource, /Math\.min\(18,/)
+  assert.match(homeSource, /data-motion-parallax/)
+  assert.match(homeSource, /data-motion-reveal="mask"/)
+  assert.match(homeSource, /data-motion-reveal="drift"/)
+  assert.match(librarySource, /data-motion-reveal=/)
+  assert.match(aboutSource, /data-motion-reveal=/)
+  assert.match(handoffSource, /data-motion-reveal=/)
+})

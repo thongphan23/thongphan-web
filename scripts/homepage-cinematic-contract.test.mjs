@@ -153,11 +153,12 @@ test('homepage motion is scoped, reversible and reduced-motion safe', async () =
 
   for (const required of [
     "matchMedia('(prefers-reduced-motion: reduce)')",
-    '[data-cinema-root]',
+    '[data-site-shell="unified"]',
     '[data-cinema-reveal]',
     '[data-focus-pull]',
     '[data-evidence-stamp]',
-    'observer.disconnect()',
+    'context.revert()',
+    'trigger.kill()',
   ]) {
     assert.match(motion, escaped(required))
   }
