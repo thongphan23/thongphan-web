@@ -72,7 +72,7 @@ const actions = {
     eyebrow: 'Thực hành có nhịp',
   },
   brain2Challenge: {
-    href: '/challenges/brain2-21-ngay',
+    href: '/brain2/21-ngay',
     label: 'Bắt đầu 21 ngày Brain2',
     reason: 'Gom ca thật, tách ý và thử một nhịp làm việc có thể duy trì.',
     eyebrow: 'Kích hoạt Brain2',
@@ -109,7 +109,7 @@ export const journeyHandoffs = {
     chapter: 'Sau câu chuyện',
     title: 'Bây giờ hãy quay lại câu chuyện của chính bạn.',
     description: 'Điểm quan trọng không phải là Thông đã làm gì, mà là chuyên môn của bạn đang có hình hài tới đâu.',
-    primary: actions.diagnostic,
+    primary: actions.brain2Challenge,
     secondary: [actions.library, actions.chat],
   },
   diagnostic: {

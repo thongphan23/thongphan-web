@@ -531,7 +531,7 @@ export const libraryNotes: LibraryNote[] = [
     "cta": {
       "label": "Bắt đầu",
       "title": "Nếu muốn làm nhịp này với hướng dẫn cụ thể, bắt đầu challenge 21 ngày Brain2.",
-      "href": "/challenges/brain2-21-ngay",
+      "href": "/brain2/21-ngay",
       "cta": "Bắt đầu 21 ngày Brain2"
     },
     "slug": "ban-do-xay-brain2-trong-21-ngay",

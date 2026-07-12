@@ -80,9 +80,9 @@ test('about keeps one outer heading path, no nested main and removes the stale m
   assert.ok(existsSync(new URL('../components/origin-story/OriginStory.module.css', import.meta.url)))
   assert.match(
     storyCss,
-    /\.act\[data-tone=['"]dark['"]\]\s+\.actHeader h2\s*\{[^}]*color:\s*var\(--cinema-paper\)/s,
+    /\.act\[data-tone=['"]dark['"]\]\s+\.actHeader h2\s*\{[^}]*color:\s*var\(--cinema-paper\)/,
   )
-  assert.match(storyCss, /\.story\s*\{[^}]*scroll-margin-top:\s*5rem/s)
+  assert.match(storyCss, /\.story\s*\{[^}]*scroll-margin-top:\s*5rem/)
   assert.equal(existsSync(new URL('../content/proof/about-proof.json', import.meta.url)), false)
   assert.equal(existsSync(new URL('../lib/about-proof.ts', import.meta.url)), false)
 })

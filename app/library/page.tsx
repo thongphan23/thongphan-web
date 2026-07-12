@@ -169,7 +169,7 @@ export default function LibraryPage() {
               <span>03 · Tạo nhịp làm</span>
               <h3>Bắt đầu một nhịp thực hành</h3>
               <p>Gom nguyên liệu thật trong 21 ngày thay vì tiếp tục lưu thêm kiến thức rời rạc.</p>
-              <Link href="/challenges/brain2-21-ngay" data-motion-action>Mở lịch 21 ngày <span aria-hidden="true">→</span></Link>
+              <Link href="/brain2/21-ngay" data-motion-action>Mở lịch 21 ngày <span aria-hidden="true">→</span></Link>
             </article>
           </div>
         </section>

@@ -79,6 +79,6 @@ INSERT OR IGNORE INTO challenges (id, slug, title, tagline, description, duratio
   'brain2-21-ngay',
   '21 Ngày Brain2 - Kích hoạt kho kiến thức của bạn',
   'Điểm bắt đầu để biến chuyên môn thành tài sản số bằng AI',
-  'Mỗi ngày 15 phút để gom kinh nghiệm, case, góc nhìn và proof thật vào một hệ thống. Sau 21 ngày, bạn có nền để vào Conan Trial và bắt đầu tạo output thật.',
+  'Mỗi ngày có một đầu ra rõ, với thời lượng thay đổi theo mục tiêu. Sau 21 ngày, bạn có nền để vào Conan Maker và bắt đầu tạo đầu ra thật.',
   21
 );

@@ -23,6 +23,7 @@ test('primary and homepage chapter navigation expose the complete route contract
     { href: '/about', label: 'Câu chuyện' },
     { href: '/library', label: 'Thư viện' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
+    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
     { href: '/conanmaker/', label: 'Conan Maker' },
   ])
   assert.deepEqual(

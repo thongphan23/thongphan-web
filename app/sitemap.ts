@@ -3,6 +3,7 @@ import { getAllPosts } from '@/lib/blog'
 import { getAllLibraryNotes } from '@/lib/library'
 import { getAllMicroAssets } from '@/lib/micro-assets'
 import { getAllReadingSummaries } from '@/lib/readings'
+import { brain2LessonMetadata } from '@/lib/brain2/lessons'
 
 const BASE_URL = 'https://thongphan.com'
 const RELEASE_DATE = '2026-07-10'
@@ -23,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/diagnostic',
     '/assets',
     '/challenges',
-    '/challenges/brain2-21-ngay',
+    '/brain2/21-ngay',
     '/chat',
     '/library',
     '/library/read',
@@ -42,5 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const assetRoutes = getAllMicroAssets().map((asset) =>
     entry(`/assets/${asset.slug}`, RELEASE_DATE),
   )
-  return [...staticRoutes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
+  const publicBrain2Routes = brain2LessonMetadata
+    .filter((lesson) => lesson.access === 'public')
+    .map((lesson) => entry(`/brain2/21-ngay/${lesson.slug}`, RELEASE_DATE))
+  return [...staticRoutes, ...publicBrain2Routes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
 }

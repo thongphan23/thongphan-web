@@ -8,7 +8,7 @@ import libraryModule from '../lib/library.ts'
 const { getLibraryNoteBySlug, getLibrarySlugs } = libraryModule
 
 const root = new URL('../', import.meta.url)
-const CONTENT_CONTRACT_HASH = 'e4b0bf2ed54fdcd16ef3d0b06ea0a2011e9bb3e7eb1cfb335f2f2ccaf2ab189a'
+const CONTENT_CONTRACT_HASH = '653a62a6685b9f638c92703bcea6510356d6f6b31aca2da810060491621b504a'
 
 async function readProjectFile(path) {
   try {

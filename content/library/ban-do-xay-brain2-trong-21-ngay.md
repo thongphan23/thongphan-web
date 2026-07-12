@@ -33,7 +33,7 @@ tags:
 cta:
   label: "Bắt đầu"
   title: "Nếu muốn làm nhịp này với hướng dẫn cụ thể, bắt đầu challenge 21 ngày Brain2."
-  href: "/challenges/brain2-21-ngay"
+  href: "/brain2/21-ngay"
   cta: "Bắt đầu 21 ngày Brain2"
 ---
 
@@ -125,4 +125,3 @@ Nếu có một câu trả lời "có", Brain2 đã bắt đầu chạy.
 - [Cấu trúc note sống](/library/cau-truc-note-song)
 - [Brain2 đang chạy thật](/library/brain2-dang-chay-that)
 - [Template audit chuyên môn thành tài sản số](/library/template-audit-chuyen-mon-thanh-tai-san-so)
-

@@ -53,7 +53,7 @@ export default function ChallengesPage() {
               {challenges.map((challenge) => (
               <a
                 key={challenge.id}
-                href={`/challenges/${challenge.slug}`}
+                href="/brain2/21-ngay"
                 className={styles.challengeLink}
               >
                 <div className={styles.challengeCard} data-reveal>

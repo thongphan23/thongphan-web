@@ -20,7 +20,7 @@ function DefaultHeader() {
           <li><Link href="/blog">Bài viết</Link></li>
           <li><Link href="/library">Thư viện</Link></li>
           <li><Link href="/assets">Kho tài sản nhỏ</Link></li>
-          <li><Link href="/challenges">21 ngày Brain2</Link></li>
+          <li><Link href="/brain2/21-ngay">21 ngày Brain2</Link></li>
           <li><Link href="/about">Về tui</Link></li>
           <li><Link href="/diagnostic" className={defaultStyles.navCta}>Tự chẩn đoán</Link></li>
         </ul>
@@ -46,8 +46,8 @@ function DefaultFooter() {
           <Link href="/blog">Bài viết</Link>
           <Link href="/library">Thư viện sống</Link>
           <Link href="/assets">Kho tài sản nhỏ</Link>
-          <Link href="/challenges">21 ngày Brain2</Link>
-          <Link href="/chat">Hỏi thử Brain2</Link>
+          <Link href="/brain2/21-ngay">21 ngày Brain2</Link>
+          <Link href="/chat">Bàn hỏi</Link>
           <Link href="/about">Về tui</Link>
         </div>
 

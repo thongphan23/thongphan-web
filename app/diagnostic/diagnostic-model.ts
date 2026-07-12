@@ -52,11 +52,11 @@ export const diagnosticLevels: DiagnosticLevel[] = [
   ] },
   { min: 9, no: '02', name: 'Content Leverage', title: 'Tầng 2, Content Leverage', diagnosis: 'Bạn đã bắt đầu dùng AI để tạo nội dung hoặc đầu ra. Đây là bước tốt, nhưng chưa đủ để tạo tài sản.', stuck: 'Bạn đang kẹt ở chỗ có nội dung nhưng chưa có hệ thống chứng minh chuyên môn, kéo khách và tái sử dụng tri thức.', next: 'Chọn 3 chủ đề bạn có trải nghiệm thật, rồi biến mỗi chủ đề thành một bài có bằng chứng, câu chuyện và lời mời rõ.', recommendations: [
     { eyebrow: 'Đọc một ca thật', label: 'Xem bài 40 nội dung viral', href: '/blog/40-bai-viral-tui-hoc-duoc-gi', reason: 'Nhìn cách nội dung được đọc như dữ liệu thay vì chạy theo cảm hứng.' },
-    { eyebrow: 'Tạo nhịp', label: 'Bắt đầu 21 ngày Brain2', href: '/challenges/brain2-21-ngay', reason: 'Gom trải nghiệm thật thành nguyên liệu có thể tái sử dụng với AI.' },
+    { eyebrow: 'Tạo nhịp', label: 'Bắt đầu 21 ngày Brain2', href: '/brain2/21-ngay', reason: 'Gom trải nghiệm thật thành nguyên liệu có thể tái sử dụng với AI.' },
     { eyebrow: 'Đóng gói nhỏ', label: 'Chọn một tài sản để thử', href: '/assets', reason: 'Biến một chủ đề đã có phản hồi thành đầu ra dùng được.' },
   ] },
   { min: 13, no: '03', name: 'Brain2 Base', title: 'Tầng 3, Brain2 Base', diagnosis: 'Bạn đã có nền chuyên môn và bắt đầu thấy cần một Brain2. Đây là đoạn chuyển từ biết nhiều sang dùng được.', stuck: 'Bạn đang kẹt ở khâu nối tri thức: ghi chú, ca thật, góc nhìn, nội dung và AI chưa chảy thành một hệ thống.', next: 'Xây nền Brain2 đủ dùng: gom tri thức, tách ý một ý, nối với case thật, rồi dùng AI trên kho đó.', recommendations: [
-    { eyebrow: 'Kích hoạt hệ thống', label: 'Bắt đầu 21 ngày Brain2', href: '/challenges/brain2-21-ngay', reason: 'Dùng một nhịp ngắn để biến ghi chú thành dữ liệu có liên kết.' },
+    { eyebrow: 'Kích hoạt hệ thống', label: 'Bắt đầu 21 ngày Brain2', href: '/brain2/21-ngay', reason: 'Dùng một nhịp ngắn để biến ghi chú thành dữ liệu có liên kết.' },
     { eyebrow: 'Hiểu cấu trúc', label: 'Đọc cách xây Brain2', href: '/blog/xay-brain2-voi-obsidian', reason: 'Thấy rõ vai trò của ghi chú, liên kết và ca thật trong cùng một hệ.' },
     { eyebrow: 'Mở rộng góc nhìn', label: 'Đi vào thư viện sống', href: '/library', reason: 'Đọc những note và bài tuyển chọn theo đúng trạng thái hiện tại.' },
   ] },

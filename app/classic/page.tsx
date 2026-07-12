@@ -87,7 +87,7 @@ const routeLanes = [
     cta: 'Mở chẩn đoán',
   },
   {
-    href: '/challenges/brain2-21-ngay',
+    href: '/brain2/21-ngay',
     label: 'Nếu muốn bắt đầu',
     title: '21 ngày Brain2',
     body: 'Gom tri thức rời rạc thành nền để AI hiểu chuyên môn riêng của bạn.',
@@ -200,7 +200,7 @@ export default function HomePage() {
             </div>
             <div className={styles.heroCtas}>
               <Link href="/diagnostic" className="btn-primary">Tự chẩn đoán năng lực AI</Link>
-              <Link href="/challenges/brain2-21-ngay" className="btn-outline">Kích hoạt 21 ngày Brain2</Link>
+              <Link href="/brain2/21-ngay" className="btn-outline">Kích hoạt 21 ngày Brain2</Link>
             </div>
           </div>
         </div>
@@ -399,7 +399,7 @@ export default function HomePage() {
                 Sau khi có nền, anh em cần nơi để làm thật: viết, đóng gói, nhận góp ý, biến tri thức thành đầu ra và tiếp tục trong nền tảng Conan đang hoạt động.
               </p>
               <div className={styles.sceneActions}>
-                <Link href="/challenges/brain2-21-ngay" className="btn-primary">Bắt đầu 21 ngày Brain2</Link>
+                <Link href="/brain2/21-ngay" className="btn-primary">Bắt đầu 21 ngày Brain2</Link>
                 <a href="https://com.conan.school" target="_blank" rel="noopener noreferrer" className="btn-outline">Vào Conan</a>
               </div>
             </div>

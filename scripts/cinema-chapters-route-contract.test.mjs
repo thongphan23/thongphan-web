@@ -12,7 +12,6 @@ const routes = [
   ['app/assets/page.tsx', 'assets', 'dark'],
   ['app/assets/[slug]/page.tsx', 'asset-detail', 'dark'],
   ['app/challenges/page.tsx', 'challenges', 'dark'],
-  ['app/challenges/[slug]/page.tsx', 'challenge-detail', 'dark'],
   ['app/blog/page.tsx', 'blog', 'paper'],
   ['app/blog/[slug]/BlogArticle.tsx', 'blog-detail', 'paper'],
 ]
@@ -40,5 +39,5 @@ test('library starts from three concrete visitor states', () => {
   assert.match(source, /aria-labelledby="current-state-title"/)
   assert.match(source, /Làm rõ điều đang vướng[\s\S]*href="\/diagnostic"/)
   assert.match(source, /Biến chuyên môn thành đầu ra[\s\S]*href="\/assets"/)
-  assert.match(source, /Bắt đầu một nhịp thực hành[\s\S]*href="\/challenges\/brain2-21-ngay"/)
+  assert.match(source, /Bắt đầu một nhịp thực hành[\s\S]*href="\/brain2\/21-ngay"/)
 })

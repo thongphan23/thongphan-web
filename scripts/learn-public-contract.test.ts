@@ -77,6 +77,7 @@ test('Learn keeps its route mode while primary navigation hides it until release
     { href: '/about', label: 'Câu chuyện' },
     { href: '/library', label: 'Thư viện' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
+    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
     { href: '/conanmaker/', label: 'Conan Maker' },
   ])
   assert.deepEqual(secondaryNavigation, [{ href: '/assets', label: 'Tài sản' }])

@@ -15,7 +15,7 @@ const routes = [
   '/assets',
   '/assets/ai-starter-van-phong',
   '/challenges',
-  '/challenges/brain2-21-ngay',
+  '/brain2/21-ngay',
   '/classic',
   '/concept',
 ]

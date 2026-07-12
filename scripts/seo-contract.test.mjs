@@ -60,7 +60,12 @@ test('SEO primitives and fail-closed legacy metadata exist', async () => {
   assert.match(headers, /Cache-Control:.*immutable/i)
   assert.deepEqual(
     redirects.trim().split(/\r?\n/).sort(),
-    ['/conanmaker /conanmaker/ 301', '/game /game/ 301'].sort(),
+    [
+      '/brain2 /brain2/21-ngay 301',
+      '/challenges/brain2-21-ngay /brain2/21-ngay 301',
+      '/conanmaker /conanmaker/ 301',
+      '/game /game/ 301',
+    ].sort(),
   )
   assert.doesNotMatch(redirects, /read\.thongphan\.com|\/library\/read/i)
 })
@@ -73,10 +78,11 @@ test('built sitemap includes every public content family and excludes legacy rou
     ...getAllLibraryNotes().map((note) => `https://thongphan.com/library/${note.slug}`),
     ...getAllReadingSummaries().map((reading) => `https://thongphan.com${reading.readingPath}`),
     ...getAllMicroAssets().map((asset) => `https://thongphan.com/assets/${asset.slug}`),
-    'https://thongphan.com/challenges/brain2-21-ngay',
+    'https://thongphan.com/brain2/21-ngay',
+    ...Array.from({ length: 7 }, (_, index) => `https://thongphan.com/brain2/21-ngay/ngay-${String(index + 1).padStart(2, '0')}`),
   ]
   for (const url of expected) assert.match(sitemap, new RegExp(`<loc>${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`))
-  assert.doesNotMatch(sitemap, /\/classic|\/concept|co-che-tep-moi|read\.thongphan\.com/)
+  assert.doesNotMatch(sitemap, /\/classic|\/concept|co-che-tep-moi|read\.thongphan\.com|\/challenges\/brain2-21-ngay|\/brain2\/21-ngay\/ngay-(?:0[89]|1\d|2[01])/)
 })
 
 test('robots, canonical metadata, structured data and custom 404 survive export', async () => {
