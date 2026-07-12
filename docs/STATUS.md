@@ -32,6 +32,13 @@ in source but fail-closed until the independent learner PWA is ready.
   at the article header, lead portrait, body, table of contents and inline imagery.
 - Browser evidence: `/tmp/thongphan-rescue-qa.json`, `/tmp/read-all-final.json`,
   `/tmp/home-mobile-final-rescue.png`, and `/tmp/read-steve-actual-body-*.png`.
+- Production deployment `103d290f-9545-4e28-bca5-44e23062be4d` is live from
+  source commit `0800037` at `https://thongphan.com` (production branch `main`).
+- Production Browser/Playwright smoke passed at desktop and mobile: zero hero
+  collisions/overflow/broken first-view images; 13/13 readers expose complete body;
+  65/65 lazy editorial images loaded after viewport activation with non-zero natural
+  dimensions and `object-fit: contain`. Evidence: `/tmp/prod-rescue-final-0800037.json`,
+  `/tmp/prod-lazy-images-0800037.json`, and `/tmp/prod-home-*-0800037.png`.
 
 ## Cinema Chapters journey system - production release
 
