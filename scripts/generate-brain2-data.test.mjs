@@ -35,6 +35,8 @@ test('public selectors expose 21 safe shells and bodies for days 01 through 07 o
   assert.deepEqual(getBrain2LessonParams().at(-1), { day: 'ngay-21' })
   assert.ok(getPublicBrain2Lesson('ngay-01')?.blocks.length > 0)
   assert.equal(getPublicBrain2Lesson('ngay-08'), null)
+  assert.equal(getPublicBrain2Lesson('toString'), null)
+  assert.equal(getPublicBrain2Lesson('__proto__'), null)
   assert.equal(getBrain2LessonMeta('ngay-21')?.access, 'conan-maker')
   assert.equal(getBrain2LessonMeta('missing'), null)
   assert.equal(brain2LessonHref(9), '/brain2/21-ngay/ngay-09')

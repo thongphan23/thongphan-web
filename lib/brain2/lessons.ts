@@ -17,7 +17,7 @@ export function getBrain2LessonMeta(slug: string): Brain2LessonMeta | null {
 }
 
 export function getPublicBrain2Lesson(slug: string): Brain2LessonPackage | null {
-  return publicBySlug[slug] ?? null
+  return Object.hasOwn(publicBySlug, slug) ? publicBySlug[slug] : null
 }
 
 export function getBrain2LessonParams(): Array<{ day: string }> {
