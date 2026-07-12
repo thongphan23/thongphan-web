@@ -23,6 +23,25 @@ test('static homepage build keeps one promise, one h1 and no hero video', async 
   assert.doesNotMatch(html, /<video(?:\s|>)/i)
 })
 
+test('static homepage build renders the compact ACT 03 origin bridge exactly once', async () => {
+  await requireBuildFile('index.html')
+  const html = await readFile(new URL('index.html', out), 'utf8')
+  const bridge = html.match(/<aside[^>]*data-home-origin-bridge[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ''
+
+  assert.ok(bridge, 'ACT 03 origin bridge is missing from the static homepage')
+  assert.equal((html.match(/data-home-section(?:=|\s|>)/g) ?? []).length, 6)
+  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1)
+  assert.equal((bridge.match(/href="\/about"/g) ?? []).length, 1)
+
+  for (const line of [
+    'Thắng sự chú ý. Thua sản phẩm cốt lõi.',
+    'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.',
+    'Brain2 bắt đầu từ quyết định không bỏ phí bài học đó.',
+  ]) {
+    assert.equal((bridge.match(new RegExp(line.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) ?? []).length, 1)
+  }
+})
+
 test('static build contains every local Next, Conan Maker and Crown game asset reference', async () => {
   await requireBuildFile('index.html')
   await requireBuildFile('conanmaker/index.html')

@@ -17,6 +17,11 @@ function escaped(phrase) {
   return new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i')
 }
 
+function countPhrase(source, phrase) {
+  const pattern = phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  return (source.match(new RegExp(pattern, 'g')) ?? []).length
+}
+
 test('homepage locks the approved Evidence Cinema story and truthful assets', async () => {
   const page = await readProjectFile('app/page.tsx')
   const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
@@ -47,7 +52,6 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
   for (const banned of [
     'Knowledge Garden',
     'premium-garden',
-    'Brain2',
     'ACV Framework',
     '<video',
     'verified',
@@ -56,6 +60,56 @@ test('homepage locks the approved Evidence Cinema story and truthful assets', as
   ]) {
     assert.doesNotMatch(source, escaped(banned))
   }
+})
+
+test('homepage keeps one compact sourced origin bridge inside the existing ACT 03 header', async () => {
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const bridge = await readProjectFile('components/home-cinema/HomeOriginBridge.tsx')
+  const trackedLink = await readProjectFile('components/home-cinema/HomeTrackedLink.tsx')
+  const eventContract = await readProjectFile('components/home-cinema/homepage-events.ts')
+  const proofSheet = await readProjectFile('components/home-cinema/ProofContactSheet.tsx')
+  const navigation = await readProjectFile('components/site-chrome/site-navigation.ts')
+  const originManifest = await readProjectFile('content/proof/origin-story-evidence.json')
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const sectionIds = [...home.matchAll(/<section id="([^"]+)"[^>]*data-home-section/g)].map(([, id]) => id)
+  const chapterIds = [...navigation.matchAll(/section:\s*'([^']+)'/g)].map(([, id]) => id)
+  const proofSection = home.match(/<section id="proof"[\s\S]*?(?=\n\s*<section id="method")/)?.[0] ?? ''
+  const bridgeRule = css.match(/\.originBridge\s*\{[^}]*\}/)?.[0] ?? ''
+
+  assert.deepEqual(sectionIds, ['story', 'mirror', 'proof', 'method', 'paths', 'conan'])
+  assert.deepEqual(chapterIds, sectionIds)
+  assert.match(proofSection, /<HomeOriginBridge\s*\/?>/)
+  assert.match(proofSection, /<header[\s\S]*?<HomeOriginBridge\s*\/>[\s\S]*?<\/header>[\s\S]*?<ProofContactSheet/)
+
+  assert.equal((bridge.match(/href=["']\/about["']/g) ?? []).length, 1)
+  assert.equal((bridge.match(/eventName=/g) ?? []).length, 1)
+  assert.match(bridge, /eventName=\{homepageEvents\.originStory\}/)
+  assert.doesNotMatch(bridge, /eventDetail|data-home-section|<h1(?:\s|>)/i)
+
+  for (const line of [
+    'Thắng sự chú ý. Thua sản phẩm cốt lõi.',
+    'Brain2 bắt đầu từ quyết định không bỏ phí bài học đó.',
+  ]) {
+    assert.equal(countPhrase(bridge, line), 1)
+  }
+  assert.match(bridge, /originStoryPublic/)
+  assert.match(bridge, /hstl-debt/)
+  assert.match(bridge, /debtClaim\.sourceLabel/)
+  assert.doesNotMatch(bridge, /pressArtifact\.sourceLabel/)
+  assert.doesNotMatch(bridge, escaped('Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.'))
+  assert.equal(countPhrase(originManifest, 'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.'), 1)
+
+  assert.match(eventContract, /originStory:\s*'origin_story_opened'/)
+  assert.match(trackedLink, /import type \{ HomepageEvent \} from ['"]\.\/homepage-events['"]/)
+  assert.doesNotMatch(trackedLink, /const homepageEvents\s*=/)
+  for (const serverConsumer of [home, bridge]) {
+    assert.match(serverConsumer, /import HomeTrackedLink from ['"]\.\/HomeTrackedLink['"]/)
+    assert.match(serverConsumer, /import \{ homepageEvents \} from ['"]\.\/homepage-events['"]/)
+    assert.doesNotMatch(serverConsumer, /HomeTrackedLink,\s*\{ homepageEvents \}/)
+  }
+  assert.match(proofSheet, /import \{ homepageEvents \} from ['"]\.\/homepage-events['"]/)
+  assert.match(bridgeRule, /align-self:\s*end/)
+  assert.doesNotMatch(bridgeRule, /min-height|height:\s*100|100(?:d|s|l)?vh/i)
 })
 
 test('homepage source exposes the selected cinema visual and responsive contract', async () => {
@@ -167,18 +221,23 @@ test('homepage motion is scoped, reversible and reduced-motion safe', async () =
 })
 
 test('homepage conversion links emit only the approved analytics events', async () => {
-  const trackedLink = await readProjectFile('components/home-cinema/HomeTrackedLink.tsx')
+  const [trackedLink, eventContract] = await Promise.all([
+    readProjectFile('components/home-cinema/HomeTrackedLink.tsx'),
+    readProjectFile('components/home-cinema/homepage-events.ts'),
+  ])
 
   for (const eventName of [
     'homepage_primary_cta_clicked',
     'homepage_proof_opened',
     'homepage_path_selected',
     'homepage_conan_handoff_clicked',
+    'origin_story_opened',
   ]) {
-    assert.match(trackedLink, escaped(eventName))
+    assert.match(eventContract, escaped(eventName))
   }
 
-  assert.doesNotMatch(trackedLink, /localStorage|sessionStorage|freeText|answer/i)
+  assert.match(trackedLink, /new CustomEvent\(eventName/)
+  assert.doesNotMatch(`${trackedLink}\n${eventContract}`, /localStorage|sessionStorage|freeText|answer/i)
 })
 
 test('proof media has a readable image failure fallback', async () => {
@@ -201,6 +260,22 @@ test('short laptop view keeps the hero compact while clearing the evidence rail'
   assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?top:\s*9rem/)
   assert.match(shortLaptop, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*1\.8rem/)
   assert.match(shortLaptop, /\.primaryButton\s*\{[\s\S]*?min-height:\s*52px/)
+  assert.match(shortLaptop, /\.proofAct\s*\{[\s\S]*?padding-top:\s*1\.25rem[\s\S]*?padding-bottom:\s*1\.25rem/)
+  assert.match(shortLaptop, /\.proofAct \.actHeader\s*\{[\s\S]*?margin-bottom:\s*0\.75rem/)
+  assert.match(shortLaptop, /\.proofAct \.actHeader\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.05fr\)\s+minmax\(24rem,\s*0\.95fr\)/)
+  assert.match(shortLaptop, /\.proofCard \.proofImageFrame\s*\{[\s\S]*?aspect-ratio:\s*16\s*\/\s*10/)
+})
+
+test('standard laptop view compacts ACT 03 without shrinking the homepage hero', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const compactProof = css.match(
+    /@media \(min-width: 901px\) and \(max-height: 950px\)[\s\S]*?(?=@media \(max-width: 900px\))/,
+  )?.[0] ?? ''
+
+  assert.match(compactProof, /\.proofAct\s*\{[\s\S]*?padding-top:\s*1\.25rem[\s\S]*?padding-bottom:\s*1\.25rem/)
+  assert.match(compactProof, /\.proofAct \.actHeader\s*\{[\s\S]*?margin-bottom:\s*0\.75rem/)
+  assert.match(compactProof, /\.proofCard \.proofImageFrame\s*\{[\s\S]*?aspect-ratio:\s*16\s*\/\s*10/)
+  assert.doesNotMatch(compactProof, /\.hero\s*\{/)
 })
 
 test('desktop hero keeps the explicit two-line promise below the display name', async () => {
@@ -280,5 +355,6 @@ test('homepage keeps hero copy above film and ACT 03 visible as a compact three-
 
   assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,260}bottom:\s*calc\(var\(--hero-film-height\)/)
   assert.match(css, /\.proofGrid\s*\{[\s\S]{0,240}grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
-  assert.match(css, /\.proofAct\s*\{[\s\S]{0,240}padding-top:\s*clamp\(3rem,\s*5vw,\s*5rem\)/)
+  assert.match(css, /\.proofAct\s*\{[\s\S]{0,240}padding-top:\s*clamp\(2\.5rem,\s*4vw,\s*4rem\)/)
+  assert.match(css, /\.proofAct \.actHeader\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.4fr\)\s+minmax\(18rem,\s*0\.6fr\)/)
 })

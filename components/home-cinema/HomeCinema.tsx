@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import HomeMirror from './HomeMirror'
 import HomeFilmReel from './HomeFilmReel'
-import HomeTrackedLink, { homepageEvents } from './HomeTrackedLink'
+import HomeOriginBridge from './HomeOriginBridge'
+import HomeTrackedLink from './HomeTrackedLink'
+import { homepageEvents } from './homepage-events'
 import ProofContactSheet from './ProofContactSheet'
 import { heroFilmItems, methodSteps, pathItems } from './home-cinema-content'
 import { homepageCanRunReel, homepageProofPublicAssets, homepageReelPublicAssets } from '@/lib/homepage-proof-assets'
@@ -91,7 +93,7 @@ export default function HomeCinema() {
         <header className={styles.actHeader} data-cinema-reveal data-motion-reveal="mask">
           <span>ACT 03 · BẰNG CHỨNG</span>
           <h2>Đừng tin một lời hứa. Hãy nhìn dấu vết công việc.</h2>
-          <p>Ba dấu vết thật. Mở từng khung để xem nguồn, bối cảnh và điều nó thực sự chứng minh.</p>
+          <HomeOriginBridge />
         </header>
         <ProofContactSheet assets={homepageProofPublicAssets} />
       </section>
