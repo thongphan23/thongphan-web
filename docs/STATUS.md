@@ -4,11 +4,11 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Motion Atmosphere is a verified local release candidate.** The balanced system now
+**Motion Atmosphere is complete and live.** The balanced system now
 adds persistent navigation, route-aware projector light, one fine-pointer runtime,
 opt-in hover/focus depth and varied GSAP choreography while keeping reading surfaces
-calm. Local functional, visual, accessibility, reduced-motion, bundle and content
-safety gates pass. Production deployment and custom-domain smoke remain pending.
+calm. Local and production functional, visual, accessibility, reduced-motion, bundle
+and content-safety gates pass on the Pages origin and the public domain.
 
 ## Motion Atmosphere local release candidate — 2026-07-12
 
@@ -44,11 +44,23 @@ safety gates pass. Production deployment and custom-domain smoke remain pending.
   pointer modes both disable pointer response; reader ambient animation is `none`.
 - Fresh verification: `npm test` 115/115, `npx tsc --noEmit`, static build 61/61,
   release contracts 10/10, Read safety 3/3 and `git diff --check` passed.
+- Production deployment `579969f1-1d7d-4bf0-ad75-554d4837cb88` is live from source
+  commit `85b4ad3` on branch `main` at both `https://579969f1.thongphan-com.pages.dev`
+  and `https://thongphan.com`.
+- Production smoke passed 10 route/viewport/motion cases across the Pages origin and
+  public domain: homepage desktop/mobile, Library desktop, reader mobile and homepage
+  reduced-motion. Every case returned HTTP 200 with a fixed/compacting header, zero
+  hero collisions, zero horizontal overflow, zero broken loaded images and zero
+  relevant console errors. Library reports restrained ambience; reader and reduced
+  motion report no ambient animation. Keyboard focus remains a visible 3px solid
+  outline and Enter reaches `/diagnostic`.
 - Evidence: `/tmp/thongphan-motion-atmosphere-qa/report.json`,
   `/tmp/thongphan-motion-atmosphere-qa/home-hover-1280x720.png`,
   `/tmp/thongphan-motion-home-390x844.png`,
   `/tmp/thongphan-motion-library-1440x900.png` and
   `/tmp/thongphan-motion-steve-jobs-2005-stanford-commencement-address-390x844.png`.
+  Production evidence: `/tmp/thongphan-motion-atmosphere-qa/production-report.json`
+  and `/tmp/thongphan-motion-atmosphere-qa/production-home-85b4ad3-1280x720.png`.
 
 **Hero vertical-layer rescue is complete and live.** Production measurements on
 2026-07-12 found that the chapter menu ended at `128px` while the display name began
