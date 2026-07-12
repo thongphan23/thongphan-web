@@ -7,6 +7,8 @@ import path from 'path'
 const VAULT_PATH = '/Users/rio/obsidian'
 const WORKER_URL = 'https://thongphan.com/api/embed' // Will deploy to custom route
 
+type EmbedResponse = { vectorsCreated?: number }
+
 async function getMarkdownFiles(dir: string): Promise<string[]> {
   const files: string[] = []
   const entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -55,7 +57,7 @@ async function main() {
         console.error(`Error processing ${relPath}: ${err}`)
         errors++
       } else {
-        const result = await res.json() as any
+        const result = await res.json() as EmbedResponse
         processed++
         totalVectors += result.vectorsCreated || 0
         if (processed % 10 === 0) {

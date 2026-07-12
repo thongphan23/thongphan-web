@@ -317,7 +317,7 @@ export const blogPosts: Post[] = [
     "updatedAt": "2026-07-12",
     "readingTime": 10,
     "featured": false,
-    "coverImage": "/images/blog/cover-ideas-travel-editorial-v1.png",
+    "coverImage": "/images/blog/cover-ideas-travel-editorial-v1.webp",
     "midCta": {
       "label": "Đừng chỉ đọc cho vui",
       "title": "Nếu anh em có chuyên môn nhưng bài viết chưa kéo được khách, kiểm tra lại nền tin tưởng trước.",

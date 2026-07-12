@@ -603,4 +603,28 @@ if (process.env.BRAIN2_LEGACY_ROOT) {
       ),
     )
   })
+
+  test('authoritative migration metadata and checksums exactly match every release artifact', async () => {
+    assert.ok(process.env.BRAIN2_PRIVATE_CONTENT_DIR, 'BRAIN2_PRIVATE_CONTENT_DIR is required for real parity')
+    const sourceName = join(process.env.BRAIN2_LEGACY_ROOT, 'script.js')
+    const source = await readFile(sourceName, 'utf8')
+    const expected = migration.migrateSourceText(source, sourceName)
+    const committedManifest = JSON.parse(
+      await readFile(join(repoRoot, 'content', 'brain2', 'manifest.json'), 'utf8'),
+    )
+
+    assert.deepEqual(committedManifest, expected.manifest)
+    for (const expectedPackage of expected.packages) {
+      const { day, slug, contentSha256: expectedContentSha256 } = expectedPackage.meta
+      const packagePath = day <= 7
+        ? join(repoRoot, 'content', 'brain2', 'public', `${slug}.json`)
+        : join(process.env.BRAIN2_PRIVATE_CONTENT_DIR, 'v1', `${slug}.json`)
+      const actualPackage = JSON.parse(await readFile(packagePath, 'utf8'))
+      const { meta: actualMeta, ...actualBody } = actualPackage
+
+      assert.deepEqual(actualMeta, expectedPackage.meta, `day ${day} metadata differs`)
+      assert.equal(actualMeta.contentSha256, expectedContentSha256, `day ${day} recorded checksum differs`)
+      assert.equal(migration.contentSha256(actualBody), expectedContentSha256, `day ${day} body checksum differs`)
+    }
+  })
 }

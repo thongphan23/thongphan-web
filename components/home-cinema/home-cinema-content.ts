@@ -12,7 +12,7 @@ export type MirrorResult = {
   category: StuckAnswer
   title: string
   explanation: string
-  href: '/library' | '/diagnostic' | '/conanmaker'
+  href: '/library' | '/diagnostic' | '/conanmaker/'
   cta: string
 }
 
@@ -37,7 +37,7 @@ const resultExplanation: Record<StuckAnswer, string> = {
 const destinationByStart: Record<StartAnswer, Pick<MirrorResult, 'href' | 'cta'>> = {
   content: { href: '/library', cta: 'Đi vào thư viện theo lộ trình này' },
   asset: { href: '/diagnostic', cta: 'Làm bản chẩn đoán đầy đủ' },
-  community: { href: '/conanmaker', cta: 'Xem môi trường Conan Maker' },
+  community: { href: '/conanmaker/', cta: 'Xem môi trường Conan Maker' },
 }
 
 export function resolveMirrorResult(answers: MirrorAnswers): MirrorResult {
@@ -109,7 +109,7 @@ export const pathItems = [
     index: '03',
     title: 'Tôi đã sẵn sàng xây cộng đồng trả phí',
     body: 'Bước vào môi trường triển khai dài hạn khi bạn đã có chuyên môn, bằng chứng và một hướng offer.',
-    href: '/conanmaker',
+    href: '/conanmaker/',
     cta: 'Đi đến Conan Maker',
   },
 ] as const

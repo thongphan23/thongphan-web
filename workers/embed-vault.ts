@@ -13,10 +13,7 @@ interface VectorizeVector {
   metadata?: Record<string, string>
 }
 
-const VAULT_FILES = [
-  // Will be populated by reading vault directory
-  // For now, we'll use a sample approach
-]
+type AiEmbeddingResult = { data: number[][] }
 
 function chunkText(text: string, size: number, overlap: number): string[] {
   const chunks: string[] = []
@@ -28,7 +25,7 @@ function chunkText(text: string, size: number, overlap: number): string[] {
   return chunks
 }
 
-export default {
+const embedVaultWorker = {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url)
 
@@ -49,7 +46,7 @@ export default {
           // Embed using Workers AI
           const embeddingResult = await env.AI.run('@cf/baai/bge-base-en-v1.5', {
             text: [chunk]
-          }) as any
+          }) as AiEmbeddingResult
 
           vectors.push({
             id: `${filePath.replace(/[^a-zA-Z0-9]/g, '-')}-${i}`,
@@ -71,8 +68,9 @@ export default {
           file: filePath
         })
 
-      } catch (error: any) {
-        return Response.json({ error: error.message }, { status: 500 })
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Embedding failed'
+        return Response.json({ error: message }, { status: 500 })
       }
     }
 
@@ -94,3 +92,5 @@ export default {
     })
   }
 }
+
+export default embedVaultWorker

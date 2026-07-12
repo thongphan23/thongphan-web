@@ -1,7 +1,7 @@
 const CANONICAL_HUB = 'https://thongphan.com/brain2/21-ngay'
 const INITIAL_CACHE = 'public, max-age=300, s-maxage=300'
 
-export default {
+const redirectWorker = {
   async fetch(request) {
     const source = new URL(request.url)
 
@@ -17,3 +17,5 @@ export default {
     })
   },
 }
+
+export default redirectWorker

@@ -9,13 +9,28 @@ type TrackedLinkProps = ComponentProps<typeof Link> & {
 }
 
 export default function HomeTrackedLink({ eventName, eventDetail, onClick, ...props }: TrackedLinkProps) {
+  const handleClick: NonNullable<TrackedLinkProps['onClick']> = (event) => {
+    window.dispatchEvent(new CustomEvent(eventName, { detail: eventDetail }))
+    onClick?.(event)
+  }
+
+  if (props.href === '/conanmaker/') {
+    const {
+      href: _href,
+      locale: _locale,
+      prefetch: _prefetch,
+      replace: _replace,
+      scroll: _scroll,
+      shallow: _shallow,
+      ...anchorProps
+    } = props
+    return <a {...anchorProps} href="/conanmaker/" onClick={handleClick} />
+  }
+
   return (
     <Link
       {...props}
-      onClick={(event) => {
-        window.dispatchEvent(new CustomEvent(eventName, { detail: eventDetail }))
-        onClick?.(event)
-      }}
+      onClick={handleClick}
     />
   )
 }

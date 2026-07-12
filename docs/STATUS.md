@@ -4,12 +4,14 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The public
+**Origin Story + 21 ngày Brain2 is a locally verified release candidate.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
 the dedicated protected-content Worker, its private release gate, the inert email v2
-release candidate and the five-act `/about` origin film are locally complete.
-Homepage bridging, cross-site wiring, full QA and production cutover remain in later
-slices. Only the legacy 21-day challenge is being consolidated;
+release candidate, the five-act `/about` origin film, the compact homepage bridge,
+canonical cross-site journey and fail-closed legacy-retirement artifacts are locally
+complete. Task 14 release QA is complete; production provisioning, smoke and cutover
+remain in Task 15. Only the legacy
+21-day challenge is being consolidated;
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
@@ -155,6 +157,53 @@ Atmosphere remains complete and live.
   regression: the final export measures 17.56:1 at desktop/mobile. The in-page anchor
   clears the pinned header by 8.5–15.4px, repeated stage imagery was reduced, and the
   final independent review ended at 0 Critical/0 Important/0 Minor.
+- Task 11 commit `eb13a7a` adds one compact, sourced origin bridge inside ACT 03. It
+  renders the first-person consequence once, labels it explicitly as personal account
+  rather than audited data and emits only `origin_story_opened`. A production-bundle
+  runtime check found that client-exported event constants had become `undefined` in
+  server consumers; the event contract now lives in a server-safe module.
+- ACT 03 QA passed at `1440×900`, `1280×720`, `1024×768`, `390×844`, `320×568` and
+  reduced motion with zero overlap, horizontal overflow, broken image, console error
+  or duplicate event. A failing `1440×900` height case produced a proof-only compact
+  breakpoint; the hero is not shrunk. Keyboard focus, evidence modal Escape and the
+  canonical mobile navigation action pass.
+- Task 12 commit `f2de474` makes `/brain2/21-ngay` the sole internal challenge detail,
+  deletes the duplicate `/challenges/[slug]` implementation, adds permanent redirects
+  for `/brain2` and the former detail URL, lists only the hub and seven public lessons
+  in the sitemap, and removes the unsupported fixed 15-minute promise. The route-graph
+  guard now scans non-test executable `.mjs` sources, which caught and fixed a stale QA
+  route during independent review.
+- Task 13 commit `5e5a0b2` creates the redirect-only legacy artifact and a private
+  snapshot at `/Users/rio/Private/thongphan-brain2-legacy-2026-07-12`. The snapshot
+  contains exactly the closed eight-file source allowlist, sanitized live evidence and
+  all 64 production deployment IDs from three REST pages (`25/25/14`). Every directory
+  is mode `700`, every file is mode `600`, 11/11 manifest artifacts match byte count
+  and SHA-256, the audited deployment ID is present and no private reflection content
+  was printed.
+- Tasks 11–13 verification: full suite 199/199, TypeScript pass, static build 82/82,
+  legacy-retirement tests 10/10 and `git diff --check` pass. Independent re-review
+  ended at 0 Critical/0 Important/0 Minor. These slices performed no remote mutation.
+- Task 14 local release QA passes: full suite 211/211, authoritative Brain2 release
+  suite 145/145, frontend/Worker TypeScript, ESLint, 82/82 static build, build 6/6,
+  SEO 4/4, bundle 3/3, Read safety 3/3, production dependency audit and diff hygiene.
+  Source/artifact parity locks exact metadata plus checksums across all 21 packages.
+- Link QA inventories all 65 source occurrences, retains 60 HTTPS occurrences across
+  40 unique live targets and passes all 40 network checks; five unsafe/stale source
+  occurrences remain deliberately omitted. Hub and lesson route deltas are
+  5,055 and 13,004 bytes gzip. The former 1.1 MB article PNG is a verified 68 KB WebP.
+- Rendered QA passes 70/70 viewport/motion cases and 9/9 interactions through the
+  actual built access Worker for unauthorized, tampered and authorized states. It found and
+  fixed two real standalone Conan Maker prefetch 404s; homepage and `/about` now use
+  canonical document anchors. Screenshot and JSON evidence lives under
+  `/tmp/thongphan-brain2-release-qa` and contains no authorized protected lesson.
+- The hardened private scanner covers server source maps, rejects stale Worker bundles
+  and exposes an explicit strict mode requiring two Keychain secrets. Its Task 14
+  diagnostic reports 2,689 files, 6,882 fingerprints, zero hits and zero symlinks.
+  The expected remaining
+  Task 15 prerequisites are the dedicated KV ID and the two not-yet-provisioned
+  Keychain secrets; email remains inert pending a valid Brevo credential.
+- Detailed local/production checklist:
+  `docs/BRAIN2_21_DAY_PRODUCTION_RELEASE_REPORT.md`.
 
 ## Motion Atmosphere production release — 2026-07-12
 

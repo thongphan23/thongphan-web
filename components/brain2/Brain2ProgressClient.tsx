@@ -23,14 +23,15 @@ const empty: Brain2Progress = { version: 1, completed: {} }
 export default function Brain2ProgressClient(props: Props) {
   const [hydrated, setHydrated] = useState(false)
   const [progress, setProgress] = useState<Brain2Progress>(empty)
+  const lessonSlug = props.variant === 'lesson' ? props.slug : null
 
   useEffect(() => {
-    const current = props.variant === 'lesson'
-      ? recordBrain2LessonOpened(props.slug)
+    const current = lessonSlug
+      ? recordBrain2LessonOpened(lessonSlug)
       : readBrain2Progress()
     setProgress(current)
     setHydrated(true)
-  }, [props.variant, props.variant === 'lesson' ? props.slug : null])
+  }, [lessonSlug])
 
   if (!hydrated) return null
 

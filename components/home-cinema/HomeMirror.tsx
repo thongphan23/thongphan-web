@@ -102,7 +102,11 @@ export default function HomeMirror() {
               <p className={styles.resultLabel}>Lộ trình phù hợp lúc này</p>
               <h3>{result.title}</h3>
               <p>{result.explanation}</p>
-              <Link href={result.href} className={styles.resultLink}>{result.cta}</Link>
+              {result.href === '/conanmaker/' ? (
+                <a href={result.href} className={styles.resultLink}>{result.cta}</a>
+              ) : (
+                <Link href={result.href} className={styles.resultLink}>{result.cta}</Link>
+              )}
             </>
           ) : (
             <>

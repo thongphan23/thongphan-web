@@ -221,7 +221,9 @@ test('homepage motion is scoped, reversible and reduced-motion safe', async () =
 })
 
 test('homepage conversion links emit only the approved analytics events', async () => {
-  const [trackedLink, eventContract] = await Promise.all([
+  const [home, homeContent, trackedLink, eventContract] = await Promise.all([
+    readProjectFile('components/home-cinema/HomeCinema.tsx'),
+    readProjectFile('components/home-cinema/home-cinema-content.ts'),
     readProjectFile('components/home-cinema/HomeTrackedLink.tsx'),
     readProjectFile('components/home-cinema/homepage-events.ts'),
   ])
@@ -237,6 +239,9 @@ test('homepage conversion links emit only the approved analytics events', async 
   }
 
   assert.match(trackedLink, /new CustomEvent\(eventName/)
+  assert.match(home, /href="\/conanmaker\/"/)
+  assert.match(trackedLink, /if \(props\.href === '\/conanmaker\/'\)[\s\S]*?<a/)
+  assert.doesNotMatch(`${home}\n${homeContent}`, /\/conanmaker["']/)
   assert.doesNotMatch(`${trackedLink}\n${eventContract}`, /localStorage|sessionStorage|freeText|answer/i)
 })
 
@@ -320,6 +325,7 @@ test('proof contact sheet exposes manual scrolling and an accessible evidence di
     'resolveMenuKeyAction',
     'triggerRef.current?.focus()',
     'HomepageProofPublicAsset',
+    'data-interactive="false"',
   ]) {
     assert.match(proofSheet, escaped(required))
   }

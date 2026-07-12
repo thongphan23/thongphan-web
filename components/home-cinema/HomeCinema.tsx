@@ -161,7 +161,7 @@ export default function HomeCinema() {
             <li>Những maker khác đang xây bên cạnh bạn</li>
           </ul>
           <HomeTrackedLink
-            href="/conanmaker"
+            href="/conanmaker/"
                 className={styles.primaryButton}
                 eventName={homepageEvents.conan}
                 data-motion-action

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { readFileSync, rmSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
@@ -28,7 +28,6 @@ import {
   verifyUnsubscribeToken,
 } from '../workers/api/email-drip'
 
-const ROOT = new URL('../', import.meta.url)
 const ORIGIN = 'https://thongphan.com'
 
 class Statement {

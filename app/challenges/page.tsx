@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import styles from './page.module.css'
 import { challenges } from '@/lib/challenges'
 import { DossierHeader } from '@/components/dossier/DossierHeader'
@@ -51,27 +52,27 @@ export default function ChallengesPage() {
           ) : (
             <div className={styles.grid}>
               {challenges.map((challenge) => (
-              <a
-                key={challenge.id}
-                href="/brain2/21-ngay"
-                className={styles.challengeLink}
-              >
-                <div className={styles.challengeCard} data-reveal>
-                  <div className={styles.duration}>
-                    {challenge.duration_days} ngày
+                <Link
+                  key={challenge.id}
+                  href="/brain2/21-ngay"
+                  className={styles.challengeLink}
+                >
+                  <div className={styles.challengeCard} data-reveal>
+                    <div className={styles.duration}>
+                      {challenge.duration_days} ngày
+                    </div>
+                    <h2>{challenge.title}</h2>
+                    {challenge.tagline && (
+                      <p className={styles.tagline}>{challenge.tagline}</p>
+                    )}
+                    {challenge.description && (
+                      <p className={styles.description}>{challenge.description}</p>
+                    )}
+                    <span className="btn-primary">
+                      Tham gia ngay →
+                    </span>
                   </div>
-                  <h2>{challenge.title}</h2>
-                  {challenge.tagline && (
-                    <p className={styles.tagline}>{challenge.tagline}</p>
-                  )}
-                  {challenge.description && (
-                    <p className={styles.description}>{challenge.description}</p>
-                  )}
-                  <span className="btn-primary">
-                    Tham gia ngay →
-                  </span>
-                </div>
-              </a>
+                </Link>
               ))}
             </div>
           )}

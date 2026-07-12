@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './page.module.css'
 
@@ -73,16 +74,16 @@ export default function BlogPostClient({ post }: { post: Post }) {
           <section className={styles.related}>
             <h3>Bài liên quan</h3>
             <div className={styles.relatedGrid}>
-              <a href="/blog/xay-brain2-voi-obsidian" className="card">
+              <Link href="/blog/xay-brain2-voi-obsidian" className="card">
                 <span className="badge">Brain2</span>
                 <h4 className="mt-4">Xây Brain2 với Obsidian</h4>
                 <p className="text-muted mt-4">Bộ não thứ 2 giúp tui nhớ mọi thứ.</p>
-              </a>
-              <a href="/blog/40-bai-viral-tui-hoc-duoc-gi" className="card">
+              </Link>
+              <Link href="/blog/40-bai-viral-tui-hoc-duoc-gi" className="card">
                 <span className="badge">Nội dung</span>
                 <h4 className="mt-4">40 bài viral, tui học được gì</h4>
                 <p className="text-muted mt-4">10 năm làm nội dung và marketing.</p>
-              </a>
+              </Link>
             </div>
           </section>
         </div>

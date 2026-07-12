@@ -39,7 +39,9 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 }
 
-export default {
+type AiEmbeddingResult = { data: number[][] }
+
+const chatWorker = {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === 'OPTIONS') {
       return new Response(null, { headers: CORS_HEADERS })
@@ -61,7 +63,7 @@ export default {
       // 1. Embed user message
       const embeddingResult = await env.AI.run('@cf/baai/bge-base-en-v1.5', {
         text: [message]
-      }) as any
+      }) as AiEmbeddingResult
       const queryVector = embeddingResult.data[0]
 
       // 2. Query Vectorize for relevant Brain2 chunks
@@ -105,3 +107,5 @@ export default {
     }
   }
 }
+
+export default chatWorker

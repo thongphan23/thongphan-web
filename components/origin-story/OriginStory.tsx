@@ -32,6 +32,9 @@ function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
       </a>
     )
   }
+  if (claim.publicHref === '/conanmaker/') {
+    return <a className={styles.sourceLink} href={claim.publicHref}>{label}</a>
+  }
   return <Link className={styles.sourceLink} href={claim.publicHref}>{label}</Link>
 }
 

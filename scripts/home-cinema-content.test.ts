@@ -22,7 +22,7 @@ test('question three selects the next route', async () => {
 
   assert.equal(resolveMirrorResult({ experience: 'over-5', stuck: 'proof', start: 'content' }).href, '/library')
   assert.equal(resolveMirrorResult({ experience: 'over-5', stuck: 'proof', start: 'asset' }).href, '/diagnostic')
-  assert.equal(resolveMirrorResult({ experience: 'over-5', stuck: 'proof', start: 'community' }).href, '/conanmaker')
+  assert.equal(resolveMirrorResult({ experience: 'over-5', stuck: 'proof', start: 'community' }).href, '/conanmaker/')
 })
 
 test('question one personalizes the explanation without changing the category', async () => {

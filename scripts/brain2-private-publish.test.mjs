@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
 import { homedir } from 'node:os'
-import { chmod, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
+import { chmod, mkdir, mkdtemp, readFile, rm, symlink, utimes, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import test, { after } from 'node:test'
 
@@ -18,6 +18,7 @@ import {
   buildPrivateFingerprintIndex,
   collectScanTargets,
   formatLeakReport,
+  readKeychainSecrets,
   scanCandidateFiles,
 } from './scan-brain2-private-leaks.mjs'
 
@@ -281,15 +282,27 @@ test('leak scanner catches normalized canaries across Git and every build surfac
   const repoRoot = join(root, 'repo')
   const workerBundleDir = join(root, 'worker-bundle')
   await mkdir(join(repoRoot, '.next', 'static'), { recursive: true })
+  await mkdir(join(repoRoot, '.next', 'server', 'app', 'brain2'), { recursive: true })
   await mkdir(join(repoRoot, 'out'), { recursive: true })
+  await mkdir(join(repoRoot, 'workers', 'brain2-access'), { recursive: true })
+  await mkdir(join(repoRoot, 'content', 'brain2'), { recursive: true })
+  await mkdir(join(repoRoot, 'lib', 'brain2'), { recursive: true })
   await mkdir(workerBundleDir, { recursive: true })
   execFileSync('git', ['init', '-q'], { cwd: repoRoot })
+  await writeFile(join(repoRoot, '.gitignore'), '.next/\nout/\n')
+  await writeFile(join(repoRoot, 'workers', 'brain2-access', 'index.ts'), 'export default {}\n')
+  await writeFile(join(repoRoot, 'content', 'brain2', 'manifest.json'), '{}\n')
+  await writeFile(join(repoRoot, 'lib', 'brain2', 'lesson-hrefs.ts'), 'export const safe = true\n')
+  await writeFile(join(repoRoot, 'lib', 'brain2', 'lesson-validation.ts'), 'export const valid = true\n')
+  await writeFile(join(repoRoot, 'wrangler.brain2-access.jsonc'), '{}\n')
 
   const canary = 'Một Hai Ba Bốn Năm Sáu Bảy Tám Chín Mười Mười Một Mười Hai Mười Ba'
   const secret = 'synthetic-keychain-secret-never-print-this'
   const tracked = join(repoRoot, 'tracked.txt')
   await writeFile(tracked, canary.toUpperCase())
   await writeFile(join(repoRoot, '.next', 'static', 'chunk.js'), JSON.stringify(canary))
+  await writeFile(join(repoRoot, '.next', 'server', 'app', 'brain2', 'page.js'), canary.toLowerCase())
+  await writeFile(join(repoRoot, '.next', 'server', 'app', 'brain2', 'page.js.map'), canary)
   await writeFile(join(repoRoot, 'out', 'index.html'), canary.normalize('NFD').replace(/[\u0300-\u036f]/g, ''))
   await writeFile(join(repoRoot, 'out', 'secret.js'), secret)
   await writeFile(join(workerBundleDir, 'index.js.map'), canary.replaceAll(' ', '\\n'))
@@ -311,9 +324,11 @@ test('leak scanner catches normalized canaries across Git and every build surfac
     fingerprintIndex,
     secretValues: [{ label: 'session-secret', value: secret }],
   })
-  assert.equal(result.hits.length, 5)
+  assert.equal(result.hits.length, 7)
   assert.ok(result.hits.some((hit) => hit.file.endsWith('tracked.txt') && hit.protectedDays.includes(8)))
   assert.ok(result.hits.some((hit) => hit.file.endsWith('chunk.js') && hit.protectedDays.includes(8)))
+  assert.ok(result.hits.some((hit) => hit.file.endsWith('page.js') && hit.protectedDays.includes(8)))
+  assert.ok(result.hits.some((hit) => hit.file.endsWith('page.js.map') && hit.protectedDays.includes(8)))
   assert.ok(result.hits.some((hit) => hit.file.endsWith('index.html') && hit.protectedDays.includes(8)))
   assert.ok(result.hits.some((hit) => hit.file.endsWith('index.js.map') && hit.protectedDays.includes(8)))
   assert.ok(result.hits.some((hit) => hit.file.endsWith('secret.js') && hit.secretMatches === 1))
@@ -343,16 +358,101 @@ test('scanner ignores public metadata and reports clean files without content va
   assert.doesNotMatch(formatLeakReport({ ...result, symlinks: [] }), /Private unit|protected marker/)
 })
 
+test('scanner makes Task 14 fingerprint-only by default and requires both secrets in strict mode', async () => {
+  const secret = 'synthetic-access-secret-never-print'
+  const optional = await readKeychainSecrets({
+    readSecret: async (account) => account === 'access-code' ? secret : null,
+  })
+  assert.equal(optional.length, 1)
+  await assert.rejects(
+    readKeychainSecrets({
+      requireSecrets: true,
+      readSecret: async (account) => account === 'access-code' ? secret : null,
+    }),
+    (error) => {
+      assert.match(error.message, /required Brain2 Keychain secrets are unavailable/i)
+      assert.doesNotMatch(error.message, new RegExp(secret))
+      return true
+    },
+  )
+})
+
+test('scanner rejects a Worker dry-run bundle older than its source, manifest, support modules or Wrangler config', async () => {
+  const root = await fixtureRoot('stale-worker-bundle')
+  const repoRoot = join(root, 'repo')
+  const workerSourceDir = join(repoRoot, 'workers', 'brain2-access')
+  const brain2LibDir = join(repoRoot, 'lib', 'brain2')
+  const workerBundleDir = join(root, 'worker-bundle')
+  const workerSource = join(workerSourceDir, 'index.ts')
+  const workerSupport = join(brain2LibDir, 'lesson-validation.ts')
+  const workerHrefSupport = join(brain2LibDir, 'lesson-hrefs.ts')
+  const unrelatedGeneratedData = join(brain2LibDir, 'brain2-data.generated.ts')
+  const contentManifest = join(repoRoot, 'content', 'brain2', 'manifest.json')
+  const workerConfig = join(repoRoot, 'wrangler.brain2-access.jsonc')
+  const workerBundle = join(workerBundleDir, 'index.js')
+
+  await mkdir(join(repoRoot, '.next', 'static'), { recursive: true })
+  await mkdir(join(repoRoot, '.next', 'server'), { recursive: true })
+  await mkdir(join(repoRoot, 'out'), { recursive: true })
+  await mkdir(workerSourceDir, { recursive: true })
+  await mkdir(brain2LibDir, { recursive: true })
+  await mkdir(join(repoRoot, 'content', 'brain2'), { recursive: true })
+  await mkdir(workerBundleDir, { recursive: true })
+  execFileSync('git', ['init', '-q'], { cwd: repoRoot })
+  await writeFile(workerSource, 'export default {}\n')
+  await writeFile(workerSupport, 'export const valid = true\n')
+  await writeFile(workerHrefSupport, 'export const safe = true\n')
+  await writeFile(unrelatedGeneratedData, 'export const generated = true\n')
+  await writeFile(contentManifest, '{}\n')
+  await writeFile(workerConfig, '{}\n')
+  await writeFile(workerBundle, 'export default {}\n')
+
+  const old = new Date('2026-01-01T00:00:00.000Z')
+  const fresh = new Date('2026-01-02T00:00:00.000Z')
+  await utimes(workerBundle, old, old)
+  await utimes(workerSource, fresh, fresh)
+  await utimes(workerSupport, fresh, fresh)
+  await utimes(workerHrefSupport, fresh, fresh)
+  await utimes(unrelatedGeneratedData, fresh, fresh)
+  await utimes(contentManifest, fresh, fresh)
+  await utimes(workerConfig, fresh, fresh)
+
+  await assert.rejects(collectScanTargets({ repoRoot, workerBundleDir }), /stale Worker dry-run bundle/i)
+
+  const rebuilt = new Date('2026-01-03T00:00:00.000Z')
+  await utimes(workerBundle, rebuilt, rebuilt)
+  const targets = await collectScanTargets({ repoRoot, workerBundleDir })
+  assert.ok(targets.files.some(({ path }) => path === workerBundle))
+
+  const changedManifest = new Date('2026-01-04T00:00:00.000Z')
+  await utimes(contentManifest, changedManifest, changedManifest)
+  await assert.rejects(collectScanTargets({ repoRoot, workerBundleDir }), /stale Worker dry-run bundle/i)
+
+  await utimes(contentManifest, fresh, fresh)
+  await utimes(unrelatedGeneratedData, changedManifest, changedManifest)
+  await collectScanTargets({ repoRoot, workerBundleDir })
+})
+
 test('scanner fails closed when a required artifact is missing and surfaces symlinks without following them', async () => {
   const root = await fixtureRoot('scan-boundaries')
   const repoRoot = join(root, 'repo')
   const workerBundleDir = join(root, 'worker-bundle')
   await mkdir(join(repoRoot, '.next', 'static'), { recursive: true })
+  await mkdir(join(repoRoot, '.next', 'server'), { recursive: true })
   await mkdir(join(repoRoot, 'out'), { recursive: true })
+  await mkdir(join(repoRoot, 'workers', 'brain2-access'), { recursive: true })
+  await mkdir(join(repoRoot, 'content', 'brain2'), { recursive: true })
+  await mkdir(join(repoRoot, 'lib', 'brain2'), { recursive: true })
   execFileSync('git', ['init', '-q'], { cwd: repoRoot })
+  await writeFile(join(repoRoot, 'workers', 'brain2-access', 'index.ts'), 'export default {}\n')
+  await writeFile(join(repoRoot, 'content', 'brain2', 'manifest.json'), '{}\n')
+  await writeFile(join(repoRoot, 'lib', 'brain2', 'lesson-hrefs.ts'), 'export const safe = true\n')
+  await writeFile(join(repoRoot, 'lib', 'brain2', 'lesson-validation.ts'), 'export const valid = true\n')
+  await writeFile(join(repoRoot, 'wrangler.brain2-access.jsonc'), '{}\n')
   await assert.rejects(collectScanTargets({ repoRoot, workerBundleDir }), /artifact root/i)
 
   await mkdir(workerBundleDir)
+  await writeFile(join(workerBundleDir, 'index.js'), 'export default {}\n')
   await writeFile(join(repoRoot, 'outside.txt'), 'synthetic public fixture')
   await symlink(join(repoRoot, 'outside.txt'), join(repoRoot, 'out', 'linked.txt'))
   const targets = await collectScanTargets({ repoRoot, workerBundleDir })

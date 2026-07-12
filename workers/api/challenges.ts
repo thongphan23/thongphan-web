@@ -28,8 +28,8 @@ const CORS_HEADERS = {
   'Content-Type': 'application/json',
 };
 
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+const challengesWorker = {
+  async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
     // Handle CORS preflight
@@ -71,6 +71,8 @@ export default {
     }
   },
 };
+
+export default challengesWorker
 
 /**
  * Get all active challenges

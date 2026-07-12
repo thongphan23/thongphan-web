@@ -119,6 +119,27 @@ const labelFor = (path, repoRoot, workerBundleDir) => {
   return path
 }
 
+async function regularFilesUnder(paths) {
+  const files = []
+  const visit = async (path) => {
+    let info
+    try {
+      info = await lstat(path)
+    } catch {
+      throw new Error('A required Worker bundle freshness input is missing')
+    }
+    if (info.isSymbolicLink()) throw new Error('A Worker bundle freshness input is a symlink')
+    if (info.isFile()) {
+      files.push({ path, mtimeMs: info.mtimeMs })
+      return
+    }
+    if (!info.isDirectory()) throw new Error('A Worker bundle freshness input is unsupported')
+    for (const entry of await readdir(path)) await visit(join(path, entry))
+  }
+  for (const path of paths) await visit(path)
+  return files
+}
+
 export async function collectScanTargets({
   repoRoot = REPO_ROOT,
   workerBundleDir = DEFAULT_WORKER_BUNDLE_DIR,
@@ -146,7 +167,7 @@ export async function collectScanTargets({
     files.set(resolved, { path: resolved, label })
   }
 
-  const walk = async (root) => {
+  const walk = async (root, includeFile = () => true) => {
     let info
     try {
       info = await lstat(root)
@@ -162,16 +183,36 @@ export async function collectScanTargets({
     for (const entry of await readdir(root, { withFileTypes: true })) {
       const child = join(root, entry.name)
       if (entry.isSymbolicLink()) symlinks.push(labelFor(resolve(child), resolvedRepo, resolvedWorker))
-      else if (entry.isDirectory()) await walk(child)
-      else if (entry.isFile()) await addFile(child)
+      else if (entry.isDirectory()) await walk(child, includeFile)
+      else if (entry.isFile()) {
+        if (includeFile(child)) await addFile(child)
+      }
       else throw new Error('A private-boundary artifact contains an unsupported entry')
     }
   }
 
   for (const file of await gitFiles(resolvedRepo)) await addFile(file)
   await walk(join(resolvedRepo, '.next', 'static'))
+  await walk(join(resolvedRepo, '.next', 'server'))
+  await walk(join(resolvedRepo, '.next'), (path) => path.endsWith('.map'))
   await walk(join(resolvedRepo, 'out'))
   await walk(resolvedWorker)
+
+  const workerInputs = await regularFilesUnder([
+    join(resolvedRepo, 'wrangler.brain2-access.jsonc'),
+    join(resolvedRepo, 'workers', 'brain2-access'),
+    join(resolvedRepo, 'content', 'brain2', 'manifest.json'),
+    join(resolvedRepo, 'lib', 'brain2', 'lesson-hrefs.ts'),
+    join(resolvedRepo, 'lib', 'brain2', 'lesson-validation.ts'),
+  ])
+  const latestInputMtime = Math.max(...workerInputs.map(({ mtimeMs }) => mtimeMs))
+  const workerBundleFiles = [...files.values()].filter(({ path }) => isWithin(resolvedWorker, path))
+  if (workerBundleFiles.length === 0) throw new Error('The Worker dry-run bundle is empty')
+  for (const { path } of workerBundleFiles) {
+    if ((await lstat(path)).mtimeMs < latestInputMtime) {
+      throw new Error('Stale Worker dry-run bundle relative to its source inputs')
+    }
+  }
   return { files: [...files.values()], symlinks: [...new Set(symlinks)].sort() }
 }
 

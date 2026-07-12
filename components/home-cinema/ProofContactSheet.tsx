@@ -29,6 +29,10 @@ export default function ProofContactSheet({ assets }: { assets: HomepageProofPub
     }
   }, [selected])
 
+  useEffect(() => {
+    sheetRef.current?.setAttribute('data-interactive', 'true')
+  }, [])
+
   const scrollSheet = (direction: -1 | 1) => {
     const sheet = sheetRef.current
     if (!sheet) return
@@ -54,7 +58,7 @@ export default function ProofContactSheet({ assets }: { assets: HomepageProofPub
   return (
     <>
       <div className={styles.proofSheetShell}>
-        <div className={styles.proofGrid} ref={sheetRef} aria-label="Ba bằng chứng có thể mở để xem chi tiết">
+        <div className={styles.proofGrid} ref={sheetRef} aria-label="Ba bằng chứng có thể mở để xem chi tiết" data-interactive="false">
           {assets.map((asset, index) => (
             <button
               key={asset.id}

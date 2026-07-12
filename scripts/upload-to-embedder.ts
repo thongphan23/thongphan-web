@@ -44,7 +44,7 @@ async function main() {
         console.error(`Error processing ${relPath}: ${err}`)
         errors++
       } else {
-        const result = await res.json()
+        await res.text()
         processed++
         if (processed % 10 === 0) {
           console.log(`Processed ${processed}/${files.length} files...`)

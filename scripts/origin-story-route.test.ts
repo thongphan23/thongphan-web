@@ -67,6 +67,15 @@ test('about closes with one tracked Brain2 primary action and one untracked proo
   assert.doesNotMatch(story, /<OriginStoryTrackedLink[^>]*proof-stack/)
 })
 
+test('about treats the standalone Conan Maker build as a document link', async () => {
+  const story = await source('components/origin-story/OriginStory.tsx')
+
+  assert.match(
+    story,
+    /claim\.publicHref === '\/conanmaker\/'[\s\S]*?<a[\s\S]*?href=\{claim\.publicHref\}/,
+  )
+})
+
 test('about keeps one outer heading path, no nested main and removes the stale metric source', async () => {
   const [page, story, storyCss, dossierHeader] = await Promise.all([
     source('app/about/page.tsx'),

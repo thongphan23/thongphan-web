@@ -1005,7 +1005,7 @@ git commit -m "ops: prepare safe Brain2 legacy retirement"
 **Interfaces:**
 - Produces: local release-candidate report and screenshots; no external mutation yet.
 
-- [ ] **Step 1: Add release safety tests**
+- [x] **Step 1: Add release safety tests**
 
 Assert 21 routes, seven indexed public days, 14 noindex shells, canonical redirects, protected manifest/body separation, Worker routes more specific than global router, `workers_dev=false`, `preview_urls=false`, v1-only email sender, the exact privacy-safe analytics event union, hub route JS ≤65KB gzip, public lesson route JS ≤45KB gzip and legacy-retirement artifact cleanliness.
 
@@ -1019,7 +1019,7 @@ supplies the real path in Step 2.
 "test:release": "npm run test:build && npm run test:seo && npm run test:bundle && npm run test:brain2"
 ```
 
-- [ ] **Step 2: Run all automated gates**
+- [x] **Step 2: Run all automated gates**
 
 ```bash
 npm test
@@ -1036,15 +1036,15 @@ git diff --check
 
 Expected: every gate passes; static count rises by 22 routes; leak count zero.
 
-- [ ] **Step 3: Browser QA matrix**
+- [x] **Step 3: Browser QA matrix**
 
 Cover `/`, `/about`, hub, day 01, day 07, locked day 08 and day 21 at `1440x900`, `1280x720`, `1024x768`, `390x844`, `320x568`, plus reduced motion. Verify no overflow/collision/broken images/console error; no face crop; ACT 03 viewport fit; keyboard menu/copy/progress/gate; public content remains present with JavaScript disabled; protected 401/authorized/tampered session/no-store using local Worker fixtures; and measured cumulative layout shift stays ≤0.1.
 
-- [ ] **Step 4: Content QA**
+- [x] **Step 4: Content QA**
 
 Check all 21 metadata against actual `DAY_CONTENT`, all 65 external links, all 41 prompt blocks, day durations, removed stale claims and exact five-act story. Proof captions and citations must be natural Vietnamese.
 
-- [ ] **Step 5: Update reports and commit**
+- [x] **Step 5: Update reports and commit**
 
 Record pass/fail evidence and remaining external deployment steps in `docs/STATUS.md` and the release report.
 

@@ -44,12 +44,6 @@ function readWebpDimensions(bytes: Buffer): { width: number; height: number } {
   }
 }
 
-function readPngDimensions(bytes: Buffer): { width: number; height: number } {
-  assert.deepEqual([...bytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10])
-  assert.equal(bytes.toString('ascii', 12, 16), 'IHDR')
-  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) }
-}
-
 test('origin evidence is exactly five ordered acts with reviewed permitted claim references', () => {
   const typedManifest = manifest as OriginStoryManifest
   assert.deepEqual(validateOriginStoryEvidence(typedManifest).issues, [])
@@ -182,7 +176,7 @@ test('normalized viral article uses a physically verified text-free generated co
   assert.match(blogCoverManifest.promptSummary, /no readable text, numbers, logos or faces/i)
   const bytes = await readFile(new URL(blogCoverManifest.derivativePath.replace(/^\//, ''), ROOT))
   assert.equal(createHash('sha256').update(bytes).digest('hex'), blogCoverManifest.derivativeSha256)
-  assert.deepEqual(readPngDimensions(bytes), { width: blogCoverManifest.width, height: blogCoverManifest.height })
+  assert.deepEqual(readWebpDimensions(bytes), { width: blogCoverManifest.width, height: blogCoverManifest.height })
   const article = await readFile(new URL('content/blog/40-bai-viral-tui-hoc-duoc-gi.md', ROOT), 'utf8')
   assert.match(article, new RegExp(blogCoverManifest.derivativePath.replace(/^\/public/, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
   assert.doesNotMatch(article, /cover-40-bai-viral\.png/)

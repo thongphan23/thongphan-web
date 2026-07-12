@@ -16,6 +16,8 @@ interface VectorizeVector {
   metadata?: Record<string, string>
 }
 
+type AiEmbeddingResponse = { result?: { data?: number[][] } }
+
 async function getMarkdownFiles(dir: string): Promise<string[]> {
   const files: string[] = []
   const entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -52,7 +54,7 @@ async function embedChunk(text: string, apiToken: string): Promise<number[]> {
       body: JSON.stringify({ text: [text] }),
     }
   )
-  const data = await res.json() as any
+  const data = await res.json() as AiEmbeddingResponse
   if (!data.result?.data?.[0]) {
     throw new Error(`Embedding failed: ${JSON.stringify(data)}`)
   }

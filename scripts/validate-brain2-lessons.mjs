@@ -2,6 +2,8 @@ import { readFile, stat } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
+import { parseFragment } from 'parse5'
+
 import {
   BANNED_OUTPUT_RULES,
   MIGRATED_AT,
@@ -10,6 +12,7 @@ import {
   assertExactDirectoryEntries,
   assertSafePrivateLessonFile,
   contentSha256,
+  extractDayContent,
   isSafeLessonHref,
   retainedExternalHref,
   preparePrivateVersionRoot,
@@ -18,6 +21,10 @@ import {
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = resolve(SCRIPT_DIR, '..')
 const HEX_256 = /^[a-f0-9]{64}$/
+const CANONICAL_EXTERNAL_LINK_COUNTS = Object.freeze({ source: 65, retained: 60, omitted: 5 })
+const DEFAULT_LEGACY_ROOT = '/Users/rio/brain2-landing'
+const DEFAULT_LINK_CONCURRENCY = 6
+const DEFAULT_LINK_TIMEOUT_MS = 10_000
 
 const validationError = (scope, message) => new Error(`${scope}: ${message}`)
 
@@ -37,6 +44,197 @@ const stringField = (value, scope) => {
   if (typeof value !== 'string' || value.trim().length === 0) {
     throw validationError(scope, 'must be a non-empty string')
   }
+}
+
+const nodeAttribute = (node, name) =>
+  node.attrs?.find((entry) => entry.name === name)?.value
+
+const sourceExternalUrls = (sourceText, sourceName) => {
+  const urls = []
+  const visit = (node) => {
+    if (node.tagName === 'a') {
+      const href = nodeAttribute(node, 'href')
+      if (href && !href.startsWith('/') && !href.startsWith('#')) urls.push(href)
+    }
+    for (const child of node.childNodes ?? []) visit(child)
+  }
+  for (const entry of extractDayContent(sourceText, sourceName)) visit(parseFragment(entry.content))
+  return urls
+}
+
+const isHttpsUrl = (value) => {
+  try {
+    return new URL(value).protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
+const retainedHttpsUrls = (value, found = []) => {
+  if (Array.isArray(value)) {
+    for (const item of value) retainedHttpsUrls(item, found)
+    return found
+  }
+  if (!plainObject(value)) return found
+  if (typeof value.href === 'string' && retainedExternalHref(value.href)) found.push(value.href)
+  for (const child of Object.values(value)) retainedHttpsUrls(child, found)
+  return found
+}
+
+export function collectExternalLinkInventory(
+  sourceText,
+  retainedUrls,
+  { sourceName = '<memory>' } = {},
+) {
+  if (!Array.isArray(retainedUrls) || retainedUrls.some((url) => !isHttpsUrl(url))) {
+    throw validationError('external links', 'every retained URL must use HTTPS')
+  }
+  const sourceUrls = sourceExternalUrls(sourceText, sourceName)
+  const unmatched = new Map()
+  for (const url of retainedUrls) unmatched.set(url, (unmatched.get(url) ?? 0) + 1)
+
+  const classifiedRetained = []
+  const omittedUrls = []
+  for (const url of sourceUrls) {
+    const remaining = unmatched.get(url) ?? 0
+    if (remaining === 0) {
+      omittedUrls.push(url)
+      continue
+    }
+    classifiedRetained.push(url)
+    unmatched.set(url, remaining - 1)
+  }
+
+  const missing = [...unmatched.values()].reduce((sum, count) => sum + count, 0)
+  if (missing > 0) {
+    throw validationError('external links', `${missing} retained URL occurrence(s) are absent from the source inventory`)
+  }
+  return { sourceUrls, retainedUrls: classifiedRetained, omittedUrls }
+}
+
+export function assertCanonicalExternalLinkInventory(inventory) {
+  if (!plainObject(inventory)) throw validationError('external links', 'inventory must be an object')
+  const { sourceUrls, retainedUrls, omittedUrls } = inventory
+  if (!Array.isArray(sourceUrls) || sourceUrls.length !== CANONICAL_EXTERNAL_LINK_COUNTS.source) {
+    throw validationError('external links', 'source inventory must contain exactly 65 URL occurrences')
+  }
+  if (!Array.isArray(retainedUrls) || retainedUrls.length !== CANONICAL_EXTERNAL_LINK_COUNTS.retained) {
+    throw validationError('external links', 'retained inventory must contain exactly 60 URL occurrences')
+  }
+  if (!Array.isArray(omittedUrls) || omittedUrls.length !== CANONICAL_EXTERNAL_LINK_COUNTS.omitted) {
+    throw validationError('external links', 'omitted inventory must contain exactly five URL occurrences')
+  }
+  if (retainedUrls.some((url) => !isHttpsUrl(url))) {
+    throw validationError('external links', 'every retained URL must use HTTPS')
+  }
+  return inventory
+}
+
+const fetchWithTimeout = async (url, method, { fetchImpl, timeoutMs }) => {
+  const controller = new AbortController()
+  let timeoutId
+  const timeout = new Promise((_, reject) => {
+    timeoutId = setTimeout(() => {
+      controller.abort()
+      const error = new Error('request timed out')
+      error.name = 'TimeoutError'
+      reject(error)
+    }, timeoutMs)
+  })
+  try {
+    const response = await Promise.race([
+      fetchImpl(url, {
+        method,
+        redirect: 'follow',
+        signal: controller.signal,
+        headers: { accept: 'text/html,application/xhtml+xml,*/*;q=0.8' },
+      }),
+      timeout,
+    ])
+    return { response }
+  } catch {
+    return { error: controller.signal.aborted ? 'timeout' : 'network' }
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
+
+const checkOneExternalLink = async (url, options) => {
+  let last = {
+    url,
+    ok: false,
+    method: 'HEAD',
+    status: null,
+    finalUrl: null,
+    redirected: false,
+    error: 'network',
+  }
+
+  for (const method of ['HEAD', 'GET']) {
+    const attempt = await fetchWithTimeout(url, method, options)
+    if (!attempt.response) {
+      last = { ...last, method, error: attempt.error }
+      continue
+    }
+
+    const response = attempt.response
+    const finalUrl = typeof response.url === 'string' && response.url.length > 0 ? response.url : url
+    const common = {
+      url,
+      method,
+      status: Number.isInteger(response.status) ? response.status : null,
+      finalUrl,
+      redirected: Boolean(response.redirected),
+    }
+    if (method === 'GET' && typeof response.body?.cancel === 'function') {
+      try {
+        await response.body.cancel()
+      } catch {
+        // The status and redirect have already been observed; response content is never read.
+      }
+    }
+    if (response.ok && !isHttpsUrl(finalUrl)) {
+      return { ...common, ok: false, error: 'redirect-downgrade' }
+    }
+    if (response.ok) return { ...common, ok: true, error: null }
+    last = { ...common, ok: false, error: 'http-status' }
+  }
+  return last
+}
+
+export async function checkRetainedExternalLinks(
+  urls,
+  {
+    fetchImpl = globalThis.fetch,
+    concurrency = DEFAULT_LINK_CONCURRENCY,
+    timeoutMs = DEFAULT_LINK_TIMEOUT_MS,
+  } = {},
+) {
+  if (!Array.isArray(urls) || urls.some((url) => !isHttpsUrl(url))) {
+    throw validationError('external links', 'live checks accept retained HTTPS URLs only')
+  }
+  if (typeof fetchImpl !== 'function') throw validationError('external links', 'fetch is unavailable')
+  if (!Number.isInteger(concurrency) || concurrency < 1) {
+    throw validationError('external links', 'concurrency must be a positive integer')
+  }
+  if (!Number.isInteger(timeoutMs) || timeoutMs < 1) {
+    throw validationError('external links', 'timeout must be a positive integer')
+  }
+
+  const uniqueUrls = [...new Set(urls)]
+  const results = Array(uniqueUrls.length)
+  let nextIndex = 0
+  const worker = async () => {
+    while (nextIndex < uniqueUrls.length) {
+      const index = nextIndex
+      nextIndex += 1
+      results[index] = await checkOneExternalLink(uniqueUrls[index], { fetchImpl, timeoutMs })
+    }
+  }
+  await Promise.all(
+    Array.from({ length: Math.min(concurrency, uniqueUrls.length) }, () => worker()),
+  )
+  return { occurrences: urls.length, unique: uniqueUrls.length, results }
 }
 
 const validateRichText = (nodes, scope) => {
@@ -322,6 +520,7 @@ export async function validateMigrationFiles({ repoRoot = REPO_ROOT, privateRoot
   const packages = []
   let prompts = 0
   let retainedLinks = 0
+  const retainedUrls = []
   for (let day = 1; day <= 21; day += 1) {
     const access = day <= 7 ? 'public' : 'conan-maker'
     const directory = access === 'public' ? publicRoot : privateVersionRoot
@@ -335,6 +534,7 @@ export async function validateMigrationFiles({ repoRoot = REPO_ROOT, privateRoot
     packages.push(lesson)
     prompts += result.prompts
     retainedLinks += result.retainedLinks
+    retainedHttpsUrls(lesson, retainedUrls)
     if (privateInfo && (privateInfo.mode & 0o077) !== 0) {
       throw validationError(`day-${String(day).padStart(2, '0')}`, 'private file permissions are too broad')
     }
@@ -356,14 +556,38 @@ export async function validateMigrationFiles({ repoRoot = REPO_ROOT, privateRoot
     prompts,
     sourceLinks: manifest.counts.sourceExternalLinks,
     retainedLinks,
+    retainedUrls,
   }
 }
 
 const run = async () => {
-  if (process.argv.includes('--check-external-links')) {
-    throw new Error('--check-external-links is reserved for Task 14')
-  }
   const result = await validateMigrationFiles({ privateRoot: process.env.BRAIN2_PRIVATE_CONTENT_DIR })
+  if (process.argv.includes('--check-external-links')) {
+    const legacyRoot = process.env.BRAIN2_LEGACY_ROOT ?? DEFAULT_LEGACY_ROOT
+    const sourceName = join(legacyRoot, 'script.js')
+    const sourceText = await readFile(sourceName, 'utf8')
+    const inventory = assertCanonicalExternalLinkInventory(
+      collectExternalLinkInventory(sourceText, result.retainedUrls, { sourceName }),
+    )
+    const report = await checkRetainedExternalLinks(inventory.retainedUrls)
+    const failures = report.results.filter(({ ok }) => !ok)
+    if (failures.length > 0) {
+      const summary = failures
+        .map(({ url, status, error }) => {
+          const parsed = new URL(url)
+          return `${parsed.origin}${parsed.pathname} (${status ?? error})`
+        })
+        .join(', ')
+      throw validationError(
+        'external links',
+        `${failures.length}/${report.unique} retained HTTPS targets failed: ${summary}`,
+      )
+    }
+    console.log(
+      `Brain2 external-link validation PASS source=${inventory.sourceUrls.length} retained=${inventory.retainedUrls.length} omitted=${inventory.omittedUrls.length} uniqueChecked=${report.unique}`,
+    )
+    return
+  }
   console.log(
     `Brain2 validation PASS lessons=${result.lessons} public=${result.public} protected=${result.protected} prompts=${result.prompts} sourceLinks=${result.sourceLinks} retainedLinks=${result.retainedLinks}`,
   )

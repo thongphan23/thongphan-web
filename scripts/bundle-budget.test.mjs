@@ -15,6 +15,9 @@ const routeFiles = [
   'assets.html',
   'challenges.html',
   'chat.html',
+  'brain2/21-ngay.html',
+  'brain2/21-ngay/ngay-01.html',
+  'brain2/21-ngay/ngay-08.html',
 ]
 
 async function requireBuild(path) {
@@ -28,7 +31,7 @@ async function requireBuild(path) {
 }
 
 function refs(html, pattern) {
-  return [...html.matchAll(pattern)].map((match) => match[1].split('?')[0])
+  return [...html.matchAll(pattern)].map((match) => decodeURIComponent(match[1].split('?')[0]))
 }
 
 async function gzipTotal(paths) {
@@ -59,5 +62,27 @@ test('first-view local raster assets are individually bounded', async () => {
       const info = await stat(await requireBuild(image.slice(1)))
       assert.ok(info.size <= 500 * 1024, `${file}: ${image} is ${info.size} bytes; budget is 512000`)
     }
+  }
+})
+
+test('Brain2 route-owned client chunks stay inside the release budgets', async () => {
+  const budgets = [
+    ['brain2/21-ngay.html', 65 * 1024],
+    ['brain2/21-ngay/ngay-01.html', 45 * 1024],
+  ]
+  const referenceHtml = await readFile(await requireBuild('about.html'), 'utf8')
+  const referenceScripts = new Set(
+    refs(referenceHtml, /<script[^>]+src="([^"]+\.js(?:\?[^\"]*)?)"/g)
+      .filter((ref) => ref.startsWith('/_next/static/chunks/')),
+  )
+
+  for (const [file, budget] of budgets) {
+    const html = await readFile(await requireBuild(file), 'utf8')
+    const routeChunks = refs(html, /<script[^>]+src="([^"]+\.js(?:\?[^"]*)?)"/g)
+      .filter((ref) => ref.startsWith('/_next/static/chunks/') && !referenceScripts.has(ref))
+
+    assert.ok(routeChunks.length > 0, `${file} exposes no measurable route-owned JS`)
+    const bytes = await gzipTotal(routeChunks)
+    assert.ok(bytes <= budget, `${file} route-owned JS is ${bytes} bytes gzip; budget is ${budget}`)
   }
 })
