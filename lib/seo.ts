@@ -68,3 +68,18 @@ export function buildWebsiteStructuredData() {
     ],
   }
 }
+
+export function buildAboutPageStructuredData() {
+  const personId = `${SITE_URL}/about#person`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${SITE_URL}/about#about-page`,
+    url: `${SITE_URL}/about`,
+    name: 'Câu chuyện của Thông Phan',
+    description: 'Năm hồi tạo nên cách Thông Phan làm việc với chuyên môn, bằng chứng, Brain2 và AI.',
+    inLanguage: 'vi-VN',
+    mainEntity: { '@id': personId },
+    about: { '@id': personId },
+  }
+}

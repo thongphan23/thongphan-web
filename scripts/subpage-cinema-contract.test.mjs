@@ -45,14 +45,17 @@ test('shared dossier primitives exist and migrated routes enable the unified she
   assert.match(routeMode, /mode !== 'legacy' && mode !== 'standalone'/)
 })
 
-test('about metrics are released only through the proof manifest', () => {
-  assert.ok(existsSync(new URL('../content/proof/about-proof.json', import.meta.url)))
-  assert.ok(existsSync(new URL('../lib/about-proof.ts', import.meta.url)))
+test('about is a five-act evidence film rather than a metric-card biography', () => {
+  assert.ok(existsSync(new URL('../content/proof/origin-story-evidence.json', import.meta.url)))
+  assert.ok(existsSync(new URL('../lib/origin-story-evidence.ts', import.meta.url)))
+  assert.ok(existsSync(new URL('../components/origin-story/OriginStory.tsx', import.meta.url)))
   const source = read('app/about/page.tsx')
-  assert.match(source, /aboutProof/)
-  assert.doesNotMatch(source, /const proofIndex|const proofArcs/)
+  assert.match(source, /<OriginStory\s*\/>/)
+  assert.doesNotMatch(source, /aboutProof|const chapters|chapterGrid|proofGrid/)
   assert.doesNotMatch(source, /14 tháng|10 năm|40\+|80k\+|600\+/, 'public metrics must not bypass the proof manifest')
-  assert.match(read('app/about/page.module.css'), /background:\s*var\(--cinema-ink\)/, 'About must use the Cinema-dark origin treatment')
+  const css = `${read('app/about/page.module.css')}\n${read('components/origin-story/OriginStory.module.css')}`
+  assert.match(css, /background:\s*var\(--cinema-ink\)/, 'About must keep the Cinema-dark origin treatment')
+  assert.match(css, /var\(--cinema-paper\)|var\(--brand-paper\)/, 'Origin acts must include a paper-light counter-rhythm')
 })
 
 test('diagnostic keeps five questions and the approved score boundaries in a pure model', async () => {

@@ -41,12 +41,14 @@ test('unified routes load a real mono font and semantic oxblood token', () => {
   assert.match(tokens, /--brand-oxblood:\s*#7b2d1c/)
 })
 
-test('About closes with the shared dark chapter handoff', () => {
-  const source = read('app/about/page.tsx')
+test('About closes with the dedicated Brain2 origin handoff', () => {
+  const page = read('app/about/page.tsx')
+  const story = read('components/origin-story/OriginStory.tsx')
 
-  assert.match(source, /import ChapterHandoff from '@\/components\/journey\/ChapterHandoff'/)
-  assert.match(source, /<ChapterHandoff journeyKey="about" tone="dark"\s*\/>/)
-  assert.doesNotMatch(source, /styles\.closing/)
+  assert.match(page, /<OriginStory\s*\/>/)
+  assert.match(story, /<OriginStoryTrackedLink[\s\S]*href="\/brain2\/21-ngay"/)
+  assert.match(story, /href="\/library\/proof-stack-thong-phan-2026"/)
+  assert.doesNotMatch(page, /ChapterHandoff/)
 })
 
 test('the physical brand stamp provides a bounded browser icon', () => {

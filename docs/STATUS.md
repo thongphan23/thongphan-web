@@ -6,9 +6,10 @@ Last updated: 2026-07-12
 
 **Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
-the dedicated protected-content Worker, its private release gate and the inert email
-v2 release candidate are locally complete. The five-act story, cross-site wiring,
-full QA and production cutover remain in later slices. Only the legacy 21-day challenge is being consolidated;
+the dedicated protected-content Worker, its private release gate, the inert email v2
+release candidate and the five-act `/about` origin film are locally complete.
+Homepage bridging, cross-site wiring, full QA and production cutover remain in later
+slices. Only the legacy 21-day challenge is being consolidated;
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
@@ -142,6 +143,18 @@ Atmosphere remains complete and live.
   copy, one H1 and zero overflow, broken images, audited stale strings or relevant
   console errors. Independent final review ended at 0 Critical/0 Important. A proposed
   Kênh14 date-label minor was rejected after the live page confirmed `21/05/2015`.
+- `/about` is now a five-act evidence film rather than a metric-card biography. It
+  consumes only the reviewed public origin DTO, distinguishes press evidence from
+  first-person consequence, preserves one disclosure for the ImageGen metaphor and
+  ends with the canonical 21-day Brain2 action plus the public proof ledger.
+- Task 10 verification: focused origin/SEO/motion/handoff contracts 31/31, full suite
+  196/196, TypeScript pass and static build 83/83. Rendered QA passed seven desktop,
+  short-laptop, tablet, mobile, reduced-motion and no-JavaScript cases with zero
+  overflow, broken images or crop distortion; primary analytics fires once and the
+  proof action emits nothing. Review found and TDD-fixed a dark-heading contrast
+  regression: the final export measures 17.56:1 at desktop/mobile. The in-page anchor
+  clears the pinned header by 8.5–15.4px, repeated stage imagery was reduced, and the
+  final independent review ended at 0 Critical/0 Important/0 Minor.
 
 ## Motion Atmosphere production release — 2026-07-12
 

@@ -244,7 +244,7 @@
       "label": "Hồi 05",
       "title": "Không bỏ phí thêm một bài học nào.",
       "claimIds": ["brain2-running-system", "brain2-twenty-one-outputs", "conan-maker-handoff"],
-      "assetIds": ["present-day-stage", "brain2-challenge-metaphor"]
+      "assetIds": ["brain2-challenge-metaphor"]
     }
   ]
 }

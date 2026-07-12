@@ -113,3 +113,19 @@ test('robots, canonical metadata, structured data and custom 404 survive export'
   assert.match(notFound, /data-route-mode="cinema-dark"/)
   assert.match(notFound, /href="\/"/)
 })
+
+test('about emits an AboutPage graph that references the canonical person identity', async () => {
+  const [about, seo] = await Promise.all([
+    source('app/about/page.tsx'),
+    source('lib/seo.ts'),
+  ])
+  assert.match(about, /<JsonLd data=\{buildAboutPageStructuredData\(\)\}/)
+  assert.match(seo, /function buildAboutPageStructuredData/)
+  const { buildAboutPageStructuredData } = await import(new URL('../lib/seo.ts', import.meta.url).href)
+  const data = buildAboutPageStructuredData()
+  assert.equal(data['@type'], 'AboutPage')
+  assert.equal(data['@id'], 'https://thongphan.com/about#about-page')
+  assert.equal(data.url, 'https://thongphan.com/about')
+  assert.deepEqual(data.mainEntity, { '@id': 'https://thongphan.com/about#person' })
+  assert.deepEqual(data.about, { '@id': 'https://thongphan.com/about#person' })
+})

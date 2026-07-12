@@ -68,14 +68,16 @@ test('motion atmosphere has one guarded pointer runtime with teardown', async ()
 })
 
 test('approved actions and surfaces opt into bounded hover and focus physics', async () => {
-  const [home, proof, handoff, library, about, css] = await Promise.all([
+  const [home, proof, handoff, library, aboutPage, aboutStory, css] = await Promise.all([
     readProjectFile('components/home-cinema/HomeCinema.tsx'),
     readProjectFile('components/home-cinema/ProofContactSheet.tsx'),
     readProjectFile('components/journey/ChapterHandoff.tsx'),
     readProjectFile('app/library/page.tsx'),
     readProjectFile('app/about/page.tsx'),
+    readProjectFile('components/origin-story/OriginStory.tsx'),
     readProjectFile('components/site-chrome/SiteChrome.module.css'),
   ])
+  const about = `${aboutPage}\n${aboutStory}`
 
   assert.match(home, /data-motion-action/)
   assert.match(home, /data-motion-surface/)
@@ -93,13 +95,15 @@ test('approved actions and surfaces opt into bounded hover and focus physics', a
 })
 
 test('GSAP scroll choreography is lazy, bounded, varied and reversible', async () => {
-  const [scrollSource, homeSource, librarySource, aboutSource, handoffSource] = await Promise.all([
+  const [scrollSource, homeSource, librarySource, aboutPageSource, aboutStorySource, handoffSource] = await Promise.all([
     readProjectFile('components/ScrollAnimations.tsx'),
     readProjectFile('components/home-cinema/HomeCinema.tsx'),
     readProjectFile('app/library/page.tsx'),
     readProjectFile('app/about/page.tsx'),
+    readProjectFile('components/origin-story/OriginStory.tsx'),
     readProjectFile('components/journey/ChapterHandoff.tsx'),
   ])
+  const aboutSource = `${aboutPageSource}\n${aboutStorySource}`
 
   assert.match(scrollSource, /import\('gsap'\)/)
   assert.match(scrollSource, /import\('gsap\/ScrollTrigger'\)/)
