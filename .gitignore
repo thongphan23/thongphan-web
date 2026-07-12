@@ -6,9 +6,14 @@ dist/
 .env.local
 .env.*.local
 .env*.bak
+.env*
 .DS_Store
 *.log
 .wrangler/
 .dev.vars
+.dev.vars*
+brain2-private/
+private-content/
+*.brain2-private.json
 artifacts/
 .worktrees/

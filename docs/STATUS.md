@@ -4,11 +4,11 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Origin Story + 21 ngày Brain2 is approved and implementation-planned.** The direction
+**Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The first
+slice establishes public-repository release guardrails while the approved direction
 adds a five-act personal origin story and consolidates only the legacy 21-day Brain2
-challenge under `/brain2/21-ngay`; it explicitly excludes the private Brain2 vault,
-chat and standalone app. Motion Atmosphere remains complete and live with its local
-and production gates passing.
+challenge under `/brain2/21-ngay`. The private Brain2 vault, chat and standalone app
+remain explicitly excluded. Motion Atmosphere remains complete and live.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
@@ -25,15 +25,17 @@ and production gates passing.
   only after canonical content, signup, access and production parity pass.
 - The production audit found R2 disabled, a global router that rewrites cache headers,
   210 overdue legacy email rows and 25 content-bearing legacy Pages deployments. The
-  approved implementation therefore uses a dedicated private KV namespace plus a
-  more-specific access Worker, versions all old queue rows as `legacy-v0`, and removes
-  old immutable deployments only after the redirect-only replacement passes.
+  approved implementation therefore uses a dedicated private KV namespace instead of
+  R2 plus a more-specific access Worker, quarantines all old queue rows as `legacy-v0`
+  so the new sender selects only `brain2-2026-v1`, and removes old immutable
+  deployments only after the redirect-only replacement passes.
 - Written design:
   `docs/superpowers/specs/2026-07-12-origin-story-brain2-21-day-integration-design.md`.
 - Implementation plan:
   `docs/superpowers/plans/2026-07-12-origin-story-brain2-21-day-integration.md`.
-- No product implementation has started; the next phase is isolated-worktree execution
-  with TDD, rendered QA, production smoke and release evidence.
+- Implementation started with an always-on repository-boundary test, hardened private
+  source ignores and the migration parser dependency. Feature slices continue through
+  TDD before rendered QA, production smoke and release evidence.
 
 ## Motion Atmosphere production release — 2026-07-12
 
