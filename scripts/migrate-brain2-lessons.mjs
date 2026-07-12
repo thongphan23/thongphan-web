@@ -22,6 +22,7 @@ import {
   deriveProtectedLessonBody,
   emptyEditorialCounts,
   isSafeLessonHref,
+  retainedExternalHref,
   normalizeLessonHtml,
   sha256,
   stableJsonStringify,
@@ -159,6 +160,7 @@ export {
   contentSha256,
   deriveProtectedLessonBody,
   isSafeLessonHref,
+  retainedExternalHref,
   normalizeLessonHtml,
   stableJsonStringify,
 }

@@ -140,7 +140,7 @@ const normalizePromptText = (value, counts) => {
 }
 
 const externalHref = (href) => Boolean(href) && !href.startsWith('/') && !href.startsWith('#')
-const retainedExternalHref = (href) => /^https:\/\//i.test(href)
+export const retainedExternalHref = (href) => /^https:\/\//i.test(href)
 
 export const isSafeLessonHref = (href) => {
   if (typeof href !== 'string' || href.length === 0 || href.includes('\\')) return false

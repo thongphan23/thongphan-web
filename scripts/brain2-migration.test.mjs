@@ -506,7 +506,10 @@ test('validator accepts typed packages and rejects checksum, block and link viol
       {
         id: 'day-01-block-01',
         kind: 'prose',
-        children: [{ type: 'link', href: 'https://example.com/guide', children: [{ type: 'text', value: 'Guide' }] }],
+        children: [
+          { type: 'link', href: 'https://example.com/guide', children: [{ type: 'text', value: 'Guide' }] },
+          { type: 'link', href: '/brain2/21-ngay/ngay-02', children: [{ type: 'text', value: 'Next lesson' }] },
+        ],
       },
       { id: 'day-01-block-02', kind: 'prompt', label: 'Copy prompt', text: 'Synthetic prompt only.' },
     ],

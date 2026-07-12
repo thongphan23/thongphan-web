@@ -11,6 +11,7 @@ import {
   assertSafePrivateLessonFile,
   contentSha256,
   isSafeLessonHref,
+  retainedExternalHref,
   preparePrivateVersionRoot,
 } from './migrate-brain2-lessons.mjs'
 
@@ -63,7 +64,8 @@ const validateRichText = (nodes, scope) => {
     if (node.type === 'link') {
       exactKeys(node, ['type', 'href', 'children'], nodeScope)
       if (!isSafeLessonHref(node.href)) throw validationError(nodeScope, 'contains an unsafe link href')
-      retainedLinks += 1 + validateRichText(node.children, `${nodeScope}.children`)
+      if (retainedExternalHref(node.href)) retainedLinks += 1
+      retainedLinks += validateRichText(node.children, `${nodeScope}.children`)
       continue
     }
     throw validationError(nodeScope, 'contains an unknown rich-text node type')
@@ -134,7 +136,7 @@ const validateBlock = (block, scope) => {
       stringField(item.title, `${itemScope}.title`)
       if (item.note !== undefined) stringField(item.note, `${itemScope}.note`)
       if (!isSafeLessonHref(item.href)) throw validationError(itemScope, 'contains an unsafe resource href')
-      retainedLinks += 1
+      if (retainedExternalHref(item.href)) retainedLinks += 1
     }
     return { prompts, retainedLinks }
   }
