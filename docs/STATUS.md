@@ -4,13 +4,13 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Hero vertical-layer rescue is in progress.** Production measurements on
+**Hero vertical-layer rescue is complete and live.** Production measurements on
 2026-07-12 found that the chapter menu ended at `128px` while the display name began
 at `105px`, producing a repeatable `23px` collision on desktop. The decorative frame
 also rendered above the CTA and evidence rail, and the proof microcopy crossed the
-film rail by `6.9px` at `1440x900`. The prior visual verdict is superseded until the
-desktop-height matrix, mobile, reduced-motion and keyboard checks pass again. Read
-content remains restored; Learn remains fail-closed until its independent PWA is ready.
+film rail by `6.9px` at `1440x900`. The corrected vertical safe zones and layer order
+are live from source commit `71b4042`. Read content remains restored; Learn remains
+fail-closed until its independent PWA is ready.
 
 ### Hero vertical-layer rescue verification
 
@@ -25,8 +25,13 @@ content remains restored; Learn remains fail-closed until its independent PWA is
   `/tmp/thongphan-hero-after-1440x900.png`,
   `/tmp/thongphan-hero-after-1280x720.png` and
   `/tmp/thongphan-hero-after-390x844.png`.
-- Fresh local verification: `npm test` 110/110, `npx tsc --noEmit`, and static build
-  61/61 pages passed. Production deployment and domain smoke remain pending.
+- Fresh local verification: `npm test` 110/110, `npx tsc --noEmit`, static build
+  61/61 pages, release contracts 10/10 and Read safety 3/3 passed.
+- Production deployment `3f29ba89-b4b8-4597-badf-b374b7d3b78c` is live on branch
+  `main`. Both its Pages origin and `https://thongphan.com` passed desktop, short
+  laptop and mobile smoke with zero intersections/overflow/console errors. The CTA
+  has a visible 3px focus outline and keyboard activation reaches `/diagnostic`.
+- Production screenshot: `/tmp/thongphan-prod-hero-71b4042-1280x720.png`.
 
 ## Production rescue — 2026-07-12
 
