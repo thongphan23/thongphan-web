@@ -43,6 +43,28 @@ test('hashes the exact UTF-8 title-newline-content source fragment', () => {
   assert.equal(sourceFragmentSha256(entry), expected)
 })
 
+const assertParseDiagnostic = (source, sourceName) => {
+  assert.throws(
+    () => extractDayContent(source, sourceName),
+    (error) => {
+      assert.match(
+        error.message,
+        new RegExp(`^${sourceName}: source contains \\d+ TypeScript parse diagnostic(?:s)?$`),
+      )
+      return true
+    },
+  )
+}
+
+test('rejects a source truncated before the final DAY_CONTENT brace', () => {
+  assertParseDiagnostic(legacySource().slice(0, -2), 'missing-final-brace.js')
+})
+
+test('rejects an unterminated final lesson template', () => {
+  const source = legacySource()
+  assertParseDiagnostic(source.slice(0, source.lastIndexOf('`')), 'unterminated-final-template.js')
+})
+
 test('rejects a missing day', () => {
   assert.throws(() => extractDayContent(legacySource(days.slice(0, -1))), /21|missing|exactly/i)
 })

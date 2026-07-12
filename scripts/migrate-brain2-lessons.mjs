@@ -61,6 +61,13 @@ export function extractDayContent(sourceText, sourceName = '<memory>') {
     false,
     ts.ScriptKind.JS,
   )
+  const diagnosticCount = sourceFile.parseDiagnostics.length
+  if (diagnosticCount > 0) {
+    fail(
+      sourceName,
+      `source contains ${diagnosticCount} TypeScript parse diagnostic${diagnosticCount === 1 ? '' : 's'}`,
+    )
+  }
   const declarations = sourceFile.statements
     .filter(ts.isVariableStatement)
     .flatMap(({ declarationList }) => declarationList.declarations)
