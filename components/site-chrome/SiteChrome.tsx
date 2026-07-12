@@ -7,6 +7,7 @@ import defaultStyles from '@/app/layout.module.css'
 import { isUnifiedRouteEnabled, routeModeForPath } from '@/lib/site-route-mode'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
+import MotionAtmosphere from './MotionAtmosphere'
 import styles from './SiteChrome.module.css'
 
 function DefaultHeader() {
@@ -103,6 +104,7 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
           <span className={defaultStyles.siteScanline} />
         </div>
       ) : null}
+      {isUnified ? <MotionAtmosphere pathname={pathname} mode={mode} /> : null}
       {isUnified ? <SiteHeader mode={mode} pathname={pathname} /> : <DefaultHeader />}
       <main className={isUnified ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
       {isUnified ? <SiteFooter mode={mode} /> : <DefaultFooter />}

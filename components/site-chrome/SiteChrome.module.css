@@ -85,6 +85,99 @@
   z-index: 1;
 }
 
+.motionAtmosphere {
+  --motion-ambient-opacity: 1;
+  --motion-pointer-opacity: 0;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+  position: fixed;
+  z-index: 50;
+}
+
+.motionAtmosphere > span,
+.motionAtmosphere::after {
+  content: '';
+  display: block;
+  pointer-events: none;
+  position: absolute;
+}
+
+.motionAtmosphere > span:first-child {
+  animation: projectorSweep 20s ease-in-out infinite alternate;
+  background: linear-gradient(
+    112deg,
+    transparent 32%,
+    rgba(232, 223, 207, 0.055) 47%,
+    rgba(224, 75, 67, 0.038) 54%,
+    transparent 69%
+  );
+  filter: blur(24px);
+  height: 150vh;
+  left: -42vw;
+  opacity: calc(0.84 * var(--motion-ambient-opacity));
+  top: -28vh;
+  transform: rotate(-7deg);
+  width: 112vw;
+}
+
+.motionAtmosphere > span:nth-child(2) {
+  animation: ambientBloom 24s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(179, 35, 27, 0.1), transparent 68%);
+  filter: blur(42px);
+  height: 46rem;
+  opacity: calc(0.72 * var(--motion-ambient-opacity));
+  right: -18rem;
+  top: 16vh;
+  width: 46rem;
+}
+
+.motionAtmosphere > span:nth-child(3) {
+  background-image: repeating-radial-gradient(
+    circle at 20% 30%,
+    rgba(232, 223, 207, 0.12) 0 0.35px,
+    transparent 0.45px 3px
+  );
+  inset: 0;
+  mix-blend-mode: soft-light;
+  opacity: calc(0.035 * var(--motion-ambient-opacity));
+}
+
+.motionAtmosphere::after {
+  background: radial-gradient(
+    430px circle at var(--pointer-x) var(--pointer-y),
+    rgba(224, 75, 67, 0.105),
+    rgba(232, 223, 207, 0.035) 34%,
+    transparent 70%
+  );
+  inset: 0;
+  opacity: var(--motion-pointer-opacity);
+  transition: opacity 320ms var(--brand-motion-ease);
+}
+
+.motionAtmosphere[data-ambient='restrained'] {
+  --motion-ambient-opacity: 0.42;
+}
+
+.motionAtmosphere[data-ambient='none'] {
+  --motion-ambient-opacity: 0;
+}
+
+.motionAtmosphere[data-motion-active='true'][data-pointer='full'] {
+  --motion-pointer-opacity: 1;
+}
+
+.siteShell:has([data-motion-surface]:hover) .motionAtmosphere[data-motion-active='true'],
+.siteShell:has([data-motion-action]:hover) .motionAtmosphere[data-motion-active='true'],
+.siteShell:has([data-motion-surface]:focus-within) .motionAtmosphere[data-motion-active='true'],
+.siteShell:has([data-motion-action]:focus-visible) .motionAtmosphere[data-motion-active='true'] {
+  --motion-pointer-opacity: 1;
+}
+
+.motionAtmosphere[data-page-visible='false'] > span {
+  animation-play-state: paused;
+}
+
 .cinemaHeader {
   -webkit-backdrop-filter: blur(16px) saturate(1.08);
   backdrop-filter: blur(16px) saturate(1.08);
@@ -475,6 +568,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .motionAtmosphere > span {
+    animation: none;
+  }
+
+  .motionAtmosphere::after {
+    display: none;
+  }
+
   .cinemaHeader,
   .cinemaHeaderInner,
   .chapterNav a::after {
@@ -482,8 +583,24 @@
   }
 }
 
+@media (hover: none), (pointer: coarse) {
+  .motionAtmosphere::after {
+    display: none;
+  }
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .cinemaHeader {
     background: rgba(7, 7, 6, 0.96);
   }
+}
+
+@keyframes projectorSweep {
+  from { transform: translate3d(-7vw, -2vh, 0) rotate(-7deg); }
+  to { transform: translate3d(38vw, 7vh, 0) rotate(-2deg); }
+}
+
+@keyframes ambientBloom {
+  from { transform: translate3d(0, -4vh, 0) scale(0.92); }
+  to { transform: translate3d(-18vw, 12vh, 0) scale(1.08); }
 }
