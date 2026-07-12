@@ -12,6 +12,10 @@
   min-width: 0;
 }
 
+.page [data-home-section] {
+  scroll-margin-top: 8.5rem;
+}
+
 .hero {
   --hero-film-height: clamp(240px, 26.5vh, 280px);
   background: var(--cinema-ink);
@@ -947,6 +951,10 @@
 }
 
 @media (max-width: 767px) {
+  .page [data-home-section] {
+    scroll-margin-top: 4.75rem;
+  }
+
   .hero {
     min-height: 980px;
   }

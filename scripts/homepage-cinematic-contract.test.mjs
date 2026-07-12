@@ -221,6 +221,7 @@ test('desktop hero reserves the chapter-nav safe zone and keeps content above de
   assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}z-index:\s*5/)
   assert.match(css, /\.heroFrameOverlay\s*\{[\s\S]{0,260}z-index:\s*1/)
   assert.match(css, /\.heroFilm\s*\{[\s\S]{0,520}z-index:\s*3/)
+  assert.match(css, /\.page \[data-home-section\]\s*\{[\s\S]*?scroll-margin-top:\s*8\.5rem/)
 })
 
 test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {
