@@ -1,6 +1,6 @@
 # Origin Story + 21 ngày Brain2 — production release report
 
-Last updated: 2026-07-12
+Last updated: 2026-07-13
 
 ## Release boundary
 
@@ -11,13 +11,15 @@ Last updated: 2026-07-12
 - Explicitly excluded: private Brain2 vault, Brain2 chat and access to the standalone Brain2 app.
 - Legacy retirement is allowed only after canonical production, protected access and signup smoke pass.
 
-## Local release-candidate verdict
+## Production verdict
 
-**LOCAL RELEASE CANDIDATE PASS; PRODUCTION CUTOVER BLOCKED.** The dedicated KV,
-two Keychain/Worker secrets, protected packages and access Worker are now provisioned
-and smoked. Canonical Pages/signup cutover remains stopped by the Cloudflare
-control-plane incident. The email Worker remains inert because the available Brevo
-credential failed provider health validation and no replacement was found.
+**CANONICAL PRODUCTION PASS; LEGACY IMMUTABLE CACHE CLEANUP BLOCKED.** The canonical
+Pages release, signup v2, protected access, 21 lesson shells and redirect-only legacy
+domain are live and smoked. Cloudflare's deployment API accepted deletion of all 64
+content-bearing legacy deployments and now lists only the redirect deployment, but
+the 64 deleted hash URLs still serve cached legacy HTML. The email Worker remains
+inert because the available Brevo credential failed provider health validation and no
+replacement was found.
 
 No protected lesson body, raw access code, session secret, subscriber identity or authorized lesson screenshot is recorded in this report.
 
@@ -95,10 +97,11 @@ Evidence is outside the repository:
 - [x] Upload and checksum-readback all 14 immutable protected packages.
 - [x] Run the strict private scan with two Keychain secrets and fresh Worker bundles.
 - [x] Deploy and smoke the dedicated access Worker.
-- [ ] Deploy signup v2 before the first controlled signup.
-- [ ] Deploy Pages preview read-only, then production and smoke public/protected journeys.
+- [x] Deploy signup v2 before the first controlled signup.
+- [x] Deploy Pages preview read-only, then production and smoke public/protected journeys.
 - [x] Evaluate Brevo health; credential is invalid, so keep cron and email routes undeployed.
-- [ ] Replace the legacy site with redirect-only content, remove legacy secret/bindings, delete the exact audited content-serving deployments and verify the redirect.
+- [x] Replace the legacy site with redirect-only content and remove legacy secret/bindings.
+- [ ] Confirm all 64 API-deleted immutable legacy URLs stop serving cached content.
 - [ ] Record deployment IDs, production screenshots, rollback point and final pass/fail here.
 
 ## Task 15 partial production evidence
@@ -110,7 +113,7 @@ Evidence is outside the repository:
 - Two raw credentials exist only as Keychain accounts under
   `thongphan-brain2-access`; encrypted Worker secrets were created without printing
   either value.
-- Strict scan: `2,690` files / `6,882` fingerprints / `2` Keychain secrets / zero
+- Strict scan: `2,691` files / `6,882` fingerprints / `2` Keychain secrets / zero
   hits / zero symlinks.
 - Protected KV release: all 14 immutable day keys uploaded and byte/checksum-read back.
 - Access Worker version `524eacb7-4b1f-4f97-9e28-af2b4b6802ec` is live on exact apex/www
@@ -120,13 +123,37 @@ Evidence is outside the repository:
   pending.
 - Email remains correctly undeployed: the only local legacy Brevo credential returns
   HTTP 401 and no replacement was found in Keychain.
-- Production cutover is currently stopped by Cloudflare control-plane errors. Two
+- The initial production cutover was stopped by Cloudflare control-plane errors. Two
   consecutive strict signup deploys returned HTTP 521 before artifact evaluation.
   After Cloudflare marked that incident resolved, the read-only Pages preview returned
   HTTP 522, a fresh strict signup deploy returned 522, and an immediately repeated
   Worker-version diagnostic changed from 200 to 522. No signup row, v1 email row,
-  production Pages deployment or legacy deletion was created by those failures. See
+  production Pages deployment or legacy deletion was created by those attempts. See
   `docs/STUCK_REPORT-2026-07-12-brain2-signup-deploy.md`.
 - Cloudflare's official status API subsequently opened unresolved incident
   `cbtmdg3gyx4z` for the Dashboard and related customer APIs at
-  `2026-07-12T21:40Z`; both components were still degraded at the final status check.
+  `2026-07-12T21:40Z`. Two clean read-only control-plane rounds later allowed the
+  release to resume.
+- Signup Worker v2 version `e0b86041-6343-4654-847c-1281fa891274` is live. A
+  controlled synthetic signup returned `200`, its duplicate returned `409`, and D1
+  contained exactly 21 `brain2-2026-v1 pending` rows for days 01–21 while all 210
+  `legacy-v0` rows remained pending. The synthetic signup and its v1 rows were then
+  deleted; final readback returned `0 v1` and `210 legacy-v0 pending`.
+- Pages preview `8452a6ae-17d0-4fb8-a4d7-158e892797be` passed seven read-only routes
+  with `X-Robots-Tag: noindex`, canonical metadata, desktop/mobile interaction QA and
+  an exact `6,882`-fingerprint private-body scan with zero hits.
+- Canonical production deployment `a0554edc-d877-4133-bac9-2262b5cefdb7` passes the
+  public route matrix, access `401 → 204 → 200`, exact day 08/day 21 package equality,
+  tampered-session rejection, logout and rendered desktop checks with zero relevant
+  console errors, broken images or overflow.
+- Legacy redirect deployment `5ec622ea-15b1-439c-bb2e-3a175359491c` returns body-free
+  `301` for root, old paths, API POSTs and query strings. Project readback confirms
+  `REFLECTIONS`, `BREVO_API_KEY` and `BREVO_LIST_ID` are removed.
+- The API deletion preflight matched exactly 65 deployments: the private snapshot's
+  64-ID allowlist plus the one redirect deployment. All 64 delete calls succeeded and
+  the production inventory now contains only the redirect. The sorted 64-ID deletion
+  allowlist has SHA-256
+  `e1b2a23138ff562c48a212a7b1cae56b6bc4e5cfcaf3f8032720ac82029def55`. The deleted hash URLs
+  nevertheless continue to return cached legacy HTML after five cache-busted checks;
+  final retirement verification therefore remains blocked. See
+  `docs/STUCK_REPORT-2026-07-13-brain2-immutable-cache.md`.

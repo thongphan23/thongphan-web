@@ -1,27 +1,28 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-12
+Last updated: 2026-07-13
 
 ## Current phase
 
-**Origin Story + 21 ngày Brain2 is a locally verified release candidate.** The public
+**Origin Story + 21 ngày Brain2 is live on canonical production.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
 the dedicated protected-content Worker, its private release gate, the inert email v2
 release candidate, the five-act `/about` origin film, the compact homepage bridge,
 canonical cross-site journey and fail-closed legacy-retirement artifacts are locally
-complete. Task 14 release QA is complete; production provisioning, smoke and cutover
-remain in Task 15. Only the legacy
+complete. Task 14 release QA and the canonical Task 15 production cutover are
+complete. Only the legacy
 21-day challenge is being consolidated;
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
-Task 15 has safely provisioned the isolated KV, D1 migration, two Keychain/Worker
-secrets, all 14 protected packages and access Worker version
-`524eacb7-4b1f-4f97-9e28-af2b4b6802ec`. Its production API smoke passes. Canonical
-Pages production and legacy retirement remain blocked: Cloudflare returned repeated
-521/522 responses for the signup Worker control plane and 522 for the read-only Pages
-preview. Cloudflare's official status API now lists unresolved incident
-`cbtmdg3gyx4z` for the affected Dashboard and customer APIs. Email remains undeployed
+Task 15 provisioned the isolated KV, D1 migration, two Keychain/Worker secrets, all
+14 protected packages, access Worker `524eacb7`, signup Worker `e0b86041`, preview
+`8452a6ae` and canonical Pages production `a0554edc`. Public, protected and signup
+production smoke passes. `brain2.thongphan.com` is redirect-only through deployment
+`5ec622ea`; its `REFLECTIONS` and two Brevo bindings are removed. Cloudflare's API
+accepted all 64 audited legacy deployment deletions and lists only the redirect, but
+every deleted immutable hash URL still serves cached legacy HTML. Final cleanup is
+therefore blocked at the CDN boundary, not the application. Email remains undeployed
 because the available Brevo credential returns 401.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12

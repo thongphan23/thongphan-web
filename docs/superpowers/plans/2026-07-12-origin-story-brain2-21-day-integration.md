@@ -1097,7 +1097,7 @@ verify the trigger, and re-query D1: all 210 legacy-v0 remain unsent. If the cre
 cannot be recovered, leave the sender and cron undeployed and record the external
 credential blocker rather than weakening the release boundary.
 
-- [ ] **Step 5: Deploy canonical Pages preview and production**
+- [x] **Step 5: Deploy canonical Pages preview and production**
 
 Deploy `out` to a non-production branch of `thongphan-com` and verify Cloudflare's
 default `X-Robots-Tag: noindex` preview header. Because preview shares production
@@ -1107,7 +1107,7 @@ branch `main` production and run the full access/signup matrix on
 `https://thongphan.com` before retiring legacy. Smoke the Pages origin and apex;
 verify canonical redirects, SEO, no protected bytes, and route-specific Worker bypass.
 
-- [ ] **Step 6: Retire the legacy frontend**
+- [x] **Step 6: Retire the legacy frontend**
 
 Only after canonical production passes, deploy `ops/brain2-legacy-redirect` to Pages
 project `brain2-platform`. Verify root, old paths, API paths and query strings all
@@ -1122,6 +1122,12 @@ Using the complete three-page private snapshot inventory, delete all 64 old
 `8d400ccd-3357-4c51-9a0f-87bd2648b9ff`. Keep only the redirect-only deployment.
 Do not derive the allowlist from Wrangler's default 25-row first page. Verify every
 former immutable URL is no longer publicly reachable.
+
+The 64-ID API deletion completed and readback contains only the redirect deployment,
+but the deleted hash URLs still serve cached legacy HTML. Keep this step open until
+the CDN no longer serves those bodies or a separately approved Worker/project-delete
+architecture revokes the project hostname. See
+`docs/STUCK_REPORT-2026-07-13-brain2-immutable-cache.md`.
 
 - [ ] **Step 8: Final production verification and documentation**
 

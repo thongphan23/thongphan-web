@@ -2,6 +2,11 @@
 
 Date: 2026-07-12
 
+Resolved: 2026-07-13. Two consecutive read-only checks later passed for both Worker
+versions and Pages deployments. Signup v2, preview and canonical production were then
+deployed and smoked. This report is retained as incident history; the current open
+boundary is `STUCK_REPORT-2026-07-13-brain2-immutable-cache.md`.
+
 ## Scope
 
 Deploy the already verified `thongphan-signup-api` v2 Worker and read-only Pages
@@ -47,8 +52,6 @@ provider send and no v1 email-queue mutation occurred.
 
 ## Decision
 
-Stop retrying the same control-plane paths. Keep the email Worker/cron undeployed, do
-not move canonical Pages to production and do not retire/delete the legacy deployment
-until the signup Worker and read-only preview can be deployed and smoked. The feature
-branch may retain the provisioned access backend and evidence, but `main/master` must
-not be integrated as a production release while this report is open.
+This decision applied while the incident was open. The control plane later passed its
+release gate and the canonical production deployment proceeded. The email Worker/cron
+remains undeployed because the independent Brevo credential gate still returns 401.
