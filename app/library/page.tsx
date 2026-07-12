@@ -68,12 +68,12 @@ function ArchiveLane({
           <span>{index}</span>
           <h2 id={`lane-${index}`}>{title}</h2>
         </div>
-        <Link href={href}>Xem tất cả <span aria-hidden="true">→</span></Link>
+        <Link href={href} data-motion-action>Xem tất cả <span aria-hidden="true">→</span></Link>
       </header>
       <p className={styles.laneDescription}>{description}</p>
       <div className={styles.laneList}>
         {entries.map((entry) => (
-          <Link href={entry.href} key={`${entry.type}-${entry.slug}`} className={styles.laneItem}>
+          <Link href={entry.href} key={`${entry.type}-${entry.slug}`} className={styles.laneItem} data-motion-surface>
             <span className={styles.laneType}>{ENTRY_TYPE_LABELS[entry.type]}</span>
             <span className={styles.laneCopy}>
               <strong>{entry.title}</strong>
@@ -129,11 +129,11 @@ export default function LibraryPage() {
               Những bài đọc đáng tin, ghi chú đang sống và trải nghiệm đã được trả giá —
               được xếp lại để bạn nhìn rõ hơn trước khi làm nhanh hơn.
             </p>
-            <Link href="/library/read/steve-jobs-2005-stanford-commencement-address" className={styles.primaryCta}>Bắt đầu đọc</Link>
+            <Link href="/library/read/steve-jobs-2005-stanford-commencement-address" className={styles.primaryCta} data-motion-action>Bắt đầu đọc</Link>
           </div>
 
           {featured ? (
-            <article className={styles.featured} aria-labelledby="featured-title">
+            <article className={styles.featured} aria-labelledby="featured-title" data-motion-surface>
               <p className={styles.featuredLabel}>Bài đọc nổi bật · Stanford 2005</p>
               <h2 id="featured-title">{featured.title}</h2>
               <p>{featured.description}</p>
@@ -142,7 +142,7 @@ export default function LibraryPage() {
                 <div><dt>Nguồn</dt><dd>{featured.source}</dd></div>
                 <div><dt>Thời lượng</dt><dd>{featured.minutes} phút</dd></div>
               </dl>
-              <Link href={FEATURED_HREF} className={styles.featuredLink}>Đọc ghi chú tuyển chọn <span aria-hidden="true">→</span></Link>
+              <Link href={FEATURED_HREF} className={styles.featuredLink} data-motion-action>Đọc ghi chú tuyển chọn <span aria-hidden="true">→</span></Link>
             </article>
           ) : null}
         </header>
@@ -153,23 +153,23 @@ export default function LibraryPage() {
             <h2 id="current-state-title">Bắt đầu từ điều bạn đang cần nhìn rõ.</h2>
           </header>
           <div className={styles.currentStateGrid}>
-            <article>
+            <article data-motion-surface>
               <span>01 · Gọi đúng vấn đề</span>
               <h3>Làm rõ điều đang vướng</h3>
               <p>Năm câu hỏi giúp xác định điểm kẹt trước khi chọn thứ để đọc hoặc công cụ để dùng.</p>
-              <Link href="/diagnostic">Mở bản đồ chuyên môn <span aria-hidden="true">→</span></Link>
+              <Link href="/diagnostic" data-motion-action>Mở bản đồ chuyên môn <span aria-hidden="true">→</span></Link>
             </article>
-            <article>
+            <article data-motion-surface>
               <span>02 · Làm ra một vật thể</span>
               <h3>Biến chuyên môn thành đầu ra</h3>
               <p>Chọn một bộ nhỏ để biến điều vừa hiểu thành thứ có thể dùng và nhận phản hồi.</p>
-              <Link href="/assets">Xem kho tài sản nhỏ <span aria-hidden="true">→</span></Link>
+              <Link href="/assets" data-motion-action>Xem kho tài sản nhỏ <span aria-hidden="true">→</span></Link>
             </article>
-            <article>
+            <article data-motion-surface>
               <span>03 · Tạo nhịp làm</span>
               <h3>Bắt đầu một nhịp thực hành</h3>
               <p>Gom nguyên liệu thật trong 21 ngày thay vì tiếp tục lưu thêm kiến thức rời rạc.</p>
-              <Link href="/challenges/brain2-21-ngay">Mở lịch 21 ngày <span aria-hidden="true">→</span></Link>
+              <Link href="/challenges/brain2-21-ngay" data-motion-action>Mở lịch 21 ngày <span aria-hidden="true">→</span></Link>
             </article>
           </div>
         </section>
@@ -208,14 +208,14 @@ export default function LibraryPage() {
             <span>03</span>
             <h2 id="blog-lane-title">Bài của Thông</h2>
           </div>
-          <Link href="/blog">Đi tới trang bài viết <span aria-hidden="true">→</span></Link>
+          <Link href="/blog" data-motion-action>Đi tới trang bài viết <span aria-hidden="true">→</span></Link>
         </header>
         <p className={styles.blogIntro}>
           Những bài dài đi từ trải nghiệm thật tới một góc nhìn có thể dùng trong công việc và cuộc sống.
         </p>
         <div className={styles.blogList}>
           {postEntries.map((post) => (
-            <Link href={post.href} key={post.slug} className={styles.blogItem}>
+            <Link href={post.href} key={post.slug} className={styles.blogItem} data-motion-surface>
               <span>{post.minutes} phút</span>
               <strong>{post.title}</strong>
               <p>{post.promise}</p>

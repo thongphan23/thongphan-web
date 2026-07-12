@@ -62,6 +62,7 @@ export default function HomeCinema() {
               href="/diagnostic"
               className={styles.primaryButton}
               eventName={homepageEvents.primary}
+              data-motion-action
             >
               <span>Khám phá lộ trình của bạn</span>
               <img src="/images/homepage/evidence-cinema-arrow-v2.png" alt="" aria-hidden="true" />
@@ -123,8 +124,9 @@ export default function HomeCinema() {
               href={item.href}
               className={styles.pathRow}
               eventName={homepageEvents.path}
-              eventDetail={{ slug: item.slug }}
-              data-cinema-reveal
+                  eventDetail={{ slug: item.slug }}
+                  data-cinema-reveal
+                  data-motion-surface
             >
               <span className={styles.pathIndex}>{item.index}</span>
               <span className={styles.pathCopy}>
@@ -157,8 +159,9 @@ export default function HomeCinema() {
           </ul>
           <HomeTrackedLink
             href="/conanmaker"
-            className={styles.primaryButton}
-            eventName={homepageEvents.conan}
+                className={styles.primaryButton}
+                eventName={homepageEvents.conan}
+                data-motion-action
           >
             Xem Conan Maker
           </HomeTrackedLink>

@@ -64,6 +64,7 @@ export default function ProofContactSheet({ assets }: { assets: HomepageProofPub
                 setSelected(asset)
               }}
               aria-label={`Mở bằng chứng: ${asset.caption}`}
+              data-motion-surface
             >
               <span className={styles.proofFrameTop} aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span><span>TP · ARCHIVE</span></span>
               <ProofImage
@@ -106,7 +107,7 @@ export default function ProofContactSheet({ assets }: { assets: HomepageProofPub
               <h3 id="proof-dialog-title">{selected.caption}</h3>
               <strong>{selected.proof}</strong>
               <small>{selected.provenance}</small>
-              <HomeTrackedLink href={selected.href} eventName={homepageEvents.proof} eventDetail={{ slug: selected.id }}>
+              <HomeTrackedLink href={selected.href} eventName={homepageEvents.proof} eventDetail={{ slug: selected.id }} data-motion-action>
                 Đi sâu vào dấu vết này
               </HomeTrackedLink>
             </div>

@@ -15,7 +15,7 @@ type ChapterHandoffProps = {
 function ActionLink({ action }: { action: JourneyAction }) {
   if (action.href === '/conanmaker/') {
     return (
-      <a href={action.href}>
+      <a href={action.href} data-motion-action>
         {action.label} <span aria-hidden="true">→</span>
       </a>
     )
@@ -23,14 +23,14 @@ function ActionLink({ action }: { action: JourneyAction }) {
 
   if (action.external) {
     return (
-      <a href={action.href} target="_blank" rel="noopener noreferrer">
+      <a href={action.href} target="_blank" rel="noopener noreferrer" data-motion-action>
         {action.label} <span aria-hidden="true">↗</span>
       </a>
     )
   }
 
   return (
-    <Link href={action.href}>
+    <Link href={action.href} data-motion-action>
       {action.label} <span aria-hidden="true">→</span>
     </Link>
   )
@@ -58,7 +58,7 @@ export default function ChapterHandoff({
 
       <div className={styles.actions}>
         {actions.map((action, index) => (
-          <article key={action.href} data-primary={index === 0}>
+          <article key={action.href} data-primary={index === 0} data-motion-surface>
             <p>{action.eyebrow}</p>
             <span>{action.reason}</span>
             <ActionLink action={action} />

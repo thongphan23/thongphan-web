@@ -50,3 +50,28 @@ test('motion atmosphere has one guarded pointer runtime with teardown', async ()
   assert.match(source, /aria-hidden="true"/)
   assert.match(source, /data-page-visible/)
 })
+
+test('approved actions and surfaces opt into bounded hover and focus physics', async () => {
+  const [home, proof, handoff, library, about, css] = await Promise.all([
+    readProjectFile('components/home-cinema/HomeCinema.tsx'),
+    readProjectFile('components/home-cinema/ProofContactSheet.tsx'),
+    readProjectFile('components/journey/ChapterHandoff.tsx'),
+    readProjectFile('app/library/page.tsx'),
+    readProjectFile('app/about/page.tsx'),
+    readProjectFile('components/site-chrome/SiteChrome.module.css'),
+  ])
+
+  assert.match(home, /data-motion-action/)
+  assert.match(home, /data-motion-surface/)
+  assert.match(proof, /data-motion-surface/)
+  assert.match(handoff, /data-motion-action/)
+  assert.match(handoff, /data-motion-surface/)
+  assert.match(library, /data-motion-action/)
+  assert.match(library, /data-motion-surface/)
+  assert.match(about, /data-motion-action/)
+  assert.match(about, /data-motion-surface/)
+  assert.match(css, /\[data-motion-action\]:focus-visible/)
+  assert.match(css, /@media \(hover: hover\) and \(pointer: fine\)/)
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/)
+  assert.match(css, /\[data-motion-surface\]:hover img\s*\{[\s\S]*?scale\(1\.02\)/)
+})
