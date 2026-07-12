@@ -1,0 +1,469 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 7,
+    "slug": "ngay-07",
+    "week": 1,
+    "access": "public",
+    "title": "Kho câu chuyện cá nhân",
+    "promise": "Biến trải nghiệm thật thành những câu chuyện có thể kể lại đúng lúc.",
+    "objective": "Khai thác và đóng gói câu chuyện theo bối cảnh, bước ngoặt, bài học và tình huống sử dụng.",
+    "estimatedMinutes": {
+      "min": 60,
+      "max": 90
+    },
+    "preview": "Bạn hoàn thành kho câu chuyện nền tảng và thử truy xuất một câu chuyện theo đối tượng cụ thể.",
+    "sourceFragmentSha256": "a1ba31efa563f7517e899b8e13ab49386875ce1b2e49870c44ec0a33912511f9",
+    "contentSha256": "317b7c88e60effe4d92865fe1fea944b234a30d37ea71fe55ac98b7e01af442f",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Câu chuyện thật mang theo bối cảnh và cảm xúc mà dữ kiện chung hoặc ví dụ vay mượn không thể thay thế.",
+  "blocks": [
+    {
+      "id": "day-07-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 7 · Cuối Tuần 1 ⏱ 60–90 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-02",
+      "kind": "prose",
+      "heading": "Kho Câu Chuyện — tài sản không ai có thể tạo thay cho bạn",
+      "children": []
+    },
+    {
+      "id": "day-07-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Dữ liệu người ta quên. Lý thuyết người ta bỏ qua. Nhưng câu chuyện thật — người ta nhớ mãi. Hôm nay bạn xây dựng kho câu chuyện cá nhân: tập hợp những câu chuyện có thể dùng đi dùng lại để giới thiệu, để viết content, để thuyết phục, để truyền cảm hứng."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🎯 Tại sao Kho Câu Chuyện quan trọng với Brain2?"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-05",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "①"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI kể chuyện thật của bạn — không phải câu chuyện chung chung"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi viết bài về chủ đề thất bại, AI kéo câu chuyện thật của bạn ra — không phải ví dụ vay mượn. Nội dung của bạn có chiều sâu thật, không thể clone."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "②"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-09",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Mỗi câu chuyện được đóng gói sẵn để dùng ngay"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thay vì phải nhớ lại và kể lại từ đầu mỗi lần — Brain2 lưu sẵn bối cảnh, khoảnh khắc quan trọng, và gợi ý \"dùng khi nào\". AI chỉ cần kéo ra và dùng."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-11",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "③"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Câu chuyện là cầu nối giữa bạn và người nghe"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-13",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Số liệu tạo ra sự tin tưởng. Câu chuyện tạo ra sự kết nối. Và kết nối là thứ khiến người ta mua, theo dõi, và giới thiệu bạn cho người khác."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-14",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📦 Format lưu trữ câu chuyện trong Brain2"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-15",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tiêu đề: [3-5 từ để nhớ câu chuyện này]"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-16",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bối cảnh: Ai, ở đâu, khi nào — 1-2 câu"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-17",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khoảnh khắc quan trọng: Điều cốt lõi xảy ra — 3-5 câu"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-18",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bước ngoặt: Câu chuyện nói lên điều gì"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-19",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Dùng khi: Tình huống 1 / Tình huống 2 / Tình huống 3..."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-20",
+      "kind": "prose",
+      "heading": "📺 Video gợi ý — xem trước để biết cách nhìn cuộc sống như một kho câu chuyện",
+      "children": []
+    },
+    {
+      "id": "day-07-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Matthew Dicks là người lập kỷ lục thi kể chuyện trên thế giới — xem để hiểu tại sao câu chuyện thường ngày của bạn có giá trị hơn bạn nghĩ."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-22",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How to tell better stories — Matthew Dicks",
+          "href": "https://www.youtube.com/watch?v=J4wguyJZI6A",
+          "note": "Lenny's Podcast · 2023 · ⭐ Xem đầu tiên · Cách xây dựng kho câu chuyện có thể triển khai trong kinh doanh. Bao gồm \"Homework for Life\" — thói quen 1 phút mỗi ngày biến trải nghiệm thường ngày thành câu chuyện đáng kể."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-23",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How to Become a Master Storyteller — Matthew Dicks",
+          "href": "https://www.youtube.com/watch?v=bZDiwANRS84",
+          "note": "The Knowledge Project · 2024 · Framework BABC + kỹ thuật \"hourglass\" · Tại sao hầu hết câu chuyện thất bại và framework BABC để tạo câu chuyện khiến người nghe không thể rời mắt. Rất hữu ích để đóng gói câu chuyện trong bước 2 của câu lệnh."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-24",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "4 Types of Stories To Build Your Personal Brand",
+          "href": "https://www.youtube.com/watch?v=8vCQTf8BVzA",
+          "note": "Alex Cattoni · 2025 · 16 phút · 4 loại câu chuyện cho personal brand · 4 dạng câu chuyện mà mọi người xây dựng thương hiệu cá nhân cần có. Xem để biết kho câu chuyện của bạn đang thiếu loại nào."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-25",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📖 Câu lệnh phỏng vấn — Kho Câu Chuyện"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-26",
+      "kind": "prose",
+      "heading": "Copy → Dán vào trợ lý AI → Kể chuyện",
+      "children": []
+    },
+    {
+      "id": "day-07-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "10 câu gợi ký ức · Đóng gói 5 thành phần · Tạo file stories.md tự động"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-28",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "10 câu chuyện · 2 bước"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-29",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh phỏng vấn Kho Câu Chuyện",
+      "text": "Hãy giúp tôi xây dựng \"Kho Câu Chuyện\" trong Brain2 — tập hợp các câu chuyện cá nhân có thể dùng lại: để giới thiệu bản thân, để viết content, để thuyết phục, để truyền cảm hứng.\n\nCÁCH THỰC HIỆN:\n- Hỏi từng câu một, chờ tôi trả lời xong mới hỏi tiếp\n- Với mỗi câu chuyện hay, đặt thêm 1 câu: \"Câu chuyện này có thể dùng khi nào?\"\n- Mục tiêu: lấy được câu chuyện THẬT và CỤ THỂ — không phải tóm tắt chung chung\n\nPHẦN 1 — KHÁM PHÁ CÁC CÂU CHUYỆN BẠN ĐANG CÓ:\n\nCâu 1. Kể câu chuyện về lần đầu tiên bạn thật sự tự đứng vững — không có mạng lưới an toàn. Chuyện đó xảy ra khi nào, trong hoàn cảnh nào?\n\nCâu 2. Có khoảnh khắc nào bạn phải chọn giữa điều dễ và điều đúng — và kết quả thế nào?\n\nCâu 3. Kể về lần bạn thất bại theo cách mà bạn không ngại kể lại — vì bạn đã học được điều gì đó thật sự quan trọng từ nó.\n\nCâu 4. Có câu chuyện nào bạn thường kể khi giải thích tại sao bạn làm điều bạn đang làm không?\n\nCâu 5. Kể về lần bạn thay đổi quyết định vào phút cuối — và điều gì đã khiến bạn thay đổi?\n\nCâu 6. Có khoảnh khắc nào bạn nhận ra mình đã thay đổi — không phải về tuổi tác mà là về cách nhìn nhận một vấn đề?\n\nCâu 7. Kể câu chuyện về người thầy, người mentor, hoặc người đã ảnh hưởng lớn nhất đến bạn — họ đã làm gì hoặc nói gì cụ thể?\n\nCâu 8. Khoảnh khắc nào bạn cảm thấy tự hào nhất về bản thân — không phải kết quả mà là cách bạn đã xử lý tình huống?\n\nCâu 9. Câu chuyện nào về gia đình, tuổi thơ, hoặc quê hương đã định hình con người bạn ngày hôm nay?\n\nCâu 10. Kể về lần bạn giúp được ai đó theo cách bạn không ngờ tới — câu chuyện đó diễn ra như thế nào?\n\nPHẦN 2 — ĐÓNG GÓI MỖI CÂU CHUYỆN HAY:\n\nVới mỗi câu chuyện tốt bạn đã chia sẻ, giúp tôi đóng gói theo format:\n- Tiêu đề ngắn: 3-5 từ để nhớ câu chuyện nào\n- Bối cảnh: ai, ở đâu, khi nào — 1-2 câu\n- Khoảnh khắc quan trọng: điều cốt lõi đã xảy ra — 3-5 câu\n- Bước ngoặt hoặc bài học: câu chuyện nói lên điều gì\n- Dùng khi: 3-5 tình huống cụ thể có thể kể câu chuyện này (giới thiệu bản thân, viết bài về chủ đề X, thuyết phục khách hàng về Y...)\n\nSAU KHI PHỎNG VẤN XONG, tạo file self/stories.md trong vault Brain2:\n- Frontmatter: type: stories, status: living-document, tags: [self, stories, narrative], ai_directive: đọc file này khi người dùng cần ví dụ thực tế, khi viết nội dung cần câu chuyện cá nhân, hoặc khi cần thuyết phục qua storytelling\n- Mỗi câu chuyện theo format 5 thành phần ở trên\n- Nhóm theo chủ đề: Khởi đầu & Sự nghiệp / Quan hệ & Con người / Bản thân & Trưởng thành / Gia đình & Gốc rễ"
+    },
+    {
+      "id": "day-07-block-30",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 Cách làm hiệu quả nhất"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-31",
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Xem đầu tiên \"How to tell better stories\" — đặc biệt phần Homework for Life"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Copy câu lệnh → Dán vào trợ lý AI"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Trả lời bằng câu chuyện thật — AI sẽ hỏi thêm để lấy chi tiết cụ thể"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Không cần kể hay — kể thật. AI giúp đóng gói ở bước 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Sau khi xong, mở Obsidian kiểm tra file "
+          },
+          {
+            "type": "code",
+            "children": [
+              {
+                "type": "text",
+                "value": "self/stories.md"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-07-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập ngày 7 + Tổng kết Tuần 1"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-33",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hoàn thành ít nhất 5 câu chuyện. Sau đó thử câu lệnh này để kiểm chứng Brain2 đã hiểu bạn:"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-34",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tôi cần giới thiệu bản thân cho [đối tượng cụ thể]. Dựa vào câu chuyện cá nhân của tôi trong brain2, hãy gợi ý câu chuyện nào phù hợp nhất và tóm tắt cách kể."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🎉 Chúc mừng hoàn thành Tuần 1!"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-36",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Sau 7 ngày, Brain2 của bạn đã có: Hồ sơ cá nhân (Ngày 3) · Dự án đang theo đuổi (Ngày 4) · Kho Bài Học (Ngày 5) · Kho Insight (Ngày 6) · Kho Câu Chuyện (Ngày 7). Đây là nền tảng — Tuần 2 sẽ dạy bạn cách dùng tất cả những điều này để tạo ra kết quả thật."
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-37",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-38",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-39",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Câu chuyện tôi kể nhiều nhất không phải câu chuyện thành công to lớn — mà là câu chuyện về lần tôi mắc sai lầm ngớ ngẩn và học được điều quan trọng nhất trong sự nghiệp. Câu chuyện đó được lưu trong Brain2 với đầy đủ bối cảnh và gợi ý dùng khi nào — mỗi khi cần, AI kéo ra trong 3 giây.\""
+        }
+      ]
+    },
+    {
+      "id": "day-07-block-40",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Câu chuyện hay nhất không phải câu chuyện hoàn hảo. Đó là câu chuyện thật.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Kho câu chuyện có thể tái sử dụng",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một tài liệu gồm các câu chuyện thật với bối cảnh, khoảnh khắc chính, bước ngoặt và gợi ý dùng khi nào."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-07-check-01",
+      "label": "Đã đóng gói ít nhất năm câu chuyện thật"
+    },
+    {
+      "id": "ngay-07-check-02",
+      "label": "Đã thử chọn một câu chuyện cho đối tượng cụ thể"
+    }
+  ]
+}

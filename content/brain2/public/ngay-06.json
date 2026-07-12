@@ -1,0 +1,425 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 6,
+    "slug": "ngay-06",
+    "week": 1,
+    "access": "public",
+    "title": "Kho insight cá nhân",
+    "promise": "Làm rõ những quan sát và góc nhìn khiến tư duy của bạn khác biệt.",
+    "objective": "Thu thập insight, giả định và quan điểm ngược chiều thành một kho có thể phát triển tiếp.",
+    "estimatedMinutes": {
+      "min": 60,
+      "max": 90
+    },
+    "preview": "Bạn tạo một tập insight riêng để dùng khi viết, phân tích và ra quyết định.",
+    "sourceFragmentSha256": "8079054b8a5511e29043b4ae3b18e0232dcd158f6b395feef5b73af87ef7aa0c",
+    "contentSha256": "e2489b4a0f4c12c1c6f86c875e6ec7961fc51bc2a6a182cf832d5adeec82e47a",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Góc nhìn riêng là nguyên liệu giúp nội dung và lời khuyên thoát khỏi sự đúng đắn nhưng nhạt nhòa.",
+  "blocks": [
+    {
+      "id": "day-06-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 6 · Tuần 1 ⏱ 60–90 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-02",
+      "kind": "prose",
+      "heading": "Góc nhìn riêng — thứ không ai có thể sao chép từ bạn",
+      "children": []
+    },
+    {
+      "id": "day-06-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bài học là thứ bạn học từ sai lầm. Insight là thứ bạn tự nhìn ra — một cách hiểu về thế giới, về con người, về ngành nghề mà người khác chưa chắc đã thấy. Đây là nguồn gốc thật sự của thẩm quyền và giọng nói độc đáo của bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧭 Insight khác bài học như thế nào?"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-05",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📚 Bài học (Ngày 5)"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-06",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Học từ sai lầm cụ thể"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Nhìn về quá khứ"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "\"Tôi đã mắc lỗi và học được...\""
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Giúp bạn không lặp lại"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-06-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🔭 Insight (Hôm nay)"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-08",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Quan sát thành mô hình tư duy"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Nhìn về hiện tại và tương lai"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "\"Tôi nhận ra rằng thế giới...\""
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Giúp bạn ra quyết định tốt hơn"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-06-block-09",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧠 Tại sao Kho Insight quan trọng với Brain2?"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "①"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-11",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI hiểu cách bạn thật sự nhìn thế giới — không phải cách bạn nghĩ mình nhìn"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi Brain2 biết bạn có insight \"hầu hết xung đột là về cái tôi chứ không phải nội dung\" — AI sẽ áp dụng góc nhìn đó mỗi khi bạn chia sẻ về mâu thuẫn với ai đó."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-13",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "②"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-14",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Nội dung bạn tạo ra có góc nhìn riêng — không phải nội dung AI tạo cho ai cũng được"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-15",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi viết bài hay chia sẻ quan điểm, AI kéo insight của bạn ra làm góc tiếp cận — thay vì viết kiểu \"nói chung mọi người đều...\""
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-16",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "③"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-17",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Góc nhìn ngược chiều được lưu lại — không bị xói mòn bởi áp lực đám đông"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-18",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Những điều bạn tin nhưng chưa ai đồng ý — Brain2 lưu và nhắc bạn mỗi khi bạn có xu hướng nhượng bộ quan điểm đó."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-19",
+      "kind": "prose",
+      "heading": "📺 Video gợi ý — xem để kích hoạt tư duy độc lập",
+      "children": []
+    },
+    {
+      "id": "day-06-block-20",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Xem để hiểu thế nào là tư duy nguyên bản — rồi dùng câu lệnh phỏng vấn để khai thác insight của chính bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-21",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How to Think Originally",
+          "href": "https://www.youtube.com/watch?v=W6PVargxd1g",
+          "note": "Odysseas · 451K lượt xem · 22 phút · ⭐ Xem đầu tiên · Tư duy nguyên bản không phải về việc nói điều chưa ai nói — mà về việc kết nối các ý tưởng theo cách chỉ bạn mới có thể làm."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-22",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How To Become An Original Thinker (Fast)",
+          "href": "https://www.youtube.com/watch?v=jhoG3WcECnw",
+          "note": "Dan Koe · 81.7K lượt xem · 30 phút · 5 phương pháp cụ thể để hình thành quan điểm riêng — đặc biệt phần \"Connect Ideas From Different Disciplines\" giúp bạn nhận ra insight đang có mà chưa biết tên."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-23",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "We Are Being Manipulated On A Massive Scale — Eric Weinstein",
+          "href": "https://www.youtube.com/watch?v=LJxBnSyH0T4",
+          "note": "Chris Williamson · 5.7 triệu lượt xem · Xem bất kỳ 20 phút nào · Mô hình mẫu của tư duy ngược chiều — cách giữ vững quan điểm độc lập trong thế giới liên tục cố định hình lại nhận thức của bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-24",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🔭 Câu lệnh phỏng vấn — Kho Insight"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-25",
+      "kind": "prose",
+      "heading": "Copy → Dán vào trợ lý AI → Trả lời từng câu",
+      "children": []
+    },
+    {
+      "id": "day-06-block-26",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "15 câu · 4 chủ đề · AI đào sâu · Tạo file insights.md tự động"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "15 câu · 4 chủ đề"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-28",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh phỏng vấn Kho Insight",
+      "text": "Hãy giúp tôi xây dựng \"Kho Insight cá nhân\" trong Brain2 — những quan sát và góc nhìn tôi tự hình thành qua trải nghiệm thật. Khác với bài học (học từ sai lầm), insight là cách tôi nhìn thấy thế giới vận hành theo một cách mà người khác chưa chắc đã nhận ra.\n\nCÁCH THỰC HIỆN:\n- Hỏi từng câu một, chờ tôi trả lời xong mới hỏi tiếp\n- Nếu câu trả lời chung chung, hỏi thêm: \"Bạn có thể cho ví dụ cụ thể không?\"\n- Nếu câu trả lời hay, hỏi thêm: \"Insight này thay đổi cách bạn hành động như thế nào?\"\n- Mục tiêu: quan sát CỤ THỂ và GÓC NHÌN RIÊNG — không phải điều bạn đọc từ sách\n\nPHẦN 1 — NGÀNH VÀ NGHỀ:\n1. Trong lĩnh vực bạn làm, điều gì hầu hết mọi người làm theo cách thông thường nhưng bạn biết là sai hoặc kém hiệu quả?\n2. Bạn quan sát thấy pattern nào lặp đi lặp lại trong công việc của mình mà ít ai để ý?\n3. Điều gì người ngoài ngành thường hiểu nhầm nhất về ngành của bạn?\n4. Bạn đã từng nhận ra cơ hội mà người khác bỏ qua vì họ đang nhìn vào chỗ sai không?\n\nPHẦN 2 — CON NGƯỜI VÀ HÀNH VI:\n5. Điều gì bạn quan sát thấy về cách con người thật sự ra quyết định — không phải cách họ nói họ ra quyết định?\n6. Pattern nào bạn thấy ở những người thực sự giỏi — điều gì họ làm khác biệt so với số đông?\n7. Điều gì bạn thấy về động lực thật sự của con người mà họ thường không thừa nhận?\n8. Khi nào bạn nhận ra hầu hết xung đột không phải về nội dung — mà về điều gì khác?\n\nPHẦN 3 — GÓC NHÌN NGƯỢC CHIỀU:\n9. Có điều gì bạn tin là đúng nhưng hầu hết người xung quanh không đồng ý hoặc chưa nhận ra?\n10. Có lời khuyên phổ biến nào bạn thấy thực ra gây hại nhiều hơn giúp ích?\n11. Điều gì xã hội hoặc ngành của bạn đang làm mà về lâu dài sẽ không bền vững?\n12. Có lần nào bạn chọn làm khác số đông và kết quả chứng minh bạn đúng?\n\nPHẦN 4 — CUỘC SỐNG:\n13. Điều gì bạn nhận ra về sự khác biệt giữa người sống có chủ đích và người trôi theo — từ quan sát thực tế?\n14. Pattern nào bạn thấy ở những người thực sự hạnh phúc — hạnh phúc thật sự, không phải từ sách?\n15. Nếu bạn viết 1 câu để mô tả cách thế giới thực sự vận hành theo quan sát của bạn — câu đó là gì?\n\nSAU KHI PHỎNG VẤN XONG, tạo file self/insights.md trong vault Brain2:\n- Frontmatter: type: insights, status: living-document, tags: [self, insights, worldview], ai_directive: đọc file này khi người dùng hỏi về cách nhìn nhận tình huống hoặc khi cần góc nhìn riêng để viết nội dung\n- Mỗi insight có: Tiêu đề (1 câu tuyên ngôn) + Nguồn gốc (nhận ra từ đâu) + Ý nghĩa thực tiễn (thay đổi cách hành động như thế nào)\n- Nhóm theo 4 chủ đề: Ngành & Nghề / Con người & Hành vi / Góc nhìn ngược chiều / Cuộc sống"
+    },
+    {
+      "id": "day-06-block-29",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập ngày 6"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-30",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hoàn thành ít nhất 2 trong 4 phần — đặc biệt không bỏ qua phần Góc nhìn ngược chiều. Sau đó thử:"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tôi đang chuẩn bị viết về [chủ đề]. Dựa vào insight và góc nhìn cá nhân của tôi trong brain2, hãy giúp tôi tìm góc tiếp cận độc đáo mà không ai khác có."
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-33",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-34",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Insight quan trọng nhất tôi có về content marketing là: người ta không mua sản phẩm — họ mua bằng chứng rằng người bán thật sự hiểu vấn đề của họ. Khi tôi lưu insight này vào Brain2, mọi bài viết tôi tạo ra đều bắt đầu từ góc nhìn đó.\""
+        }
+      ]
+    },
+    {
+      "id": "day-06-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Insight cá nhân không cần phải cách mạng. Nó chỉ cần thật — thật với trải nghiệm của bạn.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Kho insight và góc nhìn riêng",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một tài liệu gồm các insight có nguồn gốc, lập luận, góc nhìn ngược chiều và tình huống sử dụng."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-06-check-01",
+      "label": "Đã ghi ít nhất hai nhóm insight cá nhân"
+    },
+    {
+      "id": "ngay-06-check-02",
+      "label": "Đã bổ sung một góc nhìn ngược chiều có lý do"
+    }
+  ]
+}

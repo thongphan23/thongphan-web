@@ -1,0 +1,771 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 1,
+    "slug": "ngay-01",
+    "week": 1,
+    "access": "public",
+    "title": "Tại sao và bắt đầu",
+    "promise": "Thiết lập một Brain2 tối giản và bắt đầu bằng lý do đủ mạnh để duy trì.",
+    "objective": "Tạo vault, chọn bộ công cụ nền tảng và viết cam kết cá nhân đầu tiên.",
+    "estimatedMinutes": {
+      "min": 20,
+      "max": 30
+    },
+    "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
+    "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
+    "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Một hệ thống tri thức chỉ tích lũy khi bạn sở hữu dữ liệu và biết rõ mình xây nó để làm gì.",
+  "blocks": [
+    {
+      "id": "day-01-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 1 · Tuần 1 ⏱ 20–30 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-02",
+      "kind": "prose",
+      "heading": "Tại sao hôm nay là ngày quan trọng nhất trong 21 ngày?",
+      "children": []
+    },
+    {
+      "id": "day-01-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Vì đây không phải ngày bạn \"cài app\". Đây là ngày bạn quyết định — não mình có xứng đáng được đầu tư không. Mọi thứ sau đó chỉ là kỹ thuật."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧭 Triết lý nền tảng"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-05",
+      "kind": "prose",
+      "heading": "Bộ não sinh học không được thiết kế để nhớ — nó được thiết kế để suy nghĩ",
+      "children": []
+    },
+    {
+      "id": "day-01-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Não bạn giỏi kết nối, liên tưởng, sáng tạo. Nhưng nó cực kỳ tệ trong việc lưu trữ thông tin chính xác và truy xuất theo ý muốn. Đó là lý do bạn đọc sách xong quên ngay, tham gia khóa học mà 2 tuần sau không nhớ mình học gì."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Brain2 không thay thế bộ não của bạn. Nó "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "giải phóng"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " bộ não khỏi nhiệm vụ nhớ — để bộ não làm điều nó giỏi nhất: "
+        },
+        {
+          "type": "em",
+          "children": [
+            {
+              "type": "text",
+              "value": "tư duy sâu"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi bạn có hệ thống lưu trữ đáng tin cậy bên ngoài đầu, bạn ngừng lo \"mình có quên không\" và bắt đầu thực sự "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "nghĩ"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-09",
+      "kind": "prose",
+      "heading": "Tại sao Obsidian — không phải Notion, không phải Google Docs?",
+      "children": []
+    },
+    {
+      "id": "day-01-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "✅ Obsidian"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-11",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "File text thuần — bạn sở hữu 100%"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Offline, không phụ thuộc server"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Liên kết notes như mạng nơ-ron"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Nhanh, nhẹ, không quảng cáo"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-01-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "⚠️ Notion / Google Docs"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-13",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Dữ liệu nằm trên server của họ"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Công ty đóng cửa → mất hết"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Chậm, cần internet, nặng"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Friction cao, tối ưu cho team"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Không hỗ trợ tư duy phi tuyến"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-01-block-14",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Nguyên tắc Brain2 #1:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Notes là tài sản tích lũy dài hạn. Chỉ đầu tư vào thứ bạn "
+        },
+        {
+          "type": "em",
+          "children": [
+            {
+              "type": "text",
+              "value": "thực sự"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " sở hữu và kiểm soát."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-15",
+      "kind": "prose",
+      "heading": "📺 Video gợi ý — chọn 1 xem hôm nay",
+      "children": []
+    },
+    {
+      "id": "day-01-block-16",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Không cần xem hết, chỉ cần đủ để hiểu công cụ trước khi cài."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-17",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "Obsidian For Beginners — Non-Linear Notes, Plugins & Templates",
+          "href": "https://www.youtube.com/watch?v=d2BkvqbTPjk",
+          "note": "Wanderloots · 2024 · ~30 phút · ⭐ Gợi ý cho người mới hoàn toàn · Giải thích tại sao Obsidian tốt hơn + hướng dẫn setup từ đầu + cách tư duy phi tuyến (non-linear thinking)."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-18",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "Obsidian: The King of Learning Tools (Full Guide + Setup)",
+          "href": "https://www.youtube.com/watch?v=hSTy_BInQs8",
+          "note": "Odysseas · 2024 · ~36 phút · Cho người thích hiểu triết lý trước khi làm · Zettelkasten, tránh perfectionism, folder setup + cách viết note đúng từ đầu đến cuối."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-19",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "Obsidian As A Second Brain — The Ultimate Tutorial",
+          "href": "https://www.youtube.com/watch?v=WqKluXIra70",
+          "note": "Dabi · ~1h30 · Bookmark xem dần trong 21 ngày · Từng được bán $97, nay free. Khóa học đầy đủ nhất — từng phần tương ứng từng giai đoạn của thử thách."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-20",
+      "kind": "prose",
+      "heading": "🛠 Làm ngay hôm nay — 3 bước",
+      "children": []
+    },
+    {
+      "id": "day-01-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-22",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Vào "
+        },
+        {
+          "type": "link",
+          "href": "https://obsidian.md",
+          "children": [
+            {
+              "type": "text",
+              "value": "obsidian.md"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " → Download cho hệ điều hành của bạn (Mac, Windows, Linux, iOS, Android đều có). Cài như app bình thường."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-23",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tại sao:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Obsidian là local app — dữ liệu lưu thẳng trên máy bạn, không phụ thuộc cloud của ai. Knowledge của bạn thuộc về bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-24",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-25",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tạo vault — đặt tên "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "Brain2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-26",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Mở Obsidian → "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Create new vault"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " → đặt tên "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "Brain2"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " → chọn thư mục lưu trên máy (Desktop hoặc Documents đều được)."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tại sao:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Vault là một folder thông thường. Mỗi note là file "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": ".md"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " — bạn mở được bằng bất kỳ text editor nào. Dữ liệu bền vĩnh, không bị lock-in vào app nào."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-28",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-29",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bật đúng 3 plugin — không hơn, không kém"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-30",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Vào "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Settings → Community Plugins → Turn on community plugins → Browse"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " rồi tìm và cài:"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "01"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Dataview"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-33",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Biến vault thành database. Truy vấn notes theo tag, ngày, thuộc tính — như SQL nhưng cho knowledge."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-34",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "02"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Templater"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-36",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Templates với biến động (ngày, giờ, tên file). Chuẩn hóa cấu trúc note từ đầu, tránh chaos sau này."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-37",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "03"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-38",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Calendar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-39",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Daily notes gắn với lịch. Mỗi ngày 1 note — nơi capture tất cả trước khi phân loại. Inbox của Brain2."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-40",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tại sao chỉ 3?"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Cài quá nhiều plugin tạo ra Cognitive Load (tải nhận thức) khổng lồ — giết chết thói quen trước khi nó hình thành. 3 plugin này tạo ra 80% giá trị. Tuần 2 & 3 sẽ thêm dần theo từng nhu cầu thật."
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-41",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập ngày 1"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-42",
+      "kind": "prose",
+      "heading": "Viết note đầu tiên — \"Tại sao tôi ở đây\"",
+      "children": []
+    },
+    {
+      "id": "day-01-block-43",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tạo note tên "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "Tại sao tôi xây Brain2"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " và trả lời thật 3 câu hỏi này:"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-44",
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Điều gì đang tệ nhất trong việc quản lý kiến thức của tôi hiện tại?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Nếu Brain2 hoạt động đúng như kỳ vọng, 6 tháng nữa tôi sẽ khác gì so với bây giờ?"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Thứ duy nhất có thể ngăn tôi hoàn thành 21 ngày này là gì?"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-01-block-45",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-46",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-47",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Ngày đầu tôi setup Obsidian, tôi bị cuốn vào tìm theme đẹp, cài 20 plugin, design folder như dự án NASA. Mất 3 tiếng. Không viết một note nào.\""
+        }
+      ]
+    },
+    {
+      "id": "day-01-block-48",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Vault đẹp nhưng trống rỗng không bằng vault xấu nhưng có nội dung thật. Hôm nay chỉ cần: cài xong, tạo vault, viết 1 note. Đó là win.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Vault Brain2 và note cam kết đầu tiên",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một vault có thể mở lại, kèm note ghi rõ vấn đề hiện tại, thay đổi mong muốn và rào cản cần vượt qua."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-01-check-01",
+      "label": "Đã tạo vault Brain2 có thể mở lại"
+    },
+    {
+      "id": "ngay-01-check-02",
+      "label": "Đã hoàn thành note lý do xây Brain2"
+    }
+  ]
+}

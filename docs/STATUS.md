@@ -36,6 +36,15 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
 - Implementation started with an always-on repository-boundary test, hardened private
   source ignores and the migration parser dependency. Feature slices continue through
   TDD before rendered QA, production smoke and release evidence.
+- Canonical lesson migration now passes the Task 2B boundary: 21/21 lessons normalized,
+  seven public packages tracked, 14 protected packages written only to the validated
+  outside-repository directory, 41 copy-derived prompts and 65 source external links
+  inventoried. The offline validator and real-source migration suite pass; route,
+  Worker, email and release work remain in later slices.
+- Task 2B review hardening removes protected package fields from tracked metadata,
+  derives them only during private migration, rejects descendant symlinks and every
+  unexpected package-directory entry, and preserves heading word boundaries while
+  filtering dynamic claims and counting only retained external HTTPS links.
 
 ## Motion Atmosphere production release — 2026-07-12
 

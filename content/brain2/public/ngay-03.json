@@ -1,0 +1,596 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 3,
+    "slug": "ngay-03",
+    "week": 1,
+    "access": "public",
+    "title": "Hồ sơ cá nhân và thế giới quan",
+    "promise": "Cho Brain2 hiểu con người, kinh nghiệm và cách nhìn riêng của bạn.",
+    "objective": "Ghi lại hồ sơ cá nhân cùng những niềm tin có ảnh hưởng trực tiếp đến quyết định.",
+    "estimatedMinutes": {
+      "min": 60,
+      "max": 90
+    },
+    "preview": "Bạn hoàn thiện bộ dữ liệu gốc để AI phản hồi theo bối cảnh thật thay vì câu trả lời chung.",
+    "sourceFragmentSha256": "af8dc116d18693c7a0843dc1bfca9e30ab81634f9fa21ec998cbadd4d05d8eac",
+    "contentSha256": "4bdafe8f0fad4ef52c835bdc47d308819fb35e27095fa5c487e1de066e23d3de",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "AI chỉ có thể hỗ trợ đúng giọng và đúng hướng khi nó được cung cấp bối cảnh cá nhân có cấu trúc.",
+  "blocks": [
+    {
+      "id": "day-03-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 3 · Tuần 1 ⏱ 60–90 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-02",
+      "kind": "prose",
+      "heading": "Brain2 biết bạn là ai — Đây là bước tạo ra sự khác biệt",
+      "children": []
+    },
+    {
+      "id": "day-03-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Trí tuệ nhân tạo chỉ cho câu trả lời chung chung vì nó không biết bạn là ai, bạn đang ở đâu, bạn muốn gì. Hôm nay bạn thay đổi điều đó — đưa "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "con người thật của bạn"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " vào Brain2 để từ đây mọi câu trả lời đều được cá nhân hóa đúng với bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "❓ Tại sao 6 files này quan trọng với Brain2?"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-05",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "①"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hồ sơ cá nhân — AI biết bạn là ai trước khi trả lời"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Không có hồ sơ, AI tư vấn theo kiểu \"áp dụng cho tất cả mọi người\". Có hồ sơ, câu trả lời sẽ khớp với ngành của bạn, kinh nghiệm của bạn, tình huống thật của bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "②"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-09",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thế giới quan — AI không tư vấn ngược với niềm tin của bạn"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Nếu bạn tin vào \"xây dài hạn, không bắt sóng ngắn hạn\" — AI sẽ không gợi ý bạn chạy theo xu hướng. File thế giới quan là bộ lọc để mọi lời khuyên nhất quán với hệ giá trị của bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-11",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "③"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Câu chuyện định hình — nguồn gốc của mọi nội dung có chiều sâu"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-13",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi bạn cần viết bài, thuyết phục ai đó, hay giải thích quyết định — AI sẽ kéo đúng câu chuyện thật từ cuộc đời bạn ra, không phải tự bịa câu chuyện chung chung."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-14",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "④"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-15",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Điểm mạnh & giới hạn — AI biết khi nào cần nhắc bạn cẩn thận"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-16",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Nếu bạn biết mình yếu ở khâu vận hành, AI sẽ chủ động hỏi \"bạn đã có người lo phần triển khai chưa?\" thay vì chỉ đưa ra kế hoạch đẹp rồi để bạn tự xử."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-17",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📁 6 ghi chú sẽ được tạo hôm nay"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-18",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/profile.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Tôi là ai, làm gì, hành trình"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-19",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/the-gioi-quan.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Niềm tin gốc — tài liệu ràng buộc"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-20",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/doi-tuong.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Đối tượng phục vụ và giá trị tạo ra"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/muc-tieu.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Mục tiêu 90 ngày, 1 năm, 5 năm"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-22",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/cau-chuyen.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Câu chuyện định hình — thất bại, bước ngoặt"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-23",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "self/diem-manh.md"
+            }
+          ]
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "Điểm mạnh, giới hạn, môi trường tối ưu"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-24",
+      "kind": "prose",
+      "heading": "📺 Xem trước khi bắt đầu — nền tảng lý thuyết",
+      "children": []
+    },
+    {
+      "id": "day-03-block-25",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "3 video giúp bạn hiểu sâu hơn tại sao tự hiểu bản thân là nền tảng của mọi hệ thống kiến thức hiệu quả."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-26",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "The Science of Knowing Yourself — Khoa học về việc hiểu bản thân",
+          "href": "https://www.youtube.com/watch?v=k71UvTbaMio",
+          "note": "Dr Thomas Smithyman · 2025 · 24 phút · ⭐ Xem đầu tiên · Tại sao tự hiểu bản thân là nền tảng của mọi quyết định đúng — có bằng chứng khoa học. Xem trước khi bắt đầu 30 câu hỏi."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-27",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "Personal Identity: The Narrative Self — Bản sắc là câu chuyện bạn kể về mình",
+          "href": "https://www.youtube.com/watch?v=lcIqoN9oRgo",
+          "note": "Wireless Philosophy · Triết học về bản sắc cá nhân · Triết học giải thích tại sao \"bạn là tập hợp câu chuyện bạn kể về bản thân\" — nền tảng lý thuyết cho phần Origin Stories trong hồ sơ."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-28",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How to Live a Meaningful Life — Sống có ý nghĩa thực sự là gì?",
+          "href": "https://www.youtube.com/watch?v=Yq23W7B9D0Q",
+          "note": "Rachelle in Theory · Về giá trị cốt lõi và mục tiêu sống · Cách xác định giá trị cốt lõi và kết nối chúng với mục tiêu hàng ngày — thực hành trực tiếp cho phần Thế Giới Quan."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-29",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🎯 Câu lệnh chính — 30 câu hỏi"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-30",
+      "kind": "prose",
+      "heading": "Copy câu lệnh này → Dán vào trợ lý AI",
+      "children": []
+    },
+    {
+      "id": "day-03-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI sẽ tự hỏi từng câu, nghe bạn trả lời, rồi tạo 6 ghi chú đầy đủ"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "30 câu · 6 ghi chú"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-33",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh 30 câu hỏi",
+      "text": "Hãy giúp tôi xây dựng hồ sơ cá nhân đầy đủ trong Brain2. Đây là bước quan trọng nhất để AI hiểu đúng con người thật của tôi — từ đó mọi tư vấn, gợi ý, và nội dung đều phù hợp chính xác với tôi.\n\nCÁCH THỰC HIỆN:\n- Hỏi từng câu một, chờ tôi trả lời xong mới hỏi câu tiếp theo\n- Nếu câu trả lời quá ngắn hoặc chung chung, hỏi thêm: \"Bạn có thể kể cụ thể hơn không — ví dụ thật từ kinh nghiệm của bạn?\"\n- Sau khi hỏi xong 30 câu, tổng hợp thành 6 ghi chú riêng biệt trong thư mục self/ của vault Brain2\n- Mỗi ghi chú dùng phần thông tin đầu file (frontmatter): type, created, tags, status: living-document, ai_directive: binding\n\n30 CÂU HỎI — HỎI LẦN LƯỢT THEO THỨ TỰ:\n\n=== PHẦN 1: TÔI LÀ AI (6 câu) ===\nCâu 1. Bạn tên gì? Hiện tại đang làm nghề gì, trong lĩnh vực nào?\nCâu 2. Công việc thực tế hàng ngày của bạn trông như thế nào — bạn dành phần lớn thời gian làm điều gì?\nCâu 3. Bạn đã đi qua hành trình nào để đến vị trí hiện tại? Học gì, từng làm ở đâu trước?\nCâu 4. Thành tựu nào bạn tự hào nhất — không cần ấn tượng với người ngoài, chỉ cần thật với bạn?\nCâu 5. Nếu phải mô tả bản thân trong một câu cho người chưa biết bạn, bạn sẽ nói gì?\nCâu 6. Điều gì thôi thúc bạn tham gia thử thách Brain2 — bạn muốn thay đổi điều gì trong cách làm việc với kiến thức?\n\n=== PHẦN 2: ĐỐI TƯỢNG VÀ GIÁ TRỊ BẠN TẠO RA (5 câu) ===\nCâu 7. Bạn đang phục vụ ai — đối tượng chính của công việc hoặc nội dung bạn tạo ra là ai? Mô tả cụ thể: tuổi tác, nghề nghiệp, họ đang ở giai đoạn nào trong cuộc sống?\nCâu 8. Vấn đề lớn nhất mà đối tượng đó đang gặp phải là gì — vấn đề thật bên dưới, không phải vấn đề bề mặt họ hay nói?\nCâu 9. Bạn giúp họ đi từ đâu đến đâu — trạng thái trước và sau khi có bạn trông như thế nào?\nCâu 10. Tại sao họ nên chọn bạn thay vì người khác — lợi thế thật sự của bạn là gì?\nCâu 11. Phản hồi hay nhất bạn từng nhận về công việc của mình — ai nói, họ nói gì?\n\n=== PHẦN 3: MỤC TIÊU (5 câu) ===\nCâu 12. Mục tiêu cụ thể nhất của bạn trong 90 ngày tới là gì — đo được bằng con số?\nCâu 13. Bạn muốn ở đâu sau 1 năm — về công việc, thu nhập, cách sống?\nCâu 14. Bạn muốn ở đâu sau 3 đến 5 năm — bức tranh dài hạn bạn đang hướng đến?\nCâu 15. Trở ngại lớn nhất bạn đang phải vượt qua ngay bây giờ — thứ chiếm nhiều đầu óc nhất?\nCâu 16. Điều gì bạn sẵn sàng từ bỏ để đạt được mục tiêu — sự đánh đổi bạn chấp nhận?\n\n=== PHẦN 4: THẾ GIỚI QUAN — NIỀM TIN GỐC (8 câu) ===\nCâu 17. Câu duy nhất bạn tin sâu sắc nhất về cách thế giới vận hành — không phải từ sách vở, mà từ trải nghiệm thật của bạn?\nCâu 18. Điều gì mọi người xung quanh tin nhưng bạn không đồng ý — dù biết nói ra có thể gây tranh luận?\nCâu 19. Ranh giới nào bạn sẽ không bao giờ vượt qua dù ai đó trả bao nhiêu tiền — nguyên tắc không thể thỏa hiệp?\nCâu 20. Theo bạn, thành công thực sự là gì — định nghĩa của bạn, không phải của xã hội hay cha mẹ?\nCâu 21. Điều gì 10 năm sau vẫn còn đúng — thứ bạn sẵn sàng đặt cược sự nghiệp vào?\nCâu 22. Quyết định nào bạn thường đưa ra mà người khác thấy khó hiểu — và tại sao bạn lại quyết định như vậy?\nCâu 23. Khi ai đó làm bạn thực sự thất vọng, lý do thường là gì — họ đã vi phạm giá trị nào của bạn?\nCâu 24. Bạn đang tối ưu hóa cuộc sống cho điều gì — thứ bạn thực sự đang đánh đổi mọi thứ để có được?\n\n=== PHẦN 5: CÂU CHUYỆN ĐỊNH HÌNH CON NGƯỜI BẠN (4 câu) ===\nCâu 25. Kể thất bại lớn nhất đã thay đổi cách bạn suy nghĩ — thất bại thật, không phải \"thất bại đẹp\" để kể trong phỏng vấn?\nCâu 26. Quyết định bước ngoặt quan trọng nhất bạn từng đưa ra — và hệ quả của nó là gì?\nCâu 27. Ai đã ảnh hưởng lớn nhất đến tư duy của bạn — và họ đã dạy bạn điều gì, dù có thể là người chưa bao giờ gặp?\nCâu 28. Có lần nào bạn làm điều người khác nói là sai nhưng bạn biết là đúng với mình không — chuyện đó như thế nào?\n\n=== PHẦN 6: ĐIỂM MẠNH, GIỚI HẠN VÀ MÔI TRƯỜNG LÀM VIỆC (6 câu) ===\nCâu 29. Bạn giỏi nhất điều gì — nếu có nhóm, người ta sẽ luôn giao việc đó cho bạn đầu tiên?\nCâu 30. Điều gì bạn biết mình chưa giỏi — không phải điểm yếu giả để đối phó, mà thật sự là giới hạn của bạn?\nCâu 31. Bạn cần ai bên cạnh để bù đắp cho điểm còn thiếu đó?\nCâu 32. Môi trường nào khiến bạn làm việc tốt nhất — và môi trường nào khiến bạn tệ nhất?\n\nSAU KHI PHỎNG VẤN XONG, TẠO 6 GHI CHÚ RIÊNG:\n1. ~/brain2/vault/self/profile.md — Tôi là ai, hành trình, cách tôi tự mô tả bản thân\n2. ~/brain2/vault/self/doi-tuong.md — Đối tượng phục vụ, vấn đề của họ, giá trị tôi tạo ra\n3. ~/brain2/vault/self/muc-tieu.md — Mục tiêu theo từng mốc thời gian, trở ngại, sự đánh đổi\n4. ~/brain2/vault/self/the-gioi-quan.md — Thế giới quan dưới dạng tuyên ngôn: Niềm tin gốc → Những thứ tôi không tin → Bộ lọc quyết định\n5. ~/brain2/vault/self/cau-chuyen.md — 4 câu chuyện định hình dưới dạng ghi chú súc tích có đầu đuôi\n6. ~/brain2/vault/self/diem-manh.md — Điểm mạnh, giới hạn thật sự, cần ai bên cạnh, môi trường tối ưu\n\nGhi chú thế giới quan cần chi tiết nhất, theo cấu trúc: Niềm tin trung tâm → 3 Niềm tin gốc (mỗi cái có bằng chứng từ trải nghiệm thật) → Những thứ tôi không tin → Bộ lọc quyết định. Đây là tài liệu ràng buộc — AI sẽ đọc trước mọi tư vấn quan trọng."
+    },
+    {
+      "id": "day-03-block-34",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🌍 Mẫu thế giới quan — làm theo format này"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Copy mẫu dưới đây, dán vào trợ lý AI kèm câu: "
+        },
+        {
+          "type": "em",
+          "children": [
+            {
+              "type": "text",
+              "value": "\"Tôi muốn tạo ghi chú thế giới quan tương tự thế này cho tôi — hãy phỏng vấn tôi để điền vào.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-36",
+      "kind": "prompt",
+      "label": "📋 Copy mẫu thế giới quan",
+      "text": "---\ntype: worldview\ncreated: 2026-XX-XX\nupdated: 2026-XX-XX\ntags: [worldview, core-beliefs, identity, decision-framework]\nstatus: living-document\nai_directive: \"binding — mọi content, quyết định, tư vấn phải consistent với worldview này\"\n---\n\n# Tuyên Ngôn Thế Giới Quan — [Tên bạn]\n\n> *Tài liệu sống. Không phải để show — để kiểm tra tính nhất quán của mọi quyết định.*\n\n---\n\n## Câu duy nhất tôi tin về cách thế giới vận hành\n\n> **\"[Điền niềm tin cốt lõi của bạn vào đây]\"**\n\n[Giải thích tại sao bạn tin điều này — không phải từ sách, mà từ trải nghiệm thật của bạn]\n\n**Hệ quả trực tiếp:**\n- Điều này ảnh hưởng cách tôi làm việc như thế nào\n- Điều này ảnh hưởng cách tôi đưa ra quyết định như thế nào\n- Điều này ảnh hưởng cách tôi xây dựng quan hệ như thế nào\n\n---\n\n## 3 Niềm Tin Gốc\n\n### Niềm Tin 1 — [Tiêu đề]\n\n[Mô tả niềm tin — lý do bạn tin, bằng chứng từ trải nghiệm]\n\n**Bằng chứng từ trải nghiệm:**\n- [Câu chuyện thật 1 chứng minh niềm tin này]\n- [Câu chuyện thật 2]\n\n---\n\n### Niềm Tin 2 — [Tiêu đề]\n\n[Mô tả niềm tin]\n\n---\n\n### Niềm Tin 3 — [Tiêu đề]\n\n[Mô tả niềm tin]\n\n---\n\n## Những Thứ Tôi KHÔNG Tin (Counter-Positions)\n\n- **Không tin:** \"[Điều người ta hay nói nhưng bạn không đồng ý]\" → [Lý do]\n- **Không tin:** \"[Điều 2]\" → [Lý do]\n- **Không tin:** \"[Điều 3]\" → [Lý do]\n\n---\n\n## Bộ Lọc Quyết Định\n\nVới MỌI quyết định quan trọng, lọc qua 3 câu hỏi:\n\n**1. [Câu hỏi lọc 1 của bạn]**\n\n**2. [Câu hỏi lọc 2]**\n\n**3. [Câu hỏi lọc 3]**\n\n---\n\n*Tài liệu này là living document — cập nhật khi có quyết định lớn thay đổi hoặc làm rõ một trong các niềm tin trên.*"
+    },
+    {
+      "id": "day-03-block-37",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 Cách làm hiệu quả nhất"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-38",
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Xem 1-2 video phía trên để hiểu triết lý trước"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Copy câu lệnh 30 câu → Dán vào trợ lý AI → Để AI hỏi từng câu"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Trả lời thật — càng cụ thể càng tốt, đừng cố nghe hay"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Sau khi xong, AI tự tạo 6 ghi chú vào vault"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Copy mẫu thế giới quan → Dán tiếp để tạo tuyên ngôn niềm tin riêng"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Mở Obsidian kiểm tra 6 ghi chú → bổ sung thêm nếu còn thiếu"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-03-block-39",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập — Kiểm chứng sự khác biệt"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-40",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Dựa vào hồ sơ của tôi trong brain2, hãy gợi ý 3 chủ đề tôi nên học chuyên sâu trong 90 ngày tới — phù hợp với mục tiêu và điểm mạnh của tôi."
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-41",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-42",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-43",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Ghi chú thế giới quan là thứ tôi mất 2 năm mới viết được — vì trước đó tôi chưa dám đối diện với câu hỏi 'mình thực sự tin gì?'. Bây giờ nhìn lại, đó là ghi chú quan trọng nhất trong toàn bộ Brain2 của tôi.\""
+        }
+      ]
+    },
+    {
+      "id": "day-03-block-44",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Đừng cố viết hoàn hảo ngay lần đầu. 6 ghi chú này là tài liệu sống — cập nhật liên tục trong 21 ngày và sau đó. Cứ bắt đầu với những gì bạn biết hôm nay.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Hồ sơ cá nhân và bản đồ thế giới quan",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một hồ sơ nêu rõ bối cảnh, kinh nghiệm, giá trị, niềm tin và các góc nhìn quan trọng của bạn."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-03-check-01",
+      "label": "Đã hoàn thiện hồ sơ cá nhân cốt lõi"
+    },
+    {
+      "id": "ngay-03-check-02",
+      "label": "Đã ghi lại các niềm tin và góc nhìn chủ đạo"
+    }
+  ]
+}

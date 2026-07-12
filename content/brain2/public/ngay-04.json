@@ -1,0 +1,490 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 4,
+    "slug": "ngay-04",
+    "week": 1,
+    "access": "public",
+    "title": "Thiết lập khu vực dự án",
+    "promise": "Đưa một dự án đang làm vào Brain2 để kiến thức gắn trực tiếp với hành động.",
+    "objective": "Tạo khu vực dự án có mục tiêu, trạng thái, nguồn liên quan và bước tiếp theo.",
+    "estimatedMinutes": {
+      "min": 60,
+      "max": 90
+    },
+    "preview": "Bạn chọn một dự án thật và dựng trang điều khiển đủ rõ để tiếp tục làm việc.",
+    "sourceFragmentSha256": "562af237ef49ef6e27ced0b11b3fd77fd864fbc598ee6ba2c5ea29c2e83b80da",
+    "contentSha256": "4184c7a5b6f8ed546dcb6045fa684e35bfa4f84290ed76e0221b245c05c1683c",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Kiến thức tạo giá trị khi nó được đặt cạnh một kết quả cụ thể và một bước hành động có thể quan sát.",
+  "blocks": [
+    {
+      "id": "day-04-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 4 · Tuần 1 ⏱ 60–90 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-02",
+      "kind": "prose",
+      "heading": "AI tư vấn dự án tốt nhất khi nó biết rõ dự án của bạn",
+      "children": []
+    },
+    {
+      "id": "day-04-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Mỗi khi bạn nói \"giúp tôi với dự án X\" mà không cung cấp bối cảnh — AI phải đoán từ đầu. Hôm nay bạn đưa toàn bộ thông tin về các dự án đang theo đuổi vào Brain2 để mọi cuộc thảo luận tiếp theo đều xuất phát từ nền tảng đầy đủ."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧭 Triết lý về dự án trong Brain2"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-05",
+      "kind": "prose",
+      "heading": "Tại sao dự án cần có ghi chú riêng, đầy đủ?",
+      "children": []
+    },
+    {
+      "id": "day-04-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hầu hết mọi người lưu thông tin về dự án rải rác khắp nơi — email, nhóm chat, ghi chú điện thoại, tài liệu Google Drive. Khi cần tra lại phải tìm khắp nơi, mà vẫn thiếu bối cảnh."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Brain2 gom tất cả vào một nơi: mục tiêu, thời hạn, tài liệu, quyết định đã đưa ra, trở ngại đang gặp, bước tiếp theo. Khi AI đọc file dự án trước khi tư vấn — câu trả lời không còn chung chung mà cụ thể với đúng tình huống của bạn."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "❌ Không có ghi chú dự án"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-09",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Giúp tôi viết đề xuất cho khách hàng mới...\""
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "→ AI không biết khách hàng là ai, bạn đã làm gì, tone phù hợp là gì"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "✅ Có ghi chú dự án đầy đủ"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-11",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Giúp tôi viết đề xuất cho dự án X...\""
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "→ AI đọc bối cảnh, ngành nghề, ngân sách, mục tiêu → viết đúng ngay lần đầu"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-12",
+      "kind": "prose",
+      "heading": "📺 Video gợi ý — xem trước khi bắt đầu",
+      "children": []
+    },
+    {
+      "id": "day-04-block-13",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hiểu hệ thống tổ chức dự án theo tư duy thứ hai não trước khi thiết lập."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-14",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "The PARA Method — Hệ thống tổ chức cuộc sống theo 4 tầng",
+          "href": "https://www.youtube.com/watch?v=T6Mfl1OywM8",
+          "note": "Tiago Forte · ⭐ Xem đầu tiên · Giải thích tại sao tổ chức theo Dự Án (P) thay vì theo Chủ Đề là cách hiệu quả nhất để tri thức phục vụ công việc thật."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-15",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How I Manage Multiple Projects — Quản lý nhiều dự án cùng lúc không bị rối",
+          "href": "https://www.youtube.com/watch?v=K-ssUVyfn5g",
+          "note": "Ali Abdaal · Thực hành cụ thể với Notion và ghi chú số · Cách tạo trung tâm điều phối cho từng dự án để không bao giờ mất thông tin hay quên bước tiếp theo."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-16",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "Building a Second Brain for Work — Brain2 ứng dụng vào công việc thật",
+          "href": "https://www.youtube.com/watch?v=Y__243RqBeM",
+          "note": "Thomas Frank · Kết hợp ghi chú số và quản lý dự án · Cách cấu trúc vault để phục vụ các dự án công việc đang chạy song song — ứng dụng thực tế nhất."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-17",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📁 Cấu trúc sẽ được tạo trong vault"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-18",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "brain2/vault/"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-19",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "└── projects/"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-20",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "├── ten-du-an-1/"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "│ ├── index.md ← trung tâm điều phối"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-22",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "│ └── docs/ ← tài liệu liên quan"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-23",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "├── ten-du-an-2/"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-24",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "│ └── index.md"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-25",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "└── ..."
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-26",
+      "kind": "prose",
+      "heading": "🤖 3 câu lệnh để làm việc với dự án trong Brain2",
+      "children": []
+    },
+    {
+      "id": "day-04-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Câu lệnh 1 — Dùng ngay hôm nay"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-28",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thiết lập toàn bộ khu vực Dự Án"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-29",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI sẽ hỏi về từng dự án, yêu cầu tài liệu, rồi tạo cấu trúc vault"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-30",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh thiết lập dự án",
+      "text": "Hãy giúp tôi thiết lập khu vực Dự Án trong Brain2. Tôi sẽ cung cấp thông tin về tất cả các dự án đang theo đuổi — bạn sẽ hỏi để khai thác đủ bối cảnh, rồi tạo ghi chú riêng cho từng dự án trong vault.\n\nCÁCH THỰC HIỆN:\n- Bắt đầu bằng cách hỏi tôi liệt kê tất cả dự án đang theo đuổi (công việc, cá nhân, học tập, kinh doanh)\n- Với từng dự án, hỏi lần lượt các câu sau — chờ tôi trả lời rồi mới hỏi tiếp\n- Yêu cầu tôi cung cấp tài liệu, đường dẫn, ghi chú liên quan nếu có\n- Sau khi xong tất cả dự án, tạo cấu trúc thư mục và ghi chú tương ứng\n\nCÁC CÂU HỎI CHO TỪNG DỰ ÁN:\n1. Tên dự án là gì? Mô tả ngắn gọn trong 1-2 câu?\n2. Mục tiêu cụ thể của dự án này là gì — kết quả hoàn thành trông như thế nào?\n3. Thời hạn hoặc mốc thời gian quan trọng?\n4. Dự án đang ở giai đoạn nào — mới bắt đầu, đang triển khai, hay gần hoàn thành?\n5. Trở ngại lớn nhất hiện tại là gì?\n6. Ai cùng tham gia — nếu có cộng tác viên, đối tác, hoặc khách hàng liên quan?\n7. Bạn có tài liệu, đường dẫn, ghi chú nào liên quan không? (Dán vào đây hoặc mô tả)\n8. Bước hành động tiếp theo cụ thể nhất là gì?\n\nSAU KHI THU THẬP ĐỦ THÔNG TIN, TẠO CẤU TRÚC SAU:\n- Mỗi dự án tạo một thư mục: projects/[tên-dự-án]/\n- File chính: projects/[tên-dự-án]/index.md gồm:\n  * Tóm tắt dự án (mục tiêu, thời hạn, trạng thái)\n  * Bối cảnh và lý do thực hiện\n  * Các bên liên quan\n  * Tài liệu và đường dẫn tham chiếu\n  * Trở ngại đang gặp\n  * Bước tiếp theo\n  * Phần thông tin đầu file: type: project, status: active, created, tags\n\nKhi tôi đề cập đến dự án này trong tương lai, bạn sẽ đọc file index.md trước để hiểu đầy đủ bối cảnh trước khi tư vấn."
+    },
+    {
+      "id": "day-04-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Câu lệnh 2 — Dùng hàng ngày"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bổ sung tài liệu và thông tin vào dự án"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-33",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi có tài liệu mới, quyết định mới, hoặc cập nhật tiến độ"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-34",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh bổ sung tài liệu",
+      "text": "Tôi muốn bổ sung tài liệu và thông tin vào dự án [tên dự án] trong Brain2.\n\nDưới đây là nội dung tôi muốn thêm vào:\n[Dán tài liệu, đường dẫn, ghi chú, quyết định, cập nhật tiến độ vào đây]\n\nHãy:\n1. Đọc file projects/[tên-dự-án]/index.md để hiểu bối cảnh hiện tại\n2. Phân loại nội dung tôi vừa cung cấp vào đúng mục\n3. Nếu là tài liệu tham khảo — tạo file riêng trong projects/[tên-dự-án]/docs/\n4. Nếu là cập nhật tiến độ — cập nhật phần trạng thái trong index.md\n5. Nếu là quyết định đã đưa ra — thêm vào phần nhật ký quyết định\n6. Tóm tắt lại những gì đã được thêm và trạng thái dự án hiện tại"
+    },
+    {
+      "id": "day-04-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Câu lệnh 3 — Dùng khi thảo luận"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-36",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thảo luận về một dự án cụ thể"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-37",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI đọc toàn bộ bối cảnh dự án trước khi trả lời bất kỳ câu hỏi nào"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-38",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh thảo luận dự án",
+      "text": "Rà soát lại những gì liên quan đến dự án [tên dự án], chúng ta sẽ thảo luận để [nêu mục tiêu — ví dụ: lên kế hoạch bước tiếp theo / giải quyết trở ngại / chuẩn bị buổi họp...]"
+    },
+    {
+      "id": "day-04-block-39",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập ngày 4"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-40",
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Dùng Câu lệnh 1 → để trợ lý AI phỏng vấn và tạo ghi chú cho tất cả dự án"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Với ít nhất 1 dự án: dán thêm tài liệu thật (brief, proposal, link, ghi chú) bằng Câu lệnh 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Thử hỏi AI về dự án đó bằng Câu lệnh 3 — xem phản hồi có cụ thể hơn không"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-04-block-41",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-42",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-43",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Tôi từng phải dành 10-15 phút đầu mỗi cuộc họp để nhớ lại trạng thái dự án. Kể từ khi có ghi chú dự án trong Brain2, AI đọc file và tóm tắt cho tôi trong 30 giây — bao gồm cả những quyết định đã đưa ra tuần trước mà tôi không còn nhớ.\""
+        }
+      ]
+    },
+    {
+      "id": "day-04-block-44",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Bí quyết là càng cung cấp nhiều bối cảnh thật — tài liệu, đường dẫn, quyết định, trở ngại — thì AI càng tư vấn được cụ thể hơn. Đừng chỉ viết mô tả chung chung.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Trang điều khiển cho một dự án đang hoạt động",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một khu vực dự án ghi rõ kết quả mong muốn, tài nguyên liên quan, trạng thái hiện tại và hành động kế tiếp."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-04-check-01",
+      "label": "Đã chọn một dự án thật để đưa vào Brain2"
+    },
+    {
+      "id": "ngay-04-check-02",
+      "label": "Đã ghi mục tiêu, trạng thái và bước tiếp theo"
+    }
+  ]
+}

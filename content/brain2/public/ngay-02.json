@@ -1,0 +1,528 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 2,
+    "slug": "ngay-02",
+    "week": 1,
+    "access": "public",
+    "title": "Atomic Notes và kết nối AI",
+    "promise": "Biến ghi chú rời rạc thành các ý nhỏ có thể kết nối và tái sử dụng.",
+    "objective": "Thiết lập cấu trúc Atomic Notes và giao cho trợ lý AI một quy tắc làm việc rõ ràng.",
+    "estimatedMinutes": {
+      "min": 30,
+      "max": 45
+    },
+    "preview": "Bạn tạo những note nguyên tử đầu tiên và kiểm tra cách AI đọc đúng cấu trúc đó.",
+    "sourceFragmentSha256": "8157355972af5b1e44a0fef71a4557c4214b098ee098b1f68173ee03f9187eca",
+    "contentSha256": "1f60f049313104ec88f21d097af58f74b51a3eda57ab088068981ef964a41dfa",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Một ý tưởng đứng riêng sẽ dễ tìm, dễ liên kết và dễ đưa vào sản phẩm hơn một tài liệu dài hỗn tạp.",
+  "blocks": [
+    {
+      "id": "day-02-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 2 · Tuần 1 ⏱ 30–45 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-02",
+      "kind": "prose",
+      "heading": "Atomic Notes + AI — Brain2 thực sự hoạt động từ đây",
+      "children": []
+    },
+    {
+      "id": "day-02-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hôm nay bạn hiểu "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "tại sao"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Brain2 lưu theo kiểu atomic, rồi dùng chính trợ lý AI để setup mọi thứ còn lại."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧩 Triết lý — Atomic Notes là gì?"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-05",
+      "kind": "prose",
+      "heading": "1 note = 1 ý tưởng. Không hơn, không kém.",
+      "children": []
+    },
+    {
+      "id": "day-02-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hầu hết mọi người ghi chú theo kiểu \"dump\" — tất cả vào 1 file dài. Kết quả: khó tìm, khó dùng lại, không bao giờ mở lại."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Atomic Notes ngược lại: "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "1 note = 1 ý tưởng duy nhất"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", ngắn gọn, tự đứng vững, kết nối được với bất kỳ note nào khác. Đây là đơn vị cơ bản của Brain2."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "❌ Ghi chú thông thường"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-09",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "File \"Sách tháng 5\" dài 50 trang"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Tìm lại = scroll vô tận"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Không biết dùng vào đâu"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Mỗi năm xóa đi làm lại từ đầu"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-02-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "✅ Atomic Notes"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-11",
+      "kind": "list",
+      "ordered": false,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "1 note = 1 insight, story, concept"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Tìm bằng AI, tag, link"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Tái sử dụng vào content, bài viết"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Tích lũy vĩnh viễn, compound theo năm"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-02-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Ví dụ:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " Thay vì 1 file \"Tóm tắt Deep Work\" dài 20 trang, Brain2 tạo ra: "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "concept-deep-work.md"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " + "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "insight-depth-vs-shallow.md"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " + "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "story-khi-tat-dien-thoai.md"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ". Ba notes kết nối nhau, tái dùng được khi viết bài về productivity, focus, leadership — mãi mãi."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-13",
+      "kind": "prose",
+      "heading": "🛠 Setup hôm nay — 3 bước",
+      "children": []
+    },
+    {
+      "id": "day-02-block-14",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-15",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Cài trợ lý AI — AI Agent chính của Brain2"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-16",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "trợ lý AI là AI Agent của Google — chạy trực tiếp trên máy, truy cập file system, hỗ trợ MCP. Đây là công cụ bạn sẽ dùng hàng ngày để tương tác với Brain2."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-17",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Mac · Windows · Linux · Miễn phí với tài khoản Google cá nhân"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-18",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📺 Video hướng dẫn cài đặt từng bước:"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-19",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-20",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Dùng trợ lý AI để kéo Brain2 về và cài MCP"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Không cần terminal, không cần git thủ công. Chỉ cần mở trợ lý AI và paste prompt sau vào chat — AI sẽ tự làm mọi thứ:"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-22",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📋 Prompt 1 — Clone Brain2 + Setup MCP"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-23",
+      "kind": "prompt",
+      "label": "📋 Copy prompt",
+      "text": "Hãy giúp tôi setup Brain2 — hệ thống Second Brain. Làm lần lượt từng bước:\n1. Clone repo này về ~/brain2: https://github.com/thongphan23/brain2-starter.git\nSau mỗi bước xác nhận kết quả trước khi làm bước tiếp theo."
+    },
+    {
+      "id": "day-02-block-24",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 trợ lý AI có quyền chạy lệnh terminal và đọc/ghi file — nên nó tự clone git, tạo file config, copy workflows mà bạn không cần làm gì thêm. Nếu có lỗi, AI sẽ tự debug và thử lại."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-25",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-26",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Cài Global Rule — Brain2-first cho mọi hội thoại"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Sau khi trợ lý AI khởi động lại (để load MCP mới), paste prompt này để cài \"não trạng thái\" Brain2-first:"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-28",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📋 Prompt 2 — Setup Global Brain2 Rule"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-29",
+      "kind": "prompt",
+      "label": "📋 Copy prompt",
+      "text": "- \"brain2\" hoặc \"second brain\" = vault tại [đường dẫn tìm được]\n- Với MỌI câu hỏi, luôn tìm kiếm trong brain2 TRƯỚC khi trả lời\n- Nếu có thông tin liên quan trong vault → trích dẫn note nguồn\n- Nếu chưa có → trả lời bình thường, hỏi tôi có muốn lưu insight này vào brain2 không"
+    },
+    {
+      "id": "day-02-block-30",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Sau bước này, trợ lý AI sẽ tự động search vault của bạn trước khi trả lời bất kỳ câu hỏi nào."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập — Atomic Note đầu tiên qua AI"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Sau khi setup xong, gõ vào trợ lý AI:"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-33",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "/reflect Hôm nay tôi nhận ra rằng [insight thật của bạn]. Bài học: [điền vào]."
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-34",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "✅ Thành công = AI tạo file trong "
+        },
+        {
+          "type": "code",
+          "children": [
+            {
+              "type": "text",
+              "value": "01-Atomic/Reflections/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-35",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-36",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-37",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Từng có file 'Tóm tắt sách 2023' dài 80 trang không bao giờ mở lại. Sau khi chuyển sang atomic — mỗi insight thành 1 note riêng — tôi bắt đầu thực sự dùng lại knowledge của mình hàng tuần.\""
+        }
+      ]
+    },
+    {
+      "id": "day-02-block-38",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Bước setup có thể gặp lỗi — cứ paste lỗi đó vào trợ lý AI, nó tự debug. Đừng tự làm thủ công.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Cấu trúc Atomic Notes và hai note đầu tiên",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một cấu trúc lưu note nhất quán, kèm ít nhất hai Atomic Notes có một ý chính và liên kết liên quan."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-02-check-01",
+      "label": "Đã tạo cấu trúc lưu Atomic Notes"
+    },
+    {
+      "id": "ngay-02-check-02",
+      "label": "Đã viết và liên kết ít nhất hai note nguyên tử"
+    }
+  ]
+}

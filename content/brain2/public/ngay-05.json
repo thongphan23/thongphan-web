@@ -1,0 +1,389 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "day": 5,
+    "slug": "ngay-05",
+    "week": 1,
+    "access": "public",
+    "title": "Kho bài học cá nhân",
+    "promise": "Chuyển trải nghiệm đã qua thành những bài học có thể dùng lại.",
+    "objective": "Khai thác các quyết định, sai lầm và kết quả để tạo kho bài học có cấu trúc.",
+    "estimatedMinutes": {
+      "min": 60,
+      "max": 90
+    },
+    "preview": "Bạn đóng gói những bài học quan trọng thành tài sản có thể truy xuất khi cần.",
+    "sourceFragmentSha256": "58d044a4e449fff20d3d38c0ffb88ab5788fa13ced5276175d83b75d856e15c5",
+    "contentSha256": "6b1832c114850cf264aafe647d128ef2d9ac725580897beb487ddac713f4d773",
+    "migratedAt": "2026-07-12T00:00:00.000Z",
+    "editorialState": "reviewed"
+  },
+  "reason": "Bài học không được ghi lại sẽ phải trả học phí thêm lần nữa trong một tình huống tương tự.",
+  "blocks": [
+    {
+      "id": "day-05-block-01",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ngày 5 · Tuần 1 ⏱ 60–90 phút"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-02",
+      "kind": "prose",
+      "heading": "Bài học từ trải nghiệm thật — thứ không có trong bất kỳ cuốn sách nào",
+      "children": []
+    },
+    {
+      "id": "day-05-block-03",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Kiến thức từ sách ai cũng có thể đọc được. Nhưng bài học bạn tự đúc kết từ thất bại, sai lầm, và những khoảnh khắc khó khăn của riêng mình — đó là tài sản không ai sao chép được. Hôm nay bạn đưa toàn bộ kho bài học đó vào Brain2."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-04",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🧭 Tại sao kho bài học quan trọng với Brain2?"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-05",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "①"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-06",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "AI tư vấn dựa trên lịch sử của bạn — không phải lý thuyết chung"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-07",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Khi bạn hỏi \"nên làm A hay B?\" — AI biết bạn đã từng mắc sai lầm gì, đã học được gì, và đưa ra gợi ý phù hợp với bạn cụ thể."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-08",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "②"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-09",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Không lặp lại sai lầm cũ vì AI nhớ — ngay cả khi bạn quên"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-10",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Brain2 lưu lại \"pattern\" — những tình huống bạn hay phán đoán sai, những bẫy bạn hay rơi vào. AI sẽ nhắc bạn trước khi bạn mắc lại."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-11",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "③"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-12",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Bài học cá nhân là nguồn gốc của nội dung có thẩm quyền"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-13",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Mỗi khi cần viết bài, chia sẻ kinh nghiệm, hay thuyết phục ai đó — AI kéo đúng bài học thật từ cuộc đời bạn ra, không phải câu chuyện vay mượn."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-14",
+      "kind": "prose",
+      "heading": "📺 Video gợi ý — xem để khởi động tư duy",
+      "children": []
+    },
+    {
+      "id": "day-05-block-15",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Xem để nhớ lại những bài học mình đã trải qua — rồi dùng câu lệnh phỏng vấn để đưa chúng vào Brain2."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-16",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "40 Brutal Truths I Wish I Knew in My 20s",
+          "href": "https://www.youtube.com/watch?v=wTJrzGeMJPI",
+          "note": "Dan Martell · 4.4 triệu lượt xem · ⭐ Xem đầu tiên · 40 bài học khắc nghiệt từ người đã xây dựng và bán nhiều công ty. Xem để nhớ lại những bài học bạn cũng đã trải qua nhưng chưa đặt tên."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-17",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "7 Life Lessons I Wish I Knew Sooner",
+          "href": "https://www.youtube.com/watch?v=sj23hsw5oqE",
+          "note": "Ali Abdaal · 329K lượt xem · 28 phút · 7 bài học lớn Ali Abdaal tiếc là không biết sớm hơn — cách chia sẻ bài học cá nhân một cách thành thật và có chiều sâu."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-18",
+      "kind": "resources",
+      "title": "Tài nguyên tham khảo",
+      "items": [
+        {
+          "title": "How to Own Your Mistakes and Recover From Them",
+          "href": "https://www.youtube.com/watch?v=v66miB8DrSY",
+          "note": "Jim Kwik · Phương pháp học từ sai lầm — O.L.D. · Cách chuyển hóa sai lầm thành bài học thật sự thay vì chỉ dừng lại ở cảm giác hối tiếc. Hữu ích để làm trước khi điền câu lệnh phỏng vấn."
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-19",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "🎯 Câu lệnh phỏng vấn — Kho Bài Học"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-20",
+      "kind": "prose",
+      "heading": "Copy → Dán vào trợ lý AI → Trả lời từng câu",
+      "children": []
+    },
+    {
+      "id": "day-05-block-21",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "17 câu hỏi qua 4 chủ đề · AI đào sâu mỗi câu trả lời · Tạo file lessons.md tự động"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-22",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "17 câu · 4 chủ đề"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-23",
+      "kind": "prompt",
+      "label": "📋 Copy câu lệnh phỏng vấn Kho Bài Học",
+      "text": "Hãy giúp tôi xây dựng \"Kho Bài Học\" trong Brain2 — tập hợp những bài học tôi tự đúc kết từ trải nghiệm thật của bản thân.\n\nCÁCH THỰC HIỆN:\n- Hỏi từng câu một, chờ tôi trả lời xong mới hỏi tiếp\n- Nếu câu trả lời còn chung chung, hỏi thêm: \"Câu chuyện cụ thể nào đằng sau bài học này?\"\n- Nếu tôi đã trả lời tốt, hỏi tiếp: \"Từ đó bạn đã hành động khác đi như thế nào?\"\n- Mục tiêu: lấy được bài học CỤ THỂ từ trải nghiệm THẬT — không phải trích dẫn sách hay lời người khác\n\n--- PHẦN 1: THẤT BẠI VÀ SAI LẦM ---\n\nCâu 1. Kể một quyết định bạn đưa ra và sau đó nhận ra là sai. Lúc đó bạn nghĩ gì? Thực tế xảy ra như thế nào?\n\nCâu 2. Có lần nào bạn quá tự tin và kết quả không như kỳ vọng không? Chuyện đó như thế nào?\n\nCâu 3. Điều gì bạn đã tin là đúng trong nhiều năm, nhưng sau đó nhận ra là sai hoặc thiếu sót? Điều gì đã khiến bạn thay đổi suy nghĩ?\n\nCâu 4. Bạn đã từng trì hoãn một quyết định quan trọng quá lâu chưa? Hệ quả là gì? Bây giờ bạn nhận biết mình đang trì hoãn qua dấu hiệu nào?\n\nCâu 5. Sai lầm tốn kém nhất bạn từng mắc — về tiền bạc, thời gian, hoặc các mối quan hệ — là gì? Nó thay đổi cách bạn hành động như thế nào từ đó?\n\n--- PHẦN 2: CON NGƯỜI VÀ CÁC MỐI QUAN HỆ ---\n\nCâu 6. Có người nào đã dạy bạn bài học quan trọng — dù họ không cố ý dạy? Bài học đó là gì và nó ảnh hưởng đến cách bạn đối xử với người khác ra sao?\n\nCâu 7. Bạn đã từng tin tưởng nhầm người chưa? Từ đó bạn học được gì về cách chọn người để hợp tác hoặc giao phó? Bây giờ bạn nhận ra người đáng tin qua dấu hiệu nào?\n\nCâu 8. Lần nào bạn phải từ chối hoặc rời khỏi một tình huống khó — và đó lại là quyết định đúng?\n\nCâu 9. Bài học nào về giao tiếp hoặc thuyết phục bạn học được theo cách khó nhất?\n\n--- PHẦN 3: CÔNG VIỆC VÀ TIỀN BẠC ---\n\nCâu 10. Dự án hoặc công việc nào bạn đã đổ rất nhiều công sức nhưng kết quả không tương xứng? Bạn nhận ra điều gì từ đó? Bây giờ bạn quyết định đầu tư thời gian theo cách khác như thế nào?\n\nCâu 11. Bài học quan trọng nhất bạn học được về tiền — không phải từ sách tài chính, mà từ trải nghiệm thật của bạn?\n\nCâu 12. Có thời điểm nào bạn làm đúng hướng nhưng sai thời điểm không? Bạn rút ra được gì?\n\nCâu 13. Điều gì bạn đã làm rất hiệu quả mà bạn muốn nhắc bản thân áp dụng nhiều hơn?\n\n--- PHẦN 4: VỀ BẢN THÂN ---\n\nCâu 14. Bạn đã từng cố thay đổi bản thân theo hướng nào đó nhưng thất bại liên tục — và sau đó nhận ra lý do thật sự là gì?\n\nCâu 15. Khi nào bạn hoạt động tốt nhất? Bạn mất bao lâu để nhận ra điều đó?\n\nCâu 16. Bạn đã từng phủ nhận một điểm yếu của mình trong thời gian dài không? Điều gì khiến bạn cuối cùng phải đối mặt với nó?\n\nCâu 17. Có niềm tin nào về bản thân mà khi còn trẻ bạn cho là đúng, nhưng bây giờ thấy là đang tự giới hạn mình?\n\n--- SAU KHI PHỎNG VẤN XONG ---\n\nTạo file self/lessons.md trong vault Brain2, gồm:\n- Phần thông tin đầu file: type: lessons, status: living-document, tags: [self, lessons, experience], ai_directive: đọc file này khi người dùng hỏi về quyết định quan trọng hoặc chia sẻ về sai lầm\n- Tổng hợp thành các bài học rõ ràng, mỗi bài học có:\n  * Tên bài học — viết thành 1 câu súc tích như một nguyên tắc\n  * Bối cảnh — học từ tình huống nào\n  * Bài học cốt lõi — nguyên tắc tôi đúc kết\n  * Ứng dụng — tôi đã hành động khác đi như thế nào\n- Nhóm theo 4 chủ đề: Thất bại & Sai lầm / Con người & Quan hệ / Công việc & Tiền bạc / Về bản thân"
+    },
+    {
+      "id": "day-05-block-24",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💡 Cách làm hiệu quả nhất"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-25",
+      "kind": "list",
+      "ordered": true,
+      "items": [
+        [
+          {
+            "type": "text",
+            "value": "Xem 1-2 video để kích hoạt ký ức — nhớ lại những bài học mình đã trải qua"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Copy câu lệnh → Dán vào trợ lý AI"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Trả lời thật và cụ thể — AI sẽ hỏi thêm để đào sâu hơn"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Không cần hoàn thành trong 1 lần — có thể chia thành 2-3 phiên"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Sau khi xong, mở Obsidian kiểm tra file "
+          },
+          {
+            "type": "code",
+            "children": [
+              {
+                "type": "text",
+                "value": "self/lessons.md"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "id": "day-05-block-26",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "📝 Bài tập ngày 5"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-27",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hoàn thành ít nhất 2 trong 4 phần của câu lệnh phỏng vấn. Sau đó thử câu lệnh này để kiểm chứng:"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-28",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tôi đang phân vân về [quyết định gì đó]. Dựa vào bài học và kinh nghiệm của tôi trong brain2, bạn thấy tôi nên chú ý điều gì?"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-29",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "💬"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-30",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "Thông Phan nói"
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-31",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Một trong những bài học tốn kém nhất của tôi là tin rằng nhiệt huyết có thể bù đắp cho sự chuẩn bị kém. Tôi mất 2 năm và không ít tiền để thật sự hiểu điều đó. Khi bài học đó được lưu vào Brain2 — mỗi khi tôi hứng khởi với một dự án mới, AI sẽ hỏi: 'Bạn đã chuẩn bị những gì?'\""
+        }
+      ]
+    },
+    {
+      "id": "day-05-block-32",
+      "kind": "prose",
+      "children": [
+        {
+          "type": "text",
+          "value": "\"Bài học cá nhân không cần phải nghe hay hay có vẻ khôn ngoan. Nó chỉ cần thật — và thật với bạn.\""
+        }
+      ]
+    }
+  ],
+  "deliverable": {
+    "title": "Kho bài học từ trải nghiệm thực tế",
+    "body": [
+      {
+        "type": "text",
+        "value": "Một tài liệu gồm các bài học có bối cảnh, điều đã xảy ra, kết luận và tình huống nên áp dụng lại."
+      }
+    ]
+  },
+  "checklist": [
+    {
+      "id": "ngay-05-check-01",
+      "label": "Đã khai thác các trải nghiệm có bài học rõ"
+    },
+    {
+      "id": "ngay-05-check-02",
+      "label": "Đã đóng gói từng bài học theo cấu trúc thống nhất"
+    }
+  ]
+}

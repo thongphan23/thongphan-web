@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "2026-07-12.1",
+  "migratedAt": "2026-07-12T00:00:00.000Z",
+  "source": {
+    "sha256": "2ff0807fe96a8c730a4a881faf37e4e6eaedc7ca7f43c5d059196c6768e1453b"
+  },
+  "counts": {
+    "lessons": 21,
+    "public": 7,
+    "protected": 14,
+    "copyDerivedPrompts": 41,
+    "sourceExternalLinks": 65,
+    "retainedExternalLinks": 61
+  },
+  "lessons": [
+    {
+      "schemaVersion": 1,
+      "day": 1,
+      "slug": "ngay-01",
+      "week": 1,
+      "access": "public",
+      "title": "Tại sao và bắt đầu",
+      "promise": "Thiết lập một Brain2 tối giản và bắt đầu bằng lý do đủ mạnh để duy trì.",
+      "objective": "Tạo vault, chọn bộ công cụ nền tảng và viết cam kết cá nhân đầu tiên.",
+      "estimatedMinutes": {
+        "min": 20,
+        "max": 30
+      },
+      "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
+      "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
+      "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 2,
+      "slug": "ngay-02",
+      "week": 1,
+      "access": "public",
+      "title": "Atomic Notes và kết nối AI",
+      "promise": "Biến ghi chú rời rạc thành các ý nhỏ có thể kết nối và tái sử dụng.",
+      "objective": "Thiết lập cấu trúc Atomic Notes và giao cho trợ lý AI một quy tắc làm việc rõ ràng.",
+      "estimatedMinutes": {
+        "min": 30,
+        "max": 45
+      },
+      "preview": "Bạn tạo những note nguyên tử đầu tiên và kiểm tra cách AI đọc đúng cấu trúc đó.",
+      "sourceFragmentSha256": "8157355972af5b1e44a0fef71a4557c4214b098ee098b1f68173ee03f9187eca",
+      "contentSha256": "1f60f049313104ec88f21d097af58f74b51a3eda57ab088068981ef964a41dfa",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 3,
+      "slug": "ngay-03",
+      "week": 1,
+      "access": "public",
+      "title": "Hồ sơ cá nhân và thế giới quan",
+      "promise": "Cho Brain2 hiểu con người, kinh nghiệm và cách nhìn riêng của bạn.",
+      "objective": "Ghi lại hồ sơ cá nhân cùng những niềm tin có ảnh hưởng trực tiếp đến quyết định.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn hoàn thiện bộ dữ liệu gốc để AI phản hồi theo bối cảnh thật thay vì câu trả lời chung.",
+      "sourceFragmentSha256": "af8dc116d18693c7a0843dc1bfca9e30ab81634f9fa21ec998cbadd4d05d8eac",
+      "contentSha256": "4bdafe8f0fad4ef52c835bdc47d308819fb35e27095fa5c487e1de066e23d3de",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 4,
+      "slug": "ngay-04",
+      "week": 1,
+      "access": "public",
+      "title": "Thiết lập khu vực dự án",
+      "promise": "Đưa một dự án đang làm vào Brain2 để kiến thức gắn trực tiếp với hành động.",
+      "objective": "Tạo khu vực dự án có mục tiêu, trạng thái, nguồn liên quan và bước tiếp theo.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn chọn một dự án thật và dựng trang điều khiển đủ rõ để tiếp tục làm việc.",
+      "sourceFragmentSha256": "562af237ef49ef6e27ced0b11b3fd77fd864fbc598ee6ba2c5ea29c2e83b80da",
+      "contentSha256": "4184c7a5b6f8ed546dcb6045fa684e35bfa4f84290ed76e0221b245c05c1683c",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 5,
+      "slug": "ngay-05",
+      "week": 1,
+      "access": "public",
+      "title": "Kho bài học cá nhân",
+      "promise": "Chuyển trải nghiệm đã qua thành những bài học có thể dùng lại.",
+      "objective": "Khai thác các quyết định, sai lầm và kết quả để tạo kho bài học có cấu trúc.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn đóng gói những bài học quan trọng thành tài sản có thể truy xuất khi cần.",
+      "sourceFragmentSha256": "58d044a4e449fff20d3d38c0ffb88ab5788fa13ced5276175d83b75d856e15c5",
+      "contentSha256": "6b1832c114850cf264aafe647d128ef2d9ac725580897beb487ddac713f4d773",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 6,
+      "slug": "ngay-06",
+      "week": 1,
+      "access": "public",
+      "title": "Kho insight cá nhân",
+      "promise": "Làm rõ những quan sát và góc nhìn khiến tư duy của bạn khác biệt.",
+      "objective": "Thu thập insight, giả định và quan điểm ngược chiều thành một kho có thể phát triển tiếp.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn tạo một tập insight riêng để dùng khi viết, phân tích và ra quyết định.",
+      "sourceFragmentSha256": "8079054b8a5511e29043b4ae3b18e0232dcd158f6b395feef5b73af87ef7aa0c",
+      "contentSha256": "e2489b4a0f4c12c1c6f86c875e6ec7961fc51bc2a6a182cf832d5adeec82e47a",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 7,
+      "slug": "ngay-07",
+      "week": 1,
+      "access": "public",
+      "title": "Kho câu chuyện cá nhân",
+      "promise": "Biến trải nghiệm thật thành những câu chuyện có thể kể lại đúng lúc.",
+      "objective": "Khai thác và đóng gói câu chuyện theo bối cảnh, bước ngoặt, bài học và tình huống sử dụng.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn hoàn thành kho câu chuyện nền tảng và thử truy xuất một câu chuyện theo đối tượng cụ thể.",
+      "sourceFragmentSha256": "a1ba31efa563f7517e899b8e13ab49386875ce1b2e49870c44ec0a33912511f9",
+      "contentSha256": "317b7c88e60effe4d92865fe1fea944b234a30d37ea71fe55ac98b7e01af442f",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 8,
+      "slug": "ngay-08",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Đọc sâu với PDF và Brain2",
+      "promise": "Chuyển một tài liệu PDF thành tri thức đã hiểu và có thể kết nối.",
+      "objective": "Đọc có mục đích, trích xuất luận điểm và tạo Atomic Notes từ một nguồn dài.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn đi từ tệp PDF ban đầu đến một bộ note đã chọn lọc thay vì chỉ lưu tài liệu.",
+      "sourceFragmentSha256": "e2379d587f4996957bd0cb0bafe42673aa1722dfa3b0c069b7517adced324a8d",
+      "contentSha256": "79525e45e822ab41bf44f6f0788ae1e78d8063c24273587c2d78700f12e36d01",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:08"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 9,
+      "slug": "ngay-09",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Brain2 → viết bài viral",
+      "promise": "Dùng dữ liệu riêng trong Brain2 để viết một bài có góc nhìn và sức lan truyền.",
+      "objective": "Kết hợp insight, câu chuyện và bằng chứng thành cấu trúc bài viết rõ ràng.",
+      "estimatedMinutes": {
+        "min": 45,
+        "max": 60
+      },
+      "preview": "Bạn tạo một bản nháp hoàn chỉnh bắt đầu từ tài sản thật thay vì chạy theo công thức trống.",
+      "sourceFragmentSha256": "8bd3e62408c387f10dd1c83df0d823d5b68809f953a5e056285a8cc85da7bd1d",
+      "contentSha256": "a8efc4dc42d15810928b9a685bde00536b43748e738edd25d8207c6a21b018b9",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:09"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 10,
+      "slug": "ngay-10",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Brain2 → bài viết bán hàng",
+      "promise": "Viết nội dung bán hàng dựa trên hiểu biết thật về vấn đề và khách hàng.",
+      "objective": "Kết nối bằng chứng, chuyển biến và lời mời hành động thành một lập luận thuyết phục.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 75
+      },
+      "preview": "Bạn hoàn thành bản nháp bán hàng không cần phóng đại hay dùng lời hứa rỗng.",
+      "sourceFragmentSha256": "5167ad051c37fd91307f0e5798687c9d54882017725a85d925e5504ab6ad4685",
+      "contentSha256": "10359680a2499d25251328d48a84a62465ecd284a5bce87afdf5e50140aa64d2",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:10"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 11,
+      "slug": "ngay-11",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Brain2 → slide thuyết trình",
+      "promise": "Biến một cụm kiến thức thành mạch thuyết trình dễ theo dõi.",
+      "objective": "Chọn luận điểm, sắp thứ tự câu chuyện và xác định nội dung chính cho từng slide.",
+      "estimatedMinutes": {
+        "min": 45,
+        "max": 60
+      },
+      "preview": "Bạn có một dàn slide đủ rõ để trình bày hoặc đưa sang công cụ thiết kế.",
+      "sourceFragmentSha256": "d94d7577ebc9af903afda27fbd1221aea799dfa5c1519dfa8a61038b259d92b3",
+      "contentSha256": "21a14b0b5d9e796e6edeb1b1606f036579be5998b3d3f21acf746a237866369e",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:11"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 12,
+      "slug": "ngay-12",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Xây dựng AI mentor cá nhân",
+      "promise": "Tạo một người phản biện AI dựa trên mục tiêu và nguyên tắc của chính bạn.",
+      "objective": "Xác định vai trò, dữ liệu tham chiếu, câu hỏi và giới hạn cho phiên cố vấn.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn thiết lập một quy trình đối thoại giúp suy nghĩ kỹ hơn trước quyết định quan trọng.",
+      "sourceFragmentSha256": "cb6741fbee24ca5689ceee1d15cf181b1f5e2fed3f8aa505b3f970df48fa0751",
+      "contentSha256": "bfd04e78e4bbb7ce66ece83d5ef62221b06273bb3c3676d3fee0c08810460b5f",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:12"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 13,
+      "slug": "ngay-13",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Brain2 → phân tích và phát triển bản thân",
+      "promise": "Nhìn lại dữ liệu cá nhân để nhận ra mẫu hình và chọn hướng phát triển cụ thể.",
+      "objective": "Phân tích điểm mạnh, điểm nghẽn, tiến bộ và khoảng cách giữa ý định với hành động.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn hoàn thành một bản tự đánh giá có bằng chứng cùng ưu tiên phát triển tiếp theo.",
+      "sourceFragmentSha256": "b5052fd792d4f5d35799b095638e569b42b1e3f8c4ec1b8cc33a76986ad0a44a",
+      "contentSha256": "66b0de18db795a2e692544c21d802985af0cf838598a8c208115f98821972cab",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:13"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 14,
+      "slug": "ngay-14",
+      "week": 2,
+      "access": "conan-maker",
+      "title": "Brain2 → cố vấn kinh doanh",
+      "promise": "Dùng Brain2 như bàn phân tích cho một quyết định kinh doanh đang diễn ra.",
+      "objective": "Tập hợp bối cảnh, giả định, lựa chọn và tiêu chí để nhận phản biện có cấu trúc.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 75
+      },
+      "preview": "Bạn biến một vấn đề kinh doanh mơ hồ thành bản quyết định có phương án và rủi ro rõ.",
+      "sourceFragmentSha256": "7a70c8d63ec2a60d894c505f4036bcc3216547c7debaf42ffe1745995a3d7953",
+      "contentSha256": "6d26df60e6193a471ad513f47d8948ab54ca9c22d3c5571d131cf9122faf5bd9",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:14"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 15,
+      "slug": "ngay-15",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Đo sức khỏe Brain2",
+      "promise": "Đánh giá Brain2 bằng khả năng tìm, hiểu và dùng lại tri thức.",
+      "objective": "Kiểm tra cấu trúc, liên kết, chất lượng note và những khu vực đang tích tụ rác.",
+      "estimatedMinutes": {
+        "min": 45,
+        "max": 60
+      },
+      "preview": "Bạn có một bảng chẩn đoán cùng danh sách sửa chữa ưu tiên cho hệ thống hiện tại.",
+      "sourceFragmentSha256": "1f15d63324f8a80e63f9746290256023588bee3202b5cf9abaa8f2a4ca84aeec",
+      "contentSha256": "8da829897bc8460a05c41edf2bec8d271cfb3a0a0bda775c13ecf08eba6bfebb",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:15"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 16,
+      "slug": "ngay-16",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Brain2 → đóng gói sản phẩm tri thức",
+      "promise": "Biến một cụm chuyên môn thành sản phẩm có đối tượng và kết quả rõ.",
+      "objective": "Chọn vấn đề, lời hứa, cấu trúc nội dung và hình thức chuyển giao phù hợp.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn tạo bản thiết kế đầu tiên cho một sản phẩm tri thức có thể kiểm chứng với người dùng.",
+      "sourceFragmentSha256": "8edf15002ec2feb33f8bc46abb88f3864fbd7e3877c372a461436d17beb8c911",
+      "contentSha256": "dd2cff34acdcf3d8629fc0cf6b31ecba01eb790b891241169329ff8fb278b42e",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:16"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 17,
+      "slug": "ngay-17",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Brain2 → tạo tài liệu quà tặng (lead magnet)",
+      "promise": "Tạo một tài liệu nhỏ giải quyết nhanh một vấn đề có thật của người đọc.",
+      "objective": "Chọn lời hứa hẹp, trích tri thức phù hợp và sắp thành trải nghiệm hoàn thành được.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 75
+      },
+      "preview": "Bạn có bản nháp tài liệu quà tặng vừa hữu ích vừa dẫn tự nhiên tới bước tiếp theo.",
+      "sourceFragmentSha256": "43753675b3819bd52b46a5fbb37f759cef2e47006693b80294dd48bf11860429",
+      "contentSha256": "a50a254688d98d9b7f0effb4b5d4fbd0f9e6488b4e090372239117829495b6e8",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:17"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 18,
+      "slug": "ngay-18",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Brain2 → thiết kế bản đồ tư duy và minh họa",
+      "promise": "Làm cho một hệ thống ý tưởng phức tạp trở nên dễ nhìn và dễ giải thích.",
+      "objective": "Xác định quan hệ giữa các ý rồi chọn cấu trúc hình ảnh phù hợp với thông điệp.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn hoàn thành một bản đồ tư duy hoặc brief minh họa có nhãn và thứ bậc rõ ràng.",
+      "sourceFragmentSha256": "298f13cf1aaf318c1f3f6f7a2d1dec2a0e199f662cff3014677b0c2ed60ac07c",
+      "contentSha256": "22b7fbf920ee8a728c03cd1f59aab9a104d2b60a9a8bfd7a52f6a2db5e966b3a",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:18"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 19,
+      "slug": "ngay-19",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Brain2 → lên kế hoạch nội dung cả tháng",
+      "promise": "Xây lịch nội dung tháng từ tài sản đã có thay vì nghĩ chủ đề từ số không.",
+      "objective": "Kết nối mục tiêu, nhóm chủ đề, insight, câu chuyện và định dạng thành nhịp xuất bản.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 75
+      },
+      "preview": "Bạn có lịch nội dung thực tế với đầu vào rõ cho từng bài và khoảng trống để điều chỉnh.",
+      "sourceFragmentSha256": "c01d9bb17130d68f813d3dac104d90329b7edd1036840e01d16b9fbdfb836636",
+      "contentSha256": "4a50d844c8863f39027d1ecedf59e5b9edfa81c43705073d2b50c17c3fd6df85",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:19"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 20,
+      "slug": "ngay-20",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Tự động hóa dòng chảy tri thức",
+      "promise": "Giảm thao tác lặp lại từ lúc thu nhận đến khi tri thức được đưa vào sử dụng.",
+      "objective": "Vẽ dòng chảy hiện tại, chọn một điểm nghẽn và thiết kế tự động hóa có bước kiểm tra.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn hoàn thành một quy trình nhỏ giúp tri thức di chuyển đều mà vẫn giữ quyền kiểm soát.",
+      "sourceFragmentSha256": "f46286fa351ffbed4aee8580ecbc17e5a9beed80426b261ff1f393154bfa0eae",
+      "contentSha256": "e51c4a7e78c6f71bff024af6ed705247005e428c5ae370ddead2c53ffad579a6",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:20"
+    },
+    {
+      "schemaVersion": 1,
+      "day": 21,
+      "slug": "ngay-21",
+      "week": 3,
+      "access": "conan-maker",
+      "title": "Tốt nghiệp và bản đồ tri thức",
+      "promise": "Nhìn lại toàn bộ Brain2 và chọn hướng phát triển sau chặng 21 ngày.",
+      "objective": "Tổng hợp tài sản đã tạo, mối liên hệ nổi bật, khoảng trống và nhịp duy trì tiếp theo.",
+      "estimatedMinutes": {
+        "min": 60,
+        "max": 90
+      },
+      "preview": "Bạn kết thúc bằng một bản đồ tri thức độc bản cùng kế hoạch sử dụng hệ thống sau khóa học.",
+      "sourceFragmentSha256": "1219f59e4dad814dfbbf3164039660499222c6a370557c72eda54246dd0368ee",
+      "contentSha256": "a922e247eaa1b1fb07be2791181cf6b9b07a26dcad870cba1f070fe11ec37c7a",
+      "migratedAt": "2026-07-12T00:00:00.000Z",
+      "editorialState": "reviewed",
+      "storageKey": "brain2:21:2026-07-12.1:day:21"
+    }
+  ]
+}
