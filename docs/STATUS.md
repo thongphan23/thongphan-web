@@ -4,11 +4,13 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The first
-slice establishes public-repository release guardrails while the approved direction
-adds a five-act personal origin story and consolidates only the legacy 21-day Brain2
-challenge under `/brain2/21-ngay`. The private Brain2 vault, chat and standalone app
-remain explicitly excluded. Motion Atmosphere remains complete and live.
+**Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The public
+hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI and
+the dedicated protected-content Worker are locally complete. Private publishing,
+email v2, the five-act story, cross-site wiring, full QA and production cutover remain
+in later slices. Only the legacy 21-day challenge is being consolidated; the private
+Brain2 vault, chat and standalone app remain explicitly excluded. Motion Atmosphere
+remains complete and live.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
@@ -75,6 +77,19 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
   83/83, npm audit zero vulnerabilities, final rendered QA at 1440×900 and 390×844,
   and re-review with 0 Critical/0 Important. The hub/lesson route chunks measure
   2,967/7,919 bytes gzip and the sensitive-string scan reports zero hits.
+- The dedicated `thongphan-brain2-access-api` Worker is now a locally verified release
+  candidate. It owns only the exact apex/www challenge API paths, uses a signed
+  path-scoped session, reserves each of five rolling attempts atomically in D1 before
+  evaluating a code, and validates immutable KV packages against exact public metadata,
+  schema, byte ceiling and SHA-256 body checksum. All responses are private/no-store;
+  local development/preview hostnames and shared KV reuse are disabled.
+- Task 6 verification: focused 13/13, full 162/162, TypeScript pass, static build
+  83/83, npm audit zero vulnerabilities and Wrangler 4.110.0 dry-run at 10.46 KiB
+  gzip. A 12-token scan compared 12,792 private fingerprints across 1,733 tracked/build
+  files and found zero hits. Independent review ended at 0 Critical/0 Important/0
+  Minor after TDD fixes for chunked-body buffering, mixed-candidate concurrency and
+  D1 release failure. The tracked KV ID remains a deliberate non-deployable placeholder;
+  no remote resource, migration, secret or Worker was changed in this slice.
 
 ## Motion Atmosphere production release — 2026-07-12
 

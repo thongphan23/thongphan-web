@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thongphan-brain2-access-api",
+  "main": "workers/brain2-access/index.ts",
+  "compatibility_date": "2026-07-12",
+  "workers_dev": false,
+  "preview_urls": false,
+  "minify": true,
+  "routes": [
+    {
+      "pattern": "thongphan.com/brain2/21-ngay/api/*",
+      "zone_name": "thongphan.com"
+    },
+    {
+      "pattern": "www.thongphan.com/brain2/21-ngay/api/*",
+      "zone_name": "thongphan.com"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "thongphan-db",
+      "database_id": "7cffb7f5-c48b-49c2-b215-9611abd734a5",
+      "migrations_dir": "workers/migrations"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "BRAIN2_CONTENT",
+      "id": "00000000000000000000000000000000"
+    }
+  ]
+}
