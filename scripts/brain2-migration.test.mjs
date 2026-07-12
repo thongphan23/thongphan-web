@@ -244,10 +244,12 @@ test('removes unsafe URLs and stale operational copy while retaining safe links'
      <p>Tham gia Zoom và đăng lên nhóm Zalo trong workshop tháng 5/2026.</p>
      <p>Passcode 0203 tại https://brain2.thongphan.com và /Users/example/.agent/config.</p>
      <p>Create 1 note today.</p><p>Trusted by 1200 members.</p>
-     <ul><li>Miễn phí vĩnh viễn</li><li>Miễn phí 100%</li><li>Free forever</li><li>Useful retained item</li></ul>
+     <p>Công ty đóng cửa → mất hết</p>
+     <ul><li>Miễn phí vĩnh viễn</li><li>Miễn phí 100%</li><li>Free forever</li><li>Miễn phí với tài khoản Google cá nhân</li><li>Useful retained item</li></ul>
      <p><a href="javascript:alert(1)">Unsafe</a> <a href="https://example.com/safe">Safe</a></p>
      <p><a href="https://antigravity.google/download">Legacy tool download</a></p>
      <a href="https://video.example/legacy"><div><p>Antigravity setup tutorial</p></div></a>
+     <a href="https://video.example/dynamic"><div><p>Course</p><p>Từng được bán $97, nay free. Khóa học đầy đủ nhất.</p></div></a>
      <p><a href="https://sachmoi.net/book">Old resource</a></p>`,
     { day: 3, sourceName: 'editorial-fixture' },
   )
@@ -257,13 +259,14 @@ test('removes unsafe URLs and stale operational copy while retaining safe links'
   assert.match(serialized, /bạn/)
   assert.match(serialized, /Create 1 note today/)
   assert.match(serialized, /Useful retained item/)
-  assert.doesNotMatch(serialized, /Miễn phí vĩnh viễn|Miễn phí 100%|Free forever/i)
+  assert.match(serialized, /Phụ thuộc vào quyền truy cập và chính sách của nền tảng/)
+  assert.doesNotMatch(serialized, /Miễn phí vĩnh viễn|Miễn phí 100%|Free forever|Miễn phí với tài khoản Google|\$97|nay free|khóa học đầy đủ nhất|Công ty đóng cửa\s*→\s*mất hết/i)
   assert.doesNotMatch(serialized, /1200 members/)
   assert.doesNotMatch(
     serialized,
     /Antigravity|\bmày\b|anh em|Zoom|Zalo|workshop|tháng 5|0203|brain2\.thongphan\.com|\/Users\/|\.agent|javascript:|sachmoi\.net/i,
   )
-  assert.equal(result.inventory.sourceExternalLinks, 5)
+  assert.equal(result.inventory.sourceExternalLinks, 6)
   assert.equal(result.inventory.retainedExternalLinks, 1)
 })
 

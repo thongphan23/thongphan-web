@@ -482,6 +482,7 @@ Status: PASS for the canonical migration package split.
 ${omissionRows}
 | \`ai-tool-neutralized\` | ${editorialCounts['ai-tool-neutralized']} | Rephrased to tool-neutral instruction |
 | \`audience-normalized\` | ${editorialCounts['audience-normalized']} | Normalized to \`bạn\` |
+| \`platform-risk-neutralized\` | ${editorialCounts['platform-risk-neutralized']} | Rephrased absolute platform-loss language as a bounded dependency risk |
 
 The report intentionally contains no protected lesson body, prompt, resource note, deliverable body or checklist label.
 `

@@ -9,7 +9,7 @@ Status: PASS for the canonical migration package split.
 - Protected packages: 14, written only to the validated outside-repository target.
 - Copy-derived prompt actions: 41.
 - Source external links inventoried before omission: 65.
-- External links retained after editorial normalization: 61.
+- External links retained after editorial normalization: 60.
 - Static reviewed editorial rows: 21/21, including source-matched duration ranges.
 - Protected-day tracked rows contain public metadata only; private package fields are derived deterministically at migration runtime.
 - Private output uses canonical real directories, no-follow file writes and an exact 14-entry allowlist.
@@ -29,8 +29,9 @@ Status: PASS for the canonical migration package split.
 | `ai-tool-link` | 3 | Omitted before package output |
 | `omitted-resource` | 1 | Omitted before package output |
 | `unverified-count` | 0 | Omitted before package output |
-| `dynamic-claim` | 2 | Omitted before package output |
+| `dynamic-claim` | 4 | Omitted before package output |
 | `ai-tool-neutralized` | 19 | Rephrased to tool-neutral instruction |
 | `audience-normalized` | 0 | Normalized to `bạn` |
+| `platform-risk-neutralized` | 1 | Rephrased absolute platform-loss language as a bounded dependency risk |
 
 The report intentionally contains no protected lesson body, prompt, resource note, deliverable body or checklist label.

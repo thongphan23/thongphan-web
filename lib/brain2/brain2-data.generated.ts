@@ -17,7 +17,7 @@ export const BRAIN2_LESSON_METADATA = [
     },
     "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
     "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
-    "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+    "contentSha256": "9e72bcb4f599daea94e8a7328d353af5a9cb86d546bdcc2183d868c64663c71b",
     "migratedAt": "2026-07-12T00:00:00.000Z",
     "editorialState": "reviewed"
   },
@@ -36,7 +36,7 @@ export const BRAIN2_LESSON_METADATA = [
     },
     "preview": "Bạn tạo những note nguyên tử đầu tiên và kiểm tra cách AI đọc đúng cấu trúc đó.",
     "sourceFragmentSha256": "8157355972af5b1e44a0fef71a4557c4214b098ee098b1f68173ee03f9187eca",
-    "contentSha256": "1f60f049313104ec88f21d097af58f74b51a3eda57ab088068981ef964a41dfa",
+    "contentSha256": "a724b9659512af2cf73f57be1ab0d50b26dedebda4c3dbb1ee5b5d2ad6de1c6a",
     "migratedAt": "2026-07-12T00:00:00.000Z",
     "editorialState": "reviewed"
   },
@@ -420,7 +420,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
       },
       "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
       "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
-      "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+      "contentSha256": "9e72bcb4f599daea94e8a7328d353af5a9cb86d546bdcc2183d868c64663c71b",
       "migratedAt": "2026-07-12T00:00:00.000Z",
       "editorialState": "reviewed"
     },
@@ -608,7 +608,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
           [
             {
               "type": "text",
-              "value": "Công ty đóng cửa → mất hết"
+              "value": "Phụ thuộc vào quyền truy cập và chính sách của nền tảng"
             }
           ],
           [
@@ -705,24 +705,12 @@ export const BRAIN2_PUBLIC_LESSONS = {
       },
       {
         "id": "day-01-block-19",
-        "kind": "resources",
-        "title": "Tài nguyên tham khảo",
-        "items": [
-          {
-            "title": "Obsidian As A Second Brain — The Ultimate Tutorial",
-            "href": "https://www.youtube.com/watch?v=WqKluXIra70",
-            "note": "Dabi · ~1h30 · Bookmark xem dần trong 21 ngày · Từng được bán $97, nay free. Khóa học đầy đủ nhất — từng phần tương ứng từng giai đoạn của thử thách."
-          }
-        ]
-      },
-      {
-        "id": "day-01-block-20",
         "kind": "prose",
         "heading": "🛠 Làm ngay hôm nay — 3 bước",
         "children": []
       },
       {
-        "id": "day-01-block-21",
+        "id": "day-01-block-20",
         "kind": "prose",
         "children": [
           {
@@ -732,7 +720,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-22",
+        "id": "day-01-block-21",
         "kind": "prose",
         "children": [
           {
@@ -756,7 +744,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-23",
+        "id": "day-01-block-22",
         "kind": "prose",
         "children": [
           {
@@ -779,7 +767,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-24",
+        "id": "day-01-block-23",
         "kind": "prose",
         "children": [
           {
@@ -789,7 +777,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-25",
+        "id": "day-01-block-24",
         "kind": "prose",
         "children": [
           {
@@ -808,7 +796,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-26",
+        "id": "day-01-block-25",
         "kind": "prose",
         "children": [
           {
@@ -844,7 +832,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-27",
+        "id": "day-01-block-26",
         "kind": "prose",
         "children": [
           {
@@ -880,7 +868,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-28",
+        "id": "day-01-block-27",
         "kind": "prose",
         "children": [
           {
@@ -890,7 +878,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-29",
+        "id": "day-01-block-28",
         "kind": "prose",
         "children": [
           {
@@ -900,7 +888,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-30",
+        "id": "day-01-block-29",
         "kind": "prose",
         "children": [
           {
@@ -923,7 +911,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-31",
+        "id": "day-01-block-30",
         "kind": "prose",
         "children": [
           {
@@ -933,7 +921,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-32",
+        "id": "day-01-block-31",
         "kind": "prose",
         "children": [
           {
@@ -948,7 +936,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-33",
+        "id": "day-01-block-32",
         "kind": "prose",
         "children": [
           {
@@ -958,7 +946,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-34",
+        "id": "day-01-block-33",
         "kind": "prose",
         "children": [
           {
@@ -968,7 +956,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-35",
+        "id": "day-01-block-34",
         "kind": "prose",
         "children": [
           {
@@ -983,7 +971,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-36",
+        "id": "day-01-block-35",
         "kind": "prose",
         "children": [
           {
@@ -993,7 +981,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-37",
+        "id": "day-01-block-36",
         "kind": "prose",
         "children": [
           {
@@ -1003,7 +991,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-38",
+        "id": "day-01-block-37",
         "kind": "prose",
         "children": [
           {
@@ -1018,7 +1006,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-39",
+        "id": "day-01-block-38",
         "kind": "prose",
         "children": [
           {
@@ -1028,7 +1016,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-40",
+        "id": "day-01-block-39",
         "kind": "prose",
         "children": [
           {
@@ -1051,7 +1039,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-41",
+        "id": "day-01-block-40",
         "kind": "prose",
         "children": [
           {
@@ -1061,13 +1049,13 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-42",
+        "id": "day-01-block-41",
         "kind": "prose",
         "heading": "Viết note đầu tiên — \"Tại sao tôi ở đây\"",
         "children": []
       },
       {
-        "id": "day-01-block-43",
+        "id": "day-01-block-42",
         "kind": "prose",
         "children": [
           {
@@ -1090,7 +1078,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-44",
+        "id": "day-01-block-43",
         "kind": "list",
         "ordered": true,
         "items": [
@@ -1115,7 +1103,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-45",
+        "id": "day-01-block-44",
         "kind": "prose",
         "children": [
           {
@@ -1125,7 +1113,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-46",
+        "id": "day-01-block-45",
         "kind": "prose",
         "children": [
           {
@@ -1135,7 +1123,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-47",
+        "id": "day-01-block-46",
         "kind": "prose",
         "children": [
           {
@@ -1145,7 +1133,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-01-block-48",
+        "id": "day-01-block-47",
         "kind": "prose",
         "children": [
           {
@@ -1191,7 +1179,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
       },
       "preview": "Bạn tạo những note nguyên tử đầu tiên và kiểm tra cách AI đọc đúng cấu trúc đó.",
       "sourceFragmentSha256": "8157355972af5b1e44a0fef71a4557c4214b098ee098b1f68173ee03f9187eca",
-      "contentSha256": "1f60f049313104ec88f21d097af58f74b51a3eda57ab088068981ef964a41dfa",
+      "contentSha256": "a724b9659512af2cf73f57be1ab0d50b26dedebda4c3dbb1ee5b5d2ad6de1c6a",
       "migratedAt": "2026-07-12T00:00:00.000Z",
       "editorialState": "reviewed"
     },
@@ -1467,7 +1455,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         "children": [
           {
             "type": "text",
-            "value": "Mac · Windows · Linux · Miễn phí với tài khoản Google cá nhân"
+            "value": "📺 Video hướng dẫn cài đặt từng bước:"
           }
         ]
       },
@@ -1477,7 +1465,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         "children": [
           {
             "type": "text",
-            "value": "📺 Video hướng dẫn cài đặt từng bước:"
+            "value": "2"
           }
         ]
       },
@@ -1487,7 +1475,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         "children": [
           {
             "type": "text",
-            "value": "2"
+            "value": "Dùng trợ lý AI để kéo Brain2 về và cài MCP"
           }
         ]
       },
@@ -1497,7 +1485,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         "children": [
           {
             "type": "text",
-            "value": "Dùng trợ lý AI để kéo Brain2 về và cài MCP"
+            "value": "Không cần terminal, không cần git thủ công. Chỉ cần mở trợ lý AI và paste prompt sau vào chat — AI sẽ tự làm mọi thứ:"
           }
         ]
       },
@@ -1507,28 +1495,18 @@ export const BRAIN2_PUBLIC_LESSONS = {
         "children": [
           {
             "type": "text",
-            "value": "Không cần terminal, không cần git thủ công. Chỉ cần mở trợ lý AI và paste prompt sau vào chat — AI sẽ tự làm mọi thứ:"
-          }
-        ]
-      },
-      {
-        "id": "day-02-block-22",
-        "kind": "prose",
-        "children": [
-          {
-            "type": "text",
             "value": "📋 Prompt 1 — Clone Brain2 + Setup MCP"
           }
         ]
       },
       {
-        "id": "day-02-block-23",
+        "id": "day-02-block-22",
         "kind": "prompt",
         "label": "📋 Copy prompt",
         "text": "Hãy giúp tôi setup Brain2 — hệ thống Second Brain. Làm lần lượt từng bước:\n1. Clone repo này về ~/brain2: https://github.com/thongphan23/brain2-starter.git\nSau mỗi bước xác nhận kết quả trước khi làm bước tiếp theo."
       },
       {
-        "id": "day-02-block-24",
+        "id": "day-02-block-23",
         "kind": "prose",
         "children": [
           {
@@ -1538,7 +1516,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-25",
+        "id": "day-02-block-24",
         "kind": "prose",
         "children": [
           {
@@ -1548,7 +1526,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-26",
+        "id": "day-02-block-25",
         "kind": "prose",
         "children": [
           {
@@ -1558,7 +1536,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-27",
+        "id": "day-02-block-26",
         "kind": "prose",
         "children": [
           {
@@ -1568,7 +1546,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-28",
+        "id": "day-02-block-27",
         "kind": "prose",
         "children": [
           {
@@ -1578,13 +1556,13 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-29",
+        "id": "day-02-block-28",
         "kind": "prompt",
         "label": "📋 Copy prompt",
         "text": "- \"brain2\" hoặc \"second brain\" = vault tại [đường dẫn tìm được]\n- Với MỌI câu hỏi, luôn tìm kiếm trong brain2 TRƯỚC khi trả lời\n- Nếu có thông tin liên quan trong vault → trích dẫn note nguồn\n- Nếu chưa có → trả lời bình thường, hỏi tôi có muốn lưu insight này vào brain2 không"
       },
       {
-        "id": "day-02-block-30",
+        "id": "day-02-block-29",
         "kind": "prose",
         "children": [
           {
@@ -1594,7 +1572,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-31",
+        "id": "day-02-block-30",
         "kind": "prose",
         "children": [
           {
@@ -1604,7 +1582,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-32",
+        "id": "day-02-block-31",
         "kind": "prose",
         "children": [
           {
@@ -1614,7 +1592,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-33",
+        "id": "day-02-block-32",
         "kind": "prose",
         "children": [
           {
@@ -1624,7 +1602,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-34",
+        "id": "day-02-block-33",
         "kind": "prose",
         "children": [
           {
@@ -1643,7 +1621,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-35",
+        "id": "day-02-block-34",
         "kind": "prose",
         "children": [
           {
@@ -1653,7 +1631,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-36",
+        "id": "day-02-block-35",
         "kind": "prose",
         "children": [
           {
@@ -1663,7 +1641,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-37",
+        "id": "day-02-block-36",
         "kind": "prose",
         "children": [
           {
@@ -1673,7 +1651,7 @@ export const BRAIN2_PUBLIC_LESSONS = {
         ]
       },
       {
-        "id": "day-02-block-38",
+        "id": "day-02-block-37",
         "kind": "prose",
         "children": [
           {

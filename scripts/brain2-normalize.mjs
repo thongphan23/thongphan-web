@@ -56,7 +56,7 @@ const countMatches = (value, pattern) => [...value.matchAll(pattern)].length
 const UNVERIFIED_COUNT_PATTERN =
   /\b(?:\d{3,}|\d{1,3}(?:[.,]\d{3})+|\d+(?:[.,]\d+)?\s*[kKmM])(?:\+)?\s*(?:notes?|ghi\s*chú|shares?|lượt\s*chia\s*sẻ|members?|thành\s*viên)\b/i
 const DYNAMIC_CLAIM_PATTERN =
-  /(?:Obsidian\s+)?miễn\s+phí\s+(?:100\s*%|vĩnh\s+viễn)|free\s+forever/i
+  /(?:Obsidian\s+)?miễn\s+phí\s+(?:100\s*%|vĩnh\s+viễn|với\s+tài\s+khoản\s+Google\s+cá\s+nhân)|free\s+forever|từng\s+được\s+bán\s*\$?\d+(?:[.,]\d+)?[^.]{0,40}nay\s+free|khóa\s+học\s+đầy\s+đủ\s+nhất/i
 
 const OMIT_RULES = [
   {
@@ -97,6 +97,7 @@ export const BANNED_OUTPUT_RULES = [
   ['omitted-resource', /sachmoi\.net/i],
   ['unverified-count', UNVERIFIED_COUNT_PATTERN],
   ['dynamic-claim', DYNAMIC_CLAIM_PATTERN],
+  ['absolute-platform-loss', /Công\s+ty\s+đóng\s+cửa\s*→\s*mất\s+hết/i],
   ['stale-ai-name', /\bAntigravity\b/i],
   ['stale-audience', /\b(?:mày|anh\s+em)\b/i],
 ]
@@ -106,15 +107,18 @@ export const emptyEditorialCounts = () =>
     ...OMIT_RULES.map(({ key }) => [key, 0]),
     ['ai-tool-neutralized', 0],
     ['audience-normalized', 0],
+    ['platform-risk-neutralized', 0],
   ])
 
 const normalizeInstructionText = (value, counts) => {
   counts['ai-tool-neutralized'] += countMatches(value, /\bAntigravity\b/gi)
   counts['audience-normalized'] += countMatches(value, /\b(?:mày|anh\s+em)\b/gi)
+  counts['platform-risk-neutralized'] += countMatches(value, /Công\s+ty\s+đóng\s+cửa\s*→\s*mất\s+hết/gi)
   return value
     .replace(/\bAntigravity\b/gi, 'trợ lý AI')
     .replace(/\banh\s+em\b/gi, 'bạn')
     .replace(/\bmày\b/gi, 'bạn')
+    .replace(/Công\s+ty\s+đóng\s+cửa\s*→\s*mất\s+hết/gi, 'Phụ thuộc vào quyền truy cập và chính sách của nền tảng')
 }
 
 const omittedByEditorialRule = (value, counts) => {

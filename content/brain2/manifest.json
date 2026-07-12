@@ -11,7 +11,7 @@
     "protected": 14,
     "copyDerivedPrompts": 41,
     "sourceExternalLinks": 65,
-    "retainedExternalLinks": 61
+    "retainedExternalLinks": 60
   },
   "lessons": [
     {
@@ -29,7 +29,7 @@
       },
       "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
       "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
-      "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+      "contentSha256": "9e72bcb4f599daea94e8a7328d353af5a9cb86d546bdcc2183d868c64663c71b",
       "migratedAt": "2026-07-12T00:00:00.000Z",
       "editorialState": "reviewed"
     },
@@ -48,7 +48,7 @@
       },
       "preview": "Bạn tạo những note nguyên tử đầu tiên và kiểm tra cách AI đọc đúng cấu trúc đó.",
       "sourceFragmentSha256": "8157355972af5b1e44a0fef71a4557c4214b098ee098b1f68173ee03f9187eca",
-      "contentSha256": "1f60f049313104ec88f21d097af58f74b51a3eda57ab088068981ef964a41dfa",
+      "contentSha256": "a724b9659512af2cf73f57be1ab0d50b26dedebda4c3dbb1ee5b5d2ad6de1c6a",
       "migratedAt": "2026-07-12T00:00:00.000Z",
       "editorialState": "reviewed"
     },

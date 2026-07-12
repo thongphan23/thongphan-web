@@ -14,7 +14,7 @@
     },
     "preview": "Bạn khởi động Brain2 bằng một hệ thống nhỏ có thể dùng ngay trong hôm nay.",
     "sourceFragmentSha256": "ba6c7f90c644af7526629ab5b326c20c90b59eb2f808801e2933ea050b9c8ef2",
-    "contentSha256": "19605e992c823546cfd63968dad0e476857ba9ba3633e27f0bf970f5a22d1d79",
+    "contentSha256": "9e72bcb4f599daea94e8a7328d353af5a9cb86d546bdcc2183d868c64663c71b",
     "migratedAt": "2026-07-12T00:00:00.000Z",
     "editorialState": "reviewed"
   },
@@ -202,7 +202,7 @@
         [
           {
             "type": "text",
-            "value": "Công ty đóng cửa → mất hết"
+            "value": "Phụ thuộc vào quyền truy cập và chính sách của nền tảng"
           }
         ],
         [
@@ -299,24 +299,12 @@
     },
     {
       "id": "day-01-block-19",
-      "kind": "resources",
-      "title": "Tài nguyên tham khảo",
-      "items": [
-        {
-          "title": "Obsidian As A Second Brain — The Ultimate Tutorial",
-          "href": "https://www.youtube.com/watch?v=WqKluXIra70",
-          "note": "Dabi · ~1h30 · Bookmark xem dần trong 21 ngày · Từng được bán $97, nay free. Khóa học đầy đủ nhất — từng phần tương ứng từng giai đoạn của thử thách."
-        }
-      ]
-    },
-    {
-      "id": "day-01-block-20",
       "kind": "prose",
       "heading": "🛠 Làm ngay hôm nay — 3 bước",
       "children": []
     },
     {
-      "id": "day-01-block-21",
+      "id": "day-01-block-20",
       "kind": "prose",
       "children": [
         {
@@ -326,7 +314,7 @@
       ]
     },
     {
-      "id": "day-01-block-22",
+      "id": "day-01-block-21",
       "kind": "prose",
       "children": [
         {
@@ -350,7 +338,7 @@
       ]
     },
     {
-      "id": "day-01-block-23",
+      "id": "day-01-block-22",
       "kind": "prose",
       "children": [
         {
@@ -373,7 +361,7 @@
       ]
     },
     {
-      "id": "day-01-block-24",
+      "id": "day-01-block-23",
       "kind": "prose",
       "children": [
         {
@@ -383,7 +371,7 @@
       ]
     },
     {
-      "id": "day-01-block-25",
+      "id": "day-01-block-24",
       "kind": "prose",
       "children": [
         {
@@ -402,7 +390,7 @@
       ]
     },
     {
-      "id": "day-01-block-26",
+      "id": "day-01-block-25",
       "kind": "prose",
       "children": [
         {
@@ -438,7 +426,7 @@
       ]
     },
     {
-      "id": "day-01-block-27",
+      "id": "day-01-block-26",
       "kind": "prose",
       "children": [
         {
@@ -474,7 +462,7 @@
       ]
     },
     {
-      "id": "day-01-block-28",
+      "id": "day-01-block-27",
       "kind": "prose",
       "children": [
         {
@@ -484,7 +472,7 @@
       ]
     },
     {
-      "id": "day-01-block-29",
+      "id": "day-01-block-28",
       "kind": "prose",
       "children": [
         {
@@ -494,7 +482,7 @@
       ]
     },
     {
-      "id": "day-01-block-30",
+      "id": "day-01-block-29",
       "kind": "prose",
       "children": [
         {
@@ -517,7 +505,7 @@
       ]
     },
     {
-      "id": "day-01-block-31",
+      "id": "day-01-block-30",
       "kind": "prose",
       "children": [
         {
@@ -527,7 +515,7 @@
       ]
     },
     {
-      "id": "day-01-block-32",
+      "id": "day-01-block-31",
       "kind": "prose",
       "children": [
         {
@@ -542,7 +530,7 @@
       ]
     },
     {
-      "id": "day-01-block-33",
+      "id": "day-01-block-32",
       "kind": "prose",
       "children": [
         {
@@ -552,7 +540,7 @@
       ]
     },
     {
-      "id": "day-01-block-34",
+      "id": "day-01-block-33",
       "kind": "prose",
       "children": [
         {
@@ -562,7 +550,7 @@
       ]
     },
     {
-      "id": "day-01-block-35",
+      "id": "day-01-block-34",
       "kind": "prose",
       "children": [
         {
@@ -577,7 +565,7 @@
       ]
     },
     {
-      "id": "day-01-block-36",
+      "id": "day-01-block-35",
       "kind": "prose",
       "children": [
         {
@@ -587,7 +575,7 @@
       ]
     },
     {
-      "id": "day-01-block-37",
+      "id": "day-01-block-36",
       "kind": "prose",
       "children": [
         {
@@ -597,7 +585,7 @@
       ]
     },
     {
-      "id": "day-01-block-38",
+      "id": "day-01-block-37",
       "kind": "prose",
       "children": [
         {
@@ -612,7 +600,7 @@
       ]
     },
     {
-      "id": "day-01-block-39",
+      "id": "day-01-block-38",
       "kind": "prose",
       "children": [
         {
@@ -622,7 +610,7 @@
       ]
     },
     {
-      "id": "day-01-block-40",
+      "id": "day-01-block-39",
       "kind": "prose",
       "children": [
         {
@@ -645,7 +633,7 @@
       ]
     },
     {
-      "id": "day-01-block-41",
+      "id": "day-01-block-40",
       "kind": "prose",
       "children": [
         {
@@ -655,13 +643,13 @@
       ]
     },
     {
-      "id": "day-01-block-42",
+      "id": "day-01-block-41",
       "kind": "prose",
       "heading": "Viết note đầu tiên — \"Tại sao tôi ở đây\"",
       "children": []
     },
     {
-      "id": "day-01-block-43",
+      "id": "day-01-block-42",
       "kind": "prose",
       "children": [
         {
@@ -684,7 +672,7 @@
       ]
     },
     {
-      "id": "day-01-block-44",
+      "id": "day-01-block-43",
       "kind": "list",
       "ordered": true,
       "items": [
@@ -709,7 +697,7 @@
       ]
     },
     {
-      "id": "day-01-block-45",
+      "id": "day-01-block-44",
       "kind": "prose",
       "children": [
         {
@@ -719,7 +707,7 @@
       ]
     },
     {
-      "id": "day-01-block-46",
+      "id": "day-01-block-45",
       "kind": "prose",
       "children": [
         {
@@ -729,7 +717,7 @@
       ]
     },
     {
-      "id": "day-01-block-47",
+      "id": "day-01-block-46",
       "kind": "prose",
       "children": [
         {
@@ -739,7 +727,7 @@
       ]
     },
     {
-      "id": "day-01-block-48",
+      "id": "day-01-block-47",
       "kind": "prose",
       "children": [
         {
