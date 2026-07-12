@@ -195,8 +195,9 @@ test('short laptop view keeps the hero compact while clearing the evidence rail'
   )?.[0] ?? ''
 
   assert.match(shortLaptop, /min-height:\s*820px/)
-  assert.match(shortLaptop, /\.displayName\s*\{[\s\S]*?font-size:\s*6\.6rem/)
+  assert.match(shortLaptop, /\.displayName\s*\{[\s\S]*?font-size:\s*5\.8rem/)
   assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?bottom:\s*calc\(var\(--hero-film-height\) \+ 1rem\)/)
+  assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?top:\s*9rem/)
   assert.match(shortLaptop, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*1\.8rem/)
   assert.match(shortLaptop, /\.primaryButton\s*\{[\s\S]*?min-height:\s*52px/)
 })
@@ -210,6 +211,15 @@ test('desktop hero keeps the explicit two-line promise below the display name', 
   assert.match(css, /\.displayName\s*\{[\s\S]*?position:\s*relative/)
   assert.match(css, /\.heroCopy\s*\{[\s\S]*?position:\s*relative/)
   assert.match(css, /\.heroCopy h1\s*\{[\s\S]*?max-width:\s*100%/)
+})
+
+test('desktop hero reserves the chapter-nav safe zone and keeps content above decorative layers', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+
+  assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}top:\s*9rem/)
+  assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}z-index:\s*5/)
+  assert.match(css, /\.heroFrameOverlay\s*\{[\s\S]{0,260}z-index:\s*1/)
+  assert.match(css, /\.heroFilm\s*\{[\s\S]{0,520}z-index:\s*3/)
 })
 
 test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {

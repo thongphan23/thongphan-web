@@ -4,12 +4,29 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Production rescue is in progress.** Browser evidence on 2026-07-12 reproduced
-hero text collisions at tablet and desktop breakpoints and confirmed that the Read
-migration intentionally published summaries while dropping all translated body
-blocks and reader images. The prior visual/read release verdict is superseded until
-the complete reader and responsive visual checks pass again. Learn remains preserved
-in source but fail-closed until the independent learner PWA is ready.
+**Hero vertical-layer rescue is in progress.** Production measurements on
+2026-07-12 found that the chapter menu ended at `128px` while the display name began
+at `105px`, producing a repeatable `23px` collision on desktop. The decorative frame
+also rendered above the CTA and evidence rail, and the proof microcopy crossed the
+film rail by `6.9px` at `1440x900`. The prior visual verdict is superseded until the
+desktop-height matrix, mobile, reduced-motion and keyboard checks pass again. Read
+content remains restored; Learn remains fail-closed until its independent PWA is ready.
+
+### Hero vertical-layer rescue verification
+
+- Added a regression contract for the desktop chapter-nav safe zone and explicit
+  decorative/content/film layer ordering; verified red before the CSS fix and green
+  afterward.
+- Local rendered QA passed at `1440x900`, `1440x768`, `1366x768`, `1280x720`,
+  `1280x650`, `1024x768`, `834x1194`, `390x844` and `320x568`: zero nav/title,
+  CTA/film and microcopy/film intersections; zero horizontal overflow; the CTA is
+  the active hit target; no console warning/error.
+- Reduced-motion was enabled across the rendered matrix. Visual captures:
+  `/tmp/thongphan-hero-after-1440x900.png`,
+  `/tmp/thongphan-hero-after-1280x720.png` and
+  `/tmp/thongphan-hero-after-390x844.png`.
+- Fresh local verification: `npm test` 110/110, `npx tsc --noEmit`, and static build
+  61/61 pages passed. Production deployment and domain smoke remain pending.
 
 ## Production rescue — 2026-07-12
 

@@ -81,25 +81,25 @@
   pointer-events: none;
   position: absolute;
   width: 100%;
-  z-index: 6;
+  z-index: 1;
 }
 
 .heroTextStack {
   bottom: calc(var(--hero-film-height) + clamp(1.25rem, 2.5vh, 2rem));
   display: flex;
   flex-direction: column;
-  gap: clamp(1.25rem, 2.5vh, 2rem);
+  gap: clamp(1rem, 2vh, 1.4rem);
   left: clamp(1.5rem, 6.5vw, 6.5rem);
   max-width: min(42rem, 47vw);
   position: absolute;
-  top: clamp(6.5rem, 11vh, 8rem);
-  z-index: 4;
+  top: 9rem;
+  z-index: 5;
 }
 
 .displayName {
   color: var(--cinema-paper);
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(8.3rem, 11.55vw, 10.8rem);
+  font-size: clamp(7.5rem, 9.6vw, 8.6rem);
   font-weight: 500;
   letter-spacing: -0.058em;
   line-height: 0.78;
@@ -183,6 +183,8 @@
   min-height: 60px;
   min-width: min(19.75rem, 100%);
   padding: 0 0.75rem 0 1.65rem;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(7, 7, 6, 0.34), inset 0 1px rgba(255, 255, 255, 0.12);
   text-decoration: none;
   transition: background-color 180ms ease, transform 180ms ease;
 }
@@ -238,7 +240,7 @@
   padding: 1.75rem 0.9rem 1.6rem;
   position: absolute;
   right: clamp(1rem, 3.5vw, 3.25rem);
-  z-index: 5;
+  z-index: 3;
 }
 
 .reelTrack {
@@ -915,13 +917,13 @@
   }
 
   .displayName {
-    font-size: 6.6rem;
+    font-size: 5.8rem;
   }
 
   .heroTextStack {
     bottom: calc(var(--hero-film-height) + 1rem);
     gap: 1rem;
-    top: 6.5rem;
+    top: 9rem;
   }
 
   .heroCopy h1 {
