@@ -14,6 +14,10 @@ export function motionProfileForPath(
     return { ambient: 'none', pointer: 'interactive', scroll: 'minimal' }
   }
 
+  if (pathname.startsWith('/brain2/21-ngay/')) {
+    return { ambient: 'none', pointer: 'interactive', scroll: 'minimal' }
+  }
+
   if (pathname === '/') {
     return { ambient: 'full', pointer: 'full', scroll: 'full' }
   }

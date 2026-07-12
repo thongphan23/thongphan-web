@@ -45,6 +45,10 @@ remain explicitly excluded. Motion Atmosphere remains complete and live.
   derives them only during private migration, rejects descendant symlinks and every
   unexpected package-directory entry, and preserves heading word boundaries while
   filtering dynamic claims and counting only retained external HTTPS links.
+- The public-data generator now revalidates every tracked public checksum before
+  emitting a deterministic module with metadata for 21 days and bodies for days
+  01–07 only. Route theming is locked to a dark evidence hub and calm paper-light
+  lesson pages; focused contracts, the 121-test suite and TypeScript all pass locally.
 
 ## Motion Atmosphere production release — 2026-07-12
 

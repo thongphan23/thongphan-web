@@ -37,6 +37,11 @@ test('motion profiles keep reading calm and dark cinema alive', () => {
     pointer: 'interactive',
     scroll: 'minimal',
   })
+  assert.deepEqual(motionProfileForPath('/brain2/21-ngay/ngay-01', 'editorial-light'), {
+    ambient: 'none',
+    pointer: 'interactive',
+    scroll: 'minimal',
+  })
 })
 
 test('motion atmosphere has one guarded pointer runtime with teardown', async () => {

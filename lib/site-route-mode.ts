@@ -15,6 +15,7 @@ const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
   '/learn': 'learning-dossier',
   '/assets': 'evidence-dossier',
   '/challenges': 'evidence-dossier',
+  '/brain2/21-ngay': 'evidence-dossier',
   '/chat': 'evidence-dossier',
   '/library': 'editorial-light',
   '/blog': 'editorial-light',
@@ -28,6 +29,7 @@ const prefixRouteModes: ReadonlyArray<readonly [prefix: string, mode: SiteRouteM
   ['/assets', 'evidence-dossier'],
   ['/learn', 'learning-dossier'],
   ['/challenges', 'evidence-dossier'],
+  ['/brain2/21-ngay', 'editorial-light'],
   ['/library', 'editorial-light'],
   ['/blog', 'editorial-light'],
 ]
