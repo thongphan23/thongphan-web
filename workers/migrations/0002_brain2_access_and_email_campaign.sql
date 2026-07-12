@@ -19,8 +19,25 @@ ALTER TABLE email_queue
 ALTER TABLE email_queue
   ADD COLUMN last_attempt_at TEXT;
 
+ALTER TABLE email_queue
+  ADD COLUMN first_attempt_at TEXT;
+
 CREATE INDEX IF NOT EXISTS idx_email_queue_campaign_status_schedule
   ON email_queue(campaign_version, status, scheduled_at);
+
+CREATE TRIGGER IF NOT EXISTS quarantine_legacy_email_update
+BEFORE UPDATE ON email_queue
+WHEN OLD.campaign_version = 'legacy-v0'
+BEGIN
+  SELECT RAISE(ABORT, 'legacy email queue is quarantined');
+END;
+
+CREATE TRIGGER IF NOT EXISTS quarantine_legacy_email_delete
+BEFORE DELETE ON email_queue
+WHEN OLD.campaign_version = 'legacy-v0'
+BEGIN
+  SELECT RAISE(ABORT, 'legacy email queue is quarantined');
+END;
 
 UPDATE challenges
 SET title = '21 ngày Brain2 — Biến trải nghiệm thành hệ thống',

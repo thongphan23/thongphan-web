@@ -10,6 +10,7 @@
 .hero,
 .transformation,
 .mapSection,
+.signupSection,
 .closing {
   border-bottom: 1px solid var(--brand-line-dark);
   margin: 0 auto;
@@ -29,6 +30,7 @@
 .eyebrow,
 .transformation header > p,
 .mapSection header > p,
+.signupSection header > p,
 .closing p {
   color: var(--brand-lacquer-bright);
   font-family: var(--font-mono);
@@ -104,6 +106,7 @@
 .mapSection > header { max-width: 68rem; }
 .transformation h2,
 .mapSection h2,
+.signupSection h2,
 .closing h2 {
   color: var(--brand-paper);
   font-family: var(--font-display);
@@ -115,6 +118,16 @@
   text-wrap: balance;
 }
 .mapSection > header > span { color: color-mix(in srgb, var(--brand-paper) 62%, transparent); display: block; line-height: 1.7; margin-top: 1.25rem; }
+.signupSection {
+  align-items: start;
+  background: radial-gradient(circle at 78% 12%, rgba(143, 48, 40, .16), transparent 34%), #171411;
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, .9fr) minmax(22rem, .75fr);
+}
+.signupSection header { max-width: 52rem; }
+.signupSection header > span { color: color-mix(in srgb, var(--brand-paper) 62%, transparent); display: block; line-height: 1.7; margin-top: 1.25rem; }
+.signupPanel { background: rgba(255, 250, 240, .035); border: 1px solid color-mix(in srgb, var(--brand-paper) 18%, transparent); padding: clamp(1.25rem, 4vw, 2.5rem); }
 .beforeAfter { background: var(--brand-line-dark); display: grid; gap: 1px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 3.5rem; }
 .beforeAfter article { background: var(--brand-ink-raised); padding: clamp(1.5rem, 4vw, 3.5rem); transition: background 280ms ease, transform 280ms ease; }
 .beforeAfter article:hover { background: #211d19; transform: translateY(-3px); }
@@ -136,6 +149,7 @@
   .hero h1 { font-size: clamp(2.35rem, 9vw, 3.2rem); }
   .heroMedia { transform: none; }
   .beforeAfter,
+  .signupSection,
   .closing { grid-template-columns: 1fr; }
   .closingActions { justify-content: flex-start; }
 }

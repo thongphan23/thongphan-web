@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Brain2Analytics, { Brain2ConanLink } from '@/components/brain2/Brain2Analytics'
 import Brain2Roadmap from '@/components/brain2/Brain2Roadmap'
 import JsonLd from '@/components/seo/JsonLd'
+import SignupForm from '@/components/SignupForm'
 import { buildBrain2CourseStructuredData } from '@/lib/brain2/structured-data'
 import styles from './page.module.css'
 
@@ -77,6 +78,17 @@ export default function Brain2ChallengePage() {
           <span>Trạng thái truy cập được ghi bằng chữ ở từng ngày, không ẩn sau màu sắc.</span>
         </header>
         <Brain2Roadmap />
+      </section>
+
+      <section className={styles.signupSection} aria-labelledby="brain2-email-title">
+        <header data-motion-reveal="fade">
+          <p>Giữ nhịp trong 21 ngày</p>
+          <h2 id="brain2-email-title">Nhận đúng một đường dẫn mỗi ngày, rồi làm bài trên website.</h2>
+          <span>Email không chứa nội dung bài hay câu trả lời của bạn. Tuần 1 mở công khai; tuần 2–3 vẫn cần quyền Conan Maker.</span>
+        </header>
+        <div className={styles.signupPanel} data-motion-surface>
+          <SignupForm challengeSlug="brain2-21-ngay" />
+        </div>
       </section>
 
       <section className={styles.closing} data-motion-reveal="fade">

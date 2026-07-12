@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": []
+  },
+  "include": [
+    "workers/brain2-campaign.ts",
+    "workers/brain2-access/**/*.ts",
+    "workers/api/signup.ts",
+    "workers/api/email-content.ts",
+    "workers/api/email-drip.ts",
+    "functions/api/signup.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -17,6 +17,14 @@ interface FormErrors {
   email?: string
 }
 
+interface SignupResponse {
+  success?: boolean
+  message?: string
+  error?: string
+}
+
+const NETWORK_FALLBACK = 'Không thể kết nối lúc này. Vui lòng giữ nguyên thông tin và thử lại.'
+
 export default function SignupForm({ challengeSlug }: SignupFormProps) {
   const [formData, setFormData] = useState<FormData>({ name: '', email: '' })
   const [errors, setErrors] = useState<FormErrors>({})
@@ -59,6 +67,7 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
     }
 
     setIsSubmitting(true)
+    let userMessage = NETWORK_FALLBACK
 
     try {
       // Call signup API
@@ -72,18 +81,18 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
         })
       })
 
-      const data = await response.json()
+      const data = await response.json().catch(() => ({})) as SignupResponse
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Đăng ký thất bại')
+      if (!response.ok || data.success !== true) {
+        userMessage = data.message ?? data.error ?? NETWORK_FALLBACK
+        throw new Error('signup_failed')
       }
 
       // Success
       setIsSuccess(true)
 
-    } catch (error) {
-      console.error('Signup error:', error)
-      setSubmitError(error instanceof Error ? error.message : 'Có lỗi xảy ra. Vui lòng thử lại.')
+    } catch {
+      setSubmitError(userMessage)
     } finally {
       setIsSubmitting(false)
     }
@@ -108,7 +117,7 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
             <br />
             Khi hoàn thành 21 ngày, bước tiếp theo là vào Conan Maker để biến Brain2 thành đầu ra thật.
           </p>
-          <a href="https://com.conan.school" target="_blank" rel="noopener noreferrer" className="btn-outline">
+          <a href="/conanmaker/" className="btn-outline">
             Xem Conan Maker
           </a>
         </div>
@@ -120,7 +129,7 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
   return (
     <div className={styles.signupForm}>
       {submitError && (
-        <div className={styles.errorAlert}>
+        <div className={styles.errorAlert} role="alert">
           {submitError}
         </div>
       )}

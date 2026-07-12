@@ -1,9 +1,18 @@
 name = "thongphan-signup-api"
 main = "workers/api/signup.ts"
 compatibility_date = "2025-01-01"
+workers_dev = false
+preview_urls = false
+
+[observability]
+enabled = false
 
 [[routes]]
 pattern = "thongphan.com/api/signup"
+zone_name = "thongphan.com"
+
+[[routes]]
+pattern = "www.thongphan.com/api/signup"
 zone_name = "thongphan.com"
 
 [[d1_databases]]
@@ -15,3 +24,19 @@ database_id = "7cffb7f5-c48b-49c2-b215-9611abd734a5"
 binding = "KV"
 id = "18e5b3dde1924e659dd536794f1d2ce2"
 preview_id = "e676e1ad29844b24a18fb4c8241b6992"
+
+[[ratelimits]]
+name = "SIGNUP_IP_RATE_LIMITER"
+namespace_id = "2026071201"
+
+  [ratelimits.simple]
+  limit = 5
+  period = 60
+
+[[ratelimits]]
+name = "SIGNUP_EMAIL_RATE_LIMITER"
+namespace_id = "2026071202"
+
+  [ratelimits.simple]
+  limit = 2
+  period = 60

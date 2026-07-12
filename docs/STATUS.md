@@ -6,9 +6,9 @@ Last updated: 2026-07-12
 
 **Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
-the dedicated protected-content Worker and its private release gate are locally
-complete. Email v2, the five-act story, cross-site wiring, full QA and production
-cutover remain in later slices. Only the legacy 21-day challenge is being consolidated;
+the dedicated protected-content Worker, its private release gate and the inert email
+v2 release candidate are locally complete. The five-act story, cross-site wiring,
+full QA and production cutover remain in later slices. Only the legacy 21-day challenge is being consolidated;
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
@@ -103,6 +103,29 @@ Atmosphere remains complete and live.
   6,882 normalized fingerprints with zero hits/symlinks. Independent review ended at
   0 Critical/0 Important/0 Minor. No KV or other remote state was touched; Task 15
   must rerun with `--require-keychain-secrets` after provisioning.
+- Email campaign v2 is now locally complete and inert. Existing rows remain
+  `legacy-v0`; migration triggers block their update/delete, while signup creates only
+  `brain2-2026-v1` rows in one D1 batch. Day 1 schedules after two minutes and days
+  02–21 at 09:00 Asia/Ho_Chi_Minh. All 21 emails contain only public manifest metadata,
+  the canonical lesson link and a signed non-PII unsubscribe URL.
+- Signup now bounds streamed request bodies, normalizes addresses, rate-limits opaque
+  IP/email keys through two Worker bindings and returns a stable no-store JSON shape
+  for duplicates, abuse and D1/binding outages. The Brevo sender claims atomically,
+  scopes every outcome to its exact attempt, uses the queue UUID as idempotency key,
+  times out provider calls before the lease and never exposes a public send trigger.
+- Task 8 verification: focused 13/13, full 184/184, frontend and dedicated Worker
+  TypeScript passes, static build
+  83/83, npm audit zero vulnerabilities and private leak scan 1,749 files/6,882
+  fingerprints/zero hits. Wrangler dry-runs pass at 10.12 KiB gzip for signup and
+  11.53 KiB gzip for email; the email config still has `crons = []`. SQLite behavior
+  tests cover live third-attempt cleanup and stale-owner races. Rendered QA at
+  1440×900, 390×844, 320×568 and reduced-motion reports zero overflow, broken images
+  or console errors; keyboard, validation, retained-field failure and synthetic
+  success states pass. Production D1 was audited read-only at 10 signups (one
+  case-insensitive duplicate group) and 210 pending/zero sent legacy queue rows; no
+  remote state or provider call was changed in this slice. Brevo credential health,
+  secret provisioning and cron activation remain Task 15 release gates. Independent
+  final review ended at 0 Critical/0 Important/0 Minor.
 
 ## Motion Atmosphere production release — 2026-07-12
 
