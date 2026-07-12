@@ -4,11 +4,12 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Motion Atmosphere design is approved and in written-spec review.** The balanced
+**Motion Atmosphere spec is approved and implementation planning is complete.** The balanced
 direction adds persistent navigation, restrained projector light, fine-pointer
 response, opt-in hover depth and varied scroll choreography while keeping reading
 surfaces calm. The specification and measurable release boundaries are recorded in
-`docs/superpowers/specs/2026-07-12-motion-atmosphere-system-design.md`. Implementation
+`docs/superpowers/specs/2026-07-12-motion-atmosphere-system-design.md`; the executable
+plan is `docs/superpowers/plans/2026-07-12-motion-atmosphere-system.md`. Implementation
 has not started; the existing production release remains unchanged.
 
 **Hero vertical-layer rescue is complete and live.** Production measurements on
