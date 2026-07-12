@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "/images/articles/chimamanda-single-story/chimamanda-adichie-2015.png",
       "sourceUrl": null,
+      "publicPath": "/images/readings/chimamanda-ngozi-adichie-the-danger-of-a-single-story/01-chimamanda-adichie-2015.png",
       "alt": "Chimamanda Ngozi Adichie trong một khung hình từ video phỏng vấn năm 2015.",
       "caption": "Chimamanda Ngozi Adichie, người đặt vấn đề về quyền lực của câu chuyện trong bài TEDGlobal 2009.",
       "credit": "Wikimedia Commons / Louisiana Channel, CC BY 3.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Louisiana Channel, CC BY 3.0",
+      "derivative": "01-chimamanda-adichie-2015.png",
+      "checksum": "sha256:7514325de05cecde5267d0bd8d4ac30a2c052848778fcd6489035fb1516604f8",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
         "legacyLocation": "/images/articles/chimamanda-single-story/chimamanda-adichie-2015.png",
         "articleSourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "/images/articles/chimamanda-single-story/sheldonian-theatre.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/chimamanda-ngozi-adichie-the-danger-of-a-single-story/02-sheldonian-theatre.jpg",
       "alt": "Sheldonian Theatre tại Oxford, nhìn từ bên ngoài.",
       "caption": "Sheldonian Theatre tại Oxford là bối cảnh TEDGlobal 2009, nơi bài nói này được trình bày.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-sheldonian-theatre.jpg",
+      "checksum": "sha256:5dd5267deffb4d73b6b059d74db88e7b552c1b85cbeb98849ca03e95de987ccc",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
         "legacyLocation": "/images/articles/chimamanda-single-story/sheldonian-theatre.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "/images/articles/chimamanda-single-story/chimamanda-adichie.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/chimamanda-ngozi-adichie-the-danger-of-a-single-story/03-chimamanda-adichie.jpg",
       "alt": "Chimamanda Ngozi Adichie ký sách trong một buổi đọc sách ở Lagos.",
       "caption": "Adichie trong một không gian văn chương, nơi câu chuyện không chỉ được viết ra mà còn được đối thoại trực tiếp với người đọc.",
       "credit": "Wikimedia Commons / Princess of Ara, CC BY-SA 4.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Princess of Ara, CC BY-SA 4.0",
+      "derivative": "03-chimamanda-adichie.jpg",
+      "checksum": "sha256:7ec09a517a47651864eb6290f94d046ff41fe12a9cc4cec181de9f4b72e9acfc",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
         "legacyLocation": "/images/articles/chimamanda-single-story/chimamanda-adichie.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "/images/articles/chimamanda-single-story/chinua-achebe-1966.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/chimamanda-ngozi-adichie-the-danger-of-a-single-story/04-chinua-achebe-1966.jpg",
       "alt": "Chân dung nhà văn Nigeria Chinua Achebe năm 1966.",
       "caption": "Chinua Achebe là một trong những nhà văn châu Phi đã giúp Adichie nhận ra người giống mình cũng có thể tồn tại trong văn chương.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "04-chinua-achebe-1966.jpg",
+      "checksum": "sha256:b4fe1b1cf42b6bb0f41e45c0daaadce843b17351f25903a66c153d8a279cdbfa",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
         "legacyLocation": "/images/articles/chimamanda-single-story/chinua-achebe-1966.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "/images/articles/chimamanda-single-story/things-fall-apart-books.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/chimamanda-ngozi-adichie-the-danger-of-a-single-story/05-things-fall-apart-books.jpg",
       "alt": "Một chồng sách Things Fall Apart của Chinua Achebe.",
       "caption": "Things Fall Apart gợi lại truyền thống văn chương châu Phi mà bài nói nhắc tới khi bàn về sự cân bằng của các câu chuyện.",
       "credit": "Wikimedia Commons / Scartol",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Scartol",
+      "derivative": "05-things-fall-apart-books.jpg",
+      "checksum": "sha256:1ba553e9b364cf57828a7b819368f3708ccfba770a4250a483171c0fba243d83",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
         "legacyLocation": "/images/articles/chimamanda-single-story/things-fall-apart-books.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:4b5f33021945e61452e59efdd604560693f04293f4ee0f4e7113762bdd56cd4c"
+  "mediaChecksum": "sha256:951948416565fdfbf77059808addefb33d95a6ac782a6a4b6ee33bf490f9098f"
 }

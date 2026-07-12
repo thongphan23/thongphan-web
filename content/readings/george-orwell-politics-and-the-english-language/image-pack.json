@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/7/7e/George_Orwell_press_photo.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/George_Orwell_press_photo.jpg",
+      "publicPath": "/images/readings/george-orwell-politics-and-the-english-language/01-george-orwell-press-photo.jpg",
       "alt": "George Orwell trong một ảnh báo chí.",
       "caption": "Orwell xem sự trong sáng của ngôn ngữ như một nghĩa vụ chính trị.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "01-george-orwell-press-photo.jpg",
+      "checksum": "sha256:d68765ffb4016f190da4b13537d4e50451fbd44bdac74efcccdbce28d1649e53",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "george-orwell-politics-and-the-english-language",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/7/7e/George_Orwell_press_photo.jpg",
         "articleSourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/George_Orwell%2C_c._1940_%2841928180381%29.jpg/1280px-George_Orwell%2C_c._1940_%2841928180381%29.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/George_Orwell%2C_c._1940_%2841928180381%29.jpg/1280px-George_Orwell%2C_c._1940_%2841928180381%29.jpg",
+      "publicPath": "/images/readings/george-orwell-politics-and-the-english-language/02-1280px-george-orwell-2c-c-1940-2841928180381-29.jpg",
       "alt": "George Orwell khoảng năm 1940.",
       "caption": "Một hình ảnh thời chiến của Orwell, gần với bối cảnh tư tưởng của bài luận.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-1280px-george-orwell-2c-c-1940-2841928180381-29.jpg",
+      "checksum": "sha256:d74cd6afe1911d00e06947c8546166006638e2db9e2147771c3586aac5a26157",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "george-orwell-politics-and-the-english-language",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/George_Orwell%2C_c._1940_%2841928180381%29.jpg/1280px-George_Orwell%2C_c._1940_%2841928180381%29.jpg",
         "articleSourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg/1280px-George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg/1280px-George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg",
+      "publicPath": "/images/readings/george-orwell-politics-and-the-english-language/03-1280px-george-orwell-and-eileen-o-e2-80-99shaughnessy-with-members-of-th.jpg",
       "alt": "George Orwell cùng Eileen O’Shaughnessy và đơn vị ILP ở Aragon Front năm 1937.",
       "caption": "Trải nghiệm chiến tranh và tuyên truyền là nền sâu cho sự nghi ngờ của Orwell với ngôn ngữ chính trị.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "03-1280px-george-orwell-and-eileen-o-e2-80-99shaughnessy-with-members-of-th.jpg",
+      "checksum": "sha256:ef1cdc40d03a1bc3bcf4495b73809490986e347997ffcea80a35c646aad5417f",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "george-orwell-politics-and-the-english-language",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg/1280px-George_Orwell_and_Eileen_O%E2%80%99Shaughnessy_with_members_of_the_ILP_unit_on_the_Aragon_Front_outside_Huesca%2C_13th_March_1937.jpg",
         "articleSourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/George_Orwell_white_plaque.jpg/1280px-George_Orwell_white_plaque.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/George_Orwell_white_plaque.jpg/1280px-George_Orwell_white_plaque.jpg",
+      "publicPath": "/images/readings/george-orwell-politics-and-the-english-language/04-1280px-george-orwell-white-plaque.jpg",
       "alt": "Một tấm biển tưởng niệm George Orwell.",
       "caption": "Di sản của Orwell gắn với câu hỏi: ngôn ngữ có đang che giấu hay làm rõ sự thật?",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "04-1280px-george-orwell-white-plaque.jpg",
+      "checksum": "sha256:cc1b2f90259f2927ebf463e27dfd79b344ac2e92ab1637721d2c477f3fd05066",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "george-orwell-politics-and-the-english-language",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/George_Orwell_white_plaque.jpg/1280px-George_Orwell_white_plaque.jpg",
         "articleSourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg/1280px-George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg/1280px-George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg",
+      "publicPath": "/images/readings/george-orwell-politics-and-the-english-language/05-1280px-george-orwell-27s-moroccan-identity-card-28back-29.jpg",
       "alt": "Mặt sau thẻ căn cước Morocco của George Orwell.",
       "caption": "Giấy tờ cá nhân của Orwell gợi lại con người thật phía sau những bài luận chính trị sắc lạnh.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "05-1280px-george-orwell-27s-moroccan-identity-card-28back-29.jpg",
+      "checksum": "sha256:d834c57b4f1466c6bd2975898011db7107c23bbea5cebd69903152beee4fe9c0",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "george-orwell-politics-and-the-english-language",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg/1280px-George_Orwell%27s_Moroccan_identity_card_%28back%29.jpg",
         "articleSourceUrl": "https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:d6d498b1162da63c0ec16d5b41b584ff2285d25e5a04efdb4926da395e02f01a"
+  "mediaChecksum": "sha256:c3cba2242f6627b7dfb07f9ff5f2567a009a48da5b7b3d9b2a6d163cfa57d185"
 }

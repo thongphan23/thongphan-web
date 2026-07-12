@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
+      "publicPath": "/images/readings/derek-sivers-projecting-meaning/01-dereksivers-iceland.jpg",
       "alt": "Derek Sivers trên bãi cát đen ở Iceland.",
       "caption": "Derek Sivers, tác giả thường dùng những bài viết rất ngắn để xoay lại cách ta nhìn đời sống.",
       "credit": "Wikimedia Commons / Derek Sivers, CC BY 2.5",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Derek Sivers, CC BY 2.5",
+      "derivative": "01-dereksivers-iceland.jpg",
+      "checksum": "sha256:6a1d249077adef15c9355f20d691e8965cdd6e48e2c8e67430f7d285d34cceaf",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "derek-sivers-projecting-meaning",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
         "articleSourceUrl": "https://sive.rs/meaning"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Chineseprimer3.png",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Chineseprimer3.png",
+      "publicPath": "/images/readings/derek-sivers-projecting-meaning/02-chineseprimer3.png",
       "alt": "Một trang primer chữ Hán cổ với hình minh họa và chữ viết.",
       "caption": "Bài mở đầu từ chữ Hán: những ký hiệu khiến người học dễ tự tạo câu chuyện phía sau từng nét chữ.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-chineseprimer3.png",
+      "checksum": "sha256:97154ff8f3299af2b0a2806fb97057fab924150fb25bfa302685cee722320bf7",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "derek-sivers-projecting-meaning",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Chineseprimer3.png",
         "articleSourceUrl": "https://sive.rs/meaning"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Byrne_2018.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Byrne_2018.jpg",
+      "publicPath": "/images/readings/derek-sivers-projecting-meaning/03-david-byrne-2018.jpg",
       "alt": "David Byrne biểu diễn trên sân khấu năm 2018.",
       "caption": "David Byrne và Talking Heads là ví dụ trong bài về ca từ gợi mở, nơi người nghe tự ghép ý nghĩa từ những mảnh rời.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "03-david-byrne-2018.jpg",
+      "checksum": "sha256:22890959a81c823689c21c299c4036a87c72a2be2d3c7160647540a117a10fbd",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "derek-sivers-projecting-meaning",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/David_Byrne_2018.jpg",
         "articleSourceUrl": "https://sive.rs/meaning"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Have_a_nice_Friday_13th!_from_a_Black_Cat.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Have_a_nice_Friday_13th!_from_a_Black_Cat.jpg",
+      "publicPath": "/images/readings/derek-sivers-projecting-meaning/04-have-a-nice-friday-13th-from-a-black-cat.jpg",
       "alt": "Một con mèo đen trong hình ảnh gợi liên tưởng Friday the 13th.",
       "caption": "Mèo đen, thang và Friday the 13th xuất hiện như những biểu tượng mà con người thường tự nạp thêm điềm báo.",
       "credit": "Wikimedia Commons / Rosana Prada",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Rosana Prada",
+      "derivative": "04-have-a-nice-friday-13th-from-a-black-cat.jpg",
+      "checksum": "sha256:871a174d1bfe2026e2e8949253663277b4da5162be3849ad0aab3097f269a220",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "derek-sivers-projecting-meaning",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Have_a_nice_Friday_13th!_from_a_Black_Cat.jpg",
         "articleSourceUrl": "https://sive.rs/meaning"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
+      "publicPath": "/images/readings/derek-sivers-projecting-meaning/05-dereksivers-iceland.jpg",
       "alt": "Derek Sivers trên bãi cát đen ở Iceland.",
       "caption": "Sivers trong một khung cảnh rộng và trống, rất hợp với câu hỏi cuối bài: điều gì thật sự có nghĩa, và điều gì do ta đặt vào?",
       "credit": "Wikimedia Commons / Derek Sivers, CC BY 2.5",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Derek Sivers, CC BY 2.5",
+      "derivative": "05-dereksivers-iceland.jpg",
+      "checksum": "sha256:6a1d249077adef15c9355f20d691e8965cdd6e48e2c8e67430f7d285d34cceaf",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "derek-sivers-projecting-meaning",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/DerekSivers-iceland.jpg",
         "articleSourceUrl": "https://sive.rs/meaning"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:60c6bcd6513ed00084271ee774699ebd9b5b93f5682fc584a2522b82522a8586"
+  "mediaChecksum": "sha256:789dc1a1aaed951e702f0c6d272b2d837566c4ad128329f372618631183cecad"
 }

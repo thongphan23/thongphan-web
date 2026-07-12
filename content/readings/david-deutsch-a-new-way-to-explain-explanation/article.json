@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 16,
   "topics": [
     "worldview",
@@ -41,9 +41,722 @@
       "Trọng tâm không phải biết nhiều dữ kiện hơn, mà là phân biệt lời giải thích bền với câu chuyện có thể sửa tùy tiện."
     ]
   },
+  "sections": [
+    {
+      "title": "Câu hỏi mở ra thế giới",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi chắc rằng trong suốt khoảng hơn 100.000 năm tồn tại của loài người — và thậm chí còn trước đó nữa — tổ tiên của chúng ta đã từng ngước nhìn bầu trời đêm và tự hỏi: **các vì sao là gì?**"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói cách khác, họ đã tự hỏi: làm sao giải thích những gì mình nhìn thấy bằng những điều mình không nhìn thấy?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, phần lớn con người chỉ thỉnh thoảng mới tự hỏi điều đó, giống như chúng ta ngày nay, trong những khoảng nghỉ ngắn giữa vô số việc thường khiến họ bận tâm."
+        },
+        {
+          "kind": "insight",
+          "label": "Cách đọc bài này",
+          "text": "Đừng đọc để đồng ý nhanh. Hãy đọc để nâng tiêu chuẩn thẩm định: điều gì làm một ý tưởng đáng tin, đáng giữ và đáng dùng lại?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng những điều khiến họ bận tâm hằng ngày cũng đầy khao khát muốn biết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ ước mình biết làm sao để nguồn thức ăn không thỉnh thoảng bị cạn kiệt. Họ ước mình biết làm sao có thể nghỉ ngơi khi mệt mà không sợ chết đói. Làm sao để ấm hơn, mát hơn, an toàn hơn, ít đau đớn hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cá là những nghệ sĩ hang động thời tiền sử ấy hẳn cũng rất muốn biết làm sao để vẽ đẹp hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong mọi khía cạnh của đời sống, họ đều khao khát tiến bộ, giống như chúng ta."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng họ gần như hoàn toàn thất bại trong việc tạo ra tiến bộ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ không biết cách."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những khám phá như lửa xảy ra hiếm đến mức, từ góc nhìn của một cá nhân, thế giới gần như không bao giờ tốt lên. Không có điều gì mới được học thêm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Manh mối đầu tiên về nguồn gốc ánh sáng của các vì sao chỉ mới xuất hiện gần đây, vào năm **1899**: đó là **phóng xạ**."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chỉ trong vòng 40 năm, các nhà vật lý đã khám phá ra toàn bộ lời giải thích, được biểu đạt — như thường lệ — bằng những ký hiệu tao nhã."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng thôi, đừng bận tâm đến các ký hiệu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nghĩ xem chúng đại diện cho bao nhiêu khám phá."
+        },
+        {
+          "kind": "highlight",
+          "text": "Dĩ nhiên là có hạt nhân nguyên tử và phản ứng hạt nhân. Nhưng còn có đồng vị, các hạt mang điện, phản vật chất, neutrino, sự chuyển hóa khối lượng thành năng lượng — chính là công thức **E = mc²** — tia gamma, sự chuyển hóa nguyên tố."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giấc mơ cổ xưa từng luôn lẩn tránh các nhà giả kim cuối cùng đã được hiện thực hóa nhờ chính những lý thuyết đã giải thích ánh sáng của các vì sao, cũng như nhiều bí ẩn cổ xưa và những hiện tượng mới, bất ngờ khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả những điều đó được khám phá trong 40 năm, nhưng lại không xuất hiện trong 100.000 năm trước đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không phải vì con người thời trước không suy nghĩ về các vì sao hay những vấn đề cấp bách kia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ thậm chí cũng đã có những câu trả lời — chẳng hạn như các huyền thoại — những câu trả lời từng chi phối đời sống của họ, nhưng gần như chẳng giống sự thật chút nào."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ bi kịch của tình trạng trì trệ kéo dài ấy vẫn chưa được nhìn nhận đủ sâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ là những con người có bộ não về cơ bản cùng một thiết kế với bộ não sau này đã khám phá ra tất cả những điều ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng năng lực tạo ra tiến bộ gần như không được sử dụng, cho đến khi một sự kiện xuất hiện và cách mạng hóa thân phận con người, đồng thời thay đổi cả vũ trụ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc ít nhất, chúng ta nên hy vọng là như vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi sự kiện đó chính là **cuộc Cách mạng Khoa học**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kể từ đó, tri thức của chúng ta về thế giới vật lý, và về cách điều chỉnh thế giới ấy theo mong muốn của mình, đã không ngừng tăng lên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy điều gì đã thay đổi?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con người bắt đầu làm điều gì lần đầu tiên, khiến cho sự khác biệt giữa trì trệ và khám phá nhanh chóng, không giới hạn, xuất hiện?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao để tạo ra sự khác biệt ấy chắc chắn là chân lý phổ quát quan trọng nhất mà con người có thể biết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và điều đáng lo là: hiện không có sự đồng thuận nào về việc chân lý đó là gì."
+        }
+      ]
+    },
+    {
+      "title": "Một lời giải thích phải đứng vững",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi sẽ nói cho các bạn biết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng trước hết, tôi cần quay lại một chút."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước cuộc Cách mạng Khoa học, con người tin rằng mọi điều quan trọng và có thể biết được đều đã được biết rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng được cất giữ trong các văn bản cổ xưa, trong các thiết chế, và trong một số quy tắc kinh nghiệm thật sự hữu ích."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, những quy tắc ấy lại bị đóng đinh thành giáo điều, cùng với rất nhiều điều sai lầm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, họ tin rằng tri thức đến từ các thẩm quyền — những thẩm quyền thật ra biết rất ít."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Do đó, tiến bộ phụ thuộc vào việc học cách bác bỏ quyền uy của những người được xem là uyên bác: các học giả, tu sĩ, truyền thống và nhà cai trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lý do cuộc Cách mạng Khoa học phải nằm trong một bối cảnh rộng hơn: **Thời kỳ Khai sáng** — một cuộc cách mạng trong cách con người tìm kiếm tri thức, cố gắng không dựa vào thẩm quyền."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đó không thể là điều đã tạo nên khác biệt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước đó, các thẩm quyền cũng từng bị bác bỏ nhiều lần. Và điều đó hiếm khi — nếu có — tạo ra một thứ gì giống cuộc Cách mạng Khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vào thời điểm ấy, điều người ta nghĩ đã làm khoa học khác biệt là một ý tưởng cấp tiến về những điều không nhìn thấy được, gọi là **chủ nghĩa kinh nghiệm**: mọi tri thức đều bắt nguồn từ giác quan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng như chúng ta đã thấy, điều đó không thể đúng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó có ích, vì thúc đẩy quan sát và thí nghiệm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ngay từ đầu, người ta đã thấy rõ rằng trong nó có điều gì đó rất sai."
+        },
+        {
+          "kind": "highlight",
+          "text": "Tri thức đến từ giác quan ư?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bằng ngôn ngữ nào?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chắc chắn không phải bằng ngôn ngữ toán học, thứ mà Galileo đã nói rất đúng rằng cuốn sách của tự nhiên được viết bằng nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nhìn thế giới xem."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn đâu có thấy các phương trình được khắc trên sườn núi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu có, đó là vì con người đã khắc chúng lên đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhân tiện, tại sao chúng ta lại không làm thế nhỉ?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta bị sao vậy?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chủ nghĩa kinh nghiệm là không đủ, bởi vì các lý thuyết khoa học giải thích những điều nhìn thấy được bằng những điều không nhìn thấy được."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và các bạn phải thừa nhận rằng những điều không nhìn thấy thì không đến với chúng ta qua giác quan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta không nhìn thấy các phản ứng hạt nhân bên trong các vì sao."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta không nhìn thấy nguồn gốc các loài."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta không nhìn thấy độ cong của không-thời gian, hay các vũ trụ khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng chúng ta biết về những điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bằng cách nào?"
+        }
+      ]
+    },
+    {
+      "title": "Khi câu chuyện cũ không còn đủ",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Câu trả lời kinh điển của các nhà kinh nghiệm luận là **quy nạp**: cái không nhìn thấy giống với cái đã nhìn thấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng không phải vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn biết bằng chứng quyết định cho thấy không-thời gian bị cong là gì không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một bức ảnh — không phải ảnh của không-thời gian, mà là ảnh của một lần nhật thực, trong đó có một điểm sáng xuất hiện ở vị trí này thay vì vị trí kia."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn bằng chứng cho tiến hóa là gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một vài tảng đá và vài con chim sẻ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn các vũ trụ song song?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lại là những điểm xuất hiện ở chỗ này thay vì chỗ kia trên một màn hình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những gì chúng ta nhìn thấy trong tất cả các trường hợp này chẳng hề giống với thực tại mà chúng ta kết luận là nguyên nhân phía sau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ có một chuỗi dài lập luận lý thuyết và diễn giải mới kết nối chúng lại với nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“À!” — những người theo thuyết sáng tạo nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Vậy là các anh thừa nhận tất cả chỉ là diễn giải. Chưa ai từng nhìn thấy tiến hóa cả. Chúng ta chỉ thấy đá. Các anh có cách diễn giải của các anh. Chúng tôi có cách diễn giải của chúng tôi. Cách của các anh đến từ phỏng đoán; cách của chúng tôi đến từ Kinh Thánh.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều mà cả người theo thuyết sáng tạo lẫn người theo chủ nghĩa kinh nghiệm đều bỏ qua là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Theo nghĩa đó, cũng chưa từng có ai nhìn thấy Kinh Thánh cả."
+        },
+        {
+          "kind": "highlight",
+          "text": "Mắt chỉ phát hiện ánh sáng — thứ mà bản thân chúng ta cũng không cảm nhận trực tiếp như chính nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bộ não chỉ phát hiện các xung thần kinh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nó thậm chí cũng không cảm nhận những xung ấy như đúng bản chất thật của chúng, tức là những tín hiệu điện lách tách."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng ta không cảm nhận bất kỳ thứ gì đúng như bản chất thật của nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mối liên hệ của chúng ta với thực tại chưa bao giờ chỉ là tri giác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó luôn luôn, như **Karl Popper** từng nói, là thứ đã được chất đầy bởi lý thuyết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tri thức khoa học không được rút ra từ bất kỳ thứ gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giống như mọi tri thức khác, nó có tính phỏng đoán: là những giả thuyết, những suy đoán, được kiểm tra bằng quan sát — chứ không phải được sinh ra từ quan sát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy có phải những phỏng đoán có thể kiểm tra được chính là đổi mới vĩ đại đã mở tung cánh cửa nhà tù trí tuệ?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trái với điều người ta thường nói, tính có thể kiểm tra được rất phổ biến trong thần thoại và trong đủ loại cách tư duy phi lý khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất kỳ kẻ lập dị nào tuyên bố rằng mặt trời sẽ tắt vào thứ Ba tuần sau đều đưa ra một dự đoán có thể kiểm tra được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy xem xét huyền thoại Hy Lạp cổ đại dùng để giải thích các mùa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "**Hades**, vị thần của âm phủ, bắt cóc **Persephone**, nữ thần mùa xuân, rồi thương lượng một hợp đồng hôn nhân cưỡng ép, buộc nàng phải thường xuyên quay lại, sau đó mới để nàng ra đi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và mỗi năm, nàng bị ép bằng phép thuật phải quay trở lại."
+        }
+      ]
+    },
+    {
+      "title": "Tiêu chuẩn của tri thức tốt hơn",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mẹ nàng, **Demeter**, nữ thần của đất đai, buồn bã, khiến thế giới trở nên lạnh lẽo và cằn cỗi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Huyền thoại đó có thể kiểm tra được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu mùa đông là do nỗi buồn của Demeter gây ra, thì mùa đông phải xảy ra đồng thời ở khắp nơi trên Trái Đất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, nếu người Hy Lạp cổ đại biết rằng ở Úc, thời điểm Demeter buồn nhất lại là lúc trời nóng nhất, họ hẳn đã biết rằng lý thuyết của họ sai."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy điều gì sai trong huyền thoại đó, cũng như trong toàn bộ tư duy tiền khoa học?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và rốt cuộc điều gì đã tạo nên khác biệt trọng đại kia?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ có một điều bạn phải quan tâm đến, và điều đó kéo theo tính có thể kiểm tra, phương pháp khoa học, Thời kỳ Khai sáng và mọi thứ khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều cốt lõi là:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không chỉ nói đến lỗi logic."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đang nói đến một **lời giải thích tồi**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó nghĩa là gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một lời giải thích là một khẳng định về thứ đang tồn tại ở phía không nhìn thấy được, nhằm lý giải cho thứ đang được nhìn thấy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vấn đề là: vai trò giải thích của bản hợp đồng hôn nhân của Persephone có thể dễ dàng được thay thế bằng vô số thực thể tùy tiện khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao lại là một hợp đồng hôn nhân, chứ không phải bất kỳ lý do nào khác cho một hành động lặp lại hằng năm?"
+        },
+        {
+          "kind": "highlight",
+          "text": "Đây là một phiên bản khác:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Persephone không hề được thả. Nàng trốn thoát. Và mỗi mùa xuân, nàng quay lại để trả thù Hades bằng quyền năng mùa xuân của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nàng làm mát vương quốc của ông ta bằng không khí mùa xuân, đẩy nhiệt nóng lên mặt đất, tạo ra mùa hè."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phiên bản này giải thích cùng những hiện tượng như huyền thoại ban đầu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cũng có thể kiểm tra được ngang nhau."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thế nhưng những điều nó khẳng định về thực tại, theo nhiều cách, lại trái ngược với bản gốc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có thể xảy ra vì các chi tiết của huyền thoại ban đầu chẳng liên quan gì đến các mùa, ngoại trừ thông qua chính huyền thoại đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "**Khả năng dễ dàng bị biến đổi** chính là dấu hiệu của một lời giải thích tồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi nếu không có một lý do mang tính chức năng để ưu tiên một phiên bản trong vô số biến thể, thì việc ủng hộ một phiên bản thay vì những phiên bản khác là phi lý."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, nếu muốn tìm bản chất của điều tạo nên khác biệt giúp tiến bộ xuất hiện, hãy tìm kiếm **những lời giải thích tốt** — những lời giải thích không thể dễ dàng bị thay đổi mà vẫn tiếp tục giải thích được hiện tượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lời giải thích hiện nay của chúng ta về các mùa là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trục Trái Đất bị nghiêng như thế này, nên mỗi bán cầu nghiêng về phía Mặt Trời trong nửa năm, và nghiêng xa khỏi Mặt Trời trong nửa năm còn lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói rõ hơn: hình minh họa này không đúng tỷ lệ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một lời giải thích tốt: **khó thay đổi**, bởi vì từng chi tiết đều đóng một vai trò chức năng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, độc lập với câu chuyện về các mùa, chúng ta biết rằng các bề mặt nghiêng ra xa nguồn nhiệt bức xạ sẽ nhận ít nhiệt hơn."
+        }
+      ]
+    },
+    {
+      "title": "Điều đáng giữ lại",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cũng biết rằng một quả cầu đang quay trong không gian sẽ giữ hướng trục tương đối ổn định."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Độ nghiêng đó cũng giải thích góc cao của Mặt Trời vào các thời điểm khác nhau trong năm, và dự đoán rằng các mùa sẽ lệch pha giữa hai bán cầu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu người ta quan sát thấy hai bán cầu có mùa cùng pha, lý thuyết này sẽ bị bác bỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng chính việc nó cũng là một lời giải thích tốt — khó thay đổi — mới tạo nên khác biệt cốt lõi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu người Hy Lạp cổ đại phát hiện ra sự thật về các mùa ở Úc, họ có thể dễ dàng chỉnh lại huyền thoại của mình để dự đoán điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng hạn:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi Demeter buồn, bà đẩy nhiệt ra khỏi vùng xung quanh mình sang bán cầu bên kia, nơi nhiệt ấy tạo ra mùa hè."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, dù bị quan sát chứng minh là sai rồi sửa lý thuyết lại cho phù hợp, người Hy Lạp cổ đại vẫn sẽ không tiến gần hơn chút nào đến việc hiểu các mùa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi lời giải thích của họ là một lời giải thích tồi — quá dễ thay đổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ khi một lời giải thích là tốt, việc nó có thể kiểm tra được hay không mới thật sự quan trọng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu lý thuyết trục nghiêng bị bác bỏ, những người bảo vệ nó sẽ không còn chỗ nào để trốn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không có thay đổi dễ dàng nào có thể khiến độ nghiêng ấy tạo ra cùng một mùa ở cả hai bán cầu."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "highlight",
+          "text": "**Việc tìm kiếm những lời giải thích khó thay đổi là nguồn gốc của mọi tiến bộ.**"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là nguyên tắc điều tiết cơ bản của Thời kỳ Khai sáng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, trong khoa học, có hai cách tiếp cận sai lầm làm hủy hoại tiến bộ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách thì đã nổi tiếng: **các lý thuyết không thể kiểm tra được**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng cách quan trọng hơn là: **các lý thuyết không có lời giải thích**."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất cứ khi nào ai đó nói với bạn rằng một xu hướng thống kê hiện có sẽ tiếp tục, nhưng lại không đưa ra một lời giải thích khó thay đổi về nguyên nhân tạo ra xu hướng đó, thì thực chất họ đang nói với bạn rằng: **có một phù thủy đã làm điều đó.**"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi bạn được nói rằng cà rốt có quyền con người vì chúng chia sẻ một nửa gene với chúng ta, nhưng không ai giải thích bằng cách nào tỷ lệ gene lại tạo ra quyền — đó là phù thủy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi ai đó tuyên bố rằng cuộc tranh luận giữa tự nhiên và nuôi dưỡng đã được giải quyết, vì có bằng chứng rằng một tỷ lệ nhất định trong quan điểm chính trị của chúng ta là di truyền, nhưng họ không giải thích gene gây ra quan điểm như thế nào, thì họ chưa giải quyết được gì cả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ chỉ đang nói rằng quan điểm của chúng ta do phù thủy gây ra — và có lẽ quan điểm của chính họ cũng vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự thật bao gồm những khẳng định khó thay đổi về thực tại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là sự thật quan trọng nhất về thế giới vật lý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bản thân sự thật ấy cũng là một điều không nhìn thấy được, nhưng lại không thể thay đổi tùy tiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 5,
   "legacyBlockCount": 170,
   "legacyBodyChecksum": "sha256:dc2a4e8c00e4f8de2ad8873b5089eaa19d896bdac529e48cf3a5a68ca448f926",
   "contentVersion": 1,
-  "contentChecksum": "sha256:e882ee93e73243941cac70498e100259768b34e6c3bd683a0cb9f069442266eb"
+  "contentChecksum": "sha256:77d29d430f0de8cc0594456f6fd4f0f823437b22a610757b606022388f1cfb4e"
 }

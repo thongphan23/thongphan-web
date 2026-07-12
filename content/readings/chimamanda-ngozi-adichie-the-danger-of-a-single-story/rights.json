@@ -1,13 +1,19 @@
 {
   "schemaVersion": 1,
   "slug": "chimamanda-ngozi-adichie-the-danger-of-a-single-story",
-  "rightsStatus": "source-link-only",
-  "publicationMode": "summary",
+  "rightsStatus": "permission-confirmed",
+  "publicationMode": "full",
   "textRights": {
-    "translation": false,
-    "publicWeb": false,
-    "commercialContext": false
+    "translation": true,
+    "publicWeb": true,
+    "commercialContext": true
   },
-  "evidence": [],
-  "reviewedAt": "2026-07-10"
+  "evidence": [
+    {
+      "type": "permission",
+      "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+      "verifiedAt": "2026-07-12"
+    }
+  ],
+  "reviewedAt": "2026-07-12"
 }

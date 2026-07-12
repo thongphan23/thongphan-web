@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 18,
   "topics": [
     "worldview",
@@ -42,9 +42,1808 @@
       "Điểm đáng giữ là năng lực nhìn ra vùng cấm trong tư duy trước khi biến nó thành lập trường công khai."
     ]
   },
+  "sections": [
+    {
+      "title": "Mở đầu",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bạn đã bao giờ nhìn thấy một bức ảnh cũ của chính mình và thấy xấu hổ vì lúc đó trông mình như thế nào chưa?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Trời, hồi đó mình thật sự ăn mặc như vậy sao?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đúng là chúng ta đã từng ăn mặc như vậy. Và khi đó, chúng ta hoàn toàn không biết mình trông buồn cười đến mức nào."
+        },
+        {
+          "kind": "insight",
+          "label": "Cách đọc bài này",
+          "text": "Đừng đọc để đồng ý nhanh. Hãy đọc để nâng tiêu chuẩn thẩm định: điều gì làm một ý tưởng đáng tin, đáng giữ và đáng dùng lại?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bản chất của thời trang là nó vô hình đối với người đang sống trong nó, cũng giống như chuyển động của Trái Đất là vô hình với tất cả chúng ta — những người đang đứng trên Trái Đất và chuyển động cùng nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều khiến tôi lo sợ là: cũng có những **thời trang đạo đức**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng cũng tùy tiện như vậy, và cũng vô hình với hầu hết mọi người như vậy. Nhưng chúng nguy hiểm hơn rất nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời trang ăn mặc thường bị nhầm là thiết kế tốt. Còn thời trang đạo đức thì bị nhầm là cái tốt."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ăn mặc kỳ lạ có thể khiến bạn bị cười nhạo. Nhưng vi phạm thời trang đạo đức có thể khiến bạn bị sa thải, bị tẩy chay, bị bỏ tù, hoặc thậm chí bị giết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh có thể du hành ngược thời gian bằng cỗ máy thời gian, có một điều sẽ đúng bất kể anh đi đến đâu: anh phải cực kỳ cẩn thận với những gì mình nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những quan điểm mà ngày nay chúng ta xem là vô hại có thể từng khiến anh gặp rắc rối lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã nói ít nhất một điều mà ở phần lớn châu Âu thế kỷ 17 có thể khiến tôi gặp rắc rối nghiêm trọng — và thật sự đã khiến Galileo gặp rắc rối lớn khi ông nói điều đó: **Trái Đất chuyển động.**"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dường như trong suốt lịch sử luôn có một quy luật bất biến:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở mọi thời kỳ, con người đều tin vào những điều rất nực cười, và tin mạnh đến mức nếu anh nói ngược lại, anh có thể gặp tai họa lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời đại của chúng ta có khác không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Với bất kỳ ai đã đọc một lượng lịch sử đủ nhiều, câu trả lời gần như chắc chắn là: **không**."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sẽ là một sự trùng hợp quá kỳ lạ nếu thời đại của chúng ta là thời đại đầu tiên hiểu đúng mọi thứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật hấp dẫn khi nghĩ rằng hiện nay chúng ta cũng đang tin vào những điều mà người trong tương lai sẽ thấy lố bịch."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu một người từ tương lai quay về thăm chúng ta bằng cỗ máy thời gian, họ sẽ phải cẩn thận không nói điều gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là điều tôi muốn nghiên cứu ở đây."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi không chỉ muốn gây sốc cho mọi người bằng một thứ dị giáo hợp thời. Tôi muốn tìm ra những công thức chung để phát hiện ra: trong bất kỳ thời đại nào, đâu là những điều anh **không được phép nói**."
+        }
+      ]
+    },
+    {
+      "title": "Bài kiểm tra người tuân thủ",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hãy bắt đầu bằng một bài kiểm tra:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh có quan điểm nào mà anh ngần ngại không dám nói ra trước một nhóm người ngang hàng với mình không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu câu trả lời là không, có lẽ anh nên dừng lại và suy nghĩ về điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tất cả những gì anh tin đều đúng là những điều anh “nên” tin, liệu đó có thể chỉ là trùng hợp không?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng cao là không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng cao là anh chỉ đang nghĩ những gì người ta bảo anh phải nghĩ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng còn lại là: anh đã độc lập suy xét mọi vấn đề, rồi tình cờ đi đến chính xác cùng những câu trả lời hiện nay được xem là chấp nhận được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có vẻ khó xảy ra, bởi như vậy anh cũng phải mắc đúng cùng những sai lầm."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người vẽ bản đồ đôi khi cố tình đặt những lỗi nhỏ vào bản đồ của mình, để họ có thể nhận ra khi ai đó sao chép bản đồ của họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu một bản đồ khác có cùng lỗi đó, đây là bằng chứng rất thuyết phục."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giống như mọi thời đại khác trong lịch sử, tấm bản đồ đạo đức của chúng ta gần như chắc chắn cũng có vài lỗi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và bất kỳ ai mắc đúng những lỗi ấy có lẽ không làm vậy một cách tình cờ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó giống như ai đó tuyên bố rằng vào năm 1972, họ đã tự mình độc lập kết luận rằng quần ống loe là một ý tưởng hay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu hiện tại anh tin mọi thứ mà anh được kỳ vọng phải tin, làm sao anh có thể chắc rằng nếu mình lớn lên giữa các chủ đồn điền miền Nam nước Mỹ trước Nội chiến, hoặc ở Đức vào thập niên 1930 — hoặc giữa người Mông Cổ năm 1200 — anh sẽ không tin mọi thứ mà khi đó anh được kỳ vọng phải tin?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng cao là anh sẽ tin."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngày xưa, trong thời của những cụm từ như “thích nghi tốt với xã hội”, dường như người ta cho rằng nếu anh có những suy nghĩ mà anh không dám nói ra thành tiếng, thì có gì đó không ổn ở anh."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cách nghĩ đó có vẻ bị đảo ngược."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần như chắc chắn, có gì đó không ổn ở anh nếu anh **không có** những suy nghĩ mà mình không dám nói ra thành tiếng."
+        }
+      ]
+    },
+    {
+      "title": "Rắc rối",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Vậy đâu là những điều chúng ta không thể nói?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách để tìm ra những ý tưởng này rất đơn giản: hãy nhìn vào những điều người ta đã nói, rồi gặp rắc rối vì đã nói chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, chúng ta không chỉ tìm những điều không thể nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đang tìm những điều không thể nói **nhưng lại đúng**, hoặc ít nhất có đủ khả năng đúng để câu hỏi đó nên được để mở."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nhiều điều khiến người ta gặp rắc rối khi nói ra có lẽ vượt qua được ngưỡng thứ hai, thấp hơn này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không ai gặp rắc rối vì nói rằng 2 + 2 = 5, hay người ở Pittsburgh cao 3 mét."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những phát biểu sai hiển nhiên như vậy có thể được xem là trò đùa, hoặc tệ nhất là dấu hiệu của điên rồ. Nhưng chúng không dễ khiến người khác nổi giận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những phát biểu khiến người khác nổi giận là những phát biểu họ lo rằng người khác có thể tin."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghi ngờ rằng những phát biểu khiến người ta giận dữ nhất chính là những phát biểu mà họ lo rằng có thể là sự thật."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu Galileo nói rằng người ở Padua cao 3 mét, ông sẽ bị xem là một kẻ lập dị vô hại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nói rằng Trái Đất quay quanh Mặt Trời lại là chuyện khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhà thờ biết rằng điều này sẽ khiến con người bắt đầu suy nghĩ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chắc chắn khi nhìn lại quá khứ, quy tắc kinh nghiệm này hoạt động khá tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều phát biểu từng khiến người ta gặp rắc rối ngày nay trông hoàn toàn vô hại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, có khả năng những vị khách đến từ tương lai sẽ đồng ý với ít nhất một số phát biểu đang khiến người ta gặp rắc rối hôm nay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta không có Galileo nào sao?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không thể nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để tìm họ, hãy theo dõi những quan điểm khiến người ta gặp rắc rối, rồi bắt đầu hỏi:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được, có thể nó là dị giáo — hoặc một phiên bản hiện đại nào đó của dị giáo. Nhưng liệu nó cũng có thể đúng không?"
+        }
+      ]
+    },
+    {
+      "title": "Dị giáo",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, cách này sẽ không cho chúng ta tất cả câu trả lời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì xảy ra nếu chưa có ai gặp rắc rối vì một ý tưởng cụ thể?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì xảy ra nếu một ý tưởng gây tranh cãi đến mức “phóng xạ”, khiến không ai dám nói ra công khai?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao chúng ta tìm được cả những ý tưởng ấy?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách khác là lần theo từ **dị giáo**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong mọi thời kỳ lịch sử, dường như luôn có những nhãn dán được gắn lên các phát biểu để bắn hạ chúng trước khi bất kỳ ai có cơ hội hỏi liệu chúng đúng hay sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Báng bổ”, “xúc phạm điều thiêng liêng”, và “dị giáo” là những nhãn như vậy trong một phần lớn lịch sử phương Tây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần đây hơn, các nhãn như “khiếm nhã”, “không phù hợp”, và “phản Mỹ” cũng từng đóng vai trò tương tự."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đến nay, những nhãn này đã mất đi phần lớn sức nặng. Chúng luôn như vậy. Hiện nay chúng chủ yếu được dùng theo nghĩa châm biếm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng vào thời của chúng, chúng có sức mạnh thật sự."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, từ “chủ bại” hiện nay không còn hàm ý chính trị đặc biệt nào. Nhưng ở Đức năm 1917, nó là một vũ khí, được Ludendorff dùng trong cuộc thanh trừng những người ủng hộ hòa bình thông qua thương lượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đầu Thế chiến II, từ này cũng được Churchill và những người ủng hộ ông dùng rộng rãi để bịt miệng phe đối lập."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Năm 1940, bất kỳ lập luận nào chống lại chính sách cứng rắn của Churchill đều bị gọi là “chủ bại”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lập luận đó đúng hay sai?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lý tưởng nhất là: không ai kịp đi xa đến mức đặt câu hỏi đó."
+        },
+        {
+          "kind": "highlight",
+          "text": "Ngày nay tất nhiên chúng ta cũng có những nhãn như vậy, và có khá nhiều. Từ nhãn đa dụng như “không phù hợp” cho đến nhãn đáng sợ như “gây chia rẽ”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong bất kỳ thời kỳ nào, khá dễ để nhận ra những nhãn này. Chỉ cần nhìn xem người ta gọi những ý tưởng họ không đồng ý là gì, ngoài việc nói chúng “sai”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi một chính trị gia nói đối thủ của mình nhầm, đó là một lời phê bình trực tiếp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi ông ta công kích một phát biểu bằng cách gọi nó là “gây chia rẽ” hoặc “thiếu nhạy cảm về chủng tộc”, thay vì lập luận rằng nó sai, ta nên bắt đầu chú ý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, một cách khác để nhận ra những điều cấm kỵ mà thế hệ tương lai sẽ cười nhạo là bắt đầu từ các nhãn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lấy một nhãn — chẳng hạn “phân biệt giới tính” — rồi thử nghĩ ra một số ý tưởng có thể bị gọi như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, với từng ý tưởng, hãy hỏi:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cứ bắt đầu liệt kê ý tưởng ngẫu nhiên sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đúng vậy, bởi vì chúng sẽ không thật sự ngẫu nhiên."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những ý tưởng xuất hiện đầu tiên trong đầu anh sẽ là những ý tưởng có vẻ hợp lý nhất. Chúng sẽ là những điều anh đã từng nhận ra, nhưng chưa cho phép mình nghĩ tiếp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Năm 1989, một số nhà nghiên cứu thông minh đã theo dõi chuyển động mắt của các bác sĩ X-quang khi họ xem ảnh chụp ngực để tìm dấu hiệu ung thư phổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ phát hiện rằng ngay cả khi bác sĩ bỏ sót một tổn thương ung thư, mắt họ thường vẫn đã dừng lại ở đúng vị trí đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một phần trong não họ biết có gì đó ở đó. Nó chỉ chưa nổi lên đủ cao để trở thành nhận thức có ý thức."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ nhiều suy nghĩ dị giáo thú vị cũng đã gần như hình thành trong tâm trí chúng ta rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu ta tạm thời tắt cơ chế tự kiểm duyệt, chúng sẽ là những thứ đầu tiên nổi lên."
+        }
+      ]
+    },
+    {
+      "title": "Thời gian và không gian",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta có thể nhìn vào tương lai, việc nhận ra những điều cấm kỵ nào của chúng ta sẽ bị họ cười nhạo hẳn sẽ rất rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta không thể làm vậy. Nhưng ta có thể làm một việc gần như tốt tương đương: nhìn vào quá khứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách khác để phát hiện điều chúng ta đang sai là nhìn vào những gì từng được chấp nhận, nhưng ngày nay không thể tưởng tượng nổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những thay đổi giữa quá khứ và hiện tại đôi khi thật sự đại diện cho tiến bộ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong một lĩnh vực như vật lý, nếu chúng ta bất đồng với các thế hệ trước, đó là vì chúng ta đúng và họ sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều này nhanh chóng kém đúng đi khi anh rời khỏi sự chắc chắn của các khoa học cứng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh đến các vấn đề xã hội, nhiều thay đổi chỉ đơn giản là thời trang."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuổi đồng thuận dao động như độ dài gấu váy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta có thể tưởng tượng rằng mình thông minh hơn và đạo đức hơn các thế hệ trước rất nhiều. Nhưng càng đọc nhiều lịch sử, điều đó càng ít có vẻ đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con người trong quá khứ cũng rất giống chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không phải anh hùng. Không phải man rợ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dù ý tưởng của họ là gì, đó cũng là những ý tưởng mà những người hợp lý có thể tin."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "highlight",
+          "text": "Vì vậy, đây là một nguồn khác của những dị giáo thú vị:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "So sánh các ý tưởng hiện tại với ý tưởng của nhiều nền văn hóa trong quá khứ, rồi xem ta thu được gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số ý tưởng sẽ gây sốc theo tiêu chuẩn hiện nay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được thôi. Nhưng ý tưởng nào trong số đó cũng có thể đúng?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh không cần nhìn về quá khứ mới tìm thấy những khác biệt lớn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay trong thời đại chúng ta, các xã hội khác nhau cũng có những quan niệm rất khác nhau về điều gì được chấp nhận và điều gì không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, anh cũng có thể so sánh ý tưởng của các nền văn hóa khác với ý tưởng của chúng ta. Cách tốt nhất để làm điều đó là đến thăm họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất kỳ ý tưởng nào được xem là vô hại ở một tỷ lệ đáng kể các thời đại và địa điểm, nhưng lại là điều cấm kỵ ở chỗ chúng ta, đều là ứng viên cho một điều mà chúng ta có thể đang sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, ở đỉnh cao của làn sóng chính trị đúng đắn vào đầu thập niên 1990, Harvard đã phát cho giảng viên và nhân viên một tập tài liệu nói rằng, trong số nhiều điều khác, việc khen quần áo của đồng nghiệp hoặc sinh viên là không phù hợp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không còn câu “áo đẹp đấy” nữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ nguyên tắc này khá hiếm trong các nền văn hóa trên thế giới, dù là quá khứ hay hiện tại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ có nhiều nền văn hóa xem việc khen trang phục của người khác là đặc biệt lịch sự hơn là xem nó không phù hợp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng cao đây là một ví dụ nhẹ nhàng về một trong những điều cấm kỵ mà người từ tương lai sẽ phải cẩn thận tránh nếu họ đặt cỗ máy thời gian đến Cambridge, Massachusetts, năm 1992."
+        }
+      ]
+    },
+    {
+      "title": "Những người đạo mạo quá mức",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, nếu tương lai có cỗ máy thời gian, có lẽ họ sẽ có hẳn một cuốn sổ tay tham khảo riêng cho Cambridge."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nơi này từ lâu đã là một nơi khó tính, một thị trấn của những người thích chấm từng chữ i và gạch từng chữ t, nơi anh có thể bị sửa cả ngữ pháp lẫn ý tưởng trong cùng một cuộc trò chuyện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó gợi ra một cách khác để tìm các điều cấm kỵ:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nhìn vào những người đạo mạo quá mức, rồi xem trong đầu họ có gì."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đầu óc trẻ em là kho lưu trữ tất cả những điều cấm kỵ của chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta thấy phù hợp khi ý tưởng của trẻ em phải sáng sủa và sạch sẽ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bức tranh về thế giới mà chúng ta đưa cho trẻ em không chỉ được đơn giản hóa để phù hợp với tâm trí đang phát triển của chúng, mà còn được khử trùng để phù hợp với ý tưởng của chúng ta về việc trẻ em nên nghĩ gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh có thể thấy điều này ở quy mô nhỏ trong chuyện các từ tục."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều bạn bè của tôi hiện bắt đầu có con, và họ đều cố không dùng những từ như “fuck” hay “shit” trong tầm nghe của em bé, vì sợ em bé cũng bắt đầu dùng những từ ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng những từ này là một phần của ngôn ngữ, và người lớn dùng chúng suốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, cha mẹ đang cho con cái một hình ảnh không chính xác về ngôn ngữ bằng cách không dùng những từ ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao họ làm vậy?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì họ không nghĩ việc trẻ em dùng toàn bộ ngôn ngữ là phù hợp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta thích trẻ em trông có vẻ ngây thơ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tương tự, hầu hết người lớn cố tình cho trẻ em một góc nhìn sai lệch về thế giới."
+        },
+        {
+          "kind": "highlight",
+          "text": "Một trong những ví dụ rõ nhất là Ông già Noel."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta nghĩ trẻ nhỏ tin vào Ông già Noel là đáng yêu. Chính tôi cũng nghĩ việc trẻ nhỏ tin vào Ông già Noel là đáng yêu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng người ta phải tự hỏi: ta kể cho chúng những điều ấy vì lợi ích của chúng, hay vì lợi ích của chúng ta?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây tôi không lập luận ủng hộ hay phản đối ý tưởng này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ việc cha mẹ muốn mặc cho tâm trí con mình những bộ đồ trẻ con nhỏ xinh là điều không thể tránh khỏi. Có lẽ chính tôi cũng sẽ làm vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều quan trọng với mục đích của chúng ta là: kết quả là, bộ não của một đứa trẻ tuổi teen được nuôi dạy tử tế gần như là một bộ sưu tập hoàn chỉnh tất cả những điều cấm kỵ của thời đại chúng ta — và ở trạng thái nguyên vẹn, vì chúng chưa bị kinh nghiệm làm ô nhiễm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất cứ điều gì chúng ta đang nghĩ mà sau này sẽ hóa ra lố bịch, gần như chắc chắn nó nằm trong cái đầu ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao ta tiếp cận được những ý tưởng đó?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bằng thí nghiệm tưởng tượng sau:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy tưởng tượng một kiểu nhân vật Conrad thời hiện đại, người từng làm lính đánh thuê một thời gian ở châu Phi, từng làm bác sĩ một thời gian ở Nepal, từng làm quản lý hộp đêm ở Miami."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chi tiết cụ thể không quan trọng. Chỉ cần đó là một người đã thấy rất nhiều chuyện trên đời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ hãy tưởng tượng so sánh những gì có trong đầu người này với những gì có trong đầu một cô gái 16 tuổi ngoan ngoãn sống ở vùng ngoại ô."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ta nghĩ điều gì mà có thể khiến cô bé sốc?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ta biết thế giới. Cô bé biết — hoặc ít nhất là hiện thân của — những điều cấm kỵ hiện tại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lấy cái này trừ cái kia, kết quả chính là những điều chúng ta không thể nói."
+        }
+      ]
+    },
+    {
+      "title": "Cơ chế",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể nghĩ ra thêm một cách nữa để tìm ra những điều chúng ta không thể nói: nhìn vào cách các điều cấm kỵ được tạo ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các thời trang đạo đức hình thành như thế nào, và tại sao chúng được chấp nhận?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu hiểu cơ chế này, ta có thể nhìn thấy nó đang vận hành trong thời đại của chính mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời trang đạo đức dường như không được tạo ra giống cách thời trang thông thường được tạo ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời trang thông thường có vẻ xuất hiện một cách tình cờ khi mọi người bắt chước sở thích nhất thời của một người có ảnh hưởng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mốt giày mũi rộng ở châu Âu cuối thế kỷ 15 bắt đầu vì vua Charles VIII của Pháp có sáu ngón chân ở một bàn chân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mốt tên Gary bắt đầu khi diễn viên Frank Cooper lấy tên của một thị trấn công nghiệp cứng rắn ở Indiana."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời trang đạo đức dường như thường được tạo ra có chủ đích hơn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi có điều gì đó chúng ta không thể nói, thường là vì một nhóm nào đó không muốn chúng ta nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự cấm đoán sẽ mạnh nhất khi nhóm ấy đang bất an."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều trớ trêu trong trường hợp của Galileo là ông gặp rắc rối vì lặp lại ý tưởng của Copernicus."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bản thân Copernicus thì không gặp rắc rối như vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, Copernicus là một giáo sĩ của nhà thờ lớn, và ông còn đề tặng cuốn sách của mình cho Giáo hoàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đến thời Galileo, nhà thờ đang ở giữa cơn khủng hoảng của Phong trào Phản Cải cách và lo sợ các ý tưởng phi chính thống hơn nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để khởi động một điều cấm kỵ, một nhóm phải nằm ở vị trí lưng chừng giữa yếu thế và quyền lực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một nhóm tự tin không cần điều cấm kỵ để bảo vệ mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc nói những nhận xét chê bai người Mỹ hoặc người Anh không bị xem là không phù hợp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, một nhóm cũng phải đủ quyền lực để thực thi điều cấm kỵ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại thời điểm bài này được viết, những người thích phân dường như chưa đủ đông hoặc đủ năng lượng để lợi ích của họ được nâng lên thành một “lối sống”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghi ngờ rằng nguồn lớn nhất của các điều cấm kỵ đạo đức rốt cuộc sẽ là những cuộc đấu tranh quyền lực trong đó một bên chỉ vừa mới chiếm ưu thế mong manh."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là nơi anh sẽ tìm thấy một nhóm đủ mạnh để thực thi điều cấm kỵ, nhưng vẫn đủ yếu để cần đến chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hầu hết các cuộc đấu tranh, dù thật chất là về điều gì, cuối cùng sẽ được trình bày như những cuộc đấu tranh giữa các ý tưởng cạnh tranh nhau."
+        },
+        {
+          "kind": "highlight",
+          "text": "Phong trào Cải cách Anh về cơ bản là một cuộc đấu tranh vì tài sản và quyền lực, nhưng cuối cùng lại được trình bày như cuộc đấu tranh để bảo vệ linh hồn người Anh khỏi ảnh hưởng mục nát của Rome."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khiến người ta chiến đấu vì một ý tưởng thì dễ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và bên nào thắng, ý tưởng của họ cũng sẽ được xem như đã chiến thắng, như thể Chúa muốn báo hiệu sự đồng tình của mình bằng cách chọn bên ấy làm kẻ thắng cuộc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta thường thích nghĩ về Thế chiến II như chiến thắng của tự do trước chủ nghĩa toàn trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta tiện thể quên mất rằng Liên Xô cũng là một trong những bên chiến thắng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không nói rằng các cuộc đấu tranh không bao giờ xoay quanh ý tưởng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi chỉ nói rằng chúng luôn được làm cho có vẻ như xoay quanh ý tưởng, bất kể thật sự có phải vậy hay không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và cũng như chẳng có gì lỗi thời bằng mốt vừa mới bị bỏ đi, chẳng có gì bị xem là sai trái bằng các nguyên tắc của đối thủ vừa mới bị đánh bại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nghệ thuật hiện thực chỉ mới bắt đầu phục hồi khỏi việc từng được cả Hitler lẫn Stalin tán thành."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mặc dù thời trang đạo đức có xu hướng phát sinh từ các nguồn khác với thời trang quần áo, cơ chế lan truyền của chúng có vẻ khá giống nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người chấp nhận sớm sẽ được thúc đẩy bởi tham vọng: những người tự ý thức rằng mình “ngầu”, muốn phân biệt mình với đám đông bình thường."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi thời trang ấy đã ổn định, họ sẽ được gia nhập bởi nhóm thứ hai, lớn hơn nhiều, được thúc đẩy bởi nỗi sợ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhóm thứ hai chấp nhận thời trang không phải vì họ muốn nổi bật, mà vì họ sợ bị nổi bật."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, nếu anh muốn tìm ra những điều chúng ta không thể nói, hãy nhìn vào bộ máy của thời trang và thử dự đoán nó sẽ làm gì trở nên không thể nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những nhóm nào vừa quyền lực vừa bất an, và họ muốn đàn áp ý tưởng nào?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những ý tưởng nào đã bị hoen ố vì liên hệ với phe thua trong một cuộc đấu tranh gần đây?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu một người tự ý thức mình là “ngầu” muốn phân biệt bản thân với các mốt trước đó — chẳng hạn với cha mẹ mình — thì họ sẽ có xu hướng bác bỏ những ý tưởng nào của thế hệ trước?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người có đầu óc quy ước đang sợ nói điều gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kỹ thuật này sẽ không tìm ra tất cả những điều chúng ta không thể nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể nghĩ ra vài điều không phải kết quả của bất kỳ cuộc đấu tranh gần đây nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều điều cấm kỵ của chúng ta bắt rễ sâu trong quá khứ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng cách tiếp cận này, kết hợp với bốn cách trước đó, sẽ làm lộ ra khá nhiều ý tưởng không thể nghĩ."
+        }
+      ]
+    },
+    {
+      "title": "Tại sao?",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một số người sẽ hỏi: tại sao lại muốn làm việc này?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao lại cố tình lục lọi giữa những ý tưởng khó chịu, tai tiếng?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao lại nhìn dưới các tảng đá?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước hết, tôi làm vậy cùng lý do khiến tôi từng lật đá lên xem khi còn nhỏ: **tò mò thuần túy**."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi đặc biệt tò mò về bất cứ thứ gì bị cấm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy để tôi nhìn tận mắt và tự quyết định."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thứ hai, tôi làm vậy vì tôi không thích ý tưởng rằng mình đang sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu giống như các thời đại khác, chúng ta đang tin những điều sau này sẽ trông lố bịch, tôi muốn biết chúng là gì để ít nhất bản thân tôi có thể tránh tin vào chúng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thứ ba, tôi làm vậy vì nó tốt cho bộ não."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để làm việc tốt, anh cần một bộ não có thể đi đến bất kỳ đâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và anh đặc biệt cần một bộ não có thói quen đi đến những nơi nó không được phép đi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những công trình lớn thường mọc lên từ những ý tưởng mà người khác đã bỏ qua."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và không có ý tưởng nào bị bỏ qua nhiều bằng một ý tưởng bị xem là không thể nghĩ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ: chọn lọc tự nhiên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó đơn giản đến vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao không ai nghĩ ra nó trước đó?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu trả lời quá rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chính Darwin cũng rất cẩn thận bước nhẹ quanh những hệ quả từ lý thuyết của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông muốn dành thời gian suy nghĩ về sinh học, chứ không phải tranh cãi với những người buộc tội ông là vô thần."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đặc biệt trong khoa học, khả năng chất vấn các giả định là một lợi thế rất lớn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phương thức hoạt động của các nhà khoa học — ít nhất là các nhà khoa học giỏi — chính xác là như vậy:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tìm những nơi mà trí tuệ quy ước bị nứt vỡ, rồi cố cạy các vết nứt ra để xem bên dưới có gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là nơi các lý thuyết mới xuất hiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói cách khác, một nhà khoa học giỏi không chỉ phớt lờ trí tuệ quy ước, mà còn nỗ lực đặc biệt để phá vỡ nó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "highlight",
+          "text": "Các nhà khoa học chủ động đi tìm rắc rối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây đáng lẽ phải là phương thức hoạt động của bất kỳ học giả nào, nhưng các nhà khoa học có vẻ sẵn lòng nhìn dưới các tảng đá hơn nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có thể vì các nhà khoa học đơn giản là thông minh hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hầu hết các nhà vật lý, nếu cần, có thể vượt qua chương trình tiến sĩ văn học Pháp. Nhưng rất ít giáo sư văn học Pháp có thể vượt qua chương trình tiến sĩ vật lý."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc có thể vì trong khoa học, việc lý thuyết đúng hay sai rõ ràng hơn, và điều này khiến các nhà khoa học táo bạo hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc cũng có thể vì trong khoa học, việc lý thuyết đúng hay sai rõ ràng hơn, nên anh phải thông minh mới có được việc làm như một nhà khoa học, thay vì chỉ cần là một chính trị gia giỏi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dù lý do là gì, dường như có một tương quan rõ ràng giữa trí thông minh và sự sẵn lòng xem xét những ý tưởng gây sốc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không chỉ vì người thông minh chủ động tìm lỗ hổng trong tư duy quy ước."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ ngay từ đầu, các quy ước cũng ít kiểm soát họ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh có thể thấy điều đó qua cách họ ăn mặc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không chỉ trong khoa học, dị giáo mới có ích."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong bất kỳ lĩnh vực cạnh tranh nào, anh có thể thắng lớn bằng cách nhìn thấy những điều người khác không dám nhìn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và trong mọi lĩnh vực, có lẽ đều có những dị giáo mà rất ít người dám nói ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong ngành xe hơi Mỹ hiện nay có rất nhiều than vãn về thị phần đang suy giảm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nguyên nhân rõ đến mức bất kỳ người ngoài quan sát kỹ nào cũng có thể giải thích trong một giây: họ làm ra những chiếc xe tệ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và họ đã làm vậy lâu đến mức hiện nay các thương hiệu xe hơi Mỹ đã trở thành **phản thương hiệu** — thứ khiến anh mua xe bất chấp thương hiệu đó, chứ không phải vì thương hiệu đó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cadillac đã ngừng là “Cadillac của ngành xe hơi” vào khoảng năm 1970."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy mà tôi nghi ngờ không ai dám nói điều này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu không, các công ty đó đã cố sửa vấn đề từ lâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rèn luyện bản thân để nghĩ những suy nghĩ không thể nghĩ đem lại lợi ích vượt xa bản thân các suy nghĩ ấy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó giống như việc giãn cơ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh giãn cơ trước khi chạy, anh đặt cơ thể vào những tư thế cực đoan hơn nhiều so với bất kỳ tư thế nào nó sẽ phải đảm nhận trong lúc chạy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh có thể nghĩ những điều ở xa ngoài chiếc hộp đến mức khiến tóc người ta dựng đứng, anh sẽ không gặp khó khăn với những chuyến đi nhỏ ra ngoài chiếc hộp mà người ta gọi là đổi mới."
+        }
+      ]
+    },
+    {
+      "title": "Pensieri Stretti",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi anh phát hiện ra điều gì đó mình không thể nói, anh nên làm gì với nó?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lời khuyên của tôi là: **đừng nói ra**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc ít nhất, hãy chọn trận chiến của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giả sử trong tương lai có một phong trào cấm màu vàng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các đề xuất sơn bất kỳ thứ gì màu vàng đều bị lên án là “chủ nghĩa vàng”, cũng như bất kỳ ai bị nghi ngờ là thích màu vàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người thích màu cam được dung thứ, nhưng bị nhìn với sự nghi ngờ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giả sử anh nhận ra rằng màu vàng chẳng có gì sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh đi khắp nơi nói điều này, anh cũng sẽ bị lên án là một người theo chủ nghĩa vàng, và anh sẽ thấy mình phải tranh cãi rất nhiều với những người chống màu vàng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu mục tiêu đời anh là phục hồi danh dự cho màu vàng, đó có thể chính là điều anh muốn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu anh chủ yếu quan tâm đến những câu hỏi khác, việc bị dán nhãn “người theo chủ nghĩa vàng” sẽ chỉ là một sự phân tâm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tranh luận với kẻ ngu, và anh trở thành kẻ ngu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều quan trọng nhất là có thể **nghĩ** điều anh muốn, không phải **nói** điều anh muốn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu anh cảm thấy mình phải nói ra mọi điều mình nghĩ, điều đó có thể ngăn anh nghĩ những suy nghĩ không phù hợp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ tốt hơn nên theo chính sách ngược lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy vạch một đường ranh sắc nét giữa suy nghĩ và lời nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bên trong đầu anh, mọi thứ đều được phép."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong đầu mình, tôi cố ý khuyến khích những suy nghĩ táo tợn nhất mà tôi có thể tưởng tượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng cũng như trong một hội kín, không điều gì xảy ra bên trong tòa nhà nên được kể cho người ngoài."
+        },
+        {
+          "kind": "highlight",
+          "text": "Quy tắc đầu tiên của Fight Club là: anh không nói về Fight Club."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi Milton chuẩn bị đến Ý vào thập niên 1630, Sir Henry Wootton, người từng là đại sứ ở Venice, nói với ông rằng phương châm của ông nên là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Suy nghĩ khép kín, gương mặt cởi mở."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy mỉm cười với mọi người, và đừng nói cho họ biết anh đang nghĩ gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lời khuyên khôn ngoan."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Milton là một người thích tranh luận, và Tòa án Dị giáo lúc đó đang hơi bất an."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi nghĩ khác biệt giữa tình cảnh của Milton và tình cảnh của chúng ta chỉ là vấn đề mức độ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi thời đại đều có các dị giáo của nó. Và nếu anh không bị bỏ tù vì chúng, ít nhất anh cũng sẽ gặp đủ rắc rối để điều đó trở thành một sự phân tâm hoàn toàn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi thừa nhận im lặng trông có vẻ hèn nhát."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi tôi đọc về cách các nhà Scientology quấy rối những người phê bình họ, hoặc chuyện các nhóm ủng hộ Israel đang “lập hồ sơ” những người lên tiếng chống lại các vi phạm nhân quyền của Israel, hoặc chuyện người ta bị kiện vì vi phạm DMCA, một phần trong tôi muốn nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Được rồi, lũ khốn, cứ đến đây.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vấn đề là: có quá nhiều điều anh không thể nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh nói tất cả, anh sẽ chẳng còn thời gian cho công việc thật sự của mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh sẽ phải biến thành Noam Chomsky."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, rắc rối của việc giữ kín suy nghĩ là anh đánh mất lợi ích của thảo luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói về một ý tưởng sẽ dẫn đến nhiều ý tưởng hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, kế hoạch tối ưu, nếu anh làm được, là có một vài người bạn đáng tin cậy mà anh có thể nói chuyện cởi mở."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây không chỉ là cách phát triển ý tưởng. Nó cũng là một quy tắc kinh nghiệm tốt để chọn bạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người mà anh có thể nói những điều dị giáo mà không bị nhảy vào tấn công cũng là những người thú vị nhất để quen biết."
+        }
+      ]
+    },
+    {
+      "title": "Viso Sciolto?",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi không nghĩ chúng ta cần **viso sciolto** — gương mặt cởi mở — nhiều bằng **pensieri stretti** — suy nghĩ kín đáo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ chính sách tốt nhất là làm rõ rằng anh không đồng ý với bất kỳ sự cuồng tín nào đang thịnh hành trong thời đại của mình, nhưng không quá cụ thể về việc anh không đồng ý với điều gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những kẻ cuồng tín sẽ cố kéo anh ra để nói rõ, nhưng anh không cần trả lời họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu họ cố ép anh phải xử lý một câu hỏi theo khung của họ bằng cách hỏi: “Anh đứng về phía chúng tôi hay chống lại chúng tôi?”, anh luôn có thể trả lời: “Không phía nào cả.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tốt hơn nữa, hãy trả lời: “Tôi chưa quyết định.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là điều Larry Summers đã làm khi một nhóm cố đặt ông vào tình thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi giải thích sau đó, ông nói: “Tôi không làm các bài kiểm tra lập trường.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều câu hỏi khiến người ta nóng nảy thật ra khá phức tạp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không có giải thưởng nào cho việc trả lời nhanh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu những người chống màu vàng có vẻ vượt quá giới hạn và anh muốn phản công, có nhiều cách để làm điều đó mà không khiến bản thân bị buộc tội là người theo chủ nghĩa vàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giống như những lính quấy rối trong quân đội cổ đại, anh muốn tránh đối đầu trực tiếp với lực lượng chính của kẻ địch."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tốt hơn là quấy rối họ bằng những mũi tên từ xa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách để làm điều này là nâng cuộc tranh luận lên một tầng trừu tượng cao hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh phản đối kiểm duyệt nói chung, anh có thể tránh bị buộc tội mang dị giáo cụ thể nằm trong cuốn sách hay bộ phim mà ai đó đang cố kiểm duyệt."
+        },
+        {
+          "kind": "highlight",
+          "text": "Anh có thể tấn công các nhãn bằng các siêu nhãn: những nhãn nói về việc dùng nhãn để ngăn thảo luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự lan truyền của thuật ngữ “political correctness” — chính trị đúng đắn — đánh dấu sự bắt đầu của hồi kết cho chính trị đúng đắn, bởi nó cho phép người ta tấn công toàn bộ hiện tượng mà không bị buộc tội mang bất kỳ dị giáo cụ thể nào mà hiện tượng ấy cố đàn áp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách khác để phản công là dùng ẩn dụ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Arthur Miller đã làm suy yếu Ủy ban Điều tra Hoạt động Phi Mỹ bằng cách viết vở kịch **The Crucible** về các phiên tòa phù thủy Salem."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông không bao giờ trực tiếp nhắc đến ủy ban đó, nên không cho họ cách đáp trả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "HUAC có thể làm gì? Bảo vệ các phiên tòa phù thủy Salem sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy mà ẩn dụ của Miller bám rất chắc, đến mức cho đến ngày nay, hoạt động của ủy ban ấy thường được mô tả là một cuộc “săn phù thủy”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ tốt nhất là dùng hài hước."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những kẻ cuồng tín, bất kể vì nguyên nhân gì, luôn thiếu khiếu hài hước."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ không thể đáp lại trò đùa bằng trò đùa tương ứng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ lúng túng trên lãnh địa của hài hước như một hiệp sĩ cưỡi ngựa trên sân trượt băng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, sự đạo mạo kiểu Victoria dường như đã bị đánh bại chủ yếu bằng cách biến nó thành trò đùa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tương tự với phiên bản tái sinh của nó dưới dạng chính trị đúng đắn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Arthur Miller viết:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tôi mừng vì mình đã viết được The Crucible, nhưng khi nhìn lại, tôi thường ước mình có khí chất để viết một vở hài kịch phi lý, bởi đó mới là thứ tình huống ấy xứng đáng nhận.”"
+        }
+      ]
+    },
+    {
+      "title": "ABQ",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một người bạn Hà Lan nói rằng tôi nên dùng Hà Lan như ví dụ về một xã hội khoan dung."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đúng là họ có một truyền thống lâu đời về sự cởi mở tương đối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong nhiều thế kỷ, vùng đất thấp là nơi người ta tìm đến để nói những điều không thể nói ở bất kỳ nơi nào khác. Điều này đã giúp khu vực ấy trở thành trung tâm của học thuật và công nghiệp — hai thứ vốn gắn bó chặt chẽ với nhau lâu hơn nhiều so với phần lớn mọi người nhận ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Descartes, dù được người Pháp nhận là của họ, đã thực hiện nhiều suy nghĩ của mình ở Hà Lan."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy mà tôi vẫn băn khoăn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người Hà Lan dường như sống trong một biển quy tắc và quy định ngập đến tận cổ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có quá nhiều điều anh không được làm ở đó. Liệu thật sự không có điều gì anh không được nói sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chắc chắn việc họ coi trọng sự cởi mở không đảm bảo điều gì."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ai lại nghĩ mình không cởi mở?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô gái ngoại ô đoan trang giả định của chúng ta cũng nghĩ mình cởi mở."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng phải cô ấy đã được dạy như vậy sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hỏi bất kỳ ai, họ cũng sẽ nói điều tương tự: họ khá cởi mở, dù họ sẽ vạch ranh giới ở những điều thật sự sai."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số bộ lạc có thể tránh từ “sai” vì nó mang tính phán xét, và thay vào đó dùng một uyển ngữ nghe trung lập hơn như “tiêu cực” hoặc “phá hoại”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi người ta kém toán, họ biết điều đó, vì họ trả lời sai trong bài kiểm tra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi người ta kém cởi mở, họ không biết điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, họ có xu hướng nghĩ ngược lại."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nhớ: bản chất của thời trang là nó vô hình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu không vô hình, nó sẽ không vận hành được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời trang không có vẻ giống thời trang với người đang bị nó chi phối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó chỉ có vẻ là điều đúng nên làm."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ khi nhìn từ một khoảng cách, chúng ta mới thấy những dao động trong ý tưởng của con người về điều đúng nên làm, và nhận ra chúng là thời trang."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời gian cho chúng ta khoảng cách đó miễn phí."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật vậy, sự xuất hiện của các thời trang mới khiến thời trang cũ trở nên dễ thấy, vì so với hiện tại, chúng trông rất nực cười."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ một đầu của con lắc, đầu kia trông đặc biệt xa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng để nhìn thấy thời trang ngay trong thời đại của mình, anh cần một nỗ lực có ý thức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không có thời gian tạo khoảng cách cho mình, anh phải tự tạo khoảng cách."
+        },
+        {
+          "kind": "highlight",
+          "text": "Thay vì là một phần của đám đông, hãy đứng xa nó nhất có thể và quan sát nó đang làm gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và hãy đặc biệt chú ý mỗi khi một ý tưởng đang bị đàn áp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bộ lọc web dành cho trẻ em và nhân viên thường cấm các trang chứa nội dung khiêu dâm, bạo lực và “ngôn từ thù ghét”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thế nào được tính là khiêu dâm và bạo lực?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chính xác thì “ngôn từ thù ghét” là gì?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cụm từ này nghe như bước ra từ tiểu thuyết **1984**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những nhãn như vậy có lẽ là manh mối bên ngoài lớn nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu một phát biểu là sai, đó là điều tệ nhất anh có thể nói về nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh không cần nói rằng nó là dị giáo."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu nó không sai, nó không nên bị đàn áp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, khi anh thấy các phát biểu bị công kích là x-ist hoặc y-ic — hãy thay x và y bằng các giá trị hiện hành trong thời đại của anh — dù là năm 1630 hay 2030, đó là dấu hiệu chắc chắn rằng có điều gì đó không ổn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh nghe những nhãn như vậy được dùng, hãy hỏi tại sao."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đặc biệt là khi anh nghe chính mình dùng chúng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không chỉ đám đông là thứ anh cần học cách quan sát từ xa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh cũng cần có khả năng quan sát chính suy nghĩ của mình từ xa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhân tiện, đó không phải là một ý tưởng cấp tiến. Đó là khác biệt chính giữa trẻ em và người lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi một đứa trẻ nổi giận vì nó mệt, nó không biết chuyện gì đang xảy ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người lớn có thể tạo đủ khoảng cách với tình huống để nói: “Thôi không sao, tôi chỉ đang mệt thôi.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không thấy lý do gì khiến ta không thể, bằng một quá trình tương tự, học cách nhận ra và giảm bớt tác động của các thời trang đạo đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh phải đi thêm bước đó nếu muốn suy nghĩ rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều này khó hơn, bởi giờ anh đang làm việc chống lại tập tục xã hội thay vì thuận theo chúng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi người khuyến khích anh trưởng thành đến mức anh có thể giảm ảnh hưởng của tâm trạng xấu của chính mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất ít người khuyến khích anh tiếp tục trưởng thành đến mức anh có thể giảm ảnh hưởng của tâm trạng xấu của xã hội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao anh có thể nhìn thấy con sóng, khi chính anh là nước?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy luôn đặt câu hỏi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là phòng tuyến duy nhất."
+        }
+      ]
+    },
+    {
+      "title": "Ghi chú",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cảm ơn Sarah Harlin, Trevor Blackwell, Jessica Livingston, Robert Morris, Eric Raymond và Bob van der Zwaan đã đọc các bản nháp của bài viết này; cảm ơn Lisa Randall, Jackie McDonough, Ryan Stanley và Joel Rainey vì những cuộc trò chuyện về dị giáo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không cần phải nói, họ không chịu trách nhiệm cho các quan điểm được trình bày trong bài này — và đặc biệt là cho những quan điểm không được trình bày trong bài."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 12,
   "legacyBlockCount": 431,
   "legacyBodyChecksum": "sha256:69fab938db2786cef11a0199f2323f45874665f89e501b032ac2e04a394a7710",
   "contentVersion": 1,
-  "contentChecksum": "sha256:2a36f9f3aad73ab7a197ec853039bc0919552a8012bb177b670d5d1eb4668a31"
+  "contentChecksum": "sha256:7823bab889c75b29ad90c0df5d2b9d9150ac6e1d8d8bdf9e9150321857ba5ef0"
 }

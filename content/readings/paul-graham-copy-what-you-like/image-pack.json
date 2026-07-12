@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
+      "publicPath": "/images/readings/paul-graham-copy-what-you-like/01-1280px-paul-graham-programming.jpg",
       "alt": "Paul Graham đang làm việc với máy tính.",
       "caption": "Paul Graham tiếp cận câu hỏi về gu bằng kinh nghiệm của một người vừa viết, vừa lập trình, vừa quan sát người làm sản phẩm.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "01-1280px-paul-graham-programming.jpg",
+      "checksum": "sha256:886c2b92026dd283af43be4b54eda9a3ac0e1d299c24467e6ba431f1a235e2bd",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-copy-what-you-like",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
         "articleSourceUrl": "https://paulgraham.com/copy.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/James_Joyce_Ulysses_1st_Edition_1922_GB.jpg/1280px-James_Joyce_Ulysses_1st_Edition_1922_GB.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/James_Joyce_Ulysses_1st_Edition_1922_GB.jpg/1280px-James_Joyce_Ulysses_1st_Edition_1922_GB.jpg",
+      "publicPath": "/images/readings/paul-graham-copy-what-you-like/02-1280px-james-joyce-ulysses-1st-edition-1922-gb.jpg",
       "alt": "Ấn bản đầu tiên của Ulysses của James Joyce.",
       "caption": "Ulysses xuất hiện trong bài như ví dụ về thứ người ta có thể đọc vì cảm giác đạo đức khi đọc, chứ không hẳn vì thật sự yêu thích.",
       "credit": "Wikimedia Commons / Geoffrey Barker",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Geoffrey Barker",
+      "derivative": "02-1280px-james-joyce-ulysses-1st-edition-1922-gb.jpg",
+      "checksum": "sha256:91afb41b72733d68da45db54cdb7874c3dc1873b32f4bebc81028814b7522e35",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-copy-what-you-like",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/James_Joyce_Ulysses_1st_Edition_1922_GB.jpg/1280px-James_Joyce_Ulysses_1st_Edition_1922_GB.jpg",
         "articleSourceUrl": "https://paulgraham.com/copy.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Symbolics_LISP_Machine,_Google_NY_office_computer_museum.jpg",
       "sourceUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Symbolics_LISP_Machine,_Google_NY_office_computer_museum.jpg",
+      "publicPath": "/images/readings/paul-graham-copy-what-you-like/03-symbolics-lisp-machine-google-ny-office-computer-museum.jpg",
       "alt": "Một máy Symbolics Lisp Machine trong bảo tàng máy tính.",
       "caption": "Các hệ chuyên gia và máy Lisp gợi lại giai đoạn Graham quan sát những thứ trông rất ấn tượng nhưng có thể không dẫn tới điều thú vị.",
       "credit": "Wikimedia Commons / CC BY 2.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY 2.0",
+      "derivative": "03-symbolics-lisp-machine-google-ny-office-computer-museum.jpg",
+      "checksum": "sha256:d0e9ca1ffc74f785862f86a43fa7e98e015680a1065453d355a0f5a842463fe5",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-copy-what-you-like",
         "legacyLocation": "https://commons.wikimedia.org/wiki/Special:FilePath/Symbolics_LISP_Machine,_Google_NY_office_computer_museum.jpg",
         "articleSourceUrl": "https://paulgraham.com/copy.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/1280px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/1280px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
+      "publicPath": "/images/readings/paul-graham-copy-what-you-like/04-1280px-22the-school-of-athens-22-by-raffaello-sanzio-da-urbino.jpg",
       "alt": "The School of Athens của Raphael.",
       "caption": "Một kiệt tác Phục Hưng nhắc đúng cái bẫy Graham nói tới: người bắt chước rất dễ sao chép dấu vết phụ, thay vì điều thật sự làm tác phẩm tốt.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "04-1280px-22the-school-of-athens-22-by-raffaello-sanzio-da-urbino.jpg",
+      "checksum": "sha256:75fc6d611bf82cfba75f5185176a285741a935522d9bef4e72012ce02050e2d3",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-copy-what-you-like",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg/1280px-%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg",
         "articleSourceUrl": "https://paulgraham.com/copy.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "/images/articles/paul-graham-copy-what-you-like/paul-graham-yc-prototype-day.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/paul-graham-copy-what-you-like/05-paul-graham-yc-prototype-day.jpg",
       "alt": "Paul Graham nói chuyện tại Prototype Day của Y Combinator năm 2009.",
       "caption": "Từ viết essay đến xây Y Combinator, Graham nhất quán với một câu hỏi: tiêu chuẩn tốt thật sự nằm ở đâu?",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "05-paul-graham-yc-prototype-day.jpg",
+      "checksum": "sha256:a0a8fc955a15e1bad44dfcd72265084ea7643193e13fab28aea5dd4959b0ab5f",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-copy-what-you-like",
         "legacyLocation": "/images/articles/paul-graham-copy-what-you-like/paul-graham-yc-prototype-day.jpg",
         "articleSourceUrl": "https://paulgraham.com/copy.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:77cdef3721032eb22c27417b492a61e5b3383cdf8b7e52a0ba20939c08e92e0f"
+  "mediaChecksum": "sha256:8bc50b54c32259ff733bc0e4e142588e092c0bbfea6d12f0311f29b2fb05155b"
 }

@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/0/04/David_Deutsch.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/David_Deutsch.jpg",
+      "publicPath": "/images/readings/david-deutsch-a-new-way-to-explain-explanation/01-david-deutsch.jpg",
       "alt": "David Deutsch trong một chân dung công khai.",
       "caption": "David Deutsch, người đặt lại tiêu chuẩn cho một lời giải thích tốt.",
       "credit": "Wikimedia Commons / CC BY 3.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY 3.0",
+      "derivative": "01-david-deutsch.jpg",
+      "checksum": "sha256:c3f038167a5a84266811e573c7cd30ee98bfa2ebc691ac94a86642106cb44e17",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "david-deutsch-a-new-way-to-explain-explanation",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/0/04/David_Deutsch.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Night_Sky_Stars_Trees_02.jpg/1280px-Night_Sky_Stars_Trees_02.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Night_Sky_Stars_Trees_02.jpg/1280px-Night_Sky_Stars_Trees_02.jpg",
+      "publicPath": "/images/readings/david-deutsch-a-new-way-to-explain-explanation/02-1280px-night-sky-stars-trees-02.jpg",
       "alt": "Bầu trời đêm đầy sao phía trên hàng cây.",
       "caption": "Bài nói bắt đầu từ câu hỏi cổ xưa: các vì sao là gì?",
       "credit": "Wikimedia Commons / CC BY-SA",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY-SA",
+      "derivative": "02-1280px-night-sky-stars-trees-02.jpg",
+      "checksum": "sha256:78fedd72cdfefec8bca6763f929042690e8258630ae6c5b36e87bc5e1ab41c51",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "david-deutsch-a-new-way-to-explain-explanation",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Night_Sky_Stars_Trees_02.jpg/1280px-Night_Sky_Stars_Trees_02.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg/1280px-Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg/1280px-Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg",
+      "publicPath": "/images/readings/david-deutsch-a-new-way-to-explain-explanation/03-1280px-terracotta-votive-relief-showing-demeter-26-persephone-2c-4th-c-b.jpg",
       "alt": "Phù điêu đất nung về Demeter và Persephone.",
       "caption": "Huyền thoại Demeter - Persephone gợi cách con người từng giải thích mùa màng bằng câu chuyện.",
       "credit": "Wikimedia Commons / CC0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC0",
+      "derivative": "03-1280px-terracotta-votive-relief-showing-demeter-26-persephone-2c-4th-c-b.jpg",
+      "checksum": "sha256:b9108c6b6cde2fbc04c6478e5810f450c0a9b1c38b70895b7b779e0177e6cae8",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "david-deutsch-a-new-way-to-explain-explanation",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg/1280px-Terracotta_votive_relief_showing_Demeter_%26_Persephone%2C_4th_c_BC%2C_Eleusis.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Earth%27s_axial_tilt_and_seasons.webm/1280px--Earth%27s_axial_tilt_and_seasons.webm.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Earth%27s_axial_tilt_and_seasons.webm/1280px--Earth%27s_axial_tilt_and_seasons.webm.jpg",
+      "publicPath": "/images/readings/david-deutsch-a-new-way-to-explain-explanation/04-1280px-earth-27s-axial-tilt-and-seasons-webm.jpg",
       "alt": "Minh họa độ nghiêng trục Trái Đất và các mùa.",
       "caption": "Khoa học thay câu chuyện tùy tiện bằng cơ chế khó biến đổi hơn.",
       "credit": "Wikimedia Commons / CC BY-SA",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY-SA",
+      "derivative": "04-1280px-earth-27s-axial-tilt-and-seasons-webm.jpg",
+      "checksum": "sha256:b2a7699102b3b8d997a967883c997a13948d8e09fc9e25b41897bef567ae7ce1",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "david-deutsch-a-new-way-to-explain-explanation",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Earth%27s_axial_tilt_and_seasons.webm/1280px--Earth%27s_axial_tilt_and_seasons.webm.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
+      "publicPath": "/images/readings/david-deutsch-a-new-way-to-explain-explanation/05-karl-popper.jpg",
       "alt": "Karl Popper trong một ảnh chân dung.",
       "caption": "Popper là một nền tham chiếu quan trọng cho câu hỏi về tri thức và kiểm chứng.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "05-karl-popper.jpg",
+      "checksum": "sha256:4df72b581196a6099f280ac44774026739fca9d1f47a4a2069235c1a51880b67",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "david-deutsch-a-new-way-to-explain-explanation",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/david_deutsch_a_new_way_to_explain_explanation"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:7d26bafbb155b537d357aee9af9db448b3c737b9c87ef85b6a2c5f3f3dc8ab02"
+  "mediaChecksum": "sha256:e6d01c5956ec3da1996b1dd4e1fb20fc5eb93d248953d86ddc59f3bb52bc63ee"
 }

@@ -4,9 +4,34 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Cinema Chapters is released and verified in production.** The connected journey
-is live across the in-scope site. Learn remains preserved in source but fail-closed
-until the independent learner PWA and `learn.thongphan.com` are ready.
+**Production rescue is in progress.** Browser evidence on 2026-07-12 reproduced
+hero text collisions at tablet and desktop breakpoints and confirmed that the Read
+migration intentionally published summaries while dropping all translated body
+blocks and reader images. The prior visual/read release verdict is superseded until
+the complete reader and responsive visual checks pass again. Learn remains preserved
+in source but fail-closed until the independent learner PWA is ready.
+
+## Production rescue — 2026-07-12
+
+- Reproduced the hero display-name/promise collision at `834x1194` and `1440x900`.
+- Confirmed the migration source still contains 13 translated articles, 2,650 body
+  blocks and 65 editorial image records.
+- Root cause: `scripts/migrate-readings.mjs` forced `publicationMode: summary`,
+  omitted `sections`, marked every image pending and explicitly copied zero assets.
+- Rescue acceptance: no text collision at supported breakpoints; face-safe hero and
+  proof imagery; 13/13 articles render their complete translated body; 5/5 editorial
+  images per article render without destructive crop; original source remains visible.
+- Local rescue verification: `npm test` 109/109, `npx tsc --noEmit`, static build
+  61/61 pages, Read safety 3/3 and release contracts 10/10 passed.
+- Browser QA at `1440x900`, `834x1194`, `390x844` and `320x568` reports zero
+  title/promise collision, zero stamp/promise collision, zero horizontal overflow
+  and zero broken homepage images. Reduced-motion mobile smoke also passed.
+- All 13 reading routes were opened at `390x844`; all 65 editorial images loaded
+  with non-zero natural dimensions, `object-fit: contain`, zero horizontal overflow
+  and no console warning/error. Steve Jobs was additionally inspected desktop/mobile
+  at the article header, lead portrait, body, table of contents and inline imagery.
+- Browser evidence: `/tmp/thongphan-rescue-qa.json`, `/tmp/read-all-final.json`,
+  `/tmp/home-mobile-final-rescue.png`, and `/tmp/read-steve-actual-body-*.png`.
 
 ## Cinema Chapters journey system - production release
 

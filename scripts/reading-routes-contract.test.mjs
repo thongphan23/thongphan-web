@@ -45,7 +45,7 @@ test('reading index and detail routes are static, canonical, and fail closed', a
   assert.match(sitemap, /readingPath/)
 })
 
-test('current source-link pages expose only editorial guidance and the original source action', async () => {
+test('reading pages expose the complete body, editorial images and original source action', async () => {
   const [detailPage, sourceDisclosure, toolbar, readings] = await Promise.all([
     readProjectFile('app/library/read/[slug]/page.tsx'),
     readProjectFile('components/editorial/SourceDisclosure.tsx'),
@@ -59,7 +59,10 @@ test('current source-link pages expose only editorial guidance and the original 
   assert.match(detailPage, /reflection/)
   assert.match(detailPage, /authorProfile/)
   assert.match(detailPage, /contentContext/)
-  assert.doesNotMatch(detailPage, /articleBody|dangerouslySetInnerHTML|<audio|sections\.map|images\.map/)
+  assert.match(detailPage, /ReadingBody/)
+  assert.match(detailPage, /reading\.sections/)
+  assert.match(detailPage, /reading\.images/)
+  assert.doesNotMatch(detailPage, /dangerouslySetInnerHTML|<audio/)
 
   assert.match(sourceDisclosure, /bài gốc/)
   assert.match(sourceDisclosure, /thongphan\.com/)

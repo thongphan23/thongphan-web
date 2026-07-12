@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 18,
   "topics": [
     "truyen-thong",
@@ -41,9 +41,839 @@
       "Nó đặc biệt phù hợp với thư viện này vì rèn năng lực nhìn nhiều lớp trước khi đánh giá một con người, cộng đồng hay nền văn hóa."
     ]
   },
+  "sections": [
+    {
+      "title": "Một cô bé học cách nhìn mình qua sách",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi là một người kể chuyện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và hôm nay, tôi muốn kể với các bạn một vài câu chuyện cá nhân về điều mà tôi gọi là “sự nguy hiểm của một câu chuyện duy nhất.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi lớn lên trong khuôn viên một trường đại học ở miền Đông Nigeria. Mẹ tôi kể rằng tôi bắt đầu đọc sách từ năm hai tuổi, mặc dù tôi nghĩ bốn tuổi có lẽ gần với sự thật hơn. Dù sao thì tôi cũng là một đứa trẻ biết đọc sớm. Và những thứ tôi đọc là sách thiếu nhi của Anh và Mỹ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cũng bắt đầu viết từ rất sớm. Khi khoảng bảy tuổi, tôi viết những câu chuyện bằng bút chì, minh họa bằng bút sáp màu — những câu chuyện mà người mẹ tội nghiệp của tôi buộc phải đọc."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi viết đúng kiểu những câu chuyện mà tôi đang đọc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả nhân vật của tôi đều là người da trắng, mắt xanh. Họ chơi đùa trong tuyết. Họ ăn táo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và họ nói rất nhiều về thời tiết, rằng thật tuyệt biết bao khi mặt trời ló dạng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này xảy ra trong khi tôi đang sống ở Nigeria."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi chưa từng ra khỏi Nigeria. Ở chỗ chúng tôi không có tuyết. Chúng tôi ăn xoài. Và chúng tôi chẳng bao giờ nói về thời tiết, vì thật sự không có nhu cầu phải làm thế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các nhân vật của tôi cũng uống rất nhiều bia gừng, bởi vì các nhân vật trong những cuốn sách Anh mà tôi đọc đều uống bia gừng. Mặc dù khi đó tôi chẳng hề biết bia gừng là gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và trong nhiều năm sau đó, tôi từng có một khao khát mãnh liệt là được nếm thử bia gừng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đó lại là một câu chuyện khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này, theo tôi, cho thấy chúng ta dễ bị ảnh hưởng và dễ tổn thương đến mức nào trước một câu chuyện, đặc biệt là khi còn nhỏ."
+        },
+        {
+          "kind": "pause",
+          "text": "Một câu chuyện duy nhất thường bắt đầu rất lặng: ta đọc một kiểu thế giới quá lâu, rồi tưởng đó là toàn bộ thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì tất cả những gì tôi từng đọc là những cuốn sách có nhân vật ngoại quốc, tôi đã tin rằng bản chất của sách là phải có người ngoại quốc trong đó, và phải nói về những thứ mà tôi không thể nhận ra trong đời sống của chính mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi chuyện thay đổi khi tôi phát hiện ra những cuốn sách châu Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi ấy, sách châu Phi không có nhiều, và cũng không dễ tìm như sách nước ngoài. Nhưng nhờ những nhà văn như Chinua Achebe và Camara Laye, nhận thức của tôi về văn chương đã thay đổi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nhận ra rằng những người giống như tôi — những cô bé có làn da màu sô-cô-la, với mái tóc xoăn chặt không thể buộc thành đuôi ngựa — cũng có thể tồn tại trong văn chương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi bắt đầu viết về những thứ mình nhận ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi yêu những cuốn sách Mỹ và Anh mà mình đã đọc. Chúng khuấy động trí tưởng tượng của tôi. Chúng mở ra cho tôi những thế giới mới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng hệ quả ngoài ý muốn là tôi không hề biết rằng những người giống như tôi cũng có thể xuất hiện trong văn chương."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, điều mà việc phát hiện ra các nhà văn châu Phi đã làm cho tôi là thế này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cứu tôi khỏi việc chỉ có một câu chuyện duy nhất về sách là gì."
+        },
+        {
+          "kind": "highlight",
+          "text": "Tôi sinh ra trong một gia đình Nigeria trung lưu, khá truyền thống. Bố tôi là giáo sư. Mẹ tôi là quản lý hành chính."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và như thông lệ khi đó, gia đình tôi có người giúp việc sống cùng nhà. Họ thường đến từ những ngôi làng nông thôn gần đó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Năm tôi lên tám tuổi, gia đình tôi có một cậu giúp việc mới. Tên cậu ấy là Fide."
+        }
+      ]
+    },
+    {
+      "title": "Khi nghèo khó trở thành toàn bộ câu chuyện về một con người",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Điều duy nhất mẹ tôi kể với chúng tôi về cậu ấy là gia đình cậu rất nghèo. Mẹ tôi gửi khoai mỡ, gạo và quần áo cũ cho gia đình cậu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và mỗi khi tôi không ăn hết bữa tối, mẹ tôi sẽ nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Ăn hết đi! Con không biết à? Những người như gia đình Fide chẳng có gì để ăn đâu.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi cảm thấy vô cùng thương hại gia đình Fide."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi một ngày thứ Bảy, chúng tôi đến thăm làng của cậu ấy. Mẹ cậu ấy cho chúng tôi xem một chiếc giỏ rất đẹp, được đan bằng sợi cọ nhuộm màu, với hoa văn tinh xảo, do anh trai cậu ấy làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sững sờ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi chưa từng nghĩ rằng bất kỳ ai trong gia đình cậu ấy lại có thể thật sự làm ra một thứ gì đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả những gì tôi từng nghe về họ là họ nghèo đến mức nào. Vì vậy, trong đầu tôi, tôi không thể nhìn họ như bất cứ điều gì khác ngoài sự nghèo khó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nghèo khó chính là câu chuyện duy nhất của tôi về họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều năm sau, tôi nghĩ lại chuyện này khi rời Nigeria để sang Mỹ học đại học. Khi ấy tôi 19 tuổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn cùng phòng người Mỹ của tôi đã rất sốc về tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy hỏi tôi học nói tiếng Anh giỏi như vậy ở đâu. Và cô ấy bối rối khi tôi nói rằng tiếng Anh là ngôn ngữ chính thức của Nigeria."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy hỏi liệu cô có thể nghe thứ mà cô gọi là “nhạc bộ lạc” của tôi không. Và rồi cô ấy rất thất vọng khi tôi lấy ra cuốn băng Mariah Carey."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy mặc định rằng tôi không biết dùng bếp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều khiến tôi chú ý là thế này:"
+        },
+        {
+          "kind": "pause",
+          "text": "Adichie không phủ nhận khác biệt. Bà chỉ chỉ ra điều nguy hiểm hơn: biến khác biệt thành khoảng cách không thể có sự bình đẳng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy đã thương hại tôi trước cả khi thật sự nhìn thấy tôi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vị thế mặc định của cô ấy đối với tôi, với tư cách một người châu Phi, là một kiểu thương hại có vẻ tử tế, nhưng đầy tính bề trên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn cùng phòng của tôi có một câu chuyện duy nhất về châu Phi: một câu chuyện duy nhất về thảm họa."
+        },
+        {
+          "kind": "highlight",
+          "text": "Trong câu chuyện duy nhất ấy, không hề có khả năng người châu Phi có điểm gì giống cô ấy. Không có khả năng tồn tại những cảm xúc phức tạp hơn lòng thương hại. Không có khả năng có một sự kết nối giữa hai con người bình đẳng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi phải nói rằng trước khi sang Mỹ, tôi không ý thức rõ mình là “người châu Phi”. Nhưng ở Mỹ, mỗi khi châu Phi được nhắc đến, mọi người đều quay sang nhìn tôi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mặc dù tôi chẳng biết gì về những nơi như Namibia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi dần chấp nhận căn tính mới này. Và ở nhiều phương diện, giờ đây tôi nghĩ về mình như một người châu Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dù vậy, tôi vẫn khá bực mình mỗi khi châu Phi bị gọi như một quốc gia. Ví dụ gần đây nhất là chuyến bay Virgin tuyệt vời của tôi từ Lagos hai ngày trước, khi trên máy bay có một thông báo về hoạt động từ thiện ở “Ấn Độ, châu Phi và các quốc gia khác.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau vài năm sống ở Mỹ với tư cách một người châu Phi, tôi bắt đầu hiểu phản ứng của bạn cùng phòng đối với mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi không lớn lên ở Nigeria, và nếu tất cả những gì tôi biết về châu Phi chỉ đến từ những hình ảnh phổ biến trên truyền thông, có lẽ chính tôi cũng sẽ nghĩ rằng châu Phi là một nơi có phong cảnh đẹp, động vật đẹp, và những con người khó hiểu: đánh nhau trong những cuộc chiến vô nghĩa, chết vì nghèo đói và AIDS, không thể tự lên tiếng cho mình, và đang chờ được một người nước ngoài da trắng tử tế cứu giúp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ nhìn người châu Phi giống như cách tôi, khi còn nhỏ, đã từng nhìn gia đình Fide."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ rằng câu chuyện duy nhất về châu Phi rốt cuộc bắt nguồn từ văn chương phương Tây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một trích dẫn từ ghi chép của một thương nhân London tên là John Lok, người đã đi thuyền đến Tây Phi vào năm 1561 và để lại một bản tường thuật khá thú vị về chuyến đi của mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau khi gọi người châu Phi da đen là “những con thú không có nhà cửa”, ông ta viết:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Họ cũng là những người không có đầu, miệng và mắt nằm ở ngực.”"
+        }
+      ]
+    },
+    {
+      "title": "Ai được quyền kể câu chuyện cuối cùng?",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Mỗi lần đọc câu này, tôi đều bật cười."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và có lẽ ta cũng phải ngưỡng mộ trí tưởng tượng của John Lok."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều quan trọng trong những ghi chép của ông ta là chúng đại diện cho sự khởi đầu của một truyền thống kể chuyện về châu Phi ở phương Tây:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một truyền thống mô tả vùng châu Phi hạ Sahara như một nơi của thiếu thốn, khác biệt, bóng tối; nơi của những con người mà theo cách nói của nhà thơ Rudyard Kipling, là “nửa quỷ dữ, nửa trẻ con.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và rồi tôi bắt đầu nhận ra rằng bạn cùng phòng người Mỹ của tôi hẳn đã nhìn thấy và nghe thấy nhiều phiên bản khác nhau của câu chuyện duy nhất ấy trong suốt cuộc đời cô."
+        },
+        {
+          "kind": "highlight",
+          "text": "Cũng như một vị giáo sư từng nói với tôi rằng tiểu thuyết của tôi không “đậm chất châu Phi một cách chân thực.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi hoàn toàn sẵn sàng tranh luận rằng cuốn tiểu thuyết của mình có nhiều điểm chưa tốt, rằng nó thất bại ở nhiều chỗ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi chưa từng tưởng tượng rằng nó lại thất bại trong việc đạt được một thứ gọi là “tính châu Phi chân thực.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, tôi cũng không biết “tính châu Phi chân thực” là gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vị giáo sư nói với tôi rằng các nhân vật của tôi quá giống ông ấy: một người đàn ông có học, thuộc tầng lớp trung lưu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhân vật của tôi lái xe. Họ không bị đói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, họ không thật sự “châu Phi.”"
+        },
+        {
+          "kind": "pause",
+          "text": "Một hệ thống kể chuyện có quyền lực khi nó không chỉ kể về người khác, mà còn khiến người khác bị định nghĩa bởi cách kể đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi cũng phải nhanh chóng nói thêm rằng chính tôi cũng có lỗi trong vấn đề “câu chuyện duy nhất.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vài năm trước, tôi đến Mexico từ Mỹ. Khi đó, bầu không khí chính trị ở Mỹ rất căng thẳng, và có rất nhiều tranh luận xoay quanh vấn đề nhập cư."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và như vẫn thường xảy ra ở Mỹ, nhập cư trở thành đồng nghĩa với người Mexico."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có vô số câu chuyện về người Mexico như những người đang bòn rút hệ thống y tế, lén lút vượt biên, bị bắt ở biên giới, đại loại như vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nhớ ngày đầu tiên đi dạo ở Guadalajara. Tôi nhìn thấy mọi người đi làm, cuốn bánh tortilla trong chợ, hút thuốc, cười nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nhớ ban đầu mình hơi ngạc nhiên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi sau đó, tôi bị nhấn chìm trong cảm giác xấu hổ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nhận ra rằng mình đã bị truyền thông về người Mexico bao phủ nhiều đến mức trong đầu tôi, họ đã trở thành một thứ duy nhất: những người nhập cư khốn khổ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã tin vào câu chuyện duy nhất về người Mexico."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi không thể xấu hổ hơn về chính mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, đây là cách tạo ra một câu chuyện duy nhất:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy mô tả một nhóm người như một thứ duy nhất, chỉ một thứ duy nhất, lặp đi lặp lại nhiều lần."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "quote",
+          "text": "Và rồi họ sẽ trở thành đúng như vậy trong nhận thức của người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không thể nói về câu chuyện duy nhất mà không nói về quyền lực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có một từ trong tiếng Igbo mà tôi thường nghĩ đến mỗi khi suy ngẫm về các cấu trúc quyền lực trên thế giới. Đó là từ “nkali.”"
+        }
+      ]
+    },
+    {
+      "title": "Quyền lực, nkali và điểm bắt đầu của câu chuyện",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Đó là một danh từ, có thể tạm dịch là: “trở nên lớn hơn người khác.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cũng giống như thế giới kinh tế và chính trị của chúng ta, các câu chuyện cũng được định hình bởi nguyên lý nkali:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng được kể như thế nào, ai là người kể, được kể vào lúc nào, có bao nhiêu câu chuyện được kể — tất cả những điều đó thật sự phụ thuộc vào quyền lực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quyền lực không chỉ là khả năng kể câu chuyện về một người khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quyền lực còn là khả năng biến câu chuyện đó thành câu chuyện mang tính định nghĩa cuối cùng về con người ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhà thơ Palestine Mourid Barghouti từng viết rằng nếu bạn muốn tước đoạt một dân tộc, cách đơn giản nhất là kể câu chuyện của họ và bắt đầu bằng từ “thứ hai.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy bắt đầu câu chuyện bằng những mũi tên của người Mỹ bản địa, thay vì bắt đầu bằng sự xuất hiện của người Anh, và bạn sẽ có một câu chuyện hoàn toàn khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy bắt đầu câu chuyện bằng sự thất bại của các nhà nước châu Phi, thay vì bắt đầu bằng việc các nhà nước châu Phi được tạo ra bởi chủ nghĩa thực dân, và bạn sẽ có một câu chuyện hoàn toàn khác."
+        },
+        {
+          "kind": "pause",
+          "text": "Cùng một sự kiện, nhưng bắt đầu ở một điểm khác, phẩm giá của nhân vật trong câu chuyện có thể thay đổi hoàn toàn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần đây, tôi có nói chuyện tại một trường đại học. Một sinh viên nói với tôi rằng thật đáng xấu hổ khi đàn ông Nigeria lại là những kẻ bạo hành thể xác, giống như nhân vật người cha trong tiểu thuyết của tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nói với cậu ấy rằng tôi vừa đọc một tiểu thuyết tên là American Psycho, và thật đáng xấu hổ khi những người Mỹ trẻ tuổi lại là những kẻ giết người hàng loạt."
+        },
+        {
+          "kind": "highlight",
+          "text": "Dĩ nhiên, tôi nói vậy trong một thoáng hơi bực mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi sẽ không bao giờ nghĩ rằng chỉ vì mình đọc một cuốn tiểu thuyết có nhân vật là kẻ giết người hàng loạt, thì nhân vật đó bằng cách nào đó đại diện cho toàn bộ người Mỹ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này không phải vì tôi là người tốt hơn cậu sinh viên kia, mà vì nhờ quyền lực văn hóa và kinh tế của nước Mỹ, tôi có rất nhiều câu chuyện về nước Mỹ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã đọc Tyler, Updike, Steinbeck, Gaitskill."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không có một câu chuyện duy nhất về nước Mỹ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vài năm trước, khi biết rằng người ta thường kỳ vọng các nhà văn phải có một tuổi thơ thật bất hạnh thì mới có thể thành công, tôi bắt đầu nghĩ xem mình có thể bịa ra những điều khủng khiếp nào mà bố mẹ đã làm với mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng sự thật là tôi đã có một tuổi thơ rất hạnh phúc, đầy tiếng cười và tình yêu, trong một gia đình rất gắn bó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi cũng có những người ông đã chết trong các trại tị nạn."
+        },
+        {
+          "kind": "pause",
+          "text": "Bài này rèn Taste ở tầng đạo đức của kể chuyện: biết nghi ngờ điểm bắt đầu, người kể và phần bị bỏ qua."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người anh họ Polle của tôi chết vì không được chăm sóc y tế đầy đủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một trong những người bạn thân nhất của tôi, Okoloma, chết trong một vụ tai nạn máy bay vì xe cứu hỏa của chúng tôi không có nước."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi lớn lên dưới những chính quyền quân sự áp bức, những chính quyền coi nhẹ giáo dục đến mức đôi khi bố mẹ tôi không được trả lương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và khi còn nhỏ, tôi đã thấy mứt biến mất khỏi bàn ăn sáng. Rồi bơ thực vật biến mất. Rồi bánh mì trở nên quá đắt. Rồi sữa bị phân phối theo khẩu phần."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và hơn hết, một kiểu nỗi sợ chính trị được bình thường hóa đã xâm nhập vào đời sống của chúng tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả những câu chuyện ấy tạo nên con người tôi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu chỉ khăng khăng kể những câu chuyện tiêu cực ấy, thì trải nghiệm của tôi sẽ bị làm phẳng, và rất nhiều câu chuyện khác đã hình thành nên tôi sẽ bị bỏ qua."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu chuyện duy nhất tạo ra định kiến."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và vấn đề của định kiến không phải là chúng hoàn toàn sai sự thật, mà là chúng không đầy đủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng biến một câu chuyện thành câu chuyện duy nhất."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dĩ nhiên, châu Phi là một lục địa có đầy những thảm họa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có những thảm họa khổng lồ, chẳng hạn như những vụ cưỡng hiếp kinh hoàng ở Congo."
+        }
+      ]
+    },
+    {
+      "title": "Định kiến không sai hoàn toàn; nó không đầy đủ",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Có những điều gây chán nản, chẳng hạn như việc 5.000 người nộp đơn cho một vị trí việc làm ở Nigeria."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng cũng có những câu chuyện khác không nói về thảm họa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và việc kể những câu chuyện ấy cũng rất quan trọng — quan trọng không kém."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi luôn cảm thấy rằng ta không thể thật sự gắn kết đúng cách với một nơi chốn hay một con người nếu ta không gắn kết với tất cả những câu chuyện về nơi chốn ấy và con người ấy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hệ quả của câu chuyện duy nhất là thế này:"
+        },
+        {
+          "kind": "highlight",
+          "text": "Nó tước đi phẩm giá của con người."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó khiến chúng ta khó nhận ra nhân tính bình đẳng của nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó nhấn mạnh vào việc chúng ta khác nhau như thế nào, thay vì chúng ta giống nhau ra sao."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy điều gì sẽ xảy ra nếu trước chuyến đi Mexico của mình, tôi đã theo dõi cuộc tranh luận về nhập cư từ cả hai phía — phía Mỹ và phía Mexico?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu mẹ tôi nói với chúng tôi rằng gia đình Fide nghèo, nhưng cũng chăm chỉ?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu chúng ta có một mạng truyền hình châu Phi phát sóng những câu chuyện đa dạng về châu Phi ra khắp thế giới?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều mà nhà văn Nigeria Chinua Achebe gọi là “sự cân bằng của các câu chuyện.”"
+        },
+        {
+          "kind": "pause",
+          "text": "Đây là điểm sắc nhất của bài: vấn đề của định kiến không phải lúc nào cũng là bịa đặt, mà là làm phẳng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu bạn cùng phòng của tôi biết về nhà xuất bản Nigeria của tôi, Muhtar Bakare — một người đàn ông đáng kinh ngạc, đã bỏ công việc ở ngân hàng để theo đuổi giấc mơ và thành lập một nhà xuất bản?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quan niệm thông thường khi đó là người Nigeria không đọc văn chương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ấy không đồng ý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông tin rằng những người biết đọc sẽ đọc, nếu văn chương được làm cho đủ rẻ và đủ dễ tiếp cận."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không lâu sau khi ông xuất bản cuốn tiểu thuyết đầu tiên của tôi, tôi đến một đài truyền hình ở Lagos để phỏng vấn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người phụ nữ làm công việc đưa thư ở đó bước đến gặp tôi và nói:"
+        }
+      ]
+    },
+    {
+      "title": "Nhiều câu chuyện là cách trả lại phẩm giá",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "“Tôi rất thích tiểu thuyết của cô. Tôi không thích cái kết. Giờ cô phải viết phần tiếp theo, và chuyện sẽ diễn ra như thế này…”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi cô ấy tiếp tục nói cho tôi biết tôi nên viết gì trong phần tiếp theo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không chỉ thấy đáng yêu. Tôi còn thật sự xúc động."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước mặt tôi là một người phụ nữ thuộc về tầng lớp bình dân Nigeria — những người vốn được cho là không phải độc giả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy không chỉ đọc cuốn sách, mà còn xem nó như một phần của mình, và cảm thấy hoàn toàn có quyền nói với tôi rằng tôi nên viết gì trong phần tiếp theo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu bạn cùng phòng của tôi biết về bạn tôi Funmi Iyanda, một người phụ nữ can đảm, dẫn một chương trình truyền hình ở Lagos, và quyết tâm kể những câu chuyện mà chúng ta thường muốn quên đi?"
+        },
+        {
+          "kind": "pause",
+          "text": "Khi có nhiều câu chuyện hơn, người đọc không chỉ biết thêm thông tin. Họ lấy lại khả năng nhìn người khác như một con người phức tạp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu bạn cùng phòng của tôi biết về ca phẫu thuật tim được thực hiện tại một bệnh viện ở Lagos tuần trước?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu cô ấy biết về âm nhạc Nigeria đương đại, nơi những con người tài năng hát bằng tiếng Anh, tiếng Pidgin, tiếng Igbo, tiếng Yoruba và tiếng Ijo; pha trộn ảnh hưởng từ Jay-Z, Fela, Bob Marley cho đến những người ông của họ?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu bạn cùng phòng của tôi biết về nữ luật sư gần đây đã ra tòa ở Nigeria để thách thức một điều luật vô lý, yêu cầu phụ nữ phải có sự đồng ý của chồng mới được gia hạn hộ chiếu?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu cô ấy biết về Nollywood, nơi đầy những con người sáng tạo đang làm phim bất chấp vô số khó khăn kỹ thuật; những bộ phim phổ biến đến mức chúng thật sự là ví dụ tốt nhất cho việc người Nigeria tiêu thụ chính những thứ họ tạo ra?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì sẽ xảy ra nếu cô ấy biết về người thợ tết tóc đầy tham vọng tuyệt vời của tôi, người vừa bắt đầu công việc kinh doanh riêng bằng cách bán tóc nối?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc biết về hàng triệu người Nigeria khác đang khởi nghiệp, đôi khi thất bại, nhưng vẫn tiếp tục nuôi dưỡng tham vọng?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mỗi lần trở về quê nhà, tôi đều phải đối diện với những nguồn bực bội quen thuộc của hầu hết người Nigeria: hạ tầng yếu kém, chính phủ yếu kém."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi cũng đối diện với sức bền đáng kinh ngạc của những con người vẫn phát triển mạnh mẽ không phải nhờ chính phủ, mà bất chấp chính phủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mỗi mùa hè, tôi dạy các workshop viết ở Lagos. Và tôi luôn thấy kinh ngạc trước số lượng người đăng ký, trước việc có quá nhiều người khao khát được viết, được kể những câu chuyện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhà xuất bản Nigeria của tôi và tôi vừa thành lập một tổ chức phi lợi nhuận tên là Farafina Trust."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi có những giấc mơ lớn: xây dựng thư viện, cải tạo những thư viện đã có, cung cấp sách cho các trường công lập vốn chẳng có gì trong thư viện, và tổ chức thật nhiều workshop đọc và viết cho tất cả những người đang háo hức kể rất nhiều câu chuyện của chúng tôi."
+        },
+        {
+          "kind": "pause",
+          "text": "Một thư viện tốt không làm người đọc tin vào một kết luận duy nhất. Nó giúp họ có đủ nhiều câu chuyện để phán đoán công bằng hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu chuyện là điều quan trọng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nhiều câu chuyện là điều quan trọng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những câu chuyện từng được dùng để tước đoạt và bôi xấu. Nhưng những câu chuyện cũng có thể được dùng để trao quyền và nhân tính hóa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những câu chuyện có thể phá vỡ phẩm giá của một dân tộc. Nhưng những câu chuyện cũng có thể hàn gắn phẩm giá đã bị phá vỡ ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhà văn Mỹ Alice Walker từng viết về những người họ hàng miền Nam của bà, những người đã chuyển lên miền Bắc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bà giới thiệu cho họ một cuốn sách viết về đời sống miền Nam mà họ đã rời bỏ."
+        },
+        {
+          "kind": "quote",
+          "text": "“Họ ngồi quanh đó, tự mình đọc cuốn sách, nghe tôi đọc cuốn sách, và một kiểu thiên đường đã được tìm lại.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi muốn kết thúc bằng suy nghĩ này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi chúng ta từ chối câu chuyện duy nhất, khi chúng ta nhận ra rằng không bao giờ chỉ có một câu chuyện duy nhất về bất kỳ nơi chốn nào, chúng ta tìm lại được một kiểu thiên đường."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 6,
   "legacyBlockCount": 198,
   "legacyBodyChecksum": "sha256:a3f5aec524b4ca039b1ee22bd07c284650dc7542ac75f5844af025423a764593",
   "contentVersion": 1,
-  "contentChecksum": "sha256:3caed1f9021416ac8722d86ca7774935382ab8ddd93fcfaa30196b8c697aff38"
+  "contentChecksum": "sha256:77d82910a6df143e1691641b3c13f0013668d292452930c33d7ea2a1294690df"
 }

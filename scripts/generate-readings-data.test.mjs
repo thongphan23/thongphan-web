@@ -78,7 +78,7 @@ test('reading ingestion artifacts exist before package validation', () => {
   assert.ok(artifactsReady, 'expected reading packages, generator, validator, and materializer')
 })
 
-test('13 committed packages preserve the safe legacy manifest without translated bodies', { skip: !artifactsReady }, async () => {
+test('13 committed packages preserve the complete translated legacy reader', { skip: !artifactsReady }, async () => {
   const legacyManifest = await readJson(legacyManifestPath)
   const slugs = (await readdir(contentRoot)).sort()
 
@@ -108,27 +108,30 @@ test('13 committed packages preserve the safe legacy manifest without translated
     assert.ok(Array.isArray(article.topics) && article.topics.length > 0)
     assert.ok(['clarity', 'taste', 'asset'].includes(article.intent))
     assert.ok(['under-10', '10-20', 'over-20'].includes(article.durationBand))
-    assert.equal(article.rightsStatus, 'source-link-only')
-    assert.equal('sections' in article, false)
-    assert.equal('paragraphs' in article, false)
-    assert.equal('blocks' in article, false)
+    assert.equal(article.rightsStatus, 'permission-confirmed')
+    assert.equal(article.sections.length, item.legacySectionCount)
+    assert.equal(
+      article.sections.reduce((count, section) => count + section.blocks.length, 0),
+      item.legacyBlockCount,
+    )
 
     assert.equal(rights.slug, item.slug)
-    assert.equal(rights.rightsStatus, 'source-link-only')
-    assert.equal(rights.publicationMode, 'summary')
+    assert.equal(rights.rightsStatus, 'permission-confirmed')
+    assert.equal(rights.publicationMode, 'full')
     assert.deepEqual(rights.textRights, {
-      translation: false,
-      publicWeb: false,
-      commercialContext: false,
+      translation: true,
+      publicWeb: true,
+      commercialContext: true,
     })
-    assert.deepEqual(rights.evidence, [])
+    assert.ok(rights.evidence.length > 0)
 
     assert.equal(imagePack.slug, item.slug)
     assert.equal(imagePack.candidates.length, 5)
     assert.equal(imagePack.mediaChecksum, sha256(JSON.stringify(imagePack.candidates)))
     for (const candidate of imagePack.candidates) {
-      assert.equal(candidate.status, 'pending-rights')
-      assert.equal('publicPath' in candidate, false)
+      assert.equal(candidate.status, 'ready')
+      assert.match(candidate.publicPath, new RegExp(`^/images/readings/${item.slug}/`))
+      assert.match(candidate.checksum, /^sha256:[a-f0-9]{64}$/)
       assert.ok(candidate.sourceLocation)
       assert.ok(candidate.alt)
       assert.ok(candidate.caption)
@@ -269,7 +272,7 @@ test('ready media validator rejects normalized traversal outside its slug direct
   )
 })
 
-test('generation is byte-stable and public records expose summaries only', { skip: !artifactsReady }, async () => {
+test('generation is byte-stable and public records expose complete reader content', { skip: !artifactsReady }, async () => {
   const { generateReadingsData } = await import(pathToFileURL(generatorPath).href)
   const temporaryRoot = await mkdtemp(join(tmpdir(), 'readings-data-'))
   const outputFile = join(temporaryRoot, 'readings.generated.ts')
@@ -287,12 +290,10 @@ test('generation is byte-stable and public records expose summaries only', { ski
     assert.equal(generatedReadings.length, 13)
 
     for (const reading of generatedReadings) {
-      assert.equal(reading.publicationMode, 'summary')
-      assert.equal('sections' in reading, false)
-      assert.equal('blocks' in reading, false)
-      assert.equal('paragraphs' in reading, false)
+      assert.equal(reading.publicationMode, 'full')
+      assert.ok(reading.sections.length > 0)
       assert.equal('candidates' in reading, false)
-      assert.deepEqual(reading.images, [])
+      assert.equal(reading.images.length, 5)
       assert.deepEqual(reading.audio, [])
     }
 
@@ -321,11 +322,11 @@ test('topic, intent, and duration adapters are deterministic', { skip: !artifact
   assert.equal(adaptDurationBand(sample.minutes), adaptDurationBand(sample.minutes))
 })
 
-test('materializer treats zero ready assets as a successful no-op', { skip: !artifactsReady }, async () => {
+test('materializer verifies all restored editorial assets', { skip: !artifactsReady }, async () => {
   const { materializeReadingAssets } = await import(pathToFileURL(materializerPath).href)
   assert.deepEqual(await materializeReadingAssets({ contentDir: contentRoot, publicDir: join(root, 'public') }), {
-    ready: 0,
-    validated: 0,
+    ready: 65,
+    validated: 65,
   })
 })
 

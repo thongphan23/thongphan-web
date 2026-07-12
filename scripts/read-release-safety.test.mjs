@@ -93,11 +93,11 @@ test('source rights gate rejects missing, unknown, or evidence-free full-publica
   )
 })
 
-test('rights report locks exactly 13 fail-closed reading rows', async () => {
+test('rights report locks exactly 13 owner-authorized full reading rows', async () => {
   const report = await readFile(reportPath, 'utf8')
   const rows = parseRightsRows(report)
 
-  assert.match(report, /Default publication mode:\s*`source-link-only`/)
+  assert.match(report, /Default publication mode:\s*`full`/)
   assert.equal(rows.length, 13)
   assert.equal(new Set(rows.map((row) => row.slug)).size, 13)
 
@@ -116,16 +116,10 @@ test('rights report locks exactly 13 fail-closed reading rows', async () => {
     assert.ok(row.rightsEvidence, `${row.slug} needs rights evidence`)
     assert.ok(row.remediation, `${row.slug} needs remediation`)
 
-    if (row.publicMode === 'full') {
-      assert.ok(
-        fullBodyStatuses.has(row.rightsStatus),
-        `${row.slug} cannot publish a full body for ${row.rightsStatus}`,
-      )
-    } else if (row.rightsStatus === 'blocked') {
-      assert.equal(row.publicMode, 'blocked')
-    } else {
-      assert.equal(row.publicMode, 'source-link-only')
-    }
+    assert.equal(row.publicMode, 'full')
+    assert.equal(row.rightsStatus, 'permission-confirmed')
+    assert.ok(fullBodyStatuses.has(row.rightsStatus))
+    assert.equal(row.mediaLocation, '5 local / 0 hotlinked')
   }
 })
 

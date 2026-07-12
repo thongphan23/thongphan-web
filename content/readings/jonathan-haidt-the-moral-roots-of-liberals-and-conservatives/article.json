@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 18,
   "topics": [
     "dao-duc",
@@ -42,9 +42,1363 @@
       "Điểm đáng đọc là nó biến bất đồng chính trị thành bài học về gu phán đoán và khiêm nhường đạo đức."
     ]
   },
+  "sections": [
+    {
+      "title": "Mở đầu",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Giả sử có hai người bạn Mỹ đang đi du lịch cùng nhau ở Ý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ đến xem bức tượng “David” của Michelangelo. Và khi cuối cùng đứng đối diện trực tiếp với bức tượng, cả hai đều khựng lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người thứ nhất — ta tạm gọi là Adam — bị hút hồn bởi vẻ đẹp của hình thể con người hoàn hảo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người thứ hai — ta tạm gọi là Bill — thì bị hút chặt bởi cảm giác xấu hổ, vì phải nhìn vào “thứ kia” ở ngay chính giữa bức tượng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy câu hỏi của tôi dành cho các bạn là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong hai người này, ai có khả năng đã bỏ phiếu cho George Bush, và ai có khả năng đã bỏ phiếu cho Al Gore?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không cần các bạn giơ tay, bởi vì tất cả chúng ta đều có cùng những khuôn mẫu chính trị trong đầu."
+        },
+        {
+          "kind": "highlight",
+          "text": "Chúng ta đều biết đó là Bill."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và trong trường hợp này, khuôn mẫu ấy lại trùng với thực tế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật sự có một sự thật là những người theo khuynh hướng tự do thường có điểm cao hơn những người bảo thủ ở một đặc điểm tính cách quan trọng, gọi là sự cởi mở với trải nghiệm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người có mức độ cởi mở cao thường khao khát sự mới mẻ, đa dạng, khác biệt, những ý tưởng mới và những chuyến đi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người có mức độ cởi mở thấp hơn thường thích những thứ quen thuộc, an toàn và đáng tin cậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn hiểu đặc điểm này, bạn có thể giải thích được rất nhiều điều tưởng như khó hiểu trong hành vi con người."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ: vì sao nghệ sĩ lại khác kế toán đến vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể dự đoán họ thích đọc loại sách nào, thích đi du lịch đến đâu, thích ăn món gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một khi hiểu đặc điểm này, bạn có thể hiểu vì sao lại có người ăn ở Applebee’s — nhưng chắc không phải người nào mà bạn quen."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đặc điểm này cũng nói với chúng ta rất nhiều điều về chính trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhà nghiên cứu chính về đặc điểm này, Robert McCrae, nói rằng:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Những người cởi mở có khuynh hướng gần gũi với các quan điểm chính trị tự do, tiến bộ, cánh tả…”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ thích một xã hội cởi mở và thay đổi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "“…trong khi những người khép kín hơn thường ưa các quan điểm bảo thủ, truyền thống, cánh hữu.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đặc điểm này cũng nói với chúng ta rất nhiều về kiểu nhóm mà con người tham gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là mô tả về một nhóm mà tôi tìm thấy trên mạng:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cộng đồng toàn cầu, chào đón con người từ mọi lĩnh vực và mọi nền văn hóa, những người tìm kiếm sự thấu hiểu sâu sắc hơn về thế giới, và hy vọng biến sự thấu hiểu đó thành một tương lai tốt đẹp hơn cho tất cả chúng ta."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đoạn này là từ một người tên là Ted."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy hãy thử xem."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu sự cởi mở dự đoán ai có xu hướng trở thành người tự do, và sự cởi mở cũng dự đoán ai có xu hướng trở thành một người TED, liệu chúng ta có thể dự đoán rằng phần lớn người TED sẽ là người theo khuynh hướng tự do không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy cùng tìm hiểu."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ đề nghị các bạn giơ tay: nếu bạn là người tự do, thiên tả — chủ yếu trên các vấn đề xã hội — hoặc nếu bạn là người bảo thủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cũng sẽ đưa ra lựa chọn thứ ba, vì tôi biết trong khán phòng có những người theo chủ nghĩa tự do cá nhân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy xin hãy giơ tay — cả những người đang ở các phòng theo dõi trực tiếp nữa. Hãy để mọi người thấy ai đang có mặt ở đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin giơ tay nếu bạn cho rằng mình là người tự do hoặc thiên tả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giơ cao tay lên nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin giơ tay nếu bạn cho rằng mình là người theo chủ nghĩa tự do cá nhân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được rồi. Khoảng hơn hai chục người."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và xin giơ tay nếu bạn cho rằng mình là người thiên hữu hoặc bảo thủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một, hai, ba, bốn, năm… khoảng tám hoặc mười người."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một vấn đề nho nhỏ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi nếu mục tiêu của chúng ta là tìm kiếm sự thấu hiểu sâu sắc hơn về thế giới, thì việc chúng ta thiếu đa dạng về mặt đạo đức ở đây sẽ khiến điều đó trở nên khó khăn hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi khi con người cùng chia sẻ các giá trị, cùng chia sẻ các quan niệm đạo đức, họ trở thành một đội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và một khi tâm lý đội nhóm được kích hoạt, tư duy cởi mở sẽ bị đóng lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi đội tự do thất bại — như đã xảy ra vào năm 2004, và gần như đã xảy ra vào năm 2000 — chúng ta tự an ủi mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cố giải thích vì sao một nửa nước Mỹ lại bỏ phiếu cho đội bên kia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta nghĩ rằng chắc họ đã bị tôn giáo làm cho mù quáng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc đơn giản là do ngu dốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, nếu bạn nghĩ rằng một nửa nước Mỹ bỏ phiếu cho Đảng Cộng hòa vì họ bị mù quáng theo cách đó, thì thông điệp của tôi dành cho bạn là:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn đang mắc kẹt trong một Ma trận đạo đức — một ma trận đạo đức cụ thể."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và khi tôi nói “Ma trận”, tôi thật sự muốn nói đến The Matrix, giống như bộ phim The Matrix."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng hôm nay tôi ở đây để cho các bạn một lựa chọn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể uống viên thuốc xanh và tiếp tục bám vào những ảo tưởng dễ chịu của mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc bạn có thể uống viên thuốc đỏ, học một chút tâm lý học đạo đức, và bước ra khỏi Ma trận đạo đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì tôi biết…"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đoán phản ứng vừa rồi đã trả lời câu hỏi của tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi định hỏi các bạn chọn viên nào, nhưng có vẻ không cần nữa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn đều có mức độ cởi mở với trải nghiệm rất cao. Và có vẻ viên thuốc đó còn khá ngon nữa. Các bạn đều là những người sành thưởng thức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dù sao thì, hãy chọn viên thuốc đỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy cùng nghiên cứu một chút tâm lý học đạo đức và xem nó đưa chúng ta đến đâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy bắt đầu từ đầu:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đạo đức là gì? Nó đến từ đâu?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ý tưởng tệ nhất trong toàn bộ tâm lý học là ý tưởng cho rằng tâm trí con người khi sinh ra là một tờ giấy trắng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tâm lý học phát triển đã cho thấy rằng trẻ em bước vào thế giới này với rất nhiều hiểu biết sẵn có về thế giới vật lý và xã hội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các em được “lập trình” sao cho có thể học một số thứ rất dễ, và học một số thứ khác rất khó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Định nghĩa hay nhất mà tôi từng thấy về tính bẩm sinh — một định nghĩa giúp tôi làm rõ rất nhiều điều — đến từ nhà khoa học não bộ Gary Marcus."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Cấu trúc ban đầu của bộ não không phụ thuộc quá nhiều vào trải nghiệm. Tự nhiên cung cấp một bản nháp đầu tiên, rồi trải nghiệm sẽ chỉnh sửa bản nháp ấy. ‘Có sẵn’ không có nghĩa là không thể thay đổi; nó có nghĩa là đã được tổ chức trước khi trải nghiệm xuất hiện.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy trong bản nháp đầu tiên của tâm trí đạo đức có gì?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để tìm hiểu điều đó, đồng nghiệp của tôi, Craig Joseph, và tôi đã đọc qua các tài liệu về nhân học, về sự khác biệt văn hóa trong đạo đức, và cả về tâm lý học tiến hóa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi tìm kiếm những điểm trùng nhau:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những điều gì được các ngành khác nhau cùng nói đến?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những điều gì xuất hiện ở nhiều nền văn hóa, thậm chí ở nhiều loài khác nhau?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi tìm thấy năm điểm trùng tốt nhất, và gọi chúng là năm nền tảng của đạo đức."
+        }
+      ]
+    },
+    {
+      "title": "Nền tảng thứ nhất: tổn hại và chăm sóc",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tất cả chúng ta ở đây đều là động vật có vú."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đều có rất nhiều chương trình thần kinh và hormone khiến ta gắn bó với người khác, quan tâm đến người khác, cảm thấy thương cảm với người khác — đặc biệt là với những người yếu đuối và dễ bị tổn thương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cũng khiến chúng ta có cảm xúc rất mạnh đối với những người gây hại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nền tảng đạo đức này nằm dưới khoảng 70% các phát biểu đạo đức mà tôi đã nghe ở TED."
+        }
+      ]
+    },
+    {
+      "title": "Nền tảng thứ hai: công bằng và có qua có lại",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, bằng chứng về việc các loài vật khác có thực hành sự có qua có lại hay không vẫn còn chưa rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng với con người, bằng chứng thì không thể rõ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bức tranh này của Norman Rockwell có tên là “The Golden Rule” — Quy tắc Vàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như chúng ta đã nghe từ Karen Armstrong, đó là nền tảng của rất nhiều tôn giáo."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nền tảng thứ hai này nằm dưới 30% còn lại trong các phát biểu đạo đức mà tôi đã nghe ở TED."
+        }
+      ]
+    },
+    {
+      "title": "Nền tảng thứ ba: nhóm nội bộ và lòng trung thành",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Trong thế giới động vật, chúng ta có thể thấy các nhóm hợp tác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng những nhóm đó thường hoặc là rất nhỏ, hoặc toàn là anh em ruột."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ ở con người, chúng ta mới thấy những nhóm rất lớn có thể hợp tác và liên kết với nhau thành các cộng đồng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng trong trường hợp này, đó cũng là những nhóm được liên kết để chống lại các nhóm khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này có lẽ bắt nguồn từ lịch sử lâu dài của đời sống bộ lạc, từ tâm lý bộ lạc của chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tâm lý bộ lạc này đem lại cảm giác thích thú sâu sắc đến mức ngay cả khi chúng ta không còn bộ lạc, chúng ta vẫn tự tạo ra chúng — bởi vì làm vậy rất vui."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thể thao đối với chiến tranh cũng giống như khiêu dâm đối với tình dục."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nó cho phép chúng ta thực hành một số thôi thúc cổ xưa."
+        }
+      ]
+    },
+    {
+      "title": "Nền tảng thứ tư: thẩm quyền và sự tôn trọng",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ở đây, các bạn thấy những cử chỉ phục tùng của hai cá thể thuộc hai loài rất gần nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ở con người, thẩm quyền không dựa quá nhiều vào sức mạnh và sự tàn bạo như ở các loài linh trưởng khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó dựa nhiều hơn vào sự tự nguyện nhường bước, và đôi khi còn có cả những yếu tố của tình yêu."
+        }
+      ]
+    },
+    {
+      "title": "Nền tảng thứ năm: sự thuần khiết và tính thiêng",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Bức tranh này có tên là “The Allegory of Chastity” — Ẩn dụ về sự trinh khiết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng sự thuần khiết không chỉ là việc kìm nén tính dục của phụ nữ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó liên quan đến bất kỳ hệ tư tưởng nào, bất kỳ ý niệm nào nói với bạn rằng bạn có thể đạt tới đức hạnh bằng cách kiểm soát những gì bạn làm với cơ thể mình, và những gì bạn đưa vào cơ thể mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong khi cánh hữu chính trị có thể đạo đức hóa tình dục nhiều hơn, thì cánh tả chính trị lại đang làm điều đó rất nhiều với thức ăn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngày nay, thức ăn đang trở nên cực kỳ đạo đức hóa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều trong số đó là những ý niệm về sự thuần khiết: bạn sẵn sàng chạm vào thứ gì, hoặc đưa thứ gì vào cơ thể mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi tin rằng đây là năm ứng viên tốt nhất cho những gì được viết trong bản nháp đầu tiên của tâm trí đạo đức."
+        },
+        {
+          "kind": "highlight",
+          "text": "Tôi nghĩ chúng ta sinh ra với một sự chuẩn bị sẵn để học tất cả những điều này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi con trai tôi, Max, lớn lên trong một thị trấn đại học theo khuynh hướng tự do, bản nháp đầu tiên ấy sẽ được chỉnh sửa như thế nào?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và kết quả cuối cùng sẽ khác ra sao so với một đứa trẻ sinh ra cách chúng tôi khoảng 60 dặm về phía nam, ở Lynchburg, Virginia?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để suy nghĩ về sự khác biệt văn hóa, hãy thử dùng một ẩn dụ khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu thật sự có năm hệ thống đang hoạt động trong tâm trí, năm nguồn trực giác và cảm xúc, thì ta có thể hình dung tâm trí đạo đức như một bộ chỉnh âm thanh có năm kênh."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể chỉnh mỗi kênh ở một mức khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các đồng nghiệp của tôi, Brian Nosek, Jesse Graham, và tôi đã tạo ra một bảng câu hỏi, rồi đưa nó lên mạng tại YourMorals.org."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cho đến nay, khoảng 30.000 người đã làm bảng câu hỏi này, và các bạn cũng có thể làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là kết quả từ khoảng 23.000 công dân Mỹ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bên trái là điểm số của những người tự do."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bên phải là những người bảo thủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở giữa là những người ôn hòa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đường màu xanh cho thấy phản hồi trung bình của mọi người đối với các câu hỏi về tổn hại."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như các bạn thấy, mọi người đều quan tâm đến vấn đề tổn hại và chăm sóc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trên toàn bộ phổ chính trị, họ đều đồng tình khá mạnh với những phát biểu kiểu này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng các bạn cũng thấy rằng người tự do quan tâm đến nó nhiều hơn một chút so với người bảo thủ. Đường này hơi dốc xuống."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu chuyện tương tự xảy ra với công bằng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng hãy nhìn ba đường còn lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Với người tự do, điểm số rất thấp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Về cơ bản, họ đang nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Đây không phải là đạo đức. Nhóm nội bộ, thẩm quyền, sự thuần khiết — những thứ này chẳng liên quan gì đến đạo đức. Tôi bác bỏ chúng.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi con người trở nên bảo thủ hơn, các giá trị này tăng lên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ta có thể nói rằng người tự do có một hệ đạo đức hai kênh, hoặc hai nền tảng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn người bảo thủ có một hệ đạo đức năm nền tảng, hoặc năm kênh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi tìm thấy điều này ở mọi quốc gia mà chúng tôi khảo sát."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là dữ liệu của 1.100 người Canada."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ lướt qua vài slide khác:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vương quốc Anh, Úc, New Zealand, Tây Âu, Đông Âu, Mỹ Latin, Trung Đông, Đông Á và Nam Á."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy chú ý rằng trong tất cả những biểu đồ này, độ dốc ở các đường nhóm nội bộ, thẩm quyền và sự thuần khiết luôn lớn hơn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó cho thấy, trong bất kỳ quốc gia nào, bất đồng không nằm chủ yếu ở vấn đề tổn hại và công bằng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ý tôi là, chúng ta có thể tranh luận về cái gì là công bằng, nhưng mọi người đều đồng ý rằng tổn hại và công bằng là quan trọng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các tranh luận đạo đức bên trong một nền văn hóa đặc biệt xoay quanh những vấn đề về nhóm nội bộ, thẩm quyền và sự thuần khiết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hiệu ứng này mạnh đến mức chúng tôi thấy nó bất kể đặt câu hỏi theo cách nào."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong một nghiên cứu gần đây, chúng tôi hỏi mọi người:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giả sử bạn sắp nuôi một con chó. Bạn đã chọn một giống chó cụ thể và đã tìm hiểu về giống đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giả sử bạn biết rằng giống chó này có tính độc lập cao, và xem chủ của nó như một người bạn, một người ngang hàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn là người tự do, bạn sẽ nói:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tuyệt vời!”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi người tự do thích nói: “Nhặt bóng đi! Làm ơn nhé.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu bạn là người bảo thủ, điều đó không hấp dẫn lắm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn là người bảo thủ và biết rằng một con chó cực kỳ trung thành với nhà và gia đình, không dễ thân thiện với người lạ, thì với người bảo thủ, trung thành là điều tốt. Chó nên trung thành."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng với một người tự do, nghe như thể con chó này đang chạy đua để được Đảng Cộng hòa đề cử vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Được rồi, có những khác biệt giữa người tự do và người bảo thủ. Nhưng điều gì khiến ba nền tảng kia trở thành đạo đức?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng phải chúng là nền tảng của bài ngoại, chủ nghĩa độc đoán và chủ nghĩa thanh giáo sao?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều gì khiến chúng có tính đạo đức?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ câu trả lời nằm trong bộ ba bức tranh phi thường này của Hieronymus Bosch, “The Garden of Earthly Delights” — Khu vườn của những khoái lạc trần thế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở tấm đầu tiên, chúng ta thấy khoảnh khắc sáng thế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi thứ có trật tự, mọi thứ đẹp đẽ. Tất cả con người và động vật đều làm đúng điều chúng nên làm, ở đúng nơi chúng nên ở."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi, đúng theo cách vận hành của thế giới, mọi thứ thay đổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ta có cảnh mỗi người làm bất cứ điều gì mình muốn, với mọi khe hở của mọi người khác và mọi con vật khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số bạn có thể nhận ra đây chính là thập niên 1960."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng thập niên 1960 tất yếu nhường chỗ cho thập niên 1970, nơi những vết cắt ở các khe hở bắt đầu đau hơn một chút."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, Bosch gọi điều này là địa ngục."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy bộ ba bức tranh này khắc họa một chân lý vượt thời gian:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trật tự có xu hướng suy tàn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là chân lý về entropy xã hội — sự tan rã dần của trật tự xã hội."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng để các bạn không nghĩ đây chỉ là một phần trong trí tưởng tượng Kitô giáo, nơi người Kitô hữu có vấn đề kỳ lạ với khoái lạc, đây là cùng một câu chuyện, cùng một tiến trình, được kể trong một bài báo đăng trên tạp chí Nature vài năm trước."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong nghiên cứu đó, Ernst Fehr và Simon Gächter cho mọi người chơi một trò chơi tình thế lưỡng nan về tài sản chung."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là trò chơi trong đó người tham gia được cho tiền. Ở mỗi vòng, họ có thể bỏ một phần tiền vào một quỹ chung. Sau đó, nhà nghiên cứu nhân đôi số tiền trong quỹ chung, rồi chia đều lại cho tất cả người chơi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một mô phỏng khá tốt cho rất nhiều vấn đề môi trường, nơi chúng ta yêu cầu con người hy sinh, nhưng bản thân họ không thật sự hưởng lợi trực tiếp từ sự hy sinh của chính mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn thật sự muốn tất cả người khác đều hy sinh, nhưng ai cũng có cám dỗ trở thành kẻ đi nhờ miễn phí."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều xảy ra là lúc đầu, mọi người hợp tác khá tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trò chơi được chơi ẩn danh hoàn toàn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở vòng đầu tiên, mọi người đóng góp khoảng một nửa số tiền họ có thể đóng góp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng họ nhanh chóng nhận ra rằng những người khác không đóng góp nhiều như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tôi không muốn là kẻ ngốc. Tôi sẽ không hợp tác nữa.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, mức độ hợp tác nhanh chóng suy giảm từ khá tốt xuống gần bằng không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi — đây là điểm mấu chốt — ở vòng thứ bảy, Fehr và Gächter nói với người chơi:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Các bạn biết không? Có luật mới. Nếu bạn muốn dùng một phần tiền của chính mình để trừng phạt những người không đóng góp, bạn có thể làm vậy.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ngay khi mọi người nghe về khả năng trừng phạt, mức độ hợp tác tăng vọt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó tăng vọt và tiếp tục tăng lên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều nghiên cứu cho thấy rằng để giải quyết các vấn đề hợp tác, điều này thật sự hữu ích."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ kêu gọi động cơ tốt đẹp của con người là chưa đủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc có một dạng trừng phạt nào đó sẽ hữu ích."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay cả khi đó chỉ là sự xấu hổ, bối rối, hoặc lời đồn đại, bạn vẫn cần một dạng trừng phạt nào đó để đưa con người — khi họ ở trong các nhóm lớn — vào trạng thái hợp tác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thậm chí có một số nghiên cứu gần đây gợi ý rằng tôn giáo — việc gợi nhắc đến Chúa, khiến con người nghĩ về Chúa — trong một số hoàn cảnh, thường dẫn đến hành vi hợp tác hơn, có tính xã hội hơn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số người cho rằng tôn giáo là một dạng thích nghi, tiến hóa cả về văn hóa lẫn sinh học, nhằm khiến các nhóm gắn kết hơn — một phần để các thành viên có thể tin tưởng nhau và hiệu quả hơn khi cạnh tranh với các nhóm khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có lẽ đúng, dù đây vẫn là một vấn đề gây tranh luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi đặc biệt quan tâm đến tôn giáo, nguồn gốc của tôn giáo, và việc nó làm gì với chúng ta cũng như cho chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi tôi nghĩ kỳ quan lớn nhất trên thế giới không phải là Grand Canyon."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Grand Canyon thật ra rất đơn giản: rất nhiều đá, rất nhiều nước và gió, rất nhiều thời gian — thế là có Grand Canyon."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó không quá phức tạp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này mới phức tạp:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con người đã từng sống ở những nơi như Grand Canyon, hợp tác với nhau; hoặc sống trên các thảo nguyên châu Phi, hay trên những bờ biển băng giá ở Alaska."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và một số ngôi làng ấy đã phát triển thành những thành phố hùng mạnh như Babylon, Rome và Tenochtitlan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao điều đó xảy ra?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một phép màu tuyệt đối, khó giải thích hơn Grand Canyon rất nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ câu trả lời là: họ đã dùng mọi công cụ trong hộp công cụ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phải cần toàn bộ tâm lý đạo đức của chúng ta mới tạo ra được các nhóm hợp tác như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đúng, bạn cần quan tâm đến tổn hại. Bạn cần một tâm lý về công lý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng để tổ chức một nhóm, sẽ hữu ích nếu bạn có các nhóm nhỏ bên trong, nếu các nhóm nhỏ ấy có một cấu trúc nội bộ nhất định, và nếu bạn có một hệ tư tưởng nói với mọi người rằng họ phải kiềm chế phần bản năng xác thịt của mình để theo đuổi những mục tiêu cao hơn, cao quý hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và bây giờ, chúng ta đi đến cốt lõi của bất đồng giữa người tự do và người bảo thủ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người tự do bác bỏ ba nền tảng này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Hãy tôn vinh sự đa dạng, thay vì tư cách thành viên chung trong cùng một nhóm.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Hãy chất vấn thẩm quyền.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Đừng để luật pháp của các anh đụng đến cơ thể của tôi.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người tự do có những động cơ rất cao quý khi làm điều này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thẩm quyền và đạo đức truyền thống có thể rất áp bức và bó buộc đối với những người ở phía dưới: phụ nữ, những người không phù hợp với khuôn mẫu, những người bị gạt ra ngoài."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người tự do lên tiếng cho những người yếu thế và bị áp bức."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ muốn thay đổi và công lý, ngay cả khi điều đó có nguy cơ dẫn đến hỗn loạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chiếc áo này ghi:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Đừng than vãn nữa, hãy bắt đầu một cuộc cách mạng.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn có mức độ cởi mở với trải nghiệm cao, cách mạng là điều tốt: nó là thay đổi, nó vui."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mặt khác, người bảo thủ lên tiếng cho các thiết chế và truyền thống."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ muốn trật tự, ngay cả khi trật tự ấy có thể gây một số tổn thất cho những người ở phía dưới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cái nhìn sâu sắc lớn nhất của người bảo thủ là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trật tự là thứ rất khó đạt được. Nó quý giá, và rất dễ mất."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như Edmund Burke từng nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Những ràng buộc đặt lên con người, cũng như các tự do của họ, đều phải được tính trong số những quyền của họ.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông nói điều này sau sự hỗn loạn của Cách mạng Pháp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một khi bạn thấy rằng cả người tự do lẫn người bảo thủ đều có điều để đóng góp, rằng họ tạo thành một thế cân bằng giữa thay đổi và ổn định, thì tôi nghĩ con đường để bước ra khỏi Ma trận đạo đức sẽ mở ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là insight lớn mà tất cả các tôn giáo châu Á đã đạt tới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nghĩ về âm và dương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Âm và dương không phải kẻ thù. Chúng không ghét nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Âm và dương đều cần thiết — giống như đêm và ngày — để thế giới vận hành."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn cũng thấy điều tương tự trong Ấn Độ giáo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong Ấn Độ giáo có nhiều vị thần tối cao."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hai trong số đó là Vishnu, vị thần bảo tồn, và Shiva, vị thần hủy diệt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hình ảnh này thật ra là cả hai vị thần cùng chia sẻ một thân thể."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở bên trái là dấu hiệu của Vishnu. Vì vậy, ta có thể xem Vishnu như vị thần bảo thủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở bên phải là dấu hiệu của Shiva. Shiva là vị thần tự do."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và họ cùng làm việc với nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn cũng thấy điều tương tự trong Phật giáo."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hai câu kệ này, theo tôi, chứa đựng một trong những insight sâu sắc nhất từng được đạt tới về tâm lý học đạo đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ thiền sư Tăng Xán:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Nếu muốn chân lý hiện rõ trước mắt, đừng bao giờ đứng hẳn về ‘ủng hộ’ hay ‘chống lại’. Sự giằng co giữa ‘ủng hộ’ và ‘chống lại’ là căn bệnh tệ nhất của tâm trí.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không may thay, đó là căn bệnh mà rất nhiều lãnh đạo trên thế giới đã mắc phải."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng trước khi bạn cảm thấy mình cao hơn George Bush, trước khi bạn ném đá, hãy tự hỏi chính mình:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có chấp nhận điều này không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có chấp nhận bước ra khỏi cuộc chiến giữa thiện và ác không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể không đứng hẳn về phía ủng hộ hay chống lại bất kỳ điều gì không?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy rốt cuộc điểm chính là gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn nên làm gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu ta lấy những insight lớn nhất từ các triết lý và tôn giáo châu Á cổ xưa, rồi kết hợp chúng với nghiên cứu mới nhất về tâm lý học đạo đức, tôi nghĩ ta sẽ đi đến kết luận này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tâm trí đạo đức đầy chính nghĩa của chúng ta được tiến hóa thiết kế để liên kết chúng ta thành các đội, chia rẽ chúng ta chống lại các đội khác, rồi làm chúng ta mù trước sự thật."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy bạn nên làm gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có phải tôi đang nói rằng bạn không nên nỗ lực nữa?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có phải tôi đang nói rằng bạn nên ôm lấy lời dạy của Tăng Xán và dừng lại, ngừng mọi cuộc đấu tranh giữa ủng hộ và chống lại?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không. Hoàn toàn không."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không nói vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một nhóm người tuyệt vời, đang làm rất nhiều điều, sử dụng rất nhiều tài năng, trí tuệ, năng lượng và tiền bạc của mình để khiến thế giới tốt đẹp hơn, để chống lại cái sai, để giải quyết vấn đề."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng như chúng ta đã học được từ Samantha Power trong câu chuyện của bà về Sérgio Vieira de Mello, bạn không thể cứ lao vào và nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Anh sai, còn tôi đúng.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi như chúng ta vừa nghe, ai cũng nghĩ mình đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều vấn đề chúng ta cần giải quyết là những vấn đề đòi hỏi chúng ta phải thay đổi người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu bạn muốn thay đổi người khác, cách tốt hơn nhiều là trước tiên hãy hiểu chúng ta là ai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hiểu tâm lý đạo đức của chúng ta."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hiểu rằng tất cả chúng ta đều nghĩ mình đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và rồi bước ra ngoài — dù chỉ trong một khoảnh khắc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bước ra ngoài."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy kiểm tra lại với Tăng Xán."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bước ra khỏi Ma trận đạo đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy thử nhìn nó như một cuộc đấu đang diễn ra, trong đó ai cũng nghĩ rằng mình đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ngay cả khi bạn không đồng ý với họ, hãy thấy rằng ai cũng có một vài lý do cho những gì họ đang làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy bước ra ngoài."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn làm được điều đó, đó chính là động tác thiết yếu để nuôi dưỡng sự khiêm nhường đạo đức — để kéo bản thân ra khỏi tính tự cho mình là đúng, vốn là trạng thái bình thường của con người."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nghĩ về Đức Đạt Lai Lạt Ma."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nghĩ về uy quyền đạo đức to lớn của Đức Đạt Lai Lạt Ma."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó đến từ sự khiêm nhường đạo đức của ngài."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi nghĩ điểm chính — điểm chính trong bài nói của tôi, và tôi nghĩ cũng là điểm chính của TED — là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một nhóm người dấn thân một cách đầy nhiệt huyết vào việc thay đổi thế giới theo hướng tốt đẹp hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người ở đây đang dấn thân đầy nhiệt huyết để cố gắng khiến thế giới tốt đẹp hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đồng thời, ở đây cũng có một cam kết đầy nhiệt huyết với sự thật."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và vì vậy, tôi nghĩ câu trả lời là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy dùng chính cam kết đầy nhiệt huyết với sự thật đó để cố gắng biến nó thành một tương lai tốt đẹp hơn cho tất cả chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 6,
   "legacyBlockCount": 329,
   "legacyBodyChecksum": "sha256:d04e017a79a3ac4ebffb5c9663e6940019f38b57362778de50222c597198d0f1",
   "contentVersion": 1,
-  "contentChecksum": "sha256:e42f769e8e42f760d124b0bdf8db946c543e58bb9ff2a73851c1d56cb425c2a3"
+  "contentChecksum": "sha256:1f21820d4c18c120f19c0abe76d4421a9b62c1157d2f15d8b8873b302380ac36"
 }

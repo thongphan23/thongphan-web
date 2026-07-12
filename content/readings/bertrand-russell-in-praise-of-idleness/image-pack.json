@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
+      "publicPath": "/images/readings/bertrand-russell-in-praise-of-idleness/01-bertrand-russell-photo.jpg",
       "alt": "Bertrand Russell trong một ảnh chân dung.",
       "caption": "Russell dùng sự sắc bén triết học để chất vấn đạo đức tôn sùng lao động.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "01-bertrand-russell-photo.jpg",
+      "checksum": "sha256:2536c609ee947f94e2edd53fbc595edef543709bfcefd8db2d99234dd16805d7",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "bertrand-russell-in-praise-of-idleness",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/1/18/Bertrand_Russell_photo.jpg",
         "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
+      "publicPath": "/images/readings/bertrand-russell-in-praise-of-idleness/02-1280px-bertrand-russell-2c-by-j-f-horrabin.jpg",
       "alt": "Chân dung Bertrand Russell do J. F. Horrabin thực hiện.",
       "caption": "Một hình ảnh Russell ở tư cách trí thức công chúng, gần với giọng văn tranh luận của bài.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-1280px-bertrand-russell-2c-by-j-f-horrabin.jpg",
+      "checksum": "sha256:92f3d8dcdb9a33464a94a8d0977db68d02ce2d3b5e56a5f26f76b3566191fd87",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "bertrand-russell-in-praise-of-idleness",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bertrand_Russell%2C_by_J._F._Horrabin.jpg/1280px-Bertrand_Russell%2C_by_J._F._Horrabin.jpg",
         "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
+      "publicPath": "/images/readings/bertrand-russell-in-praise-of-idleness/03-russell1907-2.jpg",
       "alt": "Bertrand Russell năm 1907.",
       "caption": "Russell trẻ hơn, trước khi trở thành một trong những biểu tượng trí thức của thế kỷ 20.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "03-russell1907-2.jpg",
+      "checksum": "sha256:913c04e0045d39014c133c92d69c522a0fe44eb5f1ad83119c923e6ece9ecab5",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "bertrand-russell-in-praise-of-idleness",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Russell1907-2.jpg",
         "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
+      "publicPath": "/images/readings/bertrand-russell-in-praise-of-idleness/04-bust-of-bertrand-russell-red-lion-square-london.jpg",
       "alt": "Tượng bán thân Bertrand Russell ở Red Lion Square, London.",
       "caption": "Di sản của Russell gắn với tự do tư tưởng và việc đặt lại những điều xã hội cho là hiển nhiên.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "04-bust-of-bertrand-russell-red-lion-square-london.jpg",
+      "checksum": "sha256:10cc20dccc9d185a4725264b4c1d151772fa9997a929107d25ed3301c349144f",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "bertrand-russell-in-praise-of-idleness",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Bust_Of_Bertrand_Russell-Red_Lion_Square-London.jpg",
         "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
+      "publicPath": "/images/readings/bertrand-russell-in-praise-of-idleness/05-1280px-bertrand-russell-transparent-bg.png",
       "alt": "Ảnh Bertrand Russell được tách nền.",
       "caption": "Russell trong một chân dung giản lược, gợi đúng chất của bài luận: bình tĩnh, sắc lạnh và không dễ bị cuốn theo đạo đức đám đông.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "05-1280px-bertrand-russell-transparent-bg.png",
+      "checksum": "sha256:f44449b2efcc7d607828aca909cedfc4f8ecebd2d2846d8fd39a24a44b9d7221",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "bertrand-russell-in-praise-of-idleness",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Bertrand_Russell_transparent_bg.png/1280px-Bertrand_Russell_transparent_bg.png",
         "articleSourceUrl": "https://harpers.org/archive/1932/10/in-praise-of-idleness/"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:790803350172a5b97f2b4b3426a322758f2aa1f7c1aed7b1dc01e985c52fa1f8"
+  "mediaChecksum": "sha256:26607c81b58fac3adc9d352a699ed18513cfcd25e6902b8544e7056d497a1c04"
 }

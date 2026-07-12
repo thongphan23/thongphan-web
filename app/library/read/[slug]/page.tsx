@@ -5,6 +5,7 @@ import ReadNext from '@/components/editorial/ReadNext'
 import SourceDisclosure from '@/components/editorial/SourceDisclosure'
 import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import ReadingToolbar from '@/components/library/ReadingToolbar'
+import ReadingBody from '@/components/library/ReadingBody'
 import { buildReadingStructuredData } from '@/lib/reading-structured-data'
 import {
   getReadingBySlug,
@@ -117,8 +118,11 @@ export default async function ReadingDetailPage({
             </div>
           </section>
 
-          {reading.authorProfile ? <InfoSection box={reading.authorProfile} index="03" /> : null}
-          {reading.contentContext ? <InfoSection box={reading.contentContext} index="04" /> : null}
+          <SourceDisclosure source={reading.source} sourceUrl={reading.sourceUrl} />
+
+          {reading.sections?.length ? (
+            <ReadingBody sections={reading.sections} images={reading.images} />
+          ) : null}
 
           {reading.reflection ? (
             <section className={styles.reflection} aria-labelledby="reflection-title">
@@ -128,7 +132,8 @@ export default async function ReadingDetailPage({
             </section>
           ) : null}
 
-          <SourceDisclosure source={reading.source} sourceUrl={reading.sourceUrl} />
+          {reading.authorProfile ? <InfoSection box={reading.authorProfile} index="03" /> : null}
+          {reading.contentContext ? <InfoSection box={reading.contentContext} index="04" /> : null}
           <ReadNext readings={related} />
         </article>
 

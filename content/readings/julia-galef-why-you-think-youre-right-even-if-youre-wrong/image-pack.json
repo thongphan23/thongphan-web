@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "/images/articles/julia-galef-scout-mindset/julia-galef-2015.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/julia-galef-why-you-think-youre-right-even-if-youre-wrong/01-julia-galef-2015.jpg",
       "alt": "Julia Galef trong một sự kiện năm 2015 tại Antwerp, Belgium.",
       "caption": "Julia Galef, người phổ biến khái niệm tư duy người trinh sát (scout mindset).",
       "credit": "Wikimedia Commons / BrainDad, CC BY-SA 4.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / BrainDad, CC BY-SA 4.0",
+      "derivative": "01-julia-galef-2015.jpg",
+      "checksum": "sha256:67eb6952789e56f1420397fc2c854ec20222c9647612b63322dfd95139fda9d0",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
         "legacyLocation": "/images/articles/julia-galef-scout-mindset/julia-galef-2015.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "/images/articles/julia-galef-scout-mindset/dreyfus-portrait.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/julia-galef-why-you-think-youre-right-even-if-youre-wrong/02-dreyfus-portrait.jpg",
       "alt": "Chân dung Alfred Dreyfus.",
       "caption": "Alfred Dreyfus là trung tâm của vụ án mà Galef dùng để minh họa lý luận có động cơ.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "02-dreyfus-portrait.jpg",
+      "checksum": "sha256:0be3e9203a1de9d7dc603302a240f6fb26a0e10335f9d831a9f9e7af41a9ed8c",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
         "legacyLocation": "/images/articles/julia-galef-scout-mindset/dreyfus-portrait.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "/images/articles/julia-galef-scout-mindset/degradation-dreyfus.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/julia-galef-why-you-think-youre-right-even-if-youre-wrong/03-degradation-dreyfus.jpg",
       "alt": "Minh họa sự kiện giáng cấp Alfred Dreyfus trên Le Petit Journal năm 1895.",
       "caption": "Sự giáng cấp Dreyfus cho thấy một niềm tin sai có thể được biến thành nghi lễ công khai và hậu quả thật.",
       "credit": "Wikimedia Commons / Le Petit Journal, Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Le Petit Journal, Public domain",
+      "derivative": "03-degradation-dreyfus.jpg",
+      "checksum": "sha256:2501e6095c8dedef0309d2a8927fafc40df228e91fe60569a4b1685355d330ef",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
         "legacyLocation": "/images/articles/julia-galef-scout-mindset/degradation-dreyfus.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "/images/articles/julia-galef-scout-mindset/dreyfus-devils-island.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/julia-galef-why-you-think-youre-right-even-if-youre-wrong/04-dreyfus-devils-island.jpg",
       "alt": "Alfred Dreyfus bị giam trên Đảo Quỷ năm 1898.",
       "caption": "Đảo Quỷ là nơi Dreyfus chịu án tù sau khi bị kết tội oan, làm rõ cái giá của phán đoán sai.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "04-dreyfus-devils-island.jpg",
+      "checksum": "sha256:a138d07c824d86d831d90e869a01562d199926cc3c724797d837e6b16737802a",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
         "legacyLocation": "/images/articles/julia-galef-scout-mindset/dreyfus-devils-island.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "/images/articles/julia-galef-scout-mindset/picquart-portrait.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/julia-galef-why-you-think-youre-right-even-if-youre-wrong/05-picquart-portrait.jpg",
       "alt": "Chân dung Georges Picquart khoảng năm 1900.",
       "caption": "Picquart là hình mẫu trong bài cho việc vượt qua thiên kiến của chính mình để đi theo bằng chứng.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "05-picquart-portrait.jpg",
+      "checksum": "sha256:e2725176eb7ef445e8bd0feb1f3765f9a7ea7f51f6c1aa67da7980ccb99d199c",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "julia-galef-why-you-think-youre-right-even-if-youre-wrong",
         "legacyLocation": "/images/articles/julia-galef-scout-mindset/picquart-portrait.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/julia_galef_why_you_think_you_re_right_even_if_you_re_wrong"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:a677d0a30f4074907a77f03fd99f781684b99f7b11844917cb4eed1fbc34b2cf"
+  "mediaChecksum": "sha256:f4a95a4ecbb260e9392fbf1ee92c9ddcd1f8326b5acd1df387250e249d41e57f"
 }

@@ -10,13 +10,13 @@ export default function SourceDisclosure({ source, sourceUrl }: SourceDisclosure
   return (
     <aside className={styles.sourceDisclosure} aria-labelledby="source-disclosure-title">
       <p className={styles.sectionIndex}>Nguồn và quyền đọc</p>
-      <h2 id="source-disclosure-title">Đây là ghi chú tuyển đọc, không phải bản dịch toàn văn.</h2>
+      <h2 id="source-disclosure-title">Bản dịch tuyển đọc luôn đi cùng nguồn gốc.</h2>
       <p>
-        Thư viện tóm lược bối cảnh và gợi ý cách tiếp cận bài viết. Toàn bộ nội dung gốc vẫn
-        thuộc về tác giả và đơn vị xuất bản; vì vậy phần đọc đầy đủ được mở tại nguồn.
+        Thư viện thongphan.com giữ lại bản dịch đầy đủ để bạn đọc liền mạch, đồng thời đặt
+        liên kết nguồn ngay tại đây để tác giả và đơn vị xuất bản luôn được nhận diện rõ ràng.
       </p>
       <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
-        Rời thongphan.com để đọc bài gốc tại {source} (mở trong thẻ mới)
+        Đối chiếu bài gốc tại {source} (mở trong thẻ mới)
         <ExternalLink aria-hidden="true" size={18} strokeWidth={1.7} />
       </a>
     </aside>

@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 24,
   "topics": [
     "taste",
@@ -42,9 +42,519 @@
       "Vì vậy bài nói có sức nặng đặc biệt: nó vừa là lời nhắn cho sinh viên tốt nghiệp, vừa là bản tóm lược triết lý sống của ông."
     ]
   },
+  "sections": [
+    {
+      "title": "Mở đầu",
+      "minutes": 1,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi rất vinh dự khi được có mặt cùng các bạn hôm nay, trong lễ tốt nghiệp của các bạn tại một trong những trường đại học tốt nhất thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói thật, tôi chưa từng tốt nghiệp đại học. Và đây là lần gần nhất trong đời tôi được tham dự một buổi lễ tốt nghiệp đại học."
+        },
+        {
+          "kind": "pause",
+          "text": "Hôm nay, tôi muốn kể cho các bạn nghe ba câu chuyện từ cuộc đời mình. Chỉ vậy thôi. Không có gì to tát. Chỉ là ba câu chuyện."
+        }
+      ]
+    },
+    {
+      "title": "Câu chuyện đầu tiên: Kết nối những dấu chấm (Connecting the dots)",
+      "minutes": 8,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi bỏ học ở Reed College sau sáu tháng đầu tiên, nhưng sau đó vẫn ở lại trường như một người học dự thính thêm khoảng 18 tháng nữa, trước khi thật sự rời đi. Vậy tại sao tôi lại bỏ học?"
+        },
+        {
+          "kind": "pause",
+          "text": "Câu chuyện bắt đầu từ trước khi tôi được sinh ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mẹ ruột của tôi khi đó là một nghiên cứu sinh trẻ, chưa kết hôn, và bà quyết định cho tôi làm con nuôi. Bà tin rất mạnh rằng tôi nên được nhận nuôi bởi những người đã tốt nghiệp đại học. Vì vậy, mọi thứ đã được sắp xếp để ngay khi sinh ra, tôi sẽ được một luật sư và vợ của ông ấy nhận nuôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi tôi chào đời, họ đột nhiên quyết định vào phút chót rằng họ thật sự muốn có một bé gái. Vì vậy, bố mẹ nuôi của tôi — khi đó đang nằm trong danh sách chờ — nhận được một cuộc gọi lúc nửa đêm: “Chúng tôi có một bé trai ngoài dự kiến. Hai người có muốn nhận nuôi không?” Họ trả lời: “Tất nhiên rồi.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, mẹ ruột của tôi phát hiện ra rằng mẹ nuôi tôi chưa từng tốt nghiệp đại học, còn bố nuôi tôi thậm chí chưa tốt nghiệp trung học. Bà từ chối ký giấy tờ nhận con nuôi cuối cùng. Mãi vài tháng sau, bà mới đồng ý, sau khi bố mẹ nuôi tôi hứa rằng sau này tôi sẽ được đi học đại học."
+        },
+        {
+          "kind": "pause",
+          "text": "Đó là khởi đầu cuộc đời tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và 17 năm sau, tôi thật sự vào đại học. Nhưng tôi đã ngây thơ chọn một ngôi trường gần như đắt đỏ ngang Stanford. Toàn bộ tiền tiết kiệm của bố mẹ tôi — những người thuộc tầng lớp lao động — đều bị dùng để trả học phí cho tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau sáu tháng, tôi không còn nhìn thấy giá trị của việc đó nữa. Tôi không biết mình muốn làm gì với cuộc đời. Tôi cũng không biết đại học sẽ giúp tôi tìm ra điều đó như thế nào. Và tôi đang tiêu hết số tiền mà bố mẹ tôi đã dành dụm cả đời."
+        },
+        {
+          "kind": "pause",
+          "text": "Vì vậy, tôi quyết định bỏ học và tin rằng mọi chuyện rồi sẽ ổn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lúc đó, quyết định ấy khá đáng sợ. Nhưng khi nhìn lại, đó là một trong những quyết định tốt nhất tôi từng đưa ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay khi bỏ học, tôi không còn phải học những môn bắt buộc mà mình không hứng thú nữa. Thay vào đó, tôi có thể dự những lớp mà tôi thấy thú vị hơn nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi chuyện không hề lãng mạn như người ta tưởng. Tôi không có phòng ký túc xá, nên phải ngủ trên sàn phòng của bạn bè. Tôi nhặt và trả lại các chai Coca-Cola để lấy 5 xu tiền đặt cọc, dùng số tiền đó mua đồ ăn. Mỗi tối Chủ nhật, tôi đi bộ hơn 11 cây số băng qua thành phố để có được một bữa ăn tử tế trong tuần tại đền Hare Krishna."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi yêu quãng thời gian đó."
+        },
+        {
+          "kind": "pause",
+          "text": "Ở đây Jobs không kể chuyện bỏ học như một huyền thoại nổi loạn. Ông đặt nó như một bài học về sự tò mò có kỷ luật: chỉ đi theo điều mình thật sự muốn hiểu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và rất nhiều thứ tôi tình cờ bước vào, chỉ vì đi theo sự tò mò và trực giác của mình, sau này hóa ra lại vô giá. Để tôi cho các bạn một ví dụ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời đó, Reed College có lẽ là nơi dạy thư pháp tốt nhất nước Mỹ. Khắp khuôn viên trường, mọi tấm áp phích, mọi nhãn dán trên từng ngăn kéo đều được viết tay bằng thư pháp rất đẹp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì tôi đã bỏ học và không phải học những môn bắt buộc thông thường nữa, tôi quyết định tham gia một lớp thư pháp để học cách làm điều đó."
+        },
+        {
+          "kind": "pause",
+          "text": "Tôi học về các kiểu chữ có chân và không chân, học cách điều chỉnh khoảng cách giữa các cặp chữ khác nhau, học điều gì làm nên một kiểu chữ đẹp. Nó đẹp, có chiều sâu lịch sử, tinh tế về nghệ thuật — theo một cách mà khoa học khó có thể nắm bắt trọn vẹn. Và tôi thấy nó thật hấp dẫn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi ấy, những thứ đó chẳng có vẻ gì là sẽ có ứng dụng thực tế trong đời tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng mười năm sau, khi chúng tôi thiết kế chiếc máy tính Macintosh đầu tiên, tất cả những điều đó quay trở lại với tôi. Và chúng tôi đưa chúng vào trong máy Mac. Đó là chiếc máy tính đầu tiên có typography đẹp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi chưa từng dự lớp học thư pháp ấy ở đại học, máy Mac có lẽ đã không có nhiều kiểu chữ khác nhau, cũng không có các phông chữ được căn khoảng cách theo tỷ lệ. Và vì Windows sau đó sao chép theo Mac, rất có thể máy tính cá nhân ngày nay cũng sẽ không có những thứ đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi chưa từng bỏ học, tôi đã không thể dự lớp thư pháp ấy. Và máy tính cá nhân có thể đã không có typography tuyệt vời như bây giờ."
+        },
+        {
+          "kind": "quote",
+          "text": "Các bạn không thể kết nối các dấu chấm khi nhìn về phía trước. Các bạn chỉ có thể kết nối chúng khi nhìn lại phía sau.",
+          "attribution": "Steve Jobs"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, khi còn ở đại học, tôi không thể kết nối các dấu chấm khi nhìn về phía trước. Nhưng mười năm sau, khi nhìn lại, mọi thứ trở nên rất rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một lần nữa: các bạn không thể kết nối các dấu chấm khi nhìn về phía trước. Các bạn chỉ có thể kết nối chúng khi nhìn lại phía sau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, các bạn phải tin rằng bằng cách nào đó, những dấu chấm ấy sẽ kết nối với nhau trong tương lai của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn phải tin vào một điều gì đó: trực giác, số phận, cuộc sống, nghiệp, bất cứ điều gì. Bởi niềm tin rằng những dấu chấm rồi sẽ kết nối với nhau trên hành trình phía trước sẽ cho các bạn sự can đảm để đi theo trái tim mình, ngay cả khi con đường đó đưa các bạn rời khỏi lối mòn quen thuộc."
+        },
+        {
+          "kind": "highlight",
+          "text": "Và chính điều đó sẽ tạo ra tất cả khác biệt."
+        }
+      ]
+    },
+    {
+      "title": "Câu chuyện thứ hai: Tình yêu và mất mát (Love and loss)",
+      "minutes": 7,
+      "blocks": [
+        {
+          "kind": "highlight",
+          "text": "Tôi đã rất may mắn. Tôi tìm thấy điều mình yêu thích từ khá sớm trong đời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Woz và tôi thành lập Apple trong gara của bố mẹ tôi khi tôi 20 tuổi. Chúng tôi làm việc rất chăm chỉ. Và sau 10 năm, Apple đã phát triển từ hai người trong một gara thành một công ty trị giá 2 tỷ đô la với hơn 4.000 nhân viên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi vừa cho ra mắt sáng tạo tốt nhất của mình — Macintosh — một năm trước đó. Và tôi vừa bước sang tuổi 30."
+        },
+        {
+          "kind": "pause",
+          "text": "Rồi tôi bị sa thải."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Làm sao bạn có thể bị sa thải khỏi chính công ty mà mình sáng lập?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi Apple phát triển, chúng tôi thuê một người mà tôi nghĩ là rất tài năng để cùng tôi điều hành công ty. Trong khoảng một năm đầu, mọi chuyện diễn ra tốt đẹp. Nhưng rồi tầm nhìn của chúng tôi về tương lai bắt đầu khác nhau. Cuối cùng, chúng tôi bất đồng sâu sắc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi chuyện đó xảy ra, hội đồng quản trị đứng về phía ông ấy. Và thế là ở tuổi 30, tôi bị loại ra ngoài — một cách rất công khai."
+        },
+        {
+          "kind": "pause",
+          "text": "Jobs không né phần mất mặt công khai. Đây là chỗ bài nói chuyển từ câu chuyện thành tiêu chuẩn: thứ bạn yêu phải còn đứng vững sau khi danh phận bị lấy đi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều từng là trọng tâm của toàn bộ cuộc đời trưởng thành của tôi bỗng biến mất. Và điều đó thật sự tàn phá tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong vài tháng, tôi thật sự không biết phải làm gì. Tôi cảm thấy mình đã làm thế hệ doanh nhân đi trước thất vọng. Tôi cảm thấy như mình đã đánh rơi cây gậy tiếp sức khi nó vừa được trao đến tay mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi gặp David Packard và Bob Noyce, cố gắng xin lỗi vì đã làm mọi thứ rối tung đến vậy. Tôi là một kẻ thất bại trước mắt công chúng. Thậm chí tôi còn nghĩ đến chuyện rời khỏi Thung lũng Silicon."
+        },
+        {
+          "kind": "quote",
+          "text": "Tôi đã bị từ chối, nhưng tôi vẫn còn yêu. Vì vậy, tôi quyết định bắt đầu lại.",
+          "attribution": "Steve Jobs"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi, một điều dần dần lóe lên trong tôi: Tôi vẫn yêu việc mình làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những biến cố ở Apple không hề thay đổi điều đó, dù chỉ một chút. Tôi đã bị từ chối, nhưng tôi vẫn còn yêu. Vì vậy, tôi quyết định bắt đầu lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lúc đó tôi không nhìn ra, nhưng sau này tôi nhận ra rằng việc bị Apple sa thải là điều tốt nhất từng xảy đến với mình."
+        },
+        {
+          "kind": "pause",
+          "text": "Sức nặng của thành công được thay thế bằng sự nhẹ nhõm của việc được làm người mới bắt đầu một lần nữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sức nặng của thành công được thay thế bằng sự nhẹ nhõm của việc được làm người mới bắt đầu một lần nữa — ít chắc chắn hơn về mọi thứ. Chính điều đó giải phóng tôi, đưa tôi bước vào một trong những giai đoạn sáng tạo nhất đời mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong năm năm tiếp theo, tôi thành lập một công ty tên là NeXT, một công ty khác tên là Pixar, và tôi yêu một người phụ nữ tuyệt vời, người sau này trở thành vợ tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Pixar sau đó tạo ra bộ phim hoạt hình dài đầu tiên trên thế giới được làm hoàn toàn bằng máy tính: Toy Story. Và hiện nay, Pixar là xưởng phim hoạt hình thành công nhất thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong một bước ngoặt đáng kinh ngạc, Apple mua lại NeXT, và tôi quay trở lại Apple. Công nghệ mà chúng tôi phát triển ở NeXT trở thành phần cốt lõi trong sự hồi sinh hiện tại của Apple. Còn Laurene và tôi có với nhau một gia đình tuyệt vời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi khá chắc rằng không điều gì trong số đó có thể xảy ra nếu tôi không bị Apple sa thải."
+        },
+        {
+          "kind": "quote",
+          "text": "Đôi khi cuộc đời sẽ ném một viên gạch vào đầu bạn. Đừng đánh mất niềm tin.",
+          "attribution": "Steve Jobs"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một liều thuốc có vị rất tệ. Nhưng có lẽ bệnh nhân khi ấy cần đúng liều thuốc đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đôi khi cuộc đời sẽ ném một viên gạch vào đầu bạn. Đừng đánh mất niềm tin."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi tin chắc rằng điều duy nhất giúp tôi tiếp tục là vì tôi yêu việc mình làm."
+        },
+        {
+          "kind": "pause",
+          "text": "Cách duy nhất để làm được công việc vĩ đại là yêu điều mình làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn phải tìm ra điều mình yêu. Điều đó đúng với công việc, cũng như đúng với tình yêu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Công việc sẽ chiếm một phần rất lớn trong cuộc đời các bạn. Và cách duy nhất để thật sự hài lòng là làm điều mà bạn tin rằng đó là một công việc vĩ đại. Cách duy nhất để làm được công việc vĩ đại là yêu điều mình làm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu các bạn vẫn chưa tìm thấy nó, hãy tiếp tục tìm. Đừng thỏa hiệp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cũng như mọi chuyện liên quan đến trái tim, khi tìm thấy, bạn sẽ biết. Và như bất kỳ mối quan hệ tuyệt vời nào, nó sẽ ngày càng tốt đẹp hơn theo năm tháng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Vì vậy, hãy tiếp tục tìm kiếm. Đừng thỏa hiệp."
+        }
+      ]
+    },
+    {
+      "title": "Câu chuyện thứ ba: Cái chết (Death)",
+      "minutes": 7,
+      "blocks": [
+        {
+          "kind": "quote",
+          "text": "Nếu bạn sống mỗi ngày như thể đó là ngày cuối cùng của đời mình, rồi một ngày nào đó, chắc chắn bạn sẽ đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi tôi 17 tuổi, tôi đọc được một câu nói đại khái thế này: “Nếu bạn sống mỗi ngày như thể đó là ngày cuối cùng của đời mình, rồi một ngày nào đó, chắc chắn bạn sẽ đúng.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu nói ấy để lại ấn tượng rất sâu trong tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kể từ đó, suốt 33 năm qua, mỗi sáng tôi đều nhìn vào gương và tự hỏi: “Nếu hôm nay là ngày cuối cùng của đời mình, liệu tôi có muốn làm điều mình sắp làm hôm nay không?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và mỗi khi câu trả lời là “không” trong quá nhiều ngày liên tiếp, tôi biết mình cần phải thay đổi điều gì đó."
+        },
+        {
+          "kind": "pause",
+          "text": "Đây là một câu hỏi thực dụng, không phải bi kịch hóa cái chết: nếu nhiều ngày liên tiếp câu trả lời là không, hệ thống sống đang lệch."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc nhớ rằng mình sẽ chết sớm là công cụ quan trọng nhất tôi từng biết để giúp mình đưa ra những lựa chọn lớn trong đời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì hầu như mọi thứ — kỳ vọng bên ngoài, lòng kiêu hãnh, nỗi sợ xấu hổ, nỗi sợ thất bại — tất cả đều tan biến khi đối diện với cái chết. Chỉ còn lại những gì thật sự quan trọng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhớ rằng mình rồi sẽ chết là cách tốt nhất tôi biết để tránh rơi vào cái bẫy nghĩ rằng mình còn thứ gì đó để mất."
+        },
+        {
+          "kind": "pause",
+          "text": "Bạn vốn đã trần trụi rồi. Không có lý do gì để không đi theo trái tim mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn vốn đã trần trụi rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không có lý do gì để không đi theo trái tim mình."
+        },
+        {
+          "kind": "pause",
+          "text": "Khoảng một năm trước, tôi được chẩn đoán mắc ung thư."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đi chụp chiếu lúc 7 giờ 30 sáng, và kết quả cho thấy rất rõ có một khối u trong tuyến tụy của tôi. Thú thật, khi đó tôi thậm chí còn không biết tuyến tụy là gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bác sĩ nói với tôi rằng gần như chắc chắn đó là một dạng ung thư không thể chữa khỏi, và tôi nên chuẩn bị tinh thần rằng mình chỉ còn sống được từ ba đến sáu tháng."
+        },
+        {
+          "kind": "quote",
+          "text": "Hãy chuẩn bị để chết.",
+          "attribution": "Cách nói thẳng phía sau lời khuyên của bác sĩ"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bác sĩ khuyên tôi về nhà và “sắp xếp mọi chuyện cho ổn thỏa”. Đó là cách nói của bác sĩ cho câu: “Hãy chuẩn bị để chết.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có nghĩa là bạn phải cố gắng nói với con mình tất cả những điều mà bạn từng nghĩ mình còn mười năm để nói, nhưng giờ phải nói trong vài tháng. Nó có nghĩa là bạn phải đảm bảo mọi thứ được chuẩn bị gọn gàng nhất có thể để gia đình mình dễ dàng hơn. Nó có nghĩa là bạn phải nói lời tạm biệt."
+        },
+        {
+          "kind": "pause",
+          "text": "Tôi sống với chẩn đoán đó suốt cả ngày."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tối hôm đó, tôi được sinh thiết. Họ đưa một ống nội soi qua cổ họng tôi, xuống dạ dày, vào ruột, rồi dùng kim lấy vài tế bào từ khối u trong tuyến tụy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi được gây mê. Nhưng vợ tôi, người có mặt ở đó, kể lại rằng khi các bác sĩ nhìn những tế bào ấy dưới kính hiển vi, họ bắt đầu khóc. Bởi hóa ra đó là một dạng ung thư tuyến tụy rất hiếm, có thể chữa khỏi bằng phẫu thuật."
+        },
+        {
+          "kind": "pause",
+          "text": "Tôi đã phẫu thuật. Và thật may mắn, hiện tại tôi vẫn ổn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã phẫu thuật. Và thật may mắn, hiện tại tôi vẫn ổn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lần tôi đến gần cái chết nhất. Và tôi hy vọng đó sẽ là lần gần nhất trong vài chục năm tới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau khi trải qua chuyện đó, giờ tôi có thể nói với các bạn điều này với sự chắc chắn lớn hơn nhiều so với khi cái chết với tôi chỉ là một khái niệm hữu ích nhưng thuần túy mang tính trí tuệ."
+        },
+        {
+          "kind": "pause",
+          "text": "Không ai muốn chết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay cả những người muốn lên thiên đường cũng không muốn phải chết để đến đó."
+        },
+        {
+          "kind": "quote",
+          "text": "Cái chết rất có thể là phát minh tốt nhất duy nhất của sự sống.",
+          "attribution": "Steve Jobs"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thế nhưng, cái chết là điểm đến chung của tất cả chúng ta. Chưa từng có ai thoát khỏi nó. Và điều đó nên là như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì cái chết rất có thể là phát minh tốt nhất duy nhất của sự sống. Nó là tác nhân thay đổi của cuộc đời. Nó dọn đi cái cũ để nhường chỗ cho cái mới."
+        },
+        {
+          "kind": "pause",
+          "text": "Ngay lúc này, cái mới chính là các bạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng một ngày nào đó, không quá xa từ bây giờ, các bạn cũng sẽ dần trở thành cái cũ và được dọn đi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin lỗi vì nghe có vẻ kịch tính, nhưng đó là sự thật."
+        },
+        {
+          "kind": "pause",
+          "text": "Thời gian của các bạn là hữu hạn. Vì vậy, đừng lãng phí nó để sống cuộc đời của người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thời gian của các bạn là hữu hạn. Vì vậy, đừng lãng phí nó để sống cuộc đời của người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đừng mắc kẹt trong giáo điều — tức là sống theo kết quả tư duy của người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đừng để tiếng ồn từ ý kiến của người khác nhấn chìm tiếng nói bên trong bạn."
+        },
+        {
+          "kind": "quote",
+          "text": "Và quan trọng nhất, hãy có can đảm đi theo trái tim và trực giác của mình.",
+          "attribution": "Steve Jobs"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bằng cách nào đó, chúng đã biết bạn thật sự muốn trở thành ai."
+        },
+        {
+          "kind": "pause",
+          "text": "Mọi thứ khác chỉ là thứ yếu."
+        }
+      ]
+    },
+    {
+      "title": "Stay hungry. Stay foolish.",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi tôi còn trẻ, có một ấn phẩm tuyệt vời tên là The Whole Earth Catalog. Nó giống như một trong những cuốn kinh thánh của thế hệ tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ấn phẩm đó được tạo ra bởi một người tên là Stewart Brand, không xa nơi này, ở Menlo Park. Ông ấy thổi sự sống vào nó bằng nét chạm rất thơ."
+        },
+        {
+          "kind": "pause",
+          "text": "Whole Earth Catalog không chỉ là một kỷ niệm đẹp. Nó là biểu tượng của một gu học hỏi: tò mò, tự làm, mở rộng thế giới và không chấp nhận sống theo mặc định."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là cuối thập niên 1960, trước thời máy tính cá nhân và xuất bản trên máy tính. Vì vậy, mọi thứ được làm bằng máy đánh chữ, kéo và máy ảnh Polaroid."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó giống như Google dưới dạng sách giấy, xuất hiện trước Google khoảng 35 năm. Nó đầy lý tưởng, tràn ngập những công cụ hay ho và những ý tưởng tuyệt vời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Stewart và đội ngũ của ông đã xuất bản nhiều số của The Whole Earth Catalog. Rồi khi hành trình của nó đi đến hồi kết, họ phát hành số cuối cùng."
+        },
+        {
+          "kind": "pause",
+          "text": "Đó là giữa thập niên 1970, và khi ấy tôi bằng tuổi các bạn bây giờ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở bìa sau của số cuối cùng ấy là một bức ảnh chụp một con đường miền quê vào sáng sớm — kiểu con đường mà bạn có thể sẽ đứng vẫy xe đi nhờ nếu bạn đủ phiêu lưu."
+        },
+        {
+          "kind": "pause",
+          "text": "Stay hungry. Stay foolish."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bên dưới bức ảnh là dòng chữ: “Stay hungry. Stay foolish.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lời chia tay của họ khi khép lại hành trình."
+        },
+        {
+          "kind": "pause",
+          "text": "“Stay hungry. Stay foolish.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi luôn mong điều đó cho chính mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và giờ đây, khi các bạn tốt nghiệp để bắt đầu một hành trình mới, tôi cũng chúc các bạn điều đó."
+        },
+        {
+          "kind": "pause",
+          "text": "Hãy cứ khát khao. Hãy cứ dại khờ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn tất cả các bạn rất nhiều."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 5,
   "legacyBlockCount": 118,
   "legacyBodyChecksum": "sha256:cf7e9f725c608190b899a03eee4a14ba3ba0c5c672bab4f4233b7791549748c3",
   "contentVersion": 1,
-  "contentChecksum": "sha256:1afda9d789dd93c84a5e7d2ca73befc454f777935aad01051e4187e0578adedb"
+  "contentChecksum": "sha256:b0d5fb450b4459e81c388eb6029dee7dcf4d3a42acc09aca951b4f27cf3fa635"
 }

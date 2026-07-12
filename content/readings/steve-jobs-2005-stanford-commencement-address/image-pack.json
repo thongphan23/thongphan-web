@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "/images/articles/steve-jobs/steve-jobs-portrait.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/steve-jobs-2005-stanford-commencement-address/01-steve-jobs-portrait.jpg",
       "alt": "Chân dung Steve Jobs trong áo cổ lọ đen, nhìn thẳng vào máy ảnh.",
       "caption": "Steve Jobs, người kể ba câu chuyện đời mình tại lễ tốt nghiệp Stanford năm 2005.",
       "credit": "Wikimedia Commons / Matthew Yohe",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Matthew Yohe",
+      "derivative": "01-steve-jobs-portrait.jpg",
+      "checksum": "sha256:e10691d6b3047005280de916c6e71dd7025ee148288f535bca46fa9189949588",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "steve-jobs-2005-stanford-commencement-address",
         "legacyLocation": "/images/articles/steve-jobs/steve-jobs-portrait.jpg",
         "articleSourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "/images/articles/steve-jobs/stanford-memorial-church.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/steve-jobs-2005-stanford-commencement-address/02-stanford-memorial-church.jpg",
       "alt": "Mặt tiền Stanford Memorial Church trong khuôn viên Stanford University.",
       "caption": "Stanford là bối cảnh của bài nói: một sân khấu trang trọng cho một thông điệp rất riêng tư.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-stanford-memorial-church.jpg",
+      "checksum": "sha256:251c23bb79803e555adeaf51a14eb7ce5746663fc2449c78943414b27bd98020",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "steve-jobs-2005-stanford-commencement-address",
         "legacyLocation": "/images/articles/steve-jobs/stanford-memorial-church.jpg",
         "articleSourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "/images/articles/steve-jobs/reed-college-eliot-hall.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/steve-jobs-2005-stanford-commencement-address/03-reed-college-eliot-hall.jpg",
       "alt": "Eliot Hall tại Reed College, nơi Steve Jobs từng học dự thính lớp thư pháp.",
       "caption": "Reed College gợi lại lớp thư pháp đã trở thành một “dấu chấm” quan trọng trong tư duy typography của Macintosh.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "03-reed-college-eliot-hall.jpg",
+      "checksum": "sha256:b3895daee4d8008e64386776ec905c6ba83d8105f2af213bd98ebab1ad916c5d",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "steve-jobs-2005-stanford-commencement-address",
         "legacyLocation": "/images/articles/steve-jobs/reed-college-eliot-hall.jpg",
         "articleSourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "/images/articles/steve-jobs/nextcube-computer-history-museum.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/steve-jobs-2005-stanford-commencement-address/04-nextcube-computer-history-museum.jpg",
       "alt": "Máy tính NeXTcube được trưng bày tại Computer History Museum.",
       "caption": "NeXT là một đoạn vòng tưởng như thất bại, nhưng sau này trở thành một phần quan trọng trong đường trở lại Apple của Jobs.",
       "credit": "Wikimedia Commons / Computer History Museum",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Computer History Museum",
+      "derivative": "04-nextcube-computer-history-museum.jpg",
+      "checksum": "sha256:78143011e72c91795a7b97bd5f59b7b7302da68e959eaf7b61cd7ed65ab42c18",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "steve-jobs-2005-stanford-commencement-address",
         "legacyLocation": "/images/articles/steve-jobs/nextcube-computer-history-museum.jpg",
         "articleSourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "/images/articles/steve-jobs/whole-earth-catalog-back-cover-1972.jpg",
       "sourceUrl": null,
+      "publicPath": "/images/readings/steve-jobs-2005-stanford-commencement-address/05-whole-earth-catalog-back-cover-1972.jpg",
       "alt": "Bìa sau Whole Earth Catalog với dòng chữ Stay hungry. Stay foolish.",
       "caption": "Whole Earth Catalog là nguồn gốc của câu kết “Stay hungry. Stay foolish.” mà Jobs gửi lại cho sinh viên Stanford.",
       "credit": "Flickr / Traci Lawson, CC BY 2.0",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Flickr / Traci Lawson, CC BY 2.0",
+      "derivative": "05-whole-earth-catalog-back-cover-1972.jpg",
+      "checksum": "sha256:559c8b6eb5e831760acf233ab5c251d2a0c8e7de606ec7a01df8f7be5e5a797f",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "steve-jobs-2005-stanford-commencement-address",
         "legacyLocation": "/images/articles/steve-jobs/whole-earth-catalog-back-cover-1972.jpg",
         "articleSourceUrl": "https://news.stanford.edu/stories/2005/06/youve-got-find-love-jobs-says"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:6421a6e48761ca1d2b446c46f4cc68ec6da11d6b9546c7dd5585c9a472f42815"
+  "mediaChecksum": "sha256:a9e26464cb49dfba260eade19bde2941d2f48e419ccf2f48f9569374fd0b0fd0"
 }

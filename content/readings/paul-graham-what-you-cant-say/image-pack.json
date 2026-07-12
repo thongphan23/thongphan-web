@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
+      "publicPath": "/images/readings/paul-graham-what-you-cant-say/01-1280px-paul-graham-programming.jpg",
       "alt": "Paul Graham đang làm việc với máy tính.",
       "caption": "Paul Graham tiếp cận câu hỏi cấm kỵ bằng thói quen của một hacker: tìm nơi hệ thống bị lỗi.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "01-1280px-paul-graham-programming.jpg",
+      "checksum": "sha256:886c2b92026dd283af43be4b54eda9a3ac0e1d299c24467e6ba431f1a235e2bd",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-what-you-cant-say",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Paul_Graham_programming.jpg/1280px-Paul_Graham_programming.jpg",
         "articleSourceUrl": "https://paulgraham.com/say.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
+      "publicPath": "/images/readings/paul-graham-what-you-cant-say/02-1280px-paul-graham-talking-about-prototype-day-at-y-combinator-summer-20.jpg",
       "alt": "Paul Graham nói chuyện tại Prototype Day của Y Combinator năm 2009.",
       "caption": "Bối cảnh startup khiến bài essay mang màu thực dụng: nghĩ độc lập để tìm điều người khác né tránh.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "02-1280px-paul-graham-talking-about-prototype-day-at-y-combinator-summer-20.jpg",
+      "checksum": "sha256:a0a8fc955a15e1bad44dfcd72265084ea7643193e13fab28aea5dd4959b0ab5f",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-what-you-cant-say",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg/1280px-Paul_Graham_talking_about_Prototype_Day_at_Y_Combinator_Summer_2009.jpg",
         "articleSourceUrl": "https://paulgraham.com/say.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
+      "publicPath": "/images/readings/paul-graham-what-you-cant-say/03-paulgraham-240x320.jpg",
       "alt": "Chân dung Paul Graham.",
       "caption": "Paul Graham ở tư cách tác giả của những bài essay đã ảnh hưởng sâu tới cách nhiều founder suy nghĩ về startup và tư duy độc lập.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "03-paulgraham-240x320.jpg",
+      "checksum": "sha256:f0d9215701dcfc707726653b811ab027ae106b8f060e91f2f4f07d7d062c84d0",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-what-you-cant-say",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Paulgraham_240x320.jpg",
         "articleSourceUrl": "https://paulgraham.com/say.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
+      "publicPath": "/images/readings/paul-graham-what-you-cant-say/04-lossy-page1-1280px-galileo-galilei-281564-1642-29-rmg-bhc2700-tiff.jpg",
       "alt": "Chân dung Galileo Galilei.",
       "caption": "Galileo là ví dụ kinh điển trong bài về ý tưởng từng không thể nói công khai.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "04-lossy-page1-1280px-galileo-galilei-281564-1642-29-rmg-bhc2700-tiff.jpg",
+      "checksum": "sha256:62b0bfbff1243d1195d48213fa04f7dbcdac95ca34e8175fc5201e1ab3f21c56",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-what-you-cant-say",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1280px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg",
         "articleSourceUrl": "https://paulgraham.com/say.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
+      "publicPath": "/images/readings/paul-graham-what-you-cant-say/05-1280px-paul-graham-and-mark-zuckerberg-say-hi-285090069380-29.jpg",
       "alt": "Paul Graham và Mark Zuckerberg trong một sự kiện công nghệ.",
       "caption": "Bài viết nằm trong hệ sinh thái tư duy công nghệ, nơi câu hỏi khác thường thường tạo lợi thế.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "05-1280px-paul-graham-and-mark-zuckerberg-say-hi-285090069380-29.jpg",
+      "checksum": "sha256:f829a65b8184df552c578d1eafd75af821e32fc8a2ba0af3df0ec876dda53dd4",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "paul-graham-what-you-cant-say",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg/1280px-Paul_Graham_and_Mark_Zuckerberg_say_hi_%285090069380%29.jpg",
         "articleSourceUrl": "https://paulgraham.com/say.html"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:2a6438bc148c5054a826f834eff71710b09e547ae31a41d397e110814bb3c818"
+  "mediaChecksum": "sha256:4ccce33af094ba60be4f30d26a84bce65a8e044d334ded50f7238cb72217fb00"
 }

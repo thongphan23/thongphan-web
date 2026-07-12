@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 25,
   "topics": [
     "worldview",
@@ -41,9 +41,1134 @@
       "Bài này đặc biệt quan trọng với người muốn có gu đánh giá: biết nghi ngờ cả điều mình muốn tin."
     ]
   },
+  "sections": [
+    {
+      "title": "Câu hỏi mở ra thế giới",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một vài nhận xét về khoa học, giả khoa học, và việc học cách để không tự lừa mình. Đây là bài phát biểu tốt nghiệp của Feynman tại Caltech năm 1974."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong thời Trung Cổ, có đủ loại ý tưởng điên rồ. Chẳng hạn như người ta tin rằng một mẩu sừng tê giác có thể làm tăng sinh lực đàn ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ý tưởng điên rồ khác từ thời Trung Cổ là mấy cái mũ chúng ta đang đội hôm nay — trong trường hợp của tôi thì cái mũ này hơi rộng quá."
+        },
+        {
+          "kind": "insight",
+          "label": "Cách đọc bài này",
+          "text": "Đừng đọc để đồng ý nhanh. Hãy đọc để nâng tiêu chuẩn thẩm định: điều gì làm một ý tưởng đáng tin, đáng giữ và đáng dùng lại?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi con người phát hiện ra một phương pháp để phân loại các ý tưởng: thử xem một ý tưởng có hiệu quả không. Nếu nó không hiệu quả, thì loại bỏ nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phương pháp ấy, tất nhiên, dần dần được tổ chức thành **khoa học**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nó phát triển rất tốt, đến mức ngày nay chúng ta đang sống trong một thời đại khoa học. Thật ra, thời đại này “khoa học” đến mức chúng ta thấy khó hiểu vì sao các thầy lang phù thủy ngày xưa lại từng có thể tồn tại, trong khi gần như chẳng có gì họ đề xuất thật sự hiệu quả — hoặc nếu có thì rất ít."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ngay cả hôm nay, tôi vẫn gặp rất nhiều người. Sớm hay muộn, họ cũng kéo tôi vào những cuộc trò chuyện về UFO, chiêm tinh học, một dạng thần bí nào đó, sự mở rộng ý thức, những loại nhận thức mới, ngoại cảm, và đủ thứ tương tự."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi kết luận rằng: đây không phải là một thế giới khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất nhiều người tin vào quá nhiều điều kỳ diệu, đến mức tôi quyết định điều tra xem tại sao họ lại tin như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và cái mà người ta gọi là tính tò mò điều tra của tôi đã đẩy tôi vào một tình thế khó xử: tôi tìm thấy quá nhiều thứ rác rưởi để nói đến, nhiều đến mức tôi không thể nói hết trong bài hôm nay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi bị choáng ngợp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ban đầu, tôi bắt đầu bằng cách điều tra nhiều ý tưởng thần bí khác nhau, các trải nghiệm thần bí khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi từng vào bồn cách ly — nơi tối, yên tĩnh, bạn nổi trong dung dịch muối Epsom — và đã có nhiều giờ ảo giác. Vì vậy, tôi cũng biết chút ít về chuyện đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, tôi đến **Esalen**, một nơi rất sôi động với những kiểu tư tưởng như vậy. Đó là một nơi tuyệt vời, các bạn nên ghé thăm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi tôi bị choáng ngợp thật sự."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã không nhận ra có nhiều thứ đến mức nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, có lần tôi đang ngồi trong một bồn nước nóng. Trong bồn có một anh chàng khác và một cô gái."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh ta nói với cô gái:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tôi đang học massage, không biết tôi có thể thực hành trên cô được không?”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy nói được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thế là cô ấy nằm lên bàn, và anh ta bắt đầu với bàn chân của cô — xoa bóp ngón chân cái, ấn qua ấn lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi anh ta quay sang người có vẻ là người hướng dẫn của mình và nói:"
+        },
+        {
+          "kind": "highlight",
+          "text": "“Tôi cảm thấy có một chỗ lõm. Đây có phải là tuyến yên không?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô hướng dẫn nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Không, tuyến yên không có cảm giác như vậy.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Anh bạn, anh đang cách tuyến yên xa khủng khiếp đấy.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cả hai người quay sang nhìn tôi — các bạn thấy đấy, tôi đã tự làm lộ mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi cô ấy nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Đây là phản xạ học.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thế là tôi nhắm mắt lại và giả vờ như đang thiền."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó chỉ là một ví dụ về những thứ khiến tôi choáng ngợp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cũng tìm hiểu về ngoại cảm và các hiện tượng PSI. Cơn sốt mới nhất lúc đó là **Uri Geller**, người được cho là có khả năng bẻ cong chìa khóa chỉ bằng cách xoa ngón tay lên nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Theo lời mời của ông ta, tôi đến phòng khách sạn của ông để xem biểu diễn đọc ý nghĩ và bẻ cong chìa khóa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ta không đọc được ý nghĩ nào thành công. Chắc là không ai đọc được ý nghĩ của tôi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con trai tôi cầm một chiếc chìa khóa, Geller xoa nó, và chẳng có gì xảy ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó ông ta nói rằng nó hoạt động tốt hơn dưới nước."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, các bạn có thể tưởng tượng cảnh tất cả chúng tôi đứng trong phòng tắm, mở nước, đặt chiếc chìa khóa dưới vòi, còn ông ta xoa chìa khóa bằng ngón tay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng có gì xảy ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi đã không thể điều tra hiện tượng đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi tôi bắt đầu nghĩ:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn điều gì khác mà chúng ta tin nữa?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi nghĩ đến các thầy lang phù thủy ngày xưa, cũng như việc thật ra lẽ ra có thể kiểm tra họ rất dễ, chỉ bằng cách nhận ra rằng gần như chẳng có gì thật sự hiệu quả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi tôi tìm thấy những thứ mà thậm chí còn nhiều người tin hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng hạn như niềm tin rằng chúng ta có hiểu biết về cách giáo dục."
+        }
+      ]
+    },
+    {
+      "title": "Một lời giải thích phải đứng vững",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Có rất nhiều trường phái lớn về phương pháp dạy đọc, phương pháp dạy toán, vân vân. Nhưng nếu các bạn để ý, điểm đọc hiểu cứ tiếp tục đi xuống — hoặc gần như không tăng — bất chấp việc chúng ta liên tục dùng chính những người đó để cải tiến phương pháp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một loại phương thuốc thầy lang không hiệu quả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cần được xem xét: làm sao họ biết rằng phương pháp của họ đáng lẽ phải hiệu quả?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ví dụ khác là cách đối xử với tội phạm."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rõ ràng chúng ta chẳng đạt được tiến bộ nào — rất nhiều lý thuyết, nhưng không có tiến bộ — trong việc làm giảm số lượng tội phạm bằng những phương pháp mà chúng ta đang dùng để xử lý tội phạm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ấy vậy mà những thứ này vẫn được gọi là khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta nghiên cứu chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi nghĩ rằng những người bình thường có lẽ có nhiều ý tưởng rất hợp lý theo lẽ thường, nhưng lại bị thứ giả khoa học này làm cho sợ hãi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cô giáo có ý tưởng tốt về cách dạy học sinh đọc lại bị hệ thống trường học buộc phải dạy theo một cách khác — hoặc thậm chí bị hệ thống trường học lừa khiến cô tin rằng phương pháp của mình chưa chắc đã tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc một bà mẹ có những đứa con hư, sau khi kỷ luật chúng theo cách này hay cách khác, lại cảm thấy tội lỗi suốt phần đời còn lại vì mình đã không làm “điều đúng đắn” theo lời các chuyên gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng ta thật sự nên xem xét kỹ những lý thuyết không hiệu quả, và những thứ được gọi là khoa học nhưng không phải là khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cố tìm một nguyên tắc để phát hiện thêm những thứ như vậy, và nghĩ ra hệ thống sau đây."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất cứ khi nào bạn thấy mình đang ở trong một cuộc trò chuyện tại một bữa tiệc cocktail — một cuộc trò chuyện mà bạn không cảm thấy khó chịu nếu bà chủ nhà đi ngang qua và nói: “Sao mấy anh lại nói chuyện công việc ở đây?” hoặc nếu vợ bạn đi tới và nói: “Sao anh lại tán tỉnh nữa rồi?” — thì bạn có thể chắc chắn rằng mình đang nói về một thứ mà chẳng ai thật sự biết gì cả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dùng phương pháp này, tôi phát hiện thêm vài chủ đề mà trước đó mình đã quên mất — trong đó có hiệu quả của nhiều hình thức trị liệu tâm lý khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi bắt đầu điều tra qua thư viện, vân vân. Và tôi có quá nhiều điều để kể với các bạn, nhiều đến mức không thể kể hết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ phải giới hạn lại trong vài chuyện nhỏ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ tập trung vào những thứ mà nhiều người tin hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ năm sau tôi sẽ có một loạt bài nói về tất cả các chủ đề này. Sẽ mất rất nhiều thời gian."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ những nghiên cứu giáo dục và tâm lý mà tôi vừa nhắc đến là ví dụ cho điều tôi muốn gọi là **khoa học kiểu Cargo Cult**."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở vùng Nam Thái Bình Dương có một nhóm người theo “Cargo Cult”."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong chiến tranh, họ từng thấy máy bay hạ cánh, mang theo rất nhiều hàng hóa tốt đẹp. Và bây giờ họ muốn điều tương tự xảy ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, họ làm những thứ giống như đường băng. Họ đốt lửa dọc hai bên đường băng. Họ dựng một cái chòi gỗ để một người ngồi trong đó, đặt hai miếng gỗ lên đầu giống như tai nghe, rồi cắm những thanh tre nhô ra như ăng-ten — người đó là kiểm soát viên không lưu."
+        },
+        {
+          "kind": "highlight",
+          "text": "Và họ chờ máy bay hạ cánh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ làm mọi thứ đúng hình thức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hình thức rất hoàn hảo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trông nó y hệt như trước đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nó không hoạt động."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không có chiếc máy bay nào hạ cánh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi gọi những thứ này là **khoa học kiểu Cargo Cult**, bởi vì chúng làm theo tất cả những quy tắc và hình thức bề ngoài của việc điều tra khoa học, nhưng lại thiếu một điều cốt yếu nào đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi máy bay không hạ cánh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, giờ tôi có trách nhiệm phải nói cho các bạn biết điều họ đang thiếu là gì."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng việc này cũng khó gần như việc giải thích cho những cư dân Nam Thái Bình Dương kia rằng họ phải sắp xếp mọi thứ thế nào để thật sự có của cải đi vào hệ thống của họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó không phải là chuyện đơn giản như bảo họ cải thiện hình dạng của cái tai nghe."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng có một đặc điểm mà tôi nhận thấy thường vắng mặt trong khoa học kiểu Cargo Cult."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là ý tưởng mà chúng tôi hy vọng các bạn đã học được khi học khoa học ở trường — chúng tôi chưa bao giờ nói rõ nó là gì, mà chỉ hy vọng các bạn tự nắm bắt được qua tất cả các ví dụ điều tra khoa học."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, bây giờ nói rõ điều đó ra cũng là điều thú vị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một dạng **chính trực khoa học**, một nguyên tắc của tư duy khoa học tương ứng với một kiểu trung thực tuyệt đối — một kiểu trung thực đến mức phải cố ý nghiêng người về phía ngược lại để tránh thiên lệch."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, nếu bạn đang làm một thí nghiệm, bạn nên báo cáo mọi thứ mà bạn nghĩ có thể làm cho thí nghiệm ấy mất giá trị — không chỉ những điều bạn nghĩ là đúng về nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải nêu ra các nguyên nhân khác có thể giải thích kết quả của mình; những điều bạn đã nghĩ đến và đã loại trừ bằng một thí nghiệm khác; và cách các thí nghiệm ấy hoạt động như thế nào — để người khác có thể thấy rằng chúng thật sự đã được loại trừ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những chi tiết có thể làm người khác nghi ngờ cách diễn giải của bạn phải được đưa ra, nếu bạn biết chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải làm hết sức có thể — nếu bạn biết có điều gì sai, hoặc có thể sai — để giải thích nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn đưa ra một lý thuyết, chẳng hạn, rồi quảng bá nó hoặc công bố nó, thì bạn cũng phải đưa ra tất cả các dữ kiện trái ngược với lý thuyết ấy, chứ không chỉ những dữ kiện ủng hộ nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn có một vấn đề tinh tế hơn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi bạn ghép nhiều ý tưởng lại với nhau để tạo thành một lý thuyết phức tạp, bạn phải đảm bảo rằng khi giải thích lý thuyết ấy phù hợp với điều gì, những điều mà nó phù hợp không chỉ là những điều đã khiến bạn nghĩ ra lý thuyết ban đầu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lý thuyết hoàn chỉnh ấy cũng phải khiến một điều gì khác trở nên đúng, ngoài những điều ban đầu."
+        }
+      ]
+    },
+    {
+      "title": "Khi câu chuyện cũ không còn đủ",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tóm lại, ý tưởng là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "**Hãy cố gắng cung cấp toàn bộ thông tin để giúp người khác đánh giá giá trị đóng góp của bạn — chứ không chỉ cung cấp những thông tin dẫn họ đến một phán đoán theo một hướng cụ thể nào đó.**"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cách dễ nhất để giải thích ý tưởng này là đối chiếu nó với quảng cáo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tối qua tôi nghe nói rằng dầu ăn **Wesson Oil** không thấm xuyên qua thức ăn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó không phải là lời nói dối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều tôi đang nói không chỉ là chuyện không nói dối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đang nói về **chính trực khoa học**, một cấp độ khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự thật cần được bổ sung vào câu quảng cáo đó là: không loại dầu nào thấm xuyên qua thức ăn nếu được dùng ở một nhiệt độ nhất định."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu dùng ở một nhiệt độ khác, tất cả chúng đều sẽ thấm — bao gồm cả Wesson Oil."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy điều được truyền đi không phải là dữ kiện — dữ kiện thì đúng — mà là hàm ý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và sự khác biệt giữa hai thứ đó chính là điều chúng ta phải xử lý."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ kinh nghiệm, chúng ta đã học được rằng sự thật rồi sẽ lộ ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những nhà thí nghiệm khác sẽ lặp lại thí nghiệm của bạn và tìm ra bạn đúng hay sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các hiện tượng tự nhiên sẽ đồng ý hoặc không đồng ý với lý thuyết của bạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và dù bạn có thể có được chút danh tiếng và sự phấn khích tạm thời, bạn sẽ không có được danh tiếng tốt với tư cách một nhà khoa học nếu bạn không cố gắng hết sức cẩn trọng trong kiểu công việc này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chính loại chính trực này, kiểu cẩn trọng để không tự lừa mình này, là điều còn thiếu rất nhiều trong nhiều nghiên cứu thuộc kiểu khoa học Cargo Cult."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, phần lớn khó khăn của họ đến từ độ khó của chủ đề, cũng như việc phương pháp khoa học không dễ áp dụng cho chủ đề ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, cần nói rằng đó không phải là khó khăn duy nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lý do máy bay không hạ cánh — nhưng dù sao thì máy bay vẫn không hạ cánh."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đã học được rất nhiều từ kinh nghiệm về cách xử lý một số cách mà chính chúng ta tự lừa mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ví dụ:"
+        },
+        {
+          "kind": "highlight",
+          "text": "**Millikan** đo điện tích của electron bằng thí nghiệm giọt dầu rơi, và đưa ra một kết quả mà ngày nay chúng ta biết là không hoàn toàn đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó hơi lệch một chút, vì ông đã dùng giá trị sai cho độ nhớt của không khí."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều thú vị là nhìn vào lịch sử các phép đo điện tích electron sau Millikan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn vẽ chúng theo thời gian, bạn sẽ thấy một kết quả hơi lớn hơn kết quả của Millikan, rồi kết quả tiếp theo lại lớn hơn một chút, rồi kết quả sau nữa lại lớn hơn một chút, cho đến khi cuối cùng chúng ổn định ở một con số cao hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao họ không phát hiện ngay rằng con số mới cao hơn?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một chuyện mà các nhà khoa học cảm thấy xấu hổ — lịch sử này — bởi rõ ràng con người đã làm những việc như sau:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi họ nhận được một con số cao hơn quá nhiều so với của Millikan, họ nghĩ chắc có điều gì đó sai, rồi đi tìm và tìm được một lý do vì sao có thể có điều gì đó sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi họ nhận được một con số gần với giá trị của Millikan hơn, họ không tìm kiếm kỹ như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì thế, họ loại bỏ những con số quá lệch, và làm nhiều việc tương tự."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngày nay chúng ta đã học được những thủ thuật đó, và giờ chúng ta không còn mắc căn bệnh kiểu ấy nữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng lịch sử dài của việc học cách không tự lừa mình — của việc có sự chính trực khoa học tuyệt đối — rất tiếc lại là điều mà theo tôi biết, chúng ta chưa đưa một cách cụ thể vào bất kỳ khóa học nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta chỉ hy vọng các bạn hấp thụ nó bằng cách thẩm thấu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nguyên tắc đầu tiên là:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, bạn phải cực kỳ cẩn thận với điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau khi bạn đã không tự lừa mình, thì việc không lừa các nhà khoa học khác trở nên dễ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, bạn chỉ cần trung thực theo cách thông thường."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi muốn thêm một điều không thiết yếu đối với khoa học, nhưng là điều tôi phần nào tin."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là: khi bạn nói với tư cách một nhà khoa học, bạn không nên lừa người ngoài ngành."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không cố nói với các bạn phải làm gì về chuyện lừa dối vợ, lừa bạn gái, hay những chuyện tương tự khi bạn không cố làm một nhà khoa học, mà chỉ đang cố làm một con người bình thường."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những vấn đề đó chúng tôi để cho các bạn và giáo sĩ Do Thái của các bạn xử lý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đang nói về một kiểu chính trực đặc biệt, bổ sung: không chỉ là không nói dối, mà là cố tình nghiêng người về phía ngược lại để chỉ ra rằng có thể mình sai như thế nào — điều bạn nên làm khi hành động với tư cách một nhà khoa học."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đây là trách nhiệm của chúng ta với tư cách nhà khoa học, chắc chắn là với các nhà khoa học khác, và tôi nghĩ cũng là với người ngoài ngành."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, tôi từng hơi ngạc nhiên khi nói chuyện với một người bạn chuẩn bị lên đài phát thanh."
+        }
+      ]
+    },
+    {
+      "title": "Tiêu chuẩn của tri thức tốt hơn",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Anh ấy làm việc trong lĩnh vực vũ trụ học và thiên văn học, và băn khoăn không biết nên giải thích các ứng dụng của công việc này ra sao."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“À, chẳng có ứng dụng nào cả.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh ấy nói:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Đúng, nhưng nếu vậy chúng ta sẽ không nhận được tài trợ cho thêm nghiên cứu kiểu này.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ điều đó có phần không trung thực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn đang đại diện cho bản thân với tư cách một nhà khoa học, bạn nên giải thích với người ngoài ngành rằng mình đang làm gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu trong hoàn cảnh đó họ không muốn tài trợ cho bạn, thì đó là quyết định của họ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ví dụ cho nguyên tắc này là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn đã quyết định kiểm tra một lý thuyết, hoặc muốn giải thích một ý tưởng nào đó, bạn nên luôn quyết định sẽ công bố nó bất kể kết quả ra sao."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta chỉ công bố những kết quả thuộc một loại nhất định, chúng ta có thể khiến lập luận trông rất thuyết phục."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta phải công bố cả hai loại kết quả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ — hãy lấy quảng cáo một lần nữa — giả sử một loại thuốc lá cụ thể có một đặc tính nào đó, như hàm lượng nicotine thấp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Công ty quảng bá rộng rãi rằng điều này có nghĩa là nó tốt cho bạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng họ không nói, chẳng hạn, rằng tỷ lệ nhựa hắc ín lại khác, hoặc có điều gì khác không ổn với điếu thuốc đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói cách khác, xác suất công bố phụ thuộc vào câu trả lời."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không nên làm như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cho rằng điều này cũng quan trọng khi đưa ra một số loại tư vấn cho chính phủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giả sử một thượng nghị sĩ hỏi bạn lời khuyên về việc có nên khoan một cái lỗ ở bang của ông ta hay không; và bạn kết luận rằng tốt hơn nên khoan ở một bang khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bạn không công bố kết quả ấy, theo tôi, bạn không còn đang đưa ra lời khuyên khoa học nữa."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn đang bị sử dụng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu câu trả lời của bạn tình cờ đi theo hướng mà chính phủ hoặc chính trị gia thích, họ có thể dùng nó làm lập luận có lợi cho mình."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nếu nó đi theo hướng ngược lại, họ không công bố nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó không phải là tư vấn khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có những loại sai lầm khác đặc trưng hơn cho khoa học kém chất lượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi tôi còn ở **Cornell**, tôi thường nói chuyện với những người trong khoa tâm lý học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một sinh viên kể với tôi rằng cô muốn làm một thí nghiệm đại khái như thế này — tôi không nhớ chi tiết — nhưng những người khác đã phát hiện rằng trong một số điều kiện nhất định, X, chuột sẽ làm hành vi A."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô tò mò muốn biết rằng nếu cô thay đổi điều kiện sang Y, chuột có còn làm A hay không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, đề xuất của cô là làm thí nghiệm trong điều kiện Y và xem chuột có còn làm A không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi giải thích với cô rằng trước tiên cô cần lặp lại thí nghiệm của người khác trong chính phòng thí nghiệm của mình — tức là làm dưới điều kiện X để xem liệu cô có thu được kết quả A hay không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó mới đổi sang Y để xem A có thay đổi hay không."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như vậy, cô mới biết sự khác biệt thật sự là thứ mà cô nghĩ mình đang kiểm soát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cô rất vui với ý tưởng mới này, và đem nó đến gặp giáo sư của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu trả lời của ông ấy là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Không, em không thể làm vậy, vì thí nghiệm đó đã được làm rồi. Em sẽ chỉ lãng phí thời gian.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuyện này xảy ra vào khoảng năm 1935, và dường như khi đó chính sách chung là không cố lặp lại các thí nghiệm tâm lý học, mà chỉ thay đổi điều kiện rồi xem điều gì xảy ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngày nay, có một nguy cơ rằng điều tương tự cũng đang xảy ra, ngay cả trong lĩnh vực nổi tiếng như vật lý học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã sốc khi nghe về một thí nghiệm được thực hiện tại máy gia tốc lớn ở **National Accelerator Laboratory**, nơi một người sử dụng deuterium."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để so sánh kết quả với hydro nặng của mình với điều có thể xảy ra với hydro nhẹ, anh ta phải dùng dữ liệu từ thí nghiệm của người khác về hydro nhẹ, được thực hiện trên một thiết bị khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi được hỏi, anh ta nói rằng đó là vì không thể có thời gian trong chương trình — vì thời gian rất ít và thiết bị quá đắt — để làm thí nghiệm với hydro nhẹ trên chính thiết bị này, bởi sẽ không có kết quả mới nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và vì những người phụ trách chương trình ở NAL quá nóng lòng có kết quả mới, nhằm có thêm tiền duy trì hoạt động cho mục đích quan hệ công chúng, nên họ có thể đang phá hủy giá trị của chính các thí nghiệm — vốn là toàn bộ mục đích của việc đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các nhà thí nghiệm ở đó thường gặp khó khăn trong việc hoàn thành công việc theo đúng yêu cầu của chính trực khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, không phải mọi thí nghiệm tâm lý học đều thuộc kiểu này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, đã có rất nhiều thí nghiệm cho chuột chạy qua đủ loại mê cung, vân vân — với rất ít kết quả rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng vào năm 1937, một người tên là **Young** đã làm một thí nghiệm rất thú vị."
+        }
+      ]
+    },
+    {
+      "title": "Điều đáng giữ lại",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ông có một hành lang dài với nhiều cửa dọc theo một bên, nơi chuột đi vào, và các cửa dọc theo bên kia, nơi có thức ăn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông muốn xem liệu có thể huấn luyện chuột đi vào cánh cửa thứ ba tính từ nơi chúng được thả ra hay không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuột lập tức đi đến cánh cửa nơi lần trước có thức ăn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu hỏi là: làm sao chuột biết được? Bởi hành lang được xây rất đẹp và rất đồng đều. Làm sao chúng biết đó là cùng một cánh cửa như trước?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rõ ràng phải có điều gì đó ở cánh cửa ấy khác với những cánh cửa còn lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, ông sơn các cánh cửa rất cẩn thận, sắp xếp kết cấu bề mặt của các cánh cửa giống hệt nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuột vẫn phân biệt được."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, ông nghĩ có thể chuột ngửi thấy mùi thức ăn, nên ông dùng hóa chất để thay đổi mùi sau mỗi lần chạy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuột vẫn phân biệt được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi ông nhận ra chuột có thể phân biệt bằng cách nhìn ánh sáng và cách sắp xếp trong phòng thí nghiệm, như bất kỳ người có lẽ thường nào cũng nghĩ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, ông che hành lang lại."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuột vẫn phân biệt được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cuối cùng, ông phát hiện ra rằng chuột có thể phân biệt bằng âm thanh của sàn khi chúng chạy qua."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ông chỉ khắc phục được điều đó bằng cách đặt hành lang của mình trong cát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy là ông lần lượt che phủ từng manh mối có thể có, và cuối cùng mới có thể đánh lừa chuột để chúng buộc phải học cách đi vào cánh cửa thứ ba."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu ông nới lỏng bất kỳ điều kiện nào, chuột lại phân biệt được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ góc nhìn khoa học, đó là một thí nghiệm hạng nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là thí nghiệm khiến các thí nghiệm cho chuột chạy mê cung trở nên có ý nghĩa, bởi nó khám phá ra những manh mối mà con chuột thật sự đang sử dụng — chứ không phải những manh mối mà bạn nghĩ nó đang sử dụng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đó là thí nghiệm cho biết chính xác bạn phải dùng những điều kiện nào để cẩn thận và kiểm soát mọi thứ trong một thí nghiệm về chuột chạy mê cung."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã tìm hiểu lịch sử tiếp theo của hướng nghiên cứu này."
+        },
+        {
+          "kind": "highlight",
+          "text": "Thí nghiệm sau đó, rồi thí nghiệm sau nữa, không hề nhắc đến ông Young."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ không dùng bất kỳ tiêu chí nào của ông: không đặt hành lang trên cát, không cẩn thận như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ cứ tiếp tục cho chuột chạy theo cách cũ, và không chú ý đến những khám phá lớn của ông Young."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bài báo của ông không được trích dẫn, bởi vì ông không phát hiện điều gì về chuột cả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, ông đã phát hiện tất cả những điều bạn cần làm để có thể phát hiện điều gì đó về chuột."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng việc không chú ý đến những thí nghiệm như vậy chính là một đặc điểm của khoa học kiểu Cargo Cult."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ví dụ khác là các thí nghiệm ESP của ông **Rhine** và những người khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi nhiều người đưa ra phê bình — và chính họ cũng tự phê bình thí nghiệm của mình — họ cải tiến kỹ thuật, khiến hiệu ứng trở nên nhỏ hơn, rồi nhỏ hơn, rồi nhỏ hơn nữa, cho đến khi dần dần biến mất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả các nhà cận tâm lý học đều đang tìm kiếm một thí nghiệm có thể lặp lại — tức là bạn có thể làm lại và vẫn thu được cùng một hiệu ứng, ít nhất là về mặt thống kê."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ cho chạy một triệu con chuột — không, lần này là con người — họ làm rất nhiều thứ và thu được một hiệu ứng thống kê nào đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lần sau họ thử lại, hiệu ứng không còn nữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và giờ bạn thấy có người nói rằng yêu cầu một thí nghiệm có thể lặp lại là một yêu cầu không liên quan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là khoa học sao?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người này cũng nói về một viện mới, trong một bài phát biểu khi ông từ chức Giám đốc Viện Cận tâm lý học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi nói với mọi người nên làm gì tiếp theo, ông nói rằng một trong những việc họ phải làm là đảm bảo chỉ đào tạo những sinh viên đã thể hiện khả năng tạo ra kết quả PSI ở mức chấp nhận được — đừng lãng phí thời gian với những sinh viên đầy tham vọng và hứng thú nhưng chỉ tạo ra kết quả ngẫu nhiên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có một chính sách giảng dạy như vậy là rất nguy hiểm: chỉ dạy sinh viên cách tạo ra một số kết quả nhất định, thay vì dạy họ cách làm thí nghiệm với sự chính trực khoa học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi muốn chúc các bạn — tôi không còn thời gian nữa, nên chỉ có một lời chúc dành cho các bạn —"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi chúc các bạn có may mắn được ở một nơi mà các bạn có tự do để duy trì kiểu chính trực mà tôi đã mô tả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một nơi mà các bạn không cảm thấy bị buộc phải đánh mất sự chính trực của mình chỉ vì cần giữ vị trí trong tổ chức, cần nguồn tài trợ tài chính, hay những thứ tương tự."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mong các bạn có được sự tự do đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và xin cho phép tôi gửi đến các bạn một lời khuyên cuối cùng:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "**Đừng bao giờ nhận lời diễn thuyết nếu bạn chưa biết rõ mình sẽ nói về điều gì, và ít nhiều sẽ nói những gì.**"
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 5,
   "legacyBlockCount": 273,
   "legacyBodyChecksum": "sha256:450fb0d79dd01ff3e7ee25d5973d746de8e63298901a0cad6968f26113b90286",
   "contentVersion": 1,
-  "contentChecksum": "sha256:03485a7171e9da35aaff129fd4ff8d397875ab20fe73e2cc3abf6c02ea71333b"
+  "contentChecksum": "sha256:e2c126597375cab52219528f8c95df176dd697822091fc004ca4fe32a0332b96"
 }

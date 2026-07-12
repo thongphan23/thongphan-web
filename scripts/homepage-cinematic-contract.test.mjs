@@ -196,16 +196,20 @@ test('short laptop view keeps the hero compact while clearing the evidence rail'
 
   assert.match(shortLaptop, /min-height:\s*820px/)
   assert.match(shortLaptop, /\.displayName\s*\{[\s\S]*?font-size:\s*6\.6rem/)
-  assert.match(shortLaptop, /\.heroCopy\s*\{[\s\S]*?bottom:\s*calc\(var\(--hero-film-height\) \+ 1rem\)/)
+  assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?bottom:\s*calc\(var\(--hero-film-height\) \+ 1rem\)/)
   assert.match(shortLaptop, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*1\.8rem/)
   assert.match(shortLaptop, /\.primaryButton\s*\{[\s\S]*?min-height:\s*52px/)
 })
 
 test('desktop hero keeps the explicit two-line promise below the display name', async () => {
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
+  assert.match(home, /className=\{styles\.heroTextStack\}/)
+  assert.match(css, /\.heroTextStack\s*\{[\s\S]*?display:\s*flex[\s\S]*?flex-direction:\s*column[\s\S]*?gap:/)
+  assert.match(css, /\.displayName\s*\{[\s\S]*?position:\s*relative/)
+  assert.match(css, /\.heroCopy\s*\{[\s\S]*?position:\s*relative/)
   assert.match(css, /\.heroCopy h1\s*\{[\s\S]*?max-width:\s*100%/)
-  assert.doesNotMatch(css, /\.heroCopy h1\s*\{[\s\S]*?max-width:\s*24ch/)
 })
 
 test('tablet hero leaves room for two headline lines, the CTA and proof microcopy above the rail', async () => {
@@ -262,7 +266,7 @@ test('film reel is gated and remains static until six approved frames exist', as
 test('homepage keeps hero copy above film and ACT 03 visible as a compact three-up sheet', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
-  assert.match(css, /\.heroCopy\s*\{[\s\S]{0,260}bottom:\s*calc\(var\(--hero-film-height\)/)
+  assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,260}bottom:\s*calc\(var\(--hero-film-height\)/)
   assert.match(css, /\.proofGrid\s*\{[\s\S]{0,240}grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/)
   assert.match(css, /\.proofAct\s*\{[\s\S]{0,240}padding-top:\s*clamp\(3rem,\s*5vw,\s*5rem\)/)
 })

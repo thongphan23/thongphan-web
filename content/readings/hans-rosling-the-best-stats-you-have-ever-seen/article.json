@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 20,
   "topics": [
     "worldview",
@@ -42,9 +42,1269 @@
       "Nó quan trọng với thư viện vì dạy người đọc không chỉ đọc kết luận, mà đọc cấu trúc dữ liệu phía sau kết luận."
     ]
   },
+  "sections": [
+    {
+      "title": "Một bài kiểm tra nhỏ làm lộ một thế giới quan sai",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khoảng 10 năm trước, tôi nhận nhiệm vụ giảng dạy môn phát triển toàn cầu cho sinh viên đại học ở Thụy Điển."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước đó, tôi đã dành khoảng 20 năm làm việc cùng các tổ chức ở châu Phi để nghiên cứu về nạn đói tại châu lục này. Vì vậy, người ta kỳ vọng rằng tôi hẳn cũng biết đôi chút về thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại trường đại học y khoa của chúng tôi, Karolinska Institute, tôi mở một khóa học bậc đại học tên là Sức khỏe Toàn cầu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng khi có cơ hội như vậy, bạn cũng sẽ hơi lo lắng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ: những sinh viên đến học với chúng tôi là những người đạt điểm cao nhất trong hệ thống tuyển sinh đại học Thụy Điển. Có khi họ đã biết hết những điều tôi sắp dạy thì sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, ngay khi họ đến lớp, tôi cho họ làm một bài kiểm tra đầu vào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và một trong những câu hỏi khiến tôi học được rất nhiều là câu này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Trong năm cặp quốc gia sau đây, nước nào có tỷ lệ tử vong trẻ em cao hơn?”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi ghép các nước thành từng cặp sao cho trong mỗi cặp, một nước có tỷ lệ tử vong trẻ em cao gấp đôi nước còn lại. Điều đó có nghĩa là sự khác biệt giữa hai nước lớn hơn rất nhiều so với mức sai số của dữ liệu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ không kiểm tra các bạn ở đây đâu."
+        },
+        {
+          "kind": "pause",
+          "text": "Rosling mở bài bằng một bài kiểm tra, nhưng thứ ông thật sự đo không phải trí nhớ. Ông đo độ lệch của mô hình thế giới trong đầu người học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng câu trả lời đúng là: Thổ Nhĩ Kỳ, Ba Lan, Nga, Pakistan và Nam Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đây là kết quả của các sinh viên Thụy Điển."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi tính toán để có khoảng tin cậy, và khoảng đó khá hẹp. Tất nhiên, tôi đã rất vui: trung bình họ trả lời đúng 1,8 câu trên tổng số 5 câu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có nghĩa là vẫn còn chỗ cho một giáo sư sức khỏe quốc tế như tôi, và vẫn còn chỗ cho khóa học của tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng vào một đêm muộn, khi tôi đang tổng hợp báo cáo, tôi thật sự nhận ra điều mình vừa phát hiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã chứng minh được rằng, về mặt thống kê, những sinh viên giỏi nhất Thụy Điển hiểu về thế giới kém hơn tinh tinh một cách có ý nghĩa thống kê."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi nếu tôi đưa cho tinh tinh hai quả chuối, một quả ghi “Sri Lanka” và một quả ghi “Thổ Nhĩ Kỳ”, nó sẽ chọn đúng khoảng một nửa số lần."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng các sinh viên thì còn không đạt tới mức đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vấn đề của tôi không phải là sự thiếu hiểu biết."
+        },
+        {
+          "kind": "highlight",
+          "text": "Vấn đề là những định kiến có sẵn trong đầu."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cũng đã thực hiện một nghiên cứu không mấy đạo đức với các giáo sư của Karolinska Institute — nơi trao giải Nobel Y học — và kết quả là họ cũng chỉ ngang hàng với tinh tinh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chính lúc đó, tôi nhận ra rằng thật sự cần phải truyền đạt lại thông tin cho rõ ràng hơn. Bởi dữ liệu về những gì đang diễn ra trên thế giới, cũng như tình hình sức khỏe trẻ em ở từng quốc gia, thật ra đã có sẵn và khá đầy đủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng tôi tạo ra phần mềm này, hiển thị dữ liệu theo cách như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mỗi bong bóng ở đây là một quốc gia."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quốc gia này là Trung Quốc. Đây là Ấn Độ. Kích thước của bong bóng thể hiện dân số."
+        }
+      ]
+    },
+    {
+      "title": "Khi dữ liệu bắt đầu chuyển động",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Trên trục này, tôi đặt tỷ suất sinh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi khi tôi hỏi sinh viên của mình: “Các em thật sự nghĩ gì về thế giới?”, tôi phát hiện ra rằng “sách giáo khoa” của họ chủ yếu là Tintin."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Thế giới vẫn là ‘chúng ta’ và ‘họ’. ‘Chúng ta’ là phương Tây, còn ‘họ’ là Thế giới thứ ba.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi hỏi:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Vậy các em hiểu ‘phương Tây’ là gì?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ trả lời:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Phương Tây là sống lâu và gia đình nhỏ. Còn Thế giới thứ ba là sống ngắn và gia đình đông con.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây chính là điều tôi có thể hiển thị ở đây."
+        },
+        {
+          "kind": "pause",
+          "text": "Sức mạnh của biểu đồ không nằm ở màu sắc. Nó nằm ở việc làm cho thay đổi lịch sử trở nên nhìn thấy được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đặt tỷ suất sinh ở trục này — số con trung bình trên mỗi phụ nữ: một, hai, ba, bốn, lên đến khoảng tám con trên mỗi phụ nữ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ khoảng năm 1960–1962, chúng ta đã có dữ liệu rất tốt về quy mô gia đình ở tất cả các quốc gia. Biên độ sai số khá nhỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây, tôi đặt tuổi thọ kỳ vọng khi sinh, từ 30 tuổi ở một số nước cho đến khoảng 70 tuổi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vào năm 1962, thật sự có một nhóm quốc gia ở đây là các nước công nghiệp hóa. Họ có gia đình nhỏ và sống lâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn đây là các nước đang phát triển. Họ có gia đình đông con và tuổi thọ tương đối thấp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy từ năm 1962 đến nay đã xảy ra chuyện gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta muốn nhìn thấy sự thay đổi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các sinh viên có đúng không? Thế giới vẫn gồm hai loại quốc gia như vậy sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hay các nước đang phát triển đã có gia đình nhỏ hơn và di chuyển sang đây?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc họ sống lâu hơn và di chuyển lên trên?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy cùng xem."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta bắt đầu cho thế giới chuyển động."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây đều là số liệu thống kê của Liên Hợp Quốc đã có sẵn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây, bắt đầu nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn thấy không? Trung Quốc đang di chuyển theo hướng sức khỏe tốt hơn. Các nước Mỹ Latin màu xanh lá đang tiến về phía gia đình nhỏ hơn."
+        },
+        {
+          "kind": "pause",
+          "text": "Một mô hình cũ thường sống dai vì nó đứng yên. Dữ liệu chuyển động buộc mô hình đó phải tự lộ lỗi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các nước màu vàng ở đây là các nước Ả Rập. Họ sống lâu hơn, nhưng quy mô gia đình không tăng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các nước châu Phi ở đây. Họ vẫn còn ở khu vực này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là Ấn Độ. Indonesia thì đang tiến rất nhanh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vào thập niên 1980, Bangladesh vẫn còn nằm trong nhóm các nước châu Phi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi ở Bangladesh, một phép màu xảy ra trong thập niên 1980: các giáo sĩ Hồi giáo bắt đầu thúc đẩy kế hoạch hóa gia đình, và đất nước này di chuyển lên góc trên kia."
+        },
+        {
+          "kind": "highlight",
+          "text": "Đến thập niên 1990, chúng ta có đại dịch HIV khủng khiếp, làm kéo giảm tuổi thọ của các nước châu Phi."
+        }
+      ]
+    },
+    {
+      "title": "Việt Nam, Hoa Kỳ và sự thay đổi bị đánh giá thấp",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Còn phần còn lại của thế giới thì cùng di chuyển lên góc trên, nơi có tuổi thọ cao và gia đình nhỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chúng ta có một thế giới hoàn toàn mới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, hãy để tôi so sánh trực tiếp giữa Hoa Kỳ và Việt Nam."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Năm 1964: Mỹ có gia đình nhỏ và tuổi thọ cao. Việt Nam có gia đình đông con và tuổi thọ thấp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đây là những gì đã xảy ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dữ liệu trong thời chiến cho thấy, ngay cả khi có rất nhiều cái chết do chiến tranh, tuổi thọ kỳ vọng vẫn được cải thiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đến cuối năm đó, kế hoạch hóa gia đình bắt đầu ở Việt Nam, và Việt Nam chuyển dần sang mô hình gia đình nhỏ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong khi đó, Hoa Kỳ ở phía trên kia tiếp tục tăng tuổi thọ, đồng thời giữ quy mô gia đình ổn định."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đến thập niên 1980, Việt Nam từ bỏ cơ chế kế hoạch hóa kiểu cộng sản và chuyển sang kinh tế thị trường. Sự thay đổi khi đó còn diễn ra nhanh hơn cả thay đổi xã hội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ngày nay, Việt Nam vào năm 2003 có cùng mức tuổi thọ và cùng quy mô gia đình như Hoa Kỳ vào năm 1974, tức là vào cuối chiến tranh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ rằng tất cả chúng ta, nếu không nhìn vào dữ liệu, đều sẽ đánh giá thấp sự thay đổi khổng lồ ở châu Á — một sự thay đổi xã hội diễn ra trước khi chúng ta nhìn thấy thay đổi kinh tế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, hãy chuyển sang một cách khác để hiển thị phân phối thu nhập trên thế giới."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là phân phối thu nhập của người dân trên toàn cầu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một đô la, mười đô la, hay một trăm đô la mỗi ngày."
+        },
+        {
+          "kind": "pause",
+          "text": "Đoạn Việt Nam là một ví dụ tốt: nếu chỉ giữ hình ảnh chiến tranh trong đầu, ta bỏ lỡ một quỹ đạo phát triển hoàn toàn khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không còn một khoảng cách rõ ràng giữa người giàu và người nghèo nữa. Đó là một huyền thoại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây có một gợn nhỏ, nhưng thật ra con người trải dài trên toàn bộ thang thu nhập."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta nhìn xem thu nhập kết thúc ở đâu, đây là 100% thu nhập hằng năm của toàn thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "20% người giàu nhất lấy khoảng 74% trong số đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "20% người nghèo nhất chỉ nhận khoảng 2%."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này cho thấy khái niệm “các nước đang phát triển” là một khái niệm cực kỳ đáng nghi ngờ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta thường nghĩ về viện trợ như thế này: những người ở đây giúp đỡ những người ở kia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ở giữa mới là phần lớn dân số thế giới. Và hiện nay họ đang nắm khoảng 24% thu nhập."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đã nghe điều này dưới nhiều hình thức khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy họ là ai? Các quốc gia khác nhau nằm ở đâu?"
+        },
+        {
+          "kind": "pause",
+          "text": "Rosling liên tục chống lại cặp đối lập quá dễ: giàu/nghèo, phương Tây/thế giới thứ ba, phát triển/đang phát triển."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể cho các bạn thấy châu Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là châu Phi: khoảng 10% dân số thế giới, phần lớn sống trong nghèo đói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là OECD — nhóm các nước giàu, “câu lạc bộ quốc gia” của Liên Hợp Quốc. Họ nằm ở phía bên này."
+        },
+        {
+          "kind": "highlight",
+          "text": "Có một mức độ chồng lấn khá đáng kể giữa châu Phi và OECD."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là Mỹ Latin. Mỹ Latin có mọi thứ trên đời này: từ những người nghèo nhất đến những người giàu nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trên đó, chúng ta có thể đặt thêm Đông Âu, Đông Á và Nam Á."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy nếu quay ngược thời gian về khoảng năm 1970 thì trông như thế nào?"
+        }
+      ]
+    },
+    {
+      "title": "Không có một “châu Phi” duy nhất trong dữ liệu",
+      "minutes": 5,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi đó, biểu đồ có một đỉnh rõ hơn. Và phần lớn những người sống trong nghèo tuyệt đối là người châu Á."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vấn đề của thế giới khi đó là nghèo đói ở châu Á."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, nếu tôi cho thế giới chuyển động về phía trước, các bạn sẽ thấy rằng trong khi dân số tăng lên, hàng trăm triệu người ở châu Á thoát khỏi nghèo đói, còn một số người khác rơi vào nghèo đói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đó là mô hình mà chúng ta có ngày nay."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dự báo tốt nhất của Ngân hàng Thế giới cho thấy điều này sẽ tiếp tục xảy ra, và chúng ta sẽ không có một thế giới bị chia đôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta sẽ có phần lớn dân số nằm ở giữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất nhiên, đây là thang đo logarithm. Nhưng cách chúng ta hiểu về kinh tế thường là tăng trưởng theo phần trăm. Chúng ta nhìn nó như khả năng tăng theo tỷ lệ phần trăm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi thay đổi biểu đồ này, dùng GDP bình quân đầu người thay vì thu nhập gia đình; biến dữ liệu cá nhân thành dữ liệu vùng về tổng sản phẩm quốc nội; rồi đặt các vùng ở đây, kích thước bong bóng vẫn là dân số."
+        },
+        {
+          "kind": "pause",
+          "text": "Khi nhìn trung bình, ta tưởng mình hiểu. Khi tách dữ liệu ra, ta bắt đầu thấy thế giới thật sự có nhiều tầng hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn có OECD ở đây, và châu Phi hạ Sahara ở đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta tách các quốc gia Ả Rập — vốn đến từ cả châu Phi và châu Á — ra riêng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta mở rộng trục này, và tôi có thể thêm một chiều mới bằng cách đưa vào giá trị xã hội: tỷ lệ sống sót của trẻ em."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, tôi có tiền trên trục này, và khả năng trẻ em sống sót trên trục kia."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở một số quốc gia, 99,7% trẻ em sống đến năm tuổi. Ở một số nước khác, chỉ khoảng 70%."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại đây, dường như có một khoảng cách giữa OECD, Mỹ Latin, Đông Âu, Đông Á, các nước Ả Rập, Nam Á và châu Phi hạ Sahara."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mối quan hệ tuyến tính giữa tỷ lệ sống sót của trẻ em và tiền là rất mạnh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng hãy để tôi tách riêng châu Phi hạ Sahara ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sức khỏe nằm ở đây, và sức khỏe tốt hơn là ở phía trên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể vào đây và tách châu Phi hạ Sahara thành từng quốc gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi biểu đồ bung ra, kích thước bong bóng của mỗi quốc gia thể hiện quy mô dân số."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sierra Leone ở dưới này. Mauritius ở trên này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mauritius là quốc gia đầu tiên thoát khỏi các rào cản thương mại. Họ có thể bán đường và dệt may của mình với điều kiện bình đẳng như người dân ở châu Âu và Bắc Mỹ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có sự khác biệt rất lớn bên trong châu Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ghana nằm ở giữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở Sierra Leone, cần viện trợ nhân đạo."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở Uganda, cần viện trợ phát triển."
+        },
+        {
+          "kind": "pause",
+          "text": "Cùng một khu vực địa lý không có nghĩa là cùng một vấn đề, cùng một chiến lược hay cùng một tương lai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây là lúc để đầu tư."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn ở kia, bạn có thể đi du lịch nghỉ dưỡng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có sự đa dạng khổng lồ bên trong châu Phi, nhưng chúng ta lại thường biến nó thành một thứ đồng nhất, như thể tất cả đều giống nhau."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể tách Nam Á ra ở đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ấn Độ là bong bóng lớn ở giữa. Nhưng có sự khác biệt khổng lồ giữa Afghanistan và Sri Lanka."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể tách các quốc gia Ả Rập ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ thế nào?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cùng khí hậu, cùng văn hóa, cùng tôn giáo — nhưng khác biệt rất lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thậm chí giữa các nước láng giềng cũng vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Yemen: nội chiến."
+        },
+        {
+          "kind": "highlight",
+          "text": "Các Tiểu vương quốc Ả Rập Thống nhất: có tiền, và số tiền ấy được sử dụng khá đồng đều, khá hiệu quả."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không giống như huyền thoại thường thấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và dữ liệu đó bao gồm cả con cái của những lao động nước ngoài đang sống trong nước."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dữ liệu thường tốt hơn bạn nghĩ."
+        }
+      ]
+    },
+    {
+      "title": "Đường đi của quốc gia và khác biệt bên trong quốc gia",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nhiều người nói dữ liệu rất tệ. Đúng là có biên độ bất định, nhưng chúng ta vẫn có thể thấy rất rõ sự khác biệt ở đây: Campuchia và Singapore."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự khác biệt lớn hơn rất nhiều so với điểm yếu của dữ liệu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đông Âu: từng có nền kinh tế Soviet trong một thời gian dài, nhưng sau 10 năm, các nước đi ra theo những hướng rất, rất khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi đến Mỹ Latin."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngày nay, chúng ta không cần đến Cuba mới tìm được một quốc gia khỏe mạnh ở Mỹ Latin. Trong vài năm tới, Chile sẽ có tỷ lệ tử vong trẻ em thấp hơn Cuba."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây, chúng ta có các quốc gia thu nhập cao trong OECD."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chúng ta có được toàn bộ mô hình của thế giới, đại khái như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta nhìn vào thế giới từ năm 1960, nó bắt đầu chuyển động."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là Mao Trạch Đông. Ông mang lại sức khỏe cho Trung Quốc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi ông qua đời."
+        },
+        {
+          "kind": "pause",
+          "text": "Một bong bóng quốc gia vẫn có thể che giấu hàng triệu khác biệt bên trong. Rosling buộc người xem đi thêm một tầng chi tiết nữa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, Đặng Tiểu Bình xuất hiện, mang tiền bạc đến cho Trung Quốc, và đưa Trung Quốc trở lại dòng chảy chính của thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đã thấy các quốc gia di chuyển theo nhiều hướng khác nhau như thế này. Vì vậy, thật khó tìm một quốc gia ví dụ duy nhất có thể đại diện cho mô hình của toàn thế giới."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi muốn đưa các bạn trở lại khoảng năm 1960."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi muốn so sánh Hàn Quốc — chính là nước này — với Brazil — chính là nước này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhãn tên của tôi bị biến mất ở đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi muốn so sánh thêm với Uganda, nằm ở đây."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể chạy dữ liệu về phía trước như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các bạn có thể thấy Hàn Quốc tiến bộ rất, rất nhanh, trong khi Brazil chậm hơn nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta quay lại một lần nữa và bật đường đi của các nước lên, các bạn lại thấy rằng tốc độ phát triển giữa các quốc gia rất khác nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các nước nhìn chung di chuyển theo hướng tiền bạc và sức khỏe cùng tăng lên."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng có vẻ như bạn có thể tiến nhanh hơn rất nhiều nếu trước tiên bạn khỏe mạnh, so với việc trước tiên bạn giàu có."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Để minh họa điều đó, các bạn có thể nhìn vào con đường của Các Tiểu vương quốc Ả Rập Thống nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ xuất phát từ đây, một quốc gia giàu tài nguyên khoáng sản."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ khai thác dầu, họ có tiền."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng sức khỏe thì không thể mua trong siêu thị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải đầu tư vào sức khỏe."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải đưa trẻ em đến trường."
+        },
+        {
+          "kind": "pause",
+          "text": "Bài học Taste ở đây là biết nghi ngờ mức tổng hợp: dữ liệu đúng ở cấp này có thể đánh lừa ở cấp khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải đào tạo nhân viên y tế."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn phải giáo dục người dân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và Sheikh Zayed đã làm điều đó theo một cách khá tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bất chấp giá dầu sụt giảm, ông đã đưa đất nước này tiến lên đây."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng ta có một bức tranh thế giới “dòng chính” hơn nhiều, nơi tất cả các quốc gia có xu hướng sử dụng tiền của mình tốt hơn so với trước đây."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, nếu nhìn vào dữ liệu trung bình của các quốc gia, thì đại khái chúng trông như thế này."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nhưng dùng dữ liệu trung bình là điều nguy hiểm, vì bên trong mỗi quốc gia có sự khác biệt rất lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi nhìn vào đây, chúng ta có thể thấy Uganda ngày nay đang ở vị trí của Hàn Quốc năm 1960."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi tách Uganda ra, có sự khác biệt khá lớn bên trong Uganda."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là năm nhóm dân số, mỗi nhóm chiếm 20% dân số Uganda."
+        },
+        {
+          "kind": "paragraph",
+          "text": "20% người Uganda giàu nhất ở đây."
+        }
+      ]
+    },
+    {
+      "title": "Dữ liệu công cần được giải phóng khỏi cơ sở dữ liệu",
+      "minutes": 4,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "20% nghèo nhất ở dưới này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu tôi tách Nam Phi ra, nó trông như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu tôi nhìn xuống Niger, nơi gần đây có một nạn đói khủng khiếp, nó trông như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "20% nghèo nhất của Niger nằm ở đây."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "20% giàu nhất của Nam Phi nằm ở kia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy mà chúng ta vẫn có xu hướng thảo luận xem “châu Phi” nên có giải pháp gì, như thể đó là một thực thể thống nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi thứ trên thế giới này đều tồn tại trong châu Phi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn không thể thảo luận về việc tiếp cận điều trị HIV phổ cập cho nhóm dân số ở trên này bằng cùng một chiến lược với nhóm dân số ở dưới này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự cải thiện của thế giới phải được đặt trong bối cảnh rất cụ thể. Và sẽ không phù hợp nếu chỉ nhìn ở cấp độ khu vực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta phải chi tiết hơn rất nhiều."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi nhận thấy sinh viên cực kỳ hào hứng khi họ có thể sử dụng cách nhìn này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Không chỉ sinh viên, mà cả các nhà hoạch định chính sách và khu vực doanh nghiệp cũng muốn nhìn thấy thế giới đang thay đổi như thế nào."
+        },
+        {
+          "kind": "pause",
+          "text": "Rosling không chỉ trình bày dữ liệu. Ông đang phê bình một hệ thống nơi dữ liệu đã có nhưng bị chôn, bị khóa, hoặc bị trình bày đến mức không ai muốn dùng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy tại sao điều này vẫn chưa diễn ra?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tại sao chúng ta không sử dụng dữ liệu mình đang có?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta có dữ liệu trong Liên Hợp Quốc, trong các cơ quan thống kê quốc gia, trong các trường đại học và trong các tổ chức phi chính phủ khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi vì dữ liệu đang bị chôn vùi trong các cơ sở dữ liệu."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Công chúng thì ở ngoài kia. Internet cũng đã có. Nhưng chúng ta vẫn chưa sử dụng nó một cách hiệu quả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả những thông tin chúng ta vừa thấy về sự thay đổi của thế giới không bao gồm các thống kê được tài trợ công khai theo cách dễ tiếp cận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có một số trang web như thế này, các bạn biết đấy. Chúng hút một ít dinh dưỡng từ các cơ sở dữ liệu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi người ta lại đặt giá lên chúng, đặt những mật khẩu ngớ ngẩn và trình bày thống kê theo cách nhàm chán."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như vậy thì không hiệu quả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy chúng ta cần gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta đã có cơ sở dữ liệu rồi. Thứ chúng ta cần không phải là một cơ sở dữ liệu mới."
+        },
+        {
+          "kind": "quote",
+          "text": "Chúng ta đã có những công cụ thiết kế tuyệt vời, và ngày càng có thêm nhiều công cụ như vậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì thế, chúng tôi bắt đầu một dự án phi lợi nhuận nhằm kết nối dữ liệu với thiết kế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi gọi nó là Gapminder."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tên này lấy cảm hứng từ tàu điện ngầm London, nơi họ thường cảnh báo: “Mind the gap” — hãy chú ý khoảng cách."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng tôi nghĩ cái tên Gapminder rất phù hợp."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi bắt đầu viết phần mềm có thể kết nối dữ liệu theo cách như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và việc đó cũng không quá khó. Nó mất vài năm công sức của một số người, và chúng tôi đã tạo ra các hoạt ảnh dữ liệu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn có thể lấy một bộ dữ liệu và đưa nó vào đây."
+        },
+        {
+          "kind": "pause",
+          "text": "Gapminder là một tuyên bố thiết kế: dữ liệu công phải đủ dễ nhìn để công chúng có thể dùng nó để sửa thế giới quan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng tôi đang giải phóng dữ liệu của Liên Hợp Quốc, từ một số tổ chức của Liên Hợp Quốc."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số quốc gia chấp nhận để cơ sở dữ liệu của họ được đưa ra thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng điều chúng ta thật sự cần, tất nhiên, là một chức năng tìm kiếm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một chức năng tìm kiếm để chúng ta có thể sao chép dữ liệu sang một định dạng có thể tìm kiếm được và đưa nó ra thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chúng tôi nghe thấy gì khi đi khắp nơi?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã làm “nhân học” với các đơn vị thống kê chính."
+        },
+        {
+          "kind": "highlight",
+          "text": "Ai cũng nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Không thể đâu. Không làm được đâu. Thông tin của chúng tôi đặc thù đến mức không thể tìm kiếm như những thứ khác. Chúng tôi không thể cung cấp dữ liệu miễn phí cho sinh viên, miễn phí cho các doanh nhân trên thế giới.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đó chính là điều chúng ta muốn thấy, đúng không?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dữ liệu được tài trợ công nằm ở dưới này."
+        }
+      ]
+    },
+    {
+      "title": "Kết thúc bằng một màn trình diễn để người xem nhớ dữ liệu",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Và chúng ta muốn những bông hoa mọc lên trên mạng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một trong những điểm then chốt là làm cho dữ liệu có thể tìm kiếm được. Sau đó, mọi người có thể sử dụng các công cụ thiết kế khác nhau để tạo hoạt ảnh từ dữ liệu ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi có một tin khá tốt cho các bạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tin tốt là người đứng đầu mới của bộ phận thống kê Liên Hợp Quốc hiện nay không nói rằng chuyện đó là bất khả thi."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ấy chỉ nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Chúng tôi không làm được.”"
+        },
+        {
+          "kind": "pause",
+          "text": "Ở Rosling, sự chính xác và trình diễn không đối lập nhau. Trình diễn là cách ông bảo vệ sự thật khỏi sự nhàm chán."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người khá thông minh đấy chứ, đúng không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, chúng ta có thể thấy rất nhiều điều sẽ xảy ra với dữ liệu trong những năm tới."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta sẽ có thể nhìn phân phối thu nhập theo những cách hoàn toàn mới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là phân phối thu nhập của Trung Quốc năm 1970."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là phân phối thu nhập của Hoa Kỳ năm 1970."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần như không có phần giao nhau."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần như không chồng lấn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và chuyện gì đã xảy ra?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuyện xảy ra là thế này: Trung Quốc đang tăng trưởng. Nó không còn bình đẳng như trước nữa, và đang xuất hiện ở đây, lơ lửng phía trên Hoa Kỳ, gần như một bóng ma vậy, phải không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khá đáng sợ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tôi nghĩ việc có tất cả những thông tin này là vô cùng quan trọng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta thật sự cần nhìn thấy nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và thay vì nhìn vào biểu đồ này, tôi muốn kết thúc bằng cách cho các bạn xem số người dùng Internet trên mỗi 1.000 dân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong phần mềm này, chúng tôi có thể truy cập khá dễ dàng khoảng 500 biến số từ tất cả các quốc gia."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc thay đổi sang biến số này mất một chút thời gian, nhưng trên các trục, bạn có thể khá dễ dàng chọn bất kỳ biến số nào mình muốn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều quan trọng là phải mở các cơ sở dữ liệu miễn phí, làm cho chúng có thể tìm kiếm được, và chỉ với một cú nhấp chuột thứ hai, đưa chúng vào các định dạng đồ họa để bạn có thể hiểu ngay lập tức."
+        },
+        {
+          "kind": "pause",
+          "text": "Một bài nói về thống kê kết thúc bằng cảm giác giải trí, nhưng thứ còn lại là một yêu cầu nghiêm túc: hãy nhìn thế giới bằng dữ liệu tốt hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, các nhà thống kê không thích điều này, vì họ nói rằng nó không thể hiện thực tại. Họ cho rằng chúng ta cần các phương pháp thống kê và phân tích."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đây là cách để tạo ra giả thuyết."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi kết thúc bằng hình ảnh của thế giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây, Internet đang xuất hiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Số người dùng Internet đang tăng lên như thế này."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là GDP bình quân đầu người."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một công nghệ mới đang lan vào thế giới. Nhưng điều đáng kinh ngạc là nó phù hợp rất chặt với nền kinh tế của các quốc gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là lý do vì sao chiếc máy tính 100 đô la sẽ rất quan trọng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nhưng xu hướng này rất thú vị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó giống như thể thế giới đang dần phẳng ra, phải không?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những quốc gia này đang vươn lên nhanh hơn cả nền kinh tế của họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và sẽ rất thú vị nếu chúng ta có thể theo dõi điều này qua từng năm — giống như cách tôi mong các bạn sẽ có thể làm với tất cả dữ liệu được tài trợ công khai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn các bạn rất nhiều."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 7,
   "legacyBlockCount": 304,
   "legacyBodyChecksum": "sha256:0e04f0ced0070d6278351e31b08648b3536a4a64f782eeffb7ea47d763528ecd",
   "contentVersion": 1,
-  "contentChecksum": "sha256:eaea966d3f3a5434373ebf4ac3dc987950506ff01a7f5fb8ac584d1d55b6170a"
+  "contentChecksum": "sha256:1cd4ffec7c48b504a000590e8aa4ac38156ecccb7f7495921ca64d265fca1d83"
 }

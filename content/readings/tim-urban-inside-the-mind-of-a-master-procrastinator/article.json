@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 14,
   "topics": [
     "cam-xuc",
@@ -42,9 +42,263 @@
       "Với thư viện này, bài giúp người đọc rèn năng lực tự quan sát thay vì chỉ tự trách."
     ]
   },
+  "sections": [
+    {
+      "title": "Kế hoạch đẹp và cách nó sụp đổ",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi còn học đại học, tôi học ngành chính trị học, nghĩa là tôi phải viết rất nhiều bài luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi một sinh viên bình thường viết bài, họ có thể phân bổ công việc ra một chút. Ban đầu có thể bắt đầu hơi chậm, nhưng trong tuần đầu tiên cũng làm được kha khá. Rồi sau đó, với vài ngày làm nặng hơn, mọi thứ vẫn hoàn thành, mọi chuyện vẫn trong tầm kiểm soát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi cũng muốn làm như vậy. Đó sẽ là kế hoạch. Tôi sẽ chuẩn bị mọi thứ sẵn sàng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng rồi, khi bài luận thật sự đến, tôi lại làm kiểu này. Và chuyện đó xảy ra với mọi bài luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi đến luận văn tốt nghiệp dài 90 trang, một bài mà đáng lẽ anh phải dành cả năm để làm. Tôi biết rằng với một bài như vậy, quy trình làm việc bình thường của mình không thể áp dụng được. Dự án này quá lớn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi lập kế hoạch, và quyết định rằng mình phải làm theo kiểu này: bắt đầu nhẹ nhàng, tăng tốc ở những tháng giữa, và đến cuối thì đẩy lên tốc độ cao, giống như đi lên từng bậc cầu thang nhỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng mấy tháng đầu tiên ấy đến rồi đi, mà tôi vẫn không thật sự làm được gì. Rồi những tháng giữa trôi qua, tôi vẫn gần như chưa viết được chữ nào. Hai tháng biến thành một tháng, một tháng biến thành hai tuần."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ngày nọ, tôi thức dậy và nhận ra chỉ còn ba ngày là đến hạn nộp, mà tôi vẫn chưa viết một chữ nào. Vì vậy, tôi làm điều duy nhất mình có thể làm: viết 90 trang trong 72 giờ, thức trắng hai đêm liền, chạy nước rút băng qua khuôn viên trường và nộp bài đúng sát hạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một tuần sau, tôi nhận được một cuộc gọi từ nhà trường. Họ nói: “Chúng tôi cần nói chuyện về luận văn của anh.” Rồi họ nói: “Đó là bài hay nhất chúng tôi từng thấy.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuyện đó đã không xảy ra. Đó là một luận văn rất, rất tệ. Tôi chỉ muốn tận hưởng một khoảnh khắc khi tất cả các bạn nghĩ: “Anh chàng này thật đáng kinh ngạc!”"
+        }
+      ]
+    },
+    {
+      "title": "Con Khỉ Thỏa Mãn Tức Thì",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hiện nay tôi là một người viết kiêm blogger. Tôi viết blog Wait But Why. Vài năm trước, tôi quyết định viết về sự trì hoãn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hành vi của tôi luôn khiến những người không trì hoãn xung quanh tôi bối rối, và tôi muốn giải thích điều gì đang diễn ra trong đầu những người trì hoãn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có một giả thuyết rằng bộ não của người trì hoãn khác với bộ não của những người khác. Cả hai bộ não đều có một Người Ra Quyết Định Lý Trí. Nhưng bộ não của người trì hoãn còn có thêm một Con Khỉ Thỏa Mãn Tức Thì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người Ra Quyết Định Lý Trí sẽ đưa ra quyết định hợp lý: làm một việc gì đó có ích. Nhưng Con Khỉ không thích kế hoạch đó, nên nó giành lấy tay lái."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó nói: hãy đọc toàn bộ trang Wikipedia về Nancy Kerrigan và Tonya Harding, ra tủ lạnh xem có gì mới không, rồi rơi vào vòng xoáy YouTube từ Richard Feynman nói về nam châm đến các cuộc phỏng vấn mẹ của Justin Bieber."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả chuyện đó sẽ mất khá nhiều thời gian, nên hôm nay không còn chỗ cho công việc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con Khỉ Thỏa Mãn Tức Thì sống hoàn toàn trong khoảnh khắc hiện tại. Nó không có ký ức về quá khứ, không hiểu tương lai, và chỉ quan tâm đến hai thứ: dễ và vui."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong thế giới động vật, điều đó hoạt động ổn. Nhưng con người đang sống trong một nền văn minh phát triển, nơi ta cần hình dung tương lai, nhìn bức tranh lớn và lập kế hoạch dài hạn."
+        }
+      ]
+    },
+    {
+      "title": "Sân Chơi Tăm Tối",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Đôi khi làm những việc dễ và vui cũng hợp lý, như khi ăn tối, đi ngủ hoặc tận hưởng nghỉ ngơi xứng đáng. Nhưng những lúc khác, để phục vụ bức tranh lớn, làm việc khó hơn lại hợp lý hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và đó là lúc xung đột xảy ra. Với người trì hoãn, cuộc xung đột đó thường kết thúc theo cùng một cách, khiến anh ta dành rất nhiều thời gian trong một vùng dễ và vui nhưng hoàn toàn nằm ngoài vòng tròn “Có Ý Nghĩa”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi gọi nó là Sân Chơi Tăm Tối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sân Chơi Tăm Tối là nơi các hoạt động giải trí diễn ra vào những lúc lẽ ra không được giải trí."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Niềm vui anh có trong đó thật ra không vui, bởi nó hoàn toàn không xứng đáng. Không khí ở đó đầy cảm giác tội lỗi, sợ hãi, lo âu, tự ghét bản thân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu hỏi là: khi Con Khỉ đang cầm lái, làm sao người trì hoãn có thể đưa mình sang vùng kém dễ chịu hơn, nhưng là nơi những việc thật sự quan trọng xảy ra?"
+        }
+      ]
+    },
+    {
+      "title": "Quái Vật Hoảng Loạn",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Hóa ra người trì hoãn có một thiên thần hộ mệnh: Quái Vật Hoảng Loạn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quái Vật Hoảng Loạn phần lớn thời gian ngủ yên, nhưng nó thức dậy khi hạn chót đến quá gần, hoặc khi có nguy cơ bị bẽ mặt công khai, thảm họa sự nghiệp hay một hệ quả đáng sợ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều quan trọng là: nó là thứ duy nhất khiến Con Khỉ thật sự khiếp sợ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quái Vật Hoảng Loạn trở nên rất liên quan trong đời tôi khi TED mời tôi thực hiện một bài TED Talk. Tất nhiên, tôi nói đồng ý. Từ lâu, ước mơ của tôi luôn là đã từng thực hiện một bài TED Talk trong quá khứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng giữa sự phấn khích, Người Ra Quyết Định Lý Trí nói: chúng ta cần làm việc này ngay bây giờ. Con Khỉ đồng ý, rồi đề nghị mở Google Earth, phóng to xuống tận đáy Ấn Độ và kéo lên trong hai tiếng rưỡi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi TED công bố danh sách diễn giả, khuôn mặt tôi hiện trên website. Và đoán xem ai thức dậy?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Quái Vật Hoảng Loạn bắt đầu phát điên. Con Khỉ leo tót lên cây. Cuối cùng, Người Ra Quyết Định Lý Trí cầm lại tay lái và tôi bắt đầu làm bài nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Toàn bộ hệ thống này không đẹp đẽ gì, nhưng cuối cùng, nó hoạt động."
+        }
+      ]
+    },
+    {
+      "title": "Loại trì hoãn nguy hiểm hơn",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi tôi viết bài về sự trì hoãn trên blog, tôi rất ngạc nhiên trước phản hồi nhận được. Hàng nghìn email gửi đến, từ y tá, nhân viên ngân hàng, họa sĩ, kỹ sư và rất nhiều nghiên cứu sinh tiến sĩ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tất cả họ đều viết cùng một điều: “Tôi cũng có vấn đề này.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều khiến tôi chú ý là sự tương phản giữa giọng điệu nhẹ nhàng của bài viết và sức nặng trong những email đó. Họ viết với sự bức bối dữ dội về những gì sự trì hoãn đã gây ra cho đời họ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hóa ra có hai loại trì hoãn. Loại tôi nói từ đầu đến giờ đều có hạn chót. Khi có hạn chót, tác động của trì hoãn bị giới hạn trong ngắn hạn vì Quái Vật Hoảng Loạn tham gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng có một loại trì hoãn thứ hai xảy ra trong các tình huống không có hạn chót."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh muốn theo đuổi nghệ thuật, khởi nghiệp hoặc bất kỳ việc gì đòi hỏi tự mình bắt đầu, ban đầu những việc đó không có hạn chót. Chưa có gì xảy ra cả, cho đến khi anh làm phần việc khó để tạo đà."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngoài sự nghiệp, cũng có đủ loại việc quan trọng không có hạn chót: gặp gia đình, tập thể dục, chăm sóc sức khỏe, vun đắp mối quan hệ, hoặc rời khỏi một mối quan hệ không còn hiệu quả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu cơ chế duy nhất giúp người trì hoãn làm những việc khó là Quái Vật Hoảng Loạn, thì đó là một vấn đề. Trong các tình huống không có hạn chót, Quái Vật Hoảng Loạn không xuất hiện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tác động của sự trì hoãn không dừng lại ở một phạm vi gọn gàng; nó cứ lan rộng ra mãi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Loại trì hoãn dài hạn này ít được nhìn thấy hơn, ít được nói đến hơn rất nhiều so với kiểu trì hoãn ngắn hạn hài hước dựa trên deadline. Nó thường được chịu đựng trong im lặng và riêng tư."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó có thể là nguồn gốc của rất nhiều bất hạnh dài hạn và hối tiếc. Trì hoãn dài hạn khiến người ta đôi khi cảm thấy như một khán giả trong chính cuộc đời mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nỗi bức bối không phải là họ không thể đạt được giấc mơ, mà là họ thậm chí còn không thể bắt đầu đuổi theo chúng."
+        }
+      ]
+    },
+    {
+      "title": "Lịch cuộc đời",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi không nghĩ có người không trì hoãn. Tôi nghĩ tất cả các bạn đều là người trì hoãn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có thể không phải ai cũng là một đống hỗn loạn. Một số người có thể có mối quan hệ lành mạnh với deadline."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng hãy nhớ: trò lén lút nhất của Con Khỉ là khi không có deadline."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi muốn cho các bạn xem một thứ cuối cùng. Tôi gọi đây là Lịch Cuộc Đời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mỗi ô là một tuần trong một cuộc đời 90 năm. Thật ra không có quá nhiều ô, đặc biệt khi chúng ta đã dùng hết một mớ trong số đó rồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi nghĩ tất cả chúng ta cần nhìn thật lâu và thật kỹ vào tấm lịch ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cần nghĩ xem mình thật sự đang trì hoãn điều gì, bởi ai cũng đang trì hoãn một điều gì đó trong đời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cần luôn nhận thức về Con Khỉ Thỏa Mãn Tức Thì. Đó là công việc của tất cả chúng ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và vì trên đó không có quá nhiều ô, đây có lẽ là một công việc nên bắt đầu từ hôm nay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "À, có thể không phải hôm nay, nhưng… anh biết đấy. Một lúc nào đó sớm thôi. Xin cảm ơn."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 6,
   "legacyBlockCount": 54,
   "legacyBodyChecksum": "sha256:28555e7275a6f398b88614424e943d56edf8fae22341b08ed8a60956d92ce019",
   "contentVersion": 1,
-  "contentChecksum": "sha256:ba4b45c5df13f808e7edae0f5e433ee9a30abb0288502dc6f19a13ee3a4a74e5"
+  "contentChecksum": "sha256:3f70c347fc02fd1702650afcd1d4c6b8ca8685ad3c37fefb2394c1ebbcb3d01c"
 }

@@ -127,7 +127,10 @@ const validateReadyCandidate = (candidate, slug) => {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a checksum`)
   }
   if (!/^https:\/\//.test(candidate.sourceUrl ?? '')) {
-    errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a source URL`)
+    const legacyLocal = /^\/images\/articles\//.test(candidate.sourceLocation ?? '')
+    if (!legacyLocal || candidate.provenance?.legacyLocation !== candidate.sourceLocation) {
+      errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a source URL or exact legacy provenance`)
+    }
   }
   if (isPlaceholder(candidate.license)) {
     errors.push(`${slug}: ready media ${candidate.id ?? 'unknown'} needs a verified license`)

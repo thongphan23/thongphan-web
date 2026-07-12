@@ -45,11 +45,30 @@ export default function HomeCinema() {
           data-cinema-frame
         />
 
-        <p className={styles.displayName} aria-hidden="true" data-cinema-reveal>
-          <span>THÔNG</span>
-          <span>PHAN</span>
-          <img src="/images/homepage/evidence-cinema-signature-v3.png" alt="" />
-        </p>
+        <div className={styles.heroTextStack}>
+          <p className={styles.displayName} aria-hidden="true" data-cinema-reveal>
+            <span>THÔNG</span>
+            <span>PHAN</span>
+            <img src="/images/homepage/evidence-cinema-signature-v3.png" alt="" />
+          </p>
+
+          <div className={styles.heroCopy} data-cinema-reveal>
+            <h1>
+              Biến chuyên môn thật<br />
+              thành <em>tài sản</em> có người muốn dùng.
+            </h1>
+            <p className={styles.heroLead}>Từ trải nghiệm thật đến cộng đồng trả phí — không cần rời bỏ công việc hiện tại.</p>
+            <HomeTrackedLink
+              href="/diagnostic"
+              className={styles.primaryButton}
+              eventName={homepageEvents.primary}
+            >
+              <span>Khám phá lộ trình của bạn</span>
+              <img src="/images/homepage/evidence-cinema-arrow-v2.png" alt="" aria-hidden="true" />
+            </HomeTrackedLink>
+            <p className={styles.proofMicrocopy}>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
+          </div>
+        </div>
 
         <div
           className={styles.evidenceStamp}
@@ -58,23 +77,6 @@ export default function HomeCinema() {
           data-stamp-copy="LÀM THẬT · TRẢ GIÁ THẬT · HỆ THỐNG THẬT"
         >
           <img src="/images/homepage/evidence-cinema-stamp-v4.png" alt="" />
-        </div>
-
-        <div className={styles.heroCopy} data-cinema-reveal>
-          <h1>
-            Biến chuyên môn thật<br />
-            thành <em>tài sản</em> có người muốn dùng.
-          </h1>
-          <p className={styles.heroLead}>Từ trải nghiệm thật đến cộng đồng trả phí — không cần rời bỏ công việc hiện tại.</p>
-          <HomeTrackedLink
-            href="/diagnostic"
-            className={styles.primaryButton}
-            eventName={homepageEvents.primary}
-          >
-            <span>Khám phá lộ trình của bạn</span>
-            <img src="/images/homepage/evidence-cinema-arrow-v2.png" alt="" aria-hidden="true" />
-          </HomeTrackedLink>
-          <p className={styles.proofMicrocopy}>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
         </div>
 
         <HomeFilmReel items={filmItems} canRun={homepageCanRunReel} />

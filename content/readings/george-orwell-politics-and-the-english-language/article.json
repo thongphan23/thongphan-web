@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 30,
   "topics": [
     "worldview",
@@ -42,9 +42,1188 @@
       "Bài này nên được đọc như một công cụ vệ sinh trí óc trước mọi diễn ngôn chính trị."
     ]
   },
+  "sections": [
+    {
+      "title": "Mở đầu",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Phần lớn những người từng bận tâm đến vấn đề này đều sẽ thừa nhận rằng tiếng Anh hiện đang ở trong một tình trạng tồi tệ. Nhưng nhìn chung, người ta lại cho rằng chúng ta không thể dùng hành động có ý thức để làm gì với nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lập luận thường là thế này: nền văn minh của chúng ta đang suy đồi, và ngôn ngữ của chúng ta tất yếu cũng phải chia sẻ sự sụp đổ chung ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ đó suy ra rằng mọi nỗ lực chống lại việc lạm dụng ngôn ngữ chỉ là một kiểu hoài cổ đa cảm, giống như thích nến hơn đèn điện, hoặc thích xe ngựa hơn máy bay."
+        },
+        {
+          "kind": "insight",
+          "label": "Cách đọc bài này",
+          "text": "Đừng đọc để đồng ý nhanh. Hãy đọc để nâng tiêu chuẩn thẩm định: điều gì làm một ý tưởng đáng tin, đáng giữ và đáng dùng lại?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ẩn bên dưới lập luận ấy là một niềm tin nửa ý thức rằng ngôn ngữ là một thứ tự nhiên mọc lên, chứ không phải một công cụ mà chúng ta định hình để phục vụ mục đích của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rõ ràng, sự suy tàn của một ngôn ngữ cuối cùng phải có nguyên nhân chính trị và kinh tế. Nó không đơn giản chỉ do ảnh hưởng xấu của một vài nhà văn cá nhân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng một hệ quả có thể biến thành nguyên nhân, củng cố nguyên nhân ban đầu và tạo ra cùng một hệ quả ở mức độ mạnh hơn, rồi cứ thế tiếp diễn không ngừng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người có thể bắt đầu uống rượu vì cảm thấy mình là kẻ thất bại, rồi sau đó thất bại nặng nề hơn chính vì anh ta uống rượu."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều tương tự đang xảy ra với tiếng Anh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngôn ngữ trở nên xấu xí và thiếu chính xác vì suy nghĩ của chúng ta ngu xuẩn. Nhưng sự cẩu thả trong ngôn ngữ lại khiến chúng ta dễ có những suy nghĩ ngu xuẩn hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điểm quan trọng là: quá trình này có thể đảo ngược."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tiếng Anh hiện đại, đặc biệt là tiếng Anh viết, đầy những thói quen xấu lan truyền qua bắt chước. Nhưng chúng có thể tránh được, nếu người ta sẵn sàng chịu khó cần thiết."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu loại bỏ được những thói quen này, ta có thể suy nghĩ rõ ràng hơn. Và suy nghĩ rõ ràng là bước đầu tiên cần thiết để tái sinh chính trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, cuộc chiến chống lại thứ tiếng Anh tồi không phải chuyện phù phiếm, cũng không phải mối bận tâm riêng của các nhà văn chuyên nghiệp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ quay lại điểm này sau. Và tôi hy vọng đến lúc đó, ý nghĩa của những gì tôi vừa nói sẽ trở nên rõ ràng hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong lúc này, đây là năm mẫu tiếng Anh như nó thường được viết hiện nay."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Năm đoạn văn này không được chọn vì chúng đặc biệt tệ — nếu muốn, tôi có thể trích những đoạn còn tệ hơn nhiều — mà vì chúng minh họa nhiều thói xấu tinh thần khác nhau mà chúng ta đang mắc phải."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng hơi dưới mức trung bình, nhưng vẫn là những ví dụ khá đại diện."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đánh số chúng để có thể nhắc lại khi cần."
+        }
+      ]
+    },
+    {
+      "title": "1",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi thật sự không chắc liệu có phải không đúng khi nói rằng Milton, người từng có vẻ không khác Shelley của thế kỷ mười bảy là bao, đã không trở nên, từ một trải nghiệm mỗi năm lại cay đắng hơn, xa lạ hơn với người sáng lập giáo phái Dòng Tên mà không điều gì có thể khiến ông dung thứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "— Giáo sư Harold Laski, *Essay in Freedom of Expression*"
+        }
+      ]
+    },
+    {
+      "title": "2",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Trên hết, chúng ta không thể đùa giỡn tùy tiện với một kho thành ngữ bản địa vốn quy định những kết hợp từ ngữ sai lệch nghiêm trọng, chẳng hạn như trong Basic English dùng “put up with” thay cho “tolerate”, hoặc “put at a loss” thay cho “bewilder”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "— Giáo sư Lancelot Hogben, *Interglossia*"
+        }
+      ]
+    },
+    {
+      "title": "3",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một mặt, ta có cá tính tự do: theo định nghĩa, nó không mang tính thần kinh, vì nó không có xung đột cũng không có giấc mơ. Những ham muốn của nó, nếu có thể gọi như vậy, đều trong suốt, vì chúng chỉ là những gì sự chấp thuận của thiết chế giữ ở phía trước ý thức; một khuôn mẫu thiết chế khác sẽ thay đổi số lượng và cường độ của chúng; trong chúng có rất ít điều tự nhiên, không thể quy giản, hoặc nguy hiểm về mặt văn hóa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng mặt khác, chính mối liên kết xã hội cũng chẳng là gì ngoài sự phản chiếu lẫn nhau của những toàn vẹn tự an toàn này. Hãy nhớ lại định nghĩa về tình yêu. Đây chẳng phải chính là hình ảnh của một học giả nhỏ bé sao? Trong đại sảnh gương này, còn chỗ nào cho cá tính hoặc tình huynh đệ?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "— Bài luận về tâm lý học trong chính trị, New York"
+        }
+      ]
+    },
+    {
+      "title": "4",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tất cả những “người tốt nhất” từ các câu lạc bộ quý ông, cùng tất cả những viên đại úy phát xít điên cuồng, thống nhất với nhau trong lòng căm ghét Chủ nghĩa Xã hội và nỗi kinh hoàng thú tính trước làn sóng dâng cao của phong trào cách mạng quần chúng, đã chuyển sang các hành vi khiêu khích, những vụ phóng hỏa bẩn thỉu, những truyền thuyết Trung Cổ về giếng nước bị đầu độc, nhằm hợp pháp hóa việc chính họ phá hủy các tổ chức vô sản, và kích động tầng lớp tiểu tư sản hoảng loạn đi vào cơn cuồng nhiệt sô-vanh để chống lại lối thoát cách mạng khỏi cuộc khủng hoảng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "— Truyền đơn cộng sản"
+        }
+      ]
+    },
+    {
+      "title": "5",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Nếu một tinh thần mới cần được truyền vào đất nước già cỗi này, thì có một cải cách gai góc và gây tranh cãi phải được xử lý, đó là nhân tính hóa và tiếp sinh lực cho BBC. Sự rụt rè ở đây sẽ cho thấy căn bệnh mục ruỗng và sự teo tóp của linh hồn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trái tim nước Anh có thể vẫn còn lành mạnh và đập mạnh mẽ, chẳng hạn, nhưng tiếng gầm của sư tử Anh hiện nay lại giống tiếng gầm của Bottom trong vở *Giấc mộng đêm hè* của Shakespeare — dịu dàng như tiếng chim bồ câu non."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một nước Anh mới cường tráng không thể tiếp tục bị bôi nhọ mãi trong mắt, hay đúng hơn là trong tai của thế giới, bởi sự uể oải suy nhược từ Langham Place, đang trơ tráo giả dạng thành “tiếng Anh chuẩn”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi Tiếng nói của nước Anh được nghe lúc chín giờ, thà nghe những âm h bị nuốt một cách trung thực còn tốt hơn, và ít lố bịch hơn vô hạn, so với tiếng be be kiểu bà giáo, kiểu đạo mạo, phồng rỗng, bị ức chế, kiêu kỳ của những cô gái nhút nhát vô tội hiện nay!"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "— Thư trên tờ *Tribune*"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mỗi đoạn văn trên có những lỗi riêng. Nhưng ngoài sự xấu xí có thể tránh được, cả năm đều có chung hai đặc điểm."
+        },
+        {
+          "kind": "highlight",
+          "text": "Thứ nhất là hình ảnh sáo mòn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thứ hai là thiếu chính xác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người viết hoặc có một ý nhưng không thể diễn đạt nó, hoặc vô tình nói sang một điều khác, hoặc gần như thờ ơ với việc liệu lời mình nói có nghĩa gì hay không."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự pha trộn giữa mơ hồ và bất tài thuần túy này là đặc điểm nổi bật nhất của văn xuôi tiếng Anh hiện đại, đặc biệt là bất kỳ loại văn chính trị nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay khi một số chủ đề nhất định được nêu ra, cái cụ thể tan chảy thành cái trừu tượng, và dường như không ai có thể nghĩ ra cách diễn đạt nào không bị mòn cũ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Văn xuôi ngày càng ít được tạo nên từ những từ được chọn vì ý nghĩa của chúng, và ngày càng nhiều hơn từ những cụm từ được ghép lại như các mảng của một chuồng gà lắp ghép sẵn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dưới đây, tôi liệt kê cùng ghi chú và ví dụ một số thủ thuật mà nhờ chúng, công việc thật sự của việc xây dựng văn xuôi thường xuyên bị né tránh."
+        }
+      ]
+    },
+    {
+      "title": "Những ẩn dụ đang hấp hối",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một ẩn dụ mới được sáng tạo giúp tư duy bằng cách gợi lên một hình ảnh thị giác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngược lại, một ẩn dụ đã “chết” về mặt kỹ thuật — ví dụ như “ý chí sắt đá” — thực chất đã trở lại thành một từ thông thường, và thường có thể được dùng mà không làm mất đi sự sinh động."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng giữa hai loại đó có một bãi rác khổng lồ gồm những ẩn dụ cũ mòn đã mất hết sức gợi hình, và chỉ được dùng vì chúng giúp người ta khỏi phải tự nghĩ ra cách diễn đạt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ: rung chuông thay đổi, cầm gậy chiến đấu cho, bước đúng vạch, chà đạp thô bạo lên, sát cánh vai kề vai, rơi vào tay ai đó, không có rìu để mài, nguyên liệu cho cối xay, câu cá trong vùng nước đục, nằm trong chương trình nghị sự, gót chân Achilles, khúc thiên nga, ổ nóng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều cụm trong số này được dùng mà người viết không biết nghĩa của chúng. Chẳng hạn “rift” thật sự là gì?"
+        },
+        {
+          "kind": "highlight",
+          "text": "Các ẩn dụ không tương thích cũng thường xuyên bị trộn lẫn, một dấu hiệu chắc chắn rằng người viết không quan tâm đến điều mình đang nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số ẩn dụ hiện đang phổ biến đã bị vặn khỏi ý nghĩa ban đầu mà người dùng thậm chí không nhận ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, “toe the line” đôi khi bị viết thành “tow the line”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ví dụ khác là “búa và đe”, hiện nay luôn được dùng với hàm ý rằng cái đe là bên chịu thiệt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong đời thực, cái đe luôn là thứ làm vỡ cái búa, chứ không bao giờ ngược lại."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người viết dừng lại để suy nghĩ về điều mình đang nói sẽ tránh bóp méo cụm gốc như vậy."
+        }
+      ]
+    },
+    {
+      "title": "Những bộ phận giả bằng lời",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Những thứ này giúp người viết khỏi phải chọn động từ và danh từ phù hợp, đồng thời nhồi thêm âm tiết vào câu để khiến nó có vẻ cân đối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các cụm đặc trưng là: làm cho mất hiệu lực, gây trở ngại cho, chứng tỏ là không thể chấp nhận, thiết lập liên hệ với, chịu sự chi phối của, làm phát sinh, tạo cơ sở cho, có tác dụng là, đóng vai trò hàng đầu trong, khiến bản thân được cảm nhận, có hiệu lực, biểu lộ xu hướng, phục vụ mục đích của, vân vân."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điểm cốt lõi là loại bỏ các động từ đơn giản."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thay vì dùng một từ như phá vỡ, dừng lại, làm hỏng, sửa chữa, giết, động từ biến thành một cụm, được tạo bởi một danh từ hoặc tính từ gắn với một động từ đa dụng như chứng tỏ, phục vụ, tạo thành, đóng vai trò, làm cho."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "highlight",
+          "text": "Ngoài ra, thể bị động được dùng bất cứ khi nào có thể thay cho thể chủ động, và các cấu trúc danh từ được dùng thay cho danh động từ — ví dụ “bằng sự xem xét của” thay vì “bằng cách xem xét”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phạm vi động từ tiếp tục bị thu hẹp bằng các dạng “-ize” và “de-”, còn những phát biểu tầm thường được khoác vẻ sâu sắc bằng cấu trúc “không phải là không”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các liên từ và giới từ đơn giản bị thay thế bằng các cụm như: liên quan đến, xét đến, thực tế là, nhờ vào, xét trên, vì lợi ích của, trên giả thuyết rằng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cuối câu thì được cứu khỏi sự hụt hơi bằng những câu sáo rỗng vang dội như: rất đáng mong muốn, không thể bỏ qua, một diễn biến có thể được kỳ vọng trong tương lai gần, đáng được xem xét nghiêm túc, được đưa đến một kết luận thỏa đáng, vân vân và vân vân."
+        }
+      ]
+    },
+    {
+      "title": "Từ ngữ khoa trương",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Những từ như hiện tượng, yếu tố, cá nhân, khách quan, tuyệt đối, hiệu quả, gần như, cơ bản, chính yếu, thúc đẩy, cấu thành, biểu hiện, khai thác, sử dụng, loại bỏ, thanh lý, được dùng để trang điểm cho những phát biểu đơn giản và tạo vẻ khách quan khoa học cho các phán đoán thiên lệch."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những tính từ như mở ra kỷ nguyên, sử thi, lịch sử, không thể quên, chiến thắng, ngàn đời, tất yếu, không thể cưỡng lại, đích thực, được dùng để nâng phẩm giá cho những quá trình nhơ bẩn của chính trị quốc tế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong khi đó, lối viết nhằm tôn vinh chiến tranh thường mang màu sắc cổ xưa, với những từ đặc trưng như: vương quốc, ngai vàng, chiến xa, nắm đấm bọc thép, đinh ba, kiếm, khiên, khiên nhỏ, cờ hiệu, ủng nhà binh, tiếng kèn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các từ và cụm từ nước ngoài như cul de sac, ancien régime, deus ex machina, mutatis mutandis, status quo, Gleichschaltung, Weltanschauung, được dùng để tạo vẻ văn hóa và tao nhã."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngoại trừ các chữ viết tắt hữu ích như i.e., e.g. và etc., thật ra không có nhu cầu thực sự nào cho hàng trăm cụm nước ngoài hiện đang phổ biến trong tiếng Anh."
+        },
+        {
+          "kind": "highlight",
+          "text": "Những người viết kém, đặc biệt là các nhà văn khoa học, chính trị và xã hội học, gần như luôn bị ám ảnh bởi ý tưởng rằng các từ gốc Latin hoặc Hy Lạp thì cao quý hơn các từ gốc Saxon."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ không cần thiết như expedite, ameliorate, predict, extraneous, deracinated, clandestine, sub-aqueous, và hàng trăm từ khác, liên tục lấn át các từ tương đương Anglo-Saxon."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Biệt ngữ đặc trưng của lối viết Marxist — linh cẩu, đao phủ, kẻ ăn thịt người, tiểu tư sản, bọn này, tay sai, nịnh thần, chó điên, Bạch vệ, vân vân — phần lớn gồm các từ được dịch từ tiếng Nga, Đức hoặc Pháp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng cách thông thường để tạo ra một từ mới là dùng một gốc Latin hoặc Hy Lạp với tiền tố hoặc hậu tố phù hợp, và khi cần thì thêm dạng “-ize”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thường thì việc bịa ra những từ như deregionalize, impermissible, extramarital, non-fragmentatory, vân vân, còn dễ hơn việc nghĩ ra các từ tiếng Anh thật sự bao quát đúng ý mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kết quả nhìn chung là sự cẩu thả và mơ hồ tăng lên."
+        }
+      ]
+    },
+    {
+      "title": "Những từ vô nghĩa",
+      "minutes": 18,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Trong một số loại văn viết, đặc biệt là phê bình nghệ thuật và phê bình văn học, việc gặp những đoạn dài gần như hoàn toàn không có nghĩa là chuyện bình thường."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ như lãng mạn, tạo hình, giá trị, nhân văn, chết, đa cảm, tự nhiên, sức sống, khi được dùng trong phê bình nghệ thuật, thực chất là vô nghĩa, theo nghĩa là chúng không chỉ không chỉ ra bất kỳ đối tượng có thể phát hiện nào, mà người đọc gần như cũng không kỳ vọng chúng làm vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi một nhà phê bình viết: “Đặc điểm nổi bật trong tác phẩm của ông X là phẩm chất sống động của nó”, còn một người khác viết: “Điều gây ấn tượng ngay lập tức trong tác phẩm của ông X là sự chết chóc đặc biệt của nó”, người đọc chấp nhận đây chỉ là một khác biệt quan điểm đơn giản."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu những từ như đen và trắng được dùng thay vì những từ biệt ngữ như chết và sống, người đọc sẽ thấy ngay rằng ngôn ngữ đang bị sử dụng sai cách."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều từ chính trị cũng bị lạm dụng tương tự."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Từ “phát xít” hiện nay gần như không còn nghĩa nào ngoài việc chỉ “một thứ không đáng mong muốn”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các từ dân chủ, xã hội chủ nghĩa, tự do, yêu nước, thực tế, công lý, mỗi từ đều có nhiều nghĩa khác nhau không thể hòa giải với nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Với một từ như dân chủ, không chỉ không có định nghĩa được thống nhất, mà mọi nỗ lực đưa ra một định nghĩa cũng bị chống lại từ mọi phía."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Gần như ai cũng cảm thấy rằng khi ta gọi một quốc gia là dân chủ, ta đang khen nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Do đó, những người bảo vệ mọi loại chế độ đều tuyên bố chế độ của mình là dân chủ, và sợ rằng họ có thể phải ngừng dùng từ đó nếu nó bị cố định vào một nghĩa duy nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ kiểu này thường được dùng một cách cố ý thiếu trung thực."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tức là người dùng chúng có định nghĩa riêng trong đầu, nhưng để người nghe tưởng rằng mình đang nói một điều hoàn toàn khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những phát biểu như “Thống chế Pétain là một người yêu nước chân chính”, “Báo chí Liên Xô là nền báo chí tự do nhất thế giới”, “Giáo hội Công giáo phản đối đàn áp”, gần như luôn được nói với ý định đánh lừa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ khác được dùng với ý nghĩa biến đổi, trong phần lớn trường hợp ít nhiều thiếu trung thực, gồm: giai cấp, toàn trị, khoa học, tiến bộ, phản động, tư sản, bình đẳng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giờ tôi đã lập danh mục những trò lừa đảo và bóp méo này, hãy để tôi đưa ra một ví dụ khác về kiểu văn mà chúng dẫn tới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Lần này, do bản chất của nó, ví dụ sẽ là tưởng tượng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi sẽ dịch một đoạn tiếng Anh hay thành loại tiếng Anh hiện đại tệ nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một câu nổi tiếng trong sách Truyền Đạo:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi quay lại và thấy dưới mặt trời rằng cuộc đua không thuộc về người nhanh, trận chiến không thuộc về người mạnh, bánh không thuộc về người khôn ngoan, của cải không thuộc về người hiểu biết, ân huệ không thuộc về người tài giỏi; nhưng thời thế và cơ hội xảy đến với tất cả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là nó trong tiếng Anh hiện đại:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc xem xét khách quan các hiện tượng đương đại buộc ta đi đến kết luận rằng thành công hay thất bại trong các hoạt động cạnh tranh không biểu hiện xu hướng tương xứng với năng lực bẩm sinh, mà một yếu tố đáng kể của tính bất khả dự đoán luôn phải được tính đến."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một bản nhại, nhưng không phải bản nhại quá lố."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ số 3 ở trên có nhiều mảng tiếng Anh cùng kiểu như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có thể thấy rằng tôi chưa dịch đầy đủ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đầu và cuối câu bám khá sát nghĩa gốc, nhưng ở phần giữa, các hình ảnh cụ thể — cuộc đua, trận chiến, bánh — tan biến thành cụm mơ hồ “thành công hay thất bại trong các hoạt động cạnh tranh”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này buộc phải xảy ra, bởi không một nhà văn hiện đại nào thuộc kiểu tôi đang bàn — không ai có khả năng dùng những cụm như “sự xem xét khách quan các hiện tượng đương đại” — lại có thể sắp xếp tư tưởng của mình theo cách chính xác và chi tiết như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Toàn bộ xu hướng của văn xuôi hiện đại là rời xa tính cụ thể."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ hãy phân tích hai câu này kỹ hơn một chút."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu thứ nhất có 49 từ nhưng chỉ 60 âm tiết, và tất cả từ ngữ đều thuộc đời sống hằng ngày."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu thứ hai có 38 từ nhưng 90 âm tiết; 18 từ trong đó có gốc Latin, và một từ có gốc Hy Lạp."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu thứ nhất chứa sáu hình ảnh sống động, và chỉ có một cụm — “thời thế và cơ hội” — có thể được gọi là mơ hồ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Câu thứ hai không có một cụm mới mẻ, gây chú ý nào. Và bất chấp 90 âm tiết, nó chỉ đưa ra một phiên bản rút gọn của ý nghĩa trong câu thứ nhất."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, không nghi ngờ gì nữa, chính kiểu câu thứ hai đang ngày càng lan rộng trong tiếng Anh hiện đại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi không muốn phóng đại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kiểu viết này chưa phổ biến tuyệt đối, và những mảng đơn giản vẫn sẽ xuất hiện đây đó, ngay cả trên những trang viết tệ nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dù vậy, nếu anh hoặc tôi được yêu cầu viết vài dòng về sự bất định của vận mệnh con người, chúng ta có lẽ sẽ tiến gần hơn nhiều đến câu tưởng tượng của tôi so với câu trong sách Truyền Đạo."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như tôi đã cố gắng chỉ ra, văn viết hiện đại ở dạng tệ nhất không còn là việc chọn từ vì ý nghĩa của chúng và sáng tạo hình ảnh để làm cho ý nghĩa rõ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó là việc dán những dải từ dài đã được người khác sắp sẵn lại với nhau, rồi làm cho kết quả trông có vẻ ổn bằng sự bịp bợm thuần túy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sức hấp dẫn của lối viết này là nó dễ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói “theo ý kiến của tôi, đây không phải là một giả định không thể biện minh” dễ hơn — thậm chí nhanh hơn, một khi anh đã có thói quen — so với nói “tôi nghĩ”."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu dùng các cụm có sẵn, anh không chỉ không phải lục tìm từ ngữ, mà cũng không cần bận tâm đến nhịp điệu của câu, vì các cụm này thường đã được sắp xếp sao cho nghe ít nhiều êm tai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh đang viết vội — chẳng hạn khi đọc cho thư ký tốc ký, hoặc phát biểu trước công chúng — việc rơi vào một phong cách khoa trương, Latin hóa là điều tự nhiên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những mảnh ghép như “một cân nhắc mà chúng ta nên ghi nhớ” hoặc “một kết luận mà tất cả chúng ta sẵn sàng đồng ý” sẽ cứu nhiều câu khỏi rơi xuống một cái kết cụt ngủn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bằng cách dùng những ẩn dụ, so sánh và thành ngữ cũ mòn, anh tiết kiệm được nhiều nỗ lực tinh thần, nhưng phải trả giá bằng việc để ý nghĩa trở nên mơ hồ — không chỉ với người đọc mà cả với chính mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là ý nghĩa của những ẩn dụ trộn lẫn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mục đích duy nhất của một ẩn dụ là gợi lên một hình ảnh thị giác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi các hình ảnh ấy va chạm nhau — như trong câu “Con bạch tuộc phát xít đã hát khúc thiên nga của nó, chiếc ủng nhà binh bị ném vào nồi nấu chảy” — có thể chắc chắn rằng người viết không hề nhìn thấy trong đầu hình ảnh của những vật mà mình đang gọi tên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói cách khác, anh ta không thật sự suy nghĩ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nhìn lại các ví dụ tôi đưa ra ở đầu bài luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giáo sư Laski dùng năm phủ định trong 53 từ. Một trong số đó là thừa, khiến toàn bộ đoạn trở nên vô nghĩa. Ngoài ra còn có lỗi “alien” thay vì “akin”, khiến đoạn càng vô nghĩa hơn, cùng nhiều chỗ vụng về có thể tránh được, làm tăng thêm sự mơ hồ chung."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Giáo sư Hogben thì “đùa giỡn tùy tiện” với một “khẩu đội” có khả năng viết đơn thuốc; và trong khi phản đối cụm đời thường “put up with”, ông lại không sẵn lòng tra từ “egregious” trong từ điển để xem nó nghĩa là gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ số 3, nếu nhìn với thái độ không khoan dung, đơn giản là vô nghĩa. Có lẽ ta có thể suy ra ý định của nó bằng cách đọc toàn bộ bài viết chứa đoạn đó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong ví dụ số 4, người viết ít nhiều biết mình muốn nói gì, nhưng một đống cụm từ cũ mòn đã làm nghẹn ông ta như bã trà làm tắc bồn rửa."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong ví dụ số 5, từ ngữ và ý nghĩa gần như đã chia tay nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người viết kiểu này thường có một ý nghĩa cảm xúc chung: họ ghét một thứ và muốn bày tỏ sự đoàn kết với một thứ khác. Nhưng họ không quan tâm đến chi tiết của điều mình đang nói."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một người viết cẩn trọng, trong mỗi câu mình viết, sẽ tự hỏi ít nhất bốn câu hỏi:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đang cố nói gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ nào sẽ diễn đạt điều đó?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hình ảnh hoặc thành ngữ nào sẽ làm nó rõ hơn?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hình ảnh này có đủ mới để tạo hiệu quả không?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và có lẽ anh ta còn tự hỏi thêm hai câu:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có thể nói ngắn hơn không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi có nói điều gì xấu xí một cách có thể tránh được không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng anh không bắt buộc phải chịu tất cả những phiền phức ấy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh có thể né tránh bằng cách đơn giản mở đầu óc mình ra và để các cụm từ có sẵn ùa vào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng sẽ xây câu cho anh — thậm chí ở một mức độ nào đó còn nghĩ thay anh — và khi cần, chúng sẽ thực hiện một dịch vụ quan trọng: che giấu một phần ý nghĩa của anh, ngay cả khỏi chính anh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chính tại điểm này, mối liên hệ đặc biệt giữa chính trị và sự suy đồi của ngôn ngữ trở nên rõ ràng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Trong thời đại của chúng ta, nhìn chung có thể nói rằng văn chính trị là văn tồi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi điều này không đúng, thường sẽ thấy người viết là một kiểu nổi loạn nào đó, người đang bày tỏ quan điểm riêng của mình chứ không phải một “đường lối đảng phái”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chính thống, dù thuộc màu sắc nào, dường như luôn đòi hỏi một phong cách vô hồn, bắt chước."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các phương ngữ chính trị tìm thấy trong truyền đơn, xã luận, tuyên ngôn, Sách Trắng và các bài phát biểu của thứ trưởng tất nhiên khác nhau giữa các đảng, nhưng chúng giống nhau ở chỗ gần như không bao giờ có trong đó một cách nói mới mẻ, sống động, tự làm ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi ta nhìn một kẻ viết thuê mệt mỏi trên bục diễn thuyết máy móc lặp lại những cụm quen thuộc — tội ác thú tính, gót sắt, chế độ chuyên chế nhuốm máu, các dân tộc tự do trên thế giới, sát cánh vai kề vai — ta thường có một cảm giác kỳ lạ rằng mình không đang nhìn một con người sống, mà là một thứ hình nhân."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cảm giác này bất chợt mạnh hơn ở những khoảnh khắc ánh sáng chiếu vào kính của diễn giả và biến chúng thành hai đĩa trống trơn, như thể phía sau không có đôi mắt nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này không hoàn toàn là tưởng tượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một diễn giả dùng loại ngôn ngữ như vậy đã đi được một đoạn đường khá xa trong việc biến chính mình thành một cái máy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những âm thanh phù hợp đang phát ra từ thanh quản của anh ta, nhưng bộ não không tham gia như nó sẽ tham gia nếu anh ta tự chọn từ ngữ cho mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu bài phát biểu anh ta đang đọc là bài anh ta đã quen đọc đi đọc lại, anh ta có thể gần như không ý thức về điều mình đang nói, giống như khi người ta đọc các câu đáp trong nhà thờ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và trạng thái ý thức bị giảm sút này, nếu không phải là điều bắt buộc, thì ít nhất cũng thuận lợi cho sự tuân phục chính trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong thời đại chúng ta, lời nói và văn viết chính trị phần lớn là sự bảo vệ cho những điều không thể bảo vệ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những chuyện như việc tiếp tục duy trì quyền cai trị của Anh ở Ấn Độ, các cuộc thanh trừng và lưu đày ở Nga, việc thả bom nguyên tử xuống Nhật Bản, quả thật có thể được bảo vệ, nhưng chỉ bằng những lập luận quá tàn bạo để phần lớn mọi người đối diện, và không khớp với những mục tiêu mà các đảng phái chính trị tuyên bố."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Do đó, ngôn ngữ chính trị phải phần lớn bao gồm mỹ từ, lối lập luận né tránh vấn đề và sự mơ hồ dày đặc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các ngôi làng không có khả năng tự vệ bị ném bom từ trên không, cư dân bị xua ra vùng quê, gia súc bị bắn bằng súng máy, các túp lều bị đốt bằng đạn cháy: điều này được gọi là bình định."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hàng triệu nông dân bị cướp mất trang trại và bị bắt lê bước trên đường với không gì ngoài những gì họ có thể mang theo: điều này được gọi là chuyển dịch dân cư hoặc chỉnh lý biên giới."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Con người bị giam nhiều năm không xét xử, hoặc bị bắn vào sau gáy, hoặc bị đưa đến chết vì bệnh scorbut trong các trại đốn gỗ Bắc Cực: điều này được gọi là loại bỏ các phần tử không đáng tin cậy."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Loại ngôn ngữ như vậy là cần thiết nếu người ta muốn gọi tên sự việc mà không gợi lên hình ảnh tinh thần của chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy xét, chẳng hạn, một giáo sư Anh dễ chịu đang bảo vệ chế độ toàn trị Nga."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông ta không thể nói thẳng:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Tôi tin vào việc giết đối thủ của mình khi điều đó đem lại kết quả tốt.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, có lẽ ông ta sẽ nói điều gì đó kiểu như:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong khi sẵn sàng thừa nhận rằng chế độ Xô Viết biểu hiện một số đặc điểm mà người theo chủ nghĩa nhân đạo có thể có khuynh hướng lấy làm tiếc, tôi nghĩ chúng ta phải đồng ý rằng một mức độ hạn chế nhất định đối với quyền đối lập chính trị là một hệ quả không thể tránh khỏi của các giai đoạn chuyển tiếp, và rằng những gian khổ mà nhân dân Nga được kêu gọi chịu đựng đã được biện minh đầy đủ trong lĩnh vực thành tựu cụ thể."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phong cách phồng rỗng tự thân nó là một dạng mỹ từ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một khối từ Latin rơi xuống các sự thật như tuyết mềm, làm mờ các đường viền và phủ kín mọi chi tiết."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kẻ thù lớn nhất của ngôn ngữ rõ ràng là sự thiếu thành thật."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi có khoảng cách giữa mục tiêu thật và mục tiêu được tuyên bố, người ta gần như theo bản năng quay sang dùng những từ dài và những thành ngữ kiệt sức, giống như mực phun mực ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong thời đại của chúng ta, không có chuyện “đứng ngoài chính trị”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mọi vấn đề đều là vấn đề chính trị, và bản thân chính trị là một khối gồm dối trá, lẩn tránh, ngu xuẩn, thù hận và phân liệt."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi bầu không khí chung trở nên tồi tệ, ngôn ngữ tất yếu phải chịu ảnh hưởng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đoán — đây là một phỏng đoán mà tôi không có đủ kiến thức để xác minh — rằng tiếng Đức, tiếng Nga và tiếng Ý đều đã suy đồi trong mười hoặc mười lăm năm qua, như một hệ quả của chế độ độc tài."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu tư tưởng làm hư ngôn ngữ, ngôn ngữ cũng có thể làm hư tư tưởng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một cách dùng xấu có thể lan truyền qua truyền thống và bắt chước, ngay cả giữa những người đáng lẽ biết rõ hơn và thật sự cũng biết rõ hơn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thứ ngôn ngữ suy đồi mà tôi đang bàn, theo một số cách, rất tiện dụng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những cụm như “một giả định không phải là không thể biện minh”, “còn nhiều điều đáng mong muốn”, “sẽ không phục vụ mục đích tốt đẹp nào”, “một cân nhắc mà chúng ta nên ghi nhớ” là những cám dỗ liên tục, giống như một gói aspirin luôn nằm ngay bên khuỷu tay."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy nhìn lại bài luận này, và chắc chắn anh sẽ thấy chính tôi đã nhiều lần phạm đúng những lỗi mà tôi đang phản đối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong thư sáng nay, tôi nhận được một cuốn truyền đơn nói về tình hình ở Đức."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tác giả nói với tôi rằng ông “cảm thấy bị thôi thúc” phải viết nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi mở ngẫu nhiên, và đây gần như là câu đầu tiên tôi nhìn thấy:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Các nước Đồng minh có cơ hội không chỉ đạt được một sự chuyển hóa triệt để trong cấu trúc xã hội và chính trị của Đức theo cách tránh một phản ứng dân tộc chủ nghĩa bên trong chính nước Đức, mà đồng thời còn đặt nền móng cho một châu Âu hợp tác và thống nhất.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh thấy đó, ông ta “cảm thấy bị thôi thúc” phải viết — có lẽ ông cảm thấy mình có điều gì mới để nói — nhưng lời lẽ của ông, giống như ngựa kỵ binh nghe tiếng kèn, tự động tụ lại thành mô thức ảm đạm quen thuộc."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự xâm lấn của các cụm từ có sẵn vào tâm trí con người — “đặt nền móng”, “đạt được một sự chuyển hóa triệt để” — chỉ có thể bị ngăn chặn nếu ta luôn cảnh giác trước chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và mỗi cụm như vậy lại gây tê một phần bộ não."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi đã nói trước đó rằng sự suy đồi của ngôn ngữ chúng ta có lẽ có thể chữa được."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người phủ nhận điều này, nếu họ đưa ra lập luận, sẽ nói rằng ngôn ngữ chỉ phản ánh các điều kiện xã hội hiện có, và chúng ta không thể tác động đến sự phát triển của nó bằng việc can thiệp trực tiếp vào từ ngữ và cấu trúc."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xét về sắc thái hoặc tinh thần chung của một ngôn ngữ, điều này có thể đúng. Nhưng xét về chi tiết thì không đúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những từ ngữ và cách diễn đạt ngu xuẩn thường biến mất không phải nhờ một quá trình tiến hóa nào đó, mà nhờ hành động có ý thức của một nhóm thiểu số."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hai ví dụ gần đây là “explore every avenue” và “leave no stone unturned”, những cụm đã bị giết chết bởi sự chế giễu của một vài nhà báo."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có một danh sách dài các ẩn dụ mục nát có thể bị loại bỏ tương tự nếu đủ người quan tâm đến việc này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cũng nên có thể cười nhạo cấu trúc “not un-” cho đến khi nó biến mất, giảm lượng Latin và Hy Lạp trong câu trung bình, xua đuổi các cụm nước ngoài và các từ khoa học đi lạc, và nói chung khiến sự khoa trương trở nên lỗi thời."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng tất cả những điều đó chỉ là điểm nhỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Việc bảo vệ tiếng Anh bao hàm nhiều hơn thế, và có lẽ tốt nhất nên bắt đầu bằng cách nói rõ nó **không** bao hàm điều gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trước hết, nó không liên quan gì đến sự cổ xưa hóa, đến việc cứu vớt những từ và cách nói đã lỗi thời, hoặc đến việc dựng lên một thứ “tiếng Anh chuẩn” không bao giờ được phép rời bỏ."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngược lại, nó đặc biệt quan tâm đến việc vứt bỏ mọi từ hoặc thành ngữ đã hết giá trị sử dụng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó không liên quan đến ngữ pháp và cú pháp đúng chuẩn, những thứ không quan trọng miễn là người ta làm rõ được ý mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cũng không liên quan đến việc tránh các cách dùng kiểu Mỹ, hoặc có cái gọi là “phong cách văn xuôi hay”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mặt khác, nó không quan tâm đến sự đơn giản giả tạo, hay nỗ lực biến tiếng Anh viết thành tiếng Anh nói hằng ngày."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó cũng không hàm ý rằng trong mọi trường hợp ta nên thích từ Saxon hơn từ Latin, dù nó hàm ý rằng ta nên dùng ít từ nhất và ngắn nhất có thể để bao quát đúng ý mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều cần thiết trên hết là để ý nghĩa chọn từ ngữ, chứ không phải ngược lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong văn xuôi, điều tệ nhất người ta có thể làm với từ ngữ là đầu hàng chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh nghĩ về một vật cụ thể, anh nghĩ không bằng lời. Sau đó, nếu muốn mô tả thứ mình vừa hình dung, anh có lẽ sẽ tìm kiếm cho đến khi thấy đúng những từ có vẻ phù hợp với nó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi anh nghĩ về một thứ trừu tượng, anh có xu hướng dùng từ ngay từ đầu. Và nếu anh không có nỗ lực có ý thức để ngăn lại, phương ngữ hiện có sẽ lao vào và làm công việc thay anh, với cái giá là làm mờ hoặc thậm chí thay đổi ý nghĩa của anh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ tốt hơn là trì hoãn việc dùng từ càng lâu càng tốt, và làm cho ý nghĩa của mình rõ nhất có thể thông qua hình ảnh và cảm giác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, ta có thể chọn — chứ không chỉ chấp nhận — những cụm từ bao quát ý nghĩa tốt nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rồi sau đó, ta quay lại và quyết định xem lời nói của mình có khả năng tạo ấn tượng gì lên người khác."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nỗ lực trí óc cuối cùng này sẽ loại bỏ mọi hình ảnh cũ mòn hoặc trộn lẫn, mọi cụm từ lắp sẵn, mọi lặp lại không cần thiết, cũng như sự bịp bợm và mơ hồ nói chung."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng người ta thường có thể nghi ngờ về hiệu quả của một từ hoặc một cụm từ, và cần những quy tắc có thể dựa vào khi bản năng thất bại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ các quy tắc sau sẽ bao quát phần lớn trường hợp:"
+        }
+      ]
+    },
+    {
+      "title": "Sáu quy tắc",
+      "minutes": 3,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "1. Đừng bao giờ dùng một ẩn dụ, so sánh hoặc hình thái tu từ nào mà anh đã quen thấy trên báo in."
+        },
+        {
+          "kind": "paragraph",
+          "text": "2. Đừng bao giờ dùng một từ dài nếu một từ ngắn có thể thay thế."
+        },
+        {
+          "kind": "paragraph",
+          "text": "3. Nếu có thể cắt bỏ một từ, hãy luôn cắt bỏ nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "4. Đừng bao giờ dùng thể bị động nếu anh có thể dùng thể chủ động."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "5. Đừng bao giờ dùng một cụm từ nước ngoài, một từ khoa học hoặc một từ biệt ngữ nếu anh có thể nghĩ ra một từ tiếng Anh hằng ngày tương đương."
+        },
+        {
+          "kind": "paragraph",
+          "text": "6. Hãy phá vỡ bất kỳ quy tắc nào trong số này trước khi nói một điều gì đó thô bạo đến mức man rợ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những quy tắc này nghe có vẻ sơ đẳng, và đúng là vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng chúng đòi hỏi một sự thay đổi thái độ sâu sắc ở bất kỳ ai đã quen viết theo phong cách hiện đang thịnh hành."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người ta có thể giữ tất cả các quy tắc này mà vẫn viết tiếng Anh dở, nhưng sẽ không thể viết loại văn mà tôi đã trích trong năm mẫu ở đầu bài."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ở đây tôi không bàn đến việc dùng ngôn ngữ trong văn chương, mà chỉ bàn đến ngôn ngữ như một công cụ để biểu đạt tư tưởng, chứ không phải để che giấu hoặc ngăn cản tư tưởng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Stuart Chase và một số người khác đã tiến gần đến việc tuyên bố rằng mọi từ trừu tượng đều vô nghĩa, rồi dùng điều đó như cái cớ để ủng hộ một kiểu chủ nghĩa im lặng chính trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì anh không biết phát xít là gì, làm sao anh có thể đấu tranh chống phát xít?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ta không cần nuốt những điều phi lý như vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ta nên nhận ra rằng sự hỗn loạn chính trị hiện tại có liên quan đến sự suy đồi của ngôn ngữ, và có lẽ ta có thể tạo ra một số cải thiện bằng cách bắt đầu từ đầu mối ngôn từ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh đơn giản hóa tiếng Anh của mình, anh được giải phóng khỏi những ngu xuẩn tệ nhất của chính thống."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh không thể nói bằng bất kỳ phương ngữ cần thiết nào của nó. Và khi anh đưa ra một nhận xét ngu xuẩn, sự ngu xuẩn của nó sẽ trở nên rõ ràng, ngay cả với chính anh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngôn ngữ chính trị — và với một số biến thể, điều này đúng với mọi đảng phái chính trị, từ Bảo thủ đến Vô chính phủ — được thiết kế để làm cho lời dối trá nghe có vẻ thật, làm cho giết người trông đáng kính, và trao vẻ vững chắc cho làn gió rỗng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ta không thể thay đổi tất cả điều này trong một khoảnh khắc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ít nhất ta có thể thay đổi thói quen của chính mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và thỉnh thoảng, nếu ta chế giễu đủ lớn, ta thậm chí có thể ném một cụm từ mòn cũ và vô dụng — một chiếc ủng nhà binh, một gót chân Achilles, một ổ nóng, một nồi nấu chảy, một phép thử axit, một địa ngục đích thực, hoặc một mẩu rác ngôn từ nào khác — vào thùng rác, nơi nó thuộc về."
+        }
+      ]
+    },
+    {
+      "title": "Ghi chú",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "[1] Một minh họa thú vị cho điều này là cách các tên hoa bằng tiếng Anh, vốn còn được dùng cho đến rất gần đây, đang bị thay thế bằng các tên Hy Lạp. Snapdragon trở thành antirrhinum, forget-me-not trở thành myosotis, vân vân. Khó thấy có lý do thực tế nào cho sự thay đổi thời trang này. Có lẽ nó xuất phát từ một bản năng quay lưng lại với từ ngữ bình dân hơn, và một cảm giác mơ hồ rằng từ Hy Lạp có vẻ khoa học hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "[2] Ví dụ: “Tính phổ quát trong tri giác và hình ảnh của Comfort, kỳ lạ thay mang tầm vóc Whitman, gần như đối lập hoàn toàn về thôi thúc thẩm mỹ, tiếp tục gợi lên sự run rẩy khí quyển tích tụ, ám chỉ một tính phi thời gian tàn nhẫn, thanh thản không thể cưỡng lại… Wrey Gardiner ghi điểm bằng cách nhắm vào những hồng tâm đơn giản với độ chính xác. Chỉ có điều chúng không đơn giản như vậy, và xuyên qua nỗi buồn hài lòng này còn chảy hơn cả vị đắng ngọt bề mặt của sự cam chịu.” — *Poetry Quarterly*"
+        },
+        {
+          "kind": "paragraph",
+          "text": "[3] Người ta có thể tự chữa khỏi cấu trúc “not un-” bằng cách ghi nhớ câu này: “Một con chó không phải không đen đang đuổi theo một con thỏ không phải không nhỏ băng qua một cánh đồng không phải không xanh.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "— *Horizon*, tháng 4 năm 1946"
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 12,
   "legacyBlockCount": 276,
   "legacyBodyChecksum": "sha256:af752d044c3bc126902c842dd8994b3138fdd94a04bef10efc9741ceffed672c",
   "contentVersion": 1,
-  "contentChecksum": "sha256:f24ff95cf605f9e4e5263e2fe56e6a77f053154ff54f08e3bc250d36df818568"
+  "contentChecksum": "sha256:ffa9df4bdd5e86373077106ff461b5b30659cff5bc900c97257729d72abe6868"
 }

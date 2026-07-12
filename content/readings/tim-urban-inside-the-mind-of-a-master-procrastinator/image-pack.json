@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d5d00454-d7aa-434c-8fae-ff2bc97c5f02/TimUrban_2016-embed.jpg?quality=82&w=1200",
       "sourceUrl": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d5d00454-d7aa-434c-8fae-ff2bc97c5f02/TimUrban_2016-embed.jpg?quality=82&w=1200",
+      "publicPath": "/images/readings/tim-urban-inside-the-mind-of-a-master-procrastinator/01-timurban-2016-embed.jpg",
       "alt": "Tim Urban trên sân khấu TED2016.",
       "caption": "Tim Urban tại TED2016, nơi ông biến một thói quen xấu rất riêng thành một mô hình tâm lý ai cũng nhận ra.",
       "credit": "TED",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "TED",
+      "derivative": "01-timurban-2016-embed.jpg",
+      "checksum": "sha256:9ad5bbc0760827231657b33cfae0cef9bb37781340bc41ed0babd7c40737b233",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "tim-urban-inside-the-mind-of-a-master-procrastinator",
         "legacyLocation": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d5d00454-d7aa-434c-8fae-ff2bc97c5f02/TimUrban_2016-embed.jpg?quality=82&w=1200",
         "articleSourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d6c5a1c9-12a7-4c36-9d1b-0063e1f72dc4/TimUrban_2016-stageshot.jpg",
       "sourceUrl": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d6c5a1c9-12a7-4c36-9d1b-0063e1f72dc4/TimUrban_2016-stageshot.jpg",
+      "publicPath": "/images/readings/tim-urban-inside-the-mind-of-a-master-procrastinator/02-timurban-2016-stageshot.jpg",
       "alt": "Tim Urban đứng trên sân khấu TED2016.",
       "caption": "Sân khấu TED2016 là bối cảnh bài nói, nơi sự trì hoãn được kể bằng hài hước thay vì tự trách.",
       "credit": "TED",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "TED",
+      "derivative": "02-timurban-2016-stageshot.jpg",
+      "checksum": "sha256:4ded4c5f9b9c0cdf16e70dac4452b569ff132488e454c085463e0d4e87ebeedd",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "tim-urban-inside-the-mind-of-a-master-procrastinator",
         "legacyLocation": "https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d6c5a1c9-12a7-4c36-9d1b-0063e1f72dc4/TimUrban_2016-stageshot.jpg",
         "articleSourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://1.bp.blogspot.com/-S6ryaE6HuZg/Upvh2oS7q9I/AAAAAAAAGcI/R2-QDRd6A7o/s640/P+brain.png",
       "sourceUrl": "https://1.bp.blogspot.com/-S6ryaE6HuZg/Upvh2oS7q9I/AAAAAAAAGcI/R2-QDRd6A7o/s640/P+brain.png",
+      "publicPath": "/images/readings/tim-urban-inside-the-mind-of-a-master-procrastinator/03-p-brain.png",
       "alt": "Minh họa bộ não của người trì hoãn với Instant Gratification Monkey.",
       "caption": "Minh họa gốc của Wait But Why: bộ não trì hoãn có thêm một nhân vật luôn kéo ta về phía dễ và vui.",
       "credit": "Wait But Why / Tim Urban",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wait But Why / Tim Urban",
+      "derivative": "03-p-brain.png",
+      "checksum": "sha256:4bf4802b672576923e48e224470636b7ba1bf42d3070d2302ef281d312bbe4e8",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "tim-urban-inside-the-mind-of-a-master-procrastinator",
         "legacyLocation": "https://1.bp.blogspot.com/-S6ryaE6HuZg/Upvh2oS7q9I/AAAAAAAAGcI/R2-QDRd6A7o/s640/P+brain.png",
         "articleSourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://3.bp.blogspot.com/-vg18-8Nm9yg/Upvh006UpSI/AAAAAAAAGbg/y0zGXUVInlE/s640/Dark+Playground.png",
       "sourceUrl": "https://3.bp.blogspot.com/-vg18-8Nm9yg/Upvh006UpSI/AAAAAAAAGbg/y0zGXUVInlE/s640/Dark+Playground.png",
+      "publicPath": "/images/readings/tim-urban-inside-the-mind-of-a-master-procrastinator/04-dark-playground.png",
       "alt": "Minh họa Dark Playground từ Wait But Why.",
       "caption": "Sân Chơi Tăm Tối là nơi giải trí diễn ra khi lẽ ra ta phải làm việc, nên niềm vui ở đó luôn đi kèm tội lỗi và lo âu.",
       "credit": "Wait But Why / Tim Urban",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wait But Why / Tim Urban",
+      "derivative": "04-dark-playground.png",
+      "checksum": "sha256:84de9a4603a2581693cd1e0f47f611cf098d61f402619e3d36709037c42089e4",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "tim-urban-inside-the-mind-of-a-master-procrastinator",
         "legacyLocation": "https://3.bp.blogspot.com/-vg18-8Nm9yg/Upvh006UpSI/AAAAAAAAGbg/y0zGXUVInlE/s640/Dark+Playground.png",
         "articleSourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://waitbutwhy.com/wp-content/uploads/2014/05/Weeks.png",
       "sourceUrl": "https://waitbutwhy.com/wp-content/uploads/2014/05/Weeks.png",
+      "publicPath": "/images/readings/tim-urban-inside-the-mind-of-a-master-procrastinator/05-weeks.png",
       "alt": "Lịch cuộc đời bằng các ô tuần từ Wait But Why.",
       "caption": "Life Calendar làm phần kết của bài trở nên nặng hơn: trì hoãn dài hạn không mất một ngày, nó ăn dần từng tuần của đời sống.",
       "credit": "Wait But Why / Tim Urban",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wait But Why / Tim Urban",
+      "derivative": "05-weeks.png",
+      "checksum": "sha256:c7cf73aa5ff8957cf03a9b57639067e01e0497ad0263f970054d138e97370d72",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "tim-urban-inside-the-mind-of-a-master-procrastinator",
         "legacyLocation": "https://waitbutwhy.com/wp-content/uploads/2014/05/Weeks.png",
         "articleSourceUrl": "https://www.ted.com/talks/tim_urban_inside_the_mind_of_a_master_procrastinator"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:0313f9adb051f1465f45efd42f127d3383bda767a4ec24981e202494cf2da132"
+  "mediaChecksum": "sha256:907a7b8e376ea1bd49d294b65f0f2588f59b16d8496ac8846243d324e4f183e4"
 }

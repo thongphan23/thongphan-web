@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 10,
   "topics": [
     "sang-tao",
@@ -42,9 +42,223 @@
       "Điểm đáng giữ là câu cuối: trong chuyện chất lượng, anh phải tự mình tìm ra điều gì là tốt."
     ]
   },
+  "sections": [
+    {
+      "title": "Bắt chước sai thứ",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi còn học trung học, tôi đã dành rất nhiều thời gian bắt chước những người viết dở."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những gì chúng tôi học trong các lớp tiếng Anh chủ yếu là truyện hư cấu, nên tôi mặc định rằng đó là hình thức cao nhất của viết lách. Sai lầm thứ nhất."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những câu chuyện có vẻ được ngưỡng mộ nhất là những câu chuyện trong đó con người đau khổ theo những cách phức tạp. Bất cứ thứ gì hài hước hoặc cuốn hút, tự thân nó đã đáng nghi rồi, trừ khi nó đủ cổ để trở nên khó hiểu, như Shakespeare hay Chaucer. Sai lầm thứ hai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phương tiện lý tưởng dường như là truyện ngắn, thứ mà sau này tôi mới biết thật ra chỉ có một đời sống khá ngắn ngủi, gần như trùng với thời kỳ đỉnh cao của xuất bản tạp chí. Nhưng vì độ dài của truyện ngắn khiến chúng rất phù hợp để dùng trong lớp trung học, chúng tôi đọc rất nhiều truyện ngắn, và điều đó tạo cho chúng tôi ấn tượng rằng truyện ngắn đang phát triển rực rỡ. Sai lầm thứ ba."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và vì chúng quá ngắn, thật ra chẳng cần có chuyện gì xảy ra cả. Anh chỉ cần cho thấy một lát cắt đời sống bị cắt cụt một cách ngẫu nhiên, và điều đó được xem là tiến bộ. Sai lầm thứ tư."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kết quả là tôi viết rất nhiều câu chuyện trong đó chẳng có gì xảy ra, ngoại trừ việc ai đó bất hạnh theo một cách có vẻ sâu sắc."
+        }
+      ]
+    },
+    {
+      "title": "Uy tín không đồng nghĩa với nội dung tốt",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Trong phần lớn thời gian đại học, tôi học chuyên ngành triết học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi rất ấn tượng với các bài báo được đăng trên các tạp chí triết học. Chúng được dàn trang rất đẹp, và giọng văn của chúng thì thật mê hoặc, lúc thì gần gũi tự nhiên, lúc thì kỹ thuật đến mức như tràn bộ nhớ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một anh chàng đang đi trên phố, rồi đột nhiên “tính khả thể xét như tính khả thể” nhảy xổ vào anh ta."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi chưa bao giờ thật sự hiểu trọn vẹn những bài báo ấy, nhưng tôi nghĩ sau này mình sẽ hiểu, khi có thời gian đọc lại kỹ hơn. Trong lúc đó, tôi cố hết sức bắt chước chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ nhìn lại, tôi thấy đây là một nỗ lực đã định sẵn là thất bại, bởi thật ra chúng chẳng nói gì cả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, chưa từng có triết gia nào thật sự bác bỏ được một triết gia khác, bởi không ai nói điều gì đủ xác định để có thể bị bác bỏ. Không cần phải nói, những bản bắt chước của tôi cũng chẳng nói gì cả."
+        }
+      ]
+    },
+    {
+      "title": "Cơn sốt trông thông minh",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Khi học cao học, tôi vẫn tiếp tục lãng phí thời gian bắt chước những thứ sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi đó có một loại chương trình đang thịnh hành gọi là hệ chuyên gia, mà ở lõi của nó có một thứ gọi là bộ máy suy luận."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nhìn xem những thứ này làm gì và nghĩ: “Tôi có thể viết thứ đó trong một nghìn dòng code.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ấy vậy mà các giáo sư nổi tiếng đang viết sách về chúng, còn các startup thì bán chúng với giá bằng cả năm lương cho mỗi bản."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi nghĩ: cơ hội lớn đây rồi; những thứ trông rất ấn tượng này lại có vẻ dễ với mình; chắc mình khá sắc bén. Sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó đơn giản chỉ là một cơn sốt nhất thời. Những cuốn sách mà các giáo sư viết về hệ chuyên gia hiện nay đã bị lãng quên. Chúng thậm chí còn không nằm trên con đường dẫn đến bất kỳ điều gì thú vị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và những khách hàng trả nhiều tiền để mua chúng phần lớn cũng là những cơ quan chính phủ từng trả hàng nghìn đô cho tua-vít và bệ ngồi toilet."
+        }
+      ]
+    },
+    {
+      "title": "Chỉ bắt chước những gì anh thật sự thích",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Làm sao để tránh bắt chước nhầm thứ?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ bắt chước những gì anh thật sự thích."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó đã có thể cứu tôi trong cả ba trường hợp. Tôi không thích những truyện ngắn mà chúng tôi buộc phải đọc trong lớp tiếng Anh. Tôi không học được gì từ các bài báo triết học. Tôi cũng không tự mình dùng các hệ chuyên gia."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi tin những thứ ấy là tốt chỉ vì chúng được người khác ngưỡng mộ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có thể rất khó tách bạch giữa những thứ anh thích và những thứ khiến anh bị ấn tượng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một mẹo là hãy bỏ qua cách trình bày. Mỗi khi tôi thấy một bức tranh được treo rất trang trọng trong bảo tàng, tôi tự hỏi: “Nếu tôi thấy bức này ở một buổi bán đồ cũ trong gara, bẩn thỉu, không khung, và không biết ai vẽ nó, tôi sẽ trả bao nhiêu tiền?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu anh đi quanh bảo tàng và thử thí nghiệm này, anh sẽ phát hiện ra vài kết quả thật sự đáng kinh ngạc. Đừng bỏ qua điểm dữ liệu này chỉ vì nó là ngoại lệ."
+        }
+      ]
+    },
+    {
+      "title": "Thú vui tội lỗi thường thành thật hơn",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Một cách khác để tìm ra anh thật sự thích gì là nhìn vào những thứ anh tận hưởng như một thú vui tội lỗi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều thứ con người thích, đặc biệt nếu họ còn trẻ và nhiều tham vọng, thật ra họ thích phần lớn vì cảm giác đạo đức khi thích chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "99% những người đang đọc Ulysses vừa đọc vừa nghĩ: “Mình đang đọc Ulysses.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một thú vui tội lỗi ít nhất là một thú vui thuần khiết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh đọc gì khi anh không còn đủ sức để tỏ ra đạo đức?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Loại sách nào khiến anh đọc và thấy buồn vì chỉ còn một nửa, thay vì thấy ấn tượng rằng mình đã đọc được một nửa? Đó mới là thứ anh thật sự thích."
+        }
+      ]
+    },
+    {
+      "title": "Bắt chước điều làm nó tốt, không phải khuyết điểm",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Ngay cả khi anh tìm được những thứ thật sự tốt để bắt chước, vẫn còn một cái bẫy khác cần tránh."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hãy cẩn thận bắt chước điều khiến chúng tốt, chứ không phải các khuyết điểm của chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rất dễ bị cuốn vào việc bắt chước khuyết điểm, bởi khuyết điểm dễ thấy hơn, và tất nhiên cũng dễ sao chép hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, phần lớn họa sĩ thế kỷ 18 và 19 dùng những màu hơi nâu. Họ đang bắt chước các họa sĩ vĩ đại thời Phục Hưng, những bức tranh mà đến thời đó đã ngả nâu vì bụi bẩn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau này những bức tranh ấy được làm sạch, để lộ ra các màu sắc rực rỡ. Còn tranh của những người bắt chước họ thì dĩ nhiên vẫn cứ nâu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhân tiện, chính hội họa là thứ đã chữa cho tôi khỏi việc bắt chước sai thứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đến giữa chương trình cao học, tôi quyết định muốn thử làm họa sĩ, và thế giới nghệ thuật thì mục ruỗng một cách quá hiển nhiên đến mức nó giật đứt sợi dây tin tưởng ngây thơ trong tôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những người này khiến các giáo sư triết học trông có vẻ cẩn trọng như các nhà toán học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Rõ ràng đến mức gần như chỉ có thể chọn một trong hai: hoặc làm việc tốt, hoặc trở thành người trong cuộc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó buộc tôi phải nhìn thấy sự phân biệt này. Nó tồn tại ở một mức độ nào đó trong gần như mọi lĩnh vực, nhưng cho đến lúc ấy tôi vẫn xoay xở để tránh phải đối diện với nó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là một trong những điều giá trị nhất tôi học được từ hội họa: Anh phải tự mình tìm ra điều gì là tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh không thể tin vào các thẩm quyền. Trong chuyện này, họ sẽ nói dối anh."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 6,
   "legacyBlockCount": 44,
   "legacyBodyChecksum": "sha256:1690e97abe1ab0151bec30084ae0ca9668fab355ecace2de7827a0aca106b23a",
   "contentVersion": 1,
-  "contentChecksum": "sha256:66a2e1ff58035a7299b62bcc5775adabbb4205a4aab6c778ec90132d4864e1a5"
+  "contentChecksum": "sha256:b00f4c86650b8c470b8abefe3f0dc1703720cee342a2066e45e903b455f44b9f"
 }

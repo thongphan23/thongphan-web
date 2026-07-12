@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 12,
   "topics": [
     "phan-doan",
@@ -42,9 +42,637 @@
       "Câu hỏi cuối của bài biến tư duy phản biện thành một câu hỏi về khao khát: mình muốn đúng, hay muốn thấy rõ?"
     ]
   },
+  "sections": [
+    {
+      "title": "Hai kiểu tư duy: người lính và người trinh sát",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi muốn các bạn tưởng tượng trong giây lát rằng mình là một người lính giữa trận chiến."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có thể bạn là một bộ binh La Mã, một cung thủ thời trung cổ, hoặc một chiến binh Zulu. Bất kể bạn thuộc thời đại nào, ở nơi nào, vẫn có vài điều không đổi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Adrenaline trong cơ thể bạn tăng cao. Hành động của bạn xuất phát từ những phản xạ đã ăn sâu vào bên trong — những phản xạ bắt nguồn từ nhu cầu bảo vệ bản thân, bảo vệ phe mình, và đánh bại kẻ thù."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bây giờ, tôi muốn các bạn tưởng tượng mình đang đóng một vai rất khác: người trinh sát."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Công việc của người trinh sát không phải là tấn công hay phòng thủ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Công việc của người trinh sát là thấu hiểu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người trinh sát là người đi ra ngoài, vẽ bản đồ địa hình, nhận diện những chướng ngại có thể xuất hiện. Người trinh sát có thể hy vọng phát hiện ra rằng, chẳng hạn, có một cây cầu ở vị trí thuận tiện để băng qua sông."
+        },
+        {
+          "kind": "highlight",
+          "text": "Nhưng trên hết, điều người trinh sát muốn biết là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thực tế ở đó có gì — một cách chính xác nhất có thể."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong một đội quân thật sự, cả người lính lẫn người trinh sát đều cần thiết."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng bạn cũng có thể xem mỗi vai trò này như một kiểu tư duy — một ẩn dụ cho cách tất cả chúng ta xử lý thông tin và ý tưởng trong đời sống hằng ngày."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều tôi muốn lập luận hôm nay là:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khả năng phán đoán tốt, dự đoán chính xác và đưa ra quyết định đúng phần lớn phụ thuộc vào việc bạn đang ở trong kiểu tư duy nào."
+        }
+      ]
+    },
+    {
+      "title": "Vụ Dreyfus và lý luận có động cơ",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Để minh họa hai kiểu tư duy này khi chúng hoạt động, tôi sẽ đưa các bạn quay lại nước Pháp thế kỷ 19, nơi một mảnh giấy trông rất bình thường đã châm ngòi cho một trong những bê bối chính trị lớn nhất trong lịch sử."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Mảnh giấy ấy được các sĩ quan trong Bộ Tổng tham mưu Pháp phát hiện vào năm 1894."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó đã bị xé nhỏ trong một sọt giấy vụn. Nhưng khi họ ghép nó lại, họ phát hiện ra rằng có ai đó trong hàng ngũ của mình đang bán bí mật quân sự cho Đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, họ mở một cuộc điều tra lớn."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và sự nghi ngờ của họ nhanh chóng tập trung vào một người: Alfred Dreyfus."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dreyfus có một hồ sơ rất trong sạch. Ông chưa từng có tiền sử sai phạm. Theo những gì họ biết, ông cũng không có động cơ rõ ràng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng Dreyfus là sĩ quan Do Thái duy nhất ở cấp bậc đó trong quân đội. Và thật không may, vào thời điểm ấy, quân đội Pháp có thái độ bài Do Thái rất nặng."
+        },
+        {
+          "kind": "highlight",
+          "text": "Họ so sánh chữ viết tay của Dreyfus với chữ trên bản ghi nhớ kia, rồi kết luận rằng chúng khớp nhau."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này xảy ra dù các chuyên gia chữ viết tay chuyên nghiệp bên ngoài lại không tự tin như vậy về sự tương đồng ấy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng thôi kệ điều đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ đến lục soát căn hộ của Dreyfus, tìm bất kỳ dấu hiệu gián điệp nào."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ lục tung hồ sơ của ông, nhưng không tìm thấy gì."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này lại càng khiến họ tin chắc hơn rằng Dreyfus không chỉ có tội, mà còn rất ranh mãnh. Bởi rõ ràng, theo họ, ông hẳn đã giấu hết mọi bằng chứng trước khi họ kịp tìm đến."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tiếp theo, họ đào sâu vào lịch sử cá nhân của ông để tìm bất kỳ chi tiết nào có thể buộc tội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ nói chuyện với các thầy giáo cũ của ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ phát hiện ra rằng ở trường, Dreyfus từng học ngoại ngữ — điều này, theo họ, rõ ràng cho thấy ông có mong muốn thông đồng với các chính phủ nước ngoài sau này."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các thầy giáo cũng nói rằng Dreyfus nổi tiếng là người có trí nhớ tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này cực kỳ đáng ngờ, đúng không?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì các bạn biết đấy, một gián điệp thì phải nhớ rất nhiều thứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vụ án được đưa ra xét xử, và Dreyfus bị kết tội."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, họ đưa ông ra một quảng trường công cộng, thực hiện nghi thức xé phù hiệu khỏi quân phục của ông, rồi bẻ đôi thanh kiếm của ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sự kiện này được gọi là Sự giáng cấp của Dreyfus."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Sau đó, họ kết án ông tù chung thân trên một nơi có cái tên rất phù hợp: Đảo Quỷ — một mỏm đá hoang cằn nằm ngoài khơi Nam Mỹ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Dreyfus bị đưa đến đó."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ở đó, ông sống những ngày tháng cô độc, viết hết lá thư này đến lá thư khác gửi chính phủ Pháp, cầu xin họ mở lại vụ án để có thể phát hiện ra sự vô tội của ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng phần lớn nước Pháp xem như vụ việc đã khép lại."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một điều khiến tôi thật sự thấy thú vị về vụ Dreyfus là câu hỏi này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì sao các sĩ quan lại tin chắc đến vậy rằng Dreyfus có tội?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ý tôi là, bạn thậm chí có thể cho rằng họ đang cố tình gài bẫy ông, cố tình dựng chuyện để hãm hại ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng các nhà sử học không nghĩ đó là điều đã xảy ra."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Theo những gì chúng ta biết, các sĩ quan ấy thật sự tin rằng vụ án chống lại Dreyfus là rất vững chắc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này khiến ta phải tự hỏi:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó nói gì về tâm trí con người, khi chúng ta có thể xem những bằng chứng yếu ớt như vậy là đủ thuyết phục để kết án một con người?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là một trường hợp của điều mà các nhà khoa học gọi là “lý luận có động cơ”."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là hiện tượng trong đó những động cơ vô thức, những mong muốn và nỗi sợ của chúng ta, định hình cách chúng ta diễn giải thông tin."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một số thông tin, một số ý tưởng, tạo cảm giác như đồng minh của ta. Ta muốn chúng thắng. Ta muốn bảo vệ chúng."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Còn những thông tin hay ý tưởng khác thì giống như kẻ thù. Và ta muốn bắn hạ chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, tôi gọi lý luận có động cơ là “tư duy người lính.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Có lẽ phần lớn các bạn chưa từng truy bức một sĩ quan Pháp gốc Do Thái vì tội phản quốc — tôi đoán vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng có thể các bạn từng theo dõi thể thao hoặc chính trị."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và có lẽ các bạn từng nhận ra điều này:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi trọng tài phán rằng đội của bạn phạm lỗi, bạn sẽ rất có động lực để tìm lý do chứng minh rằng ông ấy sai."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu trọng tài phán rằng đội đối thủ phạm lỗi thì sao?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tuyệt vời. Đó là một quyết định đúng. Không cần xem xét quá kỹ làm gì."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hoặc có thể bạn từng đọc một bài báo hay một nghiên cứu về một chính sách gây tranh cãi, chẳng hạn như án tử hình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Như các nhà nghiên cứu đã chỉ ra, nếu bạn ủng hộ án tử hình và nghiên cứu cho thấy án tử hình không hiệu quả, bạn sẽ rất có động lực để tìm mọi lý do vì sao nghiên cứu đó được thiết kế tệ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng nếu nghiên cứu cho thấy án tử hình có hiệu quả, thì đó là một nghiên cứu tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và ngược lại: nếu bạn không ủng hộ án tử hình, điều tương tự cũng xảy ra."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Phán đoán của chúng ta bị ảnh hưởng rất mạnh, một cách vô thức, bởi việc ta muốn bên nào thắng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều này xuất hiện ở khắp nơi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nó định hình cách chúng ta nghĩ về sức khỏe, các mối quan hệ, cách chúng ta quyết định bỏ phiếu, điều gì ta xem là công bằng hay có đạo đức."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều khiến tôi sợ nhất về lý luận có động cơ, hay tư duy người lính, là nó diễn ra vô thức đến mức nào."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta có thể nghĩ rằng mình đang khách quan và công tâm, nhưng cuối cùng vẫn có thể hủy hoại cuộc đời của một người vô tội."
+        }
+      ]
+    },
+    {
+      "title": "Picquart và động lực tìm sự thật",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tuy nhiên, may mắn cho Dreyfus, câu chuyện của ông chưa kết thúc ở đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đây là Đại tá Picquart."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông là một sĩ quan cấp cao khác trong quân đội Pháp. Và giống như hầu hết mọi người, ban đầu ông cũng cho rằng Dreyfus có tội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cũng giống như hầu hết người trong quân đội, ông ít nhiều cũng có thái độ bài Do Thái."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng đến một thời điểm, Picquart bắt đầu nghi ngờ:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Nếu tất cả chúng ta đều sai về Dreyfus thì sao?”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chuyện xảy ra là ông phát hiện ra bằng chứng cho thấy hoạt động gián điệp cho Đức vẫn tiếp tục, ngay cả sau khi Dreyfus đã bị bỏ tù."
+        },
+        {
+          "kind": "highlight",
+          "text": "Ông cũng phát hiện ra rằng có một sĩ quan khác trong quân đội có chữ viết tay khớp hoàn hảo với bản ghi nhớ kia — còn giống hơn rất nhiều so với chữ của Dreyfus."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, ông mang những phát hiện này báo cáo với cấp trên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng trước sự kinh ngạc và thất vọng của ông, họ hoặc không quan tâm, hoặc tạo ra những cách hợp lý hóa rất phức tạp để giải thích phát hiện của ông."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kiểu như:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“À, tất cả những gì anh thật sự chứng minh được, Picquart, là có một gián điệp khác đã học cách bắt chước chữ viết của Dreyfus. Và hắn đã tiếp tục công việc gián điệp sau khi Dreyfus rời đi. Nhưng Dreyfus vẫn có tội.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cuối cùng, Picquart đã xoay xở giúp Dreyfus được minh oan."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng việc đó mất đến 10 năm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và trong một phần thời gian ấy, chính Picquart cũng bị bỏ tù vì tội bất trung với quân đội."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhiều người cảm thấy Picquart không thể thật sự là người hùng của câu chuyện này, bởi ông là người bài Do Thái — và điều đó là xấu, tôi đồng ý."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng với cá nhân tôi, chính việc Picquart là người bài Do Thái lại khiến hành động của ông đáng ngưỡng mộ hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bởi ông có cùng thành kiến, cùng những lý do để thiên lệch như các sĩ quan khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng động lực tìm ra sự thật và bảo vệ sự thật của ông đã vượt lên trên tất cả những điều đó."
+        }
+      ]
+    },
+    {
+      "title": "Cảm xúc tạo ra phán đoán tốt",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Với tôi, Picquart là hình mẫu tiêu biểu cho điều tôi gọi là “tư duy người trinh sát.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó không phải là động lực khiến một ý tưởng này thắng và một ý tưởng khác thua."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Đó là động lực chỉ muốn nhìn thấy thực tế đúng như nó đang là, một cách trung thực và chính xác nhất có thể — ngay cả khi thực tế ấy không đẹp, không thuận tiện, hoặc không dễ chịu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Kiểu tư duy này là điều tôi đặc biệt quan tâm."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trong vài năm qua, tôi đã dành thời gian nghiên cứu và cố gắng tìm hiểu điều gì tạo ra tư duy người trinh sát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì sao một số người, ít nhất là trong một số thời điểm, có thể xuyên qua chính những định kiến, thiên kiến và động cơ của mình, để cố gắng nhìn vào sự thật và bằng chứng một cách khách quan nhất có thể?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và câu trả lời là: cảm xúc."
+        },
+        {
+          "kind": "highlight",
+          "text": "Cũng như tư duy người lính bắt nguồn từ những cảm xúc như phòng vệ hoặc tinh thần bộ lạc, tư duy người trinh sát cũng vậy."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chỉ là nó bắt nguồn từ những cảm xúc khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ, người trinh sát có tính tò mò."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ có nhiều khả năng nói rằng họ cảm thấy vui thích khi học được thông tin mới, hoặc cảm thấy ngứa ngáy muốn giải một câu đố."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ có nhiều khả năng cảm thấy bị cuốn hút khi gặp điều gì đó trái với kỳ vọng của mình."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Người trinh sát cũng có những giá trị khác."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Họ có nhiều khả năng nói rằng việc kiểm tra lại niềm tin của chính mình là một phẩm chất đáng quý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và họ ít có khả năng nói rằng một người thay đổi quan điểm là người yếu đuối."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Trên hết, người trinh sát có sự vững vàng bên trong."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó có nghĩa là giá trị bản thân của họ với tư cách một con người không bị buộc chặt vào việc họ đúng hay sai về một chủ đề cụ thể nào đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, họ có thể tin rằng án tử hình có hiệu quả."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu sau đó các nghiên cứu xuất hiện và cho thấy án tử hình không hiệu quả, họ có thể nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Ồ. Có vẻ như mình đã sai.”"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều đó không có nghĩa là tôi xấu xa hay ngu ngốc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Cụm đặc điểm này là điều mà các nhà nghiên cứu đã tìm thấy — và tôi cũng thấy qua trải nghiệm cá nhân — có khả năng dự đoán phán đoán tốt."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và điều quan trọng tôi muốn để lại cho các bạn về những đặc điểm ấy là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng chủ yếu không liên quan đến việc bạn thông minh đến đâu, hay bạn biết nhiều đến mức nào."
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Thật ra, chúng không tương quan nhiều với chỉ số IQ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng liên quan đến cách bạn cảm thấy."
+        }
+      ]
+    },
+    {
+      "title": "Câu hỏi cuối: bạn thật sự khao khát điều gì?",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Có một câu nói mà tôi luôn quay lại, của Saint-Exupéry, tác giả cuốn “Hoàng tử bé.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông nói:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "“Nếu bạn muốn đóng một con tàu, đừng hô hào mọi người đi gom gỗ, ra lệnh cho họ và phân chia công việc. Thay vào đó, hãy dạy họ khao khát biển cả mênh mông vô tận.”"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nói cách khác, tôi cho rằng:"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nếu chúng ta thật sự muốn cải thiện khả năng phán đoán của mình, với tư cách cá nhân cũng như xã hội, điều chúng ta cần nhất không phải là thêm các bài học về logic, hùng biện, xác suất hay kinh tế học — dù những thứ đó rất có giá trị."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng để sử dụng tốt những nguyên tắc ấy, điều chúng ta cần nhất là tư duy người trinh sát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cần thay đổi cách mình cảm nhận."
+        },
+        {
+          "kind": "highlight",
+          "text": "Chúng ta cần học cách cảm thấy tự hào, thay vì xấu hổ, khi nhận ra có thể mình đã sai về điều gì đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta cần học cách cảm thấy tò mò, thay vì phòng vệ, khi gặp một thông tin trái ngược với niềm tin của mình."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vì vậy, câu hỏi tôi muốn để lại cho các bạn là:"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Điều bạn thật sự khao khát nhất là gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Bạn khao khát bảo vệ niềm tin của chính mình?"
+        },
+        {
+          "kind": "pause",
+          "text": ""
+        },
+        {
+          "kind": "paragraph",
+          "text": "Hay bạn khao khát nhìn thế giới rõ ràng nhất có thể?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Xin cảm ơn."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 5,
   "legacyBlockCount": 149,
   "legacyBodyChecksum": "sha256:01b819ae8e90df98d42dc8729ebd19bcde01f304c853beae1a555b8c2e506ea3",
   "contentVersion": 1,
-  "contentChecksum": "sha256:83712777e8de1fac46f4d5b0df311a14d73ac1aa1884a738dd66cdba8ab22eab"
+  "contentChecksum": "sha256:d02a4c03f0005875271803403940ae0cc03f02ea85598c142345bf56ff2c311f"
 }

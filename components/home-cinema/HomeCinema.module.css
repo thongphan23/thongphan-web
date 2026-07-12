@@ -84,18 +84,28 @@
   z-index: 6;
 }
 
+.heroTextStack {
+  bottom: calc(var(--hero-film-height) + clamp(1.25rem, 2.5vh, 2rem));
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vh, 2rem);
+  left: clamp(1.5rem, 6.5vw, 6.5rem);
+  max-width: min(42rem, 47vw);
+  position: absolute;
+  top: clamp(6.5rem, 11vh, 8rem);
+  z-index: 4;
+}
+
 .displayName {
   color: var(--cinema-paper);
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(8.3rem, 11.55vw, 10.8rem);
   font-weight: 500;
-  left: clamp(1.5rem, 6.5vw, 6.5rem);
   letter-spacing: -0.058em;
   line-height: 0.78;
   margin: 0;
-  position: absolute;
+  position: relative;
   text-shadow: 0 2px 26px rgba(0, 0, 0, 0.35);
-  top: clamp(9.75rem, 15.4vh, 10.2rem);
   z-index: 1;
 }
 
@@ -133,11 +143,8 @@
 }
 
 .heroCopy {
-  bottom: calc(var(--hero-film-height) + clamp(2.5rem, 4.5vh, 4rem));
-  left: clamp(1.5rem, 6.7vw, 6.7rem);
-  max-width: min(39rem, 43vw);
-  position: absolute;
-  z-index: 4;
+  max-width: 39rem;
+  position: relative;
 }
 
 .heroCopy h1 {
@@ -831,8 +838,8 @@
     font-size: clamp(7.5rem, 15.5vw, 10.5rem);
   }
 
-  .heroCopy {
-    max-width: 48vw;
+  .heroTextStack {
+    max-width: 52vw;
   }
 
   .evidenceStamp {
@@ -863,15 +870,10 @@
     left: 0;
   }
 
-  .displayName {
-    left: 2rem;
-    top: 9rem;
-  }
-
-  .heroCopy {
-    bottom: calc(var(--hero-film-height) + 3.25rem);
+  .heroTextStack {
     left: 2rem;
     max-width: 72vw;
+    top: 8rem;
   }
 
   .evidenceStamp {
@@ -914,11 +916,12 @@
 
   .displayName {
     font-size: 6.6rem;
-    top: 7.5rem;
   }
 
-  .heroCopy {
+  .heroTextStack {
     bottom: calc(var(--hero-film-height) + 1rem);
+    gap: 1rem;
+    top: 6.5rem;
   }
 
   .heroCopy h1 {
@@ -977,25 +980,25 @@
     opacity: 0.42;
   }
 
-  .displayName {
-    font-size: clamp(5.7rem, 27vw, 8rem);
-    left: 1rem;
-    line-height: 0.69;
-    top: 7rem;
-  }
-
-  .evidenceStamp {
-    height: 8.2rem;
-    right: 0.8rem;
-    top: 18rem;
-    width: 8.2rem;
-  }
-
-  .heroCopy {
+  .heroTextStack {
     bottom: 282px;
+    gap: 1.1rem;
     left: 1.1rem;
     max-width: calc(100% - 2.2rem);
     right: 1.1rem;
+    top: 6.5rem;
+  }
+
+  .displayName {
+    font-size: clamp(5.7rem, 27vw, 8rem);
+    line-height: 0.69;
+  }
+
+  .evidenceStamp {
+    height: 7rem;
+    right: 1rem;
+    top: 34rem;
+    width: 7rem;
   }
 
   .heroCopy h1 {

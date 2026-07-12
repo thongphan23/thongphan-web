@@ -10,8 +10,8 @@
   "translator": null,
   "editor": null,
   "translatedAt": null,
-  "lastReviewedAt": "2026-07-10",
-  "rightsStatus": "source-link-only",
+  "lastReviewedAt": "2026-07-12",
+  "rightsStatus": "permission-confirmed",
   "minutes": 8,
   "topics": [
     "worldview",
@@ -42,9 +42,139 @@
       "Điểm đáng giữ là câu hỏi: nếu ý nghĩa do mình đặt vào, mình có thể lấy một ý nghĩa đang làm mình khổ ra khỏi sự việc không?"
     ]
   },
+  "sections": [
+    {
+      "title": "Mỗi chữ giống như một bài thơ nhỏ",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Chữ Hán nhìn có vẻ phức tạp, nhưng phần lớn chúng được tạo thành từ những chữ nhỏ hơn, đơn giản hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ví dụ: ngôn ngữ 语 = lời nói 讠 + năm 五 + miệng 口; cảm ơn 谢 = lời nói 讠 + cơ thể 身 + tấc 寸; em gái 妹 = phụ nữ 女 + chưa 未; bạn 你 = người 人 + cúi xuống 𠂉 + nhỏ bé 小; tên gọi 名 = buổi tối 夕 + miệng 口."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tôi rất thích học những chữ này, vì mỗi chữ giống như một bài thơ nhỏ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ngôn ngữ là những lời mà năm cái miệng cùng nói ra sao? Khi anh nói “cảm ơn”, có phải anh đang dùng lời nói để trao cho một cơ thể thêm một tấc không gian?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Tên của anh là thứ được một cái miệng nói ra vào buổi tối? Nghe cũng lãng mạn đấy chứ."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Những câu chuyện ấy sống động đến mức tôi cố hình dung ý nghĩa lịch sử hoặc văn hóa phía sau từng chữ."
+        }
+      ]
+    },
+    {
+      "title": "Người nghe tự tạo ý nghĩa",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Talking Heads là một ban nhạc tuyệt vời hoạt động từ năm 1975 đến 1988."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ca từ của họ gợi cảm và bí ẩn, vừa cụ thể vừa mơ hồ, khiến người nghe tự hỏi rốt cuộc chúng thật sự nói về điều gì."
+        },
+        {
+          "kind": "paragraph",
+          "text": "David Byrne, nhạc sĩ chính của Talking Heads, sau này nói rằng phần lớn ca từ của họ thật ra chỉ là ngẫu nhiên."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông viết những cụm từ nhỏ lên các mảnh giấy, thả chúng vào một cái bát, rồi xáo lên. Sau đó, ông ngẫu nhiên bốc vài mảnh ra khỏi bát và đưa chúng vào bài hát."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ông làm vậy vì thích cách người nghe tự tạo ra một ý nghĩa mà ban đầu không hề được chủ ý."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Khi nghe một cụm từ đứng cạnh một cụm từ khác, anh mặc định rằng chúng có liên hệ với nhau theo một cách có ý nghĩa. Nhưng không. Nó chỉ là ngẫu nhiên. Chính anh là người đã tự tạo ra ý nghĩa đó."
+        }
+      ]
+    },
+    {
+      "title": "Khi biết là ngẫu nhiên, ta vẫn chọn giữ câu chuyện",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Tôi mua một cuốn từ điển tiếng Trung để tìm hiểu ý nghĩa phía sau những chữ mình đang học."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và tôi phát hiện ra rằng rất nhiều chữ trong số đó chỉ mang tính ngữ âm."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Các thành phần cấu tạo nên chúng không được chọn vì ý nghĩa, mà được chọn chỉ vì âm đọc."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Vậy là hóa ra từ trước đến nay, tôi đã tự nhét ý nghĩa vào chúng. Thật ra bản thân chúng không có ý nghĩa đó."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng ngay cả khi biết vậy, tôi vẫn chọn tiếp tục làm điều ấy. Nó có chất thơ. Nó đẹp. Việc tạo ra câu chuyện giúp tôi ghi nhớ chúng."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Nhưng còn bao nhiêu thứ khác trong đời thật ra cũng chẳng có ý nghĩa gì?"
+        }
+      ]
+    },
+    {
+      "title": "Không có gì mang sẵn ý nghĩa nội tại",
+      "minutes": 2,
+      "blocks": [
+        {
+          "kind": "paragraph",
+          "text": "Cô ấy sinh ngày 12 tháng 4. Anh ấy sinh ngày 12 tháng 9. Điều đó có nghĩa gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một ngày nọ, anh đi xe đạp thay vì đi xe buýt. Đúng ngày hôm đó, chuyến xe buýt quen thuộc của anh gặp tai nạn lớn. Điều đó có nghĩa gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Một con mèo đen băng qua đường trước mặt anh, đúng lúc anh đang đi dưới một cái thang vào thứ Sáu ngày 13. Điều đó có nghĩa gì?"
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chẳng có nghĩa gì cả. Không có gì mang sẵn ý nghĩa nội tại. Nó là chính nó, vậy thôi."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Chúng ta chỉ chọn gán ý nghĩa lên mọi thứ. Tạo ra câu chuyện khiến ta thấy dễ chịu."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Ngay cả khi được đưa ra bằng chứng rằng một sự kiện hoàn toàn ngẫu nhiên hoặc trung tính, chúng ta vẫn quyết định rằng nó có ý nghĩa. Điều đó khiến đời sống trở nên thơ hơn và đẹp hơn."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Và nếu anh đã gán một ý nghĩa xấu nào đó lên một sự việc, rồi ý nghĩa ấy đang kéo anh xuống thì sao? Hãy biết rằng không điều nào trong đó là sự thật."
+        },
+        {
+          "kind": "paragraph",
+          "text": "Anh là người đã đặt ý nghĩa ấy vào nó. Và anh cũng có thể dễ dàng lấy toàn bộ ý nghĩa ấy ra khỏi nó."
+        }
+      ]
+    }
+  ],
   "legacySectionCount": 4,
   "legacyBlockCount": 26,
   "legacyBodyChecksum": "sha256:c7897cb51b4abe970f8ae72cbf6b0f1c7c3478d7779d20bfeda093d056ce2e74",
   "contentVersion": 1,
-  "contentChecksum": "sha256:254cd3776839075ec17ee08b08e459c4c572caecbcd6a66807ade8b46a46773b"
+  "contentChecksum": "sha256:8182ed8dcccee2dd7ee44c58cea18a5e35a07b4a31d2c9f65225f882ba6fef7f"
 }

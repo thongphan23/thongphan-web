@@ -6,92 +6,127 @@
       "id": "image-01",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feynman-richard_p.jpg/1280px-Feynman-richard_p.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feynman-richard_p.jpg/1280px-Feynman-richard_p.jpg",
+      "publicPath": "/images/readings/richard-feynman-cargo-cult-science/01-1280px-feynman-richard-p.jpg",
       "alt": "Richard Feynman trong một ảnh chân dung.",
       "caption": "Feynman biến bài phát biểu tốt nghiệp thành một lời nhắc về chính trực khoa học.",
       "credit": "Wikimedia Commons",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons",
+      "derivative": "01-1280px-feynman-richard-p.jpg",
+      "checksum": "sha256:9cba0f88f72afd99d6d0d8f859a7a544af9399efcc719091b8ce7228f488434a",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "richard-feynman-cargo-cult-science",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feynman-richard_p.jpg/1280px-Feynman-richard_p.jpg",
         "articleSourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-02",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Millikan%E2%80%99s_oil-drop_apparatus_1.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Millikan%E2%80%99s_oil-drop_apparatus_1.jpg",
+      "publicPath": "/images/readings/richard-feynman-cargo-cult-science/02-millikan-e2-80-99s-oil-drop-apparatus-1.jpg",
       "alt": "Thiết bị thí nghiệm giọt dầu của Millikan.",
       "caption": "Feynman dùng câu chuyện Millikan để nói về thiên lệch trong đo lường khoa học.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "02-millikan-e2-80-99s-oil-drop-apparatus-1.jpg",
+      "checksum": "sha256:5d1f81e030299475dc869ab05a80803d6603b1c1f8d4d24056fca141c2e2c2b8",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "richard-feynman-cargo-cult-science",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Millikan%E2%80%99s_oil-drop_apparatus_1.jpg",
         "articleSourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-03",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Richard_Feynman_1959.png/1280px-Richard_Feynman_1959.png",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Richard_Feynman_1959.png/1280px-Richard_Feynman_1959.png",
+      "publicPath": "/images/readings/richard-feynman-cargo-cult-science/03-1280px-richard-feynman-1959.png",
       "alt": "Richard Feynman năm 1959.",
       "caption": "Feynman ở giai đoạn đã trở thành một tiếng nói lớn của vật lý hiện đại, nhưng vẫn giữ phong cách chất vấn trực diện.",
       "credit": "Wikimedia Commons / Public domain",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / Public domain",
+      "derivative": "03-1280px-richard-feynman-1959.png",
+      "checksum": "sha256:8e551c82d16a412066155f9e405eff64305d3b83f27d5024c8153ce7f3141a0d",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "richard-feynman-cargo-cult-science",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Richard_Feynman_1959.png/1280px-Richard_Feynman_1959.png",
         "articleSourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-04",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/b/bc/MorrisWaterMaze.jpg",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/MorrisWaterMaze.jpg",
+      "publicPath": "/images/readings/richard-feynman-cargo-cult-science/04-morriswatermaze.jpg",
       "alt": "Một thí nghiệm mê cung nước dùng trong nghiên cứu hành vi.",
       "caption": "Các ví dụ về chuột và mê cung trong bài cho thấy thí nghiệm tốt phải kiểm soát manh mối thật sự.",
       "credit": "Wikimedia Commons / CC BY-SA",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY-SA",
+      "derivative": "04-morriswatermaze.jpg",
+      "checksum": "sha256:eb0c5b821b1da76e17e18e1ec83ea833426be95001cd10cf341964ebdce55890",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "richard-feynman-cargo-cult-science",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/b/bc/MorrisWaterMaze.jpg",
         "articleSourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm"
       },
-      "status": "pending-rights"
+      "status": "ready"
     },
     {
       "id": "image-05",
       "sourceLocation": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Tryon%27s_Rat_Graph.png",
       "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Tryon%27s_Rat_Graph.png",
+      "publicPath": "/images/readings/richard-feynman-cargo-cult-science/05-tryon-27s-rat-graph.png",
       "alt": "Một biểu đồ liên quan đến nghiên cứu hành vi trên chuột.",
       "caption": "Dữ liệu hành vi chỉ có ý nghĩa khi thiết kế thí nghiệm không tự đánh lừa người nghiên cứu.",
       "credit": "Wikimedia Commons / CC BY-SA",
-      "license": null,
-      "derivative": null,
-      "checksum": null,
-      "rightsEvidence": [],
+      "license": "Wikimedia Commons / CC BY-SA",
+      "derivative": "05-tryon-27s-rat-graph.png",
+      "checksum": "sha256:447f985c7cb190a17127b82642263e76eca9d62fee56ba8d020ff9b9f8caa2ec",
+      "rightsEvidence": [
+        {
+          "type": "permission",
+          "reference": "Owner directive 2026-07-12: restore the complete translated reader and editorial images previously published on read.thongphan.com",
+          "verifiedAt": "2026-07-12"
+        }
+      ],
       "provenance": {
         "legacyArticle": "richard-feynman-cargo-cult-science",
         "legacyLocation": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Tryon%27s_Rat_Graph.png",
         "articleSourceUrl": "https://calteches.library.caltech.edu/51/2/CargoCult.htm"
       },
-      "status": "pending-rights"
+      "status": "ready"
     }
   ],
-  "mediaChecksum": "sha256:78eae482833aba1ba0fa10871175aea79f2bcfcbceba43c62a692f26f5521978"
+  "mediaChecksum": "sha256:5607ec6b4ba214ce316a5dbe3067e40b5ceb22f05f242c467d6235b089be3b97"
 }
