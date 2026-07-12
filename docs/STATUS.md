@@ -15,6 +15,15 @@ remain in Task 15. Only the legacy
 the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
 Atmosphere remains complete and live.
 
+Task 15 has safely provisioned the isolated KV, D1 migration, two Keychain/Worker
+secrets, all 14 protected packages and access Worker version
+`524eacb7-4b1f-4f97-9e28-af2b4b6802ec`. Its production API smoke passes. Canonical
+Pages production and legacy retirement remain blocked: Cloudflare returned repeated
+521/522 responses for the signup Worker control plane and 522 for the read-only Pages
+preview. Cloudflare's official status API now lists unresolved incident
+`cbtmdg3gyx4z` for the affected Dashboard and customer APIs. Email remains undeployed
+because the available Brevo credential returns 401.
+
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
 - Approved story arc: difference → success → collapse → rebuilding → system. The HSTL

@@ -13,7 +13,11 @@ Last updated: 2026-07-12
 
 ## Local release-candidate verdict
 
-**PASS with two Task 15 deployment prerequisites still intentionally unresolved:** the dedicated production KV ID and the two generated Keychain secrets do not exist yet. The email Worker also remains inert because the existing Brevo credential has not passed provider health validation.
+**LOCAL RELEASE CANDIDATE PASS; PRODUCTION CUTOVER BLOCKED.** The dedicated KV,
+two Keychain/Worker secrets, protected packages and access Worker are now provisioned
+and smoked. Canonical Pages/signup cutover remains stopped by the Cloudflare
+control-plane incident. The email Worker remains inert because the available Brevo
+credential failed provider health validation and no replacement was found.
 
 No protected lesson body, raw access code, session secret, subscriber identity or authorized lesson screenshot is recorded in this report.
 
@@ -79,18 +83,50 @@ Evidence is outside the repository:
 - Private-package scan covers Git files, unignored files, `.next/static`, all `.next/**/*.map`, `out` and fresh Worker dry-run bundles.
 - The Task 14 diagnostic scanned `2,689` files against `6,882` protected fingerprints with zero hits and zero symlinks, including every `.next/server` artifact.
 - The explicit strict Task 15 mode fails closed unless both Keychain accounts exist. Both modes refuse Worker bundles older than the access source/config/manifest/runtime inputs.
-- Current strict CLI result is the expected Task 15 prerequisite failure: Keychain has neither `access-code` nor `session-secret`. The error is generic and disclosed no secret value.
+- At Task 14 closeout, strict mode deliberately failed because Keychain had neither
+  `access-code` nor `session-secret`; Task 15 has since provisioned both accounts and
+  passed the strict scan recorded below. Neither run disclosed a secret value.
 
 ## Task 15 production checklist
 
-- [ ] Create isolated `BRAIN2_PROTECTED_CONTENT` KV and patch the real ID.
-- [ ] Apply and read back D1 migration `0002_brain2_access_and_email_campaign.sql`.
-- [ ] Generate two high-entropy secrets, store raw values only in Keychain and upload only the code hash/session secret to the Worker.
-- [ ] Upload and checksum-readback all 14 immutable protected packages.
-- [ ] Run the strict private scan with two Keychain secrets and fresh Worker bundles.
-- [ ] Deploy and smoke the dedicated access Worker.
+- [x] Create isolated `BRAIN2_PROTECTED_CONTENT` KV and patch the real ID.
+- [x] Apply and read back D1 migration `0002_brain2_access_and_email_campaign.sql`.
+- [x] Generate two high-entropy secrets, store raw values only in Keychain and upload only the code hash/session secret to the Worker.
+- [x] Upload and checksum-readback all 14 immutable protected packages.
+- [x] Run the strict private scan with two Keychain secrets and fresh Worker bundles.
+- [x] Deploy and smoke the dedicated access Worker.
 - [ ] Deploy signup v2 before the first controlled signup.
 - [ ] Deploy Pages preview read-only, then production and smoke public/protected journeys.
-- [ ] Enable email only if a valid Brevo credential passes a controlled health/smoke check; otherwise keep cron and email routes undeployed.
+- [x] Evaluate Brevo health; credential is invalid, so keep cron and email routes undeployed.
 - [ ] Replace the legacy site with redirect-only content, remove legacy secret/bindings, delete the exact audited content-serving deployments and verify the redirect.
 - [ ] Record deployment IDs, production screenshots, rollback point and final pass/fail here.
+
+## Task 15 partial production evidence
+
+- Dedicated KV namespace provisioned and bound only as `BRAIN2_CONTENT`.
+- D1 migration applied once. Readback found all four new email columns, the access
+  table/index, both legacy-quarantine triggers, `210 legacy-v0 pending`, `0 v1` and
+  `0` access-failure rows.
+- Two raw credentials exist only as Keychain accounts under
+  `thongphan-brain2-access`; encrypted Worker secrets were created without printing
+  either value.
+- Strict scan: `2,690` files / `6,882` fingerprints / `2` Keychain secrets / zero
+  hits / zero symlinks.
+- Protected KV release: all 14 immutable day keys uploaded and byte/checksum-read back.
+- Access Worker version `524eacb7-4b1f-4f97-9e28-af2b4b6802ec` is live on exact apex/www
+  API routes. Production smoke passed `401 → 204 → 200`, day 08/day 21 checksums,
+  tampered-cookie rejection, the complete protected header set and global-router
+  bypass. Post-smoke D1 remains `0` access-failure rows and all 210 legacy rows remain
+  pending.
+- Email remains correctly undeployed: the only local legacy Brevo credential returns
+  HTTP 401 and no replacement was found in Keychain.
+- Production cutover is currently stopped by Cloudflare control-plane errors. Two
+  consecutive strict signup deploys returned HTTP 521 before artifact evaluation.
+  After Cloudflare marked that incident resolved, the read-only Pages preview returned
+  HTTP 522, a fresh strict signup deploy returned 522, and an immediately repeated
+  Worker-version diagnostic changed from 200 to 522. No signup row, v1 email row,
+  production Pages deployment or legacy deletion was created by those failures. See
+  `docs/STUCK_REPORT-2026-07-12-brain2-signup-deploy.md`.
+- Cloudflare's official status API subsequently opened unresolved incident
+  `cbtmdg3gyx4z` for the Dashboard and related customer APIs at
+  `2026-07-12T21:40Z`; both components were still degraded at the final status check.

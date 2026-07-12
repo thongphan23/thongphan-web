@@ -1066,15 +1066,15 @@ git commit -m "test: verify origin story and Brain2 release candidate"
 **Interfaces:**
 - Produces: dedicated KV release, dedicated auth Worker, email v2 Worker, canonical Pages release, legacy redirect-only deployment, deleted insecure deployments and production report.
 
-- [ ] **Step 1: Create isolated Cloudflare resources and apply migration**
+- [x] **Step 1: Create isolated Cloudflare resources and apply migration**
 
 Create a dedicated KV namespace `BRAIN2_PROTECTED_CONTENT`. Patch its actual ID into `wrangler.brain2-access.jsonc`. Apply `0002_brain2_access_and_email_campaign.sql` remotely, then read back schema/counts. Expected: 210 legacy rows remain pending with `campaign_version='legacy-v0'`; zero v1 rows before controlled signup.
 
-- [ ] **Step 2: Rotate secrets without exposing them**
+- [x] **Step 2: Rotate secrets without exposing them**
 
 Generate a high-entropy Conan Maker code and 32-byte session secret, store raw values only in macOS Keychain service `thongphan-brain2-access`, set only hash/session secrets on `thongphan-brain2-access-api`, and confirm `0203` is absent from repo/bundles.
 
-- [ ] **Step 3: Upload protected release and deploy auth Worker**
+- [x] **Step 3: Upload protected release and deploy auth Worker**
 
 Upload all 14 immutable keys, read back checksums, run the real-private leak scan, deploy with `wrangler deploy --strict`, and smoke:
 
@@ -1085,7 +1085,7 @@ Upload all 14 immutable keys, read back checksums, run the real-private leak sca
 - response contains no `X-TP-Router` and retains private/no-store;
 - Worker dev/preview hostname is unavailable.
 
-- [ ] **Step 4: Deploy email v2 without sending legacy rows**
+- [x] **Step 4: Deploy email v2 without sending legacy rows**
 
 Recover the existing Brevo key from an authorized source such as Keychain/password
 manager; the encrypted legacy Pages value cannot be read back and must never be
