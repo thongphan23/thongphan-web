@@ -4,13 +4,51 @@ Last updated: 2026-07-12
 
 ## Current phase
 
-**Motion Atmosphere spec is approved and implementation planning is complete.** The balanced
-direction adds persistent navigation, restrained projector light, fine-pointer
-response, opt-in hover depth and varied scroll choreography while keeping reading
-surfaces calm. The specification and measurable release boundaries are recorded in
-`docs/superpowers/specs/2026-07-12-motion-atmosphere-system-design.md`; the executable
-plan is `docs/superpowers/plans/2026-07-12-motion-atmosphere-system.md`. Implementation
-has not started; the existing production release remains unchanged.
+**Motion Atmosphere is a verified local release candidate.** The balanced system now
+adds persistent navigation, route-aware projector light, one fine-pointer runtime,
+opt-in hover/focus depth and varied GSAP choreography while keeping reading surfaces
+calm. Local functional, visual, accessibility, reduced-motion, bundle and content
+safety gates pass. Production deployment and custom-domain smoke remain pending.
+
+## Motion Atmosphere local release candidate — 2026-07-12
+
+- Unified navigation is fixed on desktop/mobile. It compacts after `24px` of scroll;
+  the homepage chapter bar remains directly below it and active-section tracking is
+  preserved.
+- Homepage hash navigation now reserves `8.5rem` desktop and `4.75rem` mobile, so a
+  pinned header cannot cover the destination. This was found in Browser QA, reproduced
+  at `#proof`, locked with a failing contract and verified after the fix.
+- One route-aware atmosphere runtime owns requestAnimationFrame-throttled pointer
+  coordinates, fine/coarse pointer detection, page-visibility pause and dynamic
+  reduced-motion teardown. Dark Cinema is full, indexes restrained and reader detail
+  is `ambient: none` with its keyframes stopped rather than merely hidden.
+- Approved CTAs, evidence cards, path rows, library lanes and chapter handoffs opt in
+  to lacquer light sweep, bounded depth and maximum `1.02` media scale. Article prose,
+  forms and reading bodies remain outside the effect boundary.
+- Existing GSAP is lazy-loaded only outside reduced-motion mode. Mask, fade and drift
+  reveals replace the uniform bottom-up entrance; approved homepage media uses at most
+  `18px` shallow parallax and all ScrollTriggers/contexts are torn down.
+- In-app Browser verified page identity, meaningful DOM, console health, screenshots,
+  homepage chapter interaction and the Library/reader journey. Responsive matrix used
+  local Playwright because the in-app Browser viewport is fixed and exposes no viewport
+  resize method.
+- Responsive QA covered `/`, `/library`, the Steve Jobs full reader, `/about` and
+  `/diagnostic` across 14 desktop/mobile/reduced-motion cases including `1440x900`,
+  `1280x720`, `390x844` and `320x568`: fixed header at top/mid-page, zero hero
+  nav/title or CTA/film collisions, zero horizontal overflow, zero broken loaded
+  images and zero relevant console warning/error.
+- Interaction QA: pointer CSS coordinates update; CTA sweep remains hit-testable;
+  keyboard focus is a visible 3px solid outline and Enter reaches `/diagnostic`;
+  mobile menu focuses Close, locks body scroll, closes with Escape and restores focus;
+  simulated page visibility pauses ambient animation. Reduced-motion and coarse
+  pointer modes both disable pointer response; reader ambient animation is `none`.
+- Fresh verification: `npm test` 115/115, `npx tsc --noEmit`, static build 61/61,
+  release contracts 10/10, Read safety 3/3 and `git diff --check` passed.
+- Evidence: `/tmp/thongphan-motion-atmosphere-qa/report.json`,
+  `/tmp/thongphan-motion-atmosphere-qa/home-hover-1280x720.png`,
+  `/tmp/thongphan-motion-home-390x844.png`,
+  `/tmp/thongphan-motion-library-1440x900.png` and
+  `/tmp/thongphan-motion-steve-jobs-2005-stanford-commencement-address-390x844.png`.
 
 **Hero vertical-layer rescue is complete and live.** Production measurements on
 2026-07-12 found that the chapter menu ended at `128px` while the display name began
