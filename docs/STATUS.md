@@ -5,12 +5,12 @@ Last updated: 2026-07-12
 ## Current phase
 
 **Origin Story + 21 ngày Brain2 is in isolated-worktree implementation.** The public
-hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI and
-the dedicated protected-content Worker are locally complete. Private publishing,
-email v2, the five-act story, cross-site wiring, full QA and production cutover remain
-in later slices. Only the legacy 21-day challenge is being consolidated; the private
-Brain2 vault, chat and standalone app remain explicitly excluded. Motion Atmosphere
-remains complete and live.
+hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
+the dedicated protected-content Worker and its private release gate are locally
+complete. Email v2, the five-act story, cross-site wiring, full QA and production
+cutover remain in later slices. Only the legacy 21-day challenge is being consolidated;
+the private Brain2 vault, chat and standalone app remain explicitly excluded. Motion
+Atmosphere remains complete and live.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
@@ -90,6 +90,19 @@ remains complete and live.
   Minor after TDD fixes for chunked-body buffering, mixed-candidate concurrency and
   D1 release failure. The tracked KV ID remains a deliberate non-deployable placeholder;
   no remote resource, migration, secret or Worker was changed in this slice.
+- The private release gate now validates all 14 outside-repository packages, refuses
+  reused release prefixes, uploads only by file path, reads every KV value back as raw
+  bytes and compares both byte equality and SHA-256. Live publish also requires the
+  supplied namespace ID to match the provisioned `BRAIN2_CONTENT` binding; the tracked
+  placeholder cannot be used accidentally.
+- The companion scanner compares protected display-unit fingerprints against tracked
+  and non-ignored files, `.next/static`, `out`, source maps and the Worker bundle. It
+  also supports in-memory exact scans for the future raw access/session secrets from
+  Keychain without printing them. Task 7 verification: focused 9/9, full 171/171,
+  TypeScript pass, real-package dry-run 14/14 and a real scan of 1,746 files against
+  6,882 normalized fingerprints with zero hits/symlinks. Independent review ended at
+  0 Critical/0 Important/0 Minor. No KV or other remote state was touched; Task 15
+  must rerun with `--require-keychain-secrets` after provisioning.
 
 ## Motion Atmosphere production release — 2026-07-12
 
