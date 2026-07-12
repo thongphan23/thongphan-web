@@ -16,9 +16,30 @@ type SiteHeaderProps = {
 export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('story')
+  const [scrolled, setScrolled] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const isHomepage = pathname === '/'
   const isLibrary = pathname.startsWith('/library')
+
+  useEffect(() => {
+    let frame = 0
+
+    const update = () => {
+      frame = 0
+      setScrolled(window.scrollY > 24)
+    }
+
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', schedule)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
 
   useEffect(() => {
     if (!isHomepage) return
@@ -41,7 +62,11 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   }, [isHomepage])
 
   return (
-    <header className={styles.cinemaHeader} data-route-mode={mode}>
+    <header
+      className={styles.cinemaHeader}
+      data-route-mode={mode}
+      data-header-scrolled={scrolled}
+    >
       <div className={styles.cinemaHeaderInner}>
         <Link
           href={isLibrary ? '/library' : '/'}

@@ -86,31 +86,53 @@
 }
 
 .cinemaHeader {
-  background: linear-gradient(180deg, rgba(7, 7, 6, 0.86), transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(1.08);
+  backdrop-filter: blur(16px) saturate(1.08);
+  background: rgba(7, 7, 6, 0.68);
+  border-bottom: 1px solid transparent;
   color: var(--brand-paper);
   left: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
+  transition:
+    background-color 220ms var(--brand-motion-ease),
+    border-color 220ms var(--brand-motion-ease),
+    box-shadow 220ms var(--brand-motion-ease);
   z-index: 400;
 }
 
 .cinemaHeader[data-route-mode='editorial-light'] {
-  background: var(--brand-ink);
+  background: rgba(7, 7, 6, 0.97);
   border-bottom: 1px solid var(--brand-line-dark);
-  position: relative;
 }
 
 .cinemaHeader[data-route-mode='evidence-dossier'] {
-  background: var(--brand-ink);
+  background: rgba(7, 7, 6, 0.94);
   border-bottom: 1px solid var(--brand-line-dark);
-  position: relative;
 }
 
 .cinemaHeader[data-route-mode='learning-dossier'] {
-  background: var(--brand-ink);
+  background: rgba(7, 7, 6, 0.94);
   border-bottom: 1px solid var(--brand-line-dark);
-  position: relative;
+}
+
+.cinemaHeader[data-header-scrolled='true'] {
+  background: rgba(7, 7, 6, 0.95);
+  border-bottom-color: rgba(224, 75, 67, 0.24);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+.cinemaHeader[data-header-scrolled='true'] .cinemaHeaderInner {
+  min-height: 70px;
+}
+
+.siteShell[data-site-shell='unified'][data-homepage='false'] .cinemaMain {
+  padding-top: 82px;
+}
+
+.siteShell[data-route-mode='editorial-light'][data-homepage='false'] .cinemaMain {
+  padding-top: 96px;
 }
 
 .cinemaHeader[data-route-mode='editorial-light'] .cinemaHeaderInner {
@@ -134,6 +156,7 @@
   justify-content: space-between;
   min-height: 82px;
   padding: 0 var(--brand-space-inline);
+  transition: min-height 220ms var(--brand-motion-ease);
 }
 
 .cinemaWordmark {
@@ -385,27 +408,14 @@
 }
 
 @media (max-width: 900px) {
-  .siteShell[data-route-mode='evidence-dossier'] .cinemaMain {
-    padding-top: 64px;
-  }
-
-  .siteShell[data-route-mode='learning-dossier'] .cinemaMain {
+  .siteShell[data-site-shell='unified'][data-homepage='false'] .cinemaMain,
+  .siteShell[data-route-mode='editorial-light'][data-homepage='false'] .cinemaMain {
     padding-top: 64px;
   }
 
   .cinemaHeader {
     background: rgba(7, 7, 6, 0.94);
     border-bottom: 1px solid var(--brand-line-dark);
-    position: fixed;
-  }
-
-  .cinemaHeader[data-route-mode='editorial-light'] {
-    position: fixed;
-  }
-
-  .cinemaHeader[data-route-mode='evidence-dossier'],
-  .cinemaHeader[data-route-mode='learning-dossier'] {
-    position: fixed;
   }
 
   .cinemaHeader[data-route-mode='editorial-light'] .cinemaHeaderInner {
@@ -429,6 +439,10 @@
     gap: 0.5rem;
     min-height: 64px;
     padding: 0 1rem;
+  }
+
+  .cinemaHeader[data-header-scrolled='true'] .cinemaHeaderInner {
+    min-height: 64px;
   }
 
   .desktopNav,
@@ -461,7 +475,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cinemaHeader,
+  .cinemaHeaderInner,
   .chapterNav a::after {
     transition: none;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .cinemaHeader {
+    background: rgba(7, 7, 6, 0.96);
   }
 }

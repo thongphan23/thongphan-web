@@ -89,6 +89,7 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
       className={`${styles.siteShell} ${isUnified ? '' : legacyFontClassName}`}
       data-route-mode={mode}
       data-site-shell={isUnified ? 'unified' : 'legacy'}
+      data-homepage={pathname === '/'}
     >
       <div
         className={isUnified ? styles.cinemaProgress : defaultStyles.scrollProgress}

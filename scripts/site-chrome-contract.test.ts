@@ -58,6 +58,24 @@ test('unified shell is route-mode themed while legacy routes keep their old shel
   assert.equal((footer.match(/<footer\b/g) ?? []).length, 1)
 })
 
+test('unified navigation stays pinned with route-safe content offsets', async () => {
+  const chrome = await readProjectFile('components/site-chrome/SiteChrome.tsx')
+  const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
+  const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
+
+  assert.match(header, /data-header-scrolled=\{scrolled\}/)
+  assert.match(header, /window\.addEventListener\('scroll',[\s\S]*?passive:\s*true/)
+  assert.match(header, /window\.requestAnimationFrame\(update\)/)
+  assert.match(chrome, /data-homepage=\{pathname === '\/'\}/)
+  assert.match(css, /\.cinemaHeader\s*\{[\s\S]*?position:\s*fixed/)
+  assert.match(css, /\.cinemaHeader\[data-header-scrolled='true'\]\s*\{/)
+  assert.match(
+    css,
+    /\.siteShell\[data-site-shell='unified'\]\[data-homepage='false'\] \.cinemaMain\s*\{[\s\S]*?padding-top:\s*82px/,
+  )
+  assert.match(css, /@media \(max-width:\s*900px\)[\s\S]*?padding-top:\s*64px/)
+})
+
 test('mobile menu traps focus, closes with Escape, locks scroll, and restores focus', async () => {
   const menu = await readProjectFile('components/site-chrome/MobileMenu.tsx')
   const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
