@@ -1141,7 +1141,7 @@ body-free `301` for root/path/API. Main tests pass `211/211`, Brain2 `143/143`, 
 `3/3`, strict private scan covers `2,692` files with zero hits/symlinks, and the
 production build still exports `82/82` routes.
 
-- [ ] **Step 9: Commit, integrate and push production evidence**
+- [x] **Step 9: Commit, integrate and push production evidence**
 
 ```bash
 git add wrangler.brain2-access.jsonc wrangler.brain2-email.toml docs/STATUS.md docs/BRAIN2_21_DAY_PRODUCTION_RELEASE_REPORT.md
@@ -1157,3 +1157,9 @@ git push origin main:master
 ```
 
 Expected: remote `master` equals local release-evidence commit; `https://thongphan.com` is canonical; legacy domain is redirect-only; old immutable deployments are gone; no known acceptance criterion remains open.
+
+The feature branch was fast-forwarded into the original `main` worktree without
+staging its pre-existing `tsconfig.tsbuildinfo` or four Conan Maker assets. After
+`npm ci` synchronized the main worktree to the committed lockfile, merged-result
+tests passed `211/211` plus retirement `11/11`. Push readback confirmed remote
+`master` exactly matched the integrated release commit before this closeout note.
