@@ -1,10 +1,9 @@
 import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
-import { access, cp, mkdtemp, rm } from 'node:fs/promises'
+import { access, cp, mkdir, rename, rm, writeFile } from 'node:fs/promises'
 import { createServer } from 'node:net'
-import { realpathSync } from 'node:fs'
 import { join } from 'node:path'
-import { tmpdir } from 'node:os'
+import { hostname } from 'node:os'
 import { fileURLToPath } from 'node:url'
 import {
   assertAlignedControls,
@@ -16,20 +15,103 @@ import {
 
 const repo = fileURLToPath(new URL('../', import.meta.url))
 const out = join(repo, 'out')
+const lock = join(repo, '.learn-pages-preview.lock')
+const workspace = join(lock, 'workspace')
+const ownerFile = join(lock, 'owner.json')
+const originalOut = join(workspace, 'original-out')
+const disabledArtifact = join(workspace, 'build-disabled')
+const enabledArtifact = join(workspace, 'build-enabled')
 const wrangler = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url))
 const learnRoutes = ['/learn', '/learn/free']
+const activeChildren = new Set()
+let lockOwned = false
+let originalStateCaptured = false
+let hadOriginalOut = false
+let initializationPromise
+let cleanupPromise
+let signalExitCode
 
 async function exists(path) {
   try { await access(path); return true } catch { return false }
 }
 
+async function acquireLock() {
+  try {
+    await mkdir(lock, { mode: 0o700 })
+    lockOwned = true
+  } catch (error) {
+    if (error?.code !== 'EEXIST') throw error
+    throw new Error(
+      `Learn Pages preview matrix already running or its lock is stale: ${lock}. `
+      + 'This runner did not modify the lock. Inspect owner.json, verify the recorded PID is inactive, '
+      + 'restore workspace/original-out when present, then remove the lock manually.',
+    )
+  }
+
+  await writeFile(ownerFile, `${JSON.stringify({
+    pid: process.pid,
+    hostname: hostname(),
+    startedAt: new Date().toISOString(),
+    command: 'npm run test:learn-pages-preview',
+  }, null, 2)}\n`, { mode: 0o600 })
+  await mkdir(workspace, { mode: 0o700 })
+}
+
+async function captureOriginalOut() {
+  hadOriginalOut = await exists(out)
+  if (hadOriginalOut) await rename(out, originalOut)
+  originalStateCaptured = true
+  await writeFile(ownerFile, `${JSON.stringify({
+    pid: process.pid,
+    hostname: hostname(),
+    startedAt: new Date().toISOString(),
+    command: 'npm run test:learn-pages-preview',
+    hadOriginalOut,
+    snapshot: hadOriginalOut ? 'workspace/original-out' : null,
+  }, null, 2)}\n`, { mode: 0o600 })
+}
+
+function childExited(child) {
+  return child.exitCode !== null || child.signalCode !== null
+}
+
+function signalChild(child, signal) {
+  if (childExited(child)) return
+  try {
+    if (child.spawnargs && process.platform !== 'win32') process.kill(-child.pid, signal)
+    else child.kill(signal)
+  } catch (error) {
+    if (error?.code !== 'ESRCH') throw error
+  }
+}
+
+function spawnOwned(command, args, options) {
+  if (signalExitCode) throw new Error('Learn Pages preview matrix interrupted')
+  const child = spawn(command, args, {
+    ...options,
+    detached: process.platform !== 'win32',
+  })
+  activeChildren.add(child)
+  const forget = () => activeChildren.delete(child)
+  child.once('exit', forget)
+  child.once('error', forget)
+  return child
+}
+
+async function waitForChild(child) {
+  return new Promise((resolve, reject) => {
+    child.once('error', reject)
+    child.once('exit', (code, signal) => resolve({ code, signal }))
+  })
+}
+
 async function runBuild(enabled) {
-  const child = spawn('npm', ['run', 'build'], {
+  const child = spawnOwned('npm', ['run', 'build'], {
     cwd: repo,
     env: { ...process.env, NEXT_PUBLIC_LEARN_PUBLIC_ENABLED: enabled ? 'true' : 'false' },
     stdio: 'inherit',
   })
-  const code = await new Promise((resolve) => child.once('exit', resolve))
+  const { code } = await waitForChild(child)
   if (code !== 0) throw new Error(`${enabled ? 'enabled' : 'disabled'} Learn build failed (${code})`)
 }
 
@@ -58,20 +140,29 @@ async function waitUntilReady(base, child, output) {
 }
 
 async function stop(child) {
-  if (child.exitCode !== null) return
-  child.kill('SIGTERM')
-  await Promise.race([
-    new Promise((resolve) => child.once('exit', resolve)),
-    new Promise((resolve) => setTimeout(resolve, 3_000)),
-  ])
-  if (child.exitCode === null) child.kill('SIGKILL')
+  if (childExited(child)) return
+  signalChild(child, 'SIGTERM')
+  await new Promise((resolve) => {
+    if (childExited(child)) return resolve()
+    const finish = () => {
+      clearTimeout(timeout)
+      child.off('exit', finish)
+      resolve()
+    }
+    const timeout = setTimeout(finish, 3_000)
+    child.once('exit', finish)
+  })
+  if (!childExited(child)) {
+    signalChild(child, 'SIGKILL')
+    await new Promise((resolve) => child.once('exit', resolve))
+  }
 }
 
 async function withPreview(artifact, runtimeFlag, verify) {
   const port = await openPort()
   const args = [wrangler, 'pages', 'dev', artifact, '--ip', '127.0.0.1', '--port', String(port), '--log-level', 'error']
   if (runtimeFlag !== undefined) args.push('--binding', `LEARN_PUBLIC_ENABLED=${runtimeFlag}`)
-  const child = spawn(process.execPath, args, { cwd: repo, env: { ...process.env, CI: '1' }, stdio: ['ignore', 'pipe', 'pipe'] })
+  const child = spawnOwned(process.execPath, args, { cwd: repo, env: { ...process.env, CI: '1' }, stdio: ['ignore', 'pipe', 'pipe'] })
   const output = { value: '' }
   child.stdout.on('data', (chunk) => { output.value += chunk })
   child.stderr.on('data', (chunk) => { output.value += chunk })
@@ -98,14 +189,40 @@ async function assertRuntimeDisabled(base) {
   }
 }
 
-const temp = await mkdtemp(join(realpathSync(tmpdir()), 'thongphan-learn-pages-preview-smoke-'))
-const originalOut = join(temp, 'original-out')
-const disabledArtifact = join(temp, 'build-disabled')
-const enabledArtifact = join(temp, 'build-enabled')
-const hadOriginalOut = await exists(out)
+async function cleanupOwnedState() {
+  if (!lockOwned) return
+  if (cleanupPromise) return cleanupPromise
+  cleanupPromise = (async () => {
+    await Promise.all([...activeChildren].map(stop))
+    if (initializationPromise) {
+      try { await initializationPromise } catch {}
+    }
+    if (originalStateCaptured) {
+      await rm(out, { recursive: true, force: true })
+      if (hadOriginalOut) await rename(originalOut, out)
+    }
+    await rm(lock, { recursive: true, force: true })
+    lockOwned = false
+  })()
+  return cleanupPromise
+}
+
+function handleSignal(signal) {
+  if (signalExitCode) return
+  signalExitCode = signal === 'SIGINT' ? 130 : 143
+  void cleanupOwnedState().catch(() => {})
+}
+
+const onSigint = () => handleSignal('SIGINT')
+const onSigterm = () => handleSignal('SIGTERM')
 
 try {
-  if (hadOriginalOut) await cp(out, originalOut, { recursive: true })
+  await acquireLock()
+  process.on('SIGINT', onSigint)
+  process.on('SIGTERM', onSigterm)
+  initializationPromise = captureOriginalOut()
+  await initializationPromise
+  if (signalExitCode) throw new Error('Learn Pages preview matrix interrupted')
 
   await runBuild(false)
   await cp(out, disabledArtifact, { recursive: true })
@@ -161,8 +278,12 @@ try {
   }
 
   console.log('Learn Pages build/runtime matrix passed: 2 artifacts, 6 runtime pairs, mismatches rejected')
+} catch (error) {
+  if (!signalExitCode) throw error
 } finally {
-  await rm(out, { recursive: true, force: true })
-  if (hadOriginalOut) await cp(originalOut, out, { recursive: true })
-  await rm(temp, { recursive: true, force: true })
+  await cleanupOwnedState()
+  process.off('SIGINT', onSigint)
+  process.off('SIGTERM', onSigterm)
 }
+
+if (signalExitCode) process.exitCode = signalExitCode
