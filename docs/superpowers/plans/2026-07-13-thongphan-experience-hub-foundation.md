@@ -801,14 +801,14 @@ Run:
 node --import tsx --test scripts/site-journey.test.ts scripts/site-chrome-contract.test.ts
 ```
 
-Expected: FAIL because `experiences` and `getPrimaryNavigation` do not exist.
+Expected: FAIL because the retired `challenges` journey key still exists and `getPrimaryNavigation` does not exist.
 
 - [ ] **Step 3: Update the journey model**
 
 In `lib/site-journey.ts`:
 
 1. Remove the retired `JourneyKey` member `'challenges'`; preserve the existing `'experiences'` member added by Task 2.
-2. Replace `actions.challenges` with:
+2. Verify `actions.experiences`, moved forward by Task 3 for canonical-link safety, matches:
 
 ```ts
 experiences: {
@@ -819,7 +819,7 @@ experiences: {
 },
 ```
 
-3. Change the `asset-detail` primary action to `actions.experiences`.
+3. Verify `asset-detail.primary` already uses `actions.experiences`; do not add a second action.
 4. Verify the existing hub handoff still matches this exact final contract; do not add a duplicate:
 
 ```ts
