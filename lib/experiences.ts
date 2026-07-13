@@ -111,9 +111,12 @@ export const experiences: readonly ExperienceDefinition[] = [
   },
 ]
 
-export function getPublishedExperiences({ includeLearn }: { includeLearn: boolean }) {
+export function getPublishedExperiences({ includeLearn }: { includeLearn: boolean }): readonly ExperienceDefinition[] {
   return experiences.filter((experience) =>
     experience.status === 'published'
-      && (experience.availability === 'always' || includeLearn),
+      && (
+        experience.availability === 'always'
+        || (experience.availability === 'learn-public' && includeLearn)
+      ),
   )
 }

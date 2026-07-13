@@ -1,305 +1,156 @@
-# Task 1 Report — Unified Cinema Foundation
+# Task 1 Report — Versioned Public Experience Registry
 
 ## Status
 
-**PASS** for the Task 1 implementation and automated acceptance gates.
+DONE
 
-Interactive in-app Browser QA was unavailable in the implementer session and was completed by the controller; evidence is recorded below. No Playwright or Chrome fallback was used.
+Commit: `b41622ed371e254e40b3edb32283b92a8b2c87c4`
 
-## Scope delivered
+## Những gì đã làm
 
-- Added the shared Cinema semantic tokens, focus, spacing, and motion primitives.
-- Root preloads only Be Vietnam Pro. Cormorant Garamond and Newsreader are non-preloaded for the unified shell; Inter, Lora, and JetBrains Mono are non-preloaded and scoped only to disabled legacy routes during migration.
-- Added the exact-first/prefix-second route-mode matcher.
-- Kept `isUnifiedRouteEnabled(pathname)` homepage-only.
-- Split universal navigation, header, accessible mobile dialog, and footer into focused components.
-- Added the complete five-link primary navigation and homepage-only chapter navigation.
-- Preserved the legacy Default shell, Garden atmosphere, CSS logo mark, and `app/layout.module.css` for every route except `/`.
-- Added `lucide-react` as a production dependency and used direct Menu, X, and ArrowRight imports only.
-- Preserved the canonical `/conanmaker/` trailing slash with raw anchors for the standalone static bundle.
+- Tạo registry thuần TypeScript tại `lib/experiences.ts` với các type công khai `ExperienceDefinition`, `ExperienceType`, `ExperienceAvailability`, `ExperienceAccess`, `ExperienceStatus`.
+- Khai báo đúng ba experience có version `1.0.0`: `expertise-asset-map`, `brain2-21-days`, `ai-foundation`.
+- Thêm `getPublishedExperiences({ includeLearn })` theo fail-closed release gate: hai experience `always` luôn public; `ai-foundation` chỉ xuất hiện khi `includeLearn: true`.
+- Giữ nguyên văn toàn bộ nội dung, route, access copy và metadata media theo brief.
+- Thêm contract test vào `scripts/experience-registry.test.ts` và nối test này vào `package.json` ngay trước `scripts/site-journey.test.ts`.
+- Không sửa repo/worktree Learn và không triển khai Task 2 trở đi.
 
-## RED evidence
-
-### Route matcher
+## TDD — RED
 
 Command:
 
-```text
-npx tsx --test scripts/site-route-mode.test.ts
+```bash
+node --import tsx --test scripts/experience-registry.test.ts
 ```
 
-Observed RED:
+Kết quả liên quan: exit code `1`, failure đúng nguyên nhân expected:
 
-- exit code `1`;
-- `ERR_MODULE_NOT_FOUND` for `../lib/site-route-mode`;
-- failure occurred before `lib/site-route-mode.ts` existed, as intended.
+```text
+Error: Cannot find module '../lib/experiences'
+code: 'MODULE_NOT_FOUND'
+not ok 1 - scripts/experience-registry.test.ts
+# pass 0
+# fail 1
+```
 
-### Mobile and shell contract
+## TDD — GREEN
 
 Command:
 
-```text
-npx tsx --test scripts/site-chrome-contract.test.ts scripts/homepage-cinematic-contract.test.mjs
+```bash
+node --import tsx --test scripts/experience-registry.test.ts
 ```
 
-Observed RED:
-
-- exit code `1`;
-- 10 existing checks passed and 6 new checks failed;
-- failures identified the absent navigation module, unified component split, mobile dialog contract, 44px width contract, root font/token contract, and Lucide dependency.
-
-### Standalone trailing-slash regression
-
-Static export inspection showed Next `<Link>` normalized `/conanmaker/` to `/conanmaker`. A regression test was added first:
+Kết quả: exit code `0`.
 
 ```text
-npx tsx --test scripts/site-chrome-contract.test.ts
+ok 1 - registry exposes stable versioned experiences with complete user-facing contracts
+ok 2 - Learn is fail-closed while always-available experiences remain public
+ok 3 - current Brain2 access copy stays truthful
+# tests 3
+# pass 3
+# fail 0
 ```
 
-Observed RED: 6 passed, 1 failed because the universal chrome did not yet use a canonical raw anchor for the standalone bundle.
+TypeScript:
 
-## GREEN evidence
-
-### Focused route matcher
-
-```text
-npx tsx --test scripts/site-route-mode.test.ts
-```
-
-Result: 2/2 passed.
-
-### Focused shell suite
-
-```text
-npx tsx --test scripts/site-route-mode.test.ts scripts/site-chrome-contract.test.ts scripts/homepage-cinematic-contract.test.mjs
-```
-
-Result: 18/18 passed before the later trailing-slash regression was added.
-
-After the trailing-slash fix:
-
-```text
-npx tsx --test scripts/site-chrome-contract.test.ts
-```
-
-Result: 7/7 passed.
-
-## Final verification
-
-```text
-npm test
-```
-
-- exit code `0`;
-- 27/27 tests passed.
-
-```text
+```bash
 npx tsc --noEmit
 ```
 
-- exit code `0`;
-- no diagnostics.
+Kết quả: exit code `0`, không có diagnostic. File cache `tsconfig.tsbuildinfo` bị TypeScript cập nhật trong lúc kiểm tra đã được phục hồi đúng HEAD và không nằm trong diff Task 1.
 
-```text
-npm run build
+## Full test suite
+
+Command:
+
+```bash
+npm test
 ```
 
-- exit code `0`;
-- production compilation and TypeScript checks passed;
-- 38 static pages generated;
-- expected route table included `/`, `/library`, and `/diagnostic`.
-
-`git diff --check` also passed with no whitespace errors.
-
-## Browser and export evidence
-
-The in-app Browser runtime initialized, but selecting the requested surface returned exactly:
+Kết quả: exit code `0`.
 
 ```text
-Browser is not available: iab
+# tests 214
+# pass 214
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
 ```
 
-Per the task constraint, no Playwright or Chrome fallback was used. Keyboard interaction and visual screenshots are therefore deferred to the controller.
+## Files changed
 
-Fresh static-export inspection confirmed:
-
-- `/`: `data-site-shell="unified"`, `data-route-mode="cinema-dark"`, exactly one `<main>`, primary and chapter navigation landmarks, and canonical `/conanmaker/` links in the universal chrome;
-- `/library`: `data-site-shell="legacy"`, `data-route-mode="editorial-light"`, legacy Garden atmosphere and logo mark retained;
-- `/diagnostic`: `data-site-shell="legacy"`, `data-route-mode="evidence-dossier"`, legacy Garden atmosphere and logo mark retained.
-
-Per the approved Task 1 boundary, `/library` and `/diagnostic` are regression checks only. Their route-specific landmark/mobile-shell migration remains for the later slice that enables each route family.
-
-## Files
-
-Created:
-
-- `styles/brand-tokens.css`
-- `lib/site-route-mode.ts`
-- `components/site-chrome/site-navigation.ts`
-- `components/site-chrome/SiteHeader.tsx`
-- `components/site-chrome/MobileMenu.tsx`
-- `components/site-chrome/SiteFooter.tsx`
-- `scripts/site-route-mode.test.ts`
-- `scripts/site-chrome-contract.test.ts`
-
-Modified:
-
-- `components/site-chrome/SiteChrome.tsx`
-- `components/site-chrome/SiteChrome.module.css`
-- `app/layout.tsx`
-- `styles/globals.css`
-- `scripts/homepage-cinematic-contract.test.mjs`
-- `package.json`
-- `package-lock.json`
-
-Intentionally retained:
-
-- `app/layout.module.css`
-- all legacy Garden/default consumers
-- all Conan Maker static files
+- `lib/experiences.ts` — new public registry and filter.
+- `scripts/experience-registry.test.ts` — new three-test contract.
+- `package.json` — adds the contract test to the explicit `test` file list.
 
 ## Self-review
 
-- Route matcher checks exact paths before bounded `prefix/` matches and defaults unknown paths safely.
-- Unified activation is exactly `pathname === '/'`; route mode alone never activates a subpage.
-- The universal shell source contains one `<main>` and one rendered header/footer branch.
-- Primary navigation contains all five specified destinations; chapter navigation is homepage-only.
-- Mobile dialog includes initial focus, Tab/Shift+Tab trapping, Escape close, body scroll lock/restore, focus restoration, and minimum 44 × 44px targets.
-- Legacy subpages still receive the previous DefaultHeader, DefaultFooter, Garden atmosphere, CSS logo mark, and main wrapper.
-- Cormorant and Newsreader are non-preloaded; removed font variables retain compatibility fallbacks for legacy consumers.
-- No Conan file was modified.
-- `tsconfig.tsbuildinfo` was already dirty at task start, was changed again by TypeScript tooling, and is explicitly excluded from staging.
+- Scope: chỉ ba implementation/test/config file trong brief; không chạm Learn repo/worktree, route UI, navigation hay Task 2+.
+- Contract: ID order, semver shape, publication status, user-facing minimums, truth-copy và Learn fail-closed behavior đều được test bằng real module, không mock.
+- Truthfulness: cả ba referenced asset paths tồn tại trong `public/images`.
+- Simplicity: không thêm dependency, factory, helper hoặc abstraction ngoài interface được yêu cầu.
+- Hygiene: `git diff --check` pass trước staging; generated TypeScript cache đã được loại khỏi diff.
 
-## Commit
+## Concerns
 
-Subject: `feat: establish unified Cinema foundation`
-
-This report is included in that Task 1 commit; the immutable SHA is provided in the handoff after commit creation.
-
-## Concerns / follow-up
-
-- In-app Browser keyboard/visual QA was completed by the controller after the implementer handoff; see the evidence below.
-- `/diagnostic` still has the known legacy nested-main condition; it is intentionally not changed until its route family is migrated and enabled in Task 5.
-- Next build reports the existing multiple-lockfile workspace-root warning and edge-runtime static-generation warning.
-- `npm install` reports four dependency audit findings (1 low, 2 moderate, 1 high); no unrelated dependency remediation was attempted in this focused task.
-
-## Controller in-app Browser verification
-
-The controller completed the deferred keyboard and rendered-state checks in the Codex in-app Browser against `http://127.0.0.1:3002` after commit `10af9d2`.
-
-- Mobile viewport override `390 × 844`: the menu trigger opened the dialog and initial focus landed on `Đóng menu`.
-- `Shift+Tab` from the first control wrapped to the last chapter link `Conan`; `Tab` from that link wrapped back to `Đóng menu`.
-- `Escape` closed the dialog and restored focus to `Mở mục lục`.
-- Body inline overflow changed from `''` to `hidden` while open, then restored exactly to `''` after close.
-- Every dialog control measured at least `44 × 44px`; the shortest chapter links `Mở đầu` and `Conan` measured exactly `44 × 44px`.
-- Mobile document had no horizontal overflow (`scrollWidth === clientWidth`).
-- Desktop `1440 × 900`: unified homepage rendered one `<main>`, all five primary links including `/conanmaker/`, `data-site-shell="unified"`, and `data-route-mode="cinema-dark"`, with no horizontal overflow.
-- `/library` and `/diagnostic` remained `data-site-shell="legacy"`; their main content computed to the isolated Inter stack. The known diagnostic nested main remains intentionally deferred until its route activation slice.
+Không có concern trong phạm vi Task 1.
 
 ---
 
-## Reviewer fix pass — 2026-07-10
+## Reviewer fix — readonly public return contract
 
-### Findings resolved
+### Finding resolved
 
-1. Restored Inter, Lora, and JetBrains Mono for disabled legacy routes without preloading them. Their Next font variable classes are passed from the server layout and applied only when `isUnified` is false. The legacy wrapper restores `--font-body`, `--font-serif`, `--font-mono`, and inherited body typography. Unified `/` retains only Be Vietnam Pro, Cormorant, and Newsreader classes.
-2. Added `min-width: 44px` to `.mobileChapterNav a`, completing the 44 × 44px target contract.
-3. Added the pure `resolveMenuKeyAction` helper and Node tests for Escape, Tab, Shift+Tab, first/middle/last/outside/empty/one-item cases. `MobileMenu` calls the helper against a fresh focusable-element list on every keydown.
-4. Added `data-home-section` to the real `#mirror` section and locked every homepage chapter destination to an observable section contract.
+- Thêm explicit return type `readonly ExperienceDefinition[]` cho `getPublishedExperiences`.
+- Thêm type-level assertion `PublishedExperiencesStayReadonly`; `npx tsc --noEmit` sẽ lỗi nếu `ReturnType<typeof getPublishedExperiences>` trở lại mutable array.
+- Đổi release filter sang allowlist rõ: chỉ `always`, hoặc `learn-public` khi `includeLearn: true`; availability tương lai vẫn fail-closed.
+- Thêm runtime assertions cho `access.label`, `media.position` và cặp `media.source`/`media.rights`.
+- Không dùng `as`, `@ts-ignore`, runtime placeholder test hoặc dependency mới.
 
-### Reviewer-fix RED evidence
+### RED evidence
 
 Command:
 
-```text
-npx tsx --test scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts
-```
-
-Observed RED:
-
-- exit code `1`;
-- 3 tests passed and 5 failed for the intended reasons;
-- missing pure helper module;
-- `#mirror` lacked `data-home-section`;
-- `MobileMenu` did not call the helper;
-- `.mobileChapterNav a` reported `min-width is 0px`;
-- Inter/Lora/JetBrains and their isolated legacy wrapper contract were absent.
-
-Self-review found one additional inheritance gap and added a failing contract before the fix:
-
-```text
-npx tsx --test scripts/site-chrome-contract.test.ts
-```
-
-- exit code `1`;
-- 6 tests passed and 1 failed because the legacy wrapper had not yet applied `font-family: var(--font-body)`.
-
-### Reviewer-fix GREEN evidence
-
-Focused command:
-
-```text
-npx tsx --test scripts/site-chrome-contract.test.ts scripts/mobile-menu-focus.test.ts scripts/homepage-cinematic-contract.test.mjs
-```
-
-- exit code `0`;
-- 23/23 tests passed.
-
-Final verification:
-
-```text
-npm test
-```
-
-- exit code `0`;
-- 33/33 tests passed.
-
-```text
+```bash
 npx tsc --noEmit
 ```
 
-- exit code `0`;
-- no diagnostics.
+Kết quả trước khi thêm return annotation: exit code `2`.
 
 ```text
-npm run build
+scripts/experience-registry.test.ts(9,3): error TS2344: Type 'false' does not satisfy the constraint 'true'.
 ```
 
-- exit code `0`;
-- production compilation and TypeScript passed;
-- 38 static pages generated.
+Command:
 
-`git diff --check` passed with no whitespace errors.
+```bash
+node --import tsx --test scripts/experience-registry.test.ts
+```
 
-### Export font isolation evidence
+Kết quả trước khi thêm availability allowlist: exit code `1`; regression mới thất bại đúng vì `future-gate` bị public khi `includeLearn: true`.
 
-Fresh generated HTML inspection:
+```text
+not ok 3 - unknown future availability remains fail-closed even when Learn is public
+Expected values to be strictly equal:
+true !== false
+# pass 3
+# fail 1
+```
 
-- `/`: body carries Be Vietnam Pro, Cormorant, and Newsreader variable classes; the unified shell carries no Inter/Lora/JetBrains class; one `<main>`.
-- `/library`: legacy shell carries Inter, Lora, and JetBrains Mono variable classes.
-- `/diagnostic`: legacy shell carries Inter, Lora, and JetBrains Mono variable classes; its known nested-main migration remains out of Task 1 scope.
-- all inspected routes contain the same 14 Be Vietnam Pro preload entries; Inter/Lora/JetBrains are `preload:false` and absent from the preload manifest.
+### Final verification
 
-Mandatory in-app Browser QA was completed by the controller; no Playwright fallback was used.
+```bash
+node --import tsx --test scripts/experience-registry.test.ts
+```
 
-### Fix files
+Kết quả: exit code `0`; 4/4 tests pass, 0 fail, gồm regression cho unknown future availability.
 
-Created:
+```bash
+npx tsc --noEmit
+```
 
-- `components/site-chrome/mobile-menu-focus.ts`
-- `scripts/mobile-menu-focus.test.ts`
+Kết quả: exit code `0`, không có diagnostic.
 
-Modified:
-
-- `app/layout.tsx`
-- `components/home-cinema/HomeCinema.tsx`
-- `components/site-chrome/MobileMenu.tsx`
-- `components/site-chrome/SiteChrome.module.css`
-- `components/site-chrome/SiteChrome.tsx`
-- `scripts/homepage-cinematic-contract.test.mjs`
-- `scripts/site-chrome-contract.test.ts`
-- `package.json`
-
-`tsconfig.tsbuildinfo` remains deliberately unstaged.
-
-Fix commit subject: `fix: preserve legacy shell contracts` (immutable SHA reported in handoff).
+Scope giữ nguyên Task 1; không sửa repo Learn và không triển khai Task 2.
