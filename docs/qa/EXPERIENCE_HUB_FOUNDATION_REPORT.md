@@ -4,7 +4,7 @@ Date: 2026-07-13
 
 Verdict: local release candidate passed
 
-Verified implementation HEAD: `bcb11c86ede86b81006bb40ad74faa01330f16c6`
+Verified implementation HEAD: `e1872e67a3b09eff847a438d57e5c453b6e640ea`
 
 ## Scope
 
@@ -21,7 +21,7 @@ Verified implementation HEAD: `bcb11c86ede86b81006bb40ad74faa01330f16c6`
 ## Automated verification
 
 - `npm run lint`: passed with zero warnings or errors
-- `npm test`: 236/236 passed
+- `npm test`: 238/238 passed
 - `npx tsc --noEmit`: passed with zero diagnostics
 - `npm run build`: passed; 82/82 static pages generated
 - `npm run test:build`: 6/6 passed
@@ -55,7 +55,10 @@ Verified implementation HEAD: `bcb11c86ede86b81006bb40ad74faa01330f16c6`
 - Focused concurrency tests hold one owner in a controllable build, reject a second
   runner before build, preserve the owner lock/workspace byte-for-byte, then prove
   `SIGTERM` restores the original `out/`, removes owned temporary state and leaves no
-  build child. An unknown pre-existing lock remains untouched and blocks the run.
+  build child. Deterministic checkpoints immediately after atomic lock ownership
+  additionally prove SIGINT/SIGTERM exit with 130/143, remove the owned empty lock,
+  leave `out/` exact and create no build, temporary artifact or child process. An
+  unknown pre-existing lock remains untouched and blocks the run.
 - The real serial matrix started and ended with the same disabled `out/` tree SHA-256:
   `5ed8086f7ffcc9e80ee68d01a530c876790a39bd65c50b6b21fb0986557f7334`.
 - Learn repository HEAD before and after:

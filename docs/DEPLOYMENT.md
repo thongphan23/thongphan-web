@@ -32,7 +32,7 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 
 - Local routes: `/learn`, `/learn/free`, `/learn/diagnostic` and
   `/learn/courses/{ai-foundation,prompt-thinking,evaluate-verify}`.
-- Static export: 82/82 pages in both release modes; 236/236 functional contracts;
+- Static export: 82/82 pages in both release modes; 238/238 functional contracts;
   TypeScript passed.
 - Production dependency audit: zero finding.
 - Browser evidence: `docs/qa/screenshots/learn-*.png` at 1440x900, 390x844
@@ -71,8 +71,10 @@ pre-existing `out/` directory after the matrix completes.
 
 The matrix acquires the worktree-level `.learn-pages-preview.lock` directory
 atomically before inspecting or moving `out/`. A concurrent invocation fails without
-reading or changing the owner workspace. `SIGINT` and `SIGTERM` stop owned build and
-Wrangler process groups, restore the original `out/` tree and remove the owned lock.
+reading or changing the owner workspace. Signal handlers are armed before lock
+acquisition; `SIGINT` and `SIGTERM`, including immediately after atomic ownership,
+stop owned build and Wrangler process groups, restore the original `out/` tree and
+remove only the owned lock with conventional exit codes 130 and 143.
 
 The lock is fail-closed: an unknown existing lock is never removed automatically. If
 a process is interrupted by `SIGKILL` or a machine failure, inspect
