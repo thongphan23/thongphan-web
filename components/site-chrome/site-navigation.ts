@@ -1,13 +1,25 @@
-export const primaryNavigation = [
+import { learnPublicEnabled } from '@/lib/learn-release'
+
+const coreNavigation = [
   { href: '/about', label: 'Câu chuyện' },
   { href: '/library', label: 'Thư viện' },
-  { href: '/diagnostic', label: 'Chẩn đoán' },
-  { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
-  { href: '/conanmaker/', label: 'Conan Maker' },
+  { href: '/experiences', label: 'Trải nghiệm' },
 ] as const
+
+export function getPrimaryNavigation(includeLearn: boolean) {
+  return [
+    ...coreNavigation,
+    ...(includeLearn ? [{ href: '/learn', label: 'Học' } as const] : []),
+    { href: '/diagnostic', label: 'Chẩn đoán' } as const,
+  ]
+}
+
+export const primaryNavigation = getPrimaryNavigation(learnPublicEnabled)
 
 export const secondaryNavigation = [
   { href: '/assets', label: 'Tài sản' },
+  { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
+  { href: '/conanmaker/', label: 'Conan Maker' },
 ] as const
 
 export const homepageChapterNavigation = [

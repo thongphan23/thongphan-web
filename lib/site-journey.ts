@@ -7,7 +7,6 @@ export type JourneyKey =
   | 'assets'
   | 'asset-detail'
   | 'experiences'
-  | 'challenges'
   | 'challenge-detail'
   | 'blog'
   | 'blog-detail'
@@ -152,13 +151,6 @@ export const journeyHandoffs = {
     chapter: 'Chọn một cam kết',
     title: 'Bắt đầu bằng một đầu ra đủ nhỏ để hoàn thành.',
     description: 'Tự chẩn đoán nếu chưa rõ vị trí, hoặc bắt đầu Brain2 nếu bạn đã sẵn sàng gom tri thức thật.',
-    primary: actions.brain2Challenge,
-    secondary: [actions.diagnostic, actions.library],
-  },
-  challenges: {
-    chapter: 'Chọn một cam kết',
-    title: 'Bắt đầu bằng một nhịp đủ nhỏ để không bỏ cuộc.',
-    description: 'Hai mươi mốt ngày đủ để tạo nguyên liệu thật, nhưng vẫn ngắn để nhìn thấy tiến triển.',
     primary: actions.brain2Challenge,
     secondary: [actions.diagnostic, actions.library],
   },

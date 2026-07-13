@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { X } from 'lucide-react'
 import { useCallback, useEffect, useRef, type RefObject } from 'react'
 import { resolveMenuKeyAction } from './mobile-menu-focus'
-import { homepageChapterNavigation, primaryNavigation } from './site-navigation'
+import { homepageChapterNavigation, primaryNavigation, secondaryNavigation } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
 type MobileMenuProps = {
@@ -88,17 +88,20 @@ export default function MobileMenu({
         </div>
 
         <nav className={styles.mobileNav} aria-label="Điều hướng chính trên di động">
-          {primaryNavigation.map((link, index) =>
+          {primaryNavigation.map((link, index) => (
+            <Link key={link.href} href={link.href} onClick={closeMenu}>
+              <span>0{index + 1}</span>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <nav className={styles.mobileSecondaryNav} aria-label="Điểm đến mở rộng">
+          {secondaryNavigation.map((link) =>
             link.href === '/conanmaker/' ? (
-              <a key={link.href} href={link.href} onClick={closeMenu}>
-                <span>0{index + 1}</span>
-                {link.label}
-              </a>
+              <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
             ) : (
-              <Link key={link.href} href={link.href} onClick={closeMenu}>
-                <span>0{index + 1}</span>
-                {link.label}
-              </Link>
+              <Link key={link.href} href={link.href} onClick={closeMenu}>{link.label}</Link>
             ),
           )}
         </nav>

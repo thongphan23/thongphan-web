@@ -353,6 +353,7 @@
 .menuTrigger:focus-visible,
 .menuClose:focus-visible,
 .mobileNav a:focus-visible,
+.mobileSecondaryNav a:focus-visible,
 .mobileChapterNav a:focus-visible {
   outline: var(--brand-focus-ring-dark);
   outline-offset: var(--brand-focus-offset);
@@ -440,6 +441,23 @@
   font-family: var(--font-be-vietnam), sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.16em;
+}
+
+.mobileSecondaryNav {
+  border-top: 1px solid var(--brand-line-dark);
+  display: grid;
+  gap: .2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.mobileSecondaryNav a {
+  align-items: center;
+  color: color-mix(in srgb, var(--brand-paper) 76%, transparent);
+  display: flex;
+  min-height: 44px;
+  min-width: 44px;
+  text-decoration: none;
 }
 
 .mobileChapterNav {

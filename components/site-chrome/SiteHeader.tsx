@@ -85,11 +85,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
           <ul>
             {primaryNavigation.map((link) => (
               <li key={link.href}>
-                {link.href === '/conanmaker/' ? (
-                  <a href={link.href}>{link.label}</a>
-                ) : (
-                  <Link href={link.href}>{link.label}</Link>
-                )}
+                <Link href={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>

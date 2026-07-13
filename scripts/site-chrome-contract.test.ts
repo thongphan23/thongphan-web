@@ -14,17 +14,16 @@ async function readProjectFile(path: string) {
 }
 
 test('primary and homepage chapter navigation expose the complete route contract', async () => {
-  const { primaryNavigation, homepageChapterNavigation } = await import(
+  const { getPrimaryNavigation, homepageChapterNavigation } = await import(
     '../components/site-chrome/site-navigation'
   )
   const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
 
-  assert.deepEqual(primaryNavigation, [
+  assert.deepEqual(getPrimaryNavigation(false), [
     { href: '/about', label: 'Câu chuyện' },
     { href: '/library', label: 'Thư viện' },
+    { href: '/experiences', label: 'Trải nghiệm' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
-    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
-    { href: '/conanmaker/', label: 'Conan Maker' },
   ])
   assert.deepEqual(
     homepageChapterNavigation.map(({ href }) => href),
@@ -37,6 +36,31 @@ test('primary and homepage chapter navigation expose the complete route contract
       section,
     )
   }
+})
+
+test('navigation promotes real experiences and hides gated Learn cleanly', async () => {
+  const { getPrimaryNavigation, secondaryNavigation } = await import(
+    '../components/site-chrome/site-navigation'
+  )
+
+  assert.deepEqual(getPrimaryNavigation(false), [
+    { href: '/about', label: 'Câu chuyện' },
+    { href: '/library', label: 'Thư viện' },
+    { href: '/experiences', label: 'Trải nghiệm' },
+    { href: '/diagnostic', label: 'Chẩn đoán' },
+  ])
+  assert.deepEqual(getPrimaryNavigation(true), [
+    { href: '/about', label: 'Câu chuyện' },
+    { href: '/library', label: 'Thư viện' },
+    { href: '/experiences', label: 'Trải nghiệm' },
+    { href: '/learn', label: 'Học' },
+    { href: '/diagnostic', label: 'Chẩn đoán' },
+  ])
+  assert.deepEqual(secondaryNavigation, [
+    { href: '/assets', label: 'Tài sản' },
+    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
+    { href: '/conanmaker/', label: 'Conan Maker' },
+  ])
 })
 
 test('unified shell is route-mode themed while legacy routes keep their old shell', async () => {
@@ -102,7 +126,7 @@ test('mobile menu traps focus, closes with Escape, locks scroll, and restores fo
 test('every mobile menu control has a 44 by 44 pixel minimum target', async () => {
   const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
 
-  for (const selector of ['menuTrigger', 'menuClose', 'mobileNav a', 'mobileChapterNav a']) {
+  for (const selector of ['menuTrigger', 'menuClose', 'mobileNav a', 'mobileSecondaryNav a', 'mobileChapterNav a']) {
     const escapedSelector = selector.replace('.', '\\.').replace(' ', '\\s+')
     const rule = new RegExp(`\\.${escapedSelector}\\s*\\{[\\s\\S]*?\\}`, 'i')
     const match = css.match(rule)?.[0] ?? ''
@@ -198,12 +222,13 @@ test('site chrome uses only direct Lucide menu, close, and arrow icons', async (
 })
 
 test('standalone Conan Maker links preserve their canonical trailing slash', async () => {
+  const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
   const sources = await Promise.all([
-    readProjectFile('components/site-chrome/SiteHeader.tsx'),
     readProjectFile('components/site-chrome/MobileMenu.tsx'),
     readProjectFile('components/site-chrome/SiteFooter.tsx'),
   ])
 
+  assert.doesNotMatch(header, /link\.href === '\/conanmaker\/'/)
   for (const source of sources) {
     assert.match(source, /link\.href === '\/conanmaker\/'[\s\S]*?<a[\s\S]*?href=\{link\.href\}/)
   }

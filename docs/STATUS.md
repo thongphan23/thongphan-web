@@ -27,6 +27,13 @@ remains undeployed because the available Brevo credential returns 401.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
+- Experience Hub Task 4 connects the canonical `/experiences` route to the shared
+  journey and pinned navigation. The retired `challenges` journey key/handoff is
+  removed while `challenge-detail` remains; primary navigation exposes four internal
+  destinations with Learn disabled and five when released. Assets, 21 ngày Brain2 and
+  Conan Maker remain secondary mobile/footer destinations, with 44px minimum mobile
+  targets. Focused contracts pass 27/27, the full suite passes 221/221, TypeScript and
+  scoped ESLint pass. No Tools/Account, Learn runtime or Brain2 access change was made.
 - Experience Hub Task 3 now makes `/experiences` the sole canonical practice index:
   the former `/challenges` page/data wrapper is removed, Cloudflare compatibility is
   a permanent `301`, sitemap and route mode use `/experiences`, and an executable-source

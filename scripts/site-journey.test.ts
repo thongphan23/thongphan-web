@@ -47,16 +47,11 @@ test('prompt intent selects a reasoned canonical route', () => {
 })
 
 test('known keys return stable handoffs', () => {
+  assert.equal('challenges' in journeyHandoffs, false)
   assert.equal(getJourneyHandoff('about').primary.href, '/brain2/21-ngay')
   assert.equal(getJourneyHandoff('reader').primary.href, '/assets')
+  assert.equal(getJourneyHandoff('experiences').primary.href, '/brain2/21-ngay')
   assert.equal(getJourneyHandoff('asset-detail').primary.href, '/experiences')
-  assert.deepEqual(getJourneyHandoff('experiences'), {
-    chapter: 'Chọn một cam kết',
-    title: 'Bắt đầu bằng một đầu ra đủ nhỏ để hoàn thành.',
-    description: 'Tự chẩn đoán nếu chưa rõ vị trí, hoặc bắt đầu Brain2 nếu bạn đã sẵn sàng gom tri thức thật.',
-    primary: journeyHandoffs.challenges.primary,
-    secondary: [journeyHandoffs.challenges.secondary[0], journeyHandoffs.challenges.secondary[1]],
-  })
 })
 
 test('public source graph contains no duplicate Brain2 detail URL or fixed 15-minute promise', async () => {
