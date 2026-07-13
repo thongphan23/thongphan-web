@@ -1,7 +1,7 @@
 # Đặc Tả Hệ Sinh Thái Trải Nghiệm Và Sản Phẩm Thông Phan
 
 **Ngày:** 13/07/2026
-**Trạng thái:** Các quyết định thiết kế đã được anh Thông duyệt trong hội thoại; chờ duyệt bản đặc tả viết
+**Trạng thái:** Được anh Thông duyệt bản viết ngày 13/07/2026
 **Phạm vi:** `thongphan.com`, tích hợp công khai với `learn.thongphan.com`, các challenge và tool/app tương lai
 **Không phải phạm vi:** thay đổi implementation hiện tại của repo Learn trong luồng công việc này
 

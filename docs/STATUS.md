@@ -25,7 +25,7 @@ gone. Post-delete verification made 128 requests across all 64 immutable URLs an
 their cache-busted variants: all were unreachable with zero legacy body hits. Email
 remains undeployed because the available Brevo credential returns 401.
 
-## Experience + Commerce Ecosystem — approved conversation design — 2026-07-13
+## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
 - Anh Thông approved an independent product ecosystem rather than a Conan-only funnel:
   Learn subscription revenue, usage-based tool credit revenue and Conan Maker as a
@@ -42,9 +42,15 @@ remains undeployed because the available Brevo credential returns 401.
   the ecosystem design document and must not edit the Learn repo, schema, migrations,
   Workers, lesson packages or runtime. Future cross-repo implementation requires a
   fresh HEAD/STATUS checkpoint and versioned owner/producer/consumer contract matrix.
-- Written design awaiting explicit approval:
+- Written design approved by anh Thông:
   `docs/superpowers/specs/2026-07-13-thongphan-experience-commerce-ecosystem-design.md`.
-- No implementation plan or product code has been started for this ecosystem slice.
+- The program is split into independently releasable plans. The first detailed plan
+  changes only the public site: versioned Experience Registry, canonical
+  `/experiences` hub, permanent `/challenges` redirect, journey/navigation integration
+  and rendered QA:
+  `docs/superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md`.
+- No product code has been started for this ecosystem slice. Learn, subscription,
+  credit, Tools and shared-account implementation remain outside this plan.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
