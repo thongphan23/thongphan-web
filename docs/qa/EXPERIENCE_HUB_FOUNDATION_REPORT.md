@@ -59,8 +59,9 @@ Verified implementation HEAD: `e1872e67a3b09eff847a438d57e5c453b6e640ea`
   additionally prove SIGINT/SIGTERM exit with 130/143, remove the owned empty lock,
   leave `out/` exact and create no build, temporary artifact or child process. An
   unknown pre-existing lock remains untouched and blocks the run.
-- The real serial matrix started and ended with the same disabled `out/` tree SHA-256:
-  `5ed8086f7ffcc9e80ee68d01a530c876790a39bd65c50b6b21fb0986557f7334`.
+- The real serial matrix started and ended with the same disabled `out/` tree SHA-256
+  captured in that run:
+  `4aeaa86ccd7ef723d181315e10051665f7946b95ddcbde91e96a3bce4b6d1ad7`.
 - Learn repository HEAD before and after:
   `bb57a093ee7d6b2591a9627b1fb981efbf518d0b`.
 - The complete pre-existing dirty status of
