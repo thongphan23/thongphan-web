@@ -287,10 +287,11 @@ git commit -m "feat: add versioned experience registry"
 - Create: `app/experiences/page.module.css`
 - Create: `scripts/experience-hub-contract.test.ts`
 - Modify: `package.json`
+- Modify: `lib/site-journey.ts` (compile dependency only: add `experiences` while preserving `challenges` until Task 4)
 
 **Interfaces:**
 - Consumes: `ExperienceDefinition` and `getPublishedExperiences({ includeLearn })` from Task 1; `learnPublicEnabled` from `lib/learn-release.ts`.
-- Produces: static `/experiences` route, `ExperienceCard({ experience, index })`, stable `data-experience-id` hooks.
+- Produces: static `/experiences` route, `ExperienceCard({ experience, index })`, stable `data-experience-id` hooks, and the minimal `JourneyKey = 'experiences'` plus final `journeyHandoffs.experiences` entry required for the page to typecheck.
 
 - [ ] **Step 1: Write the failing source contract**
 
@@ -806,7 +807,7 @@ Expected: FAIL because `experiences` and `getPrimaryNavigation` do not exist.
 
 In `lib/site-journey.ts`:
 
-1. Replace the `JourneyKey` member `'challenges'` with `'experiences'`.
+1. Remove the retired `JourneyKey` member `'challenges'`; preserve the existing `'experiences'` member added by Task 2.
 2. Replace `actions.challenges` with:
 
 ```ts
@@ -819,7 +820,7 @@ experiences: {
 ```
 
 3. Change the `asset-detail` primary action to `actions.experiences`.
-4. Replace the hub handoff with:
+4. Verify the existing hub handoff still matches this exact final contract; do not add a duplicate:
 
 ```ts
 experiences: {

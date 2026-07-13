@@ -4,7 +4,7 @@
 
 PASS. The canonical `/experiences` route, registry-driven cards, source contract, and package test entry are implemented. The Learn card remains controlled by `learnPublicEnabled` through `getPublishedExperiences({ includeLearn: learnPublicEnabled })`.
 
-Commit: `cd46575` (`feat: add canonical experience hub`).
+Commits: `cd46575` (`feat: add canonical experience hub`), `556899c` (`fix: preserve contained experience media`).
 
 ## Implementation
 
