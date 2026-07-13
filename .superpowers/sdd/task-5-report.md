@@ -54,9 +54,11 @@ is never hidden during capture.
 
 ## Original-resolution inspection
 
-All 21 PNGs were opened at original resolution. Result: 21/21 clean. Every named
-target is present and readable, both card media subjects are complete, and there are
-no black compositor tiles. The dark area beginning below desktop `card-2` is the
+All 21 PNGs were opened at original resolution. Result: 21/21 clean. Every segment's
+named anchor area is present and readable, both card media subjects are complete, and
+there are no black compositor tiles. On short mobile viewports, DOM visibility and
+content-signature contracts cover the portion of a tall card or handoff beyond the
+single viewport raster. The dark area beginning below desktop `card-2` is the
 intentional first edge of `ChapterHandoff`, outside the complete card bounding rect,
 not raster corruption.
 

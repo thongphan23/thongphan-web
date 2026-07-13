@@ -83,6 +83,8 @@ DOM, content, layout or accessibility defect behind these black tiles.
 
 The replacement architecture passed locally on 2026-07-13: five cases, twenty
 authoritative segment screenshots and one pre-stabilization active-motion viewport.
-Original-resolution inspection found 21/21 clean images with complete target content,
-no black tiles and no clipped media subjects. This successful replacement does not
-reverse the decision above: full-page capture remains retired for this route.
+Original-resolution inspection found 21/21 clean images with each segment anchor
+visible, no black tiles and no clipped media subjects. DOM visibility and matching
+content signatures cover content below a single short mobile viewport. This successful
+replacement does not reverse the decision above: full-page capture remains retired
+for this route.
