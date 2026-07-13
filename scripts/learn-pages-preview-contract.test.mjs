@@ -35,6 +35,13 @@ test('enabled Learn requires exact canonical, indexable head and semantic page c
     () => assertEnabledLearnDocument(enabled.replace('Học AI để làm việc tốt hơn.', 'Học AI để làm việc nhanh hơn.'), '/learn'),
     /exact semantic H1/i,
   )
+  assert.throws(
+    () => assertEnabledLearnDocument(enabled, '/learn', {
+      status: 200,
+      headers: new Headers({ 'X-Robots-Tag': 'noindex' }),
+    }),
+    /X-Robots-Tag|noindex/i,
+  )
 })
 
 test('discovery assertions use exact anchors and reject text-only payload matches', () => {

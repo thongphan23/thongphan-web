@@ -47,10 +47,18 @@ function inspectDocument(html) {
   }
 }
 
-export function assertEnabledLearnDocument(html, route) {
+export function assertEnabledLearnDocument(html, route, response) {
   const document = inspectDocument(html)
   const expected = enabledLearnExpectations[route]
   assert.ok(expected, `${route}: no enabled-document contract is defined`)
+  if (response) {
+    assert.equal(response.status, 200, `${route}: enabled response status`)
+    assert.doesNotMatch(
+      response.headers.get('x-robots-tag') ?? '',
+      /noindex/i,
+      `${route}: enabled X-Robots-Tag must not contain noindex`,
+    )
+  }
   assert.equal(document.errorRoot, false, `${route}: enabled artifact cannot use the Next error root`)
   assert.equal(document.canonical, `https://thongphan.com${route}`, `${route}: exact canonical`)
   assert.equal(document.robots.some((value) => value.includes('noindex')), false, `${route}: must be indexable`)

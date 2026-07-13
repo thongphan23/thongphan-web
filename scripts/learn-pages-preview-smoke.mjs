@@ -115,8 +115,8 @@ try {
   await withPreview(enabledArtifact, 'true', async (base) => {
     assertAlignedControls({ buildEnabled: true, runtimeEnabled: true })
     for (const route of learnRoutes) {
-      const { html } = await responseAt(base, route, 200)
-      assertEnabledLearnDocument(html, route)
+      const { response, html } = await responseAt(base, route, 200)
+      assertEnabledLearnDocument(html, route, response)
     }
     const { html: discovery } = await responseAt(base, '/experiences', 200)
     assertEnabledDiscoveryDocument(discovery)
