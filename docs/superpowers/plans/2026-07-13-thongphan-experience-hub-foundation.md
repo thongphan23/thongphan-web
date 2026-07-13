@@ -933,7 +933,18 @@ git commit -m "feat: connect experiences to site journey"
 
 **Interfaces:**
 - Consumes: static export at `QA_BASE_URL`, default `http://127.0.0.1:3022`.
-- Produces: `/tmp/thongphan-experience-hub-qa/report.json` and screenshots for three viewports plus reduced motion.
+- Produces: `/tmp/thongphan-experience-hub-qa/report.json`, twenty authoritative
+  normal-viewport segment screenshots (`top`, `card-1`, `card-2`, `handoff` for
+  each of five cases), and one active-motion desktop viewport screenshot.
+
+**2026-07-13 evidence architecture decision:** Headless Chromium full-page capture
+is nondeterministic for this route and produced black compositor tiles after two
+capture-only mitigation rounds. It is retired as authoritative evidence. See
+`docs/qa/STUCK_REPORT_EXPERIENCE_FULLPAGE_CAPTURE_2026-07-13.md`. Task 5 uses
+faithful segmented viewport evidence and retains the objective DOM/content,
+reduced-motion, no-JavaScript and keyboard contracts. It must not hide production
+content. A corrupt ordinary viewport screenshot is a stop condition, not an
+invitation for another workaround.
 
 - [ ] **Step 1: Add the rendered QA script**
 
@@ -1052,18 +1063,21 @@ Run terminal B:
 npm run qa:experiences
 ```
 
-Expected: `Experience QA passed 5/5`, five screenshots and `report.json` under `/tmp/thongphan-experience-hub-qa`.
+Expected: `Experience QA passed 5/5 with 21 viewport screenshots`, twenty named
+segment screenshots, `desktop-motion-viewport.png`, and `report.json` with segment
+target/scroll/viewport metadata under `/tmp/thongphan-experience-hub-qa`.
 
 - [ ] **Step 4: Inspect the screenshots at original resolution**
 
-Open all five PNG files and verify:
+Open all 21 PNG files at original resolution and verify:
 
 - the pinned header never covers the title;
 - every subject remains complete inside its frame;
 - the 320px cards do not force horizontal scroll;
 - typography, paper, oxblood, image treatment and motion atmosphere belong to the existing Cinema system;
 - no empty card, coming-soon promise or Learn card appears when the release flag is false;
-- reduced-motion first frame contains the same content.
+- reduced-motion and no-JavaScript segments contain the same content signatures;
+- no segment contains a black compositor tile or a clipped media subject.
 
 If any item fails, add the smallest failing contract to `experience-hub-contract.test.ts` or `qa-experiences.mjs`, reproduce, then fix the source before continuing.
 

@@ -27,13 +27,17 @@ remains undeployed because the available Brevo credential returns 401.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
-- Experience Hub Task 5 compositor follow-up is blocked after both authorized
-  capture-only mitigations failed original-resolution inspection. Three normal
-  full-page captures were deterministic with animations disabled, but the
-  five-case reduced-motion image still produced black tiles; capture-hiding
-  Motion Atmosphere produced three clean normal images and three identically
-  corrupted reduced-motion images. No third workaround or production change was
-  attempted; detailed evidence is in `.superpowers/sdd/task-5-report.md`.
+- Experience Hub Task 5 now passes locally with segmented viewport evidence.
+  Chromium `fullPage` evidence is permanently retired for this route after two
+  failed capture-only mitigations; no third workaround or production change was
+  attempted. The replacement matrix passes 5/5 cases and original-resolution
+  inspection passes 21/21 PNGs: four ordinary viewport segments per case plus one
+  active-motion desktop viewport. H1/card title/body/link signatures match across
+  desktop, mobile, 320px, reduced-motion and no-JavaScript; visibility, media,
+  overflow, overlap, console and keyboard-focus contracts pass. The architecture
+  boundary is recorded in
+  `docs/qa/STUCK_REPORT_EXPERIENCE_FULLPAGE_CAPTURE_2026-07-13.md`; final evidence
+  is in `.superpowers/sdd/task-5-report.md`.
 - Experience Hub Task 4 connects the canonical `/experiences` route to the shared
   journey and pinned navigation. The retired `challenges` journey key/handoff is
   removed while `challenge-detail` remains; primary navigation exposes four internal
