@@ -25,6 +25,21 @@ gone. Post-delete verification made 128 requests across all 64 immutable URLs an
 their cache-busted variants: all were unreachable with zero legacy body hits. Email
 remains undeployed because the available Brevo credential returns 401.
 
+## Experience Hub Foundation — locally verified — 2026-07-13
+
+- `/experiences` is the canonical public hub for currently usable diagnostic,
+  challenge and release-enabled Learn experiences.
+- `/challenges` is redirect-only; sitemap, journey and pinned navigation use the
+  canonical Experience route.
+- The registry is versioned, fail-closed for Learn and exposes no unavailable Tool,
+  Account, subscription or credit destination.
+- Desktop, mobile, reduced-motion, keyboard, link, SEO, build and source contracts
+  pass. Task 5 uses 21/21 authoritative segmented-viewport PNGs; Chromium full-page
+  capture is retired due the documented headless compositor blocker. Evidence is
+  recorded in `docs/qa/EXPERIENCE_HUB_FOUNDATION_REPORT.md`.
+- Learn runtime and the live Brain2 access boundary were not changed.
+- Production deployment remains a separate explicitly authorized release action.
+
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
 - Experience Hub Task 5 now passes locally with segmented viewport evidence.
@@ -75,8 +90,9 @@ remains undeployed because the available Brevo credential returns 401.
   `/experiences` hub, permanent `/challenges` redirect, journey/navigation integration
   and rendered QA:
   `docs/superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md`.
-- No product code has been started for this ecosystem slice. Learn, subscription,
-  credit, Tools and shared-account implementation remain outside this plan.
+- The Experience Hub foundation slice is now locally verified through Tasks 1-6.
+  Learn runtime, subscription, credit, Tools and shared-account implementation remain
+  outside this plan.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
