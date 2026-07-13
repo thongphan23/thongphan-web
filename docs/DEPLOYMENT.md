@@ -8,23 +8,31 @@
 - Static Conan Maker route source: `public/conanmaker/`.
 - Static Crown & Citadel route source: `public/game/`, built from the `crown-and-citadel` repository with `npm run build:site`.
 - Canonical redirect source: `public/_redirects`.
+- Custom-domain router source: `workers/thongphan-router.mjs`, deployed with
+  `wrangler.router.toml`.
 
 Do not patch the generated production output or upload a manual homepage build that is absent from this repository.
 
 The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
-## Current Cinema Chapters release
+## Current Experience Hub release
 
 - Public URL: `https://thongphan.com`
-- Source commit: `5f684d132b3d9fb77f08aa27e890f98cb1868fe8`
-- Preview deployment: `2b34c806-3e46-4a64-bdb6-500ca46470a6`
-- Preview URL: `https://2b34c806.thongphan-com.pages.dev`
-- Production deployment: `f6370989-798d-49a4-9ff7-f4716f12bb78`
-- Production origin: `https://f6370989.thongphan-com.pages.dev`
-- Pre-release rollback deployment: `802dbe32-6d0a-4b9f-8c9e-d874a5275e24`
-- Homepage HTML SHA-256: `c96f8c17ccc1e46fde4ae5c77063c5c052691a264c7b81c35a0fa784abc1a987`
-- Release verification: 109 functional contracts, TypeScript, 61-page export,
-  10 release contracts, preview Browser QA and production Browser smoke all pass.
+- Pages source commit: `97b3dc18a3a454d9e79133e82fa85fba86d3fec7`
+- Preview deployment: `b7a31c73-abc8-4358-b8af-36934e044d3f`
+- Preview URL: `https://b7a31c73.thongphan-com.pages.dev`
+- Production deployment: `faa9aeae-e548-4757-8ec8-44b412055866`
+- Production origin: `https://faa9aeae.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `a0554edc-d877-4133-bac9-2262b5cefdb7`
+- Router source commit: `19e8dab`
+- Router production version: `dfaaca5d-7019-4f1d-9959-e607f519248b`
+- Router rollback version: `d6a877e3-2bee-40ab-ab41-ade7dfe0db4b`
+- Homepage HTML SHA-256: `57f122a1e4afaf54f8aaeebc4b1f384750adce52951b62c668afa89e9fba71d0`
+- Experience HTML SHA-256: `36ec1e4d12593e0d3d24ed8b8b04cdcda803abe812a71c355608bbfbf2c0c842`
+- Release verification: 240 functional contracts, TypeScript, 82-route export,
+  full release gate, six-case Learn matrix, 70/70 whole-site rendered cases,
+  9/9 interactions, preview QA and production smoke all pass.
+- Full evidence: `docs/releases/EXPERIENCE_HUB_PRODUCTION_RELEASE_REPORT.md`.
 
 `read.thongphan.com` is retired. Worker `thongphan-read` was deleted only after the main production smoke passed. The subdomain now returns HTTP 530 and no redirect; never recreate it as a 301/302 migration layer.
 
@@ -108,7 +116,8 @@ lock.
 - Preview deployment: `83022506-856e-467a-b17f-9bf7261cced8`
 - Production verification on 2026-07-11: 69/69 game files returned HTTP 200; release manifest and fingerprinted CSS/JS matched the verified artifact; homepage, diagnostic, library, about and Conan Maker returned HTTP 200; Playwright completed policy change, food trade, road/house construction, first-turn resolution and schema 2 save/restore with no application or generated-asset errors.
 
-The Pages origin applies `/game` → `/game/` as a 301. The custom `thongphan.com` router currently serves the same game index directly at `/game` with HTTP 200; both public forms are valid and load assets from `/game/assets/`.
+The Pages origin and the custom `thongphan.com` router both preserve `/game` →
+`/game/` as a 301 and load assets from `/game/assets/`.
 
 ## Required release gate
 

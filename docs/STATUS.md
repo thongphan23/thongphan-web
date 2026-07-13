@@ -1,10 +1,16 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-13
+Last updated: 2026-07-14
 
 ## Current phase
 
-**Origin Story + 21 ngày Brain2 is live on canonical production.** The public
+**Experience Hub Foundation is live on canonical production.** `/experiences` is
+the public practice hub and `/challenges` is a preserved 301 compatibility route.
+Pages production `faa9aeae` serves source `97b3dc1`; custom-domain router version
+`dfaaca5d` preserves Pages redirects on apex and `www`. The prior Pages deployment
+`a0554edc` and router version `d6a877e3` remain independent rollback points.
+
+**Origin Story + 21 ngày Brain2 remains live on canonical production.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,
 the dedicated protected-content Worker, its private release gate, the inert email v2
 release candidate, the five-act `/about` origin film, the compact homepage bridge,
@@ -25,7 +31,24 @@ gone. Post-delete verification made 128 requests across all 64 immutable URLs an
 their cache-busted variants: all were unreachable with zero legacy body hits. Email
 remains undeployed because the available Brevo credential returns 401.
 
-## Experience Hub Foundation — locally verified — 2026-07-13
+## Experience Hub Foundation — production release — 2026-07-14
+
+- Preview `b7a31c73` and production `faa9aeae` serve the exact verified artifact;
+  public and immutable-origin homepage/Experience hashes match.
+- The local full-site browser matrix passes 70/70 responsive/motion cases and 9/9
+  interactions. Experience Hub passes 5/5 with 21 segmented screenshots on local,
+  preview and production runs.
+- Core public routes return 200. `/challenges` redirects 301 to `/experiences` on
+  Pages, apex and `www`. Disabled Learn paths return real noindex 404 responses and
+  no Learn anchor appears in Experience.
+- Production smoke found the old custom router flattened upstream redirects by
+  following them. Regression-first commit `19e8dab` moved the router into this
+  repository and changed only redirect handling; 240/240 tests and the production
+  smoke pass. The dedicated Brain2 API still bypasses the global router.
+- Detailed evidence:
+  `docs/releases/EXPERIENCE_HUB_PRODUCTION_RELEASE_REPORT.md`.
+
+## Experience Hub Foundation — implementation history — 2026-07-13
 
 - `/experiences` is the canonical public hub for currently usable diagnostic,
   challenge and release-enabled Learn experiences.
@@ -63,7 +86,7 @@ remains undeployed because the available Brevo credential returns 401.
   added only ` M docs/DEBUG_LOG.md`, producing a 67-line status with SHA-256
   `552944d50c8af924b5f895d02cbe0629fa0fb0befc9f6bb75f8998e56597b836`
   while HEAD remained `bb57a093ee7d6b2591a9627b1fb981efbf518d0b`.
-- Production deployment remains a separate explicitly authorized release action.
+- Production deployment was explicitly authorized and completed on 2026-07-14.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
