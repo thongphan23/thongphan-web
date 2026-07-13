@@ -30,6 +30,8 @@ let hadOriginalOut = false
 let initializationPromise
 let cleanupPromise
 let signalExitCode
+let afterLockSignalResume
+let interruptedChildrenPromise
 
 async function exists(path) {
   try { await access(path); return true } catch { return false }
@@ -47,6 +49,27 @@ async function acquireLock() {
       + 'restore workspace/original-out when present, then remove the lock manually.',
     )
   }
+
+  const afterLockMarker = process.env.LEARN_PREVIEW_TEST_AFTER_LOCK_MARKER
+  if (afterLockMarker) {
+    let keepAlive
+    const signalRequested = new Promise((resolve) => {
+      keepAlive = setInterval(() => {}, 1_000)
+      afterLockSignalResume = () => {
+        clearInterval(keepAlive)
+        resolve()
+      }
+    })
+    try {
+      await writeFile(afterLockMarker, `${process.pid}\n`)
+      if (signalExitCode) afterLockSignalResume()
+      await signalRequested
+    } finally {
+      clearInterval(keepAlive)
+      afterLockSignalResume = undefined
+    }
+  }
+  if (signalExitCode) throw new Error('Learn Pages preview matrix interrupted')
 
   await writeFile(ownerFile, `${JSON.stringify({
     pid: process.pid,
@@ -129,7 +152,7 @@ async function openPort() {
 
 async function waitUntilReady(base, child, output) {
   for (let attempt = 0; attempt < 100; attempt += 1) {
-    if (child.exitCode !== null) throw new Error(`Wrangler exited early (${child.exitCode}): ${output.value}`)
+    if (childExited(child)) throw new Error(`Wrangler exited early (${child.exitCode ?? child.signalCode}): ${output.value}`)
     try {
       const response = await fetch(base, { redirect: 'manual' })
       if (response.status > 0) return
@@ -193,6 +216,7 @@ async function cleanupOwnedState() {
   if (!lockOwned) return
   if (cleanupPromise) return cleanupPromise
   cleanupPromise = (async () => {
+    if (interruptedChildrenPromise) await interruptedChildrenPromise
     await Promise.all([...activeChildren].map(stop))
     if (initializationPromise) {
       try { await initializationPromise } catch {}
@@ -210,16 +234,18 @@ async function cleanupOwnedState() {
 function handleSignal(signal) {
   if (signalExitCode) return
   signalExitCode = signal === 'SIGINT' ? 130 : 143
-  void cleanupOwnedState().catch(() => {})
+  afterLockSignalResume?.()
+  interruptedChildrenPromise = Promise.all([...activeChildren].map(stop))
 }
 
 const onSigint = () => handleSignal('SIGINT')
 const onSigterm = () => handleSignal('SIGTERM')
 
+process.on('SIGINT', onSigint)
+process.on('SIGTERM', onSigterm)
+
 try {
   await acquireLock()
-  process.on('SIGINT', onSigint)
-  process.on('SIGTERM', onSigterm)
   initializationPromise = captureOriginalOut()
   await initializationPromise
   if (signalExitCode) throw new Error('Learn Pages preview matrix interrupted')

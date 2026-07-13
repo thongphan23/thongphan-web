@@ -16,7 +16,7 @@ async function waitForPath(path, timeoutMs = 5_000) {
     if (await exists(path)) return
     await new Promise((resolve) => setTimeout(resolve, 25))
   }
-  throw new Error(`timed out waiting for ${path}`)
+  assert.fail(`timed out waiting for ${path}`)
 }
 
 async function waitForExit(child, timeoutMs = 8_000) {
@@ -123,6 +123,42 @@ const { join } = require('node:path')
       TEST_BUILD_INVOKED: buildInvoked,
     },
   }
+}
+
+for (const { signal, expectedCode } of [
+  { signal: 'SIGINT', expectedCode: 130 },
+  { signal: 'SIGTERM', expectedCode: 143 },
+]) {
+  test(`${signal} immediately after lock ownership removes only the owned lock`, async (t) => {
+    const fixture = await makeFixture(t)
+    const lock = join(fixture.repo, '.learn-pages-preview.lock')
+    const marker = join(fixture.root, `${signal.toLowerCase()}-after-lock`)
+    const originalHash = await treeHash(join(fixture.repo, 'out'))
+    const owner = runSmoke(fixture.repo, {
+      ...fixture.env,
+      TEST_ROLE: 'owner',
+      LEARN_PREVIEW_TEST_AFTER_LOCK_MARKER: marker,
+    })
+
+    try {
+      await waitForPath(marker, 1_000)
+      assert.deepEqual(await readdir(lock), [], 'checkpoint must precede owner metadata and workspace creation')
+      owner.kill(signal)
+      const stopped = await waitForExit(owner)
+      assert.equal(stopped.code, expectedCode)
+      assert.equal(stopped.signal, null)
+      assert.equal(await treeHash(join(fixture.repo, 'out')), originalHash)
+      assert.equal(await exists(lock), false)
+      assert.equal(await exists(fixture.buildInvoked), false)
+      assert.deepEqual(await readdir(fixture.temp), [])
+    } finally {
+      if (owner.exitCode === null && owner.signalCode === null) owner.kill('SIGKILL')
+      if (await exists(fixture.buildPid)) {
+        const pid = Number(await readFile(fixture.buildPid, 'utf8'))
+        if (await processExists(pid)) process.kill(pid, 'SIGKILL')
+      }
+    }
+  })
 }
 
 test('exclusive owner rejects a concurrent runner and restores out on SIGTERM', async (t) => {
