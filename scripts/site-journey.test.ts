@@ -49,6 +49,7 @@ test('prompt intent selects a reasoned canonical route', () => {
 test('known keys return stable handoffs', () => {
   assert.equal(getJourneyHandoff('about').primary.href, '/brain2/21-ngay')
   assert.equal(getJourneyHandoff('reader').primary.href, '/assets')
+  assert.equal(getJourneyHandoff('asset-detail').primary.href, '/experiences')
   assert.deepEqual(getJourneyHandoff('experiences'), {
     chapter: 'Chọn một cam kết',
     title: 'Bắt đầu bằng một đầu ra đủ nhỏ để hoàn thành.',
@@ -66,7 +67,7 @@ test('public source graph contains no duplicate Brain2 detail URL or fixed 15-mi
   const oldLinks = sources.filter(({ body }) => body.includes('/challenges/brain2-21-ngay')).map(({ file }) => file)
   assert.deepEqual(oldLinks, [])
 
-  const fixedPromiseFiles = ['lib/challenges.ts', 'workers/schema.sql']
+  const fixedPromiseFiles = ['workers/schema.sql']
   const fixedPromiseSources = await Promise.all(fixedPromiseFiles.map((file) => readFile(new URL(file, root), 'utf8')))
   assert.doesNotMatch(fixedPromiseSources.join('\n'), /Mỗi ngày\s+15 phút|15 phút\s*(?:mỗi ngày|\/ngày)/i)
 })

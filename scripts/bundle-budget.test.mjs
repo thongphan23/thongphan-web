@@ -13,7 +13,7 @@ const routeFiles = [
   'library/read.html',
   'blog.html',
   'assets.html',
-  'challenges.html',
+  'experiences.html',
   'chat.html',
   'brain2/21-ngay.html',
   'brain2/21-ngay/ngay-01.html',

@@ -11,7 +11,7 @@ const routes = [
   ['app/library/read/[slug]/page.tsx', 'reader', 'paper'],
   ['app/assets/page.tsx', 'assets', 'dark'],
   ['app/assets/[slug]/page.tsx', 'asset-detail', 'dark'],
-  ['app/challenges/page.tsx', 'challenges', 'dark'],
+  ['app/experiences/page.tsx', 'experiences', 'dark'],
   ['app/blog/page.tsx', 'blog', 'paper'],
   ['app/blog/[slug]/BlogArticle.tsx', 'blog-detail', 'paper'],
 ]

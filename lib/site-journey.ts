@@ -66,11 +66,11 @@ const actions = {
     reason: 'Biến điều vừa hiểu thành một đầu ra có thể dùng và nhận phản hồi.',
     eyebrow: 'Tạo đầu ra',
   },
-  challenges: {
-    href: '/challenges',
-    label: 'Xem các nhịp thực hành',
-    reason: 'Chọn một cam kết đủ nhỏ để đưa hiểu biết vào công việc thật.',
-    eyebrow: 'Thực hành có nhịp',
+  experiences: {
+    href: '/experiences',
+    label: 'Chọn một trải nghiệm',
+    reason: 'Chọn theo thời gian, đầu ra và mức cam kết thay vì mở thêm nội dung ngẫu nhiên.',
+    eyebrow: 'Bắt tay làm',
   },
   brain2Challenge: {
     href: '/brain2/21-ngay',
@@ -145,7 +145,7 @@ export const journeyHandoffs = {
     chapter: 'Sau khi có công cụ',
     title: 'Đưa tài sản vào một nhịp làm thật.',
     description: 'Công cụ chỉ có giá trị khi nó được dùng đủ đều để tạo ra đầu ra và phản hồi.',
-    primary: actions.challenges,
+    primary: actions.experiences,
     secondary: [actions.chat, actions.conan],
   },
   experiences: {

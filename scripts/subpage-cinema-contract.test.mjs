@@ -10,7 +10,7 @@ const migratedRoutes = [
   ['diagnostic', 'app/diagnostic/DiagnosticClient.tsx', 'app/diagnostic/page.module.css'],
   ['assets', 'app/assets/page.tsx', 'app/assets/page.module.css'],
   ['asset detail', 'app/assets/[slug]/page.tsx', 'app/assets/[slug]/page.module.css'],
-  ['challenges', 'app/challenges/page.tsx', 'app/challenges/page.module.css'],
+  ['experiences', 'app/experiences/page.tsx', 'app/experiences/page.module.css'],
   ['Brain2 hub', 'app/brain2/21-ngay/page.tsx', 'app/brain2/21-ngay/page.module.css'],
   ['Brain2 lesson', 'app/brain2/21-ngay/[day]/page.tsx', 'app/brain2/21-ngay/[day]/page.module.css'],
   ['chat', 'app/chat/ChatClient.tsx', 'app/chat/page.module.css'],
@@ -37,12 +37,12 @@ test('shared dossier primitives exist and migrated routes enable the unified she
   ]) assert.ok(existsSync(new URL(`../${path}`, import.meta.url)), `${path} must exist`)
 
   const routeMode = read('lib/site-route-mode.ts')
-  for (const path of ['/about', '/diagnostic', '/assets', '/challenges', '/chat']) {
+  for (const path of ['/about', '/diagnostic', '/assets', '/experiences', '/chat']) {
     assert.match(routeMode, new RegExp(`['"]${path}['"]:\\s*['"](?:cinema-dark|evidence-dossier)['"]`), `${path} must enable the unified shell`)
   }
   assert.match(routeMode, /\['\/blog',\s*'editorial-light'\]/)
   assert.match(routeMode, /\['\/assets',\s*'evidence-dossier'\]/)
-  assert.match(routeMode, /\['\/challenges',\s*'evidence-dossier'\]/)
+  assert.match(routeMode, /\['\/experiences',\s*'evidence-dossier'\]/)
   assert.match(routeMode, /mode !== 'legacy' && mode !== 'standalone'/)
 })
 
@@ -76,12 +76,14 @@ test('diagnostic keeps five questions and the approved score boundaries in a pur
   assert.equal(getDiagnosticLevel(20).min, 19)
 })
 
-test('challenge data and chat runtime have one source of truth without changing their contracts', async () => {
-  assert.ok(existsSync(new URL('../lib/challenges.ts', import.meta.url)))
-  const challengeIndex = read('app/challenges/page.tsx')
-  assert.match(challengeIndex, /from ['"]@\/lib\/challenges['"]/)
-  assert.match(challengeIndex, /href="\/brain2\/21-ngay"/)
-  assert.equal(existsSync(new URL('../app/challenges/[slug]/page.tsx', import.meta.url)), false)
+test('experience data and chat runtime have one source of truth', async () => {
+  assert.ok(existsSync(new URL('../lib/experiences.ts', import.meta.url)))
+  assert.equal(existsSync(new URL('../lib/challenges.ts', import.meta.url)), false)
+  const experienceIndex = read('app/experiences/page.tsx')
+  assert.match(experienceIndex, /from ['"]@\/lib\/experiences['"]/)
+  assert.match(experienceIndex, /getPublishedExperiences/)
+  assert.match(experienceIndex, /<ExperienceCard/)
+  assert.equal(existsSync(new URL('../app/challenges/page.tsx', import.meta.url)), false)
 
   const chatPage = read('app/chat/page.tsx')
   const chatClient = read('app/chat/ChatClient.tsx')
@@ -100,14 +102,16 @@ test('challenge data and chat runtime have one source of truth without changing 
   })
 })
 
-test('migrated routes override global Garden controls and challenges use a real editorial slate', () => {
+test('migrated routes override global Garden controls and experiences use real editorial imagery', () => {
   const chrome = read('components/site-chrome/SiteChrome.module.css')
   assert.match(chrome, /data-site-shell='unified'[\s\S]*:global\(\.btn-primary\)[\s\S]*var\(--brand-lacquer/)
   assert.doesNotMatch(chrome, /data-site-shell='unified'[\s\S]*accent-(?:green|gold|blue)/)
 
-  const challengeSource = read('app/challenges/page.tsx')
-  assert.match(challengeSource, /brain2-21-day-editorial-slate-v1\.webp/)
-  assert.doesNotMatch(challengeSource, /dayDeck|dayStack|Array\.from\(\{ length: 21 \}\)/)
-  assert.equal(existsSync(new URL('../app/challenges/[slug]/page.tsx', import.meta.url)), false)
+  const experienceSource = read('app/experiences/page.tsx')
+  const cardSource = read('components/experience/ExperienceCard.tsx')
+  assert.match(experienceSource, /thong-library-author\.jpg/)
+  assert.match(cardSource, /experience\.media\.src/)
+  assert.doesNotMatch(`${experienceSource}\n${cardSource}`, /dayDeck|dayStack|Array\.from\(\{ length: 21 \}\)/)
   assert.ok(existsSync(new URL('../public/images/challenges/brain2-21-day-editorial-slate-v1.webp', import.meta.url)))
+  assert.ok(existsSync(new URL('../public/images/learn/course-ai-foundation.jpg', import.meta.url)))
 })

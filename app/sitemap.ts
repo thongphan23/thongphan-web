@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/diagnostic',
     '/assets',
-    '/challenges',
+    '/experiences',
     '/brain2/21-ngay',
     '/chat',
     '/library',

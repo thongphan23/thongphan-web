@@ -62,6 +62,7 @@ test('SEO primitives and fail-closed legacy metadata exist', async () => {
     redirects.trim().split(/\r?\n/).sort(),
     [
       '/brain2 /brain2/21-ngay 301',
+      '/challenges /experiences 301',
       '/challenges/brain2-21-ngay /brain2/21-ngay 301',
       '/conanmaker /conanmaker/ 301',
       '/game /game/ 301',
@@ -82,6 +83,8 @@ test('built sitemap includes every public content family and excludes legacy rou
     ...Array.from({ length: 7 }, (_, index) => `https://thongphan.com/brain2/21-ngay/ngay-${String(index + 1).padStart(2, '0')}`),
   ]
   for (const url of expected) assert.match(sitemap, new RegExp(`<loc>${url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>`))
+  assert.match(sitemap, /<loc>https:\/\/thongphan\.com\/experiences<\/loc>/)
+  assert.doesNotMatch(sitemap, /<loc>https:\/\/thongphan\.com\/challenges<\/loc>/)
   assert.doesNotMatch(sitemap, /\/classic|\/concept|co-che-tep-moi|read\.thongphan\.com|\/challenges\/brain2-21-ngay|\/brain2\/21-ngay\/ngay-(?:0[89]|1\d|2[01])/)
 })
 

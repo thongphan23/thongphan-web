@@ -27,6 +27,14 @@ remains undeployed because the available Brevo credential returns 401.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
+- Experience Hub Task 3 now makes `/experiences` the sole canonical practice index:
+  the former `/challenges` page/data wrapper is removed, Cloudflare compatibility is
+  a permanent `301`, sitemap and route mode use `/experiences`, and an executable-source
+  guard rejects stale `/challenges` destinations. Focused contracts pass 14/14, the
+  full suite passes 220/220, static export passes 82/82, SEO passes 4/4 and bundle
+  budgets pass 3/3. The asset-detail handoff moved to `/experiences` as the minimum
+  Task 4 overlap required to make the stale-link contract truthful; navigation and
+  the retained legacy journey key/handoff remain for Task 4.
 - Anh Thông approved an independent product ecosystem rather than a Conan-only funnel:
   Learn subscription revenue, usage-based tool credit revenue and Conan Maker as a
   separate premium transformation environment.
