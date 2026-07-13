@@ -42,7 +42,10 @@ remains undeployed because the available Brevo credential returns 401.
   `LEARN_PUBLIC_ENABLED`. The local gate builds distinct enabled/disabled artifacts
   and runs all six artifact/runtime pairs. Only the coherent enabled pair passes the
   exact indexable DOM/head contract; the coherent disabled pairs stay real noindex
-  404 responses, and both mismatched control pairs are explicitly rejected.
+  404 responses, and both mismatched control pairs are explicitly rejected. An
+  atomic worktree lock serializes the matrix before any `out/` access; concurrent and
+  unknown-lock runners fail closed, while owner signal cleanup restores the original
+  artifact and stops all owned child process groups.
 - QA output deletion is restricted to the dedicated `os.tmpdir()` evidence directory
   or a validated descendant, including symlink-escape protection. Rendered checks now
   await and decode every image and use ancestor-aware `checkVisibility` plus real
@@ -490,7 +493,7 @@ fail-closed until its independent PWA is ready.
 
 ### Learn verification
 
-- `npm test`: 234/234 passed on the current branch-wide suite.
+- `npm test`: 236/236 passed on the current branch-wide suite.
 - `npx tsc --noEmit`: passed.
 - Both enabled and disabled `npm run build` artifacts generate 82/82 static pages;
   runtime exposure is verified separately by the six-pair Wrangler matrix.

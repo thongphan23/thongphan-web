@@ -32,7 +32,7 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 
 - Local routes: `/learn`, `/learn/free`, `/learn/diagnostic` and
   `/learn/courses/{ai-foundation,prompt-thinking,evaluate-verify}`.
-- Static export: 82/82 pages in both release modes; 234/234 functional contracts;
+- Static export: 82/82 pages in both release modes; 236/236 functional contracts;
   TypeScript passed.
 - Production dependency audit: zero finding.
 - Browser evidence: `docs/qa/screenshots/learn-*.png` at 1440x900, 390x844
@@ -68,6 +68,19 @@ contracts for `/learn` and `/learn/free`; the disabled pair must return the fail
 HTTP 404 with `noindex, nofollow`. Discovery links are checked as real DOM anchors,
 not text that happens to exist in a React payload. The command restores the caller's
 pre-existing `out/` directory after the matrix completes.
+
+The matrix acquires the worktree-level `.learn-pages-preview.lock` directory
+atomically before inspecting or moving `out/`. A concurrent invocation fails without
+reading or changing the owner workspace. `SIGINT` and `SIGTERM` stop owned build and
+Wrangler process groups, restore the original `out/` tree and remove the owned lock.
+
+The lock is fail-closed: an unknown existing lock is never removed automatically. If
+a process is interrupted by `SIGKILL` or a machine failure, inspect
+`.learn-pages-preview.lock/owner.json` and verify that its PID is inactive. When
+`workspace/original-out` exists, restore that directory before removing the stale
+lock; when `hadOriginalOut` is false, remove the generated `out/` instead. If owner
+state or snapshot state is ambiguous, stop and investigate rather than deleting the
+lock.
 
 ## Cinema Chapters release history
 
