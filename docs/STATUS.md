@@ -37,7 +37,19 @@ remains undeployed because the available Brevo credential returns 401.
   pass. Task 5 uses 21/21 authoritative segmented-viewport PNGs; Chromium full-page
   capture is retired due the documented headless compositor blocker. Evidence is
   recorded in `docs/qa/EXPERIENCE_HUB_FOUNDATION_REPORT.md`.
-- Learn runtime and the live Brain2 access boundary were not changed.
+- Learn release now requires two independent exact-`true` controls: build-time
+  `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED` and the Pages runtime binding
+  `LEARN_PUBLIC_ENABLED`. Local Wrangler Pages previews prove `/learn` and
+  `/learn/free` return 200 only when the runtime binding is true and remain a real
+  noindex 404 when it is false or missing.
+- QA output deletion is restricted to the dedicated `os.tmpdir()` evidence directory
+  or a validated descendant, including symlink-escape protection. Rendered checks now
+  await and decode every image and use ancestor-aware `checkVisibility` plus real
+  client geometry. A zero-opacity ancestor regression fixture fails as intended.
+- Experience Hub muted/caption copy uses scoped `#625b52`, measuring 5.83:1 on
+  `#f3efe6` and 5.03:1 on `#e8decf`.
+- The separate Learn repository/runtime and the live Brain2 access boundary were not
+  changed.
 - Production deployment remains a separate explicitly authorized release action.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
@@ -92,9 +104,10 @@ remains undeployed because the available Brevo credential returns 401.
   `/experiences` hub, permanent `/challenges` redirect, journey/navigation integration
   and rendered QA:
   `docs/superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md`.
-- The Experience Hub foundation slice is now locally verified through Tasks 1-6.
-  Learn runtime, subscription, credit, Tools and shared-account implementation remain
-  outside this plan.
+- The Experience Hub foundation slice is now locally verified through Tasks 1-6 and
+  the final review hardening at implementation commit `35c1131f638c0623ebe8c43238e5ca2b088ba16c`.
+  Learn repository/runtime, subscription, credit, Tools and shared-account
+  implementation remain outside this plan.
 
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
