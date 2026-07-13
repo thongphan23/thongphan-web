@@ -1,6 +1,6 @@
 # Brain2 Content Restoration + Cinematic Learning Studio v2
 
-Date: 2026-07-13  
+Date: 2026-07-13
 Status: awaiting written-spec and visual-target approval
 
 ## Goal
@@ -155,8 +155,8 @@ The first viewport answers four questions without scrolling:
 3. Can I begin free now?
 4. Where is the kickoff explanation?
 
-Primary action: start or resume the next available day.  
-Secondary action: watch kickoff.  
+Primary action: start or resume the next available day.
+Secondary action: watch kickoff.
 Supporting action: understand Conan Maker access for days 08–21.
 
 The hub includes, in order:
