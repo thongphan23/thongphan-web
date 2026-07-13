@@ -1,0 +1,8 @@
+name = "thongphan-com-router"
+main = "workers/thongphan-router.mjs"
+compatibility_date = "2026-06-10"
+
+routes = [
+  { pattern = "thongphan.com/*", zone_name = "thongphan.com" },
+  { pattern = "www.thongphan.com/*", zone_name = "thongphan.com" }
+]
