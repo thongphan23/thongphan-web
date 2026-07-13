@@ -4,7 +4,7 @@ Date: 2026-07-13
 
 Verdict: local release candidate passed
 
-Verified implementation HEAD: `7c4956a6ac69b84101391345782011f3627f5f06`
+Verified implementation HEAD: `1d463d41358f35cebdd84d40ee482668da2ff3c1`
 
 ## Scope
 
@@ -46,7 +46,8 @@ Verified implementation HEAD: `7c4956a6ac69b84101391345782011f3627f5f06`
 - The release smoke preserves the caller's `out/`, builds distinct disabled and
   enabled artifacts, and runs each with runtime true, false and missing. The coherent
   enabled pair returns HTTP 200 and passes exact canonical, title, H1, indexability
-  and discovery-anchor contracts. Coherent disabled pairs return HTTP 404 with
+  in both the HTML and `X-Robots-Tag` response header, plus discovery-anchor
+  contracts. Coherent disabled pairs return HTTP 404 with
   `noindex, nofollow`. Both mismatched pairs are inspected and then explicitly
   rejected as incoherent release controls; hidden React payload text cannot create a
   false pass.
@@ -101,5 +102,6 @@ mitigations and stop boundary are documented in
 - Production deployment was not performed by this plan.
 
 This verdict is local only. Production release remains a separate explicitly
-authorized action that must select the Learn flag, deploy the exact verified
-commit and record canonical smoke evidence.
+authorized action that must align the build-time `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED`
+and runtime `LEARN_PUBLIC_ENABLED` controls, deploy the exact verified commit and
+record canonical smoke evidence.
