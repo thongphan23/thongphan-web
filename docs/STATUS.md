@@ -55,7 +55,11 @@ remains undeployed because the available Brevo credential returns 401.
 - Experience Hub muted/caption copy uses scoped `#625b52`, measuring 5.83:1 on
   `#f3efe6` and 5.03:1 on `#e8decf`.
 - The separate Learn repository/runtime and the live Brain2 access boundary were not
-  changed.
+  changed by this website task. Its task-start 66-line dirty-state snapshot remained
+  exact through the matrix work; during final verification, a concurrent Learn thread
+  added only ` M docs/DEBUG_LOG.md`, producing a 67-line status with SHA-256
+  `552944d50c8af924b5f895d02cbe0629fa0fb0befc9f6bb75f8998e56597b836`
+  while HEAD remained `bb57a093ee7d6b2591a9627b1fb981efbf518d0b`.
 - Production deployment remains a separate explicitly authorized release action.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13

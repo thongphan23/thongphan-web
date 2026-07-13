@@ -69,6 +69,13 @@ Verified implementation HEAD: `e1872e67a3b09eff847a438d57e5c453b6e640ea`
   read-only observations. Both status snapshots contain 66 lines and have SHA-256
   `52838139e59ce53b896c9f2ff52bd5c9beabcd5ed6b4803f9f82b7dcd02c0987`;
   this task made no Learn repository change.
+- During final verification, an independent concurrent Learn thread added only
+  ` M docs/DEBUG_LOG.md` to that repository's status. Learn HEAD remained
+  `bb57a093ee7d6b2591a9627b1fb981efbf518d0b`; the current status therefore has 67
+  lines and SHA-256
+  `552944d50c8af924b5f895d02cbe0629fa0fb0befc9f6bb75f8998e56597b836`.
+  This website task continued to inspect the Learn repository read-only and did not
+  modify or revert the external work.
 
 ## Rendered verification
 
