@@ -25,6 +25,27 @@ gone. Post-delete verification made 128 requests across all 64 immutable URLs an
 their cache-busted variants: all were unreachable with zero legacy body hits. Email
 remains undeployed because the available Brevo credential returns 401.
 
+## Experience + Commerce Ecosystem — approved conversation design — 2026-07-13
+
+- Anh Thông approved an independent product ecosystem rather than a Conan-only funnel:
+  Learn subscription revenue, usage-based tool credit revenue and Conan Maker as a
+  separate premium transformation environment.
+- The approved commercial baseline is one shared identity, Learn at an experimental
+  VND 179,000/month, monthly member credits and separately purchasable credits. Exact
+  credit units and packs remain blocked on measured tool unit economics.
+- Five product spaces are defined: public `thongphan.com`, Experience Hub,
+  `learn.thongphan.com`, Tools and `Không gian của tôi`.
+- Deep interactive articles, diagnostic, 3/7/21-day challenges and tool trials share an
+  Experience Engine contract and produce versioned user-owned `Tác phẩm`.
+- The north-star metric is weekly users who produce a meaningful result, not pageviews.
+- Learn is being actively developed in another Codex thread. This worktree owns only
+  the ecosystem design document and must not edit the Learn repo, schema, migrations,
+  Workers, lesson packages or runtime. Future cross-repo implementation requires a
+  fresh HEAD/STATUS checkpoint and versioned owner/producer/consumer contract matrix.
+- Written design awaiting explicit approval:
+  `docs/superpowers/specs/2026-07-13-thongphan-experience-commerce-ecosystem-design.md`.
+- No implementation plan or product code has been started for this ecosystem slice.
+
 ## Origin Story + 21 ngày Brain2 — approved design and implementation audit — 2026-07-12
 
 - Approved story arc: difference → success → collapse → rebuilding → system. The HSTL
