@@ -1,10 +1,37 @@
 import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
+import { access, cp, mkdtemp, rm } from 'node:fs/promises'
 import { createServer } from 'node:net'
+import { realpathSync } from 'node:fs'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
 import { fileURLToPath } from 'node:url'
+import {
+  assertAlignedControls,
+  assertDisabledLearnDocument,
+  assertEnabledDiscoveryDocument,
+  assertEnabledLearnDocument,
+  assertNoLearnDiscoveryDocument,
+} from './learn-pages-preview-contract.mjs'
 
+const repo = fileURLToPath(new URL('../', import.meta.url))
+const out = join(repo, 'out')
 const wrangler = fileURLToPath(new URL('../node_modules/wrangler/bin/wrangler.js', import.meta.url))
-const routes = ['/learn', '/learn/free']
+const learnRoutes = ['/learn', '/learn/free']
+
+async function exists(path) {
+  try { await access(path); return true } catch { return false }
+}
+
+async function runBuild(enabled) {
+  const child = spawn('npm', ['run', 'build'], {
+    cwd: repo,
+    env: { ...process.env, NEXT_PUBLIC_LEARN_PUBLIC_ENABLED: enabled ? 'true' : 'false' },
+    stdio: 'inherit',
+  })
+  const code = await new Promise((resolve) => child.once('exit', resolve))
+  if (code !== 0) throw new Error(`${enabled ? 'enabled' : 'disabled'} Learn build failed (${code})`)
+}
 
 async function openPort() {
   const server = createServer()
@@ -19,7 +46,7 @@ async function openPort() {
 }
 
 async function waitUntilReady(base, child, output) {
-  for (let attempt = 0; attempt < 80; attempt += 1) {
+  for (let attempt = 0; attempt < 100; attempt += 1) {
     if (child.exitCode !== null) throw new Error(`Wrangler exited early (${child.exitCode}): ${output.value}`)
     try {
       const response = await fetch(base, { redirect: 'manual' })
@@ -40,46 +67,102 @@ async function stop(child) {
   if (child.exitCode === null) child.kill('SIGKILL')
 }
 
-async function verifyMode(name, runtimeFlag, expectedStatus) {
+async function withPreview(artifact, runtimeFlag, verify) {
   const port = await openPort()
-  const args = [
-    wrangler,
-    'pages',
-    'dev',
-    'out',
-    '--ip', '127.0.0.1',
-    '--port', String(port),
-    '--log-level', 'error',
-  ]
+  const args = [wrangler, 'pages', 'dev', artifact, '--ip', '127.0.0.1', '--port', String(port), '--log-level', 'error']
   if (runtimeFlag !== undefined) args.push('--binding', `LEARN_PUBLIC_ENABLED=${runtimeFlag}`)
-
-  const child = spawn(process.execPath, args, {
-    cwd: fileURLToPath(new URL('../', import.meta.url)),
-    env: { ...process.env, CI: '1' },
-    stdio: ['ignore', 'pipe', 'pipe'],
-  })
+  const child = spawn(process.execPath, args, { cwd: repo, env: { ...process.env, CI: '1' }, stdio: ['ignore', 'pipe', 'pipe'] })
   const output = { value: '' }
   child.stdout.on('data', (chunk) => { output.value += chunk })
   child.stderr.on('data', (chunk) => { output.value += chunk })
   const base = `http://127.0.0.1:${port}`
-
   try {
     await waitUntilReady(base, child, output)
-    for (const route of routes) {
-      const response = await fetch(`${base}${route}`, { redirect: 'manual' })
-      assert.equal(response.status, expectedStatus, `${name} ${route}`)
-      if (expectedStatus === 404) {
-        assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow')
-      } else {
-        assert.match(await response.text(), /Học AI để làm việc tốt hơn|AI Foundation/)
-      }
-    }
+    await verify(base)
   } finally {
     await stop(child)
   }
 }
 
-await verifyMode('runtime true', 'true', 200)
-await verifyMode('runtime false', 'false', 404)
-await verifyMode('runtime missing', undefined, 404)
-console.log('Learn Pages preview smoke passed: runtime true 200; false/missing 404')
+async function responseAt(base, route, expectedStatus) {
+  const response = await fetch(`${base}${route}`, { redirect: 'manual' })
+  assert.equal(response.status, expectedStatus, `${route}: HTTP status`)
+  return { response, html: await response.text() }
+}
+
+async function assertRuntimeDisabled(base) {
+  for (const route of learnRoutes) {
+    const { response, html } = await responseAt(base, route, 404)
+    assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow')
+    assertDisabledLearnDocument(html, route)
+  }
+}
+
+const temp = await mkdtemp(join(realpathSync(tmpdir()), 'thongphan-learn-pages-preview-smoke-'))
+const originalOut = join(temp, 'original-out')
+const disabledArtifact = join(temp, 'build-disabled')
+const enabledArtifact = join(temp, 'build-enabled')
+const hadOriginalOut = await exists(out)
+
+try {
+  if (hadOriginalOut) await cp(out, originalOut, { recursive: true })
+
+  await runBuild(false)
+  await cp(out, disabledArtifact, { recursive: true })
+  await runBuild(true)
+  await cp(out, enabledArtifact, { recursive: true })
+
+  await withPreview(enabledArtifact, 'true', async (base) => {
+    assertAlignedControls({ buildEnabled: true, runtimeEnabled: true })
+    for (const route of learnRoutes) {
+      const { html } = await responseAt(base, route, 200)
+      assertEnabledLearnDocument(html, route)
+    }
+    const { html: discovery } = await responseAt(base, '/experiences', 200)
+    assertEnabledDiscoveryDocument(discovery)
+  })
+
+  for (const runtimeFlag of ['false', undefined]) {
+    await withPreview(enabledArtifact, runtimeFlag, async (base) => {
+      await assertRuntimeDisabled(base)
+      const { html: discovery } = await responseAt(base, '/experiences', 200)
+      assertEnabledDiscoveryDocument(discovery)
+      assert.throws(
+        () => assertAlignedControls({ buildEnabled: true, runtimeEnabled: false }),
+        /incoherent deployment controls/,
+      )
+    })
+  }
+
+  await withPreview(disabledArtifact, 'true', async (base) => {
+    for (const route of learnRoutes) {
+      const { html } = await responseAt(base, route, 200)
+      assertDisabledLearnDocument(html, route)
+      assert.throws(
+        () => assertEnabledLearnDocument(html, route),
+        /canonical|indexable|error|noindex/i,
+      )
+    }
+    const { html: discovery } = await responseAt(base, '/experiences', 200)
+    assertNoLearnDiscoveryDocument(discovery)
+    assert.throws(
+      () => assertAlignedControls({ buildEnabled: false, runtimeEnabled: true }),
+      /incoherent deployment controls/,
+    )
+  })
+
+  for (const runtimeFlag of ['false', undefined]) {
+    await withPreview(disabledArtifact, runtimeFlag, async (base) => {
+      assertAlignedControls({ buildEnabled: false, runtimeEnabled: false })
+      await assertRuntimeDisabled(base)
+      const { html: discovery } = await responseAt(base, '/experiences', 200)
+      assertNoLearnDiscoveryDocument(discovery)
+    })
+  }
+
+  console.log('Learn Pages build/runtime matrix passed: 2 artifacts, 6 runtime pairs, mismatches rejected')
+} finally {
+  await rm(out, { recursive: true, force: true })
+  if (hadOriginalOut) await cp(originalOut, out, { recursive: true })
+  await rm(temp, { recursive: true, force: true })
+}

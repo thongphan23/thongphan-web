@@ -17,6 +17,10 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 test('QA output resolver accepts only its dedicated temp root or descendants', async () => {
   assert.equal(await resolveQaOutputDir(), qaOutputRoot)
   assert.equal(await resolveQaOutputDir(join(qaOutputRoot, 'run-1')), join(qaOutputRoot, 'run-1'))
+  assert.equal(
+    await resolveQaOutputDir(join(tmpdir(), 'thongphan-experience-hub-qa', 'run-alias')),
+    join(qaOutputRoot, 'run-alias'),
+  )
 
   for (const unsafe of [
     tmpdir(),

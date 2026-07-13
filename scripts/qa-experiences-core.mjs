@@ -36,10 +36,6 @@ export async function resolveQaOutputDir(input = qaOutputRoot) {
   if (input.split(/[\\/]+/).includes('..')) throw new Error('QA output path may not contain traversal segments')
 
   const candidate = resolve(input)
-  if (!isInside(qaOutputRoot, candidate)) {
-    throw new Error(`QA output must stay inside the dedicated directory ${qaOutputRoot}`)
-  }
-
   const [canonicalRoot, canonicalCandidate] = await Promise.all([
     resolveThroughExistingAncestor(qaOutputRoot),
     resolveThroughExistingAncestor(candidate),
@@ -51,7 +47,7 @@ export async function resolveQaOutputDir(input = qaOutputRoot) {
     throw new Error('QA output symlink resolves outside the dedicated directory')
   }
 
-  return candidate
+  return canonicalCandidate
 }
 
 export async function waitForImages(page) {
