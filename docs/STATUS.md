@@ -48,6 +48,9 @@ remains undeployed because the available Brevo credential returns 401.
   artifact and stops all owned child process groups. Signal handlers are registered
   before lock acquisition, and deterministic post-`mkdir` SIGINT/SIGTERM contracts
   prove exit codes 130/143, owned-empty-lock removal and zero build/temp/process leak.
+  The lifecycle protocol, acceptance criteria and interactive RED/failure trace are
+  recorded in the
+  [Learn preview lifecycle amendment](superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md#amendment-learn-preview-lifecycle-hardening-2026-07-13).
 - QA output deletion is restricted to the dedicated `os.tmpdir()` evidence directory
   or a validated descendant, including symlink-escape protection. Rendered checks now
   await and decode every image and use ancestor-aware `checkVisibility` plus real

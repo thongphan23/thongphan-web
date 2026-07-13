@@ -59,6 +59,9 @@ Verified implementation HEAD: `e1872e67a3b09eff847a438d57e5c453b6e640ea`
   additionally prove SIGINT/SIGTERM exit with 130/143, remove the owned empty lock,
   leave `out/` exact and create no build, temporary artifact or child process. An
   unknown pre-existing lock remains untouched and blocks the run.
+- The lifecycle protocol, non-goals, fixture-only marker boundary and interactive
+  RED/failure trace are recorded in the
+  [Learn preview lifecycle amendment](../superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md#amendment-learn-preview-lifecycle-hardening-2026-07-13).
 - The real serial matrix started and ended with the same disabled `out/` tree SHA-256
   captured in that run:
   `4aeaa86ccd7ef723d181315e10051665f7946b95ddcbde91e96a3bce4b6d1ad7`.

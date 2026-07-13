@@ -1217,3 +1217,102 @@ Expected: commit succeeds and the feature worktree is clean.
 ## Production Release Boundary
 
 This plan stops at a local release candidate. Production deployment is a separate external-state action. Before deploying, the release owner must confirm the desired Learn flag, deploy the exact verified commit, smoke `/experiences`, `/challenges`, `/diagnostic`, `/brain2/21-ngay` and `/learn`, then record deployment ID and canonical smoke evidence in `docs/STATUS.md`.
+
+## Amendment: Learn preview lifecycle hardening (2026-07-13)
+
+Status: completed in implementation commit
+`e1872e67a3b09eff847a438d57e5c453b6e640ea` after final review exposed an
+interrupt window around atomic lock acquisition.
+
+### Goal
+
+Make `npm run test:learn-pages-preview` an exclusive, interruption-safe local
+verification command that never leaves the caller's `out/` tree, owned child
+processes or temporary state in an ambiguous condition.
+
+### Scope
+
+- Worktree-local preview orchestration in `scripts/learn-pages-preview-smoke.mjs`.
+- Deterministic lifecycle contracts in
+  `scripts/learn-pages-preview-concurrency.test.mjs`.
+- The existing two-artifact, six-runtime-pair Learn release matrix.
+
+### Non-goals
+
+- Merge or deploy any commit.
+- Change the production website, Pages runtime contract or release flags.
+- Change the Learn app, content, schema, migrations or repository.
+- Create a generalized job-lock framework for other commands.
+- Automatically decide that an existing lock is stale or remove it.
+
+### Acceptance criteria
+
+- [x] Acquire `.learn-pages-preview.lock` atomically before reading, moving or
+  replacing `out/`; only the process that created the directory becomes owner.
+- [x] A non-owner fails fast without reading, changing or deleting the owner lock,
+  owner metadata, workspace or `out/`.
+- [x] An unknown pre-existing lock fails closed with manual recovery guidance; the
+  command never auto-removes a suspected stale lock.
+- [x] Restore the exact caller-owned `out/` tree after success, failure, SIGINT or
+  SIGTERM, including the case where no original `out/` existed.
+- [x] SIGINT maps to exit code 130 and SIGTERM maps to 143 whether received
+  immediately after atomic ownership or while an owned build/preview child is
+  active.
+- [x] Early interruption removes the owned empty lock without creating
+  `owner.json`, workspace, build output, child process or temporary artifact.
+- [x] Build-stage interruption terminates the owned process group, restores `out/`
+  and leaves no child, lock or temporary artifact.
+- [x] The serialized real matrix still builds separate disabled/enabled artifacts,
+  checks all six runtime pairs and restores the exact pre-run disabled artifact.
+
+### Architecture impact
+
+The command uses one worktree-local lock directory as both the atomic exclusion
+primitive and the container for owner metadata, workspace and the original `out/`
+snapshot. Signal handlers are registered before lock acquisition, record the
+conventional exit code and stop active owned process groups; ownership gates all
+destructive cleanup. Normal completion and every interruption converge on one
+awaited `finally` cleanup path.
+
+`LEARN_PREVIEW_TEST_AFTER_LOCK_MARKER` is a fixture-only deterministic checkpoint.
+It is inert unless a test explicitly sets it, is not a deployment variable or
+supported configuration API, and must not be configured in CI or production.
+This lifecycle change has no production website/Pages behavior and no Learn
+repository impact.
+
+### Verification evidence and failure trace
+
+- RED was observed interactively before implementation, not encoded as a commit:
+  the new early-signal tests first timed out because no post-ownership checkpoint
+  existed.
+- The first synchronization attempt exposed a lost wake-up: SIGINT did not produce
+  130 and SIGTERM exited 13 because the marker could become visible before the
+  waiter was armed.
+- After arming the waiter first, both cases still exited 13. Root cause was a bare
+  unresolved top-level Promise that did not keep Node's event loop alive. The final
+  fixture checkpoint uses an explicit keepalive timer and clears it on signal and in
+  `finally`.
+- Focused final suite: 8/8 passed, covering early SIGINT 130, early SIGTERM 143,
+  build-stage SIGTERM/concurrent rejection, unknown-lock fail-closed behavior and
+  the four release-document contracts. The stage-independent handler owns the same
+  130/143 mapping; the encoded build-stage fixture directly exercises SIGTERM
+  cleanup, while the two early fixtures assert both exact codes.
+- Repository verification: lint passed, TypeScript passed, `npm test` passed
+  238/238 and `npm run test:build` passed 6/6.
+- The real serial matrix passed two artifacts and six runtime pairs. Its same-run
+  disabled `out/` SHA-256 was
+  `4aeaa86ccd7ef723d181315e10051665f7946b95ddcbde91e96a3bce4b6d1ad7`
+  before and after; the lock and preview processes were absent afterward.
+
+### Self-audit
+
+- Ownership is set only after successful atomic `mkdir`; a signaled non-owner
+  cannot enter owned cleanup.
+- No signal handler deletes the lock directly. Cleanup remains ownership-guarded
+  and awaited from the single outer `finally`.
+- The marker cannot affect ordinary runs because the environment variable is
+  otherwise absent. Its timer is cleared on both resolution and exceptional exit.
+- Unknown locks remain a deliberate operator decision. No PID-based automatic
+  deletion or generalized locking abstraction was added.
+- Final review found no production route, runtime binding, Learn repository or
+  release-scope change.
