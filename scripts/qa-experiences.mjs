@@ -60,7 +60,11 @@ try {
         cardCount: experienceCards.length,
         contentSignature: {
           h1: normalizeText(document.querySelector('h1')?.textContent),
-          cards: experienceCards.map((card) => normalizeText(card.textContent)),
+          cards: experienceCards.map((card) => ({
+            title: normalizeText(card.querySelector('h2')?.textContent),
+            body: normalizeText(card.querySelector('p')?.textContent),
+            link: normalizeText(card.querySelector('a')?.textContent),
+          })),
         },
         atmosphere: atmosphere ? {
           ambient: atmosphere.getAttribute('data-ambient'),
