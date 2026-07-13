@@ -26,7 +26,8 @@
     "test:brain2-private-boundary:strict": "node scripts/scan-brain2-private-leaks.mjs --require-keychain-secrets",
     "typecheck:brain2-workers": "tsc --noEmit -p tsconfig.brain2-workers.json",
     "audit:reading-rights": "node scripts/reading-rights-audit.mjs",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "qa:experiences": "node scripts/qa-experiences.mjs"
   },
   "keywords": [],
   "author": "",
