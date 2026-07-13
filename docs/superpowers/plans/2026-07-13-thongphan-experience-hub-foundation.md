@@ -13,7 +13,7 @@
 - Do not edit `/Users/rio/Projects/learn-conan-school`, its worktrees, schema, migrations, Worker, content packages or tests.
 - Do not change the live Brain2 entitlement: days 01–07 remain public and days 08–21 remain Conan Maker-only.
 - Do not publish Tools, Account, subscription or credit links before their routes and commercial contracts exist.
-- `learn.thongphan.com` appears in the registry only when `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED === 'true'` at build time.
+- `learn.thongphan.com` appears in the registry only when `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED === 'true'` at build time. Serving `/learn/*` also requires the separate Pages runtime binding `LEARN_PUBLIC_ENABLED === 'true'`; missing/false runtime state remains a real noindex 404.
 - The canonical public route is `/experiences`; `/challenges` permanently redirects to it because `/challenges` is already public.
 - Render only published, currently usable experiences. Do not add coming-soon cards to inflate the catalog.
 - Reuse approved real/generated raster assets already tracked in `public/images`; create no CSS illustration, handmade SVG, emoji-led hierarchy or generic stand-in.
@@ -28,7 +28,7 @@
 
 This plan implements only the first independently releasable public-site slice. The approved ecosystem spec requires separate detailed plans after their gates are ready:
 
-1. Brain2 Content Restoration executes its already approved dedicated spec and visual target without changing this registry contract.
+1. Brain2 Content Restoration is awaiting written-spec and visual-target approval; after both approvals it may execute its dedicated plan without changing this registry contract.
 2. Free Experience Loop receives its own content/product spec for one deep article, the expertise diagnostic and a three-day artifact-producing challenge.
 3. Content Tool v1 receives a separate product spec and unit-cost experiment before any credit sale.
 4. Learn Subscription + Shared Credit begins only after a fresh Learn HEAD/STATUS checkpoint and a versioned owner/producer/consumer contract matrix.

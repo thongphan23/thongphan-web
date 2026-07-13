@@ -45,6 +45,24 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
   release flag is off. Cloudflare returns HTTP 404 with `noindex, nofollow` for all
   `/learn` paths.
 
+### Learn release flags
+
+Learn has two independent, fail-closed release controls. Both compare their value to
+the exact string `true`; neither flag substitutes for the other:
+
+- `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED=true` is a build-time flag. It includes the Learn
+  pages, card and navigation in the static export.
+- `LEARN_PUBLIC_ENABLED=true` is a Cloudflare Pages runtime binding. It allows the
+  `/learn/*` Pages Function to call `context.next()` and serve those static assets.
+  When the binding is missing or any value other than `true`, the Function returns the
+  disabled HTTP 404 with `noindex, nofollow`.
+
+A public release must build with the first flag and configure the second binding on
+the same Pages environment. Verify the local contract with
+`npm run test:learn-pages-preview`; it performs a Learn-enabled build, then uses local
+`wrangler pages dev out --binding LEARN_PUBLIC_ENABLED=...` previews to prove `/learn`
+and `/learn/free` return 200 only for runtime `true`, and 404 for false/missing.
+
 ## Cinema Chapters release history
 
 - Source commit: `29bcb9d2d212753065e3c8838875be694718d66e`.

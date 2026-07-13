@@ -42,6 +42,8 @@ remains undeployed because the available Brevo credential returns 401.
 
 ## Experience + Commerce Ecosystem — approved written design — 2026-07-13
 
+- Brain2 content-restoration spec and visual target remain awaiting written and visual approval;
+  the approved Experience + Commerce ecosystem document does not approve that separate work.
 - Experience Hub Task 5 now passes locally with segmented viewport evidence.
   Chromium `fullPage` evidence is permanently retired for this route after two
   failed capture-only mitigations; no third workaround or production change was

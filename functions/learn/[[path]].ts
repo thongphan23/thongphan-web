@@ -35,7 +35,14 @@ const disabledLearnPage = `<!doctype html>
   </body>
 </html>`
 
-export async function onRequest(): Promise<Response> {
+type LearnPagesContext = {
+  env: { LEARN_PUBLIC_ENABLED?: string }
+  next: () => Promise<Response>
+}
+
+export async function onRequest(context: LearnPagesContext): Promise<Response> {
+  if (context.env.LEARN_PUBLIC_ENABLED === 'true') return context.next()
+
   return new Response(disabledLearnPage, {
     status: 404,
     headers: {

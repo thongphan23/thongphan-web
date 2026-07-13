@@ -1,8 +1,13 @@
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { chromium } from 'playwright'
+import {
+  inspectExperiencePage,
+  resolveQaOutputDir,
+  waitForImages,
+} from './qa-experiences-core.mjs'
 
 const base = process.env.QA_BASE_URL ?? 'http://127.0.0.1:3022'
-const output = process.env.QA_OUTPUT_DIR ?? '/tmp/thongphan-experience-hub-qa'
+const output = await resolveQaOutputDir(process.env.QA_OUTPUT_DIR)
 const cases = [
   { name: 'desktop', width: 1440, height: 900, reducedMotion: 'no-preference', javascriptEnabled: true },
   { name: 'mobile', width: 390, height: 844, reducedMotion: 'no-preference', javascriptEnabled: true },
@@ -152,6 +157,9 @@ try {
 
     if (response?.status() !== 200) throw new Error(`${item.name}: HTTP ${response?.status()}`)
 
+    await prepareAllContent(page, item.javascriptEnabled)
+    await waitForImages(page)
+
     const initialAtmosphere = await page.evaluate(() => {
       const atmosphere = document.querySelector('[data-page-visible]')
       return atmosphere ? {
@@ -174,62 +182,7 @@ try {
       await page.screenshot({ path: `${output}/desktop-motion-viewport.png` })
     }
 
-    await prepareAllContent(page, item.javascriptEnabled)
-
-    const state = await page.evaluate(() => {
-      const header = document.querySelector('header[data-header-scrolled]')?.getBoundingClientRect()
-      const title = document.querySelector('h1')?.getBoundingClientRect()
-      const experienceCards = [...document.querySelectorAll('[data-experience-id]')]
-      const normalizeText = (value) => value?.replace(/\s+/g, ' ').trim() ?? ''
-      const overlap = header && title
-        ? Math.max(0, Math.min(header.bottom, title.bottom) - Math.max(header.top, title.top))
-        : 0
-      return {
-        h1Count: document.querySelectorAll('h1').length,
-        cardCount: experienceCards.length,
-        contentSignature: {
-          h1: normalizeText(document.querySelector('h1')?.textContent),
-          cards: experienceCards.map((card) => ({
-            title: normalizeText(card.querySelector('h2')?.textContent),
-            body: normalizeText(card.querySelector('p')?.textContent),
-            link: normalizeText(card.querySelector('a')?.textContent),
-          })),
-        },
-        hiddenExperienceCards: experienceCards.filter((card) => {
-          const style = getComputedStyle(card)
-          const rect = card.getBoundingClientRect()
-          return style.display === 'none'
-            || style.visibility === 'hidden'
-            || Number(style.opacity) < 0.99
-            || rect.width === 0
-            || rect.height === 0
-        }).map((card) => card.getAttribute('data-experience-id')),
-        unreadyExperienceContent: experienceCards.flatMap((card) =>
-          [...card.querySelectorAll('*')].filter((element) => {
-            const hasDirectText = [...element.childNodes].some(
-              (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim(),
-            )
-            const isMedia = element.matches('img, picture, video, svg, canvas')
-            if (!hasDirectText && !isMedia) return false
-            const style = getComputedStyle(element)
-            const rect = element.getBoundingClientRect()
-            return style.display === 'none'
-              || style.visibility === 'hidden'
-              || Number(style.opacity) < 0.99
-              || rect.width === 0
-              || rect.height === 0
-          }).map((element) => ({
-            card: card.getAttribute('data-experience-id'),
-            tag: element.tagName,
-            text: normalizeText(element.textContent).slice(0, 80),
-          })),
-        ),
-        overflow: document.documentElement.scrollWidth - innerWidth,
-        brokenImages: [...document.images].filter((image) => image.complete && image.naturalWidth === 0).length,
-        headerTitleOverlap: overlap,
-        reduced: matchMedia('(prefers-reduced-motion: reduce)').matches,
-      }
-    })
+    const state = await inspectExperiencePage(page)
 
     if (state.h1Count !== 1) throw new Error(`${item.name}: expected one H1`)
     if (state.cardCount !== 2) throw new Error(`${item.name}: expected exactly two released experiences`)

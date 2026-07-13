@@ -43,7 +43,7 @@
 .body dl { display: grid; gap: .85rem; margin: 0; }
 .body dl div { border-top: 1px solid var(--brand-line-paper); display: grid; gap: .35rem; grid-template-columns: 6rem 1fr; padding-top: .85rem; }
 .body dt { color: var(--brand-lacquer); font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
-.body dd { color: var(--brand-muted-on-paper); line-height: 1.55; margin: 0; }
+.body dd { color: var(--brand-experience-muted); line-height: 1.55; margin: 0; }
 .action { align-items: center; border-bottom: 1px solid currentColor; display: inline-flex; font-weight: 800; gap: .6rem; justify-self: start; min-height: 48px; text-decoration: none; }
 
 @media (max-width: 760px) {
