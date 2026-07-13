@@ -1,0 +1,50 @@
+.card {
+  background: var(--brand-reading-paper);
+  border: 1px solid var(--brand-line-paper);
+  display: grid;
+  grid-template-columns: minmax(260px, .78fr) minmax(0, 1.22fr);
+}
+
+.media {
+  background: var(--brand-reading-paper-deep);
+  border-right: 1px solid var(--brand-line-paper);
+  display: grid;
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+  place-items: center;
+  position: relative;
+}
+
+.media img { display: block; height: 100%; max-height: 520px; width: 100%; }
+.media[data-fit='cover'] img { object-fit: cover; }
+.media[data-fit='contain'] img { object-fit: contain; }
+.media figcaption {
+  background: rgba(7, 7, 6, .86);
+  bottom: 0;
+  color: var(--brand-paper);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  left: 0;
+  letter-spacing: .08em;
+  padding: .65rem .8rem;
+  position: absolute;
+}
+
+.body { align-content: start; display: grid; gap: 1.1rem; padding: clamp(1.5rem, 4vw, 3rem); }
+.meta { display: flex; flex-wrap: wrap; gap: .6rem 1rem; }
+.meta span { color: var(--brand-lacquer); font-family: var(--font-mono); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+.body h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.6rem); letter-spacing: -.04em; line-height: .98; margin: 0; }
+.promise { color: var(--brand-text-on-paper); font-size: 1.04rem; line-height: 1.65; margin: 0; max-width: 68ch; }
+.body dl { display: grid; gap: .85rem; margin: 0; }
+.body dl div { border-top: 1px solid var(--brand-line-paper); display: grid; gap: .35rem; grid-template-columns: 6rem 1fr; padding-top: .85rem; }
+.body dt { color: var(--brand-lacquer); font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase; }
+.body dd { color: var(--brand-muted-on-paper); line-height: 1.55; margin: 0; }
+.action { align-items: center; border-bottom: 1px solid currentColor; display: inline-flex; font-weight: 800; gap: .6rem; justify-self: start; min-height: 48px; text-decoration: none; }
+
+@media (max-width: 760px) {
+  .card { grid-template-columns: 1fr; }
+  .media { border-bottom: 1px solid var(--brand-line-paper); border-right: 0; min-height: 230px; }
+  .media img { max-height: 330px; }
+  .body dl div { grid-template-columns: 1fr; }
+}

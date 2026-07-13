@@ -4,7 +4,7 @@ import { experiences, getPublishedExperiences } from '../lib/experiences'
 
 type Assert<T extends true> = T
 type IsReadonlyArray<T extends readonly unknown[]> = T extends unknown[] ? false : true
-type PublishedExperiencesStayReadonly = Assert<
+type _PublishedExperiencesStayReadonly = Assert<
   IsReadonlyArray<ReturnType<typeof getPublishedExperiences>>
 >
 
