@@ -32,7 +32,8 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 
 - Local routes: `/learn`, `/learn/free`, `/learn/diagnostic` and
   `/learn/courses/{ai-foundation,prompt-thinking,evaluate-verify}`.
-- Static export: 60/60 pages; 88/88 functional contracts; TypeScript passed.
+- Static export: 82/82 pages in both release modes; 234/234 functional contracts;
+  TypeScript passed.
 - Production dependency audit: zero finding.
 - Browser evidence: `docs/qa/screenshots/learn-*.png` at 1440x900, 390x844
   and 320x568 with no eager-image failure or horizontal overflow.
@@ -59,9 +60,14 @@ the exact string `true`; neither flag substitutes for the other:
 
 A public release must build with the first flag and configure the second binding on
 the same Pages environment. Verify the local contract with
-`npm run test:learn-pages-preview`; it performs a Learn-enabled build, then uses local
-`wrangler pages dev out --binding LEARN_PUBLIC_ENABLED=...` previews to prove `/learn`
-and `/learn/free` return 200 only for runtime `true`, and 404 for false/missing.
+`npm run test:learn-pages-preview`. The command creates distinct Learn-disabled and
+Learn-enabled artifacts, previews each artifact with runtime `true`, `false` and a
+missing binding, and rejects both incoherent build/runtime combinations. The enabled
+pair must return indexable HTTP 200 documents with exact canonical, title and H1
+contracts for `/learn` and `/learn/free`; the disabled pair must return the fail-closed
+HTTP 404 with `noindex, nofollow`. Discovery links are checked as real DOM anchors,
+not text that happens to exist in a React payload. The command restores the caller's
+pre-existing `out/` directory after the matrix completes.
 
 ## Cinema Chapters release history
 
@@ -126,17 +132,27 @@ All commands must exit 0 before a deployment artifact is handed to Cloudflare Pa
 
 ## Pre-deploy smoke checks
 
-Serve `out/` with clean-URL support and verify:
+Serve the exact release artifact with clean-URL support and verify these checks in
+every release mode:
 
 - `/` renders one semantic `h1` and no framework overlay;
-- `/diagnostic`, `/learn`, `/learn/diagnostic`, `/learn/free`, `/library`, `/about`
-  and `/conanmaker/` resolve;
+- `/diagnostic`, `/library`, `/about` and `/conanmaker/` resolve;
 - `/game/` loads the title screen, all runtime assets resolve below `/game/assets/`, and `/game` redirects canonically;
 - homepage mobile menu opens, traps focus, closes on Escape and restores focus;
 - the three-question mirror returns a result and correct destination;
 - the proof rail scrolls with ArrowLeft/ArrowRight;
 - browser console has no relevant errors or warnings;
 - desktop and mobile have no horizontal overflow.
+
+Then verify the selected Learn state:
+
+- Learn disabled: both controls are false/missing, `/learn/*` returns HTTP 404 with
+  `noindex, nofollow`, and public discovery has no Learn anchors.
+- Learn enabled: both controls are exact `true`; `/learn`, `/learn/diagnostic`,
+  `/learn/free` and the three course routes resolve from the same enabled artifact,
+  while `/learn` and `/learn/free` satisfy the exact indexable DOM/head contract.
+- In both cases, run `npm run test:learn-pages-preview` and reject the release if the
+  build-time and runtime controls are not aligned.
 
 ## Preview and production promotion
 

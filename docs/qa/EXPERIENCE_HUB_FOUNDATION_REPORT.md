@@ -4,7 +4,7 @@ Date: 2026-07-13
 
 Verdict: local release candidate passed
 
-Verified implementation HEAD: `35c1131f638c0623ebe8c43238e5ca2b088ba16c`
+Verified implementation HEAD: `7c4956a6ac69b84101391345782011f3627f5f06`
 
 ## Scope
 
@@ -21,13 +21,14 @@ Verified implementation HEAD: `35c1131f638c0623ebe8c43238e5ca2b088ba16c`
 ## Automated verification
 
 - `npm run lint`: passed with zero warnings or errors
-- `npm test`: 230/230 passed
+- `npm test`: 234/234 passed
 - `npx tsc --noEmit`: passed with zero diagnostics
 - `npm run build`: passed; 82/82 static pages generated
 - `npm run test:build`: 6/6 passed
 - `npm run test:seo`: 4/4 passed
 - `npm run test:bundle`: 3/3 passed
-- `npm run test:learn-pages-preview`: passed with Wrangler 4.110.0
+- `npm run test:learn-pages-preview`: passed with two independent build artifacts,
+  six Wrangler 4.110.0 runtime pairs and explicit mismatch rejection
 - `npm audit --omit=dev`: zero production vulnerability
 - `git diff --check`: passed
 - Static export: `out/experiences.html` present and `out/challenges.html` absent
@@ -35,17 +36,20 @@ Verified implementation HEAD: `35c1131f638c0623ebe8c43238e5ca2b088ba16c`
 ## Learn release-state verification
 
 - `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED=false npm run build`: passed; 82/82 static
-  pages generated and `AI Foundation cho người đi làm` had zero matches in
-  `out/experiences.html`.
+  pages generated and public discovery contained no Learn anchors.
 - `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED=true npm run build`: passed; 82/82 static
-  pages generated and `AI Foundation cho người đi làm` had two matches in
-  `out/experiences.html` (rendered content plus React payload).
+  pages generated and public discovery contained exact `/learn` and `/learn/free`
+  anchors.
 - Direct Pages handler tests passed for runtime binding true, false and missing.
   Exact `LEARN_PUBLIC_ENABLED=true` falls through with `context.next()`; false or
   missing returns the disabled HTTP 404 with `X-Robots-Tag: noindex, nofollow`.
-- A real local `wrangler pages dev out --binding LEARN_PUBLIC_ENABLED=...` smoke
-  proved `/learn` and `/learn/free` return 200 for runtime true and 404 for runtime
-  false/missing. Build and runtime flags remain separate and fail closed.
+- The release smoke preserves the caller's `out/`, builds distinct disabled and
+  enabled artifacts, and runs each with runtime true, false and missing. The coherent
+  enabled pair returns HTTP 200 and passes exact canonical, title, H1, indexability
+  and discovery-anchor contracts. Coherent disabled pairs return HTTP 404 with
+  `noindex, nofollow`. Both mismatched pairs are inspected and then explicitly
+  rejected as incoherent release controls; hidden React payload text cannot create a
+  false pass.
 - Learn repository HEAD before and after:
   `bb57a093ee7d6b2591a9627b1fb981efbf518d0b`.
 - The complete pre-existing dirty status of
@@ -73,11 +77,13 @@ Task 5 is the authoritative rendered verification for this release candidate:
   clipped subject or hidden content.
 - Evidence: `/private/var/folders/n_/1vb9l4ls49bg1vcm3jpfjx_40000gn/T/thongphan-experience-hub-qa`.
 - `report.json` SHA-256:
-  `f97a327d010ecd84234b5c30aa3982796ed767fdc8fd08a28e9893fee12977b0`.
+  `44a1e7eb58001f3669fa400cf3889b27ab1daffc933e0ad5d0e4574079501143`.
 
-The recursive cleanup target is resolved before `rm` and is restricted to the
-dedicated canonical `os.tmpdir()` directory or its descendants. Tests reject the
-temporary root, home, repository, outside paths, traversal and symlink escapes.
+The recursive cleanup target is canonicalized before containment checks and `rm`,
+then restricted to the dedicated canonical `os.tmpdir()` directory or its
+descendants. `/var` and `/private/var` aliases resolve to the same canonical output;
+tests reject the temporary root, home, repository, outside paths, traversal and
+symlink escapes.
 
 Experience Hub caption and muted card copy use scoped `#625b52`; contrast assertions
 measure 5.83:1 against `#f3efe6` and 5.03:1 against `#e8decf`, both above 4.5:1.

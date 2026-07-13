@@ -37,11 +37,12 @@ remains undeployed because the available Brevo credential returns 401.
   pass. Task 5 uses 21/21 authoritative segmented-viewport PNGs; Chromium full-page
   capture is retired due the documented headless compositor blocker. Evidence is
   recorded in `docs/qa/EXPERIENCE_HUB_FOUNDATION_REPORT.md`.
-- Learn release now requires two independent exact-`true` controls: build-time
+- Learn release now requires two aligned exact-`true` controls: build-time
   `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED` and the Pages runtime binding
-  `LEARN_PUBLIC_ENABLED`. Local Wrangler Pages previews prove `/learn` and
-  `/learn/free` return 200 only when the runtime binding is true and remain a real
-  noindex 404 when it is false or missing.
+  `LEARN_PUBLIC_ENABLED`. The local gate builds distinct enabled/disabled artifacts
+  and runs all six artifact/runtime pairs. Only the coherent enabled pair passes the
+  exact indexable DOM/head contract; the coherent disabled pairs stay real noindex
+  404 responses, and both mismatched control pairs are explicitly rejected.
 - QA output deletion is restricted to the dedicated `os.tmpdir()` evidence directory
   or a validated descendant, including symlink-escape protection. Rendered checks now
   await and decode every image and use ancestor-aware `checkVisibility` plus real
@@ -105,7 +106,7 @@ remains undeployed because the available Brevo credential returns 401.
   and rendered QA:
   `docs/superpowers/plans/2026-07-13-thongphan-experience-hub-foundation.md`.
 - The Experience Hub foundation slice is now locally verified through Tasks 1-6 and
-  the final review hardening at implementation commit `35c1131f638c0623ebe8c43238e5ca2b088ba16c`.
+  the final review hardening at implementation commit `7c4956a6ac69b84101391345782011f3627f5f06`.
   Learn repository/runtime, subscription, credit, Tools and shared-account
   implementation remain outside this plan.
 
@@ -489,9 +490,10 @@ fail-closed until its independent PWA is ready.
 
 ### Learn verification
 
-- `npm test`: 88/88 passed.
+- `npm test`: 234/234 passed on the current branch-wide suite.
 - `npx tsc --noEmit`: passed.
-- `npm run build`: 60/60 static pages generated, including all Learn routes.
+- Both enabled and disabled `npm run build` artifacts generate 82/82 static pages;
+  runtime exposure is verified separately by the six-pair Wrangler matrix.
 - `npm audit --omit=dev`: zero production vulnerability after upgrading Next to
   16.2.10 and overriding PostCSS to 8.5.10.
 - Production paths are intentionally fail-closed because `learn.thongphan.com` and
