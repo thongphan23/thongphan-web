@@ -1,228 +1,125 @@
-# Task 2 Report — Validated Reading Package Ingestion
+# Task 2 Report — Canonical Experience Hub and Accessible Cards
 
-Date: 2026-07-10
+## Status
 
-Base commit: `8e1eb10f585c52f7b489030ab2bf5a3e0bc84cb5`
+PASS. The canonical `/experiences` route, registry-driven cards, source contract, and package test entry are implemented. The Learn card remains controlled by `learnPublicEnabled` through `getPublishedExperiences({ includeLearn: learnPublicEnabled })`.
 
-Verdict: **PASS**
+Commit: `cd46575` (`feat: add canonical experience hub`).
 
-## Goal
+## Implementation
 
-Migrate the 13 legacy Read records into deterministic, committed packages without republishing translated bodies or uncleared media. Main-site dev/build must generate public summary data only from those committed packages and must not depend on the external Read repo.
+- Added a static `/experiences` page with canonical metadata, one semantic `h1` from `DossierHeader`, an `h2` section heading, and `h2` card titles.
+- Added `ExperienceCard({ experience, index })` with stable `data-experience-id`, registry-controlled image fit and position, duration/access/output copy, and exactly one canonical `Link` action.
+- Added responsive paper-surface styling. The hero uses `object-fit: contain`; every current registry card is also `fit: 'contain'`, so faces and subjects are not destructively cropped.
+- Added the Experience Hub source contract to the main `npm test` script immediately after the registry contract.
+- Resolved the plan conflict reported during TypeScript verification: `journeyKey="experiences"` was required by Task 2 but absent from `JourneyKey`. With coordinator approval, the minimum Task 4 contract was moved forward: the new key and exact final `journeyHandoffs.experiences` copy were added without changing `challenges`, `asset-detail`, or existing actions/routes.
+- Renamed the Task 1 compile-time type assertion to `_PublishedExperiencesStayReadonly` so the exact scoped ESLint command required by this brief passes; behavior is unchanged.
 
-## Scope delivered
+## TDD Evidence
 
-- Added 13 directories under `content/readings/<slug>/` with exactly:
-  - `article.json`
-  - `rights.json`
-  - `image-pack.json`
-- Added a manual TSX-backed migration script that imports `libraryItems` from the legacy Read repo, writes the packages, and validates after each group of three plus the final package.
-- Added a fail-closed rights/package validator.
-- Added a byte-stable package-only generator and typed public read API.
-- Added a local-only ready-asset validator/materializer. It performs no network or download work.
-- Wired `generate-readings` into `dev` and `build`, while leaving migration manual.
-- Added focused ingestion/rights/checksum/API tests to `npm test`.
-
-## Deliberate non-goals
-
-- No Task 3 routes, reader UI, components, CSS, or public content pages.
-- No changes to the legacy Read runtime or plugin publishing workflow.
-- No image/audio copy: the current audit cleared zero media records and found zero ready audio records.
-- No full translated sections, paragraphs, or blocks in committed `article.json` or generated public TypeScript.
-- No dependency from `dev` or `build` on `/Users/rio/Projects/thongphan-read`.
-
-## Data and rights result
-
-| Gate | Result |
-| --- | ---: |
-| Packages | 13 |
-| Full publication | 0 |
-| Source-link summary | 13 |
-| Blocked | 0 |
-| Legacy media candidates retained privately | 65 |
-| Ready/public media | 0 |
-| Ready/public audio | 0 |
-
-Each `article.json` contains safe catalog/editorial context, the legacy section count, legacy block count, a legacy-body checksum, a package content checksum/version, and exact `/library/read/<slug>` canonical path. It does not contain legacy body arrays.
-
-Each `rights.json` uses:
-
-```json
-{
-  "rightsStatus": "source-link-only",
-  "publicationMode": "summary",
-  "textRights": {
-    "translation": false,
-    "publicWeb": false,
-    "commercialContext": false
-  },
-  "evidence": []
-}
-```
-
-Each `image-pack.json` retains legacy source location, alt, caption, credit, provenance, and `pending-rights` status. Pending candidates have no `publicPath`; none are copied into `public/` or emitted in `lib/readings-data.generated.ts`.
-
-## TDD evidence
-
-### RED
+### RED — Experience Hub
 
 Command:
 
-```text
-npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```bash
+node --import tsx --test scripts/experience-hub-contract.test.ts
 ```
 
-Observed before implementation:
+Result: exit 1, 0/2 passed. Both tests failed with the expected `ENOENT` for `app/experiences/page.tsx`.
 
-```text
-not ok 1 - reading ingestion artifacts exist before package validation
-error: expected reading packages, generator, validator, and materializer
-tests 5, fail 1, skipped 4
-exit 1
-```
-
-The failure was the intended missing-feature assertion, not a syntax or fixture error.
-
-### GREEN
+### RED — Experiences journey handoff
 
 Command:
 
-```text
-npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```bash
+node --import tsx --test scripts/site-journey.test.ts
 ```
 
-Observed after implementation:
+Result: exit 1, 3/4 passed. `known keys return stable handoffs` failed because `getJourneyHandoff('experiences')` returned `undefined`.
 
-```text
-tests 6, pass 6, fail 0, skipped 0
-exit 0
+### GREEN — Focused verification
+
+Command:
+
+```bash
+node --import tsx --test scripts/experience-registry.test.ts scripts/experience-hub-contract.test.ts scripts/site-journey.test.ts
+npx tsc --noEmit
+npx eslint app/experiences components/experience lib/experiences.ts lib/site-journey.ts scripts/experience-*.test.ts scripts/site-journey.test.ts --max-warnings=0
 ```
 
-Focused coverage includes package parity with the legacy source, absence of translated body keys, rights promotion rules, checksums, deterministic adapters, byte-stable generation, public API fail-closed behavior, unknown-slug null behavior, and zero-ready asset handling.
+Result: exit 0; 10/10 tests passed; TypeScript passed; scoped ESLint passed with zero warnings/errors.
 
-## Migration and generation evidence
+## Full Verification
 
-Manual migration command:
-
-```text
-node --import tsx scripts/migrate-readings.mjs
+```bash
+npm test
 ```
 
-Observed:
+Result: exit 0; 217/217 tests passed, 0 failed, 0 skipped.
 
-```text
-Validated 3/13 reading packages
-Validated 6/13 reading packages
-Validated 9/13 reading packages
-Validated 12/13 reading packages
-Validated 13/13 reading packages
-Migrated 13 fail-closed reading packages; copied 0 images and 0 audio files
+```bash
+git diff --check
 ```
 
-Rights validation:
+Result: exit 0.
 
-```text
-npm run validate-reading-rights
-packages 13, full 0, sourceLinkOnly 13, blocked 0
-```
+## Files
 
-Asset materialization:
-
-```text
-npm run materialize-reading-assets
-ready 0, validated 0
-```
-
-Two consecutive generation runs produced identical bytes:
-
-```text
-3df7e7ffcf3bf76929d8059d5ce84e5f8f18db5fbb0f313e778e22663ddb9a46
-```
-
-## Full verification
-
-| Command | Result |
-| --- | --- |
-| `npm test` | PASS — 39/39 tests, 0 failures |
-| `npx tsc --noEmit` | PASS — exit 0 |
-| `npm run build` | PASS — production build and 38 static pages generated |
-| body/public-path scan | PASS — no `sections`, `paragraphs`, `blocks`, or `publicPath` keys in articles/generated public data |
-| generated media scan | PASS — generated records contain `images: []` and `audio: []`; no media hotlinks |
-
-The build emitted the pre-existing Next.js multiple-lockfile workspace-root warning and the existing edge-runtime/static-generation warning. Neither is introduced by this slice and neither failed the build.
+- `app/experiences/page.tsx`
+- `app/experiences/page.module.css`
+- `components/experience/ExperienceCard.tsx`
+- `components/experience/ExperienceCard.module.css`
+- `scripts/experience-hub-contract.test.ts`
+- `package.json`
+- `lib/site-journey.ts` — approved minimum plan-conflict resolution
+- `scripts/site-journey.test.ts` — regression contract for that resolution
+- `scripts/experience-registry.test.ts` — lint-only type alias rename
 
 ## Self-review
 
-- **Rights boundary:** PASS. `source-link-only` and `blocked` packages are rejected if any body key appears recursively. Full publication requires an approved full-text rights status, all three text-right booleans, and retained non-placeholder evidence.
-- **Public API boundary:** PASS. Blocked records are omitted; unknown slugs return `null`; summaries explicitly strip body/media fields; no pending candidate/provenance data is generated publicly.
-- **Source parity:** PASS. Default tests compare all 13 packages against a committed safe manifest; optional live-source parity remains available as an explicit manual command without copying the bodies.
-- **Determinism:** PASS. Package and media checksums are regenerated from stable JSON inputs; topic, intent, and duration adapters are deterministic; package directories and generated records are sorted.
-- **Runtime independence:** PASS. Only manual migration/parity commands import the external Read repo. Default tests, dev, and build use committed files only.
-- **Asset safety:** PASS. Pending candidates cannot have `publicPath`; ready records require a local reading path, checksum, source URL, license, and rights evidence. Materialization only reads and verifies ready local files.
-- **Scope:** PASS. No Task 3 UI, Conan files, images, audio, `next-env.d.ts`, or `tsconfig.tsbuildinfo` are included in the intended commit.
+- Heading order is semantic: one page `h1`, then the index and each independently titled card use `h2`; no heading level is skipped.
+- All imagery comes from tracked raster paths and `next/image`; there is no handmade SVG, emoji, Lucide illustration, or CSS art.
+- Hero and all currently published experience media use `contain`, preserving faces/subjects. Registry `objectPosition` remains attached to each card image.
+- Cards expose exactly one `Link`, a minimum 48px action height, descriptive image alt text, native definition-list semantics, and stable test hooks.
+- Learn remains fail-closed when `NEXT_PUBLIC_LEARN_PUBLIC_ENABLED` is not `true`; the page does not bypass or duplicate release-gate logic.
+- No redirect, navigation, Learn repository, or Task 3/4 route work was added beyond the explicitly approved handoff contract needed to compile Task 2.
 
-## Final verdict
+## Concerns
 
-**PASS.** Task 2 acceptance criteria are met with 13 committed fail-closed reading packages, deterministic generation, no translated body publication, no media/audio publication, and fresh test/type/build evidence.
+- No implementation blocker remains.
+- `.superpowers/sdd/task-1-report.md` was already modified before Task 2 and is intentionally excluded from this task's commit.
 
-## Independent review remediation
+## Important review remediation — contained media motion
 
-Review verdict received after commit `56ad83a`: **Needs fixes**. All four findings were addressed in a focused follow-up.
+The independent read-only review found that the shared motion selector scales every image inside a hovered `data-motion-surface`. Because Experience Card media uses `overflow: hidden`, that shared scale could clip the edges of registry images configured with `fit: 'contain'`.
 
-### Fixes
+The card keeps `data-motion-surface`, so its surface lift and atmosphere/light response remain active. A higher-specificity, card-scoped override now keeps only `contain` media untransformed on hover and `focus-within`. The shared image motion remains available to future `cover` media.
 
-1. **Portable default tests**
-   - Replaced the default-suite import of the external Read repo with `scripts/fixtures/readings-legacy-manifest.json`.
-   - Added a regression assertion that the default test file contains neither the absolute legacy path nor the legacy-root environment variable.
-   - Added `npm run test:readings-live-parity` as an explicit optional/manual check. It is not referenced by `npm test`, dev, or build.
-2. **Complete rights-evidence validation**
-   - Allowed evidence types are now `license`, `permission`, and `public-domain`.
-   - Every retained evidence record requires a non-placeholder `reference` and a real calendar date in `YYYY-MM-DD` form.
-   - Invalid `type`, placeholder/unverified `verifiedAt`, and impossible dates cannot unlock full publication.
-3. **Explicit publication mode**
-   - `publicationMode` must be one of `summary`, `full`, or `blocked` before status compatibility is evaluated.
-   - Missing and misspelled modes are rejected explicitly.
-4. **Ready-media containment**
-   - Validator and materializer now share normalized path logic.
-   - A ready asset must remain beneath `public/images/readings/<slug>/`; traversal and non-canonical paths are rejected before any file read.
-
-### Follow-up TDD evidence
+### TDD evidence
 
 RED command:
 
-```text
-npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```bash
+node --import tsx --test scripts/experience-hub-contract.test.ts
 ```
 
-Observed before the fixes:
-
-```text
-tests 11, pass 6, fail 5
-```
-
-The five expected failures were: missing manual live-parity command, placeholder evidence type accepted, missing publication-mode enum validation, validator traversal accepted, and materializer traversal reaching `ENOENT` instead of being rejected.
+Observed before the CSS override: exit 1; 2/3 tests passed. The new source regression assertion failed because the required scoped hover/focus selector and `transform: none` declaration were absent.
 
 GREEN command:
 
-```text
-npm exec -- tsx --test scripts/generate-readings-data.test.mjs
+```bash
+node --import tsx --test scripts/experience-hub-contract.test.ts
 ```
 
-Observed after the fixes:
+Observed after the CSS override: exit 0; 3/3 tests passed.
 
-```text
-tests 11, pass 11, fail 0
+### Fresh focused verification
+
+```bash
+node --import tsx --test scripts/experience-registry.test.ts scripts/experience-hub-contract.test.ts scripts/site-journey.test.ts
+npx tsc --noEmit
+npx eslint app/experiences components/experience lib/experiences.ts lib/site-journey.ts scripts/experience-*.test.ts scripts/site-journey.test.ts --max-warnings=0
+git diff --check
 ```
 
-### Follow-up verification
-
-| Command | Result |
-| --- | --- |
-| `npm run test:readings-live-parity` | PASS — optional/manual parity for 13 readings |
-| `npm run validate-reading-rights` | PASS — 13 packages; 0 full, 13 source-link-only, 0 blocked |
-| `npm run materialize-reading-assets` | PASS — 0 ready, 0 validated |
-| `npm test` | PASS — 44/44 tests |
-| `npx tsc --noEmit` | PASS — exit 0 |
-| `npm run build` | PASS — production build and 38 static pages generated |
-
-Follow-up verdict: **PASS**. The default release gate is portable and all rights/publication/path findings are closed.
+Result: exit 0; 11/11 focused tests passed; TypeScript passed; scoped ESLint passed with zero warnings/errors; `git diff --check` passed.

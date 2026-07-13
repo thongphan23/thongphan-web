@@ -36,3 +36,20 @@ test('Experience Hub uses real tracked images and no handmade illustration', asy
   assert.match(body, /from ['"]next\/image['"]/)
   assert.doesNotMatch(body, /<svg\b|createLucideIcon|emoji|CSS art/i)
 })
+
+test('contained card media stays untransformed while the motion surface remains active', async () => {
+  const [card, css] = await Promise.all([
+    source('components/experience/ExperienceCard.tsx'),
+    source('components/experience/ExperienceCard.module.css'),
+  ])
+
+  assert.match(card, /data-motion-surface/)
+  assert.match(
+    css,
+    /\.card:hover\s+\.media\[data-fit=['"]contain['"]\]\s+img\s*,\s*\.card:focus-within\s+\.media\[data-fit=['"]contain['"]\]\s+img\s*\{\s*transform:\s*none;/,
+  )
+  assert.doesNotMatch(
+    css,
+    /\.media\[data-fit=['"]cover['"]\]\s+img\s*\{[^}]*transform:\s*none;/,
+  )
+})
