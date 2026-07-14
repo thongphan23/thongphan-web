@@ -55,11 +55,27 @@ truthful moving evidence reel, and retain accessible navigation and motion.
 
 - Pre-release production deployment / rollback:
   `faa9aeae-e548-4757-8ec8-44b412055866`.
-- Preview deployment: pending.
-- Production deployment: pending.
+- Release source commit: `b2aa9d9`.
+- Preview deployment: `06e91386-496b-4b1c-8bfd-d4d21c556fbb`.
+- Preview URL: `https://06e91386.thongphan-com.pages.dev`.
+- Production deployment: `3b377065-9dd5-4012-b621-369d2bc5af64`.
+- Production origin: `https://3b377065.thongphan-com.pages.dev`.
 - Public URL: `https://thongphan.com`.
+- Homepage HTML SHA-256:
+  `26bafb1b2834849f46bb1bcadb87a83dbe27e2dce959b5a7431077175ecf2fcf`.
+
+## Production smoke
+
+- Preview, production origin, apex and `www` return the identical homepage hash.
+- Homepage, About, Library, Diagnostic, Experiences, 21 ngày Brain2, Conan Maker
+  and Crown & Citadel return HTTP 200 on all three production surfaces.
+- `/challenges` preserves its HTTP 301 to `/experiences`.
+- Disabled `/learn` remains a real HTTP 404 with `noindex, nofollow`.
+- Browser-rendered canonical production passes settled desktop and mobile visual
+  inspection; the reel control, mobile menu, Escape close and visible focus
+  restoration all work.
 
 ## Result
 
-Release candidate passed locally. Cloudflare preview and production promotion are
-pending the release commit and final smoke verification.
+passed — the exact verified artifact is live on preview, production origin, apex
+and `www`; the previous production deployment is retained for rollback.

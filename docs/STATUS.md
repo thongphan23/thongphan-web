@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-14
 
-## Homepage polish regression — release candidate passed — 2026-07-14
+## Homepage polish regression — production release — 2026-07-14
 
 - Repaired the homepage Hero safe area, Vietnamese display-name wrapping,
   portrait focal crop, six-frame evidence reel, full-height mobile menu and the
@@ -12,19 +12,20 @@ Last updated: 2026-07-14
   complete accents/hairline/face, working reel pause, working mobile menu focus and
   Escape restoration, zero overflow and zero P0/P1/P2 visual finding.
 - `npm test` (242/242), lint, TypeScript, 82-route build, release gate, six-pair
-  Learn exposure matrix and `git diff --check` all pass. Preview and production
-  promotion remain the only release steps.
+  Learn exposure matrix and `git diff --check` all pass. Preview `06e91386` and
+  production `3b377065` serve source `b2aa9d9`; origin, apex and `www` homepage
+  hashes match and the full route smoke passes.
 - Detailed evidence:
   `docs/releases/HOMEPAGE_POLISH_PRODUCTION_RELEASE_REPORT-2026-07-14.md` and
   `design-qa.md`.
 
 ## Current phase
 
-**Experience Hub Foundation is live on canonical production.** `/experiences` is
+**Homepage polish and Experience Hub Foundation are live on canonical production.** `/experiences` is
 the public practice hub and `/challenges` is a preserved 301 compatibility route.
-Pages production `faa9aeae` serves source `97b3dc1`; custom-domain router version
+Pages production `3b377065` serves source `b2aa9d9`; custom-domain router version
 `dfaaca5d` preserves Pages redirects on apex and `www`. The prior Pages deployment
-`a0554edc` and router version `d6a877e3` remain independent rollback points.
+`faa9aeae` and router version `d6a877e3` remain independent rollback points.
 
 **Origin Story + 21 ngày Brain2 remains live on canonical production.** The public
 hub, 21 lesson shells, seven complete public lessons, anonymous progress/access UI,

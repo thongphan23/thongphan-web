@@ -18,21 +18,23 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 ## Current Experience Hub release
 
 - Public URL: `https://thongphan.com`
-- Pages source commit: `97b3dc18a3a454d9e79133e82fa85fba86d3fec7`
-- Preview deployment: `b7a31c73-abc8-4358-b8af-36934e044d3f`
-- Preview URL: `https://b7a31c73.thongphan-com.pages.dev`
-- Production deployment: `faa9aeae-e548-4757-8ec8-44b412055866`
-- Production origin: `https://faa9aeae.thongphan-com.pages.dev`
-- Pre-release rollback deployment: `a0554edc-d877-4133-bac9-2262b5cefdb7`
+- Pages source commit: `b2aa9d9`
+- Preview deployment: `06e91386-496b-4b1c-8bfd-d4d21c556fbb`
+- Preview URL: `https://06e91386.thongphan-com.pages.dev`
+- Production deployment: `3b377065-9dd5-4012-b621-369d2bc5af64`
+- Production origin: `https://3b377065.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `faa9aeae-e548-4757-8ec8-44b412055866`
 - Router source commit: `19e8dab`
 - Router production version: `dfaaca5d-7019-4f1d-9959-e607f519248b`
 - Router rollback version: `d6a877e3-2bee-40ab-ab41-ade7dfe0db4b`
-- Homepage HTML SHA-256: `57f122a1e4afaf54f8aaeebc4b1f384750adce52951b62c668afa89e9fba71d0`
-- Experience HTML SHA-256: `36ec1e4d12593e0d3d24ed8b8b04cdcda803abe812a71c355608bbfbf2c0c842`
-- Release verification: 240 functional contracts, TypeScript, 82-route export,
-  full release gate, six-case Learn matrix, 70/70 whole-site rendered cases,
-  9/9 interactions, preview QA and production smoke all pass.
-- Full evidence: `docs/releases/EXPERIENCE_HUB_PRODUCTION_RELEASE_REPORT.md`.
+- Homepage HTML SHA-256: `26bafb1b2834849f46bb1bcadb87a83dbe27e2dce959b5a7431077175ecf2fcf`
+- Experience HTML SHA-256: `5ed23c3d39d7e4b6e66d265434a745d3f68aa6bfb06bf4406797190ab7af6a32`
+- Release verification: 242 functional contracts, TypeScript, 82-route export,
+  full release gate, six-case Learn matrix, responsive visual QA, preview QA and
+  production smoke all pass.
+- Full evidence:
+  `docs/releases/HOMEPAGE_POLISH_PRODUCTION_RELEASE_REPORT-2026-07-14.md` and
+  `docs/releases/EXPERIENCE_HUB_PRODUCTION_RELEASE_REPORT.md`.
 
 `read.thongphan.com` is retired. Worker `thongphan-read` was deleted only after the main production smoke passed. The subdomain now returns HTTP 530 and no redirect; never recreate it as a 301/302 migration layer.
 
