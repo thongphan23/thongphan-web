@@ -19,10 +19,10 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 
 - Public URL: `https://thongphan.com`
 - Pages source commit: `b2aa9d9`
-- Preview deployment: `06e91386-496b-4b1c-8bfd-d4d21c556fbb`
-- Preview URL: `https://06e91386.thongphan-com.pages.dev`
-- Production deployment: `3b377065-9dd5-4012-b621-369d2bc5af64`
-- Production origin: `https://3b377065.thongphan-com.pages.dev`
+- Preview deployment: `0d49e550-1f79-4afa-9f41-5a675fc59723`
+- Preview URL: `https://0d49e550.thongphan-com.pages.dev`
+- Production deployment: `3bc101dc-4c23-4c3b-9b4b-5afe46a6e2d8`
+- Production origin: `https://3bc101dc.thongphan-com.pages.dev`
 - Pre-release rollback deployment: `faa9aeae-e548-4757-8ec8-44b412055866`
 - Router source commit: `19e8dab`
 - Router production version: `dfaaca5d-7019-4f1d-9959-e607f519248b`

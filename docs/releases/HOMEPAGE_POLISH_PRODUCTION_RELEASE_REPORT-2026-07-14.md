@@ -56,10 +56,10 @@ truthful moving evidence reel, and retain accessible navigation and motion.
 - Pre-release production deployment / rollback:
   `faa9aeae-e548-4757-8ec8-44b412055866`.
 - Release source commit: `b2aa9d9`.
-- Preview deployment: `06e91386-496b-4b1c-8bfd-d4d21c556fbb`.
-- Preview URL: `https://06e91386.thongphan-com.pages.dev`.
-- Production deployment: `3b377065-9dd5-4012-b621-369d2bc5af64`.
-- Production origin: `https://3b377065.thongphan-com.pages.dev`.
+- Preview deployment: `0d49e550-1f79-4afa-9f41-5a675fc59723`.
+- Preview URL: `https://0d49e550.thongphan-com.pages.dev`.
+- Production deployment: `3bc101dc-4c23-4c3b-9b4b-5afe46a6e2d8`.
+- Production origin: `https://3bc101dc.thongphan-com.pages.dev`.
 - Public URL: `https://thongphan.com`.
 - Homepage HTML SHA-256:
   `26bafb1b2834849f46bb1bcadb87a83dbe27e2dce959b5a7431077175ecf2fcf`.
@@ -74,6 +74,9 @@ truthful moving evidence reel, and retain accessible navigation and motion.
 - Browser-rendered canonical production passes settled desktop and mobile visual
   inspection; the reel control, mobile menu, Escape close and visible focus
   restoration all work.
+- Four unrelated untracked Conan Maker assets were explicitly removed from the
+  release artifact while remaining untouched in the workspace. Their URLs return
+  HTTP 404 on production origin, apex and `www`.
 
 ## Result
 

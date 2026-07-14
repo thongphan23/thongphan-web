@@ -12,8 +12,8 @@ Last updated: 2026-07-14
   complete accents/hairline/face, working reel pause, working mobile menu focus and
   Escape restoration, zero overflow and zero P0/P1/P2 visual finding.
 - `npm test` (242/242), lint, TypeScript, 82-route build, release gate, six-pair
-  Learn exposure matrix and `git diff --check` all pass. Preview `06e91386` and
-  production `3b377065` serve source `b2aa9d9`; origin, apex and `www` homepage
+  Learn exposure matrix and `git diff --check` all pass. Clean preview `0d49e550`
+  and production `3bc101dc` serve source `b2aa9d9`; origin, apex and `www` homepage
   hashes match and the full route smoke passes.
 - Detailed evidence:
   `docs/releases/HOMEPAGE_POLISH_PRODUCTION_RELEASE_REPORT-2026-07-14.md` and
@@ -23,7 +23,7 @@ Last updated: 2026-07-14
 
 **Homepage polish and Experience Hub Foundation are live on canonical production.** `/experiences` is
 the public practice hub and `/challenges` is a preserved 301 compatibility route.
-Pages production `3b377065` serves source `b2aa9d9`; custom-domain router version
+Pages production `3bc101dc` serves source `b2aa9d9`; custom-domain router version
 `dfaaca5d` preserves Pages redirects on apex and `www`. The prior Pages deployment
 `faa9aeae` and router version `d6a877e3` remain independent rollback points.
 
