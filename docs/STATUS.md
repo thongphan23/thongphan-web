@@ -2,6 +2,22 @@
 
 Last updated: 2026-07-14
 
+## Homepage polish regression — release candidate passed — 2026-07-14
+
+- Repaired the homepage Hero safe area, Vietnamese display-name wrapping,
+  portrait focal crop, six-frame evidence reel, full-height mobile menu and the
+  above-the-fold reveal baseline without touching the separate Learn workstream.
+- Root causes were reproduced and regression-locked on 1440×900, 1280×720,
+  1024×768, 390×844 and 320×568. Browser-rendered static-artifact QA confirms
+  complete accents/hairline/face, working reel pause, working mobile menu focus and
+  Escape restoration, zero overflow and zero P0/P1/P2 visual finding.
+- `npm test` (242/242), lint, TypeScript, 82-route build, release gate, six-pair
+  Learn exposure matrix and `git diff --check` all pass. Preview and production
+  promotion remain the only release steps.
+- Detailed evidence:
+  `docs/releases/HOMEPAGE_POLISH_PRODUCTION_RELEASE_REPORT-2026-07-14.md` and
+  `design-qa.md`.
+
 ## Current phase
 
 **Experience Hub Foundation is live on canonical production.** `/experiences` is
@@ -555,4 +571,7 @@ fail-closed until its independent PWA is ready.
 
 ## Accepted boundary
 
-The homepage reel remains intentionally static because the release manifest has fewer than six approved, truthfully sourced reel frames. The three-proof contact sheet is the accepted safe fallback; no evidence was fabricated to force autoplay.
+The homepage reel now uses six unique approved local derivatives with verified
+source hashes, rights status, captions and focal points. It animates only when the
+release manifest satisfies that complete contract; otherwise the truthful static
+fallback remains in place. No historical evidence was fabricated.

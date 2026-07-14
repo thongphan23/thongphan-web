@@ -18,6 +18,7 @@ export default function HomeCinema() {
         alt: asset.alt,
         label: 'EVIDENCE ARCHIVE',
         caption: asset.caption,
+        focalPoint: asset.focalPoint,
       }))
     : heroFilmItems
 
@@ -48,9 +49,9 @@ export default function HomeCinema() {
         />
 
         <div className={styles.heroTextStack}>
-          <p className={styles.displayName} aria-hidden="true" data-cinema-reveal data-motion-reveal="mask">
-            <span>THÔNG</span>
-            <span>PHAN</span>
+          <p className={styles.displayName} aria-hidden="true" data-display-name data-cinema-reveal data-motion-reveal="mask">
+            <span data-display-word>THÔNG</span>
+            <span data-display-word>PHAN</span>
             <img src="/images/homepage/evidence-cinema-signature-v3.png" alt="" />
           </p>
 
@@ -69,7 +70,7 @@ export default function HomeCinema() {
               <span>Khám phá lộ trình của bạn</span>
               <img src="/images/homepage/evidence-cinema-arrow-v2.png" alt="" aria-hidden="true" />
             </HomeTrackedLink>
-            <p className={styles.proofMicrocopy}>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
+            <p className={styles.proofMicrocopy} data-hero-content-end>Làm thật <i /> Trả giá thật <i /> Hệ thống thật</p>
           </div>
         </div>
 

@@ -104,6 +104,7 @@ test('unified navigation stays pinned with route-safe content offsets', async ()
 test('mobile menu traps focus, closes with Escape, locks scroll, and restores focus', async () => {
   const menu = await readProjectFile('components/site-chrome/MobileMenu.tsx')
   const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
+  const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
 
   for (const required of [
     'role="dialog"',
@@ -121,6 +122,7 @@ test('mobile menu traps focus, closes with Escape, locks scroll, and restores fo
   assert.match(header, /aria-controls="site-mobile-menu"/)
   assert.match(header, /<Menu\b/)
   assert.match(menu, /<X\b/)
+  assert.match(css, /\.menuDialog\s*\{[\s\S]*?min-height:\s*100dvh/)
 })
 
 test('every mobile menu control has a 44 by 44 pixel minimum target', async () => {

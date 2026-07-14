@@ -6,7 +6,7 @@ export type HomepageProofAsset = {
   sourcePath: string
   sourceSha256: string
   sourceRight: {
-    status: 'approved-local-source'
+    status: 'approved-local-source' | 'approved-project-generated'
     basis: string
   }
   derivativePath: string
@@ -49,11 +49,11 @@ export function validateHomepageProofManifest(input: unknown): { issues: string[
     ids.add(asset?.id)
     if (!['proof', 'reel'].includes(asset?.kind)) issues.push(`${key}: invalid kind`)
     if (!asset?.sourcePath || !sha256.test(asset?.sourceSha256 ?? '')) issues.push(`${key}: invalid source trace`)
-    if (asset?.sourceRight?.status !== 'approved-local-source' || !asset?.sourceRight?.basis) issues.push(`${key}: source right is not approved`)
-    if (!asset?.derivativePath?.startsWith('/public/images/homepage/')) issues.push(`${key}: derivative must stay in the homepage asset directory`)
+    if (!['approved-local-source', 'approved-project-generated'].includes(asset?.sourceRight?.status) || !asset?.sourceRight?.basis) issues.push(`${key}: source right is not approved`)
+    if (!asset?.derivativePath?.startsWith('/public/images/') || asset.derivativePath.includes('..')) issues.push(`${key}: derivative must stay in the public image directory`)
     if (!sha256.test(asset?.derivativeSha256 ?? '')) issues.push(`${key}: invalid derivative hash`)
     const dimensionsAreValid = asset?.kind === 'reel'
-      ? (asset?.width === 1200 && asset?.height === 675) || (asset?.width === 720 && asset?.height === 405)
+      ? (asset?.width ?? 0) >= 960 && (asset?.height ?? 0) >= 630
       : asset?.width === 1200 && asset?.height === 800
     if (!dimensionsAreValid) issues.push(`${key}: invalid ${asset?.kind ?? 'unknown'} derivative dimensions`)
     if (

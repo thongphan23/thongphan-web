@@ -107,7 +107,7 @@ export default function ScrollAnimations() {
                 ? { filter: 'blur(6px)', opacity: 0.55, scale: 0.992 }
                 : variant === 'stamp'
                   ? { opacity: 0.45, rotation: -8, scale: 0.94 }
-                  : { opacity: 0.3, y: 18 }
+                  : { opacity: 0.72, y: 12 }
 
           gsap.fromTo(target, from, {
             clipPath: 'inset(0 0 0% 0)',

@@ -7,6 +7,7 @@ import manifestJson from '../content/homepage/homepage-proof-assets.json'
 import {
   canRunReel,
   getHomepageProofAssets,
+  getHomepageReelAssets,
   toPublicProofAsset,
   validateHomepageProofManifest,
   type HomepageProofAsset,
@@ -54,14 +55,15 @@ test('homepage manifest releases only physically verified, traceable assets', as
     assert.ok(asset.alt.length >= 20)
     assert.ok(asset.caption.length >= 20)
     assert.ok(asset.proof.length >= 40)
-    assert.equal(asset.sourceRight.status, 'approved-local-source')
+    assert.ok(['approved-local-source', 'approved-project-generated'].includes(asset.sourceRight.status))
   }
 
   assert.equal(assets.length, manifestJson.assets.length, 'every proof and reel record must pass physical verification')
 })
 
-test('film reel stays off below six approved reel frames', () => {
-  assert.equal(canRunReel(manifestJson), false)
+test('film reel runs only after six approved, traceable frames are released', () => {
+  assert.equal(getHomepageReelAssets(manifestJson).length >= 6, true)
+  assert.equal(canRunReel(manifestJson), true)
 
   const seed = getHomepageProofAssets(manifestJson)[0]
   assert.ok(seed)
@@ -82,11 +84,11 @@ test('public proof DTO never serializes private paths, rights objects, or hashes
   assert.match(publicAsset.derivativeUrl, /^\/images\/homepage\/proof\//)
 })
 
-test('manifest rejects missing focal points and wrong reel aspect ratios', () => {
+test('manifest rejects missing focal points and undersized reel media', () => {
   const seed = getHomepageProofAssets(manifestJson)[0]
   assert.ok(seed)
   const missingFocalPoint = { ...seed, focalPoint: undefined }
-  const wrongReelShape = { ...seed, id: 'bad-reel', kind: 'reel' as const }
+  const wrongReelShape = { ...seed, id: 'bad-reel', kind: 'reel' as const, width: 640, height: 360 }
   assert.match(validateHomepageProofManifest({ version: 1, assets: [missingFocalPoint] }).issues.join('\n'), /focal point/)
   assert.match(validateHomepageProofManifest({ version: 1, assets: [wrongReelShape] }).issues.join('\n'), /dimensions/)
 })

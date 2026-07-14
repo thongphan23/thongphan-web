@@ -45,6 +45,7 @@ export default defineConfig([
     '.next/**',
     '.playwright-cli/**',
     '.superpowers/**',
+    '.worktrees/**',
     '.wrangler/**',
     'artifacts/**',
     'build/**',

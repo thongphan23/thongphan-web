@@ -262,7 +262,7 @@ test('short laptop view keeps the hero compact while clearing the evidence rail'
   assert.match(shortLaptop, /min-height:\s*820px/)
   assert.match(shortLaptop, /\.displayName\s*\{[\s\S]*?font-size:\s*5\.8rem/)
   assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?bottom:\s*calc\(var\(--hero-film-height\) \+ 1rem\)/)
-  assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?top:\s*9rem/)
+  assert.match(shortLaptop, /\.heroTextStack\s*\{[\s\S]*?top:\s*var\(--hero-copy-safe-top\)/)
   assert.match(shortLaptop, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*1\.8rem/)
   assert.match(shortLaptop, /\.primaryButton\s*\{[\s\S]*?min-height:\s*52px/)
   assert.match(shortLaptop, /\.proofAct\s*\{[\s\S]*?padding-top:\s*1\.25rem[\s\S]*?padding-bottom:\s*1\.25rem/)
@@ -280,6 +280,9 @@ test('standard laptop view compacts ACT 03 without shrinking the homepage hero',
   assert.match(compactProof, /\.proofAct\s*\{[\s\S]*?padding-top:\s*1\.25rem[\s\S]*?padding-bottom:\s*1\.25rem/)
   assert.match(compactProof, /\.proofAct \.actHeader\s*\{[\s\S]*?margin-bottom:\s*0\.75rem/)
   assert.match(compactProof, /\.proofCard \.proofImageFrame\s*\{[\s\S]*?aspect-ratio:\s*16\s*\/\s*10/)
+  assert.match(compactProof, /\.displayName\s*\{[\s\S]*?font-size:\s*7\.4rem/)
+  assert.match(compactProof, /\.heroCopy h1\s*\{[\s\S]*?font-size:\s*2\.25rem/)
+  assert.match(compactProof, /\.proofMicrocopy\s*\{[\s\S]*?margin-top:\s*0\.65rem/)
   assert.doesNotMatch(compactProof, /\.hero\s*\{/)
 })
 
@@ -297,7 +300,11 @@ test('desktop hero keeps the explicit two-line promise below the display name', 
 test('desktop hero reserves the chapter-nav safe zone and keeps content above decorative layers', async () => {
   const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
 
-  assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}top:\s*9rem/)
+  assert.match(css, /--hero-chrome-safe-top:\s*clamp\(/)
+  assert.match(css, /--hero-copy-safe-top:\s*clamp\(/)
+  assert.match(css, /\.heroPhoto\s*\{[\s\S]{0,260}top:\s*var\(--hero-chrome-safe-top\)/)
+  assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}top:\s*var\(--hero-copy-safe-top\)/)
+  assert.match(css, /\.displayName span\s*\{[\s\S]{0,120}white-space:\s*nowrap/)
   assert.match(css, /\.heroTextStack\s*\{[\s\S]{0,420}z-index:\s*5/)
   assert.match(css, /\.heroFrameOverlay\s*\{[\s\S]{0,260}z-index:\s*1/)
   assert.match(css, /\.heroFilm\s*\{[\s\S]{0,520}z-index:\s*3/)
@@ -348,12 +355,43 @@ test('film reel is gated and remains static until six approved frames exist', as
     'aria-pressed',
     'Tạm dừng thước phim',
     'priority={!duplicate && index < 3}',
+    'focalPoint={item.focalPoint}',
   ]) {
     assert.match(`${reel}\n${home}`, escaped(required))
   }
   assert.match(css, /animation-play-state:\s*paused/)
   assert.match(css, /@media \(hover:\s*none\),\s*\(pointer:\s*coarse\)/)
   assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.reelTrackDuplicate\s*\{[\s\S]*?display:\s*none/)
+})
+
+test('mobile hero keeps the name to two unbroken lines and separates the portrait from the type', async () => {
+  const css = await readProjectFile('components/home-cinema/HomeCinema.module.css')
+  const mobile = css.match(
+    /@media \(max-width: 767px\)[\s\S]*?(?=@media \(prefers-reduced-motion: reduce\))/,
+  )?.[0] ?? ''
+
+  assert.match(mobile, /\.displayName\s*\{[\s\S]*?font-size:\s*clamp\(4\.75rem,\s*22vw,\s*6\.25rem\)/)
+  assert.match(mobile, /\.heroPhoto img\s*\{[\s\S]*?object-position:\s*68%\s+24%/)
+})
+
+test('release QA measures decorative-name wrapping, portrait safe area and the live reel', async () => {
+  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
+  const qa = await readProjectFile('scripts/qa-site.mjs')
+
+  assert.match(home, /data-display-name/)
+  assert.match(home, /data-display-word/)
+  for (const required of [
+    'getClientRects()',
+    'displayWordLineCounts',
+    'displayNameHeaderGap',
+    'heroPhotoHeaderGap',
+    'heroContentFilmGap',
+    'reelRunning',
+    'focalFrameCount',
+  ]) {
+    assert.match(qa, escaped(required))
+  }
+  assert.match(home, /data-hero-content-end/)
 })
 
 test('homepage keeps hero copy above film and ACT 03 visible as a compact three-up sheet', async () => {

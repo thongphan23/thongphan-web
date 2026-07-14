@@ -17,6 +17,8 @@
 }
 
 .hero {
+  --hero-chrome-safe-top: clamp(7.75rem, 9vw, 8.5rem);
+  --hero-copy-safe-top: clamp(10.75rem, 12vw, 11.75rem);
   --hero-film-height: clamp(240px, 26.5vh, 280px);
   background: var(--cinema-ink);
   border: 1px solid rgba(232, 223, 207, 0.12);
@@ -42,7 +44,7 @@
   overflow: hidden;
   position: absolute;
   right: 0;
-  top: 0;
+  top: var(--hero-chrome-safe-top);
   z-index: -1;
 }
 
@@ -60,7 +62,7 @@
   left: 12.7%;
   object-fit: unset;
   position: absolute;
-  top: -2%;
+  top: 0;
   transform: none;
   width: 86.4%;
 }
@@ -70,7 +72,7 @@
     linear-gradient(90deg, rgba(7, 7, 6, 0.3) 0%, transparent 48%),
     linear-gradient(270deg, rgba(7, 7, 6, 0.62) 0%, transparent 8%),
     linear-gradient(180deg, rgba(7, 7, 6, 0.12) 0%, transparent 58%, rgba(7, 7, 6, 0.28) 100%);
-  inset: 0 0 var(--hero-film-height);
+  inset: var(--hero-chrome-safe-top) 0 var(--hero-film-height);
   pointer-events: none;
   position: absolute;
   z-index: 0;
@@ -96,7 +98,7 @@
   left: clamp(1.5rem, 6.5vw, 6.5rem);
   max-width: min(42rem, 47vw);
   position: absolute;
-  top: 9rem;
+  top: var(--hero-copy-safe-top);
   z-index: 5;
 }
 
@@ -106,7 +108,7 @@
   font-size: clamp(7.5rem, 9.6vw, 8.6rem);
   font-weight: 500;
   letter-spacing: -0.058em;
-  line-height: 0.78;
+  line-height: 0.82;
   margin: 0;
   position: relative;
   text-shadow: 0 2px 26px rgba(0, 0, 0, 0.35);
@@ -115,6 +117,7 @@
 
 .displayName span {
   display: block;
+  white-space: nowrap;
 }
 
 .displayName img {
@@ -133,7 +136,7 @@
   overflow: hidden;
   position: absolute;
   right: clamp(2.2rem, 3vw, 3rem);
-  top: clamp(4.8rem, 8.8vh, 5.9rem);
+  top: calc(var(--hero-chrome-safe-top) + 0.75rem);
   transform: rotate(-4deg);
   width: clamp(11.5rem, 18vw, 16.8rem);
   z-index: 3;
@@ -904,7 +907,7 @@
 
 @media (max-width: 1100px) {
   .displayName {
-    font-size: clamp(7.5rem, 15.5vw, 10.5rem);
+    font-size: clamp(6.6rem, 13vw, 8.4rem);
   }
 
   .heroTextStack {
@@ -930,6 +933,30 @@
 }
 
 @media (min-width: 901px) and (max-height: 950px) {
+  .displayName {
+    font-size: 7.4rem;
+  }
+
+  .heroTextStack {
+    gap: 0.8rem;
+  }
+
+  .heroCopy h1 {
+    font-size: 2.25rem;
+  }
+
+  .heroLead {
+    margin: 0.75rem 0 1rem;
+  }
+
+  .primaryButton {
+    min-height: 54px;
+  }
+
+  .proofMicrocopy {
+    margin-top: 0.65rem;
+  }
+
   .proofAct {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
@@ -955,6 +982,8 @@
 
 @media (max-width: 900px) {
   .hero {
+    --hero-chrome-safe-top: 4rem;
+    --hero-copy-safe-top: 8rem;
     min-height: 920px;
   }
 
@@ -966,7 +995,7 @@
   .heroTextStack {
     left: 2rem;
     max-width: 72vw;
-    top: 8rem;
+    top: var(--hero-copy-safe-top);
   }
 
   .evidenceStamp {
@@ -1018,7 +1047,7 @@
   .heroTextStack {
     bottom: calc(var(--hero-film-height) + 1rem);
     gap: 1rem;
-    top: 9rem;
+    top: var(--hero-copy-safe-top);
   }
 
   .heroCopy h1 {
@@ -1069,6 +1098,7 @@
   }
 
   .hero {
+    --hero-copy-safe-top: 6.5rem;
     min-height: 980px;
   }
 
@@ -1083,12 +1113,12 @@
   .heroPhoto img {
     filter: contrast(1.04) saturate(0.84) brightness(0.84);
     height: 100%;
-    left: 0;
+    left: 6%;
     object-fit: contain;
-    object-position: 50% 30%;
+    object-position: 68% 24%;
     top: 0;
     transform: none;
-    width: 100%;
+    width: 112%;
   }
 
   .heroEdgeFade {
@@ -1109,12 +1139,12 @@
     left: 1.1rem;
     max-width: calc(100% - 2.2rem);
     right: 1.1rem;
-    top: 6.5rem;
+    top: var(--hero-copy-safe-top);
   }
 
   .displayName {
-    font-size: clamp(5.7rem, 27vw, 8rem);
-    line-height: 0.69;
+    font-size: clamp(4.75rem, 22vw, 6.25rem);
+    line-height: 0.74;
   }
 
   .evidenceStamp {

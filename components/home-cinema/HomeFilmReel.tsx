@@ -12,6 +12,7 @@ export type FilmFrame = {
   alt: string
   label: string
   caption: string
+  focalPoint?: { x: number; y: number }
 }
 
 function FilmTrack({ items, duplicate = false }: { items: readonly FilmFrame[]; duplicate?: boolean }) {
@@ -28,6 +29,7 @@ function FilmTrack({ items, duplicate = false }: { items: readonly FilmFrame[]; 
             alt={duplicate ? '' : item.alt}
             sizes="(max-width: 767px) 86vw, 31vw"
             priority={!duplicate && index < 3}
+            focalPoint={item.focalPoint}
           />
           <div className={styles.heroFrameCaption}>
             <span>{item.label}</span>

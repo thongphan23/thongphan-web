@@ -57,6 +57,120 @@
       "caption": "Một nội dung đã đi qua ghi hình, dựng, kiểm tra từng khung và hoàn thiện.",
       "proof": "Nội dung không chỉ được viết ra; nó đi qua một quy trình sản xuất, kiểm tra hình ảnh và đóng gói thành video có thể xem lại.",
       "href": "/blog"
+    },
+    {
+      "id": "reel-stage-work",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/assets/branding/thongphan-speaker-hires.jpg",
+      "sourceSha256": "18cacee64696a70485f4422ebab68fd9973fdbe7361329ad43d1262a0bcd8b6e",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Ảnh thương hiệu gốc do Thông Phan lưu trong kho branding local."
+      },
+      "derivativePath": "/public/images/homepage/proof/thong-stage-3x2-v1.webp",
+      "derivativeSha256": "519456366a8798b9e8e7645c04188d60cb329a8dadb2021feaa54e58678e3705",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 55, "y": 34 },
+      "alt": "Thông Phan cầm micro chia sẻ trên sân khấu tại một sự kiện kinh doanh.",
+      "caption": "Một khoảnh khắc đứng lớp trong ảnh tư liệu sự kiện.",
+      "proof": "Một khung hình làm việc thật, được dùng như dấu vết trực tiếp của kinh nghiệm đã triển khai.",
+      "href": "/about"
+    },
+    {
+      "id": "reel-published-book",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/thongphan-com/public/images/homepage/thong-library-author.jpg",
+      "sourceSha256": "a1c30edef0bb599bc3d48c668ad3af104d3470ffb68cf52d24e31e2e94ede9de",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Ảnh tác giả do Thông Phan sở hữu và đã công khai trên chính thongphan.com."
+      },
+      "derivativePath": "/public/images/homepage/proof/thong-author-book-3x2-v1.webp",
+      "derivativeSha256": "860975dcc87cd521023475fd629809add36e37e160fdee3ab013b05635d0e648",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 50, "y": 38 },
+      "alt": "Thông Phan cầm cuốn sách Thần thoại Hy Lạp tại một hiệu sách.",
+      "caption": "Tri thức đã được hệ thống hóa thành một sản phẩm xuất bản thật.",
+      "proof": "Khung hình nối trực tiếp tri thức cá nhân với một sản phẩm đã được viết, in và cầm trên tay.",
+      "href": "/library"
+    },
+    {
+      "id": "reel-production-room",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/Movies/screenforge-thong-phan-runs/preview-first-90s-natural-inspect-20260629-021025/contact-sheet.jpg",
+      "sourceSha256": "c6b6c95811f8b9d61917011b95c643ae5c4a3c7e021fcb7c985b208fa84783e6",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Contact sheet QA được tạo từ quy trình sản xuất video và phần ghi hình của chính Thông Phan."
+      },
+      "derivativePath": "/public/images/homepage/proof/screenforge-production-3x2-v1.webp",
+      "derivativeSha256": "685c9ba396d512a2960b10b1e0d8d2211b885ce194cb81bec8d5390c44f571e9",
+      "width": 1200,
+      "height": 800,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Contact sheet nhiều khung hình từ quy trình sản xuất một video hướng dẫn của Thông Phan.",
+      "caption": "Một nội dung đi qua ghi hình, dựng và kiểm tra từng khung.",
+      "proof": "Khung hình thể hiện quy trình sản xuất có kiểm tra, thay vì chỉ là một lời tuyên bố về năng lực.",
+      "href": "/blog"
+    },
+    {
+      "id": "reel-brain2-practice",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/thongphan-com/public/images/challenges/brain2-21-day-editorial-slate-v1.webp",
+      "sourceSha256": "e9517db970f5cc078e3a52a480a5195348ad4b404feb05d08dbc4e8c7a29494f",
+      "sourceRight": {
+        "status": "approved-project-generated",
+        "basis": "Tài sản biên tập được OpenAI ImageGen tạo riêng cho thử thách 21 ngày trên thongphan.com."
+      },
+      "derivativePath": "/public/images/challenges/brain2-21-day-editorial-slate-v1.webp",
+      "derivativeSha256": "e9517db970f5cc078e3a52a480a5195348ad4b404feb05d08dbc4e8c7a29494f",
+      "width": 1200,
+      "height": 675,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Bàn biên tập điện ảnh với lịch thực hành và clapperboard tượng trưng cho thử thách Brain2.",
+      "caption": "Hai mươi mốt ngày biến việc ghi chú thành một nhịp thực hành.",
+      "proof": "Tài sản dẫn người xem từ câu chuyện cá nhân vào một trải nghiệm có thể bắt đầu và hoàn thành từng ngày.",
+      "href": "/brain2/21-ngay"
+    },
+    {
+      "id": "reel-ideas-travel",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/thongphan-com/public/images/blog/cover-ideas-travel-editorial-v1.webp",
+      "sourceSha256": "388dbf579f4aaef46bea6d32993d5fc18484b8d88ab15a8797ccbb4e9b3af038",
+      "sourceRight": {
+        "status": "approved-project-generated",
+        "basis": "Tài sản biên tập được OpenAI ImageGen tạo riêng cho bài viết trên thongphan.com."
+      },
+      "derivativePath": "/public/images/blog/cover-ideas-travel-editorial-v1.webp",
+      "derivativeSha256": "388dbf579f4aaef46bea6d32993d5fc18484b8d88ab15a8797ccbb4e9b3af038",
+      "width": 1200,
+      "height": 630,
+      "focalPoint": { "x": 50, "y": 50 },
+      "alt": "Bàn bằng chứng điện ảnh với giấy, khung phim và sợi chỉ đỏ tượng trưng cho một ý tưởng lan truyền.",
+      "caption": "Một ý tưởng hữu ích có thể đi xa hơn người tạo ra nó.",
+      "proof": "Khung hình mở vào kho bài viết chuyên sâu, nơi ý tưởng được nối với bằng chứng và trải nghiệm thật.",
+      "href": "/blog"
+    },
+    {
+      "id": "reel-stage-portrait",
+      "kind": "reel",
+      "sourcePath": "/Users/rio/assets/branding/thongphan-speaker-hires.jpg",
+      "sourceSha256": "18cacee64696a70485f4422ebab68fd9973fdbe7361329ad43d1262a0bcd8b6e",
+      "sourceRight": {
+        "status": "approved-local-source",
+        "basis": "Ảnh thương hiệu gốc do Thông Phan lưu trong kho branding local."
+      },
+      "derivativePath": "/public/images/homepage/thong-stage-anchor-cinema.webp",
+      "derivativeSha256": "50aedef0db8b4f0734d36385e72ec3573fb14b8f59b4a96127cdf7f96e183ebc",
+      "width": 1200,
+      "height": 1800,
+      "focalPoint": { "x": 50, "y": 23 },
+      "alt": "Chân dung điện ảnh của Thông Phan đang cầm micro chia sẻ trên sân khấu.",
+      "caption": "Con người đứng sau hệ thống vẫn hiện diện trong từng khung hình.",
+      "proof": "Chân dung được nối về câu chuyện thật để hệ thống không trở thành một thương hiệu vô danh và trừu tượng.",
+      "href": "/about"
     }
   ]
 }

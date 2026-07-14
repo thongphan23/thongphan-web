@@ -238,6 +238,19 @@ async function inspectPage(page, routeCase, viewport, motion) {
     const main = document.querySelector('main')
     const h1 = document.querySelector('h1')
     const header = document.querySelector('header[data-header-scrolled]')
+    const displayName = document.querySelector('[data-display-name]')
+    const heroPhoto = document.querySelector('[data-focus-pull]')
+    const displayWordLineCounts = displayName
+      ? [...displayName.querySelectorAll('[data-display-word]')].map((word) => {
+          const range = document.createRange()
+          range.selectNodeContents(word)
+          return range.getClientRects().length
+        })
+      : []
+    const displayNameRect = displayName?.getBoundingClientRect()
+    const heroPhotoRect = heroPhoto?.getBoundingClientRect()
+    const heroContentEnd = document.querySelector('[data-hero-content-end]')?.getBoundingClientRect()
+    const heroFilm = document.querySelector('[data-frame-count]')?.getBoundingClientRect()
     const images = [...document.images]
     const motionStates = [...document.querySelectorAll('[data-motion-active]')]
       .map((node) => node.getAttribute('data-motion-active'))
@@ -252,6 +265,10 @@ async function inspectPage(page, routeCase, viewport, motion) {
       deferredLazyImages: images.filter((image) => !image.complete && image.loading === 'lazy').length,
       cls: Number(window.__tpReleaseCls ?? 0),
       headerH1Overlap: header && h1 ? overlapArea(header.getBoundingClientRect(), h1.getBoundingClientRect()) : 0,
+      displayWordLineCounts,
+      displayNameHeaderGap: header && displayNameRect ? displayNameRect.top - header.getBoundingClientRect().bottom : null,
+      heroPhotoHeaderGap: header && heroPhotoRect ? heroPhotoRect.top - header.getBoundingClientRect().bottom : null,
+      heroContentFilmGap: heroContentEnd && heroFilm ? heroFilm.top - heroContentEnd.bottom : null,
       reducedMatches: matchMedia('(prefers-reduced-motion: reduce)').matches,
       motionNodeCount: motionStates.length,
       motionActiveCount: motionStates.filter((state) => state === 'true').length,
@@ -261,6 +278,7 @@ async function inspectPage(page, routeCase, viewport, motion) {
     if (kind === 'home') {
       const proof = document.querySelector('#proof')
       const bridge = document.querySelector('[data-home-origin-bridge]')
+      const reel = document.querySelector('[data-reel-running]')
       const proofHeader = proof?.querySelector('header')?.getBoundingClientRect()
       const proofSheet = proof?.querySelector('[aria-label="Ba bằng chứng có thể mở để xem chi tiết"]')?.getBoundingClientRect()
       const debt = 'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.'
@@ -272,6 +290,11 @@ async function inspectPage(page, routeCase, viewport, motion) {
         proofHeight: proof?.getBoundingClientRect().height ?? 0,
         proofFitsViewport: viewportWidth < 1024 || (proof?.getBoundingClientRect().height ?? Infinity) <= viewportHeight,
         headerSheetGap: proofHeader && proofSheet ? proofSheet.top - proofHeader.bottom : -1,
+        reelRunning: Boolean(reel),
+        reelFrameCount: Number(reel?.getAttribute('data-frame-count') ?? 0),
+        focalFrameCount: reel
+          ? [...reel.querySelectorAll('img')].filter((image) => image.style.objectPosition).length
+          : 0,
       }
     } else if (kind === 'about') {
       const debt = 'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.'
@@ -339,11 +362,16 @@ async function inspectPage(page, routeCase, viewport, motion) {
 function failuresFor(result, routeCase, motion) {
   const failures = []
   const metrics = result.metrics
+  const route = metrics?.route ?? {}
   if (result.status !== 200) failures.push(`HTTP ${result.status}`)
   if (!metrics || metrics.mainCount !== 1 || metrics.h1Count !== 1 || !metrics.meaningfulText) failures.push('page identity')
   if (metrics?.overflowX > 2) failures.push(`overflow ${metrics.overflowX}`)
   if (metrics?.brokenImages || metrics?.incompleteImages || metrics?.deferredLazyImages) failures.push('broken, incomplete or deferred image')
   if (metrics?.headerH1Overlap > 0) failures.push('pinned header overlaps H1')
+  if (routeCase.kind === 'home' && metrics?.displayWordLineCounts.some((count) => count !== 1)) failures.push('display name wraps inside a word')
+  if (routeCase.kind === 'home' && route.viewportWidth >= 901 && (metrics?.displayNameHeaderGap ?? -1) < 24) failures.push('display name misses pinned-header safe area')
+  if (routeCase.kind === 'home' && route.viewportWidth >= 901 && (metrics?.heroPhotoHeaderGap ?? -Infinity) < -8) failures.push('hero portrait starts behind pinned header')
+  if (routeCase.kind === 'home' && (metrics?.heroContentFilmGap ?? -1) < 8) failures.push('hero content overlaps evidence film')
   if ((metrics?.cls ?? Infinity) > 0.1) failures.push(`CLS ${metrics?.cls}`)
   if (motion.reducedMotion === 'reduce' && (!metrics?.reducedMatches || metrics?.motionActiveCount > 0)) failures.push('reduced motion boundary')
   if (motion.reducedMotion === 'no-preference' && metrics?.reducedMatches) failures.push('motion media mismatch')
@@ -352,8 +380,7 @@ function failuresFor(result, routeCase, motion) {
     : result.diagnostics.consoleErrors
   if (unexpectedConsoleErrors.length || result.diagnostics.pageErrors.length || result.diagnostics.failedRequests.length || result.diagnostics.responseErrors.length) failures.push('runtime diagnostics')
 
-  const route = metrics?.route ?? {}
-  if (routeCase.kind === 'home' && (route.sectionCount !== 6 || route.bridgeCount !== 1 || route.proofTriggerCount !== 3 || route.debtCount !== 1 || !route.proofFitsViewport || route.headerSheetGap < 0)) failures.push('homepage contract')
+  if (routeCase.kind === 'home' && (route.sectionCount !== 6 || route.bridgeCount !== 1 || route.proofTriggerCount !== 3 || route.debtCount !== 1 || !route.proofFitsViewport || route.headerSheetGap < 0 || !route.reelRunning || route.reelFrameCount < 6 || route.focalFrameCount < 6)) failures.push('homepage contract')
   if (routeCase.kind === 'about' && (route.actCount !== 5 || route.consequenceCount !== 1 || route.debtCount !== 1 || route.disclosureCount < 1 || route.externalLinkCount < 3 || route.unsafeExternalLinkCount !== 0 || route.distortedImageCount !== 0)) failures.push('about contract')
   if (routeCase.kind === 'hub' && (route.roadmapStates !== 21 || route.publicStates !== 7 || route.protectedStates !== 14 || route.uniqueLessonLinks !== 21)) failures.push('hub contract')
   if (routeCase.kind === 'public-lesson' && (route.articleCount < 1 || route.blockCount !== 47 || route.reasonCount !== 1 || route.deliverableCount !== 1 || route.checklistCount !== 1 || route.checklistItemCount !== 2 || route.promptCount !== 0)) failures.push('public lesson contract')
