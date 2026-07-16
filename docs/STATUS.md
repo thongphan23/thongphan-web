@@ -1,6 +1,24 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-14
+Last updated: 2026-07-16
+
+## Brain2 kickoff-video restoration — local release candidate — 2026-07-16
+
+- Restored the original kickoff video to `/brain2/21-ngay` from the verified
+  legacy source: YouTube ID `ubsOey-hDyg`, label
+  `Buổi Kick-off Brain2 Challenge · Tháng 5/2026` and the real YouTube
+  thumbnail. Both the editorial text action and poster open the canonical video
+  in a separate tab with safe external-link attributes.
+- Added a responsive Cinema screening-room section between the transformation
+  and roadmap chapters. Browser QA passes at 1440×900 and 390×844: the thumbnail
+  loads at natural size, mobile stacks to one column, horizontal overflow is
+  zero and the focusable link has an explicit accessible name.
+- Regression-first evidence passes: focused hub contract 7/7, full suite
+  242/242, Brain2 release suite 143/143, lint, TypeScript and the 82-route static
+  build. The generated artifact contains the exact video URL, label and
+  thumbnail; live YouTube and thumbnail probes both return HTTP 200.
+- This restoration is committed locally only. Production remains on the prior
+  verified release until a new deployment is explicitly authorized.
 
 ## Homepage polish regression — production release — 2026-07-14
 

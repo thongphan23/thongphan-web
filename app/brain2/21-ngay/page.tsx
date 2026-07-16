@@ -71,6 +71,43 @@ export default function Brain2ChallengePage() {
         </div>
       </section>
 
+      <section className={styles.kickoffSection} aria-labelledby="brain2-kickoff-title">
+        <header data-motion-reveal="fade">
+          <p>Buổi Kick-off</p>
+          <h2 id="brain2-kickoff-title">Xem buổi mở đầu trước khi bước vào hành trình 21 ngày.</h2>
+          <span>Thông Phan giải thích toàn bộ chương trình, cách bắt đầu với Obsidian và trả lời những câu hỏi đầu tiên của người tham gia.</span>
+          <a
+            className={styles.kickoffAction}
+            href="https://www.youtube.com/watch?v=ubsOey-hDyg"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-motion-action
+          >
+            Xem video kickoff <span aria-hidden="true">↗</span>
+          </a>
+        </header>
+
+        <a
+          className={styles.kickoffPoster}
+          href="https://www.youtube.com/watch?v=ubsOey-hDyg"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Xem Buổi Kick-off Brain2 Challenge trên YouTube"
+          data-motion-surface
+          data-motion-reveal="scale"
+        >
+          <Image
+            src="https://img.youtube.com/vi/ubsOey-hDyg/maxresdefault.jpg"
+            alt="Ảnh bìa Buổi Kick-off Brain2 Challenge"
+            width={1280}
+            height={720}
+            sizes="(max-width: 800px) 100vw, 48vw"
+          />
+          <span className={styles.playButton} aria-hidden="true"><i /></span>
+          <span className={styles.videoLabel}>Buổi Kick-off Brain2 Challenge · Tháng 5/2026</span>
+        </a>
+      </section>
+
       <section className={styles.mapSection} aria-labelledby="brain2-roadmap-title">
         <header data-motion-reveal="fade">
           <p>Bản đồ thực hành</p>

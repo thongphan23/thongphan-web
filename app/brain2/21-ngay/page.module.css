@@ -9,6 +9,7 @@
 
 .hero,
 .transformation,
+.kickoffSection,
 .mapSection,
 .signupSection,
 .closing {
@@ -29,6 +30,7 @@
 .heroCopy { position: relative; z-index: 2; }
 .eyebrow,
 .transformation header > p,
+.kickoffSection header > p,
 .mapSection header > p,
 .signupSection header > p,
 .closing p {
@@ -103,8 +105,10 @@
 .heroMedia figcaption { color: color-mix(in srgb, var(--brand-paper) 58%, transparent); font-family: var(--font-mono); font-size: .66rem; line-height: 1.55; padding: .75rem .4rem .25rem; }
 
 .transformation header,
+.kickoffSection header,
 .mapSection > header { max-width: 68rem; }
 .transformation h2,
+.kickoffSection h2,
 .mapSection h2,
 .signupSection h2,
 .closing h2 {
@@ -134,6 +138,99 @@
 .beforeAfter span { color: var(--brand-lacquer-bright); font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; }
 .beforeAfter h3 { color: var(--brand-paper); font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.08; margin: 1.25rem 0 1rem; }
 .beforeAfter p { color: color-mix(in srgb, var(--brand-paper) 62%, transparent); line-height: 1.7; }
+.kickoffSection {
+  align-items: center;
+  background: radial-gradient(circle at 12% 10%, rgba(143, 48, 40, .18), transparent 32%), #171411;
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, .8fr) minmax(24rem, 1.2fr);
+}
+.kickoffSection header { max-width: 44rem; }
+.kickoffSection header > span {
+  color: color-mix(in srgb, var(--brand-paper) 64%, transparent);
+  display: block;
+  line-height: 1.75;
+  margin-top: 1.25rem;
+}
+.kickoffAction {
+  align-items: center;
+  color: var(--brand-paper);
+  display: inline-flex;
+  font-size: .92rem;
+  font-weight: 700;
+  gap: .6rem;
+  margin-top: 2rem;
+  min-height: 44px;
+  text-decoration-color: var(--brand-lacquer-bright);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .45rem;
+  transition: color 220ms ease, transform 220ms ease;
+}
+.kickoffAction:hover { color: var(--brand-lacquer-bright); transform: translateX(.2rem); }
+.kickoffPoster {
+  aspect-ratio: 16 / 9;
+  background: #0e0d0c;
+  border: 1px solid color-mix(in srgb, var(--brand-paper) 18%, transparent);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, .38);
+  color: var(--brand-paper);
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+.kickoffPoster::after {
+  background: linear-gradient(180deg, transparent 46%, rgba(8, 7, 6, .92) 100%);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+.kickoffPoster img {
+  display: block;
+  filter: saturate(.82) contrast(1.05);
+  height: 100%;
+  object-fit: cover;
+  transition: filter 320ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1);
+  width: 100%;
+}
+.kickoffPoster:hover img { filter: saturate(1) contrast(1.05); transform: scale(1.025); }
+.playButton {
+  align-items: center;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--brand-lacquer) 88%, transparent);
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 50%;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
+  display: flex;
+  height: clamp(3.5rem, 6vw, 5rem);
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 220ms ease, transform 220ms ease;
+  width: clamp(3.5rem, 6vw, 5rem);
+  z-index: 2;
+}
+.playButton i {
+  border-bottom: .48rem solid transparent;
+  border-left: .78rem solid var(--brand-paper);
+  border-top: .48rem solid transparent;
+  height: 0;
+  margin-left: .2rem;
+  width: 0;
+}
+.kickoffPoster:hover .playButton { background: var(--brand-lacquer-bright); transform: translate(-50%, -50%) scale(1.06); }
+.videoLabel {
+  bottom: clamp(1rem, 3vw, 1.6rem);
+  font-family: var(--font-mono);
+  font-size: clamp(.62rem, 1.2vw, .76rem);
+  left: clamp(1rem, 3vw, 1.6rem);
+  letter-spacing: .04em;
+  position: absolute;
+  right: clamp(1rem, 3vw, 1.6rem);
+  text-transform: uppercase;
+  z-index: 2;
+}
 .mapSection { background: #12100e; }
 .closing { align-items: end; display: grid; gap: 2rem; grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr); }
 .closing h2 { font-size: clamp(2rem, 4vw, 4rem); }
@@ -149,6 +246,7 @@
   .hero h1 { font-size: clamp(2.35rem, 9vw, 3.2rem); }
   .heroMedia { transform: none; }
   .beforeAfter,
+  .kickoffSection,
   .signupSection,
   .closing { grid-template-columns: 1fr; }
   .closingActions { justify-content: flex-start; }
@@ -159,11 +257,15 @@
   .closingActions { align-items: stretch; flex-direction: column; }
   .primaryAction,
   .secondaryAction { width: 100%; }
+  .kickoffAction { width: fit-content; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .heroMedia::after { animation: none; opacity: 0; }
   .primaryAction,
   .secondaryAction,
-  .beforeAfter article { transition: none; }
+  .beforeAfter article,
+  .kickoffAction,
+  .kickoffPoster img,
+  .playButton { transition: none; }
 }
