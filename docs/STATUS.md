@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-16
 
-## Brain2 kickoff-video restoration — local release candidate — 2026-07-16
+## Brain2 kickoff-video restoration — production release — 2026-07-16
 
 - Restored the original kickoff video to `/brain2/21-ngay` from the verified
   legacy source: YouTube ID `ubsOey-hDyg`, label
@@ -17,8 +17,15 @@ Last updated: 2026-07-16
   242/242, Brain2 release suite 143/143, lint, TypeScript and the 82-route static
   build. The generated artifact contains the exact video URL, label and
   thumbnail; live YouTube and thumbnail probes both return HTTP 200.
-- This restoration is committed locally only. Production remains on the prior
-  verified release until a new deployment is explicitly authorized.
+- Preview `e36e4d04-58b9-4be4-bb5d-745c86ead1a9` and production
+  `350ecbc7-9eec-4661-8451-2b129577b97c` serve source `12880bc`. The production
+  origin, apex and `www` return byte-identical Brain2 hub HTML and all include
+  the exact kickoff URL, label and thumbnail. Core route smoke, the permanent
+  `/challenges` redirect, disabled Learn 404 and exclusion of the four unrelated
+  Conan Maker assets pass on all three surfaces. Previous production `3bc101dc`
+  remains the rollback point.
+- Detailed evidence:
+  `docs/releases/BRAIN2_KICKOFF_VIDEO_PRODUCTION_RELEASE_REPORT-2026-07-16.md`.
 
 ## Homepage polish regression — production release — 2026-07-14
 
