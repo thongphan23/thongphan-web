@@ -207,13 +207,27 @@ emergency PR; otherwise leave the route stopped at the safest verified state.
 
 ### Remote mutation
 
+This deploy replaces the existing production Worker in place under the exact identity
+`thongphan-chat-api`. Tombstone describes the source behavior; it is not a new Worker
+identity.
+
 ```bash
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
+rg -N -x 'name = "thongphan-chat-api"' wrangler.chat.toml
+npx wrangler deployments list --name thongphan-chat-api --json
 npx wrangler deploy --strict --config wrangler.chat.toml
-npx wrangler versions view --config wrangler.chat.toml
+npx wrangler deployments list --name thongphan-chat-api --json
+npx wrangler versions view "$R0_1B_CHAT_VERSION_ID" --name thongphan-chat-api --json
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
 ```
+
+Capture `R0_1B_CHAT_VERSION_ID` from the deploy result before the version readback.
+The readback must identify `thongphan-chat-api`, the exact apex route and zero AI,
+Vectorize, D1, KV or secret bindings. Account inventory must show that deployment
+updated this existing service and created no additional tombstone-named Worker. The
+historical erroneous identity `thongphan-chat-tombstone` must never appear in a
+Wrangler configuration or deploy target.
 
 The smoke must prove both exact endpoints return the 410 contract and `/chat` still
 uses its deterministic local journey. This is the required read-only checkpoint
@@ -221,8 +235,10 @@ before signup deployment.
 
 ### Stop conditions
 
-Stop if either endpoint differs from 410/no-store/disabled marker, any AI/Vectorize
-binding appears, `/chat` fails, the runner exceeds bounds, or output contains PII.
+Stop if the deployed/read-back Worker identity is not exactly `thongphan-chat-api`,
+an additional Worker was created, either endpoint differs from
+410/no-store/disabled marker, any binding appears, `/chat` fails, the runner exceeds
+bounds, or output contains PII.
 
 ### Rollback
 
@@ -250,20 +266,28 @@ Use the owner-approved synthetic identity through the runner's secure input cont
 never place it in a command argument, report or log.
 
 ```bash
+npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --controlled-signup
 ```
 
+Before the POST, the migration ledger must show `0003_r0_1_email_integrity.sql` as
+unapplied and no unexpected migration. The runner's pre-migration snapshots query only
+`campaign_version`, `status` and `row_count`; they must not query `audience_state` or
+`sendable`, which do not exist until migration `0003`.
+
 The runner must prove exactly one new signup row and zero queue rows for that signup,
 capture aggregate evidence, then remove only the synthetic signup. After cleanup,
-prove signup count returned to its pre-smoke value and legacy queue aggregates did
-not change.
+prove signup count returned to its pre-smoke value and the serialized pre-migration
+queue aggregate is byte-identical. The richer `audience_state`/`sendable` aggregate
+is a separate post-migration assertion in Task 8.
 
 ### Stop conditions
 
-Stop if signup copy is false, more than one signup is created, any queue row appears,
-the synthetic record cannot be uniquely identified, aggregate counts drift, cleanup
-would affect a non-synthetic row, or any identity appears in output. Do not proceed to
-D1 migration.
+Stop if migration `0003` is already applied, an unexpected migration is pending,
+signup copy is false, more than one signup is created, any queue row appears, the
+synthetic record cannot be uniquely identified, aggregate counts drift, cleanup would
+affect a non-synthetic row, or any identity appears in output. Do not proceed to D1
+migration.
 
 ### Rollback
 

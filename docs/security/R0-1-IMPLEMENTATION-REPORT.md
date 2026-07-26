@@ -297,10 +297,11 @@ cutover not performed.
   `/api/chat`. POST, GET, OPTIONS and a concurrent 25-POST burst all return the fixed
   `410 Gone` problem response without reading a binding or consuming AI/Vectorize
   budget.
-- `wrangler.chat.toml` retains the exact apex route, uses the retired-service name
-  `thongphan-chat-tombstone`, disables Workers.dev and preview URLs, removes Workers
-  AI, Vectorize and `nodejs_compat`, enables structured-log sampling at `0.1`, and
-  advances the compatibility date to `2026-07-27`.
+- `wrangler.chat.toml` retains the exact production Worker identity
+  `thongphan-chat-api` and exact apex route, disables Workers.dev and preview URLs,
+  removes Workers AI, Vectorize and `nodejs_compat`, enables structured-log sampling
+  at `0.1`, and advances the compatibility date to `2026-07-27`. The tombstone is an
+  in-place replacement, not a second Worker service.
 - `/chat` remains a public static page. `ChatClient.sendMessage(text)` always uses
   `createLocalChatTurn(text)` and retains loading state, progressive display,
   keyboard form submission, live-region output and three unique contextual
@@ -766,9 +767,9 @@ was performed by Task 8B.
 
 ## R0.1A whole-branch review — controlled smoke hardening
 
-Status: APPROVED at source `2b3f77be060659211165eebd603f735099b26668`.
-Whole-branch final review found no remaining Important finding and no Draft PR
-blocker.
+Status: SUPERSEDED at source `2b3f77be060659211165eebd603f735099b26668`.
+This historical review verdict was reopened by the later Draft PR #2 corrections
+recorded below.
 
 ### Review findings closed
 
@@ -788,10 +789,11 @@ blocker.
   `challenge_slug`, `name`, `email` body. A focused integration fixture calls the
   real `handleBrain2SignupRequest` export through `tsx`.
 - Before POST and after targeted cleanup, the runner snapshots the exact global
-  `challenge_signups` count and a bounded, deterministically ordered legacy-email
-  aggregate. It fails closed unless the total is exactly restored and the serialized
-  legacy aggregate is byte-equal. Multiplicity cleanup still removes every matching
-  row by ID plus synthetic identity while preserving unrelated rows.
+  `challenge_signups` count and a bounded, deterministically ordered pre-migration
+  email aggregate containing only `campaign_version`, `status` and `row_count`. It
+  fails closed unless the total is exactly restored and the serialized pre-migration
+  aggregate is byte-equal. Multiplicity cleanup still removes every matching row by
+  ID plus synthetic identity while preserving unrelated rows.
 - D1 lookup returns every positively identified matching ID within the bounded
   Wrangler output contract; it has no three-row cardinality trap. SQL literals double
   apostrophes, and cleanup remains narrow by signup ID, synthetic identity and
@@ -823,11 +825,59 @@ fix loop was required.
 | Task diff check | `0` | no whitespace errors |
 | Canonical preservation | `0` | `VERIFY PASS`; five protected hashes unchanged |
 
-One nonblocking Minor remains in test evidence: the table fixture labeled
-`unsuccessful` reaches the result-set cardinality rejection before independently
-exercising the `success: false` predicate. The implementation itself rejects entries
-whose `success` is not `true`; this report does not claim that fixture independently
-covered that branch. The Minor does not block implementation review.
+The test-evidence Minor recorded at this historical checkpoint was later closed by a
+standalone, valid-cardinality Wrangler result fixture in the Draft PR #2 review
+corrections below.
 
 No production origin, remote D1 operation, deploy, migration, email action, push or
 history mutation was performed during this hardening or final verification.
+
+## Draft PR #2 review corrections
+
+Status: IN PROGRESS — focused correction gates pass; fresh full release verification
+is still required before restoring implementation-review readiness.
+
+### Findings corrected
+
+- The R0.1B sequence runs the controlled signup before migration `0003`. The native
+  snapshot SQL now reads only `challenge_signups` count plus the bounded,
+  deterministically ordered `campaign_version`, `status`, `row_count` aggregate. It
+  does not query `audience_state` or `sendable` during this phase. The separate
+  post-migration aggregate remains an R0.1B step after migration `0003`.
+- `wrangler.chat.toml` now uses the exact existing production identity
+  `thongphan-chat-api`. Its tombstone source, exact `/api/chat` route,
+  `workers_dev=false`, `preview_urls=false`, zero AI/Vectorize bindings and sampled
+  observability remain unchanged.
+- The Wrangler `success` predicate now has standalone evidence with exact stdout
+  `[{"success":false,"results":[]}]`. Cardinality is valid, so the fixture fails
+  only because `success !== true`; the previous Minor is closed.
+
+### TDD evidence
+
+Pre-migration RED:
+
+```text
+SMOKE_DATABASE_COMMAND_FAILED: no such column: audience_state
+```
+
+- The RED fixture created an in-memory SQLite database from `workers/schema.sql`,
+  seeded the expected challenge, ten historical signups and 210 `legacy-v0/pending`
+  queue rows, then applied only migration `0002`. It exercised the SQL emitted by the
+  native Wrangler adapter and failed before POST because the former snapshot queried
+  a migration-`0003` column.
+- The chat config RED failed because the configured name was not
+  `thongphan-chat-api`.
+
+Focused GREEN:
+
+| Gate | Exit | Evidence |
+|---|---:|---|
+| Controlled-smoke suite | `0` | `42/42` passed |
+| Pre-0003 actual SQLite/Worker slice | `0` | one synthetic signup, zero queue rows, one targeted removal, count restored to 10 and byte-equal pre-migration aggregate |
+| Chat Worker security/config | `0` | `3/3` passed; exact production identity, route, disabled public surfaces, zero AI/Vectorize and sampled observability |
+| Standalone Wrangler `success=false` | `0` | valid one-result-set cardinality rejected with `SMOKE_DATABASE_CONTRACT` before any POST |
+
+Migration `0003` remained unapplied in the actual SQLite slice: both
+`audience_state` and `sendable` were absent before and after the controlled signup.
+No production origin, remote D1 operation, deploy, migration, email action or
+history mutation occurred during these corrections.
