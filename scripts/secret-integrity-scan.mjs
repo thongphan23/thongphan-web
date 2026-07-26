@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { execFileSync, spawnSync } from 'node:child_process';
+import { execFileSync, spawn, spawnSync } from 'node:child_process';
 import {
   closeSync,
   lstatSync,
@@ -184,13 +184,14 @@ function isPlaceholder(value) {
     /^<[^>]+>$/.test(value) ||
     /^\[[^\]]+\]$/.test(value) ||
     /^(?:your[_-]|example|placeholder|redacted|change[_-]?me|x{8,})/i.test(value) ||
+    /(?:^|[_-])at[_-]least[_-](?:thirty[_-]two|32)[_-]bytes(?:[_-]|$)/i.test(value) ||
     /(?:^|[_-])(?:test|fixture|example|placeholder|synthetic|fake|dummy|mock|dev|local)(?:[_-]|$)/i.test(
       value,
     )
   );
 }
 
-function candidateValues(text, { allowPathLike = false } = {}) {
+function candidateValues(text, { allowHex = false, allowPathLike = false } = {}) {
   const values = [];
   for (const match of text.matchAll(CANDIDATE_PATTERN)) {
     const value = match[1];
@@ -205,7 +206,7 @@ function candidateValues(text, { allowPathLike = false } = {}) {
     if (
       (allowPathLike || !looksLikePath) &&
       !looksLikeEnvironmentReference &&
-      !/^[a-f0-9]+$/i.test(value) &&
+      (allowHex || !/^[a-f0-9]+$/i.test(value)) &&
       !isPlaceholder(value) &&
       new Set(value).size >= 8 &&
       entropy(value) >= 3
@@ -230,10 +231,7 @@ function isSecretName(name) {
     /(?:cloudflare|openai|brevo|resend|stripe|github|anthropic|google|vectorize)/i.test(
       leaf,
     ) && /(?:token|secret|password|key)/i.test(leaf);
-  return (
-    providerNamedSecret ||
-    (namedSecret && /^(?:api|access|auth|bearer)[_-]?(?:token|key|secret)$/i.test(leaf))
-  );
+  return providerNamedSecret || namedSecret;
 }
 
 function providerContextBefore(lines, index) {
@@ -257,7 +255,7 @@ function findingsForText(text, file, classification) {
     const bearer = line.match(BEARER_PATTERN);
     if (
       bearer &&
-      candidateValues(bearer[1], { allowPathLike: true }).length > 0
+      candidateValues(bearer[1], { allowHex: true, allowPathLike: true }).length > 0
     ) {
       findings.push({
         rule_id: 'bearer-token-literal',
@@ -271,7 +269,7 @@ function findingsForText(text, file, classification) {
     if (
       assignment &&
       isSecretName(assignment[1]) &&
-      candidateValues(assignment[2], { allowPathLike: true }).length > 0
+      candidateValues(assignment[2], { allowHex: true, allowPathLike: true }).length > 0
     ) {
       findings.push({
         rule_id: 'named-secret-assignment',
@@ -387,7 +385,49 @@ function historyObjectMetadata(root, records) {
   return metadata;
 }
 
-function scanHistory(root) {
+function sampleHistoryBlob(root, objectId) {
+  return new Promise((resolveSample, rejectSample) => {
+    const child = spawn('git', ['cat-file', 'blob', objectId], {
+      cwd: root,
+      stdio: ['ignore', 'pipe', 'ignore'],
+    });
+    const chunks = [];
+    let sampleSize = 0;
+    let settled = false;
+
+    child.on('error', () => {
+      if (!settled) {
+        settled = true;
+        rejectSample(new ScannerFailure('git_failure'));
+      }
+    });
+    child.stdout.on('data', (chunk) => {
+      if (sampleSize < BINARY_SAMPLE_BYTES) {
+        const remaining = BINARY_SAMPLE_BYTES - sampleSize;
+        const portion = chunk.subarray(0, remaining);
+        chunks.push(portion);
+        sampleSize += portion.length;
+      }
+      if (sampleSize >= BINARY_SAMPLE_BYTES) {
+        child.stdout.destroy();
+        child.kill('SIGTERM');
+      }
+    });
+    child.on('close', () => {
+      if (settled) {
+        return;
+      }
+      settled = true;
+      if (sampleSize < BINARY_SAMPLE_BYTES) {
+        rejectSample(new ScannerFailure('git_failure'));
+        return;
+      }
+      resolveSample(Buffer.concat(chunks, sampleSize));
+    });
+  });
+}
+
+async function scanHistory(root) {
   const records = historyObjects(root);
   const metadata = historyObjectMetadata(root, records);
   const findings = [];
@@ -406,7 +446,11 @@ function scanHistory(root) {
       fail('invalid_history_object', file);
     }
     if (object.size > MAX_TEXT_BYTES) {
-      continue;
+      const sample = await sampleHistoryBlob(root, objectId);
+      if (isBinary(sample)) {
+        continue;
+      }
+      fail('oversized_text_rejected', file);
     }
     const buffer = runGit(root, ['cat-file', 'blob', objectId], {
       maxBuffer: MAX_TEXT_BYTES + 1,
@@ -456,7 +500,7 @@ try {
   const root = repositoryRoot();
   const findings = stableUniqueFindings(
     options.history
-      ? scanHistory(root)
+      ? await scanHistory(root)
       : scanCurrentTree(root, options.includeLocalEnv),
   );
   for (const finding of findings) {

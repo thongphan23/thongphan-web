@@ -153,8 +153,12 @@ credential-derived hash is recorded.
 ### TDD and verification evidence
 
 - Initial RED: scanner module absent, exit `1`.
-- Focused scanner fixtures: `17/17` passed.
-- Package-integrated suite: `259/259` passed.
+- Reviewer-hardening RED reproduced three blind spots: generic secret-name
+  assignments, high-entropy hexadecimal values in explicit credential contexts and
+  oversized historical text blobs. A fourth regression fixture preserved the known
+  public minimum-length test phrase without weakening generic-name coverage.
+- Focused scanner fixtures: `22/22` passed.
+- Package-integrated suite: `264/264` passed.
 - Current-tree post-sanitization scan: exit `0`, zero findings.
 - Separate history diagnostic: exit `1` with five metadata-only findings. It remains
   outside `test:release` as the nonblocking R0.H1 residual.
@@ -166,3 +170,17 @@ credential-derived hash is recorded.
 
 Detailed pre-sanitization metadata-only evidence:
 `.superpowers/sdd/2026-07-26-r0-1-security-remediation/task-2-phase-a-report.md`.
+
+### Reviewer hardening
+
+- Generic names such as service tokens, database passwords and API keys now reach
+  `named-secret-assignment` after non-secret metadata suffixes are excluded.
+- High-entropy hexadecimal values of at least 32 characters are accepted only in
+  explicit named-assignment and bearer contexts; unrelated checksum prose remains
+  excluded.
+- History mode samples only a bounded binary prefix through Git plumbing for blobs
+  above the text ceiling. A definitive binary prefix is skipped; otherwise the scan
+  fails closed with exit `2`, classification `oversized_text_rejected` and file path
+  metadata only.
+- Scanner output and verification evidence contain no credential value, fragment,
+  credential-derived hash or Git object ID.

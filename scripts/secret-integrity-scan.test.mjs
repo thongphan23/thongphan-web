@@ -101,6 +101,97 @@ test('reports a named secret assignment using metadata only', () => {
   assertMetadataOnly(result, value);
 });
 
+test('reports generic service, database, and API secret assignments', () => {
+  const root = makeRepository();
+  const value = syntheticCredential();
+  writeFixture(
+    root,
+    'fixtures/generic-assignments.txt',
+    [
+      `SERVICE_TOKEN=${value}`,
+      `DATABASE_PASSWORD=${value}`,
+      `MY_API_KEY=${value}`,
+      '',
+    ].join('\n'),
+  );
+  track(root, 'fixtures/generic-assignments.txt');
+
+  const result = runScanner(root);
+
+  assert.equal(result.status, 1);
+  assert.deepEqual(parseFindings(result.stdout), [
+    {
+      rule_id: 'named-secret-assignment',
+      file: 'fixtures/generic-assignments.txt',
+      line: 1,
+      classification: 'tracked_plaintext',
+    },
+    {
+      rule_id: 'named-secret-assignment',
+      file: 'fixtures/generic-assignments.txt',
+      line: 2,
+      classification: 'tracked_plaintext',
+    },
+    {
+      rule_id: 'named-secret-assignment',
+      file: 'fixtures/generic-assignments.txt',
+      line: 3,
+      classification: 'tracked_plaintext',
+    },
+  ]);
+  assertMetadataOnly(result, value);
+});
+
+test('ignores an explicit minimum-length test fixture phrase', () => {
+  const root = makeRepository();
+  writeFixture(
+    root,
+    'fixtures/public-fixture.test.ts',
+    "const SESSION_SECRET = 'task6-session-secret-that-is-at-least-thirty-two-bytes'\n",
+  );
+  track(root, 'fixtures/public-fixture.test.ts');
+
+  const result = runScanner(root);
+
+  assert.equal(result.status, 0);
+  assert.deepEqual(parseFindings(result.stdout), []);
+});
+
+test('accepts hexadecimal credentials only in explicit assignment and bearer contexts', () => {
+  const root = makeRepository();
+  const value = '0123456789abcdef'.repeat(2);
+  writeFixture(
+    root,
+    'fixtures/hex-contexts.txt',
+    [
+      `CLOUDFLARE_API_TOKEN=${value}`,
+      `Authorization: Bearer ${value}`,
+      `Cloudflare token checksum: ${value}`,
+      '',
+    ].join('\n'),
+  );
+  track(root, 'fixtures/hex-contexts.txt');
+
+  const result = runScanner(root);
+
+  assert.equal(result.status, 1);
+  assert.deepEqual(parseFindings(result.stdout), [
+    {
+      rule_id: 'named-secret-assignment',
+      file: 'fixtures/hex-contexts.txt',
+      line: 1,
+      classification: 'tracked_plaintext',
+    },
+    {
+      rule_id: 'bearer-token-literal',
+      file: 'fixtures/hex-contexts.txt',
+      line: 2,
+      classification: 'tracked_plaintext',
+    },
+  ]);
+  assertMetadataOnly(result, value);
+});
+
 test('reports token-labeled prose using metadata only', () => {
   const root = makeRepository();
   const value = syntheticCredential();
@@ -396,6 +487,39 @@ test('history mode scans reachable prior blobs without exposing values or object
     },
   ]);
   assertMetadataOnly(historyResult, value);
+});
+
+test('history mode rejects oversized text instead of silently skipping it', () => {
+  const root = makeRepository();
+  writeFixture(root, 'archive/oversized.txt', 'historical-text-fixture\n'.repeat(400_000));
+  track(root, 'archive/oversized.txt');
+  commit(root, 'add oversized historical text');
+  git(root, ['rm', '--quiet', '--', 'archive/oversized.txt']);
+  commit(root, 'remove oversized historical text');
+
+  const result = runScanner(root, ['--history']);
+
+  assert.equal(result.status, 2);
+  assert.deepEqual(parseFindings(result.stdout), []);
+  assert.equal(result.stderr.includes('classification=oversized_text_rejected'), true);
+  assert.equal(result.stderr.includes('file=archive/oversized.txt'), true);
+});
+
+test('history mode safely skips an oversized blob with a binary prefix', () => {
+  const root = makeRepository();
+  const binary = Buffer.alloc(9 * 1024 * 1024);
+  const path = join(root, 'archive/large.bin');
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, binary);
+  track(root, 'archive/large.bin');
+  commit(root, 'add oversized historical binary');
+  git(root, ['rm', '--quiet', '--', 'archive/large.bin']);
+  commit(root, 'remove oversized historical binary');
+
+  const result = runScanner(root, ['--history']);
+
+  assert.equal(result.status, 0);
+  assert.deepEqual(parseFindings(result.stdout), []);
 });
 
 test('rejects tracked symlinks without reading their targets', () => {
