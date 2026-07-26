@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { readFileSync, rmSync } from 'node:fs'
+import { existsSync, readFileSync, rmSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
@@ -10,8 +10,6 @@ import {
   BRAIN2_CAMPAIGN_VERSION,
   BRAIN2_CHALLENGE_SLUG,
   BRAIN2_EMAIL_TEMPLATES,
-  buildBrain2CampaignSchedule,
-  buildBrain2QueueStatements,
   getBrain2EmailContent,
   handleBrain2SignupRequest,
   personalizeBrain2Email,
@@ -138,40 +136,7 @@ test('campaign builds exactly 21 truthful metadata-only link emails', () => {
   assert.doesNotMatch(serialized, /"reason"|"blocks"|"deliverable"|"checklist"/)
 })
 
-test('campaign schedule uses day-one within five minutes and 09:00 Asia/Ho_Chi_Minh thereafter', () => {
-  const signupAt = '2026-07-12T17:30:00.000Z' // 00:30 on 13 July in Vietnam.
-  const schedule = buildBrain2CampaignSchedule(signupAt)
-  assert.equal(schedule.length, 21)
-  const delta = Date.parse(schedule[0]) - Date.parse(signupAt)
-  assert.ok(delta >= 0 && delta <= 5 * 60 * 1000)
-  assert.equal(schedule[1], '2026-07-14T02:00:00.000Z')
-  for (const value of schedule.slice(1)) {
-    const date = new Date(value)
-    assert.equal(date.getUTCHours(), 2)
-    assert.equal(date.getUTCMinutes(), 0)
-    assert.equal(date.getUTCSeconds(), 0)
-  }
-
-  const yearBoundary = buildBrain2CampaignSchedule('2027-12-31T20:00:00.000Z')
-  assert.equal(yearBoundary[1], '2028-01-02T02:00:00.000Z')
-})
-
-test('queue statements are a complete v1 campaign and personalization escapes user input', () => {
-  const DB = new SignupDatabase()
-  let sequence = 0
-  const statements = buildBrain2QueueStatements({
-    DB: DB as never,
-    signupId: 'signup-fixture',
-    signupAt: '2026-07-12T00:00:00.000Z',
-    randomUUID: () => `00000000-0000-4000-8000-${String(sequence += 1).padStart(12, '0')}`,
-  }) as unknown as Statement[]
-  assert.equal(statements.length, 21)
-  for (const [index, statement] of statements.entries()) {
-    assert.match(statement.query, /campaign_version/i)
-    assert.ok(statement.values.includes(BRAIN2_CAMPAIGN_VERSION))
-    assert.ok(statement.values.includes(index + 1))
-  }
-
+test('inert campaign personalization escapes user input', () => {
   const personalized = personalizeBrain2Email(
     getBrain2EmailContent(1, 21).body,
     { name: '<img src=x onerror=alert(1)>', unsubscribeUrl: 'https://thongphan.com/safe?x=1&y=2' },
@@ -181,7 +146,7 @@ test('queue statements are a complete v1 campaign and personalization escapes us
   assert.match(personalized, /x=1&amp;y=2/)
 })
 
-test('signup uses one transaction for signup plus 21 v1 rows and returns one stable JSON shape', async () => {
+test('signup persists one registration, prepares no email queue row and returns the truthful contract', async () => {
   const DB = new SignupDatabase()
   const deleted: string[] = []
   let sequence = 0
@@ -199,11 +164,16 @@ test('signup uses one transaction for signup plus 21 v1 rows and returns one sta
     randomUUID: () => `00000000-0000-4000-8000-${String(sequence += 1).padStart(12, '0')}`,
   })
   assert.equal(response.status, 200)
-  assert.deepEqual(Object.keys(await response.clone().json()).sort(), ['message', 'signup_id', 'success'])
+  const responseJson = await response.clone().json() as Record<string, unknown>
+  assert.deepEqual(Object.keys(responseJson).sort(), ['message', 'signup_id', 'success'])
+  assert.equal(
+    responseJson.message,
+    'Đã ghi nhận đăng ký. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website.',
+  )
   assert.equal(DB.batches.length, 1)
-  assert.equal(DB.batches[0].length, 22)
+  assert.equal(DB.batches[0].length, 1)
   assert.match(DB.batches[0][0].query, /INSERT INTO challenge_signups/i)
-  assert.ok(DB.batches[0].slice(1).every((statement) => statement.values.includes(BRAIN2_CAMPAIGN_VERSION)))
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
   assert.ok(DB.prepared.some((statement) => statement.values.includes('test@example.com')))
   assert.deepEqual(deleted, ['challenge:brain2-21-ngay'])
 
@@ -581,12 +551,27 @@ test('both signup surfaces share v2 logic and the hub mounts the corrected resil
   const workerSignup = readFileSync(new URL('../workers/api/signup.ts', import.meta.url), 'utf8')
   const pagesSignup = readFileSync(new URL('../functions/api/signup.ts', import.meta.url), 'utf8')
   const form = readFileSync(new URL('../components/SignupForm.tsx', import.meta.url), 'utf8')
+  const campaign = readFileSync(new URL('../workers/brain2-campaign.ts', import.meta.url), 'utf8')
   const hub = readFileSync(new URL('../app/brain2/21-ngay/page.tsx', import.meta.url), 'utf8')
   const oldEmailContent = readFileSync(new URL('../workers/api/email-content.ts', import.meta.url), 'utf8')
+  const signupContractUrl = new URL('../lib/brain2/signup-contract.ts', import.meta.url)
+
+  assert.equal(existsSync(signupContractUrl), true, 'signup contract module must exist')
+  const signupContract = readFileSync(signupContractUrl, 'utf8')
 
   assert.match(workerSignup, /handleBrain2SignupRequest/)
   assert.match(pagesSignup, /handleBrain2SignupRequest/)
   assert.doesNotMatch(`${workerSignup}\n${pagesSignup}`, /setHours\(|INSERT INTO email_queue/)
+  assert.match(form, /from ['"]@\/lib\/brain2\/signup-contract['"]/)
+  assert.match(campaign, /from ['"]\.\.\/lib\/brain2\/signup-contract['"]/)
+  assert.match(form, /BRAIN2_SIGNUP_SUCCESS_MESSAGE/)
+  assert.match(campaign, /BRAIN2_SIGNUP_SUCCESS_MESSAGE/)
+  assert.match(signupContract, /Đã ghi nhận đăng ký\. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website\./)
+  assert.match(signupContract, /Tên và email được lưu để ghi nhận đăng ký 21 ngày Brain2\. Email tự động hiện chưa được kích hoạt và địa chỉ này không được thêm vào newsletter\./)
+  assert.match(form, /aria-describedby="brain2-signup-data-notice"/)
+  assert.match(form, /<\/form>\s*<p id="brain2-signup-data-notice">\s*\{BRAIN2_SIGNUP_DATA_NOTICE\}\s*<\/p>/)
+  assert.match(form, /<a href=\{BRAIN2_DAY_ONE_PATH\}/)
+  assert.doesNotMatch(`${form}\n${campaign}`, /5 phút|trong vòng 5 phút|Email đầu tiên sẽ đến/i)
   assert.match(form, /data\.message\s*\?\?\s*data\.error/)
   assert.match(form, /response\.json\(\)\.catch/)
   assert.match(form, /data\.success\s*!==\s*true/)

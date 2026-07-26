@@ -359,3 +359,99 @@ If the local `/chat` experience regresses, revert only `ChatClient.tsx`,
 `chat-model.ts` and their local-journey contracts. Keep the `/api/chat` tombstone,
 binding-free config and deleted proxy; never restore the retired remote AI/Vectorize
 path.
+
+## R0.1A Task 5 — Make signup behavior and copy truthful
+
+Status: PASS — local signup contract, zero-queue persistence and Day 01 continuation
+verified; production cutover not performed.
+
+### Outcome
+
+- `lib/brain2/signup-contract.ts` now owns the canonical success message, descriptive
+  data-use notice and existing Day 01 path. Both the UI and signup Worker import the
+  same success-message contract.
+- A successful signup means only that the registration was persisted. The Worker
+  batches exactly one `challenge_signups` insert and prepares no `email_queue` insert.
+- The success state links directly to `/brain2/21-ngay/ngay-01`. It makes no fixed-time
+  or delivery promise.
+- The form is accessibly related to the adjacent notice through
+  `aria-describedby="brain2-signup-data-notice"`. The notice states that name and
+  email are stored for this registration, email automation is inactive and the
+  address is not added to a newsletter.
+- The existing duplicate, abuse-rate-limit, bounded-body and stable infrastructure
+  error responses remain unchanged. Validated campaign templates remain inert sender
+  source; this task does not activate delivery.
+- This task changed local source only. It did not deploy, push, mutate a production
+  route or D1 database, send email, import an audience, activate cron, alter a token
+  or rewrite Git history.
+
+### Canonical contract
+
+Success message:
+
+> Đã ghi nhận đăng ký. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu
+> Ngày 01 ngay trên website.
+
+Data-use notice:
+
+> Tên và email được lưu để ghi nhận đăng ký 21 ngày Brain2. Email tự động hiện chưa
+> được kích hoạt và địa chỉ này không được thêm vào newsletter.
+
+These statements are descriptive only. They do not establish marketing consent or
+claim that email delivery is ready.
+
+### TDD and local D1 evidence
+
+Initial RED:
+
+```bash
+node --import tsx --test scripts/brain2-email-campaign.test.ts scripts/brain2-route-contract.test.ts
+```
+
+- Exit code: `1`; `17/20` checks passed and `3/20` failed for the intended reasons.
+- The API returned the former fixed-time delivery promise, a successful request still
+  prepared the 21 queue statements, and the shared signup contract did not exist.
+- Duplicate, rate-limit and error-path checks already remained green during RED.
+
+GREEN:
+
+- Focused email/route suite: `20/20` passed.
+- Full package suite: `273/273` passed.
+- Root `npx tsc --noEmit --incremental false`: pass.
+- `npm run typecheck:brain2-workers`: pass.
+- `npm run lint`: pass with zero warnings.
+- `npm run build`: pass; Next generated `82/82` static pages, including the existing
+  Day 01 route. The built Brain2/UI artifacts contain no former delivery promise.
+- The synthetic successful-request contract records one batch containing one signup
+  statement and no prepared `INSERT INTO email_queue` statement.
+- A Wrangler-local D1 fixture against `workers/schema.sql` records
+  `signup_rows = 1` and `queue_rows = 0`. It used a dedicated temporary persistence
+  directory and did not contact the production database.
+
+The plan's broad literal scan also matches unrelated `15 phút` learning-duration
+copy because `5 phút` is a substring. The task-scoped source and built-artifact scan
+therefore uses delivery context; it returns no match in `components`, `workers`,
+`lib`, `app`, the emitted signup Worker bundle or built Brain2 assets.
+
+### Wrangler dry-run and Cloudflare review
+
+- Repository-pinned Wrangler: `4.110.0`.
+- Config: `wrangler.signup.toml`; dry-run only, no deploy.
+- Summary: `Total Upload: 33.84 KiB / gzip: 9.68 KiB`.
+- Bindings are unchanged and limited to the existing D1 database, KV namespace and
+  two signup rate limiters. The dry-run bundle contains no fixed delivery promise.
+- The request handler still bounds and streams the small signup body, awaits D1 and
+  rate-limit promises, keeps request state local, uses Web Crypto for identifiers and
+  opaque limiter keys, and returns explicit no-store error responses. Removing queue
+  preparation reduces request-path writes without introducing a floating promise or
+  remote service call.
+
+### Residual boundary and rollback
+
+Email templates and the sender remain inert until later integrity, consent and
+delivery gates pass. Production still serves the pre-cutover implementation until
+R0.1B is separately authorized.
+
+If rendering regresses, restore only the previous component structure around the
+canonical message and Day 01 link. Never restore the delivery promise or signup-time
+queue creation.
