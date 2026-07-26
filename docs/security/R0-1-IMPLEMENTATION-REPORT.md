@@ -143,8 +143,8 @@ credential-derived hash is recorded.
 ### Sanitization result
 
 - Four tracked locations across `.claude/handoff.md` and
-  `.claude/handoff-chat.md` were replaced with rotated-credential redaction and
-  environment-variable-only instructions.
+  `.claude/handoff-chat.md` were replaced with invalid-credential redaction and
+  environment-variable references.
 - The canonical local `.env.embed.local` contained only the retired assignment. It
   was deleted and then verified absent; it remains uncommitted by design.
 - No production or remote resource was mutated, no live token was changed and no
