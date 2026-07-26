@@ -15,8 +15,13 @@ giá trị vận hành.
   có thể kích hoạt lại gọi từ xa.
 - Ngày 01–07 là nội dung công khai; ngày 08–21 được đọc từ KV riêng sau khi
   Worker xác thực phiên Conan Maker.
-- 210 email cũ giữ nguyên `legacy-v0` và bị migration khóa update/delete.
-- Sender mới chỉ claim `brain2-2026-v1`.
+- 210 email cũ giữ nguyên `legacy-v0`, có `audience_state = 'quarantined_legacy'`,
+  `sendable = 0` và bị migration khóa update/delete.
+- Mọi hàng mới mặc định `delivery_inactive`/`sendable = 0`; trigger từ chối cả
+  insert lẫn update sang trạng thái gửi được.
+- Mã sender chỉ claim `brain2-2026-v1` khi đồng thời có
+  `audience_state = 'sendable' AND sendable = 1`. R0.1 cố ý làm điều kiện này
+  bất khả thi; chưa có sender production được phê duyệt.
 - Không có endpoint gửi email công khai. Cron phải giữ rỗng cho tới khi toàn bộ
   migration, secret, provider health và smoke test production đều đạt.
 
@@ -24,16 +29,17 @@ giá trị vận hành.
 
 | Chức năng | Entry | Cấu hình |
 | --- | --- | --- |
-| Signup + tạo 21 hàng email v2 | `workers/api/signup.ts` | `wrangler.signup.toml` |
+| Signup, không tạo hàng email | `workers/api/signup.ts` | `wrangler.signup.toml` |
 | Quyền truy cập ngày 08–21 | `workers/brain2-access/index.ts` | `wrangler.brain2-access.jsonc` |
-| Brevo sender + hủy đăng ký | `workers/api/email-drip.ts` | `wrangler.brain2-email.toml` |
+| Mã hợp đồng email bất hoạt, chỉ dry-run local | `workers/api/email-drip.ts` | `wrangler.brain2-email.toml` |
 | Tombstone ingestion đã ngừng | `workers/embed-vault.ts` | `wrangler.embed.toml` |
 | Tombstone chat từ xa đã ngừng | `workers/api/chat.ts` | `wrangler.chat.toml` |
 
-Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, ghi signup và
-21 hàng queue trong một `D1.batch()`, rồi mới xóa cache theo kiểu best-effort.
-Sender dùng queue UUID làm khóa idempotency Brevo, claim nguyên tử, lease bốn
-phút, timeout 20 giây và chỉ retry trong cửa sổ 25 phút.
+Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, chỉ ghi signup,
+rồi mới xóa cache theo kiểu best-effort. Mã sender giữ queue UUID làm khóa
+idempotency Brevo, nhưng toàn bộ claim/update/expire đều cần cặp predicate
+`audience_state = 'sendable' AND sendable = 1`; migration R0.1 chặn việc tạo cặp
+trạng thái này.
 
 Không còn script upload, đường nội bộ hay writer thay thế cho Brain2 Vectorize.
 Mọi phương thức gọi `/api/embed` nhận cùng problem response `410`; rollback chỉ
@@ -72,18 +78,14 @@ line, Git, build output hay log.
 4. Nạp secret bằng `wrangler secret put`; không lưu plaintext trong repo.
 5. Deploy signup và access Worker, sau đó smoke test endpoint thật bằng dữ liệu
    tổng hợp được phê duyệt.
-6. Deploy email Worker từ `wrangler.brain2-email.toml` khi `crons = []`.
-7. Kiểm tra nhà cung cấp, không gửi mail:
+6. Không deploy email Worker. Chỉ chạy dry-run local với
+   `wrangler.brain2-email.toml`, giữ `crons = []`.
+7. Kiểm tra nhà cung cấp và mọi smoke row thuộc R0.1B hoặc release email riêng;
+   không thực hiện trong R0.1A.
 
-```bash
-curl --fail-with-body \
-  -H "Authorization: Bearer $BRAIN2_EMAIL_ADMIN_SECRET" \
-  https://thongphan.com/brain2/21-ngay/api/email-admin
-```
-
-8. Chỉ sau khi signup, unsubscribe, D1/KV và Brevo health đều đạt mới cập nhật
-   lịch cron trong một release riêng. `POST` cùng URL admin chỉ được dùng cho
-   một controlled smoke row v2 và phải có Bearer secret.
+8. Một release email được duyệt sau này phải thêm migration mới, hợp đồng consent,
+   kiểm tra retention và smoke plan trước khi bất kỳ hàng nào có thể gửi. Cron chỉ
+   được xem xét trong release đó.
 
 ## Secret production
 

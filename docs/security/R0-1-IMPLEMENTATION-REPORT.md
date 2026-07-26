@@ -455,3 +455,80 @@ R0.1B is separately authorized.
 If rendering regresses, restore only the previous component structure around the
 canonical message and Day 01 link. Never restore the delivery promise or signup-time
 queue creation.
+
+## R0.1A Task 6 — Hard-quarantine legacy email rows
+
+Status: PASS — the forward-only local migration, mutation guards and impossible
+sender predicates are verified; no production migration or delivery action occurred.
+
+### Inventory and consent boundary
+
+- The previously recorded read-only source inventory contains 10 signup records and
+  210 queue rows. All queue rows were pending `legacy-v0`; the signup inventory has
+  one case-insensitive duplicate group. This task did not query production again and
+  retained counts/classifications only.
+- The current signup schema has registration and unsubscribe fields, but no affirmative
+  marketing-consent, delivery-consent, consent-source or consent-timestamp field.
+  Registration therefore cannot authorize email delivery.
+- One separately owner-reviewed address candidate remains classified `invalid` and is
+  not an import candidate. `pending`, `failed`, `bounced` and invalid-address fixture
+  states all remain non-sendable. Bounce or invalid status never implies consent and
+  cannot be promoted by R0.1A.
+- The duplicate group, invalid record and all legacy rows remain intact. Deduplication,
+  deletion and retention duration require an owner-approved retention decision; this
+  task neither merged nor deleted any record.
+
+### Migration and sender contract
+
+- `workers/migrations/0003_r0_1_email_integrity.sql` adds constrained
+  `audience_state` and `sendable` columns. It temporarily removes only the legacy
+  update guard needed for the backfill, updates rows where
+  `campaign_version = 'legacy-v0'`, then recreates immutable legacy update/delete
+  triggers.
+- Insert/update triggers reject `sendable <> 0` and
+  `audience_state = 'sendable'`. New rows default to
+  `delivery_inactive`/`sendable = 0`.
+- Every sender claim, owned update, expiry and success-finalization path now requires
+  the expected v1 campaign plus
+  `audience_state = 'sendable' AND sendable = 1`. The migration prevents that
+  conjunction, so R0.1 selects zero rows and makes zero provider calls.
+- The email configuration remains `crons = []`. A later separately approved email
+  release must add a new migration, affirmative consent contract, retention decision
+  and controlled smoke plan before any row can become sendable.
+
+### TDD and local evidence
+
+Initial RED:
+
+```bash
+node --import tsx --test scripts/brain2-email-campaign.test.ts
+```
+
+- Exit code: `1`; `11/12` checks passed and the new fixture failed only because
+  `workers/migrations/0003_r0_1_email_integrity.sql` did not exist.
+
+GREEN:
+
+- Focused email suite: `12/12` passed.
+- Full package suite: `273/273` passed.
+- Local SQLite aggregate:
+  `legacy-v0|pending|quarantined_legacy|0|210`.
+- Sendable rows across all fixture campaigns/statuses: `0`; mutation attempts to
+  create a sendable row and update/delete a legacy row all failed closed.
+- Case-insensitive duplicate inventory groups: `1`; sender-selected rows: `0`;
+  provider fetch count: `0`.
+- `npm run typecheck:brain2-workers`: pass.
+- Wrangler `4.110.0` email dry-run: pass, `42.90 KiB / gzip 11.90 KiB`; the only
+  reported binding was the configured D1 binding. This was `--dry-run` only.
+- Task-scoped `git diff --check`: pass.
+- Current-tree secret-integrity scan with local-env coverage: pass with zero findings.
+
+### Production and rollback boundary
+
+This task changed local source and a local SQLite fixture only. It did not deploy,
+push, write production D1, apply a production migration, send email, contact the
+provider, import an audience, activate cron, mutate credentials or rewrite history.
+
+If the contract is wrong, revert this local source commit and retain the failing
+regression test. There is no production data rollback in R0.1A. Never make a legacy
+row sendable as rollback behavior.
