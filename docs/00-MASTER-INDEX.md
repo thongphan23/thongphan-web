@@ -70,6 +70,15 @@ R0 evidence artifact (không làm thay đổi bộ 13 foundation documents):
 
 - `/docs/discovery/R0-AUDIT-REPORT.md` — repository/system audit tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`, gồm route/content/Cloudflare inventory, command outputs, risks, ADR đề xuất và owner decision gates.
 
+R0.1 planning artifacts (không làm thay đổi bộ 13 foundation documents và chưa cho
+phép implementation/production cutover):
+
+- `/docs/superpowers/specs/2026-07-26-r0-1-security-remediation-design.md` — thiết kế đã sửa, tách R0.1A, R0.1B và R0.H1.
+- `/docs/superpowers/plans/2026-07-26-r0-1-security-remediation.md` — kế hoạch R0.1A Local Security Remediation; source/local tests/dry-runs/implementation PR only.
+- `/docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md` — kế hoạch R0.1B Owner-Gated Production Cutover; chỉ chạy bằng prompt riêng sau khi R0.1A được review và merge vào clean `main`.
+- `/docs/security/R0-1-OWNER-ACTION-CHECKLIST.md` — checklist approval, credential, branch, clean-SHA và production gates của chủ dự án.
+- R0.H1 Public History Remediation là backlog phá hủy lịch sử, cần approval riêng, không chặn R0.1A/R0.1B/R0.2/PRD-R1 sau khi credential rotation và current-tree controls đã pass.
+
 ---
 
 ## 4. Thẩm quyền theo loại quyết định

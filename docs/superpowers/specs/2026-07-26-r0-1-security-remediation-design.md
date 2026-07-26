@@ -6,9 +6,12 @@
 
 **Date:** 2026-07-26
 
-**Status:** Design complete; implementation not started
+**Status:** Corrected and owner-approved; implementation not started
 
-**Repository baseline:** branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`
+**Verified runtime baseline:** branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`
+
+**Documentation correction baseline:** branch `agent/r0-foundation-audit`, HEAD
+`ffab17766fa4c1f807e68aa46a0f68c8dcc63d7f`
 
 ## 1. Context
 
@@ -18,20 +21,36 @@ Worker, a signup promise that cannot be fulfilled, 210 legacy email rows without
 complete consent lineage, and Cloudflare token-like values in historical handoff
 documents. Preview and production data are also not isolated.
 
-R0.1 closes the exposed capabilities and makes the data state truthful. It does
-not add a product feature. It does not create reader identity, membership,
-payment, entitlement, multi-tenancy, `/read`, or a new AI capability. Full
-preview-production isolation remains R0.2.
+R0.1 closes the exposed capabilities and makes the data state truthful. It is
+delivered in two separately authorized stages:
+
+- **R0.1A — Local Security Remediation:** source changes, local tests, dry-runs,
+  current-tree secret integrity, documentation and an implementation PR only.
+- **R0.1B — Owner-Gated Production Cutover:** remote deployment, controlled
+  production verification, migration and release closure. It requires a separate
+  owner prompt after R0.1A is reviewed and merged.
+
+Potential public-history cleanup is **R0.H1 — Public History Remediation**, a
+separate destructive, owner-gated and nonblocking backlog item. R0.H1 is not an
+R0.1 exit criterion and is not a prerequisite for R0.2 or PRD-R1 after both
+credential candidates are revoked or rotated and current-tree controls pass.
+
+R0.1 does not add a product feature. It does not create reader identity,
+membership, payment, entitlement, multi-tenancy, `/read`, or a new AI capability.
+Full preview-production isolation remains R0.2.
 
 This document makes one remediation decision for every audited risk. The
-companion implementation plan is
-`docs/superpowers/plans/2026-07-26-r0-1-security-remediation.md`.
+companion plans are:
+
+- `docs/superpowers/plans/2026-07-26-r0-1-security-remediation.md` for R0.1A;
+- `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md` for R0.1B.
 
 ## 2. Verified repository and production baseline
 
 | Fact | Evidence |
 |---|---|
-| Canonical runtime | `/Users/rio/thongphan-com`; current branch `main`; HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f` |
+| Canonical runtime | `/Users/rio/thongphan-com`; verified R0 runtime baseline branch `main`; HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f` |
+| GitHub branch state | Canonical runtime branch is `main`; GitHub default branch was still `master` during this correction and must be changed to `main` by a separate owner action before any R0.1B deployment |
 | Public Read boundary | `/library` and `/library/read/*`; `/read` is absent (`docs/discovery/R0-AUDIT-REPORT.md:91-132`) |
 | Runtime topology | Next.js static export on Pages plus exact-path Workers and a catch-all router (`docs/discovery/R0-AUDIT-REPORT.md:159-189`) |
 | Route precedence | Cloudflare selects the most specific matching route; exact API routes therefore win over `thongphan.com/*` ([Cloudflare Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/)) |
@@ -177,8 +196,10 @@ Secret values are intentionally omitted. Locations and classifications are:
 | `.env.local.bak:1` | Placeholder | Cloudflare | Keep ignored; scanner must classify it safely |
 
 The tracked candidates are the same token-like value and exist in reachable Git
-history. The ignored local candidate is different. The public repository and
-reachable history make working-tree sanitization alone insufficient.
+history. The ignored local candidate is different. Rotation/revocation plus a clean
+current tracked tree and sanitized approved ignored local configuration are the
+mandatory R0.1 controls. Historical discoverability remains an explicitly
+documented residual risk until optional R0.H1 completes.
 
 ## 9. Current data flow
 
@@ -225,7 +246,7 @@ flowchart LR
 | `/api/chat` | Private retrieval context, brand voice, AI budget | Anonymous prompt injection, context exfiltration, request flood, long body, cost amplification | Unbounded AI use and possible private metadata disclosure | Deterministic 410 tombstone; no body read; no AI/Vectorize binding; client fixed to local mode |
 | Signup | User trust and email PII | False delivery expectation; unnecessary queue growth | Persisted obligations that runtime cannot fulfill | Canonical truthful message; save signup only; no queue creation |
 | Legacy email | PII, consent integrity, brand trust | Accidental sender selection, import to newsletter, dedupe mistake | Unconsented delivery and retention risk | Explicit quarantine fields, global non-sendable triggers, sender predicate, aggregate-only inventory |
-| Documentation | Cloudflare account and deployment capabilities | Credential discovery from public files/history | Account/API compromise | Revoke/rotate, sanitize, secret scanner, mandatory owner-gated history rewrite |
+| Documentation | Cloudflare account and deployment capabilities | Credential discovery from public files/history | Account/API compromise | Revoke/rotate both candidates, sanitize current tracked and approved ignored local files, enforce current-tree scanning; track optional history cleanup as R0.H1 |
 | Shared preview data | Production D1/KV | Preview test mutates production | Integrity/privacy damage | No preview mutation in R0.1; endpoint bindings removed; D1 isolation remains R0.2 |
 
 ## 12. Root-cause analysis
@@ -296,9 +317,11 @@ flowchart LR
   fingerprints, not provider credential patterns or Git history.
 - **Wrong boundary:** a runtime credential entered the documentation provenance layer.
 - **Recurrence control:** provider-aware scanner, redacted output, environment-variable
-  instructions, pre-commit/release integration, rotation and history rewrite.
+  instructions, pre-commit/release integration and credential rotation.
 - **Regression proof:** synthetic token fixtures fail without printing their value;
-  tracked tree and reachable history pass after sanitization/rewrite.
+  the current tracked tree and approved ignored local configuration pass after
+  sanitization. The history scan remains a separate expected-red diagnostic until
+  optional R0.H1.
 
 ### 12.6. Preview-production binding overlap
 
@@ -349,12 +372,17 @@ sendable. Sender SQL requires both an explicitly sendable audience state and
 
 ### 13.5. Token-like plaintext
 
-The Cloudflare account owner revokes/rotates both candidates before sanitization.
-Tracked handoffs are redacted, the ignored local credential file is sanitized, and
-a native Node scanner is added to tests and the release gate. Because a candidate
-marked valid was committed to a public repository, reachable Git history must be
-rewritten after rotation under a separate destructive-action approval and
-collaborator freeze.
+The Cloudflare account owner revokes/rotates both candidates before sanitization and
+provides non-secret confirmation. Tracked handoffs are redacted, the approved
+ignored local credential file is sanitized, and a native Node scanner is added to
+tests and the release gate. `test:release` includes current-tree secret integrity
+only. `test:secret-integrity:history` remains a separate expected-red diagnostic and
+does not block R0.1A, R0.1B, R0.2 or PRD-R1.
+
+Because a candidate marked valid was committed to a public repository, an optional
+later R0.H1 may rewrite reachable history under a separate destructive-action
+approval, collaborator freeze and force-push protocol. Only R0.H1 uses a passing
+history scan as its completion gate.
 
 ## 14. Authentication and authorization boundary
 
@@ -393,8 +421,9 @@ opaque email key (`wrangler.signup.toml:28-42`). R0.1 does not alter these limit
    Cloudflare encrypted secrets. R0.1 creates no new endpoint secret.
 5. Scanner output contains only rule ID, file and line; never a matching value,
    substring, hash, request header or environment value.
-6. Working-tree sanitization is sufficient only for ignored local files whose value
-   was never committed. Public tracked history requires rewrite after revocation.
+6. R0.1 requires the current tracked tree and approved ignored local configuration
+   to pass the redacted scanner after rotation. Public history exposure is retained
+   as a documented residual risk and may be remediated only through optional R0.H1.
 
 Official control reference: [Cloudflare Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
@@ -469,6 +498,9 @@ separate reviewed consent and delivery design.
   are therefore static/read-only.
 - R0.2 must create explicit preview/staging/production resources before any future
   preview mutation.
+- R0.1B may run only after the documentation PR and R0.1A implementation PR are
+  merged, GitHub default branch is `main`, and a fresh clean checkout proves
+  `HEAD == origin/main`. No production command may run from a feature or docs branch.
 
 The current Wrangler config schema and current Workers type package were checked on
 2026-07-26. Final implementation uses the repository-pinned Wrangler version and
@@ -487,7 +519,7 @@ The current Wrangler config schema and current Workers type package were checked
 | Migration fails | Email Worker remains absent; cron remains empty | Stop, use the pre-migration D1 Time Travel bookmark if integrity changed |
 | Quarantine count differs from 210 | Source state drifted | Stop without update, rerun aggregate audit, amend evidence before mutation |
 | Rotation cannot be proven | Credential may still work | Do not claim secret remediation complete |
-| History rewrite lacks owner approval | Revoked value remains public in history | Keep it revoked, record residual exposure, do not force-push |
+| R0.H1 lacks owner approval | Revoked value remains public in history | Keep it revoked, record residual exposure, do not force-push; R0.1 and later planning remain unblocked after mandatory current-tree controls pass |
 
 ## 22. Rollback strategy
 
@@ -502,9 +534,9 @@ The current Wrangler config schema and current Workers type package were checked
   signup would be lost. Email remains undeployed during the decision.
 - **Secrets:** revocation is irreversible by design. Create a new least-privilege
   credential only for an approved workflow; never restore a leaked token.
-- **History rewrite:** keep a private read-only mirror before force-push. If rewrite
-  coordination fails, do not restore leaked refs to the public remote; correct refs
-  and require collaborators to reclone.
+- **R0.H1 history rewrite:** outside R0.1. If separately approved, keep a private
+  read-only mirror before force-push. If coordination fails, do not restore leaked
+  refs to the public remote; correct refs and require collaborators to reclone.
 
 ## 23. Observability
 
@@ -516,7 +548,8 @@ R0.1 records:
 - pre/post D1 aggregate counts and Time Travel bookmark;
 - signup count and zero newly created queue rows during controlled smoke;
 - secret scan file count, rule count and hit count without values;
-- Git history rewrite authorization, completion time and new canonical commit IDs;
+- non-secret credential rotation confirmation and current-tree scan summary;
+- public-history findings as a documented residual risk, without credential values;
 - unchanged hashes for `tsconfig.tsbuildinfo` and the four pre-existing Conan Maker
   assets.
 
@@ -534,9 +567,11 @@ The implementation follows regression-first TDD:
    quarantine, duplicate inventory and sendability-trigger rejection.
 8. Test generic secret detection with synthetic credentials; verify output redaction.
 9. Run TypeScript, Worker TypeScript, lint, full tests, build, release, Read safety,
-   all relevant Wrangler dry-runs, secret scan and Git diff review.
+   all relevant Wrangler dry-runs, current-tree secret scan and Git diff review.
 10. Execute build/release verification in a disposable clean worktree so unrelated
     dirty files in the canonical worktree cannot be rewritten.
+11. Keep `test:secret-integrity:history` outside `test:release`; record its expected
+    residual finding without using it as an R0.1A or R0.1B release gate.
 
 ## 25. Planned file changes
 
@@ -588,6 +623,21 @@ The implementation follows regression-first TDD:
 The ignored `.env.embed.local` is sanitized operationally after rotation and is not
 committed. No Conan Maker asset or `tsconfig.tsbuildinfo` is edited.
 
+## 25.1. Delivery workflow and merge sequence
+
+1. Correct these documents on `agent/r0-foundation-audit` and keep Draft PR #1
+   documentation-only.
+2. Under a later explicit owner action, change the GitHub default branch from
+   `master` to canonical runtime branch `main`.
+3. Review and merge the documentation correction PR into `main`.
+4. Create `agent/r0-1a-security-remediation` from the new `origin/main`.
+5. Execute only the R0.1A local plan, open a separate implementation PR, review it
+   and merge it into `main`.
+6. Start R0.1B only after another explicit owner prompt, from a fresh checkout that
+   proves clean merged-main identity.
+
+No stage inherits production authorization from an earlier review or merge.
+
 ## 26. Out of scope
 
 - PRD-R1 and every `/read` implementation.
@@ -601,14 +651,13 @@ committed. No Conan Maker asset or `tsconfig.tsbuildinfo` is edited.
 
 ## 27. OWNER BLOCKERS
 
-### 27.1. Credential revocation and history rewrite authority
+### 27.1. Credential revocation authority
 
 Repository evidence cannot identify the Cloudflare token IDs or revoke them safely.
 The authorized Cloudflare account administrator must revoke/rotate both candidate
-credentials and provide non-secret confirmation. The project owner must separately
-approve the destructive public-history rewrite, freeze collaborator pushes, and
-authorize a coordinated force-push. Until then, source remediation can be reviewed
-but secret remediation cannot be declared complete.
+credentials and provide non-secret confirmation before current-tree sanitization can
+be accepted. R0.1A source changes may be reviewed before confirmation, but R0.1B may
+not begin until the confirmation and sanitized current-tree scan both pass.
 
 ### 27.2. Legacy PII retention and deletion policy
 
@@ -632,22 +681,72 @@ wait for this decision and must occur first.
 7. A disabled endpoint still consumes a low-cost Worker invocation under traffic,
    though it cannot invoke AI or data bindings.
 
-## 29. R0.1 exit criteria
+## 29. Stage gates and exit criteria
 
-R0.1 implementation is complete only when all conditions pass:
+### 29.1. R0.1A local remediation exit
 
-1. `/api/embed` returns 410 for every method and cannot access AI/Vectorize/body data.
-2. `/api/chat` returns 410 for every method; `/chat` remains functional in local mode.
-3. Both Worker dry-runs list zero bindings and workers.dev/preview URLs are disabled.
-4. Signup UI and API use the canonical inactive-delivery message.
-5. A successful signup creates no email queue row.
-6. Exactly 210 legacy rows are `quarantined_legacy` with `sendable=0`; email logs stay
-   zero and sender selection returns zero.
-7. No email Worker, cron, newsletter import or provider send exists.
-8. Both Cloudflare token candidates are confirmed revoked/rotated without disclosure.
-9. Working tree, ignored local credential file and reachable public Git history pass
-   the redacted secret scan after the owner-approved rewrite.
-10. TypeScript, Worker TypeScript, lint, full tests, build, release gate, Read safety,
-    Wrangler dry-runs, secret scan and Git diff review pass.
-11. Pre-existing `tsconfig.tsbuildinfo` and four Conan Maker asset hashes are unchanged.
-12. Implementation evidence is recorded and the project stops before R0.2 and PRD-R1.
+R0.1A is ready for implementation review only when:
+
+1. Source implements binding-free 410 tombstones for `/api/embed` and `/api/chat`,
+   while `/chat` remains deterministic and local.
+2. Signup UI/API use the inactive-delivery contract and prepare only one
+   `challenge_signups` statement with no `email_queue` statement.
+3. Migration `0003_r0_1_email_integrity.sql` passes local fixture tests proving
+   `quarantined_legacy/0`, zero sendable rows and rejection triggers.
+4. The production smoke runner is built by TDD but performs no remote mutation in
+   R0.1A.
+5. `test:release` includes the current-tree secret-integrity gate and excludes the
+   history scan.
+6. TypeScript, Worker TypeScript, lint, full tests, build, Read safety, relevant
+   Wrangler dry-runs, current-tree scanner and Git diff review pass.
+7. Pre-existing `tsconfig.tsbuildinfo` and four Conan Maker asset hashes are unchanged.
+8. The R0.1A implementation report is ready and no production deployment, production
+   migration or history rewrite has occurred.
+
+### 29.2. R0.1B production cutover exit
+
+R0.1B is complete only when:
+
+1. The documentation PR and R0.1A implementation PR are merged to GitHub default
+   branch `main`.
+2. Production commands run from a fresh clean checkout with fetched refs,
+   `HEAD == origin/main`, an empty porcelain status and the exact main SHA recorded.
+3. Both credential candidates are confirmed revoked/rotated without disclosure;
+   current tracked and approved ignored local files are sanitized and scan clean.
+4. `/api/embed` and `/api/chat` return 410 with zero bindings; `/chat` remains local.
+5. A controlled apex signup creates exactly one signup and zero queue rows, and only
+   that synthetic signup is removed after evidence capture.
+6. The only unapplied migration is `0003_r0_1_email_integrity.sql`; after its apply,
+   the exact aggregate is `legacy-v0 | pending | quarantined_legacy | 0 | 210`, with
+   zero sendable rows and zero email logs.
+7. Pages is built and deployed from the exact merged main SHA; `/library`, a
+   representative `/library/read/*`, `/chat`, canonical and sitemap pass read-only
+   smoke.
+8. No email Worker, cron, newsletter import or provider send exists.
+9. Evidence is recorded and the project stops before R0.2 and PRD-R1.
+
+### 29.3. R0.H1 public-history remediation
+
+R0.H1 is recommended because revoked plaintext remains discoverable in public Git
+history, but it is destructive and nonblocking. It requires a separate owner prompt,
+collaborator freeze, protected mirror, coordinated force-push and fresh-clone proof.
+Only R0.H1 requires `test:secret-integrity:history` to pass. R0.H1 is not part of
+R0.1A or R0.1B exit and is not a prerequisite for R0.2 or PRD-R1.
+
+If the owner later authorizes R0.H1, its safety protocol is:
+
+1. Reconfirm both candidates are revoked or rotated; never expose either value in a
+   command, replacement file, log or report.
+2. Approve an exact collaborator push-freeze window and the exact branch/tag set that
+   may be rewritten.
+3. Create a private read-only mirror and a mode-`0600` replacement input outside the
+   repository; verify `git-filter-repo` from its trusted package source.
+4. Rewrite only in a dedicated mirror clone, scan every rewritten reachable ref, and
+   force-push only the separately approved ref set.
+5. Clone the public remote into a fresh directory, rerun the history scanner, verify
+   remote heads/tags, and require collaborators to reclone or adopt the rewritten
+   history after preserving unrelated work.
+6. Never republish old leaked refs as rollback. Correct a bad mapping from the private
+   mirror, rescan, and push the corrected rewritten refs.
+
+R0.H1 has no implied schedule and cannot be executed from either R0.1 plan.

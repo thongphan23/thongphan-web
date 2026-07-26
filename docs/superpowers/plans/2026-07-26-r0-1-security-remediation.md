@@ -1,17 +1,19 @@
-# R0.1 Security and Integrity Remediation Implementation Plan
+# R0.1A Local Security Remediation Implementation Plan
 
 > **For Codex:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to execute this plan task by task. Use `superpowers:test-driven-development` for every source change and `superpowers:verification-before-completion` before reporting success. Execution requires a separate project-owner prompt.
 
-**Goal:** Retire the two unnecessary public AI capabilities, make Brain2 signup
-truthful, hard-quarantine legacy email rows, contain exposed Cloudflare credential
-material, and produce verified R0.1 evidence without starting R0.2 or PRD-R1.
+**Goal:** Implement and locally verify source controls that retire two unnecessary
+public AI capabilities, make Brain2 signup truthful, hard-quarantine legacy email
+rows, and contain exposed Cloudflare credential material. Produce an R0.1A
+implementation PR without performing any production mutation.
 
 **Architecture:** Exact Cloudflare routes `/api/embed` and `/api/chat` remain in
 place but run a shared dependency-free `410 Gone` tombstone with no AI or data
 bindings. `/chat` stays a deterministic local page. Signup persists registration
 only; email audience state is independent from queue delivery status and is locked
-non-sendable in D1. A provider-aware scanner protects the working tree and Git
-history without printing secrets.
+non-sendable in D1. A provider-aware scanner protects the current tracked tree and
+approved ignored local configuration without printing secrets. History scanning is a
+separate diagnostic for optional R0.H1 and is not part of `test:release`.
 
 **Tech stack:** Next.js 16 static export, React 19, TypeScript 6, Node test runner,
 Cloudflare Workers, Wrangler 4.110.0, D1/SQLite, native Node scripts.
@@ -31,14 +33,21 @@ Cloudflare Workers, Wrangler 4.110.0, D1/SQLite, native Node scripts.
    new AI/internal-ingestion feature.
 6. Do not deploy the email Worker, add a cron, send email, call a provider send API,
    or import an audience.
-7. Preview QA is read-only because Pages preview and production share D1/KV.
+7. R0.1A performs local verification and Wrangler dry-runs only. It does not deploy
+   Workers or Pages, mutate remote D1, or run a controlled production signup.
 8. Never print a token value, fragment, hash, request authorization header, name or
    email address.
 9. Use repository-pinned Wrangler. Current documentation can be checked online, but
    do not upgrade dependencies in R0.1.
-10. Remote mutation tasks require explicit owner authorization in the execution
-    prompt. Git history rewrite requires a second explicit destructive-action gate.
-11. Stop after the R0.1 report. Do not start R0.2 or PRD-R1.
+10. Current-tree sanitization requires non-secret confirmation that both credential
+    candidates were revoked or rotated. The scanner can be implemented and reviewed
+    before that confirmation; do not copy any candidate into a fixture or command.
+11. `test:secret-integrity:history` is an expected-red residual diagnostic. It does
+    not block R0.1A review, R0.1B, R0.2 or PRD-R1 and must not be in `test:release`.
+12. Git history rewrite belongs only to R0.H1 under a separate destructive owner
+    prompt. Do not rewrite or force-push history in this plan.
+13. Stop after R0.1A local verification and implementation-report update. Do not
+    start R0.1B, R0.H1, R0.2 or PRD-R1.
 
 ## Task 1: Install the working-tree preservation gate
 
@@ -160,8 +169,9 @@ test: guard R0.1 working tree boundaries
 
 ### Goal
 
-Detect provider-token patterns without disclosing values, rotate both Cloudflare
-credential candidates, sanitize tracked/local plaintext, and make the gate permanent.
+Detect provider-token patterns without disclosing values, make the current-tree gate
+permanent, and sanitize tracked/approved local plaintext only after non-secret owner
+confirmation that both Cloudflare credential candidates were revoked or rotated.
 
 ### Exact files
 
@@ -214,7 +224,8 @@ Add scripts:
 "test:secret-integrity:history": "node scripts/secret-integrity-scan.mjs --history"
 ```
 
-Add the unit test to `npm test` and both scans to `test:release`.
+Add the unit test to `npm test`. Add only `test:secret-integrity` to `test:release`.
+Keep `test:secret-integrity:history` as an explicitly separate diagnostic command.
 
 Before source sanitization, the authorized Cloudflare administrator must revoke or
 rotate:
@@ -223,7 +234,7 @@ rotate:
    `.claude/handoff-chat.md:809`, `:818`, `:822`;
 2. the distinct candidate at `.env.embed.local:1`.
 
-Record only the non-secret confirmation time and actor. Replace tracked literals with
+Record only the non-secret confirmation time and actor role. Replace tracked literals with
 `[REDACTED — credential rotated]` and commands with
 `CLOUDFLARE_API_TOKEN` environment-variable references. Sanitize the ignored local
 assignment after rotation without echoing its old value. Placeholder-only lines may
@@ -237,13 +248,20 @@ node --test scripts/secret-integrity-scan.test.mjs
 git diff --check -- .claude/handoff.md .claude/handoff-chat.md package.json scripts/secret-integrity-scan.mjs scripts/secret-integrity-scan.test.mjs
 ```
 
-History mode is expected to remain red until Task 9.
+Run history mode separately and record it as an expected-red residual diagnostic:
+
+```bash
+npm run test:secret-integrity:history
+```
+
+Its result does not change the R0.1A verdict and must not be included in
+`test:release`.
 
 ### Expected success
 
 Unit fixtures pass; current tracked and approved local files contain zero prohibited
-credential values; output never contains a fixture value; history scan still reports
-file/line-only findings and therefore prevents premature R0.1 closure.
+credential values; output never contains a fixture value. History scan findings are
+recorded without values as the nonblocking R0.H1 residual.
 
 ### Documentation update
 
@@ -668,10 +686,9 @@ retention owner gate and local migration output in the implementation report.
 
 ### Rollback
 
-Before remote application there is no data rollback. After remote application, use
-the pre-migration D1 Time Travel bookmark only if schema/data integrity fails and the
-owner confirms no legitimate post-bookmark signup would be lost. Never roll back by
-making legacy rows sendable.
+R0.1A applies the migration only to local fixtures, so no production data rollback
+exists in this plan. Revert the local migration/source commit if its contract is
+wrong, retain the failing regression test, and never make a legacy row sendable.
 
 ### Proposed commit
 
@@ -736,8 +753,10 @@ as `legacy-v0`, so the contract exits 1.
 
 Update current-state tables and data-flow diagrams with evidence from Tasks 3–6.
 Record that email remains undeployed, `/chat` remains local, exact API routes return
-410, and preview/production D1 isolation is unresolved. Set `docs/STATUS.md` to
-“R0.1 implementation in progress” until production and history gates pass.
+410 in implemented source but are not yet production-deployed, and
+preview/production D1 isolation is unresolved. Set `docs/STATUS.md` to distinguish
+`R0.1A source complete` from `R0.1B production cutover not started`. Public-history
+findings remain the nonblocking R0.H1 residual.
 
 ### Verification command
 
@@ -750,7 +769,8 @@ git diff --check -- docs/discovery/CURRENT-SYSTEM-AUDIT.md docs/architecture/SAD
 ### Expected success
 
 The contract exits 0, every current-state claim matches source evidence, R0.2 remains
-open, and the report still says `IN PROGRESS`.
+unstarted, and the report says `R0.1A READY FOR IMPLEMENTATION REVIEW` only after all
+local gates pass.
 
 ### Documentation update
 
@@ -768,37 +788,124 @@ that AI/email capability is live.
 docs: record R0.1 remediated architecture
 ```
 
-## Task 8: Run the complete local release gate in a disposable worktree
+## Task 8: Build the smoke runner and complete local release verification
 
 ### Goal
 
-Prove the committed implementation without mutating the canonical worktree's unrelated
-dirty files or tracked build-info file.
+Create and locally prove the bounded smoke runner that R0.1B will use. R0.1A tests
+the runner only with adapters/fixtures and does not send a production request or
+perform a remote mutation.
 
 ### Exact files
 
-- Update after evidence: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
-- No application/source change
+- Create: `scripts/r0-1-production-smoke.mjs`
+- Create: `scripts/r0-1-production-smoke.test.mjs`
+- Modify: `package.json`
+- Update: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
 
 ### Interfaces
 
-The report status remains `IN PROGRESS` until every local command passes. Verification
-runs from a detached clean worktree at the current implementation commit.
+```text
+node scripts/r0-1-production-smoke.mjs --origin <https-origin> --read-only
+node scripts/r0-1-production-smoke.mjs --origin <https-origin> --controlled-signup
+```
+
+Read-only mode checks the disabled endpoint contract, `/chat`, `/library`, one
+representative `/library/read/*` route, canonical metadata and sitemap. Controlled
+signup mode requires an injected database adapter and an explicitly provided
+synthetic identity. It creates exactly one signup, proves zero queue rows for that
+signup, captures aggregate evidence, and removes only that synthetic signup. Neither
+mode may print the identity or any response body containing PII.
 
 ### RED test
 
+Write fetch and database adapter fixtures first. Assert timeouts, maximum response
+bytes, exact 410 markers, expected 200 routes, canonical/sitemap checks, redacted JSON
+output, zero mutation in read-only mode, and the one-signup/zero-queue/targeted-cleanup
+contract in controlled mode.
+
 ```bash
-rg -n '^Status: PASS$' docs/security/R0-1-IMPLEMENTATION-REPORT.md
+node --test scripts/r0-1-production-smoke.test.mjs
 ```
 
 ### Expected failure
 
-The report is still `IN PROGRESS`, so the command exits 1 and prevents a premature
-completion claim.
+The test fails because the runner does not exist. After adding a minimal command
+shell, each missing status, header, route or cleanup invariant fails independently.
 
 ### Minimal implementation
 
-Commit all Tasks 1–7 first. Then:
+Use native Node, injected adapters, bounded `AbortSignal.timeout()` calls and bounded
+body reads. Require an HTTPS origin outside unit tests, reject unknown flags, default
+to no mutation, and require an explicit controlled-signup flag plus injected
+synthetic identity for the mutation path. Emit only status, route, aggregate counts
+and pass/fail fields. Never include request/response bodies, name or email.
+
+Add the fixture test to `npm test`. Do not call the live origin in R0.1A; R0.1B owns
+all production smoke execution under its separate owner gate.
+
+### Verification command
+
+```bash
+node --test scripts/r0-1-production-smoke.test.mjs
+git diff --check -- scripts/r0-1-production-smoke.mjs scripts/r0-1-production-smoke.test.mjs package.json
+```
+
+### Expected success
+
+All adapter fixtures pass, read-only mode proves zero POST/database calls, controlled
+mode proves exactly one synthetic signup and targeted cleanup, and captured output
+contains no fixture identity.
+
+### Documentation update
+
+Record the fixture count and command exit code. State that the runner has not been
+executed against production.
+
+### Rollback
+
+Remove only the two new runner files and their package-script/test wiring. Do not
+substitute an ad hoc production command for the missing runner.
+
+### Proposed commit
+
+```text
+test: add R0.1 production smoke contract
+```
+
+### Phase B: Run the complete local release gate in a disposable worktree
+
+#### Goal
+
+Prove the committed implementation without mutating the canonical worktree's unrelated
+dirty files or tracked build-info file.
+
+#### Exact files
+
+- Update after evidence: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
+- No application/source change
+
+#### Interfaces
+
+The report status remains `IN PROGRESS` until every local command passes. Verification
+runs from a detached clean worktree at the current implementation commit. A passing
+local gate changes the report to `R0.1A READY FOR IMPLEMENTATION REVIEW`; it does not
+claim production deployment or overall R0.1 completion.
+
+#### RED test
+
+```bash
+rg -n '^Status: R0\.1A READY FOR IMPLEMENTATION REVIEW$' docs/security/R0-1-IMPLEMENTATION-REPORT.md
+```
+
+#### Expected failure
+
+The report is still `IN PROGRESS`, so the command exits 1 and prevents a premature
+R0.1A readiness claim.
+
+#### Minimal implementation
+
+Commit all Tasks 1–8 first. Then:
 
 ```bash
 r0_1_verify_dir=$(mktemp -d /tmp/thongphan-r0-1-verify.XXXXXX)
@@ -827,7 +934,7 @@ git worktree remove "$r0_1_verify_dir"
 
 Inspect embed/chat dry-run output and fail if either lists any binding.
 
-### Verification command
+#### Verification command
 
 ```bash
 node scripts/r0-1-change-boundary.mjs verify \
@@ -876,369 +983,42 @@ git status --short
 The guard treats every allow entry as one exact path; deletion of the four retired
 source files is allowed, while every unrelated descendant remains protected.
 
-### Expected success
+#### Expected success
 
 TypeScript, Worker TypeScript, lint, full tests, build, release, Read safety, seven
 Wrangler dry-runs and current-tree secret scan pass. Embed/chat dry-runs list zero
 bindings. The canonical worktree's five protected hashes are byte-identical.
 
-### Documentation update
+#### Documentation update
 
 Record each command, exit code, test count, route count, bundle bytes and dry-run
-bindings. Keep report status `IN PROGRESS` because production and history gates remain.
+bindings. Set report status to `R0.1A READY FOR IMPLEMENTATION REVIEW` when every
+local gate passes. Record the history scan separately as an expected-red R0.H1
+residual; it does not alter that status.
 
-### Rollback
+#### Rollback
 
 No runtime rollback applies. Remove only the disposable worktree. If a gate fails,
 return to the owning task, add a regression test and repeat Task 8 from a new clean
 worktree.
 
-### Proposed commit
+#### Proposed commit
 
 ```text
 docs: record R0.1 local verification
 ```
 
-## Task 9: Execute the owner-gated production cutover
-
-### Goal
-
-Deploy both tombstones, apply the non-sendable migration, deploy truthful signup and
-Pages copy, then prove the live state without sending email or mutating from preview.
-
-### Exact files
-
-- Create: `scripts/r0-1-production-smoke.mjs`
-- Create: `scripts/r0-1-production-smoke.test.mjs`
-- Modify: `package.json`
-- Update: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
-- Update: `docs/STATUS.md`
-
-### Interfaces
-
-```text
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --controlled-signup
-```
-
-Read-only mode checks endpoint status/headers, `/chat`, `/library`, a representative
-reader route, canonical and sitemap without POSTing signup. Controlled-signup mode
-requires an explicit synthetic address supplied through an environment variable,
-creates one signup, verifies zero queue rows for its returned signup ID, and removes
-the synthetic signup only after aggregate evidence is captured. It never touches
-legacy rows or calls an email provider.
-
-### RED test
-
-Write fetch/database adapter fixtures first, then run the read-only smoke against the
-current production before deployment:
-
-```bash
-node --test scripts/r0-1-production-smoke.test.mjs
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-```
-
-### Expected failure
-
-Fixture tests initially fail because the runner does not exist. The current live smoke
-fails because `/api/embed` returns 200 and `/api/chat` GET returns 405 instead of 410.
-
-### Minimal implementation
-
-Use native fetch with timeouts, exact status/header assertions, bounded response reads
-and redacted JSON output. Commit the runner before remote mutation.
-
-After a fresh owner approval and Cloudflare status check:
-
-1. Deploy tombstones first:
-
-```bash
-npx wrangler deploy --strict --config wrangler.embed.toml
-npx wrangler deploy --strict --config wrangler.chat.toml
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-```
-
-2. Capture D1 Time Travel and exact pre-migration aggregates:
-
-```bash
-npx wrangler d1 time-travel info thongphan-db --config wrangler.brain2-email.toml --json
-npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
-  "SELECT campaign_version,status,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status ORDER BY campaign_version,status; SELECT COUNT(*) AS email_log_count FROM email_logs;"
-```
-
-Expected precondition: exactly 210 `legacy-v0/pending`, zero email logs, zero v1 rows.
-Stop on drift.
-
-3. Apply only migration `0003` through the ledger and read back aggregate state:
-
-```bash
-npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml
-npx wrangler d1 migrations apply thongphan-db --remote --config wrangler.brain2-email.toml
-npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
-  "SELECT campaign_version,status,audience_state,sendable,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status,audience_state,sendable ORDER BY campaign_version,status,audience_state,sendable; SELECT COUNT(*) AS email_log_count FROM email_logs;"
-```
-
-Expected: `legacy-v0|pending|quarantined_legacy|0|210`, zero sendable and zero logs.
-The migration-list command must show exactly `0003_r0_1_email_integrity.sql` as
-unapplied. Any additional unapplied file stops the rollout before `migrations apply`.
-
-4. Deploy signup Worker, build once, deploy a read-only preview, then main Pages:
-
-```bash
-npx wrangler deploy --strict --config wrangler.signup.toml
-npm run build
-r0_1_release_sha=$(git rev-parse HEAD)
-npx wrangler pages deploy out --project-name thongphan-com --branch r0-1-security-preview --commit-hash "$r0_1_release_sha"
-npx wrangler pages deploy out --project-name thongphan-com --branch main --commit-hash "$r0_1_release_sha"
-```
-
-Preview smoke is static/read-only. Controlled signup runs only on the apex after main
-deployment. Before that mutation, confirm the synthetic address is approved and not a
-real recipient. After cleanup, verify aggregate legacy counts are unchanged and the
-synthetic signup has zero queue rows.
-
-5. Confirm the email Worker remains absent and cron remains empty:
-
-```bash
-npx wrangler deployments list --config wrangler.brain2-email.toml
-rg -n '^crons = \[\]$' wrangler.brain2-email.toml
-```
-
-The first command must return Worker-not-found; that expected control-plane result is
-recorded as a pass, not hidden.
-
-### Verification command
-
-```bash
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-npx wrangler versions view --config wrangler.embed.toml
-npx wrangler versions view --config wrangler.chat.toml
-npx wrangler versions view --config wrangler.signup.toml
-npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
-  "SELECT campaign_version,status,audience_state,sendable,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status,audience_state,sendable ORDER BY campaign_version,status,audience_state,sendable; SELECT COUNT(*) AS email_log_count FROM email_logs;"
-```
-
-### Expected success
-
-Both API routes return 410/no-store/disabled marker for all tested methods; `/chat`
-and Read routes remain 200; embed/chat remote versions list no bindings; exact legacy
-aggregate remains 210 quarantined/non-sendable with zero logs; controlled signup
-creates no queue row; email Worker remains absent.
-
-### Documentation update
-
-Record Worker version IDs, Pages deployment IDs, D1 Time Travel bookmark, migration
-ledger result, aggregate counts and smoke output. Do not record the synthetic address.
-
-### Rollback
-
-- Re-deploy the last verified tombstone version for endpoint failure.
-- Revert only the local `/chat` Pages commit for UI failure.
-- Do not restore old embed/chat capabilities or false signup copy.
-- Use D1 Time Travel only for proven migration corruption and after checking for
-  post-bookmark signups.
-- Keep email absent throughout rollback.
-
-### Proposed commit
-
-```text
-test: verify R0.1 production security boundary
-```
-
-## Task 10: Rewrite exposed public Git history under a separate owner gate
-
-### Goal
-
-Remove the rotated tracked Cloudflare candidate from every reachable public Git ref
-and require collaborators to adopt the rewritten canonical history.
-
-### Exact files
-
-- No new application file
-- Update after evidence: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
-- Update after evidence: `docs/STATUS.md`
-- Private temporary inputs outside repository: replacement file and mirror backup
-
-### Interfaces
-
-The secret scanner's `--history` mode is the acceptance interface. A secure
-replacement input is created outside the repository with mode `0600`; it maps the
-already rotated literal to `[REDACTED — credential rotated]` without displaying the
-literal.
-
-### RED test
-
-```bash
-npm run test:secret-integrity:history
-```
-
-### Expected failure
-
-Reachable commits containing `.claude/handoff.md` and `.claude/handoff-chat.md` fail
-with file/line/rule-only findings.
-
-### Minimal implementation
-
-Proceed only after:
-
-1. non-secret proof that both candidate credentials are revoked/rotated;
-2. written owner approval for history rewrite and force-push;
-3. collaborator push freeze and branch-protection coordination;
-4. a private read-only mirror backup outside the public remote;
-5. installation/verification of `git-filter-repo` from its trusted package source.
-
-Use `git filter-repo --replace-text <secure-absolute-file> --force` in a dedicated
-mirror clone, scan all rewritten refs, then force-push only the approved branch/tag
-set. Delete the secure replacement input after successful verification through a
-recoverable authorized process. Require every collaborator/worktree to reclone or
-hard-reset only after saving unrelated local work separately.
-
-Do not execute this task inside the dirty canonical worktree.
-
-### Verification command
-
-In the clean rewritten mirror and after remote push:
-
-```bash
-npm run test:secret-integrity:history
-git fsck --full --no-reflogs --unreachable
-git ls-remote --heads --tags origin
-```
-
-Clone the public remote into a fresh temporary directory and rerun the history scan.
-GitHub code search for the exact affected file paths must expose no raw candidate.
-
-### Expected success
-
-All reachable local and remote refs pass the history scan, the public clone passes,
-and neither scanner nor report prints a secret. The repository commit IDs change and
-the report records the new canonical HEAD.
-
-### Documentation update
-
-Record owner approval time, freeze window, rewritten ref count, old-to-new canonical
-HEAD mapping, remote verification and collaborator reset/reclone notice. Never record
-the replacement file or token value.
-
-### Rollback
-
-Do not re-publish old refs containing the credential. If a ref mapping is wrong, fix
-it from the private mirror, rescan, and push corrected rewritten refs. Credential
-revocation remains final.
-
-### Proposed commit
-
-The history rewrite changes existing commits. After the rewrite, create a documentation
-commit:
-
-```text
-docs: record credential history remediation
-```
-
-## Task 11: Close R0.1 and stop before R0.2
-
-### Goal
-
-Produce the final evidence-backed verdict, prove all gates, update status, and stop.
-
-### Exact files
-
-- Modify: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`
-- Modify: `docs/STATUS.md`
-- Modify if line evidence changed after history rewrite:
-  `docs/discovery/CURRENT-SYSTEM-AUDIT.md`
-- Modify if line evidence changed after history rewrite:
-  `docs/architecture/SAD-CLOUDFLARE-FIRST.md`
-- Modify if line evidence changed after history rewrite:
-  `docs/architecture/DATA-AND-EVENT-ARCHITECTURE.md`
-
-### Interfaces
-
-The implementation report ends with:
-
-- repository state before/after;
-- endpoint/source/data/secret findings;
-- root-cause controls;
-- local and production commands with exit status;
-- Worker/Pages versions and D1 aggregate evidence;
-- files created/modified/deleted;
-- owner decisions and residual risks;
-- explicit `PASS` or `FAIL` for every R0.1 exit criterion;
-- exact stop statement: `R0.2 and PRD-R1 not started.`
-
-### RED test
-
-Before finalizing:
-
-```bash
-rg -n '^Status: PASS$' docs/security/R0-1-IMPLEMENTATION-REPORT.md
-npm run test:secret-integrity:history
-```
-
-### Expected failure
-
-At least the report status remains `IN PROGRESS` until every prior task and owner gate
-has evidence. Any history finding also blocks closure.
-
-### Minimal implementation
-
-Run the complete Task 8 gate again at the rewritten canonical HEAD, rerun Task 9
-read-only production smoke, verify D1 aggregates, verify the email Worker is absent,
-and run the change-boundary guard. Mark each exit criterion pass/fail. Set
-`docs/STATUS.md` to `R0.1 implementation complete — R0.2 and PRD-R1 not started` only
-when every mandatory criterion passes. Otherwise set an evidence-backed blocked state
-without weakening a control.
-
-### Verification command
-
-```bash
-npx tsc --noEmit --incremental false
-npm run typecheck:brain2-workers
-npm run lint
-npm test
-npm run build
-npm run test:release
-npm run test:read-release-safety
-npm run test:secret-integrity
-npm run test:secret-integrity:history
-node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-git diff --check
-git status --short
-```
-
-Use the disposable-worktree procedure for build/release commands when the canonical
-worktree still contains unrelated dirty files. Rerun the complete exact-path
-change-boundary verification command from Task 8 after these commands.
-
-### Expected success
-
-Every local/production/security/data gate passes, the report says `Status: PASS`, the
-five protected hashes remain unchanged, the final diff contains only the approved
-R0.1 paths, and status explicitly stops before R0.2/PRD-R1.
-
-### Documentation update
-
-Finalize the report and status with current line evidence and rewritten HEAD. Preserve
-`docs/discovery/R0-AUDIT-REPORT.md` as the historical R0 baseline.
-
-### Rollback
-
-Documentation may be corrected to match evidence. Runtime/data/security controls are
-not weakened to obtain a passing report. A failed mandatory criterion leaves R0.1
-open and R0.2/PRD-R1 locked.
-
-### Proposed commit
-
-```text
-docs: close R0.1 security remediation
-```
-
 ## Explicit stop gate
 
-After Task 11:
+After Task 8:
 
-1. Do not design or implement R0.2 environment isolation.
-2. Do not create PRD-R1.
-3. Do not add auth, Member, entitlement, payment, `/read`, multi-tenancy or AI.
-4. Return the implementation report and decision gates to the project owner.
-5. Wait for a separate prompt.
+1. Mark only R0.1A as ready for implementation review when every local gate passes.
+2. Do not deploy a Worker or Pages project.
+3. Do not mutate remote D1 or run a controlled production signup.
+4. Do not rewrite or force-push Git history.
+5. Do not design or implement R0.1B, R0.H1, R0.2 or PRD-R1.
+6. Return the implementation report and wait for a separate project-owner prompt.
+
+R0.1A local remediation ready for implementation review.
+No production deployment, production migration, history rewrite,
+R0.2 or PRD-R1 has started.
