@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
 const BRAIN2_CHALLENGE_SLUG = 'brain2-21-ngay'
+const CONTROLLED_PRODUCTION_ORIGIN = 'https://thongphan.com'
 
 const READ_ONLY_ROUTES = [
   '/api/embed',
@@ -333,10 +334,8 @@ JOIN challenges AS c ON c.id = s.challenge_id
 WHERE c.slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)}
   AND s.name = ${sqlLiteral(identity.name)}
   AND lower(s.email) = lower(${sqlLiteral(identity.email)})
-ORDER BY s.id
-LIMIT 3;
+ORDER BY s.id;
 `, 1)
-      if (rows.length > 2) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
       return rows
     },
     async countQueueRows({ signupId }) {
@@ -598,6 +597,9 @@ export async function main(argv, dependencies = {}) {
     let syntheticIdentity = dependencies.syntheticIdentity
     if (parsed.mode === 'controlled-signup'
       && databaseAdapter === undefined && syntheticIdentity === undefined) {
+      if (parsed.origin !== CONTROLLED_PRODUCTION_ORIGIN) {
+        throw new SmokeError('SMOKE_CONTROLLED_ORIGIN_REQUIRED')
+      }
       syntheticIdentity = await readSecureControlledIdentity(dependencies.env ?? process.env)
       databaseAdapter = createWranglerD1Adapter({
         subprocessAdapter: dependencies.subprocessAdapter,

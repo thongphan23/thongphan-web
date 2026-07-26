@@ -8,6 +8,7 @@ import { main, runProductionSmoke } from './r0-1-production-smoke.mjs'
 import { handleBrain2SignupRequest } from '../workers/brain2-campaign.ts'
 
 const ORIGIN = 'https://fixture.invalid'
+const PRODUCTION_ORIGIN = 'https://thongphan.com'
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
 const SYNTHETIC_IDENTITY = Object.freeze({
   synthetic: true,
@@ -201,6 +202,55 @@ function actualSignupWorkerFixture() {
     },
   }
   return { state, fetchAdapter, databaseAdapter }
+}
+
+function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspectSql = () => {} }) {
+  return async ({ executable, args }) => {
+    subprocessArgs.push([executable, ...args])
+    assert.match(executable, /node_modules\/\.bin\/wrangler$/)
+    assert.equal(args.includes('--remote'), true)
+    assert.equal(args.includes('--command'), false)
+    assert.equal(args.includes('--json'), true)
+    assert.equal(args.includes('--yes'), true)
+    assert.deepEqual(args.slice(0, 3), ['d1', 'execute', 'thongphan-db'])
+    assert.doesNotMatch(args.join(' '), new RegExp(identity.name, 'i'))
+    assert.doesNotMatch(args.join(' '), new RegExp(identity.email, 'i'))
+    const sqlPath = args[args.indexOf('--file') + 1]
+    sqlPaths.push(sqlPath)
+    const sqlStat = await lstat(sqlPath)
+    assert.equal(sqlStat.isFile(), true)
+    assert.equal(sqlStat.isSymbolicLink(), false)
+    assert.equal(sqlStat.mode & 0o077, 0)
+    const sql = await readFile(sqlPath, 'utf8')
+    inspectSql(sql)
+
+    let results
+    if (sql.includes('r0-1-smoke:snapshot')) {
+      results = [
+        { success: true, results: [{ challenge_signup_count: state.signups.length }] },
+        { success: true, results: structuredClone(state.legacy) },
+      ]
+    } else if (sql.includes('r0-1-smoke:find-signup')) {
+      results = [{
+        success: true,
+        results: state.signups
+          .filter((row) => row.name === identity.name && row.email === identity.email)
+          .map((row) => ({ id: row.id })),
+      }]
+    } else if (sql.includes('r0-1-smoke:count-queue')) {
+      results = [{ success: true, results: [{ queue_count: 0 }] }]
+    } else if (sql.includes('r0-1-smoke:delete-signup')) {
+      const signupId = sql.match(/\bid = '([^']+)'/)?.[1]
+      const before = state.signups.length
+      state.signups = state.signups.filter((row) => !(
+        row.id === signupId && row.name === identity.name && row.email === identity.email
+      ))
+      results = [{ success: true, results: [{ deleted_count: before - state.signups.length }] }]
+    } else {
+      throw new Error('unexpected SQL fixture')
+    }
+    return { exitCode: 0, stdout: JSON.stringify(results), stderr: '' }
+  }
 }
 
 test('read-only smoke verifies the retired endpoints and canonical public routes without mutation', async () => {
@@ -556,7 +606,7 @@ test('controlled command fails closed without injected identity and database ada
   let fetchCalls = 0
   const lines = []
   const exitCode = await main(
-    ['--origin', ORIGIN, '--controlled-signup'],
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
     {
       fetchAdapter: async () => {
         fetchCalls += 1
@@ -575,14 +625,49 @@ test('controlled command fails closed without injected identity and database ada
   })
 })
 
-test('controlled CLI loads secure identity and uses only remote Wrangler file commands', async (t) => {
+test('native controlled CLI rejects every non-apex origin before secure input or side effects', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-origin-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'group-readable-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o640 })
+  let subprocessCalls = 0
+  let fetchCalls = 0
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', 'https://attacker.invalid', '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      subprocessAdapter: async () => {
+        subprocessCalls += 1
+        throw new Error('must not run')
+      },
+      fetchAdapter: async () => {
+        fetchCalls += 1
+        throw new Error('must not fetch')
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(subprocessCalls, 0)
+  assert.equal(fetchCalls, 0)
+  assert.deepEqual(JSON.parse(lines[0]), {
+    pass: false,
+    mode: 'controlled-signup',
+    code: 'SMOKE_CONTROLLED_ORIGIN_REQUIRED',
+  })
+})
+
+test('controlled CLI cleans three matching D1 rows and preserves an unrelated row', async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cli-test-'))
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
   await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
 
   const state = {
-    signups: [],
+    signups: [{ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }],
     legacy: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
@@ -593,66 +678,29 @@ test('controlled CLI loads secure identity and uses only remote Wrangler file co
   }
   const sqlPaths = []
   const subprocessArgs = []
-  const subprocessAdapter = async ({ executable, args }) => {
-    subprocessArgs.push([executable, ...args])
-    assert.match(executable, /node_modules\/\.bin\/wrangler$/)
-    assert.equal(args.includes('--remote'), true)
-    assert.equal(args.includes('--command'), false)
-    assert.equal(args.includes('--json'), true)
-    assert.equal(args.includes('--yes'), true)
-    assert.equal(args[0], 'd1')
-    assert.equal(args[1], 'execute')
-    assert.equal(args[2], 'thongphan-db')
-    assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
-    assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-    const sqlPath = args[args.indexOf('--file') + 1]
-    sqlPaths.push(sqlPath)
-    const sqlStat = await lstat(sqlPath)
-    assert.equal(sqlStat.isFile(), true)
-    assert.equal(sqlStat.isSymbolicLink(), false)
-    assert.equal(sqlStat.mode & 0o077, 0)
-    const sql = await readFile(sqlPath, 'utf8')
-
-    let results
-    if (sql.includes('r0-1-smoke:snapshot')) {
-      results = [
-        { success: true, results: [{ challenge_signup_count: state.signups.length }] },
-        { success: true, results: structuredClone(state.legacy) },
-      ]
-    } else if (sql.includes('r0-1-smoke:find-signup')) {
-      results = [{
-        success: true,
-        results: state.signups
-          .filter((row) => row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email)
-          .map((row) => ({ id: row.id })),
-      }]
-    } else if (sql.includes('r0-1-smoke:count-queue')) {
-      results = [{ success: true, results: [{ queue_count: 0 }] }]
-    } else if (sql.includes('r0-1-smoke:delete-signup')) {
-      const signupId = sql.match(/\bid = '([^']+)'/)?.[1]
-      const before = state.signups.length
-      state.signups = state.signups.filter((row) => row.id !== signupId)
-      results = [{ success: true, results: [{ deleted_count: before - state.signups.length }] }]
-    } else {
-      throw new Error('unexpected SQL fixture')
-    }
-    return { exitCode: 0, stdout: JSON.stringify(results), stderr: '' }
-  }
+  const subprocessAdapter = d1SubprocessFixture({
+    state,
+    identity: SYNTHETIC_IDENTITY,
+    sqlPaths,
+    subprocessArgs,
+  })
   const fetchAdapter = async (input, init) => {
     assert.equal(new URL(input).pathname, '/api/signup')
-    assert.equal(init.headers.Origin, ORIGIN)
+    assert.equal(init.headers.Origin, PRODUCTION_ORIGIN)
     assert.deepEqual(JSON.parse(init.body), {
       challenge_slug: 'brain2-21-ngay',
       name: SYNTHETIC_IDENTITY.name,
       email: SYNTHETIC_IDENTITY.email,
     })
-    state.signups.push({ id: 'secure-cli-signup-id', ...SYNTHETIC_IDENTITY })
+    for (let index = 1; index <= 3; index += 1) {
+      state.signups.push({ id: `secure-cli-signup-id-${index}`, ...SYNTHETIC_IDENTITY })
+    }
     return response('{"success":true}', { status: 200 })
   }
   const lines = []
 
   const exitCode = await main(
-    ['--origin', ORIGIN, '--controlled-signup'],
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
     {
       env: { R0_1_SMOKE_INPUT_FILE: inputPath },
       fetchAdapter,
@@ -662,15 +710,74 @@ test('controlled CLI loads secure identity and uses only remote Wrangler file co
     },
   )
 
-  assert.equal(exitCode, 0)
-  assert.equal(subprocessArgs.length, 7)
-  assert.deepEqual(state.signups, [])
-  assert.equal(JSON.parse(lines[0]).aggregate.legacy_email_aggregate_unchanged, true)
+  assert.equal(exitCode, 1)
+  assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_ROW_CONTRACT')
+  assert.equal(subprocessArgs.length, 8)
+  assert.deepEqual(state.signups, [
+    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' },
+  ])
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
   for (const sqlPath of sqlPaths) {
     await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
   }
+})
+
+test('controlled CLI safely quotes an apostrophe name and performs targeted cleanup', async (t) => {
+  const identity = { synthetic: true, name: "Ada O'Brien", email: 'ada-obrien@fixture.invalid' }
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-apostrophe-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(identity), { mode: 0o600 })
+  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }
+  const state = {
+    signups: [unrelated],
+    legacy: [{
+      campaign_version: 'legacy-v0',
+      status: 'pending',
+      audience_state: 'quarantined_legacy',
+      sendable: 0,
+      row_count: 210,
+    }],
+  }
+  const sqlPaths = []
+  const subprocessArgs = []
+  let quotedStatements = 0
+  const subprocessAdapter = d1SubprocessFixture({
+    state,
+    identity,
+    sqlPaths,
+    subprocessArgs,
+    inspectSql(sql) {
+      if (!sql.includes('r0-1-smoke:find-signup') && !sql.includes('r0-1-smoke:delete-signup')) return
+      quotedStatements += 1
+      assert.match(sql, /Ada O''Brien/)
+      assert.doesNotMatch(sql, /Ada O'Brien/)
+    },
+  })
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      tempRoot: fixtureRoot,
+      subprocessAdapter,
+      fetchAdapter: async () => {
+        state.signups.push({ id: 'apostrophe-signup-id', ...identity })
+        return response('{"success":true}', { status: 200 })
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 0)
+  assert.equal(subprocessArgs.length, 7)
+  assert.equal(quotedStatements, 4)
+  assert.deepEqual(state.signups, [unrelated])
+  assert.doesNotMatch(lines[0], new RegExp(identity.name, 'i'))
+  assert.doesNotMatch(lines[0], new RegExp(identity.email, 'i'))
+  for (const sqlPath of sqlPaths) await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
 })
 
 test('controlled CLI rejects group-readable and symlink identity files before side effects', async (t) => {
@@ -691,7 +798,7 @@ test('controlled CLI rejects group-readable and symlink identity files before si
       let fetchCalls = 0
       const lines = []
       const exitCode = await main(
-        ['--origin', ORIGIN, '--controlled-signup'],
+        ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
         {
           env: { R0_1_SMOKE_INPUT_FILE: inputPath },
           subprocessAdapter: async () => {
@@ -722,7 +829,7 @@ test('controlled CLI removes its owner-only SQL artifact when Wrangler fails', a
   const lines = []
 
   const exitCode = await main(
-    ['--origin', ORIGIN, '--controlled-signup'],
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
     {
       env: { R0_1_SMOKE_INPUT_FILE: inputPath },
       tempRoot: fixtureRoot,
@@ -744,6 +851,57 @@ test('controlled CLI removes its owner-only SQL artifact when Wrangler fails', a
   assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_COMMAND_FAILED')
   assert.equal(sqlPaths.length, 1)
   await assert.rejects(lstat(sqlPaths[0]), { code: 'ENOENT' })
+})
+
+test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL artifact', async (t) => {
+  const cases = [
+    ['malformed', '{not-json'],
+    ['oversized', 'x'.repeat((64 * 1024) + 1)],
+    ['wrong cardinality', JSON.stringify([{ success: true, results: [] }])],
+    ['unsuccessful', JSON.stringify([
+      { success: false, results: [] },
+      { success: true, results: [] },
+    ])],
+  ]
+
+  for (const [name, stdout] of cases) {
+    await t.test(name, async (subtest) => {
+      const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-json-test-'))
+      subtest.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+      const inputPath = join(fixtureRoot, 'controlled-input.json')
+      await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+      const sqlPaths = []
+      const lines = []
+      let fetchCalls = 0
+
+      const exitCode = await main(
+        ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+        {
+          env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+          tempRoot: fixtureRoot,
+          subprocessAdapter: async ({ args }) => {
+            const sqlPath = args[args.indexOf('--file') + 1]
+            sqlPaths.push(sqlPath)
+            assert.equal((await lstat(sqlPath)).mode & 0o077, 0)
+            return { exitCode: 0, stdout, stderr: '' }
+          },
+          fetchAdapter: async () => {
+            fetchCalls += 1
+            throw new Error('must not fetch')
+          },
+          writeLine: (line) => lines.push(line),
+        },
+      )
+
+      assert.equal(exitCode, 1)
+      assert.equal(fetchCalls, 0)
+      assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_CONTRACT')
+      assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
+      assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
+      assert.ok(sqlPaths.length >= 1)
+      for (const sqlPath of sqlPaths) await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
+    })
+  }
 })
 
 test('command shell rejects unknown flags and non-HTTPS origins before fetching', async (t) => {

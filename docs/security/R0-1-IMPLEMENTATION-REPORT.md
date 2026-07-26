@@ -807,8 +807,8 @@ the next slice was added.
 
 | Gate | Exit | Evidence |
 |---|---:|---|
-| Focused controlled-smoke suite | `0` | `34/34` passed |
-| Full package tests | `0` | `308/308` passed |
+| Focused controlled-smoke suite | `0` | `41/41` passed |
+| Full package tests | `0` | `315/315` passed |
 | Current-tree secret integrity | `0` | zero findings |
 | Root TypeScript, non-incremental | `0` | `npx tsc --noEmit --incremental false` |
 | Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
