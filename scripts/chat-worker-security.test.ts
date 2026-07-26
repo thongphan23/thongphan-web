@@ -112,6 +112,7 @@ test('25 concurrent anonymous chat requests cannot consume AI or Vectorize budge
 test('chat Worker config exposes only the exact apex tombstone with sampled observability', () => {
   const config = readFileSync(new URL('../wrangler.chat.toml', import.meta.url), 'utf8')
 
+  assert.match(config, /^name\s*=\s*["']thongphan-chat-api["']\s*$/m)
   assert.match(config, /pattern\s*=\s*["']thongphan\.com\/api\/chat["']/)
   assert.match(config, /workers_dev\s*=\s*false/)
   assert.match(config, /preview_urls\s*=\s*false/)

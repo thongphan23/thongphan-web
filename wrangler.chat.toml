@@ -1,4 +1,4 @@
-name = "thongphan-chat-tombstone"
+name = "thongphan-chat-api"
 main = "workers/api/chat.ts"
 compatibility_date = "2026-07-27"
 
