@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: IN PROGRESS — Task 8 local release verification has not run
+Status: IN PROGRESS — Task 8A smoke runner complete; full local release gate pending
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -600,3 +600,69 @@ GREEN:
 
 The top-level report remains `IN PROGRESS`. Task 7 does not execute Task 8's complete
 local release gate and therefore does not claim implementation-review readiness.
+
+## R0.1A Task 8A — Bounded production-smoke contract
+
+Status: PASS — the runner contract is fixture-verified; production execution and the
+full local release gate remain pending.
+
+### Outcome
+
+- `scripts/r0-1-production-smoke.mjs` exposes the documented `--read-only` and
+  `--controlled-signup` modes through a native Node command shell and an injected
+  runner interface.
+- Read-only mode issues only GET requests. It verifies both binding-free tombstones,
+  `/chat`, `/library`, one representative `/library/read/*` route, exact canonical
+  metadata and the required sitemap entries, while reporting zero POST and database
+  calls.
+- Every request receives a native `AbortSignal.timeout()`; response bodies are read
+  as bounded byte streams with a hard ceiling. HTTPS is mandatory, unknown flags are
+  rejected and omitting a mutation flag defaults to read-only mode.
+- Controlled mode fails closed unless both an injected database adapter and an
+  explicitly marked `.invalid` synthetic identity are present. The passing fixture
+  proves one POST, one created signup, zero queue rows, one identity-and-ID-targeted
+  deletion and zero matching rows after cleanup. Unrelated rows remain untouched.
+- Command output contains only pass/fail, mode, route/status and aggregate counts.
+  It contains no name, email, signup ID or response body.
+
+### TDD and local fixture evidence
+
+Initial RED:
+
+```bash
+node --test scripts/r0-1-production-smoke.test.mjs
+```
+
+- Exit code: `1`.
+- Expected reason: `scripts/r0-1-production-smoke.mjs` did not exist
+  (`ERR_MODULE_NOT_FOUND`).
+- Subsequent vertical RED/GREEN cycles independently exposed the missing 410,
+  HTTP-200, canonical, sitemap, timeout, byte-limit, controlled-signup and command
+  shell invariants.
+
+GREEN:
+
+```bash
+npm run test:r0-1-production-smoke
+```
+
+- Exit code: `0`.
+- Result: `24/24` adapter fixtures passed.
+- Coverage includes seven independent tombstone-marker mutations, public route and
+  SEO failures, native timeout, streamed byte overflow, zero-mutation read-only mode,
+  exact controlled signup/queue/cleanup counts, unrelated-row preservation,
+  pre-existing-fixture refusal, redacted output and fail-closed CLI argument/input
+  handling.
+- Package-integrated full suite: `npm test`, exit `0`, `297/297` tests passed.
+
+### Production and release-gate boundary
+
+The runner has **not** been executed against a production origin. No production
+request, controlled signup, remote D1 read/write, migration, deploy, route mutation,
+email action or Git-history action occurred in Task 8A. The top-level status remains
+`IN PROGRESS`; Task 8B owns the disposable-worktree full local release gate and is
+not started by this commit.
+
+Rollback removes only the two smoke-runner files and their `package.json` wiring,
+then removes this Task 8A report section. It must not be replaced with an ad hoc
+production command.
