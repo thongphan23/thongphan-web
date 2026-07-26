@@ -1,6 +1,16 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-16
+Last updated: 2026-07-26
+
+## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
+
+- R0.1 design complete — implementation not started.
+- R0 technical audit is complete against canonical runtime repo `/Users/rio/thongphan-com`, branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. The legacy `/Users/rio/Projects/thongphan-read` directory is migration provenance only; no legacy runtime was restored.
+- Verified current stack: Next.js 16.2.10 App Router, React 19.2.5, TypeScript 6.0.3, npm, static export to Cloudflare Pages plus dedicated Workers. Public Read remains canonical under `/library*`; `/read` is absent and returns a noindex 404.
+- Baseline passes: TypeScript, Worker TypeScript, lint, full 242/242 suite, 82-route build, release gate (build 6/6, SEO 4/4, bundle 3/3, Brain2 143/143), Read safety 3/3 and seven Wrangler Worker dry-runs. Live sitemap crawl returns 55/55 HTTP 200.
+- R0 identified owner gates before R1: reader identity/entitlement, preview-production data isolation, privacy/retention, email delivery and 210 legacy queue rows, analytics, CI/dependency scanning, and P0 ownership/security for the existing unauthenticated `/api/embed` mutation route. `npm audit` has no fresh verdict because both npm audit endpoints failed after a clean temporary install.
+- Full evidence: `docs/discovery/R0-AUDIT-REPORT.md`. `CURRENT-SYSTEM-AUDIT.md`, the SAD and Data/Event Architecture now distinguish verified current state from target architecture.
+- No app feature, framework, route, Worker, schema, migration or production Cloudflare setting changed. No deploy was run. R0 remains at owner approval gate and PRD-R1 must not start until that approval is explicit.
 
 ## Brain2 kickoff-video restoration — production release — 2026-07-16
 
