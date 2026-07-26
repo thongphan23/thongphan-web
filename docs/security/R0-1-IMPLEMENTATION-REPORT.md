@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: IN PROGRESS — controlled smoke hardening complete; fresh Phase B rerun required
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -767,3 +767,56 @@ review. R0.1B production cutover, R0.H1 history remediation, R0.2 environment
 isolation and PRD-R1 have not started. No production request, controlled production
 signup, deploy, migration, remote D1 mutation, email action, history rewrite or push
 was performed by Task 8B.
+
+## R0.1A whole-branch review — controlled smoke hardening
+
+Status: PASS for the source hardening only. The prior Task 8B readiness evidence is
+historical because this source changed after `f6f4df3`; the report remains
+`IN PROGRESS` until the root agent completes a fresh detached Phase B rerun.
+
+### Review findings closed
+
+- The direct controlled CLI now reads synthetic identity only from the absolute path
+  in `R0_1_SMOKE_INPUT_FILE`. It accepts only a bounded, owner-owned, owner-readable
+  regular non-symlink JSON file with no group/other permissions or executable bits.
+  Name and email never enter `argv`, command output or Wrangler diagnostics.
+- The native database adapter invokes only the repository-local Wrangler binary with
+  the fixed D1 database/config and `d1 execute ... --remote --file ... --json --yes`.
+  Each SQL artifact is created under an owner-only temporary directory with mode
+  `0600` and removed in `finally`, including command failure. Tests inject the
+  subprocess adapter and never contact remote D1.
+- The controlled POST now matches the actual signup Worker contract: JSON content
+  type, same-origin `Origin`, canonical `brain2-21-ngay` slug and the exact
+  `challenge_slug`, `name`, `email` body. A focused integration fixture calls the
+  real `handleBrain2SignupRequest` export through `tsx`.
+- Before POST and after targeted cleanup, the runner snapshots the exact global
+  `challenge_signups` count and a bounded, deterministically ordered legacy-email
+  aggregate. It fails closed unless the total is exactly restored and the serialized
+  legacy aggregate is byte-equal. Multiplicity cleanup still removes every matching
+  row by ID plus synthetic identity while preserving unrelated rows.
+- Read-only route, tombstone, canonical, sitemap, timeout and response-size contracts
+  are unchanged.
+
+### TDD and local verification evidence
+
+RED evidence was observed before implementation: the actual Worker fixture rejected
+the old POST contract (`SMOKE_SIGNUP_HTTP_CONTRACT`); the aggregate assertion exposed
+the missing before/after database snapshots; and the direct CLI exited fail-closed
+because no secure input/D1 path existed. Each vertical slice was made green before
+the next slice was added.
+
+| Gate | Exit | Evidence |
+|---|---:|---|
+| Focused controlled-smoke suite | `0` | `34/34` passed |
+| Full package tests | `0` | `308/308` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| Root TypeScript, non-incremental | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Production build | `0` | `82/82` static routes generated |
+| Task diff check | `0` | no whitespace errors |
+| Canonical preservation | `0` | `VERIFY PASS`; five protected hashes unchanged |
+
+No production origin, remote D1 operation, deploy, migration, email action, push or
+history mutation was performed during this hardening. A fresh detached Phase B rerun
+remains the next gate and is deliberately not claimed here.

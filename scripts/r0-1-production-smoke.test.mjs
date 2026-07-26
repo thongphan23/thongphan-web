@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict'
+import { chmod, lstat, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import test from 'node:test'
 
 import { main, runProductionSmoke } from './r0-1-production-smoke.mjs'
+import { handleBrain2SignupRequest } from '../workers/brain2-campaign.ts'
 
 const ORIGIN = 'https://fixture.invalid'
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
@@ -51,8 +55,25 @@ function readOnlyFetchFixture(overrides = new Map()) {
   }
 }
 
-function controlledSignupFixture({ queueRows = 0, createdSignupCount = 1 } = {}) {
-  const state = { signups: [], queueRows, postRequests: 0 }
+function controlledSignupFixture({
+  queueRows = 0,
+  createdSignupCount = 1,
+  signupCountDrift = 0,
+  legacyAggregateDrift = false,
+} = {}) {
+  const state = {
+    signups: [],
+    queueRows,
+    postRequests: 0,
+    snapshotCalls: 0,
+    legacyEmailAggregate: [{
+      campaign_version: 'legacy-v0',
+      status: 'pending',
+      audience_state: 'quarantined_legacy',
+      sendable: 0,
+      row_count: 210,
+    }],
+  }
   const fetchAdapter = async (input, init = {}) => {
     assert.equal(new URL(input).pathname, '/api/signup')
     assert.equal(init.method, 'POST')
@@ -69,6 +90,16 @@ function controlledSignupFixture({ queueRows = 0, createdSignupCount = 1 } = {})
     })
   }
   const databaseAdapter = {
+    async snapshotGlobalInvariants() {
+      state.snapshotCalls += 1
+      const afterCleanup = state.snapshotCalls > 1
+      const legacyEmailAggregate = structuredClone(state.legacyEmailAggregate)
+      if (afterCleanup && legacyAggregateDrift) legacyEmailAggregate[0].row_count += 1
+      return {
+        challengeSignupCount: state.signups.length + (afterCleanup ? signupCountDrift : 0),
+        legacyEmailAggregate,
+      }
+    },
     async findSyntheticSignup(identity) {
       return state.signups
         .filter((row) => row.name === identity.name && row.email === identity.email)
@@ -76,6 +107,89 @@ function controlledSignupFixture({ queueRows = 0, createdSignupCount = 1 } = {})
     },
     async countQueueRows({ signupId }) {
       assert.equal(signupId, 'fixture-signup-id')
+      return state.queueRows
+    },
+    async deleteSyntheticSignup({ signupId, identity }) {
+      const before = state.signups.length
+      state.signups = state.signups.filter((row) => !(
+        row.id === signupId && row.name === identity.name && row.email === identity.email
+      ))
+      return before - state.signups.length
+    },
+  }
+  return { state, fetchAdapter, databaseAdapter }
+}
+
+function actualSignupWorkerFixture() {
+  const state = { signups: [], queueRows: 0 }
+  const statement = (query) => {
+    const entry = {
+      query,
+      values: [],
+      bind(...values) {
+        this.values = values
+        return this
+      },
+      async first() {
+        if (query.includes('SELECT id, duration_days FROM challenges')) {
+          return { id: 'brain2-21', duration_days: 21 }
+        }
+        if (query.includes('SELECT id FROM challenge_signups')) {
+          const [, email] = this.values
+          return state.signups.find((row) => row.email.toLowerCase() === String(email).toLowerCase()) ?? null
+        }
+        throw new Error('unexpected Worker query')
+      },
+    }
+    return entry
+  }
+  const env = {
+    DB: {
+      prepare: statement,
+      async batch(statements) {
+        assert.equal(statements.length, 1)
+        const [signup] = statements
+        assert.match(signup.query, /INSERT INTO challenge_signups/)
+        const [id, challengeId, name, email, signedUpAt] = signup.values
+        state.signups.push({ id, challengeId, name, email, signedUpAt })
+        return []
+      },
+    },
+    KV: { async delete() {} },
+    SIGNUP_IP_RATE_LIMITER: { async limit() { return { success: true } } },
+    SIGNUP_EMAIL_RATE_LIMITER: { async limit() { return { success: true } } },
+  }
+  const fetchAdapter = async (input, init = {}) => {
+    const headers = new Headers(init.headers)
+    headers.set('CF-Connecting-IP', '203.0.113.10')
+    return handleBrain2SignupRequest(
+      new Request(input, { ...init, headers }),
+      env,
+      {
+        now: () => new Date('2026-07-27T00:00:00.000Z'),
+        randomUUID: () => 'actual-worker-signup-id',
+      },
+    )
+  }
+  const databaseAdapter = {
+    async snapshotGlobalInvariants() {
+      return {
+        challengeSignupCount: state.signups.length,
+        legacyEmailAggregate: [{
+          campaign_version: 'legacy-v0',
+          status: 'pending',
+          audience_state: 'quarantined_legacy',
+          sendable: 0,
+          row_count: 210,
+        }],
+      }
+    },
+    async findSyntheticSignup(identity) {
+      return state.signups
+        .filter((row) => row.name === identity.name && row.email === identity.email)
+        .map((row) => ({ id: row.id }))
+    },
+    async countQueueRows() {
       return state.queueRows
     },
     async deleteSyntheticSignup({ signupId, identity }) {
@@ -242,14 +356,34 @@ test('controlled signup creates one row, proves zero queue rows, and removes onl
   assert.equal(result.pass, true)
   assert.deepEqual(result.aggregate, {
     post_requests: 1,
-    database_calls: 5,
+    database_calls: 7,
     signup_rows_before: 0,
     signup_rows_created: 1,
     queue_rows: 0,
     signup_rows_removed: 1,
     signup_rows_remaining: 0,
+    signup_rows_total_before: 0,
+    signup_rows_total_after_cleanup: 0,
+    signup_rows_total_restored: true,
+    legacy_email_aggregate_unchanged: true,
   })
   assert.equal(fixture.state.postRequests, 1)
+  assert.deepEqual(fixture.state.signups, [])
+})
+
+test('controlled POST is accepted by the actual signup Worker contract', async () => {
+  const fixture = actualSignupWorkerFixture()
+
+  const result = await runProductionSmoke({
+    origin: 'https://thongphan.com',
+    mode: 'controlled-signup',
+    fetchAdapter: fixture.fetchAdapter,
+    databaseAdapter: fixture.databaseAdapter,
+    syntheticIdentity: SYNTHETIC_IDENTITY,
+  })
+
+  assert.equal(result.pass, true)
+  assert.equal(result.routes[0].status, 200)
   assert.deepEqual(fixture.state.signups, [])
 })
 
@@ -286,7 +420,7 @@ test('controlled signup output redacts both the identity and response body', asy
   assert.equal(JSON.parse(lines[0]).aggregate.queue_rows, 0)
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-  assert.doesNotMatch(lines[0], /fixture-signup-id|response|body|name|email/i)
+  assert.doesNotMatch(lines[0], /fixture-signup-id|response|body/i)
 })
 
 test('controlled signup fails on a queue row but still performs targeted cleanup', async () => {
@@ -303,6 +437,61 @@ test('controlled signup fails on a queue row but still performs targeted cleanup
     { code: 'SMOKE_QUEUE_CONTRACT' },
   )
   assert.equal(fixture.state.postRequests, 1)
+  assert.deepEqual(fixture.state.signups, [])
+})
+
+test('controlled signup fails closed when the global signup total drifts after cleanup', async () => {
+  const fixture = controlledSignupFixture({ signupCountDrift: 1 })
+
+  await assert.rejects(
+    runProductionSmoke({
+      origin: ORIGIN,
+      mode: 'controlled-signup',
+      fetchAdapter: fixture.fetchAdapter,
+      databaseAdapter: fixture.databaseAdapter,
+      syntheticIdentity: SYNTHETIC_IDENTITY,
+    }),
+    { code: 'SMOKE_GLOBAL_INVARIANT_DRIFT' },
+  )
+  assert.deepEqual(fixture.state.signups, [])
+})
+
+test('controlled signup rejects an unbounded global snapshot before POST', async () => {
+  const fixture = controlledSignupFixture()
+  fixture.state.legacyEmailAggregate = Array.from({ length: 65 }, (_, index) => ({
+    campaign_version: `legacy-v${index}`,
+    status: 'pending',
+    audience_state: 'quarantined_legacy',
+    sendable: 0,
+    row_count: 1,
+  }))
+
+  await assert.rejects(
+    runProductionSmoke({
+      origin: ORIGIN,
+      mode: 'controlled-signup',
+      fetchAdapter: fixture.fetchAdapter,
+      databaseAdapter: fixture.databaseAdapter,
+      syntheticIdentity: SYNTHETIC_IDENTITY,
+    }),
+    { code: 'SMOKE_DATABASE_CONTRACT' },
+  )
+  assert.equal(fixture.state.postRequests, 0)
+})
+
+test('controlled signup fails closed when the legacy email aggregate changes', async () => {
+  const fixture = controlledSignupFixture({ legacyAggregateDrift: true })
+
+  await assert.rejects(
+    runProductionSmoke({
+      origin: ORIGIN,
+      mode: 'controlled-signup',
+      fetchAdapter: fixture.fetchAdapter,
+      databaseAdapter: fixture.databaseAdapter,
+      syntheticIdentity: SYNTHETIC_IDENTITY,
+    }),
+    { code: 'SMOKE_GLOBAL_INVARIANT_DRIFT' },
+  )
   assert.deepEqual(fixture.state.signups, [])
 })
 
@@ -382,8 +571,179 @@ test('controlled command fails closed without injected identity and database ada
   assert.deepEqual(JSON.parse(lines[0]), {
     pass: false,
     mode: 'controlled-signup',
-    code: 'SMOKE_CONTROLLED_INPUT_REQUIRED',
+    code: 'SMOKE_SECURE_INPUT_REQUIRED',
   })
+})
+
+test('controlled CLI loads secure identity and uses only remote Wrangler file commands', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cli-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+
+  const state = {
+    signups: [],
+    legacy: [{
+      campaign_version: 'legacy-v0',
+      status: 'pending',
+      audience_state: 'quarantined_legacy',
+      sendable: 0,
+      row_count: 210,
+    }],
+  }
+  const sqlPaths = []
+  const subprocessArgs = []
+  const subprocessAdapter = async ({ executable, args }) => {
+    subprocessArgs.push([executable, ...args])
+    assert.match(executable, /node_modules\/\.bin\/wrangler$/)
+    assert.equal(args.includes('--remote'), true)
+    assert.equal(args.includes('--command'), false)
+    assert.equal(args.includes('--json'), true)
+    assert.equal(args.includes('--yes'), true)
+    assert.equal(args[0], 'd1')
+    assert.equal(args[1], 'execute')
+    assert.equal(args[2], 'thongphan-db')
+    assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
+    assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
+    const sqlPath = args[args.indexOf('--file') + 1]
+    sqlPaths.push(sqlPath)
+    const sqlStat = await lstat(sqlPath)
+    assert.equal(sqlStat.isFile(), true)
+    assert.equal(sqlStat.isSymbolicLink(), false)
+    assert.equal(sqlStat.mode & 0o077, 0)
+    const sql = await readFile(sqlPath, 'utf8')
+
+    let results
+    if (sql.includes('r0-1-smoke:snapshot')) {
+      results = [
+        { success: true, results: [{ challenge_signup_count: state.signups.length }] },
+        { success: true, results: structuredClone(state.legacy) },
+      ]
+    } else if (sql.includes('r0-1-smoke:find-signup')) {
+      results = [{
+        success: true,
+        results: state.signups
+          .filter((row) => row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email)
+          .map((row) => ({ id: row.id })),
+      }]
+    } else if (sql.includes('r0-1-smoke:count-queue')) {
+      results = [{ success: true, results: [{ queue_count: 0 }] }]
+    } else if (sql.includes('r0-1-smoke:delete-signup')) {
+      const signupId = sql.match(/\bid = '([^']+)'/)?.[1]
+      const before = state.signups.length
+      state.signups = state.signups.filter((row) => row.id !== signupId)
+      results = [{ success: true, results: [{ deleted_count: before - state.signups.length }] }]
+    } else {
+      throw new Error('unexpected SQL fixture')
+    }
+    return { exitCode: 0, stdout: JSON.stringify(results), stderr: '' }
+  }
+  const fetchAdapter = async (input, init) => {
+    assert.equal(new URL(input).pathname, '/api/signup')
+    assert.equal(init.headers.Origin, ORIGIN)
+    assert.deepEqual(JSON.parse(init.body), {
+      challenge_slug: 'brain2-21-ngay',
+      name: SYNTHETIC_IDENTITY.name,
+      email: SYNTHETIC_IDENTITY.email,
+    })
+    state.signups.push({ id: 'secure-cli-signup-id', ...SYNTHETIC_IDENTITY })
+    return response('{"success":true}', { status: 200 })
+  }
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      fetchAdapter,
+      subprocessAdapter,
+      tempRoot: fixtureRoot,
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 0)
+  assert.equal(subprocessArgs.length, 7)
+  assert.deepEqual(state.signups, [])
+  assert.equal(JSON.parse(lines[0]).aggregate.legacy_email_aggregate_unchanged, true)
+  assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
+  assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
+  for (const sqlPath of sqlPaths) {
+    await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
+  }
+})
+
+test('controlled CLI rejects group-readable and symlink identity files before side effects', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-input-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const targetPath = join(fixtureRoot, 'identity.json')
+  const symlinkPath = join(fixtureRoot, 'identity-link.json')
+  await writeFile(targetPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  await symlink(targetPath, symlinkPath)
+
+  for (const [name, inputPath, prepare] of [
+    ['group readable', targetPath, () => chmod(targetPath, 0o640)],
+    ['symlink', symlinkPath, () => chmod(targetPath, 0o600)],
+  ]) {
+    await t.test(name, async () => {
+      await prepare()
+      let subprocessCalls = 0
+      let fetchCalls = 0
+      const lines = []
+      const exitCode = await main(
+        ['--origin', ORIGIN, '--controlled-signup'],
+        {
+          env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+          subprocessAdapter: async () => {
+            subprocessCalls += 1
+            throw new Error('must not run')
+          },
+          fetchAdapter: async () => {
+            fetchCalls += 1
+            throw new Error('must not fetch')
+          },
+          writeLine: (line) => lines.push(line),
+        },
+      )
+      assert.equal(exitCode, 1)
+      assert.equal(subprocessCalls, 0)
+      assert.equal(fetchCalls, 0)
+      assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SECURE_INPUT_INVALID')
+    })
+  }
+})
+
+test('controlled CLI removes its owner-only SQL artifact when Wrangler fails', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cleanup-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  const sqlPaths = []
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      tempRoot: fixtureRoot,
+      subprocessAdapter: async ({ args }) => {
+        const sqlPath = args[args.indexOf('--file') + 1]
+        sqlPaths.push(sqlPath)
+        const sqlStat = await lstat(sqlPath)
+        assert.equal(sqlStat.mode & 0o077, 0)
+        throw new Error('synthetic Wrangler failure')
+      },
+      fetchAdapter: async () => {
+        throw new Error('must not fetch')
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_COMMAND_FAILED')
+  assert.equal(sqlPaths.length, 1)
+  await assert.rejects(lstat(sqlPaths[0]), { code: 'ENOENT' })
 })
 
 test('command shell rejects unknown flags and non-HTTPS origins before fetching', async (t) => {

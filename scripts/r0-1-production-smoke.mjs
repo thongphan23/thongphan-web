@@ -1,7 +1,12 @@
-import { resolve } from 'node:path'
-import { pathToFileURL } from 'node:url'
+import { execFile } from 'node:child_process'
+import { constants as fsConstants } from 'node:fs'
+import { chmod, lstat, mkdtemp, open, rm, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { dirname, isAbsolute, join, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
+const BRAIN2_CHALLENGE_SLUG = 'brain2-21-ngay'
 
 const READ_ONLY_ROUTES = [
   '/api/embed',
@@ -15,6 +20,13 @@ const READ_ONLY_ROUTES = [
 const DISABLED_BODY = '{"type":"about:blank","title":"Endpoint disabled","status":410}'
 const CANONICAL_ROUTES = new Set(['/chat', '/library', READING_PATH])
 const DEFAULT_LIMITS = Object.freeze({ timeoutMs: 5_000, maxResponseBytes: 256 * 1024 })
+const MAX_LEGACY_AGGREGATE_ROWS = 64
+const MAX_LEGACY_AGGREGATE_BYTES = 16 * 1024
+const MAX_SECURE_INPUT_BYTES = 4 * 1024
+const MAX_D1_OUTPUT_BYTES = 64 * 1024
+const D1_TIMEOUT_MS = 30_000
+const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const CONTROL_CHARACTERS = /[\u0000-\u001F\u007F-\u009F]/u
 
 class SmokeError extends Error {
   constructor(code) {
@@ -96,27 +108,259 @@ async function fetchWithTimeout(fetchAdapter, url, init, timeoutMs) {
   }
 }
 
-function assertControlledInputs(databaseAdapter, syntheticIdentity) {
-  const validIdentity = syntheticIdentity?.synthetic === true
+function validSyntheticIdentity(syntheticIdentity) {
+  return syntheticIdentity?.synthetic === true
     && typeof syntheticIdentity.name === 'string'
-    && syntheticIdentity.name.length > 0
-    && syntheticIdentity.name.length <= 120
+    && syntheticIdentity.name === syntheticIdentity.name.trim()
+    && syntheticIdentity.name.length >= 2
+    && syntheticIdentity.name.length <= 100
+    && !CONTROL_CHARACTERS.test(syntheticIdentity.name)
     && typeof syntheticIdentity.email === 'string'
+    && syntheticIdentity.email === syntheticIdentity.email.trim().toLowerCase()
+    && syntheticIdentity.email.length <= 254
+    && !CONTROL_CHARACTERS.test(syntheticIdentity.email)
     && /^[^\s@]+@[^\s@]+\.invalid$/i.test(syntheticIdentity.email)
+}
+
+function assertControlledInputs(databaseAdapter, syntheticIdentity) {
+  const validIdentity = validSyntheticIdentity(syntheticIdentity)
   const validAdapter = databaseAdapter
+    && typeof databaseAdapter.snapshotGlobalInvariants === 'function'
     && typeof databaseAdapter.findSyntheticSignup === 'function'
     && typeof databaseAdapter.countQueueRows === 'function'
     && typeof databaseAdapter.deleteSyntheticSignup === 'function'
   if (!validIdentity || !validAdapter) throw new SmokeError('SMOKE_CONTROLLED_INPUT_REQUIRED')
 }
 
+function assertGlobalSnapshot(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  const { challengeSignupCount, legacyEmailAggregate } = value
+  if (!Number.isSafeInteger(challengeSignupCount) || challengeSignupCount < 0) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  if (!Array.isArray(legacyEmailAggregate) || legacyEmailAggregate.length > MAX_LEGACY_AGGREGATE_ROWS) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  for (const row of legacyEmailAggregate) {
+    if (!row || typeof row !== 'object' || Array.isArray(row)) {
+      throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+    }
+    if (Object.keys(row).sort().join(',') !== 'audience_state,campaign_version,row_count,sendable,status'
+      || typeof row.campaign_version !== 'string' || row.campaign_version.length > 64
+      || typeof row.status !== 'string' || row.status.length > 64
+      || typeof row.audience_state !== 'string' || row.audience_state.length > 64
+      || !Number.isSafeInteger(row.sendable) || (row.sendable !== 0 && row.sendable !== 1)
+      || !Number.isSafeInteger(row.row_count) || row.row_count < 0) {
+      throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+    }
+  }
+  const legacyBytes = JSON.stringify(legacyEmailAggregate)
+  if (Buffer.byteLength(legacyBytes, 'utf8') > MAX_LEGACY_AGGREGATE_BYTES) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  return { challengeSignupCount, legacyBytes }
+}
+
 function assertSignupRows(rows) {
   if (!Array.isArray(rows) || rows.some((row) => (
-    !row || typeof row.id !== 'string' || row.id.length === 0
+    !row || typeof row.id !== 'string' || row.id.length === 0 || row.id.length > 128
+      || CONTROL_CHARACTERS.test(row.id)
   ))) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
   return rows
+}
+
+async function readSecureControlledIdentity(env) {
+  const inputPath = env?.R0_1_SMOKE_INPUT_FILE
+  if (typeof inputPath !== 'string' || !isAbsolute(inputPath) || inputPath.length > 4096) {
+    throw new SmokeError('SMOKE_SECURE_INPUT_REQUIRED')
+  }
+
+  let pathStat
+  try {
+    pathStat = await lstat(inputPath)
+  } catch {
+    throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+  }
+  if (!pathStat.isFile() || pathStat.isSymbolicLink()) {
+    throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+  }
+
+  let handle
+  try {
+    handle = await open(inputPath, fsConstants.O_RDONLY | fsConstants.O_NOFOLLOW)
+    const openedStat = await handle.stat()
+    const currentUid = typeof process.getuid === 'function' ? process.getuid() : null
+    if (!openedStat.isFile()
+      || openedStat.dev !== pathStat.dev || openedStat.ino !== pathStat.ino
+      || (currentUid !== null && openedStat.uid !== currentUid)
+      || (openedStat.mode & 0o077) !== 0
+      || (openedStat.mode & 0o400) === 0
+      || (openedStat.mode & 0o111) !== 0
+      || openedStat.size < 2 || openedStat.size > MAX_SECURE_INPUT_BYTES) {
+      throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+    }
+    const bytes = await handle.readFile()
+    if (bytes.byteLength > MAX_SECURE_INPUT_BYTES) throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+    let identity
+    try {
+      identity = JSON.parse(bytes.toString('utf8'))
+    } catch {
+      throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+    }
+    if (!identity || typeof identity !== 'object' || Array.isArray(identity)
+      || Object.keys(identity).sort().join(',') !== 'email,name,synthetic'
+      || !validSyntheticIdentity(identity)) {
+      throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+    }
+    return identity
+  } catch (error) {
+    if (error instanceof SmokeError) throw error
+    throw new SmokeError('SMOKE_SECURE_INPUT_INVALID')
+  } finally {
+    await handle?.close()
+  }
+}
+
+function nativeSubprocessAdapter({ executable, args, cwd, timeoutMs, maxOutputBytes }) {
+  return new Promise((resolveResult) => {
+    execFile(executable, args, {
+      cwd,
+      encoding: 'utf8',
+      maxBuffer: maxOutputBytes,
+      timeout: timeoutMs,
+      windowsHide: true,
+    }, (error, stdout) => {
+      resolveResult({
+        exitCode: error ? 1 : 0,
+        stdout: error ? '' : stdout,
+        stderr: '',
+      })
+    })
+  })
+}
+
+function sqlLiteral(value) {
+  return `'${value.replaceAll("'", "''")}'`
+}
+
+function parseWranglerResults(stdout, expectedSets) {
+  if (typeof stdout !== 'string' || Buffer.byteLength(stdout, 'utf8') > MAX_D1_OUTPUT_BYTES) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  let parsed
+  try {
+    parsed = JSON.parse(stdout)
+  } catch {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  if (!Array.isArray(parsed) || parsed.length !== expectedSets
+    || parsed.some((entry) => !entry || entry.success !== true || !Array.isArray(entry.results))) {
+    throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+  }
+  return parsed.map((entry) => entry.results)
+}
+
+function createWranglerD1Adapter({
+  subprocessAdapter = nativeSubprocessAdapter,
+  tempRoot = tmpdir(),
+  projectRoot = PROJECT_ROOT,
+} = {}) {
+  const executable = resolve(projectRoot, 'node_modules/.bin/wrangler')
+  const configPath = resolve(projectRoot, 'wrangler.signup.toml')
+
+  const executeSql = async (sql, expectedSets) => {
+    let artifactRoot
+    try {
+      artifactRoot = await mkdtemp(join(tempRoot, 'r0-1-smoke-sql-'))
+      await chmod(artifactRoot, 0o700)
+      const sqlPath = join(artifactRoot, 'query.sql')
+      await writeFile(sqlPath, sql, { encoding: 'utf8', flag: 'wx', mode: 0o600 })
+      const result = await subprocessAdapter({
+        executable,
+        args: [
+          'd1', 'execute', 'thongphan-db',
+          '--remote',
+          '--file', sqlPath,
+          '--config', configPath,
+          '--json',
+          '--yes',
+        ],
+        cwd: projectRoot,
+        timeoutMs: D1_TIMEOUT_MS,
+        maxOutputBytes: MAX_D1_OUTPUT_BYTES,
+      })
+      if (!result || result.exitCode !== 0) throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED')
+      return parseWranglerResults(result.stdout, expectedSets)
+    } catch (error) {
+      if (error instanceof SmokeError) throw error
+      throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED')
+    } finally {
+      if (artifactRoot) {
+        try {
+          await rm(artifactRoot, { recursive: true, force: true })
+        } catch {
+          throw new SmokeError('SMOKE_DATABASE_ARTIFACT_CLEANUP_FAILED')
+        }
+      }
+    }
+  }
+
+  return {
+    async snapshotGlobalInvariants() {
+      const [signupRows, legacyRows] = await executeSql(`-- r0-1-smoke:snapshot
+SELECT COUNT(*) AS challenge_signup_count FROM challenge_signups;
+SELECT campaign_version, status, audience_state, sendable, COUNT(*) AS row_count
+FROM email_queue
+WHERE campaign_version = 'legacy-v0'
+GROUP BY campaign_version, status, audience_state, sendable
+ORDER BY campaign_version, status, audience_state, sendable;
+`, 2)
+      if (signupRows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+      return {
+        challengeSignupCount: signupRows[0].challenge_signup_count,
+        legacyEmailAggregate: legacyRows,
+      }
+    },
+    async findSyntheticSignup(identity) {
+      const [rows] = await executeSql(`-- r0-1-smoke:find-signup
+SELECT s.id
+FROM challenge_signups AS s
+JOIN challenges AS c ON c.id = s.challenge_id
+WHERE c.slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)}
+  AND s.name = ${sqlLiteral(identity.name)}
+  AND lower(s.email) = lower(${sqlLiteral(identity.email)})
+ORDER BY s.id
+LIMIT 3;
+`, 1)
+      if (rows.length > 2) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+      return rows
+    },
+    async countQueueRows({ signupId }) {
+      const [rows] = await executeSql(`-- r0-1-smoke:count-queue
+SELECT COUNT(*) AS queue_count
+FROM email_queue
+WHERE signup_id = ${sqlLiteral(signupId)};
+`, 1)
+      if (rows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+      return rows[0].queue_count
+    },
+    async deleteSyntheticSignup({ signupId, identity }) {
+      const [rows] = await executeSql(`-- r0-1-smoke:delete-signup
+DELETE FROM challenge_signups
+WHERE id = ${sqlLiteral(signupId)}
+  AND name = ${sqlLiteral(identity.name)}
+  AND lower(email) = lower(${sqlLiteral(identity.email)})
+  AND challenge_id = (SELECT id FROM challenges WHERE slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)})
+RETURNING 1 AS deleted_count;
+`, 1)
+      if (rows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+      return rows[0].deleted_count
+    },
+  }
 }
 
 async function runControlledSignup({
@@ -129,6 +373,10 @@ async function runControlledSignup({
 }) {
   assertControlledInputs(databaseAdapter, syntheticIdentity)
   let databaseCalls = 0
+  const snapshotGlobalInvariants = async () => {
+    databaseCalls += 1
+    return assertGlobalSnapshot(await databaseAdapter.snapshotGlobalInvariants())
+  }
   const findSignup = async () => {
     databaseCalls += 1
     return assertSignupRows(await databaseAdapter.findSyntheticSignup(syntheticIdentity))
@@ -151,6 +399,7 @@ async function runControlledSignup({
 
   const rowsBefore = await findSignup()
   if (rowsBefore.length !== 0) throw new SmokeError('SMOKE_SYNTHETIC_PREEXISTS')
+  const globalBefore = await snapshotGlobalInvariants()
 
   let postRequests = 0
   let status = 0
@@ -158,6 +407,7 @@ async function runControlledSignup({
   let queueRows = 0
   let removedRows = 0
   let remainingRows = []
+  let globalAfter = null
   let pendingError = null
   try {
     postRequests = 1
@@ -166,8 +416,12 @@ async function runControlledSignup({
       new URL('/api/signup', parsedOrigin),
       {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: {
+          'content-type': 'application/json',
+          Origin: parsedOrigin.origin,
+        },
         body: JSON.stringify({
+          challenge_slug: BRAIN2_CHALLENGE_SLUG,
           name: syntheticIdentity.name,
           email: syntheticIdentity.email,
         }),
@@ -207,8 +461,20 @@ async function runControlledSignup({
     } catch (error) {
       pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
     }
+    if (postRequests === 1) {
+      try {
+        globalAfter = await snapshotGlobalInvariants()
+      } catch (error) {
+        pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
+      }
+    }
   }
 
+  const signupTotalRestored = globalAfter?.challengeSignupCount === globalBefore.challengeSignupCount
+  const legacyAggregateUnchanged = globalAfter?.legacyBytes === globalBefore.legacyBytes
+  if (!signupTotalRestored || !legacyAggregateUnchanged) {
+    pendingError ??= new SmokeError('SMOKE_GLOBAL_INVARIANT_DRIFT')
+  }
   if (pendingError) throw pendingError
   if (removedRows !== 1 || remainingRows.length !== 0) {
     throw new SmokeError('SMOKE_TARGETED_CLEANUP_CONTRACT')
@@ -226,6 +492,10 @@ async function runControlledSignup({
       queue_rows: queueRows,
       signup_rows_removed: removedRows,
       signup_rows_remaining: remainingRows.length,
+      signup_rows_total_before: globalBefore.challengeSignupCount,
+      signup_rows_total_after_cleanup: globalAfter.challengeSignupCount,
+      signup_rows_total_restored: signupTotalRestored,
+      legacy_email_aggregate_unchanged: legacyAggregateUnchanged,
     },
   }
 }
@@ -324,11 +594,22 @@ export async function main(argv, dependencies = {}) {
   try {
     const parsed = parseArgs(argv)
     mode = parsed.mode
+    let databaseAdapter = dependencies.databaseAdapter
+    let syntheticIdentity = dependencies.syntheticIdentity
+    if (parsed.mode === 'controlled-signup'
+      && databaseAdapter === undefined && syntheticIdentity === undefined) {
+      syntheticIdentity = await readSecureControlledIdentity(dependencies.env ?? process.env)
+      databaseAdapter = createWranglerD1Adapter({
+        subprocessAdapter: dependencies.subprocessAdapter,
+        tempRoot: dependencies.tempRoot,
+        projectRoot: dependencies.projectRoot,
+      })
+    }
     const result = await runProductionSmoke({
       ...parsed,
       fetchAdapter: dependencies.fetchAdapter ?? globalThis.fetch,
-      databaseAdapter: dependencies.databaseAdapter,
-      syntheticIdentity: dependencies.syntheticIdentity,
+      databaseAdapter,
+      syntheticIdentity,
       limits: dependencies.limits,
     })
     writeLine(JSON.stringify(result))
