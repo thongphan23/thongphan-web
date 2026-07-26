@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: IN PROGRESS — Task 8A smoke runner complete; full local release gate pending
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -665,10 +665,82 @@ npm run test:r0-1-production-smoke
 
 The runner has **not** been executed against a production origin. No production
 request, controlled signup, remote D1 read/write, migration, deploy, route mutation,
-email action or Git-history action occurred in Task 8A. The top-level status remains
-`IN PROGRESS`; Task 8B owns the disposable-worktree full local release gate and is
-not started by this commit.
+email action or Git-history action occurred in Task 8A. Task 8B verifies this source
+locally; it does not authorize or perform the separately gated R0.1B cutover.
 
 Rollback removes only the two smoke-runner files and their `package.json` wiring,
 then removes this Task 8A report section. It must not be replaced with an ad hoc
 production command.
+
+## R0.1A Task 8B — Complete local release verification
+
+Status: PASS — every local release gate passed at source commit `f6f4df3`; R0.1A is
+ready for implementation review only.
+
+### Readiness RED and isolated verification boundary
+
+Before this documentation update, the exact readiness check exited `1` because the
+top-level report still said `IN PROGRESS`. Verification then ran from a clean detached
+worktree at `f6f4df3bda4baac98a1292b04be3c82acacf122d`, with no source change between
+attempts.
+
+The implementation plan suggested placing that worktree under `/tmp`. The first
+attempt there failed one pre-existing path-message assertion because the repository's
+private-output guard intentionally rejects temporary roots. The worktree was recreated
+outside `/tmp` at the same unchanged commit; the complete gate then passed. This was a
+verification-location correction, not a source or test relaxation.
+
+### Clean install and local gates
+
+| Gate | Exit | Evidence |
+|---|---:|---|
+| `npm ci` | `0` | 505 packages installed; npm audit baseline reported 14 high-severity findings |
+| Root TypeScript, non-incremental | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Full package tests | `0` | `298/298` passed |
+| Production build | `0` | `82/82` static routes generated |
+| Release gate | `0` | all component suites passed; final Brain2 sub-suite `143/143` |
+| Read release safety | `0` | `3/3` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| `git diff --check HEAD` | `0` | no whitespace error |
+| Detached worktree status | `0` | empty |
+
+The npm audit count is retained as the clean-install dependency baseline, not stated
+as remediated by R0.1A.
+
+### Wrangler dry-run evidence
+
+All seven commands were dry-runs only; no Worker or Pages project was deployed.
+
+| Worker/config | Upload | Gzip | Bindings reported |
+|---|---:|---:|---|
+| Embed tombstone | 1.23 KiB | 0.60 KiB | none |
+| Chat tombstone | 1.21 KiB | 0.59 KiB | none |
+| Signup | 33.84 KiB | 9.68 KiB | existing KV, D1 and two rate limiters |
+| Custom-domain router | 2.02 KiB | 0.89 KiB | none |
+| Brain2 access | 30.93 KiB | 10.46 KiB | KV and D1 |
+| Brain2 email | 42.90 KiB | 11.90 KiB | D1 only |
+| Legacy redirect | 0.69 KiB | 0.42 KiB | none |
+
+The embed and chat bundles therefore retain the required zero-binding tombstone
+boundary.
+
+### Canonical preservation and residual history finding
+
+Canonical boundary verification returned `VERIFY PASS` at
+`6a1ec9a5a0d61342106c16a1edf42b04a00099de`. All five protected SHA-256 values remain
+exactly equal to the Task 1 baseline, and all five original dirty paths remain
+preserved. The retired local `.env.embed.local` remains absent.
+
+The separate history diagnostic remains expected-red: exit `1`, exactly five
+metadata-only findings classified `history_plaintext`. This is the nonblocking R0.H1
+residual and does not weaken the passing current-tree secret gate or R0.1A readiness.
+
+### Stop gate
+
+Remediation Tasks 1–8 are locally complete and R0.1A is ready for implementation
+review. R0.1B production cutover, R0.H1 history remediation, R0.2 environment
+isolation and PRD-R1 have not started. No production request, controlled production
+signup, deploy, migration, remote D1 mutation, email action, history rewrite or push
+was performed by Task 8B.
