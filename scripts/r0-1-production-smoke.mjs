@@ -21,8 +21,8 @@ const READ_ONLY_ROUTES = [
 const DISABLED_BODY = '{"type":"about:blank","title":"Endpoint disabled","status":410}'
 const CANONICAL_ROUTES = new Set(['/chat', '/library', READING_PATH])
 const DEFAULT_LIMITS = Object.freeze({ timeoutMs: 5_000, maxResponseBytes: 256 * 1024 })
-const MAX_LEGACY_AGGREGATE_ROWS = 64
-const MAX_LEGACY_AGGREGATE_BYTES = 16 * 1024
+const MAX_PRE_MIGRATION_AGGREGATE_ROWS = 64
+const MAX_PRE_MIGRATION_AGGREGATE_BYTES = 16 * 1024
 const MAX_SECURE_INPUT_BYTES = 4 * 1024
 const MAX_D1_OUTPUT_BYTES = 64 * 1024
 const D1_TIMEOUT_MS = 30_000
@@ -126,42 +126,41 @@ function validSyntheticIdentity(syntheticIdentity) {
 function assertControlledInputs(databaseAdapter, syntheticIdentity) {
   const validIdentity = validSyntheticIdentity(syntheticIdentity)
   const validAdapter = databaseAdapter
-    && typeof databaseAdapter.snapshotGlobalInvariants === 'function'
+    && typeof databaseAdapter.snapshotPreMigrationInvariants === 'function'
     && typeof databaseAdapter.findSyntheticSignup === 'function'
     && typeof databaseAdapter.countQueueRows === 'function'
     && typeof databaseAdapter.deleteSyntheticSignup === 'function'
   if (!validIdentity || !validAdapter) throw new SmokeError('SMOKE_CONTROLLED_INPUT_REQUIRED')
 }
 
-function assertGlobalSnapshot(value) {
+function assertPreMigrationSnapshot(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
-  const { challengeSignupCount, legacyEmailAggregate } = value
+  const { challengeSignupCount, preMigrationEmailAggregate } = value
   if (!Number.isSafeInteger(challengeSignupCount) || challengeSignupCount < 0) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
-  if (!Array.isArray(legacyEmailAggregate) || legacyEmailAggregate.length > MAX_LEGACY_AGGREGATE_ROWS) {
+  if (!Array.isArray(preMigrationEmailAggregate)
+    || preMigrationEmailAggregate.length > MAX_PRE_MIGRATION_AGGREGATE_ROWS) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
-  for (const row of legacyEmailAggregate) {
+  for (const row of preMigrationEmailAggregate) {
     if (!row || typeof row !== 'object' || Array.isArray(row)) {
       throw new SmokeError('SMOKE_DATABASE_CONTRACT')
     }
-    if (Object.keys(row).sort().join(',') !== 'audience_state,campaign_version,row_count,sendable,status'
+    if (Object.keys(row).sort().join(',') !== 'campaign_version,row_count,status'
       || typeof row.campaign_version !== 'string' || row.campaign_version.length > 64
       || typeof row.status !== 'string' || row.status.length > 64
-      || typeof row.audience_state !== 'string' || row.audience_state.length > 64
-      || !Number.isSafeInteger(row.sendable) || (row.sendable !== 0 && row.sendable !== 1)
       || !Number.isSafeInteger(row.row_count) || row.row_count < 0) {
       throw new SmokeError('SMOKE_DATABASE_CONTRACT')
     }
   }
-  const legacyBytes = JSON.stringify(legacyEmailAggregate)
-  if (Buffer.byteLength(legacyBytes, 'utf8') > MAX_LEGACY_AGGREGATE_BYTES) {
+  const preMigrationBytes = JSON.stringify(preMigrationEmailAggregate)
+  if (Buffer.byteLength(preMigrationBytes, 'utf8') > MAX_PRE_MIGRATION_AGGREGATE_BYTES) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
-  return { challengeSignupCount, legacyBytes }
+  return { challengeSignupCount, preMigrationBytes }
 }
 
 function assertSignupRows(rows) {
@@ -311,19 +310,19 @@ function createWranglerD1Adapter({
   }
 
   return {
-    async snapshotGlobalInvariants() {
-      const [signupRows, legacyRows] = await executeSql(`-- r0-1-smoke:snapshot
+    async snapshotPreMigrationInvariants() {
+      const [signupRows, preMigrationRows] = await executeSql(`-- r0-1-smoke:pre-migration-snapshot
 SELECT COUNT(*) AS challenge_signup_count FROM challenge_signups;
-SELECT campaign_version, status, audience_state, sendable, COUNT(*) AS row_count
+SELECT campaign_version, status, COUNT(*) AS row_count
 FROM email_queue
 WHERE campaign_version = 'legacy-v0'
-GROUP BY campaign_version, status, audience_state, sendable
-ORDER BY campaign_version, status, audience_state, sendable;
+GROUP BY campaign_version, status
+ORDER BY campaign_version, status;
 `, 2)
       if (signupRows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
       return {
         challengeSignupCount: signupRows[0].challenge_signup_count,
-        legacyEmailAggregate: legacyRows,
+        preMigrationEmailAggregate: preMigrationRows,
       }
     },
     async findSyntheticSignup(identity) {
@@ -372,9 +371,9 @@ async function runControlledSignup({
 }) {
   assertControlledInputs(databaseAdapter, syntheticIdentity)
   let databaseCalls = 0
-  const snapshotGlobalInvariants = async () => {
+  const snapshotPreMigrationInvariants = async () => {
     databaseCalls += 1
-    return assertGlobalSnapshot(await databaseAdapter.snapshotGlobalInvariants())
+    return assertPreMigrationSnapshot(await databaseAdapter.snapshotPreMigrationInvariants())
   }
   const findSignup = async () => {
     databaseCalls += 1
@@ -398,7 +397,7 @@ async function runControlledSignup({
 
   const rowsBefore = await findSignup()
   if (rowsBefore.length !== 0) throw new SmokeError('SMOKE_SYNTHETIC_PREEXISTS')
-  const globalBefore = await snapshotGlobalInvariants()
+  const preMigrationBefore = await snapshotPreMigrationInvariants()
 
   let postRequests = 0
   let status = 0
@@ -406,7 +405,7 @@ async function runControlledSignup({
   let queueRows = 0
   let removedRows = 0
   let remainingRows = []
-  let globalAfter = null
+  let preMigrationAfter = null
   let pendingError = null
   try {
     postRequests = 1
@@ -462,16 +461,18 @@ async function runControlledSignup({
     }
     if (postRequests === 1) {
       try {
-        globalAfter = await snapshotGlobalInvariants()
+        preMigrationAfter = await snapshotPreMigrationInvariants()
       } catch (error) {
         pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
       }
     }
   }
 
-  const signupTotalRestored = globalAfter?.challengeSignupCount === globalBefore.challengeSignupCount
-  const legacyAggregateUnchanged = globalAfter?.legacyBytes === globalBefore.legacyBytes
-  if (!signupTotalRestored || !legacyAggregateUnchanged) {
+  const signupTotalRestored = preMigrationAfter?.challengeSignupCount
+    === preMigrationBefore.challengeSignupCount
+  const preMigrationAggregateUnchanged = preMigrationAfter?.preMigrationBytes
+    === preMigrationBefore.preMigrationBytes
+  if (!signupTotalRestored || !preMigrationAggregateUnchanged) {
     pendingError ??= new SmokeError('SMOKE_GLOBAL_INVARIANT_DRIFT')
   }
   if (pendingError) throw pendingError
@@ -491,10 +492,10 @@ async function runControlledSignup({
       queue_rows: queueRows,
       signup_rows_removed: removedRows,
       signup_rows_remaining: remainingRows.length,
-      signup_rows_total_before: globalBefore.challengeSignupCount,
-      signup_rows_total_after_cleanup: globalAfter.challengeSignupCount,
+      signup_rows_total_before: preMigrationBefore.challengeSignupCount,
+      signup_rows_total_after_cleanup: preMigrationAfter.challengeSignupCount,
       signup_rows_total_restored: signupTotalRestored,
-      legacy_email_aggregate_unchanged: legacyAggregateUnchanged,
+      pre_migration_email_aggregate_unchanged: preMigrationAggregateUnchanged,
     },
   }
 }

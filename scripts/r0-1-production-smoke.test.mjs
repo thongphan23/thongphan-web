@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { chmod, lstat, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { DatabaseSync } from 'node:sqlite'
 import test from 'node:test'
 
 import { main, runProductionSmoke } from './r0-1-production-smoke.mjs'
@@ -60,18 +61,16 @@ function controlledSignupFixture({
   queueRows = 0,
   createdSignupCount = 1,
   signupCountDrift = 0,
-  legacyAggregateDrift = false,
+  preMigrationAggregateDrift = false,
 } = {}) {
   const state = {
     signups: [],
     queueRows,
     postRequests: 0,
     snapshotCalls: 0,
-    legacyEmailAggregate: [{
+    preMigrationEmailAggregate: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
-      audience_state: 'quarantined_legacy',
-      sendable: 0,
       row_count: 210,
     }],
   }
@@ -91,14 +90,14 @@ function controlledSignupFixture({
     })
   }
   const databaseAdapter = {
-    async snapshotGlobalInvariants() {
+    async snapshotPreMigrationInvariants() {
       state.snapshotCalls += 1
       const afterCleanup = state.snapshotCalls > 1
-      const legacyEmailAggregate = structuredClone(state.legacyEmailAggregate)
-      if (afterCleanup && legacyAggregateDrift) legacyEmailAggregate[0].row_count += 1
+      const preMigrationEmailAggregate = structuredClone(state.preMigrationEmailAggregate)
+      if (afterCleanup && preMigrationAggregateDrift) preMigrationEmailAggregate[0].row_count += 1
       return {
         challengeSignupCount: state.signups.length + (afterCleanup ? signupCountDrift : 0),
-        legacyEmailAggregate,
+        preMigrationEmailAggregate,
       }
     },
     async findSyntheticSignup(identity) {
@@ -173,14 +172,12 @@ function actualSignupWorkerFixture() {
     )
   }
   const databaseAdapter = {
-    async snapshotGlobalInvariants() {
+    async snapshotPreMigrationInvariants() {
       return {
         challengeSignupCount: state.signups.length,
-        legacyEmailAggregate: [{
+        preMigrationEmailAggregate: [{
           campaign_version: 'legacy-v0',
           status: 'pending',
-          audience_state: 'quarantined_legacy',
-          sendable: 0,
           row_count: 210,
         }],
       }
@@ -204,6 +201,128 @@ function actualSignupWorkerFixture() {
   return { state, fetchAdapter, databaseAdapter }
 }
 
+async function preMigrationSqliteFixture(fixtureRoot) {
+  const database = new DatabaseSync(':memory:')
+  database.exec('PRAGMA foreign_keys = ON;')
+  database.exec(await readFile(new URL('../workers/schema.sql', import.meta.url), 'utf8'))
+
+  const signupInsert = database.prepare(`
+    INSERT INTO challenge_signups (id, challenge_id, name, email, current_day, signed_up_at)
+    VALUES (?, 'brain2-21', ?, ?, 0, '2026-07-26T00:00:00.000Z')
+  `)
+  const queueInsert = database.prepare(`
+    INSERT INTO email_queue (id, signup_id, day, subject, body, scheduled_at, status)
+    VALUES (?, ?, ?, 'Historical fixture', 'Historical fixture', ?, 'pending')
+  `)
+  database.exec('BEGIN')
+  try {
+    for (let signupIndex = 1; signupIndex <= 10; signupIndex += 1) {
+      const signupId = `historical-signup-${signupIndex}`
+      signupInsert.run(
+        signupId,
+        `Historical Fixture ${signupIndex}`,
+        `historical-${signupIndex}@fixture.invalid`,
+      )
+      for (let day = 1; day <= 21; day += 1) {
+        queueInsert.run(
+          `historical-queue-${signupIndex}-${day}`,
+          signupId,
+          day,
+          `2026-07-${String(day).padStart(2, '0')}T02:00:00.000Z`,
+        )
+      }
+    }
+    database.exec('COMMIT')
+  } catch (error) {
+    database.exec('ROLLBACK')
+    throw error
+  }
+
+  database.exec(await readFile(
+    new URL('../workers/migrations/0002_brain2_access_and_email_campaign.sql', import.meta.url),
+    'utf8',
+  ))
+
+  const initialAggregate = database.prepare(`
+    SELECT campaign_version, status, COUNT(*) AS row_count
+    FROM email_queue
+    GROUP BY campaign_version, status
+    ORDER BY campaign_version, status
+  `).all().map((row) => ({ ...row }))
+  const sqlErrors = []
+
+  const createStatement = (query) => {
+    const entry = {
+      query,
+      values: [],
+      bind(...values) {
+        entry.values = values
+        return entry
+      },
+      async first() {
+        return database.prepare(query).get(...entry.values) ?? null
+      },
+    }
+    return entry
+  }
+  const environment = {
+    DB: {
+      prepare: createStatement,
+      async batch(statements) {
+        database.exec('BEGIN')
+        try {
+          for (const statement of statements) {
+            database.prepare(statement.query).run(...statement.values)
+          }
+          database.exec('COMMIT')
+          return []
+        } catch (error) {
+          database.exec('ROLLBACK')
+          throw error
+        }
+      },
+    },
+    KV: { async delete() {} },
+    SIGNUP_IP_RATE_LIMITER: { async limit() { return { success: true } } },
+    SIGNUP_EMAIL_RATE_LIMITER: { async limit() { return { success: true } } },
+  }
+  const fetchAdapter = async (input, init = {}) => {
+    const headers = new Headers(init.headers)
+    headers.set('CF-Connecting-IP', '203.0.113.10')
+    return handleBrain2SignupRequest(
+      new Request(input, { ...init, headers }),
+      environment,
+      {
+        now: () => new Date('2026-07-27T00:00:00.000Z'),
+        randomUUID: () => 'pre-migration-smoke-signup-id',
+      },
+    )
+  }
+  const subprocessAdapter = async ({ args }) => {
+    const sqlPath = args[args.indexOf('--file') + 1]
+    const sql = await readFile(sqlPath, 'utf8')
+    const statements = sql
+      .split('\n')
+      .filter((line) => !line.trimStart().startsWith('--'))
+      .join('\n')
+      .split(';')
+      .map((statement) => statement.trim())
+      .filter(Boolean)
+    try {
+      const results = statements.map((statement) => ({
+        success: true,
+        results: database.prepare(statement).all(),
+      }))
+      return { exitCode: 0, stdout: JSON.stringify(results), stderr: '' }
+    } catch (error) {
+      sqlErrors.push(error instanceof Error ? error.message : String(error))
+      return { exitCode: 1, stdout: '', stderr: '' }
+    }
+  }
+
+  return { database, fetchAdapter, initialAggregate, sqlErrors, subprocessAdapter, fixtureRoot }
+}
+
 function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspectSql = () => {} }) {
   return async ({ executable, args }) => {
     subprocessArgs.push([executable, ...args])
@@ -225,10 +344,10 @@ function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspec
     inspectSql(sql)
 
     let results
-    if (sql.includes('r0-1-smoke:snapshot')) {
+    if (sql.includes('r0-1-smoke:pre-migration-snapshot')) {
       results = [
         { success: true, results: [{ challenge_signup_count: state.signups.length }] },
-        { success: true, results: structuredClone(state.legacy) },
+        { success: true, results: structuredClone(state.preMigrationEmailAggregate) },
       ]
     } else if (sql.includes('r0-1-smoke:find-signup')) {
       results = [{
@@ -415,7 +534,7 @@ test('controlled signup creates one row, proves zero queue rows, and removes onl
     signup_rows_total_before: 0,
     signup_rows_total_after_cleanup: 0,
     signup_rows_total_restored: true,
-    legacy_email_aggregate_unchanged: true,
+    pre_migration_email_aggregate_unchanged: true,
   })
   assert.equal(fixture.state.postRequests, 1)
   assert.deepEqual(fixture.state.signups, [])
@@ -435,6 +554,66 @@ test('controlled POST is accepted by the actual signup Worker contract', async (
   assert.equal(result.pass, true)
   assert.equal(result.routes[0].status, 200)
   assert.deepEqual(fixture.state.signups, [])
+})
+
+test('native controlled signup works before migration 0003 against the actual SQLite SQL contract', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-pre-migration-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  const fixture = await preMigrationSqliteFixture(fixtureRoot)
+  t.after(() => fixture.database.close())
+  const lines = []
+
+  assert.equal(fixture.database.prepare('SELECT COUNT(*) AS count FROM challenge_signups').get().count, 10)
+  assert.equal(fixture.database.prepare('SELECT COUNT(*) AS count FROM email_queue').get().count, 210)
+  assert.deepEqual(fixture.initialAggregate, [{
+    campaign_version: 'legacy-v0',
+    status: 'pending',
+    row_count: 210,
+  }])
+  const preMigrationColumns = fixture.database.prepare('PRAGMA table_info(email_queue)').all()
+    .map((column) => column.name)
+  assert.equal(preMigrationColumns.includes('audience_state'), false)
+  assert.equal(preMigrationColumns.includes('sendable'), false)
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      tempRoot: fixtureRoot,
+      fetchAdapter: fixture.fetchAdapter,
+      subprocessAdapter: fixture.subprocessAdapter,
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 0, `${lines[0]} ${fixture.sqlErrors.join('; ')}`)
+  const output = JSON.parse(lines[0])
+  assert.equal(output.aggregate.signup_rows_created, 1)
+  assert.equal(output.aggregate.queue_rows, 0)
+  assert.equal(output.aggregate.signup_rows_removed, 1)
+  assert.equal(output.aggregate.signup_rows_remaining, 0)
+  assert.equal(output.aggregate.signup_rows_total_restored, true)
+  assert.equal(output.aggregate.pre_migration_email_aggregate_unchanged, true)
+  assert.deepEqual(fixture.sqlErrors, [])
+  assert.equal(fixture.database.prepare('SELECT COUNT(*) AS count FROM challenge_signups').get().count, 10)
+  assert.equal(fixture.database.prepare('SELECT COUNT(*) AS count FROM email_queue').get().count, 210)
+  assert.deepEqual(fixture.database.prepare(`
+    SELECT campaign_version, status, COUNT(*) AS row_count
+    FROM email_queue
+    GROUP BY campaign_version, status
+    ORDER BY campaign_version, status
+  `).all().map((row) => ({ ...row })), fixture.initialAggregate)
+  assert.equal(fixture.database.prepare(
+    'SELECT COUNT(*) AS count FROM challenge_signups WHERE id = ?',
+  ).get('pre-migration-smoke-signup-id').count, 0)
+  const postSmokeColumns = fixture.database.prepare('PRAGMA table_info(email_queue)').all()
+    .map((column) => column.name)
+  assert.equal(postSmokeColumns.includes('audience_state'), false)
+  assert.equal(postSmokeColumns.includes('sendable'), false)
+  assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
+  assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
 })
 
 test('command shell emits only redacted JSON for a passing read-only run', async () => {
@@ -508,11 +687,9 @@ test('controlled signup fails closed when the global signup total drifts after c
 
 test('controlled signup rejects an unbounded global snapshot before POST', async () => {
   const fixture = controlledSignupFixture()
-  fixture.state.legacyEmailAggregate = Array.from({ length: 65 }, (_, index) => ({
+  fixture.state.preMigrationEmailAggregate = Array.from({ length: 65 }, (_, index) => ({
     campaign_version: `legacy-v${index}`,
     status: 'pending',
-    audience_state: 'quarantined_legacy',
-    sendable: 0,
     row_count: 1,
   }))
 
@@ -529,8 +706,8 @@ test('controlled signup rejects an unbounded global snapshot before POST', async
   assert.equal(fixture.state.postRequests, 0)
 })
 
-test('controlled signup fails closed when the legacy email aggregate changes', async () => {
-  const fixture = controlledSignupFixture({ legacyAggregateDrift: true })
+test('controlled signup fails closed when the pre-migration email aggregate changes', async () => {
+  const fixture = controlledSignupFixture({ preMigrationAggregateDrift: true })
 
   await assert.rejects(
     runProductionSmoke({
@@ -668,11 +845,9 @@ test('controlled CLI cleans three matching D1 rows and preserves an unrelated ro
 
   const state = {
     signups: [{ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }],
-    legacy: [{
+    preMigrationEmailAggregate: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
-      audience_state: 'quarantined_legacy',
-      sendable: 0,
       row_count: 210,
     }],
   }
@@ -732,11 +907,9 @@ test('controlled CLI safely quotes an apostrophe name and performs targeted clea
   const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }
   const state = {
     signups: [unrelated],
-    legacy: [{
+    preMigrationEmailAggregate: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
-      audience_state: 'quarantined_legacy',
-      sendable: 0,
       row_count: 210,
     }],
   }
@@ -858,10 +1031,6 @@ test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL ar
     ['malformed', '{not-json'],
     ['oversized', 'x'.repeat((64 * 1024) + 1)],
     ['wrong cardinality', JSON.stringify([{ success: true, results: [] }])],
-    ['unsuccessful', JSON.stringify([
-      { success: false, results: [] },
-      { success: true, results: [] },
-    ])],
   ]
 
   for (const [name, stdout] of cases) {
@@ -902,6 +1071,41 @@ test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL ar
       for (const sqlPath of sqlPaths) await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
     })
   }
+})
+
+test('controlled CLI rejects a standalone unsuccessful Wrangler result set with valid cardinality', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-unsuccessful-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  const lines = []
+  let fetchCalls = 0
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      tempRoot: fixtureRoot,
+      subprocessAdapter: async () => ({
+        exitCode: 0,
+        stdout: '[{"success":false,"results":[]}]',
+        stderr: '',
+      }),
+      fetchAdapter: async () => {
+        fetchCalls += 1
+        throw new Error('must not fetch')
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(fetchCalls, 0)
+  assert.deepEqual(JSON.parse(lines[0]), {
+    pass: false,
+    mode: 'controlled-signup',
+    code: 'SMOKE_DATABASE_CONTRACT',
+  })
 })
 
 test('command shell rejects unknown flags and non-HTTPS origins before fetching', async (t) => {
