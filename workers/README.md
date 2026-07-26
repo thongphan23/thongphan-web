@@ -8,6 +8,8 @@ giá trị vận hành.
 
 - Chỉ hợp nhất lộ trình 21 ngày vào `thongphan.com`.
 - Không triển khai chat với Brain2, vault riêng hay ứng dụng Brain2 riêng tư.
+- `brain2-embedder` chỉ còn là tombstone `410 Gone` tại đúng `/api/embed`, không
+  có AI/Vectorize binding và không có quy trình ingestion được hỗ trợ.
 - Ngày 01–07 là nội dung công khai; ngày 08–21 được đọc từ KV riêng sau khi
   Worker xác thực phiên Conan Maker.
 - 210 email cũ giữ nguyên `legacy-v0` và bị migration khóa update/delete.
@@ -22,11 +24,16 @@ giá trị vận hành.
 | Signup + tạo 21 hàng email v2 | `workers/api/signup.ts` | `wrangler.signup.toml` |
 | Quyền truy cập ngày 08–21 | `workers/brain2-access/index.ts` | `wrangler.brain2-access.jsonc` |
 | Brevo sender + hủy đăng ký | `workers/api/email-drip.ts` | `wrangler.brain2-email.toml` |
+| Tombstone ingestion đã ngừng | `workers/embed-vault.ts` | `wrangler.embed.toml` |
 
 Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, ghi signup và
 21 hàng queue trong một `D1.batch()`, rồi mới xóa cache theo kiểu best-effort.
 Sender dùng queue UUID làm khóa idempotency Brevo, claim nguyên tử, lease bốn
 phút, timeout 20 giây và chỉ retry trong cửa sổ 25 phút.
+
+Không còn script upload, đường nội bộ hay writer thay thế cho Brain2 Vectorize.
+Mọi phương thức gọi `/api/embed` nhận cùng problem response `410`; rollback chỉ
+được khôi phục tombstone đã kiểm chứng, không được khôi phục writer cũ.
 
 ## Kiểm tra local bắt buộc
 

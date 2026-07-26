@@ -184,3 +184,86 @@ Detailed pre-sanitization metadata-only evidence:
   metadata only.
 - Scanner output and verification evidence contain no credential value, fragment,
   credential-derived hash or Git object ID.
+
+## R0.1A Task 3 — Retire public Vectorize ingestion
+
+Status: PASS — source tombstone and local verification complete; production cutover
+not performed.
+
+### Outcome
+
+- `workers/embed-vault.ts` is now a three-line export of the shared disabled-endpoint
+  Worker for `/api/embed`.
+- Every method returns the fixed `410 Gone` problem response with private no-store,
+  `nosniff` and disabled-state headers.
+- The handler does not parse or read the request body and has no environment binding
+  parameter, AI invocation, Vectorize read or Vectorize write path.
+- `wrangler.embed.toml` retains `brain2-embedder`, the existing entry, compatibility
+  date and exact apex route while removing the AI and Vectorize bindings. Workers.dev
+  and preview URLs are disabled; structured tombstone logs are sampled at `0.1`.
+- The three unsupported local ingestion scripts were deleted. No internal route,
+  replacement writer or supported ingestion workflow was added.
+- This task changed local source only. It did not deploy, mutate a route, access a
+  remote binding, write D1, alter a token, send email or rewrite Git history.
+
+### TDD evidence
+
+Initial RED:
+
+```bash
+node --import tsx --test scripts/embed-worker-security.test.ts
+```
+
+- Exit code: `1`; `0/5` checks passed.
+- Anonymous and fabricated-identity POSTs returned `500` after the environment Proxy
+  detected legacy binding access, the streamed body was consumed and returned `500`,
+  and GET/OPTIONS returned `200` instead of `410`.
+- The Proxy threw before any external AI call or Vectorize write could occur.
+
+Logging RED:
+
+- Exit code: `1`; the HTTP tombstone checks were already green, while the injected
+  security logger received zero events instead of the required fixed event.
+
+GREEN:
+
+- Focused suite: `6/6` passed.
+- Full package suite: `270/270` passed.
+- The focused assertions cover anonymous and fabricated Access identity headers,
+  GET/OPTIONS, an eight-MiB bounded stream with a read counter, zero environment
+  property access, zero AI calls, zero Vectorize writes, exact response headers/body
+  and the metadata-only structured log event.
+
+### Type and Wrangler verification
+
+- `npm run typecheck:brain2-workers`: pass.
+- `npm run lint`: pass with zero warnings.
+- Wrangler `4.110.0` dry-run: pass.
+- Wrangler summary: `Total Upload: 1.23 KiB / gzip: 0.60 KiB`; `No bindings found.`
+- Emitted JavaScript bundle: `1,262` bytes; source map: `2,322` bytes.
+- The scoped write-path guard found no `BRAIN2_INDEX`, `VectorizeIndex`, `.upsert(`,
+  `[ai]` or `[[vectorize]]`; all three retired scripts were absent.
+
+The exact `ExportedHandler` interface required the official Workers declarations,
+which were absent from the repository because Wrangler exposes them only as an
+optional peer. Task 3 therefore adds and locks only
+`@cloudflare/workers-types@5.20260726.1`; no unrelated dependency was upgraded.
+`package-lock.json` is the single mechanically required file beyond the task brief's
+listed files.
+
+### Temporary plan mismatch carried to Task 4
+
+The plan asks Task 3 to add both retired Worker entries to
+`tsconfig.brain2-workers.json`. Adding the still-active Task 4 chat Worker with the
+current Cloudflare types exposed pre-existing `workers/api/chat.ts:87` error
+`TS2352`: the legacy AI result is a `Record<string, unknown>` cast to
+`ReadableStream`. Task 3 did not suppress the error or edit the Task 4-owned file.
+The shared security module and embed entry are included now; Task 4 must replace the
+chat Worker with the shared tombstone and add the chat entry before final R0.1A
+verification. Until then, the two-entry plan requirement is not claimed complete.
+
+### Rollback boundary
+
+The safe rollback is the last verified tombstone version. Never restore the retired
+unauthenticated writer. If the exact route is lost during a later owner-authorized
+cutover, restore only the tombstone route and binding-free configuration.
