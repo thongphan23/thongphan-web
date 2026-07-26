@@ -574,7 +574,18 @@ Initial RED:
 
 ```bash
 node - <<'NODE'
-// Exact Task 7 documentation contract from the approved brief.
+const fs = require('node:fs')
+const files = [
+  'docs/discovery/CURRENT-SYSTEM-AUDIT.md',
+  'docs/architecture/SAD-CLOUDFLARE-FIRST.md',
+  'docs/architecture/DATA-AND-EVENT-ARCHITECTURE.md',
+  'docs/STATUS.md',
+]
+const text = files.map((file) => fs.readFileSync(file, 'utf8')).join('\n')
+if (!text.includes('/api/embed` returns `410')) process.exit(1)
+if (!text.includes('quarantined_legacy')) process.exit(1)
+if (!text.includes('sendable = false')) process.exit(1)
+if (!text.includes('R0.2')) process.exit(1)
 NODE
 ```
 
