@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A BLOCKED — REVIEW CORRECTIONS IN PROGRESS
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -834,8 +834,9 @@ history mutation was performed during this hardening or final verification.
 
 ## Draft PR #2 review corrections
 
-Status: IN PROGRESS — focused correction gates pass; fresh full release verification
-is still required before restoring implementation-review readiness.
+Status: PASS — focused corrections, independent review and the fresh full release
+gate passed at source `d68a27b26ef266883d7095bd25e929c74cffadbb`. R0.1A is
+ready for implementation review only; production cutover has not started.
 
 ### Findings corrected
 
@@ -879,5 +880,59 @@ Focused GREEN:
 
 Migration `0003` remained unapplied in the actual SQLite slice: both
 `audience_state` and `sendable` were absent before and after the controlled signup.
-No production origin, remote D1 operation, deploy, migration, email action or
-history mutation occurred during these corrections.
+
+### Evidence map
+
+| Fact | Source evidence |
+|---|---|
+| Pre-migration adapter interface and bounded exact row schema | `scripts/r0-1-production-smoke.mjs:126`, `scripts/r0-1-production-smoke.mjs:136` |
+| Pre-migration SQL selects only `campaign_version`, `status`, `row_count` in deterministic order | `scripts/r0-1-production-smoke.mjs:313` |
+| Before/after snapshot, exact one-row/zero-queue contract and targeted cleanup | `scripts/r0-1-production-smoke.mjs:371` |
+| Real schema + 10-signup/210-queue SQLite fixture with migration `0002` only | `scripts/r0-1-production-smoke.test.mjs:204` |
+| Actual pre-0003 Worker/SQL regression proof and post-cleanup invariants | `scripts/r0-1-production-smoke.test.mjs:559` |
+| Standalone valid-cardinality `success=false` fixture | `scripts/r0-1-production-smoke.test.mjs:1076` |
+| Exact chat production identity and binding-free route config | `wrangler.chat.toml:1`, `scripts/chat-worker-security.test.ts:112` |
+| In-place chat cutover and phase-separated migration plan | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:206`, `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:263` |
+
+### Fresh complete release verification
+
+Verification ran from a clean detached worktree at
+`d68a27b26ef266883d7095bd25e929c74cffadbb`. The worktree was created outside
+the canonical repository and remained empty under `git status --porcelain` after
+all commands.
+
+| Gate | Exit | Command output |
+|---|---:|---|
+| Clean install | `0` | `npm ci`: 505 packages installed; retained npm audit baseline 14 high severity |
+| Root TypeScript | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Full tests | `0` | `316/316` passed; the previous `315/315` baseline did not regress |
+| Production build | `0` | `82/82` static pages generated |
+| Release gate | `0` | build `6/6`, SEO `4/4`, bundle `3/3`, Brain2 `143/143`; secret scan and lint passed |
+| Read safety | `0` | `3/3` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| Diff and disposable status | `0` | `git diff --check HEAD` passed; porcelain empty |
+| Canonical preservation | `0` | `VERIFY PASS`; HEAD, five dirty paths and all five protected SHA-256 values unchanged |
+
+All seven repository-pinned Wrangler `4.110.0` commands used `deploy --dry-run`:
+
+| Config | Exit | Upload / gzip | Bindings |
+|---|---:|---:|---|
+| `wrangler.embed.toml` | `0` | `1.23 / 0.60 KiB` | none |
+| `wrangler.chat.toml` | `0` | `1.21 / 0.59 KiB` | none |
+| `wrangler.signup.toml` | `0` | `33.84 / 9.68 KiB` | existing KV, D1 and two rate limiters |
+| `wrangler.router.toml` | `0` | `2.02 / 0.89 KiB` | none |
+| `wrangler.brain2-access.jsonc` | `0` | `30.93 / 10.46 KiB` | existing KV and D1 |
+| `wrangler.brain2-email.toml` | `0` | `42.90 / 11.90 KiB` | existing D1 only |
+| `wrangler.brain2-legacy-redirect.jsonc` | `0` | `0.69 / 0.42 KiB` | none |
+
+The independent correction review returned zero Critical, Important or Minor
+finding. Branch search finds the retired tombstone-named identity only in the
+historical-error explanation in the production cutover plan, never in executable
+configuration or a deploy target.
+
+No Worker, Pages project, Cloudflare token, production database, production route,
+email runtime or Git history was changed. These were local Draft PR review
+corrections only. No production origin, remote D1 operation, deploy, migration,
+email action or history mutation occurred during these corrections.
