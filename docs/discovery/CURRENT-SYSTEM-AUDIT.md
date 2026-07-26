@@ -1,9 +1,9 @@
 # Current System Audit — thongphan.com và nền móng Thongphan Read
 
 **Document ID:** TPREAD-D03
-**Version:** 2.1.0
-**Status:** R0 repository audit đã hoàn tất về kỹ thuật; chờ chủ dự án duyệt exit gate
-**Last updated:** 2026-07-26
+**Version:** 2.2.0
+**Status:** R0 baseline giữ nguyên; R0.1A remediation source đã hoàn tất qua Task 7, chờ Task 8 local release verification
+**Last updated:** 2026-07-27
 **Primary owner:** Thông Phan
 
 ---
@@ -16,7 +16,7 @@ Tài liệu này tách rõ ba lớp:
 2. **Quyết định sản phẩm đã được chốt trong bộ foundation.**
 3. **Giả định kỹ thuật phải được Codex xác minh trong repository ở Release 0.**
 
-Repository và production surface đã được kiểm tra tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. Báo cáo bằng chứng đầy đủ nằm tại `docs/discovery/R0-AUDIT-REPORT.md`. Các phần mô tả kiến trúc tương lai trong tài liệu này vẫn là target, không được hiểu là capability hiện có.
+Repository và production surface đã được kiểm tra tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. Báo cáo bằng chứng đầy đủ nằm tại `docs/discovery/R0-AUDIT-REPORT.md` và vẫn là baseline R0 bất biến. R0.1A sau đó chỉ thay đổi source local; báo cáo triển khai nằm tại `docs/security/R0-1-IMPLEMENTATION-REPORT.md`. Các phần mô tả kiến trúc tương lai trong tài liệu này vẫn là target, không được hiểu là capability hiện có.
 
 ## 1.1. R0 verified snapshot
 
@@ -35,12 +35,25 @@ Repository và production surface đã được kiểm tra tại commit `c8b10f9
 | Environments | Preview và production Pages chưa tách D1/KV |
 | Analytics | Chưa có product analytics hoặc Web Analytics beacon được xác minh |
 | Payment | Chưa có provider/webhook/subscription/entitlement |
-| Email | Signup live; sender Worker không tồn tại; cron rỗng; 210 legacy rows còn pending |
+| Email | Production vẫn ở baseline trước cutover; source local ghi registration nhưng không tạo queue row; delivery/marketing consent chưa được kích hoạt |
 | R2 / Queues | R2 bị tắt; không có Queue |
-| Existing AI | `/api/chat` và `/api/embed` đang tồn tại ngoài scope Read; không được thêm/sửa ở R0 |
+| Existing AI | R0.1A source thay cả hai API bằng binding-free 410 tombstone; `/chat` vẫn là trang static dùng local model; chưa production-deploy |
 | Verification | typecheck, lint, 242 tests, 82-route build, release gate, SEO, bundle, 7 Worker dry-run pass |
 
 R0 không deploy, không migration, không tạo database, không thay route/framework và không triển khai PRD-R1.
+
+### 1.2. R0.1A implemented-source delta và production boundary
+
+| Interface | Implemented source local | Production-deployed state | Boundary còn lại |
+|---|---|---|---|
+| `/api/embed` | `/api/embed` returns `410` cho mọi method qua shared tombstone; entry không có environment binding (`workers/embed-vault.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`, `wrangler.embed.toml:5-14`) | Chưa deploy trong R0.1A; không được mô tả production là đã remediated | R0.1B owner-gated cutover và smoke |
+| `/api/chat` | `/api/chat` returns `410` qua cùng tombstone, không có AI/Vectorize binding (`workers/api/chat.ts:1-3`, `wrangler.chat.toml:5-14`) | Chưa deploy trong R0.1A | R0.1B owner-gated cutover và smoke |
+| `/chat` | Trang public/static vẫn tồn tại; client luôn gọi `createLocalChatTurn()` và không gọi remote API (`app/chat/ChatClient.tsx:27-41`, `app/chat/chat-model.ts:28-33`) | Production page không được đổi bởi R0.1A | Không được suy diễn trang `/chat` là remote AI capability |
+| Signup | Success chỉ xác nhận registration được lưu; D1 batch có đúng một signup statement và không chuẩn bị queue statement (`workers/brain2-campaign.ts:269-294`) | Production chưa cutover sang contract mới | Không có email-delivery promise hay marketing-consent grant |
+| Email audience | Migration local đặt legacy rows thành `quarantined_legacy`, cột số tương ứng với `sendable = false`; trigger chặn mọi sendable state (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`) | Migration chưa apply production; email Worker chưa deploy; cron vẫn rỗng | Delivery status như `pending` không tạo audience eligibility; retention/dedup/consent còn owner-gated |
+| Environment isolation | Không thay đổi trong R0.1A | Preview và production D1 isolation chưa giải quyết | R0.2 chưa bắt đầu; tách resource không thuộc endpoint-binding removal |
+
+`R0.1A source complete` ở đây chỉ áp dụng cho remediation source qua Task 7. Task 8 local release verification chưa chạy, `R0.1B production cutover not started`, và R0.H1 public-history residual vẫn là nhánh riêng, nonblocking.
 
 ---
 
@@ -570,10 +583,10 @@ R0 phải lập bảng cho từng thành phần:
 | DB | Một D1 cho Brain2 challenge/access/email | D1 operational state | Cần schema mới sau ADR, không reuse mù | preview dùng chung prod |
 | Object | R2 disabled | Chỉ dùng nếu có object/export thật | Chưa provision | scope/cost |
 | Cache | KV chung rỗng + KV protected Brain2 | KV cho cache/config, không làm truth | Tách environment | consistency/isolation |
-| Background | Không Queue; email cron rỗng | Queue/Cron khi R1 chứng minh nhu cầu | Chưa provision | email hiện inert |
+| Background | Không Queue; source email cron rỗng; signup local không tạo email queue row | Queue/Cron khi R1 chứng minh nhu cầu | Chưa provision/deploy | registration không phải delivery consent |
 | Analytics | Không thấy Web Analytics/product SDK | Privacy-preserving event aggregate | Cần ADR/event catalog | không có field baseline |
 | Anti-bot | Rate limit chỉ ở signup; không Turnstile | Chọn theo threat model | Chờ ADR | UX/abuse |
-| AI | Chat/embed Worker đang live ngoài Read | None trong MVP Read | Cần isolate/retire/harden riêng | P0 embed mutation |
+| AI | Source local dùng binding-free 410 tombstones; `/chat` local-only; production chưa cutover | None trong MVP Read | R0.1B deploy/smoke riêng | không được claim production remediated trước cutover |
 
 Không migrate một component chỉ vì Cloudflare có dịch vụ tương ứng. Cần chứng minh fit và migration cost.
 
@@ -650,6 +663,8 @@ Trạng thái exit criteria:
 - assumption blocking R1: **còn decision gates**, không còn repository unknown mang tính nền;
 - Thông duyệt quyết định giữ/migrate: **pending**;
 - PRD-R1: **chưa được tạo và bị khóa tới khi owner duyệt R0**.
+
+R0.1 update: remediation source qua Task 7 đã được ghi nhận local-only; Task 8 local release verification, R0.1B production cutover, R0.H1 history remediation và R0.2 environment isolation đều chưa được mở bởi tài liệu này.
 
 ---
 

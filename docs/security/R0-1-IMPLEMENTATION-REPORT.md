@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: IN PROGRESS
+Status: IN PROGRESS — Task 8 local release verification has not run
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -532,3 +532,60 @@ provider, import an audience, activate cron, mutate credentials or rewrite histo
 If the contract is wrong, revert this local source commit and retain the failing
 regression test. There is no production data rollback in R0.1A. Never make a legacy
 row sendable as rollback behavior.
+
+## R0.1A Task 7 — Current-state architecture documentation
+
+Status: PASS — documentation contract and scoped local checks passed; Task 8 remains pending.
+
+### Documented source state
+
+- Current-state audit, SAD, Data/Event Architecture and STATUS now distinguish local
+  implemented source from production deployment.
+- `/api/embed` returns `410` and `/api/chat` returns `410` in implemented source through
+  the binding-free shared tombstone (`workers/embed-vault.ts:1-3`,
+  `workers/api/chat.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`). Neither
+  tombstone is claimed as production-deployed.
+- `/chat` remains a static/local journey and calls `createLocalChatTurn()` directly
+  (`app/chat/ChatClient.tsx:27-41`, `app/chat/chat-model.ts:28-33`).
+- Signup success means persisted registration only; its D1 batch contains one signup
+  insert and no queue insert (`workers/brain2-campaign.ts:269-294`). The descriptive
+  UI notice does not create marketing consent (`lib/brain2/signup-contract.ts:1-7`,
+  `components/SignupForm.tsx:114-125`, `components/SignupForm.tsx:138-190`).
+- The local migration maps legacy rows to `quarantined_legacy` and the numeric
+  equivalent of `sendable = false`, then rejects every sendable insert/update
+  (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`). Every sender path also
+  requires independent audience eligibility (`workers/api/email-drip.ts:133-181`,
+  `workers/api/email-drip.ts:283-324`). Delivery status never grants eligibility.
+- Email remains undeployed with an empty cron list (`wrangler.brain2-email.toml:32-33`).
+  Preview/production D1 isolation remains the unstarted R0.2 boundary, separate from
+  R0.1 endpoint binding removal.
+
+### Lifecycle boundary
+
+- `R0.1A source complete` applies to remediation Tasks 1–7 in the local repository.
+- Task 8 must run the complete local release verification before this report may say
+  `R0.1A READY FOR IMPLEMENTATION REVIEW`.
+- `R0.1B production cutover not started`; no production mutation is authorized here.
+- R0.H1 public-history findings remain a separate nonblocking residual.
+
+### TDD and documentation verification
+
+Initial RED:
+
+```bash
+node - <<'NODE'
+// Exact Task 7 documentation contract from the approved brief.
+NODE
+```
+
+- Exit code: `1` before documentation edits, with no output, because the required
+  current-state markers were not all present.
+
+GREEN:
+
+- Exact Task 7 documentation contract: exit `0`, no output.
+- Scoped `git diff --check` over the five exact Task 7 documents: exit `0`, no output.
+- `npm run test:secret-integrity`: exit `0`, zero findings.
+
+The top-level report remains `IN PROGRESS`. Task 7 does not execute Task 8's complete
+local release gate and therefore does not claim implementation-review readiness.
