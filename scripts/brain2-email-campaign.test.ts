@@ -412,13 +412,20 @@ test('migration hard-quarantines 210 legacy rows and makes sender selection impo
       INSERT INTO email_queue
         (id, signup_id, day, subject, body, scheduled_at, campaign_version, audience_state, sendable)
       VALUES
-        ('forbidden-sendable', 'signup-3', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'brain2-2026-v1', 'sendable', 1);
+        ('forbidden-sendable', 'signup-3', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'brain2-2026-v1', 'delivery_inactive', 1);
+    `], { encoding: 'utf8' })
+    const audienceInsert = spawnSync('sqlite3', [database, `
+      INSERT INTO email_queue
+        (id, signup_id, day, subject, body, scheduled_at, campaign_version, audience_state, sendable)
+      VALUES
+        ('forbidden-audience', 'signup-4', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'brain2-2026-v1', 'sendable', 0);
     `], { encoding: 'utf8' })
     const legacyUpdate = spawnSync('sqlite3', [database, "UPDATE email_queue SET campaign_version='brain2-2026-v1' WHERE id='queue-0-1';"], { encoding: 'utf8' })
     const legacyDelete = spawnSync('sqlite3', [database, "DELETE FROM email_queue WHERE id='queue-0-1';"], { encoding: 'utf8' })
     assert.notEqual(sendableUpdate.status, 0)
     assert.notEqual(audienceUpdate.status, 0)
     assert.notEqual(sendableInsert.status, 0)
+    assert.notEqual(audienceInsert.status, 0)
     assert.notEqual(legacyUpdate.status, 0)
     assert.notEqual(legacyDelete.status, 0)
 
