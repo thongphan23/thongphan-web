@@ -709,6 +709,11 @@ verification-location correction, not a source or test relaxation.
 The npm audit count is retained as the clean-install dependency baseline, not stated
 as remediated by R0.1A.
 
+The successful build also emitted the pre-existing Next.js workspace-root inference
+warning because a parent lockfile and the disposable worktree lockfile were both
+visible. The build still completed with exit `0` and generated all `82/82` routes;
+R0.1A did not change output tracing or repository-root configuration.
+
 ### Wrangler dry-run evidence
 
 All seven commands were dry-runs only; no Worker or Pages project was deployed.
