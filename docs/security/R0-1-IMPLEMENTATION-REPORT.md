@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: R0.1A BLOCKED — REVIEW CORRECTIONS IN PROGRESS
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
