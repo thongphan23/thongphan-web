@@ -119,3 +119,50 @@ Delete only `scripts/r0-1-change-boundary.mjs`,
 Task 1 does not mark R0.1A ready for implementation review. Later tasks own the
 remaining local source controls and final report status. R0.1B production cutover
 has not started.
+
+## R0.1A Task 2 — Secret detection and current-tree sanitation
+
+Status: PASS — current tree sanitized; history residual remains diagnostic-only.
+
+### Owner confirmation and inventory
+
+- Provider: Cloudflare.
+- Confirmation recorded: `2026-07-27T00:38:17+0700`.
+- Actor role: authorized Cloudflare administrator, relayed by the controller.
+- Candidate A classification: `invalid`.
+- Candidate B classification:
+  `legacy_orphaned_not_present_in_active_inventory`.
+- Manual inventory scope: three user tokens and one account token.
+- Relevant AI/Vectorize permissions: zero.
+- Current-tree sanitation authorization: yes.
+- Live token mutation authorization: no; none was performed.
+
+No token name, provider object ID, account ID, credential value, fragment or
+credential-derived hash is recorded.
+
+### Sanitization result
+
+- Four tracked locations across `.claude/handoff.md` and
+  `.claude/handoff-chat.md` were replaced with rotated-credential redaction and
+  environment-variable-only instructions.
+- The canonical local `.env.embed.local` contained only the retired assignment. It
+  was deleted and then verified absent; it remains uncommitted by design.
+- No production or remote resource was mutated, no live token was changed and no
+  history rewrite was attempted.
+
+### TDD and verification evidence
+
+- Initial RED: scanner module absent, exit `1`.
+- Focused scanner fixtures: `17/17` passed.
+- Package-integrated suite: `259/259` passed.
+- Current-tree post-sanitization scan: exit `0`, zero findings.
+- Separate history diagnostic: exit `1` with five metadata-only findings. It remains
+  outside `test:release` as the nonblocking R0.H1 residual.
+- Canonical working-tree boundary verification: `VERIFY PASS` from
+  `/Users/rio/thongphan-com`. An initial invocation from the implementation worktree
+  correctly failed the wrong-root guard and was immediately rerun from the canonical
+  repository.
+- Diff whitespace verification passed for the exact Task 2 files.
+
+Detailed pre-sanitization metadata-only evidence:
+`.superpowers/sdd/2026-07-26-r0-1-security-remediation/task-2-phase-a-report.md`.

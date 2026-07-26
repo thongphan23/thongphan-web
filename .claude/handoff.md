@@ -320,7 +320,7 @@ Ghi vào đây:
 **2. EMBED BRAIN2 VAULT**
 - **Script ready:** `scripts/embed-brain2.ts` (chunk 800 chars, overlap 100, embed via @cf/baai/bge-base-en-v1.5, upsert to Vectorize)
 - **Blocker:** `CLOUDFLARE_API_TOKEN` invalid
-- **Token tested:** `4amZNilWUAFKArBy8BObgdQD4N8_0SFnnVNzjkpZ`
+- **Token tested:** `[REDACTED — credential invalid]`
 - **Error:** `Authentication error (10000)` khi call Workers AI API
 - **Root cause:** Token có thể expired hoặc thiếu Workers AI permissions
 - **Next step:** Cần token mới với scopes: `Workers AI:Read`, `Vectorize:Edit`, `Account:Read`
