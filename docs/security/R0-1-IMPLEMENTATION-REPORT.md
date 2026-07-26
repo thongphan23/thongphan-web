@@ -185,6 +185,24 @@ Detailed pre-sanitization metadata-only evidence:
 - Scanner output and verification evidence contain no credential value, fragment,
   credential-derived hash or Git object ID.
 
+### Final-review scanner regression closure
+
+- A final whole-branch review found that a bare uppercase/alphanumeric/underscore
+  value in an explicitly secret-named assignment was being mistaken for an
+  environment reference. The focused RED expected one metadata-only finding but the
+  scanner returned exit `0` with none.
+- Environment-reference exemption now requires explicit syntax: shell expansion or
+  an `env`, `process.env` or `import.meta.env` member reference. Bare values no longer
+  receive the exemption.
+- Provider/token prose context is now maintained in one forward pass, including
+  fenced semantic blocks and the bounded two-line context, instead of rescanning all
+  preceding lines for every input line.
+- Final-review GREEN: focused scanner fixtures `23/23`; current tracked and approved
+  ignored-local scan exit `0` with zero findings; full package suite `299/299`; root
+  and Worker TypeScript plus lint all exit `0`.
+- All fixtures remain synthetic and temporary, and no credential value, fragment,
+  credential-derived hash or provider object ID was printed or recorded.
+
 ## R0.1A Task 3 — Retire public Vectorize ingestion
 
 Status: PASS — source tombstone and local verification complete; production cutover

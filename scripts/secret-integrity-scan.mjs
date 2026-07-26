@@ -191,6 +191,18 @@ function isPlaceholder(value) {
   );
 }
 
+function isExplicitEnvironmentReference(text, match, value) {
+  if (/^(?:(?:process|import\.meta)\.)?env\.[A-Z][A-Z0-9_]+$/.test(value)) {
+    return true;
+  }
+  if (!/^[A-Z][A-Z0-9_]+$/.test(value)) {
+    return false;
+  }
+  const start = match.index ?? 0;
+  const end = start + value.length;
+  return text[start - 1] === '$' || (text.slice(Math.max(0, start - 2), start) === '${' && text[end] === '}');
+}
+
 function candidateValues(text, { allowHex = false, allowPathLike = false } = {}) {
   const values = [];
   for (const match of text.matchAll(CANDIDATE_PATTERN)) {
@@ -200,9 +212,7 @@ function candidateValues(text, { allowHex = false, allowPathLike = false } = {})
       /\.(?:mjs|cjs|js|ts|tsx|md|json|html|css|map|png|jpe?g|svg|mp4)$/i.test(
         value,
       );
-    const looksLikeEnvironmentReference = /^(?:(?:(?:process|import\.meta)\.)?env\.)?[A-Z][A-Z0-9_]+$/.test(
-      value,
-    );
+    const looksLikeEnvironmentReference = isExplicitEnvironmentReference(text, match, value);
     if (
       (allowPathLike || !looksLikePath) &&
       !looksLikeEnvironmentReference &&
@@ -234,25 +244,17 @@ function isSecretName(name) {
   return providerNamedSecret || namedSecret;
 }
 
-function providerContextBefore(lines, index) {
-  let openFence = -1;
-  for (let cursor = 0; cursor < index; cursor += 1) {
-    if (lines[cursor].trim().startsWith('```')) {
-      openFence = openFence === -1 ? cursor : -1;
-    }
-  }
-  if (openFence !== -1) {
-    return lines.slice(Math.max(0, openFence - 1), index).join(' ');
-  }
-  return lines.slice(Math.max(0, index - 2), index).join(' ');
-}
-
 function findingsForText(text, file, classification) {
   const findings = [];
   const lines = text.split(/\r?\n/);
+  const recentLines = [];
+  let insideFence = false;
+  let fenceHasProvider = false;
+  let fenceHasTokenLabel = false;
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     const bearer = line.match(BEARER_PATTERN);
+    const assignment = line.match(ASSIGNMENT_PATTERN);
     if (
       bearer &&
       candidateValues(bearer[1], { allowHex: true, allowPathLike: true }).length > 0
@@ -263,10 +265,7 @@ function findingsForText(text, file, classification) {
         line: index + 1,
         classification,
       });
-      continue;
-    }
-    const assignment = line.match(ASSIGNMENT_PATTERN);
-    if (
+    } else if (
       assignment &&
       isSecretName(assignment[1]) &&
       candidateValues(assignment[2], { allowHex: true, allowPathLike: true }).length > 0
@@ -277,9 +276,7 @@ function findingsForText(text, file, classification) {
         line: index + 1,
         classification,
       });
-      continue;
-    }
-    if (
+    } else if (
       PROVIDER_PATTERN.test(line) &&
       TOKEN_LABEL_PATTERN.test(line) &&
       candidateValues(line).length > 0
@@ -290,22 +287,46 @@ function findingsForText(text, file, classification) {
         line: index + 1,
         classification,
       });
-      continue;
+    } else {
+      const recentContext = recentLines.join(' ');
+      const contextHasProvider = insideFence
+        ? fenceHasProvider
+        : PROVIDER_PATTERN.test(recentContext);
+      const contextHasTokenLabel = insideFence
+        ? fenceHasTokenLabel
+        : TOKEN_LABEL_PATTERN.test(recentContext);
+      if (
+        contextHasProvider &&
+        contextHasTokenLabel &&
+        candidateValues(line).length > 0
+      ) {
+        findings.push({
+          rule_id: 'token-labeled-prose',
+          file,
+          line: index + 1,
+          classification,
+        });
+      }
     }
-    const context = providerContextBefore(lines, index);
-    if (
-      PROVIDER_PATTERN.test(context) &&
-      TOKEN_LABEL_PATTERN.test(context) &&
-      candidateValues(line).length > 0
-    ) {
-      findings.push({
-        rule_id: 'token-labeled-prose',
-        file,
-        line: index + 1,
-        classification,
-      });
-      continue;
+
+    if (line.trim().startsWith('```')) {
+      if (insideFence) {
+        insideFence = false;
+        fenceHasProvider = false;
+        fenceHasTokenLabel = false;
+      } else {
+        const fenceStartContext = `${recentLines.at(-1) ?? ''} ${line}`;
+        insideFence = true;
+        fenceHasProvider = PROVIDER_PATTERN.test(fenceStartContext);
+        fenceHasTokenLabel = TOKEN_LABEL_PATTERN.test(fenceStartContext);
+      }
+    } else if (insideFence) {
+      fenceHasProvider ||= PROVIDER_PATTERN.test(line);
+      fenceHasTokenLabel ||= TOKEN_LABEL_PATTERN.test(line);
     }
+
+    recentLines.push(line);
+    if (recentLines.length > 2) recentLines.shift();
   }
   return findings;
 }

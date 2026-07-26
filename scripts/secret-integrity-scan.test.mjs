@@ -75,6 +75,10 @@ function syntheticCredential() {
   return ['Az7_', 'By8-', 'Cx9_', 'Dw0-'].join('').repeat(3);
 }
 
+function syntheticUppercaseCredential() {
+  return ['AZ7_', 'BY8_', 'CX9_', 'DW0_'].join('').repeat(3);
+}
+
 test.after(() => {
   for (const root of temporaryRoots) {
     rmSync(root, { force: true, recursive: true });
@@ -136,6 +140,26 @@ test('reports generic service, database, and API secret assignments', () => {
       rule_id: 'named-secret-assignment',
       file: 'fixtures/generic-assignments.txt',
       line: 3,
+      classification: 'tracked_plaintext',
+    },
+  ]);
+  assertMetadataOnly(result, value);
+});
+
+test('reports a bare uppercase credential in an explicit secret assignment', () => {
+  const root = makeRepository();
+  const value = syntheticUppercaseCredential();
+  writeFixture(root, 'fixtures/uppercase-assignment.txt', `SERVICE_TOKEN=${value}\n`);
+  track(root, 'fixtures/uppercase-assignment.txt');
+
+  const result = runScanner(root);
+
+  assert.equal(result.status, 1);
+  assert.deepEqual(parseFindings(result.stdout), [
+    {
+      rule_id: 'named-secret-assignment',
+      file: 'fixtures/uppercase-assignment.txt',
+      line: 1,
       classification: 'tracked_plaintext',
     },
   ]);
