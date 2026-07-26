@@ -1,11 +1,15 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-26
+Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- R0.1 design corrected and split into local remediation and owner-gated production cutover — implementation not started.
-- R0.1A is source/local verification and a separate implementation PR only. R0.1B requires another owner prompt after both documentation and implementation PRs are merged into clean GitHub default `main`. R0.H1 public-history remediation is separate, destructive and nonblocking after credential rotation plus current-tree controls pass.
+- R0.1 design is corrected and split into local remediation and owner-gated production cutover. R0.1A Tasks 1–4 are complete in local source; Tasks 5–8 remain pending. R0.1B production cutover has not started.
+- R0.1A remains source/local verification and a separate implementation PR only. R0.1B requires another owner prompt after both documentation and implementation PRs are merged into clean GitHub default `main`. R0.H1 public-history remediation is separate, destructive and nonblocking after credential rotation plus current-tree controls pass.
+- Latest R0.1A verification after Task 4 passes: full suite `273/273`, root and Worker TypeScript, lint, current-tree secret-integrity scan with zero findings, and static build `82/82` with `/chat` retained as a static route.
+- Both retired capability dry-runs pass without bindings: `/api/embed` emits `1.23 KiB / gzip 0.60 KiB`, and `/api/chat` emits `1.21 KiB / gzip 0.59 KiB`; Wrangler reports `No bindings found.` for each.
+- The owner inventory check records Candidate A as `invalid` and Candidate B as `legacy_orphaned_not_present_in_active_inventory`; only these status classifications are retained.
+- Production is unchanged by R0.1A Tasks 1–4: no deploy, route mutation, D1 write or migration, email send, credential mutation, or Git-history rewrite occurred. R0.1B remains a separately owner-gated production action.
 - R0 technical audit is complete against canonical runtime repo `/Users/rio/thongphan-com`, branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. The legacy `/Users/rio/Projects/thongphan-read` directory is migration provenance only; no legacy runtime was restored.
 - Verified current stack: Next.js 16.2.10 App Router, React 19.2.5, TypeScript 6.0.3, npm, static export to Cloudflare Pages plus dedicated Workers. Public Read remains canonical under `/library*`; `/read` is absent and returns a noindex 404.
 - Baseline passes: TypeScript, Worker TypeScript, lint, full 242/242 suite, 82-route build, release gate (build 6/6, SEO 4/4, bundle 3/3, Brain2 143/143), Read safety 3/3 and seven Wrangler Worker dry-runs. Live sitemap crawl returns 55/55 HTTP 200.
