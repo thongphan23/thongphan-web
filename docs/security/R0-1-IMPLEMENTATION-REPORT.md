@@ -1,6 +1,6 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: IN PROGRESS — controlled smoke hardening complete; fresh Phase B rerun required
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
@@ -553,7 +553,8 @@ row sendable as rollback behavior.
 
 ## R0.1A Task 7 — Current-state architecture documentation
 
-Status: PASS — documentation contract and scoped local checks passed; Task 8 remains pending.
+Status: PASS — documentation contract and scoped local checks passed; Task 8 had not
+run at this checkpoint.
 
 ### Documented source state
 
@@ -616,13 +617,13 @@ GREEN:
 - Scoped `git diff --check` over the five exact Task 7 documents: exit `0`, no output.
 - `npm run test:secret-integrity`: exit `0`, zero findings.
 
-The top-level report remains `IN PROGRESS`. Task 7 does not execute Task 8's complete
-local release gate and therefore does not claim implementation-review readiness.
+At Task 7 completion, the top-level report remained `IN PROGRESS`. Task 7 did not
+execute Task 8's complete local release gate or claim implementation-review readiness.
 
 ## R0.1A Task 8A — Bounded production-smoke contract
 
-Status: PASS — the runner contract is fixture-verified; production execution and the
-full local release gate remain pending.
+Status: PASS — the runner contract was fixture-verified at this checkpoint; production
+execution remained separately gated and the complete local gate belonged to Task 8B.
 
 ### Outcome
 
@@ -692,21 +693,16 @@ production command.
 
 ## R0.1A Task 8B — Complete local release verification
 
-Status: PASS — every local release gate passed at source commit `f6f4df3`; R0.1A is
-ready for implementation review only.
+Status: PASS — every local release gate passed at source commit
+`2b3f77be060659211165eebd603f735099b26668`; R0.1A is ready for implementation
+review only.
 
 ### Readiness RED and isolated verification boundary
 
 Before this documentation update, the exact readiness check exited `1` because the
 top-level report still said `IN PROGRESS`. Verification then ran from a clean detached
-worktree at `f6f4df3bda4baac98a1292b04be3c82acacf122d`, with no source change between
-attempts.
-
-The implementation plan suggested placing that worktree under `/tmp`. The first
-attempt there failed one pre-existing path-message assertion because the repository's
-private-output guard intentionally rejects temporary roots. The worktree was recreated
-outside `/tmp` at the same unchanged commit; the complete gate then passed. This was a
-verification-location correction, not a source or test relaxation.
+worktree outside `/tmp` at `2b3f77be060659211165eebd603f735099b26668`, with
+no source change between the readiness RED and the complete passing run.
 
 ### Clean install and local gates
 
@@ -716,7 +712,7 @@ verification-location correction, not a source or test relaxation.
 | Root TypeScript, non-incremental | `0` | `npx tsc --noEmit --incremental false` |
 | Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
 | Lint | `0` | zero warnings |
-| Full package tests | `0` | `298/298` passed |
+| Full package tests | `0` | `315/315` passed |
 | Production build | `0` | `82/82` static routes generated |
 | Release gate | `0` | all component suites passed; final Brain2 sub-suite `143/143` |
 | Read release safety | `0` | `3/3` passed |
@@ -770,16 +766,18 @@ was performed by Task 8B.
 
 ## R0.1A whole-branch review — controlled smoke hardening
 
-Status: PASS for the source hardening only. The prior Task 8B readiness evidence is
-historical because this source changed after `f6f4df3`; the report remains
-`IN PROGRESS` until the root agent completes a fresh detached Phase B rerun.
+Status: APPROVED at source `2b3f77be060659211165eebd603f735099b26668`.
+Whole-branch final review found no remaining Important finding and no Draft PR
+blocker.
 
 ### Review findings closed
 
 - The direct controlled CLI now reads synthetic identity only from the absolute path
-  in `R0_1_SMOKE_INPUT_FILE`. It accepts only a bounded, owner-owned, owner-readable
-  regular non-symlink JSON file with no group/other permissions or executable bits.
-  Name and email never enter `argv`, command output or Wrangler diagnostics.
+  in `R0_1_SMOKE_INPUT_FILE`, and only after pinning the native controlled path to the
+  exact approved apex `https://thongphan.com`. It accepts only a bounded, owner-owned,
+  owner-readable regular non-symlink JSON file with no group/other permissions or
+  executable bits. Name and email never enter `argv`, command output or Wrangler
+  diagnostics.
 - The native database adapter invokes only the repository-local Wrangler binary with
   the fixed D1 database/config and `d1 execute ... --remote --file ... --json --yes`.
   Each SQL artifact is created under an owner-only temporary directory with mode
@@ -794,6 +792,10 @@ historical because this source changed after `f6f4df3`; the report remains
   aggregate. It fails closed unless the total is exactly restored and the serialized
   legacy aggregate is byte-equal. Multiplicity cleanup still removes every matching
   row by ID plus synthetic identity while preserving unrelated rows.
+- D1 lookup returns every positively identified matching ID within the bounded
+  Wrangler output contract; it has no three-row cardinality trap. SQL literals double
+  apostrophes, and cleanup remains narrow by signup ID, synthetic identity and
+  challenge.
 - Read-only route, tombstone, canonical, sitemap, timeout and response-size contracts
   are unchanged.
 
@@ -804,6 +806,10 @@ the old POST contract (`SMOKE_SIGNUP_HTTP_CONTRACT`); the aggregate assertion ex
 the missing before/after database snapshots; and the direct CLI exited fail-closed
 because no secure input/D1 path existed. Each vertical slice was made green before
 the next slice was added.
+
+Final-review RED evidence additionally reproduced the late non-apex rejection and the
+three-match D1 cardinality trap. Both were closed in the bounded review loop; no third
+fix loop was required.
 
 | Gate | Exit | Evidence |
 |---|---:|---|
@@ -817,6 +823,11 @@ the next slice was added.
 | Task diff check | `0` | no whitespace errors |
 | Canonical preservation | `0` | `VERIFY PASS`; five protected hashes unchanged |
 
+One nonblocking Minor remains in test evidence: the table fixture labeled
+`unsuccessful` reaches the result-set cardinality rejection before independently
+exercising the `success: false` predicate. The implementation itself rejects entries
+whose `success` is not `true`; this report does not claim that fixture independently
+covered that branch. The Minor does not block implementation review.
+
 No production origin, remote D1 operation, deploy, migration, email action, push or
-history mutation was performed during this hardening. A fresh detached Phase B rerun
-remains the next gate and is deliberately not claimed here.
+history mutation was performed during this hardening or final verification.
