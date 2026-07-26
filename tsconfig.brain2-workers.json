@@ -11,6 +11,7 @@
     "workers/brain2-campaign.ts",
     "workers/brain2-access/**/*.ts",
     "workers/api/signup.ts",
+    "workers/api/chat.ts",
     "workers/api/email-content.ts",
     "workers/api/email-drip.ts",
     "workers/embed-vault.ts",

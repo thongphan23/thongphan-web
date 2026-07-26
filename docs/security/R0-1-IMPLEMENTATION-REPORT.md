@@ -267,3 +267,95 @@ verification. Until then, the two-entry plan requirement is not claimed complete
 The safe rollback is the last verified tombstone version. Never restore the retired
 unauthenticated writer. If the exact route is lost during a later owner-authorized
 cutover, restore only the tombstone route and binding-free configuration.
+
+## R0.1A Task 4 — Retire remote chat capability
+
+Status: PASS — source tombstone and local `/chat` verification complete; production
+cutover not performed.
+
+### Outcome
+
+- `workers/api/chat.ts` now exports the shared disabled-endpoint Worker for exactly
+  `/api/chat`. POST, GET, OPTIONS and a concurrent 25-POST burst all return the fixed
+  `410 Gone` problem response without reading a binding or consuming AI/Vectorize
+  budget.
+- `wrangler.chat.toml` retains the exact apex route, uses the retired-service name
+  `thongphan-chat-tombstone`, disables Workers.dev and preview URLs, removes Workers
+  AI, Vectorize and `nodejs_compat`, enables structured-log sampling at `0.1`, and
+  advances the compatibility date to `2026-07-27`.
+- `/chat` remains a public static page. `ChatClient.sendMessage(text)` always uses
+  `createLocalChatTurn(text)` and retains loading state, progressive display,
+  keyboard form submission, live-region output and three unique contextual
+  recommendations.
+- The public `ChatMessage` and `ChatTurn` contracts are unchanged. The unreachable
+  SSE parser, `NEXT_PUBLIC_CHAT_API_URL` branch, client fetch path and dead Next proxy
+  at `app/api/chat/route.ts` were removed.
+- `workers/api/chat.ts` is now included in `tsconfig.brain2-workers.json`, closing the
+  Task 3 reviewer contingency with the current `@cloudflare/workers-types` and no
+  suppression.
+- This task changed local source only. It did not deploy, push, mutate a route, access
+  a remote binding, write D1, alter a token, send email or rewrite Git history.
+
+### TDD evidence
+
+Initial RED:
+
+```bash
+node --import tsx --test scripts/chat-worker-security.test.ts scripts/chat-journey.test.ts
+```
+
+- Exit code: `1`; `2/6` checks passed and `4/6` failed for the intended reasons.
+- The client still exposed `NEXT_PUBLIC_CHAT_API_URL` and `fetch`; the anonymous POST
+  and concurrent burst completed the local AI/Vectorize spies and returned `200`
+  instead of `410`; the config still exposed AI/Vectorize and omitted the disabled
+  public-surface/observability controls.
+- All spies were synthetic local objects. No Workers AI or Vectorize service was
+  contacted during RED.
+
+GREEN:
+
+- Focused security/journey suite: `6/6` passed.
+- Adjacent `/chat` canonical, navigation, site-shell and static-route contracts:
+  `27/27` passed.
+- Full package suite: `273/273` passed.
+- The burst contract proves all 25 responses are `410` with aggregate `0` AI calls
+  and `0` Vectorize reads; the local journey still returns a useful answer and three
+  unique internal recommendations.
+
+### Type, build and Wrangler verification
+
+- `npx tsc --noEmit`: pass after the independently reviewed Task 3 root type-boundary
+  fix at `94d35fd`.
+- `npm run typecheck:brain2-workers`: pass with both retired Worker entries and
+  `@cloudflare/workers-types@5.20260726.1`; no suppression or unsafe cast added.
+- `npm run lint`: pass with zero warnings.
+- `npm run build`: pass; Next generated `82/82` static pages and retained `/chat` as a
+  static route. The existing multiple-lockfile workspace-root warning remains
+  informational.
+- Current-tree secret-integrity scan: exit `0`, zero findings after explicit staging.
+- Wrangler `4.110.0` dry-run: pass. Summary: `Total Upload: 1.21 KiB / gzip:
+  0.59 KiB`; `No bindings found.` Emitted JavaScript bundle: `1,237` bytes; source
+  map: `2,317` bytes.
+- The remote-reactivation scan found no `NEXT_PUBLIC_CHAT_API_URL`, legacy Worker
+  name, `BRAIN2_INDEX`, `VectorizeIndex`, `AI.run`, `[ai]` or `[[vectorize]]`; the
+  Next proxy is absent.
+
+### Cloudflare review and residual concerns
+
+The dependency-free tombstone does not buffer request bodies, carry mutable global
+request state, float promises, access bindings or fail open. The retained TOML format
+is intentional because this task owns the existing `wrangler.chat.toml`; its current
+schema validation, exact route, compatibility date, public-surface controls and
+sampled observability were verified by Wrangler dry-run.
+
+No Task 4 implementation concern remains. Wrangler reported that `4.114.0` is
+available while the repository remains pinned to `4.110.0`; this task did not expand
+scope into a dependency upgrade. Production remains unchanged until a separately
+authorized cutover deploys the tombstone.
+
+### Rollback boundary
+
+If the local `/chat` experience regresses, revert only `ChatClient.tsx`,
+`chat-model.ts` and their local-journey contracts. Keep the `/api/chat` tombstone,
+binding-free config and deleted proxy; never restore the retired remote AI/Vectorize
+path.

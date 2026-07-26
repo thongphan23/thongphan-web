@@ -4,11 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { ArrowUp, MessageCircle } from 'lucide-react'
 import { DossierHeader } from '@/components/dossier/DossierHeader'
-import { getRecommendationsForPrompt } from '@/lib/site-journey'
-import { createLocalChatTurn, splitSseEvents, suggestedQuestions, type ChatMessage } from './chat-model'
+import { createLocalChatTurn, suggestedQuestions, type ChatMessage } from './chat-model'
 import styles from './page.module.css'
-
-const CHAT_API_URL = process.env.NEXT_PUBLIC_CHAT_API_URL
 
 export default function ChatClient() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -33,49 +30,14 @@ export default function ChatClient() {
     setInput('')
     setLoading(true)
     try {
-      if (!CHAT_API_URL) {
-        const turn = createLocalChatTurn(text)
-        let response = ''
-        for (const word of turn.content.split(' ')) {
-          response += `${word} `
-          updateLastAssistant(response)
-          await new Promise((resolve) => setTimeout(resolve, 24))
-        }
-        updateLastAssistant(response.trim(), turn.recommendations)
-        return
+      const turn = createLocalChatTurn(text)
+      let response = ''
+      for (const word of turn.content.split(' ')) {
+        response += `${word} `
+        updateLastAssistant(response)
+        await new Promise((resolve) => setTimeout(resolve, 24))
       }
-      const response = await fetch(CHAT_API_URL, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }),
-      })
-      if (!response.ok) throw new Error('Failed to get response')
-      const reader = response.body?.getReader()
-      if (!reader) throw new Error('Response body is empty')
-      const decoder = new TextDecoder()
-      let assistantMessage = ''
-      let remainder = ''
-      const consumeEvent = (event: string) => {
-        const data = event.slice(6)
-        if (data === '[DONE]') return
-        const parsed = JSON.parse(data)
-        if (parsed.response) { assistantMessage += parsed.response; updateLastAssistant(assistantMessage) }
-      }
-      while (true) {
-        const { done, value } = await reader.read()
-        if (done) break
-        const split = splitSseEvents(remainder, decoder.decode(value, { stream: true }))
-        remainder = split.remainder
-        split.events.forEach(consumeEvent)
-      }
-      const finalSplit = splitSseEvents(remainder, `${decoder.decode()}\n\n`)
-      finalSplit.events.forEach(consumeEvent)
-      if (!assistantMessage.trim()) throw new Error('Response stream completed without an answer')
-      updateLastAssistant(assistantMessage, getRecommendationsForPrompt(text))
-    } catch (error) {
-      console.error('Chat error:', error)
-      updateLastAssistant(
-        'Kết nối vừa bị gián đoạn. Bạn vẫn có thể chọn một bước phù hợp bên dưới.',
-        getRecommendationsForPrompt(text),
-      )
+      updateLastAssistant(response.trim(), turn.recommendations)
     } finally { setLoading(false) }
   }
 

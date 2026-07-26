@@ -10,6 +10,9 @@ giá trị vận hành.
 - Không triển khai chat với Brain2, vault riêng hay ứng dụng Brain2 riêng tư.
 - `brain2-embedder` chỉ còn là tombstone `410 Gone` tại đúng `/api/embed`, không
   có AI/Vectorize binding và không có quy trình ingestion được hỗ trợ.
+- `/chat` vẫn là hành trình public chạy local bằng model tất định; `/api/chat`
+  chỉ còn tombstone `410 Gone`, không có AI/Vectorize binding hay nhánh client
+  có thể kích hoạt lại gọi từ xa.
 - Ngày 01–07 là nội dung công khai; ngày 08–21 được đọc từ KV riêng sau khi
   Worker xác thực phiên Conan Maker.
 - 210 email cũ giữ nguyên `legacy-v0` và bị migration khóa update/delete.
@@ -25,6 +28,7 @@ giá trị vận hành.
 | Quyền truy cập ngày 08–21 | `workers/brain2-access/index.ts` | `wrangler.brain2-access.jsonc` |
 | Brevo sender + hủy đăng ký | `workers/api/email-drip.ts` | `wrangler.brain2-email.toml` |
 | Tombstone ingestion đã ngừng | `workers/embed-vault.ts` | `wrangler.embed.toml` |
+| Tombstone chat từ xa đã ngừng | `workers/api/chat.ts` | `wrangler.chat.toml` |
 
 Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, ghi signup và
 21 hàng queue trong một `D1.batch()`, rồi mới xóa cache theo kiểu best-effort.
@@ -34,6 +38,11 @@ phút, timeout 20 giây và chỉ retry trong cửa sổ 25 phút.
 Không còn script upload, đường nội bộ hay writer thay thế cho Brain2 Vectorize.
 Mọi phương thức gọi `/api/embed` nhận cùng problem response `410`; rollback chỉ
 được khôi phục tombstone đã kiểm chứng, không được khôi phục writer cũ.
+
+Mọi phương thức gọi `/api/chat` cũng nhận cùng problem response `410`. Trang
+`/chat` không gọi endpoint này: câu trả lời và ba đề xuất tiếp theo được tạo local
+từ model tất định. Nếu giao diện local hồi quy, chỉ rollback client/model và test;
+không khôi phục Worker AI, Vectorize, proxy Next hay URL public cũ.
 
 ## Kiểm tra local bắt buộc
 
@@ -47,6 +56,7 @@ npm audit --audit-level=high
 npx wrangler deploy --dry-run --config wrangler.signup.toml --outdir /tmp/brain2-signup-dry-run
 npx wrangler deploy --dry-run --config wrangler.brain2-access.jsonc --outdir /tmp/brain2-access-dry-run
 npx wrangler deploy --dry-run --config wrangler.brain2-email.toml --outdir /tmp/brain2-email-dry-run
+npx wrangler deploy --dry-run --config wrangler.chat.toml --outdir /tmp/r0-1-chat-tombstone
 ```
 
 Trước release private content, chạy thêm publisher/leak gate theo tài liệu và
