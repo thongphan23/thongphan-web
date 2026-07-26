@@ -191,9 +191,13 @@ async function runControlledSignup({
         pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
       }
     }
-    if (createdRows.length === 1) {
+    for (const row of createdRows) {
       try {
-        removedRows = await deleteSignup(createdRows[0].id)
+        const deleted = await deleteSignup(row.id)
+        removedRows += deleted
+        if (deleted !== 1) {
+          pendingError ??= new SmokeError('SMOKE_TARGETED_CLEANUP_CONTRACT')
+        }
       } catch (error) {
         pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
       }

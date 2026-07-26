@@ -51,7 +51,7 @@ function readOnlyFetchFixture(overrides = new Map()) {
   }
 }
 
-function controlledSignupFixture({ queueRows = 0 } = {}) {
+function controlledSignupFixture({ queueRows = 0, createdSignupCount = 1 } = {}) {
   const state = { signups: [], queueRows, postRequests: 0 }
   const fetchAdapter = async (input, init = {}) => {
     assert.equal(new URL(input).pathname, '/api/signup')
@@ -59,7 +59,10 @@ function controlledSignupFixture({ queueRows = 0 } = {}) {
     assert.equal(init.headers['content-type'], 'application/json')
     state.postRequests += 1
     const identity = JSON.parse(init.body)
-    state.signups.push({ id: 'fixture-signup-id', ...identity })
+    for (let index = 0; index < createdSignupCount; index += 1) {
+      const id = createdSignupCount === 1 ? 'fixture-signup-id' : `fixture-signup-id-${index + 1}`
+      state.signups.push({ id, ...identity })
+    }
     return response('{"success":true,"signup_id":"fixture-signup-id"}', {
       status: 200,
       headers: { 'content-type': 'application/json; charset=utf-8' },
@@ -336,6 +339,28 @@ test('controlled signup refuses to POST when its synthetic identity already exis
   )
   assert.equal(fixture.state.postRequests, 0)
   assert.equal(fixture.state.signups.length, 1)
+})
+
+test('controlled signup cleans every matching row when one POST creates multiple rows', async () => {
+  const fixture = controlledSignupFixture({ createdSignupCount: 2 })
+  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }
+  fixture.state.signups.push(unrelated)
+
+  await assert.rejects(
+    runProductionSmoke({
+      origin: ORIGIN,
+      mode: 'controlled-signup',
+      fetchAdapter: fixture.fetchAdapter,
+      databaseAdapter: fixture.databaseAdapter,
+      syntheticIdentity: SYNTHETIC_IDENTITY,
+    }),
+    { code: 'SMOKE_SIGNUP_ROW_CONTRACT' },
+  )
+  const matching = fixture.state.signups.filter((row) => (
+    row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email
+  ))
+  assert.deepEqual(matching, [])
+  assert.deepEqual(fixture.state.signups, [unrelated])
 })
 
 test('controlled command fails closed without injected identity and database adapter', async () => {

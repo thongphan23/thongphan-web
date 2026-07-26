@@ -647,13 +647,19 @@ npm run test:r0-1-production-smoke
 ```
 
 - Exit code: `0`.
-- Result: `24/24` adapter fixtures passed.
+- Result: `25/25` adapter fixtures passed.
 - Coverage includes seven independent tombstone-marker mutations, public route and
   SEO failures, native timeout, streamed byte overflow, zero-mutation read-only mode,
   exact controlled signup/queue/cleanup counts, unrelated-row preservation,
   pre-existing-fixture refusal, redacted output and fail-closed CLI argument/input
   handling.
-- Package-integrated full suite: `npm test`, exit `0`, `297/297` tests passed.
+- Reviewer-hardening RED reproduced a multiplicity cleanup gap: one POST created two
+  matching synthetic rows, the runner rejected the row-count contract but left both
+  rows behind. The minimal fix deletes every discovered post-preflight matching row
+  through the exact `signupId` plus synthetic-identity adapter contract, checks every
+  delete count, preserves the original multiplicity failure and leaves unrelated rows
+  intact.
+- Package-integrated full suite: `npm test`, exit `0`, `298/298` tests passed.
 
 ### Production and release-gate boundary
 
