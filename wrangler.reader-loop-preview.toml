@@ -1,0 +1,14 @@
+name = "thongphan-reader-loop-preview-api"
+main = "workers/reader-loop-preview.ts"
+compatibility_date = "2026-07-15"
+workers_dev = true
+preview_urls = true
+
+[observability]
+enabled = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "thongphan-reader-loop-preview"
+database_id = "cbc3a7e5-d614-4648-bd12-b9839047d61d"
+migrations_dir = "workers/reader-loop-preview-migrations"
