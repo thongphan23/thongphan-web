@@ -4,14 +4,21 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- **R0.1A BLOCKED — AUTHORITY AND FAILURE-SAFETY CORRECTION IN PROGRESS.** Draft
-  PR #2 still contained an obsolete two-credential mutation gate, an unconditional
-  `EXIT` cleanup that destroyed Worker-version recovery evidence after a mutation,
-  and an R0.1B release checkout under `/tmp`. RED lifecycle and document contracts
-  reproduced the blockers. Production cutover remains unstarted and separately
-  owner-gated; readiness will be restored only after the complete gate passes at the
-  correction head.
-- Controlled smoke passes `42/42` including an actual SQLite fixture built from `workers/schema.sql` plus migration `0002` only, ten historical signups, 210 `legacy-v0/pending` rows, the real signup Worker and emitted SQL. Chat security/config passes `3/3` with exact production identity `thongphan-chat-api`. The standalone valid-cardinality `success=false` fixture closes the former Minor. The fresh complete gate passes root/Worker TypeScript, lint, full `336/336` tests, `82/82` build, release suites, Read safety `3/3`, zero-finding current-tree secret scan, all seven Wrangler dry-runs, diff/clean-status checks and canonical `VERIFY PASS`. No live origin, remote D1, deploy or push was used.
+- **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now records the
+  owner-approved Candidate A `invalid` and Candidate B
+  `legacy_orphaned_not_present_in_active_inventory` dispositions without a live-token
+  mutation gate. The release checkout is owner-controlled outside `/tmp`, and the
+  Worker-version evidence lifecycle cleans pre-mutation failures, preserves secured
+  evidence after a mutation, cleans successful closure, preserves the original exit
+  code and restores the previous umask. Production cutover remains unstarted and
+  separately owner-gated.
+- Focused correction gates pass: evidence lifecycle `14/14`, production-plan contract
+  `5/5`, version delta `18/18` and version-command contract `2/2`. A clean detached
+  gate at source `5514e712e10d0b91c00616ba204344ab6c540b33` passes root/Worker
+  TypeScript, lint, full `355/355` tests, controlled smoke `42/42`, `82/82` build,
+  release suites, Read safety `3/3`, zero-finding current-tree secret scan, all seven
+  Wrangler dry-runs, diff/clean-status checks and canonical preservation. No live
+  origin, remote D1, deploy or production mutation was used.
 - **R0.1B production cutover not started.** It requires another owner prompt after documentation, implementation and Task 8 local gates are reviewed on a clean default branch. R0.H1 public-history remediation remains separate, destructive and nonblocking; R0.2 preview/production environment isolation remains unresolved and unstarted.
 - Fresh Task 8B passed from a clean detached worktree outside `/tmp` at source `2b3f77b`: the readiness check first exited `1` while the report still said `IN PROGRESS`, then `npm ci` installed 505 packages with the retained 14-high npm audit baseline; root and Worker TypeScript, lint, full `315/315` tests, `82/82` static-route build, every release component suite including final Brain2 `143/143`, Read safety `3/3`, current-tree secret scan with zero findings, seven Wrangler dry-runs, diff check and empty detached status all passed.
 - All seven dry-runs exited `0`: embed `1.23 KiB / gzip 0.60 KiB` and chat `1.21 / 0.59` have no bindings; signup `33.84 / 9.68` reports the existing KV, D1 and two rate limiters; router `2.02 / 0.89` has no bindings; access `30.93 / 10.46` reports KV and D1; email `42.90 / 11.90` reports D1 only; legacy redirect `0.69 / 0.42` has no bindings.

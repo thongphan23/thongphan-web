@@ -1,11 +1,12 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A BLOCKED — AUTHORITY AND FAILURE-SAFETY CORRECTION IN PROGRESS
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
 ## R0.1A production runbook authority and failure-safety correction
 
-Status: IN PROGRESS — RED contracts reproduced both blockers; focused and complete
-verification remain pending.
+Status: PASS — owner-approved credential authority, private release-checkout scope
+and mutation-aware Worker-version evidence handling are reconciled and verified at
+source `5514e712e10d0b91c00616ba204344ab6c540b33`.
 
 ### Credential authority contradiction and owner disposition
 
@@ -61,8 +62,58 @@ exact `main`, and clean porcelain before any production gate.
 
 ### GREEN and complete verification
 
-Pending. Do not treat this report as implementation-review readiness until every
-focused and complete release gate below is rerun at the correction head.
+Focused GREEN passed without network or production work:
+
+- Evidence lifecycle: `14/14` passed, including owner-only initialization, inherited
+  `0600` files, pre-mutation cleanup, post-mutation preservation, irreversible
+  mutation state, direct cleanup, non-recursive trap behavior, original exit-code
+  preservation and previous-umask restoration.
+- Production-plan contract: `5/5` passed. All authoritative documents now record
+  Candidate A as `invalid`, Candidate B as
+  `legacy_orphaned_not_present_in_active_inventory`, no live-token mutation gate,
+  the owner-controlled release checkout and the failure-safe evidence lifecycle.
+- Existing version protections remain green: delta helper `18/18`, version-command
+  contract `2/2`, and Bash syntax validation passed.
+
+Complete verification ran from a clean detached worktree outside `/tmp` at exact
+source `5514e712e10d0b91c00616ba204344ab6c540b33`. The checkout remained clean after
+all commands.
+
+| Gate | Exit | Command output |
+|---|---:|---|
+| Clean install | `0` | `npm ci`: 505 packages installed; retained npm audit baseline 14 high severity |
+| Root TypeScript | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Full tests | `0` | `355/355` passed; no failures, skips or cancellations |
+| Evidence lifecycle | `0` | `14/14` passed |
+| Production-plan contract | `0` | `5/5` passed |
+| Version-delta helper | `0` | `18/18` passed |
+| Version-command contract | `0` | `2/2` passed |
+| Controlled-smoke contract | `0` | `42/42` passed locally; no production endpoint called |
+| Production build | `0` | `82/82` static pages generated |
+| Release gate | `0` | build `6/6`, SEO `4/4`, bundle `3/3`, Brain2 `143/143`; secret scan and lint passed |
+| Read safety | `0` | `3/3` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| Diff and disposable status | `0` | `git diff --check HEAD` passed; porcelain empty |
+| Canonical preservation | `0` | canonical HEAD, five dirty paths and all five protected SHA-256 values unchanged |
+
+All seven repository-pinned Wrangler `4.110.0` commands used `deploy --dry-run` and
+exited `0`:
+
+| Config | Upload / gzip | Bindings |
+|---|---:|---|
+| `wrangler.embed.toml` | `1.23 / 0.60 KiB` | none |
+| `wrangler.chat.toml` | `1.21 / 0.59 KiB` | none |
+| `wrangler.signup.toml` | `33.84 / 9.68 KiB` | existing KV, D1 and two rate limiters |
+| `wrangler.router.toml` | `2.02 / 0.89 KiB` | none |
+| `wrangler.brain2-access.jsonc` | `30.93 / 10.46 KiB` | existing KV and D1 |
+| `wrangler.brain2-email.toml` | `42.90 / 11.90 KiB` | existing D1 only |
+| `wrangler.brain2-legacy-redirect.jsonc` | `0.69 / 0.42 KiB` | none |
+
+No Worker, Pages project, Cloudflare token, production database, production route,
+email runtime, migration or Git history was changed. This was a local Draft PR
+authority and failure-safety correction only.
 
 ## R0.1A Worker version readback correction
 
