@@ -39,9 +39,11 @@ Cloudflare Workers, Wrangler 4.110.0, D1/SQLite, native Node scripts.
    email address.
 9. Use repository-pinned Wrangler. Current documentation can be checked online, but
    do not upgrade dependencies in R0.1.
-10. Current-tree sanitization requires non-secret confirmation that both credential
-    candidates were revoked or rotated. The scanner can be implemented and reviewed
-    before that confirmation; do not copy any candidate into a fixture or command.
+10. Credential authority follows the owner-approved disposition: Candidate A is
+    `invalid`; Candidate B is `legacy_orphaned_not_present_in_active_inventory` after
+    complete review of 3 User API Tokens and 1 Account API Token with zero active
+    Workers AI/Vectorize permission match. Do not mutate an active token or copy any
+    candidate into a fixture or command.
 11. `test:secret-integrity:history` is an expected-red residual diagnostic. It does
     not block R0.1A review, R0.1B, R0.2 or PRD-R1 and must not be in `test:release`.
 12. Git history rewrite belongs only to R0.H1 under a separate destructive owner
@@ -170,8 +172,8 @@ test: guard R0.1 working tree boundaries
 ### Goal
 
 Detect provider-token patterns without disclosing values, make the current-tree gate
-permanent, and sanitize tracked/approved local plaintext only after non-secret owner
-confirmation that both Cloudflare credential candidates were revoked or rotated.
+permanent, and record the owner-approved invalid/orphaned dispositions alongside the
+sanitized tracked tree and removed approved ignored-local credential file.
 
 ### Exact files
 
@@ -227,18 +229,20 @@ Add scripts:
 Add the unit test to `npm test`. Add only `test:secret-integrity` to `test:release`.
 Keep `test:secret-integrity:history` as an explicitly separate diagnostic command.
 
-Before source sanitization, the authorized Cloudflare administrator must revoke or
-rotate:
+Record only the non-secret confirmation time and actor role for the authoritative
+disposition:
 
-1. the single tracked candidate repeated at `.claude/handoff.md:323` and
-   `.claude/handoff-chat.md:809`, `:818`, `:822`;
-2. the distinct candidate at `.env.embed.local:1`.
+1. Candidate A read-only verification is `invalid`; the repeated tracked plaintext
+   is sanitized and no revoke or Roll is required.
+2. Candidate B is `legacy_orphaned_not_present_in_active_inventory`; the owner
+   reviewed 3 User API Tokens and 1 Account API Token and found zero active Workers
+   AI/Vectorize permission match. The ignored `.env.embed.local` file is deleted.
 
-Record only the non-secret confirmation time and actor role. Replace tracked literals with
-`[REDACTED — credential rotated]` and commands with
-`CLOUDFLARE_API_TOKEN` environment-variable references. Sanitize the ignored local
-assignment after rotation without echoing its old value. Placeholder-only lines may
-remain only when the scanner classifies them as placeholders.
+No token names or IDs are recorded. No active Cloudflare token mutation was
+authorized or performed. Keep the tracked redactions and `CLOUDFLARE_API_TOKEN`
+environment-variable references; never restore the ignored assignment or echo its
+old value. Placeholder-only lines may remain only when the scanner classifies them as
+placeholders.
 
 ### Verification command
 
@@ -265,13 +269,14 @@ recorded without values as the nonblocking R0.H1 residual.
 
 ### Documentation update
 
-Record provider, owner, rotation confirmation, sanitized paths and scan counts. Do not
-record token IDs or values.
+Record provider, owner, the Candidate A/B dispositions, complete inventory scope,
+zero relevant permission matches, sanitized paths and scan counts. Do not record token
+names, IDs or values.
 
 ### Rollback
 
-Do not restore revoked credentials or plaintext. If prose quality regresses, rewrite
-the surrounding handoff text while keeping `[REDACTED — credential rotated]` and the
+Do not restore sanitized plaintext or the deleted ignored-local file. If prose quality
+regresses, rewrite the surrounding handoff text while keeping the redaction and the
 environment-variable-only instruction.
 
 ### Proposed commit
@@ -908,7 +913,7 @@ R0.1A readiness claim.
 Commit all Tasks 1–8 first. Then:
 
 ```bash
-r0_1_verify_dir=$(mktemp -d /tmp/thongphan-r0-1-verify.XXXXXX)
+r0_1_verify_dir=$(mktemp -d /Users/rio/thongphan-r0-1-verify.XXXXXX)
 git worktree add --detach "$r0_1_verify_dir" HEAD
 cd "$r0_1_verify_dir"
 npm ci

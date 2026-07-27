@@ -4,7 +4,13 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2's Worker-version readback correction passed helper tests `18/18`, branch-wide command contract `2/2` and the complete fresh disposable-worktree release gate at source `3eb1d7f858f0836109d8b46c75332d593a465931`. Production cutover remains unstarted and separately owner-gated.
+- **R0.1A BLOCKED — AUTHORITY AND FAILURE-SAFETY CORRECTION IN PROGRESS.** Draft
+  PR #2 still contained an obsolete two-credential mutation gate, an unconditional
+  `EXIT` cleanup that destroyed Worker-version recovery evidence after a mutation,
+  and an R0.1B release checkout under `/tmp`. RED lifecycle and document contracts
+  reproduced the blockers. Production cutover remains unstarted and separately
+  owner-gated; readiness will be restored only after the complete gate passes at the
+  correction head.
 - Controlled smoke passes `42/42` including an actual SQLite fixture built from `workers/schema.sql` plus migration `0002` only, ten historical signups, 210 `legacy-v0/pending` rows, the real signup Worker and emitted SQL. Chat security/config passes `3/3` with exact production identity `thongphan-chat-api`. The standalone valid-cardinality `success=false` fixture closes the former Minor. The fresh complete gate passes root/Worker TypeScript, lint, full `336/336` tests, `82/82` build, release suites, Read safety `3/3`, zero-finding current-tree secret scan, all seven Wrangler dry-runs, diff/clean-status checks and canonical `VERIFY PASS`. No live origin, remote D1, deploy or push was used.
 - **R0.1B production cutover not started.** It requires another owner prompt after documentation, implementation and Task 8 local gates are reviewed on a clean default branch. R0.H1 public-history remediation remains separate, destructive and nonblocking; R0.2 preview/production environment isolation remains unresolved and unstarted.
 - Fresh Task 8B passed from a clean detached worktree outside `/tmp` at source `2b3f77b`: the readiness check first exited `1` while the report still said `IN PROGRESS`, then `npm ci` installed 505 packages with the retained 14-high npm audit baseline; root and Worker TypeScript, lint, full `315/315` tests, `82/82` static-route build, every release component suite including final Brain2 `143/143`, Read safety `3/3`, current-tree secret scan with zero findings, seven Wrangler dry-runs, diff check and empty detached status all passed.

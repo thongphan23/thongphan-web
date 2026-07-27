@@ -1,6 +1,68 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: R0.1A BLOCKED — AUTHORITY AND FAILURE-SAFETY CORRECTION IN PROGRESS
+
+## R0.1A production runbook authority and failure-safety correction
+
+Status: IN PROGRESS — RED contracts reproduced both blockers; focused and complete
+verification remain pending.
+
+### Credential authority contradiction and owner disposition
+
+- Previous contradiction: the design, local plan, production plan and owner checklist
+  still required revocation or rotation of two credential candidates even though the
+  latest owner-approved evidence had already classified them without a live-token
+  mutation.
+- Candidate A final disposition: read-only verification returned `invalid`; the
+  tracked plaintext was sanitized and no revoke or Roll is required.
+- Candidate B final disposition:
+  `legacy_orphaned_not_present_in_active_inventory`; the project owner reviewed the
+  complete active inventory of 3 User API Tokens and 1 Account API Token and found
+  zero active Workers AI/Vectorize permission match.
+- No token names or IDs were recorded. The approved ignored local credential file was
+  deleted. No active Cloudflare token mutation was authorized or performed; active
+  tokens serving DNS, Tunnel, Cloudflare One, D1, R2, KV, Workers Scripts or Load
+  Balancing remain untouched.
+- Current tracked and approved ignored-local controls are sanitized and the current-
+  tree secret scan is the mandatory technical gate. R0.H1 remains nonblocking
+  public-history hygiene for tracked historical plaintext; R0.H1 does not imply
+  Candidate B revoke or rotation.
+
+### Worker-version evidence lifecycle root cause
+
+- Current contradiction: the runbook instructed the operator to preserve secured
+  before/after JSON after a post-deploy capture failure, while its unconditional
+  `EXIT` trap deleted those same JSON files.
+- Impact: a Worker may already be deployed, its exact version identity may become
+  ambiguous, the read-only recovery evidence is destroyed, and the runbook forbids
+  re-deploying merely to recover that evidence.
+- Correct policy: a nonzero exit before any remote mutation cleans temporary evidence;
+  an exit after remote mutation but before successful closure preserves the evidence
+  securely; successful completed cutover cleans it; every path preserves the original
+  process exit status and restores the previous umask.
+- Recurrence control: `scripts/r0-1b-version-evidence-lifecycle.sh` owns the stateful
+  lifecycle and is exercised only through spawned local Bash fixture processes. It
+  has no network, remote-service or JSON-content read path.
+
+### Private release checkout correction
+
+The R0.1B full repository release checkout previously used
+`/tmp/thongphan-r0-1b-release.*`. The corrected runbook requires
+`/Users/rio/thongphan-r0-1b-release.*`, owner control, an empty generated directory,
+exact `main`, and clean porcelain before any production gate.
+
+### RED evidence
+
+- `node --test scripts/r0-1b-version-evidence-lifecycle.test.mjs`: exit `1`; helper
+  absent, so the lifecycle behavior could not be satisfied.
+- `node --test scripts/r0-1b-production-plan-contract.test.mjs`: exit `1`; stale
+  credential authority, `/tmp` release checkout and unconditional cleanup trap were
+  all detected.
+
+### GREEN and complete verification
+
+Pending. Do not treat this report as implementation-review readiness until every
+focused and complete release gate below is rerun at the correction head.
 
 ## R0.1A Worker version readback correction
 

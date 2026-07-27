@@ -53,12 +53,15 @@ deployed last from the exact clean merged `main` SHA. Email sending remains abse
     select the first/latest list entry and never scrape deploy text.
 13. A zero-version or multiple-version delta is a concurrency/drift stop. An invalid
     input is an evidence-integrity stop. Do not deploy again to repair either capture
-    failure. Preserve the private files only for the bounded read-only investigation,
-    then run cleanup; recover the exact already-created version through read-only
-    control-plane evidence under a new owner instruction.
+    failure. Failure before remote mutation cleans temporary evidence. Failure after
+    remote mutation must preserve evidence directory securely; stop; do not re-deploy;
+    do not delete evidence; return the preserved absolute path only; wait for an
+    owner-authorized read-only recovery prompt.
 14. Worker-version JSON is temporary sensitive operational metadata. Keep it only in
-    `R0_1B_VERSION_DIR`, never print the complete JSON, never copy it into the checkout,
-    never commit it, and delete it through the registered cleanup before closure.
+    `R0_1B_VERSION_DIR`, never print the complete JSON, never copy it into the checkout
+    and never commit it. The sourced lifecycle helper cleans it on pre-mutation failure
+    and successful closure, preserves it after post-mutation failure, restores the
+    prior umask and preserves the original process exit status.
 
 Wrangler command semantics must be checked against the pinned version before use.
 `wrangler deploy --dry-run` compiles without upload, D1 migration commands maintain a
@@ -74,9 +77,17 @@ ledger and Time Travel restore is destructive. References:
 
 - Owner checklist identifies the approved docs PR and R0.1A implementation PR.
 - Both PRs report merged to `main`.
-- Both Cloudflare credential candidates have non-secret revocation/rotation
-  confirmation.
+- Candidate A `invalid` evidence is recorded.
+- Candidate B classification is
+  `legacy_orphaned_not_present_in_active_inventory`.
+- The complete active inventory evidence is recorded with scope
+  3 User API Tokens and 1 Account API Token, zero active Workers AI/Vectorize
+  permission match.
+- No token names or IDs are recorded and no active Cloudflare token mutation was
+  authorized or performed.
 - Current tracked tree and approved ignored local configuration are sanitized.
+- Current-tree secret scan passes; R0.H1 remains a nonblocking tracked-history
+  residual and does not imply Candidate B revoke or rotation.
 - Owner has issued a separate prompt authorizing R0.1B.
 
 ### Commands
@@ -85,26 +96,22 @@ Run read-only checks first:
 
 ```bash
 set -euo pipefail
-R0_1B_VERSION_DIR=$(mktemp -d /Users/rio/r0-1b-worker-versions.XXXXXX)
-chmod 700 "$R0_1B_VERSION_DIR"
-R0_1B_PREVIOUS_UMASK=$(umask)
-umask 077
-
-r0_1b_cleanup_worker_version_evidence() {
-  if test -d "$R0_1B_VERSION_DIR" && test ! -L "$R0_1B_VERSION_DIR"; then
-    find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
-      -exec rm -f -- {} +
-    rmdir "$R0_1B_VERSION_DIR"
-  fi
-  umask "$R0_1B_PREVIOUS_UMASK"
-}
-trap r0_1b_cleanup_worker_version_evidence EXIT
-
 gh repo view thongphan23/thongphan-web --json defaultBranchRef
 gh pr view "$R0_1B_DOCS_PR" --json state,mergedAt,baseRefName,url
 gh pr view "$R0_1B_IMPL_PR" --json state,mergedAt,baseRefName,url
 
-r0_1b_release_dir=$(mktemp -d /tmp/thongphan-r0-1b-release.XXXXXX)
+R0_1B_RELEASE_PREFIX=/Users/rio/thongphan-r0-1b-release
+test ! -e "$R0_1B_RELEASE_PREFIX"
+test ! -L "$R0_1B_RELEASE_PREFIX"
+test -d /Users/rio
+test ! -L /Users/rio
+test -O /Users/rio
+r0_1b_release_dir=$(mktemp -d /Users/rio/thongphan-r0-1b-release.XXXXXX)
+test -d "$r0_1b_release_dir"
+test ! -L "$r0_1b_release_dir"
+test -O "$r0_1b_release_dir"
+test -z "$(find "$r0_1b_release_dir" -mindepth 1 -maxdepth 1 -print -quit)"
+chmod 700 "$r0_1b_release_dir"
 git clone --branch main --single-branch https://github.com/thongphan23/thongphan-web.git "$r0_1b_release_dir"
 cd "$r0_1b_release_dir"
 git fetch origin main
@@ -112,16 +119,24 @@ test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
 test -z "$(git status --porcelain)"
 R0_1B_MAIN_SHA=$(git rev-parse HEAD)
 git show --no-patch --format='%H %cI' "$R0_1B_MAIN_SHA"
+
+source scripts/r0-1b-version-evidence-lifecycle.sh
+r0_1b_version_evidence_init /Users/rio/r0-1b-worker-versions
+r0_1b_install_exit_trap
 ```
 
 The GitHub result must name `main`; both PRs must be merged with base `main`.
-Record `R0_1B_MAIN_SHA` without adding or modifying a repository file yet.
+The generated release directory must be owner-controlled and empty before the exact
+`main` clone; it must contain no pre-existing user work. Record `R0_1B_MAIN_SHA`
+without adding or modifying a repository file yet. The lifecycle trap is installed
+inside the clean merged-main checkout before any remote mutation.
 
 ### Stop conditions
 
 Stop if default branch is not `main`, either PR is unmerged, HEAD differs from
-`origin/main`, porcelain is nonempty, the credential confirmation is missing, or
-the execution prompt does not explicitly authorize production cutover.
+`origin/main`, porcelain is nonempty, the generated path is unsafe or nonempty, any
+credential disposition/inventory/scan evidence is missing, or the execution prompt
+does not explicitly authorize production cutover.
 
 ### Rollback
 
@@ -147,6 +162,8 @@ return to a new R0.1A implementation PR.
 
 ```bash
 npm ci
+npm run test:r0-1b-version-evidence-lifecycle
+npm run test:r0-1b-production-plan-contract
 npm run test:r0-1-worker-version-delta
 npm run test:r0-1-worker-version-command-contract
 npx tsc --noEmit --incremental false
@@ -229,6 +246,7 @@ R0_1B_EMBED_VIEW="$R0_1B_VERSION_DIR/embed-view.json"
 npx wrangler versions list --config wrangler.embed.toml --json > "$R0_1B_EMBED_BEFORE"
 chmod 600 "$R0_1B_EMBED_BEFORE"
 test -s "$R0_1B_EMBED_BEFORE"
+r0_1b_mark_remote_mutation_started
 npx wrangler deploy --strict --config wrangler.embed.toml
 npx wrangler versions list --config wrangler.embed.toml --json > "$R0_1B_EMBED_AFTER"
 chmod 600 "$R0_1B_EMBED_AFTER"
@@ -551,17 +569,25 @@ fix-forward rule; never restore AI bindings, queue creation, false copy or senda
 Update the implementation report and `docs/STATUS.md` in a new documentation PR from
 the recorded production state. Closure evidence must distinguish source SHA,
 deployed version IDs, Pages deployment, D1 state and remaining R0.H1 residual.
-After recording only those safe summaries, delete the temporary JSON and unregister
-the trap:
+Only after every route, version, D1, email-runtime and safe-summary check above has
+passed, mark successful closure, delete the temporary JSON and unregister the trap:
 
 ```bash
-r0_1b_cleanup_worker_version_evidence
-trap - EXIT
+r0_1b_mark_cutover_succeeded
+r0_1b_cleanup_version_evidence
+r0_1b_remove_exit_trap
 ```
+
+On failure after remote mutation, the trap preserves the evidence directory. Stop,
+do not re-deploy, do not delete the evidence, return only
+`R0_1B_VERSION_EVIDENCE_PRESERVED=<absolute path>`, and wait for an
+owner-authorized read-only recovery prompt. Cleanup of preserved evidence requires a
+later explicit owner instruction.
 
 ## Exact cutover order
 
-1. Obtain approvals and non-secret credential rotation confirmation.
+1. Obtain approvals and record the Candidate A invalid and Candidate B
+   legacy/orphaned complete-active-inventory evidence without live token mutation.
 2. Verify Cloudflare control-plane availability.
 3. Deploy the embed tombstone.
 4. Deploy the chat tombstone.
