@@ -38,8 +38,28 @@ const requiredSessionAssertions = [
   'test -n "$R0_1B_VERSION_DIR"',
   'test -d "$R0_1B_VERSION_DIR"',
   'test ! -L "$R0_1B_VERSION_DIR"',
-  "trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'",
+  "r0_1b_assert_exit_trap_installed",
 ];
+
+test("Tasks 1-10 use the portable current-shell EXIT-trap assertion", () => {
+  const assertions = documents.cutover.match(
+    /^r0_1b_assert_exit_trap_installed$/gm,
+  );
+
+  assert.equal(assertions?.length, 10);
+  assert.doesNotMatch(
+    documents.cutover,
+    /trap -p EXIT\s*\|\s*(?:grep|rg)/,
+  );
+  assert.match(
+    documents.lifecycleHelper,
+    /^r0_1b_assert_exit_trap_installed\(\) \{$/m,
+  );
+  assert.match(
+    documents.cutover,
+    /source scripts\/r0-1b-version-evidence-lifecycle\.sh[\s\S]*r0_1b_assert_exit_trap_installed/,
+  );
+});
 
 test("credential authority matches the owner-approved invalid/orphaned disposition", () => {
   assert.doesNotMatch(

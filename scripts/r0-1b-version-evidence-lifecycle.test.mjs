@@ -65,6 +65,152 @@ test("files created after initialization inherit mode 0600", (t) => {
   assert.equal(mode(join(outputPath(result), "before.json")), 0o600);
 });
 
+test("legacy EXIT-trap pipeline loses the trap in the host Bash subshell", (t) => {
+  const { root } = fixture(t);
+  const result = runBash(
+    'trap "_r0_1b_version_evidence_exit_handler" EXIT\ntrap -p EXIT > "$2/direct.txt"\ngrep -Fq "_r0_1b_version_evidence_exit_handler" "$2/direct.txt"\ndirect_status=$?\ntrap -p EXIT | grep -Fq "_r0_1b_version_evidence_exit_handler"\npipeline_status=$?\ntrap - EXIT\nprintf "DIRECT=%s PIPELINE=%s\\n" "$direct_status" "$pipeline_status"',
+    root,
+  );
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout, "DIRECT=0 PIPELINE=1\n");
+  assert.equal(result.stderr, "");
+});
+
+test("portable EXIT-trap assertion passes repeatedly without output or artifacts", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nr0_1b_assert_exit_trap_installed\nr0_1b_assert_exit_trap_installed\ntest ! -e "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nr0_1b_remove_exit_trap\nr0_1b_cleanup_version_evidence',
+    prefix,
+  );
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout, "");
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion rejects a missing EXIT trap and cleans its artifact", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_assert_exit_trap_installed\nstatus=$?\ntest ! -e "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nprintf "STATUS=%s\\n" "$status"',
+    prefix,
+  );
+
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /^STATUS=[1-9][0-9]*\n$/);
+  assert.doesNotMatch(result.stdout, /_r0_1b_version_evidence_exit_handler/);
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion rejects a wrong EXIT handler without altering it", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ntrap "printf wrong >/dev/null" EXIT\nr0_1b_assert_exit_trap_installed\nstatus=$?\ntrap -p EXIT > "$R0_1B_VERSION_DIR/remaining.txt"\ntrap - EXIT\ntest ! -e "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nprintf "STATUS=%s DIR=%s\\n" "$status" "$R0_1B_VERSION_DIR"',
+    prefix,
+  );
+  const directory = result.stdout.match(/ DIR=(\/[^\n]+)$/m)?.[1];
+
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /^STATUS=[1-9][0-9]* DIR=\//);
+  assert.ok(directory);
+  assert.match(readFileSync(join(directory, "remaining.txt"), "utf8"), /wrong/);
+  assert.doesNotMatch(result.stdout, /printf wrong|_r0_1b_version/);
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion rejects a lookalike handler containing the marker", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ntrap "printf _r0_1b_version_evidence_exit_handler >/dev/null" EXIT\nr0_1b_assert_exit_trap_installed\nstatus=$?\ntrap - EXIT\ntest ! -e "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nprintf "STATUS=%s\\n" "$status"',
+    prefix,
+  );
+
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /^STATUS=[1-9][0-9]*\n$/);
+  assert.doesNotMatch(result.stdout, /_r0_1b_version_evidence_exit_handler/);
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion rejects arguments without creating an artifact", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nr0_1b_assert_exit_trap_installed unexpected\nstatus=$?\ntest ! -e "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nr0_1b_remove_exit_trap\nprintf "STATUS=%s\\n" "$status"',
+    prefix,
+  );
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stdout, "STATUS=64\n");
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion preserves the installed EXIT trap", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nr0_1b_assert_exit_trap_installed\ntrap -p EXIT > "$R0_1B_VERSION_DIR/remaining.txt"\nr0_1b_remove_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.equal(result.status, 0);
+  assert.match(
+    readFileSync(join(directory, "remaining.txt"), "utf8"),
+    /_r0_1b_version_evidence_exit_handler/,
+  );
+  assert.equal(existsSync(join(directory, "exit-trap-assertion.txt")), false);
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion observes a mode-0600 artifact in a mode-0700 directory", (t) => {
+  const { root, prefix } = fixture(t);
+  const modeRecord = join(root, "assertion-mode.txt");
+  const result = runBash(
+    'MODE_RECORD=$3\ngrep() { stat -f "%Lp" "$R0_1B_VERSION_DIR/exit-trap-assertion.txt" > "$MODE_RECORD"; command grep "$@"; }\nsource "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nr0_1b_assert_exit_trap_installed\nr0_1b_remove_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"',
+    prefix,
+    modeRecord,
+  );
+
+  assert.equal(result.status, 0);
+  assert.equal(readFileSync(modeRecord, "utf8"), "600\n");
+  assert.equal(mode(outputPath(result)), 0o700);
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion fails closed on a pre-existing assertion file", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf sentinel > "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nr0_1b_assert_exit_trap_installed\nstatus=$?\nr0_1b_remove_exit_trap\nprintf "STATUS=%s DIR=%s\\n" "$status" "$R0_1B_VERSION_DIR"',
+    prefix,
+  );
+  const directory = result.stdout.match(/ DIR=(\/[^\n]+)$/m)?.[1];
+
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /^STATUS=[1-9][0-9]* DIR=\//);
+  assert.ok(directory);
+  assert.equal(
+    readFileSync(join(directory, "exit-trap-assertion.txt"), "utf8"),
+    "sentinel",
+  );
+  assert.equal(result.stderr, "");
+});
+
+test("portable assertion fails closed on a symlink without touching its target", (t) => {
+  const { root, prefix } = fixture(t);
+  const target = join(root, "outside.txt");
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf outside > "$3"\nln -s "$3" "$R0_1B_VERSION_DIR/exit-trap-assertion.txt"\nr0_1b_assert_exit_trap_installed\nstatus=$?\nr0_1b_remove_exit_trap\nprintf "STATUS=%s DIR=%s\\n" "$status" "$R0_1B_VERSION_DIR"',
+    prefix,
+    target,
+  );
+  const directory = result.stdout.match(/ DIR=(\/[^\n]+)$/m)?.[1];
+
+  assert.equal(result.status, 0);
+  assert.match(result.stdout, /^STATUS=[1-9][0-9]* DIR=\//);
+  assert.ok(directory);
+  assert.equal(lstatSync(join(directory, "exit-trap-assertion.txt")).isSymbolicLink(), true);
+  assert.equal(readFileSync(target, "utf8"), "outside");
+  assert.equal(result.stderr, "");
+});
+
 test("successful cutover cleanup removes the evidence directory", (t) => {
   const { prefix } = fixture(t);
   const result = runBash(
@@ -324,5 +470,10 @@ test("cleanup restores the previous umask", (t) => {
 test("helper source has no Wrangler, network, or JSON-content read path", () => {
   const source = readFileSync(helperPath, "utf8");
   assert.doesNotMatch(source, /\bwrangler\b|\bcurl\b|\bwget\b|\bfetch\b/i);
-  assert.doesNotMatch(source, /\bcat\b|\bhead\b|\btail\b|\bgrep\b|\brg\b|\bjq\b/);
+  assert.doesNotMatch(source, /\bcat\b|\bhead\b|\btail\b|\brg\b|\bjq\b/);
+  assert.equal(
+    [...source.matchAll(/\bgrep\b/g)].length,
+    1,
+    "only the EXIT-trap marker assertion may use grep",
+  );
 });
