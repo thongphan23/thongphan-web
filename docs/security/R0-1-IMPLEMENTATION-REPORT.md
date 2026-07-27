@@ -1,12 +1,12 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A BLOCKED — VERSION READBACK CORRECTION IN PROGRESS
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
-## R0.1A Worker version readback correction — in progress
+## R0.1A Worker version readback correction
 
-Status: BLOCKED — Draft PR #2 cannot return to implementation review until the
-Worker-version delta helper, command-contract regression test, corrected R0.1B
-readback sequence and complete local verification all pass.
+Status: PASS — the tested Worker-version delta helper, branch-wide command contract,
+corrected R0.1B readback sequence and complete local release gate passed at source
+`3eb1d7f858f0836109d8b46c75332d593a465931`. Production cutover remains unstarted.
 
 ### Root cause, impact and recurrence control
 
@@ -17,13 +17,106 @@ readback sequence and complete local verification all pass.
 - Impact: an R0.1B endpoint deployment could mutate production successfully and then
   stop at the invalid readback command. That leaves a deployed endpoint without the
   evidence needed to close the cutover or identify the exact version for rollback.
-- Recurrence control: a local, network-free version-list delta helper will capture
-  exactly one new UUID from before/after Wrangler JSON, and a static contract will
-  scan `docs/**`, `scripts/**`, `package.json` and `AGENTS.md` for every version-view
-  command, including multiline forms, and reject any command without a positional ID.
+- Recurrence control: a local, network-free version-list delta helper captures
+  exactly one new UUID from before/after Wrangler JSON, and a static contract scans
+  `docs/**`, `scripts/**`, `package.json` and `AGENTS.md` for every version-view
+  command, including multiline forms, and rejects any command without a positional ID.
 
-The focused RED results, pinned help evidence, corrected command locations and final
-release-gate outputs will be recorded here before this status is restored.
+### Pinned Wrangler syntax and JSON schema
+
+Repository-pinned Wrangler reported version `4.110.0`. Its help output proved:
+
+```text
+wrangler versions list
+  --json  Display output as JSON
+
+wrangler versions view <version-id>
+  version-id  The Worker Version ID to view  [string] [required]
+  --json  Display output as JSON
+```
+
+`--config` is a global configuration selector and does not satisfy the required
+positional `version-id`. Inspection of the pinned distribution used by `npm ci`
+showed that `versions list --json` serializes the raw version array, and each entry's
+version identifier is the `id` field. Wrangler's own validation states that Worker
+version IDs are UUIDs. The helper therefore requires an array top level, object
+entries, unique nonempty UUID `id` values and set difference rather than list order.
+No Cloudflare metadata request was needed to establish this schema.
+
+### RED and focused GREEN evidence
+
+- Helper RED: `node --test scripts/r0-1-worker-version-delta.test.mjs` exited `1`
+  with `0/18` passing because the helper did not yet exist.
+- Command-contract RED: the initial branch scan identified the five invalid
+  version-view commands in Tasks 4, 6 and 10 of the cutover runbook. The first parser
+  fixture also exposed and then corrected a test-string construction defect before
+  the implementation was accepted.
+- Helper GREEN: `18/18` passed, covering one/zero/multiple deltas, order independence,
+  duplicates, missing/empty/malformed IDs, malformed/wrong-shape JSON, relative paths,
+  symlink, size and permission rejection, stable exit codes, exact stdout, redacted
+  errors and the no-Wrangler/no-network boundary.
+- Command-contract GREEN: `2/2` passed. The multiline parser fixture passes and the
+  complete scan across `docs/**`, `scripts/**`, `package.json` and `AGENTS.md` reports
+  zero invalid executable commands.
+
+### Corrected runbook evidence map
+
+| Fact | Source evidence |
+|---|---|
+| Private `0700` evidence directory, restrictive umask and cleanup trap | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:88` |
+| Embed list-before/deploy/list-after/helper/view sequence | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:226` |
+| Chat in-place `thongphan-chat-api` sequence | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:279`, `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:285` |
+| Signup sequence with approved existing bindings | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:339`, `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:346` |
+| Task 10 reuses all three captured version IDs | `docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md:503` |
+| Absolute-path/file-safety/schema/set-difference implementation | `scripts/r0-1-worker-version-delta.mjs:22`, `scripts/r0-1-worker-version-delta.mjs:48`, `scripts/r0-1-worker-version-delta.mjs:102`, `scripts/r0-1-worker-version-delta.mjs:123` |
+| Multiline command parser and branch-wide scan roots | `scripts/r0-1-worker-version-command-contract.test.mjs:20`, `scripts/r0-1-worker-version-command-contract.test.mjs:51`, `scripts/r0-1-worker-version-command-contract.test.mjs:73` |
+| Focused tests included through `npm test`, not helper execution in `test:release` | `package.json:18`, `package.json:22`, `package.json:30` |
+
+The runbook stops on zero, multiple or invalid deltas; it never selects first/latest
+array position or parses human-readable deploy output. A capture failure after upload
+must not trigger another deploy. Each secured view uses only its captured ID, and
+Task 10 reuses `R0_1B_EMBED_VERSION_ID`, `R0_1B_CHAT_VERSION_ID` and
+`R0_1B_SIGNUP_VERSION_ID`.
+
+### Fresh complete release verification
+
+Verification ran from a clean detached disposable worktree at exact source
+`3eb1d7f858f0836109d8b46c75332d593a465931`. The checkout remained clean after all
+commands.
+
+| Gate | Exit | Command output |
+|---|---:|---|
+| Clean install | `0` | `npm ci`: 505 packages installed; retained npm audit baseline 14 high severity |
+| Root TypeScript | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Full tests | `0` | `336/336` passed; previous `316/316` baseline plus 20 focused tests, no regression |
+| Helper tests | `0` | `18/18` passed |
+| Command contract | `0` | `2/2` passed; zero invalid version-view commands |
+| Controlled-smoke contract | `0` | `42/42` passed locally; no production endpoint called |
+| Production build | `0` | `82/82` static pages generated |
+| Release gate | `0` | build `6/6`, SEO `4/4`, bundle `3/3`, Brain2 `143/143`; secret scan and lint passed |
+| Read safety | `0` | `3/3` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| Diff and disposable status | `0` | `git diff --check HEAD` passed; porcelain empty |
+| Canonical preservation | `0` | `VERIFY PASS`; HEAD, five dirty paths and all five protected SHA-256 values unchanged |
+
+All seven repository-pinned Wrangler `4.110.0` commands used `deploy --dry-run`:
+
+| Config | Exit | Upload / gzip | Bindings |
+|---|---:|---:|---|
+| `wrangler.embed.toml` | `0` | `1.23 / 0.60 KiB` | none |
+| `wrangler.chat.toml` | `0` | `1.21 / 0.59 KiB` | none |
+| `wrangler.signup.toml` | `0` | `33.84 / 9.68 KiB` | existing KV, D1 and two rate limiters |
+| `wrangler.router.toml` | `0` | `2.02 / 0.89 KiB` | none |
+| `wrangler.brain2-access.jsonc` | `0` | `30.93 / 10.46 KiB` | existing KV and D1 |
+| `wrangler.brain2-email.toml` | `0` | `42.90 / 11.90 KiB` | existing D1 only |
+| `wrangler.brain2-legacy-redirect.jsonc` | `0` | `0.69 / 0.42 KiB` | none |
+
+No production request, Worker/Pages deploy, Cloudflare metadata request, remote D1
+operation, migration, email action, credential mutation or Git-history rewrite was
+performed. This correction returns R0.1A to implementation review only; it does not
+claim merge, deployment or R0.1 completion.
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
