@@ -2,6 +2,101 @@
 
 Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
+## R0.1A controlled signup response and evidence cleanup correction
+
+Status: PASS — response validation, mixed-artifact cleanup and registration copy are
+corrected and verified at implementation source
+`1c0e13b3a3d794bc59bf99f1fa776184cd828458`. R0.1B has not started and
+production is unchanged.
+
+### Root causes reproduced
+
+- Controlled signup performed the POST and bounded body read, but discarded the
+  body before accepting HTTP `200`, one D1 row and zero queue rows. Consequently
+  `success:false`, stale copy, malformed JSON and a response `signup_id` unrelated
+  to the created D1 row were not part of its pass contract.
+- The failure was reproduced with a synthetic inserted row. The new failing test
+  showed the runner returning success for `success:false`; targeted cleanup still
+  removed the row, which established the correction boundary without weakening the
+  global before/after invariants.
+- The evidence directory deliberately contains Worker/control-plane/identity JSON
+  plus six migration-ledger text files. Cleanup validated and deleted only
+  `*.json`, so successful closure with a planned `.txt` ledger failed and preserved
+  evidence instead of closing R0.1B.
+- The invalid-time signup response still said `Không thể tạo lịch email lúc này`
+  even though signup no longer creates an email schedule.
+
+### RED evidence
+
+- Controlled smoke: `success:false`, malformed JSON, invalid schema, wrong media
+  type and response-ID mismatch were accepted; the message-parity export was absent.
+- Evidence lifecycle: mixed `.json`/`.txt` successful and pre-mutation cleanup
+  cases failed because `.txt` was outside the cleanup allowlist.
+- Production-plan cross-contract: the helper did not expose an explicit `*.txt`
+  cleanup path for the six committed ledger artifacts.
+- Invalid-time signup: the focused assertion received the retired email-schedule
+  message instead of registration wording.
+
+### Local GREEN before complete gate
+
+- Controlled smoke response suite: `58/58` passed, including response privacy,
+  canonical copy parity, exact response/D1 ID parity and cleanup after rejection.
+- Evidence lifecycle: `20/20` passed with top-level regular `.json`/`.txt` only;
+  unexpected extension, extensionless file, directory and symlink fail before any
+  partial deletion.
+- Production-plan contract: `18/18` passed and recognizes all six `.txt` ledgers.
+- Focused signup/email suite: `13/13` passed with exact invalid-time registration
+  wording and zero signup/queue statement.
+
+### Complete clean release verification
+
+The complete gate ran from the clean disposable checkout
+`/Users/rio/thongphan-r0-1a-response-gate` at exact implementation source
+`1c0e13b3a3d794bc59bf99f1fa776184cd828458`.
+
+| Gate | Result |
+|---|---:|
+| Clean install | `npm ci` pass; 505 packages, retained 14-high audit baseline |
+| D1 migration scope | `4/4` |
+| Operational-document contract | `5/5` |
+| Synthetic identity | `9/9` |
+| Evidence lifecycle | `20/20` |
+| Production-plan contract | `18/18` |
+| Worker version delta / command | `18/18` and `2/2` |
+| Root and Worker TypeScript | pass |
+| Lint | pass with zero warnings |
+| Full package tests | `410/410` |
+| Controlled production-smoke fixtures | `58/58` |
+| Static build | `82/82` routes |
+| Release gate | pass; final Brain2 suite `144/144` |
+| Read release safety | `3/3` |
+| Current-tree secret integrity | pass; zero findings |
+| Seven Wrangler dry-runs | pass; embed/chat zero bindings |
+| Diff and clean checkout | pass |
+
+Wrangler `4.110.0` reported embed `1.23 / 0.60 KiB` and chat
+`1.21 / 0.59 KiB`, both with no bindings. Signup reported only the existing KV,
+D1 and two rate limiters; router had no bindings; access reported the existing KV
+and D1; email reported the existing D1; legacy redirect had no bindings. Every
+command used `deploy --dry-run` and no command used a production origin or `--remote`.
+
+The current response validator reads the bounded body exactly once, accepts only
+case-insensitive `application/json` media type, a JSON object with boolean
+`success:true`, the canonical truthful message and a bounded unchanged ID, then
+requires that ID to equal the one created D1 row. A response-contract failure remains
+the original classification while targeted cleanup, queue proof, zero remaining
+matches, restored signup total and byte-identical pre-migration aggregate still run.
+
+Lifecycle cleanup validates every top-level entry before deletion. Only regular
+`.json` and `.txt` files are accepted; `.log`, extensionless entries, directories,
+symlinks and other file types fail before partial deletion. Preserved files are mode
+`0600`, the directory is mode `0700`, and the existing exit-status/umask semantics
+remain intact.
+
+No production request, remote D1 command, deploy, migration, email action, token
+mutation, merge or Git-history rewrite occurred. R0.1A is ready only for another
+independent implementation review and merge gate.
+
 ## R0.1A scoped migration and operational consistency correction
 
 Status: PASS — scoped migration discovery, operational documentation, chat

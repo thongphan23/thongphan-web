@@ -4,26 +4,33 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- **R0.1A READY FOR IMPLEMENTATION REVIEW after scoped-migration correction.**
-  Latest exact implementation source is
-  `bf02159a580639fe2f310c0add6091d887729e06`; Draft PR #2 remains pending merge
+- **R0.1A READY FOR IMPLEMENTATION REVIEW after controlled-response and evidence-
+  lifecycle correction.** Latest exact implementation source is
+  `1c0e13b3a3d794bc59bf99f1fa776184cd828458`; Draft PR #2 remains pending merge
   and R0.1B has not started.
-- Task 8 now applies only `0003_r0_1_email_integrity.sql` through the dedicated
+- Controlled signup now accepts only bounded JSON with boolean `success:true`, the
+  canonical truthful message and a response ID equal to the exact created D1 row.
+  Invalid responses retain their stable classification while targeted cleanup,
+  zero-queue proof, zero matching rows and both global invariants still execute.
+- Evidence cleanup now accepts only top-level regular `.json` and `.txt` artifacts,
+  covering all six migration-ledger files. Unexpected extensions, extensionless
+  files, directories and symlinks fail before partial deletion; post-mutation
+  evidence remains owner-only.
+- Latest focused gates pass: controlled smoke `58/58`, evidence lifecycle `20/20`,
+  production plan `18/18` and signup/email `13/13`. A clean exact-source checkout
+  also passes D1 migration scope `4/4`, operational docs `5/5`, synthetic identity
+  `9/9`, version tests `18/18 + 2/2`, both TypeScript gates, lint, full `410/410`
+  tests, `82/82` build, release gate with final Brain2 `144/144`, Read safety `3/3`,
+  zero-finding secret scan, seven Wrangler dry-runs and clean porcelain.
+- The invalid-time signup error now describes registration rather than retired email
+  scheduling. This correction was local-only: no production request, remote D1
+  command, migration, Worker/Pages deploy, route mutation, email action, credential
+  mutation, merge or history rewrite occurred.
+- Task 8 still applies only `0003_r0_1_email_integrity.sql` through the dedicated
   migration-scope config after repeated broad/scoped preflights. Local Wrangler
-  `4.110.0` proves a synthetic later `0004` stays pending and its schema effect is
-  absent. Operational docs now distinguish implemented source from current
-  production, the chat verification accepts the required Worker identity, and embed
-  plus chat are each locked to exactly one binding-free apex route.
-- Latest focused gates pass: D1 migration scope `4/4`, operational docs `5/5`,
-  production plan `17/17`, embed/chat `10/10`, synthetic identity `9/9`, evidence
-  lifecycle `15/15`, version delta `18/18`, version command `2/2` and controlled
-  smoke `42/42`. A clean detached checkout passes both TypeScript gates, lint, full
-  `387/387` tests, `82/82` build, release `6/6 + 4/4 + 3/3 + 143/143`, Read safety
-  `3/3`, zero-finding secret scan, seven Wrangler dry-runs and clean exact-source
-  porcelain.
-- This correction was local-only: no production request, remote D1 command,
-  migration, Worker/Pages deploy, route mutation, email action, credential mutation,
-  merge or history rewrite occurred.
+  `4.110.0` proves a synthetic later `0004` stays pending; operational docs retain
+  the implemented-source/current-production boundary and embed/chat remain locked
+  to one binding-free apex route each.
 - **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now requires one persistent
   private Bash process, immutable release constants, per-Task session assertions, a
   private crypto-generated synthetic signup file, resource-specific redacted
