@@ -11,6 +11,7 @@ const paths = {
   cutover: "docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md",
   checklist: "docs/security/R0-1-OWNER-ACTION-CHECKLIST.md",
   report: "docs/security/R0-1-IMPLEMENTATION-REPORT.md",
+  migrationScopeConfig: "wrangler.r0-1b-email-integrity.toml",
 };
 
 const documents = Object.fromEntries(
@@ -321,4 +322,76 @@ test("exit policy classifies cleanup failures by original mutation state", () =>
     /cleanup fails after successful closure.{0,220}preserve/i,
   );
   assert.match(normalizedCutover, /preserve the original exit status/i);
+});
+
+test("Task 7 captures broad and exact-scope migration preflights privately", () => {
+  const taskSeven = taskSection(7);
+  const normalized = taskSeven.replace(/\\\n\s*/g, " ").replace(/\s+/g, " ");
+  const broadList =
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml";
+  const scopedList =
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.r0-1b-email-integrity.toml";
+
+  assert.match(normalized, new RegExp(broadList.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.match(normalized, new RegExp(scopedList.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  assert.match(taskSeven, /R0_1B_MIGRATIONS_BROAD_PREFLIGHT/);
+  assert.match(taskSeven, /R0_1B_MIGRATIONS_SCOPED_PREFLIGHT/);
+  assert.match(taskSeven, /chmod 600 "\$R0_1B_MIGRATIONS_BROAD_PREFLIGHT" "\$R0_1B_MIGRATIONS_SCOPED_PREFLIGHT"/);
+  assert.match(taskSeven, /0003_r0_1_email_integrity\.sql/);
+  assert.match(taskSeven, /only unapplied migration/i);
+});
+
+test("Task 8 rechecks both ledgers before exact-scope apply", () => {
+  const taskEight = taskSection(8);
+  const normalized = taskEight.replace(/\\\n\s*/g, " ").replace(/\s+/g, " ");
+  const broadListIndex = normalized.indexOf(
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml",
+  );
+  const scopedListIndex = normalized.indexOf(
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.r0-1b-email-integrity.toml",
+  );
+  const applyIndex = normalized.indexOf(
+    "npx wrangler d1 migrations apply thongphan-db --remote --config wrangler.r0-1b-email-integrity.toml",
+  );
+
+  assert.ok(broadListIndex >= 0 && broadListIndex < scopedListIndex);
+  assert.ok(scopedListIndex < applyIndex);
+  assert.match(taskEight, /R0_1B_MIGRATIONS_BROAD_RECHECK/);
+  assert.match(taskEight, /R0_1B_MIGRATIONS_SCOPED_RECHECK/);
+  assert.doesNotMatch(
+    normalized,
+    /d1 migrations apply thongphan-db --remote --config wrangler\.brain2-email\.toml/,
+  );
+});
+
+test("Task 8 performs scoped then broad postflight and forbids broad catch-up apply", () => {
+  const taskEight = taskSection(8);
+  const normalized = taskEight.replace(/\\\n\s*/g, " ").replace(/\s+/g, " ");
+  const applyIndex = normalized.indexOf(
+    "npx wrangler d1 migrations apply thongphan-db --remote --config wrangler.r0-1b-email-integrity.toml",
+  );
+  const scopedPostIndex = normalized.indexOf(
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.r0-1b-email-integrity.toml",
+    applyIndex,
+  );
+  const broadPostIndex = normalized.indexOf(
+    "npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml",
+    scopedPostIndex,
+  );
+
+  assert.ok(applyIndex >= 0 && applyIndex < scopedPostIndex);
+  assert.ok(scopedPostIndex < broadPostIndex);
+  assert.match(taskEight, /R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT/);
+  assert.match(taskEight, /R0_1B_MIGRATIONS_BROAD_POSTFLIGHT/);
+  assert.match(taskEight, /never run broad apply|never use broad apply/i);
+  assert.match(taskEight, /Pages must not deploy/i);
+});
+
+test("migration-only config locks discovery to exact migration 0003", () => {
+  const config = documents.migrationScopeConfig;
+  const pattern = config.match(/^\s*migrations_pattern\s*=\s*"([^"]+)"\s*$/m)?.[1];
+
+  assert.equal(pattern, "workers/migrations/0003_r0_1_email_integrity.sql");
+  assert.doesNotMatch(pattern, /[*?\[\]{}]/);
+  assert.match(config, /^\s*migrations_dir\s*=\s*"workers\/migrations"\s*$/m);
 });

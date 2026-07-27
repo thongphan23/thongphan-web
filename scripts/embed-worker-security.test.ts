@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import embedWorker from '../workers/embed-vault'
@@ -95,6 +96,32 @@ function syntheticPost(headers: HeadersInit = {}): Request {
   })
 }
 
+function assertExactEmbedConfig(config: string): void {
+  const routes = [...config.matchAll(/^\s*\[\[routes\]\]\s*$/gm)]
+  const patterns = [...config.matchAll(/^\s*pattern\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const zones = [...config.matchAll(/^\s*zone_name\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const names = [...config.matchAll(/^\s*name\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const workersDev = [...config.matchAll(/^\s*workers_dev\s*=\s*(\S+)\s*$/gm)]
+    .map((match) => match[1])
+  const previewUrls = [...config.matchAll(/^\s*preview_urls\s*=\s*(\S+)\s*$/gm)]
+    .map((match) => match[1])
+
+  assert.deepEqual(names, ['brain2-embedder'])
+  assert.equal(routes.length, 1)
+  assert.deepEqual(patterns, ['thongphan.com/api/embed'])
+  assert.deepEqual(zones, ['thongphan.com'])
+  assert.deepEqual(workersDev, ['false'])
+  assert.deepEqual(previewUrls, ['false'])
+  assert.doesNotMatch(
+    config,
+    /^\s*(?:\[ai\]|\[vars\]|\[\[vectorize\]\]|\[\[d1_databases\]\]|\[\[kv_namespaces\]\]|\[\[r2_buckets\]\]|\[\[services\]\]|\[\[queues\.(?:producers|consumers)\]\]|\[\[analytics_engine_datasets\]\]|\[\[ratelimits\]\])/m,
+  )
+  assert.doesNotMatch(config, /^\s*[A-Z][A-Z0-9_]*(?:SECRET|TOKEN|KEY)[A-Z0-9_]*\s*=/m)
+}
+
 test('embed tombstone returns 410 without trusting identity or touching bindings', async (t) => {
   await t.test('anonymous synthetic vector POST cannot reach a binding', async () => {
     const environment = createEnvironmentProbe()
@@ -183,4 +210,18 @@ test('disabled endpoint logger receives only the fixed security event', async ()
     vector_writes: 0,
   }])
   assert.equal(environment.propertyAccesses, 0)
+})
+
+test('embed Worker config has exactly one binding-free apex route', () => {
+  const config = readFileSync(new URL('../wrangler.embed.toml', import.meta.url), 'utf8')
+  assertExactEmbedConfig(config)
+
+  assert.throws(
+    () => assertExactEmbedConfig(`${config}\n[[routes]]\npattern = "www.thongphan.com/api/embed"\nzone_name = "thongphan.com"\n`),
+    /Expected values to be strictly equal|Expected values to be strictly deep-equal/,
+  )
+  assert.throws(
+    () => assertExactEmbedConfig(`${config}\n[[kv_namespaces]]\nbinding = "ACCIDENTAL"\nid = "synthetic"\n`),
+    /input was expected to not match/i,
+  )
 })

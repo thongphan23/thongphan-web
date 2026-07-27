@@ -17,6 +17,33 @@ const DISABLED_HEADERS = {
   'x-tp-endpoint-state': 'disabled',
 } as const
 
+function assertExactChatConfig(config: string): void {
+  const routes = [...config.matchAll(/^\s*\[\[routes\]\]\s*$/gm)]
+  const patterns = [...config.matchAll(/^\s*pattern\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const zones = [...config.matchAll(/^\s*zone_name\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const names = [...config.matchAll(/^\s*name\s*=\s*["']([^"']+)["']\s*$/gm)]
+    .map((match) => match[1])
+  const workersDev = [...config.matchAll(/^\s*workers_dev\s*=\s*(\S+)\s*$/gm)]
+    .map((match) => match[1])
+  const previewUrls = [...config.matchAll(/^\s*preview_urls\s*=\s*(\S+)\s*$/gm)]
+    .map((match) => match[1])
+
+  assert.deepEqual(names, ['thongphan-chat-api'])
+  assert.equal(routes.length, 1)
+  assert.deepEqual(patterns, ['thongphan.com/api/chat'])
+  assert.deepEqual(zones, ['thongphan.com'])
+  assert.deepEqual(workersDev, ['false'])
+  assert.deepEqual(previewUrls, ['false'])
+  assert.doesNotMatch(config, /\bnodejs_compat\b/)
+  assert.doesNotMatch(
+    config,
+    /^\s*(?:\[ai\]|\[vars\]|\[\[vectorize\]\]|\[\[d1_databases\]\]|\[\[kv_namespaces\]\]|\[\[r2_buckets\]\]|\[\[services\]\]|\[\[queues\.(?:producers|consumers)\]\]|\[\[analytics_engine_datasets\]\]|\[\[ratelimits\]\])/m,
+  )
+  assert.doesNotMatch(config, /^\s*[A-Z][A-Z0-9_]*(?:SECRET|TOKEN|KEY)[A-Z0-9_]*\s*=/m)
+}
+
 interface EnvironmentProbe {
   readonly bindings: object
   readonly aiCalls: number
@@ -112,12 +139,15 @@ test('25 concurrent anonymous chat requests cannot consume AI or Vectorize budge
 test('chat Worker config exposes only the exact apex tombstone with sampled observability', () => {
   const config = readFileSync(new URL('../wrangler.chat.toml', import.meta.url), 'utf8')
 
-  assert.match(config, /^name\s*=\s*["']thongphan-chat-api["']\s*$/m)
-  assert.match(config, /pattern\s*=\s*["']thongphan\.com\/api\/chat["']/)
-  assert.match(config, /workers_dev\s*=\s*false/)
-  assert.match(config, /preview_urls\s*=\s*false/)
+  assertExactChatConfig(config)
   assert.match(config, /\[observability\][\s\S]*enabled\s*=\s*true[\s\S]*head_sampling_rate\s*=\s*0\.1/)
-  assert.doesNotMatch(config, /\bnodejs_compat\b/)
-  assert.doesNotMatch(config, /^\s*\[ai\]\s*$/m)
-  assert.doesNotMatch(config, /^\s*\[\[vectorize\]\]\s*$/m)
+
+  assert.throws(
+    () => assertExactChatConfig(`${config}\n[[routes]]\npattern = "thongphan.com/api/chat*"\nzone_name = "thongphan.com"\n`),
+    /Expected values to be strictly equal|Expected values to be strictly deep-equal/,
+  )
+  assert.throws(
+    () => assertExactChatConfig(`${config}\n[[services]]\nbinding = "ACCIDENTAL"\nservice = "synthetic"\n`),
+    /input was expected to not match/i,
+  )
 })

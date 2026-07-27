@@ -211,6 +211,8 @@ return to a new R0.1A implementation PR.
 
 ```bash
 npm ci
+npm run test:r0-1b-d1-migration-scope
+npm run test:r0-1-operational-doc-contract
 npm run test:r0-1b-version-evidence-lifecycle
 npm run test:r0-1b-synthetic-identity
 npm run test:r0-1b-production-plan-contract
@@ -562,13 +564,30 @@ trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 npx wrangler d1 time-travel info thongphan-db --config wrangler.brain2-email.toml --json
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
   "SELECT campaign_version,status,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status ORDER BY campaign_version,status; SELECT COUNT(*) AS email_log_count FROM email_logs;"
-npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml
+R0_1B_MIGRATIONS_BROAD_PREFLIGHT="$R0_1B_VERSION_DIR/d1-migrations-broad-preflight.txt"
+R0_1B_MIGRATIONS_SCOPED_PREFLIGHT="$R0_1B_VERSION_DIR/d1-migrations-scoped-preflight.txt"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.brain2-email.toml \
+  > "$R0_1B_MIGRATIONS_BROAD_PREFLIGHT"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.r0-1b-email-integrity.toml \
+  > "$R0_1B_MIGRATIONS_SCOPED_PREFLIGHT"
+chmod 600 "$R0_1B_MIGRATIONS_BROAD_PREFLIGHT" "$R0_1B_MIGRATIONS_SCOPED_PREFLIGHT"
+test -s "$R0_1B_MIGRATIONS_BROAD_PREFLIGHT"
+test -s "$R0_1B_MIGRATIONS_SCOPED_PREFLIGHT"
+test "$(LC_ALL=C rg -o '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_BROAD_PREFLIGHT" | LC_ALL=C sort -u)" = \
+  "0003_r0_1_email_integrity.sql"
+test "$(LC_ALL=C rg -o '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_SCOPED_PREFLIGHT" | LC_ALL=C sort -u)" = \
+  "0003_r0_1_email_integrity.sql"
 ```
 
 Record the Time Travel bookmark without PII. The exact pre-migration aggregate must
 be 210 `legacy-v0/pending` and zero email logs. The `sendable` field does not exist
 until migration 0003; zero sendable rows is therefore verified only after apply. The
-only unapplied migration must be `0003_r0_1_email_integrity.sql`.
+only unapplied migration in the broad preflight must be
+`0003_r0_1_email_integrity.sql`; no additional local migration may be pending. The
+scoped preflight must discover exactly that same unapplied migration. Both complete
+ledger outputs remain private mode-`0600` evidence and must not be printed.
 
 ### Stop conditions
 
@@ -596,20 +615,59 @@ trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
-npx wrangler d1 migrations apply thongphan-db --remote --config wrangler.brain2-email.toml
+R0_1B_MIGRATIONS_BROAD_RECHECK="$R0_1B_VERSION_DIR/d1-migrations-broad-recheck.txt"
+R0_1B_MIGRATIONS_SCOPED_RECHECK="$R0_1B_VERSION_DIR/d1-migrations-scoped-recheck.txt"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.brain2-email.toml \
+  > "$R0_1B_MIGRATIONS_BROAD_RECHECK"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.r0-1b-email-integrity.toml \
+  > "$R0_1B_MIGRATIONS_SCOPED_RECHECK"
+chmod 600 "$R0_1B_MIGRATIONS_BROAD_RECHECK" "$R0_1B_MIGRATIONS_SCOPED_RECHECK"
+test -s "$R0_1B_MIGRATIONS_BROAD_RECHECK"
+test -s "$R0_1B_MIGRATIONS_SCOPED_RECHECK"
+test "$(LC_ALL=C rg -o '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_BROAD_RECHECK" | LC_ALL=C sort -u)" = \
+  "0003_r0_1_email_integrity.sql"
+test "$(LC_ALL=C rg -o '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_SCOPED_RECHECK" | LC_ALL=C sort -u)" = \
+  "0003_r0_1_email_integrity.sql"
+
+npx wrangler d1 migrations apply thongphan-db \
+  --remote \
+  --config wrangler.r0-1b-email-integrity.toml
+
+R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT="$R0_1B_VERSION_DIR/d1-migrations-scoped-postflight.txt"
+R0_1B_MIGRATIONS_BROAD_POSTFLIGHT="$R0_1B_VERSION_DIR/d1-migrations-broad-postflight.txt"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.r0-1b-email-integrity.toml \
+  > "$R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.brain2-email.toml \
+  > "$R0_1B_MIGRATIONS_BROAD_POSTFLIGHT"
+chmod 600 "$R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT" "$R0_1B_MIGRATIONS_BROAD_POSTFLIGHT"
+test -s "$R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT"
+test -s "$R0_1B_MIGRATIONS_BROAD_POSTFLIGHT"
+if rg -q '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_SCOPED_POSTFLIGHT"; then exit 1; fi
+if rg -q '[0-9][0-9A-Za-z._/-]*\.sql' "$R0_1B_MIGRATIONS_BROAD_POSTFLIGHT"; then exit 1; fi
+
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
   "SELECT campaign_version,status,audience_state,sendable,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status,audience_state,sendable ORDER BY campaign_version,status,audience_state,sendable; SELECT COUNT(*) AS sendable_count FROM email_queue WHERE sendable=1; SELECT COUNT(*) AS email_log_count FROM email_logs;"
-npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml
 ```
 
 Required result: exactly
 `legacy-v0 | pending | quarantined_legacy | 0 | 210`, zero sendable rows, zero email
-logs, and no unapplied migration.
+logs, no unapplied migration in the scoped postflight, and no unexpectedly unapplied
+migration in the broad postflight. Task 8 must never run a broad apply to catch up a
+remaining migration; `wrangler.brain2-email.toml` is ledger and aggregate evidence
+only, never the apply config.
 
 ### Stop conditions
 
-Stop before Pages build if apply fails, any extra migration applies, the exact
-aggregate differs, a row is sendable, a log exists, or the ledger remains dirty.
+Pre-apply drift in either repeated ledger is a no-mutation safe stop. A scoped apply
+failure stops and preserves evidence. If the scoped migration applies but the broad
+post-check exposes another pending migration, migration `0003` may already be applied
+but Pages must not deploy. Stop before Pages build if any extra migration applies,
+the exact aggregate differs, a row is sendable, a log exists, or either ledger
+remains dirty. Never use broad apply to finish remaining migrations.
 
 ### Rollback
 
@@ -751,8 +809,10 @@ later explicit owner instruction.
 9. Remove only the synthetic signup after evidence capture.
 10. Capture the D1 Time Travel bookmark.
 11. Capture the exact pre-migration aggregate.
-12. Prove the only unapplied migration is `0003_r0_1_email_integrity.sql`.
-13. Apply migration 0003.
+12. Prove broad and scoped preflights both expose only
+    `0003_r0_1_email_integrity.sql`.
+13. Repeat both preflights immediately before mutation, then apply only migration
+    `0003` through `wrangler.r0-1b-email-integrity.toml`.
 14. Prove `legacy-v0 | pending | quarantined_legacy | 0 | 210`.
 15. Prove zero sendable rows and zero email logs.
 16. Build the exact merged `main` SHA.

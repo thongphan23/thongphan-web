@@ -474,7 +474,8 @@ dependency-free tombstone.
 node --import tsx --test scripts/chat-worker-security.test.ts scripts/chat-journey.test.ts
 npm run typecheck:brain2-workers
 npx wrangler deploy --dry-run --outdir /tmp/r0-1-chat-tombstone --config wrangler.chat.toml
-if rg -n '(NEXT_PUBLIC_CHAT_API_URL|thongphan-chat-api|BRAIN2_INDEX|VectorizeIndex|AI\.run|\[ai\]|\[\[vectorize\]\])' app/chat/ChatClient.tsx app/chat/chat-model.ts workers/api/chat.ts wrangler.chat.toml; then exit 1; fi
+rg -N -x 'name = "thongphan-chat-api"' wrangler.chat.toml
+if rg -n '(NEXT_PUBLIC_CHAT_API_URL|BRAIN2_INDEX|VectorizeIndex|AI\.run|\[ai\]|\[\[vectorize\]\]|nodejs_compat|thongphan-chat-tombstone)' app/chat/ChatClient.tsx app/chat/chat-model.ts workers/api/chat.ts wrangler.chat.toml; then exit 1; fi
 test ! -e app/api/chat/route.ts
 ```
 

@@ -2,7 +2,7 @@
 
 **Document ID:** TPREAD-D03
 **Version:** 2.2.0
-**Status:** R0 baseline giữ nguyên; R0.1A remediation source đã hoàn tất qua Task 7, chờ Task 8 local release verification
+**Status:** R0 baseline giữ nguyên; R0.1A source implementation complete through Task 8; complete local release verification passed; Draft PR #2 remains pending merge; R0.1B not started
 **Last updated:** 2026-07-27
 **Primary owner:** Thông Phan
 
@@ -53,7 +53,11 @@ R0 không deploy, không migration, không tạo database, không thay route/fra
 | Email audience | Migration local đặt legacy rows thành `quarantined_legacy`, cột số tương ứng với `sendable = false`; trigger chặn mọi sendable state (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`) | Migration chưa apply production; email Worker chưa deploy; cron vẫn rỗng | Delivery status như `pending` không tạo audience eligibility; retention/dedup/consent còn owner-gated |
 | Environment isolation | Không thay đổi trong R0.1A | Preview và production D1 isolation chưa giải quyết | R0.2 chưa bắt đầu; tách resource không thuộc endpoint-binding removal |
 
-`R0.1A source complete` ở đây chỉ áp dụng cho remediation source qua Task 7. Task 8 local release verification chưa chạy, `R0.1B production cutover not started`, và R0.H1 public-history residual vẫn là nhánh riêng, nonblocking.
+`R0.1A source complete` ở đây áp dụng cho remediation source implementation through
+Task 8 và complete local release verification đã pass. Draft PR #2 remains pending
+merge; R0.1B not started. Production boundary vẫn là source only: no production
+migration, no production tombstone deployment, no production signup cutover. R0.H1
+public-history residual vẫn là nhánh riêng, nonblocking.
 
 ---
 
@@ -664,7 +668,10 @@ Trạng thái exit criteria:
 - Thông duyệt quyết định giữ/migrate: **pending**;
 - PRD-R1: **chưa được tạo và bị khóa tới khi owner duyệt R0**.
 
-R0.1 update: remediation source qua Task 7 đã được ghi nhận local-only; Task 8 local release verification, R0.1B production cutover, R0.H1 history remediation và R0.2 environment isolation đều chưa được mở bởi tài liệu này.
+R0.1 update: remediation source implementation through Task 8 và complete local
+release verification đã pass; Draft PR #2 remains pending merge và R0.1B not started.
+Không có production migration, tombstone deployment hoặc signup cutover. R0.H1
+history remediation và R0.2 environment isolation đều chưa được mở bởi tài liệu này.
 
 ---
 

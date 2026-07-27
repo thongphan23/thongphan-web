@@ -4,26 +4,39 @@ Tài liệu vận hành hiện hành cho API signup, quyền truy cập 21 ngày
 chiến dịch email `brain2-2026-v1`. Mọi lệnh cũ trước chiến dịch v2 đều không còn
 giá trị vận hành.
 
+## Implemented source contract
+
+- Source của `brain2-embedder` và `thongphan-chat-api` là hai tombstone `410 Gone`
+  tại đúng `/api/embed` và `/api/chat`, không có AI/Vectorize binding. Không còn
+  script, internal route hay replacement writer được hỗ trợ.
+- `/chat` vẫn là hành trình public chạy local bằng model tất định; client không có
+  nhánh gọi lại remote chat.
+- Truthful signup source chỉ lưu một registration, tạo zero queue rows, không hứa
+  delivery và không tuyên bố marketing consent.
+- Migration source `0003_r0_1_email_integrity.sql` tồn tại. Khi được áp dụng trong
+  một cutover riêng, nó đặt legacy rows thành `quarantined_legacy`/`sendable = 0`
+  và fail closed với mọi mutation tạo sendable state.
+- Sender source chỉ claim `brain2-2026-v1` khi đồng thời có
+  `audience_state = 'sendable' AND sendable = 1`. Cron trong source giữ rỗng.
+
+## Current production state
+
+- migration `0003` has not been applied to production.
+- The embed/chat tombstones are not production-deployed.
+- The truthful signup Worker is not production-deployed.
+- Production có 210 hàng `legacy-v0/pending`; các cột `audience_state` và
+  `sendable` chưa tồn tại và chỉ xuất hiện sau migration `0003`.
+- The email Worker remains undeployed, and the cron remains empty.
+- Chưa có production migration, production tombstone deployment hoặc production
+  signup cutover. R0.1B not started.
+
 ## Ranh giới an toàn
 
 - Chỉ hợp nhất lộ trình 21 ngày vào `thongphan.com`.
 - Không triển khai chat với Brain2, vault riêng hay ứng dụng Brain2 riêng tư.
-- `brain2-embedder` chỉ còn là tombstone `410 Gone` tại đúng `/api/embed`, không
-  có AI/Vectorize binding và không có quy trình ingestion được hỗ trợ.
-- `/chat` vẫn là hành trình public chạy local bằng model tất định; `/api/chat`
-  chỉ còn tombstone `410 Gone`, không có AI/Vectorize binding hay nhánh client
-  có thể kích hoạt lại gọi từ xa.
 - Ngày 01–07 là nội dung công khai; ngày 08–21 được đọc từ KV riêng sau khi
   Worker xác thực phiên Conan Maker.
-- 210 email cũ giữ nguyên `legacy-v0`, có `audience_state = 'quarantined_legacy'`,
-  `sendable = 0` và bị migration khóa update/delete.
-- Mọi hàng mới mặc định `delivery_inactive`/`sendable = 0`; trigger từ chối cả
-  insert lẫn update sang trạng thái gửi được.
-- Mã sender chỉ claim `brain2-2026-v1` khi đồng thời có
-  `audience_state = 'sendable' AND sendable = 1`. R0.1 cố ý làm điều kiện này
-  bất khả thi; chưa có sender production được phê duyệt.
-- Không có endpoint gửi email công khai. Cron phải giữ rỗng cho tới khi toàn bộ
-  migration, secret, provider health và smoke test production đều đạt.
+- Không có endpoint gửi email công khai. Registration không phải delivery consent.
 
 ## Worker và cấu hình
 
@@ -69,25 +82,36 @@ Trước release private content, chạy thêm publisher/leak gate theo tài li�
 script trong `scripts/`. Không đưa nội dung ngày 08–21 hoặc secret vào command
 line, Git, build output hay log.
 
-## Trình tự triển khai
+## Trình tự triển khai R0.1B
 
-1. Audit D1 ở chế độ chỉ đọc; xác nhận số hàng `legacy-v0` và không có email đã
-   gửi ngoài chủ đích.
-2. Áp migration bằng Wrangler migration ledger.
-3. Provision KV riêng, upload 14 package bất biến và xác minh checksum đọc lại.
-4. Nạp secret bằng `wrangler secret put`; không lưu plaintext trong repo.
-5. Deploy signup và access Worker, sau đó smoke test endpoint thật bằng dữ liệu
-   tổng hợp được phê duyệt.
-6. Không deploy email Worker. Chỉ chạy dry-run local với
-   `wrangler.brain2-email.toml`, giữ `crons = []`.
-7. Kiểm tra nhà cung cấp và mọi smoke row thuộc R0.1B hoặc release email riêng;
-   không thực hiện trong R0.1A.
+The authoritative sequence is exclusively:
+`docs/superpowers/plans/2026-07-26-r0-1-production-cutover.md`.
 
-8. Một release email được duyệt sau này phải thêm migration mới, hợp đồng consent,
-   kiểm tra retention và smoke plan trước khi bất kỳ hàng nào có thể gửi. Cron chỉ
-   được xem xét trong release đó.
+Tóm tắt thứ tự bắt buộc, không thay thế runbook:
 
-## Secret production
+1. embed tombstone;
+2. chat tombstone;
+3. read-only smoke;
+4. truthful signup Worker;
+5. controlled synthetic signup và targeted cleanup;
+6. D1 bookmark cùng broad/scoped preflight;
+7. scoped apply of only migration 0003;
+8. post-migration quarantine proof;
+9. exact-main Pages deployment;
+10. final read-only smoke.
+
+Không dùng trình tự cũ đặt migration trước truthful signup/controlled signup. Không
+deploy email Worker, provision email secret, kích hoạt cron hoặc import audience
+trong R0.1B.
+
+## Future email release only
+
+Một release email được duyệt sau này phải thêm migration mới, affirmative consent
+contract, retention decision và smoke plan trước khi bất kỳ hàng nào có thể gửi.
+KV provisioning, email-provider secrets và cron activation thuộc release tương lai
+đó, không thuộc R0.1B.
+
+### Secret production
 
 - `BRAIN2_ACCESS_CODE_HASH`
 - `BRAIN2_SESSION_SECRET`
@@ -99,7 +123,7 @@ Giá trị thật chỉ nằm trong Keychain/Cloudflare encrypted secret. Log ch
 ghi trạng thái coarse như `brain2_batch`, tuyệt đối không ghi tên, email, token,
 API key hay response body từ Brevo.
 
-## Hủy đăng ký
+### Hủy đăng ký
 
 - Email dùng token HMAC không chứa email.
 - `GET` chỉ hiển thị trang xác nhận để email scanner không tự hủy.
