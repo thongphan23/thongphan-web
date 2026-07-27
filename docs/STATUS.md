@@ -2,6 +2,29 @@
 
 Last updated: 2026-07-28
 
+## Reader Loop v0 — preview candidate — 2026-07-28
+
+- Reader Loop v0 is available on the isolated public preview at
+  `https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read`.
+- The UI uses dedicated Pages project `thongphan-reader-loop-preview`; the API
+  uses dedicated Worker `thongphan-reader-loop-preview-api` and dedicated D1
+  `thongphan-reader-loop-preview` (`cbc3a7e5-d614-4648-bd12-b9839047d61d`).
+  No production route, D1, KV, secret or data copy is used.
+- Public-preview browser QA passes Scenario A, B and C in separate anonymous
+  contexts at 1440px and 390px, including refresh/resume, incomplete return,
+  persisted non-zero coverage, completion, reflection, next action, Inspector,
+  error fallback and zero horizontal overflow.
+- The single four-axis internal audit is closed with `P0=0` and `P1=0`. One P1
+  found during the audit (likely email/phone input in free text) was fixed with
+  API rejection, UI notice and regression tests. Remaining P2/P3 findings are in
+  the review bundle.
+- Final gates pass: Reader Loop `13/13`, full suite `458/458`, root and Worker
+  TypeScript, lint, `84/84` static build, release `6/6 + 4/4 + 3/3 + 144/144`,
+  Read safety `3/3`, secret integrity and preview Worker dry-run.
+- PR #8, `product: build Reader Loop v0`, is open, Ready for Review and unmerged.
+- Review bundle:
+  `docs/review-bundles/reader-loop-v0-f937a76d/`.
+
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
 ### R0.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE
