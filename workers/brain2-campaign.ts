@@ -261,7 +261,10 @@ export async function handleBrain2SignupRequest(
 
     const now = (dependencies.now ?? (() => new Date()))()
     if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
-      return jsonResponse(503, { success: false, message: 'Không thể tạo lịch email lúc này' })
+      return jsonResponse(503, {
+        success: false,
+        message: 'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
+      })
     }
     const signupAt = now.toISOString()
     const randomUUID = dependencies.randomUUID ?? crypto.randomUUID.bind(crypto)

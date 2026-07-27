@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
 const BRAIN2_CHALLENGE_SLUG = 'brain2-21-ngay'
 const CONTROLLED_PRODUCTION_ORIGIN = 'https://thongphan.com'
+export const CONTROLLED_SIGNUP_SUCCESS_MESSAGE = 'Đã ghi nhận đăng ký. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website.'
 
 const READ_ONLY_ROUTES = [
   '/api/embed',
@@ -66,6 +67,50 @@ async function readBoundedBody(response, maxResponseBytes) {
   } finally {
     reader.releaseLock()
   }
+}
+
+async function parseControlledSignupResponse(response, maxResponseBytes) {
+  let body
+  let bodyInvalid = false
+  try {
+    body = await readBoundedBody(response, maxResponseBytes)
+  } catch {
+    bodyInvalid = true
+  }
+  if (response.status !== 200) {
+    throw new SmokeError('SMOKE_SIGNUP_HTTP_CONTRACT')
+  }
+  if (bodyInvalid) {
+    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+  }
+
+  const mediaType = response.headers.get('content-type')
+    ?.split(';', 1)[0]
+    .trim()
+    .toLowerCase()
+  if (mediaType !== 'application/json') {
+    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+  }
+
+  let parsed
+  try {
+    parsed = JSON.parse(body)
+  } catch {
+    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)
+    || Object.getPrototypeOf(parsed) !== Object.prototype
+    || parsed.success !== true
+    || parsed.message !== CONTROLLED_SIGNUP_SUCCESS_MESSAGE
+    || typeof parsed.signup_id !== 'string'
+    || parsed.signup_id.length === 0
+    || parsed.signup_id.length > 128
+    || parsed.signup_id !== parsed.signup_id.trim()
+    || CONTROL_CHARACTERS.test(parsed.signup_id)) {
+    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+  }
+
+  return { signupId: parsed.signup_id }
 }
 
 async function verifyDisabledEndpoint(response, maxResponseBytes) {
@@ -407,6 +452,7 @@ async function runControlledSignup({
   let remainingRows = []
   let preMigrationAfter = null
   let pendingError = null
+  let signupResponse = null
   try {
     postRequests = 1
     const response = await fetchWithTimeout(
@@ -427,14 +473,25 @@ async function runControlledSignup({
       timeoutMs,
     )
     status = response.status
-    await readBoundedBody(response, maxResponseBytes)
+    try {
+      signupResponse = await parseControlledSignupResponse(response, maxResponseBytes)
+    } catch (error) {
+      pendingError = error instanceof SmokeError
+        ? error
+        : new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+    }
     createdRows = await findSignup()
-    if (status !== 200) throw new SmokeError('SMOKE_SIGNUP_HTTP_CONTRACT')
-    if (createdRows.length !== 1) throw new SmokeError('SMOKE_SIGNUP_ROW_CONTRACT')
-    queueRows = await countQueueRows(createdRows[0].id)
-    if (queueRows !== 0) throw new SmokeError('SMOKE_QUEUE_CONTRACT')
+    if (createdRows.length !== 1) {
+      pendingError ??= new SmokeError('SMOKE_SIGNUP_ROW_CONTRACT')
+    } else {
+      queueRows = await countQueueRows(createdRows[0].id)
+      if (queueRows !== 0) pendingError ??= new SmokeError('SMOKE_QUEUE_CONTRACT')
+      if (signupResponse && signupResponse.signupId !== createdRows[0].id) {
+        pendingError ??= new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+      }
+    }
   } catch (error) {
-    pendingError = error instanceof SmokeError ? error : new SmokeError('SMOKE_CONTROLLED_FAILED')
+    pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_CONTROLLED_FAILED')
   } finally {
     if (postRequests === 1 && createdRows.length === 0) {
       try {

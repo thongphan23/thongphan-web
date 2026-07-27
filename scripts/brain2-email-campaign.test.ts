@@ -192,6 +192,35 @@ test('signup persists one registration, prepares no email queue row and returns 
   assert.equal(duplicateDB.batches.length, 0)
 })
 
+test('signup invalid time fails before registration with current registration wording', async () => {
+  const DB = new SignupDatabase()
+  const request = new Request(`${ORIGIN}/api/signup`, {
+    method: 'POST',
+    headers: signupHeaders,
+    body: JSON.stringify({
+      challenge_slug: BRAIN2_CHALLENGE_SLUG,
+      name: 'Anh Thông',
+      email: 'invalid-time@example.com',
+    }),
+  })
+
+  const response = await handleBrain2SignupRequest(request, signupEnv(DB) as never, {
+    now: () => new Date(Number.NaN),
+  })
+  const responseJson = await response.json() as Record<string, unknown>
+
+  assert.equal(response.status, 503)
+  assert.equal(responseJson.success, false)
+  assert.equal(
+    responseJson.message,
+    'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
+  )
+  assert.equal(DB.batches.length, 0)
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO challenge_signups/i.test(statement.query)), false)
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
+  assert.doesNotMatch(String(responseJson.message), /lịch email/i)
+})
+
 test('signup bounds streaming bodies, rejects control characters and resolves transaction races safely', async () => {
   const oversizedDB = new SignupDatabase()
   const oversized = new Request(`${ORIGIN}/api/signup`, {
