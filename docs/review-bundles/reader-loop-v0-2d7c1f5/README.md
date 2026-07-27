@@ -1,6 +1,6 @@
 # Reader Loop v0 review bundle
 
-Status: **READY FOR INDEPENDENT RE-REVIEW — preview only, unmerged**
+Status: **READY FOR PRODUCT REVIEW — preview only, unmerged**
 
 - Preview: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read
 - Evidence Inspector: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read/inspector

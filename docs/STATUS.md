@@ -21,8 +21,9 @@ Last updated: 2026-07-28
   unbounded anonymous-reader creation. A second independent review then found two
   P1s: the release gate left `out/` preview-enabled, and the global/lifetime reader
   controls could deny service to unrelated callers. Both corrections are implemented
-  and retested on implementation head `2d7c1f58a218a9e0b3f60ca8d0f5999305eed87f`;
-  independent re-review is pending.
+  and retested on implementation head `2d7c1f58a218a9e0b3f60ca8d0f5999305eed87f`.
+  Independent re-review at clean head `b0feaf8f973eea2296e56c8af57670c28ca311a4`
+  closed all tracked findings with `P0=0` and `P1=0`.
 - Final gates pass: Reader Loop `24/24`; full suite `458/458`; the release build
   gate verifies disabled → enabled → final disabled; release suites
   `6/6 + 4/4 + 3/3 + 144/144`; Read safety `3/3`; root TypeScript, lint,

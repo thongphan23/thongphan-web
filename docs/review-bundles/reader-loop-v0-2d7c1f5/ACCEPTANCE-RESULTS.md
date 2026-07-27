@@ -1,6 +1,6 @@
 # Acceptance results
 
-Verdict: **READY FOR INDEPENDENT RE-REVIEW — second P1 correction deployed**
+Verdict: **PASS — Reader Loop v0 Ready for Product Review**
 
 ## Product definition of done
 
@@ -35,7 +35,7 @@ Verdict: **READY FOR INDEPENDENT RE-REVIEW — second P1 correction deployed**
 | 27 | Không console error nghiêm trọng | PASS | zero unplanned console/page errors; forced 503 only |
 | 28 | Không horizontal overflow | PASS | mobile assertion ≤ 1px |
 | 29 | P0 = 0 | PASS | final audit |
-| 30 | P1 = 0 | PENDING | second correction implemented; independent re-review requested |
+| 30 | P1 = 0 | PASS | independent re-review at clean head `b0feaf8f` found no remaining P1 |
 | 31 | Screenshots | PASS | committed under `screenshots/` |
 | 32 | PR Ready, chưa merge | PASS | PR #8 open, `isDraft=false` |
 
@@ -79,16 +79,16 @@ Verdict: **READY FOR INDEPENDENT RE-REVIEW — second P1 correction deployed**
 The original internal audit was not sufficient: an independent focused review found
 four P1 issues after the initial handoff. After those were corrected, the next
 independent review found two further P1s: final `out/` state and global/lifetime
-reader controls. Both are corrected on implementation head `2d7c1f5`; the table
-below records implementation evidence and must not be read as an independent verdict:
+reader controls. Both are corrected on implementation head `2d7c1f5`; independent
+re-review at clean head `b0feaf8f` confirmed every tracked finding closed:
 
 | Trục | Verdict | P0 | P1 | Ghi chú |
 |---|---|---:|---:|---|
-| Product/UX | IMPLEMENTED | 0 | pending | public A/B/C, wrong-article and failure states pass |
-| Data integrity | IMPLEMENTED | 0 | pending | monotonic evidence plus FK-safe seven-day graph cleanup pass in real SQLite |
-| Security/privacy | IMPLEMENTED | 0 | pending | Origin required; keyed daily digest; caller-specific D1 limit; absent secret fails closed |
-| Engineering/release | IMPLEMENTED | 0 | pending | final disabled artifact rechecked; migrations, secret metadata, cron, dry-run and public E2E pass |
+| Product/UX | PASS | 0 | 0 | public A/B/C, wrong-article and failure states pass |
+| Data integrity | PASS | 0 | 0 | monotonic evidence plus FK-safe seven-day graph cleanup pass in real SQLite |
+| Security/privacy | PASS | 0 | 0 | Origin required; keyed daily digest; caller-specific D1 limit; absent secret fails closed |
+| Engineering/release | PASS | 0 | 0 | final disabled artifact rechecked; migrations, secret metadata, cron, dry-run and public E2E pass |
 
-Correction status: **the latest two independent P1 findings are corrected by
-implementation and regression evidence; independent re-review requested before
-claiming P1=0 or merging**. Remaining P2/P3 are recorded in `BACKLOG-P2-P3.md`.
+Correction status: **independent re-review reports `P0=0`, `P1=0`; all tracked P1
+findings are closed**. Remaining P2/P3 are recorded in `BACKLOG-P2-P3.md` and do
+not block product review.
