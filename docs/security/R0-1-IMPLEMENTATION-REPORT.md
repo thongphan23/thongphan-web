@@ -1,12 +1,13 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A BLOCKED — FINAL EXECUTION CONTRACT CORRECTION IN PROGRESS
+Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
 ## R0.1A final production execution contract correction
 
-Status: BLOCKED — regression tests now reproduce the persistent-process,
-initialization, synthetic-identity, control-plane-output, post-build cleanliness and
-post-success cleanup-failure gaps. Production cutover remains unstarted.
+Status: PASS — the persistent-process, initialization, synthetic-identity,
+control-plane-output, post-build cleanliness and post-success cleanup-failure gaps are
+corrected and verified at implementation source
+`9235105429783db6b3077dad37fbb298678eec5e`. Production cutover remains unstarted.
 
 ### Verified root causes and RED evidence
 
@@ -31,9 +32,71 @@ post-success cleanup-failure gaps. Production cutover remains unstarted.
   failed because stderr contained no preservation classification.
 - Production-plan contract RED: existing `5/5` checks remained green; all `7` new
   execution-contract checks failed against the stale runbook.
+- Direct execution of the Task 2 smoke command failed before test discovery because
+  the runbook omitted the repository TypeScript loader. A new contract failed against
+  `node --test` before the command was corrected to `node --import tsx --test`.
 
-This status must return to review-ready only after focused GREEN, full local release
-verification, a clean exact-head gate and canonical-worktree preservation checks pass.
+### Corrected contract
+
+- `scripts/r0-1b-synthetic-identity.mjs` creates exactly one owner-only identity file
+  with atomic exclusive creation, no overwrite or symlink following, crypto-derived
+  `.invalid` identity values and an exact path-only successful interface. Invalid
+  arguments, paths, ownership or modes fail closed without identity material.
+- Tasks 1–10 now run in one persistent private Bash process. Task 1 owns all immutable
+  release constants and establishes the lifecycle state; every later Task begins by
+  proving that the same trap, evidence directory and main SHA still exist. Tasks 5, 6
+  and 10 also prove the required prior Worker version IDs.
+- Task 3 uses only resource-specific versions, deployments and D1 reads. It contains
+  no executable `wrangler whoami` or token-inspection command, redirects full output
+  into private `.json` evidence files and prints only safe summaries.
+- Task 6 generates, validates, marks readonly and exports `R0_1_SMOKE_INPUT_FILE`
+  before the controlled signup. The file shares the successful lifecycle cleanup.
+- Task 9 now re-proves `HEAD`, `origin/main` and empty porcelain after build and before
+  Pages deploy.
+- Cleanup validates the complete directory before deleting any file. Any nonzero exit
+  after mutation preserves evidence even if cutover success was already marked; a
+  cleanup obstruction under `set -e` returns nonzero, retains secured evidence and
+  emits exactly one path-only classification.
+
+### GREEN and exact-head verification
+
+Focused local verification passed without network mutation:
+
+| Gate | Result |
+|---|---:|
+| Synthetic identity helper | `9/9` |
+| Evidence lifecycle | `15/15` |
+| Production-plan contract | `13/13` |
+| Worker-version delta helper | `18/18` |
+| Worker-version command contract | `2/2` |
+| Controlled production-smoke contract | `42/42` |
+| Bash syntax | pass |
+
+A clean detached checkout outside `/tmp` at exact implementation source
+`9235105429783db6b3077dad37fbb298678eec5e` then passed:
+
+| Gate | Result |
+|---|---:|
+| Clean install | pass; retained npm audit baseline of 14 high severity |
+| Root and Worker TypeScript | pass |
+| ESLint | pass; zero warnings |
+| Full suite | `373/373` |
+| Static build | `82/82` routes |
+| Release build / SEO / bundle / Brain2 | `6/6`, `4/4`, `3/3`, `143/143` |
+| Read release safety | `3/3` |
+| Current-tree secret integrity | zero findings |
+| Wrangler `4.110.0` dry-runs | `7/7` |
+| Diff, exact SHA and detached porcelain | pass; empty |
+
+The seven dry-runs retained the reviewed baseline: embed `1.23/0.60 KiB`, chat
+`1.21/0.59`, signup `33.84/9.68`, router `2.02/0.89`, access `30.93/10.46`, email
+`42.90/11.90` and legacy redirect `0.69/0.42`. Embed, chat, router and legacy redirect
+remain binding-free. No live Worker/Pages command, production endpoint, remote D1
+operation, migration, signup, email, Cloudflare credential operation, repository
+setting change, merge or history rewrite was used.
+
+The report is review-ready only for R0.1A. R0.1B remains a separate owner gate, and
+R0.H1, R0.2 and PRD-R1 remain unstarted.
 
 ## R0.1A production runbook authority and failure-safety correction
 

@@ -501,6 +501,11 @@ from the version object. The Task 2 signup tests and the controlled smoke below 
 prove the merged truthful contract persists only `challenge_signups` and prepares no
 `email_queue` statement.
 
+The synthetic identity file lives only inside `R0_1B_VERSION_DIR`. Never print it,
+copy it into the release checkout or commit it. The lifecycle helper cleans it on a
+pre-mutation failure when applicable, preserves it with mode `0600` after a
+post-mutation failure, and removes it with the other evidence on successful closure.
+
 ### Remote mutation B — controlled signup and targeted cleanup
 
 Use the owner-approved synthetic identity through the runner's secure input contract;

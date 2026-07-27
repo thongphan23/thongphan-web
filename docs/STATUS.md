@@ -4,11 +4,17 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- **R0.1A BLOCKED — FINAL EXECUTION CONTRACT CORRECTION IN PROGRESS.** Regression
-  tests now reproduce the persistent-Bash, immutable initialization, synthetic
-  identity, redacted control-plane evidence, post-build cleanliness and
-  cleanup-failure lifecycle gaps. Draft PR #2 must not return to implementation
-  review until the focused and full local gates pass. Production remains unchanged.
+- **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now requires one persistent
+  private Bash process, immutable release constants, per-Task session assertions, a
+  private crypto-generated synthetic signup file, resource-specific redacted
+  control-plane evidence, complete post-build cleanliness checks and failure-safe
+  cleanup classification. Production remains unchanged and R0.1B remains owner-gated.
+- Final correction verification passes: synthetic identity `9/9`, evidence lifecycle
+  `15/15`, production-plan contract `13/13`, version delta `18/18`, version-command
+  contract `2/2`, controlled smoke `42/42`, full suite `373/373`, build `82/82`,
+  release `6/6 + 4/4 + 3/3 + 143/143`, Read safety `3/3`, zero-finding secret scan,
+  seven Wrangler `4.110.0` dry-runs and an empty clean detached checkout at source
+  `9235105429783db6b3077dad37fbb298678eec5e`.
 - The earlier Draft PR #2 baseline records the
   owner-approved Candidate A `invalid` and Candidate B
   `legacy_orphaned_not_present_in_active_inventory` dispositions without a live-token
