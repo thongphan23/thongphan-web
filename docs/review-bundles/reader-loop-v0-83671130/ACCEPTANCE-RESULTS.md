@@ -39,9 +39,19 @@ Verdict: **PASS — Reader Loop v0 Ready for Review**
 | 31 | Screenshots | PASS | committed under `screenshots/` |
 | 32 | PR Ready, chưa merge | PASS | PR #8 open, `isDraft=false` |
 
+## P1 closure evidence
+
+| Closure | Result | Evidence |
+|---|---|---|
+| Production build fail-closed | PASS | disabled build hides `/read`, Inspector and article panel; no API origin |
+| Session/article binding | PASS | UI and API reject wrong canonical `content_url`; browser proves zero writes |
+| Atomic evidence | PASS | real SQLite order tests converge; completed session rejects later writes |
+| Reader abuse boundary | PASS | mandatory Origin, 60/hour D1 bucket and 1.000-reader atomic lifetime cap |
+
 ## Final verification gates
 
-- `npm run test:reader-loop`: **13/13 pass**.
+- `npm run test:reader-loop`: **19/19 pass**.
+- `npm run test:reader-loop-build-gate`: **pass** for both production-disabled and preview-enabled builds.
 - `npm test`: **458/458 pass** on the final sequential run.
 - `npx tsc --noEmit`: **pass**.
 - Reader Loop Worker TypeScript with `--ignoreConfig`: **pass**.
@@ -51,17 +61,24 @@ Verdict: **PASS — Reader Loop v0 Ready for Review**
 - `npm run test:read-release-safety`: **3/3 pass**.
 - `npm run test:secret-integrity`: **pass, zero finding**.
 - `wrangler deploy --dry-run --config wrangler.reader-loop-preview.toml`: **pass**, only dedicated preview D1 binding reported.
-- Public-preview `npm run qa:reader-loop-browser`: **Scenario A/B/C pass**.
+- Public-preview `npm run qa:reader-loop-browser`: **Scenario A/B/C + wrong-article binding pass**.
+- Origin-less public `POST /v1/readers`: **403**.
+- Preview migration `0002_reader_creation_rate_limit.sql`: **remote applied**.
+- Preview Worker runtime: **local start/E2E pass**, then deployed as `e3220b27-a63d-4075-88a0-a52c42d990e6`.
 
-## Single internal audit
+## Audit correction and final closure
 
-Audit được thực hiện đúng một lần sau khi sản phẩm chạy, trên bốn trục:
+The original internal audit was not sufficient: an independent focused review found
+four P1 issues after the initial handoff. The implementation was corrected and the
+same four axes were re-run against implementation head `83671130`:
 
 | Trục | Verdict | P0 | P1 | Ghi chú |
 |---|---|---:|---:|---|
-| Product/UX | PASS | 0 | 0 | flow rõ, canonical article giữ nguyên, desktop/mobile/error state pass |
-| Data integrity | PASS | 0 | 0 | evidence tách inference; completion idempotent; completed evidence không regress |
-| Security/privacy | PASS | 0 | 0 | một P1 free-text PII đã được chặn ở API và giải thích ở UI |
-| Engineering/release | PASS | 0 | 0 | latest main đã merge, full gates/dry-run/public E2E pass |
+| Product/UX | PASS | 0 | 0 | wrong-article UI fails closed; canonical article remains readable; desktop/mobile/error states pass |
+| Data integrity | PASS | 0 | 0 | canonical content binding enforced at API; monotonic atomic evidence; completed evidence closed |
+| Security/privacy | PASS | 0 | 0 | PII rejection retained; Origin required; hourly and lifetime reader caps are D1-backed |
+| Engineering/release | PASS | 0 | 0 | explicit build flag, dual-build contract, runtime Worker start, migrations, dry-run and public E2E pass |
 
-Final severity: **P0=0, P1=0, P2=4, P3=1**. P2/P3 không chặn review và được ghi riêng trong `BACKLOG-P2-P3.md`.
+Correction status: **all four independent P1 findings closed by implementation and
+regression evidence; independent re-review requested before merge**. Remaining
+P2/P3 do not block review and are recorded in `BACKLOG-P2-P3.md`.

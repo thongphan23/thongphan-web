@@ -13,17 +13,22 @@ Last updated: 2026-07-28
 - Public-preview browser QA passes Scenario A, B and C in separate anonymous
   contexts at 1440px and 390px, including refresh/resume, incomplete return,
   persisted non-zero coverage, completion, reflection, next action, Inspector,
-  error fallback and zero horizontal overflow.
-- The single four-axis internal audit is closed with `P0=0` and `P1=0`. One P1
-  found during the audit (likely email/phone input in free text) was fixed with
-  API rejection, UI notice and regression tests. Remaining P2/P3 findings are in
-  the review bundle.
-- Final gates pass: Reader Loop `13/13`, full suite `458/458`, root and Worker
-  TypeScript, lint, `84/84` static build, release `6/6 + 4/4 + 3/3 + 144/144`,
-  Read safety `3/3`, secret integrity and preview Worker dry-run.
+  error fallback and zero horizontal overflow. A fourth binding scenario proves
+  a session attached to the wrong canonical article emits no evidence/completion.
+- A focused independent review corrected the initial audit and found four P1s:
+  release exposure, article/session binding, non-atomic evidence updates and
+  unbounded anonymous-reader creation. All four are implemented and retested on
+  implementation head `836711308a8350aa059d9ec1ee1afb9db8232129`.
+- Final gates pass: Reader Loop `19/19`, dual production-disabled/preview-enabled
+  build gate, full suite `458/458`, root and Worker TypeScript, lint, `84/84`
+  static preview build, release `6/6 + 4/4 + 3/3 + 144/144`, Read safety `3/3`,
+  secret integrity and preview Worker dry-run.
+- Preview migration `0002_reader_creation_rate_limit.sql`, Worker version
+  `e3220b27-a63d-4075-88a0-a52c42d990e6` and Pages deployment `3f32d46d` are live
+  only on the isolated preview resources.
 - PR #8, `product: build Reader Loop v0`, is open, Ready for Review and unmerged.
 - Review bundle:
-  `docs/review-bundles/reader-loop-v0-f937a76d/`.
+  `docs/review-bundles/reader-loop-v0-83671130/`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

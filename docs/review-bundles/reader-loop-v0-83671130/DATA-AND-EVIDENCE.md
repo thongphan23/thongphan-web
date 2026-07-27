@@ -21,6 +21,7 @@ Forbidden production D1 `7cffb7f5-c48b-49c2-b215-9611abd734a5` is absent from Re
 - `manual_completions`: explicit reader confirmation, stored separately from scroll/time.
 - `reflections`: required takeaway and next step.
 - `next_action_decisions`: action, reason, evidence used, unknowns and policy version.
+- `reader_creation_rate_limits`: bộ đếm theo giờ dành riêng cho preview; các bucket cũ hơn 24 giờ được xóa khi có yêu cầu tạo reader mới.
 
 The application does not infer comprehension from scroll or time. It does not store raw scrolling streams, pointer movement, keystrokes, IP or fingerprint.
 
@@ -29,8 +30,11 @@ The application does not infer comprehension from scroll or time. It does not st
 - Browser stores a random anonymous reader ID/token in local storage.
 - D1 stores only the SHA-256 token hash, never the raw token.
 - Reader-owned API reads require `Reader <token>` and return 404 for another reader's session.
+- Evidence và completion bắt buộc gửi đúng canonical `content_url` của session; payload thiếu hoặc gắn sang bài khác bị từ chối trước persistence.
+- Evidence update dùng một câu SQL điều kiện, chỉ tăng aggregate, hợp nhất section và không ghi sau khi session đã completed.
 - Free text is bounded; likely email addresses and phone numbers are rejected before persistence.
-- CORS accepts localhost QA and only the dedicated Pages project host family.
+- Mọi request API phải có Origin được phép. CORS chỉ chấp nhận localhost QA và dedicated Pages project; POST không có Origin trả 403.
+- Reader creation được giữ ở tối đa 60 lần mỗi giờ trên toàn preview và tối đa 1.000 anonymous readers trong vòng đời D1; cả reservation và lifetime cap đều dùng conditional D1 writes.
 - Request bodies are capped and every API response is `no-store`.
 
 ## Traceability and persistence checks
@@ -39,13 +43,15 @@ The final read-only aggregate query against the dedicated remote D1 returned:
 
 | Measure | Value |
 |---|---:|
-| anonymous readers | 20 |
-| recommendation decisions | 19 |
-| reading sessions | 18 |
-| sessions with active time and coverage | 13 |
-| manual completions | 18 |
-| reflections | 18 |
-| next-action decisions | 18 |
+| anonymous readers | 27 |
+| recommendation decisions | 26 |
+| reading sessions | 25 |
+| sessions with active time and coverage | 16 |
+| completed sessions | 23 |
+| manual completions | 23 |
+| reflections | 23 |
+| next-action decisions | 23 |
+| active rate-limit buckets | 1 |
 
 Cloudflare reported `rows_written=0` and `changed_db=false` for this verification query. Counts include repeated QA passes; no personal data was used.
 
@@ -54,6 +60,7 @@ Cloudflare reported `rows_written=0` and `changed_db=false` for this verificatio
 - Scenario A proves the complete sample-question evidence chain and Inspector.
 - Scenario B proves a custom question survives article refresh in the same anonymous browser and completes.
 - Scenario C waits for periodic aggregate sync, leaves the article incomplete, verifies non-zero persisted coverage on `/read`, resumes the same session ID and completes.
+- The binding scenario attaches a valid session ID to the wrong canonical article and proves zero evidence/completion writes plus no completion UI.
 - Forced API 503 proves the canonical article body remains readable and exposes a retryable inline state.
 
 Selected public-preview screenshots are committed in `screenshots/`. The executable browser contract is `scripts/reader-loop-browser-qa.mjs`.

@@ -5,10 +5,10 @@ Status: **READY FOR REVIEW — preview only, unmerged**
 - Preview: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read
 - Evidence Inspector: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read/inspector
 - PR: https://github.com/thongphan23/thongphan-web/pull/8
-- Verified implementation head before this review-bundle commit:
-  `f937a76d96681bd2d1efefd54bca3832d01c846f`
-- Final preview deployment: `bbcd5eee.thongphan-reader-loop-preview.pages.dev`
-- Worker version: `6c174123-2bad-41a9-ac4f-e05e41259cce`
+- Verified P1-correction implementation head before this review-bundle commit:
+  `836711308a8350aa059d9ec1ee1afb9db8232129`
+- Final preview deployment: `3f32d46d.thongphan-reader-loop-preview.pages.dev`
+- Worker version: `e3220b27-a63d-4075-88a0-a52c42d990e6`
 
 ## Demo flow dưới năm phút
 
@@ -18,11 +18,12 @@ Status: **READY FOR REVIEW — preview only, unmerged**
 4. Cuộn bài, chọn `Đánh dấu đã đọc xong`, điền hai trường phản tư bắt buộc.
 5. Xem một Next Best Action cùng lý do; mở `Evidence Inspector` để kiểm tra toàn chuỗi evidence → decision.
 
-## Ba kịch bản đã chạy trên public preview
+## Bốn kịch bản đã chạy trên public preview
 
 - **Scenario A — PASS:** sample question → recommendation → read → completion → reflection → next action.
 - **Scenario B — PASS:** custom question → recommendation → refresh/resume → completion, chạy ở viewport mobile 390×844.
 - **Scenario C — PASS:** incomplete session → return `/read` → thấy coverage đã lưu lớn hơn 0 → continue đúng session → complete.
+- **Session/article binding — PASS:** gắn session hợp lệ vào một canonical article khác → UI cảnh báo, bài vẫn đọc được, không gửi evidence/completion và không hiện completion UI.
 
 Mỗi kịch bản dùng một browser context ẩn danh riêng. Lệnh cuối trên deployment public:
 
@@ -42,6 +43,8 @@ Reader Loop v0 chỉ dùng:
 
 Config không có production route, KV, secret hoặc production D1 ID
 `7cffb7f5-c48b-49c2-b215-9611abd734a5`. Không có production data copy và không có Reader Loop production write.
+Build production mặc định không có chức năng `/read`, Inspector hay article panel;
+preview chỉ mở khi `NEXT_PUBLIC_READER_LOOP_PREVIEW_ENABLED=true` và có API origin rõ ràng.
 
 ## Nội dung bundle
 
