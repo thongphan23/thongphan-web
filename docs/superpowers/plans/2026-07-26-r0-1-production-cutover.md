@@ -164,7 +164,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 ```
 
 The GitHub result must name `main`; both PRs must be merged with base `main`.
@@ -200,7 +200,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 node --import tsx --test scripts/r0-1-production-smoke.test.mjs
 ```
 
@@ -259,7 +259,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 npx wrangler --version
 npx wrangler versions list --help
 npx wrangler versions view 00000000-0000-0000-0000-000000000000 --help
@@ -318,7 +318,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
@@ -386,7 +386,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test -n "$R0_1B_EMBED_VERSION_ID"
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
@@ -455,7 +455,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test -n "$R0_1B_CHAT_VERSION_ID"
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
@@ -560,7 +560,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 npx wrangler d1 time-travel info thongphan-db --config wrangler.brain2-email.toml --json
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
   "SELECT campaign_version,status,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status ORDER BY campaign_version,status; SELECT COUNT(*) AS email_log_count FROM email_logs;"
@@ -611,7 +611,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
@@ -687,7 +687,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
@@ -730,7 +730,7 @@ test -n "$R0_1B_MAIN_SHA"
 test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
-trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+r0_1b_assert_exit_trap_installed
 test -n "$R0_1B_EMBED_VERSION_ID"
 test -n "$R0_1B_CHAT_VERSION_ID"
 test -n "$R0_1B_SIGNUP_VERSION_ID"

@@ -98,6 +98,56 @@ r0_1b_version_evidence_init() {
   R0_1B_EVIDENCE_INITIALIZED=1
 }
 
+r0_1b_assert_exit_trap_installed() {
+  test "$#" -eq 0 || return 64
+  test "$R0_1B_EVIDENCE_INITIALIZED" = 1 || return 64
+  _r0_1b_evidence_directory_is_safe || return 64
+
+  local assertion_file="$R0_1B_VERSION_DIR/exit-trap-assertion.txt"
+  local assertion_created=0
+  local assertion_status=0
+  local noclobber_was_set=0
+
+  case $- in
+    *C*) noclobber_was_set=1 ;;
+  esac
+
+  set -C
+  if trap -p EXIT 2>/dev/null > "$assertion_file"; then
+    assertion_created=1
+  else
+    assertion_status=$?
+  fi
+  if test "$noclobber_was_set" = 0; then
+    set +C
+  fi
+
+  test "$assertion_status" = 0 || return "$assertion_status"
+  if test "$assertion_created" != 1 ||
+    test ! -f "$assertion_file" ||
+    test -L "$assertion_file" ||
+    test ! -O "$assertion_file" ||
+    ! chmod 600 "$assertion_file" 2>/dev/null; then
+    if test "$assertion_created" = 1 &&
+      test -f "$assertion_file" &&
+      test ! -L "$assertion_file" &&
+      test -O "$assertion_file"; then
+      rm -f "$assertion_file" 2>/dev/null || true
+    fi
+    return 1
+  fi
+
+  if grep -Fqx "trap -- '_r0_1b_version_evidence_exit_handler' EXIT" \
+    "$assertion_file"; then
+    assertion_status=0
+  else
+    assertion_status=$?
+  fi
+
+  rm -f "$assertion_file" 2>/dev/null || return 1
+  return "$assertion_status"
+}
+
 r0_1b_mark_remote_mutation_started() {
   test "$#" -eq 0 || return 64
   test "$R0_1B_EVIDENCE_INITIALIZED" = 1 || return 64
