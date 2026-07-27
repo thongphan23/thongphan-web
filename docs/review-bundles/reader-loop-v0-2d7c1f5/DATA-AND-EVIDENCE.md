@@ -5,12 +5,12 @@
 | Resource | Identity | Boundary |
 |---|---|---|
 | Pages | `thongphan-reader-loop-preview` | dedicated project, preview branch `reader-loop-v0` |
-| Worker | `thongphan-reader-loop-preview-api` | `workers.dev`; no production route |
+| Worker | `thongphan-reader-loop-preview-api` | `workers.dev`; no production route; daily cleanup cron |
 | D1 | `thongphan-reader-loop-preview` | `cbc3a7e5-d614-4648-bd12-b9839047d61d` |
 | Recommendation policy | `reader-loop-rules-v0.1.0` | deterministic, rule-based, no LLM/embedding |
 | Next-action policy | `reader-loop-next-action-v0.1.0` | exactly one primary action |
 
-Forbidden production D1 `7cffb7f5-c48b-49c2-b215-9611abd734a5` is absent from Reader Loop config. The Worker has no route, KV, R2, Queue or secret binding.
+Forbidden production D1 `7cffb7f5-c48b-49c2-b215-9611abd734a5` is absent from Reader Loop config. The Worker has no route, KV, R2 or Queue binding. Its only secret is the dedicated preview `CALLER_HASH_SECRET`; it is not shared with production.
 
 ## Evidence and inference remain separate
 
@@ -21,7 +21,7 @@ Forbidden production D1 `7cffb7f5-c48b-49c2-b215-9611abd734a5` is absent from Re
 - `manual_completions`: explicit reader confirmation, stored separately from scroll/time.
 - `reflections`: required takeaway and next step.
 - `next_action_decisions`: action, reason, evidence used, unknowns and policy version.
-- `reader_creation_rate_limits`: bộ đếm theo giờ dành riêng cho preview; các bucket cũ hơn 24 giờ được xóa khi có yêu cầu tạo reader mới.
+- `reader_creation_rate_limits`: bộ đếm theo caller digest và giờ dành riêng cho preview; các hàng cũ hơn 24 giờ được xóa khi tạo reader hoặc khi cron chạy.
 
 The application does not infer comprehension from scroll or time. It does not store raw scrolling streams, pointer movement, keystrokes, IP or fingerprint.
 
@@ -34,7 +34,9 @@ The application does not infer comprehension from scroll or time. It does not st
 - Evidence update dùng một câu SQL điều kiện, chỉ tăng aggregate, hợp nhất section và không ghi sau khi session đã completed.
 - Free text is bounded; likely email addresses and phone numbers are rejected before persistence.
 - Mọi request API phải có Origin được phép. CORS chỉ chấp nhận localhost QA và dedicated Pages project; POST không có Origin trả 403.
-- Reader creation được giữ ở tối đa 60 lần mỗi giờ trên toàn preview và tối đa 1.000 anonymous readers trong vòng đời D1; cả reservation và lifetime cap đều dùng conditional D1 writes.
+- Reader creation được giữ ở tối đa 10 lần mỗi giờ cho mỗi caller digest. Digest dùng HMAC-SHA256 với secret preview và `CF-Connecting-IP`, quay vòng theo ngày; địa chỉ thô không được lưu.
+- Nếu thiếu secret mạnh hoặc managed client address, reader creation fail-closed với 503. Một caller đạt giới hạn không chặn caller khác.
+- Toàn bộ graph của anonymous reader hết hạn sau bảy ngày và được xóa theo thứ tự an toàn với khóa ngoại khi tạo reader hoặc qua cron hằng ngày. Giới hạn 1.000 chỉ tính reader chưa hết hạn và vẫn dùng conditional D1 write.
 - Request bodies are capped and every API response is `no-store`.
 
 ## Traceability and persistence checks
@@ -43,17 +45,13 @@ The final read-only aggregate query against the dedicated remote D1 returned:
 
 | Measure | Value |
 |---|---:|
-| anonymous readers | 27 |
-| recommendation decisions | 26 |
-| reading sessions | 25 |
-| sessions with active time and coverage | 16 |
-| completed sessions | 23 |
-| manual completions | 23 |
-| reflections | 23 |
-| next-action decisions | 23 |
-| active rate-limit buckets | 1 |
+| anonymous readers | 31 |
+| active rate rows | 1 |
+| minimum caller digest length | 64 |
+| maximum caller digest length | 64 |
+| non-hex caller digests | 0 |
 
-Cloudflare reported `rows_written=0` and `changed_db=false` for this verification query. Counts include repeated QA passes; no personal data was used.
+Cloudflare reported `rows_written=0` and `changed_db=false` for this verification query. Counts include repeated QA passes; no personal data was used and the query did not select digest values.
 
 ## Scenario evidence
 

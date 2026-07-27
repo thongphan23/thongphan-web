@@ -6,8 +6,7 @@ These findings remain after the corrected four-axis review. They do not block Re
 
 1. **Rehydrate the completed next-action card on a direct article refresh.** The completed decision persists in D1 and is visible in Inspector, but the article panel currently presents the card only in the completion response lifecycle.
 2. **Cross-check curated recommendation URLs against generated library data in CI.** The current six URLs exist and the build passes, but the curation file is manual.
-3. **Define content-data retention and cleanup.** Reader creation is now rate-limited and capped at 1.000 lifetime rows, while rate buckets retain only 24 hours. Session, evidence, completion and reflection rows still have no automatic TTL; define deletion/cleanup before any production promotion.
-4. **Improve custom-question ranking after evidence exists.** v0 intentionally uses deterministic keyword scoring and one stable fallback; later rules can use more explicit problem/stage signals without introducing an LLM.
+3. **Improve custom-question ranking after evidence exists.** v0 intentionally uses deterministic keyword scoring and one stable fallback; later rules can use more explicit problem/stage signals without introducing an LLM.
 
 ## P3
 

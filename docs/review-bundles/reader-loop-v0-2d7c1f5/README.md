@@ -1,14 +1,14 @@
 # Reader Loop v0 review bundle
 
-Status: **READY FOR REVIEW — preview only, unmerged**
+Status: **READY FOR INDEPENDENT RE-REVIEW — preview only, unmerged**
 
 - Preview: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read
 - Evidence Inspector: https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev/read/inspector
 - PR: https://github.com/thongphan23/thongphan-web/pull/8
-- Verified P1-correction implementation head before this review-bundle commit:
-  `836711308a8350aa059d9ec1ee1afb9db8232129`
-- Final preview deployment: `3f32d46d.thongphan-reader-loop-preview.pages.dev`
-- Worker version: `e3220b27-a63d-4075-88a0-a52c42d990e6`
+- Verified second P1-correction implementation head before this review-bundle commit:
+  `2d7c1f58a218a9e0b3f60ca8d0f5999305eed87f`
+- Final preview deployment: `352e6327.thongphan-reader-loop-preview.pages.dev`
+- Worker version: `2cfed213-942c-4646-ae2b-ed46d89376a6`
 
 ## Demo flow dưới năm phút
 
@@ -29,7 +29,7 @@ Mỗi kịch bản dùng một browser context ẩn danh riêng. Lệnh cuối t
 
 ```bash
 READER_LOOP_BASE_URL=https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev \
-READER_LOOP_SCREENSHOT_DIR=.tmp/reader-loop-browser-qa-final-deployment \
+READER_LOOP_SCREENSHOT_DIR=.tmp/reader-loop-second-correction-public \
 npm run qa:reader-loop-browser
 ```
 
@@ -41,8 +41,10 @@ Reader Loop v0 chỉ dùng:
 - Worker `thongphan-reader-loop-preview-api` trên `workers.dev`;
 - D1 `thongphan-reader-loop-preview`, ID `cbc3a7e5-d614-4648-bd12-b9839047d61d`.
 
-Config không có production route, KV, secret hoặc production D1 ID
+Config không có production route, KV hoặc production D1 ID
 `7cffb7f5-c48b-49c2-b215-9611abd734a5`. Không có production data copy và không có Reader Loop production write.
+A dedicated preview-only `CALLER_HASH_SECRET` is the sole Reader Loop secret;
+it creates rotating HMAC caller digests and is not a production binding.
 Build production mặc định không có chức năng `/read`, Inspector hay article panel;
 preview chỉ mở khi `NEXT_PUBLIC_READER_LOOP_PREVIEW_ENABLED=true` và có API origin rõ ràng.
 

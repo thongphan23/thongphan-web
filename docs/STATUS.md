@@ -9,7 +9,8 @@ Last updated: 2026-07-28
 - The UI uses dedicated Pages project `thongphan-reader-loop-preview`; the API
   uses dedicated Worker `thongphan-reader-loop-preview-api` and dedicated D1
   `thongphan-reader-loop-preview` (`cbc3a7e5-d614-4648-bd12-b9839047d61d`).
-  No production route, D1, KV, secret or data copy is used.
+  No production route, D1, KV or data copy is used. A dedicated preview-only
+  `CALLER_HASH_SECRET` protects rotating caller digests and is not shared with production.
 - Public-preview browser QA passes Scenario A, B and C in separate anonymous
   contexts at 1440px and 390px, including refresh/resume, incomplete return,
   persisted non-zero coverage, completion, reflection, next action, Inspector,
@@ -17,18 +18,23 @@ Last updated: 2026-07-28
   a session attached to the wrong canonical article emits no evidence/completion.
 - A focused independent review corrected the initial audit and found four P1s:
   release exposure, article/session binding, non-atomic evidence updates and
-  unbounded anonymous-reader creation. All four are implemented and retested on
-  implementation head `836711308a8350aa059d9ec1ee1afb9db8232129`.
-- Final gates pass: Reader Loop `19/19`, dual production-disabled/preview-enabled
-  build gate, full suite `458/458`, root and Worker TypeScript, lint, `84/84`
-  static preview build, release `6/6 + 4/4 + 3/3 + 144/144`, Read safety `3/3`,
-  secret integrity and preview Worker dry-run.
-- Preview migration `0002_reader_creation_rate_limit.sql`, Worker version
-  `e3220b27-a63d-4075-88a0-a52c42d990e6` and Pages deployment `3f32d46d` are live
-  only on the isolated preview resources.
+  unbounded anonymous-reader creation. A second independent review then found two
+  P1s: the release gate left `out/` preview-enabled, and the global/lifetime reader
+  controls could deny service to unrelated callers. Both corrections are implemented
+  and retested on implementation head `2d7c1f58a218a9e0b3f60ca8d0f5999305eed87f`;
+  independent re-review is pending.
+- Final gates pass: Reader Loop `24/24`; full suite `458/458`; the release build
+  gate verifies disabled → enabled → final disabled; release suites
+  `6/6 + 4/4 + 3/3 + 144/144`; Read safety `3/3`; root TypeScript, lint,
+  secret integrity, `84/84` preview build, Worker dry-run, local runtime
+  fail-closed checks and local/public browser QA all pass.
+- Preview migration `0003_reader_caller_expiry.sql`, Worker version
+  `2cfed213-942c-4646-ae2b-ed46d89376a6` and Pages deployment `352e6327` are live
+  only on the isolated preview resources. Per-caller digests rotate daily; rate rows
+  retain 24 hours and the complete anonymous reader graph retains seven days.
 - PR #8, `product: build Reader Loop v0`, is open, Ready for Review and unmerged.
 - Review bundle:
-  `docs/review-bundles/reader-loop-v0-83671130/`.
+  `docs/review-bundles/reader-loop-v0-2d7c1f5/`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
