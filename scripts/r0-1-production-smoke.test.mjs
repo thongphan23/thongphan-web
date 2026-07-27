@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { chmod, lstat, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
+import { chmod, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
@@ -111,9 +111,9 @@ function controlledSignupFixture({
         preMigrationEmailAggregate,
       }
     },
-    async findSyntheticSignup(identity) {
+    async findSyntheticSignup() {
       return state.signups
-        .filter((row) => row.name === identity.name && row.email === identity.email)
+        .filter((row) => row.email.toLowerCase().endsWith('.invalid'))
         .map((row) => ({ id: row.id }))
     },
     async countQueueRows({ signupId }) {
@@ -121,11 +121,10 @@ function controlledSignupFixture({
       state.queueCountCalls += 1
       return state.queueRows
     },
-    async deleteSyntheticSignup({ signupId, identity }) {
+    async deleteSyntheticSignup({ signupId }) {
       const before = state.signups.length
-      state.signups = state.signups.filter((row) => !(
-        row.id === signupId && row.name === identity.name && row.email === identity.email
-      ))
+      state.signups = state.signups.filter((row) => !(row.id === signupId
+        && row.email.toLowerCase().endsWith('.invalid')))
       return before - state.signups.length
     },
   }
@@ -194,19 +193,18 @@ function actualSignupWorkerFixture() {
         }],
       }
     },
-    async findSyntheticSignup(identity) {
+    async findSyntheticSignup() {
       return state.signups
-        .filter((row) => row.name === identity.name && row.email === identity.email)
+        .filter((row) => row.email.toLowerCase().endsWith('.invalid'))
         .map((row) => ({ id: row.id }))
     },
     async countQueueRows() {
       return state.queueRows
     },
-    async deleteSyntheticSignup({ signupId, identity }) {
+    async deleteSyntheticSignup({ signupId }) {
       const before = state.signups.length
-      state.signups = state.signups.filter((row) => !(
-        row.id === signupId && row.name === identity.name && row.email === identity.email
-      ))
+      state.signups = state.signups.filter((row) => !(row.id === signupId
+        && row.email.toLowerCase().endsWith('.invalid')))
       return before - state.signups.length
     },
   }
@@ -233,7 +231,7 @@ async function preMigrationSqliteFixture(fixtureRoot) {
       signupInsert.run(
         signupId,
         `Historical Fixture ${signupIndex}`,
-        `historical-${signupIndex}@fixture.invalid`,
+        `historical-${signupIndex}@fixture.test`,
       )
       for (let day = 1; day <= 21; day += 1) {
         queueInsert.run(
@@ -311,8 +309,8 @@ async function preMigrationSqliteFixture(fixtureRoot) {
     )
   }
   const subprocessAdapter = async ({ args }) => {
-    const sqlPath = args[args.indexOf('--file') + 1]
-    const sql = await readFile(sqlPath, 'utf8')
+    assert.equal(args.includes('--file'), false)
+    const sql = args[args.indexOf('--command') + 1]
     const statements = sql
       .split('\n')
       .filter((line) => !line.trimStart().startsWith('--'))
@@ -335,24 +333,24 @@ async function preMigrationSqliteFixture(fixtureRoot) {
   return { database, fetchAdapter, initialAggregate, sqlErrors, subprocessAdapter, fixtureRoot }
 }
 
-function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspectSql = () => {} }) {
+function d1SubprocessFixture({ state, identity, subprocessArgs, inspectSql = () => {} }) {
   return async ({ executable, args }) => {
     subprocessArgs.push([executable, ...args])
     assert.match(executable, /node_modules\/\.bin\/wrangler$/)
     assert.equal(args.includes('--remote'), true)
-    assert.equal(args.includes('--command'), false)
+    assert.equal(args.includes('--command'), true)
+    assert.equal(args.includes('--file'), false)
     assert.equal(args.includes('--json'), true)
     assert.equal(args.includes('--yes'), true)
     assert.deepEqual(args.slice(0, 3), ['d1', 'execute', 'thongphan-db'])
     assert.doesNotMatch(args.join(' '), new RegExp(identity.name, 'i'))
     assert.doesNotMatch(args.join(' '), new RegExp(identity.email, 'i'))
-    const sqlPath = args[args.indexOf('--file') + 1]
-    sqlPaths.push(sqlPath)
-    const sqlStat = await lstat(sqlPath)
-    assert.equal(sqlStat.isFile(), true)
-    assert.equal(sqlStat.isSymbolicLink(), false)
-    assert.equal(sqlStat.mode & 0o077, 0)
-    const sql = await readFile(sqlPath, 'utf8')
+    const sql = args[args.indexOf('--command') + 1]
+    assert.equal(typeof sql, 'string')
+    if (sql.includes('r0-1-smoke:find-signup') || sql.includes('r0-1-smoke:delete-signup')) {
+      assert.match(sql, /brain2-21-ngay/)
+      assert.match(sql, /\.invalid/)
+    }
     inspectSql(sql)
 
     let results
@@ -365,7 +363,7 @@ function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspec
       results = [{
         success: true,
         results: state.signups
-          .filter((row) => row.name === identity.name && row.email === identity.email)
+          .filter((row) => row.email.toLowerCase().endsWith('.invalid'))
           .map((row) => ({ id: row.id })),
       }]
     } else if (sql.includes('r0-1-smoke:count-queue')) {
@@ -373,9 +371,8 @@ function d1SubprocessFixture({ state, identity, sqlPaths, subprocessArgs, inspec
     } else if (sql.includes('r0-1-smoke:delete-signup')) {
       const signupId = sql.match(/\bid = '([^']+)'/)?.[1]
       const before = state.signups.length
-      state.signups = state.signups.filter((row) => !(
-        row.id === signupId && row.name === identity.name && row.email === identity.email
-      ))
+      state.signups = state.signups.filter((row) => !(row.id === signupId
+        && row.email.toLowerCase().endsWith('.invalid')))
       results = [{ success: true, results: [{ deleted_count: before - state.signups.length }] }]
     } else {
       throw new Error('unexpected SQL fixture')
@@ -584,7 +581,7 @@ test('controlled signup rejects success:false and still restores every invariant
   assert.equal(fixture.state.snapshotCalls, 2)
 })
 
-test('controlled signup rejects malformed JSON and cleans the inserted row', async () => {
+test('controlled signup fails closed without deleting when malformed JSON has no response ID', async () => {
   const fixture = controlledSignupFixture({ responseBody: '{not-json' })
 
   await assert.rejects(
@@ -597,7 +594,7 @@ test('controlled signup rejects malformed JSON and cleans the inserted row', asy
     }),
     { code: 'SMOKE_SIGNUP_RESPONSE_CONTRACT' },
   )
-  assert.deepEqual(fixture.state.signups, [])
+  assert.equal(fixture.state.signups.length, 1)
   assert.equal(fixture.state.queueCountCalls, 1)
 })
 
@@ -624,7 +621,9 @@ test('controlled signup rejects every invalid JSON response shape', async (t) =>
         }),
         { code: 'SMOKE_SIGNUP_RESPONSE_CONTRACT' },
       )
-      assert.deepEqual(fixture.state.signups, [])
+      const hasResponseId = body && typeof body === 'object' && !Array.isArray(body)
+        && typeof body.signup_id === 'string' && body.signup_id.length > 0
+      assert.equal(fixture.state.signups.length, hasResponseId ? 0 : 1)
     })
   }
 })
@@ -648,7 +647,7 @@ test('controlled signup rejects a response ID that differs from the created D1 r
     }),
     { code: 'SMOKE_SIGNUP_RESPONSE_CONTRACT' },
   )
-  assert.deepEqual(fixture.state.signups, [])
+  assert.equal(fixture.state.signups.length, 1)
 })
 
 test('controlled signup rejects a non-JSON media type with an otherwise valid body', async () => {
@@ -701,7 +700,7 @@ test('controlled signup preserves the non-200 classification when its body is ov
     }),
     { code: 'SMOKE_SIGNUP_HTTP_CONTRACT' },
   )
-  assert.deepEqual(fixture.state.signups, [])
+  assert.equal(fixture.state.signups.length, 1)
 })
 
 test('controlled signup accepts canonical JSON with case-insensitive media type and extra fields', async () => {
@@ -915,9 +914,9 @@ test('controlled signup fails closed when the pre-migration email aggregate chan
   assert.deepEqual(fixture.state.signups, [])
 })
 
-test('controlled signup preserves unrelated rows during targeted cleanup', async () => {
+test('controlled signup preserves unrelated non-synthetic rows during targeted cleanup', async () => {
   const fixture = controlledSignupFixture()
-  fixture.state.signups.push({ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' })
+  fixture.state.signups.push({ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' })
 
   await runProductionSmoke({
     origin: ORIGIN,
@@ -928,7 +927,7 @@ test('controlled signup preserves unrelated rows during targeted cleanup', async
   })
 
   assert.deepEqual(fixture.state.signups, [
-    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' },
+    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' },
   ])
 })
 
@@ -950,9 +949,38 @@ test('controlled signup refuses to POST when its synthetic identity already exis
   assert.equal(fixture.state.signups.length, 1)
 })
 
-test('controlled signup cleans every matching row when one POST creates multiple rows', async () => {
-  const fixture = controlledSignupFixture({ createdSignupCount: 2 })
-  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }
+test('controlled signup refuses to POST when any synthetic invalid-domain signup exists for the challenge', async () => {
+  const fixture = controlledSignupFixture()
+  fixture.state.signups.push({
+    id: 'other-synthetic-id',
+    name: 'Other Fixture',
+    email: 'other-synthetic@fixture.invalid',
+  })
+
+  await assert.rejects(
+    runProductionSmoke({
+      origin: ORIGIN,
+      mode: 'controlled-signup',
+      fetchAdapter: fixture.fetchAdapter,
+      databaseAdapter: fixture.databaseAdapter,
+      syntheticIdentity: SYNTHETIC_IDENTITY,
+    }),
+    { code: 'SMOKE_SYNTHETIC_PREEXISTS' },
+  )
+  assert.equal(fixture.state.postRequests, 0)
+  assert.equal(fixture.state.signups.length, 1)
+})
+
+test('controlled signup removes at most the response-ID row when one POST creates multiple rows', async () => {
+  const fixture = controlledSignupFixture({
+    createdSignupCount: 2,
+    responseBody: JSON.stringify({
+      success: true,
+      message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+      signup_id: 'fixture-signup-id-1',
+    }),
+  })
+  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }
   fixture.state.signups.push(unrelated)
 
   await assert.rejects(
@@ -968,8 +996,8 @@ test('controlled signup cleans every matching row when one POST creates multiple
   const matching = fixture.state.signups.filter((row) => (
     row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email
   ))
-  assert.deepEqual(matching, [])
-  assert.deepEqual(fixture.state.signups, [unrelated])
+  assert.deepEqual(matching.map((row) => row.id), ['fixture-signup-id-2'])
+  assert.deepEqual(fixture.state.signups, [unrelated, matching[0]])
 })
 
 test('controlled command fails closed without injected identity and database adapter', async () => {
@@ -1030,26 +1058,24 @@ test('native controlled CLI rejects every non-apex origin before secure input or
   })
 })
 
-test('controlled CLI cleans three matching D1 rows and preserves an unrelated row', async (t) => {
+test('controlled CLI removes at most the response-ID row when D1 reports multiple synthetic rows', async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cli-test-'))
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
   await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
 
   const state = {
-    signups: [{ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }],
+    signups: [{ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }],
     preMigrationEmailAggregate: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
       row_count: 210,
     }],
   }
-  const sqlPaths = []
   const subprocessArgs = []
   const subprocessAdapter = d1SubprocessFixture({
     state,
     identity: SYNTHETIC_IDENTITY,
-    sqlPaths,
     subprocessArgs,
   })
   const fetchAdapter = async (input, init) => {
@@ -1084,24 +1110,23 @@ test('controlled CLI cleans three matching D1 rows and preserves an unrelated ro
 
   assert.equal(exitCode, 1)
   assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_ROW_CONTRACT')
-  assert.equal(subprocessArgs.length, 8)
+  assert.equal(subprocessArgs.length, 6)
   assert.deepEqual(state.signups, [
-    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' },
+    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' },
+    { id: 'secure-cli-signup-id-2', ...SYNTHETIC_IDENTITY },
+    { id: 'secure-cli-signup-id-3', ...SYNTHETIC_IDENTITY },
   ])
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-  for (const sqlPath of sqlPaths) {
-    await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
-  }
 })
 
-test('controlled CLI safely quotes an apostrophe name and performs targeted cleanup', async (t) => {
+test('controlled CLI never places an apostrophe name or email in a D1 command', async (t) => {
   const identity = { synthetic: true, name: "Ada O'Brien", email: 'ada-obrien@fixture.invalid' }
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-apostrophe-test-'))
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
   await writeFile(inputPath, JSON.stringify(identity), { mode: 0o600 })
-  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.invalid' }
+  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }
   const state = {
     signups: [unrelated],
     preMigrationEmailAggregate: [{
@@ -1110,19 +1135,17 @@ test('controlled CLI safely quotes an apostrophe name and performs targeted clea
       row_count: 210,
     }],
   }
-  const sqlPaths = []
   const subprocessArgs = []
-  let quotedStatements = 0
+  let identityFreeStatements = 0
   const subprocessAdapter = d1SubprocessFixture({
     state,
     identity,
-    sqlPaths,
     subprocessArgs,
     inspectSql(sql) {
       if (!sql.includes('r0-1-smoke:find-signup') && !sql.includes('r0-1-smoke:delete-signup')) return
-      quotedStatements += 1
-      assert.match(sql, /Ada O''Brien/)
+      identityFreeStatements += 1
       assert.doesNotMatch(sql, /Ada O'Brien/)
+      assert.doesNotMatch(sql, /ada-obrien@fixture\.invalid/i)
     },
   })
   const lines = []
@@ -1147,11 +1170,10 @@ test('controlled CLI safely quotes an apostrophe name and performs targeted clea
 
   assert.equal(exitCode, 0)
   assert.equal(subprocessArgs.length, 7)
-  assert.equal(quotedStatements, 4)
+  assert.equal(identityFreeStatements, 4)
   assert.deepEqual(state.signups, [unrelated])
   assert.doesNotMatch(lines[0], new RegExp(identity.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(identity.email, 'i'))
-  for (const sqlPath of sqlPaths) await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
 })
 
 test('controlled CLI rejects group-readable and symlink identity files before side effects', async (t) => {
@@ -1194,24 +1216,20 @@ test('controlled CLI rejects group-readable and symlink identity files before si
   }
 })
 
-test('controlled CLI removes its owner-only SQL artifact when Wrangler fails', async (t) => {
+test('controlled CLI fails before POST when the command-mode Wrangler invocation fails', async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cleanup-test-'))
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
   await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
-  const sqlPaths = []
   const lines = []
 
   const exitCode = await main(
     ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
     {
       env: { R0_1_SMOKE_INPUT_FILE: inputPath },
-      tempRoot: fixtureRoot,
       subprocessAdapter: async ({ args }) => {
-        const sqlPath = args[args.indexOf('--file') + 1]
-        sqlPaths.push(sqlPath)
-        const sqlStat = await lstat(sqlPath)
-        assert.equal(sqlStat.mode & 0o077, 0)
+        assert.equal(args.includes('--file'), false)
+        assert.equal(args.includes('--command'), true)
         throw new Error('synthetic Wrangler failure')
       },
       fetchAdapter: async () => {
@@ -1223,11 +1241,9 @@ test('controlled CLI removes its owner-only SQL artifact when Wrangler fails', a
 
   assert.equal(exitCode, 1)
   assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_COMMAND_FAILED')
-  assert.equal(sqlPaths.length, 1)
-  await assert.rejects(lstat(sqlPaths[0]), { code: 'ENOENT' })
 })
 
-test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL artifact', async (t) => {
+test('controlled CLI rejects invalid JSON returned by command-mode Wrangler', async (t) => {
   const cases = [
     ['malformed', '{not-json'],
     ['oversized', 'x'.repeat((64 * 1024) + 1)],
@@ -1240,7 +1256,6 @@ test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL ar
       subtest.after(() => rm(fixtureRoot, { recursive: true, force: true }))
       const inputPath = join(fixtureRoot, 'controlled-input.json')
       await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
-      const sqlPaths = []
       const lines = []
       let fetchCalls = 0
 
@@ -1248,11 +1263,9 @@ test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL ar
         ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
         {
           env: { R0_1_SMOKE_INPUT_FILE: inputPath },
-          tempRoot: fixtureRoot,
           subprocessAdapter: async ({ args }) => {
-            const sqlPath = args[args.indexOf('--file') + 1]
-            sqlPaths.push(sqlPath)
-            assert.equal((await lstat(sqlPath)).mode & 0o077, 0)
+            assert.equal(args.includes('--file'), false)
+            assert.equal(args.includes('--command'), true)
             return { exitCode: 0, stdout, stderr: '' }
           },
           fetchAdapter: async () => {
@@ -1268,8 +1281,6 @@ test('controlled CLI rejects invalid Wrangler JSON and always removes its SQL ar
       assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_CONTRACT')
       assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
       assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-      assert.ok(sqlPaths.length >= 1)
-      for (const sqlPath of sqlPaths) await assert.rejects(lstat(sqlPath), { code: 'ENOENT' })
     })
   }
 })
@@ -1339,7 +1350,7 @@ test('controlled CLI response failure prints only its stable classification', as
   assert.doesNotMatch(lines[0], /private body|private-signup-id|fixture-signup-id/i)
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-  assert.deepEqual(fixture.state.signups, [])
+  assert.equal(fixture.state.signups.length, 1)
 })
 
 test('command shell rejects unknown flags and non-HTTPS origins before fetching', async (t) => {

@@ -16,6 +16,11 @@ Last updated: 2026-07-27
   production D1 migration and no production signup request or cutover.
 - R0.1B has not started and still requires a separate owner-gated prompt. R0.H1 and
   R0.2 have not started; preview/production isolation remains unresolved.
+- R0.1B current recovery state: embed/chat/signup versions are deployed and the
+  official read-only recovery passed. The first controlled signup stopped before
+  POST because Wrangler `--file` returned only an execution summary;
+  `synthetic_count=0`, and migration/Pages remain untouched. The local
+  command-mode runner repair is verified; production closure stays separate.
 
 ### Historical R0.1A implementation verification — superseded merge-state reporting
 
