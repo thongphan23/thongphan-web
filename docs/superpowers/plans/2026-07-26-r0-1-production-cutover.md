@@ -201,6 +201,7 @@ test -n "$R0_1B_VERSION_DIR"
 test -d "$R0_1B_VERSION_DIR"
 test ! -L "$R0_1B_VERSION_DIR"
 r0_1b_assert_exit_trap_installed
+npm ci
 node --import tsx --test scripts/r0-1-production-smoke.test.mjs
 ```
 
@@ -210,7 +211,6 @@ return to a new R0.1A implementation PR.
 ### Local release commands
 
 ```bash
-npm ci
 npm run test:r0-1b-d1-migration-scope
 npm run test:r0-1-operational-doc-contract
 npm run test:r0-1b-version-evidence-lifecycle
