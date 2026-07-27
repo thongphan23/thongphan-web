@@ -2,8 +2,8 @@
 
 **Document ID:** TPREAD-D03
 **Version:** 2.2.0
-**Status:** R0 baseline giữ nguyên; R0.1A source merged into `main`; R0.1B not started
-**Last updated:** 2026-07-27
+**Status:** R0 baseline giữ nguyên; R0.1A source merged into `main`; R0.1B recovery in progress — cutover incomplete
+**Last updated:** 2026-07-28
 **Primary owner:** Thông Phan
 
 ---
@@ -35,32 +35,32 @@ Repository và production surface đã được kiểm tra tại commit `c8b10f9
 | Environments | Preview và production Pages chưa tách D1/KV |
 | Analytics | Chưa có product analytics hoặc Web Analytics beacon được xác minh |
 | Payment | Chưa có provider/webhook/subscription/entitlement |
-| Email | Production vẫn ở baseline trước cutover; source local ghi registration nhưng không tạo queue row; delivery/marketing consent chưa được kích hoạt |
+| Email | Signup version ghi registration nhưng không tạo queue row đã deploy; controlled POST chưa chạy; delivery/marketing consent chưa được kích hoạt |
 | R2 / Queues | R2 bị tắt; không có Queue |
-| Existing AI | R0.1A source thay cả hai API bằng binding-free 410 tombstone; `/chat` vẫn là trang static dùng local model; chưa production-deploy |
+| Existing AI | Binding-free 410 tombstones đã deploy và qua official read-only recovery; `/chat` vẫn là trang static dùng local model |
 | Verification | typecheck, lint, 242 tests, 82-route build, release gate, SEO, bundle, 7 Worker dry-run pass |
 
-R0 không deploy, không migration, không tạo database, không thay route/framework và không triển khai PRD-R1.
+R0 baseline không deploy, không migration, không tạo database, không thay route/framework và không triển khai PRD-R1. Delta R0.1B hiện hành được ghi riêng bên dưới.
 
 ### 1.2. R0.1A merged-source delta và production boundary
 
 | Interface | Implemented source in `main` | Production-deployed state | Boundary còn lại |
 |---|---|---|---|
-| `/api/embed` | `/api/embed` returns `410` cho mọi method qua shared tombstone; entry không có environment binding (`workers/embed-vault.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`, `wrangler.embed.toml:5-14`) | Chưa deploy trong R0.1A; không được mô tả production là đã remediated | R0.1B owner-gated cutover và smoke |
-| `/api/chat` | `/api/chat` returns `410` qua cùng tombstone, không có AI/Vectorize binding (`workers/api/chat.ts:1-3`, `wrangler.chat.toml:5-14`) | Chưa deploy trong R0.1A | R0.1B owner-gated cutover và smoke |
+| `/api/embed` | `/api/embed` returns `410` cho mọi method qua shared tombstone; entry không có environment binding (`workers/embed-vault.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`, `wrangler.embed.toml:5-14`) | Tombstone version đã deploy; official read-only recovery passed | Hoàn tất các gate cutover còn lại trước closure |
+| `/api/chat` | `/api/chat` returns `410` qua cùng tombstone, không có AI/Vectorize binding (`workers/api/chat.ts:1-3`, `wrangler.chat.toml:5-14`) | Tombstone version đã deploy; official read-only recovery passed | Hoàn tất các gate cutover còn lại trước closure |
 | `/chat` | Trang public/static vẫn tồn tại; client luôn gọi `createLocalChatTurn()` và không gọi remote API (`app/chat/ChatClient.tsx:27-41`, `app/chat/chat-model.ts:28-33`) | Production page không được đổi bởi R0.1A | Không được suy diễn trang `/chat` là remote AI capability |
-| Signup | Success chỉ xác nhận registration được lưu; D1 batch có đúng một signup statement và không chuẩn bị queue statement (`workers/brain2-campaign.ts:269-294`) | Production chưa cutover sang contract mới | Không có email-delivery promise hay marketing-consent grant |
+| Signup | Success chỉ xác nhận registration được lưu; D1 batch có đúng một signup statement và không chuẩn bị queue statement (`workers/brain2-campaign.ts:269-294`) | Truthful signup version đã deploy; controlled POST has not run | Không có email-delivery promise hay marketing-consent grant |
 | Email audience | Migration local đặt legacy rows thành `quarantined_legacy`, cột số tương ứng với `sendable = false`; trigger chặn mọi sendable state (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`) | Migration chưa apply production; email Worker chưa deploy; cron vẫn rỗng | Delivery status như `pending` không tạo audience eligibility; retention/dedup/consent còn owner-gated |
 | Environment isolation | Không thay đổi trong R0.1A | Preview và production D1 isolation chưa giải quyết | R0.2 chưa bắt đầu; tách resource không thuộc endpoint-binding removal |
 
 `R0.1A source merged into main` ở đây áp dụng cho remediation source implementation
-through Task 8 và complete local release verification đã pass. PR #2 is merged;
-R0.1B not started. Production vẫn ở pre-cutover state: no production migration, no
-production tombstone deployment, no production signup cutover. Migration `0003` has
-not been applied to production; the truthful signup and tombstone Workers have not
-been production-deployed; the email Worker remains undeployed and cron remains empty.
-Preview and production isolation remains unresolved. R0.H1 public-history residual
-vẫn là nhánh riêng, nonblocking; R0.1 không được claim complete.
+through Task 8 và complete local release verification đã pass. PR #2 is merged.
+R0.1B recovery in progress; cutover incomplete. The embed/chat/signup versions are
+deployed and the official read-only recovery passed. The controlled POST has not run;
+the command-mode runner fix is verified. Migration `0003` and Pages remain untouched;
+the email Worker remains undeployed and cron remains empty. Preview and production
+isolation remains unresolved. R0.H1 public-history residual vẫn là nhánh riêng,
+nonblocking; R0.1 không được claim complete.
 
 ---
 
@@ -593,7 +593,7 @@ R0 phải lập bảng cho từng thành phần:
 | Background | Không Queue; source email cron rỗng; signup local không tạo email queue row | Queue/Cron khi R1 chứng minh nhu cầu | Chưa provision/deploy | registration không phải delivery consent |
 | Analytics | Không thấy Web Analytics/product SDK | Privacy-preserving event aggregate | Cần ADR/event catalog | không có field baseline |
 | Anti-bot | Rate limit chỉ ở signup; không Turnstile | Chọn theo threat model | Chờ ADR | UX/abuse |
-| AI | Source local dùng binding-free 410 tombstones; `/chat` local-only; production chưa cutover | None trong MVP Read | R0.1B deploy/smoke riêng | không được claim production remediated trước cutover |
+| AI | Binding-free 410 tombstone versions đã deploy và qua official read-only recovery; `/chat` local-only | None trong MVP Read | Cutover vẫn thiếu controlled POST, migration và Pages gates | không được claim R0.1B complete trước closure |
 
 Không migrate một component chỉ vì Cloudflare có dịch vụ tương ứng. Cần chứng minh fit và migration cost.
 
@@ -670,6 +670,8 @@ Trạng thái exit criteria:
 - assumption blocking R1: **còn decision gates**, không còn repository unknown mang tính nền;
 - Thông duyệt quyết định giữ/migrate: **pending**;
 - PRD-R1: **chưa được tạo và bị khóa tới khi owner duyệt R0**.
+
+### Historical R0.1A pre-merge update — superseded current-state reporting
 
 R0.1 update: remediation source implementation through Task 8 và complete local
 release verification đã pass; Draft PR #2 remains pending merge và R0.1B not started.

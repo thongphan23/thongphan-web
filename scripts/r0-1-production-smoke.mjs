@@ -28,7 +28,7 @@ const MAX_D1_OUTPUT_BYTES = 64 * 1024
 const D1_TIMEOUT_MS = 30_000
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const CONTROL_CHARACTERS = /[\u0000-\u001F\u007F-\u009F]/u
-const OPAQUE_SIGNUP_ID = /^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/u
+const CANONICAL_UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u
 
 class SmokeError extends Error {
   constructor(code) {
@@ -38,8 +38,8 @@ class SmokeError extends Error {
   }
 }
 
-function validOpaqueSignupId(value) {
-  return typeof value === 'string' && OPAQUE_SIGNUP_ID.test(value)
+function validCanonicalSignupId(value) {
+  return typeof value === 'string' && CANONICAL_UUID_V4.test(value)
 }
 
 async function readBoundedBody(response, maxResponseBytes) {
@@ -88,7 +88,7 @@ async function inspectControlledSignupResponse(response, maxResponseBytes) {
     } catch {}
   }
   const signupId = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
-    && validOpaqueSignupId(parsed.signup_id)
+    && validCanonicalSignupId(parsed.signup_id)
     ? parsed.signup_id
     : null
   if (response.status !== 200) {
@@ -205,7 +205,7 @@ function assertPreMigrationSnapshot(value) {
 
 function assertSignupRows(rows) {
   if (!Array.isArray(rows) || rows.some((row) => (
-    !row || !validOpaqueSignupId(row.id)
+    !row || !validCanonicalSignupId(row.id)
   ))) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }

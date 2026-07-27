@@ -14,6 +14,18 @@ const { main, runProductionSmoke } = productionSmoke
 const ORIGIN = 'https://fixture.invalid'
 const PRODUCTION_ORIGIN = 'https://thongphan.com'
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
+const SIGNUP_IDS = Object.freeze({
+  primary: '00000000-0000-4000-8000-000000000001',
+  secondary: '00000000-0000-4000-8000-000000000002',
+  tertiary: '00000000-0000-4000-8000-000000000003',
+  worker: '00000000-0000-4000-8000-000000000004',
+  preMigration: '00000000-0000-4000-8000-000000000005',
+  mismatch: '00000000-0000-4000-8000-000000000006',
+  apostrophe: '00000000-0000-4000-8000-000000000007',
+  private: '00000000-0000-4000-8000-000000000008',
+  validatedD1: '00000000-0000-4000-8000-000000000009',
+  unrelated: '00000000-0000-4000-8000-00000000000a',
+})
 const SYNTHETIC_IDENTITY = Object.freeze({
   synthetic: true,
   name: 'R0.1 Fixture',
@@ -88,13 +100,13 @@ function controlledSignupFixture({
     state.postRequests += 1
     const identity = JSON.parse(init.body)
     for (let index = 0; index < createdSignupCount; index += 1) {
-      const id = createdSignupCount === 1 ? 'fixture-signup-id' : `fixture-signup-id-${index + 1}`
+      const id = [SIGNUP_IDS.primary, SIGNUP_IDS.secondary, SIGNUP_IDS.tertiary][index]
       state.signups.push({ id, ...identity })
     }
     return response(responseBody ?? JSON.stringify({
       success: true,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'fixture-signup-id',
+      signup_id: SIGNUP_IDS.primary,
     }), {
       status: responseStatus,
       headers: { 'content-type': responseContentType },
@@ -117,7 +129,7 @@ function controlledSignupFixture({
         .map((row) => ({ id: row.id }))
     },
     async countQueueRows({ signupId }) {
-      assert.equal(signupId, 'fixture-signup-id')
+      assert.equal(signupId, SIGNUP_IDS.primary)
       state.queueCountCalls += 1
       return state.queueRows
     },
@@ -178,7 +190,7 @@ function actualSignupWorkerFixture() {
       env,
       {
         now: () => new Date('2026-07-27T00:00:00.000Z'),
-        randomUUID: () => 'actual-worker-signup-id',
+        randomUUID: () => SIGNUP_IDS.worker,
       },
     )
   }
@@ -227,7 +239,7 @@ async function preMigrationSqliteFixture(fixtureRoot) {
   database.exec('BEGIN')
   try {
     for (let signupIndex = 1; signupIndex <= 10; signupIndex += 1) {
-      const signupId = `historical-signup-${signupIndex}`
+      const signupId = `10000000-0000-4000-8000-${String(signupIndex).padStart(12, '0')}`
       signupInsert.run(
         signupId,
         `Historical Fixture ${signupIndex}`,
@@ -304,7 +316,7 @@ async function preMigrationSqliteFixture(fixtureRoot) {
       environment,
       {
         now: () => new Date('2026-07-27T00:00:00.000Z'),
-        randomUUID: () => 'pre-migration-smoke-signup-id',
+        randomUUID: () => SIGNUP_IDS.preMigration,
       },
     )
   }
@@ -561,7 +573,7 @@ test('controlled signup rejects success:false and still restores every invariant
     responseBody: JSON.stringify({
       success: false,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'fixture-signup-id',
+      signup_id: SIGNUP_IDS.primary,
     }),
   })
 
@@ -601,9 +613,9 @@ test('controlled signup fails closed without deleting when malformed JSON has no
 test('controlled signup rejects every invalid JSON response shape', async (t) => {
   const cases = [
     ['array', []],
-    ['missing success', { message: BRAIN2_SIGNUP_SUCCESS_MESSAGE, signup_id: 'fixture-signup-id' }],
-    ['truthy numeric success', { success: 1, message: BRAIN2_SIGNUP_SUCCESS_MESSAGE, signup_id: 'fixture-signup-id' }],
-    ['wrong message', { success: true, message: 'Đăng ký thành công', signup_id: 'fixture-signup-id' }],
+    ['missing success', { message: BRAIN2_SIGNUP_SUCCESS_MESSAGE, signup_id: SIGNUP_IDS.primary }],
+    ['truthy numeric success', { success: 1, message: BRAIN2_SIGNUP_SUCCESS_MESSAGE, signup_id: SIGNUP_IDS.primary }],
+    ['wrong message', { success: true, message: 'Đăng ký thành công', signup_id: SIGNUP_IDS.primary }],
     ['missing signup ID', { success: true, message: BRAIN2_SIGNUP_SUCCESS_MESSAGE }],
     ['empty signup ID', { success: true, message: BRAIN2_SIGNUP_SUCCESS_MESSAGE, signup_id: '' }],
   ]
@@ -633,7 +645,7 @@ test('controlled signup rejects a response ID that differs from the created D1 r
     responseBody: JSON.stringify({
       success: true,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'different-signup-id',
+      signup_id: SIGNUP_IDS.mismatch,
     }),
   })
 
@@ -675,6 +687,86 @@ test('controlled signup rejects non-opaque IDs returned by D1', async (t) => {
         }),
         { code: 'SMOKE_DATABASE_CONTRACT' },
       )
+      assert.equal(deleteCalls, 0)
+    })
+  }
+})
+
+test('controlled signup response accepts only canonical lowercase UUID v4 IDs', async (t) => {
+  const invalidIds = [
+    '00000000-0000-1000-8000-000000000001',
+    '00000000-0000-4000-7000-000000000001',
+    '00000000-0000-4000-8000-00000000000A',
+  ]
+
+  for (const invalidId of invalidIds) {
+    await t.test(invalidId, async () => {
+      const fixture = controlledSignupFixture({
+        responseBody: JSON.stringify({
+          success: true,
+          message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+          signup_id: invalidId,
+        }),
+      })
+      let lookupCalls = 0
+      let deleteCalls = 0
+      fixture.databaseAdapter.findSyntheticSignup = async () => {
+        lookupCalls += 1
+        return lookupCalls === 1 ? [] : [{ id: invalidId }]
+      }
+      fixture.databaseAdapter.deleteSyntheticSignup = async () => {
+        deleteCalls += 1
+        return 0
+      }
+
+      await assert.rejects(
+        runProductionSmoke({
+          origin: ORIGIN,
+          mode: 'controlled-signup',
+          fetchAdapter: fixture.fetchAdapter,
+          databaseAdapter: fixture.databaseAdapter,
+          syntheticIdentity: SYNTHETIC_IDENTITY,
+        }),
+        { code: 'SMOKE_SIGNUP_RESPONSE_CONTRACT' },
+      )
+      assert.equal(fixture.state.queueCountCalls, 0)
+      assert.equal(deleteCalls, 0)
+    })
+  }
+})
+
+test('controlled signup D1 rows accept only canonical lowercase UUID v4 IDs', async (t) => {
+  const invalidIds = [
+    '00000000-0000-1000-8000-000000000001',
+    '00000000-0000-4000-7000-000000000001',
+    '00000000-0000-4000-8000-00000000000A',
+  ]
+
+  for (const invalidId of invalidIds) {
+    await t.test(invalidId, async () => {
+      const fixture = controlledSignupFixture()
+      let lookupCalls = 0
+      let deleteCalls = 0
+      fixture.databaseAdapter.findSyntheticSignup = async () => {
+        lookupCalls += 1
+        return lookupCalls === 1 ? [] : [{ id: invalidId }]
+      }
+      fixture.databaseAdapter.deleteSyntheticSignup = async () => {
+        deleteCalls += 1
+        return 0
+      }
+
+      await assert.rejects(
+        runProductionSmoke({
+          origin: ORIGIN,
+          mode: 'controlled-signup',
+          fetchAdapter: fixture.fetchAdapter,
+          databaseAdapter: fixture.databaseAdapter,
+          syntheticIdentity: SYNTHETIC_IDENTITY,
+        }),
+        { code: 'SMOKE_DATABASE_CONTRACT' },
+      )
+      assert.equal(fixture.state.queueCountCalls, 0)
       assert.equal(deleteCalls, 0)
     })
   }
@@ -739,7 +831,7 @@ test('controlled signup accepts canonical JSON with case-insensitive media type 
     responseBody: JSON.stringify({
       success: true,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'fixture-signup-id',
+      signup_id: SIGNUP_IDS.primary,
       release: 'r0.1b',
     }),
   })
@@ -829,7 +921,7 @@ test('native controlled signup works before migration 0003 against the actual SQ
   `).all().map((row) => ({ ...row })), fixture.initialAggregate)
   assert.equal(fixture.database.prepare(
     'SELECT COUNT(*) AS count FROM challenge_signups WHERE id = ?',
-  ).get('pre-migration-smoke-signup-id').count, 0)
+  ).get(SIGNUP_IDS.preMigration).count, 0)
   const postSmokeColumns = fixture.database.prepare('PRAGMA table_info(email_queue)').all()
     .map((column) => column.name)
   assert.equal(postSmokeColumns.includes('audience_state'), false)
@@ -871,7 +963,7 @@ test('controlled signup output redacts both the identity and response body', asy
   assert.equal(JSON.parse(lines[0]).aggregate.queue_rows, 0)
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
-  assert.doesNotMatch(lines[0], /fixture-signup-id|response|body/i)
+  assert.doesNotMatch(lines[0], new RegExp(`${SIGNUP_IDS.primary}|response|body`, 'i'))
 })
 
 test('controlled signup fails on a queue row but still performs targeted cleanup', async () => {
@@ -946,7 +1038,7 @@ test('controlled signup fails closed when the pre-migration email aggregate chan
 
 test('controlled signup preserves unrelated non-synthetic rows during targeted cleanup', async () => {
   const fixture = controlledSignupFixture()
-  fixture.state.signups.push({ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' })
+  fixture.state.signups.push({ id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' })
 
   await runProductionSmoke({
     origin: ORIGIN,
@@ -957,13 +1049,13 @@ test('controlled signup preserves unrelated non-synthetic rows during targeted c
   })
 
   assert.deepEqual(fixture.state.signups, [
-    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' },
+    { id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' },
   ])
 })
 
 test('controlled signup refuses to POST when its synthetic identity already exists', async () => {
   const fixture = controlledSignupFixture()
-  fixture.state.signups.push({ id: 'existing-id', ...SYNTHETIC_IDENTITY })
+  fixture.state.signups.push({ id: SIGNUP_IDS.primary, ...SYNTHETIC_IDENTITY })
 
   await assert.rejects(
     runProductionSmoke({
@@ -982,7 +1074,7 @@ test('controlled signup refuses to POST when its synthetic identity already exis
 test('controlled signup refuses to POST when any synthetic invalid-domain signup exists for the challenge', async () => {
   const fixture = controlledSignupFixture()
   fixture.state.signups.push({
-    id: 'other-synthetic-id',
+    id: SIGNUP_IDS.secondary,
     name: 'Other Fixture',
     email: 'other-synthetic@fixture.invalid',
   })
@@ -1007,10 +1099,10 @@ test('controlled signup issues no cleanup when one POST creates multiple rows', 
     responseBody: JSON.stringify({
       success: true,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'fixture-signup-id-1',
+      signup_id: SIGNUP_IDS.primary,
     }),
   })
-  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }
+  const unrelated = { id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' }
   fixture.state.signups.push(unrelated)
 
   await assert.rejects(
@@ -1026,7 +1118,7 @@ test('controlled signup issues no cleanup when one POST creates multiple rows', 
   const matching = fixture.state.signups.filter((row) => (
     row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email
   ))
-  assert.deepEqual(matching.map((row) => row.id), ['fixture-signup-id-1', 'fixture-signup-id-2'])
+  assert.deepEqual(matching.map((row) => row.id), [SIGNUP_IDS.primary, SIGNUP_IDS.secondary])
   assert.deepEqual(fixture.state.signups, [unrelated, ...matching])
 })
 
@@ -1095,7 +1187,7 @@ test('controlled CLI issues no cleanup command when D1 reports multiple syntheti
   await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
 
   const state = {
-    signups: [{ id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }],
+    signups: [{ id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' }],
     preMigrationEmailAggregate: [{
       campaign_version: 'legacy-v0',
       status: 'pending',
@@ -1116,13 +1208,13 @@ test('controlled CLI issues no cleanup command when D1 reports multiple syntheti
       name: SYNTHETIC_IDENTITY.name,
       email: SYNTHETIC_IDENTITY.email,
     })
-    for (let index = 1; index <= 3; index += 1) {
-      state.signups.push({ id: `secure-cli-signup-id-${index}`, ...SYNTHETIC_IDENTITY })
+    for (const id of [SIGNUP_IDS.primary, SIGNUP_IDS.secondary, SIGNUP_IDS.tertiary]) {
+      state.signups.push({ id, ...SYNTHETIC_IDENTITY })
     }
     return response(JSON.stringify({
       success: true,
       message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: 'secure-cli-signup-id-1',
+      signup_id: SIGNUP_IDS.primary,
     }), { status: 200, headers: { 'content-type': 'application/json' } })
   }
   const lines = []
@@ -1142,10 +1234,10 @@ test('controlled CLI issues no cleanup command when D1 reports multiple syntheti
   assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_ROW_CONTRACT')
   assert.equal(subprocessArgs.length, 5)
   assert.deepEqual(state.signups, [
-    { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' },
-    { id: 'secure-cli-signup-id-1', ...SYNTHETIC_IDENTITY },
-    { id: 'secure-cli-signup-id-2', ...SYNTHETIC_IDENTITY },
-    { id: 'secure-cli-signup-id-3', ...SYNTHETIC_IDENTITY },
+    { id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' },
+    { id: SIGNUP_IDS.primary, ...SYNTHETIC_IDENTITY },
+    { id: SIGNUP_IDS.secondary, ...SYNTHETIC_IDENTITY },
+    { id: SIGNUP_IDS.tertiary, ...SYNTHETIC_IDENTITY },
   ])
   assert.equal(
     subprocessArgs.filter((args) => args.join(' ').includes('r0-1-smoke:delete-signup')).length,
@@ -1155,11 +1247,62 @@ test('controlled CLI issues no cleanup command when D1 reports multiple syntheti
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
 })
 
+test('controlled CLI rejects a free-form Alice ID before queue lookup or cleanup', async (t) => {
+  const identity = { synthetic: true, name: 'Alice', email: 'alice@fixture.invalid' }
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-alice-id-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(identity), { mode: 0o600 })
+  const state = {
+    signups: [],
+    preMigrationEmailAggregate: [{
+      campaign_version: 'legacy-v0',
+      status: 'pending',
+      row_count: 210,
+    }],
+  }
+  const subprocessArgs = []
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      subprocessAdapter: d1SubprocessFixture({ state, identity, subprocessArgs }),
+      fetchAdapter: async () => {
+        state.signups.push({ id: 'Alice', ...identity })
+        return response(JSON.stringify({
+          success: true,
+          message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+          signup_id: 'Alice',
+        }), { status: 200, headers: { 'content-type': 'application/json' } })
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_RESPONSE_CONTRACT')
+  assert.equal(
+    subprocessArgs.filter((args) => args.join(' ').includes('r0-1-smoke:count-queue')).length,
+    0,
+  )
+  assert.equal(
+    subprocessArgs.filter((args) => args.join(' ').includes('r0-1-smoke:delete-signup')).length,
+    0,
+  )
+  assert.equal(state.signups.length, 1)
+  for (const args of subprocessArgs) {
+    assert.doesNotMatch(args.join(' '), /Alice/i)
+    assert.doesNotMatch(args.join(' '), /alice@fixture\.invalid/i)
+  }
+})
+
 test('controlled CLI never sends an untrusted response ID to D1 cleanup', async (t) => {
   const cases = [
     ['synthetic email', SYNTHETIC_IDENTITY.email],
     ['synthetic name', SYNTHETIC_IDENTITY.name],
-    ['mismatched opaque ID', 'different-signup-id'],
+    ['mismatched UUID v4', SIGNUP_IDS.mismatch],
   ]
 
   for (const [name, responseSignupId] of cases) {
@@ -1190,7 +1333,7 @@ test('controlled CLI never sends an untrusted response ID to D1 cleanup', async 
           env: { R0_1_SMOKE_INPUT_FILE: inputPath },
           subprocessAdapter,
           fetchAdapter: async () => {
-            state.signups.push({ id: 'validated-d1-signup-id', ...SYNTHETIC_IDENTITY })
+            state.signups.push({ id: SIGNUP_IDS.validatedD1, ...SYNTHETIC_IDENTITY })
             return response(JSON.stringify({
               success: true,
               message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
@@ -1222,7 +1365,7 @@ test('controlled CLI never places an apostrophe name or email in a D1 command', 
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
   await writeFile(inputPath, JSON.stringify(identity), { mode: 0o600 })
-  const unrelated = { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' }
+  const unrelated = { id: SIGNUP_IDS.unrelated, name: 'Other Fixture', email: 'other@fixture.test' }
   const state = {
     signups: [unrelated],
     preMigrationEmailAggregate: [{
@@ -1253,11 +1396,11 @@ test('controlled CLI never places an apostrophe name or email in a D1 command', 
       tempRoot: fixtureRoot,
       subprocessAdapter,
       fetchAdapter: async () => {
-        state.signups.push({ id: 'apostrophe-signup-id', ...identity })
+        state.signups.push({ id: SIGNUP_IDS.apostrophe, ...identity })
         return response(JSON.stringify({
           success: true,
           message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-          signup_id: 'apostrophe-signup-id',
+          signup_id: SIGNUP_IDS.apostrophe,
         }), { status: 200, headers: { 'content-type': 'application/json' } })
       },
       writeLine: (line) => lines.push(line),
@@ -1421,7 +1564,7 @@ test('controlled CLI response failure prints only its stable classification', as
     responseBody: JSON.stringify({
       success: false,
       message: `private body for ${SYNTHETIC_IDENTITY.name}`,
-      signup_id: 'private-signup-id',
+      signup_id: SIGNUP_IDS.private,
       email: SYNTHETIC_IDENTITY.email,
     }),
   })
@@ -1443,7 +1586,7 @@ test('controlled CLI response failure prints only its stable classification', as
     mode: 'controlled-signup',
     code: 'SMOKE_SIGNUP_RESPONSE_CONTRACT',
   })
-  assert.doesNotMatch(lines[0], /private body|private-signup-id|fixture-signup-id/i)
+  assert.doesNotMatch(lines[0], new RegExp(`private body|${SIGNUP_IDS.private}|${SIGNUP_IDS.primary}`, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
   assert.equal(fixture.state.signups.length, 1)
