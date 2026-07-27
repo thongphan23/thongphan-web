@@ -48,6 +48,17 @@ deployed last from the exact clean merged `main` SHA. Email sending remains abse
     multi-tenancy or AI.
 11. Stop on route, binding, migration-ledger, aggregate, SHA, worktree, control-plane
     or smoke-test drift. Do not improvise through a failed gate.
+12. Capture every new Worker version only by comparing secured before/after outputs
+    from `versions list --json` with `scripts/r0-1-worker-version-delta.mjs`. Never
+    select the first/latest list entry and never scrape deploy text.
+13. A zero-version or multiple-version delta is a concurrency/drift stop. An invalid
+    input is an evidence-integrity stop. Do not deploy again to repair either capture
+    failure. Preserve the private files only for the bounded read-only investigation,
+    then run cleanup; recover the exact already-created version through read-only
+    control-plane evidence under a new owner instruction.
+14. Worker-version JSON is temporary sensitive operational metadata. Keep it only in
+    `R0_1B_VERSION_DIR`, never print the complete JSON, never copy it into the checkout,
+    never commit it, and delete it through the registered cleanup before closure.
 
 Wrangler command semantics must be checked against the pinned version before use.
 `wrangler deploy --dry-run` compiles without upload, D1 migration commands maintain a
@@ -73,6 +84,22 @@ ledger and Time Travel restore is destructive. References:
 Run read-only checks first:
 
 ```bash
+set -euo pipefail
+R0_1B_VERSION_DIR=$(mktemp -d /Users/rio/r0-1b-worker-versions.XXXXXX)
+chmod 700 "$R0_1B_VERSION_DIR"
+R0_1B_PREVIOUS_UMASK=$(umask)
+umask 077
+
+r0_1b_cleanup_worker_version_evidence() {
+  if test -d "$R0_1B_VERSION_DIR" && test ! -L "$R0_1B_VERSION_DIR"; then
+    find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
+      -exec rm -f -- {} +
+    rmdir "$R0_1B_VERSION_DIR"
+  fi
+  umask "$R0_1B_PREVIOUS_UMASK"
+}
+trap r0_1b_cleanup_worker_version_evidence EXIT
+
 gh repo view thongphan23/thongphan-web --json defaultBranchRef
 gh pr view "$R0_1B_DOCS_PR" --json state,mergedAt,baseRefName,url
 gh pr view "$R0_1B_IMPL_PR" --json state,mergedAt,baseRefName,url
@@ -120,6 +147,8 @@ return to a new R0.1A implementation PR.
 
 ```bash
 npm ci
+npm run test:r0-1-worker-version-delta
+npm run test:r0-1-worker-version-command-contract
 npx tsc --noEmit --incremental false
 npm run typecheck:brain2-workers
 npm run lint
@@ -155,6 +184,9 @@ implementation PR and repeat from a fresh merged-main checkout after merge.
 ### Read-only commands
 
 ```bash
+npx wrangler --version
+npx wrangler versions list --help
+npx wrangler versions view 00000000-0000-0000-0000-000000000000 --help
 npx wrangler whoami
 npx wrangler deployments list --config wrangler.embed.toml
 npx wrangler deployments list --config wrangler.chat.toml
@@ -185,17 +217,47 @@ Recheck clean-main invariants, then deploy only the embed Worker:
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
+rg -N -x 'name = "brain2-embedder"' wrangler.embed.toml
+rg -N -x 'compatibility_date = "2025-01-01"' wrangler.embed.toml
+rg -N -x 'workers_dev = false' wrangler.embed.toml
+rg -N -x 'preview_urls = false' wrangler.embed.toml
+rg -N -x 'pattern = "thongphan.com/api/embed"' wrangler.embed.toml
+
+R0_1B_EMBED_BEFORE="$R0_1B_VERSION_DIR/embed-before.json"
+R0_1B_EMBED_AFTER="$R0_1B_VERSION_DIR/embed-after.json"
+R0_1B_EMBED_VIEW="$R0_1B_VERSION_DIR/embed-view.json"
+npx wrangler versions list --config wrangler.embed.toml --json > "$R0_1B_EMBED_BEFORE"
+chmod 600 "$R0_1B_EMBED_BEFORE"
+test -s "$R0_1B_EMBED_BEFORE"
 npx wrangler deploy --strict --config wrangler.embed.toml
-npx wrangler versions view --config wrangler.embed.toml
+npx wrangler versions list --config wrangler.embed.toml --json > "$R0_1B_EMBED_AFTER"
+chmod 600 "$R0_1B_EMBED_AFTER"
+test -s "$R0_1B_EMBED_AFTER"
+R0_1B_EMBED_VERSION_ID=$(node scripts/r0-1-worker-version-delta.mjs \
+  --before "$R0_1B_EMBED_BEFORE" --after "$R0_1B_EMBED_AFTER")
+test -n "$R0_1B_EMBED_VERSION_ID"
+readonly R0_1B_EMBED_VERSION_ID
+npx wrangler versions view "$R0_1B_EMBED_VERSION_ID" \
+  --config wrangler.embed.toml --json > "$R0_1B_EMBED_VIEW"
+chmod 600 "$R0_1B_EMBED_VIEW"
+test -s "$R0_1B_EMBED_VIEW"
 ```
 
-Record the version ID and prove the deployed version has no AI, Vectorize, D1, KV or
-secret binding.
+Inspect the secured view file locally without printing or copying the full object.
+It must show `.id` equal to `R0_1B_EMBED_VERSION_ID`,
+`.resources.script_runtime.compatibility_date` equal to `2025-01-01`, and an empty
+`.resources.bindings` array. The version object does not expose the Worker name or
+route. Exact read-only alternatives for those fields are the config assertions above,
+the already-passing embed security contract from Task 2, and the exact-route smoke in
+Task 5. Record only the safe pass/fail summary and the version ID.
 
 ### Stop conditions
 
-Stop before chat deployment if upload fails, route is not the exact apex path,
-workers.dev/preview URL is enabled, any binding appears, or readback is ambiguous.
+Stop before chat deployment if the before list was not captured immediately before
+deploy, upload fails, the after list cannot be captured, the helper returns exit `1`
+or `2`, route is not the exact apex path, workers.dev/preview URL is enabled, any
+binding appears, or readback is ambiguous. A failed capture after a successful deploy
+must not trigger another deploy.
 
 ### Rollback
 
@@ -215,19 +277,40 @@ identity.
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 rg -N -x 'name = "thongphan-chat-api"' wrangler.chat.toml
-npx wrangler deployments list --name thongphan-chat-api --json
+rg -N -x 'compatibility_date = "2026-07-27"' wrangler.chat.toml
+rg -N -x 'workers_dev = false' wrangler.chat.toml
+rg -N -x 'preview_urls = false' wrangler.chat.toml
+rg -N -x 'pattern = "thongphan.com/api/chat"' wrangler.chat.toml
+
+R0_1B_CHAT_BEFORE="$R0_1B_VERSION_DIR/chat-before.json"
+R0_1B_CHAT_AFTER="$R0_1B_VERSION_DIR/chat-after.json"
+R0_1B_CHAT_VIEW="$R0_1B_VERSION_DIR/chat-view.json"
+npx wrangler versions list --config wrangler.chat.toml --json > "$R0_1B_CHAT_BEFORE"
+chmod 600 "$R0_1B_CHAT_BEFORE"
+test -s "$R0_1B_CHAT_BEFORE"
 npx wrangler deploy --strict --config wrangler.chat.toml
-npx wrangler deployments list --name thongphan-chat-api --json
-npx wrangler versions view "$R0_1B_CHAT_VERSION_ID" --name thongphan-chat-api --json
+npx wrangler versions list --config wrangler.chat.toml --json > "$R0_1B_CHAT_AFTER"
+chmod 600 "$R0_1B_CHAT_AFTER"
+test -s "$R0_1B_CHAT_AFTER"
+R0_1B_CHAT_VERSION_ID=$(node scripts/r0-1-worker-version-delta.mjs \
+  --before "$R0_1B_CHAT_BEFORE" --after "$R0_1B_CHAT_AFTER")
+test -n "$R0_1B_CHAT_VERSION_ID"
+readonly R0_1B_CHAT_VERSION_ID
+npx wrangler versions view "$R0_1B_CHAT_VERSION_ID" \
+  --config wrangler.chat.toml --json > "$R0_1B_CHAT_VIEW"
+chmod 600 "$R0_1B_CHAT_VIEW"
+test -s "$R0_1B_CHAT_VIEW"
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
 ```
 
-Capture `R0_1B_CHAT_VERSION_ID` from the deploy result before the version readback.
-The readback must identify `thongphan-chat-api`, the exact apex route and zero AI,
-Vectorize, D1, KV or secret bindings. Account inventory must show that deployment
-updated this existing service and created no additional tombstone-named Worker. The
-historical erroneous identity `thongphan-chat-tombstone` must never appear in a
-Wrangler configuration or deploy target.
+Inspect the secured view file without printing it. It must show `.id` equal to
+`R0_1B_CHAT_VERSION_ID`, compatibility date `2026-07-27`, and an empty bindings
+array. Worker name and route are not fields in the version object; the exact config
+assertions, the Task 2 chat security contract, the same-service before/after version
+delta and the endpoint smoke are the required read-only alternative evidence that
+this updated `thongphan-chat-api` in place. No additional tombstone-named Worker may
+be created; the historical erroneous identity `thongphan-chat-tombstone` must never
+appear in a Wrangler configuration or deploy target.
 
 The smoke must prove both exact endpoints return the 410 contract and `/chat` still
 uses its deterministic local journey. This is the required read-only checkpoint
@@ -235,10 +318,11 @@ before signup deployment.
 
 ### Stop conditions
 
-Stop if the deployed/read-back Worker identity is not exactly `thongphan-chat-api`,
-an additional Worker was created, either endpoint differs from
+Stop if the helper returns exit `1` or `2`, the deployed/read-back Worker identity is
+not exactly `thongphan-chat-api`, an additional Worker was created, either endpoint differs from
 410/no-store/disabled marker, any binding appears, `/chat` fails, the runner exceeds
-bounds, or output contains PII.
+bounds, or output contains PII. Do not re-deploy if version capture or view readback
+fails after the upload.
 
 ### Rollback
 
@@ -252,13 +336,40 @@ restore the public AI chat or embed implementation.
 ```bash
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
+rg -N -x 'name = "thongphan-signup-api"' wrangler.signup.toml
+rg -N -x 'compatibility_date = "2025-01-01"' wrangler.signup.toml
+rg -N -x 'workers_dev = false' wrangler.signup.toml
+rg -N -x 'preview_urls = false' wrangler.signup.toml
+rg -N -x 'pattern = "thongphan.com/api/signup"' wrangler.signup.toml
+rg -N -x 'pattern = "www.thongphan.com/api/signup"' wrangler.signup.toml
+
+R0_1B_SIGNUP_BEFORE="$R0_1B_VERSION_DIR/signup-before.json"
+R0_1B_SIGNUP_AFTER="$R0_1B_VERSION_DIR/signup-after.json"
+R0_1B_SIGNUP_VIEW="$R0_1B_VERSION_DIR/signup-view.json"
+npx wrangler versions list --config wrangler.signup.toml --json > "$R0_1B_SIGNUP_BEFORE"
+chmod 600 "$R0_1B_SIGNUP_BEFORE"
+test -s "$R0_1B_SIGNUP_BEFORE"
 npx wrangler deploy --strict --config wrangler.signup.toml
-npx wrangler versions view --config wrangler.signup.toml
+npx wrangler versions list --config wrangler.signup.toml --json > "$R0_1B_SIGNUP_AFTER"
+chmod 600 "$R0_1B_SIGNUP_AFTER"
+test -s "$R0_1B_SIGNUP_AFTER"
+R0_1B_SIGNUP_VERSION_ID=$(node scripts/r0-1-worker-version-delta.mjs \
+  --before "$R0_1B_SIGNUP_BEFORE" --after "$R0_1B_SIGNUP_AFTER")
+test -n "$R0_1B_SIGNUP_VERSION_ID"
+readonly R0_1B_SIGNUP_VERSION_ID
+npx wrangler versions view "$R0_1B_SIGNUP_VERSION_ID" \
+  --config wrangler.signup.toml --json > "$R0_1B_SIGNUP_VIEW"
+chmod 600 "$R0_1B_SIGNUP_VIEW"
+test -s "$R0_1B_SIGNUP_VIEW"
 ```
 
-Read back the deployed version before the controlled request. It must use the merged
-truthful contract, persist only `challenge_signups`, and prepare no `email_queue`
-statement.
+Inspect the secured view file without printing it. It must show `.id` equal to
+`R0_1B_SIGNUP_VERSION_ID`, compatibility date `2025-01-01`, and only the reviewed D1,
+KV and two rate-limiter bindings. Worker identity and the two routes use the exact
+config assertions above as read-only alternative evidence because they are absent
+from the version object. The Task 2 signup tests and the controlled smoke below must
+prove the merged truthful contract persists only `challenge_signups` and prepares no
+`email_queue` statement.
 
 ### Remote mutation B — controlled signup and targeted cleanup
 
@@ -283,11 +394,12 @@ is a separate post-migration assertion in Task 8.
 
 ### Stop conditions
 
-Stop if migration `0003` is already applied, an unexpected migration is pending,
+Stop if the helper returns exit `1` or `2`, version readback is ambiguous, migration
+`0003` is already applied, an unexpected migration is pending,
 signup copy is false, more than one signup is created, any queue row appears, the
 synthetic record cannot be uniquely identified, aggregate counts drift, cleanup would
 affect a non-synthetic row, or any identity appears in output. Do not proceed to D1
-migration.
+migration, and do not re-deploy to repair a version-capture failure.
 
 ### Rollback
 
@@ -394,9 +506,18 @@ reviewed fix-forward main commit, and redeploy its exact clean SHA.
 
 ```bash
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
-npx wrangler versions view --config wrangler.embed.toml
-npx wrangler versions view --config wrangler.chat.toml
-npx wrangler versions view --config wrangler.signup.toml
+npx wrangler versions view "$R0_1B_EMBED_VERSION_ID" \
+  --config wrangler.embed.toml --json > "$R0_1B_VERSION_DIR/embed-final-view.json"
+chmod 600 "$R0_1B_VERSION_DIR/embed-final-view.json"
+test -s "$R0_1B_VERSION_DIR/embed-final-view.json"
+npx wrangler versions view "$R0_1B_CHAT_VERSION_ID" \
+  --config wrangler.chat.toml --json > "$R0_1B_VERSION_DIR/chat-final-view.json"
+chmod 600 "$R0_1B_VERSION_DIR/chat-final-view.json"
+test -s "$R0_1B_VERSION_DIR/chat-final-view.json"
+npx wrangler versions view "$R0_1B_SIGNUP_VERSION_ID" \
+  --config wrangler.signup.toml --json > "$R0_1B_VERSION_DIR/signup-final-view.json"
+chmod 600 "$R0_1B_VERSION_DIR/signup-final-view.json"
+test -s "$R0_1B_VERSION_DIR/signup-final-view.json"
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
   "SELECT campaign_version,status,audience_state,sendable,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status,audience_state,sendable ORDER BY campaign_version,status,audience_state,sendable; SELECT COUNT(*) AS sendable_count FROM email_queue WHERE sendable=1; SELECT COUNT(*) AS email_log_count FROM email_logs;"
 npx wrangler deployments list --config wrangler.brain2-email.toml
@@ -404,6 +525,11 @@ rg -n '^crons = \[\]$' wrangler.brain2-email.toml
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 ```
+
+Inspect the three final secured view files against the same version IDs,
+compatibility dates and binding contracts recorded in Tasks 4–6. Do not recalculate
+an ID from list ordering or deployment text. If any ID no longer resolves or any
+resource differs, R0.1B remains open.
 
 The final smoke must verify `/api/embed`, `/api/chat`, `/library`, a representative
 `/library/read/*`, `/chat`, canonical metadata and sitemap. The expected email control
@@ -425,6 +551,13 @@ fix-forward rule; never restore AI bindings, queue creation, false copy or senda
 Update the implementation report and `docs/STATUS.md` in a new documentation PR from
 the recorded production state. Closure evidence must distinguish source SHA,
 deployed version IDs, Pages deployment, D1 state and remaining R0.H1 residual.
+After recording only those safe summaries, delete the temporary JSON and unregister
+the trap:
+
+```bash
+r0_1b_cleanup_worker_version_evidence
+trap - EXIT
+```
 
 ## Exact cutover order
 

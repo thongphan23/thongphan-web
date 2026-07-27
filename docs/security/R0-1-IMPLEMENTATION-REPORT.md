@@ -1,6 +1,29 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: R0.1A BLOCKED — VERSION READBACK CORRECTION IN PROGRESS
+
+## R0.1A Worker version readback correction — in progress
+
+Status: BLOCKED — Draft PR #2 cannot return to implementation review until the
+Worker-version delta helper, command-contract regression test, corrected R0.1B
+readback sequence and complete local verification all pass.
+
+### Root cause, impact and recurrence control
+
+- Root cause: the runbook treated `--config` as sufficient for `wrangler versions
+  view`, even though pinned Wrangler `4.110.0` requires a positional version ID.
+  There was no branch-wide command-contract test, and version-ID capture differed
+  between the embed, chat and signup sequences.
+- Impact: an R0.1B endpoint deployment could mutate production successfully and then
+  stop at the invalid readback command. That leaves a deployed endpoint without the
+  evidence needed to close the cutover or identify the exact version for rollback.
+- Recurrence control: a local, network-free version-list delta helper will capture
+  exactly one new UUID from before/after Wrangler JSON, and a static contract will
+  scan `docs/**`, `scripts/**`, `package.json` and `AGENTS.md` for every version-view
+  command, including multiline forms, and reject any command without a positional ID.
+
+The focused RED results, pinned help evidence, corrected command locations and final
+release-gate outputs will be recorded here before this status is restored.
 
 ## R0.1A Task 1 — Working-tree preservation gate
 
