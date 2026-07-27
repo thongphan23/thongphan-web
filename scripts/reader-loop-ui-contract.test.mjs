@@ -31,6 +31,10 @@ test('canonical living-note body owns reading evidence and completion UI without
   assert.match(panel, /Bước dự định làm tiếp/)
   assert.match(panel, /Đánh dấu đã đọc xong/)
   assert.match(panel, /sections_seen/)
+  assert.match(panel, /content_url/)
+  assert.match(panel, /`\/library\/\$\{slug\}`/)
+  assert.match(panel, /if \(!sessionId \|\| !credentials \|\| !session\) return/)
+  assert.match(panel, /Reading session không thuộc bài viết này/)
   assert.doesNotMatch(panel, /mouse(move|coordinates)|keystroke|fingerprint|ip_address/i)
 })
 

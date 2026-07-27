@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import ReaderLoopWorkspace from '@/components/reader-loop/ReaderLoopWorkspace'
+import { readerLoopPreviewEnabled } from '@/lib/reader-loop/release'
 
 export const metadata: Metadata = {
   title: 'Reader Loop — Một bài đọc đúng lúc',
@@ -8,5 +10,6 @@ export const metadata: Metadata = {
 }
 
 export default function ReadPage() {
+  if (!readerLoopPreviewEnabled) notFound()
   return <ReaderLoopWorkspace />
 }

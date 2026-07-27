@@ -135,12 +135,38 @@ try {
   await returnPage.screenshot({ path: path.join(screenshotDir, 'scenario-c-continue-complete.png'), fullPage: false })
   await scenarioC.close()
 
+  const bindingScenario = await browser.newContext({ viewport: { width: 1440, height: 1000 } })
+  const tamperPage = await bindingScenario.newPage()
+  watch(tamperPage, 'session-article-binding')
+  let tamperWrites = 0
+  tamperPage.on('request', (request) => {
+    if (/\/v1\/reading-sessions\/[^/]+\/(evidence|complete)$/.test(new URL(request.url()).pathname)) tamperWrites += 1
+  })
+  await tamperPage.goto(`${baseUrl}/read/`, { waitUntil: 'networkidle' })
+  await tamperPage.getByRole('button', { name: /Nhận một bài để bắt đầu/ }).click()
+  await tamperPage.getByRole('heading', { name: 'Tài sản số của người có chuyên môn' }).waitFor()
+  await tamperPage.getByRole('button', { name: /Đọc bài này/ }).click()
+  await tamperPage.waitForURL(/readerLoopSession=/)
+  await tamperPage.getByRole('button', { name: /Đánh dấu đã đọc xong/ }).waitFor()
+  const boundSession = new URL(tamperPage.url()).searchParams.get('readerLoopSession')
+  assert.ok(boundSession, 'Binding scenario must create a reading session')
+  await tamperPage.goto(`${baseUrl}/library/cau-truc-note-song?readerLoopSession=${boundSession}`, { waitUntil: 'networkidle' })
+  tamperWrites = 0
+  await tamperPage.getByRole('alert').filter({ hasText: 'Reading session không thuộc bài viết này' }).waitFor()
+  await tamperPage.waitForTimeout(5500)
+  assert.equal(tamperWrites, 0, 'wrong canonical article must send neither evidence nor completion')
+  assert.equal(await tamperPage.getByRole('button', { name: /Đánh dấu đã đọc xong/ }).count(), 0, 'wrong canonical article must not expose completion UI')
+  assert.equal(await tamperPage.getByRole('heading', { name: 'Cấu trúc note sống', level: 1 }).isVisible(), true, 'wrong canonical article must remain readable')
+  await tamperPage.screenshot({ path: path.join(screenshotDir, 'reader-loop-session-article-mismatch.png'), fullPage: false })
+  await bindingScenario.close()
+
   const unplannedErrors = unexpectedErrors.filter((message) => !message.includes('status of 503 (Service Unavailable)'))
   assert.deepEqual(unplannedErrors, [], `browser errors:\n${unplannedErrors.join('\n')}`)
   console.log(`Reader Loop browser QA passed at ${baseUrl}`)
   console.log('Scenario A PASS: sample → recommendation → read → completion → reflection → next action')
   console.log('Scenario B PASS: custom → recommendation → refresh/resume → completion')
   console.log('Scenario C PASS: incomplete → return → continue → complete')
+  console.log('Binding PASS: wrong canonical article sends no evidence or completion')
   console.log(`Screenshots: ${screenshotDir}`)
 } finally {
   await browser.close()

@@ -4,6 +4,7 @@ import type { LibraryNote, LibraryNoteMeta, LibraryRelatedLink, LibraryRelation 
 import { topicLabel } from '@/lib/library-discovery'
 import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import ReaderLoopArticlePanel from '@/components/reader-loop/ReaderLoopArticlePanel'
+import { readerLoopPreviewEnabled } from '@/lib/reader-loop/release'
 import styles from './page.module.css'
 
 interface HydratedLink extends LibraryRelatedLink {
@@ -113,7 +114,7 @@ export default function LibraryArticle({
           <div className={styles.articleColumn}>
             <div className={styles.articleBody} dangerouslySetInnerHTML={{ __html: note.contentHtml }} />
 
-            <ReaderLoopArticlePanel slug={note.slug} title={note.title} />
+            {readerLoopPreviewEnabled ? <ReaderLoopArticlePanel slug={note.slug} title={note.title} /> : null}
 
             <section className={styles.connections} aria-labelledby="connections-title">
               <p className={styles.sectionLabel}>Các mối nối</p>

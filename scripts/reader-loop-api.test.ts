@@ -16,8 +16,19 @@ class MemoryStore implements ReaderLoopStore {
   sessions = new Map<string, ReadingSessionRecord>()
   evidence = new Map<string, EvidenceSummary>()
   completions = new Map<string, CompletionRecord>()
+  readerCreationReservations = 0
 
-  async createReader(record: ReaderRecord) { this.readers.set(record.id, record) }
+  async reserveReaderCreation(_bucketStart: string, _retainAfter: string, limit: number) {
+    if (this.readerCreationReservations >= limit) return false
+    this.readerCreationReservations += 1
+    return true
+  }
+
+  async createReader(record: ReaderRecord, totalLimit: number) {
+    if (this.readers.size >= totalLimit) return false
+    this.readers.set(record.id, record)
+    return true
+  }
   async findReaderByTokenHash(tokenHash: string) {
     return [...this.readers.values()].find((reader) => reader.tokenHash === tokenHash) ?? null
   }
@@ -37,9 +48,19 @@ class MemoryStore implements ReaderLoopStore {
   async updateEvidence(readerId: string, sessionId: string, next: EvidenceSummary) {
     const session = await this.findSession(readerId, sessionId)
     if (!session) return null
-    this.evidence.set(sessionId, next)
-    this.sessions.set(sessionId, { ...session, status: 'in_progress', updatedAt: next.updatedAt })
-    return next
+    if (session.status === 'completed') return { state: 'closed' as const }
+    const evidence = {
+      ...session.evidence,
+      visibleMs: Math.max(session.evidence.visibleMs, next.visibleMs),
+      activeMs: Math.min(Math.max(session.evidence.activeMs, next.activeMs), Math.max(session.evidence.visibleMs, next.visibleMs)),
+      maxScrollPercent: Math.max(session.evidence.maxScrollPercent, next.maxScrollPercent),
+      sectionsSeen: [...new Set([...session.evidence.sectionsSeen, ...next.sectionsSeen])].sort(),
+      meaningfulInteractionCount: Math.max(session.evidence.meaningfulInteractionCount, next.meaningfulInteractionCount),
+      updatedAt: next.updatedAt > session.evidence.updatedAt ? next.updatedAt : session.evidence.updatedAt,
+    }
+    this.evidence.set(sessionId, evidence)
+    this.sessions.set(sessionId, { ...session, status: 'in_progress', updatedAt: evidence.updatedAt })
+    return { state: 'updated' as const, evidence }
   }
   async completeSession(readerId: string, sessionId: string, record: CompletionRecord) {
     const session = await this.findSession(readerId, sessionId)
@@ -74,6 +95,12 @@ async function json(response: Response) {
   return response.json() as Promise<Record<string, any>>
 }
 
+function previewRequest(input: string, init: RequestInit = {}) {
+  const headers = new Headers(init.headers)
+  headers.set('origin', 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev')
+  return new Request(input, { ...init, headers })
+}
+
 test('anonymous reader completes the evidence-to-next-action flow and can resume', async () => {
   const store = new MemoryStore()
   let sequence = 0
@@ -83,14 +110,14 @@ test('anonymous reader completes the evidence-to-next-action flow and can resume
     randomToken: () => 'reader-token-for-test',
   })
 
-  const readerResponse = await api(new Request('https://preview.test/v1/readers', { method: 'POST' }))
+  const readerResponse = await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' }))
   assert.equal(readerResponse.status, 201)
   const reader = await json(readerResponse)
   assert.match(reader.reader_id, /^rdr_/)
   assert.equal(reader.reader_token, 'reader-token-for-test')
 
   const auth = { Authorization: `Reader ${reader.reader_token}`, 'content-type': 'application/json' }
-  const recommendationResponse = await api(new Request('https://preview.test/v1/recommendations', {
+  const recommendationResponse = await api(previewRequest('https://preview.test/v1/recommendations', {
     method: 'POST',
     headers: auth,
     body: JSON.stringify({ question_id: 'ai_overload', question_text: 'Tôi muốn dùng AI nhưng đang quá tải công cụ và kiến thức.' }),
@@ -101,7 +128,7 @@ test('anonymous reader completes the evidence-to-next-action flow and can resume
   assert.equal(recommendation.alternatives.length, 2)
   assert.match(recommendation.decision_id, /^dec_/)
 
-  const sessionResponse = await api(new Request('https://preview.test/v1/reading-sessions', {
+  const sessionResponse = await api(previewRequest('https://preview.test/v1/reading-sessions', {
     method: 'POST',
     headers: auth,
     body: JSON.stringify({ decision_id: recommendation.decision_id }),
@@ -115,21 +142,22 @@ test('anonymous reader completes the evidence-to-next-action flow and can resume
     { visible_ms: 1200, active_ms: 900, max_scroll_percent: 30, sections_seen: ['intro'], meaningful_interaction_count: 1 },
     { visible_ms: 2500, active_ms: 1800, max_scroll_percent: 76, sections_seen: ['intro', 'body'], meaningful_interaction_count: 2 },
   ]) {
-    const response = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
-      method: 'POST', headers: auth, body: JSON.stringify(evidence),
+    const response = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
+      method: 'POST', headers: auth, body: JSON.stringify({ content_url: session.content_url, ...evidence }),
     }))
     assert.equal(response.status, 200)
   }
 
-  const resumed = await json(await api(new Request('https://preview.test/v1/state', { headers: auth })))
+  const resumed = await json(await api(previewRequest('https://preview.test/v1/state', { headers: auth })))
   assert.equal(resumed.active_session.id, session.session_id)
   assert.equal(resumed.active_session.evidence.max_scroll_percent, 76)
   assert.deepEqual(resumed.active_session.evidence.sections_seen, ['body', 'intro'])
 
-  const completionResponse = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
+  const completionResponse = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
     method: 'POST',
     headers: auth,
     body: JSON.stringify({
+      content_url: session.content_url,
       key_takeaway: 'Tôi cần bắt đầu từ một việc thật thay vì học thêm công cụ.',
       next_step: 'Tôi sẽ chọn một việc lặp lại để thử AI hỗ trợ.',
     }),
@@ -139,24 +167,24 @@ test('anonymous reader completes the evidence-to-next-action flow and can resume
   assert.equal(completion.next_action.type, 'do_action')
   assert.ok(completion.next_action.evidence_used.includes('manual_completion'))
 
-  const repeated = await json(await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
+  const repeated = await json(await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
     method: 'POST',
     headers: auth,
-    body: JSON.stringify({ key_takeaway: 'Nội dung khác không được ghi đè.', next_step: 'Bước khác không được ghi đè.' }),
+    body: JSON.stringify({ content_url: session.content_url, key_takeaway: 'Nội dung khác không được ghi đè.', next_step: 'Bước khác không được ghi đè.' }),
   })))
   assert.equal(repeated.manual_completion.id, completion.manual_completion.id)
   assert.equal(repeated.reflection.id, completion.reflection.id)
   assert.equal(repeated.next_action.id, completion.next_action.id)
   assert.equal(repeated.reflection.key_takeaway, completion.reflection.key_takeaway)
 
-  const postCompletionEvidence = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
+  const postCompletionEvidence = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
     method: 'POST',
     headers: auth,
-    body: JSON.stringify({ visible_ms: 9999, active_ms: 9999, max_scroll_percent: 100, sections_seen: ['after'], meaningful_interaction_count: 99 }),
+    body: JSON.stringify({ content_url: session.content_url, visible_ms: 9999, active_ms: 9999, max_scroll_percent: 100, sections_seen: ['after'], meaningful_interaction_count: 99 }),
   }))
   assert.equal(postCompletionEvidence.status, 409)
 
-  const inspector = await json(await api(new Request('https://preview.test/v1/inspector', { headers: auth })))
+  const inspector = await json(await api(previewRequest('https://preview.test/v1/inspector', { headers: auth })))
   assert.equal(inspector.question, 'Tôi muốn dùng AI nhưng đang quá tải công cụ và kiến thức.')
   assert.equal(inspector.recommendation.policy_version, 'reader-loop-rules-v0.1.0')
   assert.equal(inspector.session.evidence.active_ms, 1800)
@@ -173,22 +201,22 @@ test('reflection is required and a different anonymous token cannot inspect the 
     randomToken: () => `reader-token-long-${sequence}`,
   })
 
-  const first = await json(await api(new Request('https://preview.test/v1/readers', { method: 'POST' })))
+  const first = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
   const firstHeaders = { Authorization: `Reader ${first.reader_token}`, 'content-type': 'application/json' }
-  const recommendation = await json(await api(new Request('https://preview.test/v1/recommendations', {
+  const recommendation = await json(await api(previewRequest('https://preview.test/v1/recommendations', {
     method: 'POST', headers: firstHeaders, body: JSON.stringify({ question_id: 'expertise_asset', question_text: 'Tôi có chuyên môn.' }),
   })))
-  const session = await json(await api(new Request('https://preview.test/v1/reading-sessions', {
+  const session = await json(await api(previewRequest('https://preview.test/v1/reading-sessions', {
     method: 'POST', headers: firstHeaders, body: JSON.stringify({ decision_id: recommendation.decision_id }),
   })))
 
-  const invalid = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
-    method: 'POST', headers: firstHeaders, body: JSON.stringify({ key_takeaway: '', next_step: '' }),
+  const invalid = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
+    method: 'POST', headers: firstHeaders, body: JSON.stringify({ content_url: session.content_url, key_takeaway: '', next_step: '' }),
   }))
   assert.equal(invalid.status, 400)
 
-  const second = await json(await api(new Request('https://preview.test/v1/readers', { method: 'POST' })))
-  const forbidden = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}`, {
+  const second = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
+  const forbidden = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}`, {
     headers: { Authorization: `Reader ${second.reader_token}` },
   }))
   assert.equal(forbidden.status, 404)
@@ -202,22 +230,106 @@ test('free-text inputs reject likely email addresses and phone numbers', async (
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => 'reader-token-pii-test',
   })
-  const reader = await json(await api(new Request('https://preview.test/v1/readers', { method: 'POST' })))
+  const reader = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
   const headers = { Authorization: `Reader ${reader.reader_token}`, 'content-type': 'application/json' }
 
-  const emailQuestion = await api(new Request('https://preview.test/v1/recommendations', {
+  const emailQuestion = await api(previewRequest('https://preview.test/v1/recommendations', {
     method: 'POST', headers, body: JSON.stringify({ question_id: 'custom', question_text: 'Liên hệ tôi tại reader@example.com' }),
   }))
   assert.equal(emailQuestion.status, 400)
 
-  const recommendation = await json(await api(new Request('https://preview.test/v1/recommendations', {
+  const recommendation = await json(await api(previewRequest('https://preview.test/v1/recommendations', {
     method: 'POST', headers, body: JSON.stringify({ question_id: 'expertise_asset', question_text: 'Tôi có chuyên môn.' }),
   })))
-  const session = await json(await api(new Request('https://preview.test/v1/reading-sessions', {
+  const session = await json(await api(previewRequest('https://preview.test/v1/reading-sessions', {
     method: 'POST', headers, body: JSON.stringify({ decision_id: recommendation.decision_id }),
   })))
-  const phoneReflection = await api(new Request(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
-    method: 'POST', headers, body: JSON.stringify({ key_takeaway: 'Gọi tôi ở 0912 345 678', next_step: 'Viết một phác thảo.' }),
+  const phoneReflection = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
+    method: 'POST', headers, body: JSON.stringify({ content_url: session.content_url, key_takeaway: 'Gọi tôi ở 0912 345 678', next_step: 'Viết một phác thảo.' }),
   }))
   assert.equal(phoneReflection.status, 400)
+})
+
+test('evidence and completion reject a missing or wrong canonical content_url', async () => {
+  const store = new MemoryStore()
+  let sequence = 0
+  const api = createReaderLoopApi(store, {
+    now: () => '2026-07-28T02:00:00.000Z',
+    randomId: (prefix) => `${prefix}_${++sequence}`,
+    randomToken: () => 'reader-token-content-binding',
+  })
+  const reader = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
+  const headers = { Authorization: `Reader ${reader.reader_token}`, 'content-type': 'application/json' }
+  const recommendation = await json(await api(previewRequest('https://preview.test/v1/recommendations', {
+    method: 'POST', headers, body: JSON.stringify({ question_id: 'expertise_asset', question_text: 'Tôi có chuyên môn.' }),
+  })))
+  const session = await json(await api(previewRequest('https://preview.test/v1/reading-sessions', {
+    method: 'POST', headers, body: JSON.stringify({ decision_id: recommendation.decision_id }),
+  })))
+  const evidence = { visible_ms: 1000, active_ms: 900, max_scroll_percent: 25, sections_seen: ['intro'], meaningful_interaction_count: 1 }
+
+  const missingContent = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
+    method: 'POST', headers, body: JSON.stringify(evidence),
+  }))
+  assert.equal(missingContent.status, 400)
+
+  const wrongEvidence = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/evidence`, {
+    method: 'POST', headers, body: JSON.stringify({ content_url: '/library/cau-truc-note-song', ...evidence }),
+  }))
+  assert.equal(wrongEvidence.status, 409)
+  assert.equal((await json(wrongEvidence)).error.code, 'CONTENT_MISMATCH')
+  assert.equal(store.evidence.get(session.session_id)?.visibleMs, 0)
+
+  const wrongCompletion = await api(previewRequest(`https://preview.test/v1/reading-sessions/${session.session_id}/complete`, {
+    method: 'POST', headers, body: JSON.stringify({
+      content_url: '/library/cau-truc-note-song',
+      key_takeaway: 'Không được lưu vào bài khác.',
+      next_step: 'Không được tạo bước tiếp theo.',
+    }),
+  }))
+  assert.equal(wrongCompletion.status, 409)
+  assert.equal((await json(wrongCompletion)).error.code, 'CONTENT_MISMATCH')
+  assert.equal(store.completions.size, 0)
+  assert.equal(store.sessions.get(session.session_id)?.status, 'opened')
+})
+
+test('direct anonymous reader creation requires an allowed Origin and is globally bounded per preview bucket', async () => {
+  const store = new MemoryStore()
+  let sequence = 0
+  const api = createReaderLoopApi(store, {
+    now: () => '2026-07-28T02:00:00.000Z',
+    randomId: (prefix) => `${prefix}_${++sequence}`,
+    randomToken: () => `bounded-reader-token-${sequence}`,
+  })
+
+  const missingOrigin = await api(new Request('https://preview.test/v1/readers', { method: 'POST' }))
+  assert.equal(missingOrigin.status, 403)
+
+  for (let index = 0; index < 60; index += 1) {
+    const response = await api(previewRequest('https://preview.test/v1/readers', {
+      method: 'POST',
+      headers: { Origin: 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev' },
+    }))
+    assert.equal(response.status, 201, `reservation ${index + 1}`)
+  }
+  const limited = await api(previewRequest('https://preview.test/v1/readers', {
+    method: 'POST',
+    headers: { Origin: 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev' },
+  }))
+  assert.equal(limited.status, 429)
+})
+
+test('anonymous reader storage has a finite preview-wide lifetime cap', async () => {
+  const store = new MemoryStore()
+  for (let index = 0; index < 1000; index += 1) {
+    store.readers.set(`reader-${index}`, { id: `reader-${index}`, tokenHash: `hash-${index}`, createdAt: '2026-07-28T00:00:00.000Z' })
+  }
+  const api = createReaderLoopApi(store, {
+    now: () => '2026-07-28T03:00:00.000Z',
+    randomId: (prefix) => `${prefix}_overflow`,
+    randomToken: () => 'bounded-reader-token-overflow',
+  })
+  const response = await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' }))
+  assert.equal(response.status, 429)
+  assert.equal(store.readers.size, 1000)
 })

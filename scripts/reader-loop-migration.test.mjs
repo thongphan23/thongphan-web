@@ -5,19 +5,23 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
 
-const migration = new URL('../workers/reader-loop-preview-migrations/0001_reader_loop_v0.sql', import.meta.url)
+const migrations = [
+  new URL('../workers/reader-loop-preview-migrations/0001_reader_loop_v0.sql', import.meta.url),
+  new URL('../workers/reader-loop-preview-migrations/0002_reader_creation_rate_limit.sql', import.meta.url),
+]
 
 test('preview migration applies on an empty database and enforces evidence boundaries', () => {
   const directory = mkdtempSync(join(tmpdir(), 'reader-loop-migration-'))
   const database = join(directory, 'preview.sqlite')
 
   try {
-    execFileSync('sqlite3', [database], { input: readFileSync(migration) })
+    for (const migration of migrations) execFileSync('sqlite3', [database], { input: readFileSync(migration) })
     const tables = execFileSync('sqlite3', [database, "SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name;"]).toString().trim().split('\n')
     assert.deepEqual(tables, [
       'anonymous_readers',
       'manual_completions',
       'next_action_decisions',
+      'reader_creation_rate_limits',
       'reader_questions',
       'reading_evidence_summaries',
       'reading_sessions',

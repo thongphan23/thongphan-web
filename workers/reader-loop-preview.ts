@@ -5,6 +5,7 @@ import {
   type ReaderLoopContent,
   type SampleQuestionId,
 } from '../lib/reader-loop/recommendation'
+import { ATOMIC_EVIDENCE_UPDATE_SQL } from '../lib/reader-loop/evidence'
 
 export interface ReaderRecord {
   id: string
@@ -52,6 +53,11 @@ export interface ReadingSessionRecord {
   updatedAt: string
 }
 
+export type EvidenceUpdateResult =
+  | { state: 'updated'; evidence: EvidenceSummary }
+  | { state: 'closed' }
+  | null
+
 export interface CompletionRecord {
   readerId: string
   sessionId: string
@@ -76,13 +82,14 @@ export interface CompletionRecord {
 }
 
 export interface ReaderLoopStore {
-  createReader(record: ReaderRecord): Promise<void>
+  reserveReaderCreation(bucketStart: string, retainAfter: string, limit: number): Promise<boolean>
+  createReader(record: ReaderRecord, totalLimit: number): Promise<boolean>
   findReaderByTokenHash(tokenHash: string): Promise<ReaderRecord | null>
   createRecommendation(record: RecommendationRecord): Promise<void>
   findRecommendation(readerId: string, decisionId: string): Promise<RecommendationRecord | null>
   createSession(record: ReadingSessionRecord, summary: EvidenceSummary): Promise<void>
   findSession(readerId: string, sessionId: string): Promise<(ReadingSessionRecord & { evidence: EvidenceSummary }) | null>
-  updateEvidence(readerId: string, sessionId: string, next: EvidenceSummary): Promise<EvidenceSummary | null>
+  updateEvidence(readerId: string, sessionId: string, next: EvidenceSummary): Promise<EvidenceUpdateResult>
   completeSession(readerId: string, sessionId: string, record: CompletionRecord): Promise<CompletionRecord | null>
   getState(readerId: string): Promise<{ activeSession: (ReadingSessionRecord & { evidence?: EvidenceSummary }) | null; latestCompletion: CompletionRecord | null }>
   getInspector(readerId: string): Promise<{
@@ -109,6 +116,9 @@ const defaultRuntime: RuntimeOptions = {
 }
 
 const jsonHeaders = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }
+const READER_CREATION_LIMIT_PER_HOUR = 60
+const READER_TOTAL_LIMIT = 1000
+const READER_CREATION_RETENTION_MS = 24 * 60 * 60 * 1000
 
 function respond(body: unknown, status = 200, extraHeaders?: HeadersInit) {
   return new Response(JSON.stringify(body), { status, headers: { ...jsonHeaders, ...extraHeaders } })
@@ -229,14 +239,36 @@ export function createReaderLoopApi(store: ReaderLoopStore, runtime: RuntimeOpti
     const url = new URL(request.url)
     const trace = traceId()
 
+    if (!isAllowedReaderLoopOrigin(request.headers.get('origin'))) {
+      return error('ORIGIN_NOT_ALLOWED', 'Origin không được phép.', 403, trace)
+    }
+
     if (request.method === 'GET' && url.pathname === '/health') {
       return respond({ ok: true, environment: 'preview', policy_version: READER_LOOP_POLICY_VERSION })
     }
 
     if (request.method === 'POST' && url.pathname === '/v1/readers') {
+      const now = runtime.now()
+      const timestamp = Date.parse(now)
+      if (!Number.isFinite(timestamp)) return error('CLOCK_ERROR', 'Không thể tạo reader lúc này.', 503, trace)
+      const bucketStart = new Date(Math.floor(timestamp / 3_600_000) * 3_600_000).toISOString()
+      const retainAfter = new Date(timestamp - READER_CREATION_RETENTION_MS).toISOString()
+      let reserved = false
+      try {
+        reserved = await store.reserveReaderCreation(bucketStart, retainAfter, READER_CREATION_LIMIT_PER_HOUR)
+      } catch {
+        return error('RATE_LIMIT_UNAVAILABLE', 'Không thể tạo reader lúc này.', 503, trace)
+      }
+      if (!reserved) return error('RATE_LIMITED', 'Preview đã đạt giới hạn tạo reader trong giờ này.', 429, trace)
       const token = runtime.randomToken()
-      const record = { id: runtime.randomId('rdr'), tokenHash: await hashToken(token), createdAt: runtime.now() }
-      await store.createReader(record)
+      const record = { id: runtime.randomId('rdr'), tokenHash: await hashToken(token), createdAt: now }
+      let created = false
+      try {
+        created = await store.createReader(record, READER_TOTAL_LIMIT)
+      } catch {
+        return error('READER_STORE_UNAVAILABLE', 'Không thể tạo reader lúc này.', 503, trace)
+      }
+      if (!created) return error('PREVIEW_CAP_REACHED', 'Preview đã đạt giới hạn reader.', 429, trace)
       return respond({ reader_id: record.id, reader_token: token, created_at: record.createdAt }, 201)
     }
 
@@ -321,6 +353,11 @@ export function createReaderLoopApi(store: ReaderLoopStore, runtime: RuntimeOpti
           return error('CONFLICT', 'Reading session đã hoàn thành; evidence summary đã được đóng.', 409, trace)
         }
         const body = await readBody(request)
+        const contentUrl = boundedText(body?.content_url, 300)
+        if (!contentUrl) return error('VALIDATION_ERROR', 'content_url là bắt buộc.', 400, trace)
+        if (contentUrl !== current.contentUrl) {
+          return error('CONTENT_MISMATCH', 'Reading session không thuộc bài viết này.', 409, trace)
+        }
         const visibleMs = safeInt(body?.visible_ms, 0, 86_400_000)
         const activeMs = safeInt(body?.active_ms, 0, 86_400_000)
         const maxScrollPercent = safeInt(body?.max_scroll_percent, 0, 100)
@@ -332,19 +369,26 @@ export function createReaderLoopApi(store: ReaderLoopStore, runtime: RuntimeOpti
         }
         const next: EvidenceSummary = {
           ...current.evidence,
-          visibleMs: Math.max(current.evidence.visibleMs, visibleMs),
-          activeMs: Math.min(Math.max(current.evidence.activeMs, activeMs), Math.max(current.evidence.visibleMs, visibleMs)),
-          maxScrollPercent: Math.max(current.evidence.maxScrollPercent, maxScrollPercent),
-          sectionsSeen: [...new Set([...current.evidence.sectionsSeen, ...sections])].sort(),
-          meaningfulInteractionCount: Math.max(current.evidence.meaningfulInteractionCount, interactions),
+          visibleMs,
+          activeMs,
+          maxScrollPercent,
+          sectionsSeen: sections,
+          meaningfulInteractionCount: interactions,
           updatedAt: runtime.now(),
         }
-        await store.updateEvidence(reader.id, sessionId, next)
-        return respond({ evidence: publicEvidence(next) })
+        const update = await store.updateEvidence(reader.id, sessionId, next)
+        if (!update) return error('NOT_FOUND', 'Không tìm thấy reading session.', 404, trace)
+        if (update.state === 'closed') return error('CONFLICT', 'Reading session đã hoàn thành; evidence summary đã được đóng.', 409, trace)
+        return respond({ evidence: publicEvidence(update.evidence) })
       }
 
       if (request.method === 'POST' && action === 'complete') {
         const body = await readBody(request)
+        const contentUrl = boundedText(body?.content_url, 300)
+        if (!contentUrl) return error('VALIDATION_ERROR', 'content_url là bắt buộc.', 400, trace)
+        if (contentUrl !== current.contentUrl) {
+          return error('CONTENT_MISMATCH', 'Reading session không thuộc bài viết này.', 409, trace)
+        }
         const keyTakeaway = boundedText(body?.key_takeaway, 1200)
         const nextStep = boundedText(body?.next_step, 1200)
         if (!keyTakeaway || !nextStep) return error('VALIDATION_ERROR', 'Hai trường phản tư đều bắt buộc.', 400, trace)
@@ -386,9 +430,24 @@ interface ReaderLoopD1 {
 class D1ReaderLoopStore implements ReaderLoopStore {
   constructor(private readonly db: ReaderLoopD1) {}
 
-  async createReader(record: ReaderRecord) {
-    await this.db.prepare('INSERT INTO anonymous_readers (id, token_hash, created_at) VALUES (?, ?, ?)')
-      .bind(record.id, record.tokenHash, record.createdAt).run()
+  async reserveReaderCreation(bucketStart: string, retainAfter: string, limit: number) {
+    await this.db.prepare('DELETE FROM reader_creation_rate_limits WHERE bucket_start < ?').bind(retainAfter).run()
+    const row = await this.db.prepare(`INSERT INTO reader_creation_rate_limits (bucket_start, request_count, updated_at)
+      VALUES (?, 1, ?)
+      ON CONFLICT(bucket_start) DO UPDATE SET
+        request_count = request_count + 1,
+        updated_at = excluded.updated_at
+      WHERE request_count < ?
+      RETURNING request_count`).bind(bucketStart, bucketStart, limit).first<{ request_count: number }>()
+    return Boolean(row)
+  }
+
+  async createReader(record: ReaderRecord, totalLimit: number) {
+    const row = await this.db.prepare(`INSERT INTO anonymous_readers (id, token_hash, created_at)
+      SELECT ?, ?, ?
+      WHERE (SELECT COUNT(*) FROM anonymous_readers) < ?
+      RETURNING id`).bind(record.id, record.tokenHash, record.createdAt, totalLimit).first<{ id: string }>()
+    return Boolean(row)
   }
 
   async findReaderByTokenHash(tokenHash: string) {
@@ -458,16 +517,32 @@ class D1ReaderLoopStore implements ReaderLoopStore {
     return row ? this.mapSession(row) : null
   }
 
-  async updateEvidence(readerId: string, sessionId: string, next: EvidenceSummary) {
-    const session = await this.findSession(readerId, sessionId)
-    if (!session) return null
-    await this.db.batch([
-      this.db.prepare('UPDATE reading_evidence_summaries SET visible_ms = ?, active_ms = ?, max_scroll_percent = ?, sections_seen_json = ?, meaningful_interaction_count = ?, updated_at = ? WHERE session_id = ?')
-        .bind(next.visibleMs, next.activeMs, next.maxScrollPercent, JSON.stringify(next.sectionsSeen), next.meaningfulInteractionCount, next.updatedAt, sessionId),
-      this.db.prepare("UPDATE reading_sessions SET status = CASE WHEN status = 'completed' THEN status ELSE 'in_progress' END, updated_at = ? WHERE id = ? AND reader_id = ?")
+  async updateEvidence(readerId: string, sessionId: string, next: EvidenceSummary): Promise<EvidenceUpdateResult> {
+    const results = await this.db.batch([
+      this.db.prepare(ATOMIC_EVIDENCE_UPDATE_SQL).bind(
+        next.visibleMs,
+        next.activeMs,
+        next.visibleMs,
+        next.maxScrollPercent,
+        JSON.stringify(next.sectionsSeen),
+        next.meaningfulInteractionCount,
+        next.updatedAt,
+        sessionId,
+        sessionId,
+        readerId,
+      ),
+      this.db.prepare("UPDATE reading_sessions SET status = 'in_progress', updated_at = MAX(updated_at, ?) WHERE id = ? AND reader_id = ? AND status != 'completed'")
         .bind(next.updatedAt, sessionId, readerId),
     ])
-    return next
+    const first = Array.isArray(results) ? results[0] as Record<string, unknown> | undefined : undefined
+    const meta = first?.meta as Record<string, unknown> | undefined
+    if (typeof meta?.changes !== 'number') throw new Error('D1_EVIDENCE_CHANGE_COUNT_MISSING')
+    if (meta.changes === 0) {
+      const session = await this.findSession(readerId, sessionId)
+      return session?.status === 'completed' ? { state: 'closed' } : null
+    }
+    const session = await this.findSession(readerId, sessionId)
+    return session ? { state: 'updated', evidence: session.evidence } : null
   }
 
   private mapCompletion(row: D1Row): CompletionRecord {
@@ -532,10 +607,17 @@ class D1ReaderLoopStore implements ReaderLoopStore {
   }
 }
 
+export function isAllowedReaderLoopOrigin(origin: string | null): origin is string {
+  return Boolean(origin && (
+    /^http:\/\/(?:127\.0\.0\.1|localhost):\d{2,5}$/.test(origin)
+    || /^https:\/\/(?:[a-z0-9-]+\.)?thongphan-reader-loop-preview\.pages\.dev$/i.test(origin)
+  ))
+}
+
 function corsHeaders(origin: string | null) {
-  if (!origin || /^http:\/\/(?:127\.0\.0\.1|localhost):\d{2,5}$/.test(origin) || /^https:\/\/(?:[a-z0-9-]+\.)?thongphan-reader-loop-preview\.pages\.dev$/i.test(origin)) {
+  if (isAllowedReaderLoopOrigin(origin)) {
     return {
-      'access-control-allow-origin': origin ?? '*',
+      'access-control-allow-origin': origin,
       'access-control-allow-methods': 'GET,POST,OPTIONS',
       'access-control-allow-headers': 'Authorization,Content-Type',
       'access-control-max-age': '86400',

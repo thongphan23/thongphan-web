@@ -1,7 +1,14 @@
 'use client'
 
+import { readerLoopPreviewEnabled } from './release'
+
 export const READER_LOOP_CREDENTIALS_KEY = 'tp:reader-loop:credentials:v0'
-export const READER_LOOP_API_ORIGIN = (process.env.NEXT_PUBLIC_READER_LOOP_API_ORIGIN || 'http://127.0.0.1:8787').replace(/\/$/, '')
+export const READER_LOOP_API_ORIGIN = (process.env.NEXT_PUBLIC_READER_LOOP_API_ORIGIN || '').replace(/\/$/, '')
+
+function assertReaderLoopPreviewConfigured() {
+  if (!readerLoopPreviewEnabled) throw new Error('READER_LOOP_PREVIEW_DISABLED')
+  if (!READER_LOOP_API_ORIGIN) throw new Error('READER_LOOP_API_ORIGIN_MISSING')
+}
 
 export interface ReaderCredentials {
   readerId: string
@@ -24,6 +31,7 @@ export function readCredentials(): ReaderCredentials | null {
 }
 
 export async function ensureCredentials(): Promise<ReaderCredentials> {
+  assertReaderLoopPreviewConfigured()
   const existing = readCredentials()
   if (existing) return existing
 
@@ -36,6 +44,7 @@ export async function ensureCredentials(): Promise<ReaderCredentials> {
 }
 
 export async function readerApi<T>(path: string, init: RequestInit = {}, credentials?: ReaderCredentials): Promise<T> {
+  assertReaderLoopPreviewConfigured()
   const reader = credentials ?? await ensureCredentials()
   const headers = new Headers(init.headers)
   headers.set('authorization', `Reader ${reader.readerToken}`)

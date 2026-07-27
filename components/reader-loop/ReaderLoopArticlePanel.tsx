@@ -9,6 +9,7 @@ import styles from './reader-loop.module.css'
 interface SessionPayload {
   session: {
     id: string
+    content_url: string
     status: 'opened' | 'in_progress' | 'completed'
     evidence: {
       visible_ms: number
@@ -31,7 +32,7 @@ interface CompletionPayload {
   }
 }
 
-export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: string; title: string }) {
+export default function ReaderLoopArticlePanel({ slug, title }: { slug: string; title: string }) {
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [credentials, setCredentials] = useState<ReaderCredentials | null>(null)
   const [session, setSession] = useState<SessionPayload['session'] | null>(null)
@@ -41,6 +42,7 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
   const [nextStep, setNextStep] = useState('')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(false)
+  const [sessionMismatch, setSessionMismatch] = useState(false)
   const metrics = useRef({ visibleMs: 0, activeMs: 0, maxScroll: 0, sections: new Set<string>(), interactions: 0, lastActivity: 0 })
 
   useEffect(() => {
@@ -52,6 +54,10 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
       setCredentials(reader)
       readerApi<SessionPayload>(`/v1/reading-sessions/${encodeURIComponent(id)}`, {}, reader)
         .then((payload) => {
+          if (payload.session.content_url !== `/library/${slug}`) {
+            setSessionMismatch(true)
+            return
+          }
           setSession(payload.session)
           metrics.current = {
             visibleMs: payload.session.evidence.visible_ms,
@@ -64,14 +70,15 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
         })
         .catch(() => setError(true))
     })
-  }, [])
+  }, [slug])
 
   const syncEvidence = useCallback(async () => {
-    if (!sessionId || !credentials) return
+    if (!sessionId || !credentials || !session) return
     const state = metrics.current
     const payload = await readerApi<{ evidence: SessionPayload['session']['evidence'] }>(`/v1/reading-sessions/${encodeURIComponent(sessionId)}/evidence`, {
       method: 'POST',
       body: JSON.stringify({
+        content_url: `/library/${slug}`,
         visible_ms: state.visibleMs,
         active_ms: state.activeMs,
         max_scroll_percent: state.maxScroll,
@@ -80,10 +87,11 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
       }),
     }, credentials)
     setSession((current) => current ? { ...current, status: 'in_progress', evidence: payload.evidence } : current)
-  }, [credentials, sessionId])
+  }, [credentials, session, sessionId, slug])
 
   useEffect(() => {
-    if (!sessionId || !credentials || session?.status === 'completed') return
+    if (!sessionId || !credentials || !session) return
+    if (session.status === 'completed') return
     const state = metrics.current
     const markActivity = () => { state.lastActivity = Date.now(); state.interactions = Math.min(1000, state.interactions + 1) }
     const measureScroll = () => {
@@ -119,17 +127,17 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
       window.removeEventListener('pagehide', syncBeforeLeave)
       document.removeEventListener('visibilitychange', syncWhenHidden)
     }
-  }, [sessionId, credentials, session?.status, syncEvidence])
+  }, [sessionId, credentials, session, syncEvidence])
 
   async function submitReflection(event: FormEvent) {
     event.preventDefault()
-    if (!sessionId || !credentials) return
+    if (!sessionId || !credentials || !session) return
     setSaving(true)
     setError(false)
     try {
       await syncEvidence()
       const result = await readerApi<CompletionPayload>(`/v1/reading-sessions/${encodeURIComponent(sessionId)}/complete`, {
-        method: 'POST', body: JSON.stringify({ key_takeaway: keyTakeaway, next_step: nextStep }),
+        method: 'POST', body: JSON.stringify({ content_url: `/library/${slug}`, key_takeaway: keyTakeaway, next_step: nextStep }),
       }, credentials)
       setCompletion(result)
       setSession((current) => current ? { ...current, status: 'completed' } : current)
@@ -151,8 +159,9 @@ export default function ReaderLoopArticlePanel({ slug: _slug, title }: { slug: s
       <h2 id="reader-loop-panel-title">{title}</h2>
       <p className={styles.dataNotice}>Trang chỉ gửi active time, mức bao phủ, section đã thấy và tổng tương tác có ý nghĩa — không gửi dòng cuộn hay thao tác thô. Không nhập email hoặc số điện thoại vào phần phản tư.</p>
 
+      {sessionMismatch ? <p className={styles.inlineError} role="alert">Reading session không thuộc bài viết này. Không có evidence hoặc completion nào được gửi.</p> : null}
       {error ? <p className={styles.inlineError} role="alert">Không thể lưu tiến trình. Nội dung bài vẫn đọc được; hãy thử lại khi kết nối ổn định.</p> : null}
-      {!session && !error ? <p role="status">Đang mở lại reading session…</p> : null}
+      {!session && !error && !sessionMismatch ? <p role="status">Đang mở lại reading session…</p> : null}
 
       {session && !completion && !showReflection && session.status !== 'completed' ? (
         <button type="button" className={styles.completeButton} onClick={() => { void syncEvidence().catch(() => setError(true)); setShowReflection(true) }}>
