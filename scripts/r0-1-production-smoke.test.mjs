@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { chmod, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
+import { chmod, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { DatabaseSync } from 'node:sqlite'
@@ -9,7 +9,7 @@ import * as productionSmoke from './r0-1-production-smoke.mjs'
 import { BRAIN2_SIGNUP_SUCCESS_MESSAGE } from '../lib/brain2/signup-contract.ts'
 import { handleBrain2SignupRequest } from '../workers/brain2-campaign.ts'
 
-const { main, runProductionSmoke } = productionSmoke
+const { main, nativeSubprocessAdapter, runProductionSmoke } = productionSmoke
 
 const ORIGIN = 'https://fixture.invalid'
 const PRODUCTION_ORIGIN = 'https://thongphan.com'
@@ -322,7 +322,9 @@ async function preMigrationSqliteFixture(fixtureRoot) {
   }
   const subprocessAdapter = async ({ args }) => {
     assert.equal(args.includes('--file'), false)
-    const sql = args[args.indexOf('--command') + 1]
+    const commandArgument = args.find((argument) => argument.startsWith('--command='))
+    assert.equal(typeof commandArgument, 'string')
+    const sql = commandArgument.slice('--command='.length)
     const statements = sql
       .split('\n')
       .filter((line) => !line.trimStart().startsWith('--'))
@@ -350,14 +352,16 @@ function d1SubprocessFixture({ state, identity, subprocessArgs, inspectSql = () 
     subprocessArgs.push([executable, ...args])
     assert.match(executable, /node_modules\/\.bin\/wrangler$/)
     assert.equal(args.includes('--remote'), true)
-    assert.equal(args.includes('--command'), true)
+    assert.equal(args.includes('--command'), false)
     assert.equal(args.includes('--file'), false)
     assert.equal(args.includes('--json'), true)
     assert.equal(args.includes('--yes'), true)
     assert.deepEqual(args.slice(0, 3), ['d1', 'execute', 'thongphan-db'])
     assert.doesNotMatch(args.join(' '), new RegExp(identity.name, 'i'))
     assert.doesNotMatch(args.join(' '), new RegExp(identity.email, 'i'))
-    const sql = args[args.indexOf('--command') + 1]
+    const commandArgument = args.find((argument) => argument.startsWith('--command='))
+    assert.equal(typeof commandArgument, 'string')
+    const sql = commandArgument.slice('--command='.length)
     assert.equal(typeof sql, 'string')
     if (sql.includes('r0-1-smoke:find-signup') || sql.includes('r0-1-smoke:delete-signup')) {
       assert.match(sql, /brain2-21-ngay/)
@@ -1468,7 +1472,8 @@ test('controlled CLI fails before POST when the command-mode Wrangler invocation
       env: { R0_1_SMOKE_INPUT_FILE: inputPath },
       subprocessAdapter: async ({ args }) => {
         assert.equal(args.includes('--file'), false)
-        assert.equal(args.includes('--command'), true)
+        assert.equal(args.includes('--command'), false)
+        assert.equal(args.some((argument) => argument.startsWith('--command=')), true)
         throw new Error('synthetic Wrangler failure')
       },
       fetchAdapter: async () => {
@@ -1479,7 +1484,241 @@ test('controlled CLI fails before POST when the command-mode Wrangler invocation
   )
 
   assert.equal(exitCode, 1)
-  assert.equal(JSON.parse(lines[0]).code, 'SMOKE_DATABASE_COMMAND_FAILED')
+  assert.deepEqual(JSON.parse(lines[0]), {
+    pass: false,
+    mode: 'controlled-signup',
+    code: 'SMOKE_DATABASE_COMMAND_FAILED',
+    phase: 'find-synthetic-signup',
+    classification: 'D1_UNKNOWN',
+  })
+})
+
+test('controlled CLI binds a leading SQL comment inside the Wrangler command argument', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-command-argument-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  const lines = []
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      subprocessAdapter: async ({ args }) => {
+        assert.equal(args.includes('--command'), false)
+        const commandArgument = args.find((argument) => argument.startsWith('--command='))
+        assert.match(commandArgument, /^--command=-- r0-1-smoke:find-signup\n/)
+        return {
+          exitCode: 0,
+          stdout: JSON.stringify([{ success: true, results: [{ id: SIGNUP_IDS.primary }] }]),
+          stderr: '',
+        }
+      },
+      fetchAdapter: async () => { throw new Error('must not fetch') },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SYNTHETIC_PREEXISTS')
+})
+
+test('native Wrangler failure reports only the D1 phase and stable redacted classification', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-native-failure-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const binRoot = join(fixtureRoot, 'node_modules', '.bin')
+  const executable = join(binRoot, 'wrangler')
+  const inputPath = join(fixtureRoot, 'controlled-input.json')
+  await mkdir(binRoot, { recursive: true })
+  await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+  await writeFile(executable, `#!/usr/bin/env node
+process.stdout.write('partial stdout for private resource 11111111-1111-4111-8111-111111111111')
+process.stderr.write('Authentication error for ${SYNTHETIC_IDENTITY.email}; Authorization: Bearer fixture-sensitive-token; /Users/private/account/config.toml')
+process.exit(1)
+`, { mode: 0o700 })
+  const lines = []
+  let fetchCalls = 0
+
+  const exitCode = await main(
+    ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+    {
+      env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+      projectRoot: fixtureRoot,
+      fetchAdapter: async () => {
+        fetchCalls += 1
+        throw new Error('must not fetch')
+      },
+      writeLine: (line) => lines.push(line),
+    },
+  )
+
+  assert.equal(exitCode, 1)
+  assert.equal(fetchCalls, 0)
+  assert.deepEqual(JSON.parse(lines[0]), {
+    pass: false,
+    mode: 'controlled-signup',
+    code: 'SMOKE_DATABASE_COMMAND_FAILED',
+    phase: 'find-synthetic-signup',
+    classification: 'D1_AUTH_OR_PERMISSION',
+  })
+  assert.doesNotMatch(lines[0], /fixture-sensitive-token|fixture\.invalid|11111111|\/Users\/private/i)
+})
+
+test('native subprocess diagnostics cap stdout and stderr independently', async (t) => {
+  const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-native-bounds-test-'))
+  t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+  const exactExecutable = join(fixtureRoot, 'exact-output')
+  const overflowExecutable = join(fixtureRoot, 'overflow-output')
+  await writeFile(exactExecutable, `#!/usr/bin/env node
+process.stdout.write('o'.repeat(64 * 1024))
+process.stderr.write('e'.repeat(64 * 1024))
+process.exitCode = 1
+`, { mode: 0o700 })
+  await writeFile(overflowExecutable, `#!/usr/bin/env node
+process.stdout.write('o'.repeat((64 * 1024) + 1))
+process.stderr.write('e'.repeat((64 * 1024) + 1))
+process.exitCode = 1
+`, { mode: 0o700 })
+
+  const exact = await nativeSubprocessAdapter({
+    executable: exactExecutable,
+    args: [],
+    cwd: fixtureRoot,
+    timeoutMs: 5_000,
+    maxOutputBytes: 64 * 1024,
+  })
+  const overflow = await nativeSubprocessAdapter({
+    executable: overflowExecutable,
+    args: [],
+    cwd: fixtureRoot,
+    timeoutMs: 5_000,
+    maxOutputBytes: 64 * 1024,
+  })
+
+  assert.equal(exact.exitCode, 1)
+  assert.equal(Buffer.byteLength(exact.stdout, 'utf8'), 64 * 1024)
+  assert.equal(Buffer.byteLength(exact.stderr, 'utf8'), 64 * 1024)
+  assert.equal(exact.outputTruncated, false)
+  assert.equal(overflow.exitCode, 1)
+  assert.ok(Buffer.byteLength(overflow.stdout, 'utf8') <= 64 * 1024)
+  assert.ok(Buffer.byteLength(overflow.stderr, 'utf8') <= 64 * 1024)
+  assert.equal(overflow.outputTruncated || overflow.failureCode === 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER', true)
+})
+
+test('D1 command failures use only evidence-backed stable classifications', async (t) => {
+  const cases = [
+    ['auth', 'Authentication error [code: 10000]', 'D1_AUTH_OR_PERMISSION'],
+    ['config', 'Could not read config file at /Users/private/config.toml', 'D1_CONFIG_OR_RESOURCE'],
+    ['database', 'D1 database 11111111-1111-4111-8111-111111111111 not found', 'D1_DATABASE_NOT_FOUND'],
+    ['schema', 'D1_ERROR: no such column: audience_state', 'D1_SCHEMA_MISMATCH'],
+    ['sql', 'SQLITE_ERROR: syntax error near statement', 'D1_SQL_REJECTED'],
+    ['network', 'Network error: connection reset', 'D1_NETWORK_OR_TIMEOUT'],
+    ['unknown', 'unexpected provider failure', 'D1_UNKNOWN'],
+  ]
+
+  for (const [name, stderr, classification] of cases) {
+    await t.test(name, async (subtest) => {
+      const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-classification-test-'))
+      subtest.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+      const inputPath = join(fixtureRoot, 'controlled-input.json')
+      await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+      const lines = []
+      const exitCode = await main(
+        ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+        {
+          env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+          subprocessAdapter: async () => ({ exitCode: 1, stdout: '', stderr }),
+          fetchAdapter: async () => { throw new Error('must not fetch') },
+          writeLine: (line) => lines.push(line),
+        },
+      )
+      assert.equal(exitCode, 1)
+      assert.deepEqual(JSON.parse(lines[0]), {
+        pass: false,
+        mode: 'controlled-signup',
+        code: 'SMOKE_DATABASE_COMMAND_FAILED',
+        phase: 'find-synthetic-signup',
+        classification,
+      })
+      assert.doesNotMatch(lines[0], /audience_state|provider failure|\/Users\/private|11111111/i)
+    })
+  }
+})
+
+test('parsed D1 row contract failures retain their command phase', async (t) => {
+  const cases = [
+    ['find row type', 'find-synthetic-signup', 'find-synthetic-signup'],
+    ['snapshot row cardinality', 'pre-migration-snapshot', 'pre-migration-snapshot'],
+    ['queue count type', 'count-queue-rows', 'count-queue-rows'],
+    ['delete count type', 'delete-synthetic-signup', 'delete-synthetic-signup'],
+  ]
+
+  for (const [name, malformedPhase, expectedPhase] of cases) {
+    await t.test(name, async (subtest) => {
+      const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-row-contract-test-'))
+      subtest.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+      const inputPath = join(fixtureRoot, 'controlled-input.json')
+      await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+      let findCalls = 0
+      const lines = []
+      const subprocessAdapter = async ({ args }) => {
+        const sql = args.find((argument) => argument.startsWith('--command='))
+          .slice('--command='.length)
+        if (sql.includes('r0-1-smoke:find-signup')) {
+          findCalls += 1
+          const results = malformedPhase === 'find-synthetic-signup'
+            ? [{ id: 'not-an-opaque-id' }]
+            : findCalls === 1 ? [] : findCalls === 2 ? [{ id: SIGNUP_IDS.primary }] : []
+          return { exitCode: 0, stdout: JSON.stringify([{ success: true, results }]), stderr: '' }
+        }
+        if (sql.includes('r0-1-smoke:pre-migration-snapshot')) {
+          const signupRows = malformedPhase === 'pre-migration-snapshot'
+            ? []
+            : [{ challenge_signup_count: 0 }]
+          return {
+            exitCode: 0,
+            stdout: JSON.stringify([
+              { success: true, results: signupRows },
+              { success: true, results: [{ campaign_version: 'legacy-v0', status: 'pending', row_count: 210 }] },
+            ]),
+            stderr: '',
+          }
+        }
+        if (sql.includes('r0-1-smoke:count-queue')) {
+          const queueCount = malformedPhase === 'count-queue-rows' ? '0' : 0
+          return { exitCode: 0, stdout: JSON.stringify([{ success: true, results: [{ queue_count: queueCount }] }]), stderr: '' }
+        }
+        if (sql.includes('r0-1-smoke:delete-signup')) {
+          const deletedCount = malformedPhase === 'delete-synthetic-signup' ? '1' : 1
+          return { exitCode: 0, stdout: JSON.stringify([{ success: true, results: [{ deleted_count: deletedCount }] }]), stderr: '' }
+        }
+        throw new Error('unexpected SQL')
+      }
+
+      const exitCode = await main(
+        ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+        {
+          env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+          subprocessAdapter,
+          fetchAdapter: async () => response(JSON.stringify({
+            success: true,
+            message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+            signup_id: SIGNUP_IDS.primary,
+          }), { status: 200, headers: { 'content-type': 'application/json' } }),
+          writeLine: (line) => lines.push(line),
+        },
+      )
+
+      assert.equal(exitCode, 1)
+      assert.deepEqual(JSON.parse(lines[0]), {
+        pass: false,
+        mode: 'controlled-signup',
+        code: 'SMOKE_DATABASE_CONTRACT',
+        phase: expectedPhase,
+        classification: 'D1_OUTPUT_CONTRACT',
+      })
+    })
+  }
 })
 
 test('controlled CLI rejects invalid JSON returned by command-mode Wrangler', async (t) => {
@@ -1504,7 +1743,8 @@ test('controlled CLI rejects invalid JSON returned by command-mode Wrangler', as
           env: { R0_1_SMOKE_INPUT_FILE: inputPath },
           subprocessAdapter: async ({ args }) => {
             assert.equal(args.includes('--file'), false)
-            assert.equal(args.includes('--command'), true)
+            assert.equal(args.includes('--command'), false)
+            assert.equal(args.some((argument) => argument.startsWith('--command=')), true)
             return { exitCode: 0, stdout, stderr: '' }
           },
           fetchAdapter: async () => {
@@ -1556,6 +1796,8 @@ test('controlled CLI rejects a standalone unsuccessful Wrangler result set with 
     pass: false,
     mode: 'controlled-signup',
     code: 'SMOKE_DATABASE_CONTRACT',
+    phase: 'find-synthetic-signup',
+    classification: 'D1_OUTPUT_CONTRACT',
   })
 })
 
