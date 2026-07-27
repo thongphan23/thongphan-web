@@ -1,6 +1,25 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: R0.1A MERGED INTO MAIN — R0.1B NOT STARTED
+
+## R0.1A authoritative merge reconciliation
+
+- GitHub is authoritative for merge state. PR #2:
+  `https://github.com/thongphan23/thongphan-web/pull/2` is merged.
+- Reviewed implementation head:
+  `05946ce56dd8598721f196ab0e3220060f81368a`.
+- Base `main` before merge:
+  `bde1778d698d9c1c0cc4e1823cc28485a3e4a8cf`.
+- Authoritative merge commit and resulting `main` SHA:
+  `69666579e8ea2cf573b0681fd7cf8e2b3714752c`.
+- Merge UTC time: `2026-07-27T08:28:39Z`.
+- The remote implementation branch was deleted after the successful merge.
+- Merged source contains all controlled-response, evidence-lifecycle, operational-
+  consistency and exact-scope migration corrections reviewed in PR #2.
+- No production cutover was performed. R0.1B has not started and still requires a
+  separate owner-gated prompt.
+- Prior report language describing PR #2 as Draft, Open, pending merge or review-
+  ready is superseded by this verified GitHub state.
 
 ## R0.1A controlled signup response and evidence cleanup correction
 

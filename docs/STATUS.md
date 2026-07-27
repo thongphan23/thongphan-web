@@ -4,6 +4,25 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
+### R0.1A MERGED INTO MAIN — R0.1B NOT STARTED
+
+- GitHub PR #2 is merged. The reviewed implementation head is
+  `05946ce56dd8598721f196ab0e3220060f81368a`; the authoritative merge commit and
+  resulting `main` SHA are `69666579e8ea2cf573b0681fd7cf8e2b3714752c`.
+- The merge completed at `2026-07-27T08:28:39Z`. `main` currently contains R0.1A
+  source, including the controlled-response, evidence-lifecycle and scoped-migration
+  corrections.
+- Production is not cutover. R0.1A performed no Worker or Pages deployment, no
+  production D1 migration and no production signup request or cutover.
+- R0.1B has not started and still requires a separate owner-gated prompt. R0.H1 and
+  R0.2 have not started; preview/production isolation remains unresolved.
+
+### Historical R0.1A implementation verification — superseded merge-state reporting
+
+The entries below preserve implementation and verification history. Any statement
+that PR #2 was Draft, pending merge or awaiting implementation review is superseded
+by the authoritative state above.
+
 - **R0.1A READY FOR IMPLEMENTATION REVIEW after controlled-response and evidence-
   lifecycle correction.** Latest exact implementation source is
   `1c0e13b3a3d794bc59bf99f1fa776184cd828458`; Draft PR #2 remains pending merge

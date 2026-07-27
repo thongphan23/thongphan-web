@@ -2,7 +2,7 @@
 
 **Document ID:** TPREAD-D03
 **Version:** 2.2.0
-**Status:** R0 baseline giữ nguyên; R0.1A source implementation complete through Task 8; complete local release verification passed; Draft PR #2 remains pending merge; R0.1B not started
+**Status:** R0 baseline giữ nguyên; R0.1A source merged into `main`; R0.1B not started
 **Last updated:** 2026-07-27
 **Primary owner:** Thông Phan
 
@@ -16,7 +16,7 @@ Tài liệu này tách rõ ba lớp:
 2. **Quyết định sản phẩm đã được chốt trong bộ foundation.**
 3. **Giả định kỹ thuật phải được Codex xác minh trong repository ở Release 0.**
 
-Repository và production surface đã được kiểm tra tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. Báo cáo bằng chứng đầy đủ nằm tại `docs/discovery/R0-AUDIT-REPORT.md` và vẫn là baseline R0 bất biến. R0.1A sau đó chỉ thay đổi source local; báo cáo triển khai nằm tại `docs/security/R0-1-IMPLEMENTATION-REPORT.md`. Các phần mô tả kiến trúc tương lai trong tài liệu này vẫn là target, không được hiểu là capability hiện có.
+Repository và production surface đã được kiểm tra tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. Báo cáo bằng chứng đầy đủ nằm tại `docs/discovery/R0-AUDIT-REPORT.md` và vẫn là baseline R0 bất biến. R0.1A source đã merge vào `main` qua PR #2: implementation head `05946ce56dd8598721f196ab0e3220060f81368a`, merge commit và resulting `main` SHA `69666579e8ea2cf573b0681fd7cf8e2b3714752c`, merged at `2026-07-27T08:28:39Z`. Báo cáo triển khai nằm tại `docs/security/R0-1-IMPLEMENTATION-REPORT.md`. Các phần mô tả kiến trúc tương lai trong tài liệu này vẫn là target, không được hiểu là capability hiện có.
 
 ## 1.1. R0 verified snapshot
 
@@ -42,9 +42,9 @@ Repository và production surface đã được kiểm tra tại commit `c8b10f9
 
 R0 không deploy, không migration, không tạo database, không thay route/framework và không triển khai PRD-R1.
 
-### 1.2. R0.1A implemented-source delta và production boundary
+### 1.2. R0.1A merged-source delta và production boundary
 
-| Interface | Implemented source local | Production-deployed state | Boundary còn lại |
+| Interface | Implemented source in `main` | Production-deployed state | Boundary còn lại |
 |---|---|---|---|
 | `/api/embed` | `/api/embed` returns `410` cho mọi method qua shared tombstone; entry không có environment binding (`workers/embed-vault.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`, `wrangler.embed.toml:5-14`) | Chưa deploy trong R0.1A; không được mô tả production là đã remediated | R0.1B owner-gated cutover và smoke |
 | `/api/chat` | `/api/chat` returns `410` qua cùng tombstone, không có AI/Vectorize binding (`workers/api/chat.ts:1-3`, `wrangler.chat.toml:5-14`) | Chưa deploy trong R0.1A | R0.1B owner-gated cutover và smoke |
@@ -53,11 +53,14 @@ R0 không deploy, không migration, không tạo database, không thay route/fra
 | Email audience | Migration local đặt legacy rows thành `quarantined_legacy`, cột số tương ứng với `sendable = false`; trigger chặn mọi sendable state (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`) | Migration chưa apply production; email Worker chưa deploy; cron vẫn rỗng | Delivery status như `pending` không tạo audience eligibility; retention/dedup/consent còn owner-gated |
 | Environment isolation | Không thay đổi trong R0.1A | Preview và production D1 isolation chưa giải quyết | R0.2 chưa bắt đầu; tách resource không thuộc endpoint-binding removal |
 
-`R0.1A source complete` ở đây áp dụng cho remediation source implementation through
-Task 8 và complete local release verification đã pass. Draft PR #2 remains pending
-merge; R0.1B not started. Production boundary vẫn là source only: no production
-migration, no production tombstone deployment, no production signup cutover. R0.H1
-public-history residual vẫn là nhánh riêng, nonblocking.
+`R0.1A source merged into main` ở đây áp dụng cho remediation source implementation
+through Task 8 và complete local release verification đã pass. PR #2 is merged;
+R0.1B not started. Production vẫn ở pre-cutover state: no production migration, no
+production tombstone deployment, no production signup cutover. Migration `0003` has
+not been applied to production; the truthful signup and tombstone Workers have not
+been production-deployed; the email Worker remains undeployed and cron remains empty.
+Preview and production isolation remains unresolved. R0.H1 public-history residual
+vẫn là nhánh riêng, nonblocking; R0.1 không được claim complete.
 
 ---
 

@@ -19,13 +19,13 @@ implementation report:
 
 ## Documentation and branch gates
 
-- [ ] Documentation correction PR reviewed.
-- [ ] Documentation correction PR merged into `main`.
-- [ ] GitHub default branch changed to `main` through a separate owner action.
-- [ ] R0.1A branch `agent/r0-1a-security-remediation` created only after the
+- [x] Documentation correction PR reviewed.
+- [x] Documentation correction PR merged into `main`.
+- [x] GitHub default branch is `main`.
+- [x] R0.1A branch `agent/r0-1a-security-remediation` created only after the
   documentation correction PR is merged.
-- [ ] R0.1A implementation PR reviewed.
-- [ ] R0.1A implementation PR merged into `main`.
+- [x] R0.1A implementation PR reviewed.
+- [x] R0.1A implementation PR merged into `main`.
 - [ ] Fresh release checkout created from `main`.
 - [ ] `git fetch origin` completed in the release checkout.
 - [ ] Exact clean `main` SHA recorded and proven equal to `origin/main`.
@@ -33,22 +33,32 @@ implementation report:
 
 ## Credential and current-tree gates
 
-- [ ] Candidate A invalid verification evidence recorded.
-- [ ] Candidate B classified `legacy_orphaned_not_present_in_active_inventory` and
+- [x] Candidate A invalid verification evidence recorded.
+- [x] Candidate B classified `legacy_orphaned_not_present_in_active_inventory` and
   absent from the complete active inventory.
-- [ ] Candidate B complete active-token inventory evidence recorded.
-- [ ] Inventory scope recorded without token names or IDs: 3 User API Tokens and
+- [x] Candidate B complete active-token inventory evidence recorded.
+- [x] Inventory scope recorded without token names or IDs: 3 User API Tokens and
   1 Account API Token.
-- [ ] Zero active Workers AI/Vectorize permission match recorded.
-- [ ] No active Cloudflare token mutation was authorized or performed.
-- [ ] Current tracked tree and approved ignored-local configuration sanitized and
+- [x] Zero active Workers AI/Vectorize permission match recorded.
+- [x] No active Cloudflare token mutation was authorized or performed.
+- [x] Current tracked tree and approved ignored-local configuration sanitized and
   current-tree secret scan passed.
-- [ ] Public-history exposure recorded as a residual risk without sensitive content.
-- [ ] R0.H1 remains separate and has not been treated as an R0.1 release gate.
+- [x] Public-history exposure recorded as a residual risk without sensitive content.
+- [x] R0.H1 remains separate and has not been treated as an R0.1 release gate.
 
 No token names or IDs are recorded in this checklist. R0.H1 is nonblocking
 public-history hygiene for tracked historical plaintext; R0.H1 does not imply
 Candidate B revoke or rotation.
+
+## Completed non-secret evidence
+
+| Provider | Actor role | Action | UTC time | Result | GitHub evidence reference |
+|---|---|---|---|---|---|
+| GitHub | Repository maintainer | Documentation correction reviewed and merged into `main`; default branch verified as `main` | `2026-07-26T14:11:16Z` | Pass | [PR #1](https://github.com/thongphan23/thongphan-web/pull/1) |
+| GitHub | Repository maintainer | R0.1A implementation reviewed and merged; remote implementation branch deleted | `2026-07-27T08:28:39Z` | Pass | [PR #2](https://github.com/thongphan23/thongphan-web/pull/2) |
+| Cloudflare / GitHub | Authorized account owner | Candidate A invalid and Candidate B active-inventory disposition recorded without identifiers | `2026-07-27T08:28:39Z` | Pass; no active token mutation | [PR #2](https://github.com/thongphan23/thongphan-web/pull/2) |
+| Cloudflare / GitHub | Authorized account owner | Inventory scope and zero active AI/Vectorize permission match recorded | `2026-07-27T08:28:39Z` | Pass | [PR #2](https://github.com/thongphan23/thongphan-web/pull/2) |
+| GitHub | Verification agent | Current tree sanitation and nonblocking R0.H1 residual verified | `2026-07-27T09:00:40Z` | Pass; R0.H1 remains separate | [PR #2](https://github.com/thongphan23/thongphan-web/pull/2) |
 
 ## Production authorization gates
 
