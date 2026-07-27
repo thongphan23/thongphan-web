@@ -28,6 +28,7 @@ const MAX_D1_OUTPUT_BYTES = 64 * 1024
 const D1_TIMEOUT_MS = 30_000
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const CONTROL_CHARACTERS = /[\u0000-\u001F\u007F-\u009F]/u
+const OPAQUE_SIGNUP_ID = /^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/u
 
 class SmokeError extends Error {
   constructor(code) {
@@ -35,6 +36,10 @@ class SmokeError extends Error {
     this.name = 'SmokeError'
     this.code = code
   }
+}
+
+function validOpaqueSignupId(value) {
+  return typeof value === 'string' && OPAQUE_SIGNUP_ID.test(value)
 }
 
 async function readBoundedBody(response, maxResponseBytes) {
@@ -83,11 +88,7 @@ async function inspectControlledSignupResponse(response, maxResponseBytes) {
     } catch {}
   }
   const signupId = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
-    && typeof parsed.signup_id === 'string'
-    && parsed.signup_id.length > 0
-    && parsed.signup_id.length <= 128
-    && parsed.signup_id === parsed.signup_id.trim()
-    && !CONTROL_CHARACTERS.test(parsed.signup_id)
+    && validOpaqueSignupId(parsed.signup_id)
     ? parsed.signup_id
     : null
   if (response.status !== 200) {
@@ -204,8 +205,7 @@ function assertPreMigrationSnapshot(value) {
 
 function assertSignupRows(rows) {
   if (!Array.isArray(rows) || rows.some((row) => (
-    !row || typeof row.id !== 'string' || row.id.length === 0 || row.id.length > 128
-      || CONTROL_CHARACTERS.test(row.id)
+    !row || !validOpaqueSignupId(row.id)
   ))) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
@@ -430,6 +430,7 @@ async function runControlledSignup({
   let preMigrationAfter = null
   let pendingError = null
   let signupResponse = null
+  let cleanupSignupId = null
   try {
     postRequests = 1
     const response = await fetchWithTimeout(
@@ -461,6 +462,8 @@ async function runControlledSignup({
       if (queueRows !== 0) pendingError ??= new SmokeError('SMOKE_QUEUE_CONTRACT')
       if (signupResponse && signupResponse.signupId !== createdRows[0].id) {
         pendingError ??= new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+      } else if (signupResponse) {
+        cleanupSignupId = createdRows[0].id
       }
     }
   } catch (error) {
@@ -473,9 +476,9 @@ async function runControlledSignup({
         pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
       }
     }
-    if (signupResponse?.signupId) {
+    if (cleanupSignupId) {
       try {
-        const deleted = await deleteSignup(signupResponse.signupId)
+        const deleted = await deleteSignup(cleanupSignupId)
         removedRows += deleted
         if (deleted !== 1) {
           pendingError ??= new SmokeError('SMOKE_TARGETED_CLEANUP_CONTRACT')

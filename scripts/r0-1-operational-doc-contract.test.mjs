@@ -135,22 +135,28 @@ test('Current System Audit records the authoritative merged source and pending p
   assert.match(currentStatus, /preview.{0,80}production.{0,100}(?:unresolved|chưa giải quyết)/is)
 })
 
-test('STATUS current R0 section records merged main without stale Draft state', () => {
+test('STATUS current R0 section records R0.1B recovery in progress and incomplete cutover', () => {
   const currentR0 = sectionBetween(
     statusDocument,
     '## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26',
     '### Historical R0.1A implementation verification — superseded merge-state reporting',
   )
 
-  assert.match(currentR0, /R0\.1A MERGED INTO MAIN — R0\.1B NOT STARTED/)
+  assert.match(currentR0, /R0\.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE/)
   assert.match(currentR0, new RegExp(implementationHead))
   assert.match(currentR0, new RegExp(mergeCommit))
   assert.match(currentR0, /PR #2.{0,80}merged/is)
   assert.match(currentR0, /2026-07-27T08:28:39Z/)
   assert.match(currentR0, /main.{0,100}contains R0\.1A\s+source/is)
-  assert.match(currentR0, /production.{0,100}(?:not cutover|chưa cutover)/is)
+  assert.match(currentR0, /R0\.1B cutover is incomplete/i)
+  assert.match(currentR0, /embed\/chat\/signup versions are deployed/i)
+  assert.match(currentR0, /official read-only recovery passed/i)
+  assert.match(currentR0, /controlled signup stopped before\s+POST/is)
+  assert.match(currentR0, /synthetic_count=0/)
+  assert.match(currentR0, /migration (?:and|\/) Pages remain untouched/i)
   assert.match(currentR0, /R0\.H1.{0,80}(?:not started|chưa bắt đầu)/is)
   assert.match(currentR0, /R0\.2.{0,80}(?:not started|chưa bắt đầu)/is)
+  assert.doesNotMatch(currentR0, /R0\.1B NOT STARTED|R0\.1B has not started/i)
   assert.doesNotMatch(currentR0, /Draft PR #2 remains pending merge/i)
   assert.doesNotMatch(currentR0, /R0\.1A (?:READY|waiting) FOR IMPLEMENTATION REVIEW/i)
 })

@@ -650,6 +650,36 @@ test('controlled signup rejects a response ID that differs from the created D1 r
   assert.equal(fixture.state.signups.length, 1)
 })
 
+test('controlled signup rejects non-opaque IDs returned by D1', async (t) => {
+  for (const invalidId of [SYNTHETIC_IDENTITY.name, SYNTHETIC_IDENTITY.email]) {
+    await t.test(invalidId === SYNTHETIC_IDENTITY.name ? 'synthetic name' : 'synthetic email', async () => {
+      const fixture = controlledSignupFixture()
+      let lookupCalls = 0
+      let deleteCalls = 0
+      fixture.databaseAdapter.findSyntheticSignup = async () => {
+        lookupCalls += 1
+        return lookupCalls === 1 ? [] : [{ id: invalidId }]
+      }
+      fixture.databaseAdapter.deleteSyntheticSignup = async () => {
+        deleteCalls += 1
+        return 0
+      }
+
+      await assert.rejects(
+        runProductionSmoke({
+          origin: ORIGIN,
+          mode: 'controlled-signup',
+          fetchAdapter: fixture.fetchAdapter,
+          databaseAdapter: fixture.databaseAdapter,
+          syntheticIdentity: SYNTHETIC_IDENTITY,
+        }),
+        { code: 'SMOKE_DATABASE_CONTRACT' },
+      )
+      assert.equal(deleteCalls, 0)
+    })
+  }
+})
+
 test('controlled signup rejects a non-JSON media type with an otherwise valid body', async () => {
   const fixture = controlledSignupFixture({ responseContentType: 'text/plain' })
 
@@ -971,7 +1001,7 @@ test('controlled signup refuses to POST when any synthetic invalid-domain signup
   assert.equal(fixture.state.signups.length, 1)
 })
 
-test('controlled signup removes at most the response-ID row when one POST creates multiple rows', async () => {
+test('controlled signup issues no cleanup when one POST creates multiple rows', async () => {
   const fixture = controlledSignupFixture({
     createdSignupCount: 2,
     responseBody: JSON.stringify({
@@ -996,8 +1026,8 @@ test('controlled signup removes at most the response-ID row when one POST create
   const matching = fixture.state.signups.filter((row) => (
     row.name === SYNTHETIC_IDENTITY.name && row.email === SYNTHETIC_IDENTITY.email
   ))
-  assert.deepEqual(matching.map((row) => row.id), ['fixture-signup-id-2'])
-  assert.deepEqual(fixture.state.signups, [unrelated, matching[0]])
+  assert.deepEqual(matching.map((row) => row.id), ['fixture-signup-id-1', 'fixture-signup-id-2'])
+  assert.deepEqual(fixture.state.signups, [unrelated, ...matching])
 })
 
 test('controlled command fails closed without injected identity and database adapter', async () => {
@@ -1058,7 +1088,7 @@ test('native controlled CLI rejects every non-apex origin before secure input or
   })
 })
 
-test('controlled CLI removes at most the response-ID row when D1 reports multiple synthetic rows', async (t) => {
+test('controlled CLI issues no cleanup command when D1 reports multiple synthetic rows', async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-cli-test-'))
   t.after(() => rm(fixtureRoot, { recursive: true, force: true }))
   const inputPath = join(fixtureRoot, 'controlled-input.json')
@@ -1110,14 +1140,80 @@ test('controlled CLI removes at most the response-ID row when D1 reports multipl
 
   assert.equal(exitCode, 1)
   assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_ROW_CONTRACT')
-  assert.equal(subprocessArgs.length, 6)
+  assert.equal(subprocessArgs.length, 5)
   assert.deepEqual(state.signups, [
     { id: 'unrelated-id', name: 'Other Fixture', email: 'other@fixture.test' },
+    { id: 'secure-cli-signup-id-1', ...SYNTHETIC_IDENTITY },
     { id: 'secure-cli-signup-id-2', ...SYNTHETIC_IDENTITY },
     { id: 'secure-cli-signup-id-3', ...SYNTHETIC_IDENTITY },
   ])
+  assert.equal(
+    subprocessArgs.filter((args) => args.join(' ').includes('r0-1-smoke:delete-signup')).length,
+    0,
+  )
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
   assert.doesNotMatch(lines[0], new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
+})
+
+test('controlled CLI never sends an untrusted response ID to D1 cleanup', async (t) => {
+  const cases = [
+    ['synthetic email', SYNTHETIC_IDENTITY.email],
+    ['synthetic name', SYNTHETIC_IDENTITY.name],
+    ['mismatched opaque ID', 'different-signup-id'],
+  ]
+
+  for (const [name, responseSignupId] of cases) {
+    await t.test(name, async (subtest) => {
+      const fixtureRoot = await mkdtemp(join(tmpdir(), 'r0-1-smoke-untrusted-id-test-'))
+      subtest.after(() => rm(fixtureRoot, { recursive: true, force: true }))
+      const inputPath = join(fixtureRoot, 'controlled-input.json')
+      await writeFile(inputPath, JSON.stringify(SYNTHETIC_IDENTITY), { mode: 0o600 })
+      const state = {
+        signups: [],
+        preMigrationEmailAggregate: [{
+          campaign_version: 'legacy-v0',
+          status: 'pending',
+          row_count: 210,
+        }],
+      }
+      const subprocessArgs = []
+      const subprocessAdapter = d1SubprocessFixture({
+        state,
+        identity: SYNTHETIC_IDENTITY,
+        subprocessArgs,
+      })
+      const lines = []
+
+      const exitCode = await main(
+        ['--origin', PRODUCTION_ORIGIN, '--controlled-signup'],
+        {
+          env: { R0_1_SMOKE_INPUT_FILE: inputPath },
+          subprocessAdapter,
+          fetchAdapter: async () => {
+            state.signups.push({ id: 'validated-d1-signup-id', ...SYNTHETIC_IDENTITY })
+            return response(JSON.stringify({
+              success: true,
+              message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+              signup_id: responseSignupId,
+            }), { status: 200, headers: { 'content-type': 'application/json' } })
+          },
+          writeLine: (line) => lines.push(line),
+        },
+      )
+
+      assert.equal(exitCode, 1)
+      assert.equal(JSON.parse(lines[0]).code, 'SMOKE_SIGNUP_RESPONSE_CONTRACT')
+      assert.equal(
+        subprocessArgs.filter((args) => args.join(' ').includes('r0-1-smoke:delete-signup')).length,
+        0,
+      )
+      assert.equal(state.signups.length, 1)
+      for (const args of subprocessArgs) {
+        assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.name, 'i'))
+        assert.doesNotMatch(args.join(' '), new RegExp(SYNTHETIC_IDENTITY.email, 'i'))
+      }
+    })
+  }
 })
 
 test('controlled CLI never places an apostrophe name or email in a D1 command', async (t) => {
