@@ -68,7 +68,7 @@ test("files created after initialization inherit mode 0600", (t) => {
 test("successful cutover cleanup removes the evidence directory", (t) => {
   const { prefix } = fixture(t);
   const result = runBash(
-    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nr0_1b_mark_remote_mutation_started\nprintf "{}" > "$dir/after.json"\nr0_1b_mark_cutover_succeeded\nr0_1b_cleanup_version_evidence\nr0_1b_remove_exit_trap\ntest ! -e "$dir"',
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nr0_1b_mark_remote_mutation_started\nprintf "{}" > "$dir/after.json"\nprintf "ledger" > "$dir/migrations.txt"\nr0_1b_mark_cutover_succeeded\nr0_1b_cleanup_version_evidence\nr0_1b_remove_exit_trap\ntest ! -e "$dir"',
     prefix,
   );
 
@@ -80,7 +80,7 @@ test("successful cutover cleanup removes the evidence directory", (t) => {
 test("failure before remote mutation cleans evidence and preserves the exit code", (t) => {
   const { prefix } = fixture(t);
   const result = runBash(
-    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"\nprintf "{}" > "$R0_1B_VERSION_DIR/before.json"\nexit 37',
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"\nprintf "{}" > "$R0_1B_VERSION_DIR/before.json"\nprintf "ledger" > "$R0_1B_VERSION_DIR/before.txt"\nexit 37',
     prefix,
   );
   const directory = outputPath(result);
@@ -94,7 +94,7 @@ test("failure after remote mutation preserves secured evidence with redacted std
   const { prefix } = fixture(t);
   const sensitiveVersionId = "11111111-1111-4111-8111-111111111111";
   const result = runBash(
-    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"\nprintf "%s" "$3" > "$R0_1B_VERSION_DIR/after.json"\nr0_1b_mark_remote_mutation_started\nexit 42',
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\nprintf "DIR=%s\\n" "$R0_1B_VERSION_DIR"\nprintf "%s" "$3" > "$R0_1B_VERSION_DIR/after.json"\nprintf "ledger" > "$R0_1B_VERSION_DIR/after.txt"\nr0_1b_mark_remote_mutation_started\nexit 42',
     prefix,
     sensitiveVersionId,
   );
@@ -110,12 +110,13 @@ test("failure after remote mutation preserves secured evidence with redacted std
   assert.equal(existsSync(directory), true);
   assert.equal(mode(directory), 0o700);
   assert.equal(mode(join(directory, "after.json")), 0o600);
+  assert.equal(mode(join(directory, "after.txt")), 0o600);
 });
 
 test("cleanup failure after success preserves evidence and returns nonzero once", (t) => {
   const { prefix } = fixture(t);
   const result = runBash(
-    'set -e\nsource "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{\\"safe\\":true}" > "$dir/after.json"\nmkdir "$dir/cleanup-obstruction"\nchmod 700 "$dir/cleanup-obstruction"\nr0_1b_mark_remote_mutation_started\nr0_1b_mark_cutover_succeeded\nr0_1b_cleanup_version_evidence',
+    'set -e\nsource "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{\\"safe\\":true}" > "$dir/after.json"\nprintf "ledger" > "$dir/after.txt"\nmkdir "$dir/cleanup-obstruction"\nchmod 700 "$dir/cleanup-obstruction"\nr0_1b_mark_remote_mutation_started\nr0_1b_mark_cutover_succeeded\nr0_1b_cleanup_version_evidence',
     prefix,
   );
   const directory = outputPath(result);
@@ -129,8 +130,10 @@ test("cleanup failure after success preserves evidence and returns nonzero once"
   assert.doesNotMatch(result.stderr, /safe|\{|author|metadata/i);
   assert.equal(existsSync(directory), true);
   assert.equal(existsSync(join(directory, "after.json")), true);
+  assert.equal(existsSync(join(directory, "after.txt")), true);
   assert.equal(mode(directory), 0o700);
   assert.equal(mode(join(directory, "after.json")), 0o600);
+  assert.equal(mode(join(directory, "after.txt")), 0o600);
   assert.equal(mode(join(directory, "cleanup-obstruction")), 0o700);
 });
 
@@ -221,6 +224,78 @@ test("explicit direct cleanup removes evidence preserved by the trap", (t) => {
   assert.equal(cleaned.stdout, "");
   assert.equal(cleaned.stderr, "");
   assert.equal(existsSync(directory), false);
+});
+
+test("mark success plus mixed valid artifacts exits zero through the trap", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{}" > "$dir/view.json"\nprintf "ledger" > "$dir/ledger.txt"\nr0_1b_mark_remote_mutation_started\nr0_1b_mark_cutover_succeeded',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.equal(result.status, 0);
+  assert.equal(result.stderr, "");
+  assert.equal(existsSync(directory), false);
+});
+
+test("unexpected extension fails before any valid artifact is deleted", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{}" > "$dir/view.json"\nprintf "ledger" > "$dir/ledger.txt"\nprintf "unexpected" > "$dir/output.log"\nr0_1b_cleanup_version_evidence',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.notEqual(result.status, 0);
+  assert.equal(existsSync(join(directory, "view.json")), true);
+  assert.equal(existsSync(join(directory, "ledger.txt")), true);
+  assert.equal(existsSync(join(directory, "output.log")), true);
+});
+
+test("extensionless artifact fails before any valid artifact is deleted", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{}" > "$dir/view.json"\nprintf "ledger" > "$dir/ledger.txt"\nprintf "unexpected" > "$dir/README"\nr0_1b_cleanup_version_evidence',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.notEqual(result.status, 0);
+  assert.equal(existsSync(join(directory, "view.json")), true);
+  assert.equal(existsSync(join(directory, "ledger.txt")), true);
+  assert.equal(existsSync(join(directory, "README")), true);
+});
+
+test("unexpected subdirectory fails before any artifact is deleted", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{}" > "$dir/view.json"\nprintf "ledger" > "$dir/ledger.txt"\nmkdir "$dir/nested"\nr0_1b_cleanup_version_evidence',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.notEqual(result.status, 0);
+  assert.equal(existsSync(join(directory, "view.json")), true);
+  assert.equal(existsSync(join(directory, "ledger.txt")), true);
+  assert.equal(existsSync(join(directory, "nested")), true);
+});
+
+test("symlink artifact fails without following or deleting its target", (t) => {
+  const { root, prefix } = fixture(t);
+  const target = join(root, "outside.txt");
+  const result = runBash(
+    'source "$1"\nr0_1b_version_evidence_init "$2"\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "outside" > "$3"\nprintf "{}" > "$dir/view.json"\nprintf "ledger" > "$dir/ledger.txt"\nln -s "$3" "$dir/link.txt"\nr0_1b_cleanup_version_evidence',
+    prefix,
+    target,
+  );
+  const directory = outputPath(result);
+
+  assert.notEqual(result.status, 0);
+  assert.equal(existsSync(target), true);
+  assert.equal(existsSync(join(directory, "link.txt")), true);
+  assert.equal(existsSync(join(directory, "view.json")), true);
+  assert.equal(existsSync(join(directory, "ledger.txt")), true);
 });
 
 test("exit trap unregisters before exit and does not recurse", (t) => {

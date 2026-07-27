@@ -126,10 +126,12 @@ r0_1b_cleanup_version_evidence() {
   if test -n "${R0_1B_VERSION_DIR:-}" && test -e "$R0_1B_VERSION_DIR"; then
     if _r0_1b_evidence_directory_is_safe; then
       if test -n "$(find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 \
-        \( ! -type f -o ! -name '*.json' \) -print -quit 2>/dev/null)"; then
+        \( ! -type f -o \( ! -name '*.json' -a ! -name '*.txt' \) \) \
+        -print -quit 2>/dev/null)"; then
         cleanup_status=1
       else
-        find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
+        find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f \
+          \( -name '*.json' -o -name '*.txt' \) \
           -exec rm -f {} + 2>/dev/null || cleanup_status=1
         if test "$cleanup_status" = 0; then
           rmdir "$R0_1B_VERSION_DIR" 2>/dev/null || cleanup_status=1

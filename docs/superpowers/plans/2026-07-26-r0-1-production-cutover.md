@@ -781,7 +781,8 @@ Update the implementation report and `docs/STATUS.md` in a new documentation PR 
 the recorded production state. Closure evidence must distinguish source SHA,
 deployed version IDs, Pages deployment, D1 state and remaining R0.H1 residual.
 Only after every route, version, D1, email-runtime and safe-summary check above has
-passed, mark successful closure, delete the temporary JSON and unregister the trap:
+passed, mark successful closure, delete the temporary top-level `.json` and `.txt`
+evidence artifacts and unregister the trap:
 
 ```bash
 r0_1b_mark_cutover_succeeded

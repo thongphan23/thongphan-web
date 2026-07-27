@@ -12,6 +12,7 @@ const paths = {
   checklist: "docs/security/R0-1-OWNER-ACTION-CHECKLIST.md",
   report: "docs/security/R0-1-IMPLEMENTATION-REPORT.md",
   migrationScopeConfig: "wrangler.r0-1b-email-integrity.toml",
+  lifecycleHelper: "scripts/r0-1b-version-evidence-lifecycle.sh",
 };
 
 const documents = Object.fromEntries(
@@ -394,4 +395,34 @@ test("migration-only config locks discovery to exact migration 0003", () => {
   assert.equal(pattern, "workers/migrations/0003_r0_1_email_integrity.sql");
   assert.doesNotMatch(pattern, /[*?\[\]{}]/);
   assert.match(config, /^\s*migrations_dir\s*=\s*"workers\/migrations"\s*$/m);
+});
+
+test("production plan artifacts and cleanup helper share the exact JSON/TXT allowlist", () => {
+  const lifecyclePaths = [
+    ...documents.cutover.matchAll(/\$R0_1B_VERSION_DIR\/([A-Za-z0-9][A-Za-z0-9._-]*)/g),
+  ].map((match) => match[1]);
+  const literalPaths = lifecyclePaths.filter((path) => !path.includes("*"));
+  const migrationLedgers = [
+    "d1-migrations-broad-preflight.txt",
+    "d1-migrations-scoped-preflight.txt",
+    "d1-migrations-broad-recheck.txt",
+    "d1-migrations-scoped-recheck.txt",
+    "d1-migrations-scoped-postflight.txt",
+    "d1-migrations-broad-postflight.txt",
+  ];
+
+  assert.ok(literalPaths.length > migrationLedgers.length);
+  for (const path of literalPaths) {
+    assert.match(path, /\.(?:json|txt)$/);
+    assert.doesNotMatch(path, /\//);
+  }
+  assert.deepEqual(
+    migrationLedgers.filter((path) => literalPaths.includes(path)),
+    migrationLedgers,
+  );
+  assert.doesNotMatch(literalPaths.join("\n"), /(?:\.log$|^[^.]+$|\/)/m);
+  assert.match(documents.lifecycleHelper, /\*\.json/);
+  assert.match(documents.lifecycleHelper, /\*\.txt/);
+  assert.match(documents.lifecycleHelper, /-name '\*\.json'[\s\S]*-name '\*\.txt'/);
+  assert.match(taskSection(10), /r0_1b_cleanup_version_evidence/);
 });
