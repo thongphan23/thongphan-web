@@ -6,6 +6,8 @@ import {
   type SampleQuestionId,
 } from '../lib/reader-loop/recommendation'
 import { ATOMIC_EVIDENCE_UPDATE_SQL } from '../lib/reader-loop/evidence'
+import { deriveRotatingCallerHash } from '../lib/reader-loop/privacy'
+import { EXPIRED_READER_CLEANUP_SQL } from '../lib/reader-loop/retention'
 
 export interface ReaderRecord {
   id: string
@@ -82,7 +84,8 @@ export interface CompletionRecord {
 }
 
 export interface ReaderLoopStore {
-  reserveReaderCreation(bucketStart: string, retainAfter: string, limit: number): Promise<boolean>
+  cleanupExpired(readerExpireBefore: string, rateRetainAfter: string): Promise<void>
+  reserveReaderCreation(callerHash: string, bucketStart: string, limit: number): Promise<boolean>
   createReader(record: ReaderRecord, totalLimit: number): Promise<boolean>
   findReaderByTokenHash(tokenHash: string): Promise<ReaderRecord | null>
   createRecommendation(record: RecommendationRecord): Promise<void>
@@ -104,6 +107,7 @@ interface RuntimeOptions {
   now: () => string
   randomId: (prefix: string) => string
   randomToken: () => string
+  callerKey: (request: Request, now: string) => Promise<string | null>
 }
 
 const defaultRuntime: RuntimeOptions = {
@@ -113,12 +117,21 @@ const defaultRuntime: RuntimeOptions = {
     const bytes = crypto.getRandomValues(new Uint8Array(32))
     return btoa(String.fromCharCode(...bytes)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
   },
+  callerKey: async () => null,
 }
 
 const jsonHeaders = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }
-const READER_CREATION_LIMIT_PER_HOUR = 60
+const READER_CREATION_LIMIT_PER_CALLER_HOUR = 10
 const READER_TOTAL_LIMIT = 1000
-const READER_CREATION_RETENTION_MS = 24 * 60 * 60 * 1000
+const RATE_LIMIT_RETENTION_MS = 24 * 60 * 60 * 1000
+const READER_RETENTION_MS = 7 * 24 * 60 * 60 * 1000
+
+function retentionCutoffs(timestamp: number) {
+  return {
+    rateRetainAfter: new Date(timestamp - RATE_LIMIT_RETENTION_MS).toISOString(),
+    readerExpireBefore: new Date(timestamp - READER_RETENTION_MS).toISOString(),
+  }
+}
 
 function respond(body: unknown, status = 200, extraHeaders?: HeadersInit) {
   return new Response(JSON.stringify(body), { status, headers: { ...jsonHeaders, ...extraHeaders } })
@@ -252,14 +265,22 @@ export function createReaderLoopApi(store: ReaderLoopStore, runtime: RuntimeOpti
       const timestamp = Date.parse(now)
       if (!Number.isFinite(timestamp)) return error('CLOCK_ERROR', 'Không thể tạo reader lúc này.', 503, trace)
       const bucketStart = new Date(Math.floor(timestamp / 3_600_000) * 3_600_000).toISOString()
-      const retainAfter = new Date(timestamp - READER_CREATION_RETENTION_MS).toISOString()
+      let callerHash: string | null = null
+      try {
+        callerHash = await runtime.callerKey(request, now)
+      } catch {
+        return error('CALLER_KEY_UNAVAILABLE', 'Không thể tạo reader lúc này.', 503, trace)
+      }
+      if (!callerHash) return error('CALLER_KEY_UNAVAILABLE', 'Không thể tạo reader lúc này.', 503, trace)
+      const { rateRetainAfter, readerExpireBefore } = retentionCutoffs(timestamp)
       let reserved = false
       try {
-        reserved = await store.reserveReaderCreation(bucketStart, retainAfter, READER_CREATION_LIMIT_PER_HOUR)
+        await store.cleanupExpired(readerExpireBefore, rateRetainAfter)
+        reserved = await store.reserveReaderCreation(callerHash, bucketStart, READER_CREATION_LIMIT_PER_CALLER_HOUR)
       } catch {
         return error('RATE_LIMIT_UNAVAILABLE', 'Không thể tạo reader lúc này.', 503, trace)
       }
-      if (!reserved) return error('RATE_LIMITED', 'Preview đã đạt giới hạn tạo reader trong giờ này.', 429, trace)
+      if (!reserved) return error('RATE_LIMITED', 'Thiết bị này đã đạt giới hạn tạo reader trong giờ này.', 429, trace)
       const token = runtime.randomToken()
       const record = { id: runtime.randomId('rdr'), tokenHash: await hashToken(token), createdAt: now }
       let created = false
@@ -430,15 +451,21 @@ interface ReaderLoopD1 {
 class D1ReaderLoopStore implements ReaderLoopStore {
   constructor(private readonly db: ReaderLoopD1) {}
 
-  async reserveReaderCreation(bucketStart: string, retainAfter: string, limit: number) {
-    await this.db.prepare('DELETE FROM reader_creation_rate_limits WHERE bucket_start < ?').bind(retainAfter).run()
-    const row = await this.db.prepare(`INSERT INTO reader_creation_rate_limits (bucket_start, request_count, updated_at)
-      VALUES (?, 1, ?)
-      ON CONFLICT(bucket_start) DO UPDATE SET
+  async cleanupExpired(readerExpireBefore: string, rateRetainAfter: string) {
+    await this.db.batch([
+      ...EXPIRED_READER_CLEANUP_SQL.map((query) => this.db.prepare(query).bind(readerExpireBefore)),
+      this.db.prepare('DELETE FROM reader_creation_rate_limits WHERE updated_at < ?').bind(rateRetainAfter),
+    ])
+  }
+
+  async reserveReaderCreation(callerHash: string, bucketStart: string, limit: number) {
+    const row = await this.db.prepare(`INSERT INTO reader_creation_rate_limits (caller_hash, bucket_start, request_count, updated_at)
+      VALUES (?, ?, 1, ?)
+      ON CONFLICT(caller_hash, bucket_start) DO UPDATE SET
         request_count = request_count + 1,
         updated_at = excluded.updated_at
       WHERE request_count < ?
-      RETURNING request_count`).bind(bucketStart, bucketStart, limit).first<{ request_count: number }>()
+      RETURNING request_count`).bind(callerHash, bucketStart, bucketStart, limit).first<{ request_count: number }>()
     return Boolean(row)
   }
 
@@ -627,15 +654,36 @@ function corsHeaders(origin: string | null) {
   return null
 }
 
+interface ReaderLoopEnv {
+  DB: ReaderLoopD1
+  CALLER_HASH_SECRET?: string
+}
+
+interface ReaderLoopExecutionContext {
+  waitUntil(promise: Promise<unknown>): void
+}
+
 const worker = {
-  async fetch(request: Request, env: { DB: ReaderLoopD1 }) {
+  async fetch(request: Request, env: ReaderLoopEnv) {
     const cors = corsHeaders(request.headers.get('origin'))
     if (!cors) return respond({ error: { code: 'ORIGIN_NOT_ALLOWED', message: 'Origin không được phép.' } }, 403)
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors })
-    const response = await createReaderLoopApi(new D1ReaderLoopStore(env.DB))(request)
+    const response = await createReaderLoopApi(new D1ReaderLoopStore(env.DB), {
+      ...defaultRuntime,
+      callerKey: (incoming, now) => deriveRotatingCallerHash(
+        env.CALLER_HASH_SECRET ?? '',
+        incoming.headers.get('CF-Connecting-IP') ?? '',
+        now,
+      ),
+    })(request)
     const headers = new Headers(response.headers)
     Object.entries(cors).forEach(([key, value]) => headers.set(key, value))
     return new Response(response.body, { status: response.status, headers })
+  },
+  async scheduled(_event: unknown, env: ReaderLoopEnv, context: ReaderLoopExecutionContext) {
+    const timestamp = Date.now()
+    const { rateRetainAfter, readerExpireBefore } = retentionCutoffs(timestamp)
+    context.waitUntil(new D1ReaderLoopStore(env.DB).cleanupExpired(readerExpireBefore, rateRetainAfter))
   },
 }
 

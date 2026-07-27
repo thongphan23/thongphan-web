@@ -16,11 +16,17 @@ class MemoryStore implements ReaderLoopStore {
   sessions = new Map<string, ReadingSessionRecord>()
   evidence = new Map<string, EvidenceSummary>()
   completions = new Map<string, CompletionRecord>()
-  readerCreationReservations = 0
+  readerCreationReservations = new Map<string, number>()
 
-  async reserveReaderCreation(_bucketStart: string, _retainAfter: string, limit: number) {
-    if (this.readerCreationReservations >= limit) return false
-    this.readerCreationReservations += 1
+  async cleanupExpired(readerExpireBefore: string, _rateRetainAfter: string) {
+    for (const [id, reader] of this.readers) if (reader.createdAt < readerExpireBefore) this.readers.delete(id)
+  }
+
+  async reserveReaderCreation(callerHash: string, bucketStart: string, limit: number) {
+    const key = `${callerHash}:${bucketStart}`
+    const count = this.readerCreationReservations.get(key) ?? 0
+    if (count >= limit) return false
+    this.readerCreationReservations.set(key, count + 1)
     return true
   }
 
@@ -98,8 +104,11 @@ async function json(response: Response) {
 function previewRequest(input: string, init: RequestInit = {}) {
   const headers = new Headers(init.headers)
   headers.set('origin', 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev')
+  if (!headers.has('x-test-caller')) headers.set('x-test-caller', 'caller-a')
   return new Request(input, { ...init, headers })
 }
+
+const testCallerKey = async (request: Request) => request.headers.get('x-test-caller')
 
 test('anonymous reader completes the evidence-to-next-action flow and can resume', async () => {
   const store = new MemoryStore()
@@ -108,6 +117,7 @@ test('anonymous reader completes the evidence-to-next-action flow and can resume
     now: () => '2026-07-28T02:00:00.000Z',
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => 'reader-token-for-test',
+    callerKey: testCallerKey,
   })
 
   const readerResponse = await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' }))
@@ -199,6 +209,7 @@ test('reflection is required and a different anonymous token cannot inspect the 
     now: () => '2026-07-28T02:00:00.000Z',
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => `reader-token-long-${sequence}`,
+    callerKey: testCallerKey,
   })
 
   const first = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
@@ -229,6 +240,7 @@ test('free-text inputs reject likely email addresses and phone numbers', async (
     now: () => '2026-07-28T02:00:00.000Z',
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => 'reader-token-pii-test',
+    callerKey: testCallerKey,
   })
   const reader = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
   const headers = { Authorization: `Reader ${reader.reader_token}`, 'content-type': 'application/json' }
@@ -257,6 +269,7 @@ test('evidence and completion reject a missing or wrong canonical content_url', 
     now: () => '2026-07-28T02:00:00.000Z',
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => 'reader-token-content-binding',
+    callerKey: testCallerKey,
   })
   const reader = await json(await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' })))
   const headers = { Authorization: `Reader ${reader.reader_token}`, 'content-type': 'application/json' }
@@ -293,19 +306,25 @@ test('evidence and completion reject a missing or wrong canonical content_url', 
   assert.equal(store.sessions.get(session.session_id)?.status, 'opened')
 })
 
-test('direct anonymous reader creation requires an allowed Origin and is globally bounded per preview bucket', async () => {
+test('direct reader creation requires an allowed Origin and limits one caller without blocking another', async () => {
   const store = new MemoryStore()
   let sequence = 0
   const api = createReaderLoopApi(store, {
     now: () => '2026-07-28T02:00:00.000Z',
     randomId: (prefix) => `${prefix}_${++sequence}`,
     randomToken: () => `bounded-reader-token-${sequence}`,
+    callerKey: testCallerKey,
   })
 
   const missingOrigin = await api(new Request('https://preview.test/v1/readers', { method: 'POST' }))
   assert.equal(missingOrigin.status, 403)
 
-  for (let index = 0; index < 60; index += 1) {
+  const missingCaller = await api(new Request('https://preview.test/v1/readers', {
+    method: 'POST', headers: { Origin: 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev' },
+  }))
+  assert.equal(missingCaller.status, 503)
+
+  for (let index = 0; index < 10; index += 1) {
     const response = await api(previewRequest('https://preview.test/v1/readers', {
       method: 'POST',
       headers: { Origin: 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev' },
@@ -317,9 +336,14 @@ test('direct anonymous reader creation requires an allowed Origin and is globall
     headers: { Origin: 'https://reader-loop-v0.thongphan-reader-loop-preview.pages.dev' },
   }))
   assert.equal(limited.status, 429)
+
+  const otherCaller = await api(previewRequest('https://preview.test/v1/readers', {
+    method: 'POST', headers: { 'x-test-caller': 'caller-b' },
+  }))
+  assert.equal(otherCaller.status, 201)
 })
 
-test('anonymous reader storage has a finite preview-wide lifetime cap', async () => {
+test('anonymous reader storage has a finite cap across unexpired preview readers', async () => {
   const store = new MemoryStore()
   for (let index = 0; index < 1000; index += 1) {
     store.readers.set(`reader-${index}`, { id: `reader-${index}`, tokenHash: `hash-${index}`, createdAt: '2026-07-28T00:00:00.000Z' })
@@ -328,8 +352,25 @@ test('anonymous reader storage has a finite preview-wide lifetime cap', async ()
     now: () => '2026-07-28T03:00:00.000Z',
     randomId: (prefix) => `${prefix}_overflow`,
     randomToken: () => 'bounded-reader-token-overflow',
+    callerKey: testCallerKey,
   })
   const response = await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' }))
   assert.equal(response.status, 429)
   assert.equal(store.readers.size, 1000)
+})
+
+test('expired anonymous readers are removed before the active cap is evaluated', async () => {
+  const store = new MemoryStore()
+  for (let index = 0; index < 1000; index += 1) {
+    store.readers.set(`expired-${index}`, { id: `expired-${index}`, tokenHash: `hash-${index}`, createdAt: '2026-07-19T00:00:00.000Z' })
+  }
+  const api = createReaderLoopApi(store, {
+    now: () => '2026-07-28T03:00:00.000Z',
+    randomId: (prefix) => `${prefix}_after-cleanup`,
+    randomToken: () => 'reader-token-after-cleanup',
+    callerKey: testCallerKey,
+  })
+  const response = await api(previewRequest('https://preview.test/v1/readers', { method: 'POST' }))
+  assert.equal(response.status, 201)
+  assert.equal(store.readers.size, 1)
 })

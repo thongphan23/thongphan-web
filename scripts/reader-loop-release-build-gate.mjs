@@ -33,19 +33,28 @@ function filesContaining(value) {
   return result.stdout
 }
 
-runBuild(false)
-const disabledRead = routeHtml('read')
-const disabledInspector = routeHtml('read/inspector')
-assert.doesNotMatch(disabledRead, /Hiện tại anh\/chị đang muốn giải quyết/)
-assert.doesNotMatch(disabledInspector, /Chuỗi này chỉ thuộc mã ẩn danh/)
-assert.equal(filesContaining(apiOrigin).trim(), '')
+function assertDisabledArtifact() {
+  assert.doesNotMatch(routeHtml('read'), /Hiện tại anh\/chị đang muốn giải quyết/)
+  assert.doesNotMatch(routeHtml('read/inspector'), /Chuỗi này chỉ thuộc mã ẩn danh/)
+  assert.equal(filesContaining(apiOrigin).trim(), '')
+}
 
-runBuild(true)
-const enabledRead = routeHtml('read')
-const enabledInspector = routeHtml('read/inspector')
-assert.match(enabledRead, /Hiện tại anh\/chị đang muốn giải quyết/)
-assert.match(enabledInspector, /Chuỗi này chỉ thuộc mã ẩn danh/)
-assert.match(filesContaining(apiOrigin), /_next\/static\/chunks/)
+function assertEnabledArtifact() {
+  assert.match(routeHtml('read'), /Hiện tại anh\/chị đang muốn giải quyết/)
+  assert.match(routeHtml('read/inspector'), /Chuỗi này chỉ thuộc mã ẩn danh/)
+  assert.match(filesContaining(apiOrigin), /_next\/static\/chunks/)
+}
+
+try {
+  runBuild(false)
+  assertDisabledArtifact()
+  runBuild(true)
+  assertEnabledArtifact()
+} finally {
+  runBuild(false)
+  assertDisabledArtifact()
+}
 
 console.log('Reader Loop disabled production build: PASS')
 console.log('Reader Loop enabled preview build: PASS')
+console.log('Final Reader Loop artifact is production-disabled: PASS')

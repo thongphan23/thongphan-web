@@ -23,7 +23,7 @@
     "test:r0-1-operational-doc-contract": "node --test scripts/r0-1-operational-doc-contract.test.mjs",
     "test:r0-1b-production-plan-contract": "node --test scripts/r0-1b-production-plan-contract.test.mjs",
     "test:r0-1-production-smoke": "node --import tsx --test scripts/r0-1-production-smoke.test.mjs",
-    "test:reader-loop": "node --import tsx --test scripts/reader-loop-recommendation.test.ts scripts/reader-loop-api.test.ts scripts/reader-loop-evidence-atomicity.test.ts && node --test scripts/reader-loop-preview-isolation.test.mjs scripts/reader-loop-migration.test.mjs scripts/reader-loop-ui-contract.test.mjs scripts/reader-loop-release-gate.test.mjs",
+    "test:reader-loop": "node --import tsx --test scripts/reader-loop-recommendation.test.ts scripts/reader-loop-api.test.ts scripts/reader-loop-evidence-atomicity.test.ts scripts/reader-loop-caller-privacy.test.ts scripts/reader-loop-retention.test.ts && node --test scripts/reader-loop-preview-isolation.test.mjs scripts/reader-loop-migration.test.mjs scripts/reader-loop-ui-contract.test.mjs scripts/reader-loop-release-gate.test.mjs",
     "qa:reader-loop-browser": "node scripts/reader-loop-browser-qa.mjs",
     "test:reader-loop-build-gate": "node scripts/reader-loop-release-build-gate.mjs",
     "start": "next start",

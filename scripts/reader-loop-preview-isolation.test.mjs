@@ -51,3 +51,20 @@ test('preview Worker CORS only trusts the dedicated Pages project and local QA',
   assert.match(worker, /127\\\.0\\\.0\\\.1\|localhost/)
   assert.doesNotMatch(worker, /\[a-z0-9-\]\+\(\?:\\\.\[a-z0-9-\]\+\)\*\\\.pages\\\.dev/)
 })
+
+test('preview caller controls use a secret digest and scheduled expiry', async () => {
+  const [config, worker, privacy] = await Promise.all([
+    readFile(new URL('../wrangler.reader-loop-preview.toml', import.meta.url), 'utf8'),
+    readFile(new URL('../workers/reader-loop-preview.ts', import.meta.url), 'utf8'),
+    readFile(new URL('../lib/reader-loop/privacy.ts', import.meta.url), 'utf8'),
+  ])
+
+  assert.match(config, /^\[triggers\]$/m)
+  assert.match(config, /^crons = \["0 3 \* \* \*"\]$/m)
+  assert.match(worker, /CALLER_HASH_SECRET/)
+  assert.match(worker, /headers\.get\('CF-Connecting-IP'\)/)
+  assert.match(worker, /scheduled\(/)
+  assert.match(privacy, /HMAC/)
+  assert.match(privacy, /SHA-256/)
+  assert.doesNotMatch(worker, /headers\.get\('(X-Forwarded-For|X-Real-IP)'\)/i)
+})

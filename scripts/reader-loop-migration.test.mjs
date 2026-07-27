@@ -8,6 +8,7 @@ import test from 'node:test'
 const migrations = [
   new URL('../workers/reader-loop-preview-migrations/0001_reader_loop_v0.sql', import.meta.url),
   new URL('../workers/reader-loop-preview-migrations/0002_reader_creation_rate_limit.sql', import.meta.url),
+  new URL('../workers/reader-loop-preview-migrations/0003_reader_caller_expiry.sql', import.meta.url),
 ]
 
 test('preview migration applies on an empty database and enforces evidence boundaries', () => {
@@ -28,6 +29,9 @@ test('preview migration applies on an empty database and enforces evidence bound
       'recommendation_decisions',
       'reflections',
     ])
+
+    const rateColumns = execFileSync('sqlite3', [database, "SELECT name FROM pragma_table_info('reader_creation_rate_limits') ORDER BY cid;"]).toString().trim().split('\n')
+    assert.deepEqual(rateColumns, ['caller_hash', 'bucket_start', 'request_count', 'updated_at'])
 
     assert.throws(() => execFileSync('sqlite3', [database], {
       input: "PRAGMA foreign_keys=ON; INSERT INTO reading_sessions VALUES ('rs','missing','dec','content','/library/x','opened','now','now');",
