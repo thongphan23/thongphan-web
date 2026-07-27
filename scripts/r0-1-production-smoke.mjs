@@ -29,12 +29,32 @@ const D1_TIMEOUT_MS = 30_000
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const CONTROL_CHARACTERS = /[\u0000-\u001F\u007F-\u009F]/u
 const CANONICAL_UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u
+const D1_PHASES = new Set([
+  'find-synthetic-signup',
+  'pre-migration-snapshot',
+  'count-queue-rows',
+  'delete-synthetic-signup',
+])
+const D1_CLASSIFICATIONS = new Set([
+  'D1_AUTH_OR_PERMISSION',
+  'D1_CONFIG_OR_RESOURCE',
+  'D1_DATABASE_NOT_FOUND',
+  'D1_SCHEMA_MISMATCH',
+  'D1_SQL_REJECTED',
+  'D1_NETWORK_OR_TIMEOUT',
+  'D1_OUTPUT_CONTRACT',
+  'D1_UNKNOWN',
+])
 
 class SmokeError extends Error {
-  constructor(code) {
+  constructor(code, diagnostics = {}) {
     super(code)
     this.name = 'SmokeError'
     this.code = code
+    if (D1_PHASES.has(diagnostics.phase) && D1_CLASSIFICATIONS.has(diagnostics.classification)) {
+      this.phase = diagnostics.phase
+      this.classification = diagnostics.classification
+    }
   }
 }
 
@@ -264,19 +284,72 @@ async function readSecureControlledIdentity(env) {
   }
 }
 
-function nativeSubprocessAdapter({ executable, args, cwd, timeoutMs, maxOutputBytes }) {
+function boundDiagnosticStream(value, maxOutputBytes) {
+  const source = Buffer.from(typeof value === 'string' ? value : '', 'utf8')
+  if (source.byteLength <= maxOutputBytes) return { text: source.toString('utf8'), truncated: false }
+  let text = source.subarray(0, maxOutputBytes).toString('utf8')
+  while (Buffer.byteLength(text, 'utf8') > maxOutputBytes) text = text.slice(0, -1)
+  return { text, truncated: true }
+}
+
+function redactDiagnosticEvidence(value) {
+  return value
+    .replace(/\bbearer\s+[^\s,;]+/giu, 'Bearer [REDACTED_TOKEN]')
+    .replace(/\b((?:cf_)?api[_-]?token|authorization)\s*[:=]\s*[^\s,;]+/giu, '$1=[REDACTED_TOKEN]')
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/giu, '[REDACTED_EMAIL]')
+    .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/giu, '[REDACTED_ID]')
+    .replace(/\b[0-9a-f]{32}\b/giu, '[REDACTED_ID]')
+    .replace(/(?:\/Users|\/home)\/[^\s"'`]+/gu, '[REDACTED_PATH]')
+    .replace(/[A-Z]:\\[^\s"'`]+/gu, '[REDACTED_PATH]')
+    .replace(/\b(?:SELECT|INSERT|UPDATE|DELETE)\b[^;]*(?:;|$)/giu, '[REDACTED_SQL]')
+}
+
+function classifyD1Failure({ stdout, stderr, failureCode, timedOut, outputTruncated }) {
+  if (failureCode === 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER' || outputTruncated) {
+    return 'D1_OUTPUT_CONTRACT'
+  }
+  if (timedOut) return 'D1_NETWORK_OR_TIMEOUT'
+
+  const evidence = redactDiagnosticEvidence(`${stderr}\n${stdout}`).toLowerCase()
+  if (/authentication|not authenticated|unauthorized|permission denied|forbidden|code:\s*10000/u.test(evidence)) {
+    return 'D1_AUTH_OR_PERMISSION'
+  }
+  if (/database(?: named)?[^\n]*(?:not found|does not exist)|could not find[^\n]*d1 database/u.test(evidence)) {
+    return 'D1_DATABASE_NOT_FOUND'
+  }
+  if (/no such (?:table|column)|has no column named|unknown column|schema mismatch/u.test(evidence)) {
+    return 'D1_SCHEMA_MISMATCH'
+  }
+  if (/syntax error|sql(?:ite)?_error|query failed|statement failed/u.test(evidence)) {
+    return 'D1_SQL_REJECTED'
+  }
+  if (/timed? out|timeout|econnreset|enotfound|network error|fetch failed|connection (?:closed|refused|reset)/u.test(evidence)) {
+    return 'D1_NETWORK_OR_TIMEOUT'
+  }
+  if (/config(?:uration)?(?: file)?[^\n]*(?:not found|missing|invalid)|could not read[^\n]*config|missing[^\n]*database_id|d1 binding[^\n]*(?:missing|invalid)|resource[^\n]*not found|unknown arguments|provide either --command or --file/u.test(evidence)) {
+    return 'D1_CONFIG_OR_RESOURCE'
+  }
+  return 'D1_UNKNOWN'
+}
+
+export function nativeSubprocessAdapter({ executable, args, cwd, timeoutMs, maxOutputBytes }) {
   return new Promise((resolveResult) => {
     execFile(executable, args, {
       cwd,
       encoding: 'utf8',
-      maxBuffer: maxOutputBytes,
+      maxBuffer: maxOutputBytes * 2,
       timeout: timeoutMs,
       windowsHide: true,
-    }, (error, stdout) => {
+    }, (error, stdout, stderr) => {
+      const boundedStdout = boundDiagnosticStream(stdout, maxOutputBytes)
+      const boundedStderr = boundDiagnosticStream(stderr, maxOutputBytes)
       resolveResult({
         exitCode: error ? 1 : 0,
-        stdout: error ? '' : stdout,
-        stderr: '',
+        stdout: boundedStdout.text,
+        stderr: boundedStderr.text,
+        failureCode: typeof error?.code === 'string' ? error.code : null,
+        timedOut: Boolean(error?.killed && error?.signal === 'SIGTERM'),
+        outputTruncated: boundedStdout.truncated || boundedStderr.truncated,
       })
     })
   })
@@ -309,15 +382,19 @@ function createWranglerD1Adapter({
 } = {}) {
   const executable = resolve(projectRoot, 'node_modules/.bin/wrangler')
   const configPath = resolve(projectRoot, 'wrangler.signup.toml')
+  const outputContractError = (phase) => new SmokeError('SMOKE_DATABASE_CONTRACT', {
+    phase,
+    classification: 'D1_OUTPUT_CONTRACT',
+  })
 
-  const executeSql = async (sql, expectedSets) => {
+  const executeSql = async (sql, expectedSets, phase) => {
     try {
       const result = await subprocessAdapter({
         executable,
         args: [
           'd1', 'execute', 'thongphan-db',
           '--remote',
-          '--command', sql,
+          `--command=${sql}`,
           '--config', configPath,
           '--json',
           '--yes',
@@ -326,16 +403,45 @@ function createWranglerD1Adapter({
         timeoutMs: D1_TIMEOUT_MS,
         maxOutputBytes: MAX_D1_OUTPUT_BYTES,
       })
-      if (!result || result.exitCode !== 0) throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED')
-      return parseWranglerResults(result.stdout, expectedSets)
+      if (!result || result.exitCode !== 0) {
+        throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED', {
+          phase,
+          classification: classifyD1Failure({
+            stdout: result?.stdout ?? '',
+            stderr: result?.stderr ?? '',
+            failureCode: result?.failureCode ?? null,
+            timedOut: result?.timedOut === true,
+            outputTruncated: result?.outputTruncated === true,
+          }),
+        })
+      }
+      try {
+        return parseWranglerResults(result.stdout, expectedSets)
+      } catch (error) {
+        if (error instanceof SmokeError && error.code === 'SMOKE_DATABASE_CONTRACT') {
+          throw new SmokeError(error.code, { phase, classification: 'D1_OUTPUT_CONTRACT' })
+        }
+        throw error
+      }
     } catch (error) {
       if (error instanceof SmokeError) throw error
-      throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED')
+      const evidence = error instanceof Error ? error.message : ''
+      throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED', {
+        phase,
+        classification: classifyD1Failure({
+          stdout: '',
+          stderr: evidence,
+          failureCode: null,
+          timedOut: false,
+          outputTruncated: false,
+        }),
+      })
     }
   }
 
   return {
     async snapshotPreMigrationInvariants() {
+      const phase = 'pre-migration-snapshot'
       const [signupRows, preMigrationRows] = await executeSql(`-- r0-1-smoke:pre-migration-snapshot
 SELECT COUNT(*) AS challenge_signup_count FROM challenge_signups;
 SELECT campaign_version, status, COUNT(*) AS row_count
@@ -343,14 +449,27 @@ FROM email_queue
 WHERE campaign_version = 'legacy-v0'
 GROUP BY campaign_version, status
 ORDER BY campaign_version, status;
-`, 2)
-      if (signupRows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
-      return {
-        challengeSignupCount: signupRows[0].challenge_signup_count,
-        preMigrationEmailAggregate: preMigrationRows,
+`, 2, phase)
+      try {
+        if (signupRows.length !== 1
+          || !signupRows[0] || Object.keys(signupRows[0]).join(',') !== 'challenge_signup_count') {
+          throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+        }
+        const value = {
+          challengeSignupCount: signupRows[0].challenge_signup_count,
+          preMigrationEmailAggregate: preMigrationRows,
+        }
+        assertPreMigrationSnapshot(value)
+        return value
+      } catch (error) {
+        if (error instanceof SmokeError && error.code === 'SMOKE_DATABASE_CONTRACT') {
+          throw outputContractError(phase)
+        }
+        throw error
       }
     },
     async findSyntheticSignup() {
+      const phase = 'find-synthetic-signup'
       const [rows] = await executeSql(`-- r0-1-smoke:find-signup
 SELECT s.id
 FROM challenge_signups AS s
@@ -358,27 +477,45 @@ JOIN challenges AS c ON c.id = s.challenge_id
 WHERE c.slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)}
   AND lower(s.email) LIKE '%.invalid'
 ORDER BY s.id;
-`, 1)
-      return rows
+`, 1, phase)
+      if (rows.some((row) => !row || Object.keys(row).join(',') !== 'id')) {
+        throw outputContractError(phase)
+      }
+      try {
+        return assertSignupRows(rows)
+      } catch (error) {
+        if (error instanceof SmokeError && error.code === 'SMOKE_DATABASE_CONTRACT') {
+          throw outputContractError(phase)
+        }
+        throw error
+      }
     },
     async countQueueRows({ signupId }) {
+      const phase = 'count-queue-rows'
       const [rows] = await executeSql(`-- r0-1-smoke:count-queue
 SELECT COUNT(*) AS queue_count
 FROM email_queue
 WHERE signup_id = ${sqlLiteral(signupId)};
-`, 1)
-      if (rows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+`, 1, phase)
+      if (rows.length !== 1 || !rows[0] || Object.keys(rows[0]).join(',') !== 'queue_count'
+        || !Number.isSafeInteger(rows[0].queue_count) || rows[0].queue_count < 0) {
+        throw outputContractError(phase)
+      }
       return rows[0].queue_count
     },
     async deleteSyntheticSignup({ signupId }) {
+      const phase = 'delete-synthetic-signup'
       const [rows] = await executeSql(`-- r0-1-smoke:delete-signup
 DELETE FROM challenge_signups
 WHERE id = ${sqlLiteral(signupId)}
   AND lower(email) LIKE '%.invalid'
   AND challenge_id = (SELECT id FROM challenges WHERE slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)})
 RETURNING 1 AS deleted_count;
-`, 1)
-      if (rows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
+`, 1, phase)
+      if (rows.length !== 1 || !rows[0] || Object.keys(rows[0]).join(',') !== 'deleted_count'
+        || !Number.isSafeInteger(rows[0].deleted_count) || rows[0].deleted_count < 0) {
+        throw outputContractError(phase)
+      }
       return rows[0].deleted_count
     },
   }
@@ -652,7 +789,12 @@ export async function main(argv, dependencies = {}) {
     return 0
   } catch (error) {
     const code = error instanceof SmokeError ? error.code : 'SMOKE_FAILED'
-    writeLine(JSON.stringify({ pass: false, mode, code }))
+    const failure = { pass: false, mode, code }
+    if (error instanceof SmokeError && error.phase && error.classification) {
+      failure.phase = error.phase
+      failure.classification = error.classification
+    }
+    writeLine(JSON.stringify(failure))
     return 1
   }
 }

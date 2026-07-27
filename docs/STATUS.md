@@ -18,6 +18,23 @@ Last updated: 2026-07-28
   controlled signup stopped before POST because Wrangler `--file` returned only an
   execution summary. `synthetic_count=0`; the local command-mode runner repair is
   verified, and production closure stays separate.
+- PR #6 merged the first command-mode correction; authoritative `main` for the
+  bounded follow-up is `18deecc398d9fcbded20aa8612a58973b346e468`. Its controlled
+  retry also stopped before POST: the runner passed `--command` separately from SQL
+  beginning with `-- r0-1-smoke:find-signup`, so Wrangler parsed the SQL marker as
+  unknown command-line arguments.
+- A six-step read-only D1 ladder proved connectivity, required tables/columns and
+  `synthetic_count=0`; only the exact commented `findSyntheticSignup()` command
+  failed. The focused repair binds SQL as one `--command=<sql>` argument and adds
+  bounded stdout/stderr capture plus redacted phase/classification output. A
+  read-only verification of the formerly failing query passed. This repair remains
+  local and unmerged; controlled POST, migration `0003` and Pages remain untouched.
+- Review corrections now retain phase/classification for every post-parse D1 row
+  contract failure and distinguish exact 64 KiB output from 64 KiB + 1 without
+  retaining more than 64 KiB per stream. Fresh verification passes focused smoke
+  `91/91`, full tests `458/458`, both TypeScript gates, lint, `82/82` build, release
+  suites `6/6 + 4/4 + 3/3 + 144/144`, Read safety `3/3`, secret integrity and diff
+  check. No production mutation or network write was used.
 - R0.H1 and R0.2 have not started; preview/production isolation remains unresolved.
 
 ### Historical R0.1A implementation verification — superseded merge-state reporting

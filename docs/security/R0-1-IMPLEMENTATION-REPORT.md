@@ -26,6 +26,71 @@ Status: R0.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE
 All following R0.1A sections are historical implementation records. Their
 contemporaneous production-state wording is superseded by this current reconciliation.
 
+## R0.1B D1 diagnostic and command-construction repair
+
+Status: local focused repair ready for review; production cutover remains incomplete.
+
+### Evidence-backed root cause
+
+- The controlled retry stopped before HTTP POST at the first
+  `findSyntheticSignup()` D1 read. The old native subprocess adapter discarded
+  stdout whenever `execFile` returned an error and ignored stderr, so the CLI could
+  report only `SMOKE_DATABASE_COMMAND_FAILED` without a phase or useful class.
+- A private read-only probe ladder passed `SELECT 1`, required-table discovery,
+  both required schema checks and the global `.invalid` count of zero. The exact
+  `findSyntheticSignup()` SQL then failed with Wrangler reporting its leading
+  `-- r0-1-smoke:find-signup` marker as unknown arguments and stating that neither
+  `--command` nor `--file` was supplied.
+- Root cause is argv construction, not D1 auth, database existence or schema. The
+  runner supplied `--command` and a SQL value beginning with `--` as two argv
+  entries; Wrangler's parser reinterpreted that value as command-line flags.
+
+### Focused repair contract
+
+- The native adapter retains stdout and stderr on both success and failure, capped
+  independently at 64 KiB. Raw streams never enter CLI output.
+- D1 failures expose only a fixed command phase and one evidence-backed class:
+  `D1_AUTH_OR_PERMISSION`, `D1_CONFIG_OR_RESOURCE`, `D1_DATABASE_NOT_FOUND`,
+  `D1_SCHEMA_MISMATCH`, `D1_SQL_REJECTED`, `D1_NETWORK_OR_TIMEOUT`,
+  `D1_OUTPUT_CONTRACT` or `D1_UNKNOWN`.
+- Diagnostic evidence is redacted for bearer/API tokens, email, UUID/resource IDs,
+  private paths and SQL before classification. Insufficient evidence remains
+  `D1_UNKNOWN`.
+- SQL is passed as one `--command=<sql>` argv entry. A single read-only verification
+  of the formerly failing exact query returned one successful result set with zero
+  rows.
+
+The private probe directory and raw streams are not committed. Both preserved
+production evidence directories remain unchanged. This repair performed no POST,
+production write, cleanup, migration, Worker/Pages deploy, email action or resource
+mutation.
+
+### Review closure and fresh verification
+
+- Every parsed D1 method now converts row-cardinality, key-shape and typed-value
+  failures into `SMOKE_DATABASE_CONTRACT` with the exact command phase and
+  `D1_OUTPUT_CONTRACT`; the runner no longer loses location after Wrangler returns
+  syntactically valid JSON.
+- The diagnostic cap treats exactly 64 KiB as complete and 64 KiB + 1 as truncated.
+  The child-process buffer remains separately bounded while returned stdout and
+  stderr never exceed 64 KiB each.
+
+| Gate | Exit | Evidence |
+|---|---:|---|
+| Focused controlled-smoke suite | `0` | `91/91` passed |
+| Full package tests | `0` | `458/458` passed |
+| Root TypeScript, non-incremental | `0` | `npx tsc --noEmit --incremental false` |
+| Worker TypeScript | `0` | `npm run typecheck:brain2-workers` |
+| Lint | `0` | zero warnings |
+| Production build | `0` | `82/82` static routes generated |
+| Release gate | `0` | build `6/6`, SEO `4/4`, bundle `3/3`, Brain2 `144/144`; secret scan and lint passed |
+| Read safety | `0` | `3/3` passed |
+| Current-tree secret integrity | `0` | zero findings |
+| Diff check | `0` | `git diff --check HEAD` passed |
+
+No controlled production signup, production D1 write, migration, deploy, email
+action, push or pull request was performed during the repair or its verification.
+
 ## R0.1A controlled signup response and evidence cleanup correction
 
 Status: PASS — response validation, mixed-artifact cleanup and registration copy are
