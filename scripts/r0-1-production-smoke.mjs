@@ -1,8 +1,7 @@
 import { execFile } from 'node:child_process'
 import { constants as fsConstants } from 'node:fs'
-import { chmod, lstat, mkdtemp, open, rm, writeFile } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
-import { dirname, isAbsolute, join, resolve } from 'node:path'
+import { lstat, open } from 'node:fs/promises'
+import { dirname, isAbsolute, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const READING_PATH = '/library/read/steve-jobs-2005-stanford-commencement-address'
@@ -29,6 +28,7 @@ const MAX_D1_OUTPUT_BYTES = 64 * 1024
 const D1_TIMEOUT_MS = 30_000
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const CONTROL_CHARACTERS = /[\u0000-\u001F\u007F-\u009F]/u
+const CANONICAL_UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u
 
 class SmokeError extends Error {
   constructor(code) {
@@ -36,6 +36,10 @@ class SmokeError extends Error {
     this.name = 'SmokeError'
     this.code = code
   }
+}
+
+function validCanonicalSignupId(value) {
+  return typeof value === 'string' && CANONICAL_UUID_V4.test(value)
 }
 
 async function readBoundedBody(response, maxResponseBytes) {
@@ -69,7 +73,7 @@ async function readBoundedBody(response, maxResponseBytes) {
   }
 }
 
-async function parseControlledSignupResponse(response, maxResponseBytes) {
+async function inspectControlledSignupResponse(response, maxResponseBytes) {
   let body
   let bodyInvalid = false
   try {
@@ -77,40 +81,31 @@ async function parseControlledSignupResponse(response, maxResponseBytes) {
   } catch {
     bodyInvalid = true
   }
+  let parsed
+  if (!bodyInvalid) {
+    try {
+      parsed = JSON.parse(body)
+    } catch {}
+  }
+  const signupId = parsed && typeof parsed === 'object' && !Array.isArray(parsed)
+    && validCanonicalSignupId(parsed.signup_id)
+    ? parsed.signup_id
+    : null
   if (response.status !== 200) {
-    throw new SmokeError('SMOKE_SIGNUP_HTTP_CONTRACT')
+    return { signupId, error: new SmokeError('SMOKE_SIGNUP_HTTP_CONTRACT') }
   }
-  if (bodyInvalid) {
-    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
-  }
-
   const mediaType = response.headers.get('content-type')
     ?.split(';', 1)[0]
     .trim()
     .toLowerCase()
-  if (mediaType !== 'application/json') {
-    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
-  }
-
-  let parsed
-  try {
-    parsed = JSON.parse(body)
-  } catch {
-    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
-  }
-  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)
+  if (bodyInvalid || mediaType !== 'application/json' || !parsed || typeof parsed !== 'object' || Array.isArray(parsed)
     || Object.getPrototypeOf(parsed) !== Object.prototype
     || parsed.success !== true
     || parsed.message !== CONTROLLED_SIGNUP_SUCCESS_MESSAGE
-    || typeof parsed.signup_id !== 'string'
-    || parsed.signup_id.length === 0
-    || parsed.signup_id.length > 128
-    || parsed.signup_id !== parsed.signup_id.trim()
-    || CONTROL_CHARACTERS.test(parsed.signup_id)) {
-    throw new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+    || signupId === null) {
+    return { signupId, error: new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT') }
   }
-
-  return { signupId: parsed.signup_id }
+  return { signupId, error: null }
 }
 
 async function verifyDisabledEndpoint(response, maxResponseBytes) {
@@ -210,8 +205,7 @@ function assertPreMigrationSnapshot(value) {
 
 function assertSignupRows(rows) {
   if (!Array.isArray(rows) || rows.some((row) => (
-    !row || typeof row.id !== 'string' || row.id.length === 0 || row.id.length > 128
-      || CONTROL_CHARACTERS.test(row.id)
+    !row || !validCanonicalSignupId(row.id)
   ))) {
     throw new SmokeError('SMOKE_DATABASE_CONTRACT')
   }
@@ -311,25 +305,19 @@ function parseWranglerResults(stdout, expectedSets) {
 
 function createWranglerD1Adapter({
   subprocessAdapter = nativeSubprocessAdapter,
-  tempRoot = tmpdir(),
   projectRoot = PROJECT_ROOT,
 } = {}) {
   const executable = resolve(projectRoot, 'node_modules/.bin/wrangler')
   const configPath = resolve(projectRoot, 'wrangler.signup.toml')
 
   const executeSql = async (sql, expectedSets) => {
-    let artifactRoot
     try {
-      artifactRoot = await mkdtemp(join(tempRoot, 'r0-1-smoke-sql-'))
-      await chmod(artifactRoot, 0o700)
-      const sqlPath = join(artifactRoot, 'query.sql')
-      await writeFile(sqlPath, sql, { encoding: 'utf8', flag: 'wx', mode: 0o600 })
       const result = await subprocessAdapter({
         executable,
         args: [
           'd1', 'execute', 'thongphan-db',
           '--remote',
-          '--file', sqlPath,
+          '--command', sql,
           '--config', configPath,
           '--json',
           '--yes',
@@ -343,14 +331,6 @@ function createWranglerD1Adapter({
     } catch (error) {
       if (error instanceof SmokeError) throw error
       throw new SmokeError('SMOKE_DATABASE_COMMAND_FAILED')
-    } finally {
-      if (artifactRoot) {
-        try {
-          await rm(artifactRoot, { recursive: true, force: true })
-        } catch {
-          throw new SmokeError('SMOKE_DATABASE_ARTIFACT_CLEANUP_FAILED')
-        }
-      }
     }
   }
 
@@ -370,14 +350,13 @@ ORDER BY campaign_version, status;
         preMigrationEmailAggregate: preMigrationRows,
       }
     },
-    async findSyntheticSignup(identity) {
+    async findSyntheticSignup() {
       const [rows] = await executeSql(`-- r0-1-smoke:find-signup
 SELECT s.id
 FROM challenge_signups AS s
 JOIN challenges AS c ON c.id = s.challenge_id
 WHERE c.slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)}
-  AND s.name = ${sqlLiteral(identity.name)}
-  AND lower(s.email) = lower(${sqlLiteral(identity.email)})
+  AND lower(s.email) LIKE '%.invalid'
 ORDER BY s.id;
 `, 1)
       return rows
@@ -391,12 +370,11 @@ WHERE signup_id = ${sqlLiteral(signupId)};
       if (rows.length !== 1) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
       return rows[0].queue_count
     },
-    async deleteSyntheticSignup({ signupId, identity }) {
+    async deleteSyntheticSignup({ signupId }) {
       const [rows] = await executeSql(`-- r0-1-smoke:delete-signup
 DELETE FROM challenge_signups
 WHERE id = ${sqlLiteral(signupId)}
-  AND name = ${sqlLiteral(identity.name)}
-  AND lower(email) = lower(${sqlLiteral(identity.email)})
+  AND lower(email) LIKE '%.invalid'
   AND challenge_id = (SELECT id FROM challenges WHERE slug = ${sqlLiteral(BRAIN2_CHALLENGE_SLUG)})
 RETURNING 1 AS deleted_count;
 `, 1)
@@ -422,7 +400,7 @@ async function runControlledSignup({
   }
   const findSignup = async () => {
     databaseCalls += 1
-    return assertSignupRows(await databaseAdapter.findSyntheticSignup(syntheticIdentity))
+    return assertSignupRows(await databaseAdapter.findSyntheticSignup())
   }
   const countQueueRows = async (signupId) => {
     databaseCalls += 1
@@ -434,7 +412,6 @@ async function runControlledSignup({
     databaseCalls += 1
     const count = await databaseAdapter.deleteSyntheticSignup({
       signupId,
-      identity: syntheticIdentity,
     })
     if (!Number.isSafeInteger(count) || count < 0) throw new SmokeError('SMOKE_DATABASE_CONTRACT')
     return count
@@ -453,6 +430,7 @@ async function runControlledSignup({
   let preMigrationAfter = null
   let pendingError = null
   let signupResponse = null
+  let cleanupSignupId = null
   try {
     postRequests = 1
     const response = await fetchWithTimeout(
@@ -473,13 +451,9 @@ async function runControlledSignup({
       timeoutMs,
     )
     status = response.status
-    try {
-      signupResponse = await parseControlledSignupResponse(response, maxResponseBytes)
-    } catch (error) {
-      pendingError = error instanceof SmokeError
-        ? error
-        : new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
-    }
+    const signupInspection = await inspectControlledSignupResponse(response, maxResponseBytes)
+    signupResponse = signupInspection.signupId ? { signupId: signupInspection.signupId } : null
+    pendingError = signupInspection.error
     createdRows = await findSignup()
     if (createdRows.length !== 1) {
       pendingError ??= new SmokeError('SMOKE_SIGNUP_ROW_CONTRACT')
@@ -488,6 +462,8 @@ async function runControlledSignup({
       if (queueRows !== 0) pendingError ??= new SmokeError('SMOKE_QUEUE_CONTRACT')
       if (signupResponse && signupResponse.signupId !== createdRows[0].id) {
         pendingError ??= new SmokeError('SMOKE_SIGNUP_RESPONSE_CONTRACT')
+      } else if (signupResponse) {
+        cleanupSignupId = createdRows[0].id
       }
     }
   } catch (error) {
@@ -500,9 +476,9 @@ async function runControlledSignup({
         pendingError ??= error instanceof SmokeError ? error : new SmokeError('SMOKE_DATABASE_CONTRACT')
       }
     }
-    for (const row of createdRows) {
+    if (cleanupSignupId) {
       try {
-        const deleted = await deleteSignup(row.id)
+        const deleted = await deleteSignup(cleanupSignupId)
         removedRows += deleted
         if (deleted !== 1) {
           pendingError ??= new SmokeError('SMOKE_TARGETED_CLEANUP_CONTRACT')

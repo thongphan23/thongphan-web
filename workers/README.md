@@ -21,14 +21,13 @@ giá trị vận hành.
 
 ## Current production state
 
-- migration `0003` has not been applied to production.
-- The embed/chat tombstones are not production-deployed.
-- The truthful signup Worker is not production-deployed.
+- R0.1B recovery is in progress; cutover is incomplete.
+- The embed/chat/signup versions are deployed, and the official read-only recovery passed.
+- The controlled POST has not run; the command-mode runner fix is verified.
+- Migration `0003` and Pages remain untouched.
 - Production có 210 hàng `legacy-v0/pending`; các cột `audience_state` và
   `sendable` chưa tồn tại và chỉ xuất hiện sau migration `0003`.
 - The email Worker remains undeployed, and the cron remains empty.
-- Chưa có production migration, production tombstone deployment hoặc production
-  signup cutover. R0.1B not started.
 
 ## Ranh giới an toàn
 

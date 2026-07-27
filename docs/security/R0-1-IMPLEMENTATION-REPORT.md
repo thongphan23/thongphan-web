@@ -1,8 +1,8 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A MERGED INTO MAIN — R0.1B NOT STARTED
+Status: R0.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE
 
-## R0.1A authoritative merge reconciliation
+## Current R0.1B recovery reconciliation
 
 - GitHub is authoritative for merge state. PR #2:
   `https://github.com/thongphan23/thongphan-web/pull/2` is merged.
@@ -16,10 +16,15 @@ Status: R0.1A MERGED INTO MAIN — R0.1B NOT STARTED
 - The remote implementation branch was deleted after the successful merge.
 - Merged source contains all controlled-response, evidence-lifecycle, operational-
   consistency and exact-scope migration corrections reviewed in PR #2.
-- No production cutover was performed. R0.1B has not started and still requires a
-  separate owner-gated prompt.
+- R0.1B recovery is in progress and cutover is incomplete. The embed/chat/signup
+  versions are deployed, and the official read-only recovery passed.
+- The controlled POST has not run; the command-mode runner fix is verified.
+  Migration `0003` and Pages remain untouched.
 - Prior report language describing PR #2 as Draft, Open, pending merge or review-
   ready is superseded by this verified GitHub state.
+
+All following R0.1A sections are historical implementation records. Their
+contemporaneous production-state wording is superseded by this current reconciliation.
 
 ## R0.1A controlled signup response and evidence cleanup correction
 

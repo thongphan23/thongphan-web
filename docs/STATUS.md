@@ -1,10 +1,10 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-27
+Last updated: 2026-07-28
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-### R0.1A MERGED INTO MAIN — R0.1B NOT STARTED
+### R0.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE
 
 - GitHub PR #2 is merged. The reviewed implementation head is
   `05946ce56dd8598721f196ab0e3220060f81368a`; the authoritative merge commit and
@@ -12,10 +12,13 @@ Last updated: 2026-07-27
 - The merge completed at `2026-07-27T08:28:39Z`. `main` currently contains R0.1A
   source, including the controlled-response, evidence-lifecycle and scoped-migration
   corrections.
-- Production is not cutover. R0.1A performed no Worker or Pages deployment, no
-  production D1 migration and no production signup request or cutover.
-- R0.1B has not started and still requires a separate owner-gated prompt. R0.H1 and
-  R0.2 have not started; preview/production isolation remains unresolved.
+- R0.1B cutover is incomplete: embed/chat/signup versions are deployed, while the
+  production D1 migration and Pages remain untouched.
+- R0.1B recovery is in progress. The official read-only recovery passed; the first
+  controlled signup stopped before POST because Wrangler `--file` returned only an
+  execution summary. `synthetic_count=0`; the local command-mode runner repair is
+  verified, and production closure stays separate.
+- R0.H1 and R0.2 have not started; preview/production isolation remains unresolved.
 
 ### Historical R0.1A implementation verification — superseded merge-state reporting
 

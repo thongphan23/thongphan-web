@@ -64,17 +64,25 @@ function runRg(pattern, files, cwd = repositoryRoot) {
 test('Workers README separates implemented source from current production', () => {
   assert.match(workersReadme, /^## Implemented source contract$/m)
   assert.match(workersReadme, /^## Current production state$/m)
-  assert.match(workersReadme, /migration `0003` has not been applied to production/i)
-  assert.match(workersReadme, /tombstones?.{0,120}not production-deployed/is)
-  assert.match(workersReadme, /truthful signup.{0,120}not production-deployed/is)
-  assert.match(workersReadme, /email Worker remains undeployed/i)
-  assert.match(workersReadme, /cron remains empty/i)
 
   const productionStart = workersReadme.indexOf('## Current production state')
   const productionEnd = workersReadme.indexOf('\n## ', productionStart + 4)
   const productionSection = workersReadme.slice(
     productionStart,
     productionEnd < 0 ? undefined : productionEnd,
+  )
+  assert.match(productionSection, /R0\.1B recovery is in progress/i)
+  assert.match(productionSection, /cutover is incomplete/i)
+  assert.match(productionSection, /embed\/chat\/signup\s+versions\s+are\s+deployed/i)
+  assert.match(productionSection, /official read-only recovery passed/i)
+  assert.match(productionSection, /controlled POST has not run/i)
+  assert.match(productionSection, /command-mode runner fix is verified/i)
+  assert.match(productionSection, /migration `0003` and Pages remain untouched/i)
+  assert.match(productionSection, /email Worker remains undeployed/i)
+  assert.match(productionSection, /cron remains empty/i)
+  assert.doesNotMatch(
+    productionSection,
+    /R0\.1B not started|tombstones?.{0,120}not production-deployed|truthful signup.{0,120}not production-deployed/is,
   )
   assert.doesNotMatch(
     productionSection,
@@ -114,7 +122,7 @@ test('Workers README delegates deployment authority and preserves the R0.1B orde
   }
 })
 
-test('Current System Audit records the authoritative merged source and pending production gates', () => {
+test('Current System Audit records recovery in progress and incomplete cutover', () => {
   const currentStatus = sectionBetween(currentAudit, '**Status:**', '## 2. Executive summary')
 
   assert.match(
@@ -124,47 +132,63 @@ test('Current System Audit records the authoritative merged source and pending p
   assert.match(currentStatus, new RegExp(implementationHead))
   assert.match(currentStatus, new RegExp(mergeCommit))
   assert.match(currentStatus, /PR #2.{0,80}merged/is)
-  assert.match(currentStatus, /R0\.1B not started/i)
+  assert.match(currentStatus, /R0\.1B recovery in progress/i)
+  assert.match(currentStatus, /cutover incomplete/i)
   assert.doesNotMatch(currentStatus, /Draft PR #2 remains pending merge/i)
-  assert.match(currentStatus, /no\s+production\s+migration/i)
-  assert.match(currentStatus, /no\s+production\s+tombstone deployment/i)
-  assert.match(currentStatus, /no\s+production\s+signup cutover/i)
-  assert.match(currentStatus, /migration `0003`.{0,100}(?:not|chưa).{0,40}(?:applied|apply)/is)
+  assert.match(currentStatus, /embed\/chat\/signup\s+versions\s+are\s+deployed/i)
+  assert.match(currentStatus, /official read-only recovery passed/i)
+  assert.match(currentStatus, /controlled POST has not run/i)
+  assert.match(currentStatus, /command-mode runner fix is verified/i)
+  assert.match(currentStatus, /migration `0003` and Pages remain untouched/i)
   assert.match(currentStatus, /email Worker.{0,80}(?:absent|undeployed|chưa deploy)/is)
   assert.match(currentStatus, /cron.{0,40}(?:empty|rỗng)/is)
   assert.match(currentStatus, /preview.{0,80}production.{0,100}(?:unresolved|chưa giải quyết)/is)
+  assert.doesNotMatch(
+    currentStatus,
+    /R0\.1B not started|no\s+production\s+tombstone deployment|no\s+production\s+signup cutover|(?:tombstone|signup).{0,160}(?:not production-deployed|have not been production-deployed)/is,
+  )
+  assert.match(
+    currentAudit,
+    /^### Historical R0\.1A pre-merge update — superseded current-state reporting$/m,
+  )
 })
 
-test('STATUS current R0 section records merged main without stale Draft state', () => {
+test('STATUS current R0 section records R0.1B recovery in progress and incomplete cutover', () => {
   const currentR0 = sectionBetween(
     statusDocument,
     '## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26',
     '### Historical R0.1A implementation verification — superseded merge-state reporting',
   )
 
-  assert.match(currentR0, /R0\.1A MERGED INTO MAIN — R0\.1B NOT STARTED/)
+  assert.match(currentR0, /R0\.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE/)
   assert.match(currentR0, new RegExp(implementationHead))
   assert.match(currentR0, new RegExp(mergeCommit))
   assert.match(currentR0, /PR #2.{0,80}merged/is)
   assert.match(currentR0, /2026-07-27T08:28:39Z/)
   assert.match(currentR0, /main.{0,100}contains R0\.1A\s+source/is)
-  assert.match(currentR0, /production.{0,100}(?:not cutover|chưa cutover)/is)
+  assert.match(currentR0, /R0\.1B cutover is incomplete/i)
+  assert.match(currentR0, /embed\/chat\/signup versions are deployed/i)
+  assert.match(currentR0, /official read-only recovery passed/i)
+  assert.match(currentR0, /controlled signup stopped before\s+POST/is)
+  assert.match(currentR0, /synthetic_count=0/)
+  assert.match(currentR0, /migration (?:and|\/) Pages remain untouched/i)
   assert.match(currentR0, /R0\.H1.{0,80}(?:not started|chưa bắt đầu)/is)
   assert.match(currentR0, /R0\.2.{0,80}(?:not started|chưa bắt đầu)/is)
+  assert.doesNotMatch(currentR0, /R0\.1B NOT STARTED|R0\.1B has not started/i)
   assert.doesNotMatch(currentR0, /Draft PR #2 remains pending merge/i)
   assert.doesNotMatch(currentR0, /R0\.1A (?:READY|waiting) FOR IMPLEMENTATION REVIEW/i)
 })
 
-test('Implementation Report opens with authoritative merge reconciliation', () => {
+test('Implementation Report opens with current recovery reconciliation', () => {
   const reconciliation = sectionBetween(
     implementationReport,
-    '## R0.1A authoritative merge reconciliation',
+    '## Current R0.1B recovery reconciliation',
     '## R0.1A controlled signup response and evidence cleanup correction',
   )
 
   assert.match(
     implementationReport,
-    /^Status: R0\.1A MERGED INTO MAIN — R0\.1B NOT STARTED$/m,
+    /^Status: R0\.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE$/m,
   )
   assert.match(reconciliation, /https:\/\/github\.com\/thongphan23\/thongphan-web\/pull\/2/)
   assert.match(reconciliation, new RegExp(implementationHead))
@@ -172,9 +196,18 @@ test('Implementation Report opens with authoritative merge reconciliation', () =
   assert.match(reconciliation, /2026-07-27T08:28:39Z/)
   assert.match(reconciliation, /bde1778d698d9c1c0cc4e1823cc28485a3e4a8cf/)
   assert.match(reconciliation, /remote implementation branch.{0,80}deleted/is)
-  assert.match(reconciliation, /no production cutover/i)
+  assert.match(reconciliation, /embed\/chat\/signup\s+versions\s+are\s+deployed/i)
+  assert.match(reconciliation, /official read-only recovery passed/i)
+  assert.match(reconciliation, /controlled POST has not run/i)
+  assert.match(reconciliation, /command-mode runner fix is verified/i)
+  assert.match(reconciliation, /migration `0003` and Pages remain untouched/i)
+  assert.doesNotMatch(
+    reconciliation,
+    /R0\.1B has not started|no production cutover|tombstones?.{0,120}not production-deployed|signup.{0,120}not production-deployed/is,
+  )
   assert.match(reconciliation, /prior report.{0,100}superseded/is)
   assert.match(reconciliation, /GitHub.{0,80}authoritative/is)
+  assert.match(reconciliation, /All following R0\.1A sections are historical implementation records/i)
 })
 
 test('Owner Action Checklist closes only verified source and credential gates', () => {
