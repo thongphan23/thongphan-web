@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync, spawnSync } from 'node:child_process'
-import { readFileSync, rmSync } from 'node:fs'
+import { existsSync, readFileSync, rmSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
@@ -10,8 +10,6 @@ import {
   BRAIN2_CAMPAIGN_VERSION,
   BRAIN2_CHALLENGE_SLUG,
   BRAIN2_EMAIL_TEMPLATES,
-  buildBrain2CampaignSchedule,
-  buildBrain2QueueStatements,
   getBrain2EmailContent,
   handleBrain2SignupRequest,
   personalizeBrain2Email,
@@ -138,40 +136,7 @@ test('campaign builds exactly 21 truthful metadata-only link emails', () => {
   assert.doesNotMatch(serialized, /"reason"|"blocks"|"deliverable"|"checklist"/)
 })
 
-test('campaign schedule uses day-one within five minutes and 09:00 Asia/Ho_Chi_Minh thereafter', () => {
-  const signupAt = '2026-07-12T17:30:00.000Z' // 00:30 on 13 July in Vietnam.
-  const schedule = buildBrain2CampaignSchedule(signupAt)
-  assert.equal(schedule.length, 21)
-  const delta = Date.parse(schedule[0]) - Date.parse(signupAt)
-  assert.ok(delta >= 0 && delta <= 5 * 60 * 1000)
-  assert.equal(schedule[1], '2026-07-14T02:00:00.000Z')
-  for (const value of schedule.slice(1)) {
-    const date = new Date(value)
-    assert.equal(date.getUTCHours(), 2)
-    assert.equal(date.getUTCMinutes(), 0)
-    assert.equal(date.getUTCSeconds(), 0)
-  }
-
-  const yearBoundary = buildBrain2CampaignSchedule('2027-12-31T20:00:00.000Z')
-  assert.equal(yearBoundary[1], '2028-01-02T02:00:00.000Z')
-})
-
-test('queue statements are a complete v1 campaign and personalization escapes user input', () => {
-  const DB = new SignupDatabase()
-  let sequence = 0
-  const statements = buildBrain2QueueStatements({
-    DB: DB as never,
-    signupId: 'signup-fixture',
-    signupAt: '2026-07-12T00:00:00.000Z',
-    randomUUID: () => `00000000-0000-4000-8000-${String(sequence += 1).padStart(12, '0')}`,
-  }) as unknown as Statement[]
-  assert.equal(statements.length, 21)
-  for (const [index, statement] of statements.entries()) {
-    assert.match(statement.query, /campaign_version/i)
-    assert.ok(statement.values.includes(BRAIN2_CAMPAIGN_VERSION))
-    assert.ok(statement.values.includes(index + 1))
-  }
-
+test('inert campaign personalization escapes user input', () => {
   const personalized = personalizeBrain2Email(
     getBrain2EmailContent(1, 21).body,
     { name: '<img src=x onerror=alert(1)>', unsubscribeUrl: 'https://thongphan.com/safe?x=1&y=2' },
@@ -181,7 +146,7 @@ test('queue statements are a complete v1 campaign and personalization escapes us
   assert.match(personalized, /x=1&amp;y=2/)
 })
 
-test('signup uses one transaction for signup plus 21 v1 rows and returns one stable JSON shape', async () => {
+test('signup persists one registration, prepares no email queue row and returns the truthful contract', async () => {
   const DB = new SignupDatabase()
   const deleted: string[] = []
   let sequence = 0
@@ -199,11 +164,16 @@ test('signup uses one transaction for signup plus 21 v1 rows and returns one sta
     randomUUID: () => `00000000-0000-4000-8000-${String(sequence += 1).padStart(12, '0')}`,
   })
   assert.equal(response.status, 200)
-  assert.deepEqual(Object.keys(await response.clone().json()).sort(), ['message', 'signup_id', 'success'])
+  const responseJson = await response.clone().json() as Record<string, unknown>
+  assert.deepEqual(Object.keys(responseJson).sort(), ['message', 'signup_id', 'success'])
+  assert.equal(
+    responseJson.message,
+    'Đã ghi nhận đăng ký. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website.',
+  )
   assert.equal(DB.batches.length, 1)
-  assert.equal(DB.batches[0].length, 22)
+  assert.equal(DB.batches[0].length, 1)
   assert.match(DB.batches[0][0].query, /INSERT INTO challenge_signups/i)
-  assert.ok(DB.batches[0].slice(1).every((statement) => statement.values.includes(BRAIN2_CAMPAIGN_VERSION)))
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
   assert.ok(DB.prepared.some((statement) => statement.values.includes('test@example.com')))
   assert.deepEqual(deleted, ['challenge:brain2-21-ngay'])
 
@@ -220,6 +190,35 @@ test('signup uses one transaction for signup plus 21 v1 rows and returns one sta
   assert.deepEqual(Object.keys(duplicateJson).sort(), ['message', 'success'])
   assert.equal(duplicateJson.success, false)
   assert.equal(duplicateDB.batches.length, 0)
+})
+
+test('signup invalid time fails before registration with current registration wording', async () => {
+  const DB = new SignupDatabase()
+  const request = new Request(`${ORIGIN}/api/signup`, {
+    method: 'POST',
+    headers: signupHeaders,
+    body: JSON.stringify({
+      challenge_slug: BRAIN2_CHALLENGE_SLUG,
+      name: 'Anh Thông',
+      email: 'invalid-time@example.com',
+    }),
+  })
+
+  const response = await handleBrain2SignupRequest(request, signupEnv(DB) as never, {
+    now: () => new Date(Number.NaN),
+  })
+  const responseJson = await response.json() as Record<string, unknown>
+
+  assert.equal(response.status, 503)
+  assert.equal(responseJson.success, false)
+  assert.equal(
+    responseJson.message,
+    'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
+  )
+  assert.equal(DB.batches.length, 0)
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO challenge_signups/i.test(statement.query)), false)
+  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
+  assert.doesNotMatch(String(responseJson.message), /lịch email/i)
 })
 
 test('signup bounds streaming bodies, rejects control characters and resolves transaction races safely', async () => {
@@ -305,37 +304,6 @@ test('signup rate limits abuse and returns stable JSON when infrastructure fails
   assert.equal(limiterFailure.status, 503)
 })
 
-test('migration freezes 210 legacy rows and adds retry state without reclassification', () => {
-  const database = join(homedir(), `.brain2-email-migration-${process.pid}.sqlite`)
-  rmSync(database, { force: true })
-  try {
-    execFileSync('sqlite3', [database], { input: readFileSync(new URL('../workers/schema.sql', import.meta.url)) })
-    const fixtureSql = Array.from({ length: 10 }, (_, signupIndex) => {
-      const signupId = `signup-${signupIndex}`
-      const signup = `INSERT INTO challenge_signups (id, challenge_id, name, email) VALUES ('${signupId}', 'brain2-21', 'Fixture', 'fixture-${signupIndex}@example.com');`
-      const rows = Array.from({ length: 21 }, (_, dayIndex) => {
-        const day = dayIndex + 1
-        return `INSERT INTO email_queue (id, signup_id, day, subject, body, scheduled_at) VALUES ('queue-${signupIndex}-${day}', '${signupId}', ${day}, 'subject', 'body', '2026-01-01T00:00:00.000Z');`
-      }).join('\n')
-      return `${signup}\n${rows}`
-    }).join('\n')
-    execFileSync('sqlite3', [database], { input: fixtureSql })
-    execFileSync('sqlite3', [database], {
-      input: readFileSync(new URL('../workers/migrations/0002_brain2_access_and_email_campaign.sql', import.meta.url)),
-    })
-    const counts = execFileSync('sqlite3', [database, "SELECT campaign_version,status,COUNT(*) FROM email_queue GROUP BY campaign_version,status;"], { encoding: 'utf8' }).trim()
-    assert.equal(counts, 'legacy-v0|pending|210')
-    const columns = execFileSync('sqlite3', [database, 'PRAGMA table_info(email_queue);'], { encoding: 'utf8' })
-    assert.match(columns, /first_attempt_at/)
-    const update = spawnSync('sqlite3', [database, "UPDATE email_queue SET campaign_version='brain2-2026-v1' WHERE id='queue-0-1';"], { encoding: 'utf8' })
-    const deletion = spawnSync('sqlite3', [database, "DELETE FROM email_queue WHERE id='queue-0-1';"], { encoding: 'utf8' })
-    assert.notEqual(update.status, 0)
-    assert.notEqual(deletion.status, 0)
-  } finally {
-    rmSync(database, { force: true })
-  }
-})
-
 const sqlLiteral = (value: string | number | null) => {
   if (value === null) return 'NULL'
   if (typeof value === 'number') return String(value)
@@ -352,13 +320,175 @@ const bindSql = (query: string, values: Array<string | number | null>) => {
   return `${bound};`
 }
 
-test('real SQLite lease and ownership guards reject cleanup and stale sender races', () => {
+class SqliteStatement {
+  values: Array<string | number | null> = []
+
+  constructor(readonly query: string, private readonly database: string) {}
+
+  bind(...values: unknown[]) {
+    this.values = values.map((value) => {
+      if (value === null || typeof value === 'string' || typeof value === 'number') return value
+      throw new Error('Unsupported SQLite fixture binding')
+    })
+    return this
+  }
+
+  async first<T>() {
+    const output = execFileSync('sqlite3', ['-json', this.database], {
+      input: bindSql(this.query, this.values),
+      encoding: 'utf8',
+    }).trim()
+    if (!output) return null
+    return JSON.parse(output)[0] as T
+  }
+
+  async run() {
+    execFileSync('sqlite3', [this.database], { input: bindSql(this.query, this.values) })
+    return { success: true }
+  }
+}
+
+class SqliteDatabase {
+  constructor(private readonly database: string) {}
+
+  prepare(query: string) {
+    return new SqliteStatement(query, this.database)
+  }
+
+  async batch() {
+    throw new Error('Inert SQLite sender must not batch writes')
+  }
+}
+
+test('migration hard-quarantines 210 legacy rows and makes sender selection impossible', async () => {
+  const database = join(homedir(), `.brain2-email-migration-${process.pid}.sqlite`)
+  rmSync(database, { force: true })
+  try {
+    execFileSync('sqlite3', [database], { input: readFileSync(new URL('../workers/schema.sql', import.meta.url)) })
+    const fixtureSql = Array.from({ length: 10 }, (_, signupIndex) => {
+      const signupId = `signup-${signupIndex}`
+      const address = signupIndex === 1
+        ? 'READER-0@INVALID.TEST'
+        : signupIndex === 2
+          ? 'invalid-address'
+          : `reader-${signupIndex}@invalid.test`
+      const signup = `INSERT INTO challenge_signups (id, challenge_id, name, email) VALUES ('${signupId}', 'brain2-21', 'Fixture', '${address}');`
+      const rows = Array.from({ length: 21 }, (_, dayIndex) => {
+        const day = dayIndex + 1
+        return `INSERT INTO email_queue (id, signup_id, day, subject, body, scheduled_at) VALUES ('queue-${signupIndex}-${day}', '${signupId}', ${day}, 'subject', 'body', '2026-01-01T00:00:00.000Z');`
+      }).join('\n')
+      return `${signup}\n${rows}`
+    }).join('\n')
+    execFileSync('sqlite3', [database], { input: fixtureSql })
+    execFileSync('sqlite3', [database], {
+      input: readFileSync(new URL('../workers/migrations/0002_brain2_access_and_email_campaign.sql', import.meta.url)),
+    })
+    execFileSync('sqlite3', [database], {
+      input: readFileSync(new URL('../workers/migrations/0003_r0_1_email_integrity.sql', import.meta.url)),
+    })
+
+    const legacyAggregate = execFileSync('sqlite3', [database, `
+      SELECT campaign_version,status,audience_state,sendable,COUNT(*)
+      FROM email_queue
+      WHERE campaign_version='legacy-v0'
+      GROUP BY campaign_version,status,audience_state,sendable;
+    `], { encoding: 'utf8' }).trim()
+    assert.equal(legacyAggregate, 'legacy-v0|pending|quarantined_legacy|0|210')
+    assert.equal(execFileSync('sqlite3', [database, 'SELECT COUNT(*) FROM email_queue WHERE sendable <> 0;'], { encoding: 'utf8' }).trim(), '0')
+
+    execFileSync('sqlite3', [database], {
+      input: `
+        INSERT INTO email_queue
+          (id, signup_id, day, subject, body, scheduled_at, status, campaign_version)
+        VALUES
+          ('inactive-pending', 'signup-0', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'pending', 'brain2-2026-v1'),
+          ('inactive-failed', 'signup-1', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'failed', 'brain2-2026-v1'),
+          ('inactive-bounced', 'signup-2', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'bounced', 'brain2-2026-v1');
+      `,
+    })
+    const inactiveStates = execFileSync('sqlite3', [database, `
+      SELECT status,audience_state,sendable
+      FROM email_queue
+      WHERE id LIKE 'inactive-%'
+      ORDER BY status;
+    `], { encoding: 'utf8' }).trim()
+    assert.equal(inactiveStates, [
+      'bounced|delivery_inactive|0',
+      'failed|delivery_inactive|0',
+      'pending|delivery_inactive|0',
+    ].join('\n'))
+    assert.equal(execFileSync('sqlite3', [database, 'SELECT COUNT(*) FROM email_queue WHERE sendable <> 0;'], { encoding: 'utf8' }).trim(), '0')
+    assert.equal(execFileSync('sqlite3', [database, `
+      SELECT COUNT(*)
+      FROM email_queue q
+      JOIN challenge_signups s ON s.id=q.signup_id
+      WHERE instr(s.email, '@')=0 AND q.sendable <> 0;
+    `], { encoding: 'utf8' }).trim(), '0')
+
+    const duplicateGroups = execFileSync('sqlite3', [database, `
+      SELECT COUNT(*) FROM (
+        SELECT lower(email)
+        FROM challenge_signups
+        GROUP BY lower(email)
+        HAVING COUNT(*) > 1
+      );
+    `], { encoding: 'utf8' }).trim()
+    assert.equal(duplicateGroups, '1')
+
+    const sendableUpdate = spawnSync('sqlite3', [database, "UPDATE email_queue SET sendable=1 WHERE id='inactive-pending';"], { encoding: 'utf8' })
+    const audienceUpdate = spawnSync('sqlite3', [database, "UPDATE email_queue SET audience_state='sendable' WHERE id='inactive-pending';"], { encoding: 'utf8' })
+    const sendableInsert = spawnSync('sqlite3', [database, `
+      INSERT INTO email_queue
+        (id, signup_id, day, subject, body, scheduled_at, campaign_version, audience_state, sendable)
+      VALUES
+        ('forbidden-sendable', 'signup-3', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'brain2-2026-v1', 'delivery_inactive', 1);
+    `], { encoding: 'utf8' })
+    const audienceInsert = spawnSync('sqlite3', [database, `
+      INSERT INTO email_queue
+        (id, signup_id, day, subject, body, scheduled_at, campaign_version, audience_state, sendable)
+      VALUES
+        ('forbidden-audience', 'signup-4', 22, 'subject', 'body', '2026-01-01T00:00:00.000Z', 'brain2-2026-v1', 'sendable', 0);
+    `], { encoding: 'utf8' })
+    const legacyUpdate = spawnSync('sqlite3', [database, "UPDATE email_queue SET campaign_version='brain2-2026-v1' WHERE id='queue-0-1';"], { encoding: 'utf8' })
+    const legacyDelete = spawnSync('sqlite3', [database, "DELETE FROM email_queue WHERE id='queue-0-1';"], { encoding: 'utf8' })
+    assert.notEqual(sendableUpdate.status, 0)
+    assert.notEqual(audienceUpdate.status, 0)
+    assert.notEqual(sendableInsert.status, 0)
+    assert.notEqual(audienceInsert.status, 0)
+    assert.notEqual(legacyUpdate.status, 0)
+    assert.notEqual(legacyDelete.status, 0)
+
+    let providerFetchCount = 0
+    const report = await processPendingEmails({
+      DB: new SqliteDatabase(database),
+      BREVO_API_KEY: 'fixture-provider-key-with-at-least-thirty-two-bytes',
+      BRAIN2_EMAIL_ADMIN_SECRET: 'fixture-admin-secret-with-at-least-thirty-two-bytes',
+      BRAIN2_EMAIL_UNSUBSCRIBE_SECRET: 'fixture-unsubscribe-secret-with-at-least-thirty-two-bytes',
+    } as never, {
+      limit: 1,
+      now: () => new Date('2026-07-12T00:00:00.000Z'),
+      fetcher: (async () => {
+        providerFetchCount += 1
+        return new Response(null, { status: 503 })
+      }) as typeof fetch,
+    })
+    assert.deepEqual(report, { selected: 0, sent: 0, failed: 0, retry: 0 })
+    assert.equal(providerFetchCount, 0)
+  } finally {
+    rmSync(database, { force: true })
+  }
+})
+
+test('real SQLite audience gate blocks expire and stale-owner mutation paths', () => {
   const database = join(homedir(), `.brain2-email-race-${process.pid}.sqlite`)
   rmSync(database, { force: true })
   try {
     execFileSync('sqlite3', [database], { input: readFileSync(new URL('../workers/schema.sql', import.meta.url)) })
     execFileSync('sqlite3', [database], {
       input: readFileSync(new URL('../workers/migrations/0002_brain2_access_and_email_campaign.sql', import.meta.url)),
+    })
+    execFileSync('sqlite3', [database], {
+      input: readFileSync(new URL('../workers/migrations/0003_r0_1_email_integrity.sql', import.meta.url)),
     })
     execFileSync('sqlite3', [database], {
       input: `
@@ -387,18 +517,18 @@ test('real SQLite lease and ownership guards reject cleanup and stale sender rac
     execFileSync('sqlite3', [database], {
       input: bindSql(EMAIL_EXPIRE_SQL, ['2026-07-12T00:26:00.000Z', 3, '2026-07-12T00:05:00.000Z']),
     })
-    assert.equal(execFileSync('sqlite3', [database, "SELECT status,error_message FROM email_queue WHERE id='race-queue';"], { encoding: 'utf8' }).trim(), 'failed|delivery_unknown')
+    assert.equal(execFileSync('sqlite3', [database, "SELECT status,error_message FROM email_queue WHERE id='race-queue';"], { encoding: 'utf8' }).trim(), 'pending|')
   } finally {
     rmSync(database, { force: true })
   }
 })
 
-test('sender is v1-only, atomically claimed, Brevo-idempotent and initially inert', () => {
+test('sender requires the impossible R0.1 audience conjunction on every delivery mutation', () => {
   const sender = readFileSync(new URL('../workers/api/email-drip.ts', import.meta.url), 'utf8')
   const config = readFileSync(new URL('../wrangler.brain2-email.toml', import.meta.url), 'utf8')
-  const migration = readFileSync(new URL('../workers/migrations/0002_brain2_access_and_email_campaign.sql', import.meta.url), 'utf8')
+  const migration = readFileSync(new URL('../workers/migrations/0003_r0_1_email_integrity.sql', import.meta.url), 'utf8')
 
-  assert.match(sender, /UPDATE email_queue[\s\S]*campaign_version\s*=\s*'brain2-2026-v1'[\s\S]*RETURNING/i)
+  assert.match(sender, /UPDATE email_queue[\s\S]*campaign_version\s*=\s*'brain2-2026-v1'[\s\S]*audience_state\s*=\s*'sendable'[\s\S]*sendable\s*=\s*1[\s\S]*RETURNING/i)
   assert.match(sender, /attempt_count[\s\S]*first_attempt_at[\s\S]*last_attempt_at/i)
   assert.match(sender, /is_unsubscribed\s*=\s*0/i)
   assert.match(sender, /delivery_unknown[\s\S]*last_attempt_at\s*<=\s*\?/i)
@@ -407,7 +537,12 @@ test('sender is v1-only, atomically claimed, Brevo-idempotent and initially iner
   assert.match(sender, /AbortSignal\.timeout\(PROVIDER_TIMEOUT_MS\)/)
   assert.match(sender, /api\.brevo\.com\/v3\/smtp\/email/)
   assert.doesNotMatch(sender, /\/trigger|signup\.email\)|response\.text\(|errorText|console\.(?:log|error)\([^)]*(?:email|name)/i)
-  assert.match(migration, /quarantine[\s\S]*legacy-v0/i)
+  assert.match(migration, /audience_state[\s\S]*quarantined_legacy[\s\S]*sendable/i)
+  assert.match(migration, /UPDATE email_queue[\s\S]*campaign_version\s*=\s*'legacy-v0'/i)
+  assert.match(migration, /BEFORE INSERT[\s\S]*sendable\s*<>\s*0[\s\S]*audience_state\s*=\s*'sendable'/i)
+  assert.match(migration, /BEFORE UPDATE[\s\S]*sendable\s*<>\s*0[\s\S]*audience_state\s*=\s*'sendable'/i)
+  assert.ok((sender.match(/audience_state\s*=\s*'sendable'/g) ?? []).length >= 7)
+  assert.ok((sender.match(/sendable\s*=\s*1/g) ?? []).length >= 7)
   assert.match(config, /workers_dev\s*=\s*false/)
   assert.match(config, /preview_urls\s*=\s*false/)
   assert.match(config, /crons\s*=\s*\[\s*\]/)
@@ -505,7 +640,7 @@ const emailEnv = (DB: SenderDatabase) => ({
   BRAIN2_EMAIL_UNSUBSCRIBE_SECRET: 'task8-unsubscribe-secret-fixture-at-least-thirty-two-bytes',
 })
 
-test('sender claims one v1 row, sends an idempotent link email and treats Brevo duplicate as accepted', async () => {
+test('downstream adapter keeps idempotency and duplicate handling behind the guarded claim', async () => {
   const DB = new SenderDatabase()
   const calls: Array<{ url: string; init?: RequestInit }> = []
   const report = await processPendingEmails(emailEnv(DB) as never, {
@@ -581,12 +716,27 @@ test('both signup surfaces share v2 logic and the hub mounts the corrected resil
   const workerSignup = readFileSync(new URL('../workers/api/signup.ts', import.meta.url), 'utf8')
   const pagesSignup = readFileSync(new URL('../functions/api/signup.ts', import.meta.url), 'utf8')
   const form = readFileSync(new URL('../components/SignupForm.tsx', import.meta.url), 'utf8')
+  const campaign = readFileSync(new URL('../workers/brain2-campaign.ts', import.meta.url), 'utf8')
   const hub = readFileSync(new URL('../app/brain2/21-ngay/page.tsx', import.meta.url), 'utf8')
   const oldEmailContent = readFileSync(new URL('../workers/api/email-content.ts', import.meta.url), 'utf8')
+  const signupContractUrl = new URL('../lib/brain2/signup-contract.ts', import.meta.url)
+
+  assert.equal(existsSync(signupContractUrl), true, 'signup contract module must exist')
+  const signupContract = readFileSync(signupContractUrl, 'utf8')
 
   assert.match(workerSignup, /handleBrain2SignupRequest/)
   assert.match(pagesSignup, /handleBrain2SignupRequest/)
   assert.doesNotMatch(`${workerSignup}\n${pagesSignup}`, /setHours\(|INSERT INTO email_queue/)
+  assert.match(form, /from ['"]@\/lib\/brain2\/signup-contract['"]/)
+  assert.match(campaign, /from ['"]\.\.\/lib\/brain2\/signup-contract['"]/)
+  assert.match(form, /BRAIN2_SIGNUP_SUCCESS_MESSAGE/)
+  assert.match(campaign, /BRAIN2_SIGNUP_SUCCESS_MESSAGE/)
+  assert.match(signupContract, /Đã ghi nhận đăng ký\. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website\./)
+  assert.match(signupContract, /Tên và email được lưu để ghi nhận đăng ký 21 ngày Brain2\. Email tự động hiện chưa được kích hoạt và địa chỉ này không được thêm vào newsletter\./)
+  assert.match(form, /aria-describedby="brain2-signup-data-notice"/)
+  assert.match(form, /<\/form>\s*<p id="brain2-signup-data-notice">\s*\{BRAIN2_SIGNUP_DATA_NOTICE\}\s*<\/p>/)
+  assert.match(form, /<a href=\{BRAIN2_DAY_ONE_PATH\}/)
+  assert.doesNotMatch(`${form}\n${campaign}`, /5 phút|trong vòng 5 phút|Email đầu tiên sẽ đến/i)
   assert.match(form, /data\.message\s*\?\?\s*data\.error/)
   assert.match(form, /response\.json\(\)\.catch/)
   assert.match(form, /data\.success\s*!==\s*true/)

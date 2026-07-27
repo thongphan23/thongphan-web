@@ -1,17 +1,78 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-26
+Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- R0.1 design corrected and split into local remediation and owner-gated production cutover — implementation not started.
-- R0.1A is source/local verification and a separate implementation PR only. R0.1B requires another owner prompt after both documentation and implementation PRs are merged into clean GitHub default `main`. R0.H1 public-history remediation is separate, destructive and nonblocking after credential rotation plus current-tree controls pass.
+- **R0.1A READY FOR IMPLEMENTATION REVIEW after controlled-response and evidence-
+  lifecycle correction.** Latest exact implementation source is
+  `1c0e13b3a3d794bc59bf99f1fa776184cd828458`; Draft PR #2 remains pending merge
+  and R0.1B has not started.
+- Controlled signup now accepts only bounded JSON with boolean `success:true`, the
+  canonical truthful message and a response ID equal to the exact created D1 row.
+  Invalid responses retain their stable classification while targeted cleanup,
+  zero-queue proof, zero matching rows and both global invariants still execute.
+- Evidence cleanup now accepts only top-level regular `.json` and `.txt` artifacts,
+  covering all six migration-ledger files. Unexpected extensions, extensionless
+  files, directories and symlinks fail before partial deletion; post-mutation
+  evidence remains owner-only.
+- Latest focused gates pass: controlled smoke `58/58`, evidence lifecycle `20/20`,
+  production plan `18/18` and signup/email `13/13`. A clean exact-source checkout
+  also passes D1 migration scope `4/4`, operational docs `5/5`, synthetic identity
+  `9/9`, version tests `18/18 + 2/2`, both TypeScript gates, lint, full `410/410`
+  tests, `82/82` build, release gate with final Brain2 `144/144`, Read safety `3/3`,
+  zero-finding secret scan, seven Wrangler dry-runs and clean porcelain.
+- The invalid-time signup error now describes registration rather than retired email
+  scheduling. This correction was local-only: no production request, remote D1
+  command, migration, Worker/Pages deploy, route mutation, email action, credential
+  mutation, merge or history rewrite occurred.
+- Task 8 still applies only `0003_r0_1_email_integrity.sql` through the dedicated
+  migration-scope config after repeated broad/scoped preflights. Local Wrangler
+  `4.110.0` proves a synthetic later `0004` stays pending; operational docs retain
+  the implemented-source/current-production boundary and embed/chat remain locked
+  to one binding-free apex route each.
+- **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now requires one persistent
+  private Bash process, immutable release constants, per-Task session assertions, a
+  private crypto-generated synthetic signup file, resource-specific redacted
+  control-plane evidence, complete post-build cleanliness checks and failure-safe
+  cleanup classification. Production remains unchanged and R0.1B remains owner-gated.
+- Final correction verification passes: synthetic identity `9/9`, evidence lifecycle
+  `15/15`, production-plan contract `13/13`, version delta `18/18`, version-command
+  contract `2/2`, controlled smoke `42/42`, full suite `373/373`, build `82/82`,
+  release `6/6 + 4/4 + 3/3 + 143/143`, Read safety `3/3`, zero-finding secret scan,
+  seven Wrangler `4.110.0` dry-runs and an empty clean detached checkout at source
+  `9235105429783db6b3077dad37fbb298678eec5e`.
+- The earlier Draft PR #2 baseline records the
+  owner-approved Candidate A `invalid` and Candidate B
+  `legacy_orphaned_not_present_in_active_inventory` dispositions without a live-token
+  mutation gate. The release checkout is owner-controlled outside `/tmp`, and the
+  Worker-version evidence lifecycle cleans pre-mutation failures, preserves secured
+  evidence after a mutation, cleans successful closure, preserves the original exit
+  code and restores the previous umask. Production cutover remains unstarted and
+  separately owner-gated.
+- Focused correction gates pass: evidence lifecycle `14/14`, production-plan contract
+  `5/5`, version delta `18/18` and version-command contract `2/2`. A clean detached
+  gate at source `5514e712e10d0b91c00616ba204344ab6c540b33` passes root/Worker
+  TypeScript, lint, full `355/355` tests, controlled smoke `42/42`, `82/82` build,
+  release suites, Read safety `3/3`, zero-finding current-tree secret scan, all seven
+  Wrangler dry-runs, diff/clean-status checks and canonical preservation. No live
+  origin, remote D1, deploy or production mutation was used.
+- **R0.1B production cutover not started.** It requires another owner prompt after documentation, implementation and Task 8 local gates are reviewed on a clean default branch. R0.H1 public-history remediation remains separate, destructive and nonblocking; R0.2 preview/production environment isolation remains unresolved and unstarted.
+- Fresh Task 8B passed from a clean detached worktree outside `/tmp` at source `2b3f77b`: the readiness check first exited `1` while the report still said `IN PROGRESS`, then `npm ci` installed 505 packages with the retained 14-high npm audit baseline; root and Worker TypeScript, lint, full `315/315` tests, `82/82` static-route build, every release component suite including final Brain2 `143/143`, Read safety `3/3`, current-tree secret scan with zero findings, seven Wrangler dry-runs, diff check and empty detached status all passed.
+- All seven dry-runs exited `0`: embed `1.23 KiB / gzip 0.60 KiB` and chat `1.21 / 0.59` have no bindings; signup `33.84 / 9.68` reports the existing KV, D1 and two rate limiters; router `2.02 / 0.89` has no bindings; access `30.93 / 10.46` reports KV and D1; email `42.90 / 11.90` reports D1 only; legacy redirect `0.69 / 0.42` has no bindings.
+- Canonical boundary verification remains `VERIFY PASS` at `6a1ec9a`: all five protected hashes are exact, all five starting dirty paths are preserved and `.env.embed.local` remains absent. The separate history diagnostic remains expected-red with exactly five metadata-only `history_plaintext` findings; this is the nonblocking R0.H1 residual.
+- Latest Task 6 verification passes: focused email suite `12/12`, full suite `273/273`, Worker TypeScript, current-tree secret-integrity scan with zero findings, task-scoped diff check and the email Worker dry-run at `42.90 KiB / gzip 11.90 KiB`. The local SQLite fixture reports exact legacy aggregate `legacy-v0|pending|quarantined_legacy|0|210`, one case-insensitive duplicate group, zero sendable rows, zero sender selections and zero provider fetches.
+- Both retired capability dry-runs pass without bindings: `/api/embed` emits `1.23 KiB / gzip 0.60 KiB`, and `/api/chat` emits `1.21 KiB / gzip 0.59 KiB`; Wrangler reports `No bindings found.` for each.
+- The owner inventory check records Candidate A as `invalid` and Candidate B as `legacy_orphaned_not_present_in_active_inventory`; only these status classifications are retained.
+- Production is unchanged by R0.1A Tasks 1–8: no deploy, route mutation, production request, controlled production signup, production D1 write or migration, email send, audience import, cron activation, credential mutation or Git-history rewrite occurred. Publishing the review branch to GitHub is a separate non-production step and does not authorize R0.1B, which remains owner-gated.
+- Implemented source now makes `/api/embed` return `410` and `/api/chat` return `410` through one binding-free tombstone (`workers/embed-vault.ts:1-3`, `workers/api/chat.ts:1-3`, `workers/security/disabled-endpoint.ts:22-50`). These responses are not production-deployed yet. The public `/chat` page remains static/local (`app/chat/ChatClient.tsx:27-41`).
+- Signup success now represents persisted registration only and prepares no email queue row (`workers/brain2-campaign.ts:269-294`). Local email integrity marks legacy audience `quarantined_legacy` with the numeric equivalent of `sendable = false`; delivery status does not grant audience eligibility (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`, `workers/api/email-drip.ts:133-181`). Email remains undeployed and cron remains empty.
 - R0 technical audit is complete against canonical runtime repo `/Users/rio/thongphan-com`, branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. The legacy `/Users/rio/Projects/thongphan-read` directory is migration provenance only; no legacy runtime was restored.
 - Verified current stack: Next.js 16.2.10 App Router, React 19.2.5, TypeScript 6.0.3, npm, static export to Cloudflare Pages plus dedicated Workers. Public Read remains canonical under `/library*`; `/read` is absent and returns a noindex 404.
 - Baseline passes: TypeScript, Worker TypeScript, lint, full 242/242 suite, 82-route build, release gate (build 6/6, SEO 4/4, bundle 3/3, Brain2 143/143), Read safety 3/3 and seven Wrangler Worker dry-runs. Live sitemap crawl returns 55/55 HTTP 200.
-- R0 identified owner gates before R1: reader identity/entitlement, preview-production data isolation, privacy/retention, email delivery and 210 legacy queue rows, analytics, CI/dependency scanning, and P0 ownership/security for the existing unauthenticated `/api/embed` mutation route. `npm audit` has no fresh verdict because both npm audit endpoints failed after a clean temporary install.
+- R0 identified owner gates before R1: reader identity/entitlement, R0.2 preview-production data isolation, privacy/retention, email delivery and legacy queue disposition, analytics, CI/dependency scanning, and production cutover for the locally retired AI endpoints. The earlier R0 audit endpoints failed; Task 8B's later clean install now records the current npm audit baseline of 14 high-severity findings without claiming remediation.
 - Full evidence: `docs/discovery/R0-AUDIT-REPORT.md`. `CURRENT-SYSTEM-AUDIT.md`, the SAD and Data/Event Architecture now distinguish verified current state from target architecture.
-- No app feature, framework, route, Worker, schema, migration or production Cloudflare setting changed. No deploy was run. R0 remains at owner approval gate and PRD-R1 must not start until that approval is explicit.
+- No production app feature, framework, route, Worker, schema, migration or Cloudflare setting changed. No deploy was run. R0.1B, R0.H1, R0.2 and PRD-R1 must not start without their separate explicit gates.
 
 ## Brain2 kickoff-video restoration — production release — 2026-07-16
 

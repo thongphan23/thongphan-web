@@ -33,13 +33,22 @@ implementation report:
 
 ## Credential and current-tree gates
 
-- [ ] First Cloudflare credential candidate revoked or rotated.
-- [ ] Second Cloudflare credential candidate revoked or rotated.
-- [ ] Non-secret confirmation recorded for both actions using the evidence fields.
-- [ ] Current tracked tree sanitized and current-tree secret scan passed.
-- [ ] Approved ignored local configuration sanitized and scan passed.
+- [ ] Candidate A invalid verification evidence recorded.
+- [ ] Candidate B classified `legacy_orphaned_not_present_in_active_inventory` and
+  absent from the complete active inventory.
+- [ ] Candidate B complete active-token inventory evidence recorded.
+- [ ] Inventory scope recorded without token names or IDs: 3 User API Tokens and
+  1 Account API Token.
+- [ ] Zero active Workers AI/Vectorize permission match recorded.
+- [ ] No active Cloudflare token mutation was authorized or performed.
+- [ ] Current tracked tree and approved ignored-local configuration sanitized and
+  current-tree secret scan passed.
 - [ ] Public-history exposure recorded as a residual risk without sensitive content.
 - [ ] R0.H1 remains separate and has not been treated as an R0.1 release gate.
+
+No token names or IDs are recorded in this checklist. R0.H1 is nonblocking
+public-history hygiene for tracked historical plaintext; R0.H1 does not imply
+Candidate B revoke or rotation.
 
 ## Production authorization gates
 

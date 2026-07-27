@@ -6,7 +6,7 @@
 
 **Date:** 2026-07-26
 
-**Status:** Corrected and owner-approved; implementation not started
+**Status:** Authority-corrected and owner-approved; R0.1A implementation under review
 
 **Verified runtime baseline:** branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`
 
@@ -32,8 +32,10 @@ delivered in two separately authorized stages:
 
 Potential public-history cleanup is **R0.H1 — Public History Remediation**, a
 separate destructive, owner-gated and nonblocking backlog item. R0.H1 is not an
-R0.1 exit criterion and is not a prerequisite for R0.2 or PRD-R1 after both
-credential candidates are revoked or rotated and current-tree controls pass.
+R0.1 exit criterion and is not a prerequisite for R0.2 or PRD-R1 after the
+owner-approved credential dispositions are recorded and current-tree controls pass.
+It is public-history hygiene for tracked historical plaintext only; R0.H1 does not
+imply Candidate B revoke or rotation.
 
 R0.1 does not add a product feature. It does not create reader identity,
 membership, payment, entitlement, multi-tenancy, `/read`, or a new AI capability.
@@ -59,7 +61,7 @@ companion plans are:
 | Live chat dependency | The live `/chat` bundle contains no apex or workers.dev chat URL; it uses the local deterministic path when `NEXT_PUBLIC_CHAT_API_URL` is absent (`app/chat/ChatClient.tsx:11-47`) |
 | Email runtime | Signup Worker is deployed; email Worker does not exist remotely and tracked cron is empty (`wrangler.brain2-email.toml:1-33`) |
 | D1 email state | Read-only query on 2026-07-26 returned 10 signups, 210 `legacy-v0/pending` queue rows, zero email logs, and one case-insensitive duplicate group |
-| Credential exposure | GitHub repository `thongphan23/thongphan-web` is public; token-like plaintext is reachable in tracked history and an additional distinct candidate exists in ignored local configuration |
+| Credential exposure and disposition | GitHub repository `thongphan23/thongphan-web` is public; tracked historical plaintext remains the R0.H1 residual. Candidate A is verified `invalid`; Candidate B is legacy/orphaned and absent from the complete active inventory; its ignored local file was deleted |
 | Tooling checked | Wrangler `4.110.0`; local schema `node_modules/wrangler/config-schema.json`; current Workers types package `5.20260726.1` |
 
 The current embed and chat dry-runs both pass, which proves that the risky
@@ -190,16 +192,18 @@ Secret values are intentionally omitted. Locations and classifications are:
 |---|---|---|---|
 | `.claude/handoff.md:150`, `.claude/handoff.md:407` | Placeholder | Cloudflare | Replace with environment-variable-only instruction |
 | `.claude/handoff-chat.md:186`, `.claude/handoff-chat.md:760` | Placeholder | Cloudflare | Replace with environment-variable-only instruction |
-| `.claude/handoff.md:323` | Unknown; historical note says invalid | Cloudflare | Treat as exposed; revoke/rotate and sanitize |
-| `.claude/handoff-chat.md:809`, `:818`, `:822` | Potentially active; historical note says valid | Cloudflare | Treat as exposed; revoke/rotate and sanitize |
-| `.env.embed.local:1` | Unknown, distinct local candidate; ignored by Git | Cloudflare | Revoke/rotate and sanitize local file |
+| `.claude/handoff.md:323` | Candidate A; read-only verification `invalid` | Cloudflare | Tracked plaintext sanitized; no revoke or Roll required |
+| `.claude/handoff-chat.md:809`, `:818`, `:822` | Candidate A repeated in tracked history; read-only verification `invalid` | Cloudflare | Tracked plaintext sanitized; preserve only metadata-level R0.H1 evidence |
+| `.env.embed.local:1` | Candidate B; `legacy_orphaned_not_present_in_active_inventory` | Cloudflare | Ignored local file deleted; no live mutation |
 | `.env.local.bak:1` | Placeholder | Cloudflare | Keep ignored; scanner must classify it safely |
 
-The tracked candidates are the same token-like value and exist in reachable Git
-history. The ignored local candidate is different. Rotation/revocation plus a clean
-current tracked tree and sanitized approved ignored local configuration are the
-mandatory R0.1 controls. Historical discoverability remains an explicitly
-documented residual risk until optional R0.H1 completes.
+The owner reviewed the complete active inventory: 3 User API Tokens and 1 Account API
+Token, with zero active Workers AI/Vectorize permission match. No token names or IDs
+were recorded. No active Cloudflare token mutation was authorized or performed. The
+mandatory R0.1 controls are the two recorded dispositions, a sanitized current
+tracked tree, removal of the approved ignored-local credential file and a passing
+current-tree scan. Historical discoverability of tracked plaintext remains the
+explicit nonblocking R0.H1 residual.
 
 ## 9. Current data flow
 
@@ -246,7 +250,7 @@ flowchart LR
 | `/api/chat` | Private retrieval context, brand voice, AI budget | Anonymous prompt injection, context exfiltration, request flood, long body, cost amplification | Unbounded AI use and possible private metadata disclosure | Deterministic 410 tombstone; no body read; no AI/Vectorize binding; client fixed to local mode |
 | Signup | User trust and email PII | False delivery expectation; unnecessary queue growth | Persisted obligations that runtime cannot fulfill | Canonical truthful message; save signup only; no queue creation |
 | Legacy email | PII, consent integrity, brand trust | Accidental sender selection, import to newsletter, dedupe mistake | Unconsented delivery and retention risk | Explicit quarantine fields, global non-sendable triggers, sender predicate, aggregate-only inventory |
-| Documentation | Cloudflare account and deployment capabilities | Credential discovery from public files/history | Account/API compromise | Revoke/rotate both candidates, sanitize current tracked and approved ignored local files, enforce current-tree scanning; track optional history cleanup as R0.H1 |
+| Documentation | Cloudflare account and deployment capabilities | Credential discovery from public files/history | Account/API compromise | Record Candidate A `invalid` and Candidate B orphaned/absent from complete active inventory; sanitize current tracked and approved ignored-local surfaces; enforce current-tree scanning; track public-history hygiene as R0.H1 without mutating active tokens |
 | Shared preview data | Production D1/KV | Preview test mutates production | Integrity/privacy damage | No preview mutation in R0.1; endpoint bindings removed; D1 isolation remains R0.2 |
 
 ## 12. Root-cause analysis
@@ -317,7 +321,8 @@ flowchart LR
   fingerprints, not provider credential patterns or Git history.
 - **Wrong boundary:** a runtime credential entered the documentation provenance layer.
 - **Recurrence control:** provider-aware scanner, redacted output, environment-variable
-  instructions, pre-commit/release integration and credential rotation.
+  instructions, pre-commit/release integration and evidence-backed credential
+  disposition.
 - **Regression proof:** synthetic token fixtures fail without printing their value;
   the current tracked tree and approved ignored local configuration pass after
   sanitization. The history scan remains a separate expected-red diagnostic until
@@ -372,17 +377,21 @@ sendable. Sender SQL requires both an explicitly sendable audience state and
 
 ### 13.5. Token-like plaintext
 
-The Cloudflare account owner revokes/rotates both candidates before sanitization and
-provides non-secret confirmation. Tracked handoffs are redacted, the approved
-ignored local credential file is sanitized, and a native Node scanner is added to
-tests and the release gate. `test:release` includes current-tree secret integrity
-only. `test:secret-integrity:history` remains a separate expected-red diagnostic and
-does not block R0.1A, R0.1B, R0.2 or PRD-R1.
+Candidate A has read-only verification status `invalid`; its tracked plaintext is
+sanitized and no revoke or Roll is required. Candidate B is classified
+`legacy_orphaned_not_present_in_active_inventory` after the owner reviewed the
+complete active inventory of 3 User API Tokens and 1 Account API Token and found zero
+active Workers AI/Vectorize permission match. The approved ignored local credential
+file was deleted. No token names or IDs were recorded, and no active Cloudflare token
+mutation was authorized or performed.
 
-Because a candidate marked valid was committed to a public repository, an optional
-later R0.H1 may rewrite reachable history under a separate destructive-action
-approval, collaborator freeze and force-push protocol. Only R0.H1 uses a passing
-history scan as its completion gate.
+A native Node scanner protects the current tracked tree and approved ignored-local
+surface. `test:release` includes current-tree secret integrity only.
+`test:secret-integrity:history` remains a separate expected-red diagnostic and does
+not block R0.1A, R0.1B, R0.2 or PRD-R1. Optional R0.H1 may rewrite reachable tracked
+history under a separate destructive-action approval, collaborator freeze and
+force-push protocol. It does not imply Candidate B revoke or rotation. Only R0.H1
+uses a passing history scan as its completion gate.
 
 ## 14. Authentication and authorization boundary
 
@@ -412,18 +421,20 @@ opaque email key (`wrangler.signup.toml:28-42`). R0.1 does not alter these limit
 ## 16. Secret handling
 
 1. Never echo, interpolate into command arguments, commit, log, or paste a secret.
-2. Rotation precedes source sanitization so removing the visible copy cannot create
-   a false belief that the credential is safe.
+2. Record the owner-approved candidate disposition before accepting source sanitation
+   so removing visible plaintext cannot create a false belief about active inventory.
 3. Provider is Cloudflare. Operational owner is the authorized administrator of the
    Cloudflare account currently used by Wrangler deployments; project owner is Thông
    Phan.
-4. New credentials, if any, live only in an authorized password manager/Keychain or
-   Cloudflare encrypted secrets. R0.1 creates no new endpoint secret.
+4. Existing active tokens are outside this remediation and remain untouched. New
+   credentials, if separately approved, live only in an authorized password
+   manager/Keychain or Cloudflare encrypted secrets. R0.1 creates no endpoint secret.
 5. Scanner output contains only rule ID, file and line; never a matching value,
    substring, hash, request header or environment value.
-6. R0.1 requires the current tracked tree and approved ignored local configuration
-   to pass the redacted scanner after rotation. Public history exposure is retained
-   as a documented residual risk and may be remediated only through optional R0.H1.
+6. R0.1 requires the current tracked tree and approved ignored-local surface to pass
+   the redacted scanner after the dispositions are recorded. Public history exposure
+   is retained as a documented residual risk and may be remediated only through
+   optional R0.H1.
 
 Official control reference: [Cloudflare Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
 
@@ -518,8 +529,8 @@ The current Wrangler config schema and current Workers type package were checked
 | Signup Worker copy updates before Pages | Direct API is truthful; UI may still show old copy | Deploy Worker first, then Pages; release is incomplete until both match |
 | Migration fails | Email Worker remains absent; cron remains empty | Stop, use the pre-migration D1 Time Travel bookmark if integrity changed |
 | Quarantine count differs from 210 | Source state drifted | Stop without update, rerun aggregate audit, amend evidence before mutation |
-| Rotation cannot be proven | Credential may still work | Do not claim secret remediation complete |
-| R0.H1 lacks owner approval | Revoked value remains public in history | Keep it revoked, record residual exposure, do not force-push; R0.1 and later planning remain unblocked after mandatory current-tree controls pass |
+| Owner disposition evidence is incomplete | Active-inventory status is ambiguous | Do not claim secret remediation complete and do not mutate an active token to satisfy an obsolete checklist |
+| R0.H1 lacks owner approval | Tracked historical plaintext remains public | Record residual exposure and do not force-push; R0.1 and later planning remain unblocked after mandatory current-tree controls pass |
 
 ## 22. Rollback strategy
 
@@ -532,8 +543,9 @@ The current Wrangler config schema and current Workers type package were checked
 - **D1:** record a D1 Time Travel bookmark immediately before migration. Restore only
   when migration integrity fails and after verifying that no legitimate post-bookmark
   signup would be lost. Email remains undeployed during the decision.
-- **Secrets:** revocation is irreversible by design. Create a new least-privilege
-  credential only for an approved workflow; never restore a leaked token.
+- **Secrets:** do not modify an active token under R0.1. Create a new least-privilege
+  credential only for a separately approved workflow; never restore sanitized
+  plaintext or the deleted ignored-local file.
 - **R0.H1 history rewrite:** outside R0.1. If separately approved, keep a private
   read-only mirror before force-push. If coordination fails, do not restore leaked
   refs to the public remote; correct refs and require collaborators to reclone.
@@ -548,7 +560,8 @@ R0.1 records:
 - pre/post D1 aggregate counts and Time Travel bookmark;
 - signup count and zero newly created queue rows during controlled smoke;
 - secret scan file count, rule count and hit count without values;
-- non-secret credential rotation confirmation and current-tree scan summary;
+- non-secret Candidate A/B disposition evidence, complete active-inventory scope and
+  current-tree scan summary;
 - public-history findings as a documented residual risk, without credential values;
 - unchanged hashes for `tsconfig.tsbuildinfo` and the four pre-existing Conan Maker
   assets.
@@ -651,13 +664,16 @@ No stage inherits production authorization from an earlier review or merge.
 
 ## 27. OWNER BLOCKERS
 
-### 27.1. Credential revocation authority
+### 27.1. Credential disposition authority — resolved for R0.1
 
-Repository evidence cannot identify the Cloudflare token IDs or revoke them safely.
-The authorized Cloudflare account administrator must revoke/rotate both candidate
-credentials and provide non-secret confirmation before current-tree sanitization can
-be accepted. R0.1A source changes may be reviewed before confirmation, but R0.1B may
-not begin until the confirmation and sanitized current-tree scan both pass.
+Candidate A is verified `invalid`. Candidate B is
+`legacy_orphaned_not_present_in_active_inventory` after the authorized owner reviewed
+the complete active inventory of 3 User API Tokens and 1 Account API Token and found
+zero active Workers AI/Vectorize permission match. No token names or IDs were
+recorded. The tracked tree was sanitized, the approved ignored local credential file
+was deleted, and no active Cloudflare token mutation was authorized or performed.
+R0.1B checks this evidence plus a clean current-tree scan; it must not delete, revoke,
+Roll, rotate or replace any unrelated active token.
 
 ### 27.2. Legacy PII retention and deletion policy
 
@@ -669,10 +685,10 @@ wait for this decision and must occur first.
 ## 28. Residual risks
 
 1. Until implementation deploys the tombstones, both public AI Workers remain live.
-2. Until Cloudflare credentials are revoked, token candidates remain potentially
-   usable even after local sanitization.
-3. Until the approved history rewrite completes and caches/forks age out, revoked
-   plaintext remains discoverable in public history.
+2. The complete active inventory is owner-attested rather than API-classified for
+   Candidate B because provider verification endpoints were inconclusive.
+3. Until an approved R0.H1 history rewrite completes and caches/forks age out,
+   tracked historical plaintext remains discoverable in public history.
 4. Signup and Pages preview still share production D1/KV; R0.1 forbids preview
    mutation but cannot technically isolate it.
 5. Ten signup records retain PII without an approved deletion date.
@@ -711,8 +727,11 @@ R0.1B is complete only when:
    branch `main`.
 2. Production commands run from a fresh clean checkout with fetched refs,
    `HEAD == origin/main`, an empty porcelain status and the exact main SHA recorded.
-3. Both credential candidates are confirmed revoked/rotated without disclosure;
-   current tracked and approved ignored local files are sanitized and scan clean.
+3. Candidate A `invalid` evidence and Candidate B complete active-inventory evidence
+   are recorded; inventory scope is 3 User API Tokens and 1 Account API Token with
+   zero active Workers AI/Vectorize permission match; no active token mutation is
+   authorized or performed; current tracked and approved ignored-local surfaces are
+   sanitized and scan clean.
 4. `/api/embed` and `/api/chat` return 410 with zero bindings; `/chat` remains local.
 5. A controlled apex signup creates exactly one signup and zero queue rows, and only
    that synthetic signup is removed after evidence capture.
@@ -727,7 +746,7 @@ R0.1B is complete only when:
 
 ### 29.3. R0.H1 public-history remediation
 
-R0.H1 is recommended because revoked plaintext remains discoverable in public Git
+R0.H1 is recommended because tracked historical plaintext remains discoverable in public Git
 history, but it is destructive and nonblocking. It requires a separate owner prompt,
 collaborator freeze, protected mirror, coordinated force-push and fresh-clone proof.
 Only R0.H1 requires `test:secret-integrity:history` to pass. R0.H1 is not part of
@@ -735,7 +754,8 @@ R0.1A or R0.1B exit and is not a prerequisite for R0.2 or PRD-R1.
 
 If the owner later authorizes R0.H1, its safety protocol is:
 
-1. Reconfirm both candidates are revoked or rotated; never expose either value in a
+1. Reconfirm Candidate A is `invalid`, Candidate B is absent from the complete active
+   inventory, and no live token mutation is required; never expose either value in a
    command, replacement file, log or report.
 2. Approve an exact collaborator push-freeze window and the exact branch/tag set that
    may be rewritten.

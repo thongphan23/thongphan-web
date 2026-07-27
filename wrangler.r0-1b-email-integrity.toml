@@ -1,0 +1,7 @@
+# R0.1B migration-scope control only; this is not a Worker runtime or deployment config.
+[[d1_databases]]
+binding = "DB"
+database_name = "thongphan-db"
+database_id = "7cffb7f5-c48b-49c2-b215-9611abd734a5"
+migrations_dir = "workers/migrations"
+migrations_pattern = "workers/migrations/0003_r0_1_email_integrity.sql"
