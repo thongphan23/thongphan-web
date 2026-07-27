@@ -4,6 +4,26 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
+- **R0.1A READY FOR IMPLEMENTATION REVIEW after scoped-migration correction.**
+  Latest exact implementation source is
+  `bf02159a580639fe2f310c0add6091d887729e06`; Draft PR #2 remains pending merge
+  and R0.1B has not started.
+- Task 8 now applies only `0003_r0_1_email_integrity.sql` through the dedicated
+  migration-scope config after repeated broad/scoped preflights. Local Wrangler
+  `4.110.0` proves a synthetic later `0004` stays pending and its schema effect is
+  absent. Operational docs now distinguish implemented source from current
+  production, the chat verification accepts the required Worker identity, and embed
+  plus chat are each locked to exactly one binding-free apex route.
+- Latest focused gates pass: D1 migration scope `4/4`, operational docs `5/5`,
+  production plan `17/17`, embed/chat `10/10`, synthetic identity `9/9`, evidence
+  lifecycle `15/15`, version delta `18/18`, version command `2/2` and controlled
+  smoke `42/42`. A clean detached checkout passes both TypeScript gates, lint, full
+  `387/387` tests, `82/82` build, release `6/6 + 4/4 + 3/3 + 143/143`, Read safety
+  `3/3`, zero-finding secret scan, seven Wrangler dry-runs and clean exact-source
+  porcelain.
+- This correction was local-only: no production request, remote D1 command,
+  migration, Worker/Pages deploy, route mutation, email action, credential mutation,
+  merge or history rewrite occurred.
 - **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now requires one persistent
   private Bash process, immutable release constants, per-Task session assertions, a
   private crypto-generated synthetic signup file, resource-specific redacted

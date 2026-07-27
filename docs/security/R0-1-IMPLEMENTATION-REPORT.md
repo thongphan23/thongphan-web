@@ -2,6 +2,153 @@
 
 Status: R0.1A READY FOR IMPLEMENTATION REVIEW
 
+## R0.1A scoped migration and operational consistency correction
+
+Status: PASS — scoped migration discovery, operational documentation, chat
+verification and route cardinality are corrected and verified at implementation
+source `bf02159a580639fe2f310c0add6091d887729e06`. Production cutover remains
+unstarted.
+
+### Root cause and review findings
+
+- Task 7 captured a broad migration-ledger snapshot only once. Task 8 later invoked
+  `wrangler d1 migrations apply` through `wrangler.brain2-email.toml`, whose
+  `migrations_dir` discovers every top-level SQL migration. Pinned Wrangler `4.110.0`
+  defines this command as applying every unapplied discovered migration, so drift
+  between the Task 7 snapshot and Task 8 mutation could apply a migration other than
+  `0003_r0_1_email_integrity.sql`. A post-check could detect that only after mutation.
+- `workers/README.md` described the implemented migration result as current
+  production state and placed migration before truthful signup, contrary to the
+  approved R0.1B sequence. `CURRENT-SYSTEM-AUDIT.md` still said Task 8 local
+  verification had not run despite the complete clean-checkout gate.
+- The documented Task 4 negative scan treated the required production identity
+  `thongphan-chat-api` as a forbidden reactivation hook, making the correct config
+  fail its own verification block.
+- Embed/chat security tests proved that the expected route was present but did not
+  reject an additional route table, wildcard route, `www` route or accidental
+  binding.
+
+### Correction contract
+
+- Add one migration-only Wrangler config whose D1 resource matches the existing
+  email config and whose exact `migrations_pattern` discovers only migration `0003`.
+- Keep broad preflight/postflight ledger checks, but make the Task 8 apply command use
+  only the migration-scoped config and repeat both ledger checks immediately before
+  mutation.
+- Reconcile operational documents with the implemented-source versus current-
+  production boundary, repair the chat verification command and lock both tombstone
+  configs to one exact apex route with zero runtime binding.
+- No Worker, Pages, remote D1, migration, production endpoint, email, credential or
+  Git-history mutation is authorized by this correction.
+
+### Pinned Wrangler and exact-scope evidence
+
+- Repository-pinned Wrangler is `4.110.0`. Its `d1 migrations apply` help says
+  `Apply any unapplied D1 migrations`; the command accepts database/config/location,
+  but no migration filename positional or selector.
+- The pinned config schema and Cloudflare D1 documentation define
+  `migrations_pattern` as the discovery glob relative to the Wrangler config. It
+  requires `migrations_dir`, must begin with that directory and defaults to the broad
+  `${migrations_dir}/*.sql` when omitted.
+- `wrangler.r0-1b-email-integrity.toml` contains exactly one D1 binding. Its binding,
+  database name and database ID are byte-equal to `wrangler.brain2-email.toml`; the
+  source config does not declare a custom `migrations_table`, so neither does the
+  scoped config.
+- The scoped config sets `migrations_dir = "workers/migrations"` and exact
+  `migrations_pattern = "workers/migrations/0003_r0_1_email_integrity.sql"`. The
+  pattern has no wildcard, alternative or character class. The config has no Worker
+  name/main, route, public surface, trigger, AI, Vectorize, KV, R2, Queue, service,
+  rate limiter, var or secret and is never a deploy target.
+
+### RED evidence
+
+- Migration-scope RED: `2/4` passed and `2/4` failed because the exact-scope config
+  did not exist. The local pinned-Wrangler fixture already proved that exact-file
+  discovery itself was supported.
+- Operational-document RED: `1/5` passed and `4/5` failed against the stale README,
+  Current System Audit and self-failing chat verification block.
+- Production-plan RED stopped at module load because the scoped config did not
+  exist. At the reviewed head, Task 8 still used broad apply and had no immediate
+  broad/scoped recheck or postflight contract.
+- Route-cardinality reproduction added a second `www` route to each in-memory config.
+  The previous presence-only assertions accepted both mutations, demonstrating that
+  the reviewed tests did not reject a second route.
+
+### Corrected operational contract
+
+- Task 7 now captures a broad and scoped ledger preflight in lifecycle-managed
+  mode-`0600` evidence. Both must contain exactly
+  `0003_r0_1_email_integrity.sql` and nothing else.
+- Task 8 reasserts persistent-session, exact-main and clean-tree state, then repeats
+  both ledgers immediately before mutation. Its sole apply config is
+  `wrangler.r0-1b-email-integrity.toml`.
+- After apply, the scoped list must be empty and the broad list must expose no
+  unexpected pending migration before the normal email config verifies exact
+  aggregate `legacy-v0 | pending | quarantined_legacy | 0 | 210`, zero sendable rows
+  and zero email logs. A broad catch-up apply is explicitly forbidden; post-apply
+  broad drift blocks Pages deployment.
+- `workers/README.md` now separates implemented source contract from current
+  production state and delegates the R0.1B order exclusively to the canonical
+  cutover plan. `CURRENT-SYSTEM-AUDIT.md` records Task 8 local completion, Draft PR
+  #2 pending merge and R0.1B unstarted without rewriting immutable R0 facts.
+- The Task 4 verification block positively asserts `thongphan-chat-api`; its negative
+  scan contains only executable reactivation hooks and excludes historical prose.
+- Embed and chat tests now require exactly one `[[routes]]` table, one exact apex
+  pattern, one `thongphan.com` zone, one `workers_dev=false`, one
+  `preview_urls=false` and zero runtime/data/service binding. In-memory second-route
+  and accidental-binding mutations are rejected.
+
+### GREEN and complete local verification
+
+Focused verification passed locally with no remote command:
+
+| Gate | Result |
+|---|---:|
+| D1 migration scope | `4/4` |
+| Operational-document contract | `5/5` |
+| Production-plan contract | `17/17` |
+| Embed/chat security and route cardinality | `10/10` |
+| Scoped local `migrations list` | only `0003_r0_1_email_integrity.sql` |
+| Diff whitespace | pass |
+
+The private local integration fixture applied the base schema, applied migration
+`0002` through the broad fixture, then introduced migration `0003` plus a synthetic
+later `0004`. Pinned Wrangler `4.110.0` scoped discovery listed and applied only
+`0003`; the broad post-list left `0004` pending. Both `audience_state` and `sendable`
+existed afterward, while the synthetic `0004` table count stayed zero. The fixture
+used local persistence only, cleaned its private directory and left repository status
+byte-equal.
+
+A clean detached checkout outside `/tmp` at exact source
+`bf02159a580639fe2f310c0add6091d887729e06` passed:
+
+| Gate | Result |
+|---|---:|
+| Clean install | pass; 505 packages, retained npm audit baseline of 14 high severity |
+| Root and Worker TypeScript | pass |
+| ESLint | pass; zero warnings |
+| Full suite | `387/387` |
+| Synthetic identity | `9/9` |
+| Evidence lifecycle | `15/15` |
+| Worker-version delta / command | `18/18`, `2/2` |
+| Controlled smoke | `42/42` |
+| Static build | `82/82` routes |
+| Release build / SEO / bundle / Brain2 | `6/6`, `4/4`, `3/3`, `143/143` |
+| Read release safety | `3/3` |
+| Current-tree secret integrity | zero findings |
+| Wrangler `4.110.0` dry-runs | `7/7` |
+| Diff, exact source and detached porcelain | pass; empty |
+
+The seven dry-runs retain the reviewed binding surface: embed `1.23/0.60 KiB` and
+chat `1.21/0.59` are binding-free; signup is `33.84/9.68` with existing KV, D1 and
+two rate limiters; router is `2.02/0.89` binding-free; access is `30.93/10.46` with
+existing KV/D1; email is `42.90/11.90` with existing D1 only; legacy redirect is
+`0.69/0.42` binding-free. No scoped migration config was used in a deploy dry-run.
+
+No production origin, remote D1 command, Worker or Pages deploy, migration, email
+action, credential mutation, repository setting change, merge or history rewrite
+occurred. R0.1B, R0.H1, R0.2 and PRD-R1 remain unstarted.
+
 ## R0.1A final production execution contract correction
 
 Status: PASS — the persistent-process, initialization, synthetic-identity,
