@@ -284,6 +284,22 @@ test("Task 2 smoke contract uses the repository TypeScript loader", () => {
   );
 });
 
+test("Task 2 installs locked dependencies before the first TypeScript test", () => {
+  const task = taskSection(2);
+  const installIndex = task.indexOf("npm ci");
+  const smokeIndex = task.indexOf(
+    "node --import tsx --test scripts/r0-1-production-smoke.test.mjs",
+  );
+
+  assert.ok(installIndex >= 0, "Task 2 must install locked dependencies");
+  assert.ok(smokeIndex >= 0, "Task 2 smoke contract command is missing");
+  assert.ok(
+    installIndex < smokeIndex,
+    "npm ci must run before the first command that imports tsx",
+  );
+  assert.equal(task.match(/^npm ci$/gm)?.length, 1);
+});
+
 test("control-plane preflight avoids identity output and stores private evidence", () => {
   const taskThree = taskSection(3);
   assert.doesNotMatch(documents.cutover, /^\s*npx wrangler whoami(?:\s|$)/m);
