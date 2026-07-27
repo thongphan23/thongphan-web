@@ -112,6 +112,28 @@ test("failure after remote mutation preserves secured evidence with redacted std
   assert.equal(mode(join(directory, "after.json")), 0o600);
 });
 
+test("cleanup failure after success preserves evidence and returns nonzero once", (t) => {
+  const { prefix } = fixture(t);
+  const result = runBash(
+    'set -e\nsource "$1"\nr0_1b_version_evidence_init "$2"\nr0_1b_install_exit_trap\ndir=$R0_1B_VERSION_DIR\nprintf "DIR=%s\\n" "$dir"\nprintf "{\\"safe\\":true}" > "$dir/after.json"\nmkdir "$dir/cleanup-obstruction"\nchmod 700 "$dir/cleanup-obstruction"\nr0_1b_mark_remote_mutation_started\nr0_1b_mark_cutover_succeeded\nr0_1b_cleanup_version_evidence',
+    prefix,
+  );
+  const directory = outputPath(result);
+
+  assert.notEqual(result.status, 0);
+  assert.equal(
+    result.stderr,
+    `R0_1B_VERSION_EVIDENCE_PRESERVED=${directory}\n`,
+  );
+  assert.equal(result.stderr.trim().split("\n").length, 1);
+  assert.doesNotMatch(result.stderr, /safe|\{|author|metadata/i);
+  assert.equal(existsSync(directory), true);
+  assert.equal(existsSync(join(directory, "after.json")), true);
+  assert.equal(mode(directory), 0o700);
+  assert.equal(mode(join(directory, "after.json")), 0o600);
+  assert.equal(mode(join(directory, "cleanup-obstruction")), 0o700);
+});
+
 test("remote-mutation state becomes irreversible", (t) => {
   const { prefix } = fixture(t);
   const result = runBash(

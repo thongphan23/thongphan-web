@@ -59,9 +59,13 @@ deployed last from the exact clean merged `main` SHA. Email sending remains abse
     owner-authorized read-only recovery prompt.
 14. Worker-version JSON is temporary sensitive operational metadata. Keep it only in
     `R0_1B_VERSION_DIR`, never print the complete JSON, never copy it into the checkout
-    and never commit it. The sourced lifecycle helper cleans it on pre-mutation failure
-    and successful closure, preserves it after post-mutation failure, restores the
-    prior umask and preserves the original process exit status.
+    and never commit it. The exit handler captures the original exit status. If the
+    original exit status is nonzero and remote mutation has started, preserve evidence
+    regardless of the success flag. If the original exit status is zero and cutover
+    succeeded, clean evidence. A pre-mutation failure cleans evidence. If cleanup fails
+    after successful closure under `set -e`, preserve the still-secured evidence and
+    classify the nonzero exit once. Every path must preserve the original exit status
+    and restore the prior umask.
 
 Wrangler command semantics must be checked against the pinned version before use.
 `wrangler deploy --dry-run` compiles without upload, D1 migration commands maintain a
@@ -70,6 +74,30 @@ ledger and Time Travel restore is destructive. References:
 [D1 commands](https://developers.cloudflare.com/d1/wrangler-commands/),
 [D1 Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/), and
 [Pages deploy](https://developers.cloudflare.com/workers/wrangler/commands/pages/).
+
+## Execution process contract
+
+Start exactly one private, long-lived `/bin/bash` in a persistent PTY/session before
+Task 1. Tasks 1–10 are continuations in that same process; it owns the current working
+directory, variables, readonly PR/version identifiers, restrictive umask and `EXIT`
+trap until Task 10 closes. Never execute the fenced commands as standalone Markdown
+blocks or as separate shell invocations.
+
+Task 1 asserts the required session state immediately after initializing it. Every
+Task from 2 through 10 begins by asserting that required session state before doing
+any task work.
+
+The executor must prove it can retain and write to that same shell session before
+Task 1. For Codex, this means one persistent PTY/session ID reused for every command.
+If that facility is unavailable, stop before the first mutation and return exactly:
+
+```text
+R0_1B_PERSISTENT_SHELL_UNAVAILABLE
+```
+
+If the shell dies after any mutation, preserve the private evidence directory, do not
+re-deploy, and start only a separate owner-authorized read-only recovery. Never resume
+the cutover in a new process because its process-local trap and readonly state are gone.
 
 ## Task 1: Verify owner gates and establish the clean merged-main release root
 
@@ -96,7 +124,12 @@ Run read-only checks first:
 
 ```bash
 set -euo pipefail
-gh repo view thongphan23/thongphan-web --json defaultBranchRef
+readonly R0_1B_DOCS_PR=1
+readonly R0_1B_IMPL_PR=2
+readonly R0_1B_REPOSITORY=thongphan23/thongphan-web
+readonly R0_1B_EXPECTED_DEFAULT_BRANCH=main
+
+gh repo view "$R0_1B_REPOSITORY" --json defaultBranchRef
 gh pr view "$R0_1B_DOCS_PR" --json state,mergedAt,baseRefName,url
 gh pr view "$R0_1B_IMPL_PR" --json state,mergedAt,baseRefName,url
 
@@ -112,17 +145,26 @@ test ! -L "$r0_1b_release_dir"
 test -O "$r0_1b_release_dir"
 test -z "$(find "$r0_1b_release_dir" -mindepth 1 -maxdepth 1 -print -quit)"
 chmod 700 "$r0_1b_release_dir"
-git clone --branch main --single-branch https://github.com/thongphan23/thongphan-web.git "$r0_1b_release_dir"
+git clone --branch "$R0_1B_EXPECTED_DEFAULT_BRANCH" --single-branch \
+  "https://github.com/${R0_1B_REPOSITORY}.git" "$r0_1b_release_dir"
 cd "$r0_1b_release_dir"
-git fetch origin main
+git fetch origin "$R0_1B_EXPECTED_DEFAULT_BRANCH"
 test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
 test -z "$(git status --porcelain)"
 R0_1B_MAIN_SHA=$(git rev-parse HEAD)
+readonly R0_1B_MAIN_SHA
 git show --no-patch --format='%H %cI' "$R0_1B_MAIN_SHA"
 
 source scripts/r0-1b-version-evidence-lifecycle.sh
 r0_1b_version_evidence_init /Users/rio/r0-1b-worker-versions
 r0_1b_install_exit_trap
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 ```
 
 The GitHub result must name `main`; both PRs must be merged with base `main`.
@@ -152,7 +194,14 @@ the test first and prove it rejects wrong status, missing disabled marker, body
 overflow, timeout, unexpected POST, queue growth, PII output and broad cleanup.
 
 ```bash
-node --test scripts/r0-1-production-smoke.test.mjs
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+node --import tsx --test scripts/r0-1-production-smoke.test.mjs
 ```
 
 If the test or runner is absent, do not create it on the release checkout. Stop and
@@ -163,6 +212,7 @@ return to a new R0.1A implementation PR.
 ```bash
 npm ci
 npm run test:r0-1b-version-evidence-lifecycle
+npm run test:r0-1b-synthetic-identity
 npm run test:r0-1b-production-plan-contract
 npm run test:r0-1-worker-version-delta
 npm run test:r0-1-worker-version-command-contract
@@ -201,17 +251,46 @@ implementation PR and repeat from a fresh merged-main checkout after merge.
 ### Read-only commands
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 npx wrangler --version
 npx wrangler versions list --help
 npx wrangler versions view 00000000-0000-0000-0000-000000000000 --help
-npx wrangler whoami
-npx wrangler deployments list --config wrangler.embed.toml
-npx wrangler deployments list --config wrangler.chat.toml
-npx wrangler deployments list --config wrangler.signup.toml
-npx wrangler d1 info thongphan-db --config wrangler.brain2-email.toml --json
+npx wrangler deployments list --config wrangler.embed.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-embed-deployments.json"
+npx wrangler versions list --config wrangler.embed.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-embed-versions.json"
+npx wrangler deployments list --config wrangler.chat.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-chat-deployments.json"
+npx wrangler versions list --config wrangler.chat.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-chat-versions.json"
+npx wrangler deployments list --config wrangler.signup.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-signup-deployments.json"
+npx wrangler versions list --config wrangler.signup.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-signup-versions.json"
+npx wrangler d1 info thongphan-db --config wrangler.brain2-email.toml --json \
+  > "$R0_1B_VERSION_DIR/control-plane-d1-info.json"
+npx wrangler d1 migrations list thongphan-db --remote \
+  --config wrangler.brain2-email.toml \
+  > "$R0_1B_VERSION_DIR/control-plane-d1-migrations.json"
+chmod 600 "$R0_1B_VERSION_DIR"/control-plane-*.json
+for r0_1b_control_file in "$R0_1B_VERSION_DIR"/control-plane-*.json; do
+  test -s "$r0_1b_control_file"
+  test ! -L "$r0_1b_control_file"
+done
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 ```
+
+These resource-specific operations prove authentication and resource access without
+retrieving user identity or membership output. Never print or copy the complete
+control-plane files. The `.json` suffix is mandatory even for the migrations command,
+whose pinned CLI output is text; retain only a safe pass/fail summary.
 
 ### Stop conditions
 
@@ -231,6 +310,13 @@ authorization repair.
 Recheck clean-main invariants, then deploy only the embed Worker:
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
@@ -292,7 +378,16 @@ This deploy replaces the existing production Worker in place under the exact ide
 identity.
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+test -n "$R0_1B_EMBED_VERSION_ID"
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
+test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 rg -N -x 'name = "thongphan-chat-api"' wrangler.chat.toml
 rg -N -x 'compatibility_date = "2026-07-27"' wrangler.chat.toml
@@ -352,7 +447,16 @@ restore the public AI chat or embed implementation.
 ### Remote mutation A — signup Worker
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+test -n "$R0_1B_CHAT_VERSION_ID"
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
+test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 rg -N -x 'name = "thongphan-signup-api"' wrangler.signup.toml
 rg -N -x 'compatibility_date = "2025-01-01"' wrangler.signup.toml
@@ -379,6 +483,14 @@ npx wrangler versions view "$R0_1B_SIGNUP_VERSION_ID" \
   --config wrangler.signup.toml --json > "$R0_1B_SIGNUP_VIEW"
 chmod 600 "$R0_1B_SIGNUP_VIEW"
 test -s "$R0_1B_SIGNUP_VIEW"
+
+R0_1_SMOKE_INPUT_FILE=$(node scripts/r0-1b-synthetic-identity.mjs \
+  --directory "$R0_1B_VERSION_DIR")
+test -n "$R0_1_SMOKE_INPUT_FILE"
+test -f "$R0_1_SMOKE_INPUT_FILE"
+test ! -L "$R0_1_SMOKE_INPUT_FILE"
+readonly R0_1_SMOKE_INPUT_FILE
+export R0_1_SMOKE_INPUT_FILE
 ```
 
 Inspect the secured view file without printing it. It must show `.id` equal to
@@ -396,6 +508,8 @@ never place it in a command argument, report or log.
 
 ```bash
 npx wrangler d1 migrations list thongphan-db --remote --config wrangler.brain2-email.toml
+test -n "${R0_1_SMOKE_INPUT_FILE:-}"
+test -f "$R0_1_SMOKE_INPUT_FILE"
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --controlled-signup
 ```
 
@@ -433,6 +547,13 @@ identified synthetic signup after owner review.
 Only after controlled-signup cleanup succeeds:
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 npx wrangler d1 time-travel info thongphan-db --config wrangler.brain2-email.toml --json
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
   "SELECT campaign_version,status,COUNT(*) AS row_count FROM email_queue GROUP BY campaign_version,status ORDER BY campaign_version,status; SELECT COUNT(*) AS email_log_count FROM email_logs;"
@@ -460,7 +581,15 @@ drift through a reviewed plan.
 ### Remote mutation
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
+test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 npx wrangler d1 migrations apply thongphan-db --remote --config wrangler.brain2-email.toml
 npx wrangler d1 execute thongphan-db --remote --config wrangler.brain2-email.toml --command \
@@ -489,11 +618,20 @@ Time Travel restore is destructive; otherwise keep email absent and fix forward.
 ### Local build proof
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
 test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
 test -z "$(git status --porcelain)"
 npm run build
 test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"
+test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"
+test -z "$(git status --porcelain)"
 ```
 
 ### Remote mutation
@@ -523,6 +661,16 @@ reviewed fix-forward main commit, and redeploy its exact clean SHA.
 ### Read-only verification
 
 ```bash
+test "$R0_1B_EXIT_TRAP_INSTALLED" = 1
+test "$R0_1B_EVIDENCE_INITIALIZED" = 1
+test -n "$R0_1B_MAIN_SHA"
+test -n "$R0_1B_VERSION_DIR"
+test -d "$R0_1B_VERSION_DIR"
+test ! -L "$R0_1B_VERSION_DIR"
+trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'
+test -n "$R0_1B_EMBED_VERSION_ID"
+test -n "$R0_1B_CHAT_VERSION_ID"
+test -n "$R0_1B_SIGNUP_VERSION_ID"
 node scripts/r0-1-production-smoke.mjs --origin https://thongphan.com --read-only
 npx wrangler versions view "$R0_1B_EMBED_VERSION_ID" \
   --config wrangler.embed.toml --json > "$R0_1B_VERSION_DIR/embed-final-view.json"

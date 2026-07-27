@@ -4,7 +4,12 @@ Last updated: 2026-07-27
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
-- **R0.1A READY FOR IMPLEMENTATION REVIEW.** Draft PR #2 now records the
+- **R0.1A BLOCKED — FINAL EXECUTION CONTRACT CORRECTION IN PROGRESS.** Regression
+  tests now reproduce the persistent-Bash, immutable initialization, synthetic
+  identity, redacted control-plane evidence, post-build cleanliness and
+  cleanup-failure lifecycle gaps. Draft PR #2 must not return to implementation
+  review until the focused and full local gates pass. Production remains unchanged.
+- The earlier Draft PR #2 baseline records the
   owner-approved Candidate A `invalid` and Candidate B
   `legacy_orphaned_not_present_in_active_inventory` dispositions without a live-token
   mutation gate. The release checkout is owner-controlled outside `/tmp`, and the

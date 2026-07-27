@@ -22,6 +22,23 @@ const documents = Object.fromEntries(
 const authorityCorpus = Object.values(documents).join("\n");
 const normalizedAuthorityCorpus = authorityCorpus.replace(/\s+/g, " ");
 
+function taskSection(number) {
+  const start = documents.cutover.indexOf(`## Task ${number}:`);
+  const end = documents.cutover.indexOf(`## Task ${number + 1}:`, start + 1);
+  assert.ok(start >= 0, `Task ${number} missing`);
+  return documents.cutover.slice(start, end < 0 ? undefined : end);
+}
+
+const requiredSessionAssertions = [
+  'test "$R0_1B_EXIT_TRAP_INSTALLED" = 1',
+  'test "$R0_1B_EVIDENCE_INITIALIZED" = 1',
+  'test -n "$R0_1B_MAIN_SHA"',
+  'test -n "$R0_1B_VERSION_DIR"',
+  'test -d "$R0_1B_VERSION_DIR"',
+  'test ! -L "$R0_1B_VERSION_DIR"',
+  "trap -p EXIT | grep -F '_r0_1b_version_evidence_exit_handler'",
+];
+
 test("credential authority matches the owner-approved invalid/orphaned disposition", () => {
   assert.doesNotMatch(
     authorityCorpus,
@@ -129,4 +146,179 @@ test("local tests contain no executable R0.1B production command", () => {
     "node:url",
     "node:test",
   ]);
+});
+
+test("Tasks 1-10 require one persistent private Bash process", () => {
+  const cutover = documents.cutover;
+  const contractIndex = cutover.indexOf("## Execution process contract");
+  const taskOneIndex = cutover.indexOf("## Task 1:");
+
+  assert.ok(contractIndex >= 0 && contractIndex < taskOneIndex);
+  assert.match(
+    cutover.slice(contractIndex, taskOneIndex),
+    /exactly one private, long-lived `\/bin\/bash`/i,
+  );
+  assert.match(
+    cutover.slice(contractIndex, taskOneIndex),
+    /persistent PTY\/session/i,
+  );
+  assert.match(
+    cutover.slice(contractIndex, taskOneIndex),
+    /Tasks 1–10.{0,120}same process/is,
+  );
+  assert.match(
+    cutover.slice(contractIndex, taskOneIndex),
+    /Never execute.{0,100}standalone Markdown\s+blocks/is,
+  );
+  assert.match(
+    cutover.slice(contractIndex, taskOneIndex),
+    /R0_1B_PERSISTENT_SHELL_UNAVAILABLE/,
+  );
+  assert.match(cutover.slice(contractIndex, taskOneIndex), /read-only recovery/i);
+});
+
+test("Task 1 initializes immutable identifiers immediately after strict mode", () => {
+  const taskOne = taskSection(1);
+  const initialization = [
+    "set -euo pipefail",
+    "readonly R0_1B_DOCS_PR=1",
+    "readonly R0_1B_IMPL_PR=2",
+    "readonly R0_1B_REPOSITORY=thongphan23/thongphan-web",
+    "readonly R0_1B_EXPECTED_DEFAULT_BRANCH=main",
+  ].join("\n");
+
+  assert.ok(taskOne.includes(initialization));
+  assert.ok(
+    taskOne.indexOf("readonly R0_1B_DOCS_PR=1") <
+      taskOne.indexOf('gh pr view "$R0_1B_DOCS_PR"'),
+  );
+  assert.ok(
+    taskOne.indexOf("readonly R0_1B_IMPL_PR=2") <
+      taskOne.indexOf('gh pr view "$R0_1B_IMPL_PR"'),
+  );
+  assert.match(
+    taskOne,
+    /gh repo view "\$R0_1B_REPOSITORY" --json defaultBranchRef/,
+  );
+  let stateIndex = taskOne.indexOf("r0_1b_install_exit_trap");
+  for (const assertion of requiredSessionAssertions) {
+    const index = taskOne.indexOf(assertion, stateIndex);
+    assert.ok(index > stateIndex, `Task 1 missing or misorders: ${assertion}`);
+    stateIndex = index;
+  }
+});
+
+test("every post-initialization task begins with persistent-session assertions", () => {
+  for (const taskNumber of [2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+    const section = taskSection(taskNumber);
+    const firstFenceStart = section.indexOf("```bash");
+    const firstFenceEnd = section.indexOf("```", firstFenceStart + 7);
+    const firstBlock = section.slice(firstFenceStart, firstFenceEnd);
+    let previous = -1;
+    for (const assertion of requiredSessionAssertions) {
+      const index = firstBlock.indexOf(assertion);
+      assert.ok(
+        index > previous,
+        `Task ${taskNumber} missing or misorders: ${assertion}`,
+      );
+      previous = index;
+    }
+  }
+
+  assert.match(taskSection(5), /test -n "\$R0_1B_EMBED_VERSION_ID"/);
+  assert.match(taskSection(6), /test -n "\$R0_1B_CHAT_VERSION_ID"/);
+  for (const id of ["EMBED", "CHAT", "SIGNUP"]) {
+    assert.match(
+      taskSection(10),
+      new RegExp(`test -n "\\$R0_1B_${id}_VERSION_ID"`),
+    );
+  }
+});
+
+test("controlled signup receives one generated private identity file", () => {
+  const taskSix = taskSection(6);
+  const generatorIndex = taskSix.indexOf(
+    "node scripts/r0-1b-synthetic-identity.mjs",
+  );
+  const exportIndex = taskSix.indexOf("export R0_1_SMOKE_INPUT_FILE");
+  const controlledSignupIndex = taskSix.indexOf("--controlled-signup");
+
+  assert.ok(generatorIndex >= 0 && generatorIndex < exportIndex);
+  assert.ok(exportIndex < controlledSignupIndex);
+  assert.match(taskSix, /--directory "\$R0_1B_VERSION_DIR"/);
+  assert.match(taskSix, /test -f "\$R0_1_SMOKE_INPUT_FILE"/);
+  assert.match(taskSix, /test ! -L "\$R0_1_SMOKE_INPUT_FILE"/);
+  assert.match(taskSix, /readonly R0_1_SMOKE_INPUT_FILE/);
+  assert.match(
+    taskSix.slice(exportIndex, controlledSignupIndex),
+    /test -n "\$\{R0_1_SMOKE_INPUT_FILE:-\}"[\s\S]*test -f "\$R0_1_SMOKE_INPUT_FILE"/,
+  );
+});
+
+test("Task 2 smoke contract uses the repository TypeScript loader", () => {
+  assert.match(
+    taskSection(2),
+    /node --import tsx --test scripts\/r0-1-production-smoke\.test\.mjs/,
+  );
+});
+
+test("control-plane preflight avoids identity output and stores private evidence", () => {
+  const taskThree = taskSection(3);
+  assert.doesNotMatch(documents.cutover, /^\s*npx wrangler whoami(?:\s|$)/m);
+  assert.doesNotMatch(documents.cutover, /wrangler auth token/i);
+  assert.match(
+    taskThree,
+    /\$R0_1B_VERSION_DIR\/control-plane-[^"\s]+\.json/g,
+  );
+  assert.match(
+    taskThree,
+    /chmod 600 "\$R0_1B_VERSION_DIR"\/control-plane-\*\.json/,
+  );
+  assert.match(
+    taskThree,
+    /Never print or copy the complete\s+control-plane files/i,
+  );
+});
+
+test("Pages deploy is preceded by complete post-build source assertions", () => {
+  const taskNine = taskSection(9);
+  const buildIndex = taskNine.indexOf("npm run build");
+  const headIndex = taskNine.indexOf(
+    'test "$(git rev-parse HEAD)" = "$R0_1B_MAIN_SHA"',
+    buildIndex,
+  );
+  const originIndex = taskNine.indexOf(
+    'test "$(git rev-parse origin/main)" = "$R0_1B_MAIN_SHA"',
+    headIndex,
+  );
+  const cleanIndex = taskNine.indexOf(
+    'test -z "$(git status --porcelain)"',
+    originIndex,
+  );
+  const deployIndex = taskNine.indexOf("npx wrangler pages deploy", cleanIndex);
+
+  assert.ok(buildIndex >= 0 && buildIndex < headIndex);
+  assert.ok(headIndex < originIndex && originIndex < cleanIndex);
+  assert.ok(cleanIndex < deployIndex);
+});
+
+test("exit policy classifies cleanup failures by original mutation state", () => {
+  const normalizedCutover = documents.cutover.replace(/\s+/g, " ");
+  assert.match(
+    normalizedCutover,
+    /original exit status.{0,180}nonzero.{0,180}remote mutation.{0,180}preserve/i,
+  );
+  assert.match(
+    normalizedCutover,
+    /original exit status.{0,180}zero.{0,180}cutover succeeded.{0,180}clean/i,
+  );
+  assert.match(
+    normalizedCutover,
+    /pre-mutation failure.{0,180}clean/i,
+  );
+  assert.match(
+    normalizedCutover,
+    /cleanup fails after successful closure.{0,220}preserve/i,
+  );
+  assert.match(normalizedCutover, /preserve the original exit status/i);
 });

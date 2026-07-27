@@ -1,6 +1,39 @@
 # R0.1 Security Remediation Implementation Report
 
-Status: R0.1A READY FOR IMPLEMENTATION REVIEW
+Status: R0.1A BLOCKED — FINAL EXECUTION CONTRACT CORRECTION IN PROGRESS
+
+## R0.1A final production execution contract correction
+
+Status: BLOCKED — regression tests now reproduce the persistent-process,
+initialization, synthetic-identity, control-plane-output, post-build cleanliness and
+post-success cleanup-failure gaps. Production cutover remains unstarted.
+
+### Verified root causes and RED evidence
+
+- Tasks 1–10 were written as independent Markdown shell blocks even though their
+  variables, readonly version IDs, restrictive umask and `EXIT` trap are
+  process-local. The runbook did not require one persistent Bash process.
+- `R0_1B_DOCS_PR` and `R0_1B_IMPL_PR` were referenced under `set -u` without an
+  initialization contract.
+- The controlled-signup command had no repository-owned creation, export or cleanup
+  path for `R0_1_SMOKE_INPUT_FILE`.
+- Task 3 ran `wrangler whoami`, whose pinned `4.110.0` help confirms it retrieves user
+  information and can expose membership metadata. Resource-specific read-only checks
+  are sufficient for this cutover.
+- Task 9 checked only `HEAD` after build; it did not re-prove `origin/main` equality
+  and empty porcelain before Pages deployment.
+- The evidence exit handler selected cleanup whenever success had been marked. Under
+  `set -e`, a later cleanup failure therefore exited nonzero without preserving or
+  classifying the evidence path.
+- Synthetic identity RED: `5/8` tests passed and `3/8` failed because the helper did
+  not exist.
+- Evidence lifecycle RED: `14/15` passed and the cleanup-obstruction regression
+  failed because stderr contained no preservation classification.
+- Production-plan contract RED: existing `5/5` checks remained green; all `7` new
+  execution-contract checks failed against the stale runbook.
+
+This status must return to review-ready only after focused GREEN, full local release
+verification, a clean exact-head gate and canonical-worktree preservation checks pass.
 
 ## R0.1A production runbook authority and failure-safety correction
 

@@ -36,7 +36,9 @@ _r0_1b_evidence_directory_is_safe() {
 _r0_1b_secure_preserved_evidence() {
   _r0_1b_evidence_directory_is_safe || return 1
   chmod 700 "$R0_1B_VERSION_DIR" 2>/dev/null || return 1
-  find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
+  find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type d \
+    -exec chmod 700 {} + 2>/dev/null || return 1
+  find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f \
     -exec chmod 600 {} + 2>/dev/null || return 1
 }
 
@@ -123,9 +125,16 @@ r0_1b_cleanup_version_evidence() {
   local cleanup_status=0
   if test -n "${R0_1B_VERSION_DIR:-}" && test -e "$R0_1B_VERSION_DIR"; then
     if _r0_1b_evidence_directory_is_safe; then
-      find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
-        -exec rm -f {} + 2>/dev/null || cleanup_status=1
-      rmdir "$R0_1B_VERSION_DIR" 2>/dev/null || cleanup_status=1
+      if test -n "$(find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 \
+        \( ! -type f -o ! -name '*.json' \) -print -quit 2>/dev/null)"; then
+        cleanup_status=1
+      else
+        find "$R0_1B_VERSION_DIR" -mindepth 1 -maxdepth 1 -type f -name '*.json' \
+          -exec rm -f {} + 2>/dev/null || cleanup_status=1
+        if test "$cleanup_status" = 0; then
+          rmdir "$R0_1B_VERSION_DIR" 2>/dev/null || cleanup_status=1
+        fi
+      fi
     else
       cleanup_status=1
     fi
@@ -137,19 +146,35 @@ r0_1b_cleanup_version_evidence() {
 
 _r0_1b_version_evidence_exit_handler() {
   local original_status=$?
+  local handler_status=0
   trap - EXIT
   R0_1B_EXIT_TRAP_INSTALLED=0
 
   if test "${R0_1B_REMOTE_MUTATION_STARTED:-0}" = 1 &&
-    test "${R0_1B_CUTOVER_SUCCEEDED:-0}" != 1; then
+    { test "$original_status" -ne 0 ||
+      test "${R0_1B_CUTOVER_SUCCEEDED:-0}" != 1; }; then
     _r0_1b_secure_preserved_evidence >/dev/null 2>&1 || true
     _r0_1b_restore_previous_umask >/dev/null 2>&1 || true
     printf 'R0_1B_VERSION_EVIDENCE_PRESERVED=%s\n' "$R0_1B_VERSION_DIR" >&2
+  elif test "$original_status" -eq 0 &&
+    test "${R0_1B_CUTOVER_SUCCEEDED:-0}" = 1; then
+    if ! r0_1b_cleanup_version_evidence >/dev/null 2>&1; then
+      _r0_1b_secure_preserved_evidence >/dev/null 2>&1 || true
+      _r0_1b_restore_previous_umask >/dev/null 2>&1 || true
+      printf 'R0_1B_VERSION_EVIDENCE_PRESERVED=%s\n' "$R0_1B_VERSION_DIR" >&2
+      handler_status=1
+    fi
   else
-    r0_1b_cleanup_version_evidence >/dev/null 2>&1 || true
+    r0_1b_cleanup_version_evidence >/dev/null 2>&1 || handler_status=$?
     _r0_1b_restore_previous_umask >/dev/null 2>&1 || true
   fi
 
+  if test "$original_status" -ne 0; then
+    exit "$original_status"
+  fi
+  if test "$handler_status" -ne 0; then
+    exit "$handler_status"
+  fi
   exit "$original_status"
 }
 
