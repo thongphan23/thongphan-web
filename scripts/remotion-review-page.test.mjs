@@ -9,9 +9,9 @@ const mediaRoot = new URL(
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 
 const videos = [
-  'soul-web.mp4',
-  'walter-mitty-web.mp4',
-  'whiplash-web.mp4',
+  'soul-silent-first-v2-web.mp4',
+  'walter-mitty-silent-first-v2-web.mp4',
+  'whiplash-silent-first-v2-web.mp4',
 ]
 
 test('review route is private-by-discovery and exposes exactly three film variants', async () => {
@@ -27,6 +27,8 @@ test('review route is private-by-discovery and exposes exactly three film varian
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
+  assert.equal((gallery.match(/silent-first-v2-web\.mp4/g) ?? []).length, 3)
+  assert.doesNotMatch(gallery, /media\/(?:soul|walter-mitty|whiplash)-web\.mp4/)
   assert.doesNotMatch(gallery, /autoPlay/)
 })
 
