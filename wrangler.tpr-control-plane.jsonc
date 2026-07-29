@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "thongphan-tpr-control-plane",
+  "main": "workers/tpr-control-plane/index.ts",
+  "compatibility_date": "2026-07-29",
+  "routes": [
+    { "pattern": "thongphan.com/api/tpr/*", "zone_name": "thongphan.com" },
+    { "pattern": "www.thongphan.com/api/tpr/*", "zone_name": "thongphan.com" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "TPR_DB",
+      "database_name": "thongphan-tpr-control-plane",
+      "database_id": "304a3b49-bf29-4390-8009-135af5dc1701",
+      "migrations_dir": "workers/tpr-migrations"
+    }
+  ]
+}

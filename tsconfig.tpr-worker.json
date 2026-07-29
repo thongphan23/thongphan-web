@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": []
+  },
+  "include": [
+    "lib/tpr/**/*.ts",
+    "workers/tpr-control-plane/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

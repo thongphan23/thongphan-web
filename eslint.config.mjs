@@ -35,6 +35,7 @@ export default defineConfig([
       'components/brain2/Brain2ProgressClient.tsx',
       'components/brain2/Brain2ProtectedLesson.tsx',
       'components/library/ReadingToolbar.tsx',
+      'components/tpr/TprConsole.tsx',
     ],
     rules: {
       // These effects intentionally hydrate browser storage or bootstrap an external API state.
