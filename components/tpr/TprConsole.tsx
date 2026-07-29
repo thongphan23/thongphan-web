@@ -218,8 +218,7 @@ export default function TprConsole() {
           <div className={styles.topActions}>
             <label className={styles.search}>
               <Search aria-hidden="true" />
-              <span className="sr-only">Tìm trong mục hiện tại</span>
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Tìm run, phim, tài liệu…" />
+              <input aria-label="Tìm trong mục hiện tại" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Tìm run, phim, tài liệu…" />
               {query && <button type="button" onClick={() => setQuery('')} title="Xóa tìm kiếm"><X aria-hidden="true" /></button>}
             </label>
             <button className={styles.iconButton} type="button" onClick={() => void load()} title="Làm mới" disabled={refreshing}>
