@@ -1,0 +1,75 @@
+{
+  "schema": "tpr.published_run_evidence_index.v1",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "status": "owner_review_ready",
+  "created_at": "2026-07-30T00:02:00+07:00",
+  "stages": [
+    {
+      "stage": "01_voice_and_transcript",
+      "artifacts": [
+        "audio-intake.json",
+        "transcript-approved.json",
+        "voice-timeline.json",
+        "subtitles.json"
+      ]
+    },
+    {
+      "stage": "02_intent_viewer_and_meaning",
+      "artifacts": [
+        "communication-intent.json",
+        "viewer-model.json",
+        "meaning-beat-design.json"
+      ]
+    },
+    {
+      "stage": "03_taste_feedback",
+      "artifacts": [
+        "owner-feedback-film-source-model.json"
+      ]
+    },
+    {
+      "stage": "04_film_candidate_decision",
+      "artifacts": [
+        "film-candidate-matrix.json",
+        "film-source-shortlist.json",
+        "film-source-portfolio.json",
+        "film-rotation-clearance.json"
+      ]
+    },
+    {
+      "stage": "05_media_observation",
+      "artifacts": [
+        "clipcafe-download-report.json",
+        "visual-observation-review.json"
+      ]
+    },
+    {
+      "stage": "06_casting_and_locked_edit",
+      "artifacts": [
+        "devil-wears-prada-source-casting-board.json",
+        "devil-wears-prada-rhythm-plan.json",
+        "devil-wears-prada-locked-edit-plan.json",
+        "truman-show-source-casting-board.json",
+        "truman-show-rhythm-plan.json",
+        "truman-show-locked-edit-plan.json",
+        "inside-out-source-casting-board.json",
+        "inside-out-rhythm-plan.json",
+        "inside-out-locked-edit-plan.json"
+      ]
+    },
+    {
+      "stage": "07_render_and_qa",
+      "artifacts": [
+        "three-variant-comparison.json",
+        "final-render-receipts.json",
+        "film-source-model-qa-report.md"
+      ]
+    }
+  ],
+  "owner_review_dimensions": [
+    "understand_without_film_context",
+    "feel_emotional_curve",
+    "remember_core_message",
+    "believe_visual_evidence"
+  ]
+}

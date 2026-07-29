@@ -1,0 +1,47 @@
+{
+  "schema": "tpr.film_candidate_matrix.v1",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "decision_status": "metadata_assessed_visual_confirmation_pending",
+  "selected_for_visual_observation": [
+    {
+      "film": "The Devil Wears Prada",
+      "why_vi": "Công sở, tham vọng, phần thưởng, đánh đổi quan hệ và lựa chọn rời đi cùng nằm trên một tuyến Andy.",
+      "risk_vi": "Một số cảnh thời trang chỉ đẹp nhưng không tự chứng minh ý; phải loại sau contact sheet."
+    },
+    {
+      "film": "The Truman Show",
+      "why_vi": "Tuyến thức tỉnh, nhận ra thế giới áp đặt, đối đầu nỗi sợ và bước ra có thể kể gần như hoàn toàn bằng hành động.",
+      "risk_vi": "Khác đời sống công sở; cần dùng hành động phổ quát và tránh cảnh control-room chỉ có hội thoại."
+    },
+    {
+      "film": "Inside Out",
+      "why_vi": "Biến trạng thái bên trong, ký ức, niềm vui và nỗi buồn thành vật thể và hành động dễ đọc như hướng Soul.",
+      "risk_vi": "Hoạt hình xa bối cảnh người lớn; chỉ giữ cảnh làm khái niệm rõ hơn live action."
+    }
+  ],
+  "rejected_before_download": [
+    {
+      "film": "The Intern",
+      "evidence": "evidence/clipcafe-search/the-intern-movie-only.json",
+      "reason_vi": "Gần đời sống văn phòng và có 83 hit đúng phim, nhưng xung đột lệch gốc, thủ đoạn và hậu quả chưa đủ mạnh để phủ cao trào B08-B10."
+    },
+    {
+      "film": "Office Space",
+      "evidence": "evidence/clipcafe-search/office-space-movie-only.json",
+      "reason_vi": "Bối cảnh rất gần viewer nhưng 53 hit đúng phim thiên về châm biếm; khó giữ trục an nhiên-hòa điệu mà không biến bài thành chống công việc."
+    },
+    {
+      "film": "The Pursuit of Happyness",
+      "evidence": "evidence/clipcafe-search/pursuit-of-happyness-movie-only.json",
+      "reason_vi": "Chỉ có 12 hit đúng phim trong lượt hiện tại và tuyến chịu đựng để thành công dễ củng cố niềm tin phải đau khổ mới xứng đáng, trái reframe của voice."
+    }
+  ],
+  "rotation_blocked_for_this_batch": [
+    "Soul",
+    "The Secret Life of Walter Mitty",
+    "Whiplash",
+    "Fight Club",
+    "Forrest Gump",
+    "The Shawshank Redemption"
+  ]
+}

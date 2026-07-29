@@ -1,0 +1,153 @@
+{
+  "schema": "tpr.meaning_beat_design.v1",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "revision": 1,
+  "status": "OWNER_AUTHORIZED_FULL_EXECUTION",
+  "global_design": {
+    "video_thesis_vi": "Thành công bên ngoài chỉ bền khi cách ta theo đuổi nó hòa điệu với sự tỉnh thức và an nhiên bên trong.",
+    "emotional_arc_vi": "Tò mò -> định tâm -> nhận diện thành tích -> sáng rõ -> mở ngã rẽ -> nối cơ chế -> đỉnh sáng -> dồn áp lực -> hụt xuống -> trầm lại.",
+    "pacing_policy_vi": "Shot dài cho nhận diện và phản tư; burst ngắn chỉ sau khi nhân vật, không gian và xung đột đã được thiết lập."
+  },
+  "beats": [
+    {
+      "beat_id": "B01",
+      "transcript_segment_id": "T001",
+      "time_range_ms": {
+        "start_ms": 2180,
+        "end_ms": 8680
+      },
+      "voice_text_vi": "Điều quan trọng nhất mà bạn cần nhận thức là: đời bạn có một mục đích bên trong và một mục đích bên ngoài.",
+      "rhetorical_job": "hook",
+      "viewer_understanding_goal_vi": "Nhận ra đời sống có hai lớp mục đích cùng tồn tại.",
+      "viewer_feeling_goal_vi": "Tò mò và tự soi chiếu.",
+      "viewer_memory_goal_vi": "Hai lớp: bên trong và bên ngoài.",
+      "visible_proof_policy_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau."
+    },
+    {
+      "beat_id": "B02",
+      "transcript_segment_id": "T002",
+      "time_range_ms": {
+        "start_ms": 8880,
+        "end_ms": 14860
+      },
+      "voice_text_vi": "Mục đích bên trong là mục đích chính, và mục đích này có liên quan đến trạng thái an nhiên tự tại của bạn.",
+      "rhetorical_job": "claim",
+      "viewer_understanding_goal_vi": "Hiểu trạng thái an nhiên bên trong là lớp chính.",
+      "viewer_feeling_goal_vi": "Lắng xuống và được định tâm.",
+      "viewer_memory_goal_vi": "Bên trong là chính.",
+      "visible_proof_policy_vi": "Giữ shot đủ lâu để đọc nét mặt và sự thay đổi trạng thái."
+    },
+    {
+      "beat_id": "B03",
+      "transcript_segment_id": "T003",
+      "time_range_ms": {
+        "start_ms": 15360,
+        "end_ms": 18820
+      },
+      "voice_text_vi": "Mục đích bên ngoài dính tới những việc bạn làm, và đây chỉ là mục đích phụ.",
+      "rhetorical_job": "contrast",
+      "viewer_understanding_goal_vi": "Hiểu công việc và thành tựu thuộc lớp bên ngoài.",
+      "viewer_feeling_goal_vi": "Bị chỉnh lại một niềm tin quen thuộc.",
+      "viewer_memory_goal_vi": "Việc làm là phương tiện, không phải lõi.",
+      "visible_proof_policy_vi": "Dùng vật chứng công việc hoặc phần thưởng nhìn thấy được."
+    },
+    {
+      "beat_id": "B04",
+      "transcript_segment_id": "T004",
+      "time_range_ms": {
+        "start_ms": 19280,
+        "end_ms": 22900
+      },
+      "voice_text_vi": "Mục đích bên trong của bạn là tỉnh thức. Chỉ đơn giản có vậy thôi.",
+      "rhetorical_job": "reframe",
+      "viewer_understanding_goal_vi": "Hiểu tỉnh thức là khả năng hiện diện và nhận biết.",
+      "viewer_feeling_goal_vi": "Sáng rõ và nhẹ ra.",
+      "viewer_memory_goal_vi": "Mục đích bên trong là tỉnh thức.",
+      "visible_proof_policy_vi": "Ưu tiên khoảnh khắc nhân vật dừng lại, nhìn thấy hoặc lựa chọn có chủ ý."
+    },
+    {
+      "beat_id": "B05",
+      "transcript_segment_id": "T005",
+      "time_range_ms": {
+        "start_ms": 23340,
+        "end_ms": 28200
+      },
+      "voice_text_vi": "Mục đích bên ngoài của bạn có thể thay đổi theo thời gian và thay đổi rất nhiều ở từng người.",
+      "rhetorical_job": "explain",
+      "viewer_understanding_goal_vi": "Nhận ra mục tiêu bên ngoài thay đổi theo thời gian và từng người.",
+      "viewer_feeling_goal_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_memory_goal_vi": "Mục tiêu có thể đổi.",
+      "visible_proof_policy_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại."
+    },
+    {
+      "beat_id": "B06",
+      "transcript_segment_id": "T006",
+      "time_range_ms": {
+        "start_ms": 28200,
+        "end_ms": 35320
+      },
+      "voice_text_vi": "Tìm ra và sống hòa điệu với nhịp sống của mục đích bên trong là cơ sở để bạn có thể hoàn thành mục đích bên ngoài.",
+      "rhetorical_job": "synthesize",
+      "viewer_understanding_goal_vi": "Hiểu sự hòa điệu bên trong là nền cho hành động bên ngoài.",
+      "viewer_feeling_goal_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_memory_goal_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "visible_proof_policy_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật."
+    },
+    {
+      "beat_id": "B07",
+      "transcript_segment_id": "T007",
+      "time_range_ms": {
+        "start_ms": 35500,
+        "end_ms": 38020
+      },
+      "voice_text_vi": "Đó là cơ sở của những thành công thực sự.",
+      "rhetorical_job": "verdict",
+      "viewer_understanding_goal_vi": "Hiểu thành công thật gồm cả kết quả và cách đạt tới nó.",
+      "viewer_feeling_goal_vi": "Được giải đáp và có một đỉnh sáng ngắn.",
+      "viewer_memory_goal_vi": "Thành công thực sự là sự hòa điệu.",
+      "visible_proof_policy_vi": "Ưu tiên bằng chứng thành công cụ thể: công nhận, hoàn thành, high-five, cúp hoặc thoát ra thành công."
+    },
+    {
+      "beat_id": "B08",
+      "transcript_segment_id": "T008",
+      "time_range_ms": {
+        "start_ms": 38580,
+        "end_ms": 49900
+      },
+      "voice_text_vi": "Nếu những gì bạn làm ở bên ngoài không có sự hòa điệu với nhịp sống của mục đích bên trong, thì muốn đạt được một điều gì đó, bạn sẽ phải mất rất nhiều nỗ lực, phải đấu tranh hay dùng đến âm mưu và thủ đoạn.",
+      "rhetorical_job": "escalate",
+      "viewer_understanding_goal_vi": "Nhìn thấy sự lệch gốc tạo cưỡng ép, đấu tranh và thủ đoạn.",
+      "viewer_feeling_goal_vi": "Căng dần thành cao trào.",
+      "viewer_memory_goal_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "visible_proof_policy_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây."
+    },
+    {
+      "beat_id": "B09",
+      "transcript_segment_id": "T009",
+      "time_range_ms": {
+        "start_ms": 49960,
+        "end_ms": 54080
+      },
+      "voice_text_vi": "Nhưng làm như thế thì bạn không có được niềm vui khi công việc được hoàn tất.",
+      "rhetorical_job": "consequence",
+      "viewer_understanding_goal_vi": "Nhận ra hoàn tất công việc không bảo đảm có niềm vui.",
+      "viewer_feeling_goal_vi": "Hụt xuống sau cao trào.",
+      "viewer_memory_goal_vi": "Đạt được vẫn có thể trống rỗng.",
+      "visible_proof_policy_vi": "Giữ reaction/aftermath dài; không dùng cảnh nhân vật chỉ đang nói."
+    },
+    {
+      "beat_id": "B10",
+      "transcript_segment_id": "T010",
+      "time_range_ms": {
+        "start_ms": 54080,
+        "end_ms": 59160
+      },
+      "voice_text_vi": "Và chắc chắn những kết quả ấy chỉ mang lại khổ đau cho bạn và cho những người chung quanh.",
+      "rhetorical_job": "verdict",
+      "viewer_understanding_goal_vi": "Hiểu kết quả lệch gốc lan khổ đau tới người chung quanh.",
+      "viewer_feeling_goal_vi": "Trầm lại và muốn tự soi.",
+      "viewer_memory_goal_vi": "Kết quả sai gốc lan khổ đau.",
+      "visible_proof_policy_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức."
+    }
+  ]
+}

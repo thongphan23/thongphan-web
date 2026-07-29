@@ -5,39 +5,42 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const variants = [
   {
-    id: 'soul',
-    tab: '01 · Soul',
-    title: 'Khái niệm trở thành hình ảnh',
-    src: '/review/remotion-muc-dich-doi-song/media/soul-silent-first-v2-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/soul-silent-first-v2-poster.jpg',
-    focus: 'Độ rõ của “mục đích bên trong”, tỉnh thức và sự mất kết nối với đời sống.',
-    strength: 'Ngoại hóa trạng thái bên trong rõ nhất; 25 shot dùng 25 nguồn riêng biệt.',
-    risk: 'Chất hoạt hình có thể làm thông điệp bớt gần trải nghiệm trưởng thành.',
+    id: 'devil-wears-prada',
+    tab: '01 · Prada',
+    title: 'Thành tích công sở và cái giá quan hệ',
+    src: '/review/remotion-muc-dich-doi-song/media/devil-wears-prada-film-source-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/devil-wears-prada-film-source-v1-poster.jpg',
+    focus: 'Đối chiếu công việc danh giá, sự biến đổi bản thân và đời sống riêng bị công việc lấn át.',
+    strength: 'Gần nhất với người trẻ văn phòng; thảm đỏ và nhịp công việc thăng tiến là bằng chứng thành công trực tiếp.',
+    risk: 'Các ý trừu tượng đầu video phụ thuộc vào việc đọc được đối trọng văn phòng và quan hệ.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/devil-wears-prada-source-casting-board.json',
   },
   {
-    id: 'walter-mitty',
-    tab: '02 · Mitty',
-    title: 'Một hành trình có hướng và có điểm quay về',
-    src: '/review/remotion-muc-dich-doi-song/media/walter-mitty-silent-first-v2-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/walter-mitty-silent-first-v2-poster.jpg',
-    focus: 'Sự cân bằng giữa người thật, hành động, không gian mở và khoảng lặng.',
-    strength: 'Đi một chiều từ văn phòng đến hành trình, rồi chỉ quay về để thấy hậu quả.',
-    risk: 'Cảnh hành trình vẫn có thể bị đọc như phiêu lưu nếu voice không khóa được ý nội tâm.',
+    id: 'truman-show',
+    tab: '02 · Truman',
+    title: 'Tỉnh thức khỏi một mục đích bị áp đặt',
+    src: '/review/remotion-muc-dich-doi-song/media/truman-show-film-source-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/truman-show-film-source-v1-poster.jpg',
+    focus: 'Theo một tuyến nhân vật từ đời sống hoàn hảo được dàn dựng tới phản kháng và hậu quả lên người chung quanh.',
+    strength: 'Cửa, màn hình, phòng điều khiển và phản ứng cơ thể tạo được mạch thức tỉnh - cưỡng ép - dư âm.',
+    risk: 'Ẩn dụ kiểm soát rất mạnh nhưng bối cảnh ít gần đời sống công sở Việt Nam hơn bản Prada.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/truman-show-source-casting-board.json',
   },
   {
-    id: 'whiplash',
-    tab: '03 · Whiplash',
-    title: 'Cái giá của thành tích lệch gốc',
-    src: '/review/remotion-muc-dich-doi-song/media/whiplash-silent-first-v2-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/whiplash-silent-first-v2-poster.jpg',
-    focus: 'Lực cảm xúc của áp lực, cưỡng ép, kiệt sức và trống rỗng sau thành tích.',
-    strength: 'Talking-head đã nhường chỗ cho nhạc cụ, di chuyển, va chạm, kiệt sức và phản ứng.',
-    risk: 'Phim thể hiện cái giá của thành tích mạnh hơn trạng thái an nhiên.',
+    id: 'inside-out',
+    tab: '03 · Inside Out',
+    title: 'Biến đời sống bên trong thành vật thể',
+    src: '/review/remotion-muc-dich-doi-song/media/inside-out-film-source-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/inside-out-film-source-v1-poster.jpg',
+    focus: 'Trạng thái, ký ức, áp lực và sự mất cân bằng được nhìn thấy trực tiếp qua hệ cảm xúc của nhân vật.',
+    strength: 'Gần cách Soul diễn đạt nhất; giải thưởng, bảng điều khiển, DANGER và Sadness đều đọc được khi tắt tiếng.',
+    risk: 'Độ rõ khái niệm cao nhưng chất hoạt hình có thể tạo khoảng cách tuổi tác với một phần người xem.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/inside-out-source-casting-board.json',
   },
 ] as const
 
 export default function VideoReviewGallery() {
-  const [activeId, setActiveId] = useState<(typeof variants)[number]['id']>('soul')
+  const [activeId, setActiveId] = useState<(typeof variants)[number]['id']>('devil-wears-prada')
   const activeVariant = useMemo(
     () => variants.find((variant) => variant.id === activeId) ?? variants[0],
     [activeId],
@@ -87,6 +90,14 @@ export default function VideoReviewGallery() {
           <div>
             <dt>Rủi ro cần kiểm tra</dt>
             <dd>{activeVariant.risk}</dd>
+          </div>
+          <div>
+            <dt>Bằng chứng casting</dt>
+            <dd>
+              <a className={styles.evidenceLink} href={activeVariant.evidenceHref} target="_blank" rel="noreferrer">
+                Mở casting board
+              </a>
+            </dd>
           </div>
         </dl>
       </div>

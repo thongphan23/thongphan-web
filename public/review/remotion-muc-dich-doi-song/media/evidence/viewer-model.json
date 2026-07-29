@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.0.0",
+  "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "status": "approved",
+  "approval": {
+    "status": "approved",
+    "reviewer_id": "anh-thong",
+    "decision_basis_vi": "Owner xác nhận viewer segment và cho phép dùng nó để ràng buộc lựa chọn hình ảnh.",
+    "approved_sha256": "sha256:beb6359687d2dc01c124af47de00b61294a690653aa5dee27ff416a028b3bb20"
+  },
+  "based_on": [
+    {
+      "path": "content/communication_intent.json",
+      "sha256": "448838912589f9ae0bfc21382e59364cfdb34f3a636f045b44ea159d9ed4290a"
+    }
+  ],
+  "segment": {
+    "segment_key": "urban-vietnam-office-25-35",
+    "label_vi": "Người trẻ 25-35 tuổi làm việc văn phòng tại các thành phố lớn Việt Nam",
+    "age_range": {
+      "min": 25,
+      "max": 35
+    },
+    "country_code": "VN",
+    "city_context": [
+      "Hà Nội",
+      "TP. Hồ Chí Minh",
+      "Đà Nẵng và các đô thị lớn tương đương"
+    ],
+    "occupation_clusters": [
+      "office",
+      "knowledge_work",
+      "creative_work",
+      "management"
+    ],
+    "work_modes": [
+      "onsite",
+      "hybrid",
+      "remote"
+    ],
+    "life_stage_vi": [
+      "Đang xây năng lực nghề nghiệp, thu nhập và vị thế cá nhân",
+      "Đang cân bằng công việc với sức khỏe, quan hệ và đời sống riêng",
+      "Có thể sống một mình, thuê nhà, lập gia đình hoặc nuôi con nhỏ"
+    ],
+    "primary_language": "vi-VN"
+  },
+  "lived_context": {
+    "familiar_environments_vi": [
+      "Văn phòng mở, phòng họp và thang máy tòa nhà",
+      "Bàn làm việc có laptop, màn hình phụ và điện thoại",
+      "Đường phố đông xe vào giờ đi làm và tan sở",
+      "Quán cà phê, cửa hàng tiện lợi và khu ăn trưa gần văn phòng",
+      "Căn hộ hoặc phòng thuê tại khu đô thị",
+      "Không gian làm việc tại nhà trong căn phòng nhỏ"
+    ],
+    "familiar_objects_vi": [
+      "Laptop, màn hình máy tính và tai nghe",
+      "Điện thoại với thông báo công việc và lịch họp",
+      "Thẻ nhân viên, thang máy và cửa kiểm soát",
+      "Cốc cà phê, hộp cơm và đồ ăn giao tận nơi",
+      "Lịch, bảng công việc và tài liệu trình chiếu",
+      "Xe máy, ô tô công nghệ và mũ bảo hiểm"
+    ],
+    "familiar_actions_vi": [
+      "Kiểm tra tin nhắn công việc ngay sau khi thức dậy",
+      "Chuyển liên tục giữa cuộc họp, email và việc cần hoàn thành",
+      "Ở lại văn phòng muộn hoặc tiếp tục làm việc tại nhà",
+      "Nhìn lịch dày đặc rồi trì hoãn một việc khó",
+      "Ăn nhanh trong giờ nghỉ và quay lại màn hình",
+      "Rời văn phòng, đi bộ hoặc ngồi một mình để xả áp lực"
+    ],
+    "recurring_tensions_vi": [
+      "Áp lực deadline, KPI, đánh giá hiệu suất và nguy cơ tụt lại",
+      "Mâu thuẫn giữa thành tựu nghề nghiệp với sức khỏe và thời gian riêng",
+      "So sánh thu nhập, chức danh và tiến độ cuộc sống với bạn bè",
+      "Chi phí sống đô thị, tiền thuê nhà và trách nhiệm gia đình"
+    ],
+    "aspirations_vi": [
+      "Có công việc tốt nhưng vẫn giữ quyền chủ động với thời gian",
+      "Tăng thu nhập và năng lực mà không kiệt sức",
+      "Tìm thấy ý nghĩa, sự bình an và các mối quan hệ thật",
+      "Được công nhận nhưng không phải sống hoàn toàn theo đánh giá bên ngoài"
+    ],
+    "social_reference_points_vi": [
+      "Đồng nghiệp, quản lý, khách hàng và nhóm chat công việc",
+      "Bạn bè cùng tuổi đang thay đổi việc, kết hôn hoặc mua nhà",
+      "Gia đình kỳ vọng sự ổn định và tiến bộ nghề nghiệp",
+      "Nội dung nghề nghiệp, phát triển bản thân và đời sống đô thị trên mạng xã hội"
+    ]
+  },
+  "media_context": {
+    "visual_literacy": "mainstream",
+    "familiar_content_formats": [
+      "YouTube video essay",
+      "video ngắn dọc",
+      "phim điện ảnh và series trực tuyến",
+      "podcast có hình"
+    ],
+    "familiar_genres": [
+      "drama công sở",
+      "hài đời sống",
+      "tâm lý trưởng thành",
+      "thành công và khủng hoảng nghề nghiệp"
+    ],
+    "culturally_close_story_worlds_vi": [
+      "Đời sống đô thị châu Á đương đại với công việc và gia đình",
+      "Môi trường công sở toàn cầu có hành vi dễ nhận ra mà không cần lời thoại",
+      "Câu chuyện về áp lực thành tích, lựa chọn nghề nghiệp và sự cô đơn đô thị"
+    ],
+    "title_familiarity_policy_vi": "Không mặc định người xem đã biết phim hoặc nhân vật; độ quen tên phim chỉ là một tín hiệu có bằng chứng và không thay thế khả năng hiểu cảnh khi tắt tiếng.",
+    "unfamiliarity_risks_vi": [
+      "Cảnh chỉ có nghĩa khi biết cốt truyện hoặc nghe lời thoại gốc",
+      "Bối cảnh nghề nghiệp, nghi lễ hoặc vật thể quá xa đời sống đô thị Việt Nam",
+      "Ẩn dụ điện ảnh cần nhiều bước suy luận hơn thời lượng cảnh cho phép"
+    ],
+    "film_selection_principles_vi": [
+      "Ưu tiên thế giới phim có áp lực công việc, quan hệ và đời sống đô thị dễ nhận diện",
+      "Mọi cảnh phải tự truyền nghĩa qua hành động, phản ứng hoặc hậu quả khi tắt tiếng",
+      "Phim ít quen vẫn dùng được nếu hành động mang tính phổ quát và không cần cốt truyện",
+      "Hoạt hình hoặc thế giới trừu tượng chỉ dùng khi nó làm rõ khái niệm tốt hơn cảnh đời thực"
+    ]
+  },
+  "recognition_policy": {
+    "search_lanes": [
+      {
+        "lane_id": "office_daily_routine",
+        "use_for_rhetorical_jobs": [
+          "hook",
+          "orient",
+          "recognition",
+          "explain",
+          "evidence"
+        ],
+        "search_terms_en": [
+          "young office worker laptop",
+          "open plan office meeting",
+          "work notification phone",
+          "commute city office"
+        ],
+        "familiar_visual_anchors_vi": [
+          "laptop và lịch họp",
+          "thông báo công việc",
+          "phòng họp hoặc bàn làm việc"
+        ],
+        "source_world_priorities": [
+          "contemporary_vietnamese_urban",
+          "east_asian_urban_workplace",
+          "global_office_drama"
+        ]
+      },
+      {
+        "lane_id": "pressure_and_overload",
+        "use_for_rhetorical_jobs": [
+          "hook",
+          "escalate",
+          "challenge_assumption",
+          "consequence"
+        ],
+        "search_terms_en": [
+          "office deadline pressure",
+          "working late alone office",
+          "overwhelmed calendar laptop",
+          "stressed commute at night"
+        ],
+        "familiar_visual_anchors_vi": [
+          "lịch kín và nhiều cửa sổ công việc",
+          "văn phòng muộn",
+          "phản ứng mệt mỏi nhìn thấy được"
+        ],
+        "source_world_priorities": [
+          "contemporary_vietnamese_urban",
+          "east_asian_urban_workplace",
+          "global_office_drama",
+          "universal_action_reaction"
+        ]
+      },
+      {
+        "lane_id": "urban_private_life",
+        "use_for_rhetorical_jobs": [
+          "recognition",
+          "contrast",
+          "reflection",
+          "synthesize"
+        ],
+        "search_terms_en": [
+          "young adult apartment after work",
+          "alone dinner city apartment",
+          "quiet cafe reflection",
+          "family video call apartment"
+        ],
+        "familiar_visual_anchors_vi": [
+          "căn phòng sau giờ làm",
+          "bữa ăn một mình",
+          "điện thoại nối công việc với đời sống riêng"
+        ],
+        "source_world_priorities": [
+          "contemporary_vietnamese_urban",
+          "east_asian_urban_workplace",
+          "universal_action_reaction"
+        ]
+      },
+      {
+        "lane_id": "agency_and_release",
+        "use_for_rhetorical_jobs": [
+          "reframe",
+          "release",
+          "verdict",
+          "call_to_action"
+        ],
+        "search_terms_en": [
+          "close laptop leave office",
+          "walk after work city",
+          "turn off work phone",
+          "quiet deliberate choice"
+        ],
+        "familiar_visual_anchors_vi": [
+          "đóng laptop",
+          "rời bàn làm việc",
+          "tắt thông báo hoặc bước ra không gian mở"
+        ],
+        "source_world_priorities": [
+          "contemporary_vietnamese_urban",
+          "universal_action_reaction",
+          "east_asian_urban_workplace"
+        ]
+      },
+      {
+        "lane_id": "abstract_inner_state",
+        "use_for_rhetorical_jobs": [
+          "question",
+          "reframe",
+          "synthesize"
+        ],
+        "search_terms_en": [
+          "inner conflict visual metaphor",
+          "two paths decision",
+          "blocked path opens",
+          "abstract emotional state"
+        ],
+        "familiar_visual_anchors_vi": [
+          "hai lựa chọn nhìn thấy được",
+          "vật cản được tháo bỏ",
+          "chuyển từ căng sang thả lỏng"
+        ],
+        "source_world_priorities": [
+          "universal_action_reaction",
+          "abstract_animation"
+        ]
+      }
+    ],
+    "selection_thresholds": {
+      "minimum_semantic_accessibility": 0.6,
+      "minimum_recognition_immediacy": 0.45,
+      "maximum_context_translation_cost": 0.6,
+      "maximum_stereotype_risk": 0.45,
+      "familiarity_is_tiebreaker_not_semantic_override": true
+    },
+    "direct_recognition_priority_vi": "Ưu tiên hành động và vật thể người xem nhận ra trong một đến hai giây; sau đó mới dùng ẩn dụ hoặc thế giới phim xa hơn.",
+    "metaphor_translation_rules_vi": [
+      "Ẩn dụ phải có một hành động vật lý duy nhất nối trực tiếp với ý voice",
+      "Nếu phải biết cốt truyện hoặc giải thích thêm mới hiểu thì phải có cảnh cầu nối hoặc loại",
+      "Không dùng sự hoành tráng của điện ảnh để thay cho bằng chứng ngữ nghĩa",
+      "Tốc độ cắt không được nhanh hơn thời gian người xem cần nhận ra bối cảnh mới"
+    ]
+  },
+  "safeguards": {
+    "within_segment_variation_vi": [
+      "Thu nhập, ngành nghề, chức vụ và điều kiện sống trong nhóm khác nhau đáng kể",
+      "Không phải mọi người đều làm tại văn phòng mở hoặc chịu cùng loại KPI",
+      "Mức quen phim, khả năng đọc ẩn dụ và trải nghiệm gia đình không đồng nhất"
+    ],
+    "stereotype_risks_vi": [
+      "Đồng nhất người trẻ văn phòng với kiệt sức, cô đơn hoặc chạy theo tiền",
+      "Chỉ dùng hình ảnh hào nhoáng của tòa nhà, cà phê và laptop như định nghĩa đời sống đô thị",
+      "Mặc định mọi áp lực đến từ cá nhân thay vì tổ chức, kinh tế hoặc trách nhiệm gia đình"
+    ],
+    "prohibited_inferences_vi": [
+      "Không suy ra giới tính, thu nhập, hôn nhân hoặc sức khỏe tâm lý từ tuổi và nghề",
+      "Không khẳng định một hình ảnh đại diện cho toàn bộ người trẻ Việt Nam",
+      "Không biến độ quen thuộc thành lý do chấp nhận cảnh sai nghĩa hoặc cần biết cốt truyện"
+    ]
+  },
+  "dimension_evidence": {
+    "segment": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:2026-07-29-viewer-segment"
+      ]
+    },
+    "lived_context": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "owner:2026-07-29-viewer-segment",
+        "director:context-hypotheses-for-review"
+      ]
+    },
+    "media_context": {
+      "epistemic_status": "inferred",
+      "confidence": 0.65,
+      "evidence_refs": [
+        "director:media-context-hypotheses-for-review"
+      ]
+    },
+    "recognition_policy": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 0.9,
+      "evidence_refs": [
+        "owner:2026-07-29-familiar-life-images"
+      ]
+    },
+    "safeguards": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:2026-07-29-viewer-segment",
+        "director:anti-stereotype-policy"
+      ]
+    }
+  },
+  "segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc"
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "input_mode": "voice_with_reverse_brief",
+  "status": "approved",
+  "approval": {
+    "status": "approved",
+    "reviewer_id": "anh-thong",
+    "mode": "owner_confirmed_reverse_brief",
+    "decision_basis_vi": "Owner đã duyệt ý định nội dung trước đó và xác nhận viewer hiện hành là người Việt 25-35 tuổi làm việc văn phòng tại các thành phố lớn.",
+    "approved_sha256": "sha256:c3ebc84080314596a4b171803a46dabe4aa70a717b11fe11da1ea7a7ef5c3c2a"
+  },
+  "based_on": [
+    {
+      "path": "content/transcript_approved.json",
+      "sha256": "f326b205a17c94f33dcf842eafba463579dd05d091636ea1a7bc996464cd5ae0"
+    }
+  ],
+  "audience": {
+    "target_viewer_vi": "Người Việt 25-35 tuổi làm việc văn phòng tại các thành phố lớn, đang theo đuổi thành tựu nhưng dễ căng thẳng hoặc trống rỗng.",
+    "trigger_situation_vi": "Vừa đạt một cột mốc nhưng không thấy vui, hoặc đang phải hy sinh quá nhiều để đạt mục tiêu.",
+    "prior_knowledge_vi": "Biết về mục tiêu và thành công nhưng chưa có khung phân biệt mục đích bên trong với mục đích bên ngoài.",
+    "current_belief_vi": "Thành công chủ yếu là đạt được kết quả và cột mốc ở bên ngoài."
+  },
+  "content_job": {
+    "job_type": "reframe",
+    "jtbd_vi": "Phân biệt mục đích bên trong với mục đích bên ngoài để đánh giá lại thế nào là thành công thực sự.",
+    "uncertainty_to_reduce_vi": "Vì sao hoàn thành mục tiêu bên ngoài vẫn có thể không đem lại niềm vui và còn tạo khổ đau.",
+    "desired_progress_vi": "Có một tiêu chuẩn bên trong để xem cách mình theo đuổi mục tiêu có hòa điệu hay không."
+  },
+  "desired_change": {
+    "understand_vi": "Mục đích bên trong là tỉnh thức và an nhiên; mục tiêu bên ngoài thay đổi, và chất lượng của kết quả phụ thuộc vào sự hòa điệu giữa hai lớp này.",
+    "feel_vi": "Lắng lại, bớt bị cuốn theo thành tích và bắt đầu tự quan sát trạng thái bên trong.",
+    "believe_vi": "Thành công thực sự không chỉ nằm ở kết quả mà còn nằm ở trạng thái và cách mình tạo ra kết quả đó.",
+    "do_vi": "Trước mục tiêu quan trọng tiếp theo, tự hỏi cách mình đang theo đuổi nó có làm mình tỉnh thức và an nhiên hơn hay không.",
+    "remember_vi": "Mục đích bên trong là nền tảng của thành công thực sự ở bên ngoài."
+  },
+  "communication_contract": {
+    "proof_required_vi": [
+      "Thể hiện rõ hai lớp mục đích bên trong và bên ngoài trước khi dùng ẩn dụ điện ảnh.",
+      "Cho thấy chuỗi nhân quả từ mất hòa điệu đến đấu tranh, mất niềm vui và gây khổ đau.",
+      "Có một đối chiếu trực quan giữa thành công chỉ có kết quả và thành công có sự hòa điệu."
+    ],
+    "misinterpretations_to_avoid_vi": [
+      "Không khiến người xem hiểu rằng mục tiêu bên ngoài là xấu hoặc không cần thiết.",
+      "Không đồng nhất tỉnh thức với thụ động, bỏ tham vọng hoặc ngừng hành động.",
+      "Không dùng cảnh phim chỉ tạo cảm xúc nhưng buộc người xem biết cốt truyện mới hiểu."
+    ],
+    "success_tests_vi": [
+      "Người chưa biết các phim được dùng vẫn nói lại được sự khác nhau giữa mục đích trong và ngoài.",
+      "Người xem chỉ ra được vì sao mất hòa điệu làm thành công bên ngoài trở nên đau khổ.",
+      "Sau một lần xem, người xem nhớ được mệnh đề mục đích bên trong là nền tảng."
+    ],
+    "channel_vi": "Video ngang 1920x1080 để xem trên giao diện máy tính."
+  },
+  "field_evidence": {
+    "audience.target_viewer_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:anh-thong"
+      ]
+    },
+    "audience.trigger_situation_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:anh-thong"
+      ]
+    },
+    "audience.prior_knowledge_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:anh-thong"
+      ]
+    },
+    "audience.current_belief_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:anh-thong"
+      ]
+    },
+    "content_job.job_type": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json#segments",
+        "owner:anh-thong"
+      ]
+    },
+    "content_job.jtbd_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "content_job.uncertainty_to_reduce_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "content_job.desired_progress_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "desired_change.understand_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "desired_change.feel_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json#segments",
+        "owner:anh-thong"
+      ]
+    },
+    "desired_change.believe_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "desired_change.do_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "owner:anh-thong"
+      ]
+    },
+    "desired_change.remember_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "communication_contract.proof_required_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "communication_contract.misinterpretations_to_avoid_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "communication_contract.success_tests_vi": {
+      "epistemic_status": "owner_confirmed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/transcript_approved.json",
+        "owner:anh-thong"
+      ]
+    },
+    "communication_contract.channel_vi": {
+      "epistemic_status": "observed",
+      "confidence": 1.0,
+      "evidence_refs": [
+        "content/run_policy.json#render_policy"
+      ]
+    }
+  },
+  "missing_required_fields": [],
+  "readiness": "approved_for_message_architecture"
+}

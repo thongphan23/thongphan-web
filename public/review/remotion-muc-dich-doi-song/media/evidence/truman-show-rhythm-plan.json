@@ -1,0 +1,29 @@
+{
+  "schema": "tpr.rhythm_plan.v2",
+  "variant_id": "truman-show",
+  "modes": [
+    {
+      "range": "B01-B04",
+      "mode": "orient_reflect",
+      "shot_policy": "Một đến hai shot đủ dài mỗi beat."
+    },
+    {
+      "range": "B05-B07",
+      "mode": "build_and_prove",
+      "shot_policy": "Tăng thông tin rồi dừng ở vật chứng thành công."
+    },
+    {
+      "range": "B08",
+      "mode": "burst",
+      "shot_policy": "7 shot giảm dần sau khi bối cảnh đã rõ; không đưa ngữ cảnh mới ở cut cực ngắn."
+    },
+    {
+      "range": "B09-B10",
+      "mode": "aftermath_release",
+      "shot_policy": "Reaction dài để hiểu hậu quả và dư âm quan hệ."
+    }
+  ],
+  "based_on": {
+    "locked_plan_sha256": "sha256:85186f7d828b31574e4c192cd8f1f4f5a8d9c371507f423e52c28df759552c14"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "schema": "tpr.source_casting_board.v2",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "variant_id": "devil-wears-prada",
+  "status": "sealed",
+  "based_on": [
+    {
+      "path": "content/film_source_portfolio.json",
+      "sha256": "f788718be0c1aab1200a54d50062774c9dddb388d5703dfbc768f8cf7902ce4d"
+    },
+    {
+      "path": "content/visual_observation_review.json",
+      "sha256": "a47218a050dbff85e8c3c6fa3f65b91e4622c6accebbd89405f3bdea9abcd1fb"
+    },
+    {
+      "path": "content/meaning_beat_design.json",
+      "sha256": "cdd7eab376a8a4f7f4f45e8be660696868a90185e1ff4c30099f2aa7a31f07e2"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "S001",
+      "beat_id": "PRE",
+      "asset_id": "clipcafe_226004",
+      "clip_id": "226004",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "I don't have a thing to wear to work",
+      "source_transcript_excerpt": "Andy Sachs:\nBaby, I don't have a thing to wear to work. \nNate:\nI thought you'd answer the phone and bring coffee; you need a ball gown for that? \nAndy Sachs:\nI think I might. | I don't have a thing to wear to work You'll be answering phones and getting coffee You need a ball gown for that I think I might",
+      "visible_fact_vi": "Andy đứng trước tủ và giường, loay hoay chọn trang phục để bước vào ngày làm việc.",
+      "viewer_should_feel_vi": "Được đưa vào thế giới phim trước khi voice bắt đầu.",
+      "viewer_should_remember_vi": "Một tuyến nhân vật thống nhất sẽ dẫn toàn video.",
+      "semantic_bridge_vi": "Thiết lập nhân vật và thế giới bằng hành động.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/226004/222c3850677e030ae15f8a089fc66151e63d8bc9a9162756faf030d4f3409170/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/i-dont-have-a-thing-wear-work-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 4416,
+        "source_out_ms": 6596
+      },
+      "timeline": {
+        "start_ms": 0,
+        "end_ms": 2180
+      }
+    },
+    {
+      "shot_id": "S002",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_225983",
+      "clip_id": "225983",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Okay So I was Miranda's second assistant",
+      "source_transcript_excerpt": "Emily:\nOkay, so I was Miranda's second assistant. But her first assistant recently got promoted, and so now, I'm the first. \nAndy Sachs:\nOh, and you're replacing yourself. | Okay So I was Miranda's second assistant but her first recently got promoted and now I'm the first You're replacing yourself Well I am trying",
+      "visible_fact_vi": "Andy và Emily xử lý đồ đạc, giấy tờ trong phòng thời trang, nối vai trò với hành động thực tế.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225983/77d6fd63c4e4279b44b01e1cb5fbbcedf27475f1f60adb3a704d01f9ce3650ef/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/okay-so-i-mirandas-second-assistant/"
+      ],
+      "trim": {
+        "source_in_ms": 3330,
+        "source_out_ms": 6680
+      },
+      "timeline": {
+        "start_ms": 2180,
+        "end_ms": 5530
+      }
+    },
+    {
+      "shot_id": "S003",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_225998",
+      "clip_id": "225998",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "I promise Same Andy Better clothes",
+      "source_transcript_excerpt": "Andy Sachs:\nSame Andy, better clothes. \nNate:\nI like the old clothes. | I promise Same Andy Better clothes I liked the old clothes",
+      "visible_fact_vi": "Andy và Nate ở sát nhau trong căn hộ, tạo một đối trọng đời sống riêng với văn phòng.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225998/c4f25b47fe16031000297caa58d95b0e93c564d317e6ac50a89527580c4a2874/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/i-promise-same-andy-better-clothes/"
+      ],
+      "trim": {
+        "source_in_ms": 2829,
+        "source_out_ms": 6179
+      },
+      "timeline": {
+        "start_ms": 5530,
+        "end_ms": 8880
+      }
+    },
+    {
+      "shot_id": "S004",
+      "beat_id": "B02",
+      "asset_id": "clipcafe_226003",
+      "clip_id": "226003",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "I'm still the same person I was",
+      "source_transcript_excerpt": "Emily:\n[deleted scene - during the rush as Miranda arrives]\nOh God, you're still there. Um. Go. No. Stay. Stay. Sit there, sit there and I will pray she does not notice you are in the area \n[leaves]\n\nAndy Sachs:\nIt's like self-esteem camp. | I'm still the same person I was I still want the same things Okay I promise Same Andy Better clothes I liked the old clothes",
+      "visible_fact_vi": "Andy và Nate ôm nhau trong phòng ngủ, cho thấy một quan hệ gần gũi đang cần được giữ gìn.",
+      "viewer_should_feel_vi": "Lắng xuống và được định tâm.",
+      "viewer_should_remember_vi": "Bên trong là chính.",
+      "semantic_bridge_vi": "Giữ shot đủ lâu để đọc nét mặt và sự thay đổi trạng thái.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/226003/df3631c43e909045ee1b8a51290f0748f028edf2bd13423c8cac6b0dac54168e/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/im-still-the-same-person-i-was/"
+      ],
+      "trim": {
+        "source_in_ms": 4268,
+        "source_out_ms": 10748
+      },
+      "timeline": {
+        "start_ms": 8880,
+        "end_ms": 15360
+      }
+    },
+    {
+      "shot_id": "S005",
+      "beat_id": "B03",
+      "asset_id": "clipcafe_225959",
+      "clip_id": "225959",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You have some very large shoes to fill",
+      "source_transcript_excerpt": "[to Andy's replacement]\n\nEmily:\nYou have some very large shoes to fill. I hope you know that. | You have some very large shoes to fill Hope you know that",
+      "visible_fact_vi": "Andy đứng tại bàn tiếp tân cạnh đồng nghiệp và hồ sơ, cho thấy trách nhiệm công việc đã đổi chỗ.",
+      "viewer_should_feel_vi": "Bị chỉnh lại một niềm tin quen thuộc.",
+      "viewer_should_remember_vi": "Việc làm là phương tiện, không phải lõi.",
+      "semantic_bridge_vi": "Dùng vật chứng công việc hoặc phần thưởng nhìn thấy được.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225959/0e2cbd0d6925dd0409240427bcaf9406ea5e62a99fed8ab227130e59a3f85607/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/you-have-some-very-large-shoes-fill-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 2044,
+        "source_out_ms": 5964
+      },
+      "timeline": {
+        "start_ms": 15360,
+        "end_ms": 19280
+      }
+    },
+    {
+      "shot_id": "S006",
+      "beat_id": "B04",
+      "asset_id": "clipcafe_225935",
+      "clip_id": "225935",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "That's all",
+      "source_transcript_excerpt": "[repeated line]\n\nMiranda Priestly:\nThat's all. | That's all",
+      "visible_fact_vi": "Andy đứng ở ngưỡng cửa đối diện Miranda rồi chuẩn bị quay đi, cho thấy một lựa chọn có chủ ý thay vì phản xạ công việc.",
+      "viewer_should_feel_vi": "Sáng rõ và nhẹ ra.",
+      "viewer_should_remember_vi": "Mục đích bên trong là tỉnh thức.",
+      "semantic_bridge_vi": "Ưu tiên khoảnh khắc nhân vật dừng lại, nhìn thấy hoặc lựa chọn có chủ ý.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225935/661344195cb0f9bd63cdf48cd186da609c4a79a85caaec72646b04b96d4ef875/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/thats-all-s30/"
+      ],
+      "trim": {
+        "source_in_ms": 489,
+        "source_out_ms": 2519
+      },
+      "timeline": {
+        "start_ms": 19280,
+        "end_ms": 21310
+      }
+    },
+    {
+      "shot_id": "S007",
+      "beat_id": "B04",
+      "asset_id": "clipcafe_225997",
+      "clip_id": "225997",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Good luck",
+      "source_transcript_excerpt": "[first lines]\n\nNate:\nGood luck. | Good luck",
+      "visible_fact_vi": "Andy dừng lại ngoài phố và mỉm cười nhẹ trước khi đi tiếp, đọc được như một khoảnh khắc tự quyết.",
+      "viewer_should_feel_vi": "Sáng rõ và nhẹ ra.",
+      "viewer_should_remember_vi": "Mục đích bên trong là tỉnh thức.",
+      "semantic_bridge_vi": "Ưu tiên khoảnh khắc nhân vật dừng lại, nhìn thấy hoặc lựa chọn có chủ ý.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225997/57e68c143dadec2730da7259825db573838d6b9fe4c4cf655bd45fce1d2610cb/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/i-bid-farewell-good-luck-s6/"
+      ],
+      "trim": {
+        "source_in_ms": 488,
+        "source_out_ms": 2518
+      },
+      "timeline": {
+        "start_ms": 21310,
+        "end_ms": 23340
+      }
+    },
+    {
+      "shot_id": "S008",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_225972",
+      "clip_id": "225972",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Will that fit me Oh yeah",
+      "source_transcript_excerpt": "Andy Sachs:\n[seeing Nigel with a black gown]\nI love that! Will that fit me? \nNigel:\nA little Crisco and some fishing wire and we'll be in business. | Will that fit me Oh yeah A little Crisco and some fishing line and we're in business",
+      "visible_fact_vi": "Nigel ướm và chỉnh trang phục trực tiếp trên người Andy, cho thấy một vai trò mới đang được tạo hình.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225972/92ffb0e2900658fd0afcc3d2176352d90a3e8663374f8d4664cf3a8b051546f5/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/will-fit-oh-yeah/"
+      ],
+      "trim": {
+        "source_in_ms": 2789,
+        "source_out_ms": 5219
+      },
+      "timeline": {
+        "start_ms": 23340,
+        "end_ms": 25770
+      }
+    },
+    {
+      "shot_id": "S009",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_225979",
+      "clip_id": "225979",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "I guessed an eight and a half",
+      "source_transcript_excerpt": "Nigel:\n[Nigel holds up a pair of fashionable high heels]\nI guessed an 8 and a half. \nAndy Sachs:\nI don't need those. Miranda hired me. She knows what I look like. \nNigel:\nDo you? | I guessed an eight and a half Wow that's very nice of you But I don't think I need these Miranda hired me She knows what I look like Do you",
+      "visible_fact_vi": "Andy được đo và thử giày trong không gian làm việc, biến sự đổi vai thành hành động nhìn thấy được.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225979/7a2c57b4129343faf471fa51944d5b833b597b378ec1281500ddc85f80650e9e/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/i-guessed-an-eight-a-half/"
+      ],
+      "trim": {
+        "source_in_ms": 5292,
+        "source_out_ms": 7722
+      },
+      "timeline": {
+        "start_ms": 25770,
+        "end_ms": 28200
+      }
+    },
+    {
+      "shot_id": "S010",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_225968",
+      "clip_id": "225968",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "When I come back you can go Okay",
+      "source_transcript_excerpt": "[rushing out the door to accomplish an impossible task for Miranda]\n\nAndy Sachs:\nWish me luck! \nEmily:\nNo. Shan't. | When I come back you can go Okay",
+      "visible_fact_vi": "Andy và Emily bước nhanh qua văn phòng với giấy tờ trong tay, cho thấy ý định đã chuyển thành nhịp thực thi phối hợp.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225968/9a757401745c69a55302375ba41c5aca6c32a9975ef3b6c246d625e545449ee2/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/when-i-come-back-can-go-okay/"
+      ],
+      "trim": {
+        "source_in_ms": 180,
+        "source_out_ms": 3830
+      },
+      "timeline": {
+        "start_ms": 28200,
+        "end_ms": 31850
+      }
+    },
+    {
+      "shot_id": "S011",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_225967",
+      "clip_id": "225967",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You bet your size six ass",
+      "source_transcript_excerpt": "Nigel:\nYou bet your size 6 ass! \nAndy Sachs:\n[whispers back gleefully]\nSize... 4. \n[they high-five each other] | You bet your size six ass",
+      "visible_fact_vi": "Andy và Nigel cùng nâng ly trong một khoảnh khắc chia sẻ kết quả, tạo nhịp hoàn thành trước đỉnh công nhận.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225967/7c0453e1deb15f1c8948c462be4ec3085884f36958f1c5fd00fd4ca364ec4424/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/you-bet-size-six-ass/"
+      ],
+      "trim": {
+        "source_in_ms": 682,
+        "source_out_ms": 4332
+      },
+      "timeline": {
+        "start_ms": 31850,
+        "end_ms": 35500
+      }
+    },
+    {
+      "shot_id": "S012",
+      "beat_id": "B07",
+      "asset_id": "clipcafe_226000",
+      "clip_id": "226000",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You're You're a vision",
+      "source_transcript_excerpt": "Christian Thompson:\nYou're a vision! | You're You're a vision",
+      "visible_fact_vi": "Andy xuất hiện ở thảm đỏ dưới đèn máy ảnh, một vật chứng rõ của vị thế và công nhận bên ngoài.",
+      "viewer_should_feel_vi": "Được giải đáp và có một đỉnh sáng ngắn.",
+      "viewer_should_remember_vi": "Thành công thực sự là sự hòa điệu.",
+      "semantic_bridge_vi": "Ưu tiên bằng chứng thành công cụ thể: công nhận, hoàn thành, high-five, cúp hoặc thoát ra thành công.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/226000/d4bbd01b93bd95cf68bf7baede5eff1a1ef446ba76122679b203020a9cf96632/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/youre-youre-a-vision/"
+      ],
+      "trim": {
+        "source_in_ms": 966,
+        "source_out_ms": 4046
+      },
+      "timeline": {
+        "start_ms": 35500,
+        "end_ms": 38580
+      }
+    },
+    {
+      "shot_id": "S013",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225936",
+      "clip_id": "225936",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Is there some reason that my coffee isn't here",
+      "source_transcript_excerpt": "Miranda Priestly:\nIs there some reason that my coffee isn't here? Has she died or something? | Is there some reason that my coffee isn't here Has she died or something",
+      "visible_fact_vi": "Miranda bước vào văn phòng trong khi trợ lý tất bật quanh bàn, mở nhịp áp lực quyền lực.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225936/18489807dab41426e0f6356692f6483ef33d50e39206399b29dec95d6562632e/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/is-there-some-reason-my-coffee-isnt-here-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 738,
+        "source_out_ms": 2838
+      },
+      "timeline": {
+        "start_ms": 38580,
+        "end_ms": 40680
+      }
+    },
+    {
+      "shot_id": "S014",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225944",
+      "clip_id": "225944",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Is she back Am I fired",
+      "source_transcript_excerpt": "Andy Sachs:\n[panicking over getting the Harry Potter manuscript]\nIs she back? Am I fired? \nEmily:\nYou know, I rarely say this to people who... aren't me, but you have got to calm down! Bloody hell... | Is she back Am I fired You know I rarely say this to people who aren't me but you have got to calm down Bloody hell",
+      "visible_fact_vi": "Andy vội qua hành lang rồi ngồi giữa bàn giấy, điện thoại và nhịp làm việc dày đặc.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225944/2ad5f93cc5b0da7806ffaf0d57f528dc4c8b76d82c8a74f1a9e59b63082058ff/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/is-back-am-i-fired/"
+      ],
+      "trim": {
+        "source_in_ms": 1532,
+        "source_out_ms": 3332
+      },
+      "timeline": {
+        "start_ms": 40680,
+        "end_ms": 42480
+      }
+    },
+    {
+      "shot_id": "S015",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225973",
+      "clip_id": "225973",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Right Come on",
+      "source_transcript_excerpt": "Nigel:\nCome on. Miranda's pushed the run through up a half hour. And she's always 15 minutes early. \nAndy Sachs:\nWhich means? \nNigel:\nYou're already late. | Right Come on Miranda's pushed the run through up a half an hour She's always 15 minutes early Which means You're already late",
+      "visible_fact_vi": "Nigel kéo Andy chuyển nhanh qua không gian làm việc, cơ thể và nhịp bước đều thể hiện bị thúc ép.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225973/906cf3d764fc874f17a72865637517dbd0e3c120106bc4dc97e9866fe374bc08/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/right-come-on/"
+      ],
+      "trim": {
+        "source_in_ms": 1276,
+        "source_out_ms": 2776
+      },
+      "timeline": {
+        "start_ms": 42480,
+        "end_ms": 43980
+      }
+    },
+    {
+      "shot_id": "S016",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225945",
+      "clip_id": "225945",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Where is that piece of paper I had in my hand yesterday morning",
+      "source_transcript_excerpt": "Miranda Priestly:\nFind me that piece of paper I had in my hand yesterday morning. | Where is that piece of paper I had in my hand yesterday morning",
+      "visible_fact_vi": "Miranda kiểm tra và đòi vật trên bàn trong khi người khác phải phản ứng ngay, thể hiện kiểm soát vi mô.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225945/b610170ce3b97a6faf18276e0703f3e2f3dc5d427bd7dab5525fb460d3924bc9/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/where-that-piece-of-paper-i-in-hand-yesterday-morning/"
+      ],
+      "trim": {
+        "source_in_ms": 557,
+        "source_out_ms": 1857
+      },
+      "timeline": {
+        "start_ms": 43980,
+        "end_ms": 45280
+      }
+    },
+    {
+      "shot_id": "S017",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225949",
+      "clip_id": "225949",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "By all means move at a glacial pace",
+      "source_transcript_excerpt": "Miranda Priestly:\nBy all means move at a glacial pace. You know how that thrills me. | By all means move at a glacial pace You know how that thrills me",
+      "visible_fact_vi": "Miranda ngồi chờ với nét mặt lạnh và sốt ruột, biến áp lực thời gian thành phản ứng nhìn thấy được.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225949/6fd80cf871042180b59583a82f7585c50536ec9b058fcbe5bcd4f8b7927c7e26/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/by-all-means-move-at-a-glacial-pace/"
+      ],
+      "trim": {
+        "source_in_ms": 722,
+        "source_out_ms": 1922
+      },
+      "timeline": {
+        "start_ms": 45280,
+        "end_ms": 46480
+      }
+    },
+    {
+      "shot_id": "S018",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225962",
+      "clip_id": "225962",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "She is not happy unless everyone around her is panicked nauseous or suicidal",
+      "source_transcript_excerpt": "Andy Sachs:\nShe's not happy unless everyone around her is panicked, nauseous or suicidal. | She is not happy unless everyone around her is panicked nauseous or suicidal",
+      "visible_fact_vi": "Andy và Nate đứng cách nhau trong căn phòng tối, nét mặt cho thấy công việc đã tràn vào quan hệ.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225962/b3750d3f303dd6fd6b325b92e6101a087880177ab6cf3788a44cf263b883b619/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/she-not-happy-everyone-around-her-panicked-nauseous-suicidal/"
+      ],
+      "trim": {
+        "source_in_ms": 752,
+        "source_out_ms": 1752
+      },
+      "timeline": {
+        "start_ms": 46480,
+        "end_ms": 47480
+      }
+    },
+    {
+      "shot_id": "S019",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_225965",
+      "clip_id": "225965",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Who is that sad little person",
+      "source_transcript_excerpt": "Nigel:\n[talking about Andy]\nWho is that *sad* little person? Are we doing a before-and-after piece I don't know about? | Who is that sad little person Are we doing a before and after piece I don't know about",
+      "visible_fact_vi": "Miranda và Nigel nhìn, đánh giá một người khác từ vị thế quyền lực, cho thấy cơ chế phán xét của hệ thống.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225965/df5550446750b63b16af0a27cb22eadf58dafc261940b7c8747f4cdfee1e24fb/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/who-that-sad-little-person-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 1066,
+        "source_out_ms": 1966
+      },
+      "timeline": {
+        "start_ms": 47480,
+        "end_ms": 48380
+      }
+    },
+    {
+      "shot_id": "S020",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_226006",
+      "clip_id": "226006",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Oh yes You must be the new Emily",
+      "source_transcript_excerpt": "James Holt:\n[to Andy]\nSo you're the new Emily. | Oh yes You must be the new Emily",
+      "visible_fact_vi": "Nhiều người chen quanh giá đồ và di chuyển gấp trong hậu trường, làm cao trào công việc dày lên.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/226006/e1166526c9ea5d58592b0da80a032213c150f186f2055294db8d0432291501de/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/oh-yes-you-must-be-the-new-emily/"
+      ],
+      "trim": {
+        "source_in_ms": 635,
+        "source_out_ms": 1415
+      },
+      "timeline": {
+        "start_ms": 48380,
+        "end_ms": 49160
+      }
+    },
+    {
+      "shot_id": "S021",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_226009",
+      "clip_id": "226009",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "Chairman of Elias Clarke Irv Ravitz",
+      "source_transcript_excerpt": "Nigel:\nIrv Ravitz. Chairman of Elias Clark. You know what they say. Tiny man. Huge ego. | Chairman of Elias Clarke Irv Ravitz You know what they say Tiny man huge ego",
+      "visible_fact_vi": "Nhân vật bước vào một không gian doanh nghiệp trang trọng cùng người có quyền lực, khép chuỗi tham vọng.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/226009/e1de2595278096f0382e85a843cf7e1f08033263449c5f029df67a89699b2645/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/chairman-of-elias-clarke-irv-ravitz/"
+      ],
+      "trim": {
+        "source_in_ms": 1382,
+        "source_out_ms": 2182
+      },
+      "timeline": {
+        "start_ms": 49160,
+        "end_ms": 49960
+      }
+    },
+    {
+      "shot_id": "S022",
+      "beat_id": "B09",
+      "asset_id": "clipcafe_225975",
+      "clip_id": "225975",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You know in case you were wondering",
+      "source_transcript_excerpt": "Nate:\n[as Andy takes a call from Miranda]\nYou know, in case you were wondering - the person whose calls you always take? That's the relationship you're in. I hope you two are very happy together. | You know in case you were wondering the person whose calls you always take that's the relationship you're in I hope you two are very happy together",
+      "visible_fact_vi": "Nate rời khỏi cuộc đối thoại ngoài phố, để Andy đứng một mình giữa ánh đèn sau xung đột.",
+      "viewer_should_feel_vi": "Hụt xuống sau cao trào.",
+      "viewer_should_remember_vi": "Đạt được vẫn có thể trống rỗng.",
+      "semantic_bridge_vi": "Giữ reaction/aftermath dài; không dùng cảnh nhân vật chỉ đang nói.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225975/7e2808dfc364c5450624d08c0eb4b96f7d23aea9f245f4f694c11e89ec8bdc69/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/you-know-in-case-you-wondering/"
+      ],
+      "trim": {
+        "source_in_ms": 3446,
+        "source_out_ms": 7566
+      },
+      "timeline": {
+        "start_ms": 49960,
+        "end_ms": 54080
+      }
+    },
+    {
+      "shot_id": "S023",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_225978",
+      "clip_id": "225978",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You know I wouldn't care if you were out pole dancing all night",
+      "source_transcript_excerpt": "Nate:\n[to Andy]\nI wouldn't care if you were out there pole-dancing all night, as long as you did it with a little integrity! | You know I wouldn't care if you were out pole dancing all night as long as you did it with a little integrity",
+      "visible_fact_vi": "Andy và Nate tranh cãi trong phòng tối, khoảng cách cơ thể làm hậu quả quan hệ trở nên trực tiếp.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225978/877b6e0deb4ec9da602081a61877b2050c5b56cf8bec27b465e617410e6ec374/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/you-know-i-wouldnt-care-you-out-pole-dancing-all-night/"
+      ],
+      "trim": {
+        "source_in_ms": 2610,
+        "source_out_ms": 5396
+      },
+      "timeline": {
+        "start_ms": 54080,
+        "end_ms": 56866
+      }
+    },
+    {
+      "shot_id": "S024",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_225992",
+      "clip_id": "225992",
+      "movie_slug": "the-devil-wears-prada-2006",
+      "source_title": "You used to make fun of the Runway girls",
+      "source_transcript_excerpt": "Nate:\n[to Andy]\nYou used to make fun of the Runway girls, now you're one of them! | You used to make fun of the Runway girls What happened Now you've become one of them",
+      "visible_fact_vi": "Cận cảnh Andy và Nate đối diện nhau ngoài phố với nét mặt tổn thương, kết bằng rạn nứt nhìn thấy được.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/devil-wears-prada-director-sheet.jpg",
+        "observations/devil-wears-prada/225992/77f25ff0df0d321554c994e8cac1b48cb5aa5c9b01d9ed18ccbb38a9d469a982/records/observation_packages.json",
+        "https://clip.cafe/the-devil-wears-prada-2006/you-used-make-fun-of-the-runway-girls-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 1615,
+        "source_out_ms": 4401
+      },
+      "timeline": {
+        "start_ms": 56866,
+        "end_ms": 59652
+      }
+    }
+  ]
+}

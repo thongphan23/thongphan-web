@@ -1,0 +1,9 @@
+{
+  "duration_ms": 59652,
+  "mode": "provided_audio",
+  "path": "assets/audio/source/provided_voice.mp3",
+  "run_id": "RUN-fight-club-purpose-20260729",
+  "schema": "tpr.audio_intake.v1",
+  "sha256": "65e1e34d81beb8710d00b1e77ce8de61643c273272418f5af14055809196057b",
+  "tts_used": false
+}

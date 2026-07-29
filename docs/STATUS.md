@@ -1,6 +1,26 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-29
+Last updated: 2026-07-30
+
+## Remotion Film Source Model v2 owner-review round — release candidate — 2026-07-30
+
+- Rebuilt the same authoritative 59.712-second Vietnamese voice as three new
+  film-led variants: `The Devil Wears Prada`, `The Truman Show` and `Inside
+  Out`. The round uses 68 unique shots and keeps film dialogue muted.
+- Added the persistent Film Source Model evidence packet: viewer fit, semantic
+  coverage, emotional coverage, narrative and character arc, silent visual
+  readability, selected and rejected film profiles, exact casting boards,
+  rhythm plans, locked edit plans and a sealed five-video reuse distance.
+- 84 Clip.cafe assets were downloaded and observed. `The Intern`, `Office
+  Space` and `The Pursuit of Happyness` remain preserved as rejected evidence
+  with explicit reasons instead of being discarded.
+- Video QA passes H.264/AAC duration, -15 LUFS audio, no black/freeze segments,
+  one-line subtitles and visual frame review. Plugin focused 46/46, plugin full
+  795/795, VBE full 75/75 and Remotion TypeScript pass.
+- The private-by-discovery route remains
+  `/review/remotion-muc-dich-doi-song`. Deployment and browser QA evidence are
+  recorded in
+  `docs/releases/REMOTION_FILM_SOURCE_MODEL_V2_PRODUCTION_RELEASE-2026-07-30.md`.
 
 ## Remotion silent-first owner-review round — production release — 2026-07-29
 

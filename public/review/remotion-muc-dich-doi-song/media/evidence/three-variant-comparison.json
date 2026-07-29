@@ -1,0 +1,37 @@
+{
+  "schema": "tpr.three_variant_comparison.v2",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "status": "locked_for_render",
+  "controlled_variables": [
+    "provided_voice",
+    "subtitles",
+    "music_bed",
+    "meaning_beats",
+    "viewer_model",
+    "duration"
+  ],
+  "independent_variable": "selected_film_source_and_character_arc",
+  "variants": [
+    {
+      "variant_id": "devil-wears-prada",
+      "film": "The Devil Wears Prada",
+      "lens_vi": "Thành tích công sở, sự biến đổi bản thân và cái giá quan hệ.",
+      "shot_count": 24,
+      "repeated_assets": 0
+    },
+    {
+      "variant_id": "truman-show",
+      "film": "The Truman Show",
+      "lens_vi": "Thức tỉnh khỏi mục đích bị áp đặt và giành lại quyền lựa chọn.",
+      "shot_count": 21,
+      "repeated_assets": 0
+    },
+    {
+      "variant_id": "inside-out",
+      "film": "Inside Out",
+      "lens_vi": "Biến trạng thái bên trong, áp lực và phần thưởng thành vật thể nhìn thấy được.",
+      "shot_count": 23,
+      "repeated_assets": 0
+    }
+  ]
+}

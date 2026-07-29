@@ -1,0 +1,835 @@
+{
+  "schema_version": "1.0.0",
+  "portfolio_id": "FSPT-RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+  "status": "sealed",
+  "approval": {
+    "status": "approved",
+    "reviewer_id": "director-codex-owner-authorized",
+    "decision_basis_vi": "Đạo diễn xác nhận các phim được chọn đủ bằng chứng nhìn thấy, mạch cảm xúc và độ phủ toàn bài.",
+    "sealed_sha256": "sha256:31d273ac1f6ab263bb4b06733600827191199f19378252930d520996a1536cc9"
+  },
+  "based_on": [
+    {
+      "path": "content/communication_intent.json",
+      "sha256": "448838912589f9ae0bfc21382e59364cfdb34f3a636f045b44ea159d9ed4290a"
+    },
+    {
+      "path": "content/meaning_beat_design.json",
+      "sha256": "cdd7eab376a8a4f7f4f45e8be660696868a90185e1ff4c30099f2aa7a31f07e2"
+    },
+    {
+      "path": "content/viewer_model.json",
+      "sha256": "52b7cbe2861ef1eca6aa511bfa7f488bb7803ef1c538c7638cdc17c3c32b6463"
+    },
+    {
+      "path": "content/film_rotation_clearance.json",
+      "sha256": "53d581c38298be44f6c6f0086864d13f5e17c5ed3fec3841050d44f3d1b06567"
+    }
+  ],
+  "selection_policy": {
+    "semantic_and_emotional_coverage_required": true,
+    "silent_legibility_required": true,
+    "character_arc_and_story_material_required": true,
+    "persist_rejections": true,
+    "thresholds": {
+      "semantic_coverage": 0.7,
+      "emotional_arc_coverage": 0.65,
+      "narrative_continuity": 0.6,
+      "character_arc_alignment": 0.6,
+      "silent_legibility": 0.65,
+      "viewer_proximity": 0.55,
+      "plot_independence": 0.65,
+      "source_density": 0.6
+    }
+  },
+  "assignments": [
+    {
+      "variant_id": "devil-wears-prada",
+      "film_id": "FILM-THE-DEVIL-WEARS-PRADA",
+      "profile_id": "FSP-FILM-THE-DEVIL-WEARS-PRADA-v2",
+      "video_ordinal": 7
+    },
+    {
+      "variant_id": "truman-show",
+      "film_id": "FILM-THE-TRUMAN-SHOW",
+      "profile_id": "FSP-FILM-THE-TRUMAN-SHOW-v2",
+      "video_ordinal": 8
+    },
+    {
+      "variant_id": "inside-out",
+      "film_id": "FILM-INSIDE-OUT",
+      "profile_id": "FSP-FILM-INSIDE-OUT-v2",
+      "video_ordinal": 9
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "FFA-THE-DEVIL-WEARS-PRADA",
+      "film_id": "FILM-THE-DEVIL-WEARS-PRADA",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Bước vào công việc mọi người mơ ước."
+        },
+        {
+          "beat_id": "B02",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Bước vào công việc mọi người mơ ước."
+        },
+        {
+          "beat_id": "B03",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Bước vào công việc mọi người mơ ước."
+        },
+        {
+          "beat_id": "B04",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Bước vào công việc mọi người mơ ước."
+        },
+        {
+          "beat_id": "B05",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Biến đổi để thành công rồi đánh đổi quan hệ."
+        },
+        {
+          "beat_id": "B06",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Biến đổi để thành công rồi đánh đổi quan hệ."
+        },
+        {
+          "beat_id": "B07",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-RESULT"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Biến đổi để thành công rồi đánh đổi quan hệ."
+        },
+        {
+          "beat_id": "B08",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Biến đổi để thành công rồi đánh đổi quan hệ."
+        },
+        {
+          "beat_id": "B09",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Nhận ra cái giá và chọn rời khỏi quỹ đạo ấy."
+        },
+        {
+          "beat_id": "B10",
+          "affordance_ids": [
+            "AFF-THE-DEVIL-WEARS-PRADA-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.84,
+          "emotional_fit": 0.87,
+          "silent_legibility": 0.74,
+          "plot_independence": 0.72,
+          "character_arc_stage_vi": "Nhận ra cái giá và chọn rời khỏi quỹ đạo ấy."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.84,
+        "emotional_arc_coverage": 0.87,
+        "narrative_continuity": 0.88,
+        "character_arc_alignment": 0.92,
+        "silent_legibility": 0.74,
+        "viewer_proximity": 0.96,
+        "plot_independence": 0.72,
+        "source_density": 0.88
+      },
+      "hard_failures": [],
+      "decision": {
+        "recommendation": "select",
+        "rationale_vi": "Qua contact sheet, phim đủ hành động, phản ứng, tuyến nhân vật và nhịp cảm xúc để phủ toàn bộ mười beat.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-THE-DEVIL-WEARS-PRADA-v2",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:fe9246c8a93d1cbc8fe2142e92be5a597f5a19233b6a1604d8d880e3af56644d",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    },
+    {
+      "assessment_id": "FFA-THE-TRUMAN-SHOW",
+      "film_id": "FILM-THE-TRUMAN-SHOW",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Lặp lại đời sống tưởng như hoàn hảo."
+        },
+        {
+          "beat_id": "B02",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Lặp lại đời sống tưởng như hoàn hảo."
+        },
+        {
+          "beat_id": "B03",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Lặp lại đời sống tưởng như hoàn hảo."
+        },
+        {
+          "beat_id": "B04",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Lặp lại đời sống tưởng như hoàn hảo."
+        },
+        {
+          "beat_id": "B05",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Nhận ra dấu hiệu kiểm soát và phản kháng."
+        },
+        {
+          "beat_id": "B06",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Nhận ra dấu hiệu kiểm soát và phản kháng."
+        },
+        {
+          "beat_id": "B07",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-RESULT"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Nhận ra dấu hiệu kiểm soát và phản kháng."
+        },
+        {
+          "beat_id": "B08",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Nhận ra dấu hiệu kiểm soát và phản kháng."
+        },
+        {
+          "beat_id": "B09",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Vượt nỗi sợ để bước ra khỏi thế giới áp đặt."
+        },
+        {
+          "beat_id": "B10",
+          "affordance_ids": [
+            "AFF-THE-TRUMAN-SHOW-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 2,
+          "semantic_fit": 0.87,
+          "emotional_fit": 0.93,
+          "silent_legibility": 0.89,
+          "plot_independence": 0.86,
+          "character_arc_stage_vi": "Vượt nỗi sợ để bước ra khỏi thế giới áp đặt."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.87,
+        "emotional_arc_coverage": 0.93,
+        "narrative_continuity": 0.94,
+        "character_arc_alignment": 0.95,
+        "silent_legibility": 0.89,
+        "viewer_proximity": 0.66,
+        "plot_independence": 0.86,
+        "source_density": 0.78
+      },
+      "hard_failures": [],
+      "decision": {
+        "recommendation": "select",
+        "rationale_vi": "Qua contact sheet, phim đủ hành động, phản ứng, tuyến nhân vật và nhịp cảm xúc để phủ toàn bộ mười beat.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-THE-TRUMAN-SHOW-v2",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:6bf5e688d4314638084b8b3abe741ea5ffd90271ab8c60f21ed01da8f4561a28",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    },
+    {
+      "assessment_id": "FFA-INSIDE-OUT",
+      "film_id": "FILM-INSIDE-OUT",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Các cảm xúc vận hành đời sống như một hệ thống."
+        },
+        {
+          "beat_id": "B02",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Các cảm xúc vận hành đời sống như một hệ thống."
+        },
+        {
+          "beat_id": "B03",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Các cảm xúc vận hành đời sống như một hệ thống."
+        },
+        {
+          "beat_id": "B04",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Các cảm xúc vận hành đời sống như một hệ thống."
+        },
+        {
+          "beat_id": "B05",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Joy cố kiểm soát và trạng thái bên trong hỗn loạn."
+        },
+        {
+          "beat_id": "B06",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Joy cố kiểm soát và trạng thái bên trong hỗn loạn."
+        },
+        {
+          "beat_id": "B07",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-RESULT"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Joy cố kiểm soát và trạng thái bên trong hỗn loạn."
+        },
+        {
+          "beat_id": "B08",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Joy cố kiểm soát và trạng thái bên trong hỗn loạn."
+        },
+        {
+          "beat_id": "B09",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Sadness được chấp nhận để nối lại với người thân."
+        },
+        {
+          "beat_id": "B10",
+          "affordance_ids": [
+            "AFF-INSIDE-OUT-PRESSURE"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "consequence"
+          ],
+          "candidate_clip_count": 3,
+          "semantic_fit": 0.93,
+          "emotional_fit": 0.97,
+          "silent_legibility": 0.96,
+          "plot_independence": 0.92,
+          "character_arc_stage_vi": "Sadness được chấp nhận để nối lại với người thân."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.93,
+        "emotional_arc_coverage": 0.97,
+        "narrative_continuity": 0.87,
+        "character_arc_alignment": 0.88,
+        "silent_legibility": 0.96,
+        "viewer_proximity": 0.7,
+        "plot_independence": 0.92,
+        "source_density": 0.91
+      },
+      "hard_failures": [],
+      "decision": {
+        "recommendation": "select",
+        "rationale_vi": "Qua contact sheet, phim đủ hành động, phản ứng, tuyến nhân vật và nhịp cảm xúc để phủ toàn bộ mười beat.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-INSIDE-OUT-v2",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:3712711e8db4cb0c4fedb68d2dfd0e6e8719d197b3aff6899331c483d9579c18",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    },
+    {
+      "assessment_id": "FFA-THE-INTERN",
+      "film_id": "FILM-THE-INTERN",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-THE-INTERN-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 83,
+          "semantic_fit": 0.7,
+          "emotional_fit": 0.58,
+          "silent_legibility": 0.69,
+          "plot_independence": 0.66,
+          "character_arc_stage_vi": "Làm việc trong nhịp tăng trưởng cao."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.7,
+        "emotional_arc_coverage": 0.58,
+        "narrative_continuity": 0.75,
+        "character_arc_alignment": 0.71,
+        "silent_legibility": 0.69,
+        "viewer_proximity": 0.94,
+        "plot_independence": 0.66,
+        "source_density": 0.79
+      },
+      "hard_failures": [
+        "emotional_arc_coverage_below_threshold"
+      ],
+      "decision": {
+        "recommendation": "reject",
+        "rationale_vi": "Phim có một số cảnh phù hợp nhưng không đồng thời đạt độ phủ nghĩa, cảm xúc, tuyến nhân vật và nguồn khả dụng cho toàn video.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-THE-INTERN-v1",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:d537052ff56f20a30aec7907274b099482138984fcbbed3e5343e2dba712396c",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    },
+    {
+      "assessment_id": "FFA-OFFICE-SPACE",
+      "film_id": "FILM-OFFICE-SPACE",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-OFFICE-SPACE-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 53,
+          "semantic_fit": 0.68,
+          "emotional_fit": 0.63,
+          "silent_legibility": 0.72,
+          "plot_independence": 0.64,
+          "character_arc_stage_vi": "Kiệt sức trong công việc lặp lại."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.68,
+        "emotional_arc_coverage": 0.63,
+        "narrative_continuity": 0.74,
+        "character_arc_alignment": 0.66,
+        "silent_legibility": 0.72,
+        "viewer_proximity": 0.92,
+        "plot_independence": 0.64,
+        "source_density": 0.61
+      },
+      "hard_failures": [
+        "semantic_reframe_risk"
+      ],
+      "decision": {
+        "recommendation": "reject",
+        "rationale_vi": "Phim có một số cảnh phù hợp nhưng không đồng thời đạt độ phủ nghĩa, cảm xúc, tuyến nhân vật và nguồn khả dụng cho toàn video.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-OFFICE-SPACE-v1",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:1d967ab4fe6e30748f8de02303ae0f02b4fe4f785fb458488ab315b39b27fe22",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    },
+    {
+      "assessment_id": "FFA-THE-PURSUIT-OF-HAPPYNESS",
+      "film_id": "FILM-THE-PURSUIT-OF-HAPPYNESS",
+      "beat_coverage": [
+        {
+          "beat_id": "B01",
+          "affordance_ids": [
+            "AFF-THE-PURSUIT-OF-HAPPYNESS-INNER-OUTER"
+          ],
+          "visible_proof_types": [
+            "action",
+            "reaction",
+            "recognition"
+          ],
+          "candidate_clip_count": 12,
+          "semantic_fit": 0.67,
+          "emotional_fit": 0.74,
+          "silent_legibility": 0.77,
+          "plot_independence": 0.71,
+          "character_arc_stage_vi": "Mất ổn định tài chính và gia đình."
+        }
+      ],
+      "scores": {
+        "semantic_coverage": 0.67,
+        "emotional_arc_coverage": 0.74,
+        "narrative_continuity": 0.84,
+        "character_arc_alignment": 0.79,
+        "silent_legibility": 0.77,
+        "viewer_proximity": 0.83,
+        "plot_independence": 0.71,
+        "source_density": 0.12
+      },
+      "hard_failures": [
+        "source_density_insufficient",
+        "false_inference_glorifies_suffering"
+      ],
+      "decision": {
+        "recommendation": "reject",
+        "rationale_vi": "Phim có một số cảnh phù hợp nhưng không đồng thời đạt độ phủ nghĩa, cảm xúc, tuyến nhân vật và nguồn khả dụng cho toàn video.",
+        "rejected_alternatives_vi": [
+          "Không dùng montage đẹp nhưng thiếu chuỗi nguyên nhân và hậu quả."
+        ]
+      },
+      "schema_version": "1.0.0",
+      "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+      "profile_id": "FSP-FILM-THE-PURSUIT-OF-HAPPYNESS-v1",
+      "viewer_model_id": "VM-urban-vietnam-office-25-35-509ac8eda7cc",
+      "viewer_segment_fingerprint": "sha256:7f06df5bab00c508166e2f2492ed6f01fca9309b241f99a50ef0509ac8eda7cc",
+      "assessment_sha256": "sha256:42e3c428d6df9e29e5bae9a570220b1f31da16589a0735c81f371ffe8cdafcac",
+      "created_at": "2026-07-29T23:38:30+07:00"
+    }
+  ],
+  "selected_profile_ids": [
+    "FSP-FILM-THE-DEVIL-WEARS-PRADA-v2",
+    "FSP-FILM-THE-TRUMAN-SHOW-v2",
+    "FSP-FILM-INSIDE-OUT-v2"
+  ],
+  "rejected_profile_ids": [
+    "FSP-FILM-THE-INTERN-v1",
+    "FSP-FILM-OFFICE-SPACE-v1",
+    "FSP-FILM-THE-PURSUIT-OF-HAPPYNESS-v1"
+  ],
+  "portfolio_sha256": "sha256:0c6ba5dd5a083480d268dfd9db5802b963f2323133bb6eff653d90b5772e643c",
+  "created_at": "2026-07-29T23:38:30+07:00"
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "tpr.owner_feedback_evidence.v1",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "reviewer_id": "anh-thong",
+  "scope": "series",
+  "status": "accepted_as_owner_authored_rule_evidence",
+  "message": "Cần quyết định phim theo khả năng truyền tải đủ nội dung, cảm xúc, đủ chất liệu mạch kể, tuyến nhân vật và tình tiết; lưu cả phim chọn lẫn phim loại để không research lại. Không được sử dụng một phim liên tục; nếu dùng ở clip số 1 thì tới clip số 6 mới dùng lại. Nâng cấp toàn plugin và model hóa phim.",
+  "interpretation": {
+    "actions": [
+      "reject",
+      "visual_treatment_change",
+      "rule_instruction"
+    ],
+    "reason_codes": [
+      "film_narrative_coverage_insufficient",
+      "film_character_arc_mismatch",
+      "film_rotation_required"
+    ],
+    "preferred_properties": {
+      "film_source_model": {
+        "persist_selected_and_rejected_profiles": true,
+        "require_semantic_and_emotional_coverage": true,
+        "require_character_arc_and_story_material": true,
+        "minimum_video_distance": 5,
+        "reuse_allowed_from_offset": 5
+      }
+    },
+    "rejected_properties": {
+      "single_use_research_and_unmodeled_film_choice": true
+    },
+    "scope_proposal": {
+      "level": "series",
+      "confidence": 0.97,
+      "explicit": true,
+      "evidence_phrase": "nâng cấp toàn plugin"
+    },
+    "message_hash": "4ce05c5025fda2193bf4e761c8a886a49f712a716df4478a7d38b5244e731984",
+    "interpreter_version": "feedback-interpreter.vi.v1"
+  },
+  "taste_learning_boundary_vi": "Luật cooldown và yêu cầu lưu profile là quyết định cấp series; điểm thẩm mỹ của từng phim chỉ được học sau feedback gắn với đúng variant và shot."
+}

@@ -159,6 +159,18 @@
   line-height: 1.6;
 }
 
+.evidenceLink {
+  color: #f3efe6;
+  font-weight: 700;
+  text-decoration-color: #e04b43;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.evidenceLink:hover {
+  color: #e04b43;
+}
+
 .reviewQuestions {
   padding-top: 4rem;
 }

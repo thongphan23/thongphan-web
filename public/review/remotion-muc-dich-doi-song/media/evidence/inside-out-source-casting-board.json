@@ -1,0 +1,620 @@
+{
+  "schema": "tpr.source_casting_board.v2",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "variant_id": "inside-out",
+  "status": "sealed",
+  "based_on": [
+    {
+      "path": "content/film_source_portfolio.json",
+      "sha256": "f788718be0c1aab1200a54d50062774c9dddb388d5703dfbc768f8cf7902ce4d"
+    },
+    {
+      "path": "content/visual_observation_review.json",
+      "sha256": "a47218a050dbff85e8c3c6fa3f65b91e4622c6accebbd89405f3bdea9abcd1fb"
+    },
+    {
+      "path": "content/meaning_beat_design.json",
+      "sha256": "cdd7eab376a8a4f7f4f45e8be660696868a90185e1ff4c30099f2aa7a31f07e2"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "S001",
+      "beat_id": "PRE",
+      "asset_id": "clipcafe_192660",
+      "clip_id": "192660",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Well yeah I'm Joy This is Sadness",
+      "source_transcript_excerpt": "[from trailer]\n\nDisgust:\nI'm Joy, this is Sadness, that's Anger, this is Disgust. \nDisgust:\nUgh... \nJoy:\nAnd that's Fear. \nFear:\nAhhh! Look out! | Well yeah I'm Joy This is Sadness You're Joy The Joy JOY Mmm hmm What the heck are you doing out here",
+      "visible_fact_vi": "Joy, Sadness và các cảm xúc đứng quanh bảng điều khiển, giới thiệu đời sống bên trong như một hệ thống nhìn thấy được.",
+      "viewer_should_feel_vi": "Được đưa vào thế giới phim trước khi voice bắt đầu.",
+      "viewer_should_remember_vi": "Một tuyến nhân vật thống nhất sẽ dẫn toàn video.",
+      "semantic_bridge_vi": "Thiết lập nhân vật và thế giới bằng hành động.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192660/e74b5a219830e362630b3beb1545b1aa25a3aae6b9a9cdb5ab51d01a733680b2/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/well-yeah-im-joy-this-sadness/"
+      ],
+      "trim": {
+        "source_in_ms": 2914,
+        "source_out_ms": 5094
+      },
+      "timeline": {
+        "start_ms": 0,
+        "end_ms": 2180
+      }
+    },
+    {
+      "shot_id": "S002",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_192628",
+      "clip_id": "192628",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Oh no These Facts and Opinions look so similar",
+      "source_transcript_excerpt": "Joy:\nOh no! These Facts and Opinions look so similar! \nBing Bong:\nDon't worry about it. Happens all the time. | Oh no These Facts and Opinions look so similar Oh don't worry about it Happens all the time",
+      "visible_fact_vi": "Facts và Opinions hiện thành những thùng vật thể gần giống nhau, trực quan hóa hai lớp nhận thức dễ bị lẫn.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192628/3a09d99b16b128c6f5f3355c62695633e783316a93198240ea6ac35b3c12bae3/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/oh-no-these-facts-opinions-look-similar/"
+      ],
+      "trim": {
+        "source_in_ms": 2328,
+        "source_out_ms": 5678
+      },
+      "timeline": {
+        "start_ms": 2180,
+        "end_ms": 5530
+      }
+    },
+    {
+      "shot_id": "S003",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_192672",
+      "clip_id": "192672",
+      "movie_slug": "inside-out-2015",
+      "source_title": "We're taking the Train of Thought",
+      "source_transcript_excerpt": "Bing Bong:\nWe're taking the Train of Thought. \nJoy:\nThe Train! Of course. That is so much faster, but how do we catch it? \nBing Bong:\nWell, it kind of goes all over the place. | We're taking the Train of Thought HORN BLARING JOY The train of course That is so much faster But how do we catch it Well it kind of goes all over the place",
+      "visible_fact_vi": "Đoàn tàu chạy giữa các dãy ký ức khổng lồ, biến dòng suy nghĩ bên trong thành một hành trình hữu hình.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192672/25da5ef539df8cbadb2d8a39ecbac474341f2446092353b2919b410a41bf80c9/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/were-taking-the-train-of-thought-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 4331,
+        "source_out_ms": 7681
+      },
+      "timeline": {
+        "start_ms": 5530,
+        "end_ms": 8880
+      }
+    },
+    {
+      "shot_id": "S004",
+      "beat_id": "B02",
+      "asset_id": "clipcafe_192669",
+      "clip_id": "192669",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Sadness Sadness",
+      "source_transcript_excerpt": "Joy:\nSadness! Sadness? Come on, Sadness, where are you? Okay, if I were Sadness, where would I be? \n[as Sadness]\n\nJoy:\nOh, everything is awful, and my legs don't work, and you have to drag me around while I touch all the... \n[she spots a row of memory orbs that Sadness has touched and follows it] | Sadness Sadness Come on Sadness Where are you Okay If I were Sadness where would I be Oh Everything is awful and my legs don't work and you have to drag me around while I touch all the",
+      "visible_fact_vi": "Sadness nằm co lại trước bức tường ký ức rồi Joy tìm tới, giữ nét mặt và tư thế buồn đủ lâu để người xem đọc được.",
+      "viewer_should_feel_vi": "Lắng xuống và được định tâm.",
+      "viewer_should_remember_vi": "Bên trong là chính.",
+      "semantic_bridge_vi": "Giữ shot đủ lâu để đọc nét mặt và sự thay đổi trạng thái.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192669/631d913fff5d58f2b0b2153a409e6b7a3f84d087e8a16816830ae437cadae3d7/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/sadness-sadness/"
+      ],
+      "trim": {
+        "source_in_ms": 5769,
+        "source_out_ms": 12249
+      },
+      "timeline": {
+        "start_ms": 8880,
+        "end_ms": 15360
+      }
+    },
+    {
+      "shot_id": "S005",
+      "beat_id": "B03",
+      "asset_id": "clipcafe_192663",
+      "clip_id": "192663",
+      "movie_slug": "inside-out-2015",
+      "source_title": "JOY We've been through a lot lately that's for sure",
+      "source_transcript_excerpt": "[last lines]\n\nJoy:\n[narrating]\nWe've been through a lot lately, that's for sure. But we still love our girl. She has great new friends, a great new house. Things couldn't be better. After all, Riley's twelve now. What could happen? | JOY We've been through a lot lately that's for sure But we still love our girl She has great new friends a great new house Things couldn't be better After all Riley's twelve now What could happen",
+      "visible_fact_vi": "Riley lao vào trận khúc côn cầu cùng đồng đội, một bằng chứng rõ của hoạt động và mục tiêu bên ngoài.",
+      "viewer_should_feel_vi": "Bị chỉnh lại một niềm tin quen thuộc.",
+      "viewer_should_remember_vi": "Việc làm là phương tiện, không phải lõi.",
+      "semantic_bridge_vi": "Dùng vật chứng công việc hoặc phần thưởng nhìn thấy được.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192663/c821701e2501eaabf60f1ccea6b66e6a12752121c53f55f33a185baefbb5e686/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/joy-weve-been-through-a-lot-lately-thats-sure/"
+      ],
+      "trim": {
+        "source_in_ms": 5048,
+        "source_out_ms": 8968
+      },
+      "timeline": {
+        "start_ms": 15360,
+        "end_ms": 19280
+      }
+    },
+    {
+      "shot_id": "S006",
+      "beat_id": "B04",
+      "asset_id": "clipcafe_192625",
+      "clip_id": "192625",
+      "movie_slug": "inside-out-2015",
+      "source_title": "BING BONG You made it",
+      "source_transcript_excerpt": "[Joy looks down into the memory dump and sees Bing Bong jumping for joy]\n\nBing Bong:\nYou made it! Go! Go save Riley! \n[Joy watches Bing Bong start to fade away]\n\nBing Bong:\nTake her to the moon for me. Okay? | BING BONG You made it BING BONG LAUGHING Go Go save Riley Take her to the moon for me Okay",
+      "visible_fact_vi": "Joy nhìn Bing Bong dần biến mất sau hành động hy sinh, tạo khoảnh khắc dừng lại và nhận biết điều quan trọng.",
+      "viewer_should_feel_vi": "Sáng rõ và nhẹ ra.",
+      "viewer_should_remember_vi": "Mục đích bên trong là tỉnh thức.",
+      "semantic_bridge_vi": "Ưu tiên khoảnh khắc nhân vật dừng lại, nhìn thấy hoặc lựa chọn có chủ ý.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192625/dc18e950ae9df1f749eadb64ce3285a337c3fb6554155db56c3db2532a37c2da/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/bing-bong-you-made-it/"
+      ],
+      "trim": {
+        "source_in_ms": 4476,
+        "source_out_ms": 8536
+      },
+      "timeline": {
+        "start_ms": 19280,
+        "end_ms": 23340
+      }
+    },
+    {
+      "shot_id": "S007",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_192670",
+      "clip_id": "192670",
+      "movie_slug": "inside-out-2015",
+      "source_title": "The drive out was pretty fun huh",
+      "source_transcript_excerpt": "Mom:\nThe drive out was pretty fun. What was your favourite bit? \nAnger:\nSpitting out the car window! \nDisgust:\nDefinitely not when Dad was singing. \nFear:\nWearing a seat belt! | The drive out was pretty fun huh What was your favorite part Spitting out the car window Definitely not when Dad was singing Wearing a seat belt",
+      "visible_fact_vi": "Gia đình trên chuyến xe và các cảm xúc nhớ lại hành trình, cho thấy bối cảnh sống thay đổi theo thời gian.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192670/bca39ac804b2784e5b2cc66077dd601dd941276909c058456b8a347818e78e6a/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/the-drive-out-pretty-fun-huh/"
+      ],
+      "trim": {
+        "source_in_ms": 3290,
+        "source_out_ms": 5720
+      },
+      "timeline": {
+        "start_ms": 23340,
+        "end_ms": 25770
+      }
+    },
+    {
+      "shot_id": "S008",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_192662",
+      "clip_id": "192662",
+      "movie_slug": "inside-out-2015",
+      "source_title": "DISGUST Okay we've got a group of cool girls at two o'clock",
+      "source_transcript_excerpt": "Disgust:\nOkay, we've got a group of cool girls at 2 o'clock. \nJoy:\nHow do you know? \nDisgust:\nDouble ears pierced, infinity scarf. \nJoy:\nWhoa, is she wearing eye shadow? \nDisgust:\nYeah, we wanna be friends with them. \nJoy:\nLet's go talk to them. \nDisgust:\nAre you kidding? We're not talking to them. We want them to like us! \nJoy:\nOh, yeah. Wait, what? | DISGUST Okay we've got a group of cool girls at two o'clock How do you know Double ears pierced infinity scarf JOY Whoa Is she wearing eye shadow Yeah we want to be friends with them Let's go talk to them Are you kidding We're not talking to the",
+      "visible_fact_vi": "Các cảm xúc quan sát nhóm bạn mới rồi thay nhau điều khiển phản ứng, cho thấy mục tiêu đổi theo người và môi trường.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192662/18c8c4149fd331543fad8ab8fd7796e327af3d188007d0a3b91a9ecfb1aa94f1/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/disgust-okay-weve-got-a-group-of-cool-girls-at-two-oclock/"
+      ],
+      "trim": {
+        "source_in_ms": 6294,
+        "source_out_ms": 8724
+      },
+      "timeline": {
+        "start_ms": 25770,
+        "end_ms": 28200
+      }
+    },
+    {
+      "shot_id": "S009",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_192634",
+      "clip_id": "192634",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Yeah it's good",
+      "source_transcript_excerpt": "Fear:\nMaybe it was a bear? \nDisgust:\nThere are no bears in San Francisco. \nAnger:\nI saw a really hairy guy, he looked like a bear. | Yeah it's good What happened with the playoffs We won the first game Coach says we might actually go to the finals this year",
+      "visible_fact_vi": "Riley nhìn màn hình thành tích thể thao trong khi trạng thái bên trong theo dõi, nối hành động ngoài đời với hệ điều khiển bên trong.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192634/fc4b0fba6f9e54e1d2e1d5d3e55135bf1a02937dd9c7832f7aba46c01c6e8f88/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/yeah-its-good/"
+      ],
+      "trim": {
+        "source_in_ms": 2178,
+        "source_out_ms": 5828
+      },
+      "timeline": {
+        "start_ms": 28200,
+        "end_ms": 31850
+      }
+    },
+    {
+      "shot_id": "S010",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_192655",
+      "clip_id": "192655",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Hey Hey look at me",
+      "source_transcript_excerpt": "Joy:\nHey! Hey, look at me. Did you mean what you said before? \nRiley's Imaginary Boyfriend:\nI would die for Riley. I would die for Riley. \nJoy:\nYeah, yeah, okay, haircut. Time to prove it! \n[stuffs him in a bag] | Hey Hey look at me Did you mean what you said before I would die for Riley I would die for Riley Yeah okay haircut Time to prove it",
+      "visible_fact_vi": "Joy kích hoạt một kế hoạch và đẩy nhân vật vào cỗ máy, biến ý định bên trong thành hành động có kết quả.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192655/4528027a490f26d9c9442e4571b31febfd5f6dcde9f4095375bc1c015fbd1e6b/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/hey-hey-look-at-me/"
+      ],
+      "trim": {
+        "source_in_ms": 2680,
+        "source_out_ms": 6330
+      },
+      "timeline": {
+        "start_ms": 31850,
+        "end_ms": 35500
+      }
+    },
+    {
+      "shot_id": "S011",
+      "beat_id": "B07",
+      "asset_id": "clipcafe_192652",
+      "clip_id": "192652",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Me too Oh participation award",
+      "source_transcript_excerpt": "Sadness:\nAww, participation award. | Me too Oh participation award",
+      "visible_fact_vi": "Một chiếc cúp participation award được giơ lên giữa Joy và Sadness, vật chứng thành công xuất hiện trực tiếp trong khung hình.",
+      "viewer_should_feel_vi": "Được giải đáp và có một đỉnh sáng ngắn.",
+      "viewer_should_remember_vi": "Thành công thực sự là sự hòa điệu.",
+      "semantic_bridge_vi": "Ưu tiên bằng chứng thành công cụ thể: công nhận, hoàn thành, high-five, cúp hoặc thoát ra thành công.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192652/7abf0f6564a6fa37c4b1da456c83e5e78966c7a6be4c4ec8ad2a0d441d8dba95/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/me-too-oh-participation-award/"
+      ],
+      "trim": {
+        "source_in_ms": 966,
+        "source_out_ms": 4046
+      },
+      "timeline": {
+        "start_ms": 35500,
+        "end_ms": 38580
+      }
+    },
+    {
+      "shot_id": "S012",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192666",
+      "clip_id": "192666",
+      "movie_slug": "inside-out-2015",
+      "source_title": "MOM Your dad's under a lot of pressure",
+      "source_transcript_excerpt": "Mom:\nYour dad's under a lot of pressure, but if you and I can keep smiling, it would be a big help. We can do that for him. Right? | MOM Your dad's under a lot of pressure but if you and I can keep smiling it would be a big help We can do that for him Right",
+      "visible_fact_vi": "Riley bị yêu cầu tiếp tục mỉm cười trong khi áp lực gia đình hiện trên gương mặt, mở cao trào lệch cảm xúc.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192666/27a8bcd82a9ebcad7a25b4f78931770d9a2874d5e42e3af4d1d8d8145cd1b069/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/mom-your-dads-under-a-lot-of-pressure/"
+      ],
+      "trim": {
+        "source_in_ms": 1186,
+        "source_out_ms": 3286
+      },
+      "timeline": {
+        "start_ms": 38580,
+        "end_ms": 40680
+      }
+    },
+    {
+      "shot_id": "S013",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192667",
+      "clip_id": "192667",
+      "movie_slug": "inside-out-2015",
+      "source_title": "This is crazy This is crazy No no no Joy Be positive",
+      "source_transcript_excerpt": "Joy:\n[Looking over the Memory Dump she's about to fall toward]\nThis is a really bad idea! No, Joy. Think positive... \n[pauses]\n\nJoy:\nI'm positive this is crazy! \n[Falls toward a trampoline down below] | This is crazy This is crazy No no no Joy Be positive I am positive this is crazy",
+      "visible_fact_vi": "Joy rơi xuống vực ký ức khi cố ép mình tích cực, biến sự cưỡng ép thành nguy hiểm hữu hình.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192667/bc0902ea3fc12106ec228e352928b72ad79241e1d091bb0f9912a484558c7698/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/this-crazy-this-crazy-no-no-no-joy-be-positive/"
+      ],
+      "trim": {
+        "source_in_ms": 1382,
+        "source_out_ms": 3182
+      },
+      "timeline": {
+        "start_ms": 40680,
+        "end_ms": 42480
+      }
+    },
+    {
+      "shot_id": "S014",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192671",
+      "clip_id": "192671",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Being cool is so exhausting",
+      "source_transcript_excerpt": "Cool Girl's Emotions:\nBeing cool is exhausting. | Being cool is so exhausting",
+      "visible_fact_vi": "Nhân vật gục xuống kiệt sức giữa không gian ký ức, cho thấy cái giá của việc phải giữ một hình ảnh bên ngoài.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192671/17784bd8d3195b039d12bd25f36ccad8925b950c212934d8901fa5577fbf34cf/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/being-cool-so-exhausting/"
+      ],
+      "trim": {
+        "source_in_ms": 376,
+        "source_out_ms": 1876
+      },
+      "timeline": {
+        "start_ms": 42480,
+        "end_ms": 43980
+      }
+    },
+    {
+      "shot_id": "S015",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192647",
+      "clip_id": "192647",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Hey guys What's pub er ty",
+      "source_transcript_excerpt": "Disgust:\nWhat's \"poo-ber-tee\"? | Hey Guys What's pub er ty",
+      "visible_fact_vi": "Nút cảnh báo trên bảng điều khiển được nhấn khi các cảm xúc bối rối, làm áp lực chuyển thành tín hiệu trực quan.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192647/ba5c62774d1b310a87d3d6958420db0fae34f67588367147db140f3b22fe1050/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/hey-guys-whats-pub-er-ty/"
+      ],
+      "trim": {
+        "source_in_ms": 256,
+        "source_out_ms": 1556
+      },
+      "timeline": {
+        "start_ms": 43980,
+        "end_ms": 45280
+      }
+    },
+    {
+      "shot_id": "S016",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192649",
+      "clip_id": "192649",
+      "movie_slug": "inside-out-2015",
+      "source_title": "D A N G E R Shortcut I'll prove it to you",
+      "source_transcript_excerpt": "Bing Bong:\nD, A, N, G, E, R, SHORTCUT! | D A N G E R Shortcut I'll prove it to you",
+      "visible_fact_vi": "Biển DANGER và lối tắt nguy hiểm lấp đầy khung hình, trực tiếp biểu đạt lựa chọn cưỡng ép và rủi ro.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192649/4d55ba52414396e9bf6f679563c3c2c2f9d81d5966ba070ee36f0ed798560ca3/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/d-a-n-g-e-r-shortcut-ill-prove-it-you/"
+      ],
+      "trim": {
+        "source_in_ms": 722,
+        "source_out_ms": 1922
+      },
+      "timeline": {
+        "start_ms": 45280,
+        "end_ms": 46480
+      }
+    },
+    {
+      "shot_id": "S017",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192643",
+      "clip_id": "192643",
+      "movie_slug": "inside-out-2015",
+      "source_title": "We should lock the door and scream that curse word we know",
+      "source_transcript_excerpt": "Anger:\nWe should lock the door and scream that curse word we know. It's a good one! | We should lock the door and scream that curse word we know It's a good one Now hold on",
+      "visible_fact_vi": "Anger chiếm bảng điều khiển và vung tay trong giận dữ, cho thấy xung đột bên trong chuyển thành hành động.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192643/2244c3475c59b75b1edfe4635356a0a84b28dacf759b164afc3dcf85a3e803c7/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/we-should-lock-the-door-scream-curse-word-know-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 752,
+        "source_out_ms": 1752
+      },
+      "timeline": {
+        "start_ms": 46480,
+        "end_ms": 47480
+      }
+    },
+    {
+      "shot_id": "S018",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192644",
+      "clip_id": "192644",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Can I say that curse word now",
+      "source_transcript_excerpt": "Anger:\n[after Joy and Sadness are ejected]\nCan I say that curse word now? | Can I say that curse word now",
+      "visible_fact_vi": "Anger đứng một mình trước bảng điều khiển sau khi Joy và Sadness biến mất, hệ thống cảm xúc mất cân bằng rõ rệt.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192644/849db198b1715838fc251b923021059b81385f38a8e850921e6afd1938b619e6/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/can-i-say-curse-word-now-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 466,
+        "source_out_ms": 1366
+      },
+      "timeline": {
+        "start_ms": 47480,
+        "end_ms": 48380
+      }
+    },
+    {
+      "shot_id": "S019",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192661",
+      "clip_id": "192661",
+      "movie_slug": "inside-out-2015",
+      "source_title": "These are my kind of people CARS HONKING",
+      "source_transcript_excerpt": "Anger:\n[Upon seeing the bumper-to-bumper traffic in San Francisco]\nThese are my kind of people! | These are my kind of people CARS HONKING",
+      "visible_fact_vi": "Giao thông tắc nghẽn kích hoạt Anger giữa các cảm xúc, một kích thích bên ngoài đẩy hỗn loạn bên trong lên cao.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192661/39ff458812ea8c78990981a0fdd428c8a6ba0284f7dc2108dd16d276ed9ad0c8/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/these-are-kind-of-people-cars-honking/"
+      ],
+      "trim": {
+        "source_in_ms": 484,
+        "source_out_ms": 1264
+      },
+      "timeline": {
+        "start_ms": 48380,
+        "end_ms": 49160
+      }
+    },
+    {
+      "shot_id": "S020",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_192627",
+      "clip_id": "192627",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Congratulations San Francisco",
+      "source_transcript_excerpt": "Anger:\n[seeing slices of pizza with only broccoli on top]\n\nAnger:\nCongratulations San Francisco, you've ruined pizza! First the Hawaiians, and now YOU! | Congratulations San Francisco you've ruined pizza First the Hawaiians and now you",
+      "visible_fact_vi": "Anger bùng nổ trước miếng pizza bị phá hỏng, chốt chuỗi micro-shot bằng phản ứng quá mức dễ đọc.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192627/3d5f34866ea1a8cb6beb1dfd3b40331111ffc32c5fc028a0eca7fdaa6b4e4fe4/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/congratulations-san-francisco/"
+      ],
+      "trim": {
+        "source_in_ms": 1081,
+        "source_out_ms": 1881
+      },
+      "timeline": {
+        "start_ms": 49160,
+        "end_ms": 49960
+      }
+    },
+    {
+      "shot_id": "S021",
+      "beat_id": "B09",
+      "asset_id": "clipcafe_192632",
+      "clip_id": "192632",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Okay Only I'm too sad to walk",
+      "source_transcript_excerpt": "Sadness:\nI'm too sad to walk. Just give me a few... hours. | Okay Only I'm too sad to walk Just give me a few hours",
+      "visible_fact_vi": "Sadness nằm bất động rồi phải được kéo đi, giữ dư âm kiệt sức sau cao trào.",
+      "viewer_should_feel_vi": "Hụt xuống sau cao trào.",
+      "viewer_should_remember_vi": "Đạt được vẫn có thể trống rỗng.",
+      "semantic_bridge_vi": "Giữ reaction/aftermath dài; không dùng cảnh nhân vật chỉ đang nói.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192632/af7dc1d517cbe96ed83c76724deab676768ad912b5d7f94a4a01aee166e06b1e/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/okay-only-im-too-sad-walk/"
+      ],
+      "trim": {
+        "source_in_ms": 2444,
+        "source_out_ms": 6564
+      },
+      "timeline": {
+        "start_ms": 49960,
+        "end_ms": 54080
+      }
+    },
+    {
+      "shot_id": "S022",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_192654",
+      "clip_id": "192654",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Uh Okay Bye",
+      "source_transcript_excerpt": "[Riley accidentally knocks into a boy at a hockey rink, causing him to drop his drink, which she picks up for him]\n\nRiley:\nSorry. \n[the boy's emotions freak out, with an alarm sounding, \"Girl. Girl. Girl.\"]\n\nRiley:\nUh... Okay. Bye. | Uh Okay Bye",
+      "visible_fact_vi": "Một va chạm nhỏ với Riley khiến toàn bộ cảm xúc của cậu bé hoảng loạn, cho thấy trạng thái lan sang người bên cạnh.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192654/7c07c070733bfcb00852c7755974d9712ef983f62c78988712619493335b968c/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/uh-okay-bye/"
+      ],
+      "trim": {
+        "source_in_ms": 1114,
+        "source_out_ms": 3900
+      },
+      "timeline": {
+        "start_ms": 54080,
+        "end_ms": 56866
+      }
+    },
+    {
+      "shot_id": "S023",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_192653",
+      "clip_id": "192653",
+      "movie_slug": "inside-out-2015",
+      "source_title": "Remember the funny movie where the dog dies",
+      "source_transcript_excerpt": "Sadness:\nRemember the funny movie where the dog died? | Remember the funny movie where the dog dies",
+      "visible_fact_vi": "Joy tiến lại gần Sadness trong không gian vắng và tối, kết bằng sự đau buồn được nhìn nhận thay vì bị gạt bỏ.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/inside-out-director-sheet.jpg",
+        "observations/inside-out/192653/1dd19097be2182d7d881d4074940284916d3d42b7f7be943d3a7260c57ebe5b3/records/observation_packages.json",
+        "https://clip.cafe/inside-out-2015/remember-the-funny-movie-the-dog-dies/"
+      ],
+      "trim": {
+        "source_in_ms": 1114,
+        "source_out_ms": 3900
+      },
+      "timeline": {
+        "start_ms": 56866,
+        "end_ms": 59652
+      }
+    }
+  ]
+}

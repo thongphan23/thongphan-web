@@ -1,0 +1,568 @@
+{
+  "schema": "tpr.source_casting_board.v2",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "variant_id": "truman-show",
+  "status": "sealed",
+  "based_on": [
+    {
+      "path": "content/film_source_portfolio.json",
+      "sha256": "f788718be0c1aab1200a54d50062774c9dddb388d5703dfbc768f8cf7902ce4d"
+    },
+    {
+      "path": "content/visual_observation_review.json",
+      "sha256": "a47218a050dbff85e8c3c6fa3f65b91e4622c6accebbd89405f3bdea9abcd1fb"
+    },
+    {
+      "path": "content/meaning_beat_design.json",
+      "sha256": "cdd7eab376a8a4f7f4f45e8be660696868a90185e1ff4c30099f2aa7a31f07e2"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "S001",
+      "beat_id": "PRE",
+      "asset_id": "clipcafe_255224",
+      "clip_id": "255224",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Good morning Good morning",
+      "source_transcript_excerpt": "Truman:\n[repeated line; frequently in the show]\nGood morning, and in case I don't see ya, good afternoon, good evening, and good night! | Good morning Good morning And in case I don't see you good afternoon and good night",
+      "visible_fact_vi": "Truman bước ra khỏi thang máy với nụ cười và cử chỉ chào quen thuộc, thiết lập đời sống lặp lại hoàn hảo.",
+      "viewer_should_feel_vi": "Được đưa vào thế giới phim trước khi voice bắt đầu.",
+      "viewer_should_remember_vi": "Một tuyến nhân vật thống nhất sẽ dẫn toàn video.",
+      "semantic_bridge_vi": "Thiết lập nhân vật và thế giới bằng hành động.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255224/284ece55a305beab7d232023e575bd8f504da82f9a5f47d1bfdce91387f7bda9/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/good-morning-good-morning-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 4415,
+        "source_out_ms": 6595
+      },
+      "timeline": {
+        "start_ms": 0,
+        "end_ms": 2180
+      }
+    },
+    {
+      "shot_id": "S002",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_255225",
+      "clip_id": "255225",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "That's what made you so good to watch Listen Truman",
+      "source_transcript_excerpt": "Mike Michaelson:\nChristof, let me ask you, why do you think that Truman has never come close to discovering the true nature of his world until now? \nChristof:\nWe accept the reality of the world with which we're presented. It's as simple as that. | That's what made you so good to watch Listen Truman There's no more truth out there than in the world I created for you The same lies the same deceit",
+      "visible_fact_vi": "Christof nhìn Truman qua màn hình rồi cắt sang gương mặt Truman, đặt người điều khiển và người bị điều khiển cùng mạch.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255225/697a39c6ad8c7dd5f139df74f848c6b20d37277df5389c38563d38b4b210d9cb/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/thats-what-made-you-good-watch-listen-truman/"
+      ],
+      "trim": {
+        "source_in_ms": 7834,
+        "source_out_ms": 11184
+      },
+      "timeline": {
+        "start_ms": 2180,
+        "end_ms": 5530
+      }
+    },
+    {
+      "shot_id": "S003",
+      "beat_id": "B01",
+      "asset_id": "clipcafe_255226",
+      "clip_id": "255226",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "I know you better than you do You never had a camera in my head",
+      "source_transcript_excerpt": "Christof:\nI know you better than you know yourself. \nTruman:\nYou never had a camera in my head! | I know you better than you do You never had a camera in my head",
+      "visible_fact_vi": "Hai cận cảnh đối đầu giữa Truman và người kiểm soát cho thấy một biên giới bên ngoài và tâm trí riêng bên trong.",
+      "viewer_should_feel_vi": "Tò mò và tự soi chiếu.",
+      "viewer_should_remember_vi": "Hai lớp: bên trong và bên ngoài.",
+      "semantic_bridge_vi": "Đặt hai lớp trong cùng một thế giới nhân vật, không cắt sang hai phim khác nhau.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255226/8393734f3b82938ec758d85ffab98d0ad604fdca5aa481f43d52558ea30c098b/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/i-know-better-than-do-you-never-a-camera-in-head/"
+      ],
+      "trim": {
+        "source_in_ms": 1834,
+        "source_out_ms": 5184
+      },
+      "timeline": {
+        "start_ms": 5530,
+        "end_ms": 8880
+      }
+    },
+    {
+      "shot_id": "S004",
+      "beat_id": "B02",
+      "asset_id": "clipcafe_255248",
+      "clip_id": "255248",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Look at that sunset It's perfect",
+      "source_transcript_excerpt": "Marlon:\nLook at that sunset, Truman. It's perfect. \nTruman:\nYeah. \nMarlon:\nThat's the big guy. Quite a paint brush he's got. | Look at that sunset It's perfect That's the big guy Quite a paintbrush he's got",
+      "visible_fact_vi": "Hai người ngồi yên thành bóng trước hoàng hôn rộng, tạo một khoảng lắng đủ lâu để đọc trạng thái an nhiên.",
+      "viewer_should_feel_vi": "Lắng xuống và được định tâm.",
+      "viewer_should_remember_vi": "Bên trong là chính.",
+      "semantic_bridge_vi": "Giữ shot đủ lâu để đọc nét mặt và sự thay đổi trạng thái.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255248/78e98c526546060828486c78890af69076a72b8035a10efd435849417725b3e3/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/look-at-sunset-its-perfect/"
+      ],
+      "trim": {
+        "source_in_ms": 2766,
+        "source_out_ms": 9246
+      },
+      "timeline": {
+        "start_ms": 8880,
+        "end_ms": 15360
+      }
+    },
+    {
+      "shot_id": "S005",
+      "beat_id": "B03",
+      "asset_id": "clipcafe_255239",
+      "clip_id": "255239",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "That one's for free Stand by all house cameras",
+      "source_transcript_excerpt": "Truman:\n[after scaring the two control room directors by seemingly talking to them, then easing them by seeming to revert back to his eccentricity, while they look at their notes temporarily]\nThat one's for free. | That one's for free Stand by all house cameras",
+      "visible_fact_vi": "Truman xuất hiện bên trong khung màn hình đỏ ON AIR, biến đời sống bên ngoài thành một sản phẩm bị quan sát.",
+      "viewer_should_feel_vi": "Bị chỉnh lại một niềm tin quen thuộc.",
+      "viewer_should_remember_vi": "Việc làm là phương tiện, không phải lõi.",
+      "semantic_bridge_vi": "Dùng vật chứng công việc hoặc phần thưởng nhìn thấy được.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255239/8c9d1ee44c881ceb0956dc1957889f2bcfb8e88aa55d6db0b144398c1194a54a/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/that-ones-free-stand-by-all-house-cameras/"
+      ],
+      "trim": {
+        "source_in_ms": 2044,
+        "source_out_ms": 5964
+      },
+      "timeline": {
+        "start_ms": 15360,
+        "end_ms": 19280
+      }
+    },
+    {
+      "shot_id": "S006",
+      "beat_id": "B04",
+      "asset_id": "clipcafe_255228",
+      "clip_id": "255228",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Somebody help me I'm being spontaneous",
+      "source_transcript_excerpt": "Truman Burbank:\nSomebody help me, I'm being spontaneous! | Somebody help me I'm being spontaneous",
+      "visible_fact_vi": "Chiếc xe đảo vòng liên tục nhìn từ trên cao rồi Truman phản ứng phấn khích, biểu hiện hành động tự phát phá khuôn.",
+      "viewer_should_feel_vi": "Sáng rõ và nhẹ ra.",
+      "viewer_should_remember_vi": "Mục đích bên trong là tỉnh thức.",
+      "semantic_bridge_vi": "Ưu tiên khoảnh khắc nhân vật dừng lại, nhìn thấy hoặc lựa chọn có chủ ý.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255228/62e59f820a76dcf24e4467d1bc76915bde724348ef14f4ec8fd9f26b79b7b6bc/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/somebody-help-im-being-spontaneous/"
+      ],
+      "trim": {
+        "source_in_ms": 1479,
+        "source_out_ms": 5539
+      },
+      "timeline": {
+        "start_ms": 19280,
+        "end_ms": 23340
+      }
+    },
+    {
+      "shot_id": "S007",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_255247",
+      "clip_id": "255247",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Early bird gathers no moss rolling stone catches the worm",
+      "source_transcript_excerpt": "Truman:\nThe early bird gathers no moss! The rolling stone catches the worm! | Early bird gathers no moss rolling stone catches the worm",
+      "visible_fact_vi": "Truman lặp lại tương tác thân thiện bên xe trên con phố ngăn nắp, cho thấy một vai trò đời thường cố định.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255247/e59b88b96db820e98811e4edfad79b2f33fd8ca43c5195ffea9e8d24c5a96681/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/early-bird-gathers-no-moss-rolling-stone-catches-the-worm/"
+      ],
+      "trim": {
+        "source_in_ms": 2294,
+        "source_out_ms": 4724
+      },
+      "timeline": {
+        "start_ms": 23340,
+        "end_ms": 25770
+      }
+    },
+    {
+      "shot_id": "S008",
+      "beat_id": "B05",
+      "asset_id": "clipcafe_255250",
+      "clip_id": "255250",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "I'm just the bus driver They can't sail They're actors",
+      "source_transcript_excerpt": "Bus Driver:\n[unable to get the ferry moving]\nI'm usually the bus driver! \nProduction Assistant:\n[into his radio]\nBottom line is they can't drive the boat. They're actors! | I'm just the bus driver They can't sail They're actors",
+      "visible_fact_vi": "Người vận hành phà lúng túng bên phương tiện không chạy, làm lộ việc vai trò bên ngoài có thể chỉ là diễn xuất.",
+      "viewer_should_feel_vi": "Cởi mở trước nhiều ngã rẽ.",
+      "viewer_should_remember_vi": "Mục tiêu có thể đổi.",
+      "semantic_bridge_vi": "Thể hiện biến đổi vai trò hoặc tình huống bằng hành động, không dựa vào hội thoại.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255250/d8b9a33a3f2555d532935fce2505347ff283eff6662c3492516de68f5d839be0/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/im-just-the-bus-driver-they-cant-sail-theyre-actors/"
+      ],
+      "trim": {
+        "source_in_ms": 2294,
+        "source_out_ms": 4724
+      },
+      "timeline": {
+        "start_ms": 25770,
+        "end_ms": 28200
+      }
+    },
+    {
+      "shot_id": "S009",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_255235",
+      "clip_id": "255235",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "So when are you gonna go",
+      "source_transcript_excerpt": "Truman:\n[Sailing in the artificially-roughened winds and seas - he shouts to the sky]\nIs that the best you can do? \n[Christof, in the \"moon room\", whips around to face the screen, shocked]\n\nTruman:\nYou're gonna have to kill me! \n[sings]\n\nTruman:\nWhat do ya do with a drunken sailor? What do ya do with a drunken sailor? What do ya do with a drunken sailor ear-lye in the mor-nin'! | So when are you gonna go It's not that simple It takes money planning",
+      "visible_fact_vi": "Truman nghiêng người trao đổi kế hoạch với người bạn, rồi ánh mắt chuyển sang hướng hành động sắp tới.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255235/f0eaf513cde8e921bd42e451cc4b9b0b4964d4e433ad0419ad77971591d9658b/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/so-are-gonna-go/"
+      ],
+      "trim": {
+        "source_in_ms": 5183,
+        "source_out_ms": 8833
+      },
+      "timeline": {
+        "start_ms": 28200,
+        "end_ms": 31850
+      }
+    },
+    {
+      "shot_id": "S010",
+      "beat_id": "B06",
+      "asset_id": "clipcafe_255253",
+      "clip_id": "255253",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Oh my You can do it You can make it",
+      "source_transcript_excerpt": "Man in Bathtub:\n[clinging onto his shower curtain while watching Truman clinging onto his boat in the storm]\nYOU CAN DO IT! HOLD ON! | Oh my You can do it You can make it",
+      "visible_fact_vi": "Người xem bám chặt rồi đồng loạt reo mừng khi Truman tiếp tục tiến lên, nối hành động với kết quả cảm xúc.",
+      "viewer_should_feel_vi": "Thấy cơ chế nối lại mạch lạc.",
+      "viewer_should_remember_vi": "Bên trong ổn, bên ngoài đi đúng hướng.",
+      "semantic_bridge_vi": "Dùng chuỗi nguyên nhân-hành động-kết quả trong cùng tuyến nhân vật.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255253/99ea7985f7b2abb3bd52698ecf1d4fdca52cb508d6762a40ebca75c5b1a33bdc/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/oh-you-can-do-you-can-make-it/"
+      ],
+      "trim": {
+        "source_in_ms": 1684,
+        "source_out_ms": 5334
+      },
+      "timeline": {
+        "start_ms": 31850,
+        "end_ms": 35500
+      }
+    },
+    {
+      "shot_id": "S011",
+      "beat_id": "B07",
+      "asset_id": "clipcafe_255271",
+      "clip_id": "255271",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Perfect That's our hero shot",
+      "source_transcript_excerpt": "Christof:\nThat's our hero shot. | Perfect That's our hero shot",
+      "visible_fact_vi": "Christof và cả ê-kíp tập trung vào khung hình trung tâm trong phòng điều khiển, một khoảnh khắc được đóng dấu là thành tựu.",
+      "viewer_should_feel_vi": "Được giải đáp và có một đỉnh sáng ngắn.",
+      "viewer_should_remember_vi": "Thành công thực sự là sự hòa điệu.",
+      "semantic_bridge_vi": "Ưu tiên bằng chứng thành công cụ thể: công nhận, hoàn thành, high-five, cúp hoặc thoát ra thành công.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255271/6a1f11389834b98e9be659b7b77a992839d2a3d8314296b850a598f296a11316/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/perfect-thats-our-hero-shot/"
+      ],
+      "trim": {
+        "source_in_ms": 966,
+        "source_out_ms": 4046
+      },
+      "timeline": {
+        "start_ms": 35500,
+        "end_ms": 38580
+      }
+    },
+    {
+      "shot_id": "S012",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255236",
+      "clip_id": "255236",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "As Truman grew up we manufactured ways to keep him on the island",
+      "source_transcript_excerpt": "Christof:\nAs Truman grew up, we were forced to manufacture ways to keep him on the island. \n[flashback to Truman at school]\n\nYoung Truman:\nI like to be an explorer, like the great Magellan. \nTeacher:\n[rolling down a map of the world]\nOh, you're too late. There's really nothing left to explore. | As Truman grew up we manufactured ways to keep him on the island I'd like to be a great explorer There's nothing left to explore",
+      "visible_fact_vi": "Tuổi thơ Truman bị bao quanh bởi camera và các tình huống được dựng sẵn, cho thấy sự kiểm soát kéo dài.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255236/76e7beb1f48ebd9251fefdd2777e8a48e1bc78d9456b0aea5b5c7bd3257b93a1/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/as-truman-grew-up-manufactured-ways-keep-on-the-island/"
+      ],
+      "trim": {
+        "source_in_ms": 1742,
+        "source_out_ms": 4142
+      },
+      "timeline": {
+        "start_ms": 38580,
+        "end_ms": 40980
+      }
+    },
+    {
+      "shot_id": "S013",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255237",
+      "clip_id": "255237",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Who are you I'm the creator of a TV show",
+      "source_transcript_excerpt": "Truman:\n[to an unseen Christof]\nWho are you? \nChristof:\n[on a speaker]\nI am the Creator - of a television show that gives hope and joy and inspiration to millions. \nTruman:\nThen who am I? \nChristof:\nYou're the star. | Who are you I'm the creator of a TV show It gives hope and inspiration to millions Then who am I You're the star",
+      "visible_fact_vi": "Ghế điều khiển và màn hình khổng lồ đặt người sáng tạo ở trung tâm quyền lực đối với đời Truman.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255237/72131d9cee0f94ecfcf2cda01a5b677809eb594cdff6a159af6080977d97e41e/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/who-are-im-the-creator-of-a-tv-show/"
+      ],
+      "trim": {
+        "source_in_ms": 2237,
+        "source_out_ms": 4337
+      },
+      "timeline": {
+        "start_ms": 40980,
+        "end_ms": 43080
+      }
+    },
+    {
+      "shot_id": "S014",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255241",
+      "clip_id": "255241",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Truman you are scaring me",
+      "source_transcript_excerpt": "Meryl:\n[brandishing the \"Chef's Pal\" kitchen multi-knife to keep him away from her]\nTruman! You are scaring me! \nTruman:\nNo. You're scaring me, Meryl. What are you gonna do? Dice me, slice me or peel me? There's so many CHOICES! | Truman you are scaring me No you're scaring me What are you gonna do Dice me slice me or peel me There's so many choices",
+      "visible_fact_vi": "Meryl cầm dụng cụ bếp lùi lại trong hoảng sợ khi Truman áp sát, xung đột chuyển thành đe dọa hữu hình.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255241/68f6561ee66d51158f6d4ead698daf2ece576962f21fe7610a3038ef13ae10b2/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/truman-are-scaring-me/"
+      ],
+      "trim": {
+        "source_in_ms": 1983,
+        "source_out_ms": 3783
+      },
+      "timeline": {
+        "start_ms": 43080,
+        "end_ms": 44880
+      }
+    },
+    {
+      "shot_id": "S015",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255265",
+      "clip_id": "255265",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "I think I'm going to throw up Me too",
+      "source_transcript_excerpt": "Meryl:\n[Spinning around the roundabout]\nTruman, I think I'm going to throw up! \nTruman:\nMe too! | I think I'm going to throw up Me too",
+      "visible_fact_vi": "Truman và Meryl bị quăng nghiêng trong chiếc xe chạy vòng, cơ thể mất kiểm soát làm áp lực tăng mạnh.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255265/14077e98967670b33c3f990dcd027fbb2ee09dea1ba1a1caa657278052dcdd43/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/i-think-im-going-throw-up-me-too/"
+      ],
+      "trim": {
+        "source_in_ms": 662,
+        "source_out_ms": 2262
+      },
+      "timeline": {
+        "start_ms": 44880,
+        "end_ms": 46480
+      }
+    },
+    {
+      "shot_id": "S016",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255272",
+      "clip_id": "255272",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "Take another man get down there Find the son of a bitch",
+      "source_transcript_excerpt": "[Truman has disappeared and everyone is searching for him]\n\nRon:\n[into his radio]\nI don't give a damn, just find the son of a bitch! | Take another man get down there Find the son of a bitch",
+      "visible_fact_vi": "Nhiều người cùng lao vào cuộc truy tìm trong đêm, biến ý chí kiểm soát thành hành động cưỡng ép tập thể.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255272/1ab2fd731af54427fdda1e362a4c2e9a4468b494a34b942542c3b6f2f6e38bab/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/take-man-get-down-there-find-the-son-of-a-bitch/"
+      ],
+      "trim": {
+        "source_in_ms": 692,
+        "source_out_ms": 2092
+      },
+      "timeline": {
+        "start_ms": 46480,
+        "end_ms": 47880
+      }
+    },
+    {
+      "shot_id": "S017",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255256",
+      "clip_id": "255256",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "But how do you intend to explain his 22 year absence",
+      "source_transcript_excerpt": "Mike Michaelson:\n[about Truman's father]\nBut how do you intend to explain his 22-year absence? \nChristof:\nAmnesia. \nMike Michaelson:\nBrilliant. | But how do you intend to explain his 22 year absence Amnesia Brilliant",
+      "visible_fact_vi": "Christof ngồi giữa bề mặt điều khiển và đám đông trợ lý, trực tiếp ra quyết định lên thế giới của Truman.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255256/9279e832e21fa542cbe51faaed8056fb2cce42a3391c48be05c3f7e6d7a03554/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/but-how-do-intend-explain-22-year-absence-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 1186,
+        "source_out_ms": 2286
+      },
+      "timeline": {
+        "start_ms": 47880,
+        "end_ms": 48980
+      }
+    },
+    {
+      "shot_id": "S018",
+      "beat_id": "B08",
+      "asset_id": "clipcafe_255275",
+      "clip_id": "255275",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "We have so little time They'll be here any minute",
+      "source_transcript_excerpt": "Lauren:\n[during her forbidden date with Truman, about the show's crew]\nWe have so little time. They're gonna be here any minute. \nTruman:\nWho are? \nLauren:\nThey don't want me talking to you. \nTruman:\nThen don't talk. \n[They share a long, heartfelt kiss] | We have so little time They'll be here any minute They don't want me talking to you Then don't talk",
+      "visible_fact_vi": "Truman và Lauren vội ôm hôn trong bóng tối khi nguy cơ bị chia cắt đến gần, cho thấy điều thật bị hệ thống săn đuổi.",
+      "viewer_should_feel_vi": "Căng dần thành cao trào.",
+      "viewer_should_remember_vi": "Lệch bên trong khiến cái giá tăng dần.",
+      "semantic_bridge_vi": "Dồn 6-9 micro-shot đã có bối cảnh, tránh đưa bối cảnh mới ở cut dưới một giây.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255275/f506d4d30b580c8fe88b397e3f4cab504484e2922b501ddd1825d527d16dcf03/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/we-have-little-time-theyll-be-here-any-minute/"
+      ],
+      "trim": {
+        "source_in_ms": 1655,
+        "source_out_ms": 2635
+      },
+      "timeline": {
+        "start_ms": 48980,
+        "end_ms": 49960
+      }
+    },
+    {
+      "shot_id": "S019",
+      "beat_id": "B09",
+      "asset_id": "clipcafe_255240",
+      "clip_id": "255240",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "How can anyone expect me to carry on under these conditions",
+      "source_transcript_excerpt": "[Meryl panics when Truman confronts her about the conspiracy around him, the situation is diffused by an impromptu appearance from Marlon. Crying, Meryl runs into his arms]\n\nMeryl:\nHow can anyone expect me to carry on under these conditions? It's unprofessional! | How can anyone expect me to carry on under these conditions It's unprofessional",
+      "visible_fact_vi": "Meryl bật khóc và ôm người khác sau cuộc đối đầu, giữ phản ứng đủ lâu để thấy cái giá tinh thần.",
+      "viewer_should_feel_vi": "Hụt xuống sau cao trào.",
+      "viewer_should_remember_vi": "Đạt được vẫn có thể trống rỗng.",
+      "semantic_bridge_vi": "Giữ reaction/aftermath dài; không dùng cảnh nhân vật chỉ đang nói.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255240/3198f940b95889ca3ff782db99b1c4bc4daa7b923607f05dd481a8fb57b64721/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/how-can-anyone-expect-me-carry-on-under-these-conditions-s1/"
+      ],
+      "trim": {
+        "source_in_ms": 2945,
+        "source_out_ms": 7065
+      },
+      "timeline": {
+        "start_ms": 49960,
+        "end_ms": 54080
+      }
+    },
+    {
+      "shot_id": "S020",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_255264",
+      "clip_id": "255264",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "It's me Dad Let's talk",
+      "source_transcript_excerpt": "Truman's Father:\n[Truman has disappeared and the whole community is looking for him. His dad calls out]\nTruman! It's Dad. \n[Awkward pause]\n\nTruman's Father:\n...Let's talk. | It's me Dad Let's talk",
+      "visible_fact_vi": "Người cha và cộng đồng tìm Truman trong đêm, cho thấy sự biến mất của một người kéo cả quan hệ xung quanh vào bất an.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255264/5335a1bb7af296c9ab7dd1d506eef2f08245d647d665ddee1027c38f792047cb/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/its-dad-lets-talk/"
+      ],
+      "trim": {
+        "source_in_ms": 2116,
+        "source_out_ms": 4902
+      },
+      "timeline": {
+        "start_ms": 54080,
+        "end_ms": 56866
+      }
+    },
+    {
+      "shot_id": "S021",
+      "beat_id": "B10",
+      "asset_id": "clipcafe_255267",
+      "clip_id": "255267",
+      "movie_slug": "the-truman-show-1998",
+      "source_title": "I'm determined that TV's first on air conception will take place",
+      "source_transcript_excerpt": "Christof:\nI'm determined that television's first on-air conception still take place. | I'm determined that TV's first on air conception will take place",
+      "visible_fact_vi": "Lauren nhìn màn hình trong lo lắng và đau đớn, kết bằng người ở bên ngoài cũng chịu hậu quả.",
+      "viewer_should_feel_vi": "Trầm lại và muốn tự soi.",
+      "viewer_should_remember_vi": "Kết quả sai gốc lan khổ đau.",
+      "semantic_bridge_vi": "Kết bằng hậu quả quan hệ nhìn thấy được, không kết tuyệt vọng hoặc phán xét đạo đức.",
+      "evidence_refs": [
+        "contact-sheets/truman-show-director-sheet.jpg",
+        "observations/truman-show/255267/eeb7585f0a7dbe23d0936ffdc15a6f013152f35cbe4876a2ad8587b5cf84e62a/records/observation_packages.json",
+        "https://clip.cafe/the-truman-show-1998/im-determined-tvs-first-on-air-conception-will-take-place/"
+      ],
+      "trim": {
+        "source_in_ms": 2116,
+        "source_out_ms": 4902
+      },
+      "timeline": {
+        "start_ms": 56866,
+        "end_ms": 59652
+      }
+    }
+  ]
+}

@@ -1,0 +1,498 @@
+{
+  "schema": "tpr.clipcafe_download_report.v1",
+  "requested": 84,
+  "downloaded_or_reused": 84,
+  "failed": 0,
+  "results": [
+    {
+      "clip_id": "192625",
+      "status": "downloaded",
+      "path": "192625-bing-bong-you-made-it.mp4",
+      "returncode": 0,
+      "stderr": "(node:66039) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192626",
+      "status": "reused",
+      "path": "192626-crying-helps-slow-down-obsess.mp4"
+    },
+    {
+      "clip_id": "192627",
+      "status": "downloaded",
+      "path": "192627-congratulations-san-francisco.mp4",
+      "returncode": 0,
+      "stderr": "(node:66467) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192628",
+      "status": "reused",
+      "path": "192628-oh-no-these-facts-opinions-look-similar.mp4"
+    },
+    {
+      "clip_id": "192629",
+      "status": "downloaded",
+      "path": "192629-sadness-okay-im-positive-will-get-lost-in-there.mp4",
+      "returncode": 0,
+      "stderr": "(node:66288) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192632",
+      "status": "reused",
+      "path": "192632-okay-only-im-too-sad-walk.mp4"
+    },
+    {
+      "clip_id": "192633",
+      "status": "downloaded",
+      "path": "192633-all-right-did-not-die-today.mp4",
+      "returncode": 0,
+      "stderr": "(node:66147) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192634",
+      "status": "downloaded",
+      "path": "192634-yeah-its-good.mp4",
+      "returncode": 0,
+      "stderr": "(node:66572) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192635",
+      "status": "downloaded",
+      "path": "192635-six-years-of-drama-school-this.mp4",
+      "returncode": 0,
+      "stderr": "(node:66469) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192642",
+      "status": "downloaded",
+      "path": "192642-okay-youre-saying-husband.mp4",
+      "returncode": 0,
+      "stderr": "(node:66287) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192643",
+      "status": "downloaded",
+      "path": "192643-we-should-lock-the-door-scream-curse-word-know-s1.mp4",
+      "returncode": 0,
+      "stderr": "(node:66774) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192644",
+      "status": "downloaded",
+      "path": "192644-can-i-say-curse-word-now-s1.mp4",
+      "returncode": 0,
+      "stderr": "(node:66574) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192647",
+      "status": "downloaded",
+      "path": "192647-hey-guys-whats-pub-er-ty.mp4",
+      "returncode": 0,
+      "stderr": "(node:66468) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192649",
+      "status": "downloaded",
+      "path": "192649-d-a-n-g-e-r-shortcut-ill-prove-it-you.mp4",
+      "returncode": 0,
+      "stderr": "(node:67001) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192650",
+      "status": "downloaded",
+      "path": "192650-let-guess-have-no-pants-on.mp4",
+      "returncode": 0,
+      "stderr": "(node:66779) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192652",
+      "status": "reused",
+      "path": "192652-me-too-oh-participation-award.mp4"
+    },
+    {
+      "clip_id": "192653",
+      "status": "downloaded",
+      "path": "192653-remember-the-funny-movie-the-dog-dies.mp4",
+      "returncode": 0,
+      "stderr": "(node:66573) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192654",
+      "status": "downloaded",
+      "path": "192654-uh-okay-bye.mp4",
+      "returncode": 0,
+      "stderr": "(node:67102) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192655",
+      "status": "downloaded",
+      "path": "192655-hey-hey-look-at-me.mp4",
+      "returncode": 0,
+      "stderr": "(node:67002) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192659",
+      "status": "downloaded",
+      "path": "192659-eat-im-organic.mp4",
+      "returncode": 0,
+      "stderr": "(node:66777) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192660",
+      "status": "reused",
+      "path": "192660-well-yeah-im-joy-this-sadness.mp4"
+    },
+    {
+      "clip_id": "192661",
+      "status": "downloaded",
+      "path": "192661-these-are-kind-of-people-cars-honking.mp4",
+      "returncode": 0,
+      "stderr": "(node:67242) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192662",
+      "status": "downloaded",
+      "path": "192662-disgust-okay-weve-got-a-group-of-cool-girls-at-two-oclock.mp4",
+      "returncode": 0,
+      "stderr": "(node:67103) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192663",
+      "status": "reused",
+      "path": "192663-joy-weve-been-through-a-lot-lately-thats-sure.mp4"
+    },
+    {
+      "clip_id": "192666",
+      "status": "reused",
+      "path": "192666-mom-your-dads-under-a-lot-of-pressure.mp4"
+    },
+    {
+      "clip_id": "192667",
+      "status": "reused",
+      "path": "192667-this-crazy-this-crazy-no-no-no-joy-be-positive.mp4"
+    },
+    {
+      "clip_id": "192669",
+      "status": "reused",
+      "path": "192669-sadness-sadness.mp4"
+    },
+    {
+      "clip_id": "192670",
+      "status": "downloaded",
+      "path": "192670-the-drive-out-pretty-fun-huh.mp4",
+      "returncode": 0,
+      "stderr": "(node:66148) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "192671",
+      "status": "reused",
+      "path": "192671-being-cool-so-exhausting.mp4"
+    },
+    {
+      "clip_id": "192672",
+      "status": "reused",
+      "path": "192672-were-taking-the-train-of-thought-s1.mp4"
+    },
+    {
+      "clip_id": "225935",
+      "status": "downloaded",
+      "path": "225935-thats-all-s30.mp4",
+      "returncode": 0,
+      "stderr": "(node:65412) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225936",
+      "status": "reused",
+      "path": "225936-is-there-some-reason-my-coffee-isnt-here-s1.mp4"
+    },
+    {
+      "clip_id": "225938",
+      "status": "reused",
+      "path": "225938-let-know-your-whole-life-goes-up-in-smoke-s1.mp4"
+    },
+    {
+      "clip_id": "225943",
+      "status": "downloaded",
+      "path": "225943-and-have-no-style-sense-of-fashion.mp4",
+      "returncode": 0,
+      "stderr": "(node:65414) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225944",
+      "status": "reused",
+      "path": "225944-is-back-am-i-fired.mp4"
+    },
+    {
+      "clip_id": "225945",
+      "status": "downloaded",
+      "path": "225945-where-that-piece-of-paper-i-in-hand-yesterday-morning.mp4",
+      "returncode": 0,
+      "stderr": "(node:65413) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225948",
+      "status": "reused",
+      "path": "225948-face-andy-sold-soul-the-day-put-on-pair-of-jimmy-choos.mp4"
+    },
+    {
+      "clip_id": "225949",
+      "status": "downloaded",
+      "path": "225949-by-all-means-move-at-a-glacial-pace.mp4",
+      "returncode": 0,
+      "stderr": "(node:65521) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225959",
+      "status": "downloaded",
+      "path": "225959-you-have-some-very-large-shoes-fill-s1.mp4",
+      "returncode": 0,
+      "stderr": "(node:65523) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225962",
+      "status": "reused",
+      "path": "225962-she-not-happy-everyone-around-her-panicked-nauseous-suicidal.mp4"
+    },
+    {
+      "clip_id": "225965",
+      "status": "downloaded",
+      "path": "225965-who-that-sad-little-person-s1.mp4",
+      "returncode": 0,
+      "stderr": "(node:65522) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225967",
+      "status": "reused",
+      "path": "225967-you-bet-size-six-ass.mp4"
+    },
+    {
+      "clip_id": "225968",
+      "status": "reused",
+      "path": "225968-when-i-come-back-can-go-okay.mp4"
+    },
+    {
+      "clip_id": "225972",
+      "status": "downloaded",
+      "path": "225972-will-fit-oh-yeah.mp4",
+      "returncode": 0,
+      "stderr": "(node:65628) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225973",
+      "status": "reused",
+      "path": "225973-right-come-on.mp4"
+    },
+    {
+      "clip_id": "225975",
+      "status": "reused",
+      "path": "225975-you-know-in-case-you-wondering.mp4"
+    },
+    {
+      "clip_id": "225978",
+      "status": "reused",
+      "path": "225978-you-know-i-wouldnt-care-you-out-pole-dancing-all-night.mp4"
+    },
+    {
+      "clip_id": "225979",
+      "status": "downloaded",
+      "path": "225979-i-guessed-an-eight-a-half.mp4",
+      "returncode": 0,
+      "stderr": "(node:65630) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225982",
+      "status": "reused",
+      "path": "225982-if-dont-go-ill-assume-youre-not-serious-about-future.mp4"
+    },
+    {
+      "clip_id": "225983",
+      "status": "downloaded",
+      "path": "225983-okay-so-i-mirandas-second-assistant.mp4",
+      "returncode": 0,
+      "stderr": "(node:65629) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225984",
+      "status": "reused",
+      "path": "225984-a-million-girls-would-kill-for-job-s1.mp4"
+    },
+    {
+      "clip_id": "225992",
+      "status": "downloaded",
+      "path": "225992-you-used-make-fun-of-the-runway-girls-s1.mp4",
+      "returncode": 0,
+      "stderr": "(node:65943) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225994",
+      "status": "reused",
+      "path": "225994-i-mean-what-i-dont-wanna-live-the-way-live.mp4"
+    },
+    {
+      "clip_id": "225997",
+      "status": "downloaded",
+      "path": "225997-i-bid-farewell-good-luck-s6.mp4",
+      "returncode": 0,
+      "stderr": "(node:65945) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "225998",
+      "status": "reused",
+      "path": "225998-i-promise-same-andy-better-clothes.mp4"
+    },
+    {
+      "clip_id": "226000",
+      "status": "downloaded",
+      "path": "226000-youre-youre-a-vision.mp4",
+      "returncode": 0,
+      "stderr": "(node:65944) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "226003",
+      "status": "reused",
+      "path": "226003-im-still-the-same-person-i-was.mp4"
+    },
+    {
+      "clip_id": "226004",
+      "status": "reused",
+      "path": "226004-i-dont-have-a-thing-wear-work-s1.mp4"
+    },
+    {
+      "clip_id": "226006",
+      "status": "downloaded",
+      "path": "226006-oh-yes-you-must-be-the-new-emily.mp4",
+      "returncode": 0,
+      "stderr": "(node:66038) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "226009",
+      "status": "downloaded",
+      "path": "226009-chairman-of-elias-clarke-irv-ravitz.mp4",
+      "returncode": 0,
+      "stderr": "(node:66040) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "255224",
+      "status": "reused",
+      "path": "255224-good-morning-good-morning-s1.mp4"
+    },
+    {
+      "clip_id": "255225",
+      "status": "reused",
+      "path": "255225-thats-what-made-you-good-watch-listen-truman.mp4"
+    },
+    {
+      "clip_id": "255226",
+      "status": "reused",
+      "path": "255226-i-know-better-than-do-you-never-a-camera-in-head.mp4"
+    },
+    {
+      "clip_id": "255228",
+      "status": "reused",
+      "path": "255228-somebody-help-im-being-spontaneous.mp4"
+    },
+    {
+      "clip_id": "255235",
+      "status": "reused",
+      "path": "255235-so-are-gonna-go.mp4"
+    },
+    {
+      "clip_id": "255236",
+      "status": "reused",
+      "path": "255236-as-truman-grew-up-manufactured-ways-keep-on-the-island.mp4"
+    },
+    {
+      "clip_id": "255237",
+      "status": "reused",
+      "path": "255237-who-are-im-the-creator-of-a-tv-show.mp4"
+    },
+    {
+      "clip_id": "255239",
+      "status": "reused",
+      "path": "255239-that-ones-free-stand-by-all-house-cameras.mp4"
+    },
+    {
+      "clip_id": "255240",
+      "status": "reused",
+      "path": "255240-how-can-anyone-expect-me-carry-on-under-these-conditions-s1.mp4"
+    },
+    {
+      "clip_id": "255241",
+      "status": "reused",
+      "path": "255241-truman-are-scaring-me.mp4"
+    },
+    {
+      "clip_id": "255247",
+      "status": "reused",
+      "path": "255247-early-bird-gathers-no-moss-rolling-stone-catches-the-worm.mp4"
+    },
+    {
+      "clip_id": "255248",
+      "status": "reused",
+      "path": "255248-look-at-sunset-its-perfect.mp4"
+    },
+    {
+      "clip_id": "255250",
+      "status": "reused",
+      "path": "255250-im-just-the-bus-driver-they-cant-sail-theyre-actors.mp4"
+    },
+    {
+      "clip_id": "255253",
+      "status": "reused",
+      "path": "255253-oh-you-can-do-you-can-make-it.mp4"
+    },
+    {
+      "clip_id": "255256",
+      "status": "reused",
+      "path": "255256-but-how-do-intend-explain-22-year-absence-s1.mp4"
+    },
+    {
+      "clip_id": "255258",
+      "status": "reused",
+      "path": "255258-hi-honey-s2.mp4"
+    },
+    {
+      "clip_id": "255261",
+      "status": "reused",
+      "path": "255261-sure-okay-fine-can-pass-along-a-message.mp4"
+    },
+    {
+      "clip_id": "255264",
+      "status": "reused",
+      "path": "255264-its-dad-lets-talk.mp4"
+    },
+    {
+      "clip_id": "255265",
+      "status": "reused",
+      "path": "255265-i-think-im-going-throw-up-me-too.mp4"
+    },
+    {
+      "clip_id": "255267",
+      "status": "downloaded",
+      "path": "255267-im-determined-tvs-first-on-air-conception-will-take-place.mp4",
+      "returncode": 0,
+      "stderr": "(node:66146) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "255271",
+      "status": "reused",
+      "path": "255271-perfect-thats-our-hero-shot.mp4"
+    },
+    {
+      "clip_id": "255272",
+      "status": "reused",
+      "path": "255272-take-man-get-down-there-find-the-son-of-a-bitch.mp4"
+    },
+    {
+      "clip_id": "255274",
+      "status": "downloaded",
+      "path": "255274-what-did-want-i-made-macaroni.mp4",
+      "returncode": 0,
+      "stderr": "(node:66286) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "clip_id": "255275",
+      "status": "reused",
+      "path": "255275-we-have-little-time-theyll-be-here-any-minute.mp4"
+    }
+  ]
+}

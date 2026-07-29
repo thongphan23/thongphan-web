@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "clearance_id": "FRC-RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "run_id": "RUN-muc-dich-doi-song-film-source-model-v1-20260729",
+  "status": "sealed",
+  "policy": {
+    "minimum_video_distance": 5,
+    "reuse_allowed_from_offset": 5,
+    "same_batch_unique": true
+  },
+  "assignments": [
+    {
+      "variant_id": "devil-wears-prada",
+      "film_id": "FILM-THE-DEVIL-WEARS-PRADA",
+      "profile_id": "FSP-FILM-THE-DEVIL-WEARS-PRADA-v2",
+      "video_ordinal": 7,
+      "eligible": true,
+      "last_used_ordinal": null,
+      "next_eligible_ordinal": null
+    },
+    {
+      "variant_id": "truman-show",
+      "film_id": "FILM-THE-TRUMAN-SHOW",
+      "profile_id": "FSP-FILM-THE-TRUMAN-SHOW-v2",
+      "video_ordinal": 8,
+      "eligible": true,
+      "last_used_ordinal": null,
+      "next_eligible_ordinal": null
+    },
+    {
+      "variant_id": "inside-out",
+      "film_id": "FILM-INSIDE-OUT",
+      "profile_id": "FSP-FILM-INSIDE-OUT-v2",
+      "video_ordinal": 9,
+      "eligible": true,
+      "last_used_ordinal": null,
+      "next_eligible_ordinal": null
+    }
+  ],
+  "based_on": [
+    {
+      "path": "usage_ledger.json",
+      "sha256": "2df55d6633d4e6d4a7fa7dc0cc728adc830c65a4813b5bdd5e928ed2e6a2a1ea"
+    }
+  ],
+  "clearance_sha256": "sha256:2fe845463de53017fbc80f715b30e164e668bfc9987ee5996a622efed3862dcf",
+  "created_at": "2026-07-29T23:38:30+07:00"
+}

@@ -1,0 +1,1751 @@
+{
+  "audio": {
+    "duration_ms": 59652,
+    "language": "vi-VN",
+    "path": "assets/audio/source/provided_voice.mp3",
+    "provider": "provided_audio",
+    "sha256": "65e1e34d81beb8710d00b1e77ce8de61643c273272418f5af14055809196057b"
+  },
+  "created_at": "2026-07-29T09:02:11+07:00",
+  "prosody_segments": [
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W010",
+        "W024"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 200,
+      "segment_id": "P01",
+      "speaking_rate_wpm": 221.54,
+      "time_range": {
+        "end_ms": 8680,
+        "start_ms": 2180
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "measured",
+      "emphasis_word_ids": [
+        "W033",
+        "W032"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 500,
+      "segment_id": "P02",
+      "speaking_rate_wpm": 240.8,
+      "time_range": {
+        "end_ms": 14860,
+        "start_ms": 8880
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "measured",
+      "emphasis_word_ids": [
+        "W058",
+        "W065"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 460,
+      "segment_id": "P03",
+      "speaking_rate_wpm": 294.8,
+      "time_range": {
+        "end_ms": 18820,
+        "start_ms": 15360
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "measured",
+      "emphasis_word_ids": [
+        "W074",
+        "W080"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 440,
+      "segment_id": "P04",
+      "speaking_rate_wpm": 248.62,
+      "time_range": {
+        "end_ms": 22900,
+        "start_ms": 19280
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W093",
+        "W094"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 0,
+      "segment_id": "P05",
+      "speaking_rate_wpm": 259.26,
+      "time_range": {
+        "end_ms": 28200,
+        "start_ms": 23340
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W102",
+        "W128"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 180,
+      "segment_id": "P06",
+      "speaking_rate_wpm": 227.53,
+      "time_range": {
+        "end_ms": 35320,
+        "start_ms": 28200
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "measured",
+      "emphasis_word_ids": [
+        "W137",
+        "W132"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 560,
+      "segment_id": "P07",
+      "speaking_rate_wpm": 238.1,
+      "time_range": {
+        "end_ms": 38020,
+        "start_ms": 35500
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W186",
+        "W167"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 60,
+      "segment_id": "P08",
+      "speaking_rate_wpm": 254.42,
+      "time_range": {
+        "end_ms": 49900,
+        "start_ms": 38580
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W203",
+        "W198"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 0,
+      "segment_id": "P09",
+      "speaking_rate_wpm": 247.57,
+      "time_range": {
+        "end_ms": 54080,
+        "start_ms": 49960
+      }
+    },
+    {
+      "confidence": 0.9,
+      "delivery": "continuous",
+      "emphasis_word_ids": [
+        "W218",
+        "W204"
+      ],
+      "energy": 0.5,
+      "method": "approved-word-timestamps+rms-v1",
+      "pause_after_ms": 0,
+      "segment_id": "P10",
+      "speaking_rate_wpm": 236.22,
+      "time_range": {
+        "end_ms": 59160,
+        "start_ms": 54080
+      }
+    }
+  ],
+  "revision": 1,
+  "run_id": "RUN-muc-dich-doi-song-communication-intent-20260729-20260729",
+  "schema": "tpr.voice_timeline.v2",
+  "transcript_revision": 1,
+  "transcript_status": "approved",
+  "transcript_text": "Điều quan trọng nhất mà bạn cần nhận thức là: đời bạn có một mục đích bên trong và một mục đích bên ngoài. Mục đích bên trong là mục đích chính, và mục đích này có liên quan đến trạng thái an nhiên tự tại của bạn. Mục đích bên ngoài dính tới những việc bạn làm, và đây chỉ là mục đích phụ. Mục đích bên trong của bạn là tỉnh thức. Chỉ đơn giản có vậy thôi. Mục đích bên ngoài của bạn có thể thay đổi theo thời gian và thay đổi rất nhiều ở từng người. Tìm ra và sống hòa điệu với nhịp sống của mục đích bên trong là cơ sở để bạn có thể hoàn thành mục đích bên ngoài. Đó là cơ sở của những thành công thực sự. Nếu những gì bạn làm ở bên ngoài không có sự hòa điệu với nhịp sống của mục đích bên trong, thì muốn đạt được một điều gì đó, bạn sẽ phải mất rất nhiều nỗ lực, phải đấu tranh hay dùng đến âm mưu và thủ đoạn. Nhưng làm như thế thì bạn không có được niềm vui khi công việc được hoàn tất. Và chắc chắn những kết quả ấy chỉ mang lại khổ đau cho bạn và cho những người chung quanh.",
+  "words": [
+    {
+      "confidence": 0.9038,
+      "end_ms": 2620,
+      "start_ms": 2180,
+      "text": "Điều",
+      "word_id": "W001"
+    },
+    {
+      "confidence": 0.9875,
+      "end_ms": 2860,
+      "start_ms": 2620,
+      "text": "quan",
+      "word_id": "W002"
+    },
+    {
+      "confidence": 0.9981,
+      "end_ms": 3020,
+      "start_ms": 2860,
+      "text": "trọng",
+      "word_id": "W003"
+    },
+    {
+      "confidence": 0.9959,
+      "end_ms": 3300,
+      "start_ms": 3020,
+      "text": "nhất",
+      "word_id": "W004"
+    },
+    {
+      "confidence": 0.9327,
+      "end_ms": 3460,
+      "start_ms": 3300,
+      "text": "mà",
+      "word_id": "W005"
+    },
+    {
+      "confidence": 0.9935,
+      "end_ms": 3640,
+      "start_ms": 3460,
+      "text": "bạn",
+      "word_id": "W006"
+    },
+    {
+      "confidence": 0.9906,
+      "end_ms": 3920,
+      "start_ms": 3640,
+      "text": "cần",
+      "word_id": "W007"
+    },
+    {
+      "confidence": 0.9925,
+      "end_ms": 4100,
+      "start_ms": 3920,
+      "text": "nhận",
+      "word_id": "W008"
+    },
+    {
+      "confidence": 0.983,
+      "end_ms": 4260,
+      "start_ms": 4100,
+      "text": "thức",
+      "word_id": "W009"
+    },
+    {
+      "confidence": 0.9954,
+      "end_ms": 4980,
+      "start_ms": 4260,
+      "text": "là:",
+      "word_id": "W010"
+    },
+    {
+      "confidence": 0.9091,
+      "end_ms": 5320,
+      "start_ms": 5140,
+      "text": "đời",
+      "word_id": "W011"
+    },
+    {
+      "confidence": 0.9847,
+      "end_ms": 5620,
+      "start_ms": 5320,
+      "text": "bạn",
+      "word_id": "W012"
+    },
+    {
+      "confidence": 0.979,
+      "end_ms": 5800,
+      "start_ms": 5620,
+      "text": "có",
+      "word_id": "W013"
+    },
+    {
+      "confidence": 0.8896,
+      "end_ms": 5960,
+      "start_ms": 5800,
+      "text": "một",
+      "word_id": "W014"
+    },
+    {
+      "confidence": 0.997,
+      "end_ms": 6160,
+      "start_ms": 5960,
+      "text": "mục",
+      "word_id": "W015"
+    },
+    {
+      "confidence": 0.9944,
+      "end_ms": 6240,
+      "start_ms": 6160,
+      "text": "đích",
+      "word_id": "W016"
+    },
+    {
+      "confidence": 0.9893,
+      "end_ms": 6600,
+      "start_ms": 6240,
+      "text": "bên",
+      "word_id": "W017"
+    },
+    {
+      "confidence": 0.9889,
+      "end_ms": 6820,
+      "start_ms": 6600,
+      "text": "trong",
+      "word_id": "W018"
+    },
+    {
+      "confidence": 0.9537,
+      "end_ms": 7260,
+      "start_ms": 6820,
+      "text": "và",
+      "word_id": "W019"
+    },
+    {
+      "confidence": 0.9651,
+      "end_ms": 7500,
+      "start_ms": 7260,
+      "text": "một",
+      "word_id": "W020"
+    },
+    {
+      "confidence": 0.9908,
+      "end_ms": 7720,
+      "start_ms": 7500,
+      "text": "mục",
+      "word_id": "W021"
+    },
+    {
+      "confidence": 0.9979,
+      "end_ms": 7800,
+      "start_ms": 7720,
+      "text": "đích",
+      "word_id": "W022"
+    },
+    {
+      "confidence": 0.9948,
+      "end_ms": 8080,
+      "start_ms": 7800,
+      "text": "bên",
+      "word_id": "W023"
+    },
+    {
+      "confidence": 0.9988,
+      "end_ms": 8680,
+      "start_ms": 8080,
+      "text": "ngoài.",
+      "word_id": "W024"
+    },
+    {
+      "confidence": 0.9905,
+      "end_ms": 9040,
+      "start_ms": 8880,
+      "text": "Mục",
+      "word_id": "W025"
+    },
+    {
+      "confidence": 0.9967,
+      "end_ms": 9120,
+      "start_ms": 9040,
+      "text": "đích",
+      "word_id": "W026"
+    },
+    {
+      "confidence": 0.9925,
+      "end_ms": 9420,
+      "start_ms": 9120,
+      "text": "bên",
+      "word_id": "W027"
+    },
+    {
+      "confidence": 0.9967,
+      "end_ms": 9580,
+      "start_ms": 9420,
+      "text": "trong",
+      "word_id": "W028"
+    },
+    {
+      "confidence": 0.9966,
+      "end_ms": 9760,
+      "start_ms": 9580,
+      "text": "là",
+      "word_id": "W029"
+    },
+    {
+      "confidence": 0.9962,
+      "end_ms": 10000,
+      "start_ms": 9760,
+      "text": "mục",
+      "word_id": "W030"
+    },
+    {
+      "confidence": 0.9977,
+      "end_ms": 10100,
+      "start_ms": 10000,
+      "text": "đích",
+      "word_id": "W031"
+    },
+    {
+      "confidence": 0.9961,
+      "end_ms": 10520,
+      "start_ms": 10100,
+      "text": "chính,",
+      "word_id": "W032"
+    },
+    {
+      "confidence": 0.7971,
+      "end_ms": 11080,
+      "start_ms": 10520,
+      "text": "và",
+      "word_id": "W033"
+    },
+    {
+      "confidence": 0.9775,
+      "end_ms": 11400,
+      "start_ms": 11080,
+      "text": "mục",
+      "word_id": "W034"
+    },
+    {
+      "confidence": 0.9974,
+      "end_ms": 11480,
+      "start_ms": 11400,
+      "text": "đích",
+      "word_id": "W035"
+    },
+    {
+      "confidence": 0.9923,
+      "end_ms": 11800,
+      "start_ms": 11480,
+      "text": "này",
+      "word_id": "W036"
+    },
+    {
+      "confidence": 0.9804,
+      "end_ms": 12040,
+      "start_ms": 11800,
+      "text": "có",
+      "word_id": "W037"
+    },
+    {
+      "confidence": 0.9982,
+      "end_ms": 12360,
+      "start_ms": 12040,
+      "text": "liên",
+      "word_id": "W038"
+    },
+    {
+      "confidence": 0.9994,
+      "end_ms": 12480,
+      "start_ms": 12360,
+      "text": "quan",
+      "word_id": "W039"
+    },
+    {
+      "confidence": 0.9938,
+      "end_ms": 12720,
+      "start_ms": 12480,
+      "text": "đến",
+      "word_id": "W040"
+    },
+    {
+      "confidence": 0.9928,
+      "end_ms": 12960,
+      "start_ms": 12720,
+      "text": "trạng",
+      "word_id": "W041"
+    },
+    {
+      "confidence": 0.9749,
+      "end_ms": 13280,
+      "start_ms": 12960,
+      "text": "thái",
+      "word_id": "W042"
+    },
+    {
+      "confidence": 0.9605,
+      "end_ms": 13660,
+      "start_ms": 13280,
+      "text": "an",
+      "word_id": "W043"
+    },
+    {
+      "confidence": 0.9074,
+      "end_ms": 13880,
+      "start_ms": 13660,
+      "text": "nhiên",
+      "word_id": "W044"
+    },
+    {
+      "confidence": 0.9742,
+      "end_ms": 14160,
+      "start_ms": 13880,
+      "text": "tự",
+      "word_id": "W045"
+    },
+    {
+      "confidence": 0.7009,
+      "end_ms": 14300,
+      "start_ms": 14160,
+      "text": "tại",
+      "word_id": "W046"
+    },
+    {
+      "confidence": 0.9976,
+      "end_ms": 14560,
+      "start_ms": 14300,
+      "text": "của",
+      "word_id": "W047"
+    },
+    {
+      "confidence": 0.9992,
+      "end_ms": 14860,
+      "start_ms": 14560,
+      "text": "bạn.",
+      "word_id": "W048"
+    },
+    {
+      "confidence": 0.9965,
+      "end_ms": 15580,
+      "start_ms": 15360,
+      "text": "Mục",
+      "word_id": "W049"
+    },
+    {
+      "confidence": 0.9966,
+      "end_ms": 15680,
+      "start_ms": 15580,
+      "text": "đích",
+      "word_id": "W050"
+    },
+    {
+      "confidence": 0.9867,
+      "end_ms": 15960,
+      "start_ms": 15680,
+      "text": "bên",
+      "word_id": "W051"
+    },
+    {
+      "confidence": 0.9991,
+      "end_ms": 16220,
+      "start_ms": 15960,
+      "text": "ngoài",
+      "word_id": "W052"
+    },
+    {
+      "confidence": 0.981,
+      "end_ms": 16460,
+      "start_ms": 16220,
+      "text": "dính",
+      "word_id": "W053"
+    },
+    {
+      "confidence": 0.9298,
+      "end_ms": 16660,
+      "start_ms": 16460,
+      "text": "tới",
+      "word_id": "W054"
+    },
+    {
+      "confidence": 0.9829,
+      "end_ms": 16840,
+      "start_ms": 16660,
+      "text": "những",
+      "word_id": "W055"
+    },
+    {
+      "confidence": 0.9939,
+      "end_ms": 16940,
+      "start_ms": 16840,
+      "text": "việc",
+      "word_id": "W056"
+    },
+    {
+      "confidence": 0.9806,
+      "end_ms": 17140,
+      "start_ms": 16940,
+      "text": "bạn",
+      "word_id": "W057"
+    },
+    {
+      "confidence": 0.9948,
+      "end_ms": 17500,
+      "start_ms": 17140,
+      "text": "làm,",
+      "word_id": "W058"
+    },
+    {
+      "confidence": 0.9271,
+      "end_ms": 17680,
+      "start_ms": 17500,
+      "text": "và",
+      "word_id": "W059"
+    },
+    {
+      "confidence": 0.9931,
+      "end_ms": 17860,
+      "start_ms": 17680,
+      "text": "đây",
+      "word_id": "W060"
+    },
+    {
+      "confidence": 0.9872,
+      "end_ms": 18020,
+      "start_ms": 17860,
+      "text": "chỉ",
+      "word_id": "W061"
+    },
+    {
+      "confidence": 0.9971,
+      "end_ms": 18160,
+      "start_ms": 18020,
+      "text": "là",
+      "word_id": "W062"
+    },
+    {
+      "confidence": 0.9962,
+      "end_ms": 18380,
+      "start_ms": 18160,
+      "text": "mục",
+      "word_id": "W063"
+    },
+    {
+      "confidence": 0.9981,
+      "end_ms": 18520,
+      "start_ms": 18380,
+      "text": "đích",
+      "word_id": "W064"
+    },
+    {
+      "confidence": 0.9816,
+      "end_ms": 18820,
+      "start_ms": 18520,
+      "text": "phụ.",
+      "word_id": "W065"
+    },
+    {
+      "confidence": 0.9956,
+      "end_ms": 19460,
+      "start_ms": 19280,
+      "text": "Mục",
+      "word_id": "W066"
+    },
+    {
+      "confidence": 0.9957,
+      "end_ms": 19580,
+      "start_ms": 19460,
+      "text": "đích",
+      "word_id": "W067"
+    },
+    {
+      "confidence": 0.9854,
+      "end_ms": 19840,
+      "start_ms": 19580,
+      "text": "bên",
+      "word_id": "W068"
+    },
+    {
+      "confidence": 0.9977,
+      "end_ms": 19980,
+      "start_ms": 19840,
+      "text": "trong",
+      "word_id": "W069"
+    },
+    {
+      "confidence": 0.9745,
+      "end_ms": 20160,
+      "start_ms": 19980,
+      "text": "của",
+      "word_id": "W070"
+    },
+    {
+      "confidence": 0.9988,
+      "end_ms": 20380,
+      "start_ms": 20160,
+      "text": "bạn",
+      "word_id": "W071"
+    },
+    {
+      "confidence": 0.9978,
+      "end_ms": 20660,
+      "start_ms": 20380,
+      "text": "là",
+      "word_id": "W072"
+    },
+    {
+      "confidence": 0.8208,
+      "end_ms": 20980,
+      "start_ms": 20660,
+      "text": "tỉnh",
+      "word_id": "W073"
+    },
+    {
+      "confidence": 0.9908,
+      "end_ms": 21380,
+      "start_ms": 20980,
+      "text": "thức.",
+      "word_id": "W074"
+    },
+    {
+      "confidence": 0.9885,
+      "end_ms": 21740,
+      "start_ms": 21540,
+      "text": "Chỉ",
+      "word_id": "W075"
+    },
+    {
+      "confidence": 0.9982,
+      "end_ms": 21980,
+      "start_ms": 21740,
+      "text": "đơn",
+      "word_id": "W076"
+    },
+    {
+      "confidence": 0.9976,
+      "end_ms": 22180,
+      "start_ms": 21980,
+      "text": "giản",
+      "word_id": "W077"
+    },
+    {
+      "confidence": 0.9615,
+      "end_ms": 22420,
+      "start_ms": 22180,
+      "text": "có",
+      "word_id": "W078"
+    },
+    {
+      "confidence": 0.982,
+      "end_ms": 22540,
+      "start_ms": 22420,
+      "text": "vậy",
+      "word_id": "W079"
+    },
+    {
+      "confidence": 0.9921,
+      "end_ms": 22900,
+      "start_ms": 22540,
+      "text": "thôi.",
+      "word_id": "W080"
+    },
+    {
+      "confidence": 0.9974,
+      "end_ms": 23520,
+      "start_ms": 23340,
+      "text": "Mục",
+      "word_id": "W081"
+    },
+    {
+      "confidence": 0.9902,
+      "end_ms": 23620,
+      "start_ms": 23520,
+      "text": "đích",
+      "word_id": "W082"
+    },
+    {
+      "confidence": 0.9925,
+      "end_ms": 23900,
+      "start_ms": 23620,
+      "text": "bên",
+      "word_id": "W083"
+    },
+    {
+      "confidence": 0.9988,
+      "end_ms": 24020,
+      "start_ms": 23900,
+      "text": "ngoài",
+      "word_id": "W084"
+    },
+    {
+      "confidence": 0.9771,
+      "end_ms": 24220,
+      "start_ms": 24020,
+      "text": "của",
+      "word_id": "W085"
+    },
+    {
+      "confidence": 0.9988,
+      "end_ms": 24480,
+      "start_ms": 24220,
+      "text": "bạn",
+      "word_id": "W086"
+    },
+    {
+      "confidence": 0.9894,
+      "end_ms": 24820,
+      "start_ms": 24480,
+      "text": "có",
+      "word_id": "W087"
+    },
+    {
+      "confidence": 0.9996,
+      "end_ms": 24940,
+      "start_ms": 24820,
+      "text": "thể",
+      "word_id": "W088"
+    },
+    {
+      "confidence": 0.9973,
+      "end_ms": 25200,
+      "start_ms": 24940,
+      "text": "thay",
+      "word_id": "W089"
+    },
+    {
+      "confidence": 0.9983,
+      "end_ms": 25320,
+      "start_ms": 25200,
+      "text": "đổi",
+      "word_id": "W090"
+    },
+    {
+      "confidence": 0.445,
+      "end_ms": 25480,
+      "start_ms": 25320,
+      "text": "theo",
+      "word_id": "W091"
+    },
+    {
+      "confidence": 0.9909,
+      "end_ms": 25700,
+      "start_ms": 25480,
+      "text": "thời",
+      "word_id": "W092"
+    },
+    {
+      "confidence": 0.9996,
+      "end_ms": 26100,
+      "start_ms": 25700,
+      "text": "gian",
+      "word_id": "W093"
+    },
+    {
+      "confidence": 0.969,
+      "end_ms": 26500,
+      "start_ms": 26100,
+      "text": "và",
+      "word_id": "W094"
+    },
+    {
+      "confidence": 0.9985,
+      "end_ms": 26780,
+      "start_ms": 26500,
+      "text": "thay",
+      "word_id": "W095"
+    },
+    {
+      "confidence": 0.9982,
+      "end_ms": 26920,
+      "start_ms": 26780,
+      "text": "đổi",
+      "word_id": "W096"
+    },
+    {
+      "confidence": 0.9873,
+      "end_ms": 27220,
+      "start_ms": 26920,
+      "text": "rất",
+      "word_id": "W097"
+    },
+    {
+      "confidence": 0.9962,
+      "end_ms": 27500,
+      "start_ms": 27220,
+      "text": "nhiều",
+      "word_id": "W098"
+    },
+    {
+      "confidence": 0.9249,
+      "end_ms": 27680,
+      "start_ms": 27500,
+      "text": "ở",
+      "word_id": "W099"
+    },
+    {
+      "confidence": 0.9412,
+      "end_ms": 27940,
+      "start_ms": 27680,
+      "text": "từng",
+      "word_id": "W100"
+    },
+    {
+      "confidence": 0.9954,
+      "end_ms": 28200,
+      "start_ms": 27940,
+      "text": "người.",
+      "word_id": "W101"
+    },
+    {
+      "confidence": 0.7953,
+      "end_ms": 28980,
+      "start_ms": 28200,
+      "text": "Tìm",
+      "word_id": "W102"
+    },
+    {
+      "confidence": 0.9914,
+      "end_ms": 29220,
+      "start_ms": 28980,
+      "text": "ra",
+      "word_id": "W103"
+    },
+    {
+      "confidence": 0.9479,
+      "end_ms": 29440,
+      "start_ms": 29220,
+      "text": "và",
+      "word_id": "W104"
+    },
+    {
+      "confidence": 0.9929,
+      "end_ms": 29640,
+      "start_ms": 29440,
+      "text": "sống",
+      "word_id": "W105"
+    },
+    {
+      "confidence": 0.9457,
+      "end_ms": 29960,
+      "start_ms": 29640,
+      "text": "hòa",
+      "word_id": "W106"
+    },
+    {
+      "confidence": 0.8359,
+      "end_ms": 30080,
+      "start_ms": 29960,
+      "text": "điệu",
+      "word_id": "W107"
+    },
+    {
+      "confidence": 0.9595,
+      "end_ms": 30240,
+      "start_ms": 30080,
+      "text": "với",
+      "word_id": "W108"
+    },
+    {
+      "confidence": 0.913,
+      "end_ms": 30480,
+      "start_ms": 30240,
+      "text": "nhịp",
+      "word_id": "W109"
+    },
+    {
+      "confidence": 0.9972,
+      "end_ms": 30780,
+      "start_ms": 30480,
+      "text": "sống",
+      "word_id": "W110"
+    },
+    {
+      "confidence": 0.9895,
+      "end_ms": 30980,
+      "start_ms": 30780,
+      "text": "của",
+      "word_id": "W111"
+    },
+    {
+      "confidence": 0.9916,
+      "end_ms": 31180,
+      "start_ms": 30980,
+      "text": "mục",
+      "word_id": "W112"
+    },
+    {
+      "confidence": 0.9922,
+      "end_ms": 31260,
+      "start_ms": 31180,
+      "text": "đích",
+      "word_id": "W113"
+    },
+    {
+      "confidence": 0.9881,
+      "end_ms": 31580,
+      "start_ms": 31260,
+      "text": "bên",
+      "word_id": "W114"
+    },
+    {
+      "confidence": 0.9944,
+      "end_ms": 31820,
+      "start_ms": 31580,
+      "text": "trong",
+      "word_id": "W115"
+    },
+    {
+      "confidence": 0.9275,
+      "end_ms": 32280,
+      "start_ms": 31820,
+      "text": "là",
+      "word_id": "W116"
+    },
+    {
+      "confidence": 0.9911,
+      "end_ms": 32640,
+      "start_ms": 32280,
+      "text": "cơ",
+      "word_id": "W117"
+    },
+    {
+      "confidence": 0.9844,
+      "end_ms": 32860,
+      "start_ms": 32640,
+      "text": "sở",
+      "word_id": "W118"
+    },
+    {
+      "confidence": 0.9891,
+      "end_ms": 33040,
+      "start_ms": 32860,
+      "text": "để",
+      "word_id": "W119"
+    },
+    {
+      "confidence": 0.9903,
+      "end_ms": 33220,
+      "start_ms": 33040,
+      "text": "bạn",
+      "word_id": "W120"
+    },
+    {
+      "confidence": 0.986,
+      "end_ms": 33460,
+      "start_ms": 33220,
+      "text": "có",
+      "word_id": "W121"
+    },
+    {
+      "confidence": 0.9995,
+      "end_ms": 33620,
+      "start_ms": 33460,
+      "text": "thể",
+      "word_id": "W122"
+    },
+    {
+      "confidence": 0.9887,
+      "end_ms": 34000,
+      "start_ms": 33620,
+      "text": "hoàn",
+      "word_id": "W123"
+    },
+    {
+      "confidence": 0.9965,
+      "end_ms": 34100,
+      "start_ms": 34000,
+      "text": "thành",
+      "word_id": "W124"
+    },
+    {
+      "confidence": 0.9955,
+      "end_ms": 34380,
+      "start_ms": 34100,
+      "text": "mục",
+      "word_id": "W125"
+    },
+    {
+      "confidence": 0.9957,
+      "end_ms": 34440,
+      "start_ms": 34380,
+      "text": "đích",
+      "word_id": "W126"
+    },
+    {
+      "confidence": 0.988,
+      "end_ms": 34740,
+      "start_ms": 34440,
+      "text": "bên",
+      "word_id": "W127"
+    },
+    {
+      "confidence": 0.9986,
+      "end_ms": 35320,
+      "start_ms": 34740,
+      "text": "ngoài.",
+      "word_id": "W128"
+    },
+    {
+      "confidence": 0.9676,
+      "end_ms": 35780,
+      "start_ms": 35500,
+      "text": "Đó",
+      "word_id": "W129"
+    },
+    {
+      "confidence": 0.9978,
+      "end_ms": 35960,
+      "start_ms": 35780,
+      "text": "là",
+      "word_id": "W130"
+    },
+    {
+      "confidence": 0.9981,
+      "end_ms": 36240,
+      "start_ms": 35960,
+      "text": "cơ",
+      "word_id": "W131"
+    },
+    {
+      "confidence": 0.9991,
+      "end_ms": 36540,
+      "start_ms": 36240,
+      "text": "sở",
+      "word_id": "W132"
+    },
+    {
+      "confidence": 0.988,
+      "end_ms": 36800,
+      "start_ms": 36540,
+      "text": "của",
+      "word_id": "W133"
+    },
+    {
+      "confidence": 0.982,
+      "end_ms": 37040,
+      "start_ms": 36800,
+      "text": "những",
+      "word_id": "W134"
+    },
+    {
+      "confidence": 0.9895,
+      "end_ms": 37300,
+      "start_ms": 37040,
+      "text": "thành",
+      "word_id": "W135"
+    },
+    {
+      "confidence": 0.9996,
+      "end_ms": 37460,
+      "start_ms": 37300,
+      "text": "công",
+      "word_id": "W136"
+    },
+    {
+      "confidence": 0.9303,
+      "end_ms": 37780,
+      "start_ms": 37460,
+      "text": "thực",
+      "word_id": "W137"
+    },
+    {
+      "confidence": 0.9991,
+      "end_ms": 38020,
+      "start_ms": 37780,
+      "text": "sự.",
+      "word_id": "W138"
+    },
+    {
+      "confidence": 0.9814,
+      "end_ms": 38700,
+      "start_ms": 38580,
+      "text": "Nếu",
+      "word_id": "W139"
+    },
+    {
+      "confidence": 0.9876,
+      "end_ms": 38960,
+      "start_ms": 38700,
+      "text": "những",
+      "word_id": "W140"
+    },
+    {
+      "confidence": 0.9984,
+      "end_ms": 39100,
+      "start_ms": 38960,
+      "text": "gì",
+      "word_id": "W141"
+    },
+    {
+      "confidence": 0.9825,
+      "end_ms": 39280,
+      "start_ms": 39100,
+      "text": "bạn",
+      "word_id": "W142"
+    },
+    {
+      "confidence": 0.9965,
+      "end_ms": 39480,
+      "start_ms": 39280,
+      "text": "làm",
+      "word_id": "W143"
+    },
+    {
+      "confidence": 0.9866,
+      "end_ms": 39620,
+      "start_ms": 39480,
+      "text": "ở",
+      "word_id": "W144"
+    },
+    {
+      "confidence": 0.9951,
+      "end_ms": 39840,
+      "start_ms": 39620,
+      "text": "bên",
+      "word_id": "W145"
+    },
+    {
+      "confidence": 0.9991,
+      "end_ms": 40200,
+      "start_ms": 39840,
+      "text": "ngoài",
+      "word_id": "W146"
+    },
+    {
+      "confidence": 0.971,
+      "end_ms": 40520,
+      "start_ms": 40200,
+      "text": "không",
+      "word_id": "W147"
+    },
+    {
+      "confidence": 0.983,
+      "end_ms": 40640,
+      "start_ms": 40520,
+      "text": "có",
+      "word_id": "W148"
+    },
+    {
+      "confidence": 0.9794,
+      "end_ms": 40840,
+      "start_ms": 40640,
+      "text": "sự",
+      "word_id": "W149"
+    },
+    {
+      "confidence": 0.9973,
+      "end_ms": 41120,
+      "start_ms": 40840,
+      "text": "hòa",
+      "word_id": "W150"
+    },
+    {
+      "confidence": 0.9783,
+      "end_ms": 41260,
+      "start_ms": 41120,
+      "text": "điệu",
+      "word_id": "W151"
+    },
+    {
+      "confidence": 0.9611,
+      "end_ms": 41400,
+      "start_ms": 41260,
+      "text": "với",
+      "word_id": "W152"
+    },
+    {
+      "confidence": 0.9863,
+      "end_ms": 41600,
+      "start_ms": 41400,
+      "text": "nhịp",
+      "word_id": "W153"
+    },
+    {
+      "confidence": 0.9993,
+      "end_ms": 41880,
+      "start_ms": 41600,
+      "text": "sống",
+      "word_id": "W154"
+    },
+    {
+      "confidence": 0.984,
+      "end_ms": 42040,
+      "start_ms": 41880,
+      "text": "của",
+      "word_id": "W155"
+    },
+    {
+      "confidence": 0.9985,
+      "end_ms": 42240,
+      "start_ms": 42040,
+      "text": "mục",
+      "word_id": "W156"
+    },
+    {
+      "confidence": 0.996,
+      "end_ms": 42320,
+      "start_ms": 42240,
+      "text": "đích",
+      "word_id": "W157"
+    },
+    {
+      "confidence": 0.9869,
+      "end_ms": 42640,
+      "start_ms": 42320,
+      "text": "bên",
+      "word_id": "W158"
+    },
+    {
+      "confidence": 0.9967,
+      "end_ms": 43000,
+      "start_ms": 42640,
+      "text": "trong,",
+      "word_id": "W159"
+    },
+    {
+      "confidence": 0.4522,
+      "end_ms": 43340,
+      "start_ms": 43000,
+      "text": "thì",
+      "word_id": "W160"
+    },
+    {
+      "confidence": 0.9915,
+      "end_ms": 43640,
+      "start_ms": 43340,
+      "text": "muốn",
+      "word_id": "W161"
+    },
+    {
+      "confidence": 0.9808,
+      "end_ms": 43820,
+      "start_ms": 43640,
+      "text": "đạt",
+      "word_id": "W162"
+    },
+    {
+      "confidence": 0.9781,
+      "end_ms": 43980,
+      "start_ms": 43820,
+      "text": "được",
+      "word_id": "W163"
+    },
+    {
+      "confidence": 0.9008,
+      "end_ms": 44120,
+      "start_ms": 43980,
+      "text": "một",
+      "word_id": "W164"
+    },
+    {
+      "confidence": 0.9988,
+      "end_ms": 44240,
+      "start_ms": 44120,
+      "text": "điều",
+      "word_id": "W165"
+    },
+    {
+      "confidence": 0.9995,
+      "end_ms": 44420,
+      "start_ms": 44240,
+      "text": "gì",
+      "word_id": "W166"
+    },
+    {
+      "confidence": 0.9985,
+      "end_ms": 44880,
+      "start_ms": 44420,
+      "text": "đó,",
+      "word_id": "W167"
+    },
+    {
+      "confidence": 0.5278,
+      "end_ms": 45220,
+      "start_ms": 44880,
+      "text": "bạn",
+      "word_id": "W168"
+    },
+    {
+      "confidence": 0.9584,
+      "end_ms": 45460,
+      "start_ms": 45220,
+      "text": "sẽ",
+      "word_id": "W169"
+    },
+    {
+      "confidence": 0.9598,
+      "end_ms": 45640,
+      "start_ms": 45460,
+      "text": "phải",
+      "word_id": "W170"
+    },
+    {
+      "confidence": 0.9937,
+      "end_ms": 45760,
+      "start_ms": 45640,
+      "text": "mất",
+      "word_id": "W171"
+    },
+    {
+      "confidence": 0.9925,
+      "end_ms": 46020,
+      "start_ms": 45760,
+      "text": "rất",
+      "word_id": "W172"
+    },
+    {
+      "confidence": 0.9963,
+      "end_ms": 46160,
+      "start_ms": 46020,
+      "text": "nhiều",
+      "word_id": "W173"
+    },
+    {
+      "confidence": 0.9952,
+      "end_ms": 46380,
+      "start_ms": 46160,
+      "text": "nỗ",
+      "word_id": "W174"
+    },
+    {
+      "confidence": 0.9941,
+      "end_ms": 46660,
+      "start_ms": 46380,
+      "text": "lực,",
+      "word_id": "W175"
+    },
+    {
+      "confidence": 0.9595,
+      "end_ms": 47000,
+      "start_ms": 46900,
+      "text": "phải",
+      "word_id": "W176"
+    },
+    {
+      "confidence": 0.9687,
+      "end_ms": 47200,
+      "start_ms": 47000,
+      "text": "đấu",
+      "word_id": "W177"
+    },
+    {
+      "confidence": 0.9918,
+      "end_ms": 47600,
+      "start_ms": 47200,
+      "text": "tranh",
+      "word_id": "W178"
+    },
+    {
+      "confidence": 0.6564,
+      "end_ms": 47860,
+      "start_ms": 47600,
+      "text": "hay",
+      "word_id": "W179"
+    },
+    {
+      "confidence": 0.9942,
+      "end_ms": 48120,
+      "start_ms": 47860,
+      "text": "dùng",
+      "word_id": "W180"
+    },
+    {
+      "confidence": 0.9894,
+      "end_ms": 48440,
+      "start_ms": 48120,
+      "text": "đến",
+      "word_id": "W181"
+    },
+    {
+      "confidence": 0.866,
+      "end_ms": 48760,
+      "start_ms": 48440,
+      "text": "âm",
+      "word_id": "W182"
+    },
+    {
+      "confidence": 0.8237,
+      "end_ms": 48980,
+      "start_ms": 48760,
+      "text": "mưu",
+      "word_id": "W183"
+    },
+    {
+      "confidence": 0.9779,
+      "end_ms": 49120,
+      "start_ms": 48980,
+      "text": "và",
+      "word_id": "W184"
+    },
+    {
+      "confidence": 0.9318,
+      "end_ms": 49320,
+      "start_ms": 49120,
+      "text": "thủ",
+      "word_id": "W185"
+    },
+    {
+      "confidence": 0.9907,
+      "end_ms": 49900,
+      "start_ms": 49320,
+      "text": "đoạn.",
+      "word_id": "W186"
+    },
+    {
+      "confidence": 0.9885,
+      "end_ms": 50240,
+      "start_ms": 49960,
+      "text": "Nhưng",
+      "word_id": "W187"
+    },
+    {
+      "confidence": 0.9794,
+      "end_ms": 50380,
+      "start_ms": 50240,
+      "text": "làm",
+      "word_id": "W188"
+    },
+    {
+      "confidence": 0.9898,
+      "end_ms": 50600,
+      "start_ms": 50380,
+      "text": "như",
+      "word_id": "W189"
+    },
+    {
+      "confidence": 0.9938,
+      "end_ms": 50860,
+      "start_ms": 50600,
+      "text": "thế",
+      "word_id": "W190"
+    },
+    {
+      "confidence": 0.9505,
+      "end_ms": 51020,
+      "start_ms": 50860,
+      "text": "thì",
+      "word_id": "W191"
+    },
+    {
+      "confidence": 0.9872,
+      "end_ms": 51220,
+      "start_ms": 51020,
+      "text": "bạn",
+      "word_id": "W192"
+    },
+    {
+      "confidence": 0.98,
+      "end_ms": 51540,
+      "start_ms": 51220,
+      "text": "không",
+      "word_id": "W193"
+    },
+    {
+      "confidence": 0.9624,
+      "end_ms": 51680,
+      "start_ms": 51540,
+      "text": "có",
+      "word_id": "W194"
+    },
+    {
+      "confidence": 0.9693,
+      "end_ms": 51860,
+      "start_ms": 51680,
+      "text": "được",
+      "word_id": "W195"
+    },
+    {
+      "confidence": 0.9929,
+      "end_ms": 52180,
+      "start_ms": 51860,
+      "text": "niềm",
+      "word_id": "W196"
+    },
+    {
+      "confidence": 0.999,
+      "end_ms": 52460,
+      "start_ms": 52180,
+      "text": "vui",
+      "word_id": "W197"
+    },
+    {
+      "confidence": 0.9959,
+      "end_ms": 52800,
+      "start_ms": 52460,
+      "text": "khi",
+      "word_id": "W198"
+    },
+    {
+      "confidence": 0.997,
+      "end_ms": 53080,
+      "start_ms": 52800,
+      "text": "công",
+      "word_id": "W199"
+    },
+    {
+      "confidence": 0.9993,
+      "end_ms": 53200,
+      "start_ms": 53080,
+      "text": "việc",
+      "word_id": "W200"
+    },
+    {
+      "confidence": 0.9824,
+      "end_ms": 53400,
+      "start_ms": 53200,
+      "text": "được",
+      "word_id": "W201"
+    },
+    {
+      "confidence": 0.9941,
+      "end_ms": 53640,
+      "start_ms": 53400,
+      "text": "hoàn",
+      "word_id": "W202"
+    },
+    {
+      "confidence": 0.9824,
+      "end_ms": 54080,
+      "start_ms": 53640,
+      "text": "tất.",
+      "word_id": "W203"
+    },
+    {
+      "confidence": 0.4401,
+      "end_ms": 54640,
+      "start_ms": 54080,
+      "text": "Và",
+      "word_id": "W204"
+    },
+    {
+      "confidence": 0.9374,
+      "end_ms": 54820,
+      "start_ms": 54640,
+      "text": "chắc",
+      "word_id": "W205"
+    },
+    {
+      "confidence": 0.9968,
+      "end_ms": 55040,
+      "start_ms": 54820,
+      "text": "chắn",
+      "word_id": "W206"
+    },
+    {
+      "confidence": 0.9517,
+      "end_ms": 55220,
+      "start_ms": 55040,
+      "text": "những",
+      "word_id": "W207"
+    },
+    {
+      "confidence": 0.998,
+      "end_ms": 55380,
+      "start_ms": 55220,
+      "text": "kết",
+      "word_id": "W208"
+    },
+    {
+      "confidence": 0.9966,
+      "end_ms": 55560,
+      "start_ms": 55380,
+      "text": "quả",
+      "word_id": "W209"
+    },
+    {
+      "confidence": 0.9053,
+      "end_ms": 56040,
+      "start_ms": 55560,
+      "text": "ấy",
+      "word_id": "W210"
+    },
+    {
+      "confidence": 0.4249,
+      "end_ms": 56380,
+      "start_ms": 56040,
+      "text": "chỉ",
+      "word_id": "W211"
+    },
+    {
+      "confidence": 0.9804,
+      "end_ms": 56620,
+      "start_ms": 56380,
+      "text": "mang",
+      "word_id": "W212"
+    },
+    {
+      "confidence": 0.9967,
+      "end_ms": 56840,
+      "start_ms": 56620,
+      "text": "lại",
+      "word_id": "W213"
+    },
+    {
+      "confidence": 0.9951,
+      "end_ms": 57080,
+      "start_ms": 56840,
+      "text": "khổ",
+      "word_id": "W214"
+    },
+    {
+      "confidence": 0.9924,
+      "end_ms": 57240,
+      "start_ms": 57080,
+      "text": "đau",
+      "word_id": "W215"
+    },
+    {
+      "confidence": 0.9809,
+      "end_ms": 57400,
+      "start_ms": 57240,
+      "text": "cho",
+      "word_id": "W216"
+    },
+    {
+      "confidence": 0.9965,
+      "end_ms": 57640,
+      "start_ms": 57400,
+      "text": "bạn",
+      "word_id": "W217"
+    },
+    {
+      "confidence": 0.9513,
+      "end_ms": 58260,
+      "start_ms": 57640,
+      "text": "và",
+      "word_id": "W218"
+    },
+    {
+      "confidence": 0.702,
+      "end_ms": 58400,
+      "start_ms": 58260,
+      "text": "cho",
+      "word_id": "W219"
+    },
+    {
+      "confidence": 0.9353,
+      "end_ms": 58560,
+      "start_ms": 58400,
+      "text": "những",
+      "word_id": "W220"
+    },
+    {
+      "confidence": 0.9879,
+      "end_ms": 58740,
+      "start_ms": 58560,
+      "text": "người",
+      "word_id": "W221"
+    },
+    {
+      "confidence": 0.3257,
+      "end_ms": 58960,
+      "start_ms": 58740,
+      "text": "chung",
+      "word_id": "W222"
+    },
+    {
+      "confidence": 0.9813,
+      "end_ms": 59160,
+      "start_ms": 58960,
+      "text": "quanh.",
+      "word_id": "W223"
+    }
+  ]
+}
