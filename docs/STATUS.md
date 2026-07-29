@@ -1,6 +1,24 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-16
+Last updated: 2026-07-29
+
+## Remotion owner-review page — production release — 2026-07-29
+
+- Published the private-by-discovery comparison route
+  `/review/remotion-muc-dich-doi-song` from exact production baseline `12880bc`
+  plus source commit `4bcef1f`; no R0.1 or Reader Loop work was included.
+- The page exposes one bandwidth-bounded player with three 720p H.264 variants,
+  metadata-only preload, posters, native controls and mobile-safe switching. All
+  route and media responses are `noindex`.
+- Focused 3/3, adjacent 15/15, full 242/242, lint, TypeScript and the 83-route
+  static build pass. Browser QA at 1440x1000 and 390x844 loads and plays all
+  three 59.712-second videos with zero console errors.
+- Preview `4302784c` and production `ec61e270` serve source `4bcef1f`. Production
+  origin, apex and `www` return byte-identical review HTML; all three apex MP4
+  paths return HTTP 200 after propagation.
+- Previous production `350ecbc7` serving source `12880bc` remains the rollback
+  point. Full evidence:
+  `docs/releases/REMOTION_COMPARISON_REVIEW_PRODUCTION_RELEASE-2026-07-29.md`.
 
 ## Brain2 kickoff-video restoration — local release candidate — 2026-07-16
 
