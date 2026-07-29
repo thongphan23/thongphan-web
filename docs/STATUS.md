@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-30
 
-## Remotion Film Source Model v2 owner-review round — release candidate — 2026-07-30
+## Remotion Film Source Model v2 owner-review round — production release — 2026-07-30
 
 - Rebuilt the same authoritative 59.712-second Vietnamese voice as three new
   film-led variants: `The Devil Wears Prada`, `The Truman Show` and `Inside
@@ -17,9 +17,10 @@ Last updated: 2026-07-30
 - Video QA passes H.264/AAC duration, -15 LUFS audio, no black/freeze segments,
   one-line subtitles and visual frame review. Plugin focused 46/46, plugin full
   795/795, VBE full 75/75 and Remotion TypeScript pass.
-- The private-by-discovery route remains
-  `/review/remotion-muc-dich-doi-song`. Deployment and browser QA evidence are
-  recorded in
+- The private-by-discovery route is live at
+  `/review/remotion-muc-dich-doi-song`. Production deployment `dec8a76e` serves
+  source `8c0ed7e`; desktop/mobile browser QA switches and plays all three
+  videos with zero overflow and zero console errors. Full evidence is recorded in
   `docs/releases/REMOTION_FILM_SOURCE_MODEL_V2_PRODUCTION_RELEASE-2026-07-30.md`.
 
 ## Remotion silent-first owner-review round — production release — 2026-07-29

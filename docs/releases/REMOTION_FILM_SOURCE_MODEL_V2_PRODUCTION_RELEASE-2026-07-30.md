@@ -11,7 +11,8 @@ for owner comparison after upgrading film choice from an informal editorial
 decision into a persistent, evidence-backed Film Source Model.
 
 - release branch: `agent/remotion-review-page-20260729`;
-- production source commit and deployment identity are recorded after publish;
+- source commit: `8c0ed7ec1bbc51aee24d7f5e1616f812b05f78fe`;
+- production deployment: `dec8a76e-0e17-431d-a3a4-437bf5d30056`;
 - previous production deployment: `73e64feb-a789-431a-a6f4-af9a5fdb44b2` at
   source `4c2f6432c144627e850f047cade539ae78514fe3`.
 
@@ -96,7 +97,14 @@ Pages 25 MiB per-file limit and use `faststart` progressive playback.
 - Static export: passed with 83 routes.
 - Local browser QA at 1440x1000 and 390x844: all three videos report 59.712
   seconds, playback advances, horizontal overflow is zero and console errors
-  are zero. Production-origin checks are recorded after deployment.
+  are zero.
+- Production browser QA repeats the same checks on the apex domain: all three
+  tabs select the expected source, playback advances, robots metadata is
+  `noindex, nofollow, nocache`, horizontal overflow is zero and console errors
+  are zero.
+- Immutable origin, apex and `www` return the `FILM SOURCE MODEL V2` marker.
+  All three immutable-origin MP4 paths and the evidence index return HTTP 200
+  with the expected content type.
 
 ## Rollback
 
