@@ -2,6 +2,34 @@
 
 Last updated: 2026-07-30
 
+## TPR Operations Console — production release — 2026-07-30
+
+- Released the owner-only operations console at `/tpr` with run, video, Film
+  Source Vault, document, model/graph, Taste feedback, Codex activity, cost and
+  capacity views. The dedicated Worker API fails closed behind a signed owner
+  session and projects only bounded metadata into an isolated D1 database.
+- Installed the local incremental collector as
+  `com.thongphan.tpr-control-plane-sync`. Initial historical projection accepted
+  6,879 records; an unchanged steady-state scan completes in 0.152 seconds and
+  sends no batch. Only redacted TPR user/assistant messages are projected; tool
+  output, reasoning, environment context, credentials and raw media stay local.
+- Production currently reports 21 active/review runs, 3 published videos, 12
+  Film Source profiles, 36 model records and a bounded 150-node graph. The three
+  current videos load and play from their approved publication URLs.
+- QA found and fixed the mobile search-control compression and removed 44 legacy
+  event projections containing a bare private-home marker. D1 verification now
+  returns zero private-home matches, and the owner credential was rotated after
+  QA so the test session is invalid.
+- Focused console/API 7/7, website full 249/249, lint, both TypeScript checks and
+  the 84-route static build pass. Plugin sync 10/10 passes. Desktop 1280×720 and
+  mobile 390×844 browser QA have zero horizontal overflow; video playback reaches
+  `readyState=4` and advances time.
+- Pages deployment `7e2412b4` serves source `9d2e7a6`; Worker version
+  `ac823c73-f4de-492f-a539-ee74f5827285` owns `/api/tpr/*`. R2 remains explicitly
+  unavailable on the account, so the release is metadata-only and does not cross
+  the object-storage activation boundary. Full evidence is in
+  `docs/releases/TPR_OPERATIONS_CONSOLE_PRODUCTION_RELEASE-2026-07-30.md`.
+
 ## Remotion Film Source Model v2 owner-review round — production release — 2026-07-30
 
 - Rebuilt the same authoritative 59.712-second Vietnamese voice as three new

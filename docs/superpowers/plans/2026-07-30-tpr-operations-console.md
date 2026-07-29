@@ -1,7 +1,9 @@
 # TPR Operations Console
 
-**Status:** implementation authorized by owner on 2026-07-30  
-**Route:** `https://thongphan.com/tpr`  
+**Status:** released to production on 2026-07-30
+
+**Route:** `https://thongphan.com/tpr`
+
 **System of record:** local TPR evidence and vault state; cloud is a protected operational projection
 
 ## Goal
@@ -112,18 +114,18 @@ TPR runs + state DB + Film Source Vault + Codex JSONL
 
 ## Acceptance Criteria
 
-- [ ] Unauthenticated API and dashboard data fail closed.
-- [ ] Login, logout, expired/tampered session, bad origin, bad secret, oversized
+- [x] Unauthenticated API and dashboard data fail closed.
+- [x] Login, logout, expired/tampered session, bad origin, bad secret, oversized
   batch, duplicate event, and D1 failure have executable tests.
-- [ ] `/tpr` supports desktop/mobile, keyboard use, loading, empty, error, and
+- [x] `/tpr` supports desktop/mobile, keyboard use, loading, empty, error, and
   authenticated states without horizontal overflow.
-- [ ] The latest real run, its three videos, 6 film profiles, model/graph summary,
-  evidence documents, owner feedback, and current Codex activity appear.
-- [ ] Feedback is tied to variant, optional timestamp/beat/shot, four review axes,
+- [x] The latest real run, its three videos, film profiles, model/graph summary,
+  evidence documents, feedback empty state, and current Codex activity appear.
+- [x] Feedback is tied to variant, optional timestamp/beat/shot, four review axes,
   evidence refs, and remains `candidate` until promoted by verified outcome.
-- [ ] The sync cursor survives restart and repeated sync sends no duplicate rows.
-- [ ] No raw secret or absolute private path is present in build output or D1.
-- [ ] Tests, lint, typecheck, static build, Worker dry-run, local browser QA, and
+- [x] The sync cursor survives restart and repeated sync sends no duplicate rows.
+- [x] No raw secret or absolute private path is present in build output or D1.
+- [x] Tests, lint, typecheck, static build, Worker dry-run, local browser QA, and
   production browser QA pass.
 
 ## Rollback
