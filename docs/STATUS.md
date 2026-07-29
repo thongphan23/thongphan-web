@@ -2,6 +2,26 @@
 
 Last updated: 2026-07-29
 
+## Remotion silent-first owner-review round — production release — 2026-07-29
+
+- Replaced the three comparison videos at
+  `/review/remotion-muc-dich-doi-song` with a new silent-first round built from
+  the same authoritative 59.712-second voice. Each version uses 25 shots and
+  treats film footage as mute visual evidence: action, reaction, emotion and
+  visible consequence must carry the meaning without relying on dialogue.
+- Soul now uses 25 distinct sources; Walter Mitty follows one directional
+  office-to-journey-to-consequence arc with 25 distinct sources; Whiplash
+  replaces dialogue-led scenes with pressure, motion, exhaustion and reaction.
+- Focused 3/3, adjacent 17/17, full 242/242, lint, TypeScript and the 83-route
+  static build pass. Final-video QA passes duration, codec, audio loudness,
+  black-frame, freeze, source-reuse, subtitle and silent-preview checks.
+- Preview `3708a0de` and production `73e64feb` serve source `4c2f643`.
+  Production browser QA at 1440x1000 and 390x844 switches and plays all three
+  videos, reports 59.712 seconds, has zero overflow and zero console errors.
+- Previous production `ec61e270` serving source `4bcef1f` remains the rollback
+  point. Full evidence:
+  `docs/releases/REMOTION_SILENT_FIRST_REVIEW_PRODUCTION_RELEASE-2026-07-29.md`.
+
 ## Remotion owner-review page — production release — 2026-07-29
 
 - Published the private-by-discovery comparison route
