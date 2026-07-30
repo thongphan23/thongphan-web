@@ -1,0 +1,13 @@
+name = "thongphan-tpr-admin"
+main = "workers/tpr-admin.mjs"
+compatibility_date = "2026-07-30"
+workers_dev = false
+
+routes = [
+  { pattern = "thongphan.com/tpr*", zone_name = "thongphan.com" },
+  { pattern = "www.thongphan.com/tpr*", zone_name = "thongphan.com" }
+]
+
+[[kv_namespaces]]
+binding = "TPR_ADMIN_DATA"
+id = "2dad953de9124677b61670066192e6cb"

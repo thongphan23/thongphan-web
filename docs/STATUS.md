@@ -1,6 +1,27 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-26
+Last updated: 2026-07-30
+
+## TPR Visual Selection + protected Control Room — release candidate — 2026-07-30
+
+- Thong Phan Remotion source commit `ae26192` adds the evidence-backed Visual
+  Proposition Graph between voice meaning and shot selection. Each claim now
+  requires at least three independently evidenced candidates, derived scoring,
+  fail-closed semantic/comprehension gates and exact decision lineage. Taste is
+  bounded to soft ranking and cannot rescue a semantic failure.
+- `/tpr` is a standalone, noindex operations surface for runs, visual decisions,
+  model/graph state, Taste evidence, risks and artifacts. A dedicated Worker
+  protects both the page and snapshot API with a hashed access code, signed
+  12-hour cookie, same-origin mutation, bounded request body, HMAC-pseudonymous
+  rate-limit key and isolated KV data.
+- The first snapshot truthfully reports 38 historical runs, 575 graph entities,
+  zero Visual Proposition decisions and 8 open risks. Historical runs are
+  `NOT EVALUATED`; the release does not fabricate a quality verdict or backfill
+  evidence that never existed.
+- Local evidence passes: TPR focused tests 7/7, website suite 248/248,
+  TypeScript, scoped ESLint, 83-route production build and desktop/mobile
+  browser QA without overflow or console errors. Deployment evidence is tracked
+  in `docs/releases/TPR_VISUAL_SELECTION_ADMIN_RELEASE_REPORT-2026-07-30.md`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

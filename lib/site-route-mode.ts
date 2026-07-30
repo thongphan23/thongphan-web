@@ -9,6 +9,7 @@ export type SiteRouteMode =
 
 const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
   '/conanmaker': 'standalone',
+  '/tpr': 'standalone',
   '/': 'cinema-dark',
   '/about': 'cinema-dark',
   '/diagnostic': 'evidence-dossier',
@@ -26,6 +27,7 @@ const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
 
 const prefixRouteModes: ReadonlyArray<readonly [prefix: string, mode: SiteRouteMode]> = [
   ['/conanmaker', 'standalone'],
+  ['/tpr', 'standalone'],
   ['/assets', 'evidence-dossier'],
   ['/learn', 'learning-dossier'],
   ['/experiences', 'evidence-dossier'],
