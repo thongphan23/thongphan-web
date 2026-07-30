@@ -1,6 +1,26 @@
 # thongphan.com — Unified Cinema status
 
 Last updated: 2026-07-30
+
+## Voice comparison owner review — production release — 2026-07-30
+
+- Published the private-by-discovery, `noindex` route `/voice` with the three
+  male voice variants A, B and C from the TPR V6 comparison round. Each player
+  uses native MP3 controls and metadata-only preload; starting another variant
+  pauses the active one.
+- Rebased the release onto exact current production source `de6d903` before
+  promotion, preserving the visual-proposition review and protected TPR admin
+  surfaces. The root and Remotion review routes remain public while `/tpr`
+  remains protected.
+- Focused 3/3, full regression 251/251, lint, TypeScript and the 85-route static
+  build pass. Local and immutable-preview browser QA at 1440x1000 and 390x844
+  has zero horizontal overflow; all three MP3s load with their expected
+  durations and switching from A to B pauses A.
+- Preview `a5d9a0eb` and production `9b69e8f7` serve source `49c2b87`. Apex,
+  `www` and immutable production return the expected `noindex` page; the three
+  apex MP3 payload hashes match their committed source files. Full evidence is
+  in `docs/releases/VOICE_REVIEW_PRODUCTION_RELEASE-2026-07-30.md`.
+
 ## Remotion Film Source Model v2 owner-review round — production release — 2026-07-30
 
 - Rebuilt the same authoritative 59.712-second Vietnamese voice as three new
