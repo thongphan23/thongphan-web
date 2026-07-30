@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-30
 
-## TPR Visual Selection + protected Control Room — release candidate — 2026-07-30
+## TPR Visual Selection + protected Control Room — production release — 2026-07-30
 
 - Thong Phan Remotion source commit `ae26192` adds the evidence-backed Visual
   Proposition Graph between voice meaning and shot selection. Each claim now
@@ -22,6 +22,10 @@ Last updated: 2026-07-30
   TypeScript, scoped ESLint, 83-route production build and desktop/mobile
   browser QA without overflow or console errors. Deployment evidence is tracked
   in `docs/releases/TPR_VISUAL_SELECTION_ADMIN_RELEASE_REPORT-2026-07-30.md`.
+- Pages production `062db5b2` serves website source `9e7e4bc`; dedicated TPR
+  Worker version `235c8833` protects apex and `www`. Production login, signed
+  session, exact snapshot checksum, tamper rejection and core public-route smoke
+  pass. Pages production `7e2412b4` remains the rollback point.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

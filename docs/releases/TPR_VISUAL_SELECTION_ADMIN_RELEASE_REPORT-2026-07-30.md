@@ -91,18 +91,36 @@ Browser QA 390x844: PASS
 ```
 
 Desktop evidence:
-`/Users/rio/Movies/thong-phan-remotion-admin/qa-20260730-v3/desktop-overview.png`
+`/Users/rio/Movies/thong-phan-remotion-admin/qa-20260730-production/desktop-overview.png`
 
 Mobile evidence:
-`/Users/rio/Movies/thong-phan-remotion-admin/qa-20260730-v3/mobile-risks.png`
+`/Users/rio/Movies/thong-phan-remotion-admin/qa-20260730-production/mobile-overview.png`
+
+Production smoke:
+
+```text
+unauthenticated /tpr: 401 + X-Robots-Tag noindex,nofollow,noarchive
+wrong access code: 401
+correct access code: 204 + signed secure session
+authenticated /tpr: 200
+authenticated /tpr/api/snapshot: 200 + exact SHA-256 match
+tampered session: 401
+homepage: 200
+library: 200
+www unauthenticated /tpr: 401
+```
+
+The browser's only console entry during the end-to-end login test is the
+intentional initial `401` response for the login document itself. No asset,
+script or snapshot request failed after authentication.
 
 ## Source and deployment
 
 ```text
 TPR source commit: ae26192
-Website source commit: PENDING
-Pages preview deployment: PENDING
-Pages production deployment: PENDING
-TPR Worker deployment: PENDING
+Website source commit: 9e7e4bc
+Pages preview deployment: c33f3a5d-66d6-47f7-8d4f-bb866bf175eb
+Pages production deployment: 062db5b2-6fe0-41a0-ae5d-88ed74615f55
+TPR Worker version: 235c8833-6343-4bbe-8dd2-1e22d8c4ac9a
 Rollback Pages deployment: 7e2412b4-2f13-4de7-bcc0-f71462a10088
 ```
