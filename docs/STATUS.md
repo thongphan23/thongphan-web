@@ -1,7 +1,6 @@
 # thongphan.com — Unified Cinema status
 
 Last updated: 2026-07-30
-
 ## Remotion Film Source Model v2 owner-review round — production release — 2026-07-30
 
 - Rebuilt the same authoritative 59.712-second Vietnamese voice as three new
@@ -60,8 +59,43 @@ Last updated: 2026-07-30
 - Previous production `350ecbc7` serving source `12880bc` remains the rollback
   point. Full evidence:
   `docs/releases/REMOTION_COMPARISON_REVIEW_PRODUCTION_RELEASE-2026-07-29.md`.
+## TPR Visual Selection + protected Control Room — production release — 2026-07-30
 
-## Brain2 kickoff-video restoration — local release candidate — 2026-07-16
+- Thong Phan Remotion source commit `ae26192` adds the evidence-backed Visual
+  Proposition Graph between voice meaning and shot selection. Each claim now
+  requires at least three independently evidenced candidates, derived scoring,
+  fail-closed semantic/comprehension gates and exact decision lineage. Taste is
+  bounded to soft ranking and cannot rescue a semantic failure.
+- `/tpr` is a standalone, noindex operations surface for runs, visual decisions,
+  model/graph state, Taste evidence, risks and artifacts. A dedicated Worker
+  protects both the page and snapshot API with a hashed access code, signed
+  12-hour cookie, same-origin mutation, bounded request body, HMAC-pseudonymous
+  rate-limit key and isolated KV data.
+- The first snapshot truthfully reports 38 historical runs, 575 graph entities,
+  zero Visual Proposition decisions and 8 open risks. Historical runs are
+  `NOT EVALUATED`; the release does not fabricate a quality verdict or backfill
+  evidence that never existed.
+- Local evidence passes: TPR focused tests 7/7, website suite 248/248,
+  TypeScript, scoped ESLint, 83-route production build and desktop/mobile
+  browser QA without overflow or console errors. Deployment evidence is tracked
+  in `docs/releases/TPR_VISUAL_SELECTION_ADMIN_RELEASE_REPORT-2026-07-30.md`.
+- Pages production `062db5b2` serves website source `9e7e4bc`; dedicated TPR
+  Worker version `235c8833` protects apex and `www`. Production login, signed
+  session, exact snapshot checksum, tamper rejection and core public-route smoke
+  pass. Pages production `7e2412b4` remains the rollback point.
+
+## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
+
+- R0.1 design corrected and split into local remediation and owner-gated production cutover — implementation not started.
+- R0.1A is source/local verification and a separate implementation PR only. R0.1B requires another owner prompt after both documentation and implementation PRs are merged into clean GitHub default `main`. R0.H1 public-history remediation is separate, destructive and nonblocking after credential rotation plus current-tree controls pass.
+- R0 technical audit is complete against canonical runtime repo `/Users/rio/thongphan-com`, branch `main`, HEAD `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`. The legacy `/Users/rio/Projects/thongphan-read` directory is migration provenance only; no legacy runtime was restored.
+- Verified current stack: Next.js 16.2.10 App Router, React 19.2.5, TypeScript 6.0.3, npm, static export to Cloudflare Pages plus dedicated Workers. Public Read remains canonical under `/library*`; `/read` is absent and returns a noindex 404.
+- Baseline passes: TypeScript, Worker TypeScript, lint, full 242/242 suite, 82-route build, release gate (build 6/6, SEO 4/4, bundle 3/3, Brain2 143/143), Read safety 3/3 and seven Wrangler Worker dry-runs. Live sitemap crawl returns 55/55 HTTP 200.
+- R0 identified owner gates before R1: reader identity/entitlement, preview-production data isolation, privacy/retention, email delivery and 210 legacy queue rows, analytics, CI/dependency scanning, and P0 ownership/security for the existing unauthenticated `/api/embed` mutation route. `npm audit` has no fresh verdict because both npm audit endpoints failed after a clean temporary install.
+- Full evidence: `docs/discovery/R0-AUDIT-REPORT.md`. `CURRENT-SYSTEM-AUDIT.md`, the SAD and Data/Event Architecture now distinguish verified current state from target architecture.
+- No app feature, framework, route, Worker, schema, migration or production Cloudflare setting changed. No deploy was run. R0 remains at owner approval gate and PRD-R1 must not start until that approval is explicit.
+
+## Brain2 kickoff-video restoration — production release — 2026-07-16
 
 - Restored the original kickoff video to `/brain2/21-ngay` from the verified
   legacy source: YouTube ID `ubsOey-hDyg`, label
@@ -76,8 +110,15 @@ Last updated: 2026-07-30
   242/242, Brain2 release suite 143/143, lint, TypeScript and the 82-route static
   build. The generated artifact contains the exact video URL, label and
   thumbnail; live YouTube and thumbnail probes both return HTTP 200.
-- This restoration is committed locally only. Production remains on the prior
-  verified release until a new deployment is explicitly authorized.
+- Preview `e36e4d04-58b9-4be4-bb5d-745c86ead1a9` and production
+  `350ecbc7-9eec-4661-8451-2b129577b97c` serve source `12880bc`. The production
+  origin, apex and `www` return byte-identical Brain2 hub HTML and all include
+  the exact kickoff URL, label and thumbnail. Core route smoke, the permanent
+  `/challenges` redirect, disabled Learn 404 and exclusion of the four unrelated
+  Conan Maker assets pass on all three surfaces. Previous production `3bc101dc`
+  remains the rollback point.
+- Detailed evidence:
+  `docs/releases/BRAIN2_KICKOFF_VIDEO_PRODUCTION_RELEASE_REPORT-2026-07-16.md`.
 
 ## Homepage polish regression — production release — 2026-07-14
 
