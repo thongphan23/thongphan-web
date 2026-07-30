@@ -1,78 +1,67 @@
 {
-  "schema_version": "tpr.workflow-evidence-index.v1",
-  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
-  "status": "owner_review_ready",
+  "schema": "tpr.workflow_evidence_index.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "rule": "Mỗi bước chỉ tiêu thụ artifact có thật từ bước trước; không suy diễn lại timeline sau khi graph đã seal.",
   "steps": [
     {
-      "step": "01_voice_and_transcript",
-      "inputs": [
-        "shared/assets/audio/provided_voice.mp3"
-      ],
-      "outputs": [
-        "shared/content/transcript_approved.json",
-        "shared/content/subtitles.json",
-        "shared/content/message_architecture.json"
-      ]
+      "step": 1,
+      "name_vi": "Tiếp nhận voice",
+      "inputs": ["provided_audio"],
+      "outputs": ["shared/content/audio_intake.json", "remotion/public/audio/provided_voice.mp3"]
     },
     {
-      "step": "02_claim_and_source_gates",
-      "inputs": [
-        "shared/content/transcript_approved.json"
-      ],
-      "outputs": [
-        "content/claim_timeline.json",
-        "content/source_gate_report.json",
-        "content/run_manifest.json"
-      ]
+      "step": 2,
+      "name_vi": "Bản chép và phụ đề đã duyệt",
+      "inputs": ["shared/content/audio_intake.json"],
+      "outputs": ["shared/content/transcript_approved.json", "shared/content/subtitles.json"]
     },
     {
-      "step": "03_observation_and_visual_propositions",
-      "inputs": [
-        "content/claim_timeline.json",
-        "source-pool/"
-      ],
-      "outputs": [
-        "variants/*/content/visual_observations.json",
-        "variants/*/content/visual_candidate_input.json",
-        "variants/*/content/visual_proposition_graph.json",
-        "variants/*/audit/visual_selection_risk_report.json"
-      ]
+      "step": 3,
+      "name_vi": "Tách claim và timeline",
+      "inputs": ["shared/content/transcript_approved.json"],
+      "outputs": ["content/claim_timeline.json"]
     },
     {
-      "step": "04_locked_edit_plan",
-      "inputs": [
-        "variants/*/content/visual_proposition_graph.json"
-      ],
-      "outputs": [
-        "variants/*/content/edit_plan.json",
-        "variants/*/content/editorial_plan_seal.json",
-        "content/render_input_manifest.json"
-      ]
+      "step": 4,
+      "name_vi": "Đóng khung nghĩa và quan hệ",
+      "inputs": ["content/claim_timeline.json", "relation-taxonomy.v1"],
+      "outputs": ["variants/*/content/visual_semantic_input.json"]
     },
     {
-      "step": "05_render_and_qa",
-      "inputs": [
-        "content/render_input_manifest.json",
-        "remotion/src/videoData.generated.ts"
-      ],
-      "outputs": [
-        "renders/*-final.mp4",
-        "content/render_qa_report.json",
-        "variants/*/audit/render-qa-receipt.json",
-        "audit/render-qa/*-contact-sheet.jpg"
-      ]
+      "step": 5,
+      "name_vi": "Tạo ba phương án có bằng chứng cho mỗi claim",
+      "inputs": ["variants/*/content/visual_semantic_input.json", "37 observed source files"],
+      "outputs": ["24 candidates per variant", "audit/new_search_rejections.json"]
     },
     {
-      "step": "06_owner_review_handoff",
-      "inputs": [
-        "content/render_qa_report.json"
-      ],
-      "outputs": [
-        "OWNER-REVIEW.md",
-        "content/comparison_report.md",
-        "review/*.mp4",
-        "review/*-poster.jpg"
-      ]
+      "step": 6,
+      "name_vi": "Chấm điểm minh bạch và fail-closed",
+      "inputs": ["sealed observations", "viewer assessments", "craft assessments"],
+      "outputs": ["content/visual_scorecard_comparison.md", "variants/*/content/visual_selection_review.md"]
+    },
+    {
+      "step": 7,
+      "name_vi": "Khóa quyết định và lineage",
+      "inputs": ["scorecards", "hard-gate results"],
+      "outputs": ["variants/*/content/visual_proposition_graph.json", "variants/*/state.sqlite3"]
+    },
+    {
+      "step": 8,
+      "name_vi": "Biên dịch edit plan",
+      "inputs": ["sealed visual proposition graph"],
+      "outputs": ["variants/*/content/edit_plan.json", "remotion/src/videoData.generated.ts"]
+    },
+    {
+      "step": 9,
+      "name_vi": "Render",
+      "inputs": ["locked edit plan", "provided voice", "reflection music bed"],
+      "outputs": ["renders/direct-proof-v1.mp4", "renders/soul-centered-v1.mp4", "renders/office-human-v1.mp4"]
+    },
+    {
+      "step": 10,
+      "name_vi": "Kiểm định và bàn giao",
+      "inputs": ["three final renders", "locked graph fingerprints"],
+      "outputs": ["review/render-qa-report.json", "review/contact-sheets/*", "review/keyframes/*", "review/owner-review-packet.md"]
     }
   ]
 }

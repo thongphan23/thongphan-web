@@ -1,0 +1,29 @@
+{
+  "schema": "tpr.source_search_rejection.v1",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "rejections": [
+    {
+      "clipcafe_clip_id": "1272139",
+      "title": "If I can reach Enlightenment",
+      "movie": "Little Buddha",
+      "observed_visual": "Cận cảnh trâu đi dưới nước; không có hành vi thiền hoặc tự quan sát.",
+      "reason_code": "TRANSCRIPT_MATCH_VISUAL_MISMATCH",
+      "decision": "reject"
+    },
+    {
+      "clipcafe_clip_id": "1231586",
+      "title": "There are no ordinary moments",
+      "movie": "Peaceful Warrior",
+      "observed_visual": "Cận cảnh nhân vật đang nói; tắt tiếng không chứng minh hiện diện hay tỉnh thức.",
+      "reason_code": "DIALOGUE_DEPENDENT_NO_VISIBLE_PROOF",
+      "decision": "reject"
+    },
+    {
+      "clipcafe_clip_id": "6570085",
+      "title": "The meditation cave",
+      "movie": "Eat Pray Love",
+      "reason_code": "DOWNLOAD_404_NO_OBSERVATION",
+      "decision": "reject"
+    }
+  ]
+}

@@ -9,12 +9,12 @@ const mediaRoot = new URL(
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 
 const videos = [
-  'about-time-visual-proposition-v1-web.mp4',
-  'click-visual-proposition-v1-web.mp4',
-  'up-in-the-air-visual-proposition-v1-web.mp4',
+  'direct-proof-visual-semantic-v1-web.mp4',
+  'soul-centered-visual-semantic-v1-web.mp4',
+  'office-human-visual-semantic-v1-web.mp4',
 ]
 
-test('review route is private-by-discovery and exposes exactly three visual-proposition variants', async () => {
+test('review route is private-by-discovery and exposes exactly three visual-semantic variants', async () => {
   const [page, gallery] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -22,15 +22,16 @@ test('review route is private-by-discovery and exposes exactly three visual-prop
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.equal((gallery.match(/id:\s*['"](?:about-time|click|up-in-the-air)['"]/g) ?? []).length, 3)
+  assert.equal((gallery.match(/id:\s*['"](?:direct-proof|soul-centered|office-human)['"]/g) ?? []).length, 3)
   assert.match(gallery, /preload="metadata"/)
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
-  assert.equal((gallery.match(/visual-proposition-v1-web\.mp4/g) ?? []).length, 3)
+  assert.equal((gallery.match(/visual-semantic-v1-web\.mp4/g) ?? []).length, 3)
   assert.equal((gallery.match(/evidenceHref:/g) ?? []).length, 3)
   assert.match(gallery, /Mở quyết định hình ảnh/)
-  assert.doesNotMatch(gallery, /media\/(?:devil-wears-prada|truman-show|inside-out)/)
+  assert.match(gallery, /scorecardHref:/)
+  assert.doesNotMatch(gallery, /media\/(?:about-time|click|up-in-the-air)-visual-proposition/)
   assert.doesNotMatch(gallery, /autoPlay/)
 })
 
@@ -40,11 +41,14 @@ test('review handoff exposes the traceable visual-proposition evidence packet', 
     'workflow-evidence-index.json',
     'render-qa-report.json',
     'claim-timeline.json',
-    'source-gate-report.json',
-    'comparison-report.md',
-    'about-time-visual-selection-review.md',
-    'click-visual-selection-review.md',
-    'up-in-the-air-visual-selection-review.md',
+    'source-reuse-report.json',
+    'scorecard-comparison.md',
+    'direct-proof-visual-selection-review.md',
+    'soul-centered-visual-selection-review.md',
+    'office-human-visual-selection-review.md',
+    'direct-proof-visual-proposition-graph.json',
+    'soul-centered-visual-proposition-graph.json',
+    'office-human-visual-proposition-graph.json',
   ]) {
     await access(new URL(filename, evidenceRoot))
   }

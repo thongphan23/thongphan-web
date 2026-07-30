@@ -1,0 +1,26 @@
+{
+  "schema": "tpr.visual_semantic_three_variant_design.v1",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "controlled_variables": [
+    "provided_voice",
+    "word_locked_one_line_subtitles",
+    "music_bed",
+    "claim_timeline",
+    "scorecard_policy"
+  ],
+  "variants": [
+    {
+      "variant_id": "direct-proof",
+      "lens_vi": "Được đổi phim theo từng beat; hình ảnh trực tiếp thắng continuity cấp phim."
+    },
+    {
+      "variant_id": "soul-centered",
+      "lens_vi": "Soul giữ tuyến cảm xúc; bằng chứng trực tiếp vẫn là hard gate."
+    },
+    {
+      "variant_id": "office-human",
+      "lens_vi": "Đời sống công sở/người thật làm trục; cúp từ Soul được giữ vì là bằng chứng thành công rõ nhất."
+    }
+  ],
+  "variant_count": 3
+}

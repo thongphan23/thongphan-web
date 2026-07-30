@@ -1,0 +1,22 @@
+{
+  "schema": "tpr.visual_selection_risk_report.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731-DIRECT-PROOF",
+  "status": "pass",
+  "blocked_claim_ids": [],
+  "hard_failure_counts": {
+    "DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD": 8,
+    "LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD": 8,
+    "LIVED_PROTOTYPE_MISMATCH": 8,
+    "RELATION_SEQUENCE_TOO_SHORT": 4,
+    "RELATION_STRATEGY_MISMATCH": 8,
+    "SILENT_COMPREHENSION_BELOW_THRESHOLD": 8,
+    "VOICE_CONTEXT_FIT_BELOW_THRESHOLD": 8
+  },
+  "residual_risks_vi": [
+    "Điểm chưa hiệu chỉnh không phải xác suất.",
+    "Đánh giá viewer và craft phải giữ provenance tới người/model quan sát.",
+    "Blind review sau render vẫn là bằng chứng cuối về khả năng hiểu."
+  ],
+  "visual_proposition_graph_sha256": "sha256:10fcd6506f51430d528c0281323600c5a735fd3ba333259c942038ff65bf3b9c",
+  "created_at": "2026-07-31T01:04:45+07:00"
+}

@@ -1,9 +1,12 @@
 {
-  "duration_ms": 59652,
-  "mode": "provided_audio",
-  "path": "assets/audio/source/provided_voice.mp3",
-  "run_id": "RUN-fight-club-purpose-20260729",
   "schema": "tpr.audio_intake.v1",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "authority": "provided_audio",
+  "language": "vi-VN",
+  "source_path": "/Users/rio/Downloads/YTSave_Shorts_Muc-dich-chinh-cua-doi-song-la-gi-Trich-_Media_pftLxIdT_kU_009_128k.mp3",
+  "working_copy": "remotion/public/audio/provided_voice.mp3",
   "sha256": "65e1e34d81beb8710d00b1e77ce8de61643c273272418f5af14055809196057b",
-  "tts_used": false
+  "duration_seconds": 59.652063,
+  "transcript_status": "approved_input_reused",
+  "replacement_tts_allowed": false
 }

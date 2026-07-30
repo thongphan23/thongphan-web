@@ -9,9 +9,9 @@ const cases = [
   { id: 'mobile', width: 390, height: 844 },
 ]
 const variants = [
-  { tab: '01 · About Time', source: 'about-time-visual-proposition-v1-web.mp4' },
-  { tab: '02 · Click', source: 'click-visual-proposition-v1-web.mp4' },
-  { tab: '03 · Up in the Air', source: 'up-in-the-air-visual-proposition-v1-web.mp4' },
+  { tab: '01 · Bằng chứng trực tiếp', source: 'direct-proof-visual-semantic-v1-web.mp4' },
+  { tab: '02 · Soul làm trục', source: 'soul-centered-visual-semantic-v1-web.mp4' },
+  { tab: '03 · Người đi làm', source: 'office-human-visual-semantic-v1-web.mp4' },
 ]
 
 await mkdir(outputDir, { recursive: true })

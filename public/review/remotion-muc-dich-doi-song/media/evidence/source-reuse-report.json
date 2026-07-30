@@ -1,0 +1,609 @@
+{
+  "schema": "tpr.source_reuse_report.v1",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "policy": "reuse observed local footage across runs; source-file reuse forbidden within each video",
+  "unique_source_files": 37,
+  "entries": [
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC18-your-spark-isnt-purpose.mp4",
+      "source_sha256": "sha256:413a741a655bf3b90fb18001dc6c8cb6f308c16290194abe5453be2137162eee",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 3500,
+          "source_out_ms": 7940
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 3500,
+          "source_out_ms": 7940
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-film-source-model-v1-20260729/downloads/devil-wears-prada/225936-is-there-some-reason-my-coffee-isnt-here-s1.mp4",
+      "source_sha256": "sha256:6f56b30364fb9cf593282e9cfaaf63c340524703b043e3bd5ba7146aad620b7e",
+      "film": "The Devil Wears Prada",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 500,
+          "source_out_ms": 4940
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 500,
+          "source_out_ms": 4940
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/walter-mitty/201175-beautiful-things-dont-ask-attention-s1.mp4",
+      "source_sha256": "sha256:6f6e1f151d835df102d876b9012d26dce23dccfc23f972586da045a35073ce6e",
+      "film": "The Secret Life of Walter Mitty",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-02-INNER-EASE",
+          "source_in_ms": 0,
+          "source_out_ms": 5980
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-02-INNER-EASE",
+          "source_in_ms": 0,
+          "source_out_ms": 5980
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-film-source-model-v1-20260729/downloads/devil-wears-prada/225945-where-that-piece-of-paper-i-in-hand-yesterday-morning.mp4",
+      "source_sha256": "sha256:0c9d809dbe68848a1f2ec9c9169b97bdf44fc91177888bdabe3520db5907f9cc",
+      "film": "The Devil Wears Prada",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 400,
+          "source_out_ms": 2610
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 400,
+          "source_out_ms": 2610
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC38-suit-youre-the-boss.mp4",
+      "source_sha256": "sha256:71b6bd036c75749726b625fb639e3588d45628c4b535c65da7cee30e0285b8d5",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 1000,
+          "source_out_ms": 3210
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 1000,
+          "source_out_ms": 3210
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC33-its-uh.mp4",
+      "source_sha256": "sha256:d533e122d752fc5a739974538031aa7b367e1e7fa1a05363e3352b13b3f95328",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-04-AWAKE",
+          "source_in_ms": 500,
+          "source_out_ms": 4560
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-02-INNER-EASE",
+          "source_in_ms": 500,
+          "source_out_ms": 6480
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-04-AWAKE",
+          "source_in_ms": 500,
+          "source_out_ms": 4560
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC09-truth-ive-always-worried.mp4",
+      "source_sha256": "sha256:b17b81b982fd445298e20ed47c8946ef7518270ccad0769c4957f37d1c4ed7f5",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 6500,
+          "source_out_ms": 12080
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 6500,
+          "source_out_ms": 12080
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC12-welcome-the-quartet-teach.mp4",
+      "source_sha256": "sha256:595c82f3690554f09ac44f9e33ce82bbb78e022c493ceb6ea10ce8db4ded297a",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 3400,
+          "source_out_ms": 9980
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 3400,
+          "source_out_ms": 9980
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC23-i-am-happy-accept-very-special-award-i-requested.mp4",
+      "source_sha256": "sha256:7565503c04390811c003fd96fb76e187e1667fd4cb30c8afc771e8b4bfabcaf1",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-06-REAL-SUCCESS",
+          "source_in_ms": 1000,
+          "source_out_ms": 4080
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-06-REAL-SUCCESS",
+          "source_in_ms": 1000,
+          "source_out_ms": 4080
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-06-REAL-SUCCESS",
+          "source_in_ms": 1000,
+          "source_out_ms": 4080
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196756-hey-hey-sorry-im-late.mp4",
+      "source_sha256": "sha256:268eb6abc4301999f1a732d7564211568e08d7783ce3570d6ac4f85d4897f00b",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 0,
+          "source_out_ms": 2200
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 0,
+          "source_out_ms": 2200
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196772-fuck-you-got-10-minutes.mp4",
+      "source_sha256": "sha256:e2b9f9d28ee4680fd5567f5de65dcf43844ef481572936f7d0998cd775a67979",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 5170,
+          "source_out_ms": 6970
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 5170,
+          "source_out_ms": 6970
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196770-piece-of-shit-ill-fucking-kill-you.mp4",
+      "source_sha256": "sha256:cf206088010931fa216df7bd2d6aafb8ebf1f55c908cceb47ce1a5f212a79b6b",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 4000,
+          "source_out_ms": 5600
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 4000,
+          "source_out_ms": 5600
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196720-neiman.mp4",
+      "source_sha256": "sha256:9c6e20b6e1a4a1438fb1f1122f5d7499f2845d2ebfd759086215e72533f3abdb",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 5500,
+          "source_out_ms": 6950
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 5500,
+          "source_out_ms": 6950
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196762-why-do-suppose-i-just-hurled-a-chair-at-head-neiman.mp4",
+      "source_sha256": "sha256:03a105d00ab04e05662ea16d3f5d2f8baa9ea5aeb66805c1cf4ce2e0132b3842",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 4000,
+          "source_out_ms": 5350
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 4000,
+          "source_out_ms": 5350
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196740-get-the-fuck-out-of-sight-i-demolish-you.mp4",
+      "source_sha256": "sha256:2420dd4152e33af4080a4268012a813b6bb7be824f10fab36ebc25a24478e789",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 0,
+          "source_out_ms": 1450
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 0,
+          "source_out_ms": 1450
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196741-if-deliberately-sabotage-band-s1.mp4",
+      "source_sha256": "sha256:71fe8f469e634eaf66d19ba9fc88f46f011d9b78b79851c6ca230e967c478a1f",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1000,
+          "source_out_ms": 2530
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1000,
+          "source_out_ms": 2530
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-visual-proposition-v1-20260730/remotion/public/footage/click/224859-took-bastard-a-year-promote-me.mp4",
+      "source_sha256": "sha256:3d01182da8231cecc3ffb888772f499a2278a41f1e2a2105514cf975cfe0d4a6",
+      "film": "Click",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 400,
+          "source_out_ms": 3630
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-visual-proposition-v1-20260730/remotion/public/footage/click/224884-once-again-michael-left-donna-in-bed-confused-unsatisfied.mp4",
+      "source_sha256": "sha256:aa55bfe0173d3364e0c53d954b794a971d4a1626de5854208baa5a2864b4e350",
+      "film": "Click",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 3600,
+          "source_out_ms": 6830
+        },
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 3600,
+          "source_out_ms": 6830
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC31-here-i-quit-i-think-jazz-pointless.mp4",
+      "source_sha256": "sha256:daa0531b0b1fd0dd0ba98aaa0a49f2f7005f25f9a34742d26ac84940ec7259ec",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "direct-proof",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 1000,
+          "source_out_ms": 4232
+        },
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 1000,
+          "source_out_ms": 5120
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC45-hey-dorothea.mp4",
+      "source_sha256": "sha256:277c2cf7ac1eb3b4780d82140c1ff5fbdfb7c40e5412a380c296f5e21a25ff3e",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 1000,
+          "source_out_ms": 5440
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+      "source_sha256": "sha256:0819b9c55da5542c75dc04045fadf85e261f2936e6272ad26abfc7efad24681a",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 9500,
+          "source_out_ms": 11710
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC47-so-what-do-think-youll-do.mp4",
+      "source_sha256": "sha256:e1c18609eae5a31a632f0cb60ff38de01a064729cbfde2b5523e487d680e64d3",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-04-AWAKE",
+          "source_in_ms": 9000,
+          "source_out_ms": 13060
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC15-lost-souls-are-obsessed-by-something-disconnects-them-from-life.mp4",
+      "source_sha256": "sha256:92bc6b2bbb0d4d1cd9630bcaa950df87777142874219c6187e322d64ff2d7ef0",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 2800,
+          "source_out_ms": 5000
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC44-okay-come-on-youre-doing-great.mp4",
+      "source_sha256": "sha256:da67565e1002384e63ce4c24ba4d48073a7040284259f7ab73c2fb20646a0228",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1800,
+          "source_out_ms": 3600
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC43-aah-s203.mp4",
+      "source_sha256": "sha256:9d909c4b22d48faec82589510f719a9326ccc4d4264124a8543d3caa83194f43",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 500,
+          "source_out_ms": 2100
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC37-man-would-be-hard-even-i-wasnt-wearing-a-hospital-gown.mp4",
+      "source_sha256": "sha256:f0ae9882938d01b134a33e3725114b5c58ffece9b62beb99e30b64136e72c964",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1000,
+          "source_out_ms": 2450
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC28-but-joe.mp4",
+      "source_sha256": "sha256:f92cc6a363a41a800dfb04064b78fed8bbee01493d38031fbbebb3c7f7ba19f9",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1000,
+          "source_out_ms": 2350
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC05-you-know-lost-souls-are-not-different.mp4",
+      "source_sha256": "sha256:c7548ada6c058e38fd80fb0c32bfadcb5b783a02e2dd24353b29e5f34b3d1f74",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 1000,
+          "source_out_ms": 2450
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC10-i-gonna-play-with-dorothea-williams-s1.mp4",
+      "source_sha256": "sha256:c41fb223c0e6263cf3c8d48a5b3629d5da86814f395fdda8009fe1b00116d07e",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-07-MISALIGNMENT",
+          "source_in_ms": 6500,
+          "source_out_ms": 8030
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC08-you-cant-eat-dreams-breakfast-joey.mp4",
+      "source_sha256": "sha256:0fade6d8465cd5c11c43c08073c4b2269bbf22f4939d424652109535a070bfe1",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 2500,
+          "source_out_ms": 5286
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/soul/SRC17-theres-no-point-s1.mp4",
+      "source_sha256": "sha256:43c7b3f6c3d337b754072de93c23bc2f1bb24f46eae8fee397074459ad33c37c",
+      "film": "Soul",
+      "used_by": [
+        {
+          "variant_id": "soul-centered",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 1800,
+          "source_out_ms": 4586
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-visual-proposition-v1-20260730/remotion/public/footage/about-time/1011208-i-and-he-told-his-secret-formula-happiness-i.mp4",
+      "source_sha256": "sha256:0bda3633699d7e582a409e6226af23688b1f600850cd4f017cc3f9f09cc79a19",
+      "film": "About Time",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-01-TWO-PURPOSES",
+          "source_in_ms": 1200,
+          "source_out_ms": 5640
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/walter-mitty/201200-never-fun-stage.mp4",
+      "source_sha256": "sha256:29340e5b98236d76d1a8ba610aaccbd7b572a1ee8182dbbafd52e52a4f213a05",
+      "film": "The Secret Life of Walter Mitty",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-03-OUTER-WORK",
+          "source_in_ms": 7000,
+          "source_out_ms": 9210
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196766-listen-the-key-to-just-relax.mp4",
+      "source_sha256": "sha256:793907c0101b17e575ad949b247aaf58705c0bdd4b4bf52d56a998afb89ac5c7",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 4000,
+          "source_out_ms": 9580
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-silent-first-v2-20260729/remotion/public/footage/whiplash/196774-lets-get-work-huh-how-about-caravan-bar-105.mp4",
+      "source_sha256": "sha256:52a8fde437a90a1e04c9ea288649f35819a0c8051fe3b0b1802c4c080806f4e9",
+      "film": "Whiplash",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-05-CHANGE-ALIGN",
+          "source_in_ms": 17000,
+          "source_out_ms": 23580
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-film-source-model-v1-20260729/downloads/devil-wears-prada/225994-i-mean-what-i-dont-wanna-live-the-way-live.mp4",
+      "source_sha256": "sha256:9d6f227ff6f48cddf28934e8004d17a3746f81e39e9fb3ec86d0799cd8fa3f07",
+      "film": "The Devil Wears Prada",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 2500,
+          "source_out_ms": 5730
+        }
+      ]
+    },
+    {
+      "source_path": "/Users/rio/Movies/thong-phan-remotion-runs/muc-dich-doi-song-visual-proposition-v1-20260730/remotion/public/footage/click/224820-what-do-mean-taking-him.mp4",
+      "source_sha256": "sha256:4b7a5bb76d7608f9c3a3635ca452a0f216c7a9e6d10ab6a13b841889c09db0d1",
+      "film": "Click",
+      "used_by": [
+        {
+          "variant_id": "office-human",
+          "claim_id": "CLM-08-NO-JOY-HARM",
+          "source_in_ms": 2700,
+          "source_out_ms": 5932
+        }
+      ]
+    }
+  ]
+}

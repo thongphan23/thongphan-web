@@ -1,129 +1,53 @@
 {
-  "schema_version": "tpr.render-qa-report.v1",
-  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
-  "generated_at": "2026-07-30T02:51:33.585869+00:00",
-  "gate_status": "pass",
-  "variants": [
+  "schema": "tpr.render_qa_report.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
+  "status": "pass_with_owner_taste_review_pending",
+  "checks": {
+    "typescript": "pass",
+    "remotion_compositions": 3,
+    "resolution": "1920x1080",
+    "fps": 30,
+    "duration_seconds": 59.712,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "integrated_loudness_lufs": -15.1,
+    "true_peak_dbfs": -5.4,
+    "black_segment_over_200ms": false,
+    "subtitle_lines_per_piece": 1,
+    "source_file_reuse_within_variant": false,
+    "contact_sheet_review": "pass",
+    "claim_keyframe_review": "pass"
+  },
+  "renders": [
     {
-      "schema_version": "tpr.render-qa-receipt.v1",
-      "variant_id": "about-time",
-      "source_title": "About Time",
-      "render_path": "renders/about-time-final.mp4",
-      "render_sha256": "sha256:7c1d158155a68f4c4e9ac76298b17873224d4f86c8719bc552db4f00b829696f",
-      "render_size_bytes": 72784635,
-      "render_duration_ms": 59712,
-      "shot_count": 16,
-      "unique_source_count": 16,
-      "origins": [
-        "clip.cafe"
-      ],
-      "subtitle_segment_count": 28,
-      "checks": {
-        "duration_matches_voice_within_100ms": true,
-        "has_h264_video": true,
-        "has_aac_audio": true,
-        "is_1920x1080_30fps": true,
-        "sixteen_unique_sources": true,
-        "no_source_extension": true,
-        "sealed_visual_graph": true,
-        "visual_risk_gate_passed": true,
-        "single_line_subtitles": true,
-        "subtitle_timing_locked": true
-      },
-      "gate_status": "pass",
-      "evidence": {
-        "edit_plan": "variants/about-time/content/edit_plan.json",
-        "editorial_plan_seal": "variants/about-time/content/editorial_plan_seal.json",
-        "visual_proposition_graph": "variants/about-time/content/visual_proposition_graph.json",
-        "visual_risk_report": "variants/about-time/audit/visual_selection_risk_report.json",
-        "contact_sheet": "audit/render-qa/about-time-contact-sheet.jpg"
-      }
+      "variant_id": "direct-proof",
+      "path": "renders/direct-proof-v1.mp4",
+      "sha256": "b73ca8cfa0ffc1509547cf36b46015a96ed02956b1dabe1beef8c9076bdc489c",
+      "bytes": 47885741,
+      "locked_graph_sha256": "sha256:10fcd6506f51430d528c0281323600c5a735fd3ba333259c942038ff65bf3b9c",
+      "contact_sheet": "review/contact-sheets/direct-proof-v1.jpg"
     },
     {
-      "schema_version": "tpr.render-qa-receipt.v1",
-      "variant_id": "click",
-      "source_title": "Click",
-      "render_path": "renders/click-final.mp4",
-      "render_sha256": "sha256:bf560470bcec049c3e49706131bdc815524a21f96d0c26f8ef7fa3b2f84234e5",
-      "render_size_bytes": 61173348,
-      "render_duration_ms": 59712,
-      "shot_count": 16,
-      "unique_source_count": 16,
-      "origins": [
-        "clip.cafe"
-      ],
-      "subtitle_segment_count": 28,
-      "checks": {
-        "duration_matches_voice_within_100ms": true,
-        "has_h264_video": true,
-        "has_aac_audio": true,
-        "is_1920x1080_30fps": true,
-        "sixteen_unique_sources": true,
-        "no_source_extension": true,
-        "sealed_visual_graph": true,
-        "visual_risk_gate_passed": true,
-        "single_line_subtitles": true,
-        "subtitle_timing_locked": true
-      },
-      "gate_status": "pass",
-      "evidence": {
-        "edit_plan": "variants/click/content/edit_plan.json",
-        "editorial_plan_seal": "variants/click/content/editorial_plan_seal.json",
-        "visual_proposition_graph": "variants/click/content/visual_proposition_graph.json",
-        "visual_risk_report": "variants/click/audit/visual_selection_risk_report.json",
-        "contact_sheet": "audit/render-qa/click-contact-sheet.jpg"
-      }
+      "variant_id": "soul-centered",
+      "path": "renders/soul-centered-v1.mp4",
+      "sha256": "727e1998ee0857e6d508c117cc2066693bd2232ba8c449571a631432fbf83711",
+      "bytes": 46660879,
+      "locked_graph_sha256": "sha256:d504c7b8b28a72c4e2f5b2249da6050b47ce6cba2b6f83b66e630d9a10d325c3",
+      "contact_sheet": "review/contact-sheets/soul-centered-v1.jpg"
     },
     {
-      "schema_version": "tpr.render-qa-receipt.v1",
-      "variant_id": "up-in-the-air",
-      "source_title": "Up in the Air",
-      "render_path": "renders/up-in-the-air-final.mp4",
-      "render_sha256": "sha256:548ba2258d708ac8b7b366a060710ee1ddf0d33926c18763de584bffe5a3c9ae",
-      "render_size_bytes": 52642580,
-      "render_duration_ms": 59712,
-      "shot_count": 16,
-      "unique_source_count": 16,
-      "origins": [
-        "clip.cafe",
-        "pexels-reuse"
-      ],
-      "subtitle_segment_count": 28,
-      "checks": {
-        "duration_matches_voice_within_100ms": true,
-        "has_h264_video": true,
-        "has_aac_audio": true,
-        "is_1920x1080_30fps": true,
-        "sixteen_unique_sources": true,
-        "no_source_extension": true,
-        "sealed_visual_graph": true,
-        "visual_risk_gate_passed": true,
-        "single_line_subtitles": true,
-        "subtitle_timing_locked": true
-      },
-      "gate_status": "pass",
-      "evidence": {
-        "edit_plan": "variants/up-in-the-air/content/edit_plan.json",
-        "editorial_plan_seal": "variants/up-in-the-air/content/editorial_plan_seal.json",
-        "visual_proposition_graph": "variants/up-in-the-air/content/visual_proposition_graph.json",
-        "visual_risk_report": "variants/up-in-the-air/audit/visual_selection_risk_report.json",
-        "contact_sheet": "audit/render-qa/up-in-the-air-contact-sheet.jpg"
-      }
+      "variant_id": "office-human",
+      "path": "renders/office-human-v1.mp4",
+      "sha256": "416a0d3e01a98628c3fe35f6e0f1e12ba2c65fa56549ec6ce6dfcc1ecb5c6f54",
+      "bytes": 48934495,
+      "locked_graph_sha256": "sha256:f066a220f0ae3e37bb0f181f11cc450d20c22af3824077c98c706f1522ab6f3a",
+      "contact_sheet": "review/contact-sheets/office-human-v1.jpg"
     }
   ],
-  "automated_media_checks": {
-    "blackdetect": "pass; no black interval >= 250ms at pix_th=0.10",
-    "mean_volume_db": -17.8,
-    "max_volume_db": -4.9
-  },
-  "human_visual_check": {
-    "status": "pass",
-    "method": "12-frame contact sheet per variant at five-second intervals",
-    "checks": [
-      "footage visible and correctly framed",
-      "single-line subtitle visible inside safe area",
-      "no placeholder or missing-media frame",
-      "three variants have distinct visual arcs"
-    ]
-  }
+  "owner_review_required": [
+    "Khả năng hiểu ngay từng ý khi xem cùng voice",
+    "Độ tự nhiên của nhịp nhanh ở đoạn lệch pha",
+    "Mức liền mạch cảm xúc giữa các phim trong bản direct-proof",
+    "Bản nào gần taste của anh nhất"
+  ]
 }
