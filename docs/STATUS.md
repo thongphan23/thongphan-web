@@ -1,6 +1,28 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-30
+Last updated: 2026-07-31
+
+## Remotion Visual Semantic Frame v1 owner-review round — production release — 2026-07-31
+
+- Rebuilt the authoritative Vietnamese voice as three new variants: direct
+  visual proof, Soul-centered continuity and office-human familiarity. The
+  59.712-second videos contain 57 selected shots and do not repeat a source
+  file inside the same video.
+- Replaced opaque aggregate ranking with an evidence-backed four-tier
+  scorecard: Meaning 55, Context 20, Flow 15 and Craft 10. Direct keyword
+  association, literal entailment and immediate silent comprehension are hard
+  gates. Taste, vibe and cinematic quality cannot rescue an unclear scene.
+- Expanded the visual grammar from contrast alone to 24 relation archetypes,
+  including direct referent, action, cause/effect, progression, hierarchy,
+  quantity, dependency, problem/solution, means/goal/outcome, tradeoff,
+  threshold, risk, absence/loss and inner/outer orientation.
+- Published the claim frames, prototypes, proof atoms, all candidate
+  scorecards, selected/rejected decisions, graph hashes, locked edit plans,
+  render QA and owner-review packet on the private-by-discovery review route.
+- Production deployment `e3d341de` serves source `cd8870d`. Focused 4/4, full
+  248/248, TypeScript, ESLint, 84-route build and production desktop/mobile
+  browser QA pass. `/tpr` remains protected with HTTP 401. Full evidence:
+  `docs/releases/REMOTION_VISUAL_SEMANTIC_FRAME_V1_PRODUCTION_RELEASE-2026-07-31.md`.
 
 ## Remotion Visual Proposition v1 owner-review round — production release — 2026-07-30
 
