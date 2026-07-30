@@ -1,6 +1,15 @@
 # thongphan.com — Unified Cinema status
 
 Last updated: 2026-07-30
+
+## Remotion Visual Proposition v1 owner-review round — production release — 2026-07-30
+
+- Rebuilt the authoritative Vietnamese voice as three traceable variants using `About Time`, `Click` and `Up in the Air`. Each video uses 16 unique sources, 28 one-line word-locked subtitles and a slow-fast-slow pacing curve.
+- Every claim has three independently scored visual propositions. Semantic match and immediate silent comprehension are hard gates; Taste only adjusts ranking after those gates pass. Mood-only scenes cannot carry meaning, and causal claims require a visible sequence.
+- The review route publishes the claim timeline, source gates, observations, all candidates, sealed decision graphs, locked edit plans, QA receipts and owner-review notes instead of exposing only the final videos.
+- Final production deployment `e8f8731d` serves integration source `de6d903`, which preserves the latest TPR Control Room baseline. Review-page 4/4, protected TPR 7/7, full repository 248/248, TypeScript, ESLint, 84-route build and local/production desktop-mobile browser QA pass.
+- The private-by-discovery route is live at `/review/remotion-muc-dich-doi-song`. Full release evidence: `docs/releases/REMOTION_VISUAL_PROPOSITION_V1_PRODUCTION_RELEASE-2026-07-30.md`.
+
 ## Remotion Film Source Model v2 owner-review round — production release — 2026-07-30
 
 - Rebuilt the same authoritative 59.712-second Vietnamese voice as three new
