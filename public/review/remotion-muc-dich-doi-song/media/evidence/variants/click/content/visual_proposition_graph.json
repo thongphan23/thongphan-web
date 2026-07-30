@@ -1,0 +1,2528 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+  "status": "sealed",
+  "selection_policy": {
+    "minimum_candidates_per_claim": 3,
+    "semantic_threshold": 0.8,
+    "immediate_comprehension_threshold": 0.8,
+    "decode_margin_ms": 150,
+    "maximum_inference_hops_for_new_concept": 1,
+    "meaning_before_aesthetics": true,
+    "taste_can_override_hard_gates": false,
+    "maximum_taste_delta": 0.05
+  },
+  "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+  "claims": [
+    {
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "communication_job": "introduce",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Hai cảnh ngẫu nhiên không có đối lập rõ."
+      ],
+      "intended_feeling_vi": "Nhận ra ngay hai lớp đang cùng tồn tại trong một đời người.",
+      "intended_memory_vi": "Việc mình làm và trạng thái mình sống là hai thứ khác nhau.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy một trạng thái làm việc bên ngoài và một trạng thái sống bên trong khác nhau.",
+          "kind": "contrast",
+          "mandatory": true,
+          "proof_id": "PR-01-CONTRAST",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "bên trong và bên ngoài",
+        "polarity": "neutral",
+        "predicate_vi": "có hai lớp mục đích",
+        "relation_type": "contrast",
+        "subject_vi": "đời sống"
+      },
+      "voice_segment_ref": "T001",
+      "voice_text_vi": "Đời bạn có một mục đích bên trong và một mục đích bên ngoài."
+    },
+    {
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "communication_job": "explain",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ là phong cảnh đẹp không có hành vi con người."
+      ],
+      "intended_feeling_vi": "Nhịp xem hạ xuống và người xem cảm nhận được sự có mặt.",
+      "intended_memory_vi": "Mục đích bên trong trước hết là trạng thái sống, không phải chức danh.",
+      "proof_requirements": [
+        {
+          "description_vi": "Nhân vật phải hiện diện chậm rãi, thư giãn hoặc kết nối không bị công việc lấn át.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-02-EASE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "an nhiên tự tại",
+        "polarity": "positive",
+        "predicate_vi": "gắn với",
+        "relation_type": "state",
+        "subject_vi": "mục đích bên trong"
+      },
+      "voice_segment_ref": "T002",
+      "voice_text_vi": "Mục đích bên trong liên quan đến trạng thái an nhiên tự tại."
+    },
+    {
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "communication_job": "explain",
+      "concept_novelty": "familiar",
+      "forbidden_interpretations_vi": [
+        "Chỉ có người mặc đồ công sở nhưng không làm gì."
+      ],
+      "intended_feeling_vi": "Thấy công việc rất cụ thể nhưng không bị tuyệt đối hóa.",
+      "intended_memory_vi": "Công việc là một vai trò bên ngoài, không phải toàn bộ con người.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy hành động công việc cụ thể như họp, trình bày, giao dịch hoặc giải quyết việc.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-03-WORK",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "việc đang làm",
+        "polarity": "neutral",
+        "predicate_vi": "thể hiện qua",
+        "relation_type": "identity",
+        "subject_vi": "mục đích bên ngoài"
+      },
+      "voice_segment_ref": "T003",
+      "voice_text_vi": "Mục đích bên ngoài dính tới những việc bạn làm và chỉ là mục đích phụ."
+    },
+    {
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "communication_job": "intensify",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Đứng im vì buồn ngủ hoặc kiệt sức."
+      ],
+      "intended_feeling_vi": "Một khoảng dừng sáng rõ và không cần giải mã phức tạp.",
+      "intended_memory_vi": "Tỉnh thức là nhìn thấy và sống trọn khoảnh khắc đang có.",
+      "proof_requirements": [
+        {
+          "description_vi": "Nhân vật phải thực sự dừng, chú ý hoặc kết nối với người và không gian trước mặt.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-04-AWAKE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "tỉnh thức",
+        "polarity": "positive",
+        "predicate_vi": "là",
+        "relation_type": "identity",
+        "subject_vi": "mục đích bên trong"
+      },
+      "voice_segment_ref": "T004",
+      "voice_text_vi": "Mục đích bên trong của bạn là tỉnh thức."
+    },
+    {
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "communication_job": "prove",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Montage bận rộn nhưng không có tiến triển hay kết quả."
+      ],
+      "intended_feeling_vi": "Thấy đời sống mở rộng nhưng không bị xé vụn bởi các vai trò.",
+      "intended_memory_vi": "Vai trò có thể đổi, còn trạng thái bên trong quyết định cách mình đi qua chúng.",
+      "proof_requirements": [
+        {
+          "description_vi": "Cần một chuỗi nhiều vai trò hoặc nhiệm vụ đi tới một kết quả có thể nhìn thấy.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-05-CAUSAL",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "nhiều vai trò và việc bên ngoài",
+        "polarity": "positive",
+        "predicate_vi": "làm nền cho",
+        "relation_type": "cause",
+        "subject_vi": "sự hòa điệu bên trong"
+      },
+      "voice_segment_ref": "T005-T006",
+      "voice_text_vi": "Mục đích bên ngoài thay đổi; hòa điệu bên trong giúp hoàn thành điều bên ngoài."
+    },
+    {
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "communication_job": "conclude",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ mỉm cười chung chung không có dấu hiệu kết quả."
+      ],
+      "intended_feeling_vi": "Một nhịp xác nhận rõ ràng, không cần biết cốt truyện vẫn hiểu là có kết quả.",
+      "intended_memory_vi": "Thành công thật có kết quả bên ngoài nhưng không đánh mất con người bên trong.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy sự công nhận, hoàn tất, phản hồi tích cực hoặc kết quả cụ thể.",
+          "kind": "concrete_referent",
+          "mandatory": true,
+          "proof_id": "PR-06-SUCCESS",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "thành công thực sự",
+        "polarity": "positive",
+        "predicate_vi": "tạo nền",
+        "relation_type": "value",
+        "subject_vi": "sự hòa điệu"
+      },
+      "voice_segment_ref": "T007",
+      "voice_text_vi": "Đó là cơ sở của những thành công thực sự."
+    },
+    {
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "communication_job": "intensify",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ cắt nhanh những gương mặt nói chuyện không thấy áp lực tăng."
+      ],
+      "intended_feeling_vi": "Áp lực tăng nhanh, dồn dập và khó thở theo đúng nhịp voice.",
+      "intended_memory_vi": "Càng lệch khỏi mình, cái giá đạt mục tiêu càng nhiều căng thẳng và xung đột.",
+      "proof_requirements": [
+        {
+          "description_vi": "Cần chuỗi tăng cấp gồm áp lực, đối đầu, quyết định gây hại hoặc mất kiểm soát.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-07-PRESSURE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "nỗ lực quá mức và xung đột",
+        "polarity": "negative",
+        "predicate_vi": "dẫn đến",
+        "relation_type": "cause",
+        "subject_vi": "sự không hòa điệu"
+      },
+      "voice_segment_ref": "T008",
+      "voice_text_vi": "Không hòa điệu thì phải nỗ lực quá mức, đấu tranh và dùng thủ đoạn."
+    },
+    {
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "communication_job": "conclude",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ là nét mặt buồn không rõ xảy ra sau điều gì."
+      ],
+      "intended_feeling_vi": "Nhịp chậm lại để người xem kịp cảm thấy hậu quả và khoảng trống.",
+      "intended_memory_vi": "Một kết quả khiến mình và người thân đau khổ không phải thành công thực sự.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy một người kiệt quệ hoặc trống rỗng và hậu quả chạm tới người thân hoặc đồng nghiệp.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-08-AFTERMATH",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "trống rỗng và khổ đau lan sang người khác",
+        "polarity": "negative",
+        "predicate_vi": "để lại",
+        "relation_type": "effect",
+        "subject_vi": "kết quả không hòa điệu"
+      },
+      "voice_segment_ref": "T009-T010",
+      "voice_text_vi": "Hoàn tất mà không có niềm vui thì kết quả chỉ mang lại khổ đau cho mình và người chung quanh."
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-DIRECT",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "contrast",
+          "observation_id": "OBS-CLICK-CL-S01",
+          "observed_fact_vi": "Một người đàn ông nghe điện thoại công việc giữa lúc gia đình đang tụ họp.",
+          "proof_id": "PR-01-CONTRAST"
+        },
+        {
+          "binding_type": "contrast",
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observed_fact_vi": "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S01",
+          "end_ms": 5430,
+          "observation_id": "OBS-CLICK-CL-S01",
+          "observation_sha256": "sha256:9b161fa990b70f765f15ca7695a2705527cd6a2f8c73b08341b11e159d4643f2",
+          "observed_facts_vi": [
+            "Một người đàn ông nghe điện thoại công việc giữa lúc gia đình đang tụ họp."
+          ],
+          "shot_id": "CL-S01",
+          "start_ms": 0
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S02",
+          "end_ms": 8880,
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observation_sha256": "sha256:5422fd6516e72cfaa12bc5690b4b0b5973e73893e465679d02fcead526f97588",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng."
+          ],
+          "shot_id": "CL-S02",
+          "start_ms": 5430
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "contrast_pair",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-01-CONTRAST",
+          "binding_quality": 0.85,
+          "satisfied": true,
+          "binding_count": 2
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.85,
+        "directness": 0.88,
+        "semantic_match": 0.859,
+        "immediate_comprehension": 0.8971,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9065
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-ANALOGY",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observed_fact_vi": "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S03",
+          "end_ms": 3000,
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observation_sha256": "sha256:5e43ea0be0ff78fd8334f3df7518c0a32c5de3a1530f3339545c60efc3517f47",
+          "observed_facts_vi": [
+            "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông."
+          ],
+          "shot_id": "ALT-CLICK-1-ANALOGY",
+          "start_ms": 0
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-01-CONTRAST",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "CONTRAST_PROOF_REQUIRES_PAIR"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-MOOD",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observed_fact_vi": "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S04",
+          "end_ms": 3000,
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observation_sha256": "sha256:87c537710621638c724e1651a46e43258e49bee2694288267a48626093c18512",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến."
+          ],
+          "shot_id": "ALT-CLICK-1-MOOD",
+          "start_ms": 0
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-01-CONTRAST",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY",
+        "CONTRAST_PROOF_REQUIRES_PAIR"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-02-INNER-EASE-DIRECT",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observed_fact_vi": "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S03",
+          "end_ms": 14860,
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observation_sha256": "sha256:5e43ea0be0ff78fd8334f3df7518c0a32c5de3a1530f3339545c60efc3517f47",
+          "observed_facts_vi": [
+            "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông."
+          ],
+          "shot_id": "CL-S03",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-02-EASE",
+          "binding_quality": 1.0,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 1.0,
+        "directness": 0.95,
+        "semantic_match": 0.985,
+        "immediate_comprehension": 0.9366,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9857
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-02-INNER-EASE-ANALOGY",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observed_fact_vi": "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S04",
+          "end_ms": 11880,
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observation_sha256": "sha256:87c537710621638c724e1651a46e43258e49bee2694288267a48626093c18512",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến."
+          ],
+          "shot_id": "ALT-CLICK-2-ANALOGY",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-02-EASE",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-02-INNER-EASE-MOOD",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S05",
+          "observed_fact_vi": "Người cha ngồi đối diện con tại bàn ăn và cam kết một hoạt động chung.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S05",
+          "end_ms": 11880,
+          "observation_id": "OBS-CLICK-CL-S05",
+          "observation_sha256": "sha256:174e039fdb9d54ac25c780660eba41436cc8fbfb4903d73fb3ef67944a19c026",
+          "observed_facts_vi": [
+            "Người cha ngồi đối diện con tại bàn ăn và cam kết một hoạt động chung."
+          ],
+          "shot_id": "ALT-CLICK-2-MOOD",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-02-EASE",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-03-OUTER-WORK-DIRECT",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observed_fact_vi": "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S04",
+          "end_ms": 19280,
+          "observation_id": "OBS-CLICK-CL-S04",
+          "observation_sha256": "sha256:87c537710621638c724e1651a46e43258e49bee2694288267a48626093c18512",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến."
+          ],
+          "shot_id": "CL-S04",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-03-WORK",
+          "binding_quality": 1.0,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 1.0,
+        "directness": 0.95,
+        "semantic_match": 0.985,
+        "immediate_comprehension": 0.9301,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9841
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-03-OUTER-WORK-ANALOGY",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S06",
+          "observed_fact_vi": "Người cha tới khu bơi và tương tác với một đứa trẻ trong vai trò gia đình.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S06",
+          "end_ms": 17860,
+          "observation_id": "OBS-CLICK-CL-S06",
+          "observation_sha256": "sha256:af5182eeecb66b47a43c0e5f1bb30bf924a085d84af242a4d695715f22236738",
+          "observed_facts_vi": [
+            "Người cha tới khu bơi và tương tác với một đứa trẻ trong vai trò gia đình."
+          ],
+          "shot_id": "ALT-CLICK-3-ANALOGY",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-03-WORK",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-03-OUTER-WORK-MOOD",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S07",
+          "observed_fact_vi": "Gia đình cùng tham gia một khoảnh khắc vui chơi tập thể.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S07",
+          "end_ms": 17860,
+          "observation_id": "OBS-CLICK-CL-S07",
+          "observation_sha256": "sha256:9e009e8dc14e16cae25bb80b786e4e1407c1414136191209788828a3a4a1c380",
+          "observed_facts_vi": [
+            "Gia đình cùng tham gia một khoảnh khắc vui chơi tập thể."
+          ],
+          "shot_id": "ALT-CLICK-3-MOOD",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-03-WORK",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-04-AWAKE-DIRECT",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-CLICK-CL-S05",
+          "observed_fact_vi": "Người cha ngồi đối diện con tại bàn ăn và cam kết một hoạt động chung.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S05",
+          "end_ms": 23340,
+          "observation_id": "OBS-CLICK-CL-S05",
+          "observation_sha256": "sha256:174e039fdb9d54ac25c780660eba41436cc8fbfb4903d73fb3ef67944a19c026",
+          "observed_facts_vi": [
+            "Người cha ngồi đối diện con tại bàn ăn và cam kết một hoạt động chung."
+          ],
+          "shot_id": "CL-S05",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-04-AWAKE",
+          "binding_quality": 1.0,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 1.0,
+        "directness": 0.95,
+        "semantic_match": 0.985,
+        "immediate_comprehension": 0.9278,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9835
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-04-AWAKE-ANALOGY",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S08",
+          "observed_fact_vi": "Khách hàng quyền lực phản hồi tán thành rõ ràng trong một buổi gặp công việc.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S08",
+          "end_ms": 22280,
+          "observation_id": "OBS-CLICK-CL-S08",
+          "observation_sha256": "sha256:5fcd450cde5a1a81439ab2423b21d4d12b65aaa9ae49ac1a09334d84ea0b5dcc",
+          "observed_facts_vi": [
+            "Khách hàng quyền lực phản hồi tán thành rõ ràng trong một buổi gặp công việc."
+          ],
+          "shot_id": "ALT-CLICK-4-ANALOGY",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-04-AWAKE",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-04-AWAKE-MOOD",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S09",
+          "observed_fact_vi": "Người đàn ông nhận sự chú ý tích cực trong một dịp trang trọng sau thay đổi nghề nghiệp.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S09",
+          "end_ms": 22280,
+          "observation_id": "OBS-CLICK-CL-S09",
+          "observation_sha256": "sha256:cf9627e3cdb63545767034718f9bd68479c78c2539bdd74345a81f891ea9e4a1",
+          "observed_facts_vi": [
+            "Người đàn ông nhận sự chú ý tích cực trong một dịp trang trọng sau thay đổi nghề nghiệp."
+          ],
+          "shot_id": "ALT-CLICK-4-MOOD",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-04-AWAKE",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-DIRECT",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S06",
+          "observed_fact_vi": "Người cha tới khu bơi và tương tác với một đứa trẻ trong vai trò gia đình.",
+          "proof_id": "PR-05-CAUSAL"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S07",
+          "observed_fact_vi": "Gia đình cùng tham gia một khoảnh khắc vui chơi tập thể.",
+          "proof_id": "PR-05-CAUSAL"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S08",
+          "observed_fact_vi": "Khách hàng quyền lực phản hồi tán thành rõ ràng trong một buổi gặp công việc.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S06",
+          "end_ms": 28200,
+          "observation_id": "OBS-CLICK-CL-S06",
+          "observation_sha256": "sha256:af5182eeecb66b47a43c0e5f1bb30bf924a085d84af242a4d695715f22236738",
+          "observed_facts_vi": [
+            "Người cha tới khu bơi và tương tác với một đứa trẻ trong vai trò gia đình."
+          ],
+          "shot_id": "CL-S06",
+          "start_ms": 23340
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S07",
+          "end_ms": 32000,
+          "observation_id": "OBS-CLICK-CL-S07",
+          "observation_sha256": "sha256:9e009e8dc14e16cae25bb80b786e4e1407c1414136191209788828a3a4a1c380",
+          "observed_facts_vi": [
+            "Gia đình cùng tham gia một khoảnh khắc vui chơi tập thể."
+          ],
+          "shot_id": "CL-S07",
+          "start_ms": 28200
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S08",
+          "end_ms": 35500,
+          "observation_id": "OBS-CLICK-CL-S08",
+          "observation_sha256": "sha256:5fcd450cde5a1a81439ab2423b21d4d12b65aaa9ae49ac1a09334d84ea0b5dcc",
+          "observed_facts_vi": [
+            "Khách hàng quyền lực phản hồi tán thành rõ ràng trong một buổi gặp công việc."
+          ],
+          "shot_id": "CL-S08",
+          "start_ms": 32000
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-05-CAUSAL",
+          "binding_quality": 0.85,
+          "satisfied": true,
+          "binding_count": 3
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.85,
+        "directness": 0.88,
+        "semantic_match": 0.859,
+        "immediate_comprehension": 0.9004,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9074
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-ANALOGY",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observed_fact_vi": "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S12",
+          "end_ms": 26340,
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observation_sha256": "sha256:034c4a69518ac1c17310c5a9277c41899f0b53e13d871446f7d337e8f5d4c0f5",
+          "observed_facts_vi": [
+            "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình."
+          ],
+          "shot_id": "ALT-CLICK-5-ANALOGY",
+          "start_ms": 23340
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-05-CAUSAL",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-MOOD",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observed_fact_vi": "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S13",
+          "end_ms": 26340,
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observation_sha256": "sha256:4b6623397b91b61c0e2a869ade7e32e9f7c67b83d7228606e12e552141d84d63",
+          "observed_facts_vi": [
+            "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi."
+          ],
+          "shot_id": "ALT-CLICK-5-MOOD",
+          "start_ms": 23340
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-05-CAUSAL",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-DIRECT",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-CLICK-CL-S09",
+          "observed_fact_vi": "Người đàn ông nhận sự chú ý tích cực trong một dịp trang trọng sau thay đổi nghề nghiệp.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S09",
+          "end_ms": 38580,
+          "observation_id": "OBS-CLICK-CL-S09",
+          "observation_sha256": "sha256:cf9627e3cdb63545767034718f9bd68479c78c2539bdd74345a81f891ea9e4a1",
+          "observed_facts_vi": [
+            "Người đàn ông nhận sự chú ý tích cực trong một dịp trang trọng sau thay đổi nghề nghiệp."
+          ],
+          "shot_id": "CL-S09",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "direct_referent",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-06-SUCCESS",
+          "binding_quality": 1.0,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 1.0,
+        "directness": 1.0,
+        "semantic_match": 1.0,
+        "immediate_comprehension": 0.9517,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9977
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-ANALOGY",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observed_fact_vi": "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S12",
+          "end_ms": 38500,
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observation_sha256": "sha256:034c4a69518ac1c17310c5a9277c41899f0b53e13d871446f7d337e8f5d4c0f5",
+          "observed_facts_vi": [
+            "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình."
+          ],
+          "shot_id": "ALT-CLICK-6-ANALOGY",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-06-SUCCESS",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-MOOD",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observed_fact_vi": "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S13",
+          "end_ms": 38500,
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observation_sha256": "sha256:4b6623397b91b61c0e2a869ade7e32e9f7c67b83d7228606e12e552141d84d63",
+          "observed_facts_vi": [
+            "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi."
+          ],
+          "shot_id": "ALT-CLICK-6-MOOD",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-06-SUCCESS",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-07-MISALIGNMENT-DIRECT",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S10",
+          "observed_fact_vi": "Người đàn ông ở lại văn phòng và ưu tiên yêu cầu của sếp thay cho thời gian riêng.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S11",
+          "observed_fact_vi": "Người đàn ông vẫn ngồi làm việc khi những người khác đã rời đi.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observed_fact_vi": "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observed_fact_vi": "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S14",
+          "observed_fact_vi": "Người đàn ông dùng chiếc điều khiển và đứng nhìn đời sống bị tua nhanh trước mặt.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S10",
+          "end_ms": 41800,
+          "observation_id": "OBS-CLICK-CL-S10",
+          "observation_sha256": "sha256:463fbbba2be65a5cdcc4c5b74bc2cb391045e7466d3345d601c64bcaffbc7444",
+          "observed_facts_vi": [
+            "Người đàn ông ở lại văn phòng và ưu tiên yêu cầu của sếp thay cho thời gian riêng."
+          ],
+          "shot_id": "CL-S10",
+          "start_ms": 38580
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S11",
+          "end_ms": 44400,
+          "observation_id": "OBS-CLICK-CL-S11",
+          "observation_sha256": "sha256:bb2eebd3298847b6f256c7764f912f38680b3c92cd479c2496a9c4e258276d47",
+          "observed_facts_vi": [
+            "Người đàn ông vẫn ngồi làm việc khi những người khác đã rời đi."
+          ],
+          "shot_id": "CL-S11",
+          "start_ms": 41800
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S12",
+          "end_ms": 46600,
+          "observation_id": "OBS-CLICK-CL-S12",
+          "observation_sha256": "sha256:034c4a69518ac1c17310c5a9277c41899f0b53e13d871446f7d337e8f5d4c0f5",
+          "observed_facts_vi": [
+            "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình."
+          ],
+          "shot_id": "CL-S12",
+          "start_ms": 44400
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S13",
+          "end_ms": 48200,
+          "observation_id": "OBS-CLICK-CL-S13",
+          "observation_sha256": "sha256:4b6623397b91b61c0e2a869ade7e32e9f7c67b83d7228606e12e552141d84d63",
+          "observed_facts_vi": [
+            "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi."
+          ],
+          "shot_id": "CL-S13",
+          "start_ms": 46600
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S14",
+          "end_ms": 49960,
+          "observation_id": "OBS-CLICK-CL-S14",
+          "observation_sha256": "sha256:f8bf30a491cfaea2247ff914432021e35e0ee3d802aeb21a63f6859fbda72884",
+          "observed_facts_vi": [
+            "Người đàn ông dùng chiếc điều khiển và đứng nhìn đời sống bị tua nhanh trước mặt."
+          ],
+          "shot_id": "CL-S14",
+          "start_ms": 48200
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-07-PRESSURE",
+          "binding_quality": 0.85,
+          "satisfied": true,
+          "binding_count": 5
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.85,
+        "directness": 0.88,
+        "semantic_match": 0.859,
+        "immediate_comprehension": 0.8998,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9072
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-07-MISALIGNMENT-ANALOGY",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observed_fact_vi": "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S02",
+          "end_ms": 41580,
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observation_sha256": "sha256:5422fd6516e72cfaa12bc5690b4b0b5973e73893e465679d02fcead526f97588",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng."
+          ],
+          "shot_id": "ALT-CLICK-7-ANALOGY",
+          "start_ms": 38580
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-07-PRESSURE",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-07-MISALIGNMENT-MOOD",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observed_fact_vi": "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S03",
+          "end_ms": 41580,
+          "observation_id": "OBS-CLICK-CL-S03",
+          "observation_sha256": "sha256:5e43ea0be0ff78fd8334f3df7518c0a32c5de3a1530f3339545c60efc3517f47",
+          "observed_facts_vi": [
+            "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông."
+          ],
+          "shot_id": "ALT-CLICK-7-MOOD",
+          "start_ms": 38580
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-07-PRESSURE",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-DIRECT",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S15",
+          "observed_fact_vi": "Người đàn ông nằm gục trên một chiếc giường trưng bày, mất phương hướng và kiệt sức.",
+          "proof_id": "PR-08-AFTERMATH"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-CLICK-CL-S16",
+          "observed_fact_vi": "Người đàn ông đứng trước mộ của cha với nét mặt đau đớn.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S15",
+          "end_ms": 54080,
+          "observation_id": "OBS-CLICK-CL-S15",
+          "observation_sha256": "sha256:cc148f80d3cec9d372832281421725dc1cbb0be9b50f9ba1a22e467eaeaa73ca",
+          "observed_facts_vi": [
+            "Người đàn ông nằm gục trên một chiếc giường trưng bày, mất phương hướng và kiệt sức."
+          ],
+          "shot_id": "CL-S15",
+          "start_ms": 49960
+        },
+        {
+          "asset_id": "ASSET-CLICK-CL-S16",
+          "end_ms": 59652,
+          "observation_id": "OBS-CLICK-CL-S16",
+          "observation_sha256": "sha256:18ef506cbe3693ff4982578590240ab2864bf517f382c3e20d5524e254f48181",
+          "observed_facts_vi": [
+            "Người đàn ông đứng trước mộ của cha với nét mặt đau đớn."
+          ],
+          "shot_id": "CL-S16",
+          "start_ms": 54080
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-08-AFTERMATH",
+          "binding_quality": 0.85,
+          "satisfied": true,
+          "binding_count": 2
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.85,
+        "directness": 0.88,
+        "semantic_match": 0.859,
+        "immediate_comprehension": 0.8981,
+        "viewer_familiarity": 0.86,
+        "continuity_fit": 0.9,
+        "affective_fit": 0.86,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0368,
+        "ranking_score": 0.9068
+      },
+      "hard_gate_failures": [],
+      "gate_status": "pass"
+    },
+    {
+      "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-ANALOGY",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-CLICK-CL-S01",
+          "observed_fact_vi": "Một người đàn ông nghe điện thoại công việc giữa lúc gia đình đang tụ họp.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S01",
+          "end_ms": 52960,
+          "observation_id": "OBS-CLICK-CL-S01",
+          "observation_sha256": "sha256:9b161fa990b70f765f15ca7695a2705527cd6a2f8c73b08341b11e159d4643f2",
+          "observed_facts_vi": [
+            "Một người đàn ông nghe điện thoại công việc giữa lúc gia đình đang tụ họp."
+          ],
+          "shot_id": "ALT-CLICK-8-ANALOGY",
+          "start_ms": 49960
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-08-AFTERMATH",
+          "binding_quality": 0.7,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.7,
+        "directness": 0.7,
+        "semantic_match": 0.7,
+        "immediate_comprehension": 0.7202,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.7,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0228,
+        "ranking_score": 0.7349
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    },
+    {
+      "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-MOOD",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observed_fact_vi": "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-CLICK-CL-S02",
+          "end_ms": 52960,
+          "observation_id": "OBS-CLICK-CL-S02",
+          "observation_sha256": "sha256:5422fd6516e72cfaa12bc5690b4b0b5973e73893e465679d02fcead526f97588",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng."
+          ],
+          "shot_id": "ALT-CLICK-8-MOOD",
+          "start_ms": 49960
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only",
+      "proof_evaluation": [
+        {
+          "proof_id": "PR-08-AFTERMATH",
+          "binding_quality": 0.1,
+          "satisfied": true,
+          "binding_count": 1
+        }
+      ],
+      "computed_scores": {
+        "proof_coverage": 0.1,
+        "directness": 0.1,
+        "semantic_match": 0.1,
+        "immediate_comprehension": 0.3427,
+        "viewer_familiarity": 0.72,
+        "continuity_fit": 0.68,
+        "affective_fit": 0.82,
+        "aesthetic_quality": 0.84,
+        "taste_effect": 0.0252,
+        "ranking_score": 0.3189
+      },
+      "hard_gate_failures": [
+        "SEMANTIC_MATCH_BELOW_THRESHOLD",
+        "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+        "MEANING_CARRIER_EMOTION_ONLY",
+        "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+      ],
+      "gate_status": "fail"
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "VSD-7d416e2eb766f73d7e61",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-01-TWO-PURPOSES-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 0.85,
+            "directness": 0.88,
+            "semantic_match": 0.859,
+            "immediate_comprehension": 0.8971,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9065
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "CONTRAST_PROOF_REQUIRES_PAIR"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-01-TWO-PURPOSES-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY",
+            "CONTRAST_PROOF_REQUIRES_PAIR"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.85,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-e8dc59d6ea8dda71e742",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-02-INNER-EASE",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-02-INNER-EASE-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-02-INNER-EASE-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 1.0,
+            "directness": 0.95,
+            "semantic_match": 0.985,
+            "immediate_comprehension": 0.9366,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9857
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-02-INNER-EASE-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-02-INNER-EASE-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.9366,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-cdf185de12b0c8e8d82d",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-03-OUTER-WORK-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-03-OUTER-WORK-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 1.0,
+            "directness": 0.95,
+            "semantic_match": 0.985,
+            "immediate_comprehension": 0.9301,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9841
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-03-OUTER-WORK-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-03-OUTER-WORK-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.9301,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-0e49e7208e9793eca47a",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-04-AWAKE",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-04-AWAKE-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-04-AWAKE-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 1.0,
+            "directness": 0.95,
+            "semantic_match": 0.985,
+            "immediate_comprehension": 0.9278,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9835
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-04-AWAKE-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-04-AWAKE-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.9278,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-5777bf40b9fe1525d00f",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 0.85,
+            "directness": 0.88,
+            "semantic_match": 0.859,
+            "immediate_comprehension": 0.9004,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9074
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-05-CHANGE-ALIGN-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.85,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-0d1b5ba4db7c61e4f8ff",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-06-REAL-SUCCESS-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 1.0,
+            "directness": 1.0,
+            "semantic_match": 1.0,
+            "immediate_comprehension": 0.9517,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9977
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-06-REAL-SUCCESS-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.9517,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-bdc2f9f99c7d1207b836",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-07-MISALIGNMENT-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-07-MISALIGNMENT-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 0.85,
+            "directness": 0.88,
+            "semantic_match": 0.859,
+            "immediate_comprehension": 0.8998,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9072
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-07-MISALIGNMENT-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-07-MISALIGNMENT-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.85,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    },
+    {
+      "decision_id": "VSD-04628bd1eb07816362fc",
+      "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "selection_status": "selected",
+      "selected_candidate_id": "CLICK-CLM-08-NO-JOY-HARM-DIRECT",
+      "ranking": [
+        {
+          "rank": 1,
+          "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-DIRECT",
+          "gate_status": "pass",
+          "hard_gate_failures": [],
+          "computed_scores": {
+            "proof_coverage": 0.85,
+            "directness": 0.88,
+            "semantic_match": 0.859,
+            "immediate_comprehension": 0.8981,
+            "viewer_familiarity": 0.86,
+            "continuity_fit": 0.9,
+            "affective_fit": 0.86,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0368,
+            "ranking_score": 0.9068
+          }
+        },
+        {
+          "rank": 2,
+          "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-ANALOGY",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.7,
+            "directness": 0.7,
+            "semantic_match": 0.7,
+            "immediate_comprehension": 0.7202,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.7,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0228,
+            "ranking_score": 0.7349
+          }
+        },
+        {
+          "rank": 3,
+          "candidate_id": "CLICK-CLM-08-NO-JOY-HARM-MOOD",
+          "gate_status": "fail",
+          "hard_gate_failures": [
+            "SEMANTIC_MATCH_BELOW_THRESHOLD",
+            "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD",
+            "MEANING_CARRIER_EMOTION_ONLY",
+            "CAUSAL_PROOF_REQUIRES_SEQUENCE"
+          ],
+          "computed_scores": {
+            "proof_coverage": 0.1,
+            "directness": 0.1,
+            "semantic_match": 0.1,
+            "immediate_comprehension": 0.3427,
+            "viewer_familiarity": 0.72,
+            "continuity_fit": 0.68,
+            "affective_fit": 0.82,
+            "aesthetic_quality": 0.84,
+            "taste_effect": 0.0252,
+            "ranking_score": 0.3189
+          }
+        }
+      ],
+      "confidence": {
+        "raw_score": 0.85,
+        "basis": "weakest_critical_visual_dimension",
+        "calibration_status": "uncalibrated",
+        "probability": null
+      },
+      "taste_snapshot_ref": "TASTE-OWNER-20260730-DIRECT-FIRST",
+      "rationale_vi": "Chọn phương án vượt toàn bộ cổng đúng nghĩa và dễ hiểu; gu chỉ điều chỉnh thứ tự giữa các phương án đã đạt.",
+      "created_at": "2026-07-30T09:38:58+07:00"
+    }
+  ],
+  "risk_summary": {
+    "status": "pass",
+    "blocked_claim_ids": [],
+    "hard_failure_counts": {
+      "CAUSAL_PROOF_REQUIRES_SEQUENCE": 6,
+      "CONTRAST_PROOF_REQUIRES_PAIR": 2,
+      "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD": 16,
+      "MEANING_CARRIER_EMOTION_ONLY": 8,
+      "SEMANTIC_MATCH_BELOW_THRESHOLD": 16
+    },
+    "residual_risks_vi": [
+      "Điểm chưa hiệu chỉnh không phải xác suất đúng.",
+      "Quan sát hình ảnh sai sẽ làm sai bằng chứng đầu vào; cần blind review sau dựng.",
+      "Đạt gate từng cảnh chưa tự động bảo đảm mạch liên cảnh rõ ràng."
+    ]
+  },
+  "created_at": "2026-07-30T09:38:58+07:00",
+  "graph_sha256": "sha256:025a95caeed6e85cfd67b76c9a942733c2fa01be625b88fab8710d5ae12f9e0b"
+}

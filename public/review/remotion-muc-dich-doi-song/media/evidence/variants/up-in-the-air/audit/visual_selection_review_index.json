@@ -1,0 +1,17 @@
+{
+  "schema": "tpr.visual_selection_review_index.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-UP-IN-THE-AIR",
+  "claim_count": 8,
+  "candidate_count": 24,
+  "decision_ids": [
+    "VSD-2274fa2d6c4637d7b3d7",
+    "VSD-86faa886a502985a0e2b",
+    "VSD-95b20b759aacc71b1db3",
+    "VSD-1e9a8fbd1c1f6c2d6b82",
+    "VSD-dd6a8f09c82de459c868",
+    "VSD-48e0841f6222333b7029",
+    "VSD-721c9e0c0917b0b3abc9",
+    "VSD-630c8833827310ee69f2"
+  ],
+  "graph_sha256": "sha256:aa903bd6e5fae3a2fad6b3998bfa0ece16dd11918acee0e6cf719010bd9d7063"
+}

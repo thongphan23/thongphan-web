@@ -1,0 +1,72 @@
+{
+  "claims": [
+    {
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "end_ms": 8880,
+      "intended_feeling_vi": "Nhận ra ngay hai lớp đang cùng tồn tại trong một đời người.",
+      "intended_memory_vi": "Việc mình làm và trạng thái mình sống là hai thứ khác nhau.",
+      "start_ms": 0,
+      "voice_segment_ref": "T001"
+    },
+    {
+      "claim_id": "CLM-02-INNER-EASE",
+      "end_ms": 14860,
+      "intended_feeling_vi": "Nhịp xem hạ xuống và người xem cảm nhận được sự có mặt.",
+      "intended_memory_vi": "Mục đích bên trong trước hết là trạng thái sống, không phải chức danh.",
+      "start_ms": 8880,
+      "voice_segment_ref": "T002"
+    },
+    {
+      "claim_id": "CLM-03-OUTER-WORK",
+      "end_ms": 19280,
+      "intended_feeling_vi": "Thấy công việc rất cụ thể nhưng không bị tuyệt đối hóa.",
+      "intended_memory_vi": "Công việc là một vai trò bên ngoài, không phải toàn bộ con người.",
+      "start_ms": 14860,
+      "voice_segment_ref": "T003"
+    },
+    {
+      "claim_id": "CLM-04-AWAKE",
+      "end_ms": 23340,
+      "intended_feeling_vi": "Một khoảng dừng sáng rõ và không cần giải mã phức tạp.",
+      "intended_memory_vi": "Tỉnh thức là nhìn thấy và sống trọn khoảnh khắc đang có.",
+      "start_ms": 19280,
+      "voice_segment_ref": "T004"
+    },
+    {
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "end_ms": 35500,
+      "intended_feeling_vi": "Thấy đời sống mở rộng nhưng không bị xé vụn bởi các vai trò.",
+      "intended_memory_vi": "Vai trò có thể đổi, còn trạng thái bên trong quyết định cách mình đi qua chúng.",
+      "start_ms": 23340,
+      "voice_segment_ref": "T005-T006"
+    },
+    {
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "end_ms": 38580,
+      "intended_feeling_vi": "Một nhịp xác nhận rõ ràng, không cần biết cốt truyện vẫn hiểu là có kết quả.",
+      "intended_memory_vi": "Thành công thật có kết quả bên ngoài nhưng không đánh mất con người bên trong.",
+      "start_ms": 35500,
+      "voice_segment_ref": "T007"
+    },
+    {
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "end_ms": 49960,
+      "intended_feeling_vi": "Áp lực tăng nhanh, dồn dập và khó thở theo đúng nhịp voice.",
+      "intended_memory_vi": "Càng lệch khỏi mình, cái giá đạt mục tiêu càng nhiều căng thẳng và xung đột.",
+      "start_ms": 38580,
+      "voice_segment_ref": "T008"
+    },
+    {
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "end_ms": 59652,
+      "intended_feeling_vi": "Nhịp chậm lại để người xem kịp cảm thấy hậu quả và khoảng trống.",
+      "intended_memory_vi": "Một kết quả khiến mình và người thân đau khổ không phải thành công thực sự.",
+      "start_ms": 49960,
+      "voice_segment_ref": "T009-T010"
+    }
+  ],
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
+  "schema": "tpr.claim_timeline.v1",
+  "source_message_architecture": "shared/content/message_architecture.json",
+  "source_transcript": "shared/content/transcript_approved.json"
+}

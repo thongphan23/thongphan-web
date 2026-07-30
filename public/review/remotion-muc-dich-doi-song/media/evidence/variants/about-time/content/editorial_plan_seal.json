@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-07-30T09:41:04+07:00",
+  "edit_plan_sha256": "sha256:60bb3ef6f0cc3973fa97275fc3f9058121ab49d3ad26bab8e5f3f8dd28cca52b",
+  "schema": "tpr.editorial_plan_seal.v1",
+  "shot_count": 16,
+  "source_extension_violations": 0,
+  "status": "sealed",
+  "timeline_coverage_ms": 59652,
+  "unique_source_count": 16,
+  "variant_id": "about-time",
+  "visual_graph_sha256": "sha256:222d69b360a261555827e29cafbe2416175255fe13dde124da2ad29f540903a0"
+}

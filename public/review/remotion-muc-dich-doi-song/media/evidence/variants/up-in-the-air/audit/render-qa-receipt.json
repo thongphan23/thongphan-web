@@ -1,0 +1,36 @@
+{
+  "schema_version": "tpr.render-qa-receipt.v1",
+  "variant_id": "up-in-the-air",
+  "source_title": "Up in the Air",
+  "render_path": "renders/up-in-the-air-final.mp4",
+  "render_sha256": "sha256:548ba2258d708ac8b7b366a060710ee1ddf0d33926c18763de584bffe5a3c9ae",
+  "render_size_bytes": 52642580,
+  "render_duration_ms": 59712,
+  "shot_count": 16,
+  "unique_source_count": 16,
+  "origins": [
+    "clip.cafe",
+    "pexels-reuse"
+  ],
+  "subtitle_segment_count": 28,
+  "checks": {
+    "duration_matches_voice_within_100ms": true,
+    "has_h264_video": true,
+    "has_aac_audio": true,
+    "is_1920x1080_30fps": true,
+    "sixteen_unique_sources": true,
+    "no_source_extension": true,
+    "sealed_visual_graph": true,
+    "visual_risk_gate_passed": true,
+    "single_line_subtitles": true,
+    "subtitle_timing_locked": true
+  },
+  "gate_status": "pass",
+  "evidence": {
+    "edit_plan": "variants/up-in-the-air/content/edit_plan.json",
+    "editorial_plan_seal": "variants/up-in-the-air/content/editorial_plan_seal.json",
+    "visual_proposition_graph": "variants/up-in-the-air/content/visual_proposition_graph.json",
+    "visual_risk_report": "variants/up-in-the-air/audit/visual_selection_risk_report.json",
+    "contact_sheet": "audit/render-qa/up-in-the-air-contact-sheet.jpg"
+  }
+}

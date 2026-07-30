@@ -1,0 +1,20 @@
+{
+  "schema": "tpr.visual_selection_risk_report.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-ABOUT-TIME",
+  "status": "pass",
+  "blocked_claim_ids": [],
+  "hard_failure_counts": {
+    "CAUSAL_PROOF_REQUIRES_SEQUENCE": 6,
+    "CONTRAST_PROOF_REQUIRES_PAIR": 2,
+    "IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD": 16,
+    "MEANING_CARRIER_EMOTION_ONLY": 8,
+    "SEMANTIC_MATCH_BELOW_THRESHOLD": 16
+  },
+  "residual_risks_vi": [
+    "Điểm chưa hiệu chỉnh không phải xác suất đúng.",
+    "Quan sát hình ảnh sai sẽ làm sai bằng chứng đầu vào; cần blind review sau dựng.",
+    "Đạt gate từng cảnh chưa tự động bảo đảm mạch liên cảnh rõ ràng."
+  ],
+  "visual_proposition_graph_sha256": "sha256:222d69b360a261555827e29cafbe2416175255fe13dde124da2ad29f540903a0",
+  "created_at": "2026-07-30T09:39:04+07:00"
+}

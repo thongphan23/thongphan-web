@@ -1,0 +1,35 @@
+{
+  "schema_version": "tpr.render-qa-receipt.v1",
+  "variant_id": "about-time",
+  "source_title": "About Time",
+  "render_path": "renders/about-time-final.mp4",
+  "render_sha256": "sha256:7c1d158155a68f4c4e9ac76298b17873224d4f86c8719bc552db4f00b829696f",
+  "render_size_bytes": 72784635,
+  "render_duration_ms": 59712,
+  "shot_count": 16,
+  "unique_source_count": 16,
+  "origins": [
+    "clip.cafe"
+  ],
+  "subtitle_segment_count": 28,
+  "checks": {
+    "duration_matches_voice_within_100ms": true,
+    "has_h264_video": true,
+    "has_aac_audio": true,
+    "is_1920x1080_30fps": true,
+    "sixteen_unique_sources": true,
+    "no_source_extension": true,
+    "sealed_visual_graph": true,
+    "visual_risk_gate_passed": true,
+    "single_line_subtitles": true,
+    "subtitle_timing_locked": true
+  },
+  "gate_status": "pass",
+  "evidence": {
+    "edit_plan": "variants/about-time/content/edit_plan.json",
+    "editorial_plan_seal": "variants/about-time/content/editorial_plan_seal.json",
+    "visual_proposition_graph": "variants/about-time/content/visual_proposition_graph.json",
+    "visual_risk_report": "variants/about-time/audit/visual_selection_risk_report.json",
+    "contact_sheet": "audit/render-qa/about-time-contact-sheet.jpg"
+  }
+}

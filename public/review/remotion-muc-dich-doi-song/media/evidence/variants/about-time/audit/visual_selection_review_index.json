@@ -1,0 +1,17 @@
+{
+  "schema": "tpr.visual_selection_review_index.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-ABOUT-TIME",
+  "claim_count": 8,
+  "candidate_count": 24,
+  "decision_ids": [
+    "VSD-aca769924a850dd15b20",
+    "VSD-7308ce7df857d4bca2fd",
+    "VSD-f4b40437597e67f96ead",
+    "VSD-dfb54173a07352307c61",
+    "VSD-535653609dfa98f651d2",
+    "VSD-840bb56ac160568d7c59",
+    "VSD-85de8276170cb2929470",
+    "VSD-202c7b26eda9d94791e4"
+  ],
+  "graph_sha256": "sha256:3882124818a58d6399912c80afb67d6be4c5af2118d7f0e2aca18f15d4f36740"
+}

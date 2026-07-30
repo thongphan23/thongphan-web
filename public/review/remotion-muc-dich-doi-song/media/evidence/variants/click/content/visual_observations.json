@@ -1,0 +1,247 @@
+{
+  "observations": [
+    {
+      "asset_id": "ASSET-CLICK-CL-S01",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S01",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:9b161fa990b70f765f15ca7695a2705527cd6a2f8c73b08341b11e159d4643f2",
+      "observed_facts_vi": [
+        "Một người đàn ông nghe điện thoại công việc giữa lúc gia đình đang tụ họp."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224846-hey-michael-michael-are-talking-to.mp4",
+      "source_sha256": "sha256:5566d5eb7bfefdccef7d582c2b82d0f03d6d292cb7eb9a14273e66dbe17c260e"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S02",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S02",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:5422fd6516e72cfaa12bc5690b4b0b5973e73893e465679d02fcead526f97588",
+      "observed_facts_vi": [
+        "Người đàn ông mặc vest đứng trước sếp và khách hàng trong văn phòng."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224822-michael-sorry-im-late-sir.mp4",
+      "source_sha256": "sha256:6da25eeafda93361022e7704fcc623d5acdabef9fa5095a5fd71c170345cc70f"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S03",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S03",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:5e43ea0be0ff78fd8334f3df7518c0a32c5de3a1530f3339545c60efc3517f47",
+      "observed_facts_vi": [
+        "Người đàn ông cúi sát người cha lớn tuổi trên giường và dành toàn bộ chú ý cho ông."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224848-you-gotta-tell-how-do-the-quarter-trick-its-driving-crazy.mp4",
+      "source_sha256": "sha256:6549847b3f827941018f4e6aaadf5b3742b72d9cdff279ac46ebd817890d31b3"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S04",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S04",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:87c537710621638c724e1651a46e43258e49bee2694288267a48626093c18512",
+      "observed_facts_vi": [
+        "Người đàn ông mặc vest dự một buổi gặp trang trọng liên quan đến thăng tiến."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224859-took-bastard-a-year-promote-me.mp4",
+      "source_sha256": "sha256:3d01182da8231cecc3ffb888772f499a2278a41f1e2a2105514cf975cfe0d4a6"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S05",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S05",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:174e039fdb9d54ac25c780660eba41436cc8fbfb4903d73fb3ef67944a19c026",
+      "observed_facts_vi": [
+        "Người cha ngồi đối diện con tại bàn ăn và cam kết một hoạt động chung."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224874-im-gonna-finish-the-tree-house-were-gonna-sleep-in-next-weekend.mp4",
+      "source_sha256": "sha256:83ba7af16e3ac5096f85168e48eec0c69cec5ca0df7800ef22cc9f419002dd7e"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S06",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S06",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:af5182eeecb66b47a43c0e5f1bb30bf924a085d84af242a4d695715f22236738",
+      "observed_facts_vi": [
+        "Người cha tới khu bơi và tương tác với một đứa trẻ trong vai trò gia đình."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224847-as-far-you-know-what.mp4",
+      "source_sha256": "sha256:4541fe6ca426ffa08eba323595f984e3618942dd8b0d7d721ffea55a63d9a000"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S07",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S07",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:9e009e8dc14e16cae25bb80b786e4e1407c1414136191209788828a3a4a1c380",
+      "observed_facts_vi": [
+        "Gia đình cùng tham gia một khoảnh khắc vui chơi tập thể."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224850-why-does-have-a-bathing-suit-on.mp4",
+      "source_sha256": "sha256:dee29f32c80e341f933cc13cc3c2f0e7cbd461a72df97ccd821f234a3e06bb88"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S08",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S08",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:5fcd450cde5a1a81439ab2423b21d4d12b65aaa9ae49ac1a09334d84ea0b5dcc",
+      "observed_facts_vi": [
+        "Khách hàng quyền lực phản hồi tán thành rõ ràng trong một buổi gặp công việc."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224888-god-i-love-it-simply-awesome.mp4",
+      "source_sha256": "sha256:4a3b1bf9409bb535e54101d2437311f39d237bdf129ca75763be2960b1940f6d"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S09",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S09",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:cf9627e3cdb63545767034718f9bd68479c78c2539bdd74345a81f891ea9e4a1",
+      "observed_facts_vi": [
+        "Người đàn ông nhận sự chú ý tích cực trong một dịp trang trọng sau thay đổi nghề nghiệp."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224860-when-did-get-handsome.mp4",
+      "source_sha256": "sha256:1c4777d18639bcbec5c9e9c31cd2c9588609a77edba0d3a1500f2e269ddba9cf"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S10",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S10",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:463fbbba2be65a5cdcc4c5b74bc2cb391045e7466d3345d601c64bcaffbc7444",
+      "observed_facts_vi": [
+        "Người đàn ông ở lại văn phòng và ưu tiên yêu cầu của sếp thay cho thời gian riêng."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224872-oh-therell-be-other-junes-in-life-sir.mp4",
+      "source_sha256": "sha256:c130983e73f7f815152a7be206fbe3ef1484ef83d8e49bf6298821ae076ea633"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S11",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S11",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:bb2eebd3298847b6f256c7764f912f38680b3c92cd479c2496a9c4e258276d47",
+      "observed_facts_vi": [
+        "Người đàn ông vẫn ngồi làm việc khi những người khác đã rời đi."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224880-everyones-done-you-buddy-lets-go.mp4",
+      "source_sha256": "sha256:bb3ac8512e2e913668bb8f16e8545270a8247ed554f2d7a01a4a3a89e7f05da8"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S12",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S12",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:034c4a69518ac1c17310c5a9277c41899f0b53e13d871446f7d337e8f5d4c0f5",
+      "observed_facts_vi": [
+        "Người vợ đối diện chồng với vẻ thất vọng trong một cuộc đối đầu gia đình."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224873-im-on-autopilot-more-like-auto-zombie.mp4",
+      "source_sha256": "sha256:e39f75eb6aa85c0eecec50ecef3c6d3535dd484e59ba466d02325cbe8db97f86"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S13",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S13",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:4b6623397b91b61c0e2a869ade7e32e9f7c67b83d7228606e12e552141d84d63",
+      "observed_facts_vi": [
+        "Người phụ nữ nằm lại trên giường với vẻ hụt hẫng khi chồng rời đi."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224884-once-again-michael-left-donna-in-bed-confused-unsatisfied.mp4",
+      "source_sha256": "sha256:aa55bfe0173d3364e0c53d954b794a971d4a1626de5854208baa5a2864b4e350"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S14",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S14",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:f8bf30a491cfaea2247ff914432021e35e0ee3d802aeb21a63f6859fbda72884",
+      "observed_facts_vi": [
+        "Người đàn ông dùng chiếc điều khiển và đứng nhìn đời sống bị tua nhanh trước mặt."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224863-check-out-you-hit-the-fast-forward-button.mp4",
+      "source_sha256": "sha256:3c1fcd89dbf5d0615fdab890b2242b0d0ddbd5d57c3cf09265f6fc6c4666ebe2"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S15",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S15",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:cc148f80d3cec9d372832281421725dc1cbb0be9b50f9ba1a22e467eaeaa73ca",
+      "observed_facts_vi": [
+        "Người đàn ông nằm gục trên một chiếc giường trưng bày, mất phương hướng và kiệt sức."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224889-where-am-i-youre-in-bed-bath-beyond-sir-s1.mp4",
+      "source_sha256": "sha256:70503938317431e5cdee8da8c61578607cded95a8ecb3266abe5650ce826801e"
+    },
+    {
+      "asset_id": "ASSET-CLICK-CL-S16",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-CLICK-CL-S16",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:18ef506cbe3693ff4982578590240ab2864bf517f382c3e20d5524e254f48181",
+      "observed_facts_vi": [
+        "Người đàn ông đứng trước mộ của cha với nét mặt đau đớn."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "224820-what-do-mean-taking-him.mp4",
+      "source_sha256": "sha256:4b7a5bb76d7608f9c3a3635ca452a0f216c7a9e6d10ab6a13b841889c09db0d1"
+    }
+  ],
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+  "schema": "tpr.visual_observation_set.v1",
+  "source_title": "Click"
+}

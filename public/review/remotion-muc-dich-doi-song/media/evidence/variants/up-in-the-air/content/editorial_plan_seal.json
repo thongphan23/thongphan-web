@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-07-30T09:41:04+07:00",
+  "edit_plan_sha256": "sha256:fa8283b5dded495beb41d815a2c7e3bb43a59a519d9e4044feed8402290301f2",
+  "schema": "tpr.editorial_plan_seal.v1",
+  "shot_count": 16,
+  "source_extension_violations": 0,
+  "status": "sealed",
+  "timeline_coverage_ms": 59652,
+  "unique_source_count": 16,
+  "variant_id": "up-in-the-air",
+  "visual_graph_sha256": "sha256:41c64a4213e18edcf1e33acf287b20f0449d365b4e52a6aeab90e920df21fdd9"
+}

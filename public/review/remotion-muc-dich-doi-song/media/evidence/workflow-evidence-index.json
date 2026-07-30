@@ -1,0 +1,78 @@
+{
+  "schema_version": "tpr.workflow-evidence-index.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
+  "status": "owner_review_ready",
+  "steps": [
+    {
+      "step": "01_voice_and_transcript",
+      "inputs": [
+        "shared/assets/audio/provided_voice.mp3"
+      ],
+      "outputs": [
+        "shared/content/transcript_approved.json",
+        "shared/content/subtitles.json",
+        "shared/content/message_architecture.json"
+      ]
+    },
+    {
+      "step": "02_claim_and_source_gates",
+      "inputs": [
+        "shared/content/transcript_approved.json"
+      ],
+      "outputs": [
+        "content/claim_timeline.json",
+        "content/source_gate_report.json",
+        "content/run_manifest.json"
+      ]
+    },
+    {
+      "step": "03_observation_and_visual_propositions",
+      "inputs": [
+        "content/claim_timeline.json",
+        "source-pool/"
+      ],
+      "outputs": [
+        "variants/*/content/visual_observations.json",
+        "variants/*/content/visual_candidate_input.json",
+        "variants/*/content/visual_proposition_graph.json",
+        "variants/*/audit/visual_selection_risk_report.json"
+      ]
+    },
+    {
+      "step": "04_locked_edit_plan",
+      "inputs": [
+        "variants/*/content/visual_proposition_graph.json"
+      ],
+      "outputs": [
+        "variants/*/content/edit_plan.json",
+        "variants/*/content/editorial_plan_seal.json",
+        "content/render_input_manifest.json"
+      ]
+    },
+    {
+      "step": "05_render_and_qa",
+      "inputs": [
+        "content/render_input_manifest.json",
+        "remotion/src/videoData.generated.ts"
+      ],
+      "outputs": [
+        "renders/*-final.mp4",
+        "content/render_qa_report.json",
+        "variants/*/audit/render-qa-receipt.json",
+        "audit/render-qa/*-contact-sheet.jpg"
+      ]
+    },
+    {
+      "step": "06_owner_review_handoff",
+      "inputs": [
+        "content/render_qa_report.json"
+      ],
+      "outputs": [
+        "OWNER-REVIEW.md",
+        "content/comparison_report.md",
+        "review/*.mp4",
+        "review/*-poster.jpg"
+      ]
+    }
+  ]
+}

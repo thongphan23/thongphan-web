@@ -1,0 +1,129 @@
+{
+  "schema_version": "tpr.render-qa-report.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
+  "generated_at": "2026-07-30T02:51:33.585869+00:00",
+  "gate_status": "pass",
+  "variants": [
+    {
+      "schema_version": "tpr.render-qa-receipt.v1",
+      "variant_id": "about-time",
+      "source_title": "About Time",
+      "render_path": "renders/about-time-final.mp4",
+      "render_sha256": "sha256:7c1d158155a68f4c4e9ac76298b17873224d4f86c8719bc552db4f00b829696f",
+      "render_size_bytes": 72784635,
+      "render_duration_ms": 59712,
+      "shot_count": 16,
+      "unique_source_count": 16,
+      "origins": [
+        "clip.cafe"
+      ],
+      "subtitle_segment_count": 28,
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "sixteen_unique_sources": true,
+        "no_source_extension": true,
+        "sealed_visual_graph": true,
+        "visual_risk_gate_passed": true,
+        "single_line_subtitles": true,
+        "subtitle_timing_locked": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/about-time/content/edit_plan.json",
+        "editorial_plan_seal": "variants/about-time/content/editorial_plan_seal.json",
+        "visual_proposition_graph": "variants/about-time/content/visual_proposition_graph.json",
+        "visual_risk_report": "variants/about-time/audit/visual_selection_risk_report.json",
+        "contact_sheet": "audit/render-qa/about-time-contact-sheet.jpg"
+      }
+    },
+    {
+      "schema_version": "tpr.render-qa-receipt.v1",
+      "variant_id": "click",
+      "source_title": "Click",
+      "render_path": "renders/click-final.mp4",
+      "render_sha256": "sha256:bf560470bcec049c3e49706131bdc815524a21f96d0c26f8ef7fa3b2f84234e5",
+      "render_size_bytes": 61173348,
+      "render_duration_ms": 59712,
+      "shot_count": 16,
+      "unique_source_count": 16,
+      "origins": [
+        "clip.cafe"
+      ],
+      "subtitle_segment_count": 28,
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "sixteen_unique_sources": true,
+        "no_source_extension": true,
+        "sealed_visual_graph": true,
+        "visual_risk_gate_passed": true,
+        "single_line_subtitles": true,
+        "subtitle_timing_locked": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/click/content/edit_plan.json",
+        "editorial_plan_seal": "variants/click/content/editorial_plan_seal.json",
+        "visual_proposition_graph": "variants/click/content/visual_proposition_graph.json",
+        "visual_risk_report": "variants/click/audit/visual_selection_risk_report.json",
+        "contact_sheet": "audit/render-qa/click-contact-sheet.jpg"
+      }
+    },
+    {
+      "schema_version": "tpr.render-qa-receipt.v1",
+      "variant_id": "up-in-the-air",
+      "source_title": "Up in the Air",
+      "render_path": "renders/up-in-the-air-final.mp4",
+      "render_sha256": "sha256:548ba2258d708ac8b7b366a060710ee1ddf0d33926c18763de584bffe5a3c9ae",
+      "render_size_bytes": 52642580,
+      "render_duration_ms": 59712,
+      "shot_count": 16,
+      "unique_source_count": 16,
+      "origins": [
+        "clip.cafe",
+        "pexels-reuse"
+      ],
+      "subtitle_segment_count": 28,
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "sixteen_unique_sources": true,
+        "no_source_extension": true,
+        "sealed_visual_graph": true,
+        "visual_risk_gate_passed": true,
+        "single_line_subtitles": true,
+        "subtitle_timing_locked": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/up-in-the-air/content/edit_plan.json",
+        "editorial_plan_seal": "variants/up-in-the-air/content/editorial_plan_seal.json",
+        "visual_proposition_graph": "variants/up-in-the-air/content/visual_proposition_graph.json",
+        "visual_risk_report": "variants/up-in-the-air/audit/visual_selection_risk_report.json",
+        "contact_sheet": "audit/render-qa/up-in-the-air-contact-sheet.jpg"
+      }
+    }
+  ],
+  "automated_media_checks": {
+    "blackdetect": "pass; no black interval >= 250ms at pix_th=0.10",
+    "mean_volume_db": -17.8,
+    "max_volume_db": -4.9
+  },
+  "human_visual_check": {
+    "status": "pass",
+    "method": "12-frame contact sheet per variant at five-second intervals",
+    "checks": [
+      "footage visible and correctly framed",
+      "single-line subtitle visible inside safe area",
+      "no placeholder or missing-media frame",
+      "three variants have distinct visual arcs"
+    ]
+  }
+}

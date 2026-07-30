@@ -5,42 +5,42 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const variants = [
   {
-    id: 'devil-wears-prada',
-    tab: '01 · Prada',
-    title: 'Thành tích công sở và cái giá quan hệ',
-    src: '/review/remotion-muc-dich-doi-song/media/devil-wears-prada-film-source-v1-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/devil-wears-prada-film-source-v1-poster.jpg',
-    focus: 'Đối chiếu công việc danh giá, sự biến đổi bản thân và đời sống riêng bị công việc lấn át.',
-    strength: 'Gần nhất với người trẻ văn phòng; thảm đỏ và nhịp công việc thăng tiến là bằng chứng thành công trực tiếp.',
-    risk: 'Các ý trừu tượng đầu video phụ thuộc vào việc đọc được đối trọng văn phòng và quan hệ.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/devil-wears-prada-source-casting-board.json',
+    id: 'about-time',
+    tab: '01 · About Time',
+    title: 'Ý nghĩa qua sự hiện diện và người thân',
+    src: '/review/remotion-muc-dich-doi-song/media/about-time-visual-proposition-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/about-time-visual-proposition-v1-poster.jpg',
+    focus: 'Đi từ bình yên, công việc và kết quả tới áp lực rồi hậu quả lan sang gia đình.',
+    strength: 'Khoảnh khắc đời thường và quan hệ giúp ý về mục đích bên trong có vật chứng gần gũi.',
+    risk: 'Một số đoạn công việc có sắc thái nhẹ, cần kiểm tra lực tương phản ở cao trào.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/about-time-visual-selection-review.md',
   },
   {
-    id: 'truman-show',
-    tab: '02 · Truman',
-    title: 'Tỉnh thức khỏi một mục đích bị áp đặt',
-    src: '/review/remotion-muc-dich-doi-song/media/truman-show-film-source-v1-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/truman-show-film-source-v1-poster.jpg',
-    focus: 'Theo một tuyến nhân vật từ đời sống hoàn hảo được dàn dựng tới phản kháng và hậu quả lên người chung quanh.',
-    strength: 'Cửa, màn hình, phòng điều khiển và phản ứng cơ thể tạo được mạch thức tỉnh - cưỡng ép - dư âm.',
-    risk: 'Ẩn dụ kiểm soát rất mạnh nhưng bối cảnh ít gần đời sống công sở Việt Nam hơn bản Prada.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/truman-show-source-casting-board.json',
+    id: 'click',
+    tab: '02 · Click',
+    title: 'Thành tựu bên ngoài và phần đời bị bỏ lỡ',
+    src: '/review/remotion-muc-dich-doi-song/media/click-visual-proposition-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/click-visual-proposition-v1-poster.jpg',
+    focus: 'Dùng công việc, thành tựu, xung đột và mất mát để cho thấy cái giá của sự lệch pha.',
+    strength: 'Có đối trọng trực tiếp giữa thành công nhìn thấy được và hậu quả quan hệ.',
+    risk: 'Tương phản mạnh nhưng một số cảnh có chất hài; cần chấm xem có làm giảm độ nghiêm túc không.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/click-visual-selection-review.md',
   },
   {
-    id: 'inside-out',
-    tab: '03 · Inside Out',
-    title: 'Biến đời sống bên trong thành vật thể',
-    src: '/review/remotion-muc-dich-doi-song/media/inside-out-film-source-v1-web.mp4',
-    poster: '/review/remotion-muc-dich-doi-song/media/inside-out-film-source-v1-poster.jpg',
-    focus: 'Trạng thái, ký ức, áp lực và sự mất cân bằng được nhìn thấy trực tiếp qua hệ cảm xúc của nhân vật.',
-    strength: 'Gần cách Soul diễn đạt nhất; giải thưởng, bảng điều khiển, DANGER và Sadness đều đọc được khi tắt tiếng.',
-    risk: 'Độ rõ khái niệm cao nhưng chất hoạt hình có thể tạo khoảng cách tuổi tác với một phần người xem.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/inside-out-source-casting-board.json',
+    id: 'up-in-the-air',
+    tab: '03 · Up in the Air',
+    title: 'Hiệu suất nghề nghiệp và sự cô lập',
+    src: '/review/remotion-muc-dich-doi-song/media/up-in-the-air-visual-proposition-v1-web.mp4',
+    poster: '/review/remotion-muc-dich-doi-song/media/up-in-the-air-visual-proposition-v1-poster.jpg',
+    focus: 'Sân bay, văn phòng, họp hành và sự cô độc tạo một mạch gần đời sống người đi làm thành thị.',
+    strength: 'Bối cảnh nghề nghiệp có độ nhận diện cao với nhóm khán giả mục tiêu 25-35 tuổi.',
+    risk: 'Có một cảnh gia đình trung tính ngoài phim; cần chấm độ liền mạch khi chuyển nguồn.',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/up-in-the-air-visual-selection-review.md',
   },
 ] as const
 
 export default function VideoReviewGallery() {
-  const [activeId, setActiveId] = useState<(typeof variants)[number]['id']>('devil-wears-prada')
+  const [activeId, setActiveId] = useState<(typeof variants)[number]['id']>('about-time')
   const activeVariant = useMemo(
     () => variants.find((variant) => variant.id === activeId) ?? variants[0],
     [activeId],
@@ -92,10 +92,10 @@ export default function VideoReviewGallery() {
             <dd>{activeVariant.risk}</dd>
           </div>
           <div>
-            <dt>Bằng chứng casting</dt>
+            <dt>Bằng chứng lựa chọn</dt>
             <dd>
               <a className={styles.evidenceLink} href={activeVariant.evidenceHref} target="_blank" rel="noreferrer">
-                Mở casting board
+                Mở quyết định hình ảnh
               </a>
             </dd>
           </div>

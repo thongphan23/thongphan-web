@@ -1,0 +1,55 @@
+{
+  "rejected": [
+    {
+      "evidence": [
+        "audit/the-intern/contact-sheet-30.jpg",
+        "audit/the-intern/contact-sheet-70.jpg"
+      ],
+      "reason_codes": [
+        "DIALOGUE_HEAVY_ACCESSIBLE_SET",
+        "INSUFFICIENT_VISIBLE_CAUSAL_AFTERMATH",
+        "CLIPCAFE_NEW_RECORDS_RETURNED_404"
+      ],
+      "reuse_policy": "retain research evidence; do not select until the source pool improves",
+      "source_title": "The Intern",
+      "status": "rejected_after_silent_observation"
+    },
+    {
+      "reason_codes": [
+        "ONLY_APPROXIMATELY_12_SEARCH_RESULTS",
+        "SOURCE_COVERAGE_TOO_THIN"
+      ],
+      "reuse_policy": "do not re-research unless inventory changes",
+      "source_title": "The Pursuit of Happyness",
+      "status": "rejected_before_download"
+    }
+  ],
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730",
+  "schema": "tpr.source_gate_report.v1",
+  "selected": [
+    {
+      "candidate_count": 24,
+      "composition_id": "AboutTime",
+      "observation_count": 16,
+      "shot_count": 16,
+      "source_title": "About Time",
+      "variant_id": "about-time"
+    },
+    {
+      "candidate_count": 24,
+      "composition_id": "Click",
+      "observation_count": 16,
+      "shot_count": 16,
+      "source_title": "Click",
+      "variant_id": "click"
+    },
+    {
+      "candidate_count": 24,
+      "composition_id": "UpInTheAir",
+      "observation_count": 16,
+      "shot_count": 16,
+      "source_title": "Up in the Air",
+      "variant_id": "up-in-the-air"
+    }
+  ]
+}

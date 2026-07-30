@@ -1,0 +1,247 @@
+{
+  "observations": [
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S01",
+      "created_at": "2026-07-30T09:38:46+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S01",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:2650a97d6916da4859eae1e2bb9f5822073bdc256ef80fdff4d659ffa0032ff1",
+      "observed_facts_vi": [
+        "Một người đàn ông mang ván lướt sóng đi chậm trên bãi biển cùng người thân."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011197-im-tired-s9.mp4",
+      "source_sha256": "sha256:8b415fe1f1c06b646fcbc968298ff868840ef6574b0a2396709a980d3ac56fe0"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S02",
+      "created_at": "2026-07-30T09:38:46+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S02",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:ad3611189cdd443dd260e2ad54c1f210c2500e447bebf7bb36129e311ea904b2",
+      "observed_facts_vi": [
+        "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011203-whats-our-statement-at-the-moment.mp4",
+      "source_sha256": "sha256:cbae9ba3a536356cd49262f76bfaec8f8de5090e137862ce052af97bf8321086"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S03",
+      "created_at": "2026-07-30T09:38:46+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S03",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:258c108703ba937b2468ff1afd335f1d55ab80ff55ec6a225f06d011f904b3a2",
+      "observed_facts_vi": [
+        "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011208-i-and-he-told-his-secret-formula-happiness-i.mp4",
+      "source_sha256": "sha256:0bda3633699d7e582a409e6226af23688b1f600850cd4f017cc3f9f09cc79a19"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S04",
+      "created_at": "2026-07-30T09:38:46+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S04",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:cd365f70aff28107e49ab9e14f4838bbaf8a364225431886bf6e0af839ebfcc4",
+      "observed_facts_vi": [
+        "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011249-do-the-prosecution-have-anything-final-add.mp4",
+      "source_sha256": "sha256:1acfb4215d7dfdd359edc1e1046d0992e904ccc9acacf9a86b4320b2300375e9"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S05",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S05",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:d60643100545766e4d688e3830cb1077801a8955a4b57cba254dc5488f0c2179",
+      "observed_facts_vi": [
+        "Một người đàn ông nằm thư giãn trên bãi cỏ dưới nắng, chú ý tới người bên cạnh."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011254-tim-will-you-do-back.mp4",
+      "source_sha256": "sha256:19aaa7f393db4743400bca5578902bb6d91b2664c35258293b1df2f1ed0426ca"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S06",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S06",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:2d062374ec9452f3e851aec335a7066b43ef34d99b1c1bc84d686247d134d444",
+      "observed_facts_vi": [
+        "Hai người vận động và đi dọc bờ biển rộng, thể hiện một hoạt động sống cụ thể."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011198-im-really-trying-im-really-trying.mp4",
+      "source_sha256": "sha256:4e3f38b22fb101ced7171ff51ecd51c0427552f15ecf6943b2d1ccb21660f149"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S07",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S07",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:75e74e38aaad52c73415336c7b6ddb545783232b5aa08b45cf7dac2f9c2f72b2",
+      "observed_facts_vi": [
+        "Hai người cùng chơi bóng bàn trong một không gian gia đình."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "17466-ive-forgotten-this.mp4",
+      "source_sha256": "sha256:e28432aa9d81e6a5fce47e393c4fcfb3084ff789458022417c1bc6e001802690"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S08",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S08",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:620ca4335fd5458cac3841e9c6d577075cd27db4f0500160ba66b5ae9f254388",
+      "observed_facts_vi": [
+        "Người cha bế em bé trong tay tại nhà và tập trung vào vai trò mới."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "199412-no-one-can-ever-prepare-for.mp4",
+      "source_sha256": "sha256:809ee69824cd6c21758e417c2fc649c02e157591568863ce0b466402bbe94dcb"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S09",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S09",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:0b3b11f481e6ca1bcd11d46c469c74c19f745ad4ebdc9e823b52bd8348d7f8f4",
+      "observed_facts_vi": [
+        "Người đàn ông mặc vest bước ra ngoài và mỉm cười trong ánh sáng sau một chặng việc."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "199407-were-all-travelling-through-time-together.mp4",
+      "source_sha256": "sha256:ba18acc397d7a93473754e351913f9417043728a9627eb2947d5d8c81f08d4e7"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S10",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S10",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:51cb5f71ad30749feda315604e09ccfc13986f5bae3c384b5b065a1a1550f123",
+      "observed_facts_vi": [
+        "Một người phụ nữ đi nhanh trên phố với vẻ vội vã."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011235-were-late-no-were-not.mp4",
+      "source_sha256": "sha256:1a6bf520bdb69aa1dc89d87469b290fa80b69064095d048c01ade55c1da65fdc"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S11",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S11",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:e2e8126c6f3c894a27949c0df4bc54bcc5d637bad1e5e8aacb6696ef5a91157d",
+      "observed_facts_vi": [
+        "Người đàn ông lục tìm chìa khóa trong căn phòng tối với vẻ hoảng hốt."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011241-christ-s21.mp4",
+      "source_sha256": "sha256:300f61b7f0e270e582edd05b78d97348fd38492120fd67e8adeffd8b65fb43e1"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S12",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S12",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:935e568b2b260780ff001acd61724fb7a02902a36398a31f27c8c7b4d34bdcf0",
+      "observed_facts_vi": [
+        "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "199418-i-am-fucking-furious-s1.mp4",
+      "source_sha256": "sha256:bba0cf1db16b64bf4bc3dd75022d1d7bf5ce66f94a6514926abf60bab6632e91"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S13",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S13",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:4d6bea4a35e0af732fb47880d44c83aa1f2e891072c01f07f7a71782b87dd631",
+      "observed_facts_vi": [
+        "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011201-right-are-ready-this.mp4",
+      "source_sha256": "sha256:5b799bb0abd8232e1937a9c96dcad0feeb0faf40aaf7b096fb9254f7cacfba32"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S14",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S14",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:5a01e4f3f8daae739031a0c123305357cf53668d835f95b589df996e5d0c1b31",
+      "observed_facts_vi": [
+        "Hai người ở lại trong phòng làm việc, không rời đi dù đã muộn."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011213-go-home-no.mp4",
+      "source_sha256": "sha256:2b184bc546e49b19da30df4ba2e927a22dca772450b67b26fe33fc2fb272b727"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S15",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S15",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:af2732fdb7a08c02f639c7520991911535f28ffa1e3c1b8c98913e16ffd6e6bf",
+      "observed_facts_vi": [
+        "Một phụ nữ mệt mỏi nằm trên giường bệnh khi người khác đứng quanh."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "1011227-thanks-guys-sorry-shes-a-bit-tired.mp4",
+      "source_sha256": "sha256:1102587785f24c1472d5abca4072ed54df7b60c41139dc754616dcd3d485771d"
+    },
+    {
+      "asset_id": "ASSET-ABOUT-TIME-AT-S16",
+      "created_at": "2026-07-30T09:38:47+07:00",
+      "observation_id": "OBS-ABOUT-TIME-AT-S16",
+      "observation_method": "silent_contact_sheet_30_70_plus_trim_review",
+      "observation_sha256": "sha256:b820ee5e6abe0e7e7212b2a3d70c4fd42a61e70476bfa76fc4bcdd36de01b19f",
+      "observed_facts_vi": [
+        "Người mẹ ôm em bé và người thân ở gần, cho thấy hậu quả lan tới gia đình."
+      ],
+      "origin": "clip.cafe",
+      "reviewer": "codex",
+      "source_audio_used_for_meaning": false,
+      "source_file": "199434-no-one-can-prepare-you-the-love.mp4",
+      "source_sha256": "sha256:af2147228f10fc4b0cf4ed50be22974f72535eaa28077eb9ff0d4dd2954725c7"
+    }
+  ],
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-ABOUT-TIME",
+  "schema": "tpr.visual_observation_set.v1",
+  "source_title": "About Time"
+}

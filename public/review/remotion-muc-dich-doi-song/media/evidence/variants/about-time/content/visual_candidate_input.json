@@ -1,0 +1,1273 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "ABOUT-TIME-CLM-01-TWO-PURPOSES-DIRECT",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "contrast",
+          "observation_id": "OBS-ABOUT-TIME-AT-S01",
+          "observed_fact_vi": "Một người đàn ông mang ván lướt sóng đi chậm trên bãi biển cùng người thân.",
+          "proof_id": "PR-01-CONTRAST"
+        },
+        {
+          "binding_type": "contrast",
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observed_fact_vi": "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S01",
+          "end_ms": 5430,
+          "observation_id": "OBS-ABOUT-TIME-AT-S01",
+          "observation_sha256": "sha256:2650a97d6916da4859eae1e2bb9f5822073bdc256ef80fdff4d659ffa0032ff1",
+          "observed_facts_vi": [
+            "Một người đàn ông mang ván lướt sóng đi chậm trên bãi biển cùng người thân."
+          ],
+          "shot_id": "AT-S01",
+          "start_ms": 0
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S02",
+          "end_ms": 8880,
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observation_sha256": "sha256:ad3611189cdd443dd260e2ad54c1f210c2500e447bebf7bb36129e311ea904b2",
+          "observed_facts_vi": [
+            "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng."
+          ],
+          "shot_id": "AT-S02",
+          "start_ms": 5430
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "contrast_pair"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-01-TWO-PURPOSES-ANALOGY",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observed_fact_vi": "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S03",
+          "end_ms": 3000,
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observation_sha256": "sha256:258c108703ba937b2468ff1afd335f1d55ab80ff55ec6a225f06d011f904b3a2",
+          "observed_facts_vi": [
+            "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-1-ANALOGY",
+          "start_ms": 0
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-01-TWO-PURPOSES-MOOD",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observed_fact_vi": "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán.",
+          "proof_id": "PR-01-CONTRAST"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S04",
+          "end_ms": 3000,
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observation_sha256": "sha256:cd365f70aff28107e49ab9e14f4838bbaf8a364225431886bf6e0af839ebfcc4",
+          "observed_facts_vi": [
+            "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-1-MOOD",
+          "start_ms": 0
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-02-INNER-EASE-DIRECT",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observed_fact_vi": "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S03",
+          "end_ms": 14860,
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observation_sha256": "sha256:258c108703ba937b2468ff1afd335f1d55ab80ff55ec6a225f06d011f904b3a2",
+          "observed_facts_vi": [
+            "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc."
+          ],
+          "shot_id": "AT-S03",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-02-INNER-EASE-ANALOGY",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observed_fact_vi": "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S04",
+          "end_ms": 11880,
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observation_sha256": "sha256:cd365f70aff28107e49ab9e14f4838bbaf8a364225431886bf6e0af839ebfcc4",
+          "observed_facts_vi": [
+            "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-2-ANALOGY",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-02-INNER-EASE-MOOD",
+      "claim_id": "CLM-02-INNER-EASE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S05",
+          "observed_fact_vi": "Một người đàn ông nằm thư giãn trên bãi cỏ dưới nắng, chú ý tới người bên cạnh.",
+          "proof_id": "PR-02-EASE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S05",
+          "end_ms": 11880,
+          "observation_id": "OBS-ABOUT-TIME-AT-S05",
+          "observation_sha256": "sha256:d60643100545766e4d688e3830cb1077801a8955a4b57cba254dc5488f0c2179",
+          "observed_facts_vi": [
+            "Một người đàn ông nằm thư giãn trên bãi cỏ dưới nắng, chú ý tới người bên cạnh."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-2-MOOD",
+          "start_ms": 8880
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-03-OUTER-WORK-DIRECT",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observed_fact_vi": "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S04",
+          "end_ms": 19280,
+          "observation_id": "OBS-ABOUT-TIME-AT-S04",
+          "observation_sha256": "sha256:cd365f70aff28107e49ab9e14f4838bbaf8a364225431886bf6e0af839ebfcc4",
+          "observed_facts_vi": [
+            "Một luật sư đứng trong phòng xử án và trình bày trước thẩm phán."
+          ],
+          "shot_id": "AT-S04",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-03-OUTER-WORK-ANALOGY",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S06",
+          "observed_fact_vi": "Hai người vận động và đi dọc bờ biển rộng, thể hiện một hoạt động sống cụ thể.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S06",
+          "end_ms": 17860,
+          "observation_id": "OBS-ABOUT-TIME-AT-S06",
+          "observation_sha256": "sha256:2d062374ec9452f3e851aec335a7066b43ef34d99b1c1bc84d686247d134d444",
+          "observed_facts_vi": [
+            "Hai người vận động và đi dọc bờ biển rộng, thể hiện một hoạt động sống cụ thể."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-3-ANALOGY",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-03-OUTER-WORK-MOOD",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S07",
+          "observed_fact_vi": "Hai người cùng chơi bóng bàn trong một không gian gia đình.",
+          "proof_id": "PR-03-WORK"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S07",
+          "end_ms": 17860,
+          "observation_id": "OBS-ABOUT-TIME-AT-S07",
+          "observation_sha256": "sha256:75e74e38aaad52c73415336c7b6ddb545783232b5aa08b45cf7dac2f9c2f72b2",
+          "observed_facts_vi": [
+            "Hai người cùng chơi bóng bàn trong một không gian gia đình."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-3-MOOD",
+          "start_ms": 14860
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-04-AWAKE-DIRECT",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-ABOUT-TIME-AT-S05",
+          "observed_fact_vi": "Một người đàn ông nằm thư giãn trên bãi cỏ dưới nắng, chú ý tới người bên cạnh.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S05",
+          "end_ms": 23340,
+          "observation_id": "OBS-ABOUT-TIME-AT-S05",
+          "observation_sha256": "sha256:d60643100545766e4d688e3830cb1077801a8955a4b57cba254dc5488f0c2179",
+          "observed_facts_vi": [
+            "Một người đàn ông nằm thư giãn trên bãi cỏ dưới nắng, chú ý tới người bên cạnh."
+          ],
+          "shot_id": "AT-S05",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "literal_action"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-04-AWAKE-ANALOGY",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S08",
+          "observed_fact_vi": "Người cha bế em bé trong tay tại nhà và tập trung vào vai trò mới.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S08",
+          "end_ms": 22280,
+          "observation_id": "OBS-ABOUT-TIME-AT-S08",
+          "observation_sha256": "sha256:620ca4335fd5458cac3841e9c6d577075cd27db4f0500160ba66b5ae9f254388",
+          "observed_facts_vi": [
+            "Người cha bế em bé trong tay tại nhà và tập trung vào vai trò mới."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-4-ANALOGY",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-04-AWAKE-MOOD",
+      "claim_id": "CLM-04-AWAKE",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S09",
+          "observed_fact_vi": "Người đàn ông mặc vest bước ra ngoài và mỉm cười trong ánh sáng sau một chặng việc.",
+          "proof_id": "PR-04-AWAKE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S09",
+          "end_ms": 22280,
+          "observation_id": "OBS-ABOUT-TIME-AT-S09",
+          "observation_sha256": "sha256:0b3b11f481e6ca1bcd11d46c469c74c19f745ad4ebdc9e823b52bd8348d7f8f4",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest bước ra ngoài và mỉm cười trong ánh sáng sau một chặng việc."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-4-MOOD",
+          "start_ms": 19280
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-05-CHANGE-ALIGN-DIRECT",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S06",
+          "observed_fact_vi": "Hai người vận động và đi dọc bờ biển rộng, thể hiện một hoạt động sống cụ thể.",
+          "proof_id": "PR-05-CAUSAL"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S07",
+          "observed_fact_vi": "Hai người cùng chơi bóng bàn trong một không gian gia đình.",
+          "proof_id": "PR-05-CAUSAL"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S08",
+          "observed_fact_vi": "Người cha bế em bé trong tay tại nhà và tập trung vào vai trò mới.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S06",
+          "end_ms": 28200,
+          "observation_id": "OBS-ABOUT-TIME-AT-S06",
+          "observation_sha256": "sha256:2d062374ec9452f3e851aec335a7066b43ef34d99b1c1bc84d686247d134d444",
+          "observed_facts_vi": [
+            "Hai người vận động và đi dọc bờ biển rộng, thể hiện một hoạt động sống cụ thể."
+          ],
+          "shot_id": "AT-S06",
+          "start_ms": 23340
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S07",
+          "end_ms": 32000,
+          "observation_id": "OBS-ABOUT-TIME-AT-S07",
+          "observation_sha256": "sha256:75e74e38aaad52c73415336c7b6ddb545783232b5aa08b45cf7dac2f9c2f72b2",
+          "observed_facts_vi": [
+            "Hai người cùng chơi bóng bàn trong một không gian gia đình."
+          ],
+          "shot_id": "AT-S07",
+          "start_ms": 28200
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S08",
+          "end_ms": 35500,
+          "observation_id": "OBS-ABOUT-TIME-AT-S08",
+          "observation_sha256": "sha256:620ca4335fd5458cac3841e9c6d577075cd27db4f0500160ba66b5ae9f254388",
+          "observed_facts_vi": [
+            "Người cha bế em bé trong tay tại nhà và tập trung vào vai trò mới."
+          ],
+          "shot_id": "AT-S08",
+          "start_ms": 32000
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-05-CHANGE-ALIGN-ANALOGY",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observed_fact_vi": "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S12",
+          "end_ms": 26340,
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observation_sha256": "sha256:935e568b2b260780ff001acd61724fb7a02902a36398a31f27c8c7b4d34bdcf0",
+          "observed_facts_vi": [
+            "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-5-ANALOGY",
+          "start_ms": 23340
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-05-CHANGE-ALIGN-MOOD",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observed_fact_vi": "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng.",
+          "proof_id": "PR-05-CAUSAL"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S13",
+          "end_ms": 26340,
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observation_sha256": "sha256:4d6bea4a35e0af732fb47880d44c83aa1f2e891072c01f07f7a71782b87dd631",
+          "observed_facts_vi": [
+            "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-5-MOOD",
+          "start_ms": 23340
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-06-REAL-SUCCESS-DIRECT",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "exact",
+          "observation_id": "OBS-ABOUT-TIME-AT-S09",
+          "observed_fact_vi": "Người đàn ông mặc vest bước ra ngoài và mỉm cười trong ánh sáng sau một chặng việc.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S09",
+          "end_ms": 38580,
+          "observation_id": "OBS-ABOUT-TIME-AT-S09",
+          "observation_sha256": "sha256:0b3b11f481e6ca1bcd11d46c469c74c19f745ad4ebdc9e823b52bd8348d7f8f4",
+          "observed_facts_vi": [
+            "Người đàn ông mặc vest bước ra ngoài và mỉm cười trong ánh sáng sau một chặng việc."
+          ],
+          "shot_id": "AT-S09",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "direct_referent"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-06-REAL-SUCCESS-ANALOGY",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observed_fact_vi": "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S12",
+          "end_ms": 38500,
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observation_sha256": "sha256:935e568b2b260780ff001acd61724fb7a02902a36398a31f27c8c7b4d34bdcf0",
+          "observed_facts_vi": [
+            "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-6-ANALOGY",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-06-REAL-SUCCESS-MOOD",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observed_fact_vi": "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng.",
+          "proof_id": "PR-06-SUCCESS"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S13",
+          "end_ms": 38500,
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observation_sha256": "sha256:4d6bea4a35e0af732fb47880d44c83aa1f2e891072c01f07f7a71782b87dd631",
+          "observed_facts_vi": [
+            "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-6-MOOD",
+          "start_ms": 35500
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-07-MISALIGNMENT-DIRECT",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S10",
+          "observed_fact_vi": "Một người phụ nữ đi nhanh trên phố với vẻ vội vã.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S11",
+          "observed_fact_vi": "Người đàn ông lục tìm chìa khóa trong căn phòng tối với vẻ hoảng hốt.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observed_fact_vi": "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observed_fact_vi": "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng.",
+          "proof_id": "PR-07-PRESSURE"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S14",
+          "observed_fact_vi": "Hai người ở lại trong phòng làm việc, không rời đi dù đã muộn.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S10",
+          "end_ms": 41800,
+          "observation_id": "OBS-ABOUT-TIME-AT-S10",
+          "observation_sha256": "sha256:51cb5f71ad30749feda315604e09ccfc13986f5bae3c384b5b065a1a1550f123",
+          "observed_facts_vi": [
+            "Một người phụ nữ đi nhanh trên phố với vẻ vội vã."
+          ],
+          "shot_id": "AT-S10",
+          "start_ms": 38580
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S11",
+          "end_ms": 44400,
+          "observation_id": "OBS-ABOUT-TIME-AT-S11",
+          "observation_sha256": "sha256:e2e8126c6f3c894a27949c0df4bc54bcc5d637bad1e5e8aacb6696ef5a91157d",
+          "observed_facts_vi": [
+            "Người đàn ông lục tìm chìa khóa trong căn phòng tối với vẻ hoảng hốt."
+          ],
+          "shot_id": "AT-S11",
+          "start_ms": 41800
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S12",
+          "end_ms": 46600,
+          "observation_id": "OBS-ABOUT-TIME-AT-S12",
+          "observation_sha256": "sha256:935e568b2b260780ff001acd61724fb7a02902a36398a31f27c8c7b4d34bdcf0",
+          "observed_facts_vi": [
+            "Người phụ nữ lớn tuổi căng thẳng và giận dữ khi đối thoại."
+          ],
+          "shot_id": "AT-S12",
+          "start_ms": 44400
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S13",
+          "end_ms": 48200,
+          "observation_id": "OBS-ABOUT-TIME-AT-S13",
+          "observation_sha256": "sha256:4d6bea4a35e0af732fb47880d44c83aa1f2e891072c01f07f7a71782b87dd631",
+          "observed_facts_vi": [
+            "Người phụ nữ ngồi bất động với nét mặt nặng nề trong phòng."
+          ],
+          "shot_id": "AT-S13",
+          "start_ms": 46600
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S14",
+          "end_ms": 49960,
+          "observation_id": "OBS-ABOUT-TIME-AT-S14",
+          "observation_sha256": "sha256:5a01e4f3f8daae739031a0c123305357cf53668d835f95b589df996e5d0c1b31",
+          "observed_facts_vi": [
+            "Hai người ở lại trong phòng làm việc, không rời đi dù đã muộn."
+          ],
+          "shot_id": "AT-S14",
+          "start_ms": 48200
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-07-MISALIGNMENT-ANALOGY",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observed_fact_vi": "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S02",
+          "end_ms": 41580,
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observation_sha256": "sha256:ad3611189cdd443dd260e2ad54c1f210c2500e447bebf7bb36129e311ea904b2",
+          "observed_facts_vi": [
+            "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-7-ANALOGY",
+          "start_ms": 38580
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-07-MISALIGNMENT-MOOD",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observed_fact_vi": "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc.",
+          "proof_id": "PR-07-PRESSURE"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S03",
+          "end_ms": 41580,
+          "observation_id": "OBS-ABOUT-TIME-AT-S03",
+          "observation_sha256": "sha256:258c108703ba937b2468ff1afd335f1d55ab80ff55ec6a225f06d011f904b3a2",
+          "observed_facts_vi": [
+            "Hai người đàn ông đi bộ cạnh nhau ngoài trời, xa khỏi bàn làm việc."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-7-MOOD",
+          "start_ms": 38580
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-08-NO-JOY-HARM-DIRECT",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.05,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S15",
+          "observed_fact_vi": "Một phụ nữ mệt mỏi nằm trên giường bệnh khi người khác đứng quanh.",
+          "proof_id": "PR-08-AFTERMATH"
+        },
+        {
+          "binding_type": "causal_link",
+          "observation_id": "OBS-ABOUT-TIME-AT-S16",
+          "observed_fact_vi": "Người mẹ ôm em bé và người thân ở gần, cho thấy hậu quả lan tới gia đình.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 700,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S15",
+          "end_ms": 54080,
+          "observation_id": "OBS-ABOUT-TIME-AT-S15",
+          "observation_sha256": "sha256:af2732fdb7a08c02f639c7520991911535f28ffa1e3c1b8c98913e16ffd6e6bf",
+          "observed_facts_vi": [
+            "Một phụ nữ mệt mỏi nằm trên giường bệnh khi người khác đứng quanh."
+          ],
+          "shot_id": "AT-S15",
+          "start_ms": 49960
+        },
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S16",
+          "end_ms": 59652,
+          "observation_id": "OBS-ABOUT-TIME-AT-S16",
+          "observation_sha256": "sha256:b820ee5e6abe0e7e7212b2a3d70c4fd42a61e70476bfa76fc4bcdd36de01b19f",
+          "observed_facts_vi": [
+            "Người mẹ ôm em bé và người thân ở gần, cho thấy hậu quả lan tới gia đình."
+          ],
+          "shot_id": "AT-S16",
+          "start_ms": 54080
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.86,
+        "continuity_fit": 0.9,
+        "viewer_familiarity": 0.86
+      },
+      "strategy": "causal_sequence"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-08-NO-JOY-HARM-ANALOGY",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.15,
+      "inference_hops": 1,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "familiar_analogy",
+          "observation_id": "OBS-ABOUT-TIME-AT-S01",
+          "observed_fact_vi": "Một người đàn ông mang ván lướt sóng đi chậm trên bãi biển cùng người thân.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S01",
+          "end_ms": 52960,
+          "observation_id": "OBS-ABOUT-TIME-AT-S01",
+          "observation_sha256": "sha256:2650a97d6916da4859eae1e2bb9f5822073bdc256ef80fdff4d659ffa0032ff1",
+          "observed_facts_vi": [
+            "Một người đàn ông mang ván lướt sóng đi chậm trên bãi biển cùng người thân."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-8-ANALOGY",
+          "start_ms": 49960
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.7,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "familiar_analogy"
+    },
+    {
+      "candidate_id": "ABOUT-TIME-CLM-08-NO-JOY-HARM-MOOD",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "competing_interpretations_vi": [],
+      "context_dependency": 0.1,
+      "inference_hops": 0,
+      "plot_knowledge_required": false,
+      "proof_bindings": [
+        {
+          "binding_type": "mood",
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observed_fact_vi": "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng.",
+          "proof_id": "PR-08-AFTERMATH"
+        }
+      ],
+      "recognition_latency_ms": 900,
+      "sequence": [
+        {
+          "asset_id": "ASSET-ABOUT-TIME-AT-S02",
+          "end_ms": 52960,
+          "observation_id": "OBS-ABOUT-TIME-AT-S02",
+          "observation_sha256": "sha256:ad3611189cdd443dd260e2ad54c1f210c2500e447bebf7bb36129e311ea904b2",
+          "observed_facts_vi": [
+            "Nhóm nhân viên ngồi quanh bàn với hồ sơ trong một cuộc họp văn phòng."
+          ],
+          "shot_id": "ALT-ABOUT-TIME-8-MOOD",
+          "start_ms": 49960
+        }
+      ],
+      "soft_signals": {
+        "aesthetic_quality": 0.84,
+        "affective_fit": 0.82,
+        "continuity_fit": 0.68,
+        "viewer_familiarity": 0.72
+      },
+      "strategy": "emotional_only"
+    }
+  ],
+  "claims": [
+    {
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "communication_job": "introduce",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Hai cảnh ngẫu nhiên không có đối lập rõ."
+      ],
+      "intended_feeling_vi": "Nhận ra ngay hai lớp đang cùng tồn tại trong một đời người.",
+      "intended_memory_vi": "Việc mình làm và trạng thái mình sống là hai thứ khác nhau.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy một trạng thái làm việc bên ngoài và một trạng thái sống bên trong khác nhau.",
+          "kind": "contrast",
+          "mandatory": true,
+          "proof_id": "PR-01-CONTRAST",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "bên trong và bên ngoài",
+        "polarity": "neutral",
+        "predicate_vi": "có hai lớp mục đích",
+        "relation_type": "contrast",
+        "subject_vi": "đời sống"
+      },
+      "voice_segment_ref": "T001",
+      "voice_text_vi": "Đời bạn có một mục đích bên trong và một mục đích bên ngoài."
+    },
+    {
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "communication_job": "explain",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ là phong cảnh đẹp không có hành vi con người."
+      ],
+      "intended_feeling_vi": "Nhịp xem hạ xuống và người xem cảm nhận được sự có mặt.",
+      "intended_memory_vi": "Mục đích bên trong trước hết là trạng thái sống, không phải chức danh.",
+      "proof_requirements": [
+        {
+          "description_vi": "Nhân vật phải hiện diện chậm rãi, thư giãn hoặc kết nối không bị công việc lấn át.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-02-EASE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "an nhiên tự tại",
+        "polarity": "positive",
+        "predicate_vi": "gắn với",
+        "relation_type": "state",
+        "subject_vi": "mục đích bên trong"
+      },
+      "voice_segment_ref": "T002",
+      "voice_text_vi": "Mục đích bên trong liên quan đến trạng thái an nhiên tự tại."
+    },
+    {
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "communication_job": "explain",
+      "concept_novelty": "familiar",
+      "forbidden_interpretations_vi": [
+        "Chỉ có người mặc đồ công sở nhưng không làm gì."
+      ],
+      "intended_feeling_vi": "Thấy công việc rất cụ thể nhưng không bị tuyệt đối hóa.",
+      "intended_memory_vi": "Công việc là một vai trò bên ngoài, không phải toàn bộ con người.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy hành động công việc cụ thể như họp, trình bày, giao dịch hoặc giải quyết việc.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-03-WORK",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "việc đang làm",
+        "polarity": "neutral",
+        "predicate_vi": "thể hiện qua",
+        "relation_type": "identity",
+        "subject_vi": "mục đích bên ngoài"
+      },
+      "voice_segment_ref": "T003",
+      "voice_text_vi": "Mục đích bên ngoài dính tới những việc bạn làm và chỉ là mục đích phụ."
+    },
+    {
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "communication_job": "intensify",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Đứng im vì buồn ngủ hoặc kiệt sức."
+      ],
+      "intended_feeling_vi": "Một khoảng dừng sáng rõ và không cần giải mã phức tạp.",
+      "intended_memory_vi": "Tỉnh thức là nhìn thấy và sống trọn khoảnh khắc đang có.",
+      "proof_requirements": [
+        {
+          "description_vi": "Nhân vật phải thực sự dừng, chú ý hoặc kết nối với người và không gian trước mặt.",
+          "kind": "visible_action",
+          "mandatory": true,
+          "proof_id": "PR-04-AWAKE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "tỉnh thức",
+        "polarity": "positive",
+        "predicate_vi": "là",
+        "relation_type": "identity",
+        "subject_vi": "mục đích bên trong"
+      },
+      "voice_segment_ref": "T004",
+      "voice_text_vi": "Mục đích bên trong của bạn là tỉnh thức."
+    },
+    {
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "communication_job": "prove",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Montage bận rộn nhưng không có tiến triển hay kết quả."
+      ],
+      "intended_feeling_vi": "Thấy đời sống mở rộng nhưng không bị xé vụn bởi các vai trò.",
+      "intended_memory_vi": "Vai trò có thể đổi, còn trạng thái bên trong quyết định cách mình đi qua chúng.",
+      "proof_requirements": [
+        {
+          "description_vi": "Cần một chuỗi nhiều vai trò hoặc nhiệm vụ đi tới một kết quả có thể nhìn thấy.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-05-CAUSAL",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "nhiều vai trò và việc bên ngoài",
+        "polarity": "positive",
+        "predicate_vi": "làm nền cho",
+        "relation_type": "cause",
+        "subject_vi": "sự hòa điệu bên trong"
+      },
+      "voice_segment_ref": "T005-T006",
+      "voice_text_vi": "Mục đích bên ngoài thay đổi; hòa điệu bên trong giúp hoàn thành điều bên ngoài."
+    },
+    {
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "communication_job": "conclude",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ mỉm cười chung chung không có dấu hiệu kết quả."
+      ],
+      "intended_feeling_vi": "Một nhịp xác nhận rõ ràng, không cần biết cốt truyện vẫn hiểu là có kết quả.",
+      "intended_memory_vi": "Thành công thật có kết quả bên ngoài nhưng không đánh mất con người bên trong.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy sự công nhận, hoàn tất, phản hồi tích cực hoặc kết quả cụ thể.",
+          "kind": "concrete_referent",
+          "mandatory": true,
+          "proof_id": "PR-06-SUCCESS",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "thành công thực sự",
+        "polarity": "positive",
+        "predicate_vi": "tạo nền",
+        "relation_type": "value",
+        "subject_vi": "sự hòa điệu"
+      },
+      "voice_segment_ref": "T007",
+      "voice_text_vi": "Đó là cơ sở của những thành công thực sự."
+    },
+    {
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "communication_job": "intensify",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ cắt nhanh những gương mặt nói chuyện không thấy áp lực tăng."
+      ],
+      "intended_feeling_vi": "Áp lực tăng nhanh, dồn dập và khó thở theo đúng nhịp voice.",
+      "intended_memory_vi": "Càng lệch khỏi mình, cái giá đạt mục tiêu càng nhiều căng thẳng và xung đột.",
+      "proof_requirements": [
+        {
+          "description_vi": "Cần chuỗi tăng cấp gồm áp lực, đối đầu, quyết định gây hại hoặc mất kiểm soát.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-07-PRESSURE",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "nỗ lực quá mức và xung đột",
+        "polarity": "negative",
+        "predicate_vi": "dẫn đến",
+        "relation_type": "cause",
+        "subject_vi": "sự không hòa điệu"
+      },
+      "voice_segment_ref": "T008",
+      "voice_text_vi": "Không hòa điệu thì phải nỗ lực quá mức, đấu tranh và dùng thủ đoạn."
+    },
+    {
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "communication_job": "conclude",
+      "concept_novelty": "new",
+      "forbidden_interpretations_vi": [
+        "Chỉ là nét mặt buồn không rõ xảy ra sau điều gì."
+      ],
+      "intended_feeling_vi": "Nhịp chậm lại để người xem kịp cảm thấy hậu quả và khoảng trống.",
+      "intended_memory_vi": "Một kết quả khiến mình và người thân đau khổ không phải thành công thực sự.",
+      "proof_requirements": [
+        {
+          "description_vi": "Phải thấy một người kiệt quệ hoặc trống rỗng và hậu quả chạm tới người thân hoặc đồng nghiệp.",
+          "kind": "causal_change",
+          "mandatory": true,
+          "proof_id": "PR-08-AFTERMATH",
+          "weight": 1.0
+        }
+      ],
+      "proposition": {
+        "object_vi": "trống rỗng và khổ đau lan sang người khác",
+        "polarity": "negative",
+        "predicate_vi": "để lại",
+        "relation_type": "effect",
+        "subject_vi": "kết quả không hòa điệu"
+      },
+      "voice_segment_ref": "T009-T010",
+      "voice_text_vi": "Hoàn tất mà không có niềm vui thì kết quả chỉ mang lại khổ đau cho mình và người chung quanh."
+    }
+  ],
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-ABOUT-TIME",
+  "taste_snapshot": {
+    "hard_gate_policy_mutable": false,
+    "ranking_weights": {
+      "aesthetic_quality": 0.2,
+      "affective_fit": 0.2,
+      "continuity_fit": 0.3,
+      "viewer_familiarity": 0.3
+    },
+    "snapshot_id": "TASTE-OWNER-20260730-DIRECT-FIRST"
+  }
+}

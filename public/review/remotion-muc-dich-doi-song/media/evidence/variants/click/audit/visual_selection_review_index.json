@@ -1,0 +1,17 @@
+{
+  "schema": "tpr.visual_selection_review_index.v1",
+  "run_id": "RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK",
+  "claim_count": 8,
+  "candidate_count": 24,
+  "decision_ids": [
+    "VSD-7d416e2eb766f73d7e61",
+    "VSD-e8dc59d6ea8dda71e742",
+    "VSD-cdf185de12b0c8e8d82d",
+    "VSD-0e49e7208e9793eca47a",
+    "VSD-5777bf40b9fe1525d00f",
+    "VSD-0d1b5ba4db7c61e4f8ff",
+    "VSD-bdc2f9f99c7d1207b836",
+    "VSD-04628bd1eb07816362fc"
+  ],
+  "graph_sha256": "sha256:6effa49d10e2f40f116d2a98d0f3d2860220a3db36185a682ce20c561c567971"
+}

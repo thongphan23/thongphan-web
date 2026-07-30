@@ -9,12 +9,12 @@ const mediaRoot = new URL(
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 
 const videos = [
-  'devil-wears-prada-film-source-v1-web.mp4',
-  'truman-show-film-source-v1-web.mp4',
-  'inside-out-film-source-v1-web.mp4',
+  'about-time-visual-proposition-v1-web.mp4',
+  'click-visual-proposition-v1-web.mp4',
+  'up-in-the-air-visual-proposition-v1-web.mp4',
 ]
 
-test('review route is private-by-discovery and exposes exactly three film variants', async () => {
+test('review route is private-by-discovery and exposes exactly three visual-proposition variants', async () => {
   const [page, gallery] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -22,26 +22,29 @@ test('review route is private-by-discovery and exposes exactly three film varian
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.equal((gallery.match(/id:\s*['"](?:devil-wears-prada|truman-show|inside-out)['"]/g) ?? []).length, 3)
+  assert.equal((gallery.match(/id:\s*['"](?:about-time|click|up-in-the-air)['"]/g) ?? []).length, 3)
   assert.match(gallery, /preload="metadata"/)
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
-  assert.equal((gallery.match(/film-source-v1-web\.mp4/g) ?? []).length, 3)
+  assert.equal((gallery.match(/visual-proposition-v1-web\.mp4/g) ?? []).length, 3)
   assert.equal((gallery.match(/evidenceHref:/g) ?? []).length, 3)
-  assert.match(gallery, /Mở casting board/)
-  assert.doesNotMatch(gallery, /media\/(?:soul|walter-mitty|whiplash)/)
+  assert.match(gallery, /Mở quyết định hình ảnh/)
+  assert.doesNotMatch(gallery, /media\/(?:devil-wears-prada|truman-show|inside-out)/)
   assert.doesNotMatch(gallery, /autoPlay/)
 })
 
-test('review handoff exposes the reusable film-source evidence packet', async () => {
+test('review handoff exposes the traceable visual-proposition evidence packet', async () => {
   const evidenceRoot = new URL('evidence/', mediaRoot)
   for (const filename of [
-    'run-evidence-index.json',
-    'film-source-portfolio.json',
-    'film-candidate-matrix.json',
-    'meaning-beat-design.json',
-    'viewer-model.json',
+    'workflow-evidence-index.json',
+    'render-qa-report.json',
+    'claim-timeline.json',
+    'source-gate-report.json',
+    'comparison-report.md',
+    'about-time-visual-selection-review.md',
+    'click-visual-selection-review.md',
+    'up-in-the-air-visual-selection-review.md',
   ]) {
     await access(new URL(filename, evidenceRoot))
   }
