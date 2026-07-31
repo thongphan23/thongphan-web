@@ -2,6 +2,27 @@
 
 Last updated: 2026-07-31
 
+## Remotion Single-film Continuity v1 owner-review round — production release — 2026-07-31
+
+- Rebuilt the authoritative Vietnamese voice as three 59.712-second variants,
+  locking one film per video before shot selection: `Soul`, `Click` and
+  `Forrest Gump`.
+- Added a fail-closed continuity gate: every selected shot must carry the
+  canonical `film_id` locked by that variant. Missing, unknown, mixed or
+  foreign film identities block editorial lock; secondary films are forbidden.
+- Published 49 unique selected shots, three Film Source Portfolios, sealed
+  Visual Proposition Graphs, Edit Plans, per-shot continuity reports, render
+  QA, contact-sheet review and a checksum manifest. All three variants report
+  zero foreign and zero missing film identities.
+- Plugin full regression passes 849/849 and source/cache parity passes at
+  `0.2.6-rc.1+codex.20260731075919`. Website focused 4/4, full 248/248,
+  TypeScript, ESLint, 84-route build and production desktop/mobile playback QA
+  pass.
+- Production deployment `17cec07a` serves website source `e02c28b`; all three
+  versioned MP4 routes return HTTP 200. `/tpr` remains protected with HTTP 401.
+  Full evidence:
+  `docs/releases/REMOTION_SINGLE_FILM_CONTINUITY_V1_PRODUCTION_RELEASE-2026-07-31.md`.
+
 ## Remotion Visual Semantic Frame v1 owner-review round — production release — 2026-07-31
 
 - Rebuilt the authoritative Vietnamese voice as three new variants: direct
