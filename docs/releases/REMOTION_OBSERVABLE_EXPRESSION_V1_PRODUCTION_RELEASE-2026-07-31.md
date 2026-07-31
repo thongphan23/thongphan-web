@@ -60,10 +60,17 @@ Website TypeScript: PASS
 Website ESLint: PASS
 Website build: 84 routes PASS
 Browser QA: desktop + mobile, 3/3 playback each, PASS
+Production browser QA: desktop + mobile, 3/3 playback each, PASS
 ```
 
 ## Release Boundary
 
 - `/review/remotion-muc-dich-doi-song` remains `noindex` and private by discovery.
 - `/tpr` remains protected and is not changed by this release.
-- Production deployment: PENDING.
+- Website source commit: `6f51b0b60dc2db98af3ab51957afc718c1a4061e`.
+- Cloudflare Pages deployment: `d14adb0a`.
+- Production review URL: `https://thongphan.com/review/remotion-muc-dich-doi-song`.
+- All three apex MP4 routes return complete video files. The first Forrest probe
+  briefly saw a propagation 404; a fresh origin/apex verification returned the
+  complete 13,746,370-byte MP4 with the correct `ftypisom` header.
+- `/tpr` still returns HTTP 401 without a valid session.

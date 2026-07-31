@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-31
 
-## Remotion Observable Expression v1 owner-review round — verified locally — 2026-07-31
+## Remotion Observable Expression v1 owner-review round — production release — 2026-07-31
 
 - Rebuilt the authoritative 59.652-second Vietnamese voice as three 59.712-second
   one-film variants: `Soul`, `Forrest Gump` and `A Beautiful Mind`.
@@ -19,8 +19,9 @@ Last updated: 2026-07-31
   `0.2.7-rc.1+codex.20260731093151`. Video QA passes 1080p H.264/AAC,
   -15.1 LUFS, one-line subtitles, black/freeze checks and direct frame review.
 - Website focused 4/4, full 248/248, TypeScript, ESLint, 84-route build and local
-  desktop/mobile playback QA pass. Production deployment is pending this source
-  commit. Full evidence:
+  plus production desktop/mobile playback QA pass. Production deployment
+  `d14adb0a` serves source `6f51b0b`; all three media paths return complete MP4
+  files and `/tpr` remains protected with HTTP 401. Full evidence:
   `docs/releases/REMOTION_OBSERVABLE_EXPRESSION_V1_PRODUCTION_RELEASE-2026-07-31.md`.
 
 ## Remotion Single-film Continuity v1 owner-review round — production release — 2026-07-31
