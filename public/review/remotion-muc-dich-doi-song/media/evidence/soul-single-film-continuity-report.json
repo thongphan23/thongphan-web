@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-single-film-v2-20260731-SOUL-soul",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-SOUL",
+  "variant_id": "soul",
+  "status": "pass",
+  "lock_mode": "one_film_per_video_strict",
+  "locked_film_id": "FILM-SOUL",
+  "locked_profile_id": "PROFILE-SOUL",
+  "portfolio_ref": {
+    "path": "content/film_source_portfolio.json",
+    "sha256": "dfe60b49724c8322c5666959ef906ca925fc01577af0a11a27cc52d8d8b3995f"
+  },
+  "edit_plan_sha256": "sha256:5cbcb5f01c96bd0223d32f57f294f39c784951bf9feee898222bb0bf8c42727d",
+  "shot_count": 19,
+  "observed_film_ids": [
+    "FILM-SOUL"
+  ],
+  "foreign_shot_ids": [],
+  "missing_identity_shot_ids": [],
+  "shots": [
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-INWARD",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:413a741a655bf3b90fb18001dc6c8cb6f308c16290194abe5453be2137162eee",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-PRIMARY-02",
+      "asset_id": "ASSET-SOUL-DOROTHEA-STAGE",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:277c2cf7ac1eb3b4780d82140c1ff5fbdfb7c40e5412a380c296f5e21a25ff3e",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SE-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-SENSORY",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:d533e122d752fc5a739974538031aa7b367e1e7fa1a05363e3352b13b3f95328",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-CLUB",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:0819b9c55da5542c75dc04045fadf85e261f2936e6272ad26abfc7efad24681a",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-PRIMARY-02",
+      "asset_id": "ASSET-SOUL-BARBER",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:71b6bd036c75749726b625fb639e3588d45628c4b535c65da7cee30e0285b8d5",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-AWAKE",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:e1c18609eae5a31a632f0cb60ff38de01a064729cbfde2b5523e487d680e64d3",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-CALM",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:b17b81b982fd445298e20ed47c8946ef7518270ccad0769c4957f37d1c4ed7f5",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-PRIMARY-02",
+      "asset_id": "ASSET-SOUL-STAGE",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:595c82f3690554f09ac44f9e33ce82bbb78e022c493ceb6ea10ce8db4ded297a",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SS-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-TROPHY",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:7565503c04390811c003fd96fb76e187e1667fd4cb30c8afc771e8b4bfabcaf1",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-LOST",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:92bc6b2bbb0d4d1cd9630bcaa950df87777142874219c6187e322d64ff2d7ef0",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-02",
+      "asset_id": "ASSET-SOUL-DRAGGED",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:da67565e1002384e63ce4c24ba4d48073a7040284259f7ab73c2fb20646a0228",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-03",
+      "asset_id": "ASSET-SOUL-PANIC",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:9d909c4b22d48faec82589510f719a9326ccc4d4264124a8543d3caa83194f43",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-04",
+      "asset_id": "ASSET-SOUL-STRUGGLE",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:f0ae9882938d01b134a33e3725114b5c58ffece9b62beb99e30b64136e72c964",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-05",
+      "asset_id": "ASSET-SOUL-CONFLICT",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:f92cc6a363a41a800dfb04064b78fed8bbee01493d38031fbbebb3c7f7ba19f9",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-06",
+      "asset_id": "ASSET-SOUL-OBSESSED",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:c7548ada6c058e38fd80fb0c32bfadcb5b783a02e2dd24353b29e5f34b3d1f74",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-PRIMARY-07",
+      "asset_id": "ASSET-SOUL-CONFRONT",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:c41fb223c0e6263cf3c8d48a5b3629d5da86814f395fdda8009fe1b00116d07e",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-PRIMARY-01",
+      "asset_id": "ASSET-SOUL-EMPTY",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:daa0531b0b1fd0dd0ba98aaa0a49f2f7005f25f9a34742d26ac84940ec7259ec",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-PRIMARY-02",
+      "asset_id": "ASSET-SOUL-FAMILY-COST",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:0fade6d8465cd5c11c43c08073c4b2269bbf22f4939d424652109535a070bfe1",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-PRIMARY-03",
+      "asset_id": "ASSET-SOUL-VOID",
+      "film_id": "FILM-SOUL",
+      "source_sha256": "sha256:43c7b3f6c3d337b754072de93c23bc2f1bb24f46eae8fee397074459ad33c37c",
+      "matches_locked_film": true
+    }
+  ],
+  "checks": {
+    "portfolio_sealed": true,
+    "one_assignment": true,
+    "all_shots_identified": true,
+    "all_shots_match_locked_film": true
+  },
+  "report_sha256": "sha256:f883f606b58afde541f6f7605f3d2e24e431bd5dd790564bd1bc51927b415d0d",
+  "created_at": "2026-07-31T07:53:43+07:00"
+}

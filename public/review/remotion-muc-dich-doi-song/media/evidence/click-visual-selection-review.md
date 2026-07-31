@@ -1,109 +1,85 @@
-# Duyệt lựa chọn hình ảnh
+# Duyệt lựa chọn hình ảnh theo nghĩa
 
-- Run: `RUN-MUC-DICH-DOI-SONG-VISUAL-PROPOSITION-20260730-CLICK`
-- Nguyên tắc: đúng nghĩa và dễ hiểu trước; cảm xúc, thẩm mỹ và Taste xếp sau.
-- Trạng thái rủi ro: `pass`
+- Run: `RUN-muc-dich-doi-song-single-film-v2-20260731-CLICK`
+- Thứ tự: dễ hiểu và liên tưởng trực tiếp -> đúng ngữ cảnh -> flow/vibe -> đẹp/cinematic.
+- Tổng điểm chỉ để đọc; quyết định dùng thứ tự tier và hard gate.
 
-## B01 · Đời bạn có một mục đích bên trong và một mục đích bên ngoài.
+## B01 · Điều quan trọng nhất mà bạn cần nhận thức là: đời bạn có một mục đích bên trong và một mục đích bên ngoài.
 
-- Người xem cần cảm thấy: Nhận ra ngay hai lớp đang cùng tồn tại trong một đời người.
-- Người xem cần nhớ: Việc mình làm và trạng thái mình sống là hai thứ khác nhau.
-- Kết quả: `selected` · chọn `CLICK-CLM-01-TWO-PURPOSES-DIRECT`
-- Độ tin cậy thô: `0.85` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-ES-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-01-TWO-PURPOSES-DIRECT` | pass | 0.86 | 0.90 | +0.04 | - |
-| 2 | `CLICK-CLM-01-TWO-PURPOSES-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, CONTRAST_PROOF_REQUIRES_PAIR |
-| 3 | `CLICK-CLM-01-TWO-PURPOSES-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY, CONTRAST_PROOF_REQUIRES_PAIR |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-ES-PRIMARY` | pass | 54.04 | 19.36 | 15.00 | 9.15 | 97.55 | - |
+| 2 | `CAND-CLICK-ES-MOOD-ONLY` | fail | 8.20 | 6.72 | 5.00 | 9.75 | 29.67 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-ES-CONTEXT-DEPENDENT` | fail | 6.70 | 6.72 | 5.00 | 9.75 | 28.17 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B02 · Mục đích bên trong liên quan đến trạng thái an nhiên tự tại.
+## B02 · Mục đích bên trong là mục đích chính, và mục đích này có liên quan đến trạng thái an nhiên tự tại của bạn.
 
-- Người xem cần cảm thấy: Nhịp xem hạ xuống và người xem cảm nhận được sự có mặt.
-- Người xem cần nhớ: Mục đích bên trong trước hết là trạng thái sống, không phải chức danh.
-- Kết quả: `selected` · chọn `CLICK-CLM-02-INNER-EASE-DIRECT`
-- Độ tin cậy thô: `0.94` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-SE-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-02-INNER-EASE-DIRECT` | pass | 0.98 | 0.94 | +0.04 | - |
-| 2 | `CLICK-CLM-02-INNER-EASE-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD |
-| 3 | `CLICK-CLM-02-INNER-EASE-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-SE-PRIMARY` | pass | 54.44 | 19.36 | 15.00 | 9.15 | 97.95 | - |
+| 2 | `CAND-CLICK-SE-MOOD-ONLY` | fail | 8.07 | 6.72 | 10.00 | 9.75 | 34.54 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-SE-CONTEXT-DEPENDENT` | fail | 6.57 | 6.72 | 10.00 | 9.75 | 33.04 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B03 · Mục đích bên ngoài dính tới những việc bạn làm và chỉ là mục đích phụ.
+## B03 · Mục đích bên ngoài dính tới những việc bạn làm, và đây chỉ là mục đích phụ.
 
-- Người xem cần cảm thấy: Thấy công việc rất cụ thể nhưng không bị tuyệt đối hóa.
-- Người xem cần nhớ: Công việc là một vai trò bên ngoài, không phải toàn bộ con người.
-- Kết quả: `selected` · chọn `CLICK-CLM-03-OUTER-WORK-DIRECT`
-- Độ tin cậy thô: `0.93` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-RK-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-03-OUTER-WORK-DIRECT` | pass | 0.98 | 0.93 | +0.04 | - |
-| 2 | `CLICK-CLM-03-OUTER-WORK-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD |
-| 3 | `CLICK-CLM-03-OUTER-WORK-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-RK-PRIMARY` | pass | 54.37 | 19.36 | 15.00 | 9.15 | 97.88 | - |
+| 2 | `CAND-CLICK-RK-MOOD-ONLY` | fail | 7.92 | 6.72 | 0.00 | 9.75 | 24.39 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-RK-CONTEXT-DEPENDENT` | fail | 6.42 | 6.72 | 0.00 | 9.75 | 22.89 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B04 · Mục đích bên trong của bạn là tỉnh thức.
+## B04 · Mục đích bên trong của bạn là tỉnh thức. Chỉ đơn giản có vậy thôi.
 
-- Người xem cần cảm thấy: Một khoảng dừng sáng rõ và không cần giải mã phức tạp.
-- Người xem cần nhớ: Tỉnh thức là nhìn thấy và sống trọn khoảnh khắc đang có.
-- Kết quả: `selected` · chọn `CLICK-CLM-04-AWAKE-DIRECT`
-- Độ tin cậy thô: `0.93` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-KE-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-04-AWAKE-DIRECT` | pass | 0.98 | 0.93 | +0.04 | - |
-| 2 | `CLICK-CLM-04-AWAKE-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD |
-| 3 | `CLICK-CLM-04-AWAKE-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-KE-PRIMARY` | pass | 54.34 | 19.36 | 15.00 | 9.15 | 97.85 | - |
+| 2 | `CAND-CLICK-KE-MOOD-ONLY` | fail | 7.88 | 6.72 | 10.00 | 9.75 | 34.35 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-KE-CONTEXT-DEPENDENT` | fail | 6.38 | 6.72 | 10.00 | 9.75 | 32.85 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B05 · Mục đích bên ngoài thay đổi; hòa điệu bên trong giúp hoàn thành điều bên ngoài.
+## B05 · Mục đích bên ngoài có thể thay đổi; sống hòa điệu với mục đích bên trong là cơ sở để hoàn thành mục đích bên ngoài.
 
-- Người xem cần cảm thấy: Thấy đời sống mở rộng nhưng không bị xé vụn bởi các vai trò.
-- Người xem cần nhớ: Vai trò có thể đổi, còn trạng thái bên trong quyết định cách mình đi qua chúng.
-- Kết quả: `selected` · chọn `CLICK-CLM-05-CHANGE-ALIGN-DIRECT`
-- Độ tin cậy thô: `0.85` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-GN-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-05-CHANGE-ALIGN-DIRECT` | pass | 0.86 | 0.90 | +0.04 | - |
-| 2 | `CLICK-CLM-05-CHANGE-ALIGN-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, CAUSAL_PROOF_REQUIRES_SEQUENCE |
-| 3 | `CLICK-CLM-05-CHANGE-ALIGN-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY, CAUSAL_PROOF_REQUIRES_SEQUENCE |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-GN-PRIMARY` | pass | 54.22 | 19.36 | 15.00 | 9.15 | 97.73 | - |
+| 2 | `CAND-CLICK-GN-MOOD-ONLY` | fail | 8.27 | 6.72 | 5.00 | 9.75 | 29.74 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-GN-CONTEXT-DEPENDENT` | fail | 6.77 | 6.72 | 5.00 | 9.75 | 28.24 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
 ## B06 · Đó là cơ sở của những thành công thực sự.
 
-- Người xem cần cảm thấy: Một nhịp xác nhận rõ ràng, không cần biết cốt truyện vẫn hiểu là có kết quả.
-- Người xem cần nhớ: Thành công thật có kết quả bên ngoài nhưng không đánh mất con người bên trong.
-- Kết quả: `selected` · chọn `CLICK-CLM-06-REAL-SUCCESS-DIRECT`
-- Độ tin cậy thô: `0.95` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-SS-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-06-REAL-SUCCESS-DIRECT` | pass | 1.00 | 0.95 | +0.04 | - |
-| 2 | `CLICK-CLM-06-REAL-SUCCESS-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD |
-| 3 | `CLICK-CLM-06-REAL-SUCCESS-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-SS-PRIMARY` | pass | 54.57 | 19.36 | 15.00 | 9.15 | 98.08 | - |
+| 2 | `CAND-CLICK-SS-MOOD-ONLY` | fail | 7.68 | 6.72 | 0.00 | 9.75 | 24.15 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-SS-CONTEXT-DEPENDENT` | fail | 6.18 | 6.72 | 0.00 | 9.75 | 22.65 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B07 · Không hòa điệu thì phải nỗ lực quá mức, đấu tranh và dùng thủ đoạn.
+## B07 · Khi bên ngoài không hòa điệu với bên trong, muốn đạt mục tiêu sẽ phải nỗ lực, đấu tranh và dùng thủ đoạn.
 
-- Người xem cần cảm thấy: Áp lực tăng nhanh, dồn dập và khó thở theo đúng nhịp voice.
-- Người xem cần nhớ: Càng lệch khỏi mình, cái giá đạt mục tiêu càng nhiều căng thẳng và xung đột.
-- Kết quả: `selected` · chọn `CLICK-CLM-07-MISALIGNMENT-DIRECT`
-- Độ tin cậy thô: `0.85` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-NT-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-07-MISALIGNMENT-DIRECT` | pass | 0.86 | 0.90 | +0.04 | - |
-| 2 | `CLICK-CLM-07-MISALIGNMENT-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, CAUSAL_PROOF_REQUIRES_SEQUENCE |
-| 3 | `CLICK-CLM-07-MISALIGNMENT-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY, CAUSAL_PROOF_REQUIRES_SEQUENCE |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-NT-PRIMARY` | pass | 54.21 | 19.36 | 15.00 | 9.15 | 97.72 | - |
+| 2 | `CAND-CLICK-NT-MOOD-ONLY` | fail | 8.26 | 6.72 | 0.00 | 9.75 | 24.73 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-NT-CONTEXT-DEPENDENT` | fail | 6.76 | 6.72 | 0.00 | 9.75 | 23.23 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
 
-## B08 · Hoàn tất mà không có niềm vui thì kết quả chỉ mang lại khổ đau cho mình và người chung quanh.
+## B08 · Khi ấy công việc hoàn tất không đem lại niềm vui, còn kết quả gây khổ đau cho mình và người chung quanh.
 
-- Người xem cần cảm thấy: Nhịp chậm lại để người xem kịp cảm thấy hậu quả và khoảng trống.
-- Người xem cần nhớ: Một kết quả khiến mình và người thân đau khổ không phải thành công thực sự.
-- Kết quả: `selected` · chọn `CLICK-CLM-08-NO-JOY-HARM-DIRECT`
-- Độ tin cậy thô: `0.85` (chưa hiệu chỉnh, không phải xác suất)
+- Kết quả: `selected` · chọn `CAND-CLICK-RM-PRIMARY`
 
-| Hạng | Phương án | Gate | Đúng nghĩa | Dễ hiểu | Taste | Lý do loại |
-|---:|---|---|---:|---:|---:|---|
-| 1 | `CLICK-CLM-08-NO-JOY-HARM-DIRECT` | pass | 0.86 | 0.90 | +0.04 | - |
-| 2 | `CLICK-CLM-08-NO-JOY-HARM-ANALOGY` | fail | 0.70 | 0.72 | +0.02 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, CAUSAL_PROOF_REQUIRES_SEQUENCE |
-| 3 | `CLICK-CLM-08-NO-JOY-HARM-MOOD` | fail | 0.10 | 0.34 | +0.03 | SEMANTIC_MATCH_BELOW_THRESHOLD, IMMEDIATE_COMPREHENSION_BELOW_THRESHOLD, MEANING_CARRIER_EMOTION_ONLY, CAUSAL_PROOF_REQUIRES_SEQUENCE |
+| Hạng | Phương án | Gate | Nghĩa /55 | Ngữ cảnh /20 | Flow /15 | Craft /10 | Tổng /100 | Lý do loại |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | `CAND-CLICK-RM-PRIMARY` | pass | 54.19 | 19.36 | 15.00 | 9.15 | 97.70 | - |
+| 2 | `CAND-CLICK-RM-MOOD-ONLY` | fail | 8.22 | 6.72 | 10.00 | 9.75 | 34.69 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |
+| 3 | `CAND-CLICK-RM-CONTEXT-DEPENDENT` | fail | 6.72 | 6.72 | 10.00 | 9.75 | 33.19 | DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD, LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD, SILENT_COMPREHENSION_BELOW_THRESHOLD, VOICE_CONTEXT_FIT_BELOW_THRESHOLD, LIVED_PROTOTYPE_MISMATCH, PLOT_KNOWLEDGE_REQUIRED, MEANING_CARRIER_EMOTION_ONLY, RELATION_STRATEGY_MISMATCH |

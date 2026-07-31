@@ -1,0 +1,51 @@
+{
+  "schema": "tpr.film_casting_decision.single_film.v1",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+  "decision_stage": "before_shot_selection",
+  "hard_rules": [
+    "Khóa đúng một phim cho mỗi video trước khi chọn cảnh.",
+    "Phim phải phủ đủ 8/8 claim bắt buộc; thiếu một claim thì loại cả phim.",
+    "Không dùng phim phụ, cảnh vá hoặc cảnh chỉ hiểu nhờ thoại/cốt truyện.",
+    "Dễ hiểu và liên tưởng trực tiếp đứng trước ngữ cảnh, flow và craft."
+  ],
+  "selected": [
+    {
+      "variant_id": "soul",
+      "film_id": "FILM-SOUL",
+      "film_title": "Soul",
+      "claim_coverage": "8/8",
+      "whole_video_reason_vi": "Có đủ trạng thái hướng nội, công việc, hiện diện, thành tựu nhận cúp, xung đột và hậu quả cảm xúc trong cùng một thế giới hình ảnh."
+    },
+    {
+      "variant_id": "click",
+      "film_id": "FILM-CLICK",
+      "film_title": "Click",
+      "claim_coverage": "8/8",
+      "whole_video_reason_vi": "Tuyến công việc-thăng tiến-gia đình-mất kiểm soát-hối tiếc tự mang nghĩa khi tắt tiếng và gần đời sống người đi làm."
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_id": "FILM-FORREST-GUMP",
+      "film_title": "Forrest Gump",
+      "claim_coverage": "8/8",
+      "whole_video_reason_vi": "Một đời người có suy ngẫm, lao động, tốt nghiệp, được công nhận, áp lực, xung đột và mất mát; các mốc trực tiếp giữ được mạch xuyên phim."
+    }
+  ],
+  "rejected": [
+    {
+      "film_title": "About Time",
+      "claim_coverage": "7/8",
+      "reason_vi": "Phủ tốt hiện diện và gia đình nhưng kho hiện có thiếu bằng chứng thành công công khai đủ trực tiếp."
+    },
+    {
+      "film_title": "Up in the Air",
+      "claim_coverage": "6/8",
+      "reason_vi": "Phủ công việc và cô lập nhưng yếu ở an nhiên, tỉnh thức và thành công có kết quả nhìn thấy rõ."
+    },
+    {
+      "film_title": "Whiplash",
+      "claim_coverage": "5/8",
+      "reason_vi": "Phủ rất mạnh áp lực và thành tựu nhưng không đủ trạng thái hướng nội an nhiên cho nửa đầu voice."
+    }
+  ]
+}

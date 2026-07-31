@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-single-film-v2-20260731-FORREST-GUMP-forrest-gump",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-FORREST-GUMP",
+  "variant_id": "forrest-gump",
+  "status": "pass",
+  "lock_mode": "one_film_per_video_strict",
+  "locked_film_id": "FILM-FORREST-GUMP",
+  "locked_profile_id": "PROFILE-FORREST-GUMP",
+  "portfolio_ref": {
+    "path": "content/film_source_portfolio.json",
+    "sha256": "abb40fc338abb5c412fe46a9db8619963f9107f7fad9725a8fc8ec465ea7cd20"
+  },
+  "edit_plan_sha256": "sha256:667b337a9ff4d27ecccd0131f6b8707d103293ff036f6248a1b267f25ff15bf4",
+  "shot_count": 14,
+  "observed_film_ids": [
+    "FILM-FORREST-GUMP"
+  ],
+  "foreign_shot_ids": [],
+  "missing_identity_shot_ids": [],
+  "shots": [
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-ALONE-NATURE",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:3fd92bd14b3336724d48cd880d4b42c47640e06273bf789b0bf1e8ab031a51c8",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-PRIMARY-02",
+      "asset_id": "ASSET-FORREST-BOAT",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:5dd960b461e51b0af03554ccf0f74cdf3e73eea5fa163d47093f7dd71c7b6517",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-PRESENT-WALK",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:79cd8d88edae2be74aabee3873c86bbcd44108274248a0ec5c5823cf99081194",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-MOW",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:056fa15204d92a89b729f1b7e1cebadfd2aa34f97b4408dc49082e53de398a11",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-LISTEN",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:85c569cc4dbdf3391b7cd46aa91a6e6b4ee083c8acdeecff0f48d71446db329b",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-ALIGNED-RUN",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:4f9ea673e67f63b64991e41ddb35988f53321d61637185b40d50bf4a35beaf4c",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-PRIMARY-02",
+      "asset_id": "ASSET-FORREST-GRADUATION",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:3a70f42c59a7af90587ddffff1925685409ac44ef57faccc265a455e4111e9d0",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-RECOGNITION",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:901f10d8a9f4d7ce5bb5406513346f87c101bc91e75d8f78e8bc68cb4641d835",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-WAR",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:52d85daff47f7fecb88c3a69c88096a0d84ff0ba1d91c601f5f847d9ad29a4c2",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-PRIMARY-02",
+      "asset_id": "ASSET-FORREST-DRILL-PRESSURE",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:1d48b55618e1d431765f239e8eeb7a4c2a501050b83e347490eb57e0dd4bd22c",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-PRIMARY-03",
+      "asset_id": "ASSET-FORREST-CONFRONTATION",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:515e5dad3a1466d38a972a5925b578f3e6c8752c0beccd43d9a39523de20a579",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-PRIMARY-01",
+      "asset_id": "ASSET-FORREST-NO-JOY",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:cf9e6875870e900ee90d0480f89ede17e8f92c6ef117a2bd15d1c56e9a7fa833",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-PRIMARY-02",
+      "asset_id": "ASSET-FORREST-RELATIONSHIP-CONFLICT",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:6387de9e334c634cd4d1b41a0f8e67e14aee0ff37fba3f3df037b229213f6cc3",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-PRIMARY-03",
+      "asset_id": "ASSET-FORREST-LOSS",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_sha256": "sha256:7dd8ee63846e534d8dfe9f0e27b0ac095bfc958d2d3fdbca0824e7697825fe2c",
+      "matches_locked_film": true
+    }
+  ],
+  "checks": {
+    "portfolio_sealed": true,
+    "one_assignment": true,
+    "all_shots_identified": true,
+    "all_shots_match_locked_film": true
+  },
+  "report_sha256": "sha256:7697059241187b7a16f3f72185244997761ac79e408801867bb30752aa2f13cd",
+  "created_at": "2026-07-31T07:53:44+07:00"
+}

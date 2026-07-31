@@ -1,0 +1,22 @@
+{
+  "schema": "tpr.film_source_portfolio.single_film.v1",
+  "portfolio_id": "PORTFOLIO-RUN-muc-dich-doi-song-single-film-v2-20260731-soul",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-SOUL",
+  "status": "sealed",
+  "selection_policy": "whole_voice_coverage_then_one_film_lock",
+  "one_film_per_variant_strict": true,
+  "secondary_sources_allowed": false,
+  "assignments": [
+    {
+      "variant_id": "soul",
+      "film_id": "FILM-SOUL",
+      "profile_id": "PROFILE-SOUL",
+      "film_title": "Soul",
+      "role": "exclusive_anchor"
+    }
+  ],
+  "approval": {
+    "status": "approved",
+    "mode": "owner_full_autopilot"
+  }
+}

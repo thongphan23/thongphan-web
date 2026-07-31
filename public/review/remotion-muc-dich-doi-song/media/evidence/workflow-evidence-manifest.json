@@ -1,0 +1,104 @@
+{
+  "schema": "tpr.workflow_evidence_manifest.single_film.v1",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+  "status": "pass",
+  "entry_count": 23,
+  "entries": [
+    {
+      "path": "shared/content/transcript_approved.json",
+      "sha256": "sha256:f326b205a17c94f33dcf842eafba463579dd05d091636ea1a7bc996464cd5ae0"
+    },
+    {
+      "path": "shared/content/subtitles.json",
+      "sha256": "sha256:8566b4b621bb9218d96affa53ac3c3fa1173128eea516119e6b02649f61ff53d"
+    },
+    {
+      "path": "content/claim_timeline.json",
+      "sha256": "sha256:d1acb2cd3beaf809a9e5d459a4c4c520f30d7c00a81215375728e5cd0dd9b982"
+    },
+    {
+      "path": "content/film_casting_decision.json",
+      "sha256": "sha256:78d6ede07cffb144c965d10955014783a77a277bbcae582cdf319b2cfc6eb1e3"
+    },
+    {
+      "path": "content/single_film_visual_mapping.md",
+      "sha256": "sha256:e586855db56baa04865633616e5aa2e0c8f3acc9aaec32dd6893721b3cfca884"
+    },
+    {
+      "path": "content/visual_scorecard_comparison.md",
+      "sha256": "sha256:51ecb466e575cf0cc8a484035ec372a46b528f85207bf9500071fde65e14a3ad"
+    },
+    {
+      "path": "audit/single_film_batch_verification.json",
+      "sha256": "sha256:a78f4705ca0671a4a00e8f3437c3736de6627f3c3bfbf6450e21a1ed147ad571"
+    },
+    {
+      "path": "content/render_qa_report.json",
+      "sha256": "sha256:ac2f5d89480f8f6c3f4fe2d958790541e4bf6b058332ee54cafc41389054aa82"
+    },
+    {
+      "path": "variants/soul/content/film_source_portfolio.json",
+      "sha256": "sha256:dfe60b49724c8322c5666959ef906ca925fc01577af0a11a27cc52d8d8b3995f"
+    },
+    {
+      "path": "variants/soul/content/visual_proposition_graph.json",
+      "sha256": "sha256:8000f2253448e55eb3a03f88245d58e4407dbe249c686899459ef68c269adf57"
+    },
+    {
+      "path": "variants/soul/content/edit_plan.json",
+      "sha256": "sha256:f5bf2279f4bc2ac92bf78952aed215954f7361e77ba4635cb2a034ae197ac3df"
+    },
+    {
+      "path": "variants/soul/content/single_film_continuity_report.json",
+      "sha256": "sha256:6026b0c112ed8ce3d0d3fe7703cb720af0d1b54fdfbc06e59329e6d6af7e0106"
+    },
+    {
+      "path": "variants/soul/audit/render-qa-receipt.json",
+      "sha256": "sha256:e57f80c214bd1964d16e3372aa1c1014eadd488b9b20c23498ce2fca55e7986c"
+    },
+    {
+      "path": "variants/click/content/film_source_portfolio.json",
+      "sha256": "sha256:666719e89a815166f831ea89e3d7a4d552fefca2bfb5ed56175cc99d00a2b925"
+    },
+    {
+      "path": "variants/click/content/visual_proposition_graph.json",
+      "sha256": "sha256:9061d687fa93dcc4b599e48a004bfe012811e13fec280e3cfe8e5da34aee2bb0"
+    },
+    {
+      "path": "variants/click/content/edit_plan.json",
+      "sha256": "sha256:de41da059f772d36b7197e1c2b4ac6faa1103a1705a7245cb069c9b620853d09"
+    },
+    {
+      "path": "variants/click/content/single_film_continuity_report.json",
+      "sha256": "sha256:c72f60cf4521934eddb9a70898ba31b2e5d4cece49e6de7c3849ccf1fba34e7b"
+    },
+    {
+      "path": "variants/click/audit/render-qa-receipt.json",
+      "sha256": "sha256:1a840d9cad3f5fb23fd8c12b6bee733778a8077c13aa2363ff18ffbefcba253c"
+    },
+    {
+      "path": "variants/forrest-gump/content/film_source_portfolio.json",
+      "sha256": "sha256:abb40fc338abb5c412fe46a9db8619963f9107f7fad9725a8fc8ec465ea7cd20"
+    },
+    {
+      "path": "variants/forrest-gump/content/visual_proposition_graph.json",
+      "sha256": "sha256:5172eac5b4c7170d76fb16c45c207f2ebb9c3feea36853cfdfc096c5dbb2f7a3"
+    },
+    {
+      "path": "variants/forrest-gump/content/edit_plan.json",
+      "sha256": "sha256:377a8354d6305ed3f6c147cc5cc977a8ceff25b7532b929a4166ccab369a450a"
+    },
+    {
+      "path": "variants/forrest-gump/content/single_film_continuity_report.json",
+      "sha256": "sha256:71d9fd50e2d6ab65646326bfa6a82331ccca6860d5414ff6741a1696f6b64775"
+    },
+    {
+      "path": "variants/forrest-gump/audit/render-qa-receipt.json",
+      "sha256": "sha256:11b6f7a50ed0fc77784a0b8261ca2092f07101fee4c3d4898dbc798adfedcafd"
+    }
+  ],
+  "verification": {
+    "all_files_exist": true,
+    "all_sha256_computed_from_disk": true
+  }
+}

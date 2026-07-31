@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-single-film-v2-20260731-CLICK-click",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-CLICK",
+  "variant_id": "click",
+  "status": "pass",
+  "lock_mode": "one_film_per_video_strict",
+  "locked_film_id": "FILM-CLICK",
+  "locked_profile_id": "PROFILE-CLICK",
+  "portfolio_ref": {
+    "path": "content/film_source_portfolio.json",
+    "sha256": "666719e89a815166f831ea89e3d7a4d552fefca2bfb5ed56175cc99d00a2b925"
+  },
+  "edit_plan_sha256": "sha256:ed2af22ad5eada98d1959b8040b5b5cca82c7c54ec8edc1f5e9024161f3b36cc",
+  "shot_count": 16,
+  "observed_film_ids": [
+    "FILM-CLICK"
+  ],
+  "foreign_shot_ids": [],
+  "missing_identity_shot_ids": [],
+  "shots": [
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-ES-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-INWARD",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:6549847b3f827941018f4e6aaadf5b3742b72d9cdff279ac46ebd817890d31b3",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-ES-PRIMARY-02",
+      "asset_id": "ASSET-CLICK-WORK-PHONE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:5566d5eb7bfefdccef7d582c2b82d0f03d6d292cb7eb9a14273e66dbe17c260e",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-SE-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-FAMILY-PLAY",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:dee29f32c80e341f933cc13cc3c2f0e7cbd461a72df97ccd821f234a3e06bb88",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-SE-PRIMARY-02",
+      "asset_id": "ASSET-CLICK-POSITIVE-PRESENCE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:1c4777d18639bcbec5c9e9c31cd2c9588609a77edba0d3a1500f2e269ddba9cf",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-RK-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-WORK-LATE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:bb3ac8512e2e913668bb8f16e8545270a8247ed554f2d7a01a4a3a89e7f05da8",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-KE-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-FAMILY-PRESENT",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:4541fe6ca426ffa08eba323595f984e3618942dd8b0d7d721ffea55a63d9a000",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-GN-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-ALIGNMENT",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:83ba7af16e3ac5096f85168e48eec0c69cec5ca0df7800ef22cc9f419002dd7e",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-GN-PRIMARY-02",
+      "asset_id": "ASSET-CLICK-PROMOTION-RESULT",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:3d01182da8231cecc3ffb888772f499a2278a41f1e2a2105514cf975cfe0d4a6",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-GN-PRIMARY-03",
+      "asset_id": "ASSET-CLICK-PROFESSIONAL-RESULT",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:6da25eeafda93361022e7704fcc623d5acdabef9fa5095a5fd71c170345cc70f",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-SS-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-PUBLIC-APPROVAL",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:4a3b1bf9409bb535e54101d2437311f39d237bdf129ca75763be2960b1940f6d",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-NT-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-BOSS-PRESSURE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:c130983e73f7f815152a7be206fbe3ef1484ef83d8e49bf6298821ae076ea633",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-NT-PRIMARY-02",
+      "asset_id": "ASSET-CLICK-CONFRONTATION",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:e39f75eb6aa85c0eecec50ecef3c6d3535dd484e59ba466d02325cbe8db97f86",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-NT-PRIMARY-03",
+      "asset_id": "ASSET-CLICK-LOST-CONTROL",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:3c1fcd89dbf5d0615fdab890b2242b0d0ddbd5d57c3cf09265f6fc6c4666ebe2",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-RM-PRIMARY-01",
+      "asset_id": "ASSET-CLICK-COLLAPSE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:70503938317431e5cdee8da8c61578607cded95a8ecb3266abe5650ce826801e",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-RM-PRIMARY-02",
+      "asset_id": "ASSET-CLICK-PARTNER-ALONE",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:aa55bfe0173d3364e0c53d954b794a971d4a1626de5854208baa5a2864b4e350",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-CLICK-CAND-CLICK-RM-PRIMARY-03",
+      "asset_id": "ASSET-CLICK-GRIEF",
+      "film_id": "FILM-CLICK",
+      "source_sha256": "sha256:4b7a5bb76d7608f9c3a3635ca452a0f216c7a9e6d10ab6a13b841889c09db0d1",
+      "matches_locked_film": true
+    }
+  ],
+  "checks": {
+    "portfolio_sealed": true,
+    "one_assignment": true,
+    "all_shots_identified": true,
+    "all_shots_match_locked_film": true
+  },
+  "report_sha256": "sha256:0b95594f2c5d05c0aef4fa79b189ccd561e0009160f6d73305d0da7a3b6e9349",
+  "created_at": "2026-07-31T07:53:44+07:00"
+}

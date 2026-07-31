@@ -9,12 +9,12 @@ const mediaRoot = new URL(
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 
 const videos = [
-  'direct-proof-visual-semantic-v1-web.mp4',
-  'soul-centered-visual-semantic-v1-web.mp4',
-  'office-human-visual-semantic-v1-web.mp4',
+  'soul-single-film-v2-web.mp4',
+  'click-single-film-v2-web.mp4',
+  'forrest-gump-single-film-v2-web.mp4',
 ]
 
-test('review route is private-by-discovery and exposes exactly three visual-semantic variants', async () => {
+test('review route is private-by-discovery and exposes exactly three single-film variants', async () => {
   const [page, gallery] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -22,16 +22,18 @@ test('review route is private-by-discovery and exposes exactly three visual-sema
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.equal((gallery.match(/id:\s*['"](?:direct-proof|soul-centered|office-human)['"]/g) ?? []).length, 3)
+  assert.equal((gallery.match(/id:\s*['"](?:soul|click|forrest-gump)['"]/g) ?? []).length, 3)
   assert.match(gallery, /preload="metadata"/)
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
-  assert.equal((gallery.match(/visual-semantic-v1-web\.mp4/g) ?? []).length, 3)
+  assert.equal((gallery.match(/single-film-v2-web\.mp4/g) ?? []).length, 3)
   assert.equal((gallery.match(/evidenceHref:/g) ?? []).length, 3)
+  assert.equal((gallery.match(/continuityHref:/g) ?? []).length, 3)
   assert.match(gallery, /Mở quyết định hình ảnh/)
+  assert.match(gallery, /Mở kiểm tra một-phim/)
   assert.match(gallery, /scorecardHref:/)
-  assert.doesNotMatch(gallery, /media\/(?:about-time|click|up-in-the-air)-visual-proposition/)
+  assert.doesNotMatch(gallery, /direct-proof|soul-centered|office-human/)
   assert.doesNotMatch(gallery, /autoPlay/)
 })
 
@@ -39,16 +41,22 @@ test('review handoff exposes the traceable visual-proposition evidence packet', 
   const evidenceRoot = new URL('evidence/', mediaRoot)
   for (const filename of [
     'workflow-evidence-index.json',
+    'workflow-evidence-manifest.json',
     'render-qa-report.json',
     'claim-timeline.json',
-    'source-reuse-report.json',
+    'film-casting-decision.json',
+    'single-film-batch-verification.json',
+    'single-film-visual-mapping.md',
     'scorecard-comparison.md',
-    'direct-proof-visual-selection-review.md',
-    'soul-centered-visual-selection-review.md',
-    'office-human-visual-selection-review.md',
-    'direct-proof-visual-proposition-graph.json',
-    'soul-centered-visual-proposition-graph.json',
-    'office-human-visual-proposition-graph.json',
+    'soul-visual-selection-review.md',
+    'click-visual-selection-review.md',
+    'forrest-gump-visual-selection-review.md',
+    'soul-visual-proposition-graph.json',
+    'click-visual-proposition-graph.json',
+    'forrest-gump-visual-proposition-graph.json',
+    'soul-single-film-continuity-report.json',
+    'click-single-film-continuity-report.json',
+    'forrest-gump-single-film-continuity-report.json',
   ]) {
     await access(new URL(filename, evidenceRoot))
   }

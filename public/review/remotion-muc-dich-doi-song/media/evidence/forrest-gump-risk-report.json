@@ -1,0 +1,23 @@
+{
+  "schema": "tpr.visual_selection_risk_report.v2",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-FORREST-GUMP",
+  "status": "pass",
+  "blocked_claim_ids": [],
+  "hard_failure_counts": {
+    "DIRECT_KEYWORD_ASSOCIATION_BELOW_THRESHOLD": 16,
+    "LITERAL_SEMANTIC_ENTAILMENT_BELOW_THRESHOLD": 16,
+    "LIVED_PROTOTYPE_MISMATCH": 16,
+    "MEANING_CARRIER_EMOTION_ONLY": 16,
+    "PLOT_KNOWLEDGE_REQUIRED": 8,
+    "RELATION_STRATEGY_MISMATCH": 16,
+    "SILENT_COMPREHENSION_BELOW_THRESHOLD": 16,
+    "VOICE_CONTEXT_FIT_BELOW_THRESHOLD": 16
+  },
+  "residual_risks_vi": [
+    "Điểm chưa hiệu chỉnh không phải xác suất.",
+    "Đánh giá viewer và craft phải giữ provenance tới người/model quan sát.",
+    "Blind review sau render vẫn là bằng chứng cuối về khả năng hiểu."
+  ],
+  "visual_proposition_graph_sha256": "sha256:b3e64728a713b6f25f02978455b02ce59de3a702bb0a4c9ced531aad3754964e",
+  "created_at": "2026-07-31T07:53:43+07:00"
+}

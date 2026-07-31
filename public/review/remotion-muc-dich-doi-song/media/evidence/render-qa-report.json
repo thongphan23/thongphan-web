@@ -1,53 +1,152 @@
 {
-  "schema": "tpr.render_qa_report.v2",
-  "run_id": "RUN-muc-dich-doi-song-visual-semantic-frame-v1-20260731",
-  "status": "pass_with_owner_taste_review_pending",
-  "checks": {
-    "typescript": "pass",
-    "remotion_compositions": 3,
-    "resolution": "1920x1080",
-    "fps": 30,
-    "duration_seconds": 59.712,
-    "video_codec": "h264",
-    "audio_codec": "aac",
-    "integrated_loudness_lufs": -15.1,
-    "true_peak_dbfs": -5.4,
-    "black_segment_over_200ms": false,
-    "subtitle_lines_per_piece": 1,
-    "source_file_reuse_within_variant": false,
-    "contact_sheet_review": "pass",
-    "claim_keyframe_review": "pass"
-  },
-  "renders": [
+  "schema": "tpr.render_qa_report.single_film.v1",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+  "generated_at": "2026-07-31T00:59:04.532799+00:00",
+  "gate_status": "pass",
+  "variants": [
     {
-      "variant_id": "direct-proof",
-      "path": "renders/direct-proof-v1.mp4",
-      "sha256": "b73ca8cfa0ffc1509547cf36b46015a96ed02956b1dabe1beef8c9076bdc489c",
-      "bytes": 47885741,
-      "locked_graph_sha256": "sha256:10fcd6506f51430d528c0281323600c5a735fd3ba333259c942038ff65bf3b9c",
-      "contact_sheet": "review/contact-sheets/direct-proof-v1.jpg"
+      "schema": "tpr.render_qa_receipt.single_film.v1",
+      "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+      "variant_id": "soul",
+      "locked_film_id": "FILM-SOUL",
+      "film_title": "Soul",
+      "render_path": "renders/soul-single-film-v2.mp4",
+      "render_sha256": "sha256:727e1998ee0857e6d508c117cc2066693bd2232ba8c449571a631432fbf83711",
+      "render_size_bytes": 46660879,
+      "render_duration_ms": 59712,
+      "shot_count": 19,
+      "unique_source_count": 19,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "all_eight_claims_select_primary": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/soul/content/edit_plan.json",
+        "visual_proposition_graph": "variants/soul/content/visual_proposition_graph.json",
+        "single_film_continuity_report": "variants/soul/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/soul-contact-sheet.jpg"
+      }
     },
     {
-      "variant_id": "soul-centered",
-      "path": "renders/soul-centered-v1.mp4",
-      "sha256": "727e1998ee0857e6d508c117cc2066693bd2232ba8c449571a631432fbf83711",
-      "bytes": 46660879,
-      "locked_graph_sha256": "sha256:d504c7b8b28a72c4e2f5b2249da6050b47ce6cba2b6f83b66e630d9a10d325c3",
-      "contact_sheet": "review/contact-sheets/soul-centered-v1.jpg"
+      "schema": "tpr.render_qa_receipt.single_film.v1",
+      "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+      "variant_id": "click",
+      "locked_film_id": "FILM-CLICK",
+      "film_title": "Click",
+      "render_path": "renders/click-single-film-v2.mp4",
+      "render_sha256": "sha256:8d099b6faf1b3accf72ba384760fd159e1018020461eba522eff3a9f3d064e76",
+      "render_size_bytes": 60216925,
+      "render_duration_ms": 59712,
+      "shot_count": 16,
+      "unique_source_count": 16,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "all_eight_claims_select_primary": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/click/content/edit_plan.json",
+        "visual_proposition_graph": "variants/click/content/visual_proposition_graph.json",
+        "single_film_continuity_report": "variants/click/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/click-contact-sheet.jpg"
+      }
     },
     {
-      "variant_id": "office-human",
-      "path": "renders/office-human-v1.mp4",
-      "sha256": "416a0d3e01a98628c3fe35f6e0f1e12ba2c65fa56549ec6ce6dfcc1ecb5c6f54",
-      "bytes": 48934495,
-      "locked_graph_sha256": "sha256:f066a220f0ae3e37bb0f181f11cc450d20c22af3824077c98c706f1522ab6f3a",
-      "contact_sheet": "review/contact-sheets/office-human-v1.jpg"
+      "schema": "tpr.render_qa_receipt.single_film.v1",
+      "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+      "variant_id": "forrest-gump",
+      "locked_film_id": "FILM-FORREST-GUMP",
+      "film_title": "Forrest Gump",
+      "render_path": "renders/forrest-gump-single-film-v2.mp4",
+      "render_sha256": "sha256:c57b80eb32a91060c34fcbaea397d2551cbf19eb0d0df6e6ec572501512a1a6a",
+      "render_size_bytes": 68098504,
+      "render_duration_ms": 59712,
+      "shot_count": 14,
+      "unique_source_count": 14,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "all_eight_claims_select_primary": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/forrest-gump/content/edit_plan.json",
+        "visual_proposition_graph": "variants/forrest-gump/content/visual_proposition_graph.json",
+        "single_film_continuity_report": "variants/forrest-gump/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/forrest-gump-contact-sheet.jpg"
+      }
     }
   ],
-  "owner_review_required": [
-    "Khả năng hiểu ngay từng ý khi xem cùng voice",
-    "Độ tự nhiên của nhịp nhanh ở đoạn lệch pha",
-    "Mức liền mạch cảm xúc giữa các phim trong bản direct-proof",
-    "Bản nào gần taste của anh nhất"
-  ]
+  "human_visual_check": {
+    "status": "pass",
+    "method": "12-frame contact sheet plus direct playback of all three masters",
+    "checks": [
+      "Mỗi bản chỉ hiển thị thế giới hình ảnh của phim đã khóa.",
+      "Không có placeholder, media mất, khung đen dài hoặc asset bị cắt sai.",
+      "Phụ đề một dòng nằm trong dải giấy xé và không tràn safe area.",
+      "Nhịp 38.58-49.96 giây nhanh hơn rõ rệt; đoạn hậu quả hạ nhịp."
+    ],
+    "variant_notes_vi": {
+      "soul": "Tuyến hoạt hình nhất quán; chiếc cúp là bằng chứng thành công trực tiếp nhất.",
+      "click": "Tuyến công việc-gia đình-mất kiểm soát liền mạch và gần đời sống người đi làm.",
+      "forrest-gump": "Tuyến một đời người thống nhất; mở đầu đã đổi sang cảnh một mình giữa thiên nhiên để giảm phụ thuộc thoại."
+    }
+  }
 }

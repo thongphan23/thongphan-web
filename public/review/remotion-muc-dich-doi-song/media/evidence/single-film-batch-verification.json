@@ -1,0 +1,40 @@
+{
+  "schema": "tpr.single_film_batch_verification.v1",
+  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+  "status": "pass",
+  "checks": [
+    {
+      "variant_id": "soul",
+      "locked_film_id": "FILM-SOUL",
+      "observed_film_ids": [
+        "FILM-SOUL"
+      ],
+      "shot_count": 19,
+      "foreign_shot_count": 0,
+      "missing_identity_count": 0,
+      "status": "pass"
+    },
+    {
+      "variant_id": "click",
+      "locked_film_id": "FILM-CLICK",
+      "observed_film_ids": [
+        "FILM-CLICK"
+      ],
+      "shot_count": 16,
+      "foreign_shot_count": 0,
+      "missing_identity_count": 0,
+      "status": "pass"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "locked_film_id": "FILM-FORREST-GUMP",
+      "observed_film_ids": [
+        "FILM-FORREST-GUMP"
+      ],
+      "shot_count": 14,
+      "foreign_shot_count": 0,
+      "missing_identity_count": 0,
+      "status": "pass"
+    }
+  ]
+}
