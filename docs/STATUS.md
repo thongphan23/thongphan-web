@@ -2,7 +2,7 @@
 
 Last updated: 2026-07-31
 
-## Remotion Visual Fit Calibration v2 owner-review round — release candidate — 2026-07-31
+## Remotion Visual Fit Calibration v2 owner-review round — production release — 2026-07-31
 
 - Rebuilt the same authoritative 59.652-second voice as three 59.712-second
   one-film variants: `Soul`, `Forrest Gump` and `A Beautiful Mind`.
@@ -17,8 +17,11 @@ Last updated: 2026-07-31
   source reuse, zero foreign-film shots, 1080p H.264/AAC, -15.1 LUFS, one-line
   word-locked subtitles, and no black/freeze interval over the configured limits.
 - Review route, evidence bundle and 720p fast-start media pass production build,
-  focused ESLint and Playwright QA at desktop and `390x844`. Deployment is pending
-  in this release-candidate entry.
+  focused ESLint and Playwright QA at desktop and `390x844`. Production deployment
+  `d8910edd` serves source `94bf7ba`; all three production players reach
+  `readyState=4`, advance playback and report the expected 59.712-second duration.
+  Full evidence:
+  `docs/releases/REMOTION_VISUAL_FIT_V2_PRODUCTION_RELEASE-2026-07-31.md`.
 
 ## Remotion Observable Expression v1 owner-review round — production release — 2026-07-31
 
