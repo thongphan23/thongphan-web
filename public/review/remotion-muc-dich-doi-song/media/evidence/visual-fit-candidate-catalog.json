@@ -1,0 +1,38 @@
+{
+  "schema": "tpr.visual_fit_candidate_catalog.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "selection_status": "not_selected",
+  "observer_input_policy": "silent_no_voice_no_subtitles_answer_hidden",
+  "variants": [
+    {
+      "variant_id": "soul",
+      "film_title": "Soul",
+      "claim_count": 8,
+      "candidate_count": 24,
+      "matrix_paths": [
+        "candidate-previews/soul-matrix-1.jpg",
+        "candidate-previews/soul-matrix-2.jpg"
+      ]
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_title": "Forrest Gump",
+      "claim_count": 8,
+      "candidate_count": 24,
+      "matrix_paths": [
+        "candidate-previews/forrest-gump-matrix-1.jpg",
+        "candidate-previews/forrest-gump-matrix-2.jpg"
+      ]
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "film_title": "A Beautiful Mind",
+      "claim_count": 8,
+      "candidate_count": 24,
+      "matrix_paths": [
+        "candidate-previews/a-beautiful-mind-matrix-1.jpg",
+        "candidate-previews/a-beautiful-mind-matrix-2.jpg"
+      ]
+    }
+  ]
+}

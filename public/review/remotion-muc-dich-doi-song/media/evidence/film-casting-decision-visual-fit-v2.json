@@ -1,0 +1,26 @@
+{
+  "schema": "tpr.film_casting_decision.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "decision_stage": "before_shot_selection",
+  "one_film_per_variant": true,
+  "selected": [
+    {
+      "variant_id": "soul",
+      "film_title": "Soul",
+      "claim_coverage": "8/8",
+      "reason_vi": "Biểu cảm, cúp, công việc, xung đột và nỗi đau đều đọc được khi tắt tiếng."
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_title": "Forrest Gump",
+      "claim_coverage": "8/8",
+      "reason_vi": "Một tuyến đời người có suy ngẫm riêng tư, lao động, công nhận và mất mát hữu hình."
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "film_title": "A Beautiful Mind",
+      "claim_coverage": "8/8",
+      "reason_vi": "Suy ngẫm, lao động trí tuệ, Nobel và hệ quả đau khổ cùng tồn tại trong một tuyến nhân vật."
+    }
+  ]
+}

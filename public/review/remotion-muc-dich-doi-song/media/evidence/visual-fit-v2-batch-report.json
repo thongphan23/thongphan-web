@@ -1,0 +1,424 @@
+{
+  "schema": "tpr.visual_fit_v2_batch_report.v1",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "status": "pass",
+  "policy": {
+    "preselection_forbidden": true,
+    "same_claim_provenance_required": true,
+    "minimum_candidates_per_claim": 3,
+    "minimum_eligible_competitors": 2,
+    "silent_rendered_preview_required": true,
+    "quality_probability": null,
+    "owner_fit_status": "unavailable_until_owner_review"
+  },
+  "rows": [
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "selected_candidate_id": "CAND-SOUL-ES-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-02-INNER-EASE",
+      "selected_candidate_id": "CAND-SOUL-SE-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "selected_candidate_id": "CAND-SOUL-RK-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-04-AWAKE",
+      "selected_candidate_id": "CAND-SOUL-KE-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "selected_candidate_id": "CAND-SOUL-GN-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "selected_candidate_id": "CAND-SOUL-SS-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "selected_candidate_id": "CAND-SOUL-NT-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "soul",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "selected_candidate_id": "CAND-SOUL-RM-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "selected_candidate_id": "CAND-FORREST-GUMP-ES-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-02-INNER-EASE",
+      "selected_candidate_id": "CAND-FORREST-GUMP-SE-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "selected_candidate_id": "CAND-FORREST-GUMP-RK-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-04-AWAKE",
+      "selected_candidate_id": "CAND-FORREST-GUMP-KE-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "selected_candidate_id": "CAND-FORREST-GUMP-GN-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "selected_candidate_id": "CAND-FORREST-GUMP-SS-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "selected_candidate_id": "CAND-FORREST-GUMP-NT-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "forrest-gump",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "selected_candidate_id": "CAND-FORREST-GUMP-RM-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-02-INNER-EASE",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-04-AWAKE",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "selected_candidate_id": "CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL",
+      "competition_status": "sufficient",
+      "eligible_candidate_count": 3,
+      "blind_decode_score": 1.0,
+      "evidence_grade": "B",
+      "quality_probability": null,
+      "owner_fit": {
+        "status": "unavailable",
+        "probability": null,
+        "sample_count": 0,
+        "false_high_rate": null,
+        "basis": "taste_snapshot_missing"
+      }
+    }
+  ]
+}

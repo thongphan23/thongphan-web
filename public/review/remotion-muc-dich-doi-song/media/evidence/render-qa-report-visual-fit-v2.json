@@ -1,0 +1,167 @@
+{
+  "schema": "tpr.render_qa_report.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "generated_at": "2026-07-31T17:40:22.559849+00:00",
+  "gate_status": "pass",
+  "variants": [
+    {
+      "schema": "tpr.render_qa_receipt.visual_fit.v2",
+      "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+      "variant_id": "soul",
+      "locked_film_id": "FILM-SOUL",
+      "film_title": "Soul",
+      "render_path": "renders/soul-visual-fit-v2.mp4",
+      "render_sha256": "sha256:5f747a04c8b2f846740d128d53c8ec9e613104a2d71f29d9f2b8b4ef62396262",
+      "render_size_bytes": 46714284,
+      "render_duration_ms": 59712,
+      "shot_count": 19,
+      "unique_source_count": 19,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "visual_expression_plan_sealed": true,
+        "all_eight_claims_have_observable_carriers": true,
+        "all_selected_candidates_pass_expression_and_fit_gates": true,
+        "all_eight_claims_have_real_competition_and_selection": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/soul/content/edit_plan.json",
+        "visual_proposition_graph": "variants/soul/content/visual_proposition_graph.json",
+        "visual_expression_plan": "variants/soul/content/visual_expression_plan.json",
+        "single_film_continuity_report": "variants/soul/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/soul-contact-sheet.jpg"
+      }
+    },
+    {
+      "schema": "tpr.render_qa_receipt.visual_fit.v2",
+      "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+      "variant_id": "forrest-gump",
+      "locked_film_id": "FILM-FORREST-GUMP",
+      "film_title": "Forrest Gump",
+      "render_path": "renders/forrest-gump-visual-fit-v2.mp4",
+      "render_sha256": "sha256:4bf4e876b3122f746b413685d4c0285b202bb1c78d9075e57b87e11e29b2f70f",
+      "render_size_bytes": 64842247,
+      "render_duration_ms": 59712,
+      "shot_count": 14,
+      "unique_source_count": 14,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "visual_expression_plan_sealed": true,
+        "all_eight_claims_have_observable_carriers": true,
+        "all_selected_candidates_pass_expression_and_fit_gates": true,
+        "all_eight_claims_have_real_competition_and_selection": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/forrest-gump/content/edit_plan.json",
+        "visual_proposition_graph": "variants/forrest-gump/content/visual_proposition_graph.json",
+        "visual_expression_plan": "variants/forrest-gump/content/visual_expression_plan.json",
+        "single_film_continuity_report": "variants/forrest-gump/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/forrest-gump-contact-sheet.jpg"
+      }
+    },
+    {
+      "schema": "tpr.render_qa_receipt.visual_fit.v2",
+      "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+      "variant_id": "a-beautiful-mind",
+      "locked_film_id": "FILM-A-BEAUTIFUL-MIND",
+      "film_title": "A Beautiful Mind",
+      "render_path": "renders/a-beautiful-mind-visual-fit-v2.mp4",
+      "render_sha256": "sha256:8b0c3f45ee487350cd56392486e55ef73fce3dafda0e629ef6a9ad22d3d52642",
+      "render_size_bytes": 55999765,
+      "render_duration_ms": 59712,
+      "shot_count": 18,
+      "unique_source_count": 18,
+      "audio_metrics": {
+        "mean_volume_db": -17.9,
+        "max_volume_db": -5.5,
+        "integrated_lufs": -15.1,
+        "true_peak_dbfs": -5.4
+      },
+      "checks": {
+        "duration_matches_voice_within_100ms": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "is_1920x1080_30fps": true,
+        "no_black_interval_over_250ms": true,
+        "no_frozen_interval_over_3s": true,
+        "one_film_continuity_pass": true,
+        "one_observed_film_only": true,
+        "no_foreign_or_missing_film_identity": true,
+        "no_source_file_reuse": true,
+        "no_source_duration_extension": true,
+        "visual_graph_sealed": true,
+        "visual_expression_plan_sealed": true,
+        "all_eight_claims_have_observable_carriers": true,
+        "all_selected_candidates_pass_expression_and_fit_gates": true,
+        "all_eight_claims_have_real_competition_and_selection": true,
+        "visual_risk_gate_passed": true,
+        "single_line_word_locked_subtitles": true
+      },
+      "gate_status": "pass",
+      "evidence": {
+        "edit_plan": "variants/a-beautiful-mind/content/edit_plan.json",
+        "visual_proposition_graph": "variants/a-beautiful-mind/content/visual_proposition_graph.json",
+        "visual_expression_plan": "variants/a-beautiful-mind/content/visual_expression_plan.json",
+        "single_film_continuity_report": "variants/a-beautiful-mind/content/single_film_continuity_report.json",
+        "contact_sheet": "audit/render-qa/a-beautiful-mind-contact-sheet.jpg"
+      }
+    }
+  ],
+  "human_visual_check": {
+    "status": "pass",
+    "method": "15-frame contact sheet, key-moment pixel inspection and ffmpeg black/freeze/audio analysis",
+    "checks": [
+      "Mỗi bản chỉ hiển thị thế giới hình ảnh của phim đã khóa.",
+      "Ý bên trong dùng một chủ thể, không tương tác, trạng thái tĩnh hoặc cảm nhận; không dùng đám đông.",
+      "Thành công có nghi thức, cúp, bằng cấp hoặc công nhận công khai nhìn thấy được.",
+      "Đau khổ có nét mặt, tư thế hoặc hệ quả con người quan sát được.",
+      "Không có placeholder, media mất, khung đen dài hoặc asset bị cắt sai.",
+      "Phụ đề một dòng nằm trong dải giấy xé và không tràn safe area.",
+      "Nhịp 38.58-49.96 giây nhanh hơn rõ rệt; đoạn hậu quả hạ nhịp."
+    ],
+    "variant_notes_vi": {
+      "soul": "Tuyến hoạt hình nhất quán; chiếc cúp là bằng chứng thành công trực tiếp nhất.",
+      "forrest-gump": "Tuyến một đời người thống nhất; mục đích bên trong là cảnh một mình giữa biển và kết thúc là đau khổ trên gương mặt.",
+      "a-beautiful-mind": "Cảnh một mình suy ngẫm, Nobel và hệ quả đổ vỡ đều đọc được khi tắt tiếng."
+    }
+  }
+}

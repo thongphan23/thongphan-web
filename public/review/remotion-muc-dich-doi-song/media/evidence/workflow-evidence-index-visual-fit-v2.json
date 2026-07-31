@@ -1,0 +1,102 @@
+{
+  "schema": "tpr.workflow_evidence_index.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "status": "owner_review_ready",
+  "steps": [
+    {
+      "step": "01_voice_and_approved_text",
+      "inputs": [
+        "shared/assets/audio/provided_voice.mp3"
+      ],
+      "outputs": [
+        "shared/content/transcript_approved.json",
+        "shared/content/subtitles.json"
+      ]
+    },
+    {
+      "step": "02_claim_model",
+      "inputs": [
+        "shared/content/transcript_approved.json"
+      ],
+      "outputs": [
+        "content/claim_timeline.json"
+      ]
+    },
+    {
+      "step": "03_whole_video_film_casting",
+      "inputs": [
+        "content/claim_timeline.json",
+        "observed reusable source vault"
+      ],
+      "outputs": [
+        "content/film_casting_decision.json",
+        "variants/*/content/film_source_portfolio.json"
+      ]
+    },
+    {
+      "step": "04_concept_visualizability_and_observable_expression",
+      "inputs": [
+        "content/film_casting_decision.json"
+      ],
+      "outputs": [
+        "variants/*/content/visual_expression_plan.json",
+        "content/voice_to_observable_visual_mapping.md"
+      ]
+    },
+    {
+      "step": "05_silent_candidate_previews_and_pixel_review",
+      "inputs": [
+        "variants/*/content/visual_expression_plan.json"
+      ],
+      "outputs": [
+        "content/visual_fit_candidate_catalog.json",
+        "content/pixel_review_spec.json",
+        "content/pixel_review_choices.json",
+        "candidate-previews/*"
+      ]
+    },
+    {
+      "step": "06_competitive_selection_and_locked_graph",
+      "inputs": [
+        "content/pixel_review_choices.json"
+      ],
+      "outputs": [
+        "variants/*/content/visual_proposition_graph.json",
+        "audit/false_metadata_rejection.json",
+        "audit/visual_fit_v2_batch_report.json"
+      ]
+    },
+    {
+      "step": "07_edit_plan_and_continuity",
+      "inputs": [
+        "variants/*/content/visual_proposition_graph.json"
+      ],
+      "outputs": [
+        "variants/*/content/edit_plan.json",
+        "variants/*/content/single_film_continuity_report.json"
+      ]
+    },
+    {
+      "step": "08_render_and_qa",
+      "inputs": [
+        "variants/*/content/edit_plan.json",
+        "remotion/src/videoData.generated.ts"
+      ],
+      "outputs": [
+        "renders/*.mp4",
+        "content/render_qa_report.json",
+        "audit/render-qa/*-contact-sheet.jpg"
+      ]
+    },
+    {
+      "step": "09_owner_review",
+      "inputs": [
+        "content/render_qa_report.json"
+      ],
+      "outputs": [
+        "OWNER-REVIEW.md",
+        "thongphan.com/review/remotion-muc-dich-doi-song"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "tpr.workflow_evidence_manifest.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "status": "pass",
+  "entry_count": 32,
+  "entries": [
+    {
+      "path": "shared/content/transcript_approved.json",
+      "sha256": "sha256:f326b205a17c94f33dcf842eafba463579dd05d091636ea1a7bc996464cd5ae0"
+    },
+    {
+      "path": "shared/content/subtitles.json",
+      "sha256": "sha256:8566b4b621bb9218d96affa53ac3c3fa1173128eea516119e6b02649f61ff53d"
+    },
+    {
+      "path": "content/claim_timeline.json",
+      "sha256": "sha256:d1acb2cd3beaf809a9e5d459a4c4c520f30d7c00a81215375728e5cd0dd9b982"
+    },
+    {
+      "path": "content/film_casting_decision.json",
+      "sha256": "sha256:8845cfbf063da2c8d51c6d6d8cf94dd83ba61703277f50d5528e7c63ccff33f6"
+    },
+    {
+      "path": "content/voice_to_observable_visual_mapping.md",
+      "sha256": "sha256:38baedbb7f0f955ae9f13b5006af56f9f45c29c3f099459b1861ebbfdda3af97"
+    },
+    {
+      "path": "content/visual_fit_candidate_catalog.json",
+      "sha256": "sha256:9a995f97fc86256f55c92a4120b44c49d5fd001dd447960bd4664e2fd747f101"
+    },
+    {
+      "path": "content/pixel_review_spec.json",
+      "sha256": "sha256:faa698ceb0a71c71129f12b7e99c6be0bab7220c54403fdc997d7160ceac7120"
+    },
+    {
+      "path": "content/pixel_review_choices.json",
+      "sha256": "sha256:14d68ec3d745e103d2aa8caa49042add9ca2cfcca28c759eb7fe49df0438340b"
+    },
+    {
+      "path": "audit/visual_fit_v2_batch_report.json",
+      "sha256": "sha256:fa6db63fda074989a0c74bf147bbd49a31c5aba14f93b0d6c874a10e3f5b2c09"
+    },
+    {
+      "path": "audit/false_metadata_rejection.json",
+      "sha256": "sha256:b0fc74c6e920d1aa5b69fe7c1f196aa15fb5626aa427381fdd26bb4c83278446"
+    },
+    {
+      "path": "content/render_qa_report.json",
+      "sha256": "sha256:e7ad884f7dc04f20c71c0645860a9ac7dcae668efbdd59d4db8c143a7af1d0a8"
+    },
+    {
+      "path": "variants/soul/content/film_source_portfolio.json",
+      "sha256": "sha256:bcae460aae2460a8a435a7293e820cfcdcc88926888563b153b77e9e05bea2de"
+    },
+    {
+      "path": "variants/soul/content/visual_expression_plan.json",
+      "sha256": "sha256:62f0aa4f51a2aeba6331ab74572aff95968aeb09942fd86c4cfc21e72b66c740"
+    },
+    {
+      "path": "variants/soul/content/visual_expression_review.md",
+      "sha256": "sha256:29918b0d59e3426ae4e34034217915aa19457ca5b458b3ca0df2f6a8ca523fd3"
+    },
+    {
+      "path": "variants/soul/content/visual_proposition_graph.json",
+      "sha256": "sha256:cae41220b4d3849bf90f5cb0e6bfbc305597a2195540a15a6a036148db7abb9a"
+    },
+    {
+      "path": "variants/soul/content/edit_plan.json",
+      "sha256": "sha256:5977ead77a6bbde8467a450cb9acc9aab4b3001ec8d92ae64a7bff5968502158"
+    },
+    {
+      "path": "variants/soul/content/single_film_continuity_report.json",
+      "sha256": "sha256:705533b0f126b246970884bef70bdf6fd53cf0421750a35cab38fa37c2b2b8c7"
+    },
+    {
+      "path": "variants/soul/audit/render-qa-receipt.json",
+      "sha256": "sha256:de29f5919a838b40e23821cfe3eed7ebcaae22c2694d44829d9ec33839b11449"
+    },
+    {
+      "path": "variants/forrest-gump/content/film_source_portfolio.json",
+      "sha256": "sha256:b41e558aef55259e7e87699519e25a6cd955983d172086938ee4624ec5780af6"
+    },
+    {
+      "path": "variants/forrest-gump/content/visual_expression_plan.json",
+      "sha256": "sha256:0fa9221d6dd939820b73b0baae46914fa34af526fd24fafa056df674d3e4d182"
+    },
+    {
+      "path": "variants/forrest-gump/content/visual_expression_review.md",
+      "sha256": "sha256:18e3a5c6ee2a504e6713c2cea55c1571fbb0f48d40773ef208e46bd4540c58bd"
+    },
+    {
+      "path": "variants/forrest-gump/content/visual_proposition_graph.json",
+      "sha256": "sha256:dd10c3c2395e615ec7c4e59b7f48644e8d9732f6081a8a79e7ca60e2496c3152"
+    },
+    {
+      "path": "variants/forrest-gump/content/edit_plan.json",
+      "sha256": "sha256:5e192d7b545bb2afd8fa7ccd5414541e86f6a13fa7a93d57f916ca20292de04c"
+    },
+    {
+      "path": "variants/forrest-gump/content/single_film_continuity_report.json",
+      "sha256": "sha256:44db02110ef8dffc9e519cb6848849a452797c332e085fcc167906f8e3eea3dc"
+    },
+    {
+      "path": "variants/forrest-gump/audit/render-qa-receipt.json",
+      "sha256": "sha256:68d61464f9dfb5f33340688ad74051b2ad6e7ae9261ae06bdaea755dfe245076"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/film_source_portfolio.json",
+      "sha256": "sha256:21fd39537b0bcd690846c4226b0ee149eb98eb247dbd9f94dc61d99fe1c986ab"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/visual_expression_plan.json",
+      "sha256": "sha256:416ec4935db3fb403997af26f3c8b936939d300f0159eeb7f6171a758349cd7a"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/visual_expression_review.md",
+      "sha256": "sha256:eac66d87406c5e9119f351a05bb2b8fbd0b558c94138440b673adbdaeec89a30"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/visual_proposition_graph.json",
+      "sha256": "sha256:169f2d81ba958f8ff96b35057cca3fcde29756dd3f570e2e8509864b23a89a4f"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/edit_plan.json",
+      "sha256": "sha256:e2029484549b557b8cf3c9f4341328dfb140d966a2c21957d008a36c4d900adc"
+    },
+    {
+      "path": "variants/a-beautiful-mind/content/single_film_continuity_report.json",
+      "sha256": "sha256:80b576bed0e506e9652d7ee9120a38a4471b5c43ed3b47d58d67c59b4244d7e0"
+    },
+    {
+      "path": "variants/a-beautiful-mind/audit/render-qa-receipt.json",
+      "sha256": "sha256:caee754fd6598022eb6d6a856c590b0ea1254bd9d09463095d97058d2f7cfe1e"
+    }
+  ],
+  "verification": {
+    "all_files_exist": true,
+    "all_sha256_computed_from_disk": true
+  }
+}

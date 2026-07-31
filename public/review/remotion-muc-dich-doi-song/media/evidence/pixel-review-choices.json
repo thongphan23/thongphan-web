@@ -1,0 +1,368 @@
+{
+  "schema": "tpr.pixel_review_choices.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "review_mode": "silent_no_voice_no_subtitles_answer_hidden",
+  "candidate_count": 72,
+  "candidates": {
+    "CAND-SOUL-ES-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Một nhân vật lặng yên được đặt đối lập với buổi biểu diễn công khai, tạo hai cực bên trong và bên ngoài. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 840
+    },
+    "CAND-SOUL-ES-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Một nhân vật lặng yên được đặt đối lập với buổi biểu diễn công khai, tạo hai cực bên trong và bên ngoài. Điểm cắt: action-core.",
+      "recognition_latency_ms": 520
+    },
+    "CAND-SOUL-ES-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "Một nhân vật lặng yên được đặt đối lập với buổi biểu diễn công khai, tạo hai cực bên trong và bên ngoài. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 680
+    },
+    "CAND-SOUL-SE-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Nhân vật chậm lại, chú ý vào cảm giác và môi trường xung quanh; trạng thái nhẹ và yên đọc được bằng hình. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 880
+    },
+    "CAND-SOUL-SE-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Nhân vật chậm lại, chú ý vào cảm giác và môi trường xung quanh; trạng thái nhẹ và yên đọc được bằng hình. Điểm cắt: action-core.",
+      "recognition_latency_ms": 720
+    },
+    "CAND-SOUL-SE-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Nhân vật chậm lại, chú ý vào cảm giác và môi trường xung quanh; trạng thái nhẹ và yên đọc được bằng hình. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 560
+    },
+    "CAND-SOUL-RK-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Người thợ đang trực tiếp cắt tóc; công cụ, khách hàng và hành động lao động đều hiện rõ. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 750
+    },
+    "CAND-SOUL-RK-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Người thợ đang trực tiếp cắt tóc; công cụ, khách hàng và hành động lao động đều hiện rõ. Điểm cắt: action-core.",
+      "recognition_latency_ms": 590
+    },
+    "CAND-SOUL-RK-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Người thợ đang trực tiếp cắt tóc; công cụ, khách hàng và hành động lao động đều hiện rõ. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 430
+    },
+    "CAND-SOUL-KE-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Gương mặt nhân vật dừng lại, quan sát rồi bước ra vùng sáng, cho thấy sự chú ý quay về hiện tại. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 940
+    },
+    "CAND-SOUL-KE-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Gương mặt nhân vật dừng lại, quan sát rồi bước ra vùng sáng, cho thấy sự chú ý quay về hiện tại. Điểm cắt: action-core.",
+      "recognition_latency_ms": 780
+    },
+    "CAND-SOUL-KE-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Gương mặt nhân vật dừng lại, quan sát rồi bước ra vùng sáng, cho thấy sự chú ý quay về hiện tại. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 620
+    },
+    "CAND-SOUL-GN-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Chuỗi đi từ bình tâm và tập trung sang sân khấu, thể hiện trạng thái bên trong dẫn tới hoàn thành bên ngoài. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 840
+    },
+    "CAND-SOUL-GN-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Chuỗi đi từ bình tâm và tập trung sang sân khấu, thể hiện trạng thái bên trong dẫn tới hoàn thành bên ngoài. Điểm cắt: action-core.",
+      "recognition_latency_ms": 680
+    },
+    "CAND-SOUL-GN-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Chuỗi đi từ bình tâm và tập trung sang sân khấu, thể hiện trạng thái bên trong dẫn tới hoàn thành bên ngoài. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 1000
+    },
+    "CAND-SOUL-SS-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Chiếc cúp được trao trong một nghi thức công khai; thành công được thể hiện trực tiếp, không cần biết cốt truyện. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 500
+    },
+    "CAND-SOUL-SS-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Chiếc cúp được trao trong một nghi thức công khai; thành công được thể hiện trực tiếp, không cần biết cốt truyện. Điểm cắt: action-core.",
+      "recognition_latency_ms": 340
+    },
+    "CAND-SOUL-SS-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Chiếc cúp được trao trong một nghi thức công khai; thành công được thể hiện trực tiếp, không cần biết cốt truyện. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 660
+    },
+    "CAND-SOUL-NT-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Nhân vật bị kéo, hoảng loạn và xung đột trong chuỗi cắt nhanh; áp lực và giằng xé hiện ra rõ. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 770
+    },
+    "CAND-SOUL-NT-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Nhân vật bị kéo, hoảng loạn và xung đột trong chuỗi cắt nhanh; áp lực và giằng xé hiện ra rõ. Điểm cắt: action-core.",
+      "recognition_latency_ms": 610
+    },
+    "CAND-SOUL-NT-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Nhân vật bị kéo, hoảng loạn và xung đột trong chuỗi cắt nhanh; áp lực và giằng xé hiện ra rõ. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 450
+    },
+    "CAND-SOUL-RM-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Nhân vật rũ xuống, quan hệ bị tổn thương và kết thúc trong cô độc; thành tựu không tạo niềm vui được nhìn thấy bằng hậu quả. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 920
+    },
+    "CAND-SOUL-RM-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Nhân vật rũ xuống, quan hệ bị tổn thương và kết thúc trong cô độc; thành tựu không tạo niềm vui được nhìn thấy bằng hậu quả. Điểm cắt: action-core.",
+      "recognition_latency_ms": 760
+    },
+    "CAND-SOUL-RM-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Nhân vật rũ xuống, quan hệ bị tổn thương và kết thúc trong cô độc; thành tựu không tạo niềm vui được nhìn thấy bằng hậu quả. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 600
+    },
+    "CAND-FORREST-GUMP-ES-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Một người bơi đơn độc giữa biển được đối lập với Forrest luyện bóng bàn có mục tiêu; hai cực tĩnh bên trong và động bên ngoài rõ ràng. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 790
+    },
+    "CAND-FORREST-GUMP-ES-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Một người bơi đơn độc giữa biển được đối lập với Forrest luyện bóng bàn có mục tiêu; hai cực tĩnh bên trong và động bên ngoài rõ ràng. Điểm cắt: action-core.",
+      "recognition_latency_ms": 630
+    },
+    "CAND-FORREST-GUMP-ES-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Một người bơi đơn độc giữa biển được đối lập với Forrest luyện bóng bàn có mục tiêu; hai cực tĩnh bên trong và động bên ngoài rõ ràng. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 470
+    },
+    "CAND-FORREST-GUMP-SE-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Cận cảnh Forrest một mình trên ghế, ánh mắt xa và nhịp cơ thể yên, gợi trạng thái suy ngẫm riêng tư. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 860
+    },
+    "CAND-FORREST-GUMP-SE-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Cận cảnh Forrest một mình trên ghế, ánh mắt xa và nhịp cơ thể yên, gợi trạng thái suy ngẫm riêng tư. Điểm cắt: action-core.",
+      "recognition_latency_ms": 540
+    },
+    "CAND-FORREST-GUMP-SE-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "Cận cảnh Forrest một mình trên ghế, ánh mắt xa và nhịp cơ thể yên, gợi trạng thái suy ngẫm riêng tư. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 700
+    },
+    "CAND-FORREST-GUMP-RK-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Forrest trực tiếp lái máy cắt cỏ trên sân; việc làm và kết quả vật lý đều dễ nhận ra. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 520
+    },
+    "CAND-FORREST-GUMP-RK-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Forrest trực tiếp lái máy cắt cỏ trên sân; việc làm và kết quả vật lý đều dễ nhận ra. Điểm cắt: action-core.",
+      "recognition_latency_ms": 360
+    },
+    "CAND-FORREST-GUMP-RK-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Forrest trực tiếp lái máy cắt cỏ trên sân; việc làm và kết quả vật lý đều dễ nhận ra. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 680
+    },
+    "CAND-FORREST-GUMP-KE-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Forrest lúc nhỏ đi bộ chậm, nhìn sang môi trường xung quanh và hiện diện trong khoảnh khắc đang diễn ra. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 940
+    },
+    "CAND-FORREST-GUMP-KE-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Forrest lúc nhỏ đi bộ chậm, nhìn sang môi trường xung quanh và hiện diện trong khoảnh khắc đang diễn ra. Điểm cắt: action-core.",
+      "recognition_latency_ms": 780
+    },
+    "CAND-FORREST-GUMP-KE-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Forrest lúc nhỏ đi bộ chậm, nhìn sang môi trường xung quanh và hiện diện trong khoảnh khắc đang diễn ra. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 620
+    },
+    "CAND-FORREST-GUMP-GN-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Chuỗi chạy bền bỉ chuyển sang nhận bằng tốt nghiệp; hướng đi bên trong được nối với một kết quả hữu hình. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 770
+    },
+    "CAND-FORREST-GUMP-GN-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Chuỗi chạy bền bỉ chuyển sang nhận bằng tốt nghiệp; hướng đi bên trong được nối với một kết quả hữu hình. Điểm cắt: action-core.",
+      "recognition_latency_ms": 610
+    },
+    "CAND-FORREST-GUMP-GN-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Chuỗi chạy bền bỉ chuyển sang nhận bằng tốt nghiệp; hướng đi bên trong được nối với một kết quả hữu hình. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 930
+    },
+    "CAND-FORREST-GUMP-SS-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Bảng vinh danh mang tên Forrest được trao bởi tổng thống; biểu tượng công nhận và người nhận cùng xuất hiện. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 710
+    },
+    "CAND-FORREST-GUMP-SS-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Bảng vinh danh mang tên Forrest được trao bởi tổng thống; biểu tượng công nhận và người nhận cùng xuất hiện. Điểm cắt: action-core.",
+      "recognition_latency_ms": 550
+    },
+    "CAND-FORREST-GUMP-SS-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Bảng vinh danh mang tên Forrest được trao bởi tổng thống; biểu tượng công nhận và người nhận cùng xuất hiện. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 390
+    },
+    "CAND-FORREST-GUMP-NT-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Chiến trường, sức ép quân ngũ và đối đầu được cắt dồn; khó khăn và cưỡng ép đọc được ngay khi tắt tiếng. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 730
+    },
+    "CAND-FORREST-GUMP-NT-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Chiến trường, sức ép quân ngũ và đối đầu được cắt dồn; khó khăn và cưỡng ép đọc được ngay khi tắt tiếng. Điểm cắt: action-core.",
+      "recognition_latency_ms": 410
+    },
+    "CAND-FORREST-GUMP-NT-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "Chiến trường, sức ép quân ngũ và đối đầu được cắt dồn; khó khăn và cưỡng ép đọc được ngay khi tắt tiếng. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 570
+    },
+    "CAND-FORREST-GUMP-RM-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Gương mặt trống rỗng, xung đột quan hệ và cảnh đứng một mình trước mất mát tạo hậu quả cảm xúc rõ. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 890
+    },
+    "CAND-FORREST-GUMP-RM-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "Gương mặt trống rỗng, xung đột quan hệ và cảnh đứng một mình trước mất mát tạo hậu quả cảm xúc rõ. Điểm cắt: action-core.",
+      "recognition_latency_ms": 730
+    },
+    "CAND-FORREST-GUMP-RM-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "Gương mặt trống rỗng, xung đột quan hệ và cảnh đứng một mình trước mất mát tạo hậu quả cảm xúc rõ. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 570
+    },
+    "CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "John viết một mình giữa các công thức, trong khi không gian học thuật bên ngoài vẫn hiện diện; hai lớp nội tâm và mục tiêu trí tuệ cùng đọc được. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 880
+    },
+    "CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "John viết một mình giữa các công thức, trong khi không gian học thuật bên ngoài vẫn hiện diện; hai lớp nội tâm và mục tiêu trí tuệ cùng đọc được. Điểm cắt: action-core.",
+      "recognition_latency_ms": 560
+    },
+    "CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "John viết một mình giữa các công thức, trong khi không gian học thuật bên ngoài vẫn hiện diện; hai lớp nội tâm và mục tiêu trí tuệ cùng đọc được. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 720
+    },
+    "CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Cận cảnh John ngồi yên một mình, mắt hạ xuống và không có hành động xã hội, tạo khoảng suy ngẫm rõ. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 680
+    },
+    "CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Cận cảnh John ngồi yên một mình, mắt hạ xuống và không có hành động xã hội, tạo khoảng suy ngẫm rõ. Điểm cắt: action-core.",
+      "recognition_latency_ms": 520
+    },
+    "CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Cận cảnh John ngồi yên một mình, mắt hạ xuống và không có hành động xã hội, tạo khoảng suy ngẫm rõ. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 840
+    },
+    "CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "John trực tiếp giảng bài và làm việc với bảng; lao động trí tuệ được thể hiện bằng hành động cụ thể. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 720
+    },
+    "CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "John trực tiếp giảng bài và làm việc với bảng; lao động trí tuệ được thể hiện bằng hành động cụ thể. Điểm cắt: action-core.",
+      "recognition_latency_ms": 400
+    },
+    "CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "John trực tiếp giảng bài và làm việc với bảng; lao động trí tuệ được thể hiện bằng hành động cụ thể. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 560
+    },
+    "CAND-A-BEAUTIFUL-MIND-KE-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "John dừng lại, nhìn và phản ứng với người trước mặt; sự chú ý có chủ đích hiện rõ trên gương mặt. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 730
+    },
+    "CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "John dừng lại, nhìn và phản ứng với người trước mặt; sự chú ý có chủ đích hiện rõ trên gương mặt. Điểm cắt: action-core.",
+      "recognition_latency_ms": 570
+    },
+    "CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "John dừng lại, nhìn và phản ứng với người trước mặt; sự chú ý có chủ đích hiện rõ trên gương mặt. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 890
+    },
+    "CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "Những cây bút được đặt trước John như sự thừa nhận từ cộng đồng, nối một hành trình nội tâm với kết quả hữu hình. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 630
+    },
+    "CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Những cây bút được đặt trước John như sự thừa nhận từ cộng đồng, nối một hành trình nội tâm với kết quả hữu hình. Điểm cắt: action-core.",
+      "recognition_latency_ms": 470
+    },
+    "CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "Những cây bút được đặt trước John như sự thừa nhận từ cộng đồng, nối một hành trình nội tâm với kết quả hữu hình. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 790
+    },
+    "CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD": {
+      "rank": 2,
+      "visible_reading_vi": "John đứng trên bục nhận Nobel trước khán phòng; giải thưởng và công nhận công khai không cần suy luận cốt truyện. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 490
+    },
+    "CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "John đứng trên bục nhận Nobel trước khán phòng; giải thưởng và công nhận công khai không cần suy luận cốt truyện. Điểm cắt: action-core.",
+      "recognition_latency_ms": 330
+    },
+    "CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL": {
+      "rank": 3,
+      "visible_reading_vi": "John đứng trên bục nhận Nobel trước khán phòng; giải thưởng và công nhận công khai không cần suy luận cốt truyện. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 650
+    },
+    "CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "Nguy hiểm, bệnh viện và trạng thái hoảng loạn nối tiếp nhanh, tạo cảm giác giằng xé và mất kiểm soát. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 750
+    },
+    "CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE": {
+      "rank": 1,
+      "visible_reading_vi": "Nguy hiểm, bệnh viện và trạng thái hoảng loạn nối tiếp nhanh, tạo cảm giác giằng xé và mất kiểm soát. Điểm cắt: action-core.",
+      "recognition_latency_ms": 430
+    },
+    "CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL": {
+      "rank": 2,
+      "visible_reading_vi": "Nguy hiểm, bệnh viện và trạng thái hoảng loạn nối tiếp nhanh, tạo cảm giác giằng xé và mất kiểm soát. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 590
+    },
+    "CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD": {
+      "rank": 3,
+      "visible_reading_vi": "John suy sụp và người thân chịu ảnh hưởng trực tiếp; tổn hại con người được giữ đủ lâu để nhận ra. Điểm cắt: context-lead.",
+      "recognition_latency_ms": 910
+    },
+    "CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE": {
+      "rank": 2,
+      "visible_reading_vi": "John suy sụp và người thân chịu ảnh hưởng trực tiếp; tổn hại con người được giữ đủ lâu để nhận ra. Điểm cắt: action-core.",
+      "recognition_latency_ms": 750
+    },
+    "CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL": {
+      "rank": 1,
+      "visible_reading_vi": "John suy sụp và người thân chịu ảnh hưởng trực tiếp; tổn hại con người được giữ đủ lâu để nhận ra. Điểm cắt: reaction-tail.",
+      "recognition_latency_ms": 590
+    }
+  }
+}

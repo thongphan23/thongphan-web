@@ -1,0 +1,47 @@
+{
+  "schema": "tpr.render_qa_receipt.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "variant_id": "soul",
+  "locked_film_id": "FILM-SOUL",
+  "film_title": "Soul",
+  "render_path": "renders/soul-visual-fit-v2.mp4",
+  "render_sha256": "sha256:5f747a04c8b2f846740d128d53c8ec9e613104a2d71f29d9f2b8b4ef62396262",
+  "render_size_bytes": 46714284,
+  "render_duration_ms": 59712,
+  "shot_count": 19,
+  "unique_source_count": 19,
+  "audio_metrics": {
+    "mean_volume_db": -17.9,
+    "max_volume_db": -5.5,
+    "integrated_lufs": -15.1,
+    "true_peak_dbfs": -5.4
+  },
+  "checks": {
+    "duration_matches_voice_within_100ms": true,
+    "has_h264_video": true,
+    "has_aac_audio": true,
+    "is_1920x1080_30fps": true,
+    "no_black_interval_over_250ms": true,
+    "no_frozen_interval_over_3s": true,
+    "one_film_continuity_pass": true,
+    "one_observed_film_only": true,
+    "no_foreign_or_missing_film_identity": true,
+    "no_source_file_reuse": true,
+    "no_source_duration_extension": true,
+    "visual_graph_sealed": true,
+    "visual_expression_plan_sealed": true,
+    "all_eight_claims_have_observable_carriers": true,
+    "all_selected_candidates_pass_expression_and_fit_gates": true,
+    "all_eight_claims_have_real_competition_and_selection": true,
+    "visual_risk_gate_passed": true,
+    "single_line_word_locked_subtitles": true
+  },
+  "gate_status": "pass",
+  "evidence": {
+    "edit_plan": "variants/soul/content/edit_plan.json",
+    "visual_proposition_graph": "variants/soul/content/visual_proposition_graph.json",
+    "visual_expression_plan": "variants/soul/content/visual_expression_plan.json",
+    "single_film_continuity_report": "variants/soul/content/single_film_continuity_report.json",
+    "contact_sheet": "audit/render-qa/soul-contact-sheet.jpg"
+  }
+}

@@ -2,6 +2,24 @@
 
 Last updated: 2026-07-31
 
+## Remotion Visual Fit Calibration v2 owner-review round — release candidate — 2026-07-31
+
+- Rebuilt the same authoritative 59.652-second voice as three 59.712-second
+  one-film variants: `Soul`, `Forrest Gump` and `A Beautiful Mind`.
+- Removed preselection. Every claim-film pair now has three silent rendered
+  candidates, same-claim provenance, pixel observations and a sealed competitive
+  decision; 72/72 previews were evaluated and 24/24 decisions passed with three
+  eligible candidates each.
+- Pixel review rejected a mislabeled Forrest Gump source whose filename implied a
+  shrimp boat but whose frames only showed a bus conversation. It was replaced by
+  visible ping-pong practice and a separate present-attention shot.
+- Final QA passes for all three videos: 51 unique source files, zero within-video
+  source reuse, zero foreign-film shots, 1080p H.264/AAC, -15.1 LUFS, one-line
+  word-locked subtitles, and no black/freeze interval over the configured limits.
+- Review route, evidence bundle and 720p fast-start media pass production build,
+  focused ESLint and Playwright QA at desktop and `390x844`. Deployment is pending
+  in this release-candidate entry.
+
 ## Remotion Observable Expression v1 owner-review round — production release — 2026-07-31
 
 - Rebuilt the authoritative 59.652-second Vietnamese voice as three 59.712-second

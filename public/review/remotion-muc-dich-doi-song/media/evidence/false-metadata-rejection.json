@@ -1,0 +1,32 @@
+{
+  "schema": "tpr.false_metadata_rejection.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "status": "rejected_and_replaced",
+  "rejected_source": {
+    "filename": "15169-have-ever-been-on-a-real-shrimp-boat.mp4",
+    "sha256": "sha256:5dd960b461e51b0af03554ccf0f74cdf3e73eea5fa163d47093f7dd71c7b6517",
+    "metadata_claim_vi": "Forrest ở trên tàu đánh tôm và thực hiện công việc.",
+    "pixel_observation_vi": "Toàn bộ contact sheet chỉ cho thấy Forrest và Bubba đối thoại trên xe buýt; không có tàu, biển, công cụ hay hành động lao động.",
+    "failure_class": "metadata_visual_contradiction",
+    "selection_allowed": false
+  },
+  "replacement_sources": [
+    {
+      "filename": "156907-for-some-reason-ping-pong-came-very-natural-me.mp4",
+      "sha256": "sha256:5fad4efabe71b9924a043673c85cc5a7199b5b7aedb25bacbe2c8bb7e86794b8",
+      "use": "outward_goal_directed_action",
+      "pixel_observation_vi": "Forrest cầm vợt và trực tiếp luyện bóng bàn; chủ thể, vật, hành động và mục tiêu đều hiện trong khung hình."
+    },
+    {
+      "filename": "156865-hey-forrest-dont.mp4",
+      "sha256": "sha256:2101f8801dd67f0e0e1c83d8f8d9fc2d3cec13d752b50e0246c7ddfc98c4cbc2",
+      "use": "present_attention",
+      "pixel_observation_vi": "Forrest đứng yên và giữ ánh mắt chú ý vào người con; biểu hiện hiện diện đọc được khi tắt tiếng."
+    }
+  ],
+  "policy_effect": {
+    "filename_or_dialogue_is_not_visual_evidence": true,
+    "silent_pixel_review_required_before_selection": true,
+    "contradictory_metadata_fails_closed": true
+  }
+}

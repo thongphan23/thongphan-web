@@ -1,0 +1,39 @@
+{
+  "schema": "tpr.pixel_review_spec.visual_fit.v2",
+  "run_id": "RUN-muc-dich-doi-song-visual-fit-v2-20260731",
+  "reviewer": "codex-pixel-contact-sheet-v2",
+  "review_mode": "silent_no_voice_no_subtitles_answer_hidden",
+  "legend": {
+    "context-lead": "điểm cắt vào sớm",
+    "action-core": "điểm cắt ở hành động hoặc biểu cảm chính",
+    "reaction-tail": "điểm cắt giữ phản ứng hoặc kết quả"
+  },
+  "reviews": [
+    {"variant_id":"soul","claim_id":"CLM-01-TWO-PURPOSES","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"Một nhân vật lặng yên được đặt đối lập với buổi biểu diễn công khai, tạo hai cực bên trong và bên ngoài.","recognition_latency_ms":520},
+    {"variant_id":"soul","claim_id":"CLM-02-INNER-EASE","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Nhân vật chậm lại, chú ý vào cảm giác và môi trường xung quanh; trạng thái nhẹ và yên đọc được bằng hình.","recognition_latency_ms":560},
+    {"variant_id":"soul","claim_id":"CLM-03-OUTER-WORK","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Người thợ đang trực tiếp cắt tóc; công cụ, khách hàng và hành động lao động đều hiện rõ.","recognition_latency_ms":430},
+    {"variant_id":"soul","claim_id":"CLM-04-AWAKE","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Gương mặt nhân vật dừng lại, quan sát rồi bước ra vùng sáng, cho thấy sự chú ý quay về hiện tại.","recognition_latency_ms":620},
+    {"variant_id":"soul","claim_id":"CLM-05-CHANGE-ALIGN","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Chuỗi đi từ bình tâm và tập trung sang sân khấu, thể hiện trạng thái bên trong dẫn tới hoàn thành bên ngoài.","recognition_latency_ms":680},
+    {"variant_id":"soul","claim_id":"CLM-06-REAL-SUCCESS","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Chiếc cúp được trao trong một nghi thức công khai; thành công được thể hiện trực tiếp, không cần biết cốt truyện.","recognition_latency_ms":340},
+    {"variant_id":"soul","claim_id":"CLM-07-MISALIGNMENT","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Nhân vật bị kéo, hoảng loạn và xung đột trong chuỗi cắt nhanh; áp lực và giằng xé hiện ra rõ.","recognition_latency_ms":450},
+    {"variant_id":"soul","claim_id":"CLM-08-NO-JOY-HARM","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Nhân vật rũ xuống, quan hệ bị tổn thương và kết thúc trong cô độc; thành tựu không tạo niềm vui được nhìn thấy bằng hậu quả.","recognition_latency_ms":600},
+
+    {"variant_id":"forrest-gump","claim_id":"CLM-01-TWO-PURPOSES","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Một người bơi đơn độc giữa biển được đối lập với Forrest luyện bóng bàn có mục tiêu; hai cực tĩnh bên trong và động bên ngoài rõ ràng.","recognition_latency_ms":470},
+    {"variant_id":"forrest-gump","claim_id":"CLM-02-INNER-EASE","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"Cận cảnh Forrest một mình trên ghế, ánh mắt xa và nhịp cơ thể yên, gợi trạng thái suy ngẫm riêng tư.","recognition_latency_ms":540},
+    {"variant_id":"forrest-gump","claim_id":"CLM-03-OUTER-WORK","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Forrest trực tiếp lái máy cắt cỏ trên sân; việc làm và kết quả vật lý đều dễ nhận ra.","recognition_latency_ms":360},
+    {"variant_id":"forrest-gump","claim_id":"CLM-04-AWAKE","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Forrest lúc nhỏ đi bộ chậm, nhìn sang môi trường xung quanh và hiện diện trong khoảnh khắc đang diễn ra.","recognition_latency_ms":620},
+    {"variant_id":"forrest-gump","claim_id":"CLM-05-CHANGE-ALIGN","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Chuỗi chạy bền bỉ chuyển sang nhận bằng tốt nghiệp; hướng đi bên trong được nối với một kết quả hữu hình.","recognition_latency_ms":610},
+    {"variant_id":"forrest-gump","claim_id":"CLM-06-REAL-SUCCESS","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Bảng vinh danh mang tên Forrest được trao bởi tổng thống; biểu tượng công nhận và người nhận cùng xuất hiện.","recognition_latency_ms":390},
+    {"variant_id":"forrest-gump","claim_id":"CLM-07-MISALIGNMENT","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"Chiến trường, sức ép quân ngũ và đối đầu được cắt dồn; khó khăn và cưỡng ép đọc được ngay khi tắt tiếng.","recognition_latency_ms":410},
+    {"variant_id":"forrest-gump","claim_id":"CLM-08-NO-JOY-HARM","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"Gương mặt trống rỗng, xung đột quan hệ và cảnh đứng một mình trước mất mát tạo hậu quả cảm xúc rõ.","recognition_latency_ms":570},
+
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-01-TWO-PURPOSES","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"John viết một mình giữa các công thức, trong khi không gian học thuật bên ngoài vẫn hiện diện; hai lớp nội tâm và mục tiêu trí tuệ cùng đọc được.","recognition_latency_ms":560},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-02-INNER-EASE","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Cận cảnh John ngồi yên một mình, mắt hạ xuống và không có hành động xã hội, tạo khoảng suy ngẫm rõ.","recognition_latency_ms":520},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-03-OUTER-WORK","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"John trực tiếp giảng bài và làm việc với bảng; lao động trí tuệ được thể hiện bằng hành động cụ thể.","recognition_latency_ms":400},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-04-AWAKE","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"John dừng lại, nhìn và phản ứng với người trước mặt; sự chú ý có chủ đích hiện rõ trên gương mặt.","recognition_latency_ms":570},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-05-CHANGE-ALIGN","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"Những cây bút được đặt trước John như sự thừa nhận từ cộng đồng, nối một hành trình nội tâm với kết quả hữu hình.","recognition_latency_ms":470},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-06-REAL-SUCCESS","order":["action-core","context-lead","reaction-tail"],"visible_reading_vi":"John đứng trên bục nhận Nobel trước khán phòng; giải thưởng và công nhận công khai không cần suy luận cốt truyện.","recognition_latency_ms":330},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-07-MISALIGNMENT","order":["action-core","reaction-tail","context-lead"],"visible_reading_vi":"Nguy hiểm, bệnh viện và trạng thái hoảng loạn nối tiếp nhanh, tạo cảm giác giằng xé và mất kiểm soát.","recognition_latency_ms":430},
+    {"variant_id":"a-beautiful-mind","claim_id":"CLM-08-NO-JOY-HARM","order":["reaction-tail","action-core","context-lead"],"visible_reading_vi":"John suy sụp và người thân chịu ảnh hưởng trực tiếp; tổn hại con người được giữ đủ lâu để nhận ra.","recognition_latency_ms":590}
+  ]
+}
