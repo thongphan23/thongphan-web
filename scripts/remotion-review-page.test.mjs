@@ -28,6 +28,7 @@ test('review route is private-by-discovery and exposes exactly three single-film
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
   assert.equal((gallery.match(/single-film-v2-web\.mp4/g) ?? []).length, 3)
+  assert.equal((gallery.match(/single-film-v2-web\.mp4\?v=single-film-v2-20260731/g) ?? []).length, 3)
   assert.equal((gallery.match(/evidenceHref:/g) ?? []).length, 3)
   assert.equal((gallery.match(/continuityHref:/g) ?? []).length, 3)
   assert.match(gallery, /Mở quyết định hình ảnh/)

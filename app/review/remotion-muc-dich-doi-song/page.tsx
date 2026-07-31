@@ -38,7 +38,7 @@ export default function RemotionVideoReviewPage() {
           <li>Trong Soul, Click và Forrest Gump, phim nào truyền tải thông điệp tự nhiên nhất?</li>
         </ol>
         <p>
-          <a className={styles.evidenceLink} href="/review/remotion-muc-dich-doi-song/media/evidence/workflow-evidence-index.json" target="_blank" rel="noreferrer">
+          <a className={styles.evidenceLink} href="/review/remotion-muc-dich-doi-song/media/evidence/workflow-evidence-index.json?v=single-film-v2-20260731" target="_blank" rel="noreferrer">
             Mở chỉ mục bằng chứng toàn bộ workflow
           </a>
         </p>
