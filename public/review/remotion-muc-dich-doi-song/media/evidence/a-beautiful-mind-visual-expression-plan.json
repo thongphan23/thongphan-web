@@ -1,0 +1,792 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731-A-BEAUTIFUL-MIND",
+  "status": "sealed",
+  "film_id": "FILM-A-BEAUTIFUL-MIND",
+  "policy": {
+    "policy_id": "visual-expression-meaning-first-v1",
+    "meaning_before_beauty": true,
+    "selection_order": [
+      "importance",
+      "context_relevance",
+      "visual_clarity"
+    ],
+    "hard_thresholds": {
+      "importance": 0.65,
+      "context_relevance": 0.65,
+      "visual_clarity": 0.65
+    },
+    "display_score_formula": "0.50*importance + 0.20*context_relevance + 0.30*visual_clarity",
+    "abstract_direct_carrier_forbidden": true,
+    "feature_pooling_across_shots_forbidden": true
+  },
+  "claims": [
+    {
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "beat_id": "B01",
+      "voice_text_vi": "Điều quan trọng nhất mà bạn cần nhận thức là: đời bạn có một mục đích bên trong và một mục đích bên ngoài.",
+      "claim_fingerprint": "sha256:c1f59e0f56bf656eeab024f275b9f80aea5055a4335687a763a08aaa35316155",
+      "concepts": [
+        {
+          "concept_id": "C01-TWO-LAYERS",
+          "source_phrase_vi": "hai mục đích",
+          "meaning_vi": "Một đời người có trạng thái hướng nội và hành động hướng ngoại.",
+          "priority": "primary",
+          "visualizability_class": "relational_sequence",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.95,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C01-INWARD-OUTWARD",
+              "label_vi": "Một nhịp hướng vào mình rồi một nhịp hành động hướng mục tiêu.",
+              "match_policy": "ordered_roles",
+              "forbidden_scope": "signature_shot",
+              "required_features": [],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật một mình suy nghĩ",
+                "A Beautiful Mind: nhân vật thực hiện công việc hoặc mục tiêu"
+              ],
+              "role_requirements": [
+                {
+                  "semantic_role": "inward_pole",
+                  "required_features": [
+                    {
+                      "dimension": "subject_count",
+                      "accepted_values": [
+                        "one"
+                      ]
+                    },
+                    {
+                      "dimension": "interaction_mode",
+                      "accepted_values": [
+                        "none"
+                      ]
+                    },
+                    {
+                      "dimension": "goal_relation",
+                      "accepted_values": [
+                        "inward"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "semantic_role": "outward_pole",
+                  "required_features": [
+                    {
+                      "dimension": "visible_action",
+                      "accepted_values": [
+                        "work",
+                        "performance",
+                        "goal_action"
+                      ]
+                    },
+                    {
+                      "dimension": "goal_relation",
+                      "accepted_values": [
+                        "external_goal"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Hai cảnh đẹp nhưng không tạo được hai cực hướng nội và hướng ngoại."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.95
+          ],
+          "display_score": 0.985,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C01-TWO-LAYERS"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-02-INNER-EASE",
+      "beat_id": "B02",
+      "voice_text_vi": "Mục đích bên trong là mục đích chính, và mục đích này có liên quan đến trạng thái an nhiên tự tại của bạn.",
+      "claim_fingerprint": "sha256:f669326e1b5ab55aad1ff8fdd28364a44d4978c0347606dc3762747cc278d6ca",
+      "concepts": [
+        {
+          "concept_id": "C02-INNER-ABSTRACT",
+          "source_phrase_vi": "mục đích bên trong",
+          "meaning_vi": "Đây là một ý hướng nội, không phải vật thể có thể quay trực tiếp.",
+          "priority": "primary",
+          "visualizability_class": "abstract_nonvisual",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.2,
+          "proxy_concept_id": "C02-SOLITARY-REFLECTION",
+          "derived_from_concept_id": null,
+          "observable_signatures": [],
+          "rejected_shortcuts_vi": [
+            "Không dùng cảnh đông người hoặc làm việc sôi động để mang ý bên trong."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.2
+          ],
+          "display_score": 0.76,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "proxy_required",
+          "selection_reason_vi": "Khái niệm quan trọng nhưng không nhìn thấy trực tiếp; dùng proxy quan sát được `C02-SOLITARY-REFLECTION`."
+        },
+        {
+          "concept_id": "C02-SOLITARY-REFLECTION",
+          "source_phrase_vi": "một mình suy ngẫm an nhiên",
+          "meaning_vi": "Một người tạm dừng, không giao tiếp và hướng chú ý vào trải nghiệm của mình.",
+          "priority": "primary",
+          "visualizability_class": "embodied_internal_state",
+          "expression_family": "solitary_reflection",
+          "importance": 0.98,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.96,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": "C02-INNER-ABSTRACT",
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C02-SOLITARY-REFLECTION",
+              "label_vi": "Một người ở yên, không tương tác và có ánh nhìn hướng nội.",
+              "match_policy": "same_shot",
+              "forbidden_scope": "all_shots",
+              "required_features": [
+                {
+                  "dimension": "subject_count",
+                  "accepted_values": [
+                    "one"
+                  ]
+                },
+                {
+                  "dimension": "interaction_mode",
+                  "accepted_values": [
+                    "none"
+                  ]
+                },
+                {
+                  "dimension": "body_activity",
+                  "accepted_values": [
+                    "still",
+                    "reading",
+                    "floating",
+                    "sensing"
+                  ]
+                },
+                {
+                  "dimension": "gaze_cue",
+                  "accepted_values": [
+                    "downward",
+                    "distant",
+                    "eyes_closed",
+                    "upward"
+                  ]
+                }
+              ],
+              "forbidden_features": [
+                {
+                  "dimension": "social_density",
+                  "rejected_values": [
+                    "group",
+                    "crowd",
+                    "medium",
+                    "high"
+                  ]
+                },
+                {
+                  "dimension": "interaction_mode",
+                  "rejected_values": [
+                    "active_social",
+                    "celebration"
+                  ]
+                }
+              ],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật chính ngồi một mình suy ngẫm",
+                "A Beautiful Mind: nhân vật chính một mình trong không gian yên",
+                "A Beautiful Mind: nhân vật chính thả lỏng và nhìn xa"
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Một mình nhưng đang chạy theo mục tiêu bên ngoài chưa chứng minh hướng nội."
+          ],
+          "selection_key": [
+            0.98,
+            1.0,
+            0.96
+          ],
+          "display_score": 0.978,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C02-SOLITARY-REFLECTION"
+      ],
+      "selection_summary": {
+        "candidate_count": 2,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-03-OUTER-WORK",
+      "beat_id": "B03",
+      "voice_text_vi": "Mục đích bên ngoài dính tới những việc bạn làm, và đây chỉ là mục đích phụ.",
+      "claim_fingerprint": "sha256:c0eefb383d71797f073d849955d820afcb29e7fec9af1e43aabb84a13dd34304",
+      "concepts": [
+        {
+          "concept_id": "C03-VISIBLE-WORK",
+          "source_phrase_vi": "việc bạn làm",
+          "meaning_vi": "Hành động nghề nghiệp hoặc thao tác tạo kết quả nhìn thấy được.",
+          "priority": "primary",
+          "visualizability_class": "visible_action",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.98,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C03-WORK",
+              "label_vi": "Nhân vật thực hiện một công việc cụ thể trong môi trường phù hợp.",
+              "match_policy": "same_shot",
+              "forbidden_scope": "signature_shot",
+              "required_features": [
+                {
+                  "dimension": "visible_action",
+                  "accepted_values": [
+                    "work",
+                    "craft",
+                    "performance"
+                  ]
+                },
+                {
+                  "dimension": "setting_type",
+                  "accepted_values": [
+                    "workplace",
+                    "stage",
+                    "field_work"
+                  ]
+                }
+              ],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật đang làm việc",
+                "A Beautiful Mind: nhân vật thao tác nghề nghiệp cụ thể"
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Nhân vật mặc đồ công sở nhưng không làm gì không đủ bằng chứng."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.98
+          ],
+          "display_score": 0.994,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C03-VISIBLE-WORK"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-04-AWAKE",
+      "beat_id": "B04",
+      "voice_text_vi": "Mục đích bên trong của bạn là tỉnh thức. Chỉ đơn giản có vậy thôi.",
+      "claim_fingerprint": "sha256:0aba87733e932bd3852386fcf01201f1d585d0c7db7aa50d8be9db39b0c43c4b",
+      "concepts": [
+        {
+          "concept_id": "C04-AWAKE-ABSTRACT",
+          "source_phrase_vi": "tỉnh thức",
+          "meaning_vi": "Tỉnh thức không quay trực tiếp được nếu thiếu một hành vi chú ý hiện tại.",
+          "priority": "primary",
+          "visualizability_class": "abstract_nonvisual",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.25,
+          "proxy_concept_id": "C04-PRESENT-ATTENTION",
+          "derived_from_concept_id": null,
+          "observable_signatures": [],
+          "rejected_shortcuts_vi": [
+            "Cận cảnh gương mặt vô cảm không tự chứng minh tỉnh thức."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "display_score": 0.775,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "proxy_required",
+          "selection_reason_vi": "Khái niệm quan trọng nhưng không nhìn thấy trực tiếp; dùng proxy quan sát được `C04-PRESENT-ATTENTION`."
+        },
+        {
+          "concept_id": "C04-PRESENT-ATTENTION",
+          "source_phrase_vi": "chú ý vào khoảnh khắc hiện tại",
+          "meaning_vi": "Cơ thể dừng lại và chú ý vào một cảm giác hoặc vật đang hiện hữu.",
+          "priority": "primary",
+          "visualizability_class": "embodied_internal_state",
+          "expression_family": "quiet_presence",
+          "importance": 0.97,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.94,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": "C04-AWAKE-ABSTRACT",
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C04-PRESENT-ATTENTION",
+              "label_vi": "Nhân vật dừng lại và hướng mắt hoặc tay vào tín hiệu hiện tại.",
+              "match_policy": "same_shot",
+              "forbidden_scope": "signature_shot",
+              "required_features": [
+                {
+                  "dimension": "subject_count",
+                  "accepted_values": [
+                    "one",
+                    "two"
+                  ]
+                },
+                {
+                  "dimension": "body_activity",
+                  "accepted_values": [
+                    "still",
+                    "touching",
+                    "sensing"
+                  ]
+                },
+                {
+                  "dimension": "gaze_cue",
+                  "accepted_values": [
+                    "engaged",
+                    "downward",
+                    "distant"
+                  ]
+                },
+                {
+                  "dimension": "visible_action",
+                  "accepted_values": [
+                    "sensory_attention",
+                    "present_attention"
+                  ]
+                }
+              ],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật dừng lại cảm nhận hiện tại",
+                "A Beautiful Mind: nhân vật chú ý vào một cảm giác cụ thể"
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Chỉ dùng phong cảnh êm dịu mà không có chủ thể đang chú ý."
+          ],
+          "selection_key": [
+            0.97,
+            1.0,
+            0.94
+          ],
+          "display_score": 0.967,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C04-PRESENT-ATTENTION"
+      ],
+      "selection_summary": {
+        "candidate_count": 2,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "beat_id": "B05",
+      "voice_text_vi": "Mục đích bên ngoài có thể thay đổi; sống hòa điệu với mục đích bên trong là cơ sở để hoàn thành mục đích bên ngoài.",
+      "claim_fingerprint": "sha256:7dc2326fdfd397c039c1a6d800d6318402e8cb1b329f6396f3c617c2973d76a9",
+      "concepts": [
+        {
+          "concept_id": "C05-ALIGN-RESULT",
+          "source_phrase_vi": "hòa điệu để hoàn thành",
+          "meaning_vi": "Trạng thái tự điều chỉnh phải xuất hiện trước kết quả hoàn tất nhìn thấy được.",
+          "priority": "primary",
+          "visualizability_class": "relational_sequence",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.94,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C05-CONDITION-RESULT",
+              "label_vi": "Một trạng thái tập trung ổn định dẫn tới kết quả hoàn tất hoặc được công nhận.",
+              "match_policy": "ordered_roles",
+              "forbidden_scope": "signature_shot",
+              "required_features": [],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật lấy lại tập trung",
+                "A Beautiful Mind: kết quả công việc được hoàn thành hoặc công nhận"
+              ],
+              "role_requirements": [
+                {
+                  "semantic_role": "condition",
+                  "required_features": [
+                    {
+                      "dimension": "goal_relation",
+                      "accepted_values": [
+                        "self_regulated"
+                      ]
+                    },
+                    {
+                      "dimension": "body_activity",
+                      "accepted_values": [
+                        "still",
+                        "focused",
+                        "sensing"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "semantic_role": "dependent_result",
+                  "required_features": [
+                    {
+                      "dimension": "visible_outcome",
+                      "accepted_values": [
+                        "completed_goal",
+                        "public_recognition"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Không ghép hai cảnh không có quan hệ điều kiện và kết quả."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.94
+          ],
+          "display_score": 0.982,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C05-ALIGN-RESULT"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "beat_id": "B06",
+      "voice_text_vi": "Đó là cơ sở của những thành công thực sự.",
+      "claim_fingerprint": "sha256:d2b6bc664f7088d5809122457c73111c32e839a168e24a16ad2eb67a21bd767b",
+      "concepts": [
+        {
+          "concept_id": "C06-SUCCESS-PROOF",
+          "source_phrase_vi": "thành công thực sự",
+          "meaning_vi": "Một kết quả cụ thể được trao, xác nhận hoặc công nhận công khai.",
+          "priority": "primary",
+          "visualizability_class": "direct_referent",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 1.0,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C06-PUBLIC-SUCCESS",
+              "label_vi": "Giải thưởng, bằng cấp hoặc nghi thức công nhận xuất hiện trực tiếp.",
+              "match_policy": "same_shot",
+              "forbidden_scope": "signature_shot",
+              "required_features": [
+                {
+                  "dimension": "visible_object",
+                  "accepted_values": [
+                    "trophy",
+                    "diploma",
+                    "award_stage",
+                    "recognition_symbol"
+                  ]
+                },
+                {
+                  "dimension": "visible_outcome",
+                  "accepted_values": [
+                    "public_recognition",
+                    "completed_goal"
+                  ]
+                }
+              ],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật nhận giải hoặc bằng cấp",
+                "A Beautiful Mind: thành quả được công nhận công khai"
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Nét mặt vui hoặc cảnh đẹp không thay thế vật chứng thành công."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "display_score": 1.0,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C06-SUCCESS-PROOF"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "beat_id": "B07",
+      "voice_text_vi": "Khi bên ngoài không hòa điệu với bên trong, muốn đạt mục tiêu sẽ phải nỗ lực, đấu tranh và dùng thủ đoạn.",
+      "claim_fingerprint": "sha256:d6906f253b7bb94ff911bafa922a4d13f431f941c704ab6b5bcd080052656111",
+      "concepts": [
+        {
+          "concept_id": "C07-MISALIGN-STRUGGLE",
+          "source_phrase_vi": "lệch khỏi mình rồi đấu tranh",
+          "meaning_vi": "Sai lệch nội-tại dẫn tới áp lực, xung đột và mất kiểm soát nhìn thấy được.",
+          "priority": "primary",
+          "visualizability_class": "relational_sequence",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.96,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C07-ESCALATION",
+              "label_vi": "Áp lực nguyên nhân xuất hiện trước hành động đấu tranh hoặc mất kiểm soát.",
+              "match_policy": "ordered_roles",
+              "forbidden_scope": "signature_shot",
+              "required_features": [],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật chịu áp lực và xung đột",
+                "A Beautiful Mind: nhân vật vùng vẫy hoặc mất kiểm soát"
+              ],
+              "role_requirements": [
+                {
+                  "semantic_role": "cause",
+                  "required_features": [
+                    {
+                      "dimension": "goal_relation",
+                      "accepted_values": [
+                        "misaligned"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "semantic_role": "effect",
+                  "required_features": [
+                    {
+                      "dimension": "visible_action",
+                      "accepted_values": [
+                        "struggle",
+                        "conflict",
+                        "loss_of_control"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Không dùng montage nhanh nếu các cảnh không cùng chứng minh một chuỗi leo thang."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.96
+          ],
+          "display_score": 0.988,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C07-MISALIGN-STRUGGLE"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    },
+    {
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "beat_id": "B08",
+      "voice_text_vi": "Khi ấy công việc hoàn tất không đem lại niềm vui, còn kết quả gây khổ đau cho mình và người chung quanh.",
+      "claim_fingerprint": "sha256:b404f7d37d418bd79da4d66213ab8082c75cb15a907a2c8cc0234c47e5526578",
+      "concepts": [
+        {
+          "concept_id": "C08-NO-JOY-TO-SUFFERING",
+          "source_phrase_vi": "không vui rồi gây khổ đau",
+          "meaning_vi": "Khoảng trống sau mục tiêu dẫn tới tổn thương quan hệ và đau khổ hữu hình.",
+          "priority": "primary",
+          "visualizability_class": "relational_sequence",
+          "expression_family": "",
+          "importance": 1.0,
+          "context_relevance": 1.0,
+          "visual_clarity": 0.98,
+          "proxy_concept_id": null,
+          "derived_from_concept_id": null,
+          "observable_signatures": [
+            {
+              "signature_id": "SIG-C08-HUMAN-COST",
+              "label_vi": "Không vui, người chung quanh bị tổn thương, rồi đau khổ hiện trên mặt và cơ thể.",
+              "match_policy": "ordered_roles",
+              "forbidden_scope": "signature_shot",
+              "required_features": [],
+              "forbidden_features": [],
+              "search_atoms_vi": [
+                "A Beautiful Mind: nhân vật đạt việc nhưng trống rỗng",
+                "A Beautiful Mind: người thân bị tổn thương",
+                "A Beautiful Mind: nhân vật khóc, gục xuống hoặc đau khổ"
+              ],
+              "role_requirements": [
+                {
+                  "semantic_role": "choice_or_behavior",
+                  "required_features": [
+                    {
+                      "dimension": "visible_outcome",
+                      "accepted_values": [
+                        "no_joy"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "semantic_role": "human_consequence",
+                  "required_features": [
+                    {
+                      "dimension": "human_consequence",
+                      "accepted_values": [
+                        "relationship_harm",
+                        "family_harm"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "semantic_role": "value_verdict",
+                  "required_features": [
+                    {
+                      "dimension": "facial_affect",
+                      "accepted_values": [
+                        "distress",
+                        "grief",
+                        "sadness"
+                      ]
+                    },
+                    {
+                      "dimension": "body_cue",
+                      "accepted_values": [
+                        "crying",
+                        "slumped",
+                        "collapsed",
+                        "struggling"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "rejected_shortcuts_vi": [
+            "Ánh sáng tối hoặc căn phòng trống không tự chứng minh khổ đau."
+          ],
+          "selection_key": [
+            1.0,
+            1.0,
+            0.98
+          ],
+          "display_score": 0.994,
+          "selection_formula": "hard thresholds; lexicographic importance, context_relevance, visual_clarity; display=0.50*importance+0.20*context+0.30*clarity",
+          "selection_status": "selected_carrier",
+          "selection_reason_vi": "Vượt đủ ngưỡng quan trọng, đúng ngữ cảnh và dễ nhìn thấy; được chọn làm carrier hình ảnh."
+        }
+      ],
+      "selected_carrier_concept_ids": [
+        "C08-NO-JOY-TO-SUFFERING"
+      ],
+      "selection_summary": {
+        "candidate_count": 1,
+        "selected_count": 1,
+        "selected_by": "hard thresholds, then lexicographic importance -> context relevance -> visual clarity",
+        "display_score_is_authority": false
+      }
+    }
+  ],
+  "created_at": "2026-07-31T10:00:39+07:00",
+  "plan_sha256": "sha256:786f2cf1ca34d02e5f9e5a9e79d13035d09d9a77d24ef0037e25577c9a277d28"
+}

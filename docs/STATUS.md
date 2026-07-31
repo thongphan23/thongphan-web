@@ -2,6 +2,27 @@
 
 Last updated: 2026-07-31
 
+## Remotion Observable Expression v1 owner-review round — verified locally — 2026-07-31
+
+- Rebuilt the authoritative 59.652-second Vietnamese voice as three 59.712-second
+  one-film variants: `Soul`, `Forrest Gump` and `A Beautiful Mind`.
+- Added a fail-closed Visual Expression Plan before candidate selection. The 24
+  important claim carriers must now translate abstract meaning into co-located,
+  observable subject, action, body, gaze, object, context or consequence cues.
+  A crowd scene can no longer pass `mục đích bên trong` because a later shot is
+  solitary.
+- The final batch contains 51 unique selected shots, zero within-variant source
+  reuse, zero foreign-film shots, 24/24 expression passes and three sealed
+  decision graphs. Click was rejected at film casting because the observed vault
+  did not contain enough distinct inward-reflection carriers.
+- Plugin full regression passes 858/858; active source/cache parity passes at
+  `0.2.7-rc.1+codex.20260731093151`. Video QA passes 1080p H.264/AAC,
+  -15.1 LUFS, one-line subtitles, black/freeze checks and direct frame review.
+- Website focused 4/4, full 248/248, TypeScript, ESLint, 84-route build and local
+  desktop/mobile playback QA pass. Production deployment is pending this source
+  commit. Full evidence:
+  `docs/releases/REMOTION_OBSERVABLE_EXPRESSION_V1_PRODUCTION_RELEASE-2026-07-31.md`.
+
 ## Remotion Single-film Continuity v1 owner-review round — production release — 2026-07-31
 
 - Rebuilt the authoritative Vietnamese voice as three 59.712-second variants,

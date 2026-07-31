@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0.0",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-observable-expression-v1-20260731-A-BEAUTIFUL-MIND-a-beautiful-mind",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731-A-BEAUTIFUL-MIND",
+  "variant_id": "a-beautiful-mind",
+  "status": "pass",
+  "lock_mode": "one_film_per_video_strict",
+  "locked_film_id": "FILM-A-BEAUTIFUL-MIND",
+  "locked_profile_id": "PROFILE-A-BEAUTIFUL-MIND",
+  "portfolio_ref": {
+    "path": "content/film_source_portfolio.json",
+    "sha256": "21fd39537b0bcd690846c4226b0ee149eb98eb247dbd9f94dc61d99fe1c986ab"
+  },
+  "edit_plan_sha256": "sha256:15899fed4159dc4c1fb2f6ded733a611cc5330a264571273c507a3389c4084b7",
+  "shot_count": 18,
+  "observed_film_ids": [
+    "FILM-A-BEAUTIFUL-MIND"
+  ],
+  "foreign_shot_ids": [],
+  "missing_identity_shot_ids": [],
+  "shots": [
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-PRIMARY-01",
+      "asset_id": "ASSET-ABM-REFLECT-TABLE",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:fb5f87b96eba543dd6eb325c5b60678aa976122d13bb5ae84c92feccd6796656",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-PRIMARY-02",
+      "asset_id": "ASSET-ABM-EQUATIONS",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:7bd079e2f399733dfabb8f0e12f3ed1c32f6e245ecb4a55b078bf966efd5d33a",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-PRIMARY-01",
+      "asset_id": "ASSET-ABM-QUIET-CLOSEUP",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:831108709dfd5892f4df64025c66237248619a2823454a7a7d1a9f86c8c244f3",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-PRIMARY-01",
+      "asset_id": "ASSET-ABM-LECTURE",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:0dbbe00ca13dc9d38c22f59fc42e08d57b3c9b1c570961544befd7ac6f948f1c",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-PRIMARY-01",
+      "asset_id": "ASSET-ABM-HEART",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:27cc79083c2589bd7e5af8810cbfde3bc54ab00250100bc829611b2eab4dd466",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-PRIMARY-01",
+      "asset_id": "ASSET-ABM-REAL-TOUCH",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:ac51f570b94506f15ee04bf6b09fc9a8e4d86b6f5faaebe8dcb7646f3be24807",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-PRIMARY-02",
+      "asset_id": "ASSET-ABM-PENS",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:f9c44284486c220083126c1b4dcbd4f64e04ddc3abd709b091b9a1c1aed267c0",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-PRIMARY-01",
+      "asset_id": "ASSET-ABM-NOBEL",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:ec2113ca9ef2f5707661cec6823a77c481c034f741cf80fdb795296f301c7152",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-01",
+      "asset_id": "ASSET-ABM-PRESSURE",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:ae7e9b42a59a74f02f59b6ac1808eab8699dab620f42624b4158530ade19132f",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-02",
+      "asset_id": "ASSET-ABM-REALIZATION",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:da5e91a94a2112f490feb4ce385b7acbfbbead9dbd4ac8eda9acb927d6d14916",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-03",
+      "asset_id": "ASSET-ABM-FAMILY-DANGER",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:137df3dcdaaf500d155b0a9e0d625422ace88ea8ee1288f249d6c8c0a5544a56",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-04",
+      "asset_id": "ASSET-ABM-HOSPITAL-FEAR",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:0f5f615740f1227adea0653b608fc504d734a6f2ff5209a11756894fc36426bb",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-05",
+      "asset_id": "ASSET-ABM-HALLUCINATIONS",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:ead99f249ca08e059b141b14e92588aaefeac45374493552c005e00f5812f204",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-06",
+      "asset_id": "ASSET-ABM-BLOODY-ALONE",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:978acc0d53d3ae50c5d3faebd9d35c3a74bc6c4336d7756ecdc09767345bd56d",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-PRIMARY-07",
+      "asset_id": "ASSET-ABM-EVIDENCE-ROOM",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:6595ef5acde3d3666bd34a31f831e6c0ebf8980accf6c23595b251e18f3a52ec",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-PRIMARY-01",
+      "asset_id": "ASSET-ABM-EMPTY-HOME",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:872e189e7eb88785cf6309f20e8961bf4890d3894c5913ba8453c6afef365bee",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-PRIMARY-02",
+      "asset_id": "ASSET-ABM-PARTNER-HURT",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:30bc24dfb799de39cedf21e92727aca72492839b211675fea623e7520b248aa2",
+      "matches_locked_film": true
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-PRIMARY-03",
+      "asset_id": "ASSET-ABM-BREAKDOWN",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_sha256": "sha256:5249ec7d1db99bbcc8ffcf0ad2591c2e5a430328f9492b925cb07b5bbea5397a",
+      "matches_locked_film": true
+    }
+  ],
+  "checks": {
+    "portfolio_sealed": true,
+    "one_assignment": true,
+    "all_shots_identified": true,
+    "all_shots_match_locked_film": true
+  },
+  "report_sha256": "sha256:66a37146ef91f5f4fc82e091ff754b288e12be557fdd6d19ec4eb7cbee0beea4",
+  "created_at": "2026-07-31T10:00:39+07:00"
+}

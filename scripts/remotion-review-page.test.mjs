@@ -9,9 +9,9 @@ const mediaRoot = new URL(
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 
 const videos = [
-  'soul-single-film-v2-web.mp4',
-  'click-single-film-v2-web.mp4',
-  'forrest-gump-single-film-v2-web.mp4',
+  'soul-observable-expression-v1-web.mp4',
+  'forrest-gump-observable-expression-v1-web.mp4',
+  'a-beautiful-mind-observable-expression-v1-web.mp4',
 ]
 
 test('review route is private-by-discovery and exposes exactly three single-film variants', async () => {
@@ -22,13 +22,14 @@ test('review route is private-by-discovery and exposes exactly three single-film
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.equal((gallery.match(/id:\s*['"](?:soul|click|forrest-gump)['"]/g) ?? []).length, 3)
+  assert.equal((gallery.match(/id:\s*['"](?:soul|forrest-gump|a-beautiful-mind)['"]/g) ?? []).length, 3)
   assert.match(gallery, /preload="metadata"/)
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
   assert.match(gallery, /poster=\{activeVariant\.poster\}/)
-  assert.equal((gallery.match(/single-film-v2-web\.mp4/g) ?? []).length, 3)
-  assert.equal((gallery.match(/single-film-v2-web\.mp4\?v=single-film-v2-20260731/g) ?? []).length, 3)
+  assert.equal((gallery.match(/observable-expression-v1-web\.mp4/g) ?? []).length, 3)
+  assert.equal((gallery.match(/observable-expression-v1-web\.mp4\?v=observable-expression-v1-20260731/g) ?? []).length, 3)
+  assert.equal((gallery.match(/expressionHref:/g) ?? []).length, 3)
   assert.equal((gallery.match(/evidenceHref:/g) ?? []).length, 3)
   assert.equal((gallery.match(/continuityHref:/g) ?? []).length, 3)
   assert.match(gallery, /Mở quyết định hình ảnh/)
@@ -46,18 +47,25 @@ test('review handoff exposes the traceable visual-proposition evidence packet', 
     'render-qa-report.json',
     'claim-timeline.json',
     'film-casting-decision.json',
-    'single-film-batch-verification.json',
-    'single-film-visual-mapping.md',
+    'observable-expression-batch-verification.json',
+    'voice-to-observable-visual-mapping.md',
+    'old-click-inner-false-high-rejection.json',
     'scorecard-comparison.md',
     'soul-visual-selection-review.md',
-    'click-visual-selection-review.md',
     'forrest-gump-visual-selection-review.md',
+    'a-beautiful-mind-visual-selection-review.md',
+    'soul-visual-expression-review.md',
+    'forrest-gump-visual-expression-review.md',
+    'a-beautiful-mind-visual-expression-review.md',
+    'soul-visual-expression-plan.json',
+    'forrest-gump-visual-expression-plan.json',
+    'a-beautiful-mind-visual-expression-plan.json',
     'soul-visual-proposition-graph.json',
-    'click-visual-proposition-graph.json',
     'forrest-gump-visual-proposition-graph.json',
+    'a-beautiful-mind-visual-proposition-graph.json',
     'soul-single-film-continuity-report.json',
-    'click-single-film-continuity-report.json',
     'forrest-gump-single-film-continuity-report.json',
+    'a-beautiful-mind-single-film-continuity-report.json',
   ]) {
     await access(new URL(filename, evidenceRoot))
   }

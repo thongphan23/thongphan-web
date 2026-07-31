@@ -1,0 +1,42 @@
+{
+  "schema": "tpr.false_high_rejection.v1",
+  "status": "pass",
+  "candidate": {
+    "schema": "tpr.visual_expression_candidate_evaluation.v1",
+    "candidate_id": "OLD-CLICK-CROWD-INNER",
+    "claim_id": "CLM-02-INNER-EASE",
+    "plan_sha256": "sha256:6bc72f8545063add7d12a90176c4a886e1858be878910375f4c824f060316b09",
+    "status": "fail",
+    "concept_evaluations": [
+      {
+        "concept_id": "C02-SOLITARY-REFLECTION",
+        "status": "fail",
+        "matched_signature_ids": [],
+        "signature_evaluations": [
+          {
+            "signature_id": "SIG-C02-SOLITARY-REFLECTION",
+            "status": "fail",
+            "matched_shot_ids": [],
+            "forbidden_violation_shot_ids": [
+              "OLD-CLICK-POOL"
+            ],
+            "hard_gate_failures": [
+              "OBSERVABLE_SIGNATURE_NOT_COLOCATED",
+              "FORBIDDEN_FEATURE_PRESENT_ALL_SHOTS"
+            ]
+          }
+        ],
+        "hard_gate_failures": [
+          "OBSERVABLE_SIGNATURE_NOT_COLOCATED",
+          "FORBIDDEN_FEATURE_PRESENT_ALL_SHOTS"
+        ]
+      }
+    ],
+    "hard_gate_failures": [
+      "OBSERVABLE_SIGNATURE_NOT_COLOCATED",
+      "FORBIDDEN_FEATURE_PRESENT_ALL_SHOTS",
+      "VISUAL_CARRIER_CONCEPT_UNPROVEN:C02-SOLITARY-REFLECTION"
+    ]
+  },
+  "expected_failure": "Cảnh đông người không thể mang ý một mình suy ngẫm."
+}

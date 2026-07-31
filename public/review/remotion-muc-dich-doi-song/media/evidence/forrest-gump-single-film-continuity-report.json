@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "report_id": "SFCR-RUN-muc-dich-doi-song-single-film-v2-20260731-FORREST-GUMP-forrest-gump",
-  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-FORREST-GUMP",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-observable-expression-v1-20260731-FORREST-GUMP-forrest-gump",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731-FORREST-GUMP",
   "variant_id": "forrest-gump",
   "status": "pass",
   "lock_mode": "one_film_per_video_strict",
@@ -9,9 +9,9 @@
   "locked_profile_id": "PROFILE-FORREST-GUMP",
   "portfolio_ref": {
     "path": "content/film_source_portfolio.json",
-    "sha256": "abb40fc338abb5c412fe46a9db8619963f9107f7fad9725a8fc8ec465ea7cd20"
+    "sha256": "b41e558aef55259e7e87699519e25a6cd955983d172086938ee4624ec5780af6"
   },
-  "edit_plan_sha256": "sha256:667b337a9ff4d27ecccd0131f6b8707d103293ff036f6248a1b267f25ff15bf4",
+  "edit_plan_sha256": "sha256:cafbaa0120350db7deaaa3919698e032fec5c70927c039cc91adb760faf2711e",
   "shot_count": 14,
   "observed_film_ids": [
     "FILM-FORREST-GUMP"
@@ -21,9 +21,9 @@
   "shots": [
     {
       "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-PRIMARY-01",
-      "asset_id": "ASSET-FORREST-ALONE-NATURE",
+      "asset_id": "ASSET-FORREST-RECOLLECTS",
       "film_id": "FILM-FORREST-GUMP",
-      "source_sha256": "sha256:3fd92bd14b3336724d48cd880d4b42c47640e06273bf789b0bf1e8ab031a51c8",
+      "source_sha256": "sha256:2c7b8c56ff69441f26d3d35c537d2424a24b142f29d46ee98461cfb5da6e1d3f",
       "matches_locked_film": true
     },
     {
@@ -35,9 +35,9 @@
     },
     {
       "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-PRIMARY-01",
-      "asset_id": "ASSET-FORREST-PRESENT-WALK",
+      "asset_id": "ASSET-FORREST-ALONE-NATURE",
       "film_id": "FILM-FORREST-GUMP",
-      "source_sha256": "sha256:79cd8d88edae2be74aabee3873c86bbcd44108274248a0ec5c5823cf99081194",
+      "source_sha256": "sha256:3fd92bd14b3336724d48cd880d4b42c47640e06273bf789b0bf1e8ab031a51c8",
       "matches_locked_film": true
     },
     {
@@ -124,6 +124,6 @@
     "all_shots_identified": true,
     "all_shots_match_locked_film": true
   },
-  "report_sha256": "sha256:7697059241187b7a16f3f72185244997761ac79e408801867bb30752aa2f13cd",
-  "created_at": "2026-07-31T07:53:44+07:00"
+  "report_sha256": "sha256:e9fd4bb38ac97e222af7112eebcb4f1b15637abc910f0029d54433280f291cc7",
+  "created_at": "2026-07-31T10:00:39+07:00"
 }

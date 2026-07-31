@@ -1,6 +1,6 @@
 {
-  "schema": "tpr.workflow_evidence_index.single_film.v1",
-  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731",
+  "schema": "tpr.workflow_evidence_index.observable_expression.v1",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731",
   "status": "owner_review_ready",
   "steps": [
     {
@@ -34,17 +34,27 @@
       ]
     },
     {
-      "step": "04_visual_mapping_and_scoring",
+      "step": "04_concept_visualizability_and_observable_expression",
       "inputs": [
         "content/film_casting_decision.json"
       ],
       "outputs": [
-        "content/single_film_visual_mapping.md",
-        "variants/*/content/visual_proposition_graph.json"
+        "variants/*/content/visual_expression_plan.json",
+        "content/voice_to_observable_visual_mapping.md"
       ]
     },
     {
-      "step": "05_locked_edit_plan_and_continuity",
+      "step": "05_candidate_selection_and_locked_graph",
+      "inputs": [
+        "variants/*/content/visual_expression_plan.json"
+      ],
+      "outputs": [
+        "variants/*/content/visual_proposition_graph.json",
+        "audit/old_click_inner_false_high_rejection.json"
+      ]
+    },
+    {
+      "step": "06_edit_plan_and_continuity",
       "inputs": [
         "variants/*/content/visual_proposition_graph.json"
       ],
@@ -54,7 +64,7 @@
       ]
     },
     {
-      "step": "06_render_and_qa",
+      "step": "07_render_and_qa",
       "inputs": [
         "variants/*/content/edit_plan.json",
         "remotion/src/videoData.generated.ts"
@@ -66,7 +76,7 @@
       ]
     },
     {
-      "step": "07_owner_review",
+      "step": "08_owner_review",
       "inputs": [
         "content/render_qa_report.json"
       ],

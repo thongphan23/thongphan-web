@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "report_id": "SFCR-RUN-muc-dich-doi-song-single-film-v2-20260731-SOUL-soul",
-  "run_id": "RUN-muc-dich-doi-song-single-film-v2-20260731-SOUL",
+  "report_id": "SFCR-RUN-muc-dich-doi-song-observable-expression-v1-20260731-SOUL-soul",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731-SOUL",
   "variant_id": "soul",
   "status": "pass",
   "lock_mode": "one_film_per_video_strict",
@@ -9,9 +9,9 @@
   "locked_profile_id": "PROFILE-SOUL",
   "portfolio_ref": {
     "path": "content/film_source_portfolio.json",
-    "sha256": "dfe60b49724c8322c5666959ef906ca925fc01577af0a11a27cc52d8d8b3995f"
+    "sha256": "bcae460aae2460a8a435a7293e820cfcdcc88926888563b153b77e9e05bea2de"
   },
-  "edit_plan_sha256": "sha256:5cbcb5f01c96bd0223d32f57f294f39c784951bf9feee898222bb0bf8c42727d",
+  "edit_plan_sha256": "sha256:9331e2d23a5e824a7df2e12e74b1a3a72511ed6e5aef406c3d46b45f959c0243",
   "shot_count": 19,
   "observed_film_ids": [
     "FILM-SOUL"
@@ -159,6 +159,6 @@
     "all_shots_identified": true,
     "all_shots_match_locked_film": true
   },
-  "report_sha256": "sha256:f883f606b58afde541f6f7605f3d2e24e431bd5dd790564bd1bc51927b415d0d",
-  "created_at": "2026-07-31T07:53:43+07:00"
+  "report_sha256": "sha256:f80b1d3ceb5e151c5d7b45a237e7c2541e9a51bef1264d4d5ef18cfa35be8185",
+  "created_at": "2026-07-31T10:00:39+07:00"
 }

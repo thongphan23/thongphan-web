@@ -7,41 +7,44 @@ const variants = [
   {
     id: 'soul',
     tab: '01 · Soul',
-    title: 'Một thế giới hoạt hình, một mạch cảm xúc',
-    src: '/review/remotion-muc-dich-doi-song/media/soul-single-film-v2-web.mp4?v=single-film-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/soul-single-film-v2-poster.jpg?v=single-film-v2-20260731',
-    focus: 'Chỉ dùng cảnh từ Soul: cô độc và suy ngẫm cho mục đích bên trong; nghề nghiệp, biểu diễn, được công nhận và hụt hẫng cho mục đích bên ngoài.',
-    strength: 'Hệ biểu tượng nhất quán, trạng thái nội tâm rõ và có cảnh nhận cúp làm bằng chứng trực tiếp cho thành công.',
-    risk: 'Hoạt hình vẫn có thể tạo khoảng cách với trải nghiệm người đi làm; cần chấm mức liên tưởng cá nhân.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-selection-review.md?v=single-film-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-proposition-graph.json?v=single-film-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-single-film-continuity-report.json?v=single-film-v2-20260731',
-  },
-  {
-    id: 'click',
-    tab: '02 · Click',
-    title: 'Công việc, gia đình và cái giá mất kiểm soát',
-    src: '/review/remotion-muc-dich-doi-song/media/click-single-film-v2-web.mp4?v=single-film-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/click-single-film-v2-poster.jpg?v=single-film-v2-20260731',
-    focus: 'Chỉ dùng Click để nối tham vọng công việc với sự xa cách gia đình, áp lực tăng tốc và khoảnh khắc nhận ra mình đã bỏ lỡ điều gì.',
-    strength: 'Người thật, công sở và gia đình gần với đời sống của nhóm 25-35 tuổi ở đô thị Việt Nam.',
-    risk: 'Một số ý nội tâm phải dựa vào biểu cảm và hậu quả thay vì vật chứng trực tiếp như Soul.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/click-visual-selection-review.md?v=single-film-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/click-visual-proposition-graph.json?v=single-film-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/click-single-film-continuity-report.json?v=single-film-v2-20260731',
+    title: 'Nội tâm được hiện thân bằng hành vi',
+    src: '/review/remotion-muc-dich-doi-song/media/soul-observable-expression-v1-web.mp4?v=observable-expression-v1-20260731',
+    poster: '/review/remotion-muc-dich-doi-song/media/soul-observable-expression-v1-poster.jpg?v=observable-expression-v1-20260731',
+    focus: 'Joe tĩnh lại và cảm nhận cho mục đích bên trong; công việc, sân khấu, chiếc cúp và linh hồn đau khổ mang các ý bên ngoài bằng hình câm.',
+    strength: 'Biểu cảm dễ đọc, hệ biểu tượng nhất quán và chiếc cúp chứng minh thành công trực tiếp.',
+    risk: 'Cảnh ăn pizza là carrier cảm nhận hiện tại; cần chấm xem đã đủ gợi chiều sâu hướng nội chưa.',
+    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-expression-review.md?v=observable-expression-v1-20260731',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-selection-review.md?v=observable-expression-v1-20260731',
+    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-proposition-graph.json?v=observable-expression-v1-20260731',
+    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-single-film-continuity-report.json?v=observable-expression-v1-20260731',
   },
   {
     id: 'forrest-gump',
-    tab: '03 · Forrest Gump',
-    title: 'Một đời người trong cùng một tuyến phim',
-    src: '/review/remotion-muc-dich-doi-song/media/forrest-gump-single-film-v2-web.mp4?v=single-film-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/forrest-gump-single-film-v2-poster.jpg?v=single-film-v2-20260731',
-    focus: 'Chỉ dùng Forrest Gump để đi từ khoảng lặng một mình, hành động, thành tựu, áp lực đến quan hệ và mất mát trong một đời người.',
-    strength: 'Có độ rộng về thời gian, thành tựu và quan hệ nhưng vẫn giữ nguyên tuyến nhân vật và thế giới phim.',
-    risk: 'Cần chấm xem những cảnh có đủ nghĩa khi người xem chưa từng biết cốt truyện Forrest Gump.',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-selection-review.md?v=single-film-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-proposition-graph.json?v=single-film-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-single-film-continuity-report.json?v=single-film-v2-20260731',
+    tab: '02 · Forrest Gump',
+    title: 'Một đời người với bằng chứng cụ thể',
+    src: '/review/remotion-muc-dich-doi-song/media/forrest-gump-observable-expression-v1-web.mp4?v=observable-expression-v1-20260731',
+    poster: '/review/remotion-muc-dich-doi-song/media/forrest-gump-observable-expression-v1-poster.jpg?v=observable-expression-v1-20260731',
+    focus: 'Khoảng lặng một mình, lao động, bằng tốt nghiệp, công nhận, chiến đấu và mất mát nối thành một tuyến đời người.',
+    strength: 'Nhiều hành động và hệ quả cụ thể; đoạn kết đặt đau khổ trực tiếp trên gương mặt Forrest.',
+    risk: 'Cảnh một mình giữa biển là hình thể tĩnh mạnh nhưng có thể chưa gợi suy ngẫm nhanh bằng cận cảnh.',
+    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-expression-review.md?v=observable-expression-v1-20260731',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-selection-review.md?v=observable-expression-v1-20260731',
+    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-proposition-graph.json?v=observable-expression-v1-20260731',
+    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-single-film-continuity-report.json?v=observable-expression-v1-20260731',
+  },
+  {
+    id: 'a-beautiful-mind',
+    tab: '03 · A Beautiful Mind',
+    title: 'Suy ngẫm, Nobel và cái giá con người',
+    src: '/review/remotion-muc-dich-doi-song/media/a-beautiful-mind-observable-expression-v1-web.mp4?v=observable-expression-v1-20260731',
+    poster: '/review/remotion-muc-dich-doi-song/media/a-beautiful-mind-observable-expression-v1-poster.jpg?v=observable-expression-v1-20260731',
+    focus: 'John một mình suy ngẫm, làm toán, bước lên sân khấu Nobel rồi đi qua mất kiểm soát, đổ vỡ và đau khổ.',
+    strength: 'Ba ý khó nhất đều có carrier rõ: cô tịch, nghi thức công nhận và hệ quả đau khổ trên con người.',
+    risk: 'Một số cảnh xung đột ở đoạn cao trào dày thông tin; cần chấm khả năng đọc trong nhịp nhanh.',
+    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-expression-review.md?v=observable-expression-v1-20260731',
+    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-selection-review.md?v=observable-expression-v1-20260731',
+    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-proposition-graph.json?v=observable-expression-v1-20260731',
+    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-single-film-continuity-report.json?v=observable-expression-v1-20260731',
   },
 ] as const
 
@@ -96,6 +99,14 @@ export default function VideoReviewGallery() {
           <div>
             <dt>Rủi ro cần kiểm tra</dt>
             <dd>{activeVariant.risk}</dd>
+          </div>
+          <div>
+            <dt>Concept → dấu hiệu nhìn thấy</dt>
+            <dd>
+              <a className={styles.evidenceLink} href={activeVariant.expressionHref} target="_blank" rel="noreferrer">
+                Mở bản phân rã hình ảnh
+              </a>
+            </dd>
           </div>
           <div>
             <dt>Bằng chứng lựa chọn</dt>

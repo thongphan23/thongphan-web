@@ -1,0 +1,37 @@
+{
+  "schema": "tpr.observable_expression_batch_verification.v1",
+  "run_id": "RUN-muc-dich-doi-song-observable-expression-v1-20260731",
+  "status": "pass",
+  "checks": [
+    {
+      "variant_id": "soul",
+      "film_id": "FILM-SOUL",
+      "expression_plan_sha256": "sha256:6bc72f8545063add7d12a90176c4a886e1858be878910375f4c824f060316b09",
+      "visual_graph_sha256": "sha256:9de78c1cd53cfd2d4384f09ab3e49e9ccd74a789d1fd7e92c13c22b8d3e1e14c",
+      "expression_claims_passed": 8,
+      "continuity_status": "pass",
+      "foreign_shot_count": 0,
+      "source_reuse_count": 0
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_id": "FILM-FORREST-GUMP",
+      "expression_plan_sha256": "sha256:34c497b034acaaed9ee51ab2284a76dee9219a0f65b4bded679b65d68063f81f",
+      "visual_graph_sha256": "sha256:7d9b8c482749e08935504694ee5cb070ded39751aa925fba4857f89c0ec0cefa",
+      "expression_claims_passed": 8,
+      "continuity_status": "pass",
+      "foreign_shot_count": 0,
+      "source_reuse_count": 0
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "expression_plan_sha256": "sha256:786f2cf1ca34d02e5f9e5a9e79d13035d09d9a77d24ef0037e25577c9a277d28",
+      "visual_graph_sha256": "sha256:ed020bd1d01bea3f2a4fa15536b78d5acce7a6aeb5b3491c75bfdfd3e529df50",
+      "expression_claims_passed": 8,
+      "continuity_status": "pass",
+      "foreign_shot_count": 0,
+      "source_reuse_count": 0
+    }
+  ]
+}

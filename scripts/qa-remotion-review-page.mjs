@@ -9,9 +9,9 @@ const cases = [
   { id: 'mobile', width: 390, height: 844 },
 ]
 const variants = [
-  { tab: '01 · Soul', source: 'soul-single-film-v2-web.mp4' },
-  { tab: '02 · Click', source: 'click-single-film-v2-web.mp4' },
-  { tab: '03 · Forrest Gump', source: 'forrest-gump-single-film-v2-web.mp4' },
+  { tab: '01 · Soul', source: 'soul-observable-expression-v1-web.mp4' },
+  { tab: '02 · Forrest Gump', source: 'forrest-gump-observable-expression-v1-web.mp4' },
+  { tab: '03 · A Beautiful Mind', source: 'a-beautiful-mind-observable-expression-v1-web.mp4' },
 ]
 
 await mkdir(outputDir, { recursive: true })
