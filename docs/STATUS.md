@@ -1,6 +1,33 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-31
+Last updated: 2026-08-01
+
+## Remotion Semantic Vertical Framing v1 owner-review round — production release — 2026-08-01
+
+- Added semantic 9:16 composition to the active Thông Phan Remotion plugin.
+  Vertical output now observes source pixels, proposes multiple framing
+  candidates, requires an observed/reviewed focus carrier, limits pan speed and
+  emits graph lineage instead of blindly center-cropping a horizontal render.
+- Rebuilt the authoritative 59.652-second supplied voice as nine 59.712-second
+  videos: three iterative rounds across `Soul`, `Forrest Gump` and
+  `A Beautiful Mind`, with one film per video and one-line subtitles.
+- Round 1 established the center-crop baseline at 27/51 shot gates and 79.6%
+  mean focus retention. Round 2 used face/saliency tracking and reached 44/51
+  and 96.6%, but pixel review exposed semantic false-highs. Round 3 selected
+  focus signals by shot role, added hold/dead-zone behavior and replaced three
+  irrecoverable source trims, reaching 51/51 geometric gates and 99.5% mean
+  retention; 48/51 semantic carriers pass manual pixel adjudication.
+- Published all nine web videos, nine posters, three owner-readable round
+  reports, nine composition plans, nine contact sheets and the observation/
+  override evidence on the private-by-discovery review route. Self-evaluation
+  remains system evidence and is not promoted to owner Taste.
+- Plugin regression passes 880/880 and active source/cache parity passes at
+  `0.2.9-rc.1+codex.20260801075502`. Website focused 4/4, full 248/248,
+  TypeScript, ESLint, 84-route build and local plus production browser QA pass
+  18/18 video combinations on desktop/mobile. Production deployment
+  `bc33ea67` serves website implementation commit `d18bf75`; `/tpr` remains
+  protected with HTTP 401. Full evidence:
+  `docs/releases/REMOTION_SEMANTIC_VERTICAL_FRAMING_V1_PRODUCTION_RELEASE-2026-08-01.md`.
 
 ## Remotion Visual Fit Calibration v2 owner-review round — production release — 2026-07-31
 
