@@ -39,6 +39,12 @@ const films = [
 
 type FilmId = (typeof films)[number]['id']
 
+const round5ContactSheetPages: Record<FilmId, number> = {
+  soul: 4,
+  'forrest-gump': 3,
+  'a-beautiful-mind': 5,
+}
+
 const rounds = [
   {
     id: 'r1',
@@ -204,11 +210,13 @@ export default function VideoReviewGallery() {
   const evidencePrefix = activeRound.number >= 4
     ? `${evidenceRoot}/round-${activeRound.number}/${activeFilm.id}`
     : `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
-  const contactSheet = activeRound.number === 5
-    ? `${evidencePrefix}/contact-sheet-page-01.jpg?v=${releaseTag}`
-    : activeRound.number === 4
+  const contactSheets = activeRound.number === 5
+    ? Array.from({ length: round5ContactSheetPages[activeFilm.id] }, (_, index) =>
+        `${evidencePrefix}/contact-sheet-page-${String(index + 1).padStart(2, '0')}.jpg?v=${releaseTag}`,
+      )
+    : [activeRound.number === 4
       ? `${evidenceRoot}/round-4-audit/${activeFilm.id}-shot-contact-sheet.jpg?v=${releaseTag}`
-    : `${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`
+      : `${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`]
 
   return (
     <section className={styles.review} aria-labelledby="review-heading">
@@ -285,7 +293,11 @@ export default function VideoReviewGallery() {
           <div className={styles.evidenceLinks}>
             <a href={activeRound.report} target="_blank" rel="noreferrer">Báo cáo vòng</a>
             <a href={`${evidencePrefix}${activeRound.number >= 4 ? '/vertical_composition_plan.json' : '-composition-plan.json'}?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
-            <a href={contactSheet} target="_blank" rel="noreferrer">Contact sheet</a>
+            {contactSheets.map((contactSheet, index) => (
+              <a key={contactSheet} href={contactSheet} target="_blank" rel="noreferrer">
+                {contactSheets.length === 1 ? 'Contact sheet' : `Contact sheet ${index + 1}/${contactSheets.length}`}
+              </a>
+            ))}
             {activeRound.number === 4 ? (
               <>
                 <a href={`${evidenceRoot}/round-4-audit/${activeFilm.id}-camera-stability-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">START / MID / END</a>

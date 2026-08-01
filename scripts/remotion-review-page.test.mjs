@@ -9,6 +9,11 @@ const mediaRoot = new URL(
 const evidenceRoot = new URL('evidence/vertical-framing-v1/', mediaRoot)
 const MAX_PAGES_ASSET_BYTES = 25 * 1024 * 1024
 const films = ['soul', 'forrest-gump', 'a-beautiful-mind']
+const round5ContactSheetPages = {
+  soul: 4,
+  'forrest-gump': 3,
+  'a-beautiful-mind': 5,
+}
 const videos = [
   'vertical-r1-soul-web.mp4',
   'vertical-r1-forrest-gump-web.mp4',
@@ -93,6 +98,14 @@ test('each round exposes its report, three plans and three contact sheets', asyn
     await access(new URL(`round-5/${film}/vertical_composition_plan.json`, evidenceRoot))
     await access(new URL(`round-5/${film}/vertical_edit_plan.json`, evidenceRoot))
     await access(new URL(`round-5/${film}/vertical_semantic_pixel_qa.json`, evidenceRoot))
+    for (let page = 1; page <= round5ContactSheetPages[film]; page += 1) {
+      await access(
+        new URL(
+          `round-5/${film}/contact-sheet-page-${String(page).padStart(2, '0')}.jpg`,
+          evidenceRoot,
+        ),
+      )
+    }
   }
   await access(new URL('round-5/SELF-EVALUATION.md', evidenceRoot))
   await access(new URL('round-5/OWNER-REVIEW-PACKET.md', evidenceRoot))
