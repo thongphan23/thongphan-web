@@ -23,7 +23,7 @@ Last updated: 2026-08-02
   by default. Website focused 4/4, full 248/248, TypeScript, ESLint, 84-route
   build and local/preview/production browser QA all pass 30/30 media
   combinations at desktop and mobile.
-- Production deployment `04a6a79d` serves source `dfa736a`; `/review` redirects
+- Production deployment `b4ce9d16` serves source `67d927c`; `/review` redirects
   correctly and `/tpr` remains protected with HTTP 401. Rollback deployment is
   `f3346e78`. Full evidence:
   `docs/releases/REMOTION_VERTICAL_SEMANTIC_COMPOSITION_V2_PRODUCTION_RELEASE-2026-08-02.md`.

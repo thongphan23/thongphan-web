@@ -5,12 +5,12 @@ Date: 2026-08-02
 ## Release identity
 
 - Website branch: `agent/remotion-visual-semantic-frame-v1-20260731`
-- Website source commit: `dfa736ad4bd3ee4628f1ced103372e58bcdd34b0`
+- Website source commit: `67d927c`
 - Plugin branch: `agent/director-core-v2`
 - Plugin source/cache commit: `b1d73e725ccd217de8d8e8b16cdbed0f1780a889`
 - Active plugin: `0.2.11-rc.1+codex.20260802010516`
-- Preview deployment: `7b3e12c5-a276-4ad2-9635-5edf92c9f25f`
-- Production deployment: `04a6a79d-cb2c-406f-ae26-b762d3217e94`
+- Preview deployment: `0d1d33dd-1b70-4b2f-9303-879c5e559d9f`
+- Production deployment: `b4ce9d16-a3ee-4630-96f6-fc61998e966e`
 - Rollback deployment: `f3346e78-a820-4e72-a789-165c83043800`
 - Owner-review URL: `https://thongphan.com/review/remotion-muc-dich-doi-song`
 
@@ -71,6 +71,8 @@ Master SHA-256 values:
 - Local Playwright: 2 viewports and 30 media combinations passed.
 - Preview Playwright: 2 viewports and 30 media combinations passed.
 - Production Playwright: 2 viewports and 30 media combinations passed.
+- All 12 Round 5 contact-sheet pages: HTTP 200 `image/jpeg` on preview; the
+  review UI exposes every page for the selected film.
 - Production `/review`: HTTP 302 to the canonical review page.
 - Production page, Soul MP4 and owner evidence: HTTP 200.
 - Protected `/tpr`: HTTP 401, `private, no-store`, noindex.
@@ -87,4 +89,3 @@ that all three films communicate or feel equally well.
 Redeploy complete production deployment
 `f3346e78-a820-4e72-a789-165c83043800`. Do not roll back only HTML while
 leaving Round 5 media and evidence paths partially active.
-
