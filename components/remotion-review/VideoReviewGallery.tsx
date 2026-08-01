@@ -5,7 +5,7 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const evidenceRoot =
   '/review/remotion-muc-dich-doi-song/media/evidence/vertical-framing-v1'
-const releaseTag = 'camera-stability-r4-20260801'
+const releaseTag = 'semantic-vertical-composition-r5-20260802'
 
 const films = [
   {
@@ -15,7 +15,7 @@ const films = [
     focus:
       'Khoảng lặng, công việc, thành công và đau khổ được giữ quanh Joe cùng các vật mang nghĩa thay vì quanh tâm khung nguồn.',
     residual:
-      'Một shot tối trừu tượng và một shot xe cứu hỏa có motion blur vẫn cần anh đánh giá trong chuyển động thật.',
+      'Cụm cao trào B07 đã thay cảnh tối và cảnh đổi chủ thể bằng nguồn cận dọc; cần anh chấm nhịp cảm xúc của cả chuỗi khi xem liền mạch.',
   },
   {
     id: 'forrest-gump',
@@ -24,7 +24,7 @@ const films = [
     focus:
       'Khung dọc ưu tiên Forrest, hành động và vật chứng; cảnh nhận bằng giữ người trao cùng tấm bằng trước khi chuyển sang người nhận.',
     residual:
-      'Nhân vật ở shot bơi còn nhỏ trong nguồn, nên ý hướng nội phụ thuộc vào chuyển động nhiều hơn một khung tĩnh.',
+      'Một số bằng chứng hành động cần khung bối cảnh rộng; cần anh chấm xem context window có đủ rõ mà không làm Forrest bị nhỏ.',
   },
   {
     id: 'a-beautiful-mind',
@@ -33,7 +33,7 @@ const films = [
     focus:
       'John Nash, tương tác người-vật và quan hệ nhóm được theo dõi theo từng shot; phụ đề tự đổi vùng khi bằng chứng nằm phía dưới.',
     residual:
-      'Nguồn cận cảnh giúp giữ chủ thể tốt, nhưng những đoạn xung đột dày thông tin vẫn cần chấm khả năng đọc ở nhịp thật.',
+      'Nguồn cận cảnh giữ John tốt, nhưng chuỗi xung đột có mật độ cao; cần anh chấm khả năng đọc cảm xúc ở đúng nhịp voice.',
   },
 ] as const
 
@@ -156,15 +156,44 @@ const rounds = [
       },
     },
   },
+  {
+    id: 'r5',
+    number: 5,
+    tab: 'Vòng 5',
+    status: 'Nguồn + sự kiện + chủ thể + khung · mới nhất',
+    score: '69/69 PASS',
+    gate: '69/69 item',
+    retention: '207/207 frame',
+    camera: '0/69 di động',
+    method:
+      'Chọn đồng thời nguồn, trim, native event, đúng chủ thể mang nghĩa và chế độ khung dọc. Mỗi timeline item chỉ dùng một sự kiện liền mạch và phải giữ carrier ở ba frame mã hóa START/MID/END.',
+    learned:
+      'Camera đứng yên chưa đủ. Nếu nguồn ngang không giữ được đúng người, hành động hoặc quan hệ trong 9:16 thì phải tách event, đổi nguồn hoặc dùng context window trước khi render.',
+    report: `${evidenceRoot}/round-5/SELF-EVALUATION.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r5-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r5-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r5-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r5-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r5-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r5-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
 ] as const
 
 type RoundId = (typeof rounds)[number]['id']
 
 export default function VideoReviewGallery() {
-  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r4')
+  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r5')
   const [activeFilmId, setActiveFilmId] = useState<FilmId>('soul')
   const activeRound = useMemo(
-    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[3],
+    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[4],
     [activeRoundId],
   )
   const activeFilm = useMemo(
@@ -172,11 +201,13 @@ export default function VideoReviewGallery() {
     [activeFilmId],
   )
   const media = activeRound.sources[activeFilm.id]
-  const evidencePrefix = activeRound.number === 4
-    ? `${evidenceRoot}/round-4/${activeFilm.id}`
+  const evidencePrefix = activeRound.number >= 4
+    ? `${evidenceRoot}/round-${activeRound.number}/${activeFilm.id}`
     : `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
-  const contactSheet = activeRound.number === 4
-    ? `${evidenceRoot}/round-4-audit/${activeFilm.id}-shot-contact-sheet.jpg?v=${releaseTag}`
+  const contactSheet = activeRound.number === 5
+    ? `${evidencePrefix}/contact-sheet-page-01.jpg?v=${releaseTag}`
+    : activeRound.number === 4
+      ? `${evidenceRoot}/round-4-audit/${activeFilm.id}-shot-contact-sheet.jpg?v=${releaseTag}`
     : `${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`
 
   return (
@@ -253,12 +284,19 @@ export default function VideoReviewGallery() {
 
           <div className={styles.evidenceLinks}>
             <a href={activeRound.report} target="_blank" rel="noreferrer">Báo cáo vòng</a>
-            <a href={`${evidencePrefix}${activeRound.number === 4 ? '/vertical_composition_plan.json' : '-composition-plan.json'}?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
+            <a href={`${evidencePrefix}${activeRound.number >= 4 ? '/vertical_composition_plan.json' : '-composition-plan.json'}?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
             <a href={contactSheet} target="_blank" rel="noreferrer">Contact sheet</a>
             {activeRound.number === 4 ? (
               <>
                 <a href={`${evidenceRoot}/round-4-audit/${activeFilm.id}-camera-stability-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">START / MID / END</a>
                 <a href={`${evidenceRoot}/round-4/CAMERA-STABILITY-ROOT-CAUSE-AND-REPAIR.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gốc rễ và bản sửa</a>
+              </>
+            ) : null}
+            {activeRound.number === 5 ? (
+              <>
+                <a href={`${evidencePrefix}/vertical_edit_plan.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Edit Plan dọc</a>
+                <a href={`${evidencePrefix}/vertical_semantic_pixel_qa.json?v=${releaseTag}`} target="_blank" rel="noreferrer">QA carrier trên pixel</a>
+                <a href={`${evidenceRoot}/round-5/OWNER-REVIEW-PACKET.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gói owner review</a>
               </>
             ) : null}
           </div>

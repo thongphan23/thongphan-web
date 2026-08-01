@@ -1,0 +1,1024 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-semantic-composition-v2-forrest-gump-round5",
+  "format": "vertical",
+  "render_spec": {
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "composition_plan_fingerprint": "sha256:a42fdba9001e10d2341fff33d144d3f9806e5b1dd0d37ec2e55f1eb79bb80085",
+  "timeline_items": [
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-BENCH-REFLECTION-4200-8640",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-BENCH-REFLECTION-4200-8640.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 4200,
+      "source_out_ms": 7787,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.47260625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.47260625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.464,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.464,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-01",
+      "decision_id": "VCD-236faf51f50ea94b5e19",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 3587,
+      "evidence_fingerprint": "sha256:34d8dfc06fc750aeb6feba9d7d56d1be490a05bc9787b8bc83bd089b702543e4"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-BENCH-REFLECTION-4200-8640",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-BENCH-REFLECTION-4200-8640.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 7787,
+      "source_out_ms": 8640,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "top",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.34249482095241546,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.34249482095241546,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.2930116743522503,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.2930116743522503,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-02",
+      "decision_id": "VCD-236faf51f50ea94b5e19",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 3587,
+      "timeline_end_ms": 4440,
+      "evidence_fingerprint": "sha256:a3136cfca52cf508b7a0ccf8824fc03bc547839451777e0fee7ad307c35e4b1c"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-PINGPONG-11000-15440",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-PINGPONG-11000-15440.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 11000,
+      "source_out_ms": 15440,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.32124375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.43076686249999996,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.43076686249999996,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.3979999999999999,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.3979999999999999,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-03",
+      "decision_id": "VCD-236faf51f50ea94b5e19",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 4440,
+      "timeline_end_ms": 8880,
+      "evidence_fingerprint": "sha256:7bcf110cfd5001565f4f27c72255023a8c06a73a57dfbdfec6918462e2581e04"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-RECOLLECTS-8420-14400",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-RECOLLECTS-8420-14400.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 8420,
+      "source_out_ms": 14400,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.468040625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.468040625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.45799999999999996,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.45799999999999996,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-557a7d7ca2fbcbec43c3-01",
+      "decision_id": "VCD-557a7d7ca2fbcbec43c3",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 8880,
+      "timeline_end_ms": 14860,
+      "evidence_fingerprint": "sha256:3ed1a4e7d1e3e6a6a3c0c6da000c36109fb49c1143036d6ccddf18208d7ab0b0"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-MOW-920-5340",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-MOW-920-5340.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 5340,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3486375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.582071675,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.582071675,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.626,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.626,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-01",
+      "decision_id": "VCD-60967022b1dd25e1d2e3",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 14860,
+      "timeline_end_ms": 19280,
+      "evidence_fingerprint": "sha256:eb4599fc1c0fae94642edc481f5b2ad29503e5d1495e83119dfac74660eab6a7"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-WATCH-SON-4420-8480",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-WATCH-SON-4420-8480.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 4420,
+      "source_out_ms": 8480,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-04-AWAKE-19280-23340"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-04-AWAKE-19280-23340": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23554687500000002,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5818093873560428,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5818093873560428,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6070168787079558,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6070168787079558,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d13b8d9ea7abb698034a-01",
+      "decision_id": "VCD-d13b8d9ea7abb698034a",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "timeline_start_ms": 19280,
+      "timeline_end_ms": 23340,
+      "evidence_fingerprint": "sha256:08212c6eb4cec745614be8b194caaf6e946bdd2179e189572c0a527bf9fa4452"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 3420,
+      "source_out_ms": 4379,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.534169921875,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.534169921875,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5449050308008213,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5449050308008213,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-01",
+      "decision_id": "VCD-ed23ff67dec39986d363",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 23340,
+      "timeline_end_ms": 24299,
+      "evidence_fingerprint": "sha256:2a003bfee20ab09d96dfddc3ad83690663babdfa4ca86c38500e66f8b6469e8b"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 4379,
+      "source_out_ms": 7799,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.471084375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.471084375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.462,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.462,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-02",
+      "decision_id": "VCD-ed23ff67dec39986d363",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 24299,
+      "timeline_end_ms": 27719,
+      "evidence_fingerprint": "sha256:60fc800c1f87f764a14023f089e99586ec937dfc60e856635eee63752703189b"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 7799,
+      "source_out_ms": 9000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "top",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.3489137643575668,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.3489137643575668,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.3014472467943383,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.3014472467943383,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-03",
+      "decision_id": "VCD-ed23ff67dec39986d363",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 27719,
+      "timeline_end_ms": 28920,
+      "evidence_fingerprint": "sha256:404b44a2e2294bdbffebb2e48f8ee85c7c45921883ac38e50fabc0049e3269a4"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-GRADUATION-920-7500",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-GRADUATION-920-7500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 7500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.26645625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.535552978515625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.535552978515625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5484674274923956,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5484674274923956,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-04",
+      "decision_id": "VCD-ed23ff67dec39986d363",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 28920,
+      "timeline_end_ms": 35500,
+      "evidence_fingerprint": "sha256:451a3742607e00f980895dc1cb3461c6bb16de28940543c13ea1f5510e18f081"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-RECOGNITION-420-3500",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-RECOGNITION-420-3500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 420,
+      "source_out_ms": 3500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.6544671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.464755653125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.464755653125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.398,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.398,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c29e12793f90a7e003ef-01",
+      "decision_id": "VCD-c29e12793f90a7e003ef",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "timeline_start_ms": 35500,
+      "timeline_end_ms": 38580,
+      "evidence_fingerprint": "sha256:50c663e384f8208ff22dfd4e7721f318e1c49b64baf17ddc1218ef517ce3bf03"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-WAR-1420-4420",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-WAR-1420-4420.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 3088,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-38580-41580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-38580-41580": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.64682265625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.46892039375000005,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.46892039375000005,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.41200000000000014,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.41200000000000014,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-dbbd713702017cd08ecd-01",
+      "decision_id": "VCD-dbbd713702017cd08ecd",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 38580,
+      "timeline_end_ms": 40248,
+      "evidence_fingerprint": "sha256:17fe59e83ad15f3d080b9eb92786b19ec2e09ec61f91e0d4f8818ae063b23ebf"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-WAR-1420-4420",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-WAR-1420-4420.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 3088,
+      "source_out_ms": 4420,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-38580-41580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-38580-41580": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.47252734375000005,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5052747265625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5052747265625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5100000000000001,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5100000000000001,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-dbbd713702017cd08ecd-02",
+      "decision_id": "VCD-dbbd713702017cd08ecd",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 40248,
+      "timeline_end_ms": 41580,
+      "evidence_fingerprint": "sha256:430f9bc35a721121fa4f18e1597ba68f07c90e7eaa640da5e42ee58ceb82cbf2"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-41580-44580",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-DRILL-PRESSURE-3420-6420",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-DRILL-PRESSURE-3420-6420.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 3420,
+      "source_out_ms": 6420,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-41580-44580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-41580-44580": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.541915625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.43128734375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.43128734375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.35,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.35,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-dbbd713702017cd08ecd-03",
+      "decision_id": "VCD-dbbd713702017cd08ecd",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 41580,
+      "timeline_end_ms": 44580,
+      "evidence_fingerprint": "sha256:893e16e47803e6f005ed86e6ad04080ae6f94288d816c36deab927876e153fab"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-CONFRONTATION-1920-7300",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-CONFRONTATION-1920-7300.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 1920,
+      "source_out_ms": 7300,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-44580-49960"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-44580-49960": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.7275843750000001,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.47766191874999997,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.47766191874999997,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.41799999999999987,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.41799999999999987,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-dbbd713702017cd08ecd-04",
+      "decision_id": "VCD-dbbd713702017cd08ecd",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 44580,
+      "timeline_end_ms": 49960,
+      "evidence_fingerprint": "sha256:21ed7603b69506f7cc30cc33ae70573c9f62a727ecbcdc462010e8a9d37dbaf0"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-NO-JOY-920-4120",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-NO-JOY-920-4120.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 4120,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53160"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53160": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.420910624563694,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.420910624563694,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.3960632437798032,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.3960632437798032,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-01",
+      "decision_id": "VCD-3ac70af7798bda5bf3bd",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 49960,
+      "timeline_end_ms": 53160,
+      "evidence_fingerprint": "sha256:558eb0ab7468059b14be6f13df5a0fa060b0f04e2ce881cf907b905af6aa07a4"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 5420,
+      "source_out_ms": 8420,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-53160-56160"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-53160-56160": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.70492109375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49940984218750006,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49940984218750006,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4980000000000002,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4980000000000002,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-02",
+      "decision_id": "VCD-3ac70af7798bda5bf3bd",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 53160,
+      "timeline_end_ms": 56160,
+      "evidence_fingerprint": "sha256:d023028103f732242f9b90dfff3f0eeae7b8a74d90237e39d9ed2722c3f4a746"
+    },
+    {
+      "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+      "film_id": "FILM-FORREST-GUMP",
+      "source_asset_id": "ASSET-FORREST-LOSS-920-4412",
+      "source_file": "footage-round5/forrest-gump/ASSET-FORREST-LOSS-920-4412.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 4412,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-56160-59652"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-56160-59652": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23906249999999998,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6763139925897121,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6763139925897121,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7317062736291905,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7317062736291905,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-03",
+      "decision_id": "VCD-3ac70af7798bda5bf3bd",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 56160,
+      "timeline_end_ms": 59652,
+      "evidence_fingerprint": "sha256:ccf4348fdf7ab540a396d0cf920f2b8e0259988fa3c2c5e14ca275189d1cf1a6"
+    }
+  ],
+  "status": "locked",
+  "edit_plan_fingerprint": "sha256:d7548e9fcdae93be3e7401999c7dbaf006a9ddadb5dfd7bbcbf0c71830229556"
+}

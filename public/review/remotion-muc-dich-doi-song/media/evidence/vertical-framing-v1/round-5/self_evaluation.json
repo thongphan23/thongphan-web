@@ -1,0 +1,15 @@
+{
+  "schema": "tpr.vertical_round_self_evaluation.v2",
+  "round": 5,
+  "status": "pass_pending_owner_review",
+  "timeline_item_count": 69,
+  "encoded_frame_count": 207,
+  "moving_crop_count": 0,
+  "carrier_failure_count": 0,
+  "frame_modes": {
+    "cover_static": 46,
+    "context_window": 23,
+    "contain_context": 0
+  },
+  "taste_promotion_status": "not_promoted_pending_owner_review"
+}

@@ -1,0 +1,782 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-semantic-composition-v2-soul-round5",
+  "sources": [
+    {
+      "candidate_id": "CAND-SOUL-ES-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3080-7520",
+          "at_ms": 4707
+        },
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3080-7520",
+          "at_ms": 6917
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-ES-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-ES-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-INWARD-3080-7520",
+          "source_in_ms": 3080,
+          "source_out_ms": 4707
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-ES-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-SOUL-INWARD-3080-7520",
+          "source_in_ms": 4707,
+          "source_out_ms": 6917
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-ES-CONTEXT-LEAD-01-03",
+          "source_asset_id": "ASSET-SOUL-INWARD-3080-7520",
+          "source_in_ms": 6917,
+          "source_out_ms": 7520
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-ES-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-SOUL-DOROTHEA-STAGE-580-5020",
+          "source_in_ms": 580,
+          "source_out_ms": 5020
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-ES-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3500-7940",
+          "at_ms": 4710
+        },
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3500-7940",
+          "at_ms": 6920
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-ES-ACTION-CORE-SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-INWARD-3500-7940",
+          "source_in_ms": 3500,
+          "source_out_ms": 4710
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-ACTION-CORE-SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-SOUL-INWARD-3500-7940",
+          "source_in_ms": 4710,
+          "source_out_ms": 6920
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-ACTION-CORE-SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-03",
+          "source_asset_id": "ASSET-SOUL-INWARD-3500-7940",
+          "source_in_ms": 6920,
+          "source_out_ms": 7940
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-ACTION-CORE-SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-SOUL-DOROTHEA-STAGE-1000-5440",
+          "source_in_ms": 1000,
+          "source_out_ms": 5440
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-ES-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+          "at_ms": 4671
+        },
+        {
+          "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+          "at_ms": 6881
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+          "source_in_ms": 3920,
+          "source_out_ms": 4671
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+          "source_in_ms": 4671,
+          "source_out_ms": 6881
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-03",
+          "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+          "source_in_ms": 6881,
+          "source_out_ms": 8360
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-DOROTHEA-STAGE-1420-5860",
+          "source_in_ms": 1420,
+          "source_out_ms": 5860
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SE-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-SENSORY-80-6060",
+          "at_ms": 4543
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SE-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-SE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-SENSORY-80-6060",
+          "source_in_ms": 80,
+          "source_out_ms": 4543
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-SE-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-SE-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-SOUL-SENSORY-80-6060",
+          "source_in_ms": 4543,
+          "source_out_ms": 6060
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SE-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-SENSORY-500-6480",
+          "at_ms": 4504
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SE-ACTION-CORE-SHOT-SOUL-CAND-SOUL-SE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-SENSORY-500-6480",
+          "source_in_ms": 500,
+          "source_out_ms": 4504
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-SE-ACTION-CORE-SHOT-SOUL-CAND-SOUL-SE-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-SOUL-SENSORY-500-6480",
+          "source_in_ms": 4504,
+          "source_out_ms": 6480
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SE-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-SENSORY-920-6900",
+          "at_ms": 4507
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-SENSORY-920-6900",
+          "source_in_ms": 920,
+          "source_out_ms": 4507
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-SE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-SOUL-SENSORY-920-6900",
+          "source_in_ms": 4507,
+          "source_out_ms": 6900
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RK-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-BARBER-580-2790",
+          "at_ms": 1623
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RK-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RK-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-CLUB-9080-11290",
+          "source_in_ms": 9080,
+          "source_out_ms": 11290
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RK-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-SOUL-BARBER-580-2790",
+          "source_in_ms": 580,
+          "source_out_ms": 1623
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RK-CONTEXT-LEAD-02-02",
+          "source_asset_id": "ASSET-SOUL-BARBER-580-2790",
+          "source_in_ms": 1623,
+          "source_out_ms": 2790
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RK-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-BARBER-1000-3210",
+          "at_ms": 1626
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RK-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RK-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-CLUB-9500-11710",
+          "source_in_ms": 9500,
+          "source_out_ms": 11710
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RK-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-SOUL-BARBER-1000-3210",
+          "source_in_ms": 1000,
+          "source_out_ms": 1626
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RK-ACTION-CORE-02-02",
+          "source_asset_id": "ASSET-SOUL-BARBER-1000-3210",
+          "source_in_ms": 1626,
+          "source_out_ms": 3210
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RK-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-BARBER-1420-3630",
+          "at_ms": 3047
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-CLUB-9920-12130",
+          "source_in_ms": 9920,
+          "source_out_ms": 12130
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-BARBER-1420-3630",
+          "source_in_ms": 1420,
+          "source_out_ms": 3047
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-02",
+          "source_asset_id": "ASSET-SOUL-BARBER-1420-3630",
+          "source_in_ms": 3047,
+          "source_out_ms": 3630
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-KE-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-AWAKE-8580-12640",
+          "at_ms": 9456
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-KE-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-KE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-AWAKE-8580-12640",
+          "source_in_ms": 8580,
+          "source_out_ms": 9456
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-KE-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-KE-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-SOUL-AWAKE-8580-12640",
+          "source_in_ms": 9456,
+          "source_out_ms": 12640
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-KE-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-KE-ACTION-CORE-SHOT-SOUL-CAND-SOUL-KE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-AWAKE-9000-13060",
+          "source_in_ms": 9000,
+          "source_out_ms": 13060
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-KE-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-KE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-AWAKE-9420-13480",
+          "source_in_ms": 9420,
+          "source_out_ms": 13480
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-GN-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-GN-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-GN-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-CALM-6080-11660",
+          "source_in_ms": 6080,
+          "source_out_ms": 11660
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-GN-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-GN-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-SOUL-STAGE-2980-9560",
+          "source_in_ms": 2980,
+          "source_out_ms": 9560
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-GN-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-GN-ACTION-CORE-SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-CALM-6500-12080",
+          "source_in_ms": 6500,
+          "source_out_ms": 12080
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-GN-ACTION-CORE-SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-SOUL-STAGE-3400-9980",
+          "source_in_ms": 3400,
+          "source_out_ms": 9980
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-GN-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-GN-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-GN-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-CALM-6920-12500",
+          "source_in_ms": 6920,
+          "source_out_ms": 12500
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-GN-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-GN-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-STAGE-3430-10010",
+          "source_in_ms": 3430,
+          "source_out_ms": 10010
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SS-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-TROPHY-580-3660",
+          "at_ms": 1206
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SS-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-SS-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-TROPHY-580-3660",
+          "source_in_ms": 580,
+          "source_out_ms": 1206
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-SS-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-SS-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-SOUL-TROPHY-580-3660",
+          "source_in_ms": 1206,
+          "source_out_ms": 3660
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SS-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SS-ACTION-CORE-SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-TROPHY-1000-4080",
+          "source_in_ms": 1000,
+          "source_out_ms": 4080
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-SS-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-SS-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SS-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-TROPHY-1420-4500",
+          "source_in_ms": 1420,
+          "source_out_ms": 4500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-NT-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-LOST-2380-4580",
+          "source_in_ms": 2380,
+          "source_out_ms": 4580
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-SOUL-DRAGGED-1380-3180",
+          "source_in_ms": 1380,
+          "source_out_ms": 3180
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-SOUL-PANIC-80-1680",
+          "source_in_ms": 80,
+          "source_out_ms": 1680
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-04-01",
+          "source_asset_id": "ASSET-SOUL-STRUGGLE-580-2030",
+          "source_in_ms": 580,
+          "source_out_ms": 2030
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-05-01",
+          "source_asset_id": "ASSET-SOUL-CONFLICT-580-1930",
+          "source_in_ms": 580,
+          "source_out_ms": 1930
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-06-01",
+          "source_asset_id": "ASSET-SOUL-OBSESSED-580-2030",
+          "source_in_ms": 580,
+          "source_out_ms": 2030
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-NT-CONTEXT-LEAD-07-01",
+          "source_asset_id": "ASSET-SOUL-CONFRONT-6080-7610",
+          "source_in_ms": 6080,
+          "source_out_ms": 7610
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-NT-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-LOST-2800-5000",
+          "source_in_ms": 2800,
+          "source_out_ms": 5000
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-SOUL-DRAGGED-1800-3600",
+          "source_in_ms": 1800,
+          "source_out_ms": 3600
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-SOUL-PANIC-500-2100",
+          "source_in_ms": 500,
+          "source_out_ms": 2100
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-04-01",
+          "source_asset_id": "ASSET-SOUL-STRUGGLE-1000-2450",
+          "source_in_ms": 1000,
+          "source_out_ms": 2450
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-05-01",
+          "source_asset_id": "ASSET-SOUL-CONFLICT-1000-2350",
+          "source_in_ms": 1000,
+          "source_out_ms": 2350
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-06-01",
+          "source_asset_id": "ASSET-SOUL-OBSESSED-1000-2450",
+          "source_in_ms": 1000,
+          "source_out_ms": 2450
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-ACTION-CORE-SHOT-SOUL-CAND-SOUL-NT-ACTION-CORE-07-01",
+          "source_asset_id": "ASSET-SOUL-CONFRONT-6500-8030",
+          "source_in_ms": 6500,
+          "source_out_ms": 8030
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-NT-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-PANIC-920-2520",
+          "at_ms": 1838
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-LOST-3220-5420",
+          "source_in_ms": 3220,
+          "source_out_ms": 5420
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-DRAGGED-2220-4020",
+          "source_in_ms": 2220,
+          "source_out_ms": 4020
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-SOUL-PANIC-920-2520",
+          "source_in_ms": 920,
+          "source_out_ms": 1838
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03-02",
+          "source_asset_id": "ASSET-SOUL-PANIC-920-2520",
+          "source_in_ms": 1838,
+          "source_out_ms": 2520
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-01",
+          "source_asset_id": "ASSET-SOUL-STRUGGLE-1420-2870",
+          "source_in_ms": 1420,
+          "source_out_ms": 2870
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-01",
+          "source_asset_id": "ASSET-SOUL-CONFLICT-1420-2770",
+          "source_in_ms": 1420,
+          "source_out_ms": 2770
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-01",
+          "source_asset_id": "ASSET-SOUL-OBSESSED-1420-2870",
+          "source_in_ms": 1420,
+          "source_out_ms": 2870
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-01",
+          "source_asset_id": "ASSET-SOUL-CONFRONT-6920-8450",
+          "source_in_ms": 6920,
+          "source_out_ms": 8450
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RM-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-EMPTY-580-4700",
+          "at_ms": 3541
+        },
+        {
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2080-4866",
+          "at_ms": 3456
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RM-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RM-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-SOUL-EMPTY-580-4700",
+          "source_in_ms": 580,
+          "source_out_ms": 3541
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RM-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-SOUL-EMPTY-580-4700",
+          "source_in_ms": 3541,
+          "source_out_ms": 4700
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RM-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2080-4866",
+          "source_in_ms": 2080,
+          "source_out_ms": 3456
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RM-CONTEXT-LEAD-02-02",
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2080-4866",
+          "source_in_ms": 3456,
+          "source_out_ms": 4866
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-CONTEXT-LEAD-SHOT-SOUL-CAND-SOUL-RM-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-SOUL-VOID-1380-4166",
+          "source_in_ms": 1380,
+          "source_out_ms": 4166
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RM-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-EMPTY-1000-5120",
+          "at_ms": 3544
+        },
+        {
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2500-5286",
+          "at_ms": 3459
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RM-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RM-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-SOUL-EMPTY-1000-5120",
+          "source_in_ms": 1000,
+          "source_out_ms": 3544
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RM-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-SOUL-EMPTY-1000-5120",
+          "source_in_ms": 3544,
+          "source_out_ms": 5120
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RM-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2500-5286",
+          "source_in_ms": 2500,
+          "source_out_ms": 3459
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RM-ACTION-CORE-02-02",
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2500-5286",
+          "source_in_ms": 3459,
+          "source_out_ms": 5286
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-ACTION-CORE-SHOT-SOUL-CAND-SOUL-RM-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-SOUL-VOID-1800-4586",
+          "source_in_ms": 1800,
+          "source_out_ms": 4586
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-RM-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-SOUL-EMPTY-1420-5540",
+          "at_ms": 3505
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-SOUL-EMPTY-1420-5540",
+          "source_in_ms": 1420,
+          "source_out_ms": 3505
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-SOUL-EMPTY-1420-5540",
+          "source_in_ms": 3505,
+          "source_out_ms": 5540
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-FAMILY-COST-2920-5706",
+          "source_in_ms": 2920,
+          "source_out_ms": 5706
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-SOUL-VOID-2220-5006",
+          "source_in_ms": 2220,
+          "source_out_ms": 5006
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-SOUL-NT-PORTRAIT-CARRIER",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-PORTRAIT-SAD-SOULS-01",
+          "source_asset_id": "ASSET-SOUL-PORTRAIT-SAD-SOULS-2000-4200",
+          "source_in_ms": 2000,
+          "source_out_ms": 4200
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-SOUL-DRAGGED-2220-4020",
+          "source_in_ms": 2220,
+          "source_out_ms": 4020
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-PORTRAIT-DISTRESS-CLOSEUP-01",
+          "source_asset_id": "ASSET-SOUL-DISTRESS-CLOSEUP-4000-5600",
+          "source_in_ms": 4000,
+          "source_out_ms": 5600
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-01",
+          "source_asset_id": "ASSET-SOUL-STRUGGLE-1420-2870",
+          "source_in_ms": 1420,
+          "source_out_ms": 2870
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-01",
+          "source_asset_id": "ASSET-SOUL-CONFLICT-1420-2770",
+          "source_in_ms": 1420,
+          "source_out_ms": 2770
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-01",
+          "source_asset_id": "ASSET-SOUL-OBSESSED-1420-2870",
+          "source_in_ms": 1420,
+          "source_out_ms": 2870
+        },
+        {
+          "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-01",
+          "source_asset_id": "ASSET-SOUL-CONFRONT-6920-8450",
+          "source_in_ms": 6920,
+          "source_out_ms": 8450
+        }
+      ],
+      "status": "sealed"
+    }
+  ],
+  "status": "sealed",
+  "segmentation_fingerprint": "sha256:80523471e4812d95cf9cfcf773f304f16dd397e9c94ec5037167b6878cc3f526"
+}

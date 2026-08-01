@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-semantic-composition-v2-soul-round5",
+  "composition_plan_fingerprint": "sha256:8919e66f706f3e23f98fb630a0e967107870becfe4ef87bb6cec3c5948129ae2",
+  "edit_plan_fingerprint": "sha256:ecd934102bad38b04cb00d3e177f026310a88959fb2a4b299bf516db2480158a",
+  "timeline_item_results": [
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:5fdaf5261833198f6753fbe1912cb20227ec618a5ac5663ffa784b7b4e5be4f6"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:59c6891d00430425284b54ce333e7e9226c69fad4ff4462c7386959c38425604"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-03",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:c0ef30ab884b60170c8af7fc44898a753147a5f352dc529e0e5d304aedff822e"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-04",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:edb2c7185823c3e52050cd8ead7a67d29e282a68b585b9ba34e125593e7e01e8"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:616175d8b973bc05829e5607ea40bbfe2c73548b59b8f495e08c297305bf16cd"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:4e2b24b3621012fbc9edeee45b1919a4231166dc125b14509ffdbb3f5d281a04"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:2bf23c29e66252b9a8c33d25fe88018dd5265e396d75e7469090bc57107f90ac"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:3d61bc960e1cbee09720a3814ee0f3ab957b36d32cbd6ea6e45030558391c70d"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-03",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:f297c88af363af2c6844f6c31f215647fe34a65c64872ff5cd86b8eb8970de9d"
+    },
+    {
+      "timeline_item_id": "VTI-8daa6c51d333054bacbf-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:b0faa077d6cd18bb83d74b3c3dc4212fcb8e46ffa94a34de65d2921827dc3a4e"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:a284e858b17023e7cbff60438c7fb1b0020c82af08f9318a657c383ccc6ef4ac"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:595c7a5751b9b4cded815b88c00ee4fd5bc73b42bc92b63cea43a22887abe001"
+    },
+    {
+      "timeline_item_id": "VTI-f9e8abff621bcdb72821-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:02a2c470292f7237194b9e9cb6efe98c59ffebbf7fd54828b45571311891357c"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:cf221d6a8992506456c01e419a36f0847a4f7067009bc07d5f3caacf7672e5ac"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:d141a6d7a06d651ec1adba03abe85b5fa6e5f8cbba8fcc9888903f22abeafe34"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-03",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:6eade4006f896669f27c8bf5b8b64cfd4f259ff31f1d8488a89acba265e41469"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-04",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:15aed0b4c3456258ce3afba68627e1658bd75249adf085a440a01c90c2bbbb13"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-05",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:f9b88ebb09997c5aac509c188ab6f4bedf2e8fc53f1e014c6f05694bc22ffa10"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-06",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:578305edaaabfdf5cc6dd7ec6e0d7c9b0165a81943d9acaabfdc4c4e057fde94"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-07",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:0449374ffac0048449a41065fd2596e0b7b7ee9de366c55aa48a9bc9ce1548da"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-01",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:ec8d2214091523da1850a52631876be825b51d7d3a6acda60eeeda947b4a21fe"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-02",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:3377763f6efa6e1daa4b2059f87499ecbead6321c55ca0e2b5620e8468623edf"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-03",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:9d878cff837ecfdc25d24b741668ef327588dc1f319decad913169890f108e69"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-04",
+      "rendered_observation_count": 3,
+      "carrier_pass_count": 3,
+      "status": "pass",
+      "evidence_fingerprint": "sha256:9c5cf9de16d328789374da374475affe35c32ca8c9107711beb422fccc827e7a"
+    }
+  ],
+  "status": "pass",
+  "report_fingerprint": "sha256:1b840c21ff2f6a146b31614237c5225d569546075d1664087a0ef4d593f11358"
+}

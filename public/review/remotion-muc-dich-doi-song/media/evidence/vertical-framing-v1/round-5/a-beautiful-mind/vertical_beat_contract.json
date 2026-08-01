@@ -1,0 +1,539 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-semantic-composition-v2-a-beautiful-mind-round5",
+  "contracts": [
+    {
+      "contract_id": "VBC-B01-CLM-01-TWO-PURPOSES",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline": {
+        "start_ms": 0,
+        "end_ms": 8880
+      },
+      "intended_feeling_vi": "Nhận ra ngay hai lớp cùng tồn tại trong một đời người.",
+      "intended_memory_vi": "Trạng thái mình sống và việc mình làm là hai lớp khác nhau.",
+      "presentation_archetype": "contrast",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "carrier_type": "person",
+        "visibility_requirement": "face",
+        "minimum_temporal_presence": 1.0,
+        "identity_ref": "CHARACTER-JOHN-NASH"
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Trạng thái mình sống và việc mình làm là hai lớp khác nhau.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+          "semantic_role": "inward_pole",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0,
+            "identity_ref": "CHARACTER-JOHN-NASH"
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:inward_attention",
+            "body_activity:writing",
+            "semantic_role:inward_pole",
+            "social_density:low"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra inward_pole là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+          "semantic_role": "outward_pole",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+            "carrier_type": "action",
+            "visibility_requirement": "action_envelope",
+            "minimum_temporal_presence": 1.0,
+            "identity_ref": "CHARACTER-JOHN-NASH"
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:working",
+            "instrumentality:goal_directed_action",
+            "semantic_role:outward_pole",
+            "social_density:medium",
+            "visible_action:work"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra outward_pole là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B02-CLM-02-INNER-EASE",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline": {
+        "start_ms": 8880,
+        "end_ms": 14860
+      },
+      "intended_feeling_vi": "Nhịp xem hạ xuống và tạo cảm giác có mặt.",
+      "intended_memory_vi": "Mục đích bên trong là trạng thái sống, không phải chức danh.",
+      "presentation_archetype": "reaction",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "carrier_type": "person",
+        "visibility_requirement": "face",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Mục đích bên trong là trạng thái sống, không phải chức danh.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+          "semantic_role": "state",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:inward_attention",
+            "body_activity:still",
+            "semantic_role:state",
+            "social_density:low"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra state là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B03-CLM-03-OUTER-WORK",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline": {
+        "start_ms": 14860,
+        "end_ms": 19280
+      },
+      "intended_feeling_vi": "Thấy công việc cụ thể nhưng không bị tuyệt đối hóa.",
+      "intended_memory_vi": "Công việc là hoạt động bên ngoài, không phải toàn bộ con người.",
+      "presentation_archetype": "action",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "carrier_type": "action",
+        "visibility_requirement": "action_envelope",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Công việc là hoạt động bên ngoài, không phải toàn bộ con người.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+          "semantic_role": "action",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+            "carrier_type": "action",
+            "visibility_requirement": "action_envelope",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:working",
+            "instrumentality:goal_directed_action",
+            "semantic_role:action",
+            "social_density:medium",
+            "visible_action:work"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra action là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B04-CLM-04-AWAKE",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "timeline": {
+        "start_ms": 19280,
+        "end_ms": 23340
+      },
+      "intended_feeling_vi": "Một khoảng dừng sáng rõ, không phải giải mã cốt truyện.",
+      "intended_memory_vi": "Tỉnh thức là có mặt và nhận biết khoảnh khắc đang sống.",
+      "presentation_archetype": "reaction",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-04-AWAKE-19280-23340",
+        "carrier_type": "person",
+        "visibility_requirement": "group_relation",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Tỉnh thức là có mặt và nhận biết khoảnh khắc đang sống.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+          "semantic_role": "state",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-04-AWAKE-19280-23340",
+            "carrier_type": "person",
+            "visibility_requirement": "group_relation",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:present_moment",
+            "body_activity:touching",
+            "semantic_role:state",
+            "social_density:low",
+            "visible_action:sensory_attention"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra state là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B05-CLM-05-CHANGE-ALIGN",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline": {
+        "start_ms": 23340,
+        "end_ms": 35500
+      },
+      "intended_feeling_vi": "Thấy một cơ chế: ổn định bên trong rồi mới hành động bên ngoài.",
+      "intended_memory_vi": "Chất lượng bên trong quyết định cách hoàn thành mục tiêu bên ngoài.",
+      "presentation_archetype": "contrast",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "carrier_type": "person",
+        "visibility_requirement": "group_relation",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Chất lượng bên trong quyết định cách hoàn thành mục tiêu bên ngoài.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semantic_role": "condition",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+            "carrier_type": "person",
+            "visibility_requirement": "group_relation",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:inward_attention",
+            "body_activity:sensing",
+            "semantic_role:condition",
+            "social_density:medium",
+            "visible_action:present_attention"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra condition là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semantic_role": "dependent_result",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+            "carrier_type": "action",
+            "visibility_requirement": "action_envelope",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:receiving",
+            "semantic_role:dependent_result",
+            "social_density:medium",
+            "visible_outcome:completed_goal"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra dependent_result là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B06-CLM-06-REAL-SUCCESS",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "timeline": {
+        "start_ms": 35500,
+        "end_ms": 38580
+      },
+      "intended_feeling_vi": "Một nhịp xác nhận rõ ràng và vui sáng.",
+      "intended_memory_vi": "Thành công phải có kết quả cụ thể có thể nhận ra.",
+      "presentation_archetype": "action",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "carrier_type": "action",
+        "visibility_requirement": "action_envelope",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Thành công phải có kết quả cụ thể có thể nhận ra.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+          "semantic_role": "referent",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+            "carrier_type": "action",
+            "visibility_requirement": "action_envelope",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:receiving",
+            "semantic_role:referent",
+            "social_density:medium",
+            "visible_outcome:public_recognition"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra referent là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B07-CLM-07-MISALIGNMENT",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline": {
+        "start_ms": 38580,
+        "end_ms": 49960
+      },
+      "intended_feeling_vi": "Áp lực tăng nhanh, dồn dập và khó thở.",
+      "intended_memory_vi": "Lệch khỏi mình làm cái giá của mục tiêu tăng thành căng thẳng và xung đột.",
+      "presentation_archetype": "contrast",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-38580-40580",
+        "carrier_type": "person",
+        "visibility_requirement": "group_relation",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Lệch khỏi mình làm cái giá của mục tiêu tăng thành căng thẳng và xung đột.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+          "semantic_role": "cause",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-38580-40580",
+            "carrier_type": "person",
+            "visibility_requirement": "group_relation",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:still",
+            "semantic_role:cause",
+            "social_density:medium",
+            "visible_action:struggle"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra cause là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-40580-42280",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:reacting",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:loss_of_control"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-42280-44280",
+            "carrier_type": "person",
+            "visibility_requirement": "group_relation",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:struggling",
+            "human_consequence:family_harm",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:conflict"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-44280-45980",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:struggling",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:loss_of_control"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-45980-47580",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:reacting",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:struggle"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-47580-48880",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:still",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:struggle"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+          "semantic_role": "effect",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-07-MISALIGNMENT-48880-49960",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:still",
+            "semantic_role:effect",
+            "social_density:medium",
+            "visible_action:loss_of_control"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra effect là bằng chứng cho ý đang nói."
+        }
+      ]
+    },
+    {
+      "contract_id": "VBC-B08-CLM-08-NO-JOY-HARM",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline": {
+        "start_ms": 49960,
+        "end_ms": 59652
+      },
+      "intended_feeling_vi": "Nhịp chậm lại để cảm thấy khoảng trống và hậu quả.",
+      "intended_memory_vi": "Kết quả làm mình và người thân đau khổ không phải thành công thực sự.",
+      "presentation_archetype": "contrast",
+      "primary_carrier": {
+        "carrier_id": "CARRIER-CLM-08-NO-JOY-HARM-49960-53190",
+        "carrier_type": "person",
+        "visibility_requirement": "face",
+        "minimum_temporal_presence": 1.0
+      },
+      "support_carriers": [],
+      "required_context": [],
+      "silent_comprehension_target_vi": "Kết quả làm mình và người thân đau khổ không phải thành công thực sự.",
+      "presentation_units": [
+        {
+          "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+          "semantic_role": "choice_or_behavior",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-08-NO-JOY-HARM-49960-53190",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:still",
+            "semantic_role:choice_or_behavior",
+            "social_density:low",
+            "visible_outcome:no_joy"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra choice_or_behavior là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+          "semantic_role": "human_consequence",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-08-NO-JOY-HARM-53190-56420",
+            "carrier_type": "person",
+            "visibility_requirement": "group_relation",
+            "minimum_temporal_presence": 1.0
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:still",
+            "human_consequence:relationship_harm",
+            "semantic_role:human_consequence",
+            "social_density:low"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra human_consequence là bằng chứng cho ý đang nói."
+        },
+        {
+          "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+          "semantic_role": "value_verdict",
+          "primary_carrier": {
+            "carrier_id": "CARRIER-CLM-08-NO-JOY-HARM-56420-59652",
+            "carrier_type": "person",
+            "visibility_requirement": "face",
+            "minimum_temporal_presence": 1.0,
+            "identity_ref": "CHARACTER-JOHN-NASH"
+          },
+          "support_carriers": [],
+          "required_context": [
+            "attention_direction:external",
+            "body_activity:struggling",
+            "human_consequence:relationship_harm",
+            "semantic_role:value_verdict",
+            "social_density:low",
+            "visible_action:loss_of_control"
+          ],
+          "silent_comprehension_target_vi": "Tắt tiếng vẫn nhận ra value_verdict là bằng chứng cho ý đang nói."
+        }
+      ]
+    }
+  ],
+  "contract_fingerprint": "sha256:1deae402d727be9cd7b8510fbe06fcbb52d591ad6431de0bce916a4220c7506a"
+}

@@ -1,0 +1,1362 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-semantic-composition-v2-soul-round5",
+  "format": "vertical",
+  "render_spec": {
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "composition_plan_fingerprint": "sha256:8919e66f706f3e23f98fb630a0e967107870becfe4ef87bb6cec3c5948129ae2",
+  "timeline_items": [
+    {
+      "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+      "source_file": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 3920,
+      "source_out_ms": 4671,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.48771728515625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.48771728515625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.48203214285714285,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.48203214285714285,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-01",
+      "decision_id": "VCD-41e1e1f84a6ed0588b53",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 751,
+      "evidence_fingerprint": "sha256:f3bd66cb767d21ef3934afb8803e38e3d2da3452bc8ca7fafd4a3efaadefb6bf"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+      "source_file": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 4671,
+      "source_out_ms": 6881,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-02",
+      "decision_id": "VCD-41e1e1f84a6ed0588b53",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 751,
+      "timeline_end_ms": 2961,
+      "evidence_fingerprint": "sha256:d04b8542ba3439ff6849c9e215a115f34ae7509be785cf5feac9ce4adb3dff74"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-01-03",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-INWARD-3920-8360",
+      "source_file": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 6881,
+      "source_out_ms": 8360,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-03",
+      "decision_id": "VCD-41e1e1f84a6ed0588b53",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 2961,
+      "timeline_end_ms": 4440,
+      "evidence_fingerprint": "sha256:90bfd3531de27f0243b1042c2d94dc3f337eb3cd272f79a4fe9b6e9da745de92"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-ES-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-ES-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-DOROTHEA-STAGE-1420-5860",
+      "source_file": "footage-round5/soul/ASSET-SOUL-DOROTHEA-STAGE-1420-5860.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 5860,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.526953125,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5018921875,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5018921875,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.504,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.504,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-04",
+      "decision_id": "VCD-41e1e1f84a6ed0588b53",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 4440,
+      "timeline_end_ms": 8880,
+      "evidence_fingerprint": "sha256:7bb97d4fbb8614417433ff712e035e0fc70639ab6664dbbc3a428876cf2fa874"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-SE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-SENSORY-920-6900",
+      "source_file": "footage-round5/soul/ASSET-SOUL-SENSORY-920-6900.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 4507,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6858280977606773,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6858280977606773,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7718399601527622,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7718399601527622,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-01",
+      "decision_id": "VCD-5c76f0b953e76d8790b5",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 8880,
+      "timeline_end_ms": 12467,
+      "evidence_fingerprint": "sha256:db52e76c067086d6fa1a5617aba1c00c8d2dd12063f6778098b8c0d807a394f1"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-SE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-SENSORY-920-6900",
+      "source_file": "footage-round5/soul/ASSET-SOUL-SENSORY-920-6900.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 4507,
+      "source_out_ms": 6900,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3328125,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.46797500000000003,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.46797500000000003,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.45200000000000007,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.45200000000000007,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-02",
+      "decision_id": "VCD-5c76f0b953e76d8790b5",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 12467,
+      "timeline_end_ms": 14860,
+      "evidence_fingerprint": "sha256:1a66f1c87c14c8304d703c8c0b71b165964ca712afc5aa5137a6156ff314ec75"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-17070",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-CLUB-9920-12130",
+      "source_file": "footage-round5/soul/ASSET-SOUL-CLUB-9920-12130.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 9920,
+      "source_out_ms": 12130,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-14860-17070"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-14860-17070": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.5830078125,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.4091796875,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.4091796875,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.2822014051522248,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.2822014051522248,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-567186a5d389857dea9d-01",
+      "decision_id": "VCD-567186a5d389857dea9d",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 14860,
+      "timeline_end_ms": 17070,
+      "evidence_fingerprint": "sha256:aa90ac6375a0faae78913ecb0805f1b14fe7f89bf54275bbcd7bba63a533269d"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-BARBER-1420-3630",
+      "source_file": "footage-round5/soul/ASSET-SOUL-BARBER-1420-3630.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 3047,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-17070-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-17070-19280": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "top",
+      "crop": {
+        "window": {
+          "width": 0.619921875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.614892578125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.614892578125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.8022867420349434,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.8022867420349434,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-567186a5d389857dea9d-02",
+      "decision_id": "VCD-567186a5d389857dea9d",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 17070,
+      "timeline_end_ms": 18697,
+      "evidence_fingerprint": "sha256:0bc7cd1c26834b09230e783a74220d8b184c697fa93068cf126473acc285ed11"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RK-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-02",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-BARBER-1420-3630",
+      "source_file": "footage-round5/soul/ASSET-SOUL-BARBER-1420-3630.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 3047,
+      "source_out_ms": 3630,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-17070-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-17070-19280": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.7716796875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-567186a5d389857dea9d-03",
+      "decision_id": "VCD-567186a5d389857dea9d",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 18697,
+      "timeline_end_ms": 19280,
+      "evidence_fingerprint": "sha256:f10369d80794c4d32052e463f3e9420fdaea9faa7b24193de40758e85be6dcd1"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-KE-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-AWAKE-9420-13480",
+      "source_file": "footage-round5/soul/ASSET-SOUL-AWAKE-9420-13480.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 9420,
+      "source_out_ms": 13480,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-04-AWAKE-19280-23340"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-04-AWAKE-19280-23340": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.489609375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.489609375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4848,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4848,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-8daa6c51d333054bacbf-01",
+      "decision_id": "VCD-8daa6c51d333054bacbf",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "timeline_start_ms": 19280,
+      "timeline_end_ms": 23340,
+      "evidence_fingerprint": "sha256:ad940708ab5c9ef91904c5e2159de82ba69597da3c02e36e98677a1b2667773a"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-GN-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-GN-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-CALM-6920-12500",
+      "source_file": "footage-round5/soul/ASSET-SOUL-CALM-6920-12500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 6920,
+      "source_out_ms": 12500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5005551351234316,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5005551351234316,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5008120833805628,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5008120833805628,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-01",
+      "decision_id": "VCD-936191c61dadc3349ca3",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 23340,
+      "timeline_end_ms": 28920,
+      "evidence_fingerprint": "sha256:0730b9621fb532f21ca553a4ba93f8260b50d86610213b37fe79d03ed56c87c7"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-GN-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-GN-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-STAGE-3430-10010",
+      "source_file": "footage-round5/soul/ASSET-SOUL-STAGE-3430-10010.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 3430,
+      "source_out_ms": 10010,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.8044921875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.539492578125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.539492578125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7019999999999997,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7019999999999997,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-02",
+      "decision_id": "VCD-936191c61dadc3349ca3",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 28920,
+      "timeline_end_ms": 35500,
+      "evidence_fingerprint": "sha256:6f362c81f7bfe2d5b1d3e8da9f7d5898ee2ed6c8f1229c96c754123073dd04fe"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-SS-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-SS-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-TROPHY-1420-4500",
+      "source_file": "footage-round5/soul/ASSET-SOUL-TROPHY-1420-4500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 4500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.45659912109375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.45659912109375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4365107142857143,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4365107142857143,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-f9e8abff621bcdb72821-01",
+      "decision_id": "VCD-f9e8abff621bcdb72821",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "timeline_start_ms": 35500,
+      "timeline_end_ms": 38580,
+      "evidence_fingerprint": "sha256:eef8b6656ed57e53455a91a47630f217ce653a22ded50fd0746a25a62ef3e82d"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-PORTRAIT-SAD-SOULS-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40780",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-PORTRAIT-SAD-SOULS-2000-4200",
+      "source_file": "footage-round5/soul/ASSET-SOUL-PORTRAIT-SAD-SOULS-2000-4200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 2000,
+      "source_out_ms": 4200,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-38580-40780"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-38580-40780": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1,
+          "identity_ref": "CHARACTER-SAD-SOUL-GROUP"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-01",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 38580,
+      "timeline_end_ms": 40780,
+      "evidence_fingerprint": "sha256:7c5f2875d8797a67362a057c4fa0216d44e2dcc1f0e2facd3b1fd43094898c22"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40780-42580",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-DRAGGED-2220-4020",
+      "source_file": "footage-round5/soul/ASSET-SOUL-DRAGGED-2220-4020.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 2220,
+      "source_out_ms": 4020,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-40780-42580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-40780-42580": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.438553466796875,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.438553466796875,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.41011250000000005,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.41011250000000005,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-02",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 40780,
+      "timeline_end_ms": 42580,
+      "evidence_fingerprint": "sha256:d2c81cba97f9c248c530f8c056b38169a66090560d60c6d962cf3b1e19460658"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-PORTRAIT-DISTRESS-CLOSEUP-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42580-44180",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-DISTRESS-CLOSEUP-4000-5600",
+      "source_file": "footage-round5/soul/ASSET-SOUL-DISTRESS-CLOSEUP-4000-5600.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 4000,
+      "source_out_ms": 5600,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-42580-44180"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-42580-44180": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1,
+          "identity_ref": "CHARACTER-22-SOUL"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-03",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 42580,
+      "timeline_end_ms": 44180,
+      "evidence_fingerprint": "sha256:02bbd18c04cd97398b22e30f924e2450d643ba2f9df06f8cce96c01b6498d436"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44180-45630",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-STRUGGLE-1420-2870",
+      "source_file": "footage-round5/soul/ASSET-SOUL-STRUGGLE-1420-2870.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 2870,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-44180-45630"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-44180-45630": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-04",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 44180,
+      "timeline_end_ms": 45630,
+      "evidence_fingerprint": "sha256:063e0526effb9bf8bf4e8a2f0a72fef9df795a60cbcc7976332886b8ae6bed6b"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45630-46980",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-CONFLICT-1420-2770",
+      "source_file": "footage-round5/soul/ASSET-SOUL-CONFLICT-1420-2770.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 2770,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-45630-46980"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-45630-46980": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.4517578125,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49671054687500005,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49671054687500005,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4940000000000001,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4940000000000001,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-05",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 45630,
+      "timeline_end_ms": 46980,
+      "evidence_fingerprint": "sha256:30c1998180b3ee8f4b91b894e2f0cb00e9e07bbd48eb04570c66f33f28eaaa08"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-46980-48430",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-OBSESSED-1420-2870",
+      "source_file": "footage-round5/soul/ASSET-SOUL-OBSESSED-1420-2870.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 2870,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-46980-48430"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-46980-48430": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-06",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 46980,
+      "timeline_end_ms": 48430,
+      "evidence_fingerprint": "sha256:a2c7a1fbd49520279584d45a40aa2f43d5f9a36a859a2ca647e319dc26712052"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-NT-PORTRAIT-CARRIER-SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48430-49960",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-CONFRONT-6920-8450",
+      "source_file": "footage-round5/soul/ASSET-SOUL-CONFRONT-6920-8450.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 6920,
+      "source_out_ms": 8450,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-48430-49960"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-48430-49960": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.5228515625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.55205078125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.55205078125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6090871878837494,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6090871878837494,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-643805aa680e084dc56c-07",
+      "decision_id": "VCD-643805aa680e084dc56c",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 48430,
+      "timeline_end_ms": 49960,
+      "evidence_fingerprint": "sha256:82c1095420b37effe6c4e1139f05b404e9620c595cca3e1fbbab7d7cae13f99a"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-EMPTY-1420-5540",
+      "source_file": "footage-round5/soul/ASSET-SOUL-EMPTY-1420-5540.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 1420,
+      "source_out_ms": 3505,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-54080"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-54080": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5954429302364588,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5954429302364588,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6396193722316197,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6396193722316197,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-01",
+      "decision_id": "VCD-afead7e88be4e9de071e",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 49960,
+      "timeline_end_ms": 52045,
+      "evidence_fingerprint": "sha256:22539163a439fa203cd27b0cb7cac8e3a33cc404fe6209b5c5619829967bc5e9"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-EMPTY-1420-5540",
+      "source_file": "footage-round5/soul/ASSET-SOUL-EMPTY-1420-5540.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 3505,
+      "source_out_ms": 5540,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-54080"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-54080": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-02",
+      "decision_id": "VCD-afead7e88be4e9de071e",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 52045,
+      "timeline_end_ms": 54080,
+      "evidence_fingerprint": "sha256:9b79bdb58457863881513a36334d50d5f8be22ae359e333fb058635f6a56267e"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-FAMILY-COST-2920-5706",
+      "source_file": "footage-round5/soul/ASSET-SOUL-FAMILY-COST-2920-5706.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 2920,
+      "source_out_ms": 5706,
+      "camera_strategy": "static_lock",
+      "frame_mode": "context_window",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-54080-56866"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-54080-56866": {
+          "visibility_requirement": "group_relation",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.12
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.5310546875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-03",
+      "decision_id": "VCD-afead7e88be4e9de071e",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 54080,
+      "timeline_end_ms": 56866,
+      "evidence_fingerprint": "sha256:a093c9f180636a8964c85eaa1c9da2f09175eabfaf49df50a1aebba91a965dd8"
+    },
+    {
+      "event_id": "EVT-CAND-SOUL-RM-REACTION-TAIL-SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56866-59652",
+      "film_id": "FILM-SOUL",
+      "source_asset_id": "ASSET-SOUL-VOID-2220-5006",
+      "source_file": "footage-round5/soul/ASSET-SOUL-VOID-2220-5006.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "source_in_ms": 2220,
+      "source_out_ms": 5006,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-56866-59652"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-56866-59652": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.31640625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-04",
+      "decision_id": "VCD-afead7e88be4e9de071e",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 56866,
+      "timeline_end_ms": 59652,
+      "evidence_fingerprint": "sha256:d1fdab96f788faf50c74e71d7f3dcb268d9c114de213bf8773f7f01002836ac2"
+    }
+  ],
+  "status": "locked",
+  "edit_plan_fingerprint": "sha256:ecd934102bad38b04cb00d3e177f026310a88959fb2a4b299bf516db2480158a"
+}
