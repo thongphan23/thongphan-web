@@ -1,17 +1,24 @@
+import assert from 'node:assert/strict'
 import { mkdir, writeFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright'
 
 const baseUrl = process.env.REVIEW_BASE_URL ?? 'http://127.0.0.1:4187'
 const route = process.env.REVIEW_ROUTE ?? '/review/remotion-muc-dich-doi-song.html'
-const outputDir = new URL('../artifacts/remotion-visual-proposition-review/', import.meta.url)
+const outputDir = new URL('../artifacts/remotion-vertical-framing-review/', import.meta.url)
 const cases = [
   { id: 'desktop', width: 1440, height: 1000 },
   { id: 'mobile', width: 390, height: 844 },
 ]
-const variants = [
-  { tab: '01 · Soul', source: 'soul-observable-expression-v1-web.mp4' },
-  { tab: '02 · Forrest Gump', source: 'forrest-gump-observable-expression-v1-web.mp4' },
-  { tab: '03 · A Beautiful Mind', source: 'a-beautiful-mind-observable-expression-v1-web.mp4' },
+const rounds = [
+  { label: 'Vòng 1', id: 'r1' },
+  { label: 'Vòng 2', id: 'r2' },
+  { label: 'Vòng 3', id: 'r3' },
+]
+const films = [
+  { label: '01 · Soul', id: 'soul' },
+  { label: '02 · Forrest Gump', id: 'forrest-gump' },
+  { label: '03 · A Beautiful Mind', id: 'a-beautiful-mind' },
 ]
 
 await mkdir(outputDir, { recursive: true })
@@ -30,77 +37,73 @@ try {
     })
 
     const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle' })
-    if (!response?.ok()) throw new Error(`${testCase.id}: route returned ${response?.status()}`)
+    assert.equal(response?.status(), 200)
+    await page.getByRole('heading', { name: /Chín bản dựng dọc/ }).waitFor()
 
-    const variantResults = []
-    for (const variant of variants) {
-      await page.getByRole('button', { name: variant.tab, exact: true }).click()
-      const video = page.locator('video')
-      await video.evaluate((element) => {
-        if (element.readyState < 1) {
-          return new Promise((resolve, reject) => {
-            element.addEventListener('loadedmetadata', resolve, { once: true })
-            element.addEventListener('error', reject, { once: true })
-          })
-        }
-      })
-      const metadata = await video.evaluate((element) => ({
-        currentSrc: element.currentSrc,
-        duration: element.duration,
-        poster: element.poster,
-        readyState: element.readyState,
-      }))
-      if (!metadata.currentSrc.includes(variant.source)) {
-        throw new Error(`${testCase.id}: ${variant.tab} loaded the wrong source`)
+    const combinations = []
+    for (const round of rounds) {
+      await page.getByRole('button', { name: new RegExp(`^${round.label}`) }).click()
+      for (const film of films) {
+        await page.getByRole('button', { name: film.label, exact: true }).click()
+        const video = page.locator('video')
+        const expectedFile = `vertical-${round.id}-${film.id}-web.mp4`
+        await page.waitForFunction(
+          () => {
+            const currentVideo = document.querySelector('video')
+            return Boolean(currentVideo && Number.isFinite(currentVideo.duration) && currentVideo.duration > 0)
+          },
+        )
+        const media = await video.evaluate((element) => ({
+          currentSrc: element.currentSrc,
+          duration: element.duration,
+          readyState: element.readyState,
+        }))
+        assert.match(media.currentSrc, new RegExp(expectedFile))
+        assert.ok(media.duration > 59 && media.duration < 61, `${expectedFile} duration=${media.duration}`)
+        assert.ok(media.readyState >= 1, `${expectedFile} did not load metadata`)
+        combinations.push({ round: round.id, film: film.id, ...media })
       }
-      if (Math.abs(metadata.duration - 59.712) > 0.15) {
-        throw new Error(`${testCase.id}: ${variant.tab} duration was ${metadata.duration}`)
-      }
-      await video.evaluate(async (element) => {
-        element.muted = true
-        await element.play()
+      await page.screenshot({
+        path: fileURLToPath(new URL(`${testCase.id}-${round.id}.png`, outputDir)),
+        fullPage: true,
       })
-      await page.waitForFunction(() => {
-        const element = document.querySelector('video')
-        return element instanceof HTMLVideoElement && element.currentTime > 0.15
-      })
-      await video.evaluate((element) => element.pause())
-      variantResults.push({ ...variant, ...metadata, played: true })
     }
 
-    const layout = await page.evaluate(() => ({
-      documentWidth: document.documentElement.scrollWidth,
-      viewportWidth: window.innerWidth,
-      heading: document.querySelector('h1')?.textContent?.trim(),
-    }))
-    if (layout.documentWidth > layout.viewportWidth) {
-      throw new Error(`${testCase.id}: horizontal overflow ${layout.documentWidth}/${layout.viewportWidth}`)
-    }
-    if (consoleErrors.length > 0) {
-      throw new Error(`${testCase.id}: console errors: ${consoleErrors.join(' | ')}`)
-    }
-
-    await page.screenshot({
-      path: new URL(`${testCase.id}.png`, outputDir).pathname,
-      fullPage: true,
+    await page.getByRole('button', { name: /^Vòng 3/ }).click()
+    await page.getByRole('button', { name: '01 · Soul', exact: true }).click()
+    const activeVideo = page.locator('video')
+    await activeVideo.evaluate(async (element) => {
+      await element.play()
     })
-    results.push({ ...testCase, layout, consoleErrors, variants: variantResults, status: 'pass' })
+    await page.waitForTimeout(700)
+    const playbackTime = await activeVideo.evaluate((element) => {
+      element.pause()
+      return element.currentTime
+    })
+    assert.ok(playbackTime > 0, 'final video did not advance during playback smoke')
+
+    const layout = await page.evaluate(() => {
+      const player = document.querySelector('video')?.getBoundingClientRect()
+      return {
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth: window.innerWidth,
+        playerWidth: player?.width ?? 0,
+        playerHeight: player?.height ?? 0,
+      }
+    })
+    assert.ok(layout.documentWidth <= layout.viewportWidth + 1, 'horizontal overflow detected')
+    assert.ok(Math.abs(layout.playerWidth / layout.playerHeight - 9 / 16) < 0.02, 'player is not 9:16')
+    assert.deepEqual(consoleErrors, [])
+
+    results.push({ case: testCase, combinations, playbackTime, layout, consoleErrors })
     await context.close()
   }
 } finally {
   await browser.close()
 }
 
-const report = {
-  schema_version: 'thongphan.remotion-review-browser-qa.v1',
-  base_url: baseUrl,
-  route,
-  status: 'pass',
-  results,
-}
 await writeFile(
-  new URL('report.json', outputDir),
-  `${JSON.stringify(report, null, 2)}\n`,
-  'utf8',
+  new URL('qa-results.json', outputDir),
+  `${JSON.stringify({ status: 'PASS', results }, null, 2)}\n`,
 )
-console.log(JSON.stringify(report, null, 2))
+console.log(`PASS: ${results.length} viewports, ${results.length * 9} media combinations`)

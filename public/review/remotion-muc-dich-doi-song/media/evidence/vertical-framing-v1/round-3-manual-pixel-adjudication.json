@@ -1,0 +1,44 @@
+{
+  "schema": "tpr.vertical_manual_pixel_adjudication.v1",
+  "reviewer": "codex_pixel_review",
+  "reviewed_shot_count": 51,
+  "semantic_carrier_pass_count": 48,
+  "inputs": [
+    {"path": "audit/round-3/soul-shot-contact-sheet.jpg", "sha256": "sha256:fc61cf596a9982090152c8bb25ea97b38d5e126083230e77d525c08914229e9e"},
+    {"path": "audit/round-3/forrest-gump-shot-contact-sheet.jpg", "sha256": "sha256:a6b9d7104215e1dafca39a67f5435fb2de0b244153fa0b066ebd7195f7a5bbf3"},
+    {"path": "audit/round-3/a-beautiful-mind-shot-contact-sheet.jpg", "sha256": "sha256:4022c7ca760419987437ea2fcdc6b02477f0852b70ad35e4a07ea0c55ef6c20f"}
+  ],
+  "verified_repairs": [
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+      "result": "Cảnh làm việc giữ được nhân vật và nối hành động liên tục, không còn vai áo vô nghĩa."
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+      "result": "Gương mặt Joe xuất hiện trọn vẹn và đọc được trạng thái tỉnh thức."
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "result": "Khung giữ người trao và tấm bằng trước, sau đó mới chuyển sang người nhận."
+    }
+  ],
+  "residual_failures": [
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "reason": "Khung giữa shot quá tối và hình thể trừu tượng, khó đọc nếu dừng hình.",
+      "required_action": "Ở run sau phải ưu tiên nguồn có khuôn mặt hoặc hành động căng thẳng đọc được ngay."
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "reason": "Chuyển động xe cứu hỏa tạo motion blur mạnh ở midpoint.",
+      "required_action": "Đánh giá bằng nhiều frame liên tiếp và tránh dùng midpoint duy nhất cho shot tốc độ cao."
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "reason": "Nhân vật dưới nước còn nhỏ nên ý hướng nội phụ thuộc vào chuyển động nhiều hơn khung tĩnh.",
+      "required_action": "Bổ sung điểm dễ đọc ở kích thước dọc vào cổng chọn nguồn trước khi lập crop."
+    }
+  ],
+  "owner_fit_claimed": false,
+  "taste_evidence_created": false
+}

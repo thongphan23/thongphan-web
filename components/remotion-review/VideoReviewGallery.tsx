@@ -3,137 +3,228 @@
 import { useMemo, useState } from 'react'
 import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
-const variants = [
+const evidenceRoot =
+  '/review/remotion-muc-dich-doi-song/media/evidence/vertical-framing-v1'
+const releaseTag = 'semantic-vertical-framing-v1-20260801'
+
+const films = [
   {
     id: 'soul',
     tab: '01 · Soul',
-    title: 'Biểu cảm và biểu tượng đọc được ngay',
-    src: '/review/remotion-muc-dich-doi-song/media/soul-visual-fit-v2-web.mp4?v=visual-fit-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/soul-visual-fit-v2-poster.jpg?v=visual-fit-v2-20260731',
-    focus: 'Khoảng lặng, cảm nhận hiện tại, lao động cụ thể, sân khấu, chiếc cúp và đau khổ đều ở trong một thế giới hình ảnh nhất quán.',
-    strength: 'Nghĩa được đọc nhanh: chiếc cúp chứng minh thành công trực tiếp; trạng thái và hậu quả có biểu cảm mạnh.',
-    risk: 'Ẩn dụ hoạt hình dễ hiểu nhưng có thể tạo khoảng cách với trải nghiệm đời thật của người xem trưởng thành.',
-    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-expression-review-v2.md?v=visual-fit-v2-20260731',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-selection-review-v2.md?v=visual-fit-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-visual-proposition-graph-v2.json?v=visual-fit-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/soul-single-film-continuity-report-v2.json?v=visual-fit-v2-20260731',
+    title: 'Biểu cảm và vật chứng trong một thế giới hoạt hình',
+    focus:
+      'Khoảng lặng, công việc, thành công và đau khổ được giữ quanh Joe cùng các vật mang nghĩa thay vì quanh tâm khung nguồn.',
+    residual:
+      'Một shot tối trừu tượng và một shot xe cứu hỏa có motion blur vẫn cần anh đánh giá trong chuyển động thật.',
   },
   {
     id: 'forrest-gump',
     tab: '02 · Forrest Gump',
-    title: 'Một đời người, các hành động cụ thể',
-    src: '/review/remotion-muc-dich-doi-song/media/forrest-gump-visual-fit-v2-web.mp4?v=visual-fit-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/forrest-gump-visual-fit-v2-poster.jpg?v=visual-fit-v2-20260731',
-    focus: 'Một mình giữa biển, luyện bóng bàn, cắt cỏ, tốt nghiệp, được công nhận, chịu sức ép và mất mát nối thành một tuyến đời người.',
-    strength: 'Nguồn sai “tàu đánh tôm” đã bị loại; hành động bên ngoài giờ có vợt, bóng, máy cắt cỏ và kết quả hữu hình.',
-    risk: 'Cảnh suy ngẫm trên ghế vẫn phụ thuộc nhiều vào nét mặt; cần chấm xem trạng thái an nhiên đã đủ rõ chưa.',
-    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-expression-review-v2.md?v=visual-fit-v2-20260731',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-selection-review-v2.md?v=visual-fit-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-visual-proposition-graph-v2.json?v=visual-fit-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/forrest-gump-single-film-continuity-report-v2.json?v=visual-fit-v2-20260731',
+    title: 'Một đời người được đọc qua hành động cụ thể',
+    focus:
+      'Khung dọc ưu tiên Forrest, hành động và vật chứng; cảnh nhận bằng giữ người trao cùng tấm bằng trước khi chuyển sang người nhận.',
+    residual:
+      'Nhân vật ở shot bơi còn nhỏ trong nguồn, nên ý hướng nội phụ thuộc vào chuyển động nhiều hơn một khung tĩnh.',
   },
   {
     id: 'a-beautiful-mind',
     tab: '03 · A Beautiful Mind',
-    title: 'Suy ngẫm, Nobel và cái giá con người',
-    src: '/review/remotion-muc-dich-doi-song/media/a-beautiful-mind-visual-fit-v2-web.mp4?v=visual-fit-v2-20260731',
-    poster: '/review/remotion-muc-dich-doi-song/media/a-beautiful-mind-visual-fit-v2-poster.jpg?v=visual-fit-v2-20260731',
-    focus: 'John một mình suy ngẫm, làm toán, bước lên sân khấu Nobel rồi đi qua mất kiểm soát, đổ vỡ và đau khổ.',
-    strength: 'Ba ý khó nhất đều có carrier rõ: cô tịch, nghi thức công nhận và hệ quả đau khổ trên con người.',
-    risk: 'Một số cảnh xung đột ở đoạn cao trào dày thông tin; cần chấm khả năng đọc trong nhịp nhanh.',
-    expressionHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-expression-review-v2.md?v=visual-fit-v2-20260731',
-    evidenceHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-selection-review-v2.md?v=visual-fit-v2-20260731',
-    scorecardHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-visual-proposition-graph-v2.json?v=visual-fit-v2-20260731',
-    continuityHref: '/review/remotion-muc-dich-doi-song/media/evidence/a-beautiful-mind-single-film-continuity-report-v2.json?v=visual-fit-v2-20260731',
+    title: 'Suy ngẫm, công nhận và hệ quả trên con người',
+    focus:
+      'John Nash, tương tác người-vật và quan hệ nhóm được theo dõi theo từng shot; phụ đề tự đổi vùng khi bằng chứng nằm phía dưới.',
+    residual:
+      'Nguồn cận cảnh giúp giữ chủ thể tốt, nhưng những đoạn xung đột dày thông tin vẫn cần chấm khả năng đọc ở nhịp thật.',
   },
 ] as const
 
+type FilmId = (typeof films)[number]['id']
+
+const rounds = [
+  {
+    id: 'r1',
+    number: 1,
+    tab: 'Vòng 1',
+    status: 'Crop giữa · chưa đạt',
+    score: '59,0/100',
+    gate: '27/51 shot',
+    retention: '79,6%',
+    method:
+      'Giữ nguyên crop giữa để làm đường cơ sở. Kết quả cho thấy mặt, hành động và quan hệ không gian thường bị cắt dù video vẫn render đúng kỹ thuật.',
+    learned:
+      'Không thể dùng tâm hình nguồn làm đại diện cho trọng tâm ý nghĩa trong khung dọc.',
+    report: `${evidenceRoot}/round-1-self-evaluation.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r1-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r1-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r1-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r1-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r1-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r1-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
+  {
+    id: 'r2',
+    number: 2,
+    tab: 'Vòng 2',
+    status: 'Theo mặt/vùng chú ý · còn false-high',
+    score: '59,0/100',
+    gate: '44/51 shot',
+    retention: '96,6%',
+    method:
+      'Dùng quan sát mặt và saliency thật, giữ shot ngắn tĩnh, giới hạn tốc độ pan và chuyển phụ đề tránh vùng bằng chứng.',
+    learned:
+      'Giữ được một khuôn mặt chưa đủ: khuôn mặt lớn nhất có thể không phải người hoặc vật đang mang nghĩa của voice.',
+    report: `${evidenceRoot}/round-2-self-evaluation.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r2-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r2-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r2-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r2-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r2-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r2-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
+  {
+    id: 'r3',
+    number: 3,
+    tab: 'Vòng 3',
+    status: 'Vật mang nghĩa · ứng viên cuối',
+    score: '97,2/100',
+    gate: '51/51 shot',
+    retention: '99,5%',
+    method:
+      'Chọn tín hiệu theo vai trò ngữ nghĩa của shot, dùng đoạn hold/dead-zone, sửa ba false-high bằng pixel thật và thay nguồn khi crop không thể cứu.',
+    learned:
+      'Khung dọc phải giữ đúng vật mang nghĩa đã quan sát, không chỉ giữ vùng nổi bật về thị giác.',
+    report: `${evidenceRoot}/round-3-self-evaluation.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r3-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r3-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r3-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r3-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r3-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r3-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
+] as const
+
+type RoundId = (typeof rounds)[number]['id']
+
 export default function VideoReviewGallery() {
-  const [activeId, setActiveId] = useState<(typeof variants)[number]['id']>('soul')
-  const activeVariant = useMemo(
-    () => variants.find((variant) => variant.id === activeId) ?? variants[0],
-    [activeId],
+  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r3')
+  const [activeFilmId, setActiveFilmId] = useState<FilmId>('soul')
+  const activeRound = useMemo(
+    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[2],
+    [activeRoundId],
   )
+  const activeFilm = useMemo(
+    () => films.find((film) => film.id === activeFilmId) ?? films[0],
+    [activeFilmId],
+  )
+  const media = activeRound.sources[activeFilm.id]
+  const evidencePrefix = `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
 
   return (
     <section className={styles.review} aria-labelledby="review-heading">
-      <div className={styles.tabs} role="group" aria-label="Chọn phiên bản video">
-        {variants.map((variant) => (
-          <button
-            key={variant.id}
-            type="button"
-            className={variant.id === activeId ? styles.tabActive : styles.tab}
-            aria-pressed={variant.id === activeId}
-            onClick={() => setActiveId(variant.id)}
+      <div className={styles.selectorBlock}>
+        <p className={styles.selectorLabel}>Chọn vòng cải tiến</p>
+        <div className={styles.roundTabs} role="group" aria-label="Chọn vòng cải tiến">
+          {rounds.map((round) => (
+            <button
+              key={round.id}
+              type="button"
+              className={round.id === activeRoundId ? styles.roundTabActive : styles.roundTab}
+              aria-pressed={round.id === activeRoundId}
+              onClick={() => setActiveRoundId(round.id)}
+            >
+              <span>{round.tab}</span>
+              <small>{round.status}</small>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.selectorBlock}>
+        <p className={styles.selectorLabel}>Chọn phim</p>
+        <div className={styles.filmTabs} role="group" aria-label="Chọn phim">
+          {films.map((film) => (
+            <button
+              key={film.id}
+              type="button"
+              className={film.id === activeFilmId ? styles.filmTabActive : styles.filmTab}
+              aria-pressed={film.id === activeFilmId}
+              onClick={() => setActiveFilmId(film.id)}
+            >
+              {film.tab}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.reviewStage}>
+        <div className={styles.playerStage}>
+          <video
+            key={`${activeRound.id}-${activeFilm.id}`}
+            className={styles.player}
+            controls
+            playsInline
+            preload="metadata"
+            poster={media.poster}
           >
-            {variant.tab}
-          </button>
-        ))}
+            <source src={media.src} type="video/mp4" />
+            Trình duyệt này không hỗ trợ video H.264.
+          </video>
+        </div>
+
+        <div className={styles.reviewDetail} aria-live="polite">
+          <span className={styles.variantNumber}>
+            {activeRound.tab} · {activeFilm.tab}
+          </span>
+          <h2 id="review-heading">{activeFilm.title}</h2>
+          <p>{activeFilm.focus}</p>
+
+          <dl className={styles.roundMetrics}>
+            <div><dt>Điểm tự đánh giá</dt><dd>{activeRound.score}</dd></div>
+            <div><dt>Cổng shot</dt><dd>{activeRound.gate}</dd></div>
+            <div><dt>Giữ trọng tâm</dt><dd>{activeRound.retention}</dd></div>
+          </dl>
+
+          <dl className={styles.lensNotes}>
+            <div><dt>Cách làm vòng này</dt><dd>{activeRound.method}</dd></div>
+            <div><dt>Điều hệ thống học được</dt><dd>{activeRound.learned}</dd></div>
+            <div><dt>Rủi ro còn lại của phim</dt><dd>{activeFilm.residual}</dd></div>
+          </dl>
+
+          <div className={styles.evidenceLinks}>
+            <a href={activeRound.report} target="_blank" rel="noreferrer">Báo cáo vòng</a>
+            <a href={`${evidencePrefix}-composition-plan.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
+            <a href={`${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">Contact sheet</a>
+          </div>
+        </div>
       </div>
 
-      <div className={styles.playerStage}>
-        <video
-          key={activeVariant.id}
-          className={styles.player}
-          controls
-          playsInline
-          preload="metadata"
-          poster={activeVariant.poster}
-        >
-          <source src={activeVariant.src} type="video/mp4" />
-          Trình duyệt này không hỗ trợ video H.264.
-        </video>
-      </div>
-
-      <div className={styles.reviewGrid} aria-live="polite">
-        <header>
-          <span className={styles.variantNumber}>{activeVariant.tab}</span>
-          <h2 id="review-heading">{activeVariant.title}</h2>
-          <p>{activeVariant.focus}</p>
-        </header>
-        <dl className={styles.lensNotes}>
-          <div>
-            <dt>Điểm mạnh dự kiến</dt>
-            <dd>{activeVariant.strength}</dd>
-          </div>
-          <div>
-            <dt>Rủi ro cần kiểm tra</dt>
-            <dd>{activeVariant.risk}</dd>
-          </div>
-          <div>
-            <dt>Concept → dấu hiệu nhìn thấy</dt>
-            <dd>
-              <a className={styles.evidenceLink} href={activeVariant.expressionHref} target="_blank" rel="noreferrer">
-                Mở bản phân rã hình ảnh
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt>Bằng chứng lựa chọn</dt>
-            <dd>
-              <a className={styles.evidenceLink} href={activeVariant.evidenceHref} target="_blank" rel="noreferrer">
-                Mở quyết định hình ảnh
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt>Scorecard và lineage</dt>
-            <dd>
-              <a className={styles.evidenceLink} href={activeVariant.scorecardHref} target="_blank" rel="noreferrer">
-                Mở graph đã khóa
-              </a>
-            </dd>
-          </div>
-          <div>
-            <dt>Liên tục nguồn phim</dt>
-            <dd>
-              <a className={styles.evidenceLink} href={activeVariant.continuityHref} target="_blank" rel="noreferrer">
-                Mở kiểm tra một-phim
-              </a>
-            </dd>
-          </div>
-        </dl>
-      </div>
+      <p className={styles.tasteBoundary}>
+        Điểm trên là tự đánh giá kỹ thuật và pixel của hệ thống. Chỉ phản hồi trực tiếp của anh mới
+        được tiếp nhận thành bằng chứng Taste sau khi gắn với đúng vòng, phim và shot.
+      </p>
     </section>
   )
 }

@@ -1,0 +1,784 @@
+{
+  "schema": "tpr.vertical_round_plan.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 2,
+  "variant_id": "forrest-gump",
+  "film_title": "Forrest Gump",
+  "source_edit_plan": "variants/forrest-gump/content/edit_plan.json",
+  "focus_observations": "content/vertical_focus_observations.json",
+  "previous_round_evidence": "rounds/round-1/self_evaluation.json",
+  "shot_assessments": [
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.5224560546875,
+          "y": 0.07559051513671874,
+          "width": 0.24,
+          "height": 0.382708740234375
+        },
+        {
+          "x": 0.49027099609375,
+          "y": 0.154324951171875,
+          "width": 0.2096435546875,
+          "height": 0.4104052734375
+        },
+        {
+          "x": 0.36638916015625,
+          "y": 0.19280029296875,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.6424560546875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.48638916015625,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.1561,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:da917d2926552f6c4f8e04ad43c60fc9a340e7d697bb5d6700d93d15a8b5be1d",
+        "sha256:452691ab9777efa14922cf0cffd3a58a0bf37850d26c1c925ab3939ad368e5ca",
+        "sha256:32e6cd39612da41bcdb1746c70ec82ce2d91344b2aaf18c436177dc653b00716"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.21668859459459783,
+          "y": 0.0,
+          "width": 0.1,
+          "height": 0.20136905685067177
+        },
+        {
+          "x": 0.2558998454362154,
+          "y": 0.03917356766760349,
+          "width": 0.1,
+          "height": 0.2011011801660061
+        },
+        {
+          "x": 0.295061743631959,
+          "y": 0.06053980052471161,
+          "width": 0.1,
+          "height": 0.18
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.2666885945945978,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.34506174363195896,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0784,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:6105772437cc225b6db14db9d9b760d2527ca79d062e6c4bcb4d96e09ce423ea",
+        "sha256:93292b0531c25dbf392e21688f47a21e2c0687bb0b335ceb6b00ff2e751b492e",
+        "sha256:d383d9c7cb247637277788aa2fda3b238751c7ab2a0f5443ef5074670854bb51"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01",
+      "claim_id": "CLM-02-INNER-EASE",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.3692029777169228,
+          "y": 0.059289973229169846,
+          "width": 0.16670550644397736,
+          "height": 0.5152413323521614
+        },
+        {
+          "x": 0.40467497900128363,
+          "y": 0.062245555222034454,
+          "width": 0.16643790513277054,
+          "height": 0.5144142359495163
+        },
+        {
+          "x": 0.39783461406826975,
+          "y": 0.07443857729434966,
+          "width": 0.1739806082844734,
+          "height": 0.52
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.45255573093891144,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.48482491821050644,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0323,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:118cfdb303ca62496ecadfc0fd5bb9e10ff66699cf2229c979224b00545ada06",
+        "sha256:cc646fa2ebda65ee07a046b4a7c5cd42ae480517b149de4593f6b88247e3766a",
+        "sha256:91f319aaf48af96fcf6ea7452192502cb7cd44eefc269b5b827bdf0d0900dc9c"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "proof",
+        "proof"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.5908708645030856,
+          "y": 0.14459012806415558,
+          "width": 0.1,
+          "height": 0.18
+        },
+        {
+          "x": 0.5197705078125,
+          "y": 0.24345947265625,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.4040478515625,
+          "y": 0.2288568115234375,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.6408708645030856,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5240478515625,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.9204,
+        "mean_focus_retention": 0.9735,
+        "max_center_step": 0.1168,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:3d02d8d954b121770094a3cf543057ecf66aedcab23b7ed03c2ee216e353d444",
+        "sha256:11d2dae33a562452319c78b2d4a07c20cdf2c4620ad0ac9ee3791d1021f0e02e",
+        "sha256:47bc807a8c376a990c129077559cad0fffd5866f284c17e05449b52374e39670"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01",
+      "claim_id": "CLM-04-AWAKE",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.5292101600766181,
+          "y": 0.07879768162965775,
+          "width": 0.14557845413684845,
+          "height": 0.45665893256664275
+        },
+        {
+          "x": 0.5260459920763969,
+          "y": 0.08501079678535461,
+          "width": 0.15079558074474333,
+          "height": 0.47302430868148804
+        },
+        {
+          "x": 0.5318244299292565,
+          "y": 0.09418754577636718,
+          "width": 0.15053605020046235,
+          "height": 0.4722101926803589
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.6019993871450424,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.6070924550294876,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0051,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:6b64d8db4247ee8e76bfe27b00d1f7ccf9c2df195a72436810bd943d8b2f0447",
+        "sha256:9232186e5b0fd562e5150402bd54b20b989403ff174e0a3cf19e06143dccddc0",
+        "sha256:fcbda1a35811ea060ed8e09197fbb52d45119d03fa6a5262806c945ea8cc02e7"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.5261586092412471,
+          "y": 0.18094677463173867,
+          "width": 0.1,
+          "height": 0.18
+        },
+        {
+          "x": 0.372556795924902,
+          "y": 0.1749190890789032,
+          "width": 0.2350401625037193,
+          "height": 0.52
+        },
+        {
+          "x": 0.33708882197737694,
+          "y": 0.15062046587467193,
+          "width": 0.22406138747930526,
+          "height": 0.52
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5761586092412472,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.44911951571702957,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.127,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:49915d6f6c37067eb4e2db992f5d7b09b9c319f108f2c3391e3d82487b9f6dd1",
+        "sha256:5e5ed5cc022c7dd5e826a763f9f1891292ddc4ad35d86fb0a6bc8c1cf09dccde",
+        "sha256:3da4de5717b439c52de74e8e911002484788119a7c23178d8b32612129db692c"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.4230051513761282,
+          "y": 0.1919029537588358,
+          "width": 0.1,
+          "height": 0.22107935771346093
+        },
+        {
+          "x": 0.42298647463321687,
+          "y": 0.15259168334305287,
+          "width": 0.1,
+          "height": 0.3070305876433849
+        },
+        {
+          "x": 0.48649579033255574,
+          "y": 0.1438868723809719,
+          "width": 0.1091771325469017,
+          "height": 0.3374368086457253
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4730051513761282,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5410843566060066,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0681,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:d60e4f3f835c5c5571534c16e0f79e5cfc999c6236c19f4e07f4001fb9912a33",
+        "sha256:203bf61ebcd050d29e77094bee43e0937a7d9e04a1f04fcefedfb45a67ef17e3",
+        "sha256:4a5cf96061b687094bfd2f856cc73bd4dae2fd7e3d76b60248af3cc4ed1c1cf1"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "proof",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.304957275390625,
+          "y": 0.26074005126953126,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.15734938547015193,
+          "y": 0.0,
+          "width": 0.16364949911832807,
+          "height": 0.5133452698588371
+        },
+        {
+          "x": 0.23085101678967476,
+          "y": 0.0759712181985378,
+          "width": 0.16033640533685684,
+          "height": 0.502952541410923
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.424957275390625,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.3110192194581032,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.6796,
+        "mean_focus_retention": 0.8932,
+        "max_center_step": 0.1139,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "fail",
+      "evidence_refs": [
+        "sha256:ff263519e553e04ce126318851963391690c4f69f34adeae0aabdc02127f36ee",
+        "sha256:2fce741a2b59fc80891ab008b13d680bdbaaf887c2cc9758462f61fa835b10a2",
+        "sha256:17ebac8a880969c3ac3ff64d9543f1e8a9d72fd2f53fedb5585da7882440dc20"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.328974609375,
+          "y": 0.18572021484375,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.32140625,
+          "y": 0.192342529296875,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.3825634765625,
+          "y": 0.14422393798828126,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.448974609375,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5025634765625,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0536,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:debf1d9b22175fc81545a2119e730bbfce5b5bf330578d7b6f7d53749c93e661",
+        "sha256:22337a266bfc4f64a3f5265618133e0f54ed01a83da042324e021adb4d8a375a",
+        "sha256:d28d3accf5927274a641231c0d009af68b2af890a7dda0ee2f649d52d3d1dd72"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.2282065613567829,
+          "y": 0.12413061931729316,
+          "width": 0.1493285122513771,
+          "height": 0.4615337893366814
+        },
+        {
+          "x": 0.2251338033378124,
+          "y": 0.1316575191915035,
+          "width": 0.15313830107450485,
+          "height": 0.4733088150620461
+        },
+        {
+          "x": 0.22787225872278213,
+          "y": 0.2076729580760002,
+          "width": 0.1524330848455429,
+          "height": 0.4711291700601578
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.30287081748247147,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.3040888011455536,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0012,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:527cdbc799cce2defe0c28e9723181a988451ecb8874477f8fb249fc6fdd0efd",
+        "sha256:31bd1c7fce475b6f1ed201e5f017b1953eebb2e159f5bd4bf967daf84f366fb8",
+        "sha256:ecd88e15d4914cb78afa3219f9bc952ce17e8b7bd5c4b19f105c0e53757647d9"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.18644746094942094,
+          "y": 0.16916845068335531,
+          "width": 0.1,
+          "height": 0.2903803125023842
+        },
+        {
+          "x": 0.31921839401125907,
+          "y": 0.1996792770922184,
+          "width": 0.12381275624036789,
+          "height": 0.38267152160406115
+        },
+        {
+          "x": 0.30377371035516265,
+          "y": 0.20052639171481132,
+          "width": 0.13312943682074546,
+          "height": 0.41146685630083085
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.23644746094942093,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.37033842876553535,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.1339,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:78ba6ab8824d458bf9ff56bb2f198895b5b3eb153e768c2eb553b009ccb07a87",
+        "sha256:da16237c069ba01bd99472dcd616e17bdc35357c4dc49804767ea6787e27e8df",
+        "sha256:70524093bc14c83a4d0da2ce73db1412142864cd96bf05f618f10461461aa6f6"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.3135272891819477,
+          "y": 0.15781365871429442,
+          "width": 0.21193818122148514,
+          "height": 0.52
+        },
+        {
+          "x": 0.30698374107480053,
+          "y": 0.17399149179458617,
+          "width": 0.22478304415941236,
+          "height": 0.52
+        },
+        {
+          "x": 0.2977546428143978,
+          "y": 0.1885255628824234,
+          "width": 0.22724946349859237,
+          "height": 0.52
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4194963797926903,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.411379374563694,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0081,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:28daa0fda56c500c88fba8984a88040b762c76a3972204a90426b2c413e98e28",
+        "sha256:97ccf6455e6e27ce707a7344c7418cb215453e5d8564ea97d6fc817115cc3c6d",
+        "sha256:13799b50db43335740df8895d66015dd6bd5c2bb911a4eba0c85d285c5df0532"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "proof"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.17973795607686044,
+          "y": 0.17102986559271813,
+          "width": 0.1,
+          "height": 0.18
+        },
+        {
+          "x": 0.3412457451224327,
+          "y": 0.1589253544807434,
+          "width": 0.1,
+          "height": 0.20362508296966553
+        },
+        {
+          "x": 0.48287841796875,
+          "y": 0.18897216796875,
+          "width": 0.2381005859375,
+          "height": 0.358505859375
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.22973795607686043,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.6019287109375,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.8831,
+        "mean_focus_retention": 0.961,
+        "max_center_step": 0.3722,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:fc8366267a3f8ff499bd2ebe5664d2ea38539aa72e0f49f6298d4ac92806daa3",
+        "sha256:c1ae6f5da814d4f5665415797242743f1dc2dd2f96fa9c7309f19c2ab03876e8",
+        "sha256:14df981d000a37199b18d9c388c9c7d40d1f03d0445c86654e9a05b9994914dd"
+      ]
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "subject_track",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "focus_boxes": [
+        {
+          "x": 0.6650105892121791,
+          "y": 0.11574055030941963,
+          "width": 0.11618755191564559,
+          "height": 0.3591041013598442
+        },
+        {
+          "x": 0.6597857227921486,
+          "y": 0.11497190929949283,
+          "width": 0.12209143221378325,
+          "height": 0.37735138162970544
+        },
+        {
+          "x": 0.660048153102398,
+          "y": 0.10558047667145729,
+          "width": 0.12003312289714813,
+          "height": 0.3709897145628929
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.723104365170002,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.720064714550972,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.003,
+        "subtitle_conflict_count": 0
+      },
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:688ea8c1aa3140e64798659b569dbca016e63506484a837c39071a2f5ab60ad7",
+        "sha256:52185e8ea8813c718536103629cd369f7ad9a2aec393902cbc6dcea2948ebd2a",
+        "sha256:14662dfa995876bb0c14c8d98e5730c34a606bdb43039b4e33b0599f9b7c89c5"
+      ]
+    }
+  ],
+  "status": "experimental",
+  "plan_fingerprint": "sha256:235e15d97b61324f454f24c01f53e937eaeec7c8811e0efd846dff55d331913c"
+}

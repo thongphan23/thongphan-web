@@ -1,0 +1,71 @@
+{
+  "schema": "tpr.vertical_focus_overrides.v1",
+  "round": 3,
+  "reviewer": "codex_pixel_review",
+  "shots": {
+    "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02": {
+      "source": "footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+      "sourceInMs": 12130,
+      "sourceOutMs": 14340,
+      "semantic_carrier": "người nhạc công đang thực hành công việc bên ngoài",
+      "subtitlePlacement": "top",
+      "centers": [
+        {"at": 0.0, "x": 0.55, "y": 0.5},
+        {"at": 1.0, "x": 0.55, "y": 0.5}
+      ],
+      "focus_boxes": [
+        {"x": 0.47, "y": 0.13, "width": 0.16, "height": 0.72},
+        {"x": 0.47, "y": 0.13, "width": 0.16, "height": 0.72},
+        {"x": 0.47, "y": 0.13, "width": 0.16, "height": 0.72}
+      ],
+      "evidence_refs": [
+        "sha256:0a6573cf96943f4a2d1600814624932aa742602dae17fa9ceec6e7deca646f84",
+        "sha256:e160939e14767146a9acfce67fdc410e3a56318e207d714c7c8326ec3c611973",
+        "sha256:867b1cdf4dfab57573b3242b13812a68a7b7b2240e249529df3971c2e3f4ec24"
+      ],
+      "reason": "Nguồn cũ chỉ còn vai người; dùng trim liên tục kế shot trước để giữ hành động làm việc rõ ràng."
+    },
+    "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01": {
+      "sourceInMs": 15900,
+      "sourceOutMs": 19960,
+      "semantic_carrier": "gương mặt Joe tỉnh táo bước ra ánh sáng",
+      "subtitlePlacement": "bottom",
+      "centers": [
+        {"at": 0.0, "x": 0.52, "y": 0.5},
+        {"at": 1.0, "x": 0.52, "y": 0.5}
+      ],
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.12, "width": 0.20, "height": 0.60},
+        {"x": 0.42, "y": 0.12, "width": 0.20, "height": 0.60},
+        {"x": 0.42, "y": 0.12, "width": 0.20, "height": 0.60}
+      ],
+      "evidence_refs": [
+        "sha256:23e4bd4cbbec19d59bf4a8147ec4f4c5f17971aed46903c355e994b7b87d914e",
+        "sha256:3fde8cc93daca8fd31c8415fef005ea3579358bb36087b667de5e84d04fefe4c",
+        "sha256:81f9fb81142452489da5f7f7901d4ff5e7305b6c31a021e5608b79a18fba8a03"
+      ],
+      "reason": "Trim cũ đi qua chân và hình phản chiếu; trim mới giữ trọn gương mặt tỉnh thức trong cả shot."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01": {
+      "semantic_carrier": "tấm bằng được trao rồi chuyển trọng tâm sang người nhận",
+      "subtitlePlacement": "top",
+      "centers": [
+        {"at": 0.0, "x": 0.31, "y": 0.5},
+        {"at": 0.62, "x": 0.31, "y": 0.5},
+        {"at": 0.82, "x": 0.68, "y": 0.5},
+        {"at": 1.0, "x": 0.68, "y": 0.5}
+      ],
+      "focus_boxes": [
+        {"x": 0.22, "y": 0.08, "width": 0.18, "height": 0.82},
+        {"x": 0.22, "y": 0.08, "width": 0.18, "height": 0.82},
+        {"x": 0.59, "y": 0.08, "width": 0.18, "height": 0.56}
+      ],
+      "evidence_refs": [
+        "sha256:469131d17b4b6278993be27a1643149de39f7504cb164ae4265badc2cbb8a528",
+        "sha256:a9bbfecd632ecc77f8678c203747170917f8b97a0cb18638676dd06fd510d176",
+        "sha256:e756e28354414fd1624249fa77e7dfe330c229305a915c4863aa767dbdeaffe5"
+      ],
+      "reason": "Saliency thô bám tường và vai áo; track mới ưu tiên bằng chứng trao thưởng rồi người nhận."
+    }
+  }
+}

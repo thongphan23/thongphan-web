@@ -1,8 +1,8 @@
 .page {
   min-height: 100vh;
-  background: #070706;
-  color: #e8dfcf;
   padding: 4rem max(1rem, 4vw) 6rem;
+  color: #e8dfcf;
+  background: #070706;
 }
 
 .intro,
@@ -17,8 +17,9 @@
 }
 
 .eyebrow,
+.selectorLabel,
 .variantNumber {
-  color: #e04b43;
+  color: #e05a4f;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 800;
@@ -27,25 +28,26 @@
 }
 
 .intro h1 {
-  max-width: 900px;
+  max-width: 950px;
   margin: 0.8rem 0 1rem;
   color: #f3efe6;
   font-family: var(--font-display);
-  font-size: 4rem;
+  font-size: 3.75rem;
   font-weight: 600;
   letter-spacing: 0;
-  line-height: 0.98;
+  line-height: 1;
 }
 
 .lede {
-  max-width: 760px;
-  color: rgba(232, 223, 207, 0.7);
+  max-width: 800px;
+  color: rgba(232, 223, 207, 0.72);
   font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 .runFacts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 2.25rem;
   border-top: 1px solid rgba(232, 223, 207, 0.2);
   border-bottom: 1px solid rgba(232, 223, 207, 0.2);
@@ -56,6 +58,7 @@
 }
 
 .runFacts dt,
+.roundMetrics dt,
 .lensNotes dt {
   color: rgba(232, 223, 207, 0.52);
   font-family: var(--font-mono);
@@ -64,52 +67,113 @@
   text-transform: uppercase;
 }
 
-.runFacts dd {
+.runFacts dd,
+.roundMetrics dd {
   margin-top: 0.25rem;
   color: #f3efe6;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.tabs {
+.selectorBlock {
+  border-top: 1px solid rgba(232, 223, 207, 0.18);
+}
+
+.selectorLabel {
+  margin: 0;
+  padding: 0.9rem 0 0.45rem;
+}
+
+.roundTabs,
+.filmTabs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-bottom: 1px solid rgba(232, 223, 207, 0.22);
 }
 
-.tab,
-.tabActive {
-  min-height: 3.4rem;
-  padding: 0.8rem 1rem;
+.roundTab,
+.roundTabActive,
+.filmTab,
+.filmTabActive {
+  min-width: 0;
   border: 0;
   border-bottom: 3px solid transparent;
   color: rgba(232, 223, 207, 0.56);
   background: transparent;
-  font: 700 0.82rem/1.2 var(--font-body);
+  font-family: var(--font-body);
   letter-spacing: 0;
   cursor: pointer;
 }
 
-.tab:hover,
-.tabActive {
+.roundTab,
+.roundTabActive {
+  min-height: 4.5rem;
+  padding: 0.65rem 1rem 0.8rem 0;
+  text-align: left;
+}
+
+.roundTab span,
+.roundTabActive span {
+  display: block;
+  color: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.roundTab small,
+.roundTabActive small {
+  display: block;
+  margin-top: 0.3rem;
+  overflow-wrap: anywhere;
+  font-size: 0.72rem;
+  line-height: 1.3;
+}
+
+.filmTab,
+.filmTabActive {
+  min-height: 3.4rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.roundTab:hover,
+.roundTabActive,
+.filmTab:hover,
+.filmTabActive {
   color: #f3efe6;
 }
 
-.tabActive {
-  border-bottom-color: #e04b43;
+.roundTabActive,
+.filmTabActive {
+  border-bottom-color: #e05a4f;
 }
 
-.tab:focus-visible,
-.tabActive:focus-visible {
+.roundTab:focus-visible,
+.roundTabActive:focus-visible,
+.filmTab:focus-visible,
+.filmTabActive:focus-visible,
+.evidenceLinks a:focus-visible,
+.packageLinks a:focus-visible {
   outline: 2px solid #f3efe6;
   outline-offset: 3px;
 }
 
+.reviewStage {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+}
+
 .playerStage {
-  width: 100%;
-  aspect-ratio: 16 / 9;
+  width: min(100%, 420px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
   background: #000;
-  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.45);
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.5);
 }
 
 .player {
@@ -120,55 +184,85 @@
   background: #000;
 }
 
-.reviewGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  gap: 4rem;
-  padding: 2.5rem 0 4.5rem;
-  border-bottom: 1px solid rgba(232, 223, 207, 0.2);
+.reviewDetail {
+  min-width: 0;
+  padding-top: 0.35rem;
 }
 
-.reviewGrid h2,
+.reviewDetail h2,
 .reviewQuestions h2 {
-  margin: 0.6rem 0 0.8rem;
+  margin: 0.65rem 0 0.9rem;
   color: #f3efe6;
   font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 600;
   letter-spacing: 0;
+  line-height: 1.08;
 }
 
-.reviewGrid header p {
-  max-width: 650px;
-  color: rgba(232, 223, 207, 0.68);
+.reviewDetail > p {
+  max-width: 680px;
+  color: rgba(232, 223, 207, 0.72);
+  line-height: 1.7;
+}
+
+.roundMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 2rem 0 0;
+  border-top: 1px solid rgba(232, 223, 207, 0.18);
+  border-bottom: 1px solid rgba(232, 223, 207, 0.18);
+}
+
+.roundMetrics div {
+  padding: 1rem 0.75rem 1rem 0;
 }
 
 .lensNotes {
   display: grid;
-  align-content: start;
+  margin-top: 1rem;
 }
 
 .lensNotes div {
   padding: 1rem 0;
-  border-top: 1px solid rgba(232, 223, 207, 0.16);
+  border-bottom: 1px solid rgba(232, 223, 207, 0.14);
 }
 
 .lensNotes dd {
-  margin-top: 0.35rem;
+  margin-top: 0.4rem;
   color: rgba(243, 239, 230, 0.84);
   line-height: 1.6;
 }
 
-.evidenceLink {
+.evidenceLinks,
+.packageLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.evidenceLinks a,
+.packageLinks a {
   color: #f3efe6;
+  font-size: 0.86rem;
   font-weight: 700;
-  text-decoration-color: #e04b43;
+  text-decoration-color: #e05a4f;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.3em;
 }
 
-.evidenceLink:hover {
-  color: #e04b43;
+.evidenceLinks a:hover,
+.packageLinks a:hover {
+  color: #e05a4f;
+}
+
+.tasteBoundary {
+  max-width: 860px;
+  margin: 1.2rem 0 0;
+  color: rgba(232, 223, 207, 0.55);
+  font-size: 0.82rem;
+  line-height: 1.6;
 }
 
 .reviewQuestions {
@@ -189,15 +283,16 @@
   padding: 1.25rem 1.5rem 1.25rem 0;
   border-bottom: 1px solid rgba(232, 223, 207, 0.2);
   color: rgba(243, 239, 230, 0.78);
+  line-height: 1.55;
 }
 
 .reviewQuestions li::marker {
-  color: #e04b43;
+  color: #e05a4f;
   font-family: var(--font-mono);
   font-weight: 800;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 820px) {
   .page {
     padding: 2.5rem 1rem 4rem;
   }
@@ -206,33 +301,57 @@
     font-size: 2.35rem;
   }
 
-  .runFacts,
-  .reviewGrid,
-  .reviewQuestions ol {
-    grid-template-columns: 1fr;
-  }
-
   .runFacts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .tabs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .roundTab,
+  .roundTabActive {
+    padding-right: 0.4rem;
   }
 
-  .tab,
-  .tabActive {
+  .filmTab,
+  .filmTabActive {
     padding-inline: 0.35rem;
     font-size: 0.74rem;
   }
 
-  .reviewGrid {
-    gap: 1.25rem;
-    padding: 1.75rem 0 3.5rem;
+  .reviewStage,
+  .reviewQuestions ol {
+    grid-template-columns: 1fr;
   }
 
-  .reviewGrid h2,
+  .reviewStage {
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .playerStage {
+    justify-self: center;
+    width: min(100%, 390px);
+  }
+
+  .reviewDetail h2,
   .reviewQuestions h2 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .roundTabs {
+    grid-template-columns: 1fr;
+  }
+
+  .roundTab,
+  .roundTabActive {
+    min-height: 3.6rem;
+  }
+
+  .roundMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .roundMetrics div {
+    border-bottom: 1px solid rgba(232, 223, 207, 0.12);
   }
 }

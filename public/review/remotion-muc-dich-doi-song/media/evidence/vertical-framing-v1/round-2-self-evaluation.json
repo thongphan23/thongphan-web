@@ -1,0 +1,98 @@
+{
+  "schema": "tpr.vertical_round_self_evaluation.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 2,
+  "evaluation_mode": "self_evaluation_not_owner_fit",
+  "criteria_order": [
+    "meaning_and_proof_retention",
+    "subject_completeness",
+    "subtitle_safety",
+    "motion_stability",
+    "single_film_continuity",
+    "technical_integrity",
+    "composition_craft"
+  ],
+  "video_receipts": [
+    {
+      "variant_id": "soul",
+      "film_title": "Soul",
+      "round": 2,
+      "render_path": "renders/round-2-soul.mp4",
+      "render_sha256": "sha256:1e09c2681bfefa050b165e288d302ae06025dc6c8d164277b53c7f3cdefa47c8",
+      "contact_sheet": "audit/round-2/soul-shot-contact-sheet.jpg",
+      "shot_count": 19,
+      "shot_gate_pass_count": 16,
+      "shot_gate_fail_count": 3,
+      "minimum_focus_retention": 0.0,
+      "mean_focus_retention": 0.9493,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_title": "Forrest Gump",
+      "round": 2,
+      "render_path": "renders/round-2-forrest-gump.mp4",
+      "render_sha256": "sha256:8d4c2672d51388e5205d5e5d3f50e2097fc2556f63c33321e3e92277cf9ecfbd",
+      "contact_sheet": "audit/round-2/forrest-gump-shot-contact-sheet.jpg",
+      "shot_count": 14,
+      "shot_gate_pass_count": 13,
+      "shot_gate_fail_count": 1,
+      "minimum_focus_retention": 0.6796,
+      "mean_focus_retention": 0.9877,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "film_title": "A Beautiful Mind",
+      "round": 2,
+      "render_path": "renders/round-2-a-beautiful-mind.mp4",
+      "render_sha256": "sha256:3fc8639320984a9277b93845de6065b5aa797ca55ab734c40bcb1651de90d88f",
+      "contact_sheet": "audit/round-2/a-beautiful-mind-shot-contact-sheet.jpg",
+      "shot_count": 18,
+      "shot_gate_pass_count": 15,
+      "shot_gate_fail_count": 3,
+      "minimum_focus_retention": 0.3123,
+      "mean_focus_retention": 0.9669,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true
+      },
+      "technical_status": "pass"
+    }
+  ],
+  "metrics": {
+    "shot_count": 51,
+    "shot_gate_pass_rate": 0.8627,
+    "mean_focus_retention": 0.966,
+    "unstable_center_rate": 0.0784,
+    "technical_pass": true,
+    "weighted_score_out_of_100": 59.0,
+    "hard_gate_score_cap_applied": true
+  },
+  "status": "needs_improvement",
+  "required_actions_for_next_round": [
+    "Phân biệt cảnh cảm xúc ưu tiên mặt với cảnh hành động/vật chứng ưu tiên saliency theo semanticRole.",
+    "Dùng ba keyframe có đoạn hold thay vì pan tuyến tính suốt shot.",
+    "Hạ ngưỡng chuyển tâm nhỏ thành dead-zone và kiểm tra liên tục giữa hai shot cùng claim."
+  ]
+}

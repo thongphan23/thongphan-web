@@ -1,0 +1,5640 @@
+{
+  "schema": "tpr.vertical_focus_observations.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "input_kind": "real_rendered_source_keyframes",
+  "positions": [
+    0.18,
+    0.5,
+    0.82
+  ],
+  "frame_count": 153,
+  "frames": [
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC18-your-spark-isnt-purpose.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 4299,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:f48fd980ebe280f2486de29a181f8c356005fa94e22290f1ca708458101d939f",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.53369140625,
+          "height": 0.4451904296875,
+          "width": 0.419677734375,
+          "x": 0.247314453125,
+          "y": 0.1827392578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC18-your-spark-isnt-purpose.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 5720,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:45e22deba9c8e7077a521fe6520a97a2c6fff372174a2459508a35b039cb8168",
+      "faces": [
+        {
+          "confidence": 0.6055569648742676,
+          "height": 0.23833589255809784,
+          "width": 0.1340639442205429,
+          "x": 0.46147385239601135,
+          "y": 0.30189166963100433
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.55126953125,
+          "height": 0.6165771484375,
+          "width": 0.323486328125,
+          "x": 0.360595703125,
+          "y": 0.1485595703125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC18-your-spark-isnt-purpose.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 7140,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:d0a994d42be42362a7d105d4ea01edfcd38856eeb574440b2f7a39f9a4528e3c",
+      "faces": [
+        {
+          "confidence": 0.7994749546051025,
+          "height": 0.07548651099205017,
+          "width": 0.04246116057038307,
+          "x": 0.5582139492034912,
+          "y": 0.27595117688179016
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53955078125,
+          "height": 0.6846923828125,
+          "width": 0.6123046875,
+          "x": 0.14453125,
+          "y": 0.1434326171875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC45-hey-dorothea.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 1799,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:8d4d182025d32797183a62c48891673ab7db6ee0f4f8d2d9f5ae417dd8658c5d",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5400390625,
+          "height": 0.632568359375,
+          "width": 0.530029296875,
+          "x": 0.278564453125,
+          "y": 0.131591796875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC45-hey-dorothea.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 3220,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:b80ff4357f5d3e5244ee83c22badfd6653444c5333fd4c81bba48a75488fb544",
+      "faces": [
+        {
+          "confidence": 0.7667402625083923,
+          "height": 0.10830745100975037,
+          "width": 0.06092293933033943,
+          "x": 0.5896357893943787,
+          "y": 0.22846385836601257
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52734375,
+          "height": 0.61175537109375,
+          "width": 0.360595703125,
+          "x": 0.432373046875,
+          "y": 0.08892822265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/soul/SRC45-hey-dorothea.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 4640,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:6fbaa9a01ffdd4ca2a7dd5fecaefc14e35f470b62a723f9c7d2db02dcf1e60b1",
+      "faces": [
+        {
+          "confidence": 0.8146006464958191,
+          "height": 0.09800411760807037,
+          "width": 0.05512731522321701,
+          "x": 0.45911234617233276,
+          "y": 0.4906856268644333
+        },
+        {
+          "confidence": 0.6451819539070129,
+          "height": 0.061773646622896194,
+          "width": 0.03474767506122589,
+          "x": 0.28332287073135376,
+          "y": 0.24932081624865532
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.57568359375,
+          "height": 0.6982421875,
+          "width": 0.64990234375,
+          "x": 0.1533203125,
+          "y": 0.1279296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/soul/SRC33-its-uh.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 1,
+      "local_ms": 1076,
+      "source_ms": 1996,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:5683976f6e2e92f5b72744bc4d5ea33b8af0936897427c794bf9a0ea80662b37",
+      "faces": [
+        {
+          "confidence": 0.701734721660614,
+          "height": 0.2971547544002533,
+          "width": 0.16714954376220703,
+          "x": 0.6252857446670532,
+          "y": 0.22944986820220947
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58349609375,
+          "height": 0.73797607421875,
+          "width": 0.6279296875,
+          "x": 0.2314453125,
+          "y": 0.08331298828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/soul/SRC33-its-uh.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 2,
+      "local_ms": 2990,
+      "source_ms": 3910,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:9bdc9b44fa02c232141660c86d172f24c89060e2e4c68f19c8880ce19dd4e38e",
+      "faces": [
+        {
+          "confidence": 0.7160274386405945,
+          "height": 0.3155522346496582,
+          "width": 0.17749813199043274,
+          "x": 0.6337653398513794,
+          "y": 0.2256487011909485
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5869140625,
+          "height": 0.7353515625,
+          "width": 0.6416015625,
+          "x": 0.22509765625,
+          "y": 0.08544921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/soul/SRC33-its-uh.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 3,
+      "local_ms": 4903,
+      "source_ms": 5823,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:958a8e87f057fb5c400a6c4ffe6a049d166263e050709579e6d83fcffab6be04",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.52685546875,
+          "height": 0.4552001953125,
+          "width": 0.347900390625,
+          "x": 0.257568359375,
+          "y": 0.1966552734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 1,
+      "local_ms": 397,
+      "source_ms": 10317,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:dc95bfaa1f783de7e60d86097a5f62ebf2f802e21b56a9979fd8c34c3725066d",
+      "faces": [
+        {
+          "confidence": 0.6283115148544312,
+          "height": 0.0558648519217968,
+          "width": 0.03142397850751877,
+          "x": 0.41822487115859985,
+          "y": 0.22828896716237068
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.55712890625,
+          "height": 0.841033935546875,
+          "width": 0.647186279296875,
+          "x": 0.053497314453125,
+          "y": 0.032012939453125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 2,
+      "local_ms": 1105,
+      "source_ms": 11025,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:cb18fba2f63137933edd838d87e59ea52b07728536626c9b5bab1a632fb038e9",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.56787109375,
+          "height": 0.7027587890625,
+          "width": 0.57489013671875,
+          "x": 0.11798095703125,
+          "y": 0.1717529296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 3,
+      "local_ms": 1812,
+      "source_ms": 11732,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:35ef060ccc23c627204a7413d2dd798128113240667c2627e0c760e8750b6ad7",
+      "faces": [
+        {
+          "confidence": 0.78125,
+          "height": 0.07449767738580704,
+          "width": 0.04190494120121002,
+          "x": 0.5071920156478882,
+          "y": 0.4467226192355156
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52587890625,
+          "height": 0.7095947265625,
+          "width": 0.6068115234375,
+          "x": 0.1270751953125,
+          "y": 0.1668701171875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC38-suit-youre-the-boss.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 1,
+      "local_ms": 397,
+      "source_ms": 1817,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:cdd0c2fa0e6325a3ffb5c74493230c163aa7dbc74c2c708dab9de0785c662836",
+      "faces": [
+        {
+          "confidence": 0.6341132521629333,
+          "height": 0.15378437936306,
+          "width": 0.08650371432304382,
+          "x": 0.6444547176361084,
+          "y": 0.16341014206409454
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.495361328125,
+          "height": 0.73876953125,
+          "width": 0.548095703125,
+          "x": 0.323974609375,
+          "y": 0.1298828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC38-suit-youre-the-boss.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 2,
+      "local_ms": 1105,
+      "source_ms": 2525,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:5665a20e7208268dd59d04a46a4a4cb21adaf26a1a743e1c91a65124c27d1ebd",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.51953125,
+          "height": 0.68414306640625,
+          "width": 0.62451171875,
+          "x": 0.34130859375,
+          "y": 0.08441162109375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/soul/SRC38-suit-youre-the-boss.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2210,
+      "keyframe_index": 3,
+      "local_ms": 1812,
+      "source_ms": 3232,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:45da3e8dcfc11eae181e180161f6013d0cb5522751f58299429a74d281f16f48",
+      "faces": [
+        {
+          "confidence": 0.7434610724449158,
+          "height": 0.07699510455131531,
+          "width": 0.04330974817276001,
+          "x": 0.5247969627380371,
+          "y": 0.27085790038108826
+        },
+        {
+          "confidence": 0.6862559914588928,
+          "height": 0.10073283314704895,
+          "width": 0.056662216782569885,
+          "x": 0.5721027851104736,
+          "y": 0.3512438237667084
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.55419921875,
+          "height": 0.7371826171875,
+          "width": 0.83984375,
+          "x": 0.12109375,
+          "y": 0.0885009765625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/soul/SRC47-so-what-do-think-youll-do.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 1,
+      "local_ms": 730,
+      "source_ms": 10150,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:1717b61f095a6a1da4d4bfc6dec6db367f33f469966155082be204332eabd28b",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.53173828125,
+          "height": 0.75750732421875,
+          "width": 0.8828125,
+          "x": 0,
+          "y": 0.08331298828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/soul/SRC47-so-what-do-think-youll-do.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 2,
+      "local_ms": 2030,
+      "source_ms": 11450,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:f3df7ddeac93221234d0d7afbe037e80f3ca3dec2efecee458cb44924db0a1e3",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.49609375,
+          "height": 0.69091796875,
+          "width": 0.8387451171875,
+          "x": 0.0714111328125,
+          "y": 0.07470703125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/soul/SRC47-so-what-do-think-youll-do.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 3,
+      "local_ms": 3329,
+      "source_ms": 12749,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:7ad7ea6a7d3addcd3a1edad49fd5bd9075b24f368d7000788c783abdea40fe15",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.517578125,
+          "height": 0.70233154296875,
+          "width": 0.935546875,
+          "x": 0,
+          "y": 0.06524658203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC09-truth-ive-always-worried.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 1,
+      "local_ms": 1004,
+      "source_ms": 7504,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:ebef9eca2202d3d078d3b2a727048a77a9c14e2eb74035e2a8d510f6a2ce4370",
+      "faces": [
+        {
+          "confidence": 0.740829348564148,
+          "height": 0.19762855768203735,
+          "width": 0.11116606742143631,
+          "x": 0.5261238813400269,
+          "y": 0.3639177083969116
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.525390625,
+          "height": 0.6256103515625,
+          "width": 0.3623046875,
+          "x": 0.37841796875,
+          "y": 0.1937255859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC09-truth-ive-always-worried.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 2,
+      "local_ms": 2790,
+      "source_ms": 9290,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:e2965e35e507f3a150253c5a5ebdf1b0b6bc749739b43a5a695121fe445bfcfd",
+      "faces": [
+        {
+          "confidence": 0.7824990153312683,
+          "height": 0.19608065485954285,
+          "width": 0.110295370221138,
+          "x": 0.522845447063446,
+          "y": 0.3657000958919525
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52490234375,
+          "height": 0.6484375,
+          "width": 0.3662109375,
+          "x": 0.37109375,
+          "y": 0.18994140625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC09-truth-ive-always-worried.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 3,
+      "local_ms": 4575,
+      "source_ms": 11075,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:788e05d9b37651a61d35140519dfe6515d35bca331279ddc50111cb6fb63cf5c",
+      "faces": [
+        {
+          "confidence": 0.7342087626457214,
+          "height": 0.23321130871772766,
+          "width": 0.13118135929107666,
+          "x": 0.46548789739608765,
+          "y": 0.3049333095550537
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53564453125,
+          "height": 0.6898193359375,
+          "width": 0.341552734375,
+          "x": 0.346435546875,
+          "y": 0.1470947265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC12-welcome-the-quartet-teach.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 1,
+      "local_ms": 1184,
+      "source_ms": 4584,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:04a8f29add2464af28a93e99488f545a386aaee3849b23d49a7639246e0da7d7",
+      "faces": [
+        {
+          "confidence": 0.7756046056747437,
+          "height": 0.17281892895698547,
+          "width": 0.09721064567565918,
+          "x": 0.21059440076351166,
+          "y": 0.28970786929130554
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53369140625,
+          "height": 0.5113525390625,
+          "width": 0.347412109375,
+          "x": 0.10400390625,
+          "y": 0.1478271484375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC12-welcome-the-quartet-teach.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 2,
+      "local_ms": 3290,
+      "source_ms": 6690,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:c81ec746855b28edf07c25916d48b684bfd16fa8ba003c697eec31af8f8a362b",
+      "faces": [
+        {
+          "confidence": 0.7454288005828857,
+          "height": 0.09269066900014877,
+          "width": 0.05213849991559982,
+          "x": 0.4811800718307495,
+          "y": 0.4696662202477455
+        },
+        {
+          "confidence": 0.7345411777496338,
+          "height": 0.07473908364772797,
+          "width": 0.04204073175787926,
+          "x": 0.6389009356498718,
+          "y": 0.43993620574474335
+        },
+        {
+          "confidence": 0.7207851409912109,
+          "height": 0.10797940194606781,
+          "width": 0.06073841080069542,
+          "x": 0.9241629838943481,
+          "y": 0.4970209449529648
+        },
+        {
+          "confidence": 0.673145592212677,
+          "height": 0.06224428862333298,
+          "width": 0.03501241281628609,
+          "x": 0.35681426525115967,
+          "y": 0.47606972604990005
+        },
+        {
+          "confidence": 0.6466938257217407,
+          "height": 0.052424605935811996,
+          "width": 0.02948884107172489,
+          "x": 0.23709607124328613,
+          "y": 0.3097704090178013
+        },
+        {
+          "confidence": 0.624413788318634,
+          "height": 0.05488571897149086,
+          "width": 0.030873216688632965,
+          "x": 0.7409905195236206,
+          "y": 0.32759973034262657
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.6298828125,
+          "height": 0.50439453125,
+          "width": 0.8697509765625,
+          "x": 0.0662841796875,
+          "y": 0.197265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/soul/SRC12-welcome-the-quartet-teach.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 3,
+      "local_ms": 5395,
+      "source_ms": 8795,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:74854c463b3689bc60074f46beaaedf7c706e3ca773f2b0b9b0509a1e530a1c0",
+      "faces": [
+        {
+          "confidence": 0.7868549227714539,
+          "height": 0.08268822729587555,
+          "width": 0.04651212692260742,
+          "x": 0.35357627272605896,
+          "y": 0.4659648686647415
+        },
+        {
+          "confidence": 0.7241643667221069,
+          "height": 0.09979792684316635,
+          "width": 0.05613633245229721,
+          "x": 0.81389981508255,
+          "y": 0.492903508245945
+        },
+        {
+          "confidence": 0.7146623134613037,
+          "height": 0.07345796376466751,
+          "width": 0.04132010415196419,
+          "x": 0.2346639633178711,
+          "y": 0.4725301191210747
+        },
+        {
+          "confidence": 0.709863543510437,
+          "height": 0.07555558532476425,
+          "width": 0.04250001534819603,
+          "x": 0.5259554982185364,
+          "y": 0.408413328230381
+        },
+        {
+          "confidence": 0.6945659518241882,
+          "height": 0.06257642805576324,
+          "width": 0.03519923985004425,
+          "x": 0.710956335067749,
+          "y": 0.3534805029630661
+        },
+        {
+          "confidence": 0.6883872151374817,
+          "height": 0.06372684240341187,
+          "width": 0.035846348851919174,
+          "x": 0.6565598845481873,
+          "y": 0.3255552053451538
+        },
+        {
+          "confidence": 0.5910712480545044,
+          "height": 0.05307953432202339,
+          "width": 0.02985723875463009,
+          "x": 0.12439130246639252,
+          "y": 0.3080377094447613
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.61181640625,
+          "height": 0.4998779296875,
+          "width": 0.97119140625,
+          "x": 0,
+          "y": 0.2008056640625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/soul/SRC23-i-am-happy-accept-very-special-award-i-requested.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 1,
+      "local_ms": 554,
+      "source_ms": 1554,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:984a47b835ba5de444b0bbcc727d7718d991e5324f80c3152d185a412fe89109",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.61572265625,
+          "height": 0.68438720703125,
+          "width": 0.441650390625,
+          "x": 0.197021484375,
+          "y": 0.09442138671875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/soul/SRC23-i-am-happy-accept-very-special-award-i-requested.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 2,
+      "local_ms": 1540,
+      "source_ms": 2540,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:46263c2a748eb2ae55f51b037c5526460a73d6546789bab78f4f2bdee16bb8c0",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.6357421875,
+          "height": 0.76922607421875,
+          "width": 0.5029296875,
+          "x": 0.17529296875,
+          "y": 0.08380126953125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/soul/SRC23-i-am-happy-accept-very-special-award-i-requested.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 3,
+      "local_ms": 2525,
+      "source_ms": 3525,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:878173d9d731e6a81adbe025d513aa06d4bf0e91b28e02956c03f23adf492749",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.63427734375,
+          "height": 0.66357421875,
+          "width": 0.61962890625,
+          "x": 0.11083984375,
+          "y": 0.10791015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC15-lost-souls-are-obsessed-by-something-disconnects-them-from-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2200,
+      "keyframe_index": 1,
+      "local_ms": 396,
+      "source_ms": 3616,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:b5968b4381ede3c81ea0d88970fa962df9580987eac00037934b83ec139b31f0",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5859375,
+          "height": 0.515625,
+          "width": 0.847900390625,
+          "x": 0.082763671875,
+          "y": 0.314453125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC15-lost-souls-are-obsessed-by-something-disconnects-them-from-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2200,
+      "keyframe_index": 2,
+      "local_ms": 1100,
+      "source_ms": 4320,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:ddeed8ee04ec658479d252d2c78fa2f37eb11b40eac957dad0c3237b385feaa0",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.60791015625,
+          "height": 0.500244140625,
+          "width": 0.7562255859375,
+          "x": 0.1402587890625,
+          "y": 0.325927734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC15-lost-souls-are-obsessed-by-something-disconnects-them-from-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2200,
+      "keyframe_index": 3,
+      "local_ms": 1804,
+      "source_ms": 5024,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:86ffdfb197cb22e6e59a9cc1adc90559a8637dadd8dd1992449666fc464d2842",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.63525390625,
+          "height": 0.561767578125,
+          "width": 0.87939453125,
+          "x": 0.05224609375,
+          "y": 0.198974609375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC44-okay-come-on-youre-doing-great.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1800,
+      "keyframe_index": 1,
+      "local_ms": 324,
+      "source_ms": 2544,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:dcc1e772f9c91a32ca29fde456b6a755435c9d822ad09dacc42b23ed95f9adda",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.580078125,
+          "height": 0.56591796875,
+          "width": 0.56695556640625,
+          "x": 0.10687255859375,
+          "y": 0.1943359375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC44-okay-come-on-youre-doing-great.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1800,
+      "keyframe_index": 2,
+      "local_ms": 900,
+      "source_ms": 3120,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:febb2e377c6916660a4b30fc75fbb8d5a11b9e320ad0ea7735e6d65feb9693bb",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.587890625,
+          "height": 0.5615234375,
+          "width": 0.48388671875,
+          "x": 0.1904296875,
+          "y": 0.19921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC44-okay-come-on-youre-doing-great.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1800,
+      "keyframe_index": 3,
+      "local_ms": 1476,
+      "source_ms": 3696,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:7d0aa63ca4f62d5a4a1ca6a338bc1f6a2ea455b372c711047ab54b93d0e34bfd",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.59912109375,
+          "height": 0.5755615234375,
+          "width": 0.4207763671875,
+          "x": 0.2008056640625,
+          "y": 0.1763916015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC43-aah-s203.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 1,
+      "local_ms": 288,
+      "source_ms": 1208,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03-K1.jpg",
+      "image_sha256": "sha256:718210ae16d20e280b6fe7f0eccf674031482a1ff4b7024abd53dd292f758370",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.46875,
+          "height": 0.7117919921875,
+          "width": 0.9581756591796875,
+          "x": 0.0003204345703125,
+          "y": 0.1217041015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC43-aah-s203.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 2,
+      "local_ms": 800,
+      "source_ms": 1720,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03-K2.jpg",
+      "image_sha256": "sha256:e74e032231e7d4ece59e7ae4ceff6c8a8a72ed132c6a06e8b73931fb456347b2",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.388916015625,
+          "height": 0.72637939453125,
+          "width": 0.907470703125,
+          "x": 0.092529296875,
+          "y": 0.11151123046875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC43-aah-s203.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 3,
+      "local_ms": 1312,
+      "source_ms": 2232,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03-K3.jpg",
+      "image_sha256": "sha256:8a251cd7682f5fd0a8253afa0677d3d7d49d56bdba825e71aba79a268e10eace",
+      "faces": [
+        {
+          "confidence": 0.7982524633407593,
+          "height": 0.1643894910812378,
+          "width": 0.09246908873319626,
+          "x": 0.7071406841278076,
+          "y": 0.4193359911441803
+        },
+        {
+          "confidence": 0.7211238145828247,
+          "height": 0.22471968829631805,
+          "width": 0.12640482187271118,
+          "x": -0.0016143639804795384,
+          "y": 0.132437065243721
+        },
+        {
+          "confidence": 0.6442352533340454,
+          "height": 0.10327444225549698,
+          "width": 0.05809187516570091,
+          "x": 0.23626837134361267,
+          "y": 0.46723397821187973
+        },
+        {
+          "confidence": 0.6089742183685303,
+          "height": 0.15969347953796387,
+          "width": 0.08982758224010468,
+          "x": 0.36562031507492065,
+          "y": 0.3063312768936157
+        },
+        {
+          "confidence": 0.5867182016372681,
+          "height": 0.1536899358034134,
+          "width": 0.08645059168338776,
+          "x": 0.9256302118301392,
+          "y": 0.19474487006664276
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5693359375,
+          "height": 0.5350341796875,
+          "width": 0.766357421875,
+          "x": 0.218017578125,
+          "y": 0.1588134765625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC37-man-would-be-hard-even-i-wasnt-wearing-a-hospital-gown.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 1,
+      "local_ms": 261,
+      "source_ms": 1681,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-K1.jpg",
+      "image_sha256": "sha256:3aa4faab8e2db427e062af0218fd9893785916433467299d5fe3baa1123c716d",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.52392578125,
+          "height": 0.419189453125,
+          "width": 0.396728515625,
+          "x": 0.325927734375,
+          "y": 0.165283203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC37-man-would-be-hard-even-i-wasnt-wearing-a-hospital-gown.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 2,
+      "local_ms": 725,
+      "source_ms": 2145,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-K2.jpg",
+      "image_sha256": "sha256:4cab9dca3c853946e227673215b82d1e1d9fc8179d0c46eb8e0b9d977b9ea9f6",
+      "faces": [
+        {
+          "confidence": 0.5791797637939453,
+          "height": 0.0787573903799057,
+          "width": 0.04430103302001953,
+          "x": 0.5282414555549622,
+          "y": 0.3273638039827347
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.521484375,
+          "height": 0.4130859375,
+          "width": 0.408203125,
+          "x": 0.33935546875,
+          "y": 0.17041015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC37-man-would-be-hard-even-i-wasnt-wearing-a-hospital-gown.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 3,
+      "local_ms": 1189,
+      "source_ms": 2609,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04-K3.jpg",
+      "image_sha256": "sha256:438f636e8bea42769b1e2d249311cdebfe848bbcc3bae4984107cd4d5e2f3844",
+      "faces": [
+        {
+          "confidence": 0.6314124464988708,
+          "height": 0.07475479692220688,
+          "width": 0.042049575597047806,
+          "x": 0.5287802219390869,
+          "y": 0.3273010030388832
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54833984375,
+          "height": 0.421142578125,
+          "width": 0.614501953125,
+          "x": 0.314208984375,
+          "y": 0.170166015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC28-but-joe.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1350,
+      "keyframe_index": 1,
+      "local_ms": 243,
+      "source_ms": 1663,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-K1.jpg",
+      "image_sha256": "sha256:6408bdbc573599638f897ba78500c1650745b892c41919c51a79a1b251b633b1",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5595703125,
+          "height": 0.65692138671875,
+          "width": 0.494384765625,
+          "x": 0.258056640625,
+          "y": 0.11456298828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC28-but-joe.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1350,
+      "keyframe_index": 2,
+      "local_ms": 675,
+      "source_ms": 2095,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-K2.jpg",
+      "image_sha256": "sha256:93f48a412a2b4b71bfb45497933b17d11b469ca2aa98a64aa6642cbebc9feb53",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.56201171875,
+          "height": 0.675048828125,
+          "width": 0.497802734375,
+          "x": 0.258544921875,
+          "y": 0.120361328125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC28-but-joe.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1350,
+      "keyframe_index": 3,
+      "local_ms": 1107,
+      "source_ms": 2527,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05-K3.jpg",
+      "image_sha256": "sha256:c4b42a4b1d4db9af93fa0e959fec392bb5797a94f0506c39365e6fa94ca89378",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5634765625,
+          "height": 0.6868896484375,
+          "width": 0.5008544921875,
+          "x": 0.2496337890625,
+          "y": 0.1295166015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC05-you-know-lost-souls-are-not-different.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 1,
+      "local_ms": 261,
+      "source_ms": 1681,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-K1.jpg",
+      "image_sha256": "sha256:51f3126ac870872a2498ff8736521f06693b2f645d137a5a9572f49714162920",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.55224609375,
+          "height": 0.4744873046875,
+          "width": 0.75537109375,
+          "x": 0.12890625,
+          "y": 0.1915283203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC05-you-know-lost-souls-are-not-different.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 2,
+      "local_ms": 725,
+      "source_ms": 2145,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-K2.jpg",
+      "image_sha256": "sha256:4dd684f5b870c5a6695d3448f811c2699df5ebbc24eedb6e01d4d9e3d538df48",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5615234375,
+          "height": 0.4620361328125,
+          "width": 0.7373046875,
+          "x": 0.13427734375,
+          "y": 0.2025146484375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC05-you-know-lost-souls-are-not-different.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1450,
+      "keyframe_index": 3,
+      "local_ms": 1189,
+      "source_ms": 2609,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06-K3.jpg",
+      "image_sha256": "sha256:edc9d15cda8cab5bcd6897406e16f50111d28cc91c07aaadeeac2e4385d75c6c",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.56005859375,
+          "height": 0.461669921875,
+          "width": 0.7509765625,
+          "x": 0.125,
+          "y": 0.201416015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC10-i-gonna-play-with-dorothea-williams-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1530,
+      "keyframe_index": 1,
+      "local_ms": 275,
+      "source_ms": 7195,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-K1.jpg",
+      "image_sha256": "sha256:1867618a4ff77153ff1c9826927c11af785e2be9e1e51bf24fce2b98806ef148",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.52734375,
+          "height": 0.50830078125,
+          "width": 0.580078125,
+          "x": 0.259765625,
+          "y": 0.265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC10-i-gonna-play-with-dorothea-williams-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1530,
+      "keyframe_index": 2,
+      "local_ms": 765,
+      "source_ms": 7685,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-K2.jpg",
+      "image_sha256": "sha256:11ec06c0e545ae3a6761ac2d11d81d3f239715809aeb6df2174c679ce8e8bb12",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.517578125,
+          "height": 0.6317138671875,
+          "width": 0.4716796875,
+          "x": 0.341796875,
+          "y": 0.1685791015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/soul/SRC10-i-gonna-play-with-dorothea-williams-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 1530,
+      "keyframe_index": 3,
+      "local_ms": 1254,
+      "source_ms": 8174,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07-K3.jpg",
+      "image_sha256": "sha256:35345e321e1e780b6b0c2742a3e46b22c36283f0bdee31bbe59adbbdf46d80c0",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.51611328125,
+          "height": 0.63916015625,
+          "width": 0.4814453125,
+          "x": 0.31396484375,
+          "y": 0.177734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC31-here-i-quit-i-think-jazz-pointless.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4120,
+      "keyframe_index": 1,
+      "local_ms": 741,
+      "source_ms": 2161,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:542df02eab8cd32749590543ca573303fd7641484559c4a16caa3c3a03468969",
+      "faces": [
+        {
+          "confidence": 0.7265204787254333,
+          "height": 0.23430630564689636,
+          "width": 0.13179729878902435,
+          "x": 0.5906922817230225,
+          "y": 0.4272061586380005
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53857421875,
+          "height": 0.5322265625,
+          "width": 0.37744140625,
+          "x": 0.4228515625,
+          "y": 0.2529296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC31-here-i-quit-i-think-jazz-pointless.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4120,
+      "keyframe_index": 2,
+      "local_ms": 2060,
+      "source_ms": 3480,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:9e257bbe0117db63127823a530299895f6676bfafa69e0565eef0eca9ae76409",
+      "faces": [
+        {
+          "confidence": 0.7548670172691345,
+          "height": 0.24026280641555786,
+          "width": 0.135147824883461,
+          "x": 0.5949188470840454,
+          "y": 0.4320434331893921
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5439453125,
+          "height": 0.580078125,
+          "width": 0.38037109375,
+          "x": 0.4248046875,
+          "y": 0.248046875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC31-here-i-quit-i-think-jazz-pointless.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 4120,
+      "keyframe_index": 3,
+      "local_ms": 3378,
+      "source_ms": 4798,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:45bceff9065e35909b097beea84f6b22522e0dae3a6fad1399c57d9d49f92759",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5205078125,
+          "height": 0.75604248046875,
+          "width": 0.6494140625,
+          "x": 0.15283203125,
+          "y": 0.07012939453125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC08-you-cant-eat-dreams-breakfast-joey.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 1,
+      "local_ms": 501,
+      "source_ms": 3421,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:89e89e0fb74b86a7e319e22b89ac06e7e9f2d2e05951dfcb916724c21581ddc0",
+      "faces": [
+        {
+          "confidence": 0.742146372795105,
+          "height": 0.24408899247646332,
+          "width": 0.1373000591993332,
+          "x": 0.5398841500282288,
+          "y": 0.3342068940401077
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5400390625,
+          "height": 0.4873046875,
+          "width": 0.407958984375,
+          "x": 0.321533203125,
+          "y": 0.19140625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC08-you-cant-eat-dreams-breakfast-joey.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 2,
+      "local_ms": 1393,
+      "source_ms": 4313,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:cf2aab6fb5626807a3723f6c7e1d77c2c7a848f78eec51493436f2f7adda494b",
+      "faces": [
+        {
+          "confidence": 0.7506507635116577,
+          "height": 0.19314968585968018,
+          "width": 0.1086466982960701,
+          "x": 0.5921890139579773,
+          "y": 0.2842634916305542
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.56005859375,
+          "height": 0.5072021484375,
+          "width": 0.5894775390625,
+          "x": 0.2142333984375,
+          "y": 0.1402587890625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC08-you-cant-eat-dreams-breakfast-joey.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 3,
+      "local_ms": 2284,
+      "source_ms": 5204,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:fed7818f6a08ff39f0d445a35cf852f261b06d69fdc4c25bb9543f34069cba3d",
+      "faces": [
+        {
+          "confidence": 0.7122669816017151,
+          "height": 0.18472790718078613,
+          "width": 0.1039094477891922,
+          "x": 0.5887051224708557,
+          "y": 0.3775630593299866
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5322265625,
+          "height": 0.61865234375,
+          "width": 0.46728515625,
+          "x": 0.27490234375,
+          "y": 0.13818359375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC17-theres-no-point-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 1,
+      "local_ms": 501,
+      "source_ms": 2721,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03-K1.jpg",
+      "image_sha256": "sha256:c9e23c3b82dbc9d34a1dc8dd657c13d469cd2185d2b011ca06901caa43869309",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.59814453125,
+          "height": 0.648193359375,
+          "width": 0.48388671875,
+          "x": 0.24267578125,
+          "y": 0.173583984375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC17-theres-no-point-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 2,
+      "local_ms": 1393,
+      "source_ms": 3613,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03-K2.jpg",
+      "image_sha256": "sha256:da849738e1795dc7f9d8d6811d2f19693df541b22019338f7d64c2f126187dd8",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.6005859375,
+          "height": 0.6656494140625,
+          "width": 0.489501953125,
+          "x": 0.262451171875,
+          "y": 0.1468505859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "soul",
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/soul/SRC17-theres-no-point-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1080
+      },
+      "shot_duration_ms": 2786,
+      "keyframe_index": 3,
+      "local_ms": 2284,
+      "source_ms": 4504,
+      "image_path": "audit/focus-observations/soul/SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03-K3.jpg",
+      "image_sha256": "sha256:7b1d6fc608b08789ff435d62def447c71cbf9add667b6cc899bc07e2b70ce42e",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.576171875,
+          "height": 0.72869873046875,
+          "width": 0.528076171875,
+          "x": 0.270263671875,
+          "y": 0.08624267578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156918-forrest-he-never-actually-said-so-i-think-made-peace-with-god.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 1719,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:da917d2926552f6c4f8e04ad43c60fc9a340e7d697bb5d6700d93d15a8b5be1d",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.56201171875,
+          "height": 0.5315399169921875,
+          "width": 0.397705078125,
+          "x": 0.443603515625,
+          "y": 0.0011749267578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156918-forrest-he-never-actually-said-so-i-think-made-peace-with-god.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 3140,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:452691ab9777efa14922cf0cffd3a58a0bf37850d26c1c925ab3939ad368e5ca",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.53759765625,
+          "height": 0.57000732421875,
+          "width": 0.338134765625,
+          "x": 0.426025390625,
+          "y": 0.07452392578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156918-forrest-he-never-actually-said-so-i-think-made-peace-with-god.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 4560,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:32e6cd39612da41bcdb1746c70ec82ce2d91344b2aaf18c436177dc653b00716",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5478515625,
+          "height": 0.6861572265625,
+          "width": 0.5252685546875,
+          "x": 0.2237548828125,
+          "y": 0.0897216796875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156907-for-some-reason-ping-pong-came-very-natural-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 12219,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:6105772437cc225b6db14db9d9b760d2527ca79d062e6c4bcb4d96e09ce423ea",
+      "faces": [
+        {
+          "confidence": 0.7970281839370728,
+          "height": 0.1299155205488205,
+          "width": 0.05521409586071968,
+          "x": 0.23908154666423798,
+          "y": -0.008543357253074646
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52734375,
+          "height": 0.8695068359375,
+          "width": 0.69110107421875,
+          "x": 0.11407470703125,
+          "y": 0.0006103515625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156907-for-some-reason-ping-pong-came-very-natural-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 13640,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:93292b0531c25dbf392e21688f47a21e2c0687bb0b335ceb6b00ff2e751b492e",
+      "faces": [
+        {
+          "confidence": 0.805862307548523,
+          "height": 0.12974269688129425,
+          "width": 0.055140648037195206,
+          "x": 0.2783295214176178,
+          "y": 0.07485280930995941
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5283203125,
+          "height": 0.77734375,
+          "width": 0.62493896484375,
+          "x": 0.09674072265625,
+          "y": 0
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/forrest-gump/156907-for-some-reason-ping-pong-came-very-natural-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 15060,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:d383d9c7cb247637277788aa2fda3b238751c7ab2a0f5443ef5074670854bb51",
+      "faces": [
+        {
+          "confidence": 0.742146372795105,
+          "height": 0.11225655674934387,
+          "width": 0.047709036618471146,
+          "x": 0.3212072253227234,
+          "y": 0.09441152215003967
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5634765625,
+          "height": 0.7646484375,
+          "width": 0.7445068359375,
+          "x": 0.1397705078125,
+          "y": 0
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/forrest-gump/156878-forrest-you-know-its-funny-what-a-young-man-recollects.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 1,
+      "local_ms": 1076,
+      "source_ms": 9076,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:118cfdb303ca62496ecadfc0fd5bb9e10ff66699cf2229c979224b00545ada06",
+      "faces": [
+        {
+          "confidence": 0.8370684385299683,
+          "height": 0.33241376280784607,
+          "width": 0.14127585291862488,
+          "x": 0.381917804479599,
+          "y": 0.15070375800132751
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52392578125,
+          "height": 0.52313232421875,
+          "width": 0.51806640625,
+          "x": 0.2978515625,
+          "y": 0.07159423828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/forrest-gump/156878-forrest-you-know-its-funny-what-a-young-man-recollects.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 2,
+      "local_ms": 2990,
+      "source_ms": 10990,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:cc646fa2ebda65ee07a046b4a7c5cd42ae480517b149de4593f6b88247e3766a",
+      "faces": [
+        {
+          "confidence": 0.8677152395248413,
+          "height": 0.3318801522254944,
+          "width": 0.1410490721464157,
+          "x": 0.41736939549446106,
+          "y": 0.1535125970840454
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5400390625,
+          "height": 0.80419921875,
+          "width": 0.4365234375,
+          "x": 0.3251953125,
+          "y": 0.06884765625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/forrest-gump/156878-forrest-you-know-its-funny-what-a-young-man-recollects.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 3,
+      "local_ms": 4903,
+      "source_ms": 12903,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:91f319aaf48af96fcf6ea7452192502cb7cd44eefc269b5b827bdf0d0900dc9c",
+      "faces": [
+        {
+          "confidence": 0.8825013041496277,
+          "height": 0.3469204604625702,
+          "width": 0.14744119346141815,
+          "x": 0.41110432147979736,
+          "y": 0.16097834706306458
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53955078125,
+          "height": 0.798095703125,
+          "width": 0.43896484375,
+          "x": 0.32177734375,
+          "y": 0.077880859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/forrest-gump/156871-and-cause-i-a-gazillionaire-i-liked-doing-it-much.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 1,
+      "local_ms": 795,
+      "source_ms": 1295,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:3d02d8d954b121770094a3cf543057ecf66aedcab23b7ed03c2ee216e353d444",
+      "faces": [
+        {
+          "confidence": 0.5925151705741882,
+          "height": 0.07313165068626404,
+          "width": 0.031080951914191246,
+          "x": 0.62533038854599,
+          "y": 0.19802430272102356
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.56884765625,
+          "height": 0.934417724609375,
+          "width": 0.345947265625,
+          "x": 0.459228515625,
+          "y": 0.039215087890625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/forrest-gump/156871-and-cause-i-a-gazillionaire-i-liked-doing-it-much.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 2,
+      "local_ms": 2210,
+      "source_ms": 2710,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:11d2dae33a562452319c78b2d4a07c20cdf2c4620ad0ac9ee3791d1021f0e02e",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5302734375,
+          "height": 0.8983154296875,
+          "width": 0.446044921875,
+          "x": 0.416748046875,
+          "y": 0.0343017578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/forrest-gump/156871-and-cause-i-a-gazillionaire-i-liked-doing-it-much.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 3,
+      "local_ms": 3624,
+      "source_ms": 4124,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:47bc807a8c376a990c129077559cad0fffd5866f284c17e05449b52374e39670",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5693359375,
+          "height": 0.836700439453125,
+          "width": 0.393310546875,
+          "x": 0.327392578125,
+          "y": 0.050506591796875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/forrest-gump/156865-hey-forrest-dont.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 1,
+      "local_ms": 730,
+      "source_ms": 5150,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:6b64d8db4247ee8e76bfe27b00d1f7ccf9c2df195a72436810bd943d8b2f0447",
+      "faces": [
+        {
+          "confidence": 0.846061646938324,
+          "height": 0.2946186661720276,
+          "width": 0.12337157130241394,
+          "x": 0.5403136014938354,
+          "y": 0.15981781482696533
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52587890625,
+          "height": 0.575897216796875,
+          "width": 0.323974609375,
+          "x": 0.442626953125,
+          "y": 0.032012939453125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/forrest-gump/156865-hey-forrest-dont.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 2,
+      "local_ms": 2030,
+      "source_ms": 6450,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:9232186e5b0fd562e5150402bd54b20b989403ff174e0a3cf19e06143dccddc0",
+      "faces": [
+        {
+          "confidence": 0.854103147983551,
+          "height": 0.3051769733428955,
+          "width": 0.1277928650379181,
+          "x": 0.5375473499298096,
+          "y": 0.16893446445465088
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5234375,
+          "height": 0.549774169921875,
+          "width": 0.32177734375,
+          "x": 0.4423828125,
+          "y": 0.047393798828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/forrest-gump/156865-hey-forrest-dont.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 3,
+      "local_ms": 3329,
+      "source_ms": 7749,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:fcbda1a35811ea060ed8e09197fbb52d45119d03fa6a5262806c945ea8cc02e7",
+      "faces": [
+        {
+          "confidence": 0.8535312414169312,
+          "height": 0.30465173721313477,
+          "width": 0.1275729238986969,
+          "x": 0.5433059930801392,
+          "y": 0.17796677350997925
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5224609375,
+          "height": 0.536041259765625,
+          "width": 0.32080078125,
+          "x": 0.44921875,
+          "y": 0.053802490234375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156890-forrest-now-wouldnt-believe-it-i-told-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 1,
+      "local_ms": 1004,
+      "source_ms": 4004,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:49915d6f6c37067eb4e2db992f5d7b09b9c319f108f2c3391e3d82487b9f6dd1",
+      "faces": [
+        {
+          "confidence": 0.6027281880378723,
+          "height": 0.06904249638319016,
+          "width": 0.02934306114912033,
+          "x": 0.561487078666687,
+          "y": 0.23642552644014359
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54931640625,
+          "height": 0.78033447265625,
+          "width": 0.40380859375,
+          "x": 0.33056640625,
+          "y": 0.08392333984375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156890-forrest-now-wouldnt-believe-it-i-told-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 2,
+      "local_ms": 2790,
+      "source_ms": 5790,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:5e5ed5cc022c7dd5e826a763f9f1891292ddc4ad35d86fb0a6bc8c1cf09dccde",
+      "faces": [
+        {
+          "confidence": 0.8103939294815063,
+          "height": 0.46867430210113525,
+          "width": 0.19918657839298248,
+          "x": 0.3904835879802704,
+          "y": 0.20058193802833557
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5341796875,
+          "height": 0.5361328125,
+          "width": 0.3408203125,
+          "x": 0.314453125,
+          "y": 0.16162109375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156890-forrest-now-wouldnt-believe-it-i-told-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 3,
+      "local_ms": 4575,
+      "source_ms": 7575,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:3da4de5717b439c52de74e8e911002484788119a7c23178d8b32612129db692c",
+      "faces": [
+        {
+          "confidence": 0.8724852204322815,
+          "height": 0.4467824399471283,
+          "width": 0.1898825317621231,
+          "x": 0.354178249835968,
+          "y": 0.1872292459011078
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54638671875,
+          "height": 0.531005859375,
+          "width": 0.35302734375,
+          "x": 0.29443359375,
+          "y": 0.138427734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156894-have-given-any-thought-your-future-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 1,
+      "local_ms": 1184,
+      "source_ms": 1684,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:d60e4f3f835c5c5571534c16e0f79e5cfc999c6236c19f4e07f4001fb9912a33",
+      "faces": [
+        {
+          "confidence": 0.812800407409668,
+          "height": 0.12876446545124054,
+          "width": 0.05472489818930626,
+          "x": 0.6543451547622681,
+          "y": 0.15682069957256317
+        },
+        {
+          "confidence": 0.7606663107872009,
+          "height": 0.14263184368610382,
+          "width": 0.060618530958890915,
+          "x": 0.44269588589668274,
+          "y": 0.23112671077251434
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5927734375,
+          "height": 0.602874755859375,
+          "width": 0.7325439453125,
+          "x": 0.1322021484375,
+          "y": 0.059722900390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156894-have-given-any-thought-your-future-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 2,
+      "local_ms": 3290,
+      "source_ms": 3790,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:203bf61ebcd050d29e77094bee43e0937a7d9e04a1f04fcefedfb45a67ef17e3",
+      "faces": [
+        {
+          "confidence": 0.8674337863922119,
+          "height": 0.1980842500925064,
+          "width": 0.08418580889701843,
+          "x": 0.43089357018470764,
+          "y": 0.20706485211849213
+        },
+        {
+          "confidence": 0.7890238165855408,
+          "height": 0.14713674783706665,
+          "width": 0.06253311783075333,
+          "x": 0.7089257836341858,
+          "y": 0.15750771760940552
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5634765625,
+          "height": 0.65460205078125,
+          "width": 0.7906494140625,
+          "x": 0.1312255859375,
+          "y": 0.04705810546875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/forrest-gump/156894-have-given-any-thought-your-future-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 3,
+      "local_ms": 5395,
+      "source_ms": 5895,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:4a5cf96061b687094bfd2f856cc73bd4dae2fd7e3d76b60248af3cc4ed1c1cf1",
+      "faces": [
+        {
+          "confidence": 0.8157985806465149,
+          "height": 0.21770116686820984,
+          "width": 0.092522993683815,
+          "x": 0.4948228597640991,
+          "y": 0.20375469326972961
+        },
+        {
+          "confidence": 0.7638691663742065,
+          "height": 0.17324303090572357,
+          "width": 0.07362829148769379,
+          "x": 0.8654826879501343,
+          "y": 0.11413486301898956
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.56103515625,
+          "height": 0.734466552734375,
+          "width": 0.89019775390625,
+          "x": 0.10980224609375,
+          "y": 0.039459228515625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/forrest-gump/15186-are-enjoying-in-our-nations-capital.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 1,
+      "local_ms": 554,
+      "source_ms": 974,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:ff263519e553e04ce126318851963391690c4f69f34adeae0aabdc02127f36ee",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.490966796875,
+          "height": 0.9965667724609375,
+          "width": 0.69305419921875,
+          "x": 0.07843017578125,
+          "y": 0.0024566650390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/forrest-gump/15186-are-enjoying-in-our-nations-capital.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 2,
+      "local_ms": 1540,
+      "source_ms": 1960,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:2fce741a2b59fc80891ab008b13d680bdbaaf887c2cc9758462f61fa835b10a2",
+      "faces": [
+        {
+          "confidence": 0.8000854253768921,
+          "height": 0.3311904966831207,
+          "width": 0.13868601620197296,
+          "x": 0.16983112692832947,
+          "y": 0.0024293363094329834
+        },
+        {
+          "confidence": 0.6736894249916077,
+          "height": 0.28582751750946045,
+          "width": 0.11969027668237686,
+          "x": 0.6212227940559387,
+          "y": 0.014339208602905273
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5556640625,
+          "height": 0.46746826171875,
+          "width": 0.70233154296875,
+          "x": 0.07989501953125,
+          "y": 6.103515625e-05
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/forrest-gump/15186-are-enjoying-in-our-nations-capital.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 3,
+      "local_ms": 2525,
+      "source_ms": 2945,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:17ebac8a880969c3ac3ff64d9543f1e8a9d72fd2f53fedb5585da7882440dc20",
+      "faces": [
+        {
+          "confidence": 0.817592203617096,
+          "height": 0.32448551058769226,
+          "width": 0.1358783096075058,
+          "x": 0.24308006465435028,
+          "y": 0.1652047336101532
+        },
+        {
+          "confidence": 0.6964965462684631,
+          "height": 0.29312312602996826,
+          "width": 0.12274530529975891,
+          "x": 0.5958306193351746,
+          "y": 0.13916605710983276
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.57470703125,
+          "height": 0.5018310546875,
+          "width": 0.6285400390625,
+          "x": 0.1375732421875,
+          "y": 0.0816650390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/15146-and-we-always-looking-a-guy-named-charlie.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 1,
+      "local_ms": 540,
+      "source_ms": 1540,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:debf1d9b22175fc81545a2119e730bbfce5b5bf330578d7b6f7d53749c93e661",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.6171875,
+          "height": 0.6700439453125,
+          "width": 0.70751953125,
+          "x": 0.09521484375,
+          "y": 0.0906982421875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/15146-and-we-always-looking-a-guy-named-charlie.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 2,
+      "local_ms": 1500,
+      "source_ms": 2500,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:22337a266bfc4f64a3f5265618133e0f54ed01a83da042324e021adb4d8a375a",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.611328125,
+          "height": 0.69781494140625,
+          "width": 0.7099609375,
+          "x": 0.08642578125,
+          "y": 0.08343505859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/15146-and-we-always-looking-a-guy-named-charlie.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 3,
+      "local_ms": 2460,
+      "source_ms": 3460,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:d28d3accf5927274a641231c0d009af68b2af890a7dda0ee2f649d52d3d1dd72",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.54345703125,
+          "height": 0.7637786865234375,
+          "width": 0.483154296875,
+          "x": 0.260986328125,
+          "y": 0.0023345947265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156845-done-drill-sergeant-gump.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 1,
+      "local_ms": 540,
+      "source_ms": 3540,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:527cdbc799cce2defe0c28e9723181a988451ecb8874477f8fb249fc6fdd0efd",
+      "faces": [
+        {
+          "confidence": 0.8318019509315491,
+          "height": 0.29776373505592346,
+          "width": 0.1265495866537094,
+          "x": 0.23959602415561676,
+          "y": 0.20601564645767212
+        },
+        {
+          "confidence": 0.7271922826766968,
+          "height": 0.15736520290374756,
+          "width": 0.06688021123409271,
+          "x": 0.5529342889785767,
+          "y": 0.34045135974884033
+        },
+        {
+          "confidence": 0.6498948335647583,
+          "height": 0.11042694002389908,
+          "width": 0.04693144932389259,
+          "x": 0.6471347212791443,
+          "y": 0.4490918442606926
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.60693359375,
+          "height": 0.54779052734375,
+          "width": 0.71240234375,
+          "x": 0.1484375,
+          "y": 0.10748291015625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156845-done-drill-sergeant-gump.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 2,
+      "local_ms": 1500,
+      "source_ms": 4500,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:31bd1c7fce475b6f1ed201e5f017b1953eebb2e159f5bd4bf967daf84f366fb8",
+      "faces": [
+        {
+          "confidence": 0.857526421546936,
+          "height": 0.3053605258464813,
+          "width": 0.12977822124958038,
+          "x": 0.23681384325027466,
+          "y": 0.2156316637992859
+        },
+        {
+          "confidence": 0.7651465535163879,
+          "height": 0.15996743738651276,
+          "width": 0.06798616051673889,
+          "x": 0.538679301738739,
+          "y": 0.36507268249988556
+        },
+        {
+          "confidence": 0.6321852803230286,
+          "height": 0.10223144292831421,
+          "width": 0.04344836622476578,
+          "x": 0.6487300395965576,
+          "y": 0.46040084958076477
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.61181640625,
+          "height": 0.763427734375,
+          "width": 0.71435546875,
+          "x": 0.1484375,
+          "y": 0.115478515625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156845-done-drill-sergeant-gump.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 3,
+      "local_ms": 2460,
+      "source_ms": 5460,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:ecd88e15d4914cb78afa3219f9bc952ce17e8b7bd5c4b19f105c0e53757647d9",
+      "faces": [
+        {
+          "confidence": 0.8306271433830261,
+          "height": 0.3039543032646179,
+          "width": 0.12918058037757874,
+          "x": 0.23949851095676422,
+          "y": 0.29126039147377014
+        },
+        {
+          "confidence": 0.6747757196426392,
+          "height": 0.13578850030899048,
+          "width": 0.05771011486649513,
+          "x": 0.5397720336914062,
+          "y": 0.49378103017807007
+        },
+        {
+          "confidence": 0.585051417350769,
+          "height": 0.10650967806577682,
+          "width": 0.045266613364219666,
+          "x": 0.6447632908821106,
+          "y": 0.5230451598763466
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.59033203125,
+          "height": 0.5855712890625,
+          "width": 0.7197265625,
+          "x": 0.1494140625,
+          "y": 0.1864013671875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156881-get-hands-down-do-not-salute-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5380,
+      "keyframe_index": 1,
+      "local_ms": 968,
+      "source_ms": 2468,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-K1.jpg",
+      "image_sha256": "sha256:78ba6ab8824d458bf9ff56bb2f198895b5b3eb153e768c2eb553b009ccb07a87",
+      "faces": [
+        {
+          "confidence": 0.854388952255249,
+          "height": 0.18734213709831238,
+          "width": 0.07962040603160858,
+          "x": 0.19663725793361664,
+          "y": 0.22068753838539124
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58544921875,
+          "height": 0.53558349609375,
+          "width": 0.822509765625,
+          "x": 0.086669921875,
+          "y": 0.06500244140625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156881-get-hands-down-do-not-salute-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5380,
+      "keyframe_index": 2,
+      "local_ms": 2690,
+      "source_ms": 4190,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-K2.jpg",
+      "image_sha256": "sha256:da16237c069ba01bd99472dcd616e17bdc35357c4dc49804767ea6787e27e8df",
+      "faces": [
+        {
+          "confidence": 0.8489423394203186,
+          "height": 0.24688485264778137,
+          "width": 0.10492606461048126,
+          "x": 0.3286617398262024,
+          "y": 0.2675726115703583
+        },
+        {
+          "confidence": 0.7454288005828857,
+          "height": 0.2198609858751297,
+          "width": 0.09344092011451721,
+          "x": 0.7229501605033875,
+          "y": 0.1917615383863449
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5732421875,
+          "height": 0.54473876953125,
+          "width": 0.6934814453125,
+          "x": 0.2186279296875,
+          "y": 0.10418701171875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/forrest-gump/156881-get-hands-down-do-not-salute-me.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 5380,
+      "keyframe_index": 3,
+      "local_ms": 4411,
+      "source_ms": 5911,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-K3.jpg",
+      "image_sha256": "sha256:70524093bc14c83a4d0da2ce73db1412142864cd96bf05f618f10461461aa6f6",
+      "faces": [
+        {
+          "confidence": 0.8620696663856506,
+          "height": 0.2654624879360199,
+          "width": 0.1128215566277504,
+          "x": 0.31392765045166016,
+          "y": 0.2735285758972168
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.56201171875,
+          "height": 0.5819091796875,
+          "width": 0.6910400390625,
+          "x": 0.1741943359375,
+          "y": 0.1300048828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156892-her-dream-come-true-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3200,
+      "keyframe_index": 1,
+      "local_ms": 576,
+      "source_ms": 1496,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:28daa0fda56c500c88fba8984a88040b762c76a3972204a90426b2c413e98e28",
+      "faces": [
+        {
+          "confidence": 0.8049529194831848,
+          "height": 0.42260855436325073,
+          "width": 0.17960862815380096,
+          "x": 0.3296920657157898,
+          "y": 0.20650938153266907
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53662109375,
+          "height": 0.7586669921875,
+          "width": 0.4495849609375,
+          "x": 0.2447509765625,
+          "y": 0.1075439453125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156892-her-dream-come-true-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3200,
+      "keyframe_index": 2,
+      "local_ms": 1600,
+      "source_ms": 2520,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:97ccf6455e6e27ce707a7344c7418cb215453e5d8564ea97d6fc817115cc3c6d",
+      "faces": [
+        {
+          "confidence": 0.8151998519897461,
+          "height": 0.44822144508361816,
+          "width": 0.190494105219841,
+          "x": 0.3241282105445862,
+          "y": 0.2098807692527771
+        },
+        {
+          "confidence": 0.5916904807090759,
+          "height": 0.13425442576408386,
+          "width": 0.05705813318490982,
+          "x": 0.5577099323272705,
+          "y": 0.7161976993083954
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54443359375,
+          "height": 0.817626953125,
+          "width": 0.4559326171875,
+          "x": 0.2486572265625,
+          "y": 0.109130859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156892-her-dream-come-true-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3200,
+      "keyframe_index": 3,
+      "local_ms": 2624,
+      "source_ms": 3544,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:13799b50db43335740df8895d66015dd6bd5c2bb911a4eba0c85d285c5df0532",
+      "faces": [
+        {
+          "confidence": 0.8503790497779846,
+          "height": 0.4531395137310028,
+          "width": 0.19258429110050201,
+          "x": 0.315087229013443,
+          "y": 0.221955806016922
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54150390625,
+          "height": 0.830322265625,
+          "width": 0.55908203125,
+          "x": 0.22900390625,
+          "y": 0.112060546875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/372399-forrest-forrest.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 1,
+      "local_ms": 540,
+      "source_ms": 5960,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:fc8366267a3f8ff499bd2ebe5664d2ea38539aa72e0f49f6298d4ac92806daa3",
+      "faces": [
+        {
+          "confidence": 0.7038190960884094,
+          "height": 0.0816623643040657,
+          "width": 0.03419611603021622,
+          "x": 0.21263989806175232,
+          "y": 0.22019868344068527
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.495849609375,
+          "height": 0.63726806640625,
+          "width": 0.78179931640625,
+          "x": 0.07611083984375,
+          "y": 0.07220458984375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/372399-forrest-forrest.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 2,
+      "local_ms": 1500,
+      "source_ms": 6920,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:c1ae6f5da814d4f5665415797242743f1dc2dd2f96fa9c7309f19c2ab03876e8",
+      "faces": [
+        {
+          "confidence": 0.6099756360054016,
+          "height": 0.13137102127075195,
+          "width": 0.05501161515712738,
+          "x": 0.363739937543869,
+          "y": 0.1950523853302002
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.48486328125,
+          "height": 0.6416015625,
+          "width": 0.6060791015625,
+          "x": 0.2113037109375,
+          "y": 0.0615234375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/372399-forrest-forrest.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "shot_duration_ms": 3000,
+      "keyframe_index": 3,
+      "local_ms": 2460,
+      "source_ms": 7880,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:14df981d000a37199b18d9c388c9c7d40d1f03d0445c86654e9a05b9994914dd",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.51953125,
+          "height": 0.4979248046875,
+          "width": 0.384033203125,
+          "x": 0.409912109375,
+          "y": 0.1192626953125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156841-always-said-dying-a-part-of-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3492,
+      "keyframe_index": 1,
+      "local_ms": 628,
+      "source_ms": 1548,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-K1.jpg",
+      "image_sha256": "sha256:688ea8c1aa3140e64798659b569dbca016e63506484a837c39071a2f5ab60ad7",
+      "faces": [
+        {
+          "confidence": 0.8747209310531616,
+          "height": 0.23168006539344788,
+          "width": 0.09846402704715729,
+          "x": 0.6738723516464233,
+          "y": 0.1794525682926178
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.529296875,
+          "height": 0.51361083984375,
+          "width": 0.3642578125,
+          "x": 0.5166015625,
+          "y": 0.04010009765625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156841-always-said-dying-a-part-of-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3492,
+      "keyframe_index": 2,
+      "local_ms": 1746,
+      "source_ms": 2666,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-K2.jpg",
+      "image_sha256": "sha256:52185e8ea8813c718536103629cd369f7ad9a2aec393902cbc6dcea2948ebd2a",
+      "faces": [
+        {
+          "confidence": 0.8888413906097412,
+          "height": 0.2434525042772293,
+          "width": 0.10346731543540955,
+          "x": 0.6690977811813354,
+          "y": 0.1819213479757309
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53466796875,
+          "height": 0.522430419921875,
+          "width": 0.3720703125,
+          "x": 0.5068359375,
+          "y": 0.048370361328125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/forrest-gump/156841-always-said-dying-a-part-of-life.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 816
+      },
+      "shot_duration_ms": 3492,
+      "keyframe_index": 3,
+      "local_ms": 2863,
+      "source_ms": 3783,
+      "image_path": "audit/focus-observations/forrest-gump/SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-K3.jpg",
+      "image_sha256": "sha256:14662dfa995876bb0c14c8d98e5730c34a606bdb43039b4e33b0599f9b7c89c5",
+      "faces": [
+        {
+          "confidence": 0.8997612595558167,
+          "height": 0.23934820294380188,
+          "width": 0.10172298550605774,
+          "x": 0.6692032217979431,
+          "y": 0.1714012324810028
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.525390625,
+          "height": 0.512542724609375,
+          "width": 0.3447265625,
+          "x": 0.5283203125,
+          "y": 0.040191650390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/1058463-what-are-thinking-about-s27.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 3999,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:7159dd8037a9fffebc9518a95f9d043155ea1bf0491e57296b09716744be67f5",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.52197265625,
+          "height": 0.4425048828125,
+          "width": 0.6480712890625,
+          "x": 0.1546630859375,
+          "y": 0.0941162109375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/1058463-what-are-thinking-about-s27.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 5420,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:20b35a4fa009616b131bcd6b67eec5efdd3828de284323cc5383582eaf9ed66b",
+      "faces": [
+        {
+          "confidence": 0.8855392336845398,
+          "height": 0.23657257854938507,
+          "width": 0.12814347445964813,
+          "x": 0.40787172317504883,
+          "y": 0.21824286878108978
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5859375,
+          "height": 0.7835693359375,
+          "width": 0.62548828125,
+          "x": 0.3134765625,
+          "y": 0.1007080078125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/1058463-what-are-thinking-about-s27.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 6840,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:db1f9ec48ccd22585d959e04408c4fc1c981c5bbcb51294111fe68f89d01c042",
+      "faces": [
+        {
+          "confidence": 0.8411418199539185,
+          "height": 0.2442844808101654,
+          "width": 0.13232076168060303,
+          "x": 0.3986097276210785,
+          "y": 0.2092655599117279
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5869140625,
+          "height": 0.79656982421875,
+          "width": 0.6357421875,
+          "x": 0.306640625,
+          "y": 0.08868408203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/244710-this-a-group-playing-touch-football-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 1,
+      "local_ms": 799,
+      "source_ms": 1299,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:07d179ed216afa51b205b4cfa84a24ca65e7cd55e55a6353e6c86ae012a39790",
+      "faces": [
+        {
+          "confidence": 0.7890238165855408,
+          "height": 0.25384777784347534,
+          "width": 0.13750086724758148,
+          "x": 0.3407544493675232,
+          "y": 0.27825501561164856
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52197265625,
+          "height": 0.5777587890625,
+          "width": 0.5255126953125,
+          "x": 0.2415771484375,
+          "y": 0.0711669921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/244710-this-a-group-playing-touch-football-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 2,
+      "local_ms": 2220,
+      "source_ms": 2720,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:01d090e8b3df85ed0e660b7c4c02a07af939f9b4255cf5fac27f9512d87b4da6",
+      "faces": [
+        {
+          "confidence": 0.7774909734725952,
+          "height": 0.2767980694770813,
+          "width": 0.14993229508399963,
+          "x": 0.18376420438289642,
+          "y": 0.39185670018196106
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5478515625,
+          "height": 0.64617919921875,
+          "width": 0.58929443359375,
+          "x": 0.10699462890625,
+          "y": 0.06915283203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "source_asset_id": "footage/a-beautiful-mind/244710-this-a-group-playing-touch-football-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4440,
+      "keyframe_index": 3,
+      "local_ms": 3640,
+      "source_ms": 4140,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:8435947286c4bbfb921862d35dc34da5c68afdd0c669a1033a33f60a4e28a0e0",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5205078125,
+          "height": 0.89691162109375,
+          "width": 0.9793701171875,
+          "x": 0.0010986328125,
+          "y": 0.05523681640625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/a-beautiful-mind/1058462-you-could-try-leaving-the-house.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 1,
+      "local_ms": 1076,
+      "source_ms": 8876,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:b27e31e354d9043dfd9879049689cef522df43ddaea8442ccbee3934fdc2b9c5",
+      "faces": [
+        {
+          "confidence": 0.6733269095420837,
+          "height": 0.5394452810287476,
+          "width": 0.2921995222568512,
+          "x": 0.37774932384490967,
+          "y": 0.31276166439056396
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.595703125,
+          "height": 0.6927490234375,
+          "width": 0.42333984375,
+          "x": 0.2734375,
+          "y": 0.1470947265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/a-beautiful-mind/1058462-you-could-try-leaving-the-house.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 2,
+      "local_ms": 2990,
+      "source_ms": 10790,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:603f667bb0099582ca569ea8c66f98f34a32d658026ff3df7c9a44fd5d813d67",
+      "faces": [
+        {
+          "confidence": 0.7890238165855408,
+          "height": 0.6401920318603516,
+          "width": 0.34677067399024963,
+          "x": 0.30199751257896423,
+          "y": 0.18592210114002228
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58203125,
+          "height": 0.71978759765625,
+          "width": 0.42333984375,
+          "x": 0.2568359375,
+          "y": 0.10003662109375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "source_asset_id": "footage/a-beautiful-mind/1058462-you-could-try-leaving-the-house.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5980,
+      "keyframe_index": 3,
+      "local_ms": 4903,
+      "source_ms": 12703,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:dbfa9a52533ccdda1a2daf03f26ef3771ac897e496ae598ca0610a80d69443f9",
+      "faces": [
+        {
+          "confidence": 0.8043460845947266,
+          "height": 0.11442450433969498,
+          "width": 0.06197994202375412,
+          "x": 0.5555040836334229,
+          "y": 0.13457085937261581
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5244140625,
+          "height": 0.7490081787109375,
+          "width": 0.48046875,
+          "x": 0.31591796875,
+          "y": 0.0141754150390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/a-beautiful-mind/1058480-so-see-the-zeroes-of-the-riemann-zeta-function.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 1,
+      "local_ms": 795,
+      "source_ms": 9295,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:198acdc7df466ee258eba25c042c5d8163acef9896c30cfad2ea4bc1d005452c",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.578125,
+          "height": 0.72625732421875,
+          "width": 0.9020538330078125,
+          "x": 0.0173797607421875,
+          "y": 0.02911376953125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/a-beautiful-mind/1058480-so-see-the-zeroes-of-the-riemann-zeta-function.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 2,
+      "local_ms": 2210,
+      "source_ms": 10710,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:3448816957d3076fb3dd51338a4d08f3d8a15dd30cc585e466789a433fbd46f5",
+      "faces": [
+        {
+          "confidence": 0.8388165831565857,
+          "height": 0.1542154997587204,
+          "width": 0.0835333988070488,
+          "x": 0.8628602623939514,
+          "y": 0.5078959316015244
+        },
+        {
+          "confidence": 0.8306271433830261,
+          "height": 0.176278755068779,
+          "width": 0.09548433125019073,
+          "x": 0.17227515578269958,
+          "y": 0.6529469043016434
+        },
+        {
+          "confidence": 0.8160977959632874,
+          "height": 0.1255328357219696,
+          "width": 0.06799695640802383,
+          "x": 0.32821545004844666,
+          "y": 0.44809845089912415
+        },
+        {
+          "confidence": 0.8073756694793701,
+          "height": 0.13090039789676666,
+          "width": 0.07090438157320023,
+          "x": 0.600604772567749,
+          "y": 0.568117693066597
+        },
+        {
+          "confidence": 0.8037388324737549,
+          "height": 0.19225183129310608,
+          "width": 0.10413641482591629,
+          "x": 0.4639418423175812,
+          "y": 0.7330185696482658
+        },
+        {
+          "confidence": 0.7890238165855408,
+          "height": 0.14300666749477386,
+          "width": 0.07746194303035736,
+          "x": 0.6762023568153381,
+          "y": 0.43693025410175323
+        },
+        {
+          "confidence": 0.7715016603469849,
+          "height": 0.12937207520008087,
+          "width": 0.07007654011249542,
+          "x": 0.10312154144048691,
+          "y": 0.3055103272199631
+        },
+        {
+          "confidence": 0.7638691663742065,
+          "height": 0.09326628595590591,
+          "width": 0.05051923915743828,
+          "x": -0.007994618266820908,
+          "y": 0.17629250138998032
+        },
+        {
+          "confidence": 0.7486968040466309,
+          "height": 0.11453434079885483,
+          "width": 0.06203943490982056,
+          "x": 0.9015884399414062,
+          "y": 0.213991679251194
+        },
+        {
+          "confidence": 0.6860780715942383,
+          "height": 0.10561919957399368,
+          "width": 0.05721040070056915,
+          "x": 0.5028232336044312,
+          "y": 0.04319076985120773
+        },
+        {
+          "confidence": 0.682152509689331,
+          "height": 0.13276821374893188,
+          "width": 0.0719161182641983,
+          "x": 0.3615890443325043,
+          "y": 0.27670514583587646
+        },
+        {
+          "confidence": 0.677303671836853,
+          "height": 0.10109575092792511,
+          "width": 0.054760199040174484,
+          "x": 0.18370883166790009,
+          "y": 0.1790873259305954
+        },
+        {
+          "confidence": 0.6676831245422363,
+          "height": 0.09205906093120575,
+          "width": 0.049865324050188065,
+          "x": 0.1624923050403595,
+          "y": 0.016783490777015686
+        },
+        {
+          "confidence": 0.6653021574020386,
+          "height": 0.08148476481437683,
+          "width": 0.044137582182884216,
+          "x": 0.8737905621528625,
+          "y": -0.005361825227737427
+        },
+        {
+          "confidence": 0.6577364206314087,
+          "height": 0.0928097739815712,
+          "width": 0.05027196183800697,
+          "x": 0.6850461363792419,
+          "y": 0.06170489639043808
+        },
+        {
+          "confidence": 0.6224557757377625,
+          "height": 0.1016547679901123,
+          "width": 0.055062998086214066,
+          "x": 0.3723755180835724,
+          "y": 0.14479726552963257
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5380859375,
+          "height": 0.849395751953125,
+          "width": 0.91119384765625,
+          "x": 0.08245849609375,
+          "y": 0.043182373046875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "source_asset_id": "footage/a-beautiful-mind/1058480-so-see-the-zeroes-of-the-riemann-zeta-function.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4420,
+      "keyframe_index": 3,
+      "local_ms": 3624,
+      "source_ms": 12124,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:50feec9566445df4b8630126ac4304ebef53f97e388225c65e0cd916bd3512af",
+      "faces": [
+        {
+          "confidence": 0.767694890499115,
+          "height": 0.10992521792650223,
+          "width": 0.05954282730817795,
+          "x": 0.460631787776947,
+          "y": 0.21512489765882492
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58251953125,
+          "height": 0.70074462890625,
+          "width": 0.6703643798828125,
+          "x": 0.0010223388671875,
+          "y": 0.06292724609375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/a-beautiful-mind/1058450-this-s40.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 1,
+      "local_ms": 730,
+      "source_ms": 7730,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:b3e054979239c5d4c72e2e2bf82980390e17a47ab7495484422a6a8d02262f07",
+      "faces": [
+        {
+          "confidence": 0.7490227818489075,
+          "height": 0.34511879086494446,
+          "width": 0.18693934381008148,
+          "x": 0.43611282110214233,
+          "y": 0.27941030263900757
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53955078125,
+          "height": 0.501708984375,
+          "width": 0.404296875,
+          "x": 0.3232421875,
+          "y": 0.144775390625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/a-beautiful-mind/1058450-this-s40.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 2,
+      "local_ms": 2030,
+      "source_ms": 9030,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:d81a3dd0d3abf9bc048a9d5007658dedd1b375dfada4f9e71797833dd17c0a6a",
+      "faces": [
+        {
+          "confidence": 0.7580943703651428,
+          "height": 0.3517824709415436,
+          "width": 0.190548837184906,
+          "x": 0.43622520565986633,
+          "y": 0.26180407404899597
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54345703125,
+          "height": 0.4990234375,
+          "width": 0.410400390625,
+          "x": 0.324462890625,
+          "y": 0.14794921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "source_asset_id": "footage/a-beautiful-mind/1058450-this-s40.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 4060,
+      "keyframe_index": 3,
+      "local_ms": 3329,
+      "source_ms": 10329,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:8943fbde144818fa44a72e19afb369a1ed273e7f6bd132ad3d2a680eef48e4d4",
+      "faces": [
+        {
+          "confidence": 0.7696006298065186,
+          "height": 0.3558335304260254,
+          "width": 0.19274315237998962,
+          "x": 0.4365295469760895,
+          "y": 0.2582567632198334
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5478515625,
+          "height": 0.5,
+          "width": 0.412353515625,
+          "x": 0.318603515625,
+          "y": 0.154296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/244697-you-want-know-whats-real-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 1,
+      "local_ms": 1004,
+      "source_ms": 15504,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:be186f61c6bc1e4071417d64bd20a2e42573ece3f85d5667f7e683b26125be5c",
+      "faces": [
+        {
+          "confidence": 0.8282724022865295,
+          "height": 0.28050029277801514,
+          "width": 0.15193766355514526,
+          "x": 0.34466952085494995,
+          "y": 0.26510363817214966
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54345703125,
+          "height": 0.6473388671875,
+          "width": 0.556396484375,
+          "x": 0.260986328125,
+          "y": 0.1339111328125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/244697-you-want-know-whats-real-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 2,
+      "local_ms": 2790,
+      "source_ms": 17290,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:843c4e10f304a2d1fb0665d110601dbb588bb358aed8a2bc29f47ef7b149af17",
+      "faces": [
+        {
+          "confidence": 0.8309209942817688,
+          "height": 0.29231637716293335,
+          "width": 0.1583380401134491,
+          "x": 0.34631964564323425,
+          "y": 0.3066723346710205
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5380859375,
+          "height": 0.6243896484375,
+          "width": 0.560546875,
+          "x": 0.26220703125,
+          "y": 0.1490478515625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/244697-you-want-know-whats-real-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 5580,
+      "keyframe_index": 3,
+      "local_ms": 4575,
+      "source_ms": 19075,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:e573437eba637204569e334eb02d3435b93b964a036a02e650e8be4a841c28ba",
+      "faces": [
+        {
+          "confidence": 0.8262065052986145,
+          "height": 0.29347509145736694,
+          "width": 0.15896566212177277,
+          "x": 0.34379005432128906,
+          "y": 0.29623520374298096
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53125,
+          "height": 0.5635986328125,
+          "width": 0.558349609375,
+          "x": 0.260009765625,
+          "y": 0.1502685546875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/367104-thank-sir-thank-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 1,
+      "local_ms": 1184,
+      "source_ms": 2384,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:44c1e733dbc7916f2cd732980400b1b10500233e3d3fb067b4119daf0271964b",
+      "faces": [
+        {
+          "confidence": 0.8609361052513123,
+          "height": 0.17902575433254242,
+          "width": 0.09659931808710098,
+          "x": 0.42756760120391846,
+          "y": 0.1862378865480423
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.548828125,
+          "height": 0.4444580078125,
+          "width": 0.5174560546875,
+          "x": 0.1510009765625,
+          "y": 0.0765380859375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/367104-thank-sir-thank-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 2,
+      "local_ms": 3290,
+      "source_ms": 4490,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:fac7bb728852c542dde92a7f5d5de1831ea41ae0a45707e375fa709ec4ca372a",
+      "faces": [
+        {
+          "confidence": 0.8181892037391663,
+          "height": 0.16364718973636627,
+          "width": 0.08830129355192184,
+          "x": 0.2021172195672989,
+          "y": 0.20710931718349457
+        },
+        {
+          "confidence": 0.817592203617096,
+          "height": 0.19601130485534668,
+          "width": 0.10576443374156952,
+          "x": 0.5325448513031006,
+          "y": 0.1909833550453186
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58642578125,
+          "height": 0.43402099609375,
+          "width": 0.6519775390625,
+          "x": 0.0965576171875,
+          "y": 0.08502197265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "source_asset_id": "footage/a-beautiful-mind/367104-thank-sir-thank-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "shot_duration_ms": 6580,
+      "keyframe_index": 3,
+      "local_ms": 5395,
+      "source_ms": 6595,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:68c87cd5b706bdecb1b2c661635c4acf0f1b2e0d69826044f3a4c84cde533e49",
+      "faces": [
+        {
+          "confidence": 0.7564824223518372,
+          "height": 0.08532307296991348,
+          "width": 0.0460389107465744,
+          "x": 0.4955430328845978,
+          "y": 0.45754244178533554
+        },
+        {
+          "confidence": 0.7414881587028503,
+          "height": 0.08545360714197159,
+          "width": 0.04610934108495712,
+          "x": 0.5166035294532776,
+          "y": 0.17819257825613022
+        },
+        {
+          "confidence": 0.7019086480140686,
+          "height": 0.08182681351900101,
+          "width": 0.044152382761240005,
+          "x": 0.8471645712852478,
+          "y": 0.14374356716871262
+        },
+        {
+          "confidence": 0.6984217762947083,
+          "height": 0.08086950331926346,
+          "width": 0.043635837733745575,
+          "x": 0.8421758413314819,
+          "y": 0.23270224779844284
+        },
+        {
+          "confidence": 0.6938626170158386,
+          "height": 0.06629916280508041,
+          "width": 0.035773925483226776,
+          "x": 0.7032155990600586,
+          "y": 0.3253200426697731
+        },
+        {
+          "confidence": 0.6199010610580444,
+          "height": 0.07307928800582886,
+          "width": 0.03943236544728279,
+          "x": 0.38217422366142273,
+          "y": 0.3618457317352295
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.62841796875,
+          "height": 0.601470947265625,
+          "width": 0.8590087890625,
+          "x": 0.1409912109375,
+          "y": 0.054779052734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/a-beautiful-mind/244669-ive-always-believed-in-numbers-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 1,
+      "local_ms": 554,
+      "source_ms": 6554,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:bdbf59ade5e68381bcbf0a1e270ec872c3ee59cef87a8fec235557660d5dec2e",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.57373046875,
+          "height": 0.51007080078125,
+          "width": 0.9705352783203125,
+          "x": 0.0284881591796875,
+          "y": 0.02703857421875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/a-beautiful-mind/244669-ive-always-believed-in-numbers-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 2,
+      "local_ms": 1540,
+      "source_ms": 7540,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:7b37f58c3dd95765153a296b39585117e96205742881e3fd329f952511fd96d4",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.5771484375,
+          "height": 0.497711181640625,
+          "width": 0.96209716796875,
+          "x": 0.03741455078125,
+          "y": 0.029632568359375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "source_asset_id": "footage/a-beautiful-mind/244669-ive-always-believed-in-numbers-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3080,
+      "keyframe_index": 3,
+      "local_ms": 2525,
+      "source_ms": 8525,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:228aafe2e1532ca544202f7a6ccc53f9204b1ceb0878105154cb9a648aadabf2",
+      "faces": [
+        {
+          "confidence": 0.6640165448188782,
+          "height": 0.15090347826480865,
+          "width": 0.0817393884062767,
+          "x": 0.29722192883491516,
+          "y": 0.8650518972426653
+        },
+        {
+          "confidence": 0.6623599529266357,
+          "height": 0.15274491906166077,
+          "width": 0.08273683488368988,
+          "x": 0.17300085723400116,
+          "y": 0.6600873470306396
+        },
+        {
+          "confidence": 0.6470712423324585,
+          "height": 0.08627163618803024,
+          "width": 0.04673046991229057,
+          "x": 0.9284549951553345,
+          "y": 0.23024261742830276
+        },
+        {
+          "confidence": 0.625585675239563,
+          "height": 0.09831677377223969,
+          "width": 0.05325491726398468,
+          "x": 0.13039368391036987,
+          "y": 0.4572307616472244
+        },
+        {
+          "confidence": 0.6240226626396179,
+          "height": 0.1286255121231079,
+          "width": 0.06967215240001678,
+          "x": 0.7220179438591003,
+          "y": 0.7412635385990143
+        },
+        {
+          "confidence": 0.6226518154144287,
+          "height": 0.12917207181453705,
+          "width": 0.06996820867061615,
+          "x": -0.007067312952131033,
+          "y": 0.7005531787872314
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.560546875,
+          "height": 0.727294921875,
+          "width": 0.9423828125,
+          "x": 0,
+          "y": 0.170654296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058444-its-never-going-work-john.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 1,
+      "local_ms": 360,
+      "source_ms": 2860,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01-K1.jpg",
+      "image_sha256": "sha256:16054c1b12a5571fe2ae0de60f41a6746855f1cb44afdc3b79e7c6d47c8ac00b",
+      "faces": [
+        {
+          "confidence": 0.8025228977203369,
+          "height": 0.09227535128593445,
+          "width": 0.04998248070478439,
+          "x": 0.5694583654403687,
+          "y": 0.18856164813041687
+        },
+        {
+          "confidence": 0.6577364206314087,
+          "height": 0.07248631119728088,
+          "width": 0.039263419806957245,
+          "x": 0.2608349919319153,
+          "y": 0.36209169030189514
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5517578125,
+          "height": 0.6337890625,
+          "width": 0.606201171875,
+          "x": 0.146728515625,
+          "y": 0.06298828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058444-its-never-going-work-john.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 2,
+      "local_ms": 1000,
+      "source_ms": 3500,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01-K2.jpg",
+      "image_sha256": "sha256:5a97a29ca8ccd62932ad3fe62e95fa66194a8c03210eabc51d4f09d32f292940",
+      "faces": [
+        {
+          "confidence": 0.8654614090919495,
+          "height": 0.09358105808496475,
+          "width": 0.05068974196910858,
+          "x": 0.536713719367981,
+          "y": 0.23349662870168686
+        },
+        {
+          "confidence": 0.5867182016372681,
+          "height": 0.07265877723693848,
+          "width": 0.039356838911771774,
+          "x": 0.22237859666347504,
+          "y": 0.403283953666687
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5517578125,
+          "height": 0.64117431640625,
+          "width": 0.612548828125,
+          "x": 0.118896484375,
+          "y": 0.08489990234375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058444-its-never-going-work-john.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 3,
+      "local_ms": 1640,
+      "source_ms": 4140,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01-K3.jpg",
+      "image_sha256": "sha256:c194eaf9e6d045d84482b9a907c0836cb1a7b9cc9d5c24f57211b53dca3b93d4",
+      "faces": [
+        {
+          "confidence": 0.7877851724624634,
+          "height": 0.10155986994504929,
+          "width": 0.05501159280538559,
+          "x": 0.4615288972854614,
+          "y": 0.27461225539445877
+        },
+        {
+          "confidence": 0.6199010610580444,
+          "height": 0.08213113993406296,
+          "width": 0.04448769986629486,
+          "x": 0.13764092326164246,
+          "y": 0.4419217184185982
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5498046875,
+          "height": 0.61865234375,
+          "width": 0.632354736328125,
+          "x": 0.047821044921875,
+          "y": 0.13623046875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244688-she-never-gets-old-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 1,
+      "local_ms": 306,
+      "source_ms": 4806,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02-K1.jpg",
+      "image_sha256": "sha256:eeb9d46aec1b44225f98b34997e5748770ce433198ad4f4de28e7a935541d4f2",
+      "faces": [
+        {
+          "confidence": 0.7385188937187195,
+          "height": 0.5264790654182434,
+          "width": 0.285176157951355,
+          "x": 0.3219394087791443,
+          "y": 0.23285600543022156
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5498046875,
+          "height": 0.63916015625,
+          "width": 0.3486328125,
+          "x": 0.32275390625,
+          "y": 0.14794921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244688-she-never-gets-old-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 2,
+      "local_ms": 850,
+      "source_ms": 5350,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02-K2.jpg",
+      "image_sha256": "sha256:05f211f3316f372cc68446a5c711bb8acd69ace5680aad6d1f274e2003c4a444",
+      "faces": [
+        {
+          "confidence": 0.7529239654541016,
+          "height": 0.4885197579860687,
+          "width": 0.26461488008499146,
+          "x": 0.325886070728302,
+          "y": 0.23480632901191711
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.55322265625,
+          "height": 0.607177734375,
+          "width": 0.35205078125,
+          "x": 0.32275390625,
+          "y": 0.154052734375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244688-she-never-gets-old-s1.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 3,
+      "local_ms": 1394,
+      "source_ms": 5894,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02-K3.jpg",
+      "image_sha256": "sha256:9c1a08432b42dbe6aa47b548233d7a639b1df793ac7860a30f80c4cff48708fc",
+      "faces": [
+        {
+          "confidence": 0.7385188937187195,
+          "height": 0.6141647696495056,
+          "width": 0.3326725959777832,
+          "x": 0.37166935205459595,
+          "y": 0.13388821482658386
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5517578125,
+          "height": 0.601318359375,
+          "width": 0.351318359375,
+          "x": 0.373779296875,
+          "y": 0.087158203125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058457-theres-a-storm-coming-s2.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 1,
+      "local_ms": 360,
+      "source_ms": 5860,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03-K1.jpg",
+      "image_sha256": "sha256:7f9f57c06335878d1b17ff68eb977011e593144c9227fcd7549a252e1bb6c54d",
+      "faces": [
+        {
+          "confidence": 0.7724504470825195,
+          "height": 0.11589307337999344,
+          "width": 0.06277541071176529,
+          "x": 0.2982538342475891,
+          "y": 0.21185820549726486
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.487060546875,
+          "height": 0.8563232421875,
+          "width": 0.66357421875,
+          "x": 0.16552734375,
+          "y": 0.0675048828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058457-theres-a-storm-coming-s2.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 2,
+      "local_ms": 1000,
+      "source_ms": 6500,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03-K2.jpg",
+      "image_sha256": "sha256:5daae03c67722376e1e734e74b9f23334680938f1bf92a862d521a0151956846",
+      "faces": [
+        {
+          "confidence": 0.7699177861213684,
+          "height": 0.1153213381767273,
+          "width": 0.06246572360396385,
+          "x": 0.29470863938331604,
+          "y": 0.21509814262390137
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.513671875,
+          "height": 0.64599609375,
+          "width": 0.6973876953125,
+          "x": 0.1317138671875,
+          "y": 0.0810546875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058457-theres-a-storm-coming-s2.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 2000,
+      "keyframe_index": 3,
+      "local_ms": 1640,
+      "source_ms": 7140,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03-K3.jpg",
+      "image_sha256": "sha256:bfd3295cc606dec6ed83105ab8d58eaa279be510d5dd36eb5cd44ef5f1807dcd",
+      "faces": [
+        {
+          "confidence": 0.7927281856536865,
+          "height": 0.11222254484891891,
+          "width": 0.06078721210360527,
+          "x": 0.3012336790561676,
+          "y": 0.23127783089876175
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.501953125,
+          "height": 0.6318359375,
+          "width": 0.547607421875,
+          "x": 0.138916015625,
+          "y": 0.0869140625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058468-you-see-the-nightmare-of-schizophrenia.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 1,
+      "local_ms": 306,
+      "source_ms": 5806,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04-K1.jpg",
+      "image_sha256": "sha256:f4601cbebf937584faa02da9a7da114b7883e0f5d7759b656da04916f69814ae",
+      "faces": [
+        {
+          "confidence": 0.8454843163490295,
+          "height": 0.26977983117103577,
+          "width": 0.1461307406425476,
+          "x": 0.319272518157959,
+          "y": 0.3473312556743622
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5361328125,
+          "height": 0.4808349609375,
+          "width": 0.532379150390625,
+          "x": 0.054046630859375,
+          "y": 0.2252197265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058468-you-see-the-nightmare-of-schizophrenia.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 2,
+      "local_ms": 850,
+      "source_ms": 6350,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04-K2.jpg",
+      "image_sha256": "sha256:21de8d90e5ffe30c33fe16ef9ad752475191bacd4a03f3f33c154bea065b6406",
+      "faces": [
+        {
+          "confidence": 0.8235427737236023,
+          "height": 0.2742256224155426,
+          "width": 0.14853887259960175,
+          "x": 0.3136138617992401,
+          "y": 0.359558641910553
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53662109375,
+          "height": 0.4595947265625,
+          "width": 0.47735595703125,
+          "x": 0.09881591796875,
+          "y": 0.2489013671875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058468-you-see-the-nightmare-of-schizophrenia.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1700,
+      "keyframe_index": 3,
+      "local_ms": 1394,
+      "source_ms": 6894,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04-K3.jpg",
+      "image_sha256": "sha256:1a32662d42950ff04ea17976254d5ca2a75f605079659aff07b52139550b7812",
+      "faces": [
+        {
+          "confidence": 0.8523863554000854,
+          "height": 0.28115230798721313,
+          "width": 0.15229083597660065,
+          "x": 0.319203644990921,
+          "y": 0.3674987554550171
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54296875,
+          "height": 0.446533203125,
+          "width": 0.55316162109375,
+          "x": 0.04400634765625,
+          "y": 0.260986328125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244682-but-i-still-see-things-are-not-here.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 1,
+      "local_ms": 288,
+      "source_ms": 5288,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05-K1.jpg",
+      "image_sha256": "sha256:f00813aa0dde885317202ef7ae46c597b3064e6c5e18de02425ee0d427d02375",
+      "faces": [
+        {
+          "confidence": 0.8705242872238159,
+          "height": 0.2887673079967499,
+          "width": 0.15641562640666962,
+          "x": 0.525733232498169,
+          "y": 0.30577316880226135
+        },
+        {
+          "confidence": 0.7480443120002747,
+          "height": 0.12667036056518555,
+          "width": 0.06861310452222824,
+          "x": 0.8213903307914734,
+          "y": 0.31154441833496094
+        },
+        {
+          "confidence": 0.7368641495704651,
+          "height": 0.11039003729820251,
+          "width": 0.059794604778289795,
+          "x": 0.4167026877403259,
+          "y": 0.31551393866539
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5341796875,
+          "height": 0.459228515625,
+          "width": 0.630615234375,
+          "x": 0.345947265625,
+          "y": 0.183837890625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244682-but-i-still-see-things-are-not-here.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 2,
+      "local_ms": 800,
+      "source_ms": 5800,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05-K2.jpg",
+      "image_sha256": "sha256:66960466a3bed93125135706e816806fddade2a97b2eb1b1800ebb493450c368",
+      "faces": [
+        {
+          "confidence": 0.8446176052093506,
+          "height": 0.28820714354515076,
+          "width": 0.1561122089624405,
+          "x": 0.5320461988449097,
+          "y": 0.3075166344642639
+        },
+        {
+          "confidence": 0.7756046056747437,
+          "height": 0.12838473916053772,
+          "width": 0.06954172998666763,
+          "x": 0.8210956454277039,
+          "y": 0.290198415517807
+        },
+        {
+          "confidence": 0.7180703282356262,
+          "height": 0.11170965433120728,
+          "width": 0.060509394854307175,
+          "x": 0.4158363342285156,
+          "y": 0.31240832805633545
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5361328125,
+          "height": 0.474853515625,
+          "width": 0.615966796875,
+          "x": 0.352783203125,
+          "y": 0.175048828125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/244682-but-i-still-see-things-are-not-here.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1600,
+      "keyframe_index": 3,
+      "local_ms": 1312,
+      "source_ms": 6312,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05-K3.jpg",
+      "image_sha256": "sha256:8eab9945b63e0f3a167dd5b8258cea21457278fd6b8e068c9a488ee137fb323f",
+      "faces": [
+        {
+          "confidence": 0.8370684385299683,
+          "height": 0.2943669259548187,
+          "width": 0.1594487577676773,
+          "x": 0.530707061290741,
+          "y": 0.3033812344074249
+        },
+        {
+          "confidence": 0.78125,
+          "height": 0.1146082729101181,
+          "width": 0.06207948178052902,
+          "x": 0.41021251678466797,
+          "y": 0.31358279287815094
+        },
+        {
+          "confidence": 0.7298731803894043,
+          "height": 0.12355609238147736,
+          "width": 0.06692621856927872,
+          "x": 0.8224554657936096,
+          "y": 0.2959240525960922
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.53466796875,
+          "height": 0.484375,
+          "width": 0.56494140625,
+          "x": 0.38671875,
+          "y": 0.17822265625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058469-john-s71.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1300,
+      "keyframe_index": 1,
+      "local_ms": 234,
+      "source_ms": 8234,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06-K1.jpg",
+      "image_sha256": "sha256:a95f0d028583ce8ee95754eb85bc93894090b6d5ab457db852e2afb1a0188191",
+      "faces": [
+        {
+          "confidence": 0.8019142150878906,
+          "height": 0.1642788052558899,
+          "width": 0.08898435533046722,
+          "x": 0.5343028903007507,
+          "y": 0.1660318374633789
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.51171875,
+          "height": 0.418548583984375,
+          "width": 0.381103515625,
+          "x": 0.364501953125,
+          "y": 0.049224853515625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058469-john-s71.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1300,
+      "keyframe_index": 2,
+      "local_ms": 650,
+      "source_ms": 8650,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06-K2.jpg",
+      "image_sha256": "sha256:ff3ae023d013c3ec6222e0b8ad60afac0b02453532a362902a75a94a66c5c6d3",
+      "faces": [
+        {
+          "confidence": 0.8312147259712219,
+          "height": 0.16854286193847656,
+          "width": 0.0912940502166748,
+          "x": 0.5349540710449219,
+          "y": 0.1667216420173645
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5078125,
+          "height": 0.4207763671875,
+          "width": 0.374755859375,
+          "x": 0.367431640625,
+          "y": 0.0462646484375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058469-john-s71.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1300,
+      "keyframe_index": 3,
+      "local_ms": 1066,
+      "source_ms": 9066,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06-K3.jpg",
+      "image_sha256": "sha256:e8a955f7ee546f8c3c843faee52863666c75674d6a2bf5b33fb68e66413f7f5e",
+      "faces": [
+        {
+          "confidence": 0.8498046398162842,
+          "height": 0.1765279322862625,
+          "width": 0.09561929851770401,
+          "x": 0.5306147336959839,
+          "y": 0.16603432595729828
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.51318359375,
+          "height": 0.415924072265625,
+          "width": 0.3662109375,
+          "x": 0.37841796875,
+          "y": 0.047698974609375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058473-oh-god-s1633.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1080,
+      "keyframe_index": 1,
+      "local_ms": 194,
+      "source_ms": 694,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07-K1.jpg",
+      "image_sha256": "sha256:1f9493d12d1c6aac9ec996a9406c1e61cc1c51bfb79bbbe11bb9bdcf359ee624",
+      "faces": [
+        {
+          "confidence": 0.7625896334648132,
+          "height": 0.061262547969818115,
+          "width": 0.033183880150318146,
+          "x": 0.2805463969707489,
+          "y": 0.12415939569473267
+        },
+        {
+          "confidence": 0.7065886855125427,
+          "height": 0.06211541220545769,
+          "width": 0.03364584967494011,
+          "x": 0.4141998291015625,
+          "y": 0.13083751872181892
+        },
+        {
+          "confidence": 0.684831440448761,
+          "height": 0.054431747645139694,
+          "width": 0.029483862221240997,
+          "x": 0.15186305344104767,
+          "y": 0.0913279540836811
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58349609375,
+          "height": 0.355712890625,
+          "width": 0.593048095703125,
+          "x": 0.043182373046875,
+          "y": 0
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058473-oh-god-s1633.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1080,
+      "keyframe_index": 2,
+      "local_ms": 540,
+      "source_ms": 1040,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07-K2.jpg",
+      "image_sha256": "sha256:c70aeb1c3a9b1c8b595e0ebfe85f2ffbcda1f67e08574d80390aa086860f3b1c",
+      "faces": [
+        {
+          "confidence": 0.7325442433357239,
+          "height": 0.06251107156276703,
+          "width": 0.033860161900520325,
+          "x": 0.3977802097797394,
+          "y": 0.14857693016529083
+        },
+        {
+          "confidence": 0.6568077802658081,
+          "height": 0.054208844900131226,
+          "width": 0.029363123700022697,
+          "x": 0.16200532019138336,
+          "y": 0.11353620886802673
+        },
+        {
+          "confidence": 0.6448034644126892,
+          "height": 0.062031086534261703,
+          "width": 0.03360017016530037,
+          "x": 0.2729407548904419,
+          "y": 0.14462179318070412
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.58349609375,
+          "height": 0.37353515625,
+          "width": 0.566436767578125,
+          "x": 0.058074951171875,
+          "y": 0
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "source_asset_id": "footage/a-beautiful-mind/1058473-oh-god-s1633.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 1080,
+      "keyframe_index": 3,
+      "local_ms": 885,
+      "source_ms": 1385,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07-K3.jpg",
+      "image_sha256": "sha256:6b5c659b6091e98ed8ee0c5ef5ee8deaa421b6ff63ff3e32e34bc2a5c5ac59ca",
+      "faces": [
+        {
+          "confidence": 0.706243097782135,
+          "height": 0.05703159421682358,
+          "width": 0.030892113223671913,
+          "x": 0.2647218108177185,
+          "y": 0.16043797880411148
+        },
+        {
+          "confidence": 0.7029513716697693,
+          "height": 0.05617044121026993,
+          "width": 0.030425656586885452,
+          "x": 0.1608128398656845,
+          "y": 0.12934144586324692
+        },
+        {
+          "confidence": 0.6329571604728699,
+          "height": 0.05915079265832901,
+          "width": 0.03204001113772392,
+          "x": 0.3879948556423187,
+          "y": 0.1629774197936058
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.57568359375,
+          "height": 0.3825225830078125,
+          "width": 0.563873291015625,
+          "x": 0.054290771484375,
+          "y": 0.0022430419921875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058453-i-dont-know-s162.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 1,
+      "local_ms": 581,
+      "source_ms": 1401,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-K1.jpg",
+      "image_sha256": "sha256:95cafb1763532d69e38417520b02ee77dbfd685f1007aea2ff05ee0af5115b86",
+      "faces": [
+        {
+          "confidence": 0.857241690158844,
+          "height": 0.15525712072849274,
+          "width": 0.08409760892391205,
+          "x": 0.5162637829780579,
+          "y": 0.20460925996303558
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5078125,
+          "height": 0.46588134765625,
+          "width": 0.356201171875,
+          "x": 0.383056640625,
+          "y": 0.06243896484375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058453-i-dont-know-s162.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 2,
+      "local_ms": 1615,
+      "source_ms": 2435,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-K2.jpg",
+      "image_sha256": "sha256:f625666404b064bc65b9a2c95dd11f88a6644cab722ca0c95aa41a1ebcb715ab",
+      "faces": [
+        {
+          "confidence": 0.8094896078109741,
+          "height": 0.15086114406585693,
+          "width": 0.08171644806861877,
+          "x": 0.4373989403247833,
+          "y": 0.1933271884918213
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.51806640625,
+          "height": 0.506103515625,
+          "width": 0.35791015625,
+          "x": 0.3310546875,
+          "y": 0.076904296875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058453-i-dont-know-s162.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 3,
+      "local_ms": 2648,
+      "source_ms": 3468,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-K3.jpg",
+      "image_sha256": "sha256:bc7c1f174843d477896cdcaa602cd9d167a4920cd939c58cd44a6053c983054a",
+      "faces": [
+        {
+          "confidence": 0.8247277140617371,
+          "height": 0.1498870849609375,
+          "width": 0.08118883520364761,
+          "x": 0.43756383657455444,
+          "y": 0.1914747953414917
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.51220703125,
+          "height": 0.5301513671875,
+          "width": 0.357666015625,
+          "x": 0.330322265625,
+          "y": 0.0733642578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058452-rosen-said-call-you-try-and-kill-me-anything.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 1,
+      "local_ms": 581,
+      "source_ms": 1001,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-K1.jpg",
+      "image_sha256": "sha256:d7953d0f6f0650143f67f0b167b947c540b70927b822bb70dadf155b92d12f8a",
+      "faces": [
+        {
+          "confidence": 0.8869166374206543,
+          "height": 0.2295101135969162,
+          "width": 0.12431798130273819,
+          "x": 0.38443073630332947,
+          "y": 0.20149965584278107
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5224609375,
+          "height": 0.55682373046875,
+          "width": 0.3369140625,
+          "x": 0.29296875,
+          "y": 0.08624267578125
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058452-rosen-said-call-you-try-and-kill-me-anything.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 2,
+      "local_ms": 1615,
+      "source_ms": 2035,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-K2.jpg",
+      "image_sha256": "sha256:d7ac80879cbb91aedaa72c90b3c8eb6e6dffe3fc71f31e40d7546a3634959525",
+      "faces": [
+        {
+          "confidence": 0.8270925283432007,
+          "height": 0.22903697192668915,
+          "width": 0.1240616962313652,
+          "x": 0.3837573230266571,
+          "y": 0.18825091421604156
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52099609375,
+          "height": 0.66107177734375,
+          "width": 0.335693359375,
+          "x": 0.297119140625,
+          "y": 0.05914306640625
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058452-rosen-said-call-you-try-and-kill-me-anything.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3230,
+      "keyframe_index": 3,
+      "local_ms": 2648,
+      "source_ms": 3068,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-K3.jpg",
+      "image_sha256": "sha256:79c8c7af3cd407da1e0669fd6d32a7e0863f97461c0e2fbe167ec25e0a53126d",
+      "faces": [
+        {
+          "confidence": 0.8713651895523071,
+          "height": 0.2324615865945816,
+          "width": 0.12591668963432312,
+          "x": 0.38768109679222107,
+          "y": 0.1916397660970688
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.52197265625,
+          "height": 0.53759765625,
+          "width": 0.33544921875,
+          "x": 0.296875,
+          "y": 0.0810546875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058477-help-me-somebody.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3232,
+      "keyframe_index": 1,
+      "local_ms": 581,
+      "source_ms": 11501,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03-K1.jpg",
+      "image_sha256": "sha256:45298ebccde32755c4c5b2fa75a8c9e2a83a106bdaebc42373ff5560851e3381",
+      "faces": [],
+      "saliency": [
+        {
+          "confidence": 0.48876953125,
+          "height": 0.823760986328125,
+          "width": 0.47314453125,
+          "x": 0.21923828125,
+          "y": 0.038543701171875
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058477-help-me-somebody.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3232,
+      "keyframe_index": 2,
+      "local_ms": 1616,
+      "source_ms": 12536,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03-K2.jpg",
+      "image_sha256": "sha256:1bdf47bf51557b224412013a4ec52058704a21690fc1591894f44d1f3df39821",
+      "faces": [
+        {
+          "confidence": 0.6159501075744629,
+          "height": 0.3004760146141052,
+          "width": 0.16275784373283386,
+          "x": 0.29376137256622314,
+          "y": 0.20871514081954956
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.54150390625,
+          "height": 0.59869384765625,
+          "width": 0.404541015625,
+          "x": 0.192626953125,
+          "y": 0.10150146484375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "source_asset_id": "footage/a-beautiful-mind/1058477-help-me-somebody.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "shot_duration_ms": 3232,
+      "keyframe_index": 3,
+      "local_ms": 2650,
+      "source_ms": 13570,
+      "image_path": "audit/focus-observations/a-beautiful-mind/SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03-K3.jpg",
+      "image_sha256": "sha256:8642f9ab86c6649c4aa2a353ef4f21220887390bc208cc69a0bc5fa8bef0ce0e",
+      "faces": [
+        {
+          "confidence": 0.8244315981864929,
+          "height": 0.18434345722198486,
+          "width": 0.09985270351171494,
+          "x": 0.359934002161026,
+          "y": 0.23520469665527344
+        },
+        {
+          "confidence": 0.8085843324661255,
+          "height": 0.19475355744361877,
+          "width": 0.1054915115237236,
+          "x": 0.455048143863678,
+          "y": 0.22940006852149963
+        },
+        {
+          "confidence": 0.6912186145782471,
+          "height": 0.1543591022491455,
+          "width": 0.08361117541790009,
+          "x": 0.7609928846359253,
+          "y": 0.3113895654678345
+        }
+      ],
+      "saliency": [
+        {
+          "confidence": 0.5810546875,
+          "height": 0.423095703125,
+          "width": 0.711181640625,
+          "x": 0.254150390625,
+          "y": 0.113037109375
+        }
+      ],
+      "observation_provider": "apple_vision_local"
+    }
+  ]
+}

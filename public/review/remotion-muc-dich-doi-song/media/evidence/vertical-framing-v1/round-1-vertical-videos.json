@@ -1,0 +1,2387 @@
+[
+  {
+    "compositionId": "SoulObservableVerticalR1",
+    "variantId": "soul-vertical-r1",
+    "lockedPlanFingerprint": "sha256:56960142e83cfae65951986dc3f304359cbf2d3f2c2aaea310b15cb207846867",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-8da7802ff3e275ff66e0",
+        "startMs": 0,
+        "endMs": 4440,
+        "sourceInMs": 3500,
+        "sourceOutMs": 7940,
+        "source": "footage/soul/SRC18-your-spark-isnt-purpose.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "push_in",
+        "semanticRole": "inward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:f48fd980ebe280f2486de29a181f8c356005fa94e22290f1ca708458101d939f",
+            "sha256:45e22deba9c8e7077a521fe6520a97a2c6fff372174a2459508a35b039cb8168",
+            "sha256:d0a994d42be42362a7d105d4ea01edfcd38856eeb574440b2f7a39f9a4528e3c"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-8da7802ff3e275ff66e0",
+        "startMs": 4440,
+        "endMs": 8880,
+        "sourceInMs": 1000,
+        "sourceOutMs": 5440,
+        "source": "footage/soul/SRC45-hey-dorothea.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "outward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:8d4d182025d32797183a62c48891673ab7db6ee0f4f8d2d9f5ae417dd8658c5d",
+            "sha256:b80ff4357f5d3e5244ee83c22badfd6653444c5333fd4c81bba48a75488fb544",
+            "sha256:6fbaa9a01ffdd4ca2a7dd5fecaefc14e35f470b62a723f9c7d2db02dcf1e60b1"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VSD-955e40d3c1476bdcf9fe",
+        "startMs": 8880,
+        "endMs": 14860,
+        "sourceInMs": 920,
+        "sourceOutMs": 6900,
+        "source": "footage/soul/SRC33-its-uh.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:5683976f6e2e92f5b72744bc4d5ea33b8af0936897427c794bf9a0ea80662b37",
+            "sha256:9bdc9b44fa02c232141660c86d172f24c89060e2e4c68f19c8880ce19dd4e38e",
+            "sha256:958a8e87f057fb5c400a6c4ffe6a049d166263e050709579e6d83fcffab6be04"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VSD-f2ff31b3023af1ed20ee",
+        "startMs": 14860,
+        "endMs": 17070,
+        "sourceInMs": 9920,
+        "sourceOutMs": 12130,
+        "source": "footage/soul/SRC41-ooh-just-turn-a-little-bit-right-there-like-this.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pan_left",
+        "semanticRole": "action",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:dc95bfaa1f783de7e60d86097a5f62ebf2f802e21b56a9979fd8c34c3725066d",
+            "sha256:cb18fba2f63137933edd838d87e59ea52b07728536626c9b5bab1a632fb038e9",
+            "sha256:35ef060ccc23c627204a7413d2dd798128113240667c2627e0c760e8750b6ad7"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VSD-f2ff31b3023af1ed20ee",
+        "startMs": 17070,
+        "endMs": 19280,
+        "sourceInMs": 1420,
+        "sourceOutMs": 3630,
+        "source": "footage/soul/SRC38-suit-youre-the-boss.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "action",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:cdd0c2fa0e6325a3ffb5c74493230c163aa7dbc74c2c708dab9de0785c662836",
+            "sha256:5665a20e7208268dd59d04a46a4a4cb21adaf26a1a743e1c91a65124c27d1ebd",
+            "sha256:45da3e8dcfc11eae181e180161f6013d0cb5522751f58299429a74d281f16f48"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VSD-93706cc388e56e0989f5",
+        "startMs": 19280,
+        "endMs": 23340,
+        "sourceInMs": 9420,
+        "sourceOutMs": 13480,
+        "source": "footage/soul/SRC47-so-what-do-think-youll-do.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:1717b61f095a6a1da4d4bfc6dec6db367f33f469966155082be204332eabd28b",
+            "sha256:f3df7ddeac93221234d0d7afbe037e80f3ca3dec2efecee458cb44924db0a1e3",
+            "sha256:7ad7ea6a7d3addcd3a1edad49fd5bd9075b24f368d7000788c783abdea40fe15"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-c59f869b5a65b127ecd8",
+        "startMs": 23340,
+        "endMs": 28920,
+        "sourceInMs": 6500,
+        "sourceOutMs": 12080,
+        "source": "footage/soul/SRC09-truth-ive-always-worried.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "condition",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ebef9eca2202d3d078d3b2a727048a77a9c14e2eb74035e2a8d510f6a2ce4370",
+            "sha256:e2965e35e507f3a150253c5a5ebdf1b0b6bc749739b43a5a695121fe445bfcfd",
+            "sha256:788e05d9b37651a61d35140519dfe6515d35bca331279ddc50111cb6fb63cf5c"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-c59f869b5a65b127ecd8",
+        "startMs": 28920,
+        "endMs": 35500,
+        "sourceInMs": 3400,
+        "sourceOutMs": 9980,
+        "source": "footage/soul/SRC12-welcome-the-quartet-teach.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "dependent_result",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:04a8f29add2464af28a93e99488f545a386aaee3849b23d49a7639246e0da7d7",
+            "sha256:c81ec746855b28edf07c25916d48b684bfd16fa8ba003c697eec31af8f8a362b",
+            "sha256:74854c463b3689bc60074f46beaaedf7c706e3ca773f2b0b9b0509a1e530a1c0"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VSD-e4750373237608e8ba00",
+        "startMs": 35500,
+        "endMs": 38580,
+        "sourceInMs": 1000,
+        "sourceOutMs": 4080,
+        "source": "footage/soul/SRC23-i-am-happy-accept-very-special-award-i-requested.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "referent",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:984a47b835ba5de444b0bbcc727d7718d991e5324f80c3152d185a412fe89109",
+            "sha256:46263c2a748eb2ae55f51b037c5526460a73d6546789bab78f4f2bdee16bb8c0",
+            "sha256:878173d9d731e6a81adbe025d513aa06d4bf0e91b28e02956c03f23adf492749"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 38580,
+        "endMs": 40780,
+        "sourceInMs": 3220,
+        "sourceOutMs": 5420,
+        "source": "footage/soul/SRC15-lost-souls-are-obsessed-by-something-disconnects-them-from-life.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "cause",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:b5968b4381ede3c81ea0d88970fa962df9580987eac00037934b83ec139b31f0",
+            "sha256:ddeed8ee04ec658479d252d2c78fa2f37eb11b40eac957dad0c3237b385feaa0",
+            "sha256:86ffdfb197cb22e6e59a9cc1adc90559a8637dadd8dd1992449666fc464d2842"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 40780,
+        "endMs": 42580,
+        "sourceInMs": 2220,
+        "sourceOutMs": 4020,
+        "source": "footage/soul/SRC44-okay-come-on-youre-doing-great.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:dcc1e772f9c91a32ca29fde456b6a755435c9d822ad09dacc42b23ed95f9adda",
+            "sha256:febb2e377c6916660a4b30fc75fbb8d5a11b9e320ad0ea7735e6d65feb9693bb",
+            "sha256:7d0aa63ca4f62d5a4a1ca6a338bc1f6a2ea455b372c711047ab54b93d0e34bfd"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 42580,
+        "endMs": 44180,
+        "sourceInMs": 920,
+        "sourceOutMs": 2520,
+        "source": "footage/soul/SRC43-aah-s203.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:718210ae16d20e280b6fe7f0eccf674031482a1ff4b7024abd53dd292f758370",
+            "sha256:e74e032231e7d4ece59e7ae4ceff6c8a8a72ed132c6a06e8b73931fb456347b2",
+            "sha256:8a251cd7682f5fd0a8253afa0677d3d7d49d56bdba825e71aba79a268e10eace"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 44180,
+        "endMs": 45630,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2870,
+        "source": "footage/soul/SRC37-man-would-be-hard-even-i-wasnt-wearing-a-hospital-gown.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:3aa4faab8e2db427e062af0218fd9893785916433467299d5fe3baa1123c716d",
+            "sha256:4cab9dca3c853946e227673215b82d1e1d9fc8179d0c46eb8e0b9d977b9ea9f6",
+            "sha256:438f636e8bea42769b1e2d249311cdebfe848bbcc3bae4984107cd4d5e2f3844"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 45630,
+        "endMs": 46980,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2770,
+        "source": "footage/soul/SRC28-but-joe.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6408bdbc573599638f897ba78500c1650745b892c41919c51a79a1b251b633b1",
+            "sha256:93f48a412a2b4b71bfb45497933b17d11b469ca2aa98a64aa6642cbebc9feb53",
+            "sha256:c4b42a4b1d4db9af93fa0e959fec392bb5797a94f0506c39365e6fa94ca89378"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 46980,
+        "endMs": 48430,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2870,
+        "source": "footage/soul/SRC05-you-know-lost-souls-are-not-different.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:51f3126ac870872a2498ff8736521f06693b2f645d137a5a9572f49714162920",
+            "sha256:4dd684f5b870c5a6695d3448f811c2699df5ebbc24eedb6e01d4d9e3d538df48",
+            "sha256:edc9d15cda8cab5bcd6897406e16f50111d28cc91c07aaadeeac2e4385d75c6c"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-26d8d4dfa18693e623b5",
+        "startMs": 48430,
+        "endMs": 49960,
+        "sourceInMs": 6920,
+        "sourceOutMs": 8450,
+        "source": "footage/soul/SRC10-i-gonna-play-with-dorothea-williams-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:1867618a4ff77153ff1c9826927c11af785e2be9e1e51bf24fce2b98806ef148",
+            "sha256:11ec06c0e545ae3a6761ac2d11d81d3f239715809aeb6df2174c679ce8e8bb12",
+            "sha256:35345e321e1e780b6b0c2742a3e46b22c36283f0bdee31bbe59adbbdf46d80c0"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-6d0409b1ce2682c02d5b",
+        "startMs": 49960,
+        "endMs": 54080,
+        "sourceInMs": 1420,
+        "sourceOutMs": 5540,
+        "source": "footage/soul/SRC31-here-i-quit-i-think-jazz-pointless.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "choice_or_behavior",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:542df02eab8cd32749590543ca573303fd7641484559c4a16caa3c3a03468969",
+            "sha256:9e257bbe0117db63127823a530299895f6676bfafa69e0565eef0eca9ae76409",
+            "sha256:45bceff9065e35909b097beea84f6b22522e0dae3a6fad1399c57d9d49f92759"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-6d0409b1ce2682c02d5b",
+        "startMs": 54080,
+        "endMs": 56866,
+        "sourceInMs": 2920,
+        "sourceOutMs": 5706,
+        "source": "footage/soul/SRC08-you-cant-eat-dreams-breakfast-joey.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "human_consequence",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:89e89e0fb74b86a7e319e22b89ac06e7e9f2d2e05951dfcb916724c21581ddc0",
+            "sha256:cf2aab6fb5626807a3723f6c7e1d77c2c7a848f78eec51493436f2f7adda494b",
+            "sha256:fed7818f6a08ff39f0d445a35cf852f261b06d69fdc4c25bb9543f34069cba3d"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-6d0409b1ce2682c02d5b",
+        "startMs": 56866,
+        "endMs": 59652,
+        "sourceInMs": 2220,
+        "sourceOutMs": 5006,
+        "source": "footage/soul/SRC17-theres-no-point-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "value_verdict",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:c9e23c3b82dbc9d34a1dc8dd657c13d469cd2185d2b011ca06901caa43869309",
+            "sha256:da849738e1795dc7f9d8d6811d2f19693df541b22019338f7d64c2f126187dd8",
+            "sha256:7b1d6fc608b08789ff435d62def447c71cbf9add667b6cc899bc07e2b70ce42e"
+          ]
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 3640,
+        "text": "Điều quan trọng nhất mà bạn"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 3640,
+        "endMs": 4980,
+        "text": "cần nhận thức là:"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 5140,
+        "endMs": 7500,
+        "text": "đời bạn có một mục đích bên trong và một"
+      },
+      {
+        "id": "SUB004",
+        "startMs": 7500,
+        "endMs": 8680,
+        "text": "mục đích bên ngoài."
+      },
+      {
+        "id": "SUB005",
+        "startMs": 8880,
+        "endMs": 11080,
+        "text": "Mục đích bên trong là mục đích chính, và"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 11080,
+        "endMs": 13280,
+        "text": "mục đích này có liên quan đến trạng thái"
+      },
+      {
+        "id": "SUB007",
+        "startMs": 13280,
+        "endMs": 14860,
+        "text": "an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB008",
+        "startMs": 15360,
+        "endMs": 17140,
+        "text": "Mục đích bên ngoài dính tới những việc bạn"
+      },
+      {
+        "id": "SUB009",
+        "startMs": 17140,
+        "endMs": 18820,
+        "text": "làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB010",
+        "startMs": 19280,
+        "endMs": 21380,
+        "text": "Mục đích bên trong của bạn là tỉnh thức."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 21540,
+        "endMs": 22900,
+        "text": "Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB012",
+        "startMs": 23340,
+        "endMs": 25320,
+        "text": "Mục đích bên ngoài của bạn có thể thay đổi"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 25320,
+        "endMs": 27220,
+        "text": "theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB014",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB015",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB017",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB018",
+        "startMs": 35500,
+        "endMs": 38020,
+        "text": "Đó là cơ sở của những thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40640,
+        "text": "Nếu những gì bạn làm ở bên ngoài không có"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40640,
+        "endMs": 42640,
+        "text": "sự hòa điệu với nhịp sống của mục đích bên"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42640,
+        "endMs": 44880,
+        "text": "trong, thì muốn đạt được một điều gì đó,"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44880,
+        "endMs": 47200,
+        "text": "bạn sẽ phải mất rất nhiều nỗ lực, phải đấu"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 47200,
+        "endMs": 49900,
+        "text": "tranh hay dùng đến âm mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB024",
+        "startMs": 49960,
+        "endMs": 51860,
+        "text": "Nhưng làm như thế thì bạn không có được"
+      },
+      {
+        "id": "SUB025",
+        "startMs": 51860,
+        "endMs": 54080,
+        "text": "niềm vui khi công việc được hoàn tất."
+      },
+      {
+        "id": "SUB026",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 56620,
+        "endMs": 58560,
+        "text": "lại khổ đau cho bạn và cho những"
+      },
+      {
+        "id": "SUB028",
+        "startMs": 58560,
+        "endMs": 59160,
+        "text": "người chung quanh."
+      }
+    ]
+  },
+  {
+    "compositionId": "ForrestObservableVerticalR1",
+    "variantId": "forrest-gump-vertical-r1",
+    "lockedPlanFingerprint": "sha256:b8f7a0668a286a1c0bd7b352701a22cdad58899311073bb57b670f7d62b59873",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-6ba98dae23d29a835db9",
+        "startMs": 0,
+        "endMs": 4440,
+        "sourceInMs": 920,
+        "sourceOutMs": 5360,
+        "source": "footage/forrest-gump/156918-forrest-he-never-actually-said-so-i-think-made-peace-with-god.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "push_in",
+        "semanticRole": "inward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:da917d2926552f6c4f8e04ad43c60fc9a340e7d697bb5d6700d93d15a8b5be1d",
+            "sha256:452691ab9777efa14922cf0cffd3a58a0bf37850d26c1c925ab3939ad368e5ca",
+            "sha256:32e6cd39612da41bcdb1746c70ec82ce2d91344b2aaf18c436177dc653b00716"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-6ba98dae23d29a835db9",
+        "startMs": 4440,
+        "endMs": 8880,
+        "sourceInMs": 11420,
+        "sourceOutMs": 15860,
+        "source": "footage/forrest-gump/156907-for-some-reason-ping-pong-came-very-natural-me.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pan_left",
+        "semanticRole": "outward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6105772437cc225b6db14db9d9b760d2527ca79d062e6c4bcb4d96e09ce423ea",
+            "sha256:93292b0531c25dbf392e21688f47a21e2c0687bb0b335ceb6b00ff2e751b492e",
+            "sha256:d383d9c7cb247637277788aa2fda3b238751c7ab2a0f5443ef5074670854bb51"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VSD-888cfcd8d265eb2ffbc8",
+        "startMs": 8880,
+        "endMs": 14860,
+        "sourceInMs": 8000,
+        "sourceOutMs": 13980,
+        "source": "footage/forrest-gump/156878-forrest-you-know-its-funny-what-a-young-man-recollects.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:118cfdb303ca62496ecadfc0fd5bb9e10ff66699cf2229c979224b00545ada06",
+            "sha256:cc646fa2ebda65ee07a046b4a7c5cd42ae480517b149de4593f6b88247e3766a",
+            "sha256:91f319aaf48af96fcf6ea7452192502cb7cd44eefc269b5b827bdf0d0900dc9c"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VSD-faaee1f9e040dda537c7",
+        "startMs": 14860,
+        "endMs": 19280,
+        "sourceInMs": 500,
+        "sourceOutMs": 4920,
+        "source": "footage/forrest-gump/156871-and-cause-i-a-gazillionaire-i-liked-doing-it-much.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pan_right",
+        "semanticRole": "action",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:3d02d8d954b121770094a3cf543057ecf66aedcab23b7ed03c2ee216e353d444",
+            "sha256:11d2dae33a562452319c78b2d4a07c20cdf2c4620ad0ac9ee3791d1021f0e02e",
+            "sha256:47bc807a8c376a990c129077559cad0fffd5866f284c17e05449b52374e39670"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VSD-b133e5d463017892a61b",
+        "startMs": 19280,
+        "endMs": 23340,
+        "sourceInMs": 4420,
+        "sourceOutMs": 8480,
+        "source": "footage/forrest-gump/156865-hey-forrest-dont.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6b64d8db4247ee8e76bfe27b00d1f7ccf9c2df195a72436810bd943d8b2f0447",
+            "sha256:9232186e5b0fd562e5150402bd54b20b989403ff174e0a3cf19e06143dccddc0",
+            "sha256:fcbda1a35811ea060ed8e09197fbb52d45119d03fa6a5262806c945ea8cc02e7"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-f2ea7175de654c7af9cf",
+        "startMs": 23340,
+        "endMs": 28920,
+        "sourceInMs": 3000,
+        "sourceOutMs": 8580,
+        "source": "footage/forrest-gump/156890-forrest-now-wouldnt-believe-it-i-told-you.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "condition",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:49915d6f6c37067eb4e2db992f5d7b09b9c319f108f2c3391e3d82487b9f6dd1",
+            "sha256:5e5ed5cc022c7dd5e826a763f9f1891292ddc4ad35d86fb0a6bc8c1cf09dccde",
+            "sha256:3da4de5717b439c52de74e8e911002484788119a7c23178d8b32612129db692c"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-f2ea7175de654c7af9cf",
+        "startMs": 28920,
+        "endMs": 35500,
+        "sourceInMs": 500,
+        "sourceOutMs": 7080,
+        "source": "footage/forrest-gump/156894-have-given-any-thought-your-future-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "dependent_result",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:d60e4f3f835c5c5571534c16e0f79e5cfc999c6236c19f4e07f4001fb9912a33",
+            "sha256:203bf61ebcd050d29e77094bee43e0937a7d9e04a1f04fcefedfb45a67ef17e3",
+            "sha256:4a5cf96061b687094bfd2f856cc73bd4dae2fd7e3d76b60248af3cc4ed1c1cf1"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VSD-a52e4d0fe95de57cf298",
+        "startMs": 35500,
+        "endMs": 38580,
+        "sourceInMs": 420,
+        "sourceOutMs": 3500,
+        "source": "footage/forrest-gump/15186-are-enjoying-in-our-nations-capital.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "referent",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ff263519e553e04ce126318851963391690c4f69f34adeae0aabdc02127f36ee",
+            "sha256:2fce741a2b59fc80891ab008b13d680bdbaaf887c2cc9758462f61fa835b10a2",
+            "sha256:17ebac8a880969c3ac3ff64d9543f1e8a9d72fd2f53fedb5585da7882440dc20"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-b2bbc049d609bd8b5251",
+        "startMs": 38580,
+        "endMs": 41580,
+        "sourceInMs": 1000,
+        "sourceOutMs": 4000,
+        "source": "footage/forrest-gump/15146-and-we-always-looking-a-guy-named-charlie.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "cause",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:debf1d9b22175fc81545a2119e730bbfce5b5bf330578d7b6f7d53749c93e661",
+            "sha256:22337a266bfc4f64a3f5265618133e0f54ed01a83da042324e021adb4d8a375a",
+            "sha256:d28d3accf5927274a641231c0d009af68b2af890a7dda0ee2f649d52d3d1dd72"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-b2bbc049d609bd8b5251",
+        "startMs": 41580,
+        "endMs": 44580,
+        "sourceInMs": 3000,
+        "sourceOutMs": 6000,
+        "source": "footage/forrest-gump/156845-done-drill-sergeant-gump.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:527cdbc799cce2defe0c28e9723181a988451ecb8874477f8fb249fc6fdd0efd",
+            "sha256:31bd1c7fce475b6f1ed201e5f017b1953eebb2e159f5bd4bf967daf84f366fb8",
+            "sha256:ecd88e15d4914cb78afa3219f9bc952ce17e8b7bd5c4b19f105c0e53757647d9"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-b2bbc049d609bd8b5251",
+        "startMs": 44580,
+        "endMs": 49960,
+        "sourceInMs": 1500,
+        "sourceOutMs": 6880,
+        "source": "footage/forrest-gump/156881-get-hands-down-do-not-salute-me.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:78ba6ab8824d458bf9ff56bb2f198895b5b3eb153e768c2eb553b009ccb07a87",
+            "sha256:da16237c069ba01bd99472dcd616e17bdc35357c4dc49804767ea6787e27e8df",
+            "sha256:70524093bc14c83a4d0da2ce73db1412142864cd96bf05f618f10461461aa6f6"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-d63e53f9d5a626f3fa70",
+        "startMs": 49960,
+        "endMs": 53160,
+        "sourceInMs": 920,
+        "sourceOutMs": 4120,
+        "source": "footage/forrest-gump/156892-her-dream-come-true-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "choice_or_behavior",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:28daa0fda56c500c88fba8984a88040b762c76a3972204a90426b2c413e98e28",
+            "sha256:97ccf6455e6e27ce707a7344c7418cb215453e5d8564ea97d6fc817115cc3c6d",
+            "sha256:13799b50db43335740df8895d66015dd6bd5c2bb911a4eba0c85d285c5df0532"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-d63e53f9d5a626f3fa70",
+        "startMs": 53160,
+        "endMs": 56160,
+        "sourceInMs": 5420,
+        "sourceOutMs": 8420,
+        "source": "footage/forrest-gump/372399-forrest-forrest.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "human_consequence",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:fc8366267a3f8ff499bd2ebe5664d2ea38539aa72e0f49f6298d4ac92806daa3",
+            "sha256:c1ae6f5da814d4f5665415797242743f1dc2dd2f96fa9c7309f19c2ab03876e8",
+            "sha256:14df981d000a37199b18d9c388c9c7d40d1f03d0445c86654e9a05b9994914dd"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-d63e53f9d5a626f3fa70",
+        "startMs": 56160,
+        "endMs": 59652,
+        "sourceInMs": 920,
+        "sourceOutMs": 4412,
+        "source": "footage/forrest-gump/156841-always-said-dying-a-part-of-life.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "value_verdict",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:688ea8c1aa3140e64798659b569dbca016e63506484a837c39071a2f5ab60ad7",
+            "sha256:52185e8ea8813c718536103629cd369f7ad9a2aec393902cbc6dcea2948ebd2a",
+            "sha256:14662dfa995876bb0c14c8d98e5730c34a606bdb43039b4e33b0599f9b7c89c5"
+          ]
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 3640,
+        "text": "Điều quan trọng nhất mà bạn"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 3640,
+        "endMs": 4980,
+        "text": "cần nhận thức là:"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 5140,
+        "endMs": 7500,
+        "text": "đời bạn có một mục đích bên trong và một"
+      },
+      {
+        "id": "SUB004",
+        "startMs": 7500,
+        "endMs": 8680,
+        "text": "mục đích bên ngoài."
+      },
+      {
+        "id": "SUB005",
+        "startMs": 8880,
+        "endMs": 11080,
+        "text": "Mục đích bên trong là mục đích chính, và"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 11080,
+        "endMs": 13280,
+        "text": "mục đích này có liên quan đến trạng thái"
+      },
+      {
+        "id": "SUB007",
+        "startMs": 13280,
+        "endMs": 14860,
+        "text": "an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB008",
+        "startMs": 15360,
+        "endMs": 17140,
+        "text": "Mục đích bên ngoài dính tới những việc bạn"
+      },
+      {
+        "id": "SUB009",
+        "startMs": 17140,
+        "endMs": 18820,
+        "text": "làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB010",
+        "startMs": 19280,
+        "endMs": 21380,
+        "text": "Mục đích bên trong của bạn là tỉnh thức."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 21540,
+        "endMs": 22900,
+        "text": "Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB012",
+        "startMs": 23340,
+        "endMs": 25320,
+        "text": "Mục đích bên ngoài của bạn có thể thay đổi"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 25320,
+        "endMs": 27220,
+        "text": "theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB014",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB015",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB017",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB018",
+        "startMs": 35500,
+        "endMs": 38020,
+        "text": "Đó là cơ sở của những thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40640,
+        "text": "Nếu những gì bạn làm ở bên ngoài không có"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40640,
+        "endMs": 42640,
+        "text": "sự hòa điệu với nhịp sống của mục đích bên"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42640,
+        "endMs": 44880,
+        "text": "trong, thì muốn đạt được một điều gì đó,"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44880,
+        "endMs": 47200,
+        "text": "bạn sẽ phải mất rất nhiều nỗ lực, phải đấu"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 47200,
+        "endMs": 49900,
+        "text": "tranh hay dùng đến âm mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB024",
+        "startMs": 49960,
+        "endMs": 51860,
+        "text": "Nhưng làm như thế thì bạn không có được"
+      },
+      {
+        "id": "SUB025",
+        "startMs": 51860,
+        "endMs": 54080,
+        "text": "niềm vui khi công việc được hoàn tất."
+      },
+      {
+        "id": "SUB026",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 56620,
+        "endMs": 58560,
+        "text": "lại khổ đau cho bạn và cho những"
+      },
+      {
+        "id": "SUB028",
+        "startMs": 58560,
+        "endMs": 59160,
+        "text": "người chung quanh."
+      }
+    ]
+  },
+  {
+    "compositionId": "BeautifulMindObservableVerticalR1",
+    "variantId": "a-beautiful-mind-vertical-r1",
+    "lockedPlanFingerprint": "sha256:a05c4965adecefaa3c2e0d43ace6de4561b6a28f3639a2143e3118a3dcf42499",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-77f1d2b5b9c97c4d63ad",
+        "startMs": 0,
+        "endMs": 4440,
+        "sourceInMs": 3200,
+        "sourceOutMs": 7640,
+        "source": "footage/a-beautiful-mind/1058463-what-are-thinking-about-s27.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "push_in",
+        "semanticRole": "inward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:7159dd8037a9fffebc9518a95f9d043155ea1bf0491e57296b09716744be67f5",
+            "sha256:20b35a4fa009616b131bcd6b67eec5efdd3828de284323cc5383582eaf9ed66b",
+            "sha256:db1f9ec48ccd22585d959e04408c4fc1c981c5bbcb51294111fe68f89d01c042"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VSD-77f1d2b5b9c97c4d63ad",
+        "startMs": 4440,
+        "endMs": 8880,
+        "sourceInMs": 500,
+        "sourceOutMs": 4940,
+        "source": "footage/a-beautiful-mind/244710-this-a-group-playing-touch-football-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pan_left",
+        "semanticRole": "outward_pole",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:07d179ed216afa51b205b4cfa84a24ca65e7cd55e55a6353e6c86ae012a39790",
+            "sha256:01d090e8b3df85ed0e660b7c4c02a07af939f9b4255cf5fac27f9512d87b4da6",
+            "sha256:8435947286c4bbfb921862d35dc34da5c68afdd0c669a1033a33f60a4e28a0e0"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VSD-550af46e74c7204ad937",
+        "startMs": 8880,
+        "endMs": 14860,
+        "sourceInMs": 7800,
+        "sourceOutMs": 13780,
+        "source": "footage/a-beautiful-mind/1058462-you-could-try-leaving-the-house.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:b27e31e354d9043dfd9879049689cef522df43ddaea8442ccbee3934fdc2b9c5",
+            "sha256:603f667bb0099582ca569ea8c66f98f34a32d658026ff3df7c9a44fd5d813d67",
+            "sha256:dbfa9a52533ccdda1a2daf03f26ef3771ac897e496ae598ca0610a80d69443f9"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VSD-1d464e86f5374bedee11",
+        "startMs": 14860,
+        "endMs": 19280,
+        "sourceInMs": 8500,
+        "sourceOutMs": 12920,
+        "source": "footage/a-beautiful-mind/1058480-so-see-the-zeroes-of-the-riemann-zeta-function.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pan_right",
+        "semanticRole": "action",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:198acdc7df466ee258eba25c042c5d8163acef9896c30cfad2ea4bc1d005452c",
+            "sha256:3448816957d3076fb3dd51338a4d08f3d8a15dd30cc585e466789a433fbd46f5",
+            "sha256:50feec9566445df4b8630126ac4304ebef53f97e388225c65e0cd916bd3512af"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VSD-3a1025199dffd0b72e31",
+        "startMs": 19280,
+        "endMs": 23340,
+        "sourceInMs": 7000,
+        "sourceOutMs": 11060,
+        "source": "footage/a-beautiful-mind/1058450-this-s40.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "state",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:b3e054979239c5d4c72e2e2bf82980390e17a47ab7495484422a6a8d02262f07",
+            "sha256:d81a3dd0d3abf9bc048a9d5007658dedd1b375dfada4f9e71797833dd17c0a6a",
+            "sha256:8943fbde144818fa44a72e19afb369a1ed273e7f6bd132ad3d2a680eef48e4d4"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-8fccd6838c9cac5dbac0",
+        "startMs": 23340,
+        "endMs": 28920,
+        "sourceInMs": 14500,
+        "sourceOutMs": 20080,
+        "source": "footage/a-beautiful-mind/244697-you-want-know-whats-real-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "condition",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:be186f61c6bc1e4071417d64bd20a2e42573ece3f85d5667f7e683b26125be5c",
+            "sha256:843c4e10f304a2d1fb0665d110601dbb588bb358aed8a2bc29f47ef7b149af17",
+            "sha256:e573437eba637204569e334eb02d3435b93b964a036a02e650e8be4a841c28ba"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VSD-8fccd6838c9cac5dbac0",
+        "startMs": 28920,
+        "endMs": 35500,
+        "sourceInMs": 1200,
+        "sourceOutMs": 7780,
+        "source": "footage/a-beautiful-mind/367104-thank-sir-thank-you.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "dependent_result",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:44c1e733dbc7916f2cd732980400b1b10500233e3d3fb067b4119daf0271964b",
+            "sha256:fac7bb728852c542dde92a7f5d5de1831ea41ae0a45707e375fa709ec4ca372a",
+            "sha256:68c87cd5b706bdecb1b2c661635c4acf0f1b2e0d69826044f3a4c84cde533e49"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VSD-0bf6f26e96cde189603a",
+        "startMs": 35500,
+        "endMs": 38580,
+        "sourceInMs": 6000,
+        "sourceOutMs": 9080,
+        "source": "footage/a-beautiful-mind/244669-ive-always-believed-in-numbers-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "referent",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:bdbf59ade5e68381bcbf0a1e270ec872c3ee59cef87a8fec235557660d5dec2e",
+            "sha256:7b37f58c3dd95765153a296b39585117e96205742881e3fd329f952511fd96d4",
+            "sha256:228aafe2e1532ca544202f7a6ccc53f9204b1ceb0878105154cb9a648aadabf2"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 38580,
+        "endMs": 40580,
+        "sourceInMs": 2500,
+        "sourceOutMs": 4500,
+        "source": "footage/a-beautiful-mind/1058444-its-never-going-work-john.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "cause",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:16054c1b12a5571fe2ae0de60f41a6746855f1cb44afdc3b79e7c6d47c8ac00b",
+            "sha256:5a97a29ca8ccd62932ad3fe62e95fa66194a8c03210eabc51d4f09d32f292940",
+            "sha256:c194eaf9e6d045d84482b9a907c0836cb1a7b9cc9d5c24f57211b53dca3b93d4"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 40580,
+        "endMs": 42280,
+        "sourceInMs": 4500,
+        "sourceOutMs": 6200,
+        "source": "footage/a-beautiful-mind/244688-she-never-gets-old-s1.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:eeb9d46aec1b44225f98b34997e5748770ce433198ad4f4de28e7a935541d4f2",
+            "sha256:05f211f3316f372cc68446a5c711bb8acd69ace5680aad6d1f274e2003c4a444",
+            "sha256:9c1a08432b42dbe6aa47b548233d7a639b1df793ac7860a30f80c4cff48708fc"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 42280,
+        "endMs": 44280,
+        "sourceInMs": 5500,
+        "sourceOutMs": 7500,
+        "source": "footage/a-beautiful-mind/1058457-theres-a-storm-coming-s2.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:7f9f57c06335878d1b17ff68eb977011e593144c9227fcd7549a252e1bb6c54d",
+            "sha256:5daae03c67722376e1e734e74b9f23334680938f1bf92a862d521a0151956846",
+            "sha256:bfd3295cc606dec6ed83105ab8d58eaa279be510d5dd36eb5cd44ef5f1807dcd"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 44280,
+        "endMs": 45980,
+        "sourceInMs": 5500,
+        "sourceOutMs": 7200,
+        "source": "footage/a-beautiful-mind/1058468-you-see-the-nightmare-of-schizophrenia.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:f4601cbebf937584faa02da9a7da114b7883e0f5d7759b656da04916f69814ae",
+            "sha256:21de8d90e5ffe30c33fe16ef9ad752475191bacd4a03f3f33c154bea065b6406",
+            "sha256:1a32662d42950ff04ea17976254d5ca2a75f605079659aff07b52139550b7812"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 45980,
+        "endMs": 47580,
+        "sourceInMs": 5000,
+        "sourceOutMs": 6600,
+        "source": "footage/a-beautiful-mind/244682-but-i-still-see-things-are-not-here.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:f00813aa0dde885317202ef7ae46c597b3064e6c5e18de02425ee0d427d02375",
+            "sha256:66960466a3bed93125135706e816806fddade2a97b2eb1b1800ebb493450c368",
+            "sha256:8eab9945b63e0f3a167dd5b8258cea21457278fd6b8e068c9a488ee137fb323f"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 47580,
+        "endMs": 48880,
+        "sourceInMs": 8000,
+        "sourceOutMs": 9300,
+        "source": "footage/a-beautiful-mind/1058469-john-s71.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:a95f0d028583ce8ee95754eb85bc93894090b6d5ab457db852e2afb1a0188191",
+            "sha256:ff3ae023d013c3ec6222e0b8ad60afac0b02453532a362902a75a94a66c5c6d3",
+            "sha256:e8a955f7ee546f8c3c843faee52863666c75674d6a2bf5b33fb68e66413f7f5e"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VSD-6b5a3492c76f65f415c9",
+        "startMs": 48880,
+        "endMs": 49960,
+        "sourceInMs": 500,
+        "sourceOutMs": 1580,
+        "source": "footage/a-beautiful-mind/1058473-oh-god-s1633.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "effect",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:1f9493d12d1c6aac9ec996a9406c1e61cc1c51bfb79bbbe11bb9bdcf359ee624",
+            "sha256:c70aeb1c3a9b1c8b595e0ebfe85f2ffbcda1f67e08574d80390aa086860f3b1c",
+            "sha256:6b5c659b6091e98ed8ee0c5ef5ee8deaa421b6ff63ff3e32e34bc2a5c5ac59ca"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-41565d95ac9dfa316340",
+        "startMs": 49960,
+        "endMs": 53190,
+        "sourceInMs": 820,
+        "sourceOutMs": 4050,
+        "source": "footage/a-beautiful-mind/1058453-i-dont-know-s162.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "push_in",
+        "semanticRole": "choice_or_behavior",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:95cafb1763532d69e38417520b02ee77dbfd685f1007aea2ff05ee0af5115b86",
+            "sha256:f625666404b064bc65b9a2c95dd11f88a6644cab722ca0c95aa41a1ebcb715ab",
+            "sha256:bc7c1f174843d477896cdcaa602cd9d167a4920cd939c58cd44a6053c983054a"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-41565d95ac9dfa316340",
+        "startMs": 53190,
+        "endMs": 56420,
+        "sourceInMs": 420,
+        "sourceOutMs": 3650,
+        "source": "footage/a-beautiful-mind/1058452-rosen-said-call-you-try-and-kill-me-anything.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "human_consequence",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:d7953d0f6f0650143f67f0b167b947c540b70927b822bb70dadf155b92d12f8a",
+            "sha256:d7ac80879cbb91aedaa72c90b3c8eb6e6dffe3fc71f31e40d7546a3634959525",
+            "sha256:79c8c7af3cd407da1e0669fd6d32a7e0863f97461c0e2fbe167ec25e0a53126d"
+          ]
+        }
+      },
+      {
+        "id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VSD-41565d95ac9dfa316340",
+        "startMs": 56420,
+        "endMs": 59652,
+        "sourceInMs": 10920,
+        "sourceOutMs": 14152,
+        "source": "footage/a-beautiful-mind/1058477-help-me-somebody.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "pull_out",
+        "semanticRole": "value_verdict",
+        "verticalFrame": {
+          "strategy": "center_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:45298ebccde32755c4c5b2fa75a8c9e2a83a106bdaebc42373ff5560851e3381",
+            "sha256:1bdf47bf51557b224412013a4ec52058704a21690fc1591894f44d1f3df39821",
+            "sha256:8642f9ab86c6649c4aa2a353ef4f21220887390bc208cc69a0bc5fa8bef0ce0e"
+          ]
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 3640,
+        "text": "Điều quan trọng nhất mà bạn"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 3640,
+        "endMs": 4980,
+        "text": "cần nhận thức là:"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 5140,
+        "endMs": 7500,
+        "text": "đời bạn có một mục đích bên trong và một"
+      },
+      {
+        "id": "SUB004",
+        "startMs": 7500,
+        "endMs": 8680,
+        "text": "mục đích bên ngoài."
+      },
+      {
+        "id": "SUB005",
+        "startMs": 8880,
+        "endMs": 11080,
+        "text": "Mục đích bên trong là mục đích chính, và"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 11080,
+        "endMs": 13280,
+        "text": "mục đích này có liên quan đến trạng thái"
+      },
+      {
+        "id": "SUB007",
+        "startMs": 13280,
+        "endMs": 14860,
+        "text": "an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB008",
+        "startMs": 15360,
+        "endMs": 17140,
+        "text": "Mục đích bên ngoài dính tới những việc bạn"
+      },
+      {
+        "id": "SUB009",
+        "startMs": 17140,
+        "endMs": 18820,
+        "text": "làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB010",
+        "startMs": 19280,
+        "endMs": 21380,
+        "text": "Mục đích bên trong của bạn là tỉnh thức."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 21540,
+        "endMs": 22900,
+        "text": "Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB012",
+        "startMs": 23340,
+        "endMs": 25320,
+        "text": "Mục đích bên ngoài của bạn có thể thay đổi"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 25320,
+        "endMs": 27220,
+        "text": "theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB014",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB015",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB017",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB018",
+        "startMs": 35500,
+        "endMs": 38020,
+        "text": "Đó là cơ sở của những thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40640,
+        "text": "Nếu những gì bạn làm ở bên ngoài không có"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40640,
+        "endMs": 42640,
+        "text": "sự hòa điệu với nhịp sống của mục đích bên"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42640,
+        "endMs": 44880,
+        "text": "trong, thì muốn đạt được một điều gì đó,"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44880,
+        "endMs": 47200,
+        "text": "bạn sẽ phải mất rất nhiều nỗ lực, phải đấu"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 47200,
+        "endMs": 49900,
+        "text": "tranh hay dùng đến âm mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB024",
+        "startMs": 49960,
+        "endMs": 51860,
+        "text": "Nhưng làm như thế thì bạn không có được"
+      },
+      {
+        "id": "SUB025",
+        "startMs": 51860,
+        "endMs": 54080,
+        "text": "niềm vui khi công việc được hoàn tất."
+      },
+      {
+        "id": "SUB026",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 56620,
+        "endMs": 58560,
+        "text": "lại khổ đau cho bạn và cho những"
+      },
+      {
+        "id": "SUB028",
+        "startMs": 58560,
+        "endMs": 59160,
+        "text": "người chung quanh."
+      }
+    ]
+  }
+]
