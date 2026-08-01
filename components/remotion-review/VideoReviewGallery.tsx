@@ -5,7 +5,7 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const evidenceRoot =
   '/review/remotion-muc-dich-doi-song/media/evidence/vertical-framing-v1'
-const releaseTag = 'semantic-vertical-framing-v1-20260801'
+const releaseTag = 'camera-stability-r4-20260801'
 
 const films = [
   {
@@ -48,6 +48,7 @@ const rounds = [
     score: '59,0/100',
     gate: '27/51 shot',
     retention: '79,6%',
+    camera: '0/51 di động',
     method:
       'Giữ nguyên crop giữa để làm đường cơ sở. Kết quả cho thấy mặt, hành động và quan hệ không gian thường bị cắt dù video vẫn render đúng kỹ thuật.',
     learned:
@@ -76,6 +77,7 @@ const rounds = [
     score: '59,0/100',
     gate: '44/51 shot',
     retention: '96,6%',
+    camera: '40/51 di động',
     method:
       'Dùng quan sát mặt và saliency thật, giữ shot ngắn tĩnh, giới hạn tốc độ pan và chuyển phụ đề tránh vùng bằng chứng.',
     learned:
@@ -100,10 +102,11 @@ const rounds = [
     id: 'r3',
     number: 3,
     tab: 'Vòng 3',
-    status: 'Vật mang nghĩa · ứng viên cuối',
+    status: 'Vật mang nghĩa · còn pan thừa',
     score: '97,2/100',
     gate: '51/51 shot',
     retention: '99,5%',
+    camera: '24/51 di động',
     method:
       'Chọn tín hiệu theo vai trò ngữ nghĩa của shot, dùng đoạn hold/dead-zone, sửa ba false-high bằng pixel thật và thay nguồn khi crop không thể cứu.',
     learned:
@@ -124,15 +127,44 @@ const rounds = [
       },
     },
   },
+  {
+    id: 'r4',
+    number: 4,
+    tab: 'Vòng 4',
+    status: 'Camera tĩnh · bản sửa mới',
+    score: '98,0/100',
+    gate: '51/51 shot',
+    retention: '98,35%',
+    camera: '0/51 di động',
+    method:
+      'Khóa một crop cố định cho toàn bộ shot. Detector chỉ đề xuất vật mang nghĩa; dao động saliency, source cut và identity switch không còn được chuyển thành lệnh lia máy.',
+    learned:
+      'Retention cao không phải lý do để di chuyển camera. Tracking chỉ hợp lệ khi có intent được duyệt và mọi keyframe cùng bám một semantic carrier.',
+    report: `${evidenceRoot}/round-4/SELF-EVALUATION.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r4-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r4-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r4-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r4-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r4-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r4-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
 ] as const
 
 type RoundId = (typeof rounds)[number]['id']
 
 export default function VideoReviewGallery() {
-  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r3')
+  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r4')
   const [activeFilmId, setActiveFilmId] = useState<FilmId>('soul')
   const activeRound = useMemo(
-    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[2],
+    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[3],
     [activeRoundId],
   )
   const activeFilm = useMemo(
@@ -140,7 +172,12 @@ export default function VideoReviewGallery() {
     [activeFilmId],
   )
   const media = activeRound.sources[activeFilm.id]
-  const evidencePrefix = `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
+  const evidencePrefix = activeRound.number === 4
+    ? `${evidenceRoot}/round-4/${activeFilm.id}`
+    : `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
+  const contactSheet = activeRound.number === 4
+    ? `${evidenceRoot}/round-4-audit/${activeFilm.id}-shot-contact-sheet.jpg?v=${releaseTag}`
+    : `${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`
 
   return (
     <section className={styles.review} aria-labelledby="review-heading">
@@ -205,6 +242,7 @@ export default function VideoReviewGallery() {
             <div><dt>Điểm tự đánh giá</dt><dd>{activeRound.score}</dd></div>
             <div><dt>Cổng shot</dt><dd>{activeRound.gate}</dd></div>
             <div><dt>Giữ trọng tâm</dt><dd>{activeRound.retention}</dd></div>
+            <div><dt>Shot crop di động</dt><dd>{activeRound.camera}</dd></div>
           </dl>
 
           <dl className={styles.lensNotes}>
@@ -215,8 +253,14 @@ export default function VideoReviewGallery() {
 
           <div className={styles.evidenceLinks}>
             <a href={activeRound.report} target="_blank" rel="noreferrer">Báo cáo vòng</a>
-            <a href={`${evidencePrefix}-composition-plan.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
-            <a href={`${evidencePrefix}-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">Contact sheet</a>
+            <a href={`${evidencePrefix}${activeRound.number === 4 ? '/vertical_composition_plan.json' : '-composition-plan.json'}?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch khung dọc</a>
+            <a href={contactSheet} target="_blank" rel="noreferrer">Contact sheet</a>
+            {activeRound.number === 4 ? (
+              <>
+                <a href={`${evidenceRoot}/round-4-audit/${activeFilm.id}-camera-stability-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">START / MID / END</a>
+                <a href={`${evidenceRoot}/round-4/CAMERA-STABILITY-ROOT-CAUSE-AND-REPAIR.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gốc rễ và bản sửa</a>
+              </>
+            ) : null}
           </div>
         </div>
       </div>

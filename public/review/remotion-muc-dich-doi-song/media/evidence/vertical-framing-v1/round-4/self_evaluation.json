@@ -1,0 +1,110 @@
+{
+  "schema": "tpr.vertical_round_self_evaluation.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 4,
+  "evaluation_mode": "self_evaluation_not_owner_fit",
+  "criteria_order": [
+    "meaning_and_proof_retention",
+    "subject_completeness",
+    "subtitle_safety",
+    "motion_stability",
+    "single_film_continuity",
+    "technical_integrity",
+    "composition_craft"
+  ],
+  "video_receipts": [
+    {
+      "variant_id": "soul",
+      "film_title": "Soul",
+      "round": 4,
+      "render_path": "renders/round-4-soul.mp4",
+      "render_sha256": "sha256:33f781f04490ee82814579e555293f16857187030c0bd77bba78526bd587b4ab",
+      "contact_sheet": "audit/round-4/soul-shot-contact-sheet.jpg",
+      "camera_stability_contact_sheet": "audit/round-4/soul-camera-stability-contact-sheet.jpg",
+      "moving_camera_shot_count": 0,
+      "shot_count": 19,
+      "shot_gate_pass_count": 19,
+      "shot_gate_fail_count": 0,
+      "minimum_focus_retention": 0.8263,
+      "mean_focus_retention": 0.9833,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true,
+        "generated_camera_is_static": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "variant_id": "forrest-gump",
+      "film_title": "Forrest Gump",
+      "round": 4,
+      "render_path": "renders/round-4-forrest-gump.mp4",
+      "render_sha256": "sha256:6fe09d50c4ca42aa500866c146ee6508e0d020618b51e1dc58adfb672d302cef",
+      "contact_sheet": "audit/round-4/forrest-gump-shot-contact-sheet.jpg",
+      "camera_stability_contact_sheet": "audit/round-4/forrest-gump-camera-stability-contact-sheet.jpg",
+      "moving_camera_shot_count": 0,
+      "shot_count": 14,
+      "shot_gate_pass_count": 14,
+      "shot_gate_fail_count": 0,
+      "minimum_focus_retention": 0.8424,
+      "mean_focus_retention": 0.9689,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true,
+        "generated_camera_is_static": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "variant_id": "a-beautiful-mind",
+      "film_title": "A Beautiful Mind",
+      "round": 4,
+      "render_path": "renders/round-4-a-beautiful-mind.mp4",
+      "render_sha256": "sha256:33206149fa9e244e4bb826aaa76e55f746f8e17ad0d9a359702569698edf903d",
+      "contact_sheet": "audit/round-4/a-beautiful-mind-shot-contact-sheet.jpg",
+      "camera_stability_contact_sheet": "audit/round-4/a-beautiful-mind-camera-stability-contact-sheet.jpg",
+      "moving_camera_shot_count": 0,
+      "shot_count": 18,
+      "shot_gate_pass_count": 18,
+      "shot_gate_fail_count": 0,
+      "minimum_focus_retention": 0.9197,
+      "mean_focus_retention": 0.9951,
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "no_black_interval_over_500ms": true,
+        "single_film_source_unchanged": true,
+        "generated_camera_is_static": true
+      },
+      "technical_status": "pass"
+    }
+  ],
+  "metrics": {
+    "shot_count": 51,
+    "shot_gate_pass_rate": 1.0,
+    "mean_focus_retention": 0.9835,
+    "unstable_center_rate": 0.0,
+    "moving_camera_shot_count": 0,
+    "technical_pass": true,
+    "semantic_carrier_pixel_pass_rate": 0.9412,
+    "weighted_score_out_of_100": 98.0,
+    "hard_gate_score_cap_applied": false
+  },
+  "status": "pass_with_residual_source_risks",
+  "manual_pixel_adjudication": "rounds/round-4/manual_pixel_adjudication.json",
+  "required_actions_for_next_round": [
+    "Giữ camera crop tĩnh làm mặc định lâu dài; chỉ mở tracking khi có intent đã duyệt và cùng một semantic carrier.",
+    "Dùng owner review của ba bản sửa để xác nhận tính ổn định và bố cục, không tự suy diễn thành owner approval.",
+    "Nếu một crop tĩnh không giữ được vật mang nghĩa, thay source hoặc adjudicate carrier; không bật lại pan."
+  ]
+}

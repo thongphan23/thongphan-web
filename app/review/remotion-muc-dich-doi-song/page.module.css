@@ -91,6 +91,10 @@
   border-bottom: 1px solid rgba(232, 223, 207, 0.22);
 }
 
+.roundTabs {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .roundTab,
 .roundTabActive,
 .filmTab,
@@ -208,7 +212,7 @@
 
 .roundMetrics {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin: 2rem 0 0;
   border-top: 1px solid rgba(232, 223, 207, 0.18);
   border-bottom: 1px solid rgba(232, 223, 207, 0.18);

@@ -1,0 +1,107 @@
+{
+  "schema": "tpr.vertical_static_adjudications.v1",
+  "reviewer": "codex_pixel_review",
+  "feedback_basis": "Owner rejected generated pan and tracking because it distracts, shifts centered subjects off frame, and starts shots misaligned before recentering.",
+  "policy": "One immutable crop per shot. If observations switch identity or span incompatible carriers, select the one semantic carrier that best expresses the voice instead of panning to cover all detections.",
+  "shots": {
+    "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02": {
+      "center_x": 0.5,
+      "semantic_carrier": "John Nash nhận sự công nhận trong cùng một bố cục trung tâm",
+      "subtitle_placement": "bottom",
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.68},
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.68},
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.68}
+      ],
+      "reason_vi": "Detector đổi từ Nash sang đám đông; giữ trung tâm thay vì lia theo hai chủ thể khác nhau."
+    },
+    "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01": {
+      "center_x": 0.5,
+      "semantic_carrier": "bài giảng và người giảng ở vùng trung tâm",
+      "subtitle_placement": "bottom",
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.10, "width": 0.16, "height": 0.72},
+        {"x": 0.42, "y": 0.10, "width": 0.16, "height": 0.72},
+        {"x": 0.42, "y": 0.10, "width": 0.16, "height": 0.72}
+      ],
+      "reason_vi": "Nguồn tự cắt giữa giảng viên và khán giả; crop không được đuổi theo đối tượng của từng shot con."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01": {
+      "center_x": 0.52,
+      "semantic_carrier": "Forrest một mình giữa biển",
+      "subtitle_placement": "top",
+      "focus_boxes": [
+        {"x": 0.44, "y": 0.26, "width": 0.16, "height": 0.46},
+        {"x": 0.44, "y": 0.26, "width": 0.16, "height": 0.46},
+        {"x": 0.44, "y": 0.26, "width": 0.16, "height": 0.46}
+      ],
+      "reason_vi": "Mặt biển rộng là ngữ cảnh chính; không tracking người bơi khi họ dịch chuyển nhẹ trong nguồn."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02": {
+      "center_x": 0.5,
+      "semantic_carrier": "Forrest chơi bóng bàn ở trung tâm",
+      "subtitle_placement": "bottom",
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.70},
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.70},
+        {"x": 0.42, "y": 0.12, "width": 0.16, "height": 0.70}
+      ],
+      "reason_vi": "Người chơi vốn ở giữa; saliency dao động không được chuyển thành chuyển động camera."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01": {
+      "center_x": 0.58,
+      "semantic_carrier": "Forrest đang cắt cỏ",
+      "subtitle_placement": "top",
+      "focus_boxes": [
+        {"x": 0.50, "y": 0.16, "width": 0.16, "height": 0.68},
+        {"x": 0.50, "y": 0.16, "width": 0.16, "height": 0.68},
+        {"x": 0.50, "y": 0.16, "width": 0.16, "height": 0.68}
+      ],
+      "reason_vi": "Chọn vùng hành động trung bình; không tracking xe cắt cỏ qua khung."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02": {
+      "center_x": 0.52,
+      "semantic_carrier": "Jenny hoảng loạn cạnh xe",
+      "subtitle_placement": "top",
+      "focus_boxes": [
+        {"x": 0.44, "y": 0.12, "width": 0.16, "height": 0.72},
+        {"x": 0.44, "y": 0.12, "width": 0.16, "height": 0.72},
+        {"x": 0.44, "y": 0.12, "width": 0.16, "height": 0.72}
+      ],
+      "reason_vi": "Giữ bố cục xe và nhân vật ổn định để cảm xúc đến từ diễn xuất, không từ camera nhân tạo."
+    },
+    "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01": {
+      "center_x": 0.42,
+      "semantic_carrier": "tấm bằng và người trao thưởng",
+      "subtitle_placement": "top",
+      "focus_boxes": [
+        {"x": 0.34, "y": 0.10, "width": 0.16, "height": 0.72},
+        {"x": 0.34, "y": 0.10, "width": 0.16, "height": 0.72},
+        {"x": 0.34, "y": 0.10, "width": 0.16, "height": 0.72}
+      ],
+      "reason_vi": "Ưu tiên bằng chứng thành công là tấm bằng; không lia từ vật chứng sang gương mặt."
+    },
+    "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02": {
+      "center_x": 0.5,
+      "semantic_carrier": "buổi biểu diễn như kết quả hữu hình",
+      "subtitle_placement": "bottom",
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66},
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66},
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66}
+      ],
+      "reason_vi": "Detector đổi từ Joe sang ban nhạc; giữ một sân khấu trung tâm thay vì lia theo identity switch."
+    },
+    "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01": {
+      "center_x": 0.5,
+      "semantic_carrier": "đời sống thường ngày của Joe",
+      "subtitle_placement": "bottom",
+      "focus_boxes": [
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66},
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66},
+        {"x": 0.42, "y": 0.14, "width": 0.16, "height": 0.66}
+      ],
+      "reason_vi": "Nguồn cắt từ Joe sang con mèo; crop đứng yên để tránh đuổi theo hai chủ thể khác nhau."
+    }
+  }
+}

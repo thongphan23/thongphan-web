@@ -19,9 +19,12 @@ const videos = [
   'vertical-r3-soul-web.mp4',
   'vertical-r3-forrest-gump-web.mp4',
   'vertical-r3-a-beautiful-mind-web.mp4',
+  'vertical-r4-soul-web.mp4',
+  'vertical-r4-forrest-gump-web.mp4',
+  'vertical-r4-a-beautiful-mind-web.mp4',
 ]
 
-test('review route is noindex and exposes three rounds by three single-film videos', async () => {
+test('review route is noindex and exposes four rounds by three single-film videos', async () => {
   const [page, gallery, redirects] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -30,12 +33,15 @@ test('review route is noindex and exposes three rounds by three single-film vide
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.match(page, /3 vòng × 3 phim/)
+  assert.match(page, /4 vòng × 3 phim/)
   assert.match(gallery, /aria-label="Chọn vòng cải tiến"/)
   assert.match(gallery, /aria-label="Chọn phim"/)
-  assert.equal((gallery.match(/id: 'r[123]'/g) ?? []).length, 3)
+  assert.equal((gallery.match(/id: 'r[1234]'/g) ?? []).length, 4)
   assert.equal((gallery.match(/id: '(?:soul|forrest-gump|a-beautiful-mind)'/g) ?? []).length, 3)
-  assert.equal((gallery.match(/vertical-r[123]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 9)
+  assert.equal((gallery.match(/vertical-r[1234]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 12)
+  assert.match(gallery, /useState<RoundId>\('r4'\)/)
+  assert.match(gallery, /24\/51 di động/)
+  assert.match(gallery, /0\/51 di động/)
   assert.match(gallery, /preload="metadata"/)
   assert.match(gallery, /playsInline/)
   assert.match(gallery, /controls/)
@@ -45,7 +51,7 @@ test('review route is noindex and exposes three rounds by three single-film vide
   assert.match(redirects, /^\/review \/review\/remotion-muc-dich-doi-song 302$/m)
 })
 
-test('all nine web videos are bounded, non-empty and have matching posters', async () => {
+test('all twelve web videos are bounded, non-empty and have matching posters', async () => {
   for (const filename of videos) {
     const video = new URL(filename, mediaRoot)
     const poster = new URL(filename.replace('-web.mp4', '-poster.jpg'), mediaRoot)
@@ -72,6 +78,15 @@ test('each round exposes its report, three plans and three contact sheets', asyn
       await access(new URL(`round-${round}-${film}-composition-plan.json`, evidenceRoot))
       await access(new URL(`round-${round}-${film}-contact-sheet.jpg`, evidenceRoot))
     }
+  }
+  await access(new URL('round-4/SELF-EVALUATION.md', evidenceRoot))
+  await access(new URL('round-4/self_evaluation.json', evidenceRoot))
+  await access(new URL('round-4/manual_pixel_adjudication.json', evidenceRoot))
+  await access(new URL('camera-stability-owner-feedback-evidence.json', evidenceRoot))
+  for (const film of films) {
+    await access(new URL(`round-4/${film}/vertical_composition_plan.json`, evidenceRoot))
+    await access(new URL(`round-4-audit/${film}-shot-contact-sheet.jpg`, evidenceRoot))
+    await access(new URL(`round-4-audit/${film}-camera-stability-contact-sheet.jpg`, evidenceRoot))
   }
 })
 

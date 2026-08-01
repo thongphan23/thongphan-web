@@ -1,0 +1,377 @@
+{
+  "schema": "tpr.owner_feedback_evidence.camera_stability.v1",
+  "evidence_id": "TASTE-CAMERA-STABILITY-20260801",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "scope": "plugin_series",
+  "feedback_source": {
+    "path": "content/owner_feedback_camera_stability_20260801.vi.txt",
+    "sha256": "sha256:b9939ec672c4ae1f4f3e6ddb53b39c19b733c6ab15290b3b6b8eba11ae541db7"
+  },
+  "reason_codes": [
+    "unmotivated_camera_motion",
+    "viewer_distraction",
+    "identity_switch_tracking"
+  ],
+  "preferred_properties": {
+    "camera_composition": {
+      "default_mode": "static",
+      "reviewed_motion_intent_required": true,
+      "same_semantic_carrier_required": true,
+      "renderer_fail_closed": true
+    }
+  },
+  "rejected_properties": {
+    "detector_variance_as_camera_motion": true
+  },
+  "root_causes": [
+    "The generator selected face or saliency independently at three keyframes, without carrier identity continuity.",
+    "A center span above 0.04 automatically created a multi-point camera path, converting detector variance into editorial motion.",
+    "Remotion interpolated every supplied renderer position on every frame, amplifying the bad path into a visible pan.",
+    "QA allowed movement when retention and max step passed, but had no camera-motion intent or static-first gate."
+  ],
+  "before": {
+    "round": 3,
+    "total_shot_count": 51,
+    "moving_camera_shot_count": 24,
+    "affected_shots": [
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+        "claim_id": "CLM-01-TWO-PURPOSES",
+        "semantic_role": "inward_pole",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.178895,
+        "renderer_position_span": 0.178895,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+        "claim_id": "CLM-01-TWO-PURPOSES",
+        "semantic_role": "outward_pole",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.297679,
+        "renderer_position_span": 0.196607,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+        "claim_id": "CLM-02-INNER-EASE",
+        "semantic_role": "state",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.445659,
+        "renderer_position_span": 0.425685,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+        "claim_id": "CLM-03-OUTER-WORK",
+        "semantic_role": "action",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.078103,
+        "renderer_position_span": 0.078103,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+        "claim_id": "CLM-05-CHANGE-ALIGN",
+        "semantic_role": "condition",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.074062,
+        "renderer_position_span": 0.074062,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+        "claim_id": "CLM-05-CHANGE-ALIGN",
+        "semantic_role": "dependent_result",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.349643,
+        "renderer_position_span": 0.326875,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+        "claim_id": "CLM-08-NO-JOY-HARM",
+        "semantic_role": "choice_or_behavior",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.279194,
+        "renderer_position_span": 0.270561,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "soul",
+        "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+        "claim_id": "CLM-08-NO-JOY-HARM",
+        "semantic_role": "value_verdict",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.072679,
+        "renderer_position_span": 0.072679,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+        "claim_id": "CLM-01-TWO-PURPOSES",
+        "semantic_role": "inward_pole",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.205098,
+        "renderer_position_span": 0.205098,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02",
+        "claim_id": "CLM-01-TWO-PURPOSES",
+        "semantic_role": "outward_pole",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.201368,
+        "renderer_position_span": 0.135115,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01",
+        "claim_id": "CLM-03-OUTER-WORK",
+        "semantic_role": "action",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.162025,
+        "renderer_position_span": 0.152079,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01",
+        "claim_id": "CLM-05-CHANGE-ALIGN",
+        "semantic_role": "condition",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.166951,
+        "renderer_position_span": 0.166951,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02",
+        "claim_id": "CLM-05-CHANGE-ALIGN",
+        "semantic_role": "dependent_result",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.074155,
+        "renderer_position_span": 0.074155,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+        "claim_id": "CLM-06-REAL-SUCCESS",
+        "semantic_role": "referent",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.484006,
+        "renderer_position_span": 0.484006,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01",
+        "claim_id": "CLM-07-MISALIGNMENT",
+        "semantic_role": "cause",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.089902,
+        "renderer_position_span": 0.080001,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03",
+        "claim_id": "CLM-07-MISALIGNMENT",
+        "semantic_role": "effect",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.14863,
+        "renderer_position_span": 0.088633,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "forrest-gump",
+        "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02",
+        "claim_id": "CLM-08-NO-JOY-HARM",
+        "semantic_role": "human_consequence",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.486872,
+        "renderer_position_span": 0.486872,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+        "claim_id": "CLM-01-TWO-PURPOSES",
+        "semantic_role": "outward_pole",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.275895,
+        "renderer_position_span": 0.147691,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+        "claim_id": "CLM-02-INNER-EASE",
+        "semantic_role": "state",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.229505,
+        "renderer_position_span": 0.1598,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+        "claim_id": "CLM-03-OUTER-WORK",
+        "semantic_role": "action",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.390471,
+        "renderer_position_span": 0.290302,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+        "claim_id": "CLM-05-CHANGE-ALIGN",
+        "semantic_role": "dependent_result",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.230826,
+        "renderer_position_span": 0.230826,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+        "claim_id": "CLM-06-REAL-SUCCESS",
+        "semantic_role": "referent",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.074756,
+        "renderer_position_span": 0.067986,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+        "claim_id": "CLM-08-NO-JOY-HARM",
+        "semantic_role": "choice_or_behavior",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.115278,
+        "renderer_position_span": 0.115278,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      },
+      {
+        "variant_id": "a-beautiful-mind",
+        "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+        "claim_id": "CLM-08-NO-JOY-HARM",
+        "semantic_role": "value_verdict",
+        "strategy": "reviewed_track",
+        "motion_policy": "legacy_unspecified",
+        "renderer_position_travel": 0.306803,
+        "renderer_position_span": 0.190783,
+        "post_fix_strategy": "reviewed_static",
+        "post_fix_motion_policy": "static",
+        "post_fix_renderer_position_travel": 0.0
+      }
+    ],
+    "render_sha256": {
+      "soul": "sha256:e700c9597b8d4d1711154123f43f28dc21fe90315b913deaac52df312048d482",
+      "forrest-gump": "sha256:39537a31136a0fd63c58bbc141da14f8be63505dba86ffa39ab40be72b89df94",
+      "a-beautiful-mind": "sha256:76d2eb609a7e92ff45a434e7bcf154faf6a3603a074a5e1ede507babc01283f7"
+    }
+  },
+  "after": {
+    "round": 4,
+    "total_shot_count": 51,
+    "moving_camera_shot_count": 0,
+    "shot_gate_pass_count": 51,
+    "technical_status": "pass",
+    "self_evaluation_ref": {
+      "path": "rounds/round-4/self_evaluation.json",
+      "sha256": "sha256:d8998d026100be193c06573e5c515b1d7941ba9aa51c2a5af138cb433a7dc25d"
+    },
+    "render_sha256": {
+      "soul": "sha256:33f781f04490ee82814579e555293f16857187030c0bd77bba78526bd587b4ab",
+      "forrest-gump": "sha256:6fe09d50c4ca42aa500866c146ee6508e0d020618b51e1dc58adfb672d302cef",
+      "a-beautiful-mind": "sha256:33206149fa9e244e4bb826aaa76e55f746f8e17ad0d9a359702569698edf903d"
+    }
+  },
+  "runtime_taste_admission": {
+    "status": "evidence_capsule_pending_runtime_ingest",
+    "blocker": "Current test variants use tpr.edit_plan.visual_fit.v2 without revision; FeedbackService correctly rejected incompatible context instead of fabricating an event."
+  },
+  "owner_fit_claimed_for_repair": false
+}

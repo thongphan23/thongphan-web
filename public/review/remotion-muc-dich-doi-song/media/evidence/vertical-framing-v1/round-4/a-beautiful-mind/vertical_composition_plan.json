@@ -1,0 +1,1094 @@
+{
+  "schema": "tpr.vertical_round_plan.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 4,
+  "variant_id": "a-beautiful-mind",
+  "film_title": "A Beautiful Mind",
+  "source_edit_plan": "variants/a-beautiful-mind/content/edit_plan.json",
+  "focus_observations": "content/vertical_focus_observations.json",
+  "previous_round_evidence": "rounds/round-3/self_evaluation.json",
+  "shot_assessments": [
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "inward_pole",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.35869873046875,
+          "y": 0.15606689453125,
+          "width": 0.24,
+          "height": 0.318603515625
+        },
+        {
+          "x": 0.39633881047368047,
+          "y": 0.15318540968000888,
+          "width": 0.1512092998623848,
+          "height": 0.3666874967515469
+        },
+        {
+          "x": 0.3867008590698242,
+          "y": 0.14208732768893242,
+          "width": 0.15613849878311156,
+          "height": 0.37864094525575637
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:7159dd8037a9fffebc9518a95f9d043155ea1bf0491e57296b09716744be67f5",
+        "sha256:20b35a4fa009616b131bcd6b67eec5efdd3828de284323cc5383582eaf9ed66b",
+        "sha256:db1f9ec48ccd22585d959e04408c4fc1c981c5bbcb51294111fe68f89d01c042"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "outward_pole",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.38433349609375,
+          "y": 0.15205322265625001,
+          "width": 0.24,
+          "height": 0.41598632812499997
+        },
+        {
+          "x": 0.281641845703125,
+          "y": 0.15961791992187502,
+          "width": 0.24,
+          "height": 0.46524902343749996
+        },
+        {
+          "x": 0.37078369140625,
+          "y": 0.263692626953125,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.45271875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.45271875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.9197,
+        "mean_focus_retention": 0.9393,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:07d179ed216afa51b205b4cfa84a24ca65e7cd55e55a6353e6c86ae012a39790",
+        "sha256:01d090e8b3df85ed0e660b7c4c02a07af939f9b4255cf5fac27f9512d87b4da6",
+        "sha256:8435947286c4bbfb921862d35dc34da5c68afdd0c669a1033a33f60a4e28a0e0"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01",
+      "claim_id": "CLM-02-INNER-EASE",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "state",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.40384908497333527,
+          "y": 0.32248430490493774,
+          "width": 0.24,
+          "height": 0.52
+        },
+        {
+          "x": 0.35538284957408905,
+          "y": 0.24601811707019805,
+          "width": 0.24,
+          "height": 0.52
+        },
+        {
+          "x": 0.5364940546452999,
+          "y": 0.1017831115424633,
+          "width": 0.1,
+          "height": 0.18
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:b27e31e354d9043dfd9879049689cef522df43ddaea8442ccbee3934fdc2b9c5",
+        "sha256:603f667bb0099582ca569ea8c66f98f34a32d658026ff3df7c9a44fd5d813d67",
+        "sha256:dbfa9a52533ccdda1a2daf03f26ef3771ac897e496ae598ca0610a80d69443f9"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "bài giảng và người giảng ở vùng trung tâm",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.42,
+          "y": 0.1,
+          "width": 0.16,
+          "height": 0.72
+        },
+        {
+          "x": 0.42,
+          "y": 0.1,
+          "width": 0.16,
+          "height": 0.72
+        },
+        {
+          "x": 0.42,
+          "y": 0.1,
+          "width": 0.16,
+          "height": 0.72
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:198acdc7df466ee258eba25c042c5d8163acef9896c30cfad2ea4bc1d005452c",
+        "sha256:3448816957d3076fb3dd51338a4d08f3d8a15dd30cc585e466789a433fbd46f5",
+        "sha256:50feec9566445df4b8630126ac4304ebef53f97e388225c65e0cd916bd3512af"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01",
+      "claim_id": "CLM-04-AWAKE",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "state",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.419288280159235,
+          "y": 0.1919696980714798,
+          "width": 0.22058842569589615,
+          "height": 0.52
+        },
+        {
+          "x": 0.41907581031322483,
+          "y": 0.17769530951976775,
+          "width": 0.22484762787818907,
+          "height": 0.52
+        },
+        {
+          "x": 0.4191826632618904,
+          "y": 0.17617352843284606,
+          "width": 0.22743691980838773,
+          "height": 0.52
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:b3e054979239c5d4c72e2e2bf82980390e17a47ab7495484422a6a8d02262f07",
+        "sha256:d81a3dd0d3abf9bc048a9d5007658dedd1b375dfada4f9e71797833dd17c0a6a",
+        "sha256:8943fbde144818fa44a72e19afb369a1ed273e7f6bd132ad3d2a680eef48e4d4"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "condition",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.3309951311349869,
+          "y": 0.1879660576581955,
+          "width": 0.1792864429950714,
+          "height": 0.4347754538059235
+        },
+        {
+          "x": 0.33206922203302386,
+          "y": 0.22628533095121384,
+          "width": 0.1868388873338699,
+          "height": 0.4530903846025467
+        },
+        {
+          "x": 0.3294831447303295,
+          "y": 0.21552955359220505,
+          "width": 0.18757948130369184,
+          "height": 0.45488639175891876
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4818268947303295,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4818268947303295,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:be186f61c6bc1e4071417d64bd20a2e42573ece3f85d5667f7e683b26125be5c",
+        "sha256:843c4e10f304a2d1fb0665d110601dbb588bb358aed8a2bc29f47ef7b149af17",
+        "sha256:e573437eba637204569e334eb02d3435b93b964a036a02e650e8be4a841c28ba"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "John Nash nhận sự công nhận trong cùng một bố cục trung tâm",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.16,
+          "height": 0.68
+        },
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.16,
+          "height": 0.68
+        },
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.16,
+          "height": 0.68
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:44c1e733dbc7916f2cd732980400b1b10500233e3d3fb067b4119daf0271964b",
+        "sha256:fac7bb728852c542dde92a7f5d5de1831ea41ae0a45707e375fa709ec4ca372a",
+        "sha256:68c87cd5b706bdecb1b2c661635c4acf0f1b2e0d69826044f3a4c84cde533e49"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "referent",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.39375579833984375,
+          "y": 0.098448486328125,
+          "width": 0.24,
+          "height": 0.3672509765625
+        },
+        {
+          "x": 0.398463134765625,
+          "y": 0.0993121337890625,
+          "width": 0.24,
+          "height": 0.35835205078125
+        },
+        {
+          "x": 0.35119140625,
+          "y": 0.2943017578125,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:bdbf59ade5e68381bcbf0a1e270ec872c3ee59cef87a8fec235557660d5dec2e",
+        "sha256:7b37f58c3dd95765153a296b39585117e96205742881e3fd329f952511fd96d4",
+        "sha256:228aafe2e1532ca544202f7a6ccc53f9204b1ceb0878105154cb9a648aadabf2"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "cause",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5444496057927608,
+          "y": 0.1446993237733841,
+          "width": 0.1,
+          "height": 0.18
+        },
+        {
+          "x": 0.5120585903525352,
+          "y": 0.19028715774416924,
+          "width": 0.1,
+          "height": 0.18
+        },
+        {
+          "x": 0.43903469368815423,
+          "y": 0.23539219036698342,
+          "width": 0.1,
+          "height": 0.18
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:16054c1b12a5571fe2ae0de60f41a6746855f1cb44afdc3b79e7c6d47c8ac00b",
+        "sha256:5a97a29ca8ccd62932ad3fe62e95fa66194a8c03210eabc51d4f09d32f292940",
+        "sha256:c194eaf9e6d045d84482b9a907c0836cb1a7b9cc9d5c24f57211b53dca3b93d4"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.388994140625,
+          "y": 0.237431640625,
+          "width": 0.21615234375,
+          "height": 0.4601953125
+        },
+        {
+          "x": 0.3896435546875,
+          "y": 0.23905761718750002,
+          "width": 0.218271484375,
+          "height": 0.43716796874999997
+        },
+        {
+          "x": 0.44052978515625,
+          "y": 0.1713427734375,
+          "width": 0.2178173828125,
+          "height": 0.43294921875
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.50600341796875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.50600341796875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:eeb9d46aec1b44225f98b34997e5748770ce433198ad4f4de28e7a935541d4f2",
+        "sha256:05f211f3316f372cc68446a5c711bb8acd69ace5680aad6d1f274e2003c4a444",
+        "sha256:9c1a08432b42dbe6aa47b548233d7a639b1df793ac7860a30f80c4cff48708fc"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.377314453125,
+          "y": 0.25566650390625,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.36040771484375,
+          "y": 0.171494140625,
+          "width": 0.24,
+          "height": 0.4651171875
+        },
+        {
+          "x": 0.2927197265625,
+          "y": 0.17537109375,
+          "width": 0.24,
+          "height": 0.454921875
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4555,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4555,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.9565,
+        "mean_focus_retention": 0.9724,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:7f9f57c06335878d1b17ff68eb977011e593144c9227fcd7549a252e1bb6c54d",
+        "sha256:5daae03c67722376e1e734e74b9f23334680938f1bf92a862d521a0151956846",
+        "sha256:bfd3295cc606dec6ed83105ab8d58eaa279be510d5dd36eb5cd44ef5f1807dcd"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.2002362060546875,
+          "y": 0.29253662109375,
+          "width": 0.24,
+          "height": 0.346201171875
+        },
+        {
+          "x": 0.217493896484375,
+          "y": 0.31324462890625004,
+          "width": 0.24,
+          "height": 0.33090820312499997
+        },
+        {
+          "x": 0.200587158203125,
+          "y": 0.3235009765625,
+          "width": 0.24,
+          "height": 0.32150390624999997
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.3525799560546875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.3525799560546875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:f4601cbebf937584faa02da9a7da114b7883e0f5d7759b656da04916f69814ae",
+        "sha256:21de8d90e5ffe30c33fe16ef9ad752475191bacd4a03f3f33c154bea065b6406",
+        "sha256:1a32662d42950ff04ea17976254d5ca2a75f605079659aff07b52139550b7812"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5412548828125,
+          "y": 0.2481298828125,
+          "width": 0.24,
+          "height": 0.33064453125
+        },
+        {
+          "x": 0.5407666015625,
+          "y": 0.24152832031250002,
+          "width": 0.24,
+          "height": 0.34189453124999997
+        },
+        {
+          "x": 0.549189453125,
+          "y": 0.24603515625,
+          "width": 0.24,
+          "height": 0.34875
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.636845703125,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.636845703125,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:f00813aa0dde885317202ef7ae46c597b3064e6c5e18de02425ee0d427d02375",
+        "sha256:66960466a3bed93125135706e816806fddade2a97b2eb1b1800ebb493450c368",
+        "sha256:8eab9945b63e0f3a167dd5b8258cea21457278fd6b8e068c9a488ee137fb323f"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.43691162109375004,
+          "y": 0.10782165527343751,
+          "width": 0.23628417968749998,
+          "height": 0.30135498046875
+        },
+        {
+          "x": 0.43863525390625,
+          "y": 0.10517333984375002,
+          "width": 0.2323486328125,
+          "height": 0.30295898437499996
+        },
+        {
+          "x": 0.447998046875,
+          "y": 0.10592834472656251,
+          "width": 0.22705078125,
+          "height": 0.29946533203125
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.522705078125,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.522705078125,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:a95f0d028583ce8ee95754eb85bc93894090b6d5ab457db852e2afb1a0188191",
+        "sha256:ff3ae023d013c3ec6222e0b8ad60afac0b02453532a362902a75a94a66c5c6d3",
+        "sha256:e8a955f7ee546f8c3c843faee52863666c75674d6a2bf5b33fb68e66413f7f5e"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.2197064208984375,
+          "y": 0.049799804687500004,
+          "width": 0.24,
+          "height": 0.25611328125
+        },
+        {
+          "x": 0.2212933349609375,
+          "y": 0.05229492187500001,
+          "width": 0.24,
+          "height": 0.2689453125
+        },
+        {
+          "x": 0.2162274169921875,
+          "y": 0.05579620361328125,
+          "width": 0.24,
+          "height": 0.275416259765625
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.3685711669921875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.3685711669921875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:1f9493d12d1c6aac9ec996a9406c1e61cc1c51bfb79bbbe11bb9bdcf359ee624",
+        "sha256:c70aeb1c3a9b1c8b595e0ebfe85f2ffbcda1f67e08574d80390aa086860f3b1c",
+        "sha256:6b5c659b6091e98ed8ee0c5ef5ee8deaa421b6ff63ff3e32e34bc2a5c5ac59ca"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "choice_or_behavior",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5083125874400138,
+          "y": 0.16191355176270006,
+          "width": 0.1,
+          "height": 0.24064853712916376
+        },
+        {
+          "x": 0.4282571643590927,
+          "y": 0.15184037387371063,
+          "width": 0.1,
+          "height": 0.23383477330207825
+        },
+        {
+          "x": 0.42815825417637826,
+          "y": 0.15025584697723388,
+          "width": 0.1,
+          "height": 0.23232498168945312
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:95cafb1763532d69e38417520b02ee77dbfd685f1007aea2ff05ee0af5115b86",
+        "sha256:f625666404b064bc65b9a2c95dd11f88a6644cab722ca0c95aa41a1ebcb715ab",
+        "sha256:bc7c1f174843d477896cdcaa602cd9d167a4920cd939c58cd44a6053c983054a"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "human_consequence",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.37324211798608303,
+          "y": 0.1383843746036291,
+          "width": 0.14669521793723106,
+          "height": 0.35574067607522014
+        },
+        {
+          "x": 0.37259177036583424,
+          "y": 0.12526574693620204,
+          "width": 0.14639280155301093,
+          "height": 0.3550073064863682
+        },
+        {
+          "x": 0.376348594725132,
+          "y": 0.12771282978355883,
+          "width": 0.14858169376850128,
+          "height": 0.3603154592216015
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:d7953d0f6f0650143f67f0b167b947c540b70927b822bb70dadf155b92d12f8a",
+        "sha256:d7ac80879cbb91aedaa72c90b3c8eb6e6dffe3fc71f31e40d7546a3634959525",
+        "sha256:79c8c7af3cd407da1e0669fd6d32a7e0863f97461c0e2fbe167ec25e0a53126d"
+      ]
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "value_verdict",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.335810546875,
+          "y": 0.2104241943359375,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.2791131666302681,
+          "y": 0.12608423680067063,
+          "width": 0.19205425560474396,
+          "height": 0.4657378226518631
+        },
+        {
+          "x": 0.44555390782654286,
+          "y": 0.17584284022450447,
+          "width": 0.12447998359799384,
+          "height": 0.3018680140376091
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4314569166302681,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4314569166302681,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:45298ebccde32755c4c5b2fa75a8c9e2a83a106bdaebc42373ff5560851e3381",
+        "sha256:1bdf47bf51557b224412013a4ec52058704a21690fc1591894f44d1f3df39821",
+        "sha256:8642f9ab86c6649c4aa2a353ef4f21220887390bc208cc69a0bc5fa8bef0ce0e"
+      ]
+    }
+  ],
+  "status": "camera_stability_corrected",
+  "plan_fingerprint": "sha256:7dd7282f132584dd10ac481e14370151723b0f59ce00e7311f3ff6286f7d19a7"
+}

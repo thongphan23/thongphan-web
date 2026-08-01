@@ -1,0 +1,55 @@
+{
+  "schema": "tpr.vertical_manual_pixel_adjudication.v1",
+  "reviewer": "codex_pixel_review",
+  "reviewed_shot_count": 51,
+  "semantic_carrier_pass_count": 48,
+  "camera_stability_reviewed_shot_count": 51,
+  "camera_stability_pass_count": 51,
+  "generated_camera_moving_shot_count": 0,
+  "review_method": "Compare encoded START, MID and END pixels for every shot, then verify the generated renderer-position path has zero travel.",
+  "inputs": [
+    {"path": "audit/round-4/soul-shot-contact-sheet.jpg", "sha256": "sha256:1a506c0feee5b7419ba1dea8d3c1376d20ed6c223d7dc3226c7879491bd159b1"},
+    {"path": "audit/round-4/forrest-gump-shot-contact-sheet.jpg", "sha256": "sha256:9e7f4baf62f11c907bca78f887e73682318afec31f1e76c048837ae8d651accd"},
+    {"path": "audit/round-4/a-beautiful-mind-shot-contact-sheet.jpg", "sha256": "sha256:19c7a4b33670abd19d1d5cd653c39f239305b81da890eeaf7a9669760d5e5c39"},
+    {"path": "audit/round-4/soul-camera-stability-contact-sheet.jpg", "sha256": "sha256:869ba5980b8935a0fa96940210b4e38c5c76e8d0fb996972381458828aa19f98"},
+    {"path": "audit/round-4/forrest-gump-camera-stability-contact-sheet.jpg", "sha256": "sha256:9d765296c50ecd054041fae8992bcaa6c8fc3ace9cf7638ca0102733b8d5ba1c"},
+    {"path": "audit/round-4/a-beautiful-mind-camera-stability-contact-sheet.jpg", "sha256": "sha256:4f09c81f4943302505b6ae172d1f356d8981ceb4697741fd587e46bc43bef269"}
+  ],
+  "verified_repairs": [
+    {
+      "shot_id": "ALL-ROUND-4-SHOTS",
+      "result": "51/51 shot use one immutable generated crop position; no shot starts offset and recenters or pans between detector keyframes."
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01",
+      "result": "The award evidence uses one fixed crop instead of panning from the certificate to another person."
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+      "result": "The detector identity switch from Joe to the band no longer creates a synthetic cross-frame pan."
+    },
+    {
+      "shot_id": "SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01",
+      "result": "The source cut between lecturer and audience retains one stable crop instead of chasing the detected face in each sub-shot."
+    }
+  ],
+  "residual_failures": [
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "reason": "The source remains dark and visually abstract; this is a source-selection issue, not generated camera motion.",
+      "required_action": "Prefer a face or immediately readable action in a future source-selection pass."
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "reason": "Native source motion blur remains visible; the generated crop itself is static.",
+      "required_action": "Score native source-camera and motion-blur risk before vertical crop planning."
+    },
+    {
+      "shot_id": "SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01",
+      "reason": "The swimmer remains small in portrait; the crop is stable but readability still depends on motion.",
+      "required_action": "Add portrait-scale readability to source selection before framing."
+    }
+  ],
+  "owner_fit_claimed": false,
+  "taste_evidence_created": false
+}

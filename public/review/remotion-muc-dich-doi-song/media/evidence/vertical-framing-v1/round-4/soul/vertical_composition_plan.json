@@ -1,0 +1,1154 @@
+{
+  "schema": "tpr.vertical_round_plan.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 4,
+  "variant_id": "soul",
+  "film_title": "Soul",
+  "source_edit_plan": "variants/soul/content/edit_plan.json",
+  "focus_observations": "content/vertical_focus_observations.json",
+  "previous_round_evidence": "rounds/round-3/self_evaluation.json",
+  "shot_assessments": [
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "inward_pole",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.3371533203125,
+          "y": 0.24506591796875002,
+          "width": 0.24,
+          "height": 0.32053710937499996
+        },
+        {
+          "x": 0.4494080974161625,
+          "y": 0.23634929917752742,
+          "width": 0.1581954541802406,
+          "height": 0.36942063346505166
+        },
+        {
+          "x": 0.5294445294886827,
+          "y": 0.22369443237781525,
+          "width": 0.1,
+          "height": 0.18
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4953564453125,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4953564453125,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:f48fd980ebe280f2486de29a181f8c356005fa94e22290f1ca708458101d939f",
+        "sha256:45e22deba9c8e7077a521fe6520a97a2c6fff372174a2459508a35b039cb8168",
+        "sha256:d0a994d42be42362a7d105d4ea01edfcd38856eeb574440b2f7a39f9a4528e3c"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-ES-ACTION-CORE-02",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "outward_pole",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.4235791015625,
+          "y": 0.2201513671875,
+          "width": 0.24,
+          "height": 0.45544921875
+        },
+        {
+          "x": 0.50088623046875,
+          "y": 0.17457397460937502,
+          "width": 0.2235693359375,
+          "height": 0.44046386718749997
+        },
+        {
+          "x": 0.358271484375,
+          "y": 0.23705078125,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5423828125,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5423828125,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.892,
+        "mean_focus_retention": 0.9284,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:8d4d182025d32797183a62c48891673ab7db6ee0f4f8d2d9f5ae417dd8658c5d",
+        "sha256:b80ff4357f5d3e5244ee83c22badfd6653444c5333fd4c81bba48a75488fb544",
+        "sha256:6fbaa9a01ffdd4ca2a7dd5fecaefc14e35f470b62a723f9c7d2db02dcf1e60b1"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SE-REACTION-TAIL-01",
+      "claim_id": "CLM-02-INNER-EASE",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "proof"
+      ],
+      "semantic_carrier": "đời sống thường ngày của Joe",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        },
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        },
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:5683976f6e2e92f5b72744bc4d5ea33b8af0936897427c794bf9a0ea80662b37",
+        "sha256:9bdc9b44fa02c232141660c86d172f24c89060e2e4c68f19c8880ce19dd4e38e",
+        "sha256:958a8e87f057fb5c400a6c4ffe6a049d166263e050709579e6d83fcffab6be04"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-01",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "action",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.2570904541015625,
+          "y": 0.2125299072265625,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.285426025390625,
+          "y": 0.28313232421875,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.31048095703125,
+          "y": 0.28166748046875,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4152935791015625,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4152935791015625,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:dc95bfaa1f783de7e60d86097a5f62ebf2f802e21b56a9979fd8c34c3725066d",
+        "sha256:cb18fba2f63137933edd838d87e59ea52b07728536626c9b5bab1a632fb038e9",
+        "sha256:35ef060ccc23c627204a7413d2dd798128113240667c2627e0c760e8750b6ad7"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RK-REACTION-TAIL-02",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "người nhạc công đang thực hành công việc bên ngoài",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.47,
+          "y": 0.13,
+          "width": 0.16,
+          "height": 0.72
+        },
+        {
+          "x": 0.47,
+          "y": 0.13,
+          "width": 0.16,
+          "height": 0.72
+        },
+        {
+          "x": 0.47,
+          "y": 0.13,
+          "width": 0.16,
+          "height": 0.72
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:0a6573cf96943f4a2d1600814624932aa742602dae17fa9ceec6e7deca646f84",
+        "sha256:e160939e14767146a9acfce67fdc410e3a56318e207d714c7c8326ec3c611973",
+        "sha256:867b1cdf4dfab57573b3242b13812a68a7b7b2240e249529df3971c2e3f4ec24"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-KE-REACTION-TAIL-01",
+      "claim_id": "CLM-04-AWAKE",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "gương mặt Joe tỉnh táo bước ra ánh sáng",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.2,
+          "height": 0.6
+        },
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.2,
+          "height": 0.6
+        },
+        {
+          "x": 0.42,
+          "y": 0.12,
+          "width": 0.2,
+          "height": 0.6
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:23e4bd4cbbec19d59bf4a8147ec4f4c5f17971aed46903c355e994b7b87d914e",
+        "sha256:3fde8cc93daca8fd31c8415fef005ea3579358bb36087b667de5e84d04fefe4c",
+        "sha256:81f9fb81142452489da5f7f7901d4ff5e7305b6c31a021e5608b79a18fba8a03"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-01",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "condition",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5161189352720976,
+          "y": 0.3095698550343513,
+          "width": 0.13117595955729483,
+          "height": 0.30632426440715793
+        },
+        {
+          "x": 0.5129188637435437,
+          "y": 0.31177791580557823,
+          "width": 0.13014853686094283,
+          "height": 0.3039250150322914
+        },
+        {
+          "x": 0.45368157505989076,
+          "y": 0.2408001996576786,
+          "width": 0.15479400396347046,
+          "height": 0.3614775285124779
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:ebef9eca2202d3d078d3b2a727048a77a9c14e2eb74035e2a8d510f6a2ce4370",
+        "sha256:e2965e35e507f3a150253c5a5ebdf1b0b6bc749739b43a5a695121fe445bfcfd",
+        "sha256:788e05d9b37651a61d35140519dfe6515d35bca331279ddc50111cb6fb63cf5c"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-GN-ACTION-CORE-02",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "buổi biểu diễn như kết quả hữu hình",
+      "semantic_binding_status": "reviewed_carrier",
+      "focus_boxes": [
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        },
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        },
+        {
+          "x": 0.42,
+          "y": 0.14,
+          "width": 0.16,
+          "height": 0.66
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:04a8f29add2464af28a93e99488f545a386aaee3849b23d49a7639246e0da7d7",
+        "sha256:c81ec746855b28edf07c25916d48b684bfd16fa8ba003c697eec31af8f8a362b",
+        "sha256:74854c463b3689bc60074f46beaaedf7c706e3ca773f2b0b9b0509a1e530a1c0"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-SS-ACTION-CORE-01",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "referent",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.2978466796875,
+          "y": 0.196614990234375,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.3067578125,
+          "y": 0.228414306640625,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.300654296875,
+          "y": 0.200810546875,
+          "width": 0.24,
+          "height": 0.4777734375
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.4560498046875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.4560498046875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:984a47b835ba5de444b0bbcc727d7718d991e5324f80c3152d185a412fe89109",
+        "sha256:46263c2a748eb2ae55f51b037c5526460a73d6546789bab78f4f2bdee16bb8c0",
+        "sha256:878173d9d731e6a81adbe025d513aa06d4bf0e91b28e02956c03f23adf492749"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-01",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "cause",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.3867138671875,
+          "y": 0.386640625,
+          "width": 0.24,
+          "height": 0.37124999999999997
+        },
+        {
+          "x": 0.39837158203125,
+          "y": 0.39596191406250003,
+          "width": 0.24,
+          "height": 0.36017578125
+        },
+        {
+          "x": 0.371943359375,
+          "y": 0.27762207031249997,
+          "width": 0.24,
+          "height": 0.40447265625
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:b5968b4381ede3c81ea0d88970fa962df9580987eac00037934b83ec139b31f0",
+        "sha256:ddeed8ee04ec658479d252d2c78fa2f37eb11b40eac957dad0c3237b385feaa0",
+        "sha256:86ffdfb197cb22e6e59a9cc1adc90559a8637dadd8dd1992449666fc464d2842"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-02",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.270350341796875,
+          "y": 0.273564453125,
+          "width": 0.24,
+          "height": 0.4074609375
+        },
+        {
+          "x": 0.312373046875,
+          "y": 0.27783203125,
+          "width": 0.24,
+          "height": 0.404296875
+        },
+        {
+          "x": 0.29119384765625,
+          "y": 0.25697021484375004,
+          "width": 0.24,
+          "height": 0.41440429687499997
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.428553466796875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.428553466796875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:dcc1e772f9c91a32ca29fde456b6a755435c9d822ad09dacc42b23ed95f9adda",
+        "sha256:febb2e377c6916660a4b30fc75fbb8d5a11b9e320ad0ea7735e6d65feb9693bb",
+        "sha256:7d0aa63ca4f62d5a4a1ca6a338bc1f6a2ea455b372c711047ab54b93d0e34bfd"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-03",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.35940826416015625,
+          "y": 0.23760009765625,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.4262646484375,
+          "y": 0.234700927734375,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.4811962890625,
+          "y": 0.23371826171875001,
+          "width": 0.24,
+          "height": 0.38522460937499997
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5396484375,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5396484375,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.9027,
+        "mean_focus_retention": 0.937,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:718210ae16d20e280b6fe7f0eccf674031482a1ff4b7024abd53dd292f758370",
+        "sha256:e74e032231e7d4ece59e7ae4ceff6c8a8a72ed132c6a06e8b73931fb456347b2",
+        "sha256:8a251cd7682f5fd0a8253afa0677d3d7d49d56bdba825e71aba79a268e10eace"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-04",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.4042919921875,
+          "y": 0.2239697265625,
+          "width": 0.24,
+          "height": 0.30181640625
+        },
+        {
+          "x": 0.42345703125,
+          "y": 0.2282421875,
+          "width": 0.24,
+          "height": 0.297421875
+        },
+        {
+          "x": 0.5014599609375,
+          "y": 0.2291259765625,
+          "width": 0.24,
+          "height": 0.30322265625
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5724609375,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5724609375,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.955,
+        "mean_focus_retention": 0.9712,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:3aa4faab8e2db427e062af0218fd9893785916433467299d5fe3baa1123c716d",
+        "sha256:4cab9dca3c853946e227673215b82d1e1d9fc8179d0c46eb8e0b9d977b9ea9f6",
+        "sha256:438f636e8bea42769b1e2d249311cdebfe848bbcc3bae4984107cd4d5e2f3844"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-05",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.3852490234375,
+          "y": 0.206531982421875,
+          "width": 0.24,
+          "height": 0.4729833984375
+        },
+        {
+          "x": 0.3874462890625,
+          "y": 0.2178857421875,
+          "width": 0.24,
+          "height": 0.48
+        },
+        {
+          "x": 0.38006103515625,
+          "y": 0.23296142578125,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:6408bdbc573599638f897ba78500c1650745b892c41919c51a79a1b251b633b1",
+        "sha256:93f48a412a2b4b71bfb45497933b17d11b469ca2aa98a64aa6642cbebc9feb53",
+        "sha256:c4b42a4b1d4db9af93fa0e959fec392bb5797a94f0506c39365e6fa94ca89378"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-06",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.386591796875,
+          "y": 0.25795654296875004,
+          "width": 0.24,
+          "height": 0.341630859375
+        },
+        {
+          "x": 0.3829296875,
+          "y": 0.26719970703125,
+          "width": 0.24,
+          "height": 0.332666015625
+        },
+        {
+          "x": 0.38048828125,
+          "y": 0.2660498046875,
+          "width": 0.24,
+          "height": 0.33240234375
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:51f3126ac870872a2498ff8736521f06693b2f645d137a5a9572f49714162920",
+        "sha256:4dd684f5b870c5a6695d3448f811c2699df5ebbc24eedb6e01d4d9e3d538df48",
+        "sha256:edc9d15cda8cab5bcd6897406e16f50111d28cc91c07aaadeeac2e4385d75c6c"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-NT-REACTION-TAIL-07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "effect",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.4298046875,
+          "y": 0.336787109375,
+          "width": 0.24,
+          "height": 0.3659765625
+        },
+        {
+          "x": 0.45763671875,
+          "y": 0.25701904296875,
+          "width": 0.24,
+          "height": 0.454833984375
+        },
+        {
+          "x": 0.4346875,
+          "y": 0.267216796875,
+          "width": 0.24,
+          "height": 0.4601953125
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.53943359375,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.53943359375,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:1867618a4ff77153ff1c9826927c11af785e2be9e1e51bf24fce2b98806ef148",
+        "sha256:11ec06c0e545ae3a6761ac2d11d81d3f239715809aeb6df2174c679ce8e8bb12",
+        "sha256:35345e321e1e780b6b0c2742a3e46b22c36283f0bdee31bbe59adbbdf46d80c0"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-01",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "proof"
+      ],
+      "semantic_carrier": "choice_or_behavior",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5788305248320103,
+          "y": 0.362771924585104,
+          "width": 0.15552081257104872,
+          "height": 0.36317477375268936
+        },
+        {
+          "x": 0.5827555428445339,
+          "y": 0.36597116142511366,
+          "width": 0.15947443336248396,
+          "height": 0.3724073499441147
+        },
+        {
+          "x": 0.3575390625,
+          "y": 0.208150634765625,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.557421875,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.557421875,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 0.8263,
+        "mean_focus_retention": 0.8464,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:542df02eab8cd32749590543ca573303fd7641484559c4a16caa3c3a03468969",
+        "sha256:9e257bbe0117db63127823a530299895f6676bfafa69e0565eef0eca9ae76409",
+        "sha256:45bceff9065e35909b097beea84f6b22522e0dae3a6fad1399c57d9d49f92759"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-02",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "primary_subject",
+        "primary_subject",
+        "primary_subject"
+      ],
+      "semantic_carrier": "human_consequence",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.5275271447002887,
+          "y": 0.2670824211090803,
+          "width": 0.16201406985521316,
+          "height": 0.37833793833851814
+        },
+        {
+          "x": 0.582410811111331,
+          "y": 0.23114732801914215,
+          "width": 0.12820310398936272,
+          "height": 0.2993820130825043
+        },
+        {
+          "x": 0.5793532721698285,
+          "y": 0.3267628848552704,
+          "width": 0.12261314839124679,
+          "height": 0.2863282561302185
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5524107901006937,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5524107901006937,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:89e89e0fb74b86a7e319e22b89ac06e7e9f2d2e05951dfcb916724c21581ddc0",
+        "sha256:cf2aab6fb5626807a3723f6c7e1d77c2c7a848f78eec51493436f2f7adda494b",
+        "sha256:fed7818f6a08ff39f0d445a35cf852f261b06d69fdc4c25bb9543f34069cba3d"
+      ]
+    },
+    {
+      "shot_id": "SHOT-SOUL-CAND-SOUL-RM-REACTION-TAIL-03",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "strategy": "reviewed_static",
+      "focus_sources": [
+        "proof",
+        "proof",
+        "proof"
+      ],
+      "semantic_carrier": "value_verdict",
+      "semantic_binding_status": "observer_candidate",
+      "focus_boxes": [
+        {
+          "x": 0.364619140625,
+          "y": 0.2643310546875,
+          "width": 0.24,
+          "height": 0.46669921875
+        },
+        {
+          "x": 0.3872021484375,
+          "y": 0.24004150390625,
+          "width": 0.24,
+          "height": 0.479267578125
+        },
+        {
+          "x": 0.4143017578125,
+          "y": 0.210592041015625,
+          "width": 0.24,
+          "height": 0.48
+        }
+      ],
+      "centers": [
+        {
+          "at": 0.0,
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "at": 1.0,
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "subtitle_placement": "bottom",
+      "metrics": {
+        "minimum_focus_retention": 1.0,
+        "mean_focus_retention": 1.0,
+        "max_center_step": 0.0,
+        "total_camera_travel": 0.0,
+        "subtitle_conflict_count": 0
+      },
+      "camera_motion_status": "static",
+      "camera_motion_intent": "not_required",
+      "gate_status": "pass",
+      "evidence_refs": [
+        "sha256:c9e23c3b82dbc9d34a1dc8dd657c13d469cd2185d2b011ca06901caa43869309",
+        "sha256:da849738e1795dc7f9d8d6811d2f19693df541b22019338f7d64c2f126187dd8",
+        "sha256:7b1d6fc608b08789ff435d62def447c71cbf9add667b6cc899bc07e2b70ce42e"
+      ]
+    }
+  ],
+  "status": "camera_stability_corrected",
+  "plan_fingerprint": "sha256:a7b614f8f5648938458db1a8fb861cb617e00bd9fb8a6e9744135230b3c746bd"
+}

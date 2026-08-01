@@ -1,0 +1,3 @@
+Anh đã xem và thấy khung camera bị di chuyển và cố tình bị điều chỉnh lệch qua lệch lại giống đang lia máy, chứ không đứng yên. Có nhiều cảnh nhân vật đang ở giữa tự nhiên bị kéo lệch sang một bên khiến khung hình xấu, vô nghĩa và làm người xem mất tập trung; có cảnh mới vào đã lệch sẵn rồi mới kéo về giữa.
+
+Đây là bằng chứng Taste ở phạm vi plugin/series: camera crop phải đứng yên theo mặc định. Chỉ được tracking khi có lý do biên tập rõ ràng, được kiểm duyệt và tất cả quan sát đều bám cùng một semantic carrier. Dao động detector, saliency, source cut hoặc identity switch không được biến thành chuyển động camera.

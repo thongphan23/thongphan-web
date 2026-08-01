@@ -1,0 +1,10 @@
+{
+  "round": 4,
+  "video_count": 3,
+  "shot_count": 51,
+  "pass_count": 51,
+  "fail_count": 0,
+  "minimum_focus_retention": 0.8263,
+  "mean_focus_retention": 0.9835,
+  "moving_camera_shot_count": 0
+}
