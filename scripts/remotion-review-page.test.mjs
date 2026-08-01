@@ -22,9 +22,10 @@ const videos = [
 ]
 
 test('review route is noindex and exposes three rounds by three single-film videos', async () => {
-  const [page, gallery] = await Promise.all([
+  const [page, gallery, redirects] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
+    readFile(new URL('../public/_redirects', import.meta.url), 'utf8'),
   ])
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
@@ -41,6 +42,7 @@ test('review route is noindex and exposes three rounds by three single-film vide
   assert.match(gallery, /poster=\{media\.poster\}/)
   assert.match(gallery, /Chỉ phản hồi trực tiếp của anh mới/)
   assert.doesNotMatch(gallery, /autoPlay/)
+  assert.match(redirects, /^\/review \/review\/remotion-muc-dich-doi-song 302$/m)
 })
 
 test('all nine web videos are bounded, non-empty and have matching posters', async () => {

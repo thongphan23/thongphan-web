@@ -13,7 +13,9 @@ The owner-review page publishes nine videos from three iterative rounds. Every
 round uses the same authoritative Vietnamese voice and the same three one-film
 variants: `Soul`, `Forrest Gump` and `A Beautiful Mind`.
 
-Review URL:
+Owner review URL: `https://thongphan.com/review`
+
+Detailed route:
 `https://thongphan.com/review/remotion-muc-dich-doi-song`
 
 ## Authoritative Input

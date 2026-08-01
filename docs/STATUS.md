@@ -20,7 +20,8 @@ Last updated: 2026-08-01
 - Published all nine web videos, nine posters, three owner-readable round
   reports, nine composition plans, nine contact sheets and the observation/
   override evidence on the private-by-discovery review route. Self-evaluation
-  remains system evidence and is not promoted to owner Taste.
+  remains system evidence and is not promoted to owner Taste. The stable short
+  URL `/review` redirects to the complete owner-review page.
 - Plugin regression passes 880/880 and active source/cache parity passes at
   `0.2.9-rc.1+codex.20260801075502`. Website focused 4/4, full 248/248,
   TypeScript, ESLint, 84-route build and local plus production browser QA pass
