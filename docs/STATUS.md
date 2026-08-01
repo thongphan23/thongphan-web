@@ -1,6 +1,32 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-01
+Last updated: 2026-08-02
+
+## Remotion Vertical Semantic Composition v2 owner-review - production release - 2026-08-02
+
+- Upgraded vertical planning from a post-selection crop pass to one joint
+  decision over source, trim, native event, semantic carrier identity and frame
+  mode. A static camera no longer counts as success when the important person,
+  action, relationship or proof object is absent.
+- Added additive v2.12 contracts, native-cut segmentation, independent Vertical
+  Edit Plans and encoded-pixel fail-closed QA. Plugin full regression passes
+  907/907; active source/cache parity passes at commit `b1d73e7` and version
+  `0.2.11-rc.1+codex.20260802010516`.
+- Rebuilt Round 5 for Soul, Forrest Gump and A Beautiful Mind. The three final
+  videos contain 69 timeline items, 690 source observations over 230 native
+  events and 207 reviewed encoded frames. All 69 items pass carrier integrity;
+  generated crop movement is 0/69.
+- Closed the last Soul B07 false-high: the canonical scene detector now catches
+  the approximately 0.186 native cut, and the final edit replaces the mixed
+  firetruck/character item with a single-event close-up of Character 22.
+- The review page now publishes 15 videos across five rounds and opens Round 5
+  by default. Website focused 4/4, full 248/248, TypeScript, ESLint, 84-route
+  build and local/preview/production browser QA all pass 30/30 media
+  combinations at desktop and mobile.
+- Production deployment `04a6a79d` serves source `dfa736a`; `/review` redirects
+  correctly and `/tpr` remains protected with HTTP 401. Rollback deployment is
+  `f3346e78`. Full evidence:
+  `docs/releases/REMOTION_VERTICAL_SEMANTIC_COMPOSITION_V2_PRODUCTION_RELEASE-2026-08-02.md`.
 
 ## Remotion Camera Stability R4 owner-review — production release — 2026-08-01
 
