@@ -42,3 +42,23 @@ decoded durations: 68.085688s, 66.325188s, 66.266229s
 The release branch starts from Cloudflare production source commit `3a69754`,
 then adds the isolated `/voice` route and V7 audio. It does not include or
 overwrite uncommitted work from the primary website worktree.
+
+## Cloudflare Release
+
+```text
+SOURCE_COMMIT: e482b168e38fc42e86deaff7cfc77c194c5bca01
+PREVIEW: https://preview-voice-v7-e482b16.thongphan-com.pages.dev/voice
+PRODUCTION_DEPLOYMENT: https://2620db95.thongphan-com.pages.dev
+CUSTOM_DOMAIN: https://thongphan.com/voice
+```
+
+Post-deploy smoke test on the custom domain:
+
+```text
+/voice: 200, V7 marker present
+A.mp3: 200, audio/mpeg, 1,635,309 bytes
+B.mp3: 200, audio/mpeg, 1,593,261 bytes
+C.mp3: 200, audio/mpeg, 1,592,109 bytes
+Chromium decode/playback: PASS for all three tracks
+decoded durations: 68.085688s, 66.325188s, 66.266229s
+```
