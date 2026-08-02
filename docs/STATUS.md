@@ -2,6 +2,27 @@
 
 Last updated: 2026-08-02
 
+## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02
+
+- Closed the Round 5 false-high where semantic-carrier checks could pass while
+  the renderer still preserved a reduced horizontal master inside a portrait
+  canvas. Final delivery now permits only a full-canvas static portrait crop.
+- Removed the blurred horizontal evidence band and prohibited context-window
+  rescue. A source that cannot preserve the voice-relevant person, action or
+  proof object must be split into stable portrait holds or replaced upstream.
+- Rebuilt Round 6 for Soul, Forrest Gump and A Beautiful Mind: 92/92 timeline
+  items are full-bleed and static; 276/276 encoded START/MID/END observations
+  pass. Shared frame-boundary quantization also removed one-frame render gaps.
+- Plugin focused vertical tests pass 36/36, SQLite writer stress passes 10/10,
+  full regression passes 910/910 and source/cache parity passes at commit
+  `ab89fee` and active version
+  `0.2.11-rc.1+codex.20260802043817`.
+- Website focused 4/4, full 248/248, TypeScript, ESLint, 84-route build and
+  local/preview/production browser QA pass. Production browser QA covers two
+  viewports and 36 media combinations. Deployment `75057013` serves source
+  `0331695`; rollback deployment is `b4ce9d16`. Full evidence:
+  `docs/releases/REMOTION_FULL_BLEED_VERTICAL_COMPOSITION_V3_PRODUCTION_RELEASE-2026-08-02.md`.
+
 ## Remotion Vertical Semantic Composition v2 owner-review - production release - 2026-08-02
 
 - Upgraded vertical planning from a post-selection crop pass to one joint
