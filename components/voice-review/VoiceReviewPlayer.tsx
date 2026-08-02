@@ -4,9 +4,9 @@ import { useRef } from 'react'
 import styles from '@/app/voice/page.module.css'
 
 const tracks = [
-  { id: 'A', duration: '70,6 giây', src: '/voice/audio/A.mp3' },
-  { id: 'B', duration: '67,8 giây', src: '/voice/audio/B.mp3' },
-  { id: 'C', duration: '68,2 giây', src: '/voice/audio/C.mp3' },
+  { id: 'A', duration: '68,1 giây', src: '/voice/audio/A.mp3' },
+  { id: 'B', duration: '66,3 giây', src: '/voice/audio/B.mp3' },
+  { id: 'C', duration: '66,3 giây', src: '/voice/audio/C.mp3' },
 ] as const
 
 export default function VoiceReviewPlayer() {

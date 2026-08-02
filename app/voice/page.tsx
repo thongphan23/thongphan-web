@@ -12,16 +12,16 @@ export default function VoiceReviewPage() {
   return (
     <main className={styles.page}>
       <header className={styles.intro}>
-        <p className={styles.eyebrow}>TPR · OWNER VOICE REVIEW · V6</p>
+        <p className={styles.eyebrow}>TPR · OWNER VOICE REVIEW · V7</p>
         <h1>Ba cách đọc.<br />Một nội dung.</h1>
         <p className={styles.lede}>
-          Cùng một kịch bản, giọng nam và cấu trúc ý nghĩa. Ba bản chỉ khác cách điều tiết
-          nhịp, khoảng nghỉ và đường năng lượng.
+          Cùng một kịch bản và cùng một giọng nam. Ba bản dùng các cách diễn khác nhau
+          để so sánh độ tự nhiên, nhịp suy nghĩ và đường năng lượng.
         </p>
         <dl className={styles.runFacts}>
-          <div><dt>Thời lượng</dt><dd>68–71 giây</dd></div>
-          <div><dt>Sai chữ ASR</dt><dd>0,59–0,68%</dd></div>
-          <div><dt>Đơn vị suy nghĩ</dt><dd>14 câu · 14 điểm nghỉ</dd></div>
+          <div><dt>Thời lượng</dt><dd>66,3–68,1 giây</dd></div>
+          <div><dt>Sai chữ ASR</dt><dd>0,085–0,764%</dd></div>
+          <div><dt>Đơn vị suy nghĩ</dt><dd>6 cụm ý · 6 khoảng lặng có chủ đích</dd></div>
         </dl>
       </header>
 

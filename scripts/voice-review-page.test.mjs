@@ -12,11 +12,16 @@ test('voice review route is noindex and exposes three controlled tracks', async 
   ])
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
+  assert.match(page, /OWNER VOICE REVIEW · V7/)
+  assert.match(page, /6 cụm ý · 6 khoảng lặng có chủ đích/)
+  assert.match(page, /0,085–0,764%/)
   assert.match(page, /<VoiceReviewPlayer\s*\/>/)
   assert.equal((player.match(/id:\s*['"][ABC]['"]/g) ?? []).length, 3)
   assert.equal((player.match(/preload="metadata"/g) ?? []).length, 1)
   assert.match(player, /controls/)
   assert.match(player, /onPlay=/)
+  assert.match(player, /68,1 giây/)
+  assert.equal((player.match(/66,3 giây/g) ?? []).length, 2)
   assert.doesNotMatch(player, /autoPlay/)
 })
 
