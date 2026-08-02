@@ -14,6 +14,11 @@ const round5ContactSheetPages = {
   'forrest-gump': 3,
   'a-beautiful-mind': 5,
 }
+const round6ContactSheetPages = {
+  soul: 5,
+  'forrest-gump': 6,
+  'a-beautiful-mind': 6,
+}
 const videos = [
   'vertical-r1-soul-web.mp4',
   'vertical-r1-forrest-gump-web.mp4',
@@ -30,9 +35,12 @@ const videos = [
   'vertical-r5-soul-web.mp4',
   'vertical-r5-forrest-gump-web.mp4',
   'vertical-r5-a-beautiful-mind-web.mp4',
+  'vertical-r6-soul-web.mp4',
+  'vertical-r6-forrest-gump-web.mp4',
+  'vertical-r6-a-beautiful-mind-web.mp4',
 ]
 
-test('review route is noindex and exposes five rounds by three single-film videos', async () => {
+test('review route is noindex and exposes six rounds by three single-film videos', async () => {
   const [page, gallery, redirects] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -41,13 +49,13 @@ test('review route is noindex and exposes five rounds by three single-film video
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.match(page, /5 vòng × 3 phim/)
+  assert.match(page, /6 vòng × 3 phim/)
   assert.match(gallery, /aria-label="Chọn vòng cải tiến"/)
   assert.match(gallery, /aria-label="Chọn phim"/)
-  assert.equal((gallery.match(/id: 'r[12345]'/g) ?? []).length, 5)
+  assert.equal((gallery.match(/id: 'r[123456]'/g) ?? []).length, 6)
   assert.equal((gallery.match(/id: '(?:soul|forrest-gump|a-beautiful-mind)'/g) ?? []).length, 3)
-  assert.equal((gallery.match(/vertical-r[12345]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 15)
-  assert.match(gallery, /useState<RoundId>\('r5'\)/)
+  assert.equal((gallery.match(/vertical-r[123456]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 18)
+  assert.match(gallery, /useState<RoundId>\('r6'\)/)
   assert.match(gallery, /24\/51 di động/)
   assert.match(gallery, /0\/51 di động/)
   assert.match(gallery, /preload="metadata"/)
@@ -59,7 +67,7 @@ test('review route is noindex and exposes five rounds by three single-film video
   assert.match(redirects, /^\/review \/review\/remotion-muc-dich-doi-song 302$/m)
 })
 
-test('all fifteen web videos are bounded, non-empty and have matching posters', async () => {
+test('all eighteen web videos are bounded, non-empty and have matching posters', async () => {
   for (const filename of videos) {
     const video = new URL(filename, mediaRoot)
     const poster = new URL(filename.replace('-web.mp4', '-poster.jpg'), mediaRoot)
@@ -106,10 +114,25 @@ test('each round exposes its report, three plans and three contact sheets', asyn
         ),
       )
     }
+    await access(new URL(`round-6/${film}/vertical_composition_plan.json`, evidenceRoot))
+    await access(new URL(`round-6/${film}/vertical_edit_plan.json`, evidenceRoot))
+    await access(new URL(`round-6/${film}/vertical_semantic_pixel_qa.json`, evidenceRoot))
+    for (let page = 1; page <= round6ContactSheetPages[film]; page += 1) {
+      await access(
+        new URL(
+          `round-6/${film}/contact-sheet-page-${String(page).padStart(2, '0')}.jpg`,
+          evidenceRoot,
+        ),
+      )
+    }
   }
   await access(new URL('round-5/SELF-EVALUATION.md', evidenceRoot))
   await access(new URL('round-5/OWNER-REVIEW-PACKET.md', evidenceRoot))
   await access(new URL('round-5/manual_pixel_adjudication.json', evidenceRoot))
+  await access(new URL('round-6/SELF-EVALUATION.md', evidenceRoot))
+  await access(new URL('round-6/OWNER-REVIEW-PACKET.md', evidenceRoot))
+  await access(new URL('round-6/manual_pixel_adjudication.json', evidenceRoot))
+  await access(new URL('round-6/encoded_pixel_evidence.json', evidenceRoot))
 })
 
 test('review layout keeps a stable 9:16 player and a one-column mobile reading order', async () => {

@@ -1,0 +1,895 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-full-bleed-composition-v3-a-beautiful-mind-round6",
+  "sources": [
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-2780-7220",
+          "at_ms": 4198
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-2780-7220",
+          "source_in_ms": 2780,
+          "source_out_ms": 4198
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-2780-7220",
+          "source_in_ms": 4198,
+          "source_out_ms": 7220
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-ABM-EQUATIONS-80-4520",
+          "source_in_ms": 80,
+          "source_out_ms": 4520
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3200-7640",
+          "at_ms": 4201
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3200-7640",
+          "source_in_ms": 3200,
+          "source_out_ms": 4201
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3200-7640",
+          "source_in_ms": 4201,
+          "source_out_ms": 7640
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+          "source_in_ms": 500,
+          "source_out_ms": 4940
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3620-8060",
+          "at_ms": 4204
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3620-8060",
+          "source_in_ms": 3620,
+          "source_out_ms": 4204
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-REFLECT-TABLE-3620-8060",
+          "source_in_ms": 4204,
+          "source_out_ms": 8060
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-ABM-EQUATIONS-920-5360",
+          "source_in_ms": 920,
+          "source_out_ms": 5360
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7380-13360",
+          "at_ms": 8840
+        },
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7380-13360",
+          "at_ms": 11884
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7380-13360",
+          "source_in_ms": 7380,
+          "source_out_ms": 8840
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7380-13360",
+          "source_in_ms": 8840,
+          "source_out_ms": 11884
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-CONTEXT-LEAD-01-03",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7380-13360",
+          "source_in_ms": 11884,
+          "source_out_ms": 13360
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7800-13780",
+          "at_ms": 8801
+        },
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7800-13780",
+          "at_ms": 11846
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7800-13780",
+          "source_in_ms": 7800,
+          "source_out_ms": 8801
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7800-13780",
+          "source_in_ms": 8801,
+          "source_out_ms": 11846
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-ACTION-CORE-01-03",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-7800-13780",
+          "source_in_ms": 11846,
+          "source_out_ms": 13780
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+          "at_ms": 8804
+        },
+        {
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+          "at_ms": 11849
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+          "source_in_ms": 8220,
+          "source_out_ms": 8804
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+          "source_in_ms": 8804,
+          "source_out_ms": 11849
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-03",
+          "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+          "source_in_ms": 11849,
+          "source_out_ms": 14200
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-LECTURE-8080-12500",
+          "at_ms": 9707
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-LECTURE-8080-12500",
+          "source_in_ms": 8080,
+          "source_out_ms": 9707
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-LECTURE-8080-12500",
+          "source_in_ms": 9707,
+          "source_out_ms": 12500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-LECTURE-8500-12920",
+          "at_ms": 9710
+        },
+        {
+          "source_asset_id": "ASSET-ABM-LECTURE-8500-12920",
+          "at_ms": 12087
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-LECTURE-8500-12920",
+          "source_in_ms": 8500,
+          "source_out_ms": 9710
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-ABM-LECTURE-8500-12920",
+          "source_in_ms": 9710,
+          "source_out_ms": 12087
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-ACTION-CORE-01-03",
+          "source_asset_id": "ASSET-ABM-LECTURE-8500-12920",
+          "source_in_ms": 12087,
+          "source_out_ms": 12920
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+          "at_ms": 9712
+        },
+        {
+          "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+          "at_ms": 12090
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+          "source_in_ms": 8920,
+          "source_out_ms": 9712
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+          "source_in_ms": 9712,
+          "source_out_ms": 12090
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-03",
+          "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+          "source_in_ms": 12090,
+          "source_out_ms": 13340
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-KE-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-KE-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-HEART-6580-10640",
+          "source_in_ms": 6580,
+          "source_out_ms": 10640
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-HEART-7000-11060",
+          "source_in_ms": 7000,
+          "source_out_ms": 11060
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-HEART-7420-11480",
+          "source_in_ms": 7420,
+          "source_out_ms": 11480
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-PENS-780-7360",
+          "at_ms": 1656
+        },
+        {
+          "source_asset_id": "ASSET-ABM-PENS-780-7360",
+          "at_ms": 6619
+        },
+        {
+          "source_asset_id": "ASSET-ABM-REAL-TOUCH-14080-19660",
+          "at_ms": 14831
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-REAL-TOUCH-14080-19660",
+          "source_in_ms": 14080,
+          "source_out_ms": 14831
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-REAL-TOUCH-14080-19660",
+          "source_in_ms": 14831,
+          "source_out_ms": 19660
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-ABM-PENS-780-7360",
+          "source_in_ms": 780,
+          "source_out_ms": 1656
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-02-02",
+          "source_asset_id": "ASSET-ABM-PENS-780-7360",
+          "source_in_ms": 1656,
+          "source_out_ms": 6619
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-CONTEXT-LEAD-02-03",
+          "source_asset_id": "ASSET-ABM-PENS-780-7360",
+          "source_in_ms": 6619,
+          "source_out_ms": 7360
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-PENS-1200-7780",
+          "at_ms": 6622
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-REAL-TOUCH-14500-20080",
+          "source_in_ms": 14500,
+          "source_out_ms": 20080
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-ABM-PENS-1200-7780",
+          "source_in_ms": 1200,
+          "source_out_ms": 6622
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-ACTION-CORE-02-02",
+          "source_asset_id": "ASSET-ABM-PENS-1200-7780",
+          "source_in_ms": 6622,
+          "source_out_ms": 7780
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+          "at_ms": 6625
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-REAL-TOUCH-14920-20500",
+          "source_in_ms": 14920,
+          "source_out_ms": 20500
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+          "source_in_ms": 1620,
+          "source_out_ms": 6625
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-02",
+          "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+          "source_in_ms": 6625,
+          "source_out_ms": 8200
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-NOBEL-5580-8660",
+          "at_ms": 7791
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-NOBEL-5580-8660",
+          "source_in_ms": 5580,
+          "source_out_ms": 7791
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-NOBEL-5580-8660",
+          "source_in_ms": 7791,
+          "source_out_ms": 8660
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-NOBEL-6000-9080",
+          "at_ms": 7793
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-NOBEL-6000-9080",
+          "source_in_ms": 6000,
+          "source_out_ms": 7793
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-ABM-NOBEL-6000-9080",
+          "source_in_ms": 7793,
+          "source_out_ms": 9080
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-NOBEL-6420-9500",
+          "at_ms": 7796
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-NOBEL-6420-9500",
+          "source_in_ms": 6420,
+          "source_out_ms": 7796
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-NOBEL-6420-9500",
+          "source_in_ms": 7796,
+          "source_out_ms": 9500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-PRESSURE-2080-4080",
+          "source_in_ms": 2080,
+          "source_out_ms": 4080
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-ABM-REALIZATION-4080-5780",
+          "source_in_ms": 4080,
+          "source_out_ms": 5780
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-ABM-FAMILY-DANGER-5080-7080",
+          "source_in_ms": 5080,
+          "source_out_ms": 7080
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-04-01",
+          "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5080-6780",
+          "source_in_ms": 5080,
+          "source_out_ms": 6780
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-05-01",
+          "source_asset_id": "ASSET-ABM-HALLUCINATIONS-4580-6180",
+          "source_in_ms": 4580,
+          "source_out_ms": 6180
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-06-01",
+          "source_asset_id": "ASSET-ABM-BLOODY-ALONE-7580-8880",
+          "source_in_ms": 7580,
+          "source_out_ms": 8880
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-CONTEXT-LEAD-07-01",
+          "source_asset_id": "ASSET-ABM-EVIDENCE-ROOM-80-1160",
+          "source_in_ms": 80,
+          "source_out_ms": 1160
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-REALIZATION-4500-6200",
+          "at_ms": 5501
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-PRESSURE-2500-4500",
+          "source_in_ms": 2500,
+          "source_out_ms": 4500
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-ABM-REALIZATION-4500-6200",
+          "source_in_ms": 4500,
+          "source_out_ms": 5501
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-02-02",
+          "source_asset_id": "ASSET-ABM-REALIZATION-4500-6200",
+          "source_in_ms": 5501,
+          "source_out_ms": 6200
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-ABM-FAMILY-DANGER-5500-7500",
+          "source_in_ms": 5500,
+          "source_out_ms": 7500
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-04-01",
+          "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5500-7200",
+          "source_in_ms": 5500,
+          "source_out_ms": 7200
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-05-01",
+          "source_asset_id": "ASSET-ABM-HALLUCINATIONS-5000-6600",
+          "source_in_ms": 5000,
+          "source_out_ms": 6600
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-06-01",
+          "source_asset_id": "ASSET-ABM-BLOODY-ALONE-8000-9300",
+          "source_in_ms": 8000,
+          "source_out_ms": 9300
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-ACTION-CORE-07-01",
+          "source_asset_id": "ASSET-ABM-EVIDENCE-ROOM-500-1580",
+          "source_in_ms": 500,
+          "source_out_ms": 1580
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5920-7620",
+          "at_ms": 7004
+        },
+        {
+          "source_asset_id": "ASSET-ABM-REALIZATION-4920-6620",
+          "at_ms": 5504
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-PRESSURE-2920-4920",
+          "source_in_ms": 2920,
+          "source_out_ms": 4920
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-ABM-REALIZATION-4920-6620",
+          "source_in_ms": 4920,
+          "source_out_ms": 5504
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-02-02",
+          "source_asset_id": "ASSET-ABM-REALIZATION-4920-6620",
+          "source_in_ms": 5504,
+          "source_out_ms": 6620
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-ABM-FAMILY-DANGER-5920-7920",
+          "source_in_ms": 5920,
+          "source_out_ms": 7920
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-04-01",
+          "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5920-7620",
+          "source_in_ms": 5920,
+          "source_out_ms": 7004
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-04-02",
+          "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5920-7620",
+          "source_in_ms": 7004,
+          "source_out_ms": 7620
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-05-01",
+          "source_asset_id": "ASSET-ABM-HALLUCINATIONS-5420-7020",
+          "source_in_ms": 5420,
+          "source_out_ms": 7020
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-06-01",
+          "source_asset_id": "ASSET-ABM-BLOODY-ALONE-8420-9720",
+          "source_in_ms": 8420,
+          "source_out_ms": 9720
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-07-01",
+          "source_asset_id": "ASSET-ABM-EVIDENCE-ROOM-920-2000",
+          "source_in_ms": 920,
+          "source_out_ms": 2000
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10080-13312",
+          "at_ms": 11164
+        },
+        {
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-0-3230",
+          "at_ms": 2252
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-0-3230",
+          "source_in_ms": 0,
+          "source_out_ms": 2252
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-0-3230",
+          "source_in_ms": 2252,
+          "source_out_ms": 3230
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-ABM-PARTNER-HURT-0-3230",
+          "source_in_ms": 0,
+          "source_out_ms": 3230
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10080-13312",
+          "source_in_ms": 10080,
+          "source_out_ms": 11164
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-CONTEXT-LEAD-03-02",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10080-13312",
+          "source_in_ms": 11164,
+          "source_out_ms": 13312
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10500-13732",
+          "at_ms": 11167
+        },
+        {
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10500-13732",
+          "at_ms": 12877
+        },
+        {
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-400-3630",
+          "at_ms": 2277
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-400-3630",
+          "source_in_ms": 400,
+          "source_out_ms": 2277
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-400-3630",
+          "source_in_ms": 2277,
+          "source_out_ms": 3630
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-ABM-PARTNER-HURT-0-3230",
+          "source_in_ms": 0,
+          "source_out_ms": 3230
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10500-13732",
+          "source_in_ms": 10500,
+          "source_out_ms": 11167
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-03-02",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10500-13732",
+          "source_in_ms": 11167,
+          "source_out_ms": 12877
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-ACTION-CORE-03-03",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10500-13732",
+          "source_in_ms": 12877,
+          "source_out_ms": 13732
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10920-14152",
+          "at_ms": 12880
+        },
+        {
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "at_ms": 2280
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "source_in_ms": 820,
+          "source_out_ms": 2280
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "source_in_ms": 2280,
+          "source_out_ms": 4050
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-ABM-PARTNER-HURT-420-3650",
+          "source_in_ms": 420,
+          "source_out_ms": 3650
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10920-14152",
+          "source_in_ms": 10920,
+          "source_out_ms": 12880
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-03-02",
+          "source_asset_id": "ASSET-ABM-BREAKDOWN-10920-14152",
+          "source_in_ms": 12880,
+          "source_out_ms": 14152
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-ABM-PORTRAIT-JOHN-INWARD-01",
+          "source_asset_id": "ASSET-ABM-PORTRAIT-JOHN-INWARD-2200-6640",
+          "source_in_ms": 2200,
+          "source_out_ms": 6640
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+          "source_in_ms": 500,
+          "source_out_ms": 4940
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "at_ms": 2280
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "source_in_ms": 820,
+          "source_out_ms": 2280
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+          "source_in_ms": 2280,
+          "source_out_ms": 4050
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-ABM-PARTNER-HURT-420-3650",
+          "source_in_ms": 420,
+          "source_out_ms": 3650
+        },
+        {
+          "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-ABM-HOSPITAL-PAIN-PORTRAIT-01",
+          "source_asset_id": "ASSET-ABM-HOSPITAL-PAIN-14000-17232",
+          "source_in_ms": 14000,
+          "source_out_ms": 17232
+        }
+      ],
+      "status": "sealed"
+    }
+  ],
+  "status": "sealed",
+  "segmentation_fingerprint": "sha256:252fa477517c5ba296771cbe043ecfe0f5db8465959eb91c9e84bbfe043c9cb6"
+}

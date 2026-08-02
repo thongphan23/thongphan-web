@@ -1,0 +1,20 @@
+{
+  "soul": {
+    "contracts": 8,
+    "candidates": 25,
+    "events": 84,
+    "observed_frames": 756
+  },
+  "forrest-gump": {
+    "contracts": 8,
+    "candidates": 26,
+    "events": 55,
+    "observed_frames": 495
+  },
+  "a-beautiful-mind": {
+    "contracts": 8,
+    "candidates": 26,
+    "events": 92,
+    "observed_frames": 828
+  }
+}

@@ -1,0 +1,2858 @@
+{
+  "schema": "tpr.vertical_round6_full_bleed_encoded_evidence.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "review_status": "manual_pixel_adjudication_passed",
+  "films": [
+    {
+      "film": "soul",
+      "render_path": "rounds/round-6/renders/soul.mp4",
+      "render_sha256": "sha256:ee4ae6dd6c7b545971a1f3b5b8a6b26b67321515d6004062b7656d375daadcec",
+      "edit_plan_fingerprint": "sha256:6c0abe71bbdbeb202f1844b6ec654974fd1362c4f38c7b6519447519e7dcb8e1",
+      "timeline_item_count": 28,
+      "frame_mode_counts": {
+        "cover_static": 28
+      },
+      "rendered_observation_count": 84,
+      "contact_sheet_pages": [
+        "audit/round-6/rendered-contact-sheets/soul/page-01.jpg",
+        "audit/round-6/rendered-contact-sheets/soul/page-02.jpg",
+        "audit/round-6/rendered-contact-sheets/soul/page-03.jpg",
+        "audit/round-6/rendered-contact-sheets/soul/page-04.jpg",
+        "audit/round-6/rendered-contact-sheets/soul/page-05.jpg"
+      ],
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "camera_positions_static": true,
+        "frame_intervals_contiguous": true,
+        "render_matches_locked_plan": true,
+        "all_items_full_bleed": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "film": "forrest-gump",
+      "render_path": "rounds/round-6/renders/forrest-gump.mp4",
+      "render_sha256": "sha256:96759550809c69df37c136b6deb828b077c3c3d76f2f6c2c0bec7fd092db2a81",
+      "edit_plan_fingerprint": "sha256:28eb2669ae8bc6751ac393e185c24ed1e3f01ba3812bcfd0eb9dfea95390a4d0",
+      "timeline_item_count": 31,
+      "frame_mode_counts": {
+        "cover_static": 31
+      },
+      "rendered_observation_count": 93,
+      "contact_sheet_pages": [
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-01.jpg",
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-02.jpg",
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-03.jpg",
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-04.jpg",
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-05.jpg",
+        "audit/round-6/rendered-contact-sheets/forrest-gump/page-06.jpg"
+      ],
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "camera_positions_static": true,
+        "frame_intervals_contiguous": true,
+        "render_matches_locked_plan": true,
+        "all_items_full_bleed": true
+      },
+      "technical_status": "pass"
+    },
+    {
+      "film": "a-beautiful-mind",
+      "render_path": "rounds/round-6/renders/a-beautiful-mind.mp4",
+      "render_sha256": "sha256:a9cdbe2202a1f668d43b8df4ae40c6bef624e2d16e42a4951f1e3b8036e1fc6b",
+      "edit_plan_fingerprint": "sha256:e6f1c8d7a0e622501f58971a59b6b3731399b27af93aa3db9e2f7baab27693c4",
+      "timeline_item_count": 33,
+      "frame_mode_counts": {
+        "cover_static": 33
+      },
+      "rendered_observation_count": 99,
+      "contact_sheet_pages": [
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-01.jpg",
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-02.jpg",
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-03.jpg",
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-04.jpg",
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-05.jpg",
+        "audit/round-6/rendered-contact-sheets/a-beautiful-mind/page-06.jpg"
+      ],
+      "technical_checks": {
+        "duration_matches_voice": true,
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "camera_positions_static": true,
+        "frame_intervals_contiguous": true,
+        "render_matches_locked_plan": true,
+        "all_items_full_bleed": true
+      },
+      "technical_status": "pass"
+    }
+  ],
+  "rendered_frames": [
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 90,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/01-VTI-41e1e1f84a6ed0588b53-01-start.jpg",
+      "image_sha256": "sha256:d3221b2ea19702198c32b20163ebfc17a67a43ac189e85cab97b7580dc90f47d"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 375,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/01-VTI-41e1e1f84a6ed0588b53-01-mid.jpg",
+      "image_sha256": "sha256:3d6c6e1e5f08e67ea7782fbaf8b1066bc87df3e22d0b8425339856535e738313"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 660,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/01-VTI-41e1e1f84a6ed0588b53-01-end.jpg",
+      "image_sha256": "sha256:4c460b9cd07cfe8445d0b02acb35a73129db088850aa1ce247b2958ae49be9e3"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 1016,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/02-VTI-41e1e1f84a6ed0588b53-02-start.jpg",
+      "image_sha256": "sha256:7a019aa3843d98392eec5b8eae8cc6135b5b5485bc191a8ae4855ea9e7b47f34"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 1856,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/02-VTI-41e1e1f84a6ed0588b53-02-mid.jpg",
+      "image_sha256": "sha256:0999fd81dc45c848c43fea38a7804a5dc4a3d9d1232b43f93fa79d522580781f"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 2695,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/02-VTI-41e1e1f84a6ed0588b53-02-end.jpg",
+      "image_sha256": "sha256:c12e4be7b6d791332b6077a0fa01a22a609078f29bfb35ae89985b6d31870ec5"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3138,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/03-VTI-41e1e1f84a6ed0588b53-03-start.jpg",
+      "image_sha256": "sha256:2706ddf0411a901f25632d6ec7a5a6fca6a25c588ff63f3b8b226118cb6f3b74"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3700,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/03-VTI-41e1e1f84a6ed0588b53-03-mid.jpg",
+      "image_sha256": "sha256:b69dc84de39a18117b268734df78773370ed8e36686bebf116811bb07fc0b435"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 4262,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/03-VTI-41e1e1f84a6ed0588b53-03-end.jpg",
+      "image_sha256": "sha256:295b92286e9b744bc4b4ab735ac4b778bff6e7e60b7c4aaa48e2692ba2eb33b9"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 4677,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/04-VTI-41e1e1f84a6ed0588b53-04-start.jpg",
+      "image_sha256": "sha256:8f558805a538252ee7d8ea214c8a8a67f744814f81ea0d658c53ba4b40c91ab9"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 5427,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/04-VTI-41e1e1f84a6ed0588b53-04-mid.jpg",
+      "image_sha256": "sha256:921eff71a9d8cfceb0579849af9bfd5093c729d3917cf3326d653521e33e1c46"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 6178,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/04-VTI-41e1e1f84a6ed0588b53-04-end.jpg",
+      "image_sha256": "sha256:3fdb03739d116e0f8d535125279895456ed854f243e179783547737a260367e5"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 6710,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/05-VTI-41e1e1f84a6ed0588b53-05-start.jpg",
+      "image_sha256": "sha256:756ed5ec5e65a84f1d0ba2d966a57317e8008a04d7f8022a0e9ba1275596c264"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7647,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/05-VTI-41e1e1f84a6ed0588b53-05-mid.jpg",
+      "image_sha256": "sha256:eb5f4571bda601dcc98280d64ade52466d14d3c8c4fefd31e87c62b0e59b5ac2"
+    },
+    {
+      "timeline_item_id": "VTI-41e1e1f84a6ed0588b53-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 8584,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/05-VTI-41e1e1f84a6ed0588b53-05-end.jpg",
+      "image_sha256": "sha256:65b7975fa283d827120120f8975b6325f39c331ab2d710200c83738389015cc5"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 9310,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/06-VTI-5c76f0b953e76d8790b5-01-start.jpg",
+      "image_sha256": "sha256:eb1b14e216100c00911b19a0c8ffca551a9d4b20fb57ca5ccce7f89997e9d548"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 10673,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/06-VTI-5c76f0b953e76d8790b5-01-mid.jpg",
+      "image_sha256": "sha256:ffcae000133dbea4b47870ee8477fd5f053e556f15f7315212d6058e348fa254"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 12036,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/06-VTI-5c76f0b953e76d8790b5-01-end.jpg",
+      "image_sha256": "sha256:2a513fbca95b9873d1cab7dfaae2f758e31e7ee201d726bc3fd4cd20552f62b5"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 12689,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/07-VTI-5c76f0b953e76d8790b5-02-start.jpg",
+      "image_sha256": "sha256:d4e0166e31c3ee7e382e090d09b37c32548944d1e1b9978d1bb04668e9751913"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 13394,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/07-VTI-5c76f0b953e76d8790b5-02-mid.jpg",
+      "image_sha256": "sha256:bf34a413d846e87334457245ab711f77a833b35a8d422f502b3be2adc61de26a"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14098,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/07-VTI-5c76f0b953e76d8790b5-02-end.jpg",
+      "image_sha256": "sha256:e0093f47490f0ddea3f25c8681d84903f633401f06d9736a171f8935ee004c36"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14385,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/08-VTI-5c76f0b953e76d8790b5-03-start.jpg",
+      "image_sha256": "sha256:99db38d19ee44123474640abf19e77c564fb1ecdeb76d83d19e4366dc420a4a5"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14590,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/08-VTI-5c76f0b953e76d8790b5-03-mid.jpg",
+      "image_sha256": "sha256:c3871112483e14efc9bb0ec4c5fb9e5cf8b15d3f32168cb259430e4ac3db3436"
+    },
+    {
+      "timeline_item_id": "VTI-5c76f0b953e76d8790b5-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14795,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/08-VTI-5c76f0b953e76d8790b5-03-end.jpg",
+      "image_sha256": "sha256:d015f26a0e40662687237f5c1b3335270b33f913a56c025d7701a6770ee87a42"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-17070",
+      "frame_mode": "cover_static",
+      "at_ms": 15125,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/09-VTI-567186a5d389857dea9d-01-start.jpg",
+      "image_sha256": "sha256:b81c35f711a254efd2100d093fddafffab0395b33d65c7abd55d635799db4095"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-17070",
+      "frame_mode": "cover_static",
+      "at_ms": 15965,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/09-VTI-567186a5d389857dea9d-01-mid.jpg",
+      "image_sha256": "sha256:0b6837ccefb84f6ee836e004cd8b484775ae469ad27d7f9d3616dae60fa122c1"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-17070",
+      "frame_mode": "cover_static",
+      "at_ms": 16804,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/09-VTI-567186a5d389857dea9d-01-end.jpg",
+      "image_sha256": "sha256:48358ad8969cbbc78ad5eeb98d276d7f29504a85ee73762b5ad7a86e5ace31a8"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17265,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/10-VTI-567186a5d389857dea9d-02-start.jpg",
+      "image_sha256": "sha256:f1b8aebf94b001fe3671407e68e9988c9e389cbf10030b36fa4812e18d99428f"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17883,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/10-VTI-567186a5d389857dea9d-02-mid.jpg",
+      "image_sha256": "sha256:c75f5cff9cb41614dd52eee3acddbe2197491656174cecf03dbd7597c5e53e1d"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18501,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/10-VTI-567186a5d389857dea9d-02-end.jpg",
+      "image_sha256": "sha256:35ebfe4bc4e45da5b29de73cdf43d388348f027ac884e21830da34c79d3029c7"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18766,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/11-VTI-567186a5d389857dea9d-03-start.jpg",
+      "image_sha256": "sha256:7838c39aac9580a08e3a363de4c655df5effaa45a232d7f87a932f74375980d5"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18988,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/11-VTI-567186a5d389857dea9d-03-mid.jpg",
+      "image_sha256": "sha256:ea0b088d5ae66d1fec272c527fea2c360df88d4134351f109fdf27c097613e88"
+    },
+    {
+      "timeline_item_id": "VTI-567186a5d389857dea9d-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 19210,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/11-VTI-567186a5d389857dea9d-03-end.jpg",
+      "image_sha256": "sha256:5dc7d0be300fefe27aea7a042909ccf7d4c63b9381ddd47f3fa942ec2e7f2ff9"
+    },
+    {
+      "timeline_item_id": "VTI-8daa6c51d333054bacbf-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 19767,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/12-VTI-8daa6c51d333054bacbf-01-start.jpg",
+      "image_sha256": "sha256:f6b95c938072d94bb4efaef4179cce0dd2e96b33cf7be823181479efabdb08c2"
+    },
+    {
+      "timeline_item_id": "VTI-8daa6c51d333054bacbf-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 21310,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/12-VTI-8daa6c51d333054bacbf-01-mid.jpg",
+      "image_sha256": "sha256:f9cd0bb7d15896c72e73eb5e0d4e592a3a9c99679b646643f3b434c0512cad16"
+    },
+    {
+      "timeline_item_id": "VTI-8daa6c51d333054bacbf-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 22852,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/12-VTI-8daa6c51d333054bacbf-01-end.jpg",
+      "image_sha256": "sha256:0d66756f2aa7c8b3f2633c3d20d53b9d51ca7457aaaee055b2e3a1c72d14763d"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 24009,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/13-VTI-936191c61dadc3349ca3-01-start.jpg",
+      "image_sha256": "sha256:58c1610bc75aa88d407195a3159ba9e491000283f4f2d56f848eaef20f76d2f3"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 26130,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/13-VTI-936191c61dadc3349ca3-01-mid.jpg",
+      "image_sha256": "sha256:495adbbf6c8d161d771432c6520074381849e163afb40f96632b9b5516c4b75f"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 28250,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/13-VTI-936191c61dadc3349ca3-01-end.jpg",
+      "image_sha256": "sha256:e8b1166b38259c3e87f9b13e7c7e33ffd9da80e0510b26c66a5f2ee8027c25c0"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 29097,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/14-VTI-936191c61dadc3349ca3-02-start.jpg",
+      "image_sha256": "sha256:f7b3a9131829d81875fed5667c4edaf5a38c460b1e2f5ffb126a68b13d5c8148"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 29660,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/14-VTI-936191c61dadc3349ca3-02-mid.jpg",
+      "image_sha256": "sha256:6e1b2a06c5da9cde2c74e301afdab8844e44372bdd6ea523b0da45c806cd665b"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 30222,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/14-VTI-936191c61dadc3349ca3-02-end.jpg",
+      "image_sha256": "sha256:11b624e54387871e9cee09afd5a4cca3224dae94032edff95a426a5382822d70"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 31012,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/15-VTI-936191c61dadc3349ca3-03-start.jpg",
+      "image_sha256": "sha256:333b0136f52e7fd1224ff5c28f6aa702114f7aefe0294a00796d82fbb70646c7"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 32950,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/15-VTI-936191c61dadc3349ca3-03-mid.jpg",
+      "image_sha256": "sha256:3679305239c63a6b1c85d822c80d944978a4a4cdb6293e4b9f23b564b1813039"
+    },
+    {
+      "timeline_item_id": "VTI-936191c61dadc3349ca3-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 34888,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/15-VTI-936191c61dadc3349ca3-03-end.jpg",
+      "image_sha256": "sha256:3ad77a0a5253bdbd24deb4e17f82611953751df8c15d2843ddfee18d10c17b2e"
+    },
+    {
+      "timeline_item_id": "VTI-f9e8abff621bcdb72821-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 35869,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/16-VTI-f9e8abff621bcdb72821-01-start.jpg",
+      "image_sha256": "sha256:2849a46fae24ac32785a776610dae41cab5dd1ebe8571a10030944ca46568dfd"
+    },
+    {
+      "timeline_item_id": "VTI-f9e8abff621bcdb72821-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 37040,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/16-VTI-f9e8abff621bcdb72821-01-mid.jpg",
+      "image_sha256": "sha256:f3fc39d226e069ea6f6492fc5f264a8df0b7c588e3ebd1deacde4e85e6c88176"
+    },
+    {
+      "timeline_item_id": "VTI-f9e8abff621bcdb72821-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 38210,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/16-VTI-f9e8abff621bcdb72821-01-end.jpg",
+      "image_sha256": "sha256:f08a6e210c8bc0d1c44f9b508ac0347d88b9956754a6027b0dfaa90e5763bc37"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40780",
+      "frame_mode": "cover_static",
+      "at_ms": 38844,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/17-VTI-643805aa680e084dc56c-01-start.jpg",
+      "image_sha256": "sha256:6a0978089218c477653873ef62cabbcae2c370905ddbe923235a614c13dc35dd"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40780",
+      "frame_mode": "cover_static",
+      "at_ms": 39680,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/17-VTI-643805aa680e084dc56c-01-mid.jpg",
+      "image_sha256": "sha256:681a8353bff57d895f5828525ee94b8cd92ba49302539608297526cea2558f56"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40780",
+      "frame_mode": "cover_static",
+      "at_ms": 40516,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/17-VTI-643805aa680e084dc56c-01-end.jpg",
+      "image_sha256": "sha256:598d6f22470af9e062553b5c3ca31809b883540053e233f4122bc2b4c166c549"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40780-42580",
+      "frame_mode": "cover_static",
+      "at_ms": 40996,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/18-VTI-643805aa680e084dc56c-02-start.jpg",
+      "image_sha256": "sha256:d9b232110c76663227cc453403eb11302d5bb82e07e9ed5e73d362d26fe5e649"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40780-42580",
+      "frame_mode": "cover_static",
+      "at_ms": 41680,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/18-VTI-643805aa680e084dc56c-02-mid.jpg",
+      "image_sha256": "sha256:c4641853c5377f41270e317f7c33fc0581c8ef5bac2c443cc96c2ddf915d19bd"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40780-42580",
+      "frame_mode": "cover_static",
+      "at_ms": 42364,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/18-VTI-643805aa680e084dc56c-02-end.jpg",
+      "image_sha256": "sha256:f1050fecf53557eb5a90f21add7f02a549805c0cf9fc827f21e398d271c791d9"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42580-44180",
+      "frame_mode": "cover_static",
+      "at_ms": 42772,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/19-VTI-643805aa680e084dc56c-03-start.jpg",
+      "image_sha256": "sha256:22b58723cd3919e25bf114f2da353d423d8efc303536fffe1c957cf789c4432c"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42580-44180",
+      "frame_mode": "cover_static",
+      "at_ms": 43380,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/19-VTI-643805aa680e084dc56c-03-mid.jpg",
+      "image_sha256": "sha256:3a71d5cd8303b869f90fbdd7f65ebcb0b09f8d9b3e54e830f2e3150220a544af"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42580-44180",
+      "frame_mode": "cover_static",
+      "at_ms": 43988,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/19-VTI-643805aa680e084dc56c-03-end.jpg",
+      "image_sha256": "sha256:f84a026523b0d7cef7fd664f7b08f1eab31f1084a595008601399bf737ad9a0b"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44180-45630",
+      "frame_mode": "cover_static",
+      "at_ms": 44354,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/20-VTI-643805aa680e084dc56c-04-start.jpg",
+      "image_sha256": "sha256:8d867d28912e5bf8839306294d06ebc92448cc58cd8c29d30ec5b5e0ce2f719b"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44180-45630",
+      "frame_mode": "cover_static",
+      "at_ms": 44905,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/20-VTI-643805aa680e084dc56c-04-mid.jpg",
+      "image_sha256": "sha256:5eab1bef59c8ff71a9d2ea686bca8c2e06aeb04294a533a91a66fcb7f603048e"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44180-45630",
+      "frame_mode": "cover_static",
+      "at_ms": 45456,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/20-VTI-643805aa680e084dc56c-04-end.jpg",
+      "image_sha256": "sha256:500a6cf5d94f3d7534cc5470d7775add45dbdb4be67af7ecce32ac3719df7366"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45630-46980",
+      "frame_mode": "cover_static",
+      "at_ms": 45792,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/21-VTI-643805aa680e084dc56c-05-start.jpg",
+      "image_sha256": "sha256:c63b02978844f458ac7eaa49d57840a7b1e84c245ff245109080632928b7e388"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45630-46980",
+      "frame_mode": "cover_static",
+      "at_ms": 46305,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/21-VTI-643805aa680e084dc56c-05-mid.jpg",
+      "image_sha256": "sha256:b0bd56d007d7fb1e8452554c9f18b20f6be3b57e5ec0546c36a1fd16f786ba93"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45630-46980",
+      "frame_mode": "cover_static",
+      "at_ms": 46818,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/21-VTI-643805aa680e084dc56c-05-end.jpg",
+      "image_sha256": "sha256:159531eb1fb559890736790c3d0f0cf2bda6c40b3aa93c1bbca8ec9e552a6d56"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-46980-48430",
+      "frame_mode": "cover_static",
+      "at_ms": 47154,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/22-VTI-643805aa680e084dc56c-06-start.jpg",
+      "image_sha256": "sha256:4765d2217edd042b517aa3b00e89cebc416a086e171d24516535ba9cad53b41e"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-46980-48430",
+      "frame_mode": "cover_static",
+      "at_ms": 47705,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/22-VTI-643805aa680e084dc56c-06-mid.jpg",
+      "image_sha256": "sha256:b818e3fc7c8b3419f4fd927faecbbe09ea5f90bcb57208c162d87db19fe5f73e"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-46980-48430",
+      "frame_mode": "cover_static",
+      "at_ms": 48256,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/22-VTI-643805aa680e084dc56c-06-end.jpg",
+      "image_sha256": "sha256:1c57dcd95b458fffdd0e29aa903279eb257cf10dfd18936c055eedcec9721b3a"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48430-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 48613,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/23-VTI-643805aa680e084dc56c-07-start.jpg",
+      "image_sha256": "sha256:33f5b900a59325a16ee6d0e614cfdf7c6a753e0128e02db28204015d1ebb4a5c"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48430-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49195,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/23-VTI-643805aa680e084dc56c-07-mid.jpg",
+      "image_sha256": "sha256:d18c48001bc7296661b8b66fec6fb491dc911aac38b4d9b2ef8245add507ecf6"
+    },
+    {
+      "timeline_item_id": "VTI-643805aa680e084dc56c-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48430-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49776,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/23-VTI-643805aa680e084dc56c-07-end.jpg",
+      "image_sha256": "sha256:c8e233b06d5e6aabb8b4f70ddf47cc34296e46163ee89abbf9275951a6a9a2d2"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 50210,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/24-VTI-afead7e88be4e9de071e-01-start.jpg",
+      "image_sha256": "sha256:7df9d7537503b5a1983729618c723f2dc1c35cca5f8d113eed4611ef4563ef58"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 51002,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/24-VTI-afead7e88be4e9de071e-01-mid.jpg",
+      "image_sha256": "sha256:1d7b0195da0d48c50c0731406078cd57807f5855220c421931bde70b807c99de"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 51794,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/24-VTI-afead7e88be4e9de071e-01-end.jpg",
+      "image_sha256": "sha256:d1d50b58e3d36b9870e77ed1d6832abf5fccdd923db55c95e8621731ba73a8f1"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 52289,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/25-VTI-afead7e88be4e9de071e-02-start.jpg",
+      "image_sha256": "sha256:ddc40a91493cd8b18c4115e0bb3decc51520b712ee42e7efd0b4cbb4fd82679f"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 53062,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/25-VTI-afead7e88be4e9de071e-02-mid.jpg",
+      "image_sha256": "sha256:c8f783261bc346051f171f666880e9b1c9de60e2a49fabee15e6425f7d7f1622"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+      "frame_mode": "cover_static",
+      "at_ms": 53835,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/25-VTI-afead7e88be4e9de071e-02-end.jpg",
+      "image_sha256": "sha256:9e965a558ae4d680a1ca3c4e4a860b12e3c1a4ed0637d417f1a19c9f931cc9f6"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 54155,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/26-VTI-afead7e88be4e9de071e-03-start.jpg",
+      "image_sha256": "sha256:12b7f13ca78639f85a1f114148e167741d4a820906d3012b591b4a729624d5d1"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 54393,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/26-VTI-afead7e88be4e9de071e-03-mid.jpg",
+      "image_sha256": "sha256:e5226a5eb527691bb90526cc11e7f690b4ea1fe2c78c3a66df797f8ba063ee4c"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 54630,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/26-VTI-afead7e88be4e9de071e-03-end.jpg",
+      "image_sha256": "sha256:05648305d91e8a4a61f51cc5177447b791a23fc48500353daf43e137ecf8cdfb"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 54965,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/27-VTI-afead7e88be4e9de071e-04-start.jpg",
+      "image_sha256": "sha256:8994e1aea263e3d7017ae62a5500d413efd125f5ec337a24b9761ca0d0e50015"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 55786,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/27-VTI-afead7e88be4e9de071e-04-mid.jpg",
+      "image_sha256": "sha256:f4417656b0af9ceb249629fe57f650acb94551afc13487f0519c902a22b2aa20"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+      "frame_mode": "cover_static",
+      "at_ms": 56606,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/27-VTI-afead7e88be4e9de071e-04-end.jpg",
+      "image_sha256": "sha256:5f6f8e28f34437943caf19ee4efee81979e03199b2290f88f14ce905eb445b89"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56866-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 57200,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/soul/28-VTI-afead7e88be4e9de071e-05-start.jpg",
+      "image_sha256": "sha256:9afaba1c1578162965a629342c7c10451e8bfc9aa46a16c437ca935e16812126"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56866-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 58259,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/soul/28-VTI-afead7e88be4e9de071e-05-mid.jpg",
+      "image_sha256": "sha256:1c15babeaa355d141d19cb32670211e7e518e6a4ea798653f97593096f909c0d"
+    },
+    {
+      "timeline_item_id": "VTI-afead7e88be4e9de071e-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56866-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 59317,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/soul/28-VTI-afead7e88be4e9de071e-05-end.jpg",
+      "image_sha256": "sha256:a64001fb5632c9401792fe613c8142430416df551aead89b8d55cf6e988185ba"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 380,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/01-VTI-236faf51f50ea94b5e19-01-start.jpg",
+      "image_sha256": "sha256:45adc30437ecebff3f4e3158fd0bafa172a2d5d81137af055ed907465f8c41c6"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 1587,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/01-VTI-236faf51f50ea94b5e19-01-mid.jpg",
+      "image_sha256": "sha256:4a81843582e2945d86fe8a40b8aae1cdb77177d6d9b9053a2066e37472bd5a51"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 2793,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/01-VTI-236faf51f50ea94b5e19-01-end.jpg",
+      "image_sha256": "sha256:8762ce2f84dc6e97ddcba74ffabc993534e0ef975798f7365a5af0ee2f37851d"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3223,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/02-VTI-236faf51f50ea94b5e19-02-start.jpg",
+      "image_sha256": "sha256:46600ffb5a7a3327293172c3548baca1ee898d9809989f2e476e5dd8e8547475"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3380,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/02-VTI-236faf51f50ea94b5e19-02-mid.jpg",
+      "image_sha256": "sha256:a94ed30868860634877ec175802cc195f2238200face7286ba73985a1f5d5b29"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3537,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/02-VTI-236faf51f50ea94b5e19-02-end.jpg",
+      "image_sha256": "sha256:3ac55cbd28c3bf2cae74d83473d1700cce6fdcfe25ebf6d9a364b278070ded6c"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3689,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/03-VTI-236faf51f50ea94b5e19-03-start.jpg",
+      "image_sha256": "sha256:06e2d6a2a09b57bad6ff8a8c2f77a45a90a3ebd9ba0b2780da1e23dbe5bb4835"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 4013,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/03-VTI-236faf51f50ea94b5e19-03-mid.jpg",
+      "image_sha256": "sha256:53f1ce754dfa5ed8ce79d51d24d316c828396a50ea20853b3b8529561b7b7ec2"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 4337,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/03-VTI-236faf51f50ea94b5e19-03-end.jpg",
+      "image_sha256": "sha256:2b7e9a5778a5bb327298f08058860ce2609f119c75340a126c9b12ad14cd2626"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 4501,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/04-VTI-236faf51f50ea94b5e19-04-start.jpg",
+      "image_sha256": "sha256:abc81ad025d997bbf2b2f7e57439961c39153a3396ae8fbc17f73a13780ee38b"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 4695,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/04-VTI-236faf51f50ea94b5e19-04-mid.jpg",
+      "image_sha256": "sha256:459506377b872e55ee0be4cd8206eeb6cacbe65cbcba37312694cabe1977eddf"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 4888,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/04-VTI-236faf51f50ea94b5e19-04-end.jpg",
+      "image_sha256": "sha256:d580d4ccad0ff8169ebf8ed08f75530f16ce886674e1ef060f80db34cf617544"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 5421,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/05-VTI-236faf51f50ea94b5e19-05-start.jpg",
+      "image_sha256": "sha256:e618d90beec9438d429e9368aafe8f77c609b0a46a8fbd56c538a59b0db60c20"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 6915,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/05-VTI-236faf51f50ea94b5e19-05-mid.jpg",
+      "image_sha256": "sha256:6c5768b333e0a19969995f75a895f317535804e392cefe4372b88fe166fa24f0"
+    },
+    {
+      "timeline_item_id": "VTI-236faf51f50ea94b5e19-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 8408,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/05-VTI-236faf51f50ea94b5e19-05-end.jpg",
+      "image_sha256": "sha256:20dceb950b0d21999c2758e906c8baa4a1e3e0ee940e43bbf6c0dce6aa1e4181"
+    },
+    {
+      "timeline_item_id": "VTI-557a7d7ca2fbcbec43c3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 9597,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/06-VTI-557a7d7ca2fbcbec43c3-01-start.jpg",
+      "image_sha256": "sha256:e79e838b3389edecbf2de944cb039bbda0bece217ff39c535ac9f84460130384"
+    },
+    {
+      "timeline_item_id": "VTI-557a7d7ca2fbcbec43c3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 11870,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/06-VTI-557a7d7ca2fbcbec43c3-01-mid.jpg",
+      "image_sha256": "sha256:6cac3ba476bc1928e93af5c5129625a35b21491c66d5d4fbef9b6ec3ee917bb1"
+    },
+    {
+      "timeline_item_id": "VTI-557a7d7ca2fbcbec43c3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14142,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/06-VTI-557a7d7ca2fbcbec43c3-01-end.jpg",
+      "image_sha256": "sha256:a349481867e2f9b6c56124bad410b795569df12e6d03484686f4af5c328f221b"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 15095,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/07-VTI-60967022b1dd25e1d2e3-01-start.jpg",
+      "image_sha256": "sha256:0ece5f1c173b89f659e7bc8c6661c2835280d70d4c0adebaab7ed005731b9f98"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 15843,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/07-VTI-60967022b1dd25e1d2e3-01-mid.jpg",
+      "image_sha256": "sha256:ffd6bc236f91154bf0461f39b922c4cd2f9cd5076cce9a0e9b913b33d6ed67cb"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 16590,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/07-VTI-60967022b1dd25e1d2e3-01-end.jpg",
+      "image_sha256": "sha256:92f9317b7065b551826002b92e3ede0f4b3988dc045697f2c3390134dc3f1500"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 16942,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/08-VTI-60967022b1dd25e1d2e3-02-start.jpg",
+      "image_sha256": "sha256:cca306ea3d93f71ff119d518cdf53ba8358da858ff0ef53d636888b625632a68"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17312,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/08-VTI-60967022b1dd25e1d2e3-02-mid.jpg",
+      "image_sha256": "sha256:393281b92fd445041893eb2ceab97a65d82cb5438395d2efef5525e56b67e728"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17682,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/08-VTI-60967022b1dd25e1d2e3-02-end.jpg",
+      "image_sha256": "sha256:e0e6c605dafa2df797ef493693b13a4352fade126b3173bd652dfe105b2fdc05"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17976,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/09-VTI-60967022b1dd25e1d2e3-03-start.jpg",
+      "image_sha256": "sha256:ca2011a8a9ea638c42d1c9efa3ddfb8fb3c0829c6eb46e3694b94254584fda24"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18539,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/09-VTI-60967022b1dd25e1d2e3-03-mid.jpg",
+      "image_sha256": "sha256:566a546c66c9b2ba495744b5b7ba7a7d53d47be56dd9f7be7a97b3073dd1bf3a"
+    },
+    {
+      "timeline_item_id": "VTI-60967022b1dd25e1d2e3-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 19102,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/09-VTI-60967022b1dd25e1d2e3-03-end.jpg",
+      "image_sha256": "sha256:44f623f2497b5ac6b34d19211ccf66508a1d76c7ff87235ea65a772e039dd7aa"
+    },
+    {
+      "timeline_item_id": "VTI-d13b8d9ea7abb698034a-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 19767,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/10-VTI-d13b8d9ea7abb698034a-01-start.jpg",
+      "image_sha256": "sha256:da23886f58dfa174c4c36ce0ed5c61b4d3165cca4e9075ebdff1bd0ab07cd0e8"
+    },
+    {
+      "timeline_item_id": "VTI-d13b8d9ea7abb698034a-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 21310,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/10-VTI-d13b8d9ea7abb698034a-01-mid.jpg",
+      "image_sha256": "sha256:481dba70c2fb9e1eb9baabf951c8bab05c53a9b960a0e721d483b82cbfd87269"
+    },
+    {
+      "timeline_item_id": "VTI-d13b8d9ea7abb698034a-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 22852,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/10-VTI-d13b8d9ea7abb698034a-01-end.jpg",
+      "image_sha256": "sha256:9c6461c4685b14603289fbbf65945d1d9ac9b6097319cb91c840f38033707766"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 23378,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/11-VTI-ed23ff67dec39986d363-01-start.jpg",
+      "image_sha256": "sha256:305b45a9899065a8474f51687c36e2f9a2cdfef15f489cbf9e68d1afa0730e5b"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 23500,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/11-VTI-ed23ff67dec39986d363-01-mid.jpg",
+      "image_sha256": "sha256:ed9c0e44b25faf9ec7a0a17c3775000992f1b8967aad3f5b47d5edcc0878d275"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 23622,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/11-VTI-ed23ff67dec39986d363-01-end.jpg",
+      "image_sha256": "sha256:a2a5d1122a16ba6f4e40fae7852db0ddb4621ae4b891ac5069d95ba14a69da5b"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 23737,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/12-VTI-ed23ff67dec39986d363-02-start.jpg",
+      "image_sha256": "sha256:1ae8bc979ed539df16c03a02d214ba32a59de8530306aa538ac4aff77b6be408"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 23980,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/12-VTI-ed23ff67dec39986d363-02-mid.jpg",
+      "image_sha256": "sha256:dedd907636fe3d951a7902e40ac8797f9111ec6f4dd79f9a0da061e09e982b43"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 24222,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/12-VTI-ed23ff67dec39986d363-02-end.jpg",
+      "image_sha256": "sha256:ccd6fcebdbc0af29d1f2aab8f231d833f6c1bb3db1ea93c53ce3468a063c0421"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 24617,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/13-VTI-ed23ff67dec39986d363-03-start.jpg",
+      "image_sha256": "sha256:ed41e9c9985e04561c9f9c569816dd6d2e26ca95d9f50a5744b1d5b218f11869"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 25624,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/13-VTI-ed23ff67dec39986d363-03-mid.jpg",
+      "image_sha256": "sha256:c788ec883d450fcac0e3d929a5b8bea117c36c5fb0e8933e1a56e88d65fdb70d"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 26631,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/13-VTI-ed23ff67dec39986d363-03-end.jpg",
+      "image_sha256": "sha256:2fc2b040be928e1d94b006f40b141a56f82f17330bb4a54272013664db35fb98"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 27041,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/14-VTI-ed23ff67dec39986d363-04-start.jpg",
+      "image_sha256": "sha256:22b550e3cfaabc2a12e789602cdb4c204d87783caef79199cbac3f7c7ae0d6e9"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 27334,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/14-VTI-ed23ff67dec39986d363-04-mid.jpg",
+      "image_sha256": "sha256:867f38e51f037872c583020d7cdd54f0cd450997e90eba936888eb20c5d527fd"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 27626,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/14-VTI-ed23ff67dec39986d363-04-end.jpg",
+      "image_sha256": "sha256:90f02d6b62ae9549717f75f296ddf7bec96f0aca433485bcf30bee2f7dc8a61f"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 27863,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/15-VTI-ed23ff67dec39986d363-05-start.jpg",
+      "image_sha256": "sha256:e537fe9ebc1d4b3013ff06ac5277bc2195b7a5d29c5723f5c587528bdc1001ff"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 28319,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/15-VTI-ed23ff67dec39986d363-05-mid.jpg",
+      "image_sha256": "sha256:eceacdbe3b458ecf29155e4535ae63a1efe5a2a475e86a1f7b7e6b750381b9b3"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 28775,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/15-VTI-ed23ff67dec39986d363-05-end.jpg",
+      "image_sha256": "sha256:706b8012cfd5c595b045d187df57f194595d78f53501f41a2a83af888d254dae"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-06",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 29445,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/16-VTI-ed23ff67dec39986d363-06-start.jpg",
+      "image_sha256": "sha256:b9e873fbbdf2a50844256f93ac06798e2fa0b56718ee76170afd6c88412a4568"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-06",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 31107,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/16-VTI-ed23ff67dec39986d363-06-mid.jpg",
+      "image_sha256": "sha256:1950fb9b542e7d8ae1c7f7bc206493e2dd1a5f1e4ef97dfdbec44fed4ff7819c"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-06",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 32770,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/16-VTI-ed23ff67dec39986d363-06-end.jpg",
+      "image_sha256": "sha256:89a8c535f1ae018edc8a48a07b58bbc87fb483948081c6d4bbbe8c32286d123a"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-07",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 33559,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/17-VTI-ed23ff67dec39986d363-07-start.jpg",
+      "image_sha256": "sha256:9d523374e11647fe68f5bfa3c24aa6d5cb1494f8306c0ba4a01928ecffc5861c"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-07",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 34397,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/17-VTI-ed23ff67dec39986d363-07-mid.jpg",
+      "image_sha256": "sha256:8aacc0215680b61df688fb7fe2f3695c092a87c2a8044da62f09eef5cf27a2fb"
+    },
+    {
+      "timeline_item_id": "VTI-ed23ff67dec39986d363-07",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 35235,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/17-VTI-ed23ff67dec39986d363-07-end.jpg",
+      "image_sha256": "sha256:3a563f586821bd909d53a58c1e6ad6f9798f7787e425f387323cdc44b7ca22fb"
+    },
+    {
+      "timeline_item_id": "VTI-c34e9891edc01ef766c4-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 35869,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/18-VTI-c34e9891edc01ef766c4-01-start.jpg",
+      "image_sha256": "sha256:f068c3c4e70d08b7a46334f581f441205cbcd337c42d85fda71dafba83d67962"
+    },
+    {
+      "timeline_item_id": "VTI-c34e9891edc01ef766c4-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 37040,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/18-VTI-c34e9891edc01ef766c4-01-mid.jpg",
+      "image_sha256": "sha256:b3130d8d8aa85c9a16d460b16acc28717923c72fffc3d510f01ff47d439a0f11"
+    },
+    {
+      "timeline_item_id": "VTI-c34e9891edc01ef766c4-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 38210,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/18-VTI-c34e9891edc01ef766c4-01-end.jpg",
+      "image_sha256": "sha256:13072ca59ee92c35c87c17713a0ecc5023500d0a2816013177fbe459f75cb196"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 38898,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/19-VTI-71facd38192590cf8c8f-01-start.jpg",
+      "image_sha256": "sha256:3cb3af968aa058cfb778d71dce4042953b6ad4bc97136f2ea2d5a76fdfe7bc30"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 39907,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/19-VTI-71facd38192590cf8c8f-01-mid.jpg",
+      "image_sha256": "sha256:c3430fb3095ccc9fd63867f94f11064d37cd9b55e6218a14abaa93b9bfe17678"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 40916,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/19-VTI-71facd38192590cf8c8f-01-end.jpg",
+      "image_sha256": "sha256:026a20057faeccd6385e0a70d022a4715c00da4dcd4ad21cbf91cc9fe3a19ccc"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 41276,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/20-VTI-71facd38192590cf8c8f-02-start.jpg",
+      "image_sha256": "sha256:733578646ee6bfb2ca33a55edee89aa89bf3dd05d67f3a53a889ea09f5772963"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 41407,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/20-VTI-71facd38192590cf8c8f-02-mid.jpg",
+      "image_sha256": "sha256:af220336cda6c40e36c385bec8b6f608645524b98af9ce13ce3759806609e4a4"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+      "frame_mode": "cover_static",
+      "at_ms": 41538,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/20-VTI-71facd38192590cf8c8f-02-end.jpg",
+      "image_sha256": "sha256:13f4d4351d68207d35cff1f8e5ea23272d9de9a1a0b0eab50e96768ff3ec599e"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-41580-44580",
+      "frame_mode": "cover_static",
+      "at_ms": 41940,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/21-VTI-71facd38192590cf8c8f-03-start.jpg",
+      "image_sha256": "sha256:745bfbeedb96637e8c2ab1a08791c1d8cc99a1797cbc7c4139fbbffc84159639"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-41580-44580",
+      "frame_mode": "cover_static",
+      "at_ms": 43080,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/21-VTI-71facd38192590cf8c8f-03-mid.jpg",
+      "image_sha256": "sha256:2b833534b7fbe3929f2eaa78d461ca4c2e5f2ada15df38fe73baacb17c3cccba"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-41580-44580",
+      "frame_mode": "cover_static",
+      "at_ms": 44220,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/21-VTI-71facd38192590cf8c8f-03-end.jpg",
+      "image_sha256": "sha256:5aec67a92b3a0e27ceda7ea209d8c6867ba3d84ee058b1fdfdaba4f84b09810f"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 44796,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/22-VTI-71facd38192590cf8c8f-04-start.jpg",
+      "image_sha256": "sha256:492139bd9d2c7bbd7ff3044892e5e41476414d7d6859e0d9a053412139e80d53"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 45481,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/22-VTI-71facd38192590cf8c8f-04-mid.jpg",
+      "image_sha256": "sha256:8bac804001f83b7918ac8d8ae40fd301d04b4dbd5ec2a4e9603dfa18d7e83844"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 46165,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/22-VTI-71facd38192590cf8c8f-04-end.jpg",
+      "image_sha256": "sha256:6d9ea1ad41b574744b3096ab4e1f8d6773fac6350679a64f0679120f26c4d285"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 46811,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/23-VTI-71facd38192590cf8c8f-05-start.jpg",
+      "image_sha256": "sha256:eff464d5ac254e1c5759bb6015e0e89aa51158e6154b24f3df2798eab56abc62"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 48171,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/23-VTI-71facd38192590cf8c8f-05-mid.jpg",
+      "image_sha256": "sha256:1b3453c3a43cc30d3b20b82601e7480479e3110b9c0ac3444dba07930aedd0ea"
+    },
+    {
+      "timeline_item_id": "VTI-71facd38192590cf8c8f-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49530,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/23-VTI-71facd38192590cf8c8f-05-end.jpg",
+      "image_sha256": "sha256:0bde5460427d0d9392dfb3d810d883d8fb1dd0a1144a717259ca51203d6767c5"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+      "frame_mode": "cover_static",
+      "at_ms": 50344,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/24-VTI-3ac70af7798bda5bf3bd-01-start.jpg",
+      "image_sha256": "sha256:ee41c391bc262e2f329e1e201ecd6fed74d17b5e1cb330d4d80c7415c2f24006"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+      "frame_mode": "cover_static",
+      "at_ms": 51560,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/24-VTI-3ac70af7798bda5bf3bd-01-mid.jpg",
+      "image_sha256": "sha256:250f7a050515f6387762dfa9740dfbe9fabfdfb19709de687bf62cddf2408adf"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+      "frame_mode": "cover_static",
+      "at_ms": 52776,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/24-VTI-3ac70af7798bda5bf3bd-01-end.jpg",
+      "image_sha256": "sha256:63c551aca1f750c69e01179cf252c5717521989ec8b7fa4a50b97a97e626d7a1"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 53201,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/25-VTI-3ac70af7798bda5bf3bd-02-start.jpg",
+      "image_sha256": "sha256:705677618a676d7d63153a3d963784ee99c5d3fe448e96828a1c0ce4a8f23c95"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 53332,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/25-VTI-3ac70af7798bda5bf3bd-02-mid.jpg",
+      "image_sha256": "sha256:ece0b3aff21c77b2b26a0ff2291dcf107447fc56bf4594a5f3844eb4b844eefc"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 53463,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/25-VTI-3ac70af7798bda5bf3bd-02-end.jpg",
+      "image_sha256": "sha256:556ef7246587e4f9d66158e5b46f1eae9d5a9aef16d5ca5ef351b42bcdeade5b"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 53623,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/26-VTI-3ac70af7798bda5bf3bd-03-start.jpg",
+      "image_sha256": "sha256:64fed64e00179d0e26db53d498d013df15438546ab4b9fcdfcf27db91ba457af"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54000,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/26-VTI-3ac70af7798bda5bf3bd-03-mid.jpg",
+      "image_sha256": "sha256:7c16d1dd2ed2a85add166c6eb1411de8b776d5a01c433512696130b544e641bb"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54376,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/26-VTI-3ac70af7798bda5bf3bd-03-end.jpg",
+      "image_sha256": "sha256:c82d97ed0ca7772b32eea486a906354352ca416e65e762a60b36294d257338a1"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54534,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/27-VTI-3ac70af7798bda5bf3bd-04-start.jpg",
+      "image_sha256": "sha256:8e9d67d05f7aad9be92dfed93c5664f4fd9cfc33ec29e0acbdbeb38bec18b3ba"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54660,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/27-VTI-3ac70af7798bda5bf3bd-04-mid.jpg",
+      "image_sha256": "sha256:14d73137698f5072b708c8b048a8d760713245bab9c10ca335e6aaf7a06e42d7"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54785,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/27-VTI-3ac70af7798bda5bf3bd-04-end.jpg",
+      "image_sha256": "sha256:b0ce00ad2a74eaa8e2e5c42a5bc98d08a4424d1c01dd587712ad975ef4475149"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54864,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/28-VTI-3ac70af7798bda5bf3bd-05-start.jpg",
+      "image_sha256": "sha256:73de64a5996b6e27aa0d9861a6d7e4d563c814130561b0988c551e6ca762bf0e"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 54990,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/28-VTI-3ac70af7798bda5bf3bd-05-mid.jpg",
+      "image_sha256": "sha256:6eb3294b74363b2171c705e0118879a1e52cefc7b517ce32d094ffb4683ac65c"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-05",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55115,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/28-VTI-3ac70af7798bda5bf3bd-05-end.jpg",
+      "image_sha256": "sha256:e58c8231a5aaa4795558ac9fb89984efdff97c81d463b543641805df71605a1f"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-06",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55194,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/29-VTI-3ac70af7798bda5bf3bd-06-start.jpg",
+      "image_sha256": "sha256:a5ca2dd6dde0f841142546f5a476a1094349d87801b5e19a7d168310c653834e"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-06",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55320,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/29-VTI-3ac70af7798bda5bf3bd-06-mid.jpg",
+      "image_sha256": "sha256:583f30526f7f9dead3a58792df04a1a93492dabfbcd09d7005e49cac3fbe4191"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-06",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55445,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/29-VTI-3ac70af7798bda5bf3bd-06-end.jpg",
+      "image_sha256": "sha256:310c2049140579ecb926340334d263aee6f5f4e22c00d43ee21e1ddedf1afdb9"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-07",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55566,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/30-VTI-3ac70af7798bda5bf3bd-07-start.jpg",
+      "image_sha256": "sha256:188ee7f9ec33833f053cfabb92b4b6d4c4bc3766a7cb4c39e319ad1278e5196c"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-07",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 55822,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/30-VTI-3ac70af7798bda5bf3bd-07-mid.jpg",
+      "image_sha256": "sha256:b16143a36c66aa119e43803da4d4a46a27b09c9c3d133b5306a69ca8d665280a"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-07",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+      "frame_mode": "cover_static",
+      "at_ms": 56079,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/30-VTI-3ac70af7798bda5bf3bd-07-end.jpg",
+      "image_sha256": "sha256:94ca0a9c69d605ea2c561b0b553f9a6afce509a7d3a53abe9501d7b203de8c1e"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-08",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 56579,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/31-VTI-3ac70af7798bda5bf3bd-08-start.jpg",
+      "image_sha256": "sha256:b8476bc418541bb44d7b3f71ff8476297782337ed6f9aa7d95e56dcb125cd7c7"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-08",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 57906,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/31-VTI-3ac70af7798bda5bf3bd-08-mid.jpg",
+      "image_sha256": "sha256:1ce99a5a4af0afd383ad02d97dddfee874df12c9b7104c4c71daf1c4fc5ef9b5"
+    },
+    {
+      "timeline_item_id": "VTI-3ac70af7798bda5bf3bd-08",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 59232,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/forrest-gump/31-VTI-3ac70af7798bda5bf3bd-08-end.jpg",
+      "image_sha256": "sha256:f8af6baf1b388984ed94260efba09edd683acfe787594e30876cc1e104674bd1"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 532,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/01-VTI-d0b78df9f1b0663aeb21-01-start.jpg",
+      "image_sha256": "sha256:0d5216fd6a34264d32bf6d42f9235b0079809361c277ecf60292195b383c7eb1"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 2220,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/01-VTI-d0b78df9f1b0663aeb21-01-mid.jpg",
+      "image_sha256": "sha256:d39b17ac1e9eab4006ad405fc5ee1911749252fccf8531e57303cd6bce5d7020"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-01",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "frame_mode": "cover_static",
+      "at_ms": 3907,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/01-VTI-d0b78df9f1b0663aeb21-01-end.jpg",
+      "image_sha256": "sha256:cc89ddcf726be72ec2b6488ca47fd9cc1caba1fe06b1f031f487491014da3f29"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 4735,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/02-VTI-d0b78df9f1b0663aeb21-02-start.jpg",
+      "image_sha256": "sha256:e76589e716336abb80c094278cb8aa173f41fd195134f81d097bc1be2c8b7a4f"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 5672,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/02-VTI-d0b78df9f1b0663aeb21-02-mid.jpg",
+      "image_sha256": "sha256:95ba55af5a0244e20a4fe00dea6df899c38a337187860af4bed255a3797ed5f7"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-02",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 6608,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/02-VTI-d0b78df9f1b0663aeb21-02-end.jpg",
+      "image_sha256": "sha256:f055d9f2b3f6e7718c73c6d6f802aec39965ff754d6c3b793a50b8353aa4dd18"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 6962,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/03-VTI-d0b78df9f1b0663aeb21-03-start.jpg",
+      "image_sha256": "sha256:2d8617875298500dd46bf2963f70f41c877837ca438b8073dc968b48f653e588"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7148,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/03-VTI-d0b78df9f1b0663aeb21-03-mid.jpg",
+      "image_sha256": "sha256:025a15e692fc10ef57e0f274b704393a9a6268ce5130cbf999efffd3f9a301f3"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-03",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7333,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/03-VTI-d0b78df9f1b0663aeb21-03-end.jpg",
+      "image_sha256": "sha256:7a305dbbf936ef1672816902112ca105d68c346bbd48a2a839059f0589312b56"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7450,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/04-VTI-d0b78df9f1b0663aeb21-04-start.jpg",
+      "image_sha256": "sha256:851ea04007d32ed393b056626d1be181e345d7dff5633dc49b2a5789b48f030e"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7636,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/04-VTI-d0b78df9f1b0663aeb21-04-mid.jpg",
+      "image_sha256": "sha256:16818390a359334146f03e383f9afcf6c38a4e8b4488a81ec2b0ccf0751342e1"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-04",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 7821,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/04-VTI-d0b78df9f1b0663aeb21-04-end.jpg",
+      "image_sha256": "sha256:48e9438e46a2a5b4d2d28407deb89d4f679d33c0359f65ed61aabda50893d0bc"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 8000,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/05-VTI-d0b78df9f1b0663aeb21-05-start.jpg",
+      "image_sha256": "sha256:22f742309258e04970aee3d23437c92128105637b32f7ec4512ff49bad48cf4d"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 8380,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/05-VTI-d0b78df9f1b0663aeb21-05-mid.jpg",
+      "image_sha256": "sha256:aadfa6da5852df62e93b14922a2d1b73999c895f89b95f88c93274b475fd05dd"
+    },
+    {
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-05",
+      "beat_id": "B01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "frame_mode": "cover_static",
+      "at_ms": 8760,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/05-VTI-d0b78df9f1b0663aeb21-05-end.jpg",
+      "image_sha256": "sha256:68fa0d6ed5e319c027230dc34a6bba5af7b15f7500f602b5d28b85ff40d7bb93"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 8950,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/06-VTI-c7937ae01eec7dfd08a3-01-start.jpg",
+      "image_sha256": "sha256:f4ca776283005aedaf2f94e81c742fc000efd33b5482713eb229bd17d700b2ae"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 9172,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/06-VTI-c7937ae01eec7dfd08a3-01-mid.jpg",
+      "image_sha256": "sha256:bae083eb7ac72721192b0e70f6a6109cdfdf2162bb1ba0f8262684dca09f2e0d"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-01",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 9393,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/06-VTI-c7937ae01eec7dfd08a3-01-end.jpg",
+      "image_sha256": "sha256:e45d757dd116346f384d31d4bd82d6616ae34a52c8cca203b1a7501e530697ac"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 9829,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/07-VTI-c7937ae01eec7dfd08a3-02-start.jpg",
+      "image_sha256": "sha256:db68f9e5e9045460866cbd19a85c0cdc9658bb4e142866c3b19a9c3f2b8f18c6"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 10986,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/07-VTI-c7937ae01eec7dfd08a3-02-mid.jpg",
+      "image_sha256": "sha256:b9a5d9a9c4dabf5f427d30f605fc59d731be3551b31cb9b736f18b7b085c8b44"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-02",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 12143,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/07-VTI-c7937ae01eec7dfd08a3-02-end.jpg",
+      "image_sha256": "sha256:6df22e3ef6adcdd9210796a7d024bd18591f60e37e499ceb3a9360f6800aabd8"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 12791,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/08-VTI-c7937ae01eec7dfd08a3-03-start.jpg",
+      "image_sha256": "sha256:46b84234eba46dbfa33c462ff5252686a0ef3e83d820978a0dda12cabba1295c"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 13684,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/08-VTI-c7937ae01eec7dfd08a3-03-mid.jpg",
+      "image_sha256": "sha256:2c112a9085bcfca0b89fb995c32454c941005de89cc8a17a89ee1d8b105b308d"
+    },
+    {
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-03",
+      "beat_id": "B02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "frame_mode": "cover_static",
+      "at_ms": 14577,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/08-VTI-c7937ae01eec7dfd08a3-03-end.jpg",
+      "image_sha256": "sha256:f673f57d6cbd95d70d903d9163b6ffaf52a212750b8ea6f1a431766b8ac010d3"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 14955,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/09-VTI-40843a480eeea75d7991-01-start.jpg",
+      "image_sha256": "sha256:2800e5bfb5cc0c6d9dccf498ffdce6ddc4e3a0744eeed57f9ae97275a027bc03"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 15256,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/09-VTI-40843a480eeea75d7991-01-mid.jpg",
+      "image_sha256": "sha256:2f629a83d5097a876caaae54a9456434bbd970058bbbb59d1f2c609dc7eec37c"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-01",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 15556,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/09-VTI-40843a480eeea75d7991-01-end.jpg",
+      "image_sha256": "sha256:57cf0b5a0dd46b7630c10d1dd5a1998f47fa475c9529ca32d929d579d072e5f0"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 15937,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/10-VTI-40843a480eeea75d7991-02-start.jpg",
+      "image_sha256": "sha256:59e37cf7f10b17458709d903ce175ff5197353b60f77963f2ed580e0f6c51226"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 16841,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/10-VTI-40843a480eeea75d7991-02-mid.jpg",
+      "image_sha256": "sha256:14562208e7b07e8b0827a244ccb668593cfc4845ab5a16c91ad0c94bd102d0e0"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-02",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 17744,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/10-VTI-40843a480eeea75d7991-02-end.jpg",
+      "image_sha256": "sha256:9243f78f0cb721d82b65f1d1ff5f9ae8cb8c8771943d58a768e7e918f6487fbb"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18180,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/11-VTI-40843a480eeea75d7991-03-start.jpg",
+      "image_sha256": "sha256:3e38d7f82dd8d816fc5c07b7f7cbf3533ef04da13246fdd02b61afaf47811a41"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 18655,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/11-VTI-40843a480eeea75d7991-03-mid.jpg",
+      "image_sha256": "sha256:49eb6ce33fc06536fb1ea2e7b1fc0d5cdfca889d66484fc2c2e820898e91e251"
+    },
+    {
+      "timeline_item_id": "VTI-40843a480eeea75d7991-03",
+      "beat_id": "B03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "frame_mode": "cover_static",
+      "at_ms": 19130,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/11-VTI-40843a480eeea75d7991-03-end.jpg",
+      "image_sha256": "sha256:c624278f9d7a2198a91a8aa5246bbe08d351db5cb34c222c4aed70f98d576101"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 19711,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/12-VTI-2cc774bce2aef9fd2d8e-01-start.jpg",
+      "image_sha256": "sha256:ac52cdf3a1fb957d5175e56f2675d068cff830e58ad21aeda7883121ba914418"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 21076,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/12-VTI-2cc774bce2aef9fd2d8e-01-mid.jpg",
+      "image_sha256": "sha256:253e3e4ec93be72f319050ef866d68c07ad4e914fb510c04ec04a637452b4e35"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-01",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 22440,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/12-VTI-2cc774bce2aef9fd2d8e-01-end.jpg",
+      "image_sha256": "sha256:3fd888a2a403c3dccffc65a0ea21d20d7b87d3c0bd31cab38f4d0168d773f16e"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-02",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 22928,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/13-VTI-2cc774bce2aef9fd2d8e-02-start.jpg",
+      "image_sha256": "sha256:16dde2f7445db88ea01897b6b6552193154198c4e24ce61036986a2f6bdb9a56"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-02",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 23106,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/13-VTI-2cc774bce2aef9fd2d8e-02-mid.jpg",
+      "image_sha256": "sha256:1bf2aa6e3537a222941ee37d12c9dfc03a93315a88485e03a50d35a8bbb92052"
+    },
+    {
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-02",
+      "beat_id": "B04",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "frame_mode": "cover_static",
+      "at_ms": 23283,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/13-VTI-2cc774bce2aef9fd2d8e-02-end.jpg",
+      "image_sha256": "sha256:49171b622efea4fa9b6e997b4e77952553e5c1cff1c668e080794cbd21aa89e5"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 24009,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/14-VTI-4eca9fef6cd15f4a9b4a-01-start.jpg",
+      "image_sha256": "sha256:66691c066e1546c4b920340b1f7add7f47b0e0f34f31c25755b7b9c8be4ca2bb"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 26130,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/14-VTI-4eca9fef6cd15f4a9b4a-01-mid.jpg",
+      "image_sha256": "sha256:b75beadcfe6107ca243f6e157057cac0795d9b637c982ca2174456b9229e7651"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-01",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "frame_mode": "cover_static",
+      "at_ms": 28250,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/14-VTI-4eca9fef6cd15f4a9b4a-01-end.jpg",
+      "image_sha256": "sha256:715b6447f222cd95ebff94d226fcda2da8d030323973531d382a32da31869623"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 29319,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/15-VTI-4eca9fef6cd15f4a9b4a-02-start.jpg",
+      "image_sha256": "sha256:8579853a0189eada1c6588aafb7236475e4146fc7deedd78da44f533111a3bf1"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 30584,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/15-VTI-4eca9fef6cd15f4a9b4a-02-mid.jpg",
+      "image_sha256": "sha256:1bf46d7c88f3ee4a01ec0592bf926a978ddc080103a002a00a7d50591f022ae9"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-02",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 31848,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/15-VTI-4eca9fef6cd15f4a9b4a-02-end.jpg",
+      "image_sha256": "sha256:350153e1b09c6497b08efb472c81a3760cf7316b509adc468b3b2cea84268341"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 32380,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/16-VTI-4eca9fef6cd15f4a9b4a-03-start.jpg",
+      "image_sha256": "sha256:fb3333ebafc519d2f0d05da01294907fd518a7e196c03f4a5edcc93e80c112a4"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 32798,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/16-VTI-4eca9fef6cd15f4a9b4a-03-mid.jpg",
+      "image_sha256": "sha256:e0da785a97a8a0d35c27e3b18fb70594d804481e134d31f07af5352994087da8"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-03",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 33216,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/16-VTI-4eca9fef6cd15f4a9b4a-03-end.jpg",
+      "image_sha256": "sha256:ce310055b53e4508d9186c0ad8ba6d3637aa645a2e1346d90ef7dee14a43c460"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 33418,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/17-VTI-4eca9fef6cd15f4a9b4a-04-start.jpg",
+      "image_sha256": "sha256:1ba9265b2597a98ce6b878f82f72c33bd8418e27e0d9bdf13dffc411bcea4e7f"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 33637,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/17-VTI-4eca9fef6cd15f4a9b4a-04-mid.jpg",
+      "image_sha256": "sha256:ae2d8f3b81ca04f9d802ec51745d5e1133744f71e391af6c8f6c74f39a4a4d45"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-04",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 33855,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/17-VTI-4eca9fef6cd15f4a9b4a-04-end.jpg",
+      "image_sha256": "sha256:3a6be675f97c6384d9bcb081f0ec59c52f4564390c379a92e9305ad71e0a22a8"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 34114,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/18-VTI-4eca9fef6cd15f4a9b4a-05-start.jpg",
+      "image_sha256": "sha256:4d0f01fa69829101ec3b1914f8b504754a301feebdcf49117b51c30a427dc1d3"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 34712,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/18-VTI-4eca9fef6cd15f4a9b4a-05-mid.jpg",
+      "image_sha256": "sha256:f4de5fac907c4ce662ac52bfa0caa5e166e2717a1d0f3dfe5a90afaf13fafec5"
+    },
+    {
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-05",
+      "beat_id": "B05",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "frame_mode": "cover_static",
+      "at_ms": 35311,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/18-VTI-4eca9fef6cd15f4a9b4a-05-end.jpg",
+      "image_sha256": "sha256:ce9575b81fd38c20a43d51b71b16e70a1e9368a65cf0ddc65ab3d40e099ae836"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 35665,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/19-VTI-182b7594ef3975a274b3-01-start.jpg",
+      "image_sha256": "sha256:5759d391143866bef2d05959773023720fe799d78ded353bb08c93d0ba2aac14"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 36188,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/19-VTI-182b7594ef3975a274b3-01-mid.jpg",
+      "image_sha256": "sha256:e363360e5eaa49eddff004d0f1f20eb34a965d647b337c544b2e789d6b4e7ac0"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-01",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 36710,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/19-VTI-182b7594ef3975a274b3-01-end.jpg",
+      "image_sha256": "sha256:40670399c9a7e1ec82f54f93081880d76c30336a3d2995454e7922a3b7df909f"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-02",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 37080,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/20-VTI-182b7594ef3975a274b3-02-start.jpg",
+      "image_sha256": "sha256:7be34097a557d504aa1c454cee17637948dfd61e7b6a0ede3a4548fbaf545236"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-02",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 37728,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/20-VTI-182b7594ef3975a274b3-02-mid.jpg",
+      "image_sha256": "sha256:193f93bc1dc0fa44cadca94373bc4674118db5091b9fee93b111c9c2ad3b0df1"
+    },
+    {
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-02",
+      "beat_id": "B06",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "frame_mode": "cover_static",
+      "at_ms": 38375,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/20-VTI-182b7594ef3975a274b3-02-end.jpg",
+      "image_sha256": "sha256:839814119d719c2355b2e291d50b87ccb8c40cf93351f1d16c968b596b991998"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+      "frame_mode": "cover_static",
+      "at_ms": 38820,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/21-VTI-e6f69ec221b6eaa7c842-01-start.jpg",
+      "image_sha256": "sha256:b9cd24979649e3d4ab1f75a98845b611e7df953c8f370f7b88fbc2bae3047b46"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+      "frame_mode": "cover_static",
+      "at_ms": 39580,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/21-VTI-e6f69ec221b6eaa7c842-01-mid.jpg",
+      "image_sha256": "sha256:704c3b24d0f1d024bc5e235d9490183dda88e244cb2c98af7a5dad0bf13443d7"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-01",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+      "frame_mode": "cover_static",
+      "at_ms": 40340,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/21-VTI-e6f69ec221b6eaa7c842-01-end.jpg",
+      "image_sha256": "sha256:26c7ee95307c2bf07759f75b0b43114610c8094198d264c163a858be8a7ac54e"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 40650,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/22-VTI-e6f69ec221b6eaa7c842-02-start.jpg",
+      "image_sha256": "sha256:540a3c3e293954654c7763790df80bef5f5b985c11bb680b423d096b50f675ec"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 40872,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/22-VTI-e6f69ec221b6eaa7c842-02-mid.jpg",
+      "image_sha256": "sha256:47ed41da1f78dff12728a1f2f09efd7bb5eeaeed72bdfffb2dbd7908f24d322f"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-02",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 41093,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/22-VTI-e6f69ec221b6eaa7c842-02-end.jpg",
+      "image_sha256": "sha256:4598e3b3f17d85ade90893b945a90a02acc366146f839d31028cda4c7577c72e"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 41297,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/23-VTI-e6f69ec221b6eaa7c842-03-start.jpg",
+      "image_sha256": "sha256:482c80f1f78d76a399e5cc5a3cfdf618af6f719c9cf0e47dcee4a1d50d310a1f"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 41722,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/23-VTI-e6f69ec221b6eaa7c842-03-mid.jpg",
+      "image_sha256": "sha256:3c5d5e383c674e56e21064eadaccba770cb10928fc0578603316b02c8d04d7b7"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-03",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "frame_mode": "cover_static",
+      "at_ms": 42146,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/23-VTI-e6f69ec221b6eaa7c842-03-end.jpg",
+      "image_sha256": "sha256:f1db7ea504842aa3586de8b9aea2504c5b4b4bf9d708ae2747214e44e9637782"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+      "frame_mode": "cover_static",
+      "at_ms": 42520,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/24-VTI-e6f69ec221b6eaa7c842-04-start.jpg",
+      "image_sha256": "sha256:14cf8d20edb73efc2a61451f977ceb5f0d9e84c797372b9192d1ef171ddc2c14"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+      "frame_mode": "cover_static",
+      "at_ms": 43280,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/24-VTI-e6f69ec221b6eaa7c842-04-mid.jpg",
+      "image_sha256": "sha256:f09fb91225cc96fbc558bf997f25f410de8f53f6efc5ee54df66c2bced37e1b3"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-04",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+      "frame_mode": "cover_static",
+      "at_ms": 44040,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/24-VTI-e6f69ec221b6eaa7c842-04-end.jpg",
+      "image_sha256": "sha256:64011df0f448fffc29166ba5f670508cc9f14df6e9b0a5cee96e9cea2805e054"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 44410,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/25-VTI-e6f69ec221b6eaa7c842-05-start.jpg",
+      "image_sha256": "sha256:5f4cf0d1a29484c0acab13c1e2509fc6a9fdaa45163cd12ffc0acda4bbf4c7c5"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 44822,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/25-VTI-e6f69ec221b6eaa7c842-05-mid.jpg",
+      "image_sha256": "sha256:cc64eb336256835e9cd2bde6f87e78df99020f8a12602cd4f3bbf9ccf4b04317"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-05",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 45233,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/25-VTI-e6f69ec221b6eaa7c842-05-end.jpg",
+      "image_sha256": "sha256:e826b794afe33e2674ce621e45a3b9debcaf47c38e040708820765cf0c98ecbf"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 45437,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/26-VTI-e6f69ec221b6eaa7c842-06-start.jpg",
+      "image_sha256": "sha256:385b4bd5bf0a599a4d1c310b9da3e2f21ccaefcbfc0c58128c82c8cd4ec935cb"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 45672,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/26-VTI-e6f69ec221b6eaa7c842-06-mid.jpg",
+      "image_sha256": "sha256:4b1ff6ed215a475c9eb958faf4c299b21ba4d09dcbf82c35577f303a08c08b81"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-06",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "frame_mode": "cover_static",
+      "at_ms": 45906,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/26-VTI-e6f69ec221b6eaa7c842-06-end.jpg",
+      "image_sha256": "sha256:226b609bc691a7822568a96e5c9f2e42a539753e3f0454bd57a4ce733afd6c6a"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+      "frame_mode": "cover_static",
+      "at_ms": 46172,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/27-VTI-e6f69ec221b6eaa7c842-07-start.jpg",
+      "image_sha256": "sha256:80c9a80e7efd2361e35ac3d30446788e513b9e53c42eff396c85fec3b3d6b848"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+      "frame_mode": "cover_static",
+      "at_ms": 46780,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/27-VTI-e6f69ec221b6eaa7c842-07-mid.jpg",
+      "image_sha256": "sha256:137f35394fa90e1d2f54cad160a5e410693f97e435ca840d506aa37d4b58aa22"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-07",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+      "frame_mode": "cover_static",
+      "at_ms": 47388,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/27-VTI-e6f69ec221b6eaa7c842-07-end.jpg",
+      "image_sha256": "sha256:3a356b381a4e351495bfa9a60b4a06e7ba993293605261deea19a9973da69e2d"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-08",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+      "frame_mode": "cover_static",
+      "at_ms": 47736,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/28-VTI-e6f69ec221b6eaa7c842-08-start.jpg",
+      "image_sha256": "sha256:9a94f63d21fc2c9558cba3f34a1c6a4a10a059717049018eabe058c80a8522f4"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-08",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+      "frame_mode": "cover_static",
+      "at_ms": 48230,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/28-VTI-e6f69ec221b6eaa7c842-08-mid.jpg",
+      "image_sha256": "sha256:c283ab4dcc00ba201efc04f09b4babbfcb68900a8129bd155188e4d890ab2343"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-08",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+      "frame_mode": "cover_static",
+      "at_ms": 48724,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/28-VTI-e6f69ec221b6eaa7c842-08-end.jpg",
+      "image_sha256": "sha256:0b633a58ca097373a1af6a1c1ed1f78e0ce99f051c682b41239118607bd2a02a"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-09",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49009,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/29-VTI-e6f69ec221b6eaa7c842-09-start.jpg",
+      "image_sha256": "sha256:b22e12d8c24b73e13d7c9a35eb48df03ab195dbb8b40f4b3c760ac24ac7d60a3"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-09",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49420,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/29-VTI-e6f69ec221b6eaa7c842-09-mid.jpg",
+      "image_sha256": "sha256:3f741ac2d73170ee477ebb0848cbd1f5910e2ab22744e83d638b98aa7b2feaad"
+    },
+    {
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-09",
+      "beat_id": "B07",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+      "frame_mode": "cover_static",
+      "at_ms": 49830,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/29-VTI-e6f69ec221b6eaa7c842-09-end.jpg",
+      "image_sha256": "sha256:04e18c2d640fa04020cd32e3e290aadc717caaad994362c6029167805b84478e"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 50135,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/30-VTI-49a834fc38dfeb4a4c1c-01-start.jpg",
+      "image_sha256": "sha256:351cc6243671ee4535afa41f6152ba1efde5d1597bd483f59561e1e1f0d16a95"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 50690,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/30-VTI-49a834fc38dfeb4a4c1c-01-mid.jpg",
+      "image_sha256": "sha256:10042eafeb588b5429aded685162d6447f43c87dd9eba9aed3b64e6e2120106b"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-01",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 51244,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/30-VTI-49a834fc38dfeb4a4c1c-01-end.jpg",
+      "image_sha256": "sha256:dc27310bd6e506271a763aec4cba83c7dcd0427f1998cf5c24e0f7e345c6e88b"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 51632,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/31-VTI-49a834fc38dfeb4a4c1c-02-start.jpg",
+      "image_sha256": "sha256:86e0bf136d9e9dbf93c3fb7e86279dda13dc9d0df713ea1accae5b083d557cc7"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 52305,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/31-VTI-49a834fc38dfeb4a4c1c-02-mid.jpg",
+      "image_sha256": "sha256:545dd0e308bdab8b2ac4e1a2be0b9fb9e2c52d537d3657918564c925230030e5"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-02",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "frame_mode": "cover_static",
+      "at_ms": 52977,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/31-VTI-49a834fc38dfeb4a4c1c-02-end.jpg",
+      "image_sha256": "sha256:2e19f2db18185e5820a1e98d9c9070dc2630122565aed2851ecd7571ead02ca8"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+      "frame_mode": "cover_static",
+      "at_ms": 53577,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/32-VTI-49a834fc38dfeb4a4c1c-03-start.jpg",
+      "image_sha256": "sha256:35258cd759f1f35cf9db027fd31a0772deb8c53c7ac6142a2e2777dab107ba49"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+      "frame_mode": "cover_static",
+      "at_ms": 54805,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/32-VTI-49a834fc38dfeb4a4c1c-03-mid.jpg",
+      "image_sha256": "sha256:0e709390eaa493abcea65ab10707ed92693fe645f0aec0af8c8bfee941cad072"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-03",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+      "frame_mode": "cover_static",
+      "at_ms": 56032,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/32-VTI-49a834fc38dfeb4a4c1c-03-end.jpg",
+      "image_sha256": "sha256:7a80982052b7c328fe383fa1a2d6bd680f5215a397308e7dc74af994c30ee84f"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 56807,
+      "label": "START",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/33-VTI-49a834fc38dfeb4a4c1c-04-start.jpg",
+      "image_sha256": "sha256:048143416c948510beeda2254ff4dc942abf8387e28adb9b4510b50ba509822b"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 58036,
+      "label": "MID",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/33-VTI-49a834fc38dfeb4a4c1c-04-mid.jpg",
+      "image_sha256": "sha256:4b2351f2a323358c5d330d783e74cc3cc52ae2f5268861bc2dd7ecb07492a774"
+    },
+    {
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-04",
+      "beat_id": "B08",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+      "frame_mode": "cover_static",
+      "at_ms": 59264,
+      "label": "END",
+      "image_path": "audit/round-6/rendered-frames/a-beautiful-mind/33-VTI-49a834fc38dfeb4a4c1c-04-end.jpg",
+      "image_sha256": "sha256:705db36cc8bb091316e35772e684137d50e5c3e4e3bf2b4a95262301dd2a5fab"
+    }
+  ]
+}

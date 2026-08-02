@@ -16,6 +16,7 @@ const rounds = [
   { label: 'Vòng 3', id: 'r3' },
   { label: 'Vòng 4', id: 'r4' },
   { label: 'Vòng 5', id: 'r5' },
+  { label: 'Vòng 6', id: 'r6' },
 ]
 const films = [
   { label: '01 · Soul', id: 'soul' },
@@ -40,7 +41,7 @@ try {
 
     const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle' })
     assert.equal(response?.status(), 200)
-    await page.getByRole('heading', { name: /Mười lăm bản dựng dọc/ }).waitFor()
+    await page.getByRole('heading', { name: /Mười tám bản dựng dọc/ }).waitFor()
 
     const combinations = []
     for (const round of rounds) {
@@ -71,7 +72,7 @@ try {
       })
     }
 
-    await page.getByRole('button', { name: /^Vòng 5/ }).click()
+    await page.getByRole('button', { name: /^Vòng 6/ }).click()
     await page.getByRole('button', { name: '01 · Soul', exact: true }).click()
     const activeVideo = page.locator('video')
     await activeVideo.evaluate(async (element) => {
@@ -108,4 +109,4 @@ await writeFile(
   new URL('qa-results.json', outputDir),
   `${JSON.stringify({ status: 'PASS', results }, null, 2)}\n`,
 )
-console.log(`PASS: ${results.length} viewports, ${results.length * 15} media combinations`)
+console.log(`PASS: ${results.length} viewports, ${results.length * 18} media combinations`)

@@ -5,7 +5,7 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const evidenceRoot =
   '/review/remotion-muc-dich-doi-song/media/evidence/vertical-framing-v1'
-const releaseTag = 'semantic-vertical-composition-r5-20260802'
+const releaseTag = 'full-bleed-vertical-composition-r6-20260802'
 
 const films = [
   {
@@ -15,16 +15,16 @@ const films = [
     focus:
       'Khoảng lặng, công việc, thành công và đau khổ được giữ quanh Joe cùng các vật mang nghĩa thay vì quanh tâm khung nguồn.',
     residual:
-      'Cụm cao trào B07 đã thay cảnh tối và cảnh đổi chủ thể bằng nguồn cận dọc; cần anh chấm nhịp cảm xúc của cả chuỗi khi xem liền mạch.',
+      'Các portrait hold đều giữ Joe hoặc bằng chứng chính; cần anh chấm xem hard cut giữa các hold có tự nhiên theo nhịp cảm xúc không.',
   },
   {
     id: 'forrest-gump',
     tab: '02 · Forrest Gump',
     title: 'Một đời người được đọc qua hành động cụ thể',
     focus:
-      'Khung dọc ưu tiên Forrest, hành động và vật chứng; cảnh nhận bằng giữ người trao cùng tấm bằng trước khi chuyển sang người nhận.',
+      'Khung dọc ưu tiên Forrest, hành động và vật chứng; cảnh nhận diện quá rộng đã được thay bằng cảnh tốt nghiệp portrait-composable.',
     residual:
-      'Một số bằng chứng hành động cần khung bối cảnh rộng; cần anh chấm xem context window có đủ rõ mà không làm Forrest bị nhỏ.',
+      'Cần anh chấm cảnh tốt nghiệp mới có truyền thành tựu rõ mà vẫn giữ được mạch cùng phim hay không.',
   },
   {
     id: 'a-beautiful-mind',
@@ -39,10 +39,17 @@ const films = [
 
 type FilmId = (typeof films)[number]['id']
 
-const round5ContactSheetPages: Record<FilmId, number> = {
-  soul: 4,
-  'forrest-gump': 3,
-  'a-beautiful-mind': 5,
+const contactSheetPages: Record<5 | 6, Record<FilmId, number>> = {
+  5: {
+    soul: 4,
+    'forrest-gump': 3,
+    'a-beautiful-mind': 5,
+  },
+  6: {
+    soul: 5,
+    'forrest-gump': 6,
+    'a-beautiful-mind': 6,
+  },
 }
 
 const rounds = [
@@ -166,7 +173,7 @@ const rounds = [
     id: 'r5',
     number: 5,
     tab: 'Vòng 5',
-    status: 'Nguồn + sự kiện + chủ thể + khung · mới nhất',
+    status: 'Nguồn + sự kiện + chủ thể + khung',
     score: '69/69 PASS',
     gate: '69/69 item',
     retention: '207/207 frame',
@@ -191,15 +198,44 @@ const rounds = [
       },
     },
   },
+  {
+    id: 'r6',
+    number: 6,
+    tab: 'Vòng 6',
+    status: 'Full-bleed + đúng carrier · mới nhất',
+    score: '92/92 PASS',
+    gate: '92/92 item',
+    retention: '276/276 frame',
+    camera: '0/92 di động',
+    method:
+      'Chỉ dùng full-bleed 9:16. Carrier di chuyển được chia thành các portrait hold tĩnh; source không thể giữ trọn người, hành động hoặc vật chứng sẽ bị loại và thay trước khi render.',
+    learned:
+      'Không được cứu crop dọc bằng cách thu nhỏ khổ ngang. Biên timeline cũng phải dùng chung frame đã lượng tử hóa để không tạo một frame trống giữa hai cảnh.',
+    report: `${evidenceRoot}/round-6/SELF-EVALUATION.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r6-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r6-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r6-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r6-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r6-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r6-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
 ] as const
 
 type RoundId = (typeof rounds)[number]['id']
 
 export default function VideoReviewGallery() {
-  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r5')
+  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r6')
   const [activeFilmId, setActiveFilmId] = useState<FilmId>('soul')
   const activeRound = useMemo(
-    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[4],
+    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[5],
     [activeRoundId],
   )
   const activeFilm = useMemo(
@@ -210,8 +246,8 @@ export default function VideoReviewGallery() {
   const evidencePrefix = activeRound.number >= 4
     ? `${evidenceRoot}/round-${activeRound.number}/${activeFilm.id}`
     : `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
-  const contactSheets = activeRound.number === 5
-    ? Array.from({ length: round5ContactSheetPages[activeFilm.id] }, (_, index) =>
+  const contactSheets = activeRound.number >= 5
+    ? Array.from({ length: contactSheetPages[activeRound.number as 5 | 6][activeFilm.id] }, (_, index) =>
         `${evidencePrefix}/contact-sheet-page-${String(index + 1).padStart(2, '0')}.jpg?v=${releaseTag}`,
       )
     : [activeRound.number === 4
@@ -304,11 +340,11 @@ export default function VideoReviewGallery() {
                 <a href={`${evidenceRoot}/round-4/CAMERA-STABILITY-ROOT-CAUSE-AND-REPAIR.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gốc rễ và bản sửa</a>
               </>
             ) : null}
-            {activeRound.number === 5 ? (
+            {activeRound.number >= 5 ? (
               <>
                 <a href={`${evidencePrefix}/vertical_edit_plan.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Edit Plan dọc</a>
                 <a href={`${evidencePrefix}/vertical_semantic_pixel_qa.json?v=${releaseTag}`} target="_blank" rel="noreferrer">QA carrier trên pixel</a>
-                <a href={`${evidenceRoot}/round-5/OWNER-REVIEW-PACKET.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gói owner review</a>
+                <a href={`${evidenceRoot}/round-${activeRound.number}/OWNER-REVIEW-PACKET.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gói owner review</a>
               </>
             ) : null}
           </div>

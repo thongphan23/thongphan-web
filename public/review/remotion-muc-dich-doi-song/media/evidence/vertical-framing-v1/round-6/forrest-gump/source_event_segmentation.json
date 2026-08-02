@@ -1,0 +1,568 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-full-bleed-composition-v3-forrest-gump-round6",
+  "sources": [
+    {
+      "candidate_id": "CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-PINGPONG-10580-15020",
+          "at_ms": 11164
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-ALONE-NATURE-80-4520",
+          "source_in_ms": 80,
+          "source_out_ms": 4520
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-FORREST-PINGPONG-10580-15020",
+          "source_in_ms": 10580,
+          "source_out_ms": 11164
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-02",
+          "source_asset_id": "ASSET-FORREST-PINGPONG-10580-15020",
+          "source_in_ms": 11164,
+          "source_out_ms": 15020
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-ES-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-ALONE-NATURE-500-4940",
+          "source_in_ms": 500,
+          "source_out_ms": 4940
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-FORREST-PINGPONG-11000-15440",
+          "source_in_ms": 11000,
+          "source_out_ms": 15440
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-ES-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-ALONE-NATURE-920-5360",
+          "source_in_ms": 920,
+          "source_out_ms": 5360
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-FORREST-PINGPONG-11420-15860",
+          "source_in_ms": 11420,
+          "source_out_ms": 15860
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SE-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOLLECTS-7580-13560",
+          "source_in_ms": 7580,
+          "source_out_ms": 13560
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SE-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOLLECTS-8000-13980",
+          "source_in_ms": 8000,
+          "source_out_ms": 13980
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SE-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOLLECTS-8420-14400",
+          "source_in_ms": 8420,
+          "source_out_ms": 14400
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RK-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-MOW-80-4500",
+          "source_in_ms": 80,
+          "source_out_ms": 4500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RK-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RK-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-MOW-500-4920",
+          "source_in_ms": 500,
+          "source_out_ms": 4920
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RK-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-MOW-920-5340",
+          "source_in_ms": 920,
+          "source_out_ms": 5340
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-KE-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-WATCH-SON-3580-7640",
+          "source_in_ms": 3580,
+          "source_out_ms": 7640
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-KE-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-KE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-WATCH-SON-4000-8060",
+          "source_in_ms": 4000,
+          "source_out_ms": 8060
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-KE-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-WATCH-SON-4420-8480",
+          "source_in_ms": 4420,
+          "source_out_ms": 8480
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-2580-8160",
+          "at_ms": 4373
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-2580-8160",
+          "source_in_ms": 2580,
+          "source_out_ms": 4373
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-02",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-2580-8160",
+          "source_in_ms": 4373,
+          "source_out_ms": 8160
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-FORREST-GRADUATION-80-6660",
+          "source_in_ms": 80,
+          "source_out_ms": 6660
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-GN-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3000-8580",
+          "at_ms": 4376
+        },
+        {
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3000-8580",
+          "at_ms": 7796
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3000-8580",
+          "source_in_ms": 3000,
+          "source_out_ms": 4376
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3000-8580",
+          "source_in_ms": 4376,
+          "source_out_ms": 7796
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-03",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3000-8580",
+          "source_in_ms": 7796,
+          "source_out_ms": 8580
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-FORREST-GRADUATION-500-7080",
+          "source_in_ms": 500,
+          "source_out_ms": 7080
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-GN-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+          "at_ms": 4379
+        },
+        {
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+          "at_ms": 7799
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+          "source_in_ms": 3420,
+          "source_out_ms": 4379
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+          "source_in_ms": 4379,
+          "source_out_ms": 7799
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+          "source_asset_id": "ASSET-FORREST-ALIGNED-RUN-3420-9000",
+          "source_in_ms": 7799,
+          "source_out_ms": 9000
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-FORREST-GRADUATION-920-7500",
+          "source_in_ms": 920,
+          "source_out_ms": 7500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SS-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOGNITION-0-3080",
+          "source_in_ms": 0,
+          "source_out_ms": 3080
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SS-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SS-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOGNITION-0-3080",
+          "source_in_ms": 0,
+          "source_out_ms": 3080
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SS-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-RECOGNITION-420-3500",
+          "source_in_ms": 420,
+          "source_out_ms": 3500
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-WAR-580-3580",
+          "source_in_ms": 580,
+          "source_out_ms": 3580
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-FORREST-DRILL-PRESSURE-2580-5580",
+          "source_in_ms": 2580,
+          "source_out_ms": 5580
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-FORREST-CONFRONTATION-1080-6460",
+          "source_in_ms": 1080,
+          "source_out_ms": 6460
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-NT-ACTION-CORE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-WAR-1000-4000",
+          "at_ms": 3127
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-WAR-1000-4000",
+          "source_in_ms": 1000,
+          "source_out_ms": 3127
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-02",
+          "source_asset_id": "ASSET-FORREST-WAR-1000-4000",
+          "source_in_ms": 3127,
+          "source_out_ms": 4000
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-FORREST-DRILL-PRESSURE-3000-6000",
+          "source_in_ms": 3000,
+          "source_out_ms": 6000
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-FORREST-CONFRONTATION-1500-6880",
+          "source_in_ms": 1500,
+          "source_out_ms": 6880
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-NT-REACTION-TAIL",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-WAR-1420-4420",
+          "at_ms": 3088
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-WAR-1420-4420",
+          "source_in_ms": 1420,
+          "source_out_ms": 3088
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+          "source_asset_id": "ASSET-FORREST-WAR-1420-4420",
+          "source_in_ms": 3088,
+          "source_out_ms": 4420
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-FORREST-DRILL-PRESSURE-3420-6420",
+          "source_in_ms": 3420,
+          "source_out_ms": 6420
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-FORREST-CONFRONTATION-1920-7300",
+          "source_in_ms": 1920,
+          "source_out_ms": 7300
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-LOSS-80-3572",
+          "at_ms": 747
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-01-01",
+          "source_asset_id": "ASSET-FORREST-NO-JOY-80-3280",
+          "source_in_ms": 80,
+          "source_out_ms": 3280
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-02-01",
+          "source_asset_id": "ASSET-FORREST-RELATIONSHIP-CONFLICT-4580-7580",
+          "source_in_ms": 4580,
+          "source_out_ms": 7580
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-01",
+          "source_asset_id": "ASSET-FORREST-LOSS-80-3572",
+          "source_in_ms": 80,
+          "source_out_ms": 747
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-02",
+          "source_asset_id": "ASSET-FORREST-LOSS-80-3572",
+          "source_in_ms": 747,
+          "source_out_ms": 3572
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RM-ACTION-CORE",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-01-01",
+          "source_asset_id": "ASSET-FORREST-NO-JOY-500-3700",
+          "source_in_ms": 500,
+          "source_out_ms": 3700
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-02-01",
+          "source_asset_id": "ASSET-FORREST-RELATIONSHIP-CONFLICT-5000-8000",
+          "source_in_ms": 5000,
+          "source_out_ms": 8000
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-03-01",
+          "source_asset_id": "ASSET-FORREST-LOSS-500-3992",
+          "source_in_ms": 500,
+          "source_out_ms": 3992
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-RM-REACTION-TAIL",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+          "source_asset_id": "ASSET-FORREST-NO-JOY-920-4120",
+          "source_in_ms": 920,
+          "source_out_ms": 4120
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+          "source_asset_id": "ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420",
+          "source_in_ms": 5420,
+          "source_out_ms": 8420
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+          "source_asset_id": "ASSET-FORREST-LOSS-920-4412",
+          "source_in_ms": 920,
+          "source_out_ms": 4412
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+      "native_cut_points_ms": [
+        {
+          "source_asset_id": "ASSET-FORREST-BENCH-REFLECTION-4200-8640",
+          "at_ms": 7787
+        }
+      ],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+          "source_asset_id": "ASSET-FORREST-BENCH-REFLECTION-4200-8640",
+          "source_in_ms": 4200,
+          "source_out_ms": 7787
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+          "source_asset_id": "ASSET-FORREST-BENCH-REFLECTION-4200-8640",
+          "source_in_ms": 7787,
+          "source_out_ms": 8640
+        },
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+          "source_asset_id": "ASSET-FORREST-PINGPONG-11000-15440",
+          "source_in_ms": 11000,
+          "source_out_ms": 15440
+        }
+      ],
+      "status": "sealed"
+    },
+    {
+      "candidate_id": "CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+      "native_cut_points_ms": [],
+      "events": [
+        {
+          "event_id": "EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+          "source_asset_id": "ASSET-FORREST-PORTRAIT-GRADUATION-1800-4880",
+          "source_in_ms": 1800,
+          "source_out_ms": 4880
+        }
+      ],
+      "status": "sealed"
+    }
+  ],
+  "status": "sealed",
+  "segmentation_fingerprint": "sha256:3e17ccadf27df9919258bc428ec5d71d5ec9a8ff168895ee1a8da0f7368bd269"
+}
