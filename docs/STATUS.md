@@ -2,6 +2,25 @@
 
 Last updated: 2026-08-02
 
+## Remotion Social-Safe Vertical Subtitles v1 - production release - 2026-08-02
+
+- Added Round 7 with three 9:16 videos whose picture plans are inherited
+  unchanged from Round 6; only the subtitle system changed.
+- Reflowed the provided voice from real word timestamps into 30 one-line
+  segments. Captions use a stable mid-lower torn-paper lane inside the common
+  TikTok, Reels and Shorts safe area.
+- Encoded QA passes 90/90 caption observations, 270/270 platform containment
+  checks and Apple Vision OCR similarity 1.00. Nine platform-overlay contact
+  sheets are attached to the review page.
+- Website focused tests pass 4/4; full suite 248/248, TypeScript, ESLint,
+  84-route build and local/preview/production Playwright QA pass. Browser QA
+  covers two viewports and 42 media combinations with playback, no overflow
+  and no console errors.
+- Website source commit: `3a69754`. Preview deployment: `bd39b653`.
+  Production deployment: `65df0c98`. Rollback deployment: `75057013`.
+  Full evidence:
+  `docs/releases/REMOTION_SOCIAL_SAFE_VERTICAL_SUBTITLES_V1_PRODUCTION_RELEASE-2026-08-02.md`.
+
 ## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02
 
 - Closed the Round 5 false-high where semantic-carrier checks could pass while
