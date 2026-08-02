@@ -5,7 +5,7 @@ import styles from '@/app/review/remotion-muc-dich-doi-song/page.module.css'
 
 const evidenceRoot =
   '/review/remotion-muc-dich-doi-song/media/evidence/vertical-framing-v1'
-const releaseTag = 'full-bleed-vertical-composition-r6-20260802'
+const releaseTag = 'social-safe-vertical-captions-r7-20260802'
 
 const films = [
   {
@@ -39,7 +39,7 @@ const films = [
 
 type FilmId = (typeof films)[number]['id']
 
-const contactSheetPages: Record<5 | 6, Record<FilmId, number>> = {
+const contactSheetPages: Record<5 | 6 | 7, Record<FilmId, number>> = {
   5: {
     soul: 4,
     'forrest-gump': 3,
@@ -49,6 +49,11 @@ const contactSheetPages: Record<5 | 6, Record<FilmId, number>> = {
     soul: 5,
     'forrest-gump': 6,
     'a-beautiful-mind': 6,
+  },
+  7: {
+    soul: 2,
+    'forrest-gump': 2,
+    'a-beautiful-mind': 2,
   },
 }
 
@@ -227,15 +232,44 @@ const rounds = [
       },
     },
   },
+  {
+    id: 'r7',
+    number: 7,
+    tab: 'Vòng 7',
+    status: 'Phụ đề social-safe · mới nhất',
+    score: '270/270 PASS',
+    gate: '90/90 một dòng',
+    retention: 'OCR 1,00',
+    camera: '0/92 di động',
+    method:
+      'Giữ nguyên picture plan vòng 6, reflow phụ đề từ word timeline thật và khóa một mảnh giấy một dòng vào giao điểm vùng an toàn TikTok, Reels và Shorts.',
+    learned:
+      'Phụ đề dọc phải có hợp đồng giao diện nền tảng riêng. Nếu chữ xung đột carrier, hệ thống đổi crop hoặc source thay vì đẩy chữ xuống vùng tên kênh và nút tương tác.',
+    report: `${evidenceRoot}/round-7/SELF-EVALUATION.md?v=${releaseTag}`,
+    sources: {
+      soul: {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r7-soul-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r7-soul-poster.jpg?v=${releaseTag}`,
+      },
+      'forrest-gump': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r7-forrest-gump-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r7-forrest-gump-poster.jpg?v=${releaseTag}`,
+      },
+      'a-beautiful-mind': {
+        src: `/review/remotion-muc-dich-doi-song/media/vertical-r7-a-beautiful-mind-web.mp4?v=${releaseTag}`,
+        poster: `/review/remotion-muc-dich-doi-song/media/vertical-r7-a-beautiful-mind-poster.jpg?v=${releaseTag}`,
+      },
+    },
+  },
 ] as const
 
 type RoundId = (typeof rounds)[number]['id']
 
 export default function VideoReviewGallery() {
-  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r6')
+  const [activeRoundId, setActiveRoundId] = useState<RoundId>('r7')
   const [activeFilmId, setActiveFilmId] = useState<FilmId>('soul')
   const activeRound = useMemo(
-    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[5],
+    () => rounds.find((round) => round.id === activeRoundId) ?? rounds[6],
     [activeRoundId],
   )
   const activeFilm = useMemo(
@@ -247,7 +281,7 @@ export default function VideoReviewGallery() {
     ? `${evidenceRoot}/round-${activeRound.number}/${activeFilm.id}`
     : `${evidenceRoot}/round-${activeRound.number}-${activeFilm.id}`
   const contactSheets = activeRound.number >= 5
-    ? Array.from({ length: contactSheetPages[activeRound.number as 5 | 6][activeFilm.id] }, (_, index) =>
+    ? Array.from({ length: contactSheetPages[activeRound.number as 5 | 6 | 7][activeFilm.id] }, (_, index) =>
         `${evidencePrefix}/contact-sheet-page-${String(index + 1).padStart(2, '0')}.jpg?v=${releaseTag}`,
       )
     : [activeRound.number === 4
@@ -345,6 +379,15 @@ export default function VideoReviewGallery() {
                 <a href={`${evidencePrefix}/vertical_edit_plan.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Edit Plan dọc</a>
                 <a href={`${evidencePrefix}/vertical_semantic_pixel_qa.json?v=${releaseTag}`} target="_blank" rel="noreferrer">QA carrier trên pixel</a>
                 <a href={`${evidenceRoot}/round-${activeRound.number}/OWNER-REVIEW-PACKET.md?v=${releaseTag}`} target="_blank" rel="noreferrer">Gói owner review</a>
+              </>
+            ) : null}
+            {activeRound.number === 7 ? (
+              <>
+                <a href={`${evidencePrefix}/vertical_caption_layout.json?v=${releaseTag}`} target="_blank" rel="noreferrer">Kế hoạch vùng an toàn phụ đề</a>
+                <a href={`${evidencePrefix}/vertical_caption_safe_area_qa.json?v=${releaseTag}`} target="_blank" rel="noreferrer">QA phụ đề trên MP4</a>
+                <a href={`${evidencePrefix}/platform-overlays/tiktok_in_feed-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">Mô phỏng giao diện TikTok</a>
+                <a href={`${evidencePrefix}/platform-overlays/instagram_reels-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">Mô phỏng giao diện Reels</a>
+                <a href={`${evidencePrefix}/platform-overlays/youtube_shorts-contact-sheet.jpg?v=${releaseTag}`} target="_blank" rel="noreferrer">Mô phỏng giao diện Shorts</a>
               </>
             ) : null}
           </div>

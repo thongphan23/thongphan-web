@@ -1,0 +1,948 @@
+{
+  "schema_version": "cme.subtitles.v1",
+  "enabled": true,
+  "source": "transcript_approved",
+  "timeline_lock_status": "audio_aligned",
+  "fps": 30,
+  "total_duration_sec": 59.652,
+  "style": {
+    "position": "social_mid_lower",
+    "platform_safe_profile": "social_ui_intersection.v1",
+    "safe_layout_ref": "content/vertical_caption_layout.json",
+    "anchor_x_ratio": 0.472222,
+    "anchor_y_ratio": 0.614583,
+    "max_width_ratio": 0.722222,
+    "minimum_font_size_px_at_1080": 28,
+    "max_line_chars": 38,
+    "max_lines": 1,
+    "safe_margin_px": 120,
+    "font_family": "Be Vietnam Pro",
+    "mode": "spoken_subtitle",
+    "visual_container": "torn_paper_caption_strip",
+    "line_layout": "one_line_per_paper_slip",
+    "multi_line_container_policy": "single_line_only",
+    "slip_width_strategy": "fit_each_line_with_max_width",
+    "slip_vertical_gap_px": 0,
+    "text_optical_y_offset_px": 2,
+    "text_optical_alignment_status": "needs_qa",
+    "readability_status": "needs_qa",
+    "contrast_status": "needs_qa",
+    "caption_strip_alignment_status": "needs_qa",
+    "material_treatment": "single torn paper caption slip with readable ink"
+  },
+  "segments": [
+    {
+      "id": "SUB001",
+      "scene_id": "S01",
+      "start_ms": 2180,
+      "end_ms": 4100,
+      "start_sec": 2.18,
+      "end_sec": 4.1,
+      "text": "Điều quan trọng nhất mà bạn cần nhận",
+      "lines": [
+        "Điều quan trọng nhất mà bạn cần nhận"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB001-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T001"
+      ],
+      "word_ids": [
+        "W001",
+        "W002",
+        "W003",
+        "W004",
+        "W005",
+        "W006",
+        "W007",
+        "W008"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB002",
+      "scene_id": "S01",
+      "start_ms": 4100,
+      "end_ms": 6600,
+      "start_sec": 4.1,
+      "end_sec": 6.6,
+      "text": "thức là: đời bạn có một mục đích bên",
+      "lines": [
+        "thức là: đời bạn có một mục đích bên"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB002-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T001"
+      ],
+      "word_ids": [
+        "W009",
+        "W010",
+        "W011",
+        "W012",
+        "W013",
+        "W014",
+        "W015",
+        "W016",
+        "W017"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB003",
+      "scene_id": "S01",
+      "start_ms": 6600,
+      "end_ms": 8680,
+      "start_sec": 6.6,
+      "end_sec": 8.68,
+      "text": "trong và một mục đích bên ngoài.",
+      "lines": [
+        "trong và một mục đích bên ngoài."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB003-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T001"
+      ],
+      "word_ids": [
+        "W018",
+        "W019",
+        "W020",
+        "W021",
+        "W022",
+        "W023",
+        "W024"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB004",
+      "scene_id": "S02",
+      "start_ms": 8880,
+      "end_ms": 10520,
+      "start_sec": 8.88,
+      "end_sec": 10.52,
+      "text": "Mục đích bên trong là mục đích chính,",
+      "lines": [
+        "Mục đích bên trong là mục đích chính,"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB004-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T002"
+      ],
+      "word_ids": [
+        "W025",
+        "W026",
+        "W027",
+        "W028",
+        "W029",
+        "W030",
+        "W031",
+        "W032"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB005",
+      "scene_id": "S02",
+      "start_ms": 10520,
+      "end_ms": 12960,
+      "start_sec": 10.52,
+      "end_sec": 12.96,
+      "text": "và mục đích này có liên quan đến trạng",
+      "lines": [
+        "và mục đích này có liên quan đến trạng"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB005-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T002"
+      ],
+      "word_ids": [
+        "W033",
+        "W034",
+        "W035",
+        "W036",
+        "W037",
+        "W038",
+        "W039",
+        "W040",
+        "W041"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB006",
+      "scene_id": "S02",
+      "start_ms": 12960,
+      "end_ms": 14860,
+      "start_sec": 12.96,
+      "end_sec": 14.86,
+      "text": "thái an nhiên tự tại của bạn.",
+      "lines": [
+        "thái an nhiên tự tại của bạn."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB006-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T002"
+      ],
+      "word_ids": [
+        "W042",
+        "W043",
+        "W044",
+        "W045",
+        "W046",
+        "W047",
+        "W048"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB007",
+      "scene_id": "S03",
+      "start_ms": 15360,
+      "end_ms": 16940,
+      "start_sec": 15.36,
+      "end_sec": 16.94,
+      "text": "Mục đích bên ngoài dính tới những việc",
+      "lines": [
+        "Mục đích bên ngoài dính tới những việc"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB007-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T003"
+      ],
+      "word_ids": [
+        "W049",
+        "W050",
+        "W051",
+        "W052",
+        "W053",
+        "W054",
+        "W055",
+        "W056"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB008",
+      "scene_id": "S03",
+      "start_ms": 16940,
+      "end_ms": 18820,
+      "start_sec": 16.94,
+      "end_sec": 18.82,
+      "text": "bạn làm, và đây chỉ là mục đích phụ.",
+      "lines": [
+        "bạn làm, và đây chỉ là mục đích phụ."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB008-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T003"
+      ],
+      "word_ids": [
+        "W057",
+        "W058",
+        "W059",
+        "W060",
+        "W061",
+        "W062",
+        "W063",
+        "W064",
+        "W065"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB009",
+      "scene_id": "S04",
+      "start_ms": 19280,
+      "end_ms": 20980,
+      "start_sec": 19.28,
+      "end_sec": 20.98,
+      "text": "Mục đích bên trong của bạn là tỉnh",
+      "lines": [
+        "Mục đích bên trong của bạn là tỉnh"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB009-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T004"
+      ],
+      "word_ids": [
+        "W066",
+        "W067",
+        "W068",
+        "W069",
+        "W070",
+        "W071",
+        "W072",
+        "W073"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB010",
+      "scene_id": "S04",
+      "start_ms": 20980,
+      "end_ms": 22900,
+      "start_sec": 20.98,
+      "end_sec": 22.9,
+      "text": "thức. Chỉ đơn giản có vậy thôi.",
+      "lines": [
+        "thức. Chỉ đơn giản có vậy thôi."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB010-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T004"
+      ],
+      "word_ids": [
+        "W074",
+        "W075",
+        "W076",
+        "W077",
+        "W078",
+        "W079",
+        "W080"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB011",
+      "scene_id": "S05",
+      "start_ms": 23340,
+      "end_ms": 25200,
+      "start_sec": 23.34,
+      "end_sec": 25.2,
+      "text": "Mục đích bên ngoài của bạn có thể thay",
+      "lines": [
+        "Mục đích bên ngoài của bạn có thể thay"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB011-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T005"
+      ],
+      "word_ids": [
+        "W081",
+        "W082",
+        "W083",
+        "W084",
+        "W085",
+        "W086",
+        "W087",
+        "W088",
+        "W089"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB012",
+      "scene_id": "S05",
+      "start_ms": 25200,
+      "end_ms": 27220,
+      "start_sec": 25.2,
+      "end_sec": 27.22,
+      "text": "đổi theo thời gian và thay đổi rất",
+      "lines": [
+        "đổi theo thời gian và thay đổi rất"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB012-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T005"
+      ],
+      "word_ids": [
+        "W090",
+        "W091",
+        "W092",
+        "W093",
+        "W094",
+        "W095",
+        "W096",
+        "W097"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB013",
+      "scene_id": "S05",
+      "start_ms": 27220,
+      "end_ms": 28200,
+      "start_sec": 27.22,
+      "end_sec": 28.2,
+      "text": "nhiều ở từng người.",
+      "lines": [
+        "nhiều ở từng người."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB013-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T005"
+      ],
+      "word_ids": [
+        "W098",
+        "W099",
+        "W100",
+        "W101"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB014",
+      "scene_id": "S06",
+      "start_ms": 28200,
+      "end_ms": 30780,
+      "start_sec": 28.2,
+      "end_sec": 30.78,
+      "text": "Tìm ra và sống hòa điệu với nhịp sống",
+      "lines": [
+        "Tìm ra và sống hòa điệu với nhịp sống"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB014-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T006"
+      ],
+      "word_ids": [
+        "W102",
+        "W103",
+        "W104",
+        "W105",
+        "W106",
+        "W107",
+        "W108",
+        "W109",
+        "W110"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB015",
+      "scene_id": "S06",
+      "start_ms": 30780,
+      "end_ms": 33220,
+      "start_sec": 30.78,
+      "end_sec": 33.22,
+      "text": "của mục đích bên trong là cơ sở để bạn",
+      "lines": [
+        "của mục đích bên trong là cơ sở để bạn"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB015-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T006"
+      ],
+      "word_ids": [
+        "W111",
+        "W112",
+        "W113",
+        "W114",
+        "W115",
+        "W116",
+        "W117",
+        "W118",
+        "W119",
+        "W120"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB016",
+      "scene_id": "S06",
+      "start_ms": 33220,
+      "end_ms": 35320,
+      "start_sec": 33.22,
+      "end_sec": 35.32,
+      "text": "có thể hoàn thành mục đích bên ngoài.",
+      "lines": [
+        "có thể hoàn thành mục đích bên ngoài."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB016-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T006"
+      ],
+      "word_ids": [
+        "W121",
+        "W122",
+        "W123",
+        "W124",
+        "W125",
+        "W126",
+        "W127",
+        "W128"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB017",
+      "scene_id": "S07",
+      "start_ms": 35500,
+      "end_ms": 37040,
+      "start_sec": 35.5,
+      "end_sec": 37.04,
+      "text": "Đó là cơ sở của những",
+      "lines": [
+        "Đó là cơ sở của những"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB017-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T007"
+      ],
+      "word_ids": [
+        "W129",
+        "W130",
+        "W131",
+        "W132",
+        "W133",
+        "W134"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB018",
+      "scene_id": "S07",
+      "start_ms": 37040,
+      "end_ms": 38020,
+      "start_sec": 37.04,
+      "end_sec": 38.02,
+      "text": "thành công thực sự.",
+      "lines": [
+        "thành công thực sự."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB018-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T007"
+      ],
+      "word_ids": [
+        "W135",
+        "W136",
+        "W137",
+        "W138"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB019",
+      "scene_id": "S08",
+      "start_ms": 38580,
+      "end_ms": 40520,
+      "start_sec": 38.58,
+      "end_sec": 40.52,
+      "text": "Nếu những gì bạn làm ở bên ngoài không",
+      "lines": [
+        "Nếu những gì bạn làm ở bên ngoài không"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB019-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W139",
+        "W140",
+        "W141",
+        "W142",
+        "W143",
+        "W144",
+        "W145",
+        "W146",
+        "W147"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB020",
+      "scene_id": "S08",
+      "start_ms": 40520,
+      "end_ms": 42240,
+      "start_sec": 40.52,
+      "end_sec": 42.24,
+      "text": "có sự hòa điệu với nhịp sống của mục",
+      "lines": [
+        "có sự hòa điệu với nhịp sống của mục"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB020-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W148",
+        "W149",
+        "W150",
+        "W151",
+        "W152",
+        "W153",
+        "W154",
+        "W155",
+        "W156"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB021",
+      "scene_id": "S08",
+      "start_ms": 42240,
+      "end_ms": 44120,
+      "start_sec": 42.24,
+      "end_sec": 44.12,
+      "text": "đích bên trong, thì muốn đạt được một",
+      "lines": [
+        "đích bên trong, thì muốn đạt được một"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB021-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W157",
+        "W158",
+        "W159",
+        "W160",
+        "W161",
+        "W162",
+        "W163",
+        "W164"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB022",
+      "scene_id": "S08",
+      "start_ms": 44120,
+      "end_ms": 46160,
+      "start_sec": 44.12,
+      "end_sec": 46.16,
+      "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+      "lines": [
+        "điều gì đó, bạn sẽ phải mất rất nhiều"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB022-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W165",
+        "W166",
+        "W167",
+        "W168",
+        "W169",
+        "W170",
+        "W171",
+        "W172",
+        "W173"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB023",
+      "scene_id": "S08",
+      "start_ms": 46160,
+      "end_ms": 48760,
+      "start_sec": 46.16,
+      "end_sec": 48.76,
+      "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+      "lines": [
+        "nỗ lực, phải đấu tranh hay dùng đến âm"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB023-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W174",
+        "W175",
+        "W176",
+        "W177",
+        "W178",
+        "W179",
+        "W180",
+        "W181",
+        "W182"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB024",
+      "scene_id": "S08",
+      "start_ms": 48760,
+      "end_ms": 49900,
+      "start_sec": 48.76,
+      "end_sec": 49.9,
+      "text": "mưu và thủ đoạn.",
+      "lines": [
+        "mưu và thủ đoạn."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB024-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T008"
+      ],
+      "word_ids": [
+        "W183",
+        "W184",
+        "W185",
+        "W186"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB025",
+      "scene_id": "S09",
+      "start_ms": 49960,
+      "end_ms": 51680,
+      "start_sec": 49.96,
+      "end_sec": 51.68,
+      "text": "Nhưng làm như thế thì bạn không có",
+      "lines": [
+        "Nhưng làm như thế thì bạn không có"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB025-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T009"
+      ],
+      "word_ids": [
+        "W187",
+        "W188",
+        "W189",
+        "W190",
+        "W191",
+        "W192",
+        "W193",
+        "W194"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB026",
+      "scene_id": "S09",
+      "start_ms": 51680,
+      "end_ms": 53080,
+      "start_sec": 51.68,
+      "end_sec": 53.08,
+      "text": "được niềm vui khi công",
+      "lines": [
+        "được niềm vui khi công"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB026-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T009"
+      ],
+      "word_ids": [
+        "W195",
+        "W196",
+        "W197",
+        "W198",
+        "W199"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB027",
+      "scene_id": "S09",
+      "start_ms": 53080,
+      "end_ms": 54080,
+      "start_sec": 53.08,
+      "end_sec": 54.08,
+      "text": "việc được hoàn tất.",
+      "lines": [
+        "việc được hoàn tất."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB027-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T009"
+      ],
+      "word_ids": [
+        "W200",
+        "W201",
+        "W202",
+        "W203"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB028",
+      "scene_id": "S10",
+      "start_ms": 54080,
+      "end_ms": 56620,
+      "start_sec": 54.08,
+      "end_sec": 56.62,
+      "text": "Và chắc chắn những kết quả ấy chỉ mang",
+      "lines": [
+        "Và chắc chắn những kết quả ấy chỉ mang"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB028-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T010"
+      ],
+      "word_ids": [
+        "W204",
+        "W205",
+        "W206",
+        "W207",
+        "W208",
+        "W209",
+        "W210",
+        "W211",
+        "W212"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB029",
+      "scene_id": "S10",
+      "start_ms": 56620,
+      "end_ms": 58260,
+      "start_sec": 56.62,
+      "end_sec": 58.26,
+      "text": "lại khổ đau cho bạn và",
+      "lines": [
+        "lại khổ đau cho bạn và"
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB029-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T010"
+      ],
+      "word_ids": [
+        "W213",
+        "W214",
+        "W215",
+        "W216",
+        "W217",
+        "W218"
+      ],
+      "lock_status": "word_locked"
+    },
+    {
+      "id": "SUB030",
+      "scene_id": "S10",
+      "start_ms": 58260,
+      "end_ms": 59160,
+      "start_sec": 58.26,
+      "end_sec": 59.16,
+      "text": "cho những người chung quanh.",
+      "lines": [
+        "cho những người chung quanh."
+      ],
+      "paper_slip_count": 1,
+      "slip_ids": [
+        "SUB030-L01"
+      ],
+      "source": "transcript_approved",
+      "source_transcript_segment_ids": [
+        "T010"
+      ],
+      "word_ids": [
+        "W219",
+        "W220",
+        "W221",
+        "W222",
+        "W223"
+      ],
+      "lock_status": "word_locked"
+    }
+  ]
+}

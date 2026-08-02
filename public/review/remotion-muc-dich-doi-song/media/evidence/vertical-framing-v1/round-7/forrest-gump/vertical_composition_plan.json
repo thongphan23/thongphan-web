@@ -1,0 +1,2631 @@
+{
+  "schema_version": "2.0.0",
+  "run_id": "RUN-vertical-full-bleed-composition-v3-forrest-gump-round6",
+  "render_spec": {
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "beat_contracts_fingerprint": "sha256:b3f51c2c6fe91c8024eb908a5a7fea235d9c04a40e7760e1beb7f9f99d360d12",
+  "source_candidates_fingerprint": "sha256:7371a0fda965be6a25bef86db6fe0cc95243365fa448538e88385df7b70a0910",
+  "source_segmentation_fingerprint": "sha256:3e17ccadf27df9919258bc428ec5d71d5ec9a8ff168895ee1a8da0f7368bd269",
+  "decision_order": [
+    "exact_beat_meaning",
+    "primary_carrier_completeness",
+    "action_relationship_context",
+    "native_cut_identity_continuity",
+    "silent_portrait_comprehension",
+    "subtitle_safety",
+    "temporal_stability",
+    "composition_craft"
+  ],
+  "decisions": [
+    {
+      "decision_id": "VCD-236faf51f50ea94b5e19",
+      "contract_id": "VBC-B01-CLM-01-TWO-PURPOSES",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.956,
+        "carrier_completeness": 0.95,
+        "action_context": 0.88,
+        "temporal_continuity": 0.965,
+        "composition_craft": 0.93
+      },
+      "selected_weighted_score": 0.9376,
+      "selected_timeline_item_ids": [
+        "VTI-236faf51f50ea94b5e19-01",
+        "VTI-236faf51f50ea94b5e19-02",
+        "VTI-236faf51f50ea94b5e19-03",
+        "VTI-236faf51f50ea94b5e19-04",
+        "VTI-236faf51f50ea94b5e19-05"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_PRIMARY_CARRIER_TOO_SMALL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.8905
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-ES-ACTION-CORE",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_PRIMARY_CARRIER_TOO_SMALL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.8905
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-ES-REACTION-TAIL",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_PRIMARY_CARRIER_TOO_SMALL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.8905
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-557a7d7ca2fbcbec43c3",
+      "contract_id": "VBC-B02-CLM-02-INNER-EASE",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-SE-REACTION-TAIL",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.88,
+        "temporal_continuity": 1.0,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.894,
+      "selected_timeline_item_ids": [
+        "VTI-557a7d7ca2fbcbec43c3-01"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-SE-CONTEXT-LEAD",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.894
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-SE-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.894
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-60967022b1dd25e1d2e3",
+      "contract_id": "VBC-B03-CLM-03-OUTER-WORK",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-RK-REACTION-TAIL",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.7999999999999999,
+        "temporal_continuity": 1.0,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.878,
+      "selected_timeline_item_ids": [
+        "VTI-60967022b1dd25e1d2e3-01",
+        "VTI-60967022b1dd25e1d2e3-02",
+        "VTI-60967022b1dd25e1d2e3-03"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-RK-CONTEXT-LEAD",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.878
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-RK-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.878
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-d13b8d9ea7abb698034a",
+      "contract_id": "VBC-B04-CLM-04-AWAKE",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-KE-REACTION-TAIL",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.7999999999999999,
+        "temporal_continuity": 1.0,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.878,
+      "selected_timeline_item_ids": [
+        "VTI-d13b8d9ea7abb698034a-01"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-KE-CONTEXT-LEAD",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.878
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-KE-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.878
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-ed23ff67dec39986d363",
+      "contract_id": "VBC-B05-CLM-05-CHANGE-ALIGN",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-GN-REACTION-TAIL",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.88,
+        "temporal_continuity": 0.965,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.8905,
+      "selected_timeline_item_ids": [
+        "VTI-ed23ff67dec39986d363-01",
+        "VTI-ed23ff67dec39986d363-02",
+        "VTI-ed23ff67dec39986d363-03",
+        "VTI-ed23ff67dec39986d363-04",
+        "VTI-ed23ff67dec39986d363-05",
+        "VTI-ed23ff67dec39986d363-06",
+        "VTI-ed23ff67dec39986d363-07"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+          "hard_gate_failures": [
+            "VERTICAL_PORTRAIT_HOLD_TOO_SHORT:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.8905
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-GN-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.8905
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-c34e9891edc01ef766c4",
+      "contract_id": "VBC-B06-CLM-06-REAL-SUCCESS",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.976,
+        "carrier_completeness": 0.95,
+        "action_context": 0.7999999999999999,
+        "temporal_continuity": 1.0,
+        "composition_craft": 0.915
+      },
+      "selected_weighted_score": 0.9306,
+      "selected_timeline_item_ids": [
+        "VTI-c34e9891edc01ef766c4-01"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-SS-CONTEXT-LEAD",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_REQUIRED_CONTEXT_LOST",
+            "VERTICAL_SILENT_COMPREHENSION_FAIL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.878
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-SS-ACTION-CORE",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_REQUIRED_CONTEXT_LOST",
+            "VERTICAL_SILENT_COMPREHENSION_FAIL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.878
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-SS-REACTION-TAIL",
+          "hard_gate_failures": [
+            "VERTICAL_PRIMARY_CARRIER_IDENTITY_MISMATCH",
+            "VERTICAL_PRIMARY_CARRIER_MISSING",
+            "VERTICAL_REQUIRED_CONTEXT_LOST",
+            "VERTICAL_SILENT_COMPREHENSION_FAIL"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.878
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-71facd38192590cf8c8f",
+      "contract_id": "VBC-B07-CLM-07-MISALIGNMENT",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.88,
+        "temporal_continuity": 0.9299999999999999,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.887,
+      "selected_timeline_item_ids": [
+        "VTI-71facd38192590cf8c8f-01",
+        "VTI-71facd38192590cf8c8f-02",
+        "VTI-71facd38192590cf8c8f-03",
+        "VTI-71facd38192590cf8c8f-04",
+        "VTI-71facd38192590cf8c8f-05"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-NT-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.887
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-NT-REACTION-TAIL",
+          "hard_gate_failures": [
+            "VERTICAL_PORTRAIT_HOLD_TOO_SHORT:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02"
+          ],
+          "rejection_basis": "hard_gate",
+          "weighted_score": 0.887
+        }
+      ]
+    },
+    {
+      "decision_id": "VCD-3ac70af7798bda5bf3bd",
+      "contract_id": "VBC-B08-CLM-08-NO-JOY-HARM",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "status": "selected",
+      "selected_candidate_id": "CAND-FORREST-GUMP-RM-REACTION-TAIL",
+      "selected_scorecard": {
+        "immediate_comprehension": 0.83,
+        "carrier_completeness": 0.95,
+        "action_context": 0.88,
+        "temporal_continuity": 0.9299999999999999,
+        "composition_craft": 0.9
+      },
+      "selected_weighted_score": 0.887,
+      "selected_timeline_item_ids": [
+        "VTI-3ac70af7798bda5bf3bd-01",
+        "VTI-3ac70af7798bda5bf3bd-02",
+        "VTI-3ac70af7798bda5bf3bd-03",
+        "VTI-3ac70af7798bda5bf3bd-04",
+        "VTI-3ac70af7798bda5bf3bd-05",
+        "VTI-3ac70af7798bda5bf3bd-06",
+        "VTI-3ac70af7798bda5bf3bd-07",
+        "VTI-3ac70af7798bda5bf3bd-08"
+      ],
+      "rejected_candidates": [
+        {
+          "candidate_id": "CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.887
+        },
+        {
+          "candidate_id": "CAND-FORREST-GUMP-RM-ACTION-CORE",
+          "hard_gate_failures": [],
+          "rejection_basis": "lower_weighted_score",
+          "weighted_score": 0.887
+        }
+      ]
+    }
+  ],
+  "graph": {
+    "graph_id": "VCG2-RUN-vertical-full-bleed-composition-v3-forrest-gump-round6",
+    "nodes": [
+      {
+        "ref": "beat:B01",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B02",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B03",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B04",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B05",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B06",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B07",
+        "type": "beat"
+      },
+      {
+        "ref": "beat:B08",
+        "type": "beat"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "type": "semantic_carrier"
+      },
+      {
+        "ref": "claim:CLM-01-TWO-PURPOSES",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-02-INNER-EASE",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-03-OUTER-WORK",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-04-AWAKE",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-05-CHANGE-ALIGN",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-06-REAL-SUCCESS",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-07-MISALIGNMENT",
+        "type": "claim"
+      },
+      {
+        "ref": "claim:CLM-08-NO-JOY-HARM",
+        "type": "claim"
+      },
+      {
+        "ref": "identity:CHARACTER-FORREST-GUMP",
+        "type": "carrier_identity"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-ES-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-ES-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-KE-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-KE-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-KE-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RK-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RK-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RK-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RM-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SE-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SE-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SE-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SS-ACTION-CORE",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SS-CONTEXT-LEAD",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "portrait_candidate:CAND-FORREST-GUMP-SS-REACTION-TAIL",
+        "type": "portrait_source_candidate"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-03",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-KE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RK-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-02",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SS-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-ACTION-CORE-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "source_event:EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+        "type": "source_event"
+      },
+      {
+        "ref": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "type": "vertical_beat_contract"
+      },
+      {
+        "ref": "vertical_decision:VCD-236faf51f50ea94b5e19",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-3ac70af7798bda5bf3bd",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-557a7d7ca2fbcbec43c3",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-60967022b1dd25e1d2e3",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-71facd38192590cf8c8f",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-c34e9891edc01ef766c4",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-d13b8d9ea7abb698034a",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_decision:VCD-ed23ff67dec39986d363",
+        "type": "vertical_composition_decision"
+      },
+      {
+        "ref": "vertical_timeline:VTI-236faf51f50ea94b5e19-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-236faf51f50ea94b5e19-02",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-236faf51f50ea94b5e19-03",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-236faf51f50ea94b5e19-04",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-236faf51f50ea94b5e19-05",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-02",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-03",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-04",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-05",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-06",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-07",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-08",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-557a7d7ca2fbcbec43c3-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-60967022b1dd25e1d2e3-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-60967022b1dd25e1d2e3-02",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-60967022b1dd25e1d2e3-03",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-71facd38192590cf8c8f-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-71facd38192590cf8c8f-02",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-71facd38192590cf8c8f-03",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-71facd38192590cf8c8f-04",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-71facd38192590cf8c8f-05",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-c34e9891edc01ef766c4-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-d13b8d9ea7abb698034a-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-01",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-02",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-03",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-04",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-05",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-06",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_timeline:VTI-ed23ff67dec39986d363-07",
+        "type": "vertical_timeline_item"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "type": "vertical_presentation_unit"
+      },
+      {
+        "ref": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "type": "vertical_presentation_unit"
+      }
+    ],
+    "edges": [
+      {
+        "from": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "to": "beat:B01",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "to": "claim:CLM-01-TWO-PURPOSES",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "requires"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "identity:CHARACTER-FORREST-GUMP",
+        "relation": "identifies"
+      },
+      {
+        "from": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "to": "beat:B02",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "to": "claim:CLM-02-INNER-EASE",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "to": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "to": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "to": "beat:B03",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "to": "claim:CLM-03-OUTER-WORK",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "to": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "to": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "to": "beat:B04",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "to": "claim:CLM-04-AWAKE",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "to": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "to": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "to": "beat:B05",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "to": "claim:CLM-05-CHANGE-ALIGN",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "to": "beat:B06",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "to": "claim:CLM-06-REAL-SUCCESS",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "to": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "requires"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "identity:CHARACTER-FORREST-GUMP",
+        "relation": "identifies"
+      },
+      {
+        "from": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "to": "beat:B07",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "to": "claim:CLM-07-MISALIGNMENT",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "to": "beat:B08",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "to": "claim:CLM-08-NO-JOY-HARM",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "requires"
+      },
+      {
+        "from": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "requires"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-02",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-CONTEXT-LEAD-02-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-ACTION-CORE",
+        "to": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-02-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-ACTION-CORE-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-ES-REACTION-TAIL-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-ACTION-CORE",
+        "to": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SE-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-02-INNER-EASE-08880-14860",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-ACTION-CORE",
+        "to": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RK-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-ACTION-CORE",
+        "to": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-KE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-KE-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-04-AWAKE-19280-23340",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-02",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-01-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-02-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-CONTEXT-LEAD-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "to": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-02",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-03",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-03",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-01-03",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-ACTION-CORE-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "to": "vertical_unit:UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-ACTION-CORE",
+        "to": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SS-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SS-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "to": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-02",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-01-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-ACTION-CORE-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-01-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-NT-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+        "to": "vertical_unit:UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-NT-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-REACTION-TAIL-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "to": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-01-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-02-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-CONTEXT-LEAD",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-02",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-CONTEXT-LEAD-03-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-ACTION-CORE",
+        "to": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-01-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-02-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-ACTION-CORE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-03-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-ACTION-CORE-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-ACTION-CORE-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "to": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+        "to": "vertical_unit:UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "to": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "to": "vertical_unit:UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+        "to": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "relation": "proposes"
+      },
+      {
+        "from": "portrait_candidate:CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+        "relation": "contains_event"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+        "to": "vertical_unit:UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "proposes"
+      },
+      {
+        "from": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "to": "source_event:EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+        "relation": "observed_in"
+      },
+      {
+        "from": "vertical_decision:VCD-236faf51f50ea94b5e19",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-236faf51f50ea94b5e19",
+        "to": "vertical_contract:VBC-B01-CLM-01-TWO-PURPOSES",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-557a7d7ca2fbcbec43c3",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-SE-REACTION-TAIL",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-557a7d7ca2fbcbec43c3",
+        "to": "vertical_contract:VBC-B02-CLM-02-INNER-EASE",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-60967022b1dd25e1d2e3",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-RK-REACTION-TAIL",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-60967022b1dd25e1d2e3",
+        "to": "vertical_contract:VBC-B03-CLM-03-OUTER-WORK",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-d13b8d9ea7abb698034a",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-KE-REACTION-TAIL",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-d13b8d9ea7abb698034a",
+        "to": "vertical_contract:VBC-B04-CLM-04-AWAKE",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-ed23ff67dec39986d363",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-GN-REACTION-TAIL",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-ed23ff67dec39986d363",
+        "to": "vertical_contract:VBC-B05-CLM-05-CHANGE-ALIGN",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-c34e9891edc01ef766c4",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-c34e9891edc01ef766c4",
+        "to": "vertical_contract:VBC-B06-CLM-06-REAL-SUCCESS",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-71facd38192590cf8c8f",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-NT-CONTEXT-LEAD",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-71facd38192590cf8c8f",
+        "to": "vertical_contract:VBC-B07-CLM-07-MISALIGNMENT",
+        "relation": "derived_from"
+      },
+      {
+        "from": "vertical_decision:VCD-3ac70af7798bda5bf3bd",
+        "to": "portrait_candidate:CAND-FORREST-GUMP-RM-REACTION-TAIL",
+        "relation": "selected_for"
+      },
+      {
+        "from": "vertical_decision:VCD-3ac70af7798bda5bf3bd",
+        "to": "vertical_contract:VBC-B08-CLM-08-NO-JOY-HARM",
+        "relation": "derived_from"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "to": "vertical_timeline:VTI-236faf51f50ea94b5e19-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-236faf51f50ea94b5e19-01",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-01",
+        "to": "vertical_timeline:VTI-236faf51f50ea94b5e19-02",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-236faf51f50ea94b5e19-02",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-INWARD-02",
+        "to": "vertical_timeline:VTI-236faf51f50ea94b5e19-03",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-236faf51f50ea94b5e19-03",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "to": "vertical_timeline:VTI-236faf51f50ea94b5e19-04",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-236faf51f50ea94b5e19-04",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-ES-PORTRAIT-NATIVE-SHOT-FORREST-GUMP-PORTRAIT-NATIVE-OUTWARD-01",
+        "to": "vertical_timeline:VTI-236faf51f50ea94b5e19-05",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-236faf51f50ea94b5e19-05",
+        "to": "carrier:CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-SE-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-557a7d7ca2fbcbec43c3-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-557a7d7ca2fbcbec43c3-01",
+        "to": "carrier:CARRIER-CLM-02-INNER-EASE-08880-14860",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-60967022b1dd25e1d2e3-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-60967022b1dd25e1d2e3-01",
+        "to": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-60967022b1dd25e1d2e3-02",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-60967022b1dd25e1d2e3-02",
+        "to": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RK-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RK-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-60967022b1dd25e1d2e3-03",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-60967022b1dd25e1d2e3-03",
+        "to": "carrier:CARRIER-CLM-03-OUTER-WORK-14860-19280",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-KE-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-KE-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-d13b8d9ea7abb698034a-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-d13b8d9ea7abb698034a-01",
+        "to": "carrier:CARRIER-CLM-04-AWAKE-19280-23340",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-01",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-02",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-02",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-03",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-03",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-02",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-04",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-04",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-01-03",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-05",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-05",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-06",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-06",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-GN-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-GN-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-ed23ff67dec39986d363-07",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-ed23ff67dec39986d363-07",
+        "to": "carrier:CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-SS-PORTRAIT-GRADUATION-SHOT-FORREST-GUMP-PORTRAIT-GRADUATION-01",
+        "to": "vertical_timeline:VTI-c34e9891edc01ef766c4-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-c34e9891edc01ef766c4-01",
+        "to": "carrier:CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "to": "vertical_timeline:VTI-71facd38192590cf8c8f-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-71facd38192590cf8c8f-01",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-01-01",
+        "to": "vertical_timeline:VTI-71facd38192590cf8c8f-02",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-71facd38192590cf8c8f-02",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-02-01",
+        "to": "vertical_timeline:VTI-71facd38192590cf8c8f-03",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-71facd38192590cf8c8f-03",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "to": "vertical_timeline:VTI-71facd38192590cf8c8f-04",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-71facd38192590cf8c8f-04",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-NT-CONTEXT-LEAD-03-01",
+        "to": "vertical_timeline:VTI-71facd38192590cf8c8f-05",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-71facd38192590cf8c8f-05",
+        "to": "carrier:CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-01-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-01",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-01",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-02",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-02",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-03",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-03",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-04",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-04",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-05",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-05",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-06",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-06",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-02-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-07",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-07",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+        "relation": "preserves"
+      },
+      {
+        "from": "source_event:EVT-CAND-FORREST-GUMP-RM-REACTION-TAIL-SHOT-FORREST-GUMP-CAND-FORREST-GUMP-RM-REACTION-TAIL-03-01",
+        "to": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-08",
+        "relation": "rendered_as"
+      },
+      {
+        "from": "vertical_timeline:VTI-3ac70af7798bda5bf3bd-08",
+        "to": "carrier:CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+        "relation": "preserves"
+      }
+    ]
+  },
+  "status": "approved",
+  "plan_fingerprint": "sha256:f9b8a5ac97fb348adb2351fec4f2ee6b3a9bf4700df90a3b864ae7b4a681d66e"
+}

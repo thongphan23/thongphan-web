@@ -1,0 +1,1870 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-full-bleed-composition-v3-a-beautiful-mind-round6",
+  "format": "vertical",
+  "render_spec": {
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "composition_plan_fingerprint": "sha256:90626d583ec07a406652345664c650ad1f07d819630c3b8886bcbe0a4acfd1e4",
+  "timeline_items": [
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-ABM-PORTRAIT-JOHN-INWARD-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PORTRAIT-JOHN-INWARD-2200-6640",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PORTRAIT-JOHN-INWARD-2200-6640.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 2200,
+      "source_out_ms": 6640,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-00000-04440": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5276996201276779,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5276996201276779,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5398376559139637,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5398376559139637,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-01",
+      "decision_id": "VCD-d0b78df9f1b0663aeb21",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 4440,
+      "evidence_fingerprint": "sha256:dd0fb7475dc0ff0df1b481c910f267dea89cfd8ab18ae92fad4165c1e128e452"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 500,
+      "source_out_ms": 2964,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.454109375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.454109375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.434,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.434,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-02",
+      "decision_id": "VCD-d0b78df9f1b0663aeb21",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 4440,
+      "timeline_end_ms": 6904,
+      "evidence_fingerprint": "sha256:951f6fd038f25a789f01184693951a0548a1fc8c2c2d5942cd11d2dc8ce64029"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 2964,
+      "source_out_ms": 3452,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.3999127197265625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.3999127197265625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.3560542485955056,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.3560542485955056,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-03",
+      "decision_id": "VCD-d0b78df9f1b0663aeb21",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 6904,
+      "timeline_end_ms": 7392,
+      "evidence_fingerprint": "sha256:7c62c04933161fec993be9b879b3c492036799d40558f5598382b48e3ea36655"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 3452,
+      "source_out_ms": 3940,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.2805889892578125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.2805889892578125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.18444259129213483,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.18444259129213483,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-04",
+      "decision_id": "VCD-d0b78df9f1b0663aeb21",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 7392,
+      "timeline_end_ms": 7880,
+      "evidence_fingerprint": "sha256:1c310083ad1a97981af5475b60e994b77aa7a4887f1375e90f506ca36874dc49"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-ES-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-ES-ACTION-CORE-02-01",
+      "presentation_unit_id": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EQUATIONS-500-4940",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 3940,
+      "source_out_ms": 4940,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-01-TWO-PURPOSES-04440-08880": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.543109375,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.543109375,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.562,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.562,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d0b78df9f1b0663aeb21-05",
+      "decision_id": "VCD-d0b78df9f1b0663aeb21",
+      "beat_id": "B01",
+      "claim_id": "CLM-01-TWO-PURPOSES",
+      "timeline_start_ms": 7880,
+      "timeline_end_ms": 8880,
+      "evidence_fingerprint": "sha256:bc09c7613dc4a3448f2ac153c77825f01a408a359f49a0a70908c7239b6e604a"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 8220,
+      "source_out_ms": 8804,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.43559315614402294,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.43559315614402294,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4073699324318532,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4073699324318532,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-01",
+      "decision_id": "VCD-c7937ae01eec7dfd08a3",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 8880,
+      "timeline_end_ms": 9464,
+      "evidence_fingerprint": "sha256:5ae529eb4f09511bf5fbef98023b0dbcbccefdbfd4432f7bc203668aac0bc98e"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 8804,
+      "source_out_ms": 11849,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.4974766665697098,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.4974766665697098,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49637093619014444,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49637093619014444,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-02",
+      "decision_id": "VCD-c7937ae01eec7dfd08a3",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 9464,
+      "timeline_end_ms": 12509,
+      "evidence_fingerprint": "sha256:68c27ae2f101e04f07d975f1caf9765f43cfaf146df3eab2d7a1c4f82085e27d"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SE-REACTION-TAIL-01-03",
+      "presentation_unit_id": "UNIT-CLM-02-INNER-EASE-08880-14860",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-QUIET-CLOSEUP-8220-14200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 11849,
+      "source_out_ms": 14200,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-02-INNER-EASE-08880-14860"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-02-INNER-EASE-08880-14860": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.509779642522335,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.509779642522335,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5140651038523469,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5140651038523469,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c7937ae01eec7dfd08a3-03",
+      "decision_id": "VCD-c7937ae01eec7dfd08a3",
+      "beat_id": "B02",
+      "claim_id": "CLM-02-INNER-EASE",
+      "timeline_start_ms": 12509,
+      "timeline_end_ms": 14860,
+      "evidence_fingerprint": "sha256:11111f590c40f5487d95fd20bc58bfffaedcf1d5e6e25d36f9cac5ab21a476ab"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 8920,
+      "source_out_ms": 9712,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-40843a480eeea75d7991-01",
+      "decision_id": "VCD-40843a480eeea75d7991",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 14860,
+      "timeline_end_ms": 15652,
+      "evidence_fingerprint": "sha256:4d46e4b0158bdd0d369a55a5626e7558ce7a09f41ea990f3441e87cd791cc051"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 9712,
+      "source_out_ms": 12090,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.522984619140625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.522984619140625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5330565308988764,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5330565308988764,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-40843a480eeea75d7991-02",
+      "decision_id": "VCD-40843a480eeea75d7991",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 15652,
+      "timeline_end_ms": 18030,
+      "evidence_fingerprint": "sha256:14e600de29161e57a372ef5ba33db067235ad60f8dcc9ce309e77933f4269eb0"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RK-REACTION-TAIL-01-03",
+      "presentation_unit_id": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-LECTURE-8920-13340",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 12090,
+      "source_out_ms": 13340,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-03-OUTER-WORK-14860-19280": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.345362548828125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.345362548828125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.2776000702247191,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.2776000702247191,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-40843a480eeea75d7991-03",
+      "decision_id": "VCD-40843a480eeea75d7991",
+      "beat_id": "B03",
+      "claim_id": "CLM-03-OUTER-WORK",
+      "timeline_start_ms": 18030,
+      "timeline_end_ms": 19280,
+      "evidence_fingerprint": "sha256:869b8346eddc209c9ed6dcc1aeb33877e1b8a54e3f9927907d5ec4c2d1ab3199"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HEART-7420-11480",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HEART-7420-11480.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 7420,
+      "source_out_ms": 11012,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-04-AWAKE-19280-23340"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-04-AWAKE-19280-23340": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-01",
+      "decision_id": "VCD-2cc774bce2aef9fd2d8e",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "timeline_start_ms": 19280,
+      "timeline_end_ms": 22872,
+      "evidence_fingerprint": "sha256:284e50f30598ab57ee79857ff9467958a17e21f89f7205b371ef99fb3dc26d23"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-KE-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-04-AWAKE-19280-23340",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HEART-7420-11480",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HEART-7420-11480.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 11012,
+      "source_out_ms": 11480,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-04-AWAKE-19280-23340"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-04-AWAKE-19280-23340": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.4685414054989815,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.4685414054989815,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4547561786951644,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4547561786951644,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-2cc774bce2aef9fd2d8e-02",
+      "decision_id": "VCD-2cc774bce2aef9fd2d8e",
+      "beat_id": "B04",
+      "claim_id": "CLM-04-AWAKE",
+      "timeline_start_ms": 22872,
+      "timeline_end_ms": 23340,
+      "evidence_fingerprint": "sha256:203743757a280c262c963b576568212e501e6a5a9b44d8be8a257e5db5d38b4e"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-REAL-TOUCH-14920-20500",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-REAL-TOUCH-14920-20500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 14920,
+      "source_out_ms": 20500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.46384420931339265,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.46384420931339265,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4480006605855535,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4480006605855535,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-01",
+      "decision_id": "VCD-4eca9fef6cd15f4a9b4a",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 23340,
+      "timeline_end_ms": 28920,
+      "evidence_fingerprint": "sha256:46dc9267aae08544924fe48b8ccdb643e824031301c268a5fc5cad6a6dad605f"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "source_in_ms": 1620,
+      "source_out_ms": 4948,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.303515625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.442127685546875,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.442127685546875,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.41690795008412784,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.41690795008412784,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-02",
+      "decision_id": "VCD-4eca9fef6cd15f4a9b4a",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 28920,
+      "timeline_end_ms": 32248,
+      "evidence_fingerprint": "sha256:39ae2b0c436d692d68c47c982a991bd167620f2cc18a60929d1282f562dabc38"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "source_in_ms": 4948,
+      "source_out_ms": 6049,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.303515625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5843212890625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5843212890625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6210670218732474,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6210670218732474,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-03",
+      "decision_id": "VCD-4eca9fef6cd15f4a9b4a",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 32248,
+      "timeline_end_ms": 33349,
+      "evidence_fingerprint": "sha256:5ac9291c1dd514ca597d48ca11e264c35c0b452d6823cb0af0fe32cc64f511af"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "source_in_ms": 6049,
+      "source_out_ms": 6625,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.303515625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-04",
+      "decision_id": "VCD-4eca9fef6cd15f4a9b4a",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 33349,
+      "timeline_end_ms": 33925,
+      "evidence_fingerprint": "sha256:55c4ebb35caa257603e573a1f5286bc6f6da9edc8abc27e713db033b18cfb047"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-GN-REACTION-TAIL-02-02",
+      "presentation_unit_id": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PENS-1620-8200",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1036
+      },
+      "source_in_ms": 6625,
+      "source_out_ms": 8200,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.303515625,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.518809814453125,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.518809814453125,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5270068003365115,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5270068003365115,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4eca9fef6cd15f4a9b4a-05",
+      "decision_id": "VCD-4eca9fef6cd15f4a9b4a",
+      "beat_id": "B05",
+      "claim_id": "CLM-05-CHANGE-ALIGN",
+      "timeline_start_ms": 33925,
+      "timeline_end_ms": 35500,
+      "evidence_fingerprint": "sha256:c598157096b8317428f2fa3bc3951f6b4ae97cc057dfbae401bc6b274cc3a9b8"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-NOBEL-6420-9500",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-NOBEL-6420-9500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 6420,
+      "source_out_ms": 7796,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-01",
+      "decision_id": "VCD-182b7594ef3975a274b3",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "timeline_start_ms": 35500,
+      "timeline_end_ms": 36876,
+      "evidence_fingerprint": "sha256:11631cde791a3f7f9f679a7aa2aac82416270f858552ebef7120345cd9a73f28"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-SS-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-NOBEL-6420-9500",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-NOBEL-6420-9500.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 7796,
+      "source_out_ms": 9500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-06-REAL-SUCCESS-35500-38580": {
+          "visibility_requirement": "action_envelope",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.2
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-182b7594ef3975a274b3-02",
+      "decision_id": "VCD-182b7594ef3975a274b3",
+      "beat_id": "B06",
+      "claim_id": "CLM-06-REAL-SUCCESS",
+      "timeline_start_ms": 36876,
+      "timeline_end_ms": 38580,
+      "evidence_fingerprint": "sha256:09b64e1c11d55a981d684031c770e216e8d9871b412f1c620194701a6db440f0"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PRESSURE-2920-4920",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PRESSURE-2920-4920.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 2920,
+      "source_out_ms": 4920,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-38580-40580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-38580-40580": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-01",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 38580,
+      "timeline_end_ms": 40580,
+      "evidence_fingerprint": "sha256:04180d35df8bf686edddf958e21af7d3185e1b4a468c6d7981c768d4cda327f3"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-REALIZATION-4920-6620",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-REALIZATION-4920-6620.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 4920,
+      "source_out_ms": 5504,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-40580-42280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-40580-42280": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.4958422699570656,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.4958422699570656,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49402034330903816,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49402034330903816,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-02",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 40580,
+      "timeline_end_ms": 41164,
+      "evidence_fingerprint": "sha256:34dffe6a1688e1b49e2b911fa4d28deea3a25fccb1e4e080b68f876a50c18bab"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-02-02",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-REALIZATION-4920-6620",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-REALIZATION-4920-6620.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 5504,
+      "source_out_ms": 6620,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-40580-42280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-40580-42280": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5183965867757797,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5183965867757797,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5264580124415709,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5264580124415709,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-03",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 41164,
+      "timeline_end_ms": 42280,
+      "evidence_fingerprint": "sha256:54df4889d983d85fd3ec6006ea90a4d86a494010cf327cea9049f7eb7862f751"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-03-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-FAMILY-DANGER-5920-7920",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-FAMILY-DANGER-5920-7920.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 5920,
+      "source_out_ms": 7920,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-42280-44280"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-42280-44280": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.428285251185298,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.428285251185298,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.39685968709795666,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.39685968709795666,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-04",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 42280,
+      "timeline_end_ms": 44280,
+      "evidence_fingerprint": "sha256:789885d0d8998b675fbeb427089327d4404d8c90b4e6794cb1101444494b9225"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-04-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5920-7620",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-FEAR-5920-7620.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 5920,
+      "source_out_ms": 7004,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-44280-45980"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-44280-45980": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.4316887628287077,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.4316887628287077,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4017546251918493,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4017546251918493,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-05",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 44280,
+      "timeline_end_ms": 45364,
+      "evidence_fingerprint": "sha256:fa4ac1839aac8b100b392afebe11230bf72d1a099b355383cb685d21b0feddc8"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-04-02",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HOSPITAL-FEAR-5920-7620",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-FEAR-5920-7620.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 7004,
+      "source_out_ms": 7620,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-44280-45980"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-44280-45980": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-06",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 45364,
+      "timeline_end_ms": 45980,
+      "evidence_fingerprint": "sha256:8de465b2af2d7a6d788671449e4ee27af3469078275aa7b3ed45f5bfc64abbc0"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-05-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HALLUCINATIONS-5420-7020",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HALLUCINATIONS-5420-7020.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 5420,
+      "source_out_ms": 7020,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-45980-47580"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-45980-47580": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5696838727593422,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5696838727593422,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6002195023954584,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6002195023954584,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-07",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 45980,
+      "timeline_end_ms": 47580,
+      "evidence_fingerprint": "sha256:99934d723305a474f020b4b135ea1ca477f00d0f7d9c0e23e23a003fde84430a"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-06-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-BLOODY-ALONE-8420-9720",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-BLOODY-ALONE-8420-9720.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 8420,
+      "source_out_ms": 9720,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-47580-48880"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-47580-48880": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-08",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 47580,
+      "timeline_end_ms": 48880,
+      "evidence_fingerprint": "sha256:054dbb20409ebfd399ba7f2836f180abb68e77c1df26f45226d9feb439df30ac"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-NT-REACTION-TAIL-07-01",
+      "presentation_unit_id": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EVIDENCE-ROOM-920-2000",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EVIDENCE-ROOM-920-2000.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 920,
+      "source_out_ms": 2000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-07-MISALIGNMENT-48880-49960"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-07-MISALIGNMENT-48880-49960": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e6f69ec221b6eaa7c842-09",
+      "decision_id": "VCD-e6f69ec221b6eaa7c842",
+      "beat_id": "B07",
+      "claim_id": "CLM-07-MISALIGNMENT",
+      "timeline_start_ms": 48880,
+      "timeline_end_ms": 49960,
+      "evidence_fingerprint": "sha256:faa94a264420c09301c996eae4a26e0da6916d8b7793d0f0351d175866c9bd38"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EMPTY-HOME-820-4050.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 820,
+      "source_out_ms": 2280,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53190"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53190": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-01",
+      "decision_id": "VCD-49a834fc38dfeb4a4c1c",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 49960,
+      "timeline_end_ms": 51420,
+      "evidence_fingerprint": "sha256:063511192b529fe71318cf78e53c7abd400bac4f755020994a8825e67517a5ab"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-01-02",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-EMPTY-HOME-820-4050",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-EMPTY-HOME-820-4050.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 2280,
+      "source_out_ms": 4050,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53190"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-49960-53190": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-02",
+      "decision_id": "VCD-49a834fc38dfeb4a4c1c",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 51420,
+      "timeline_end_ms": 53190,
+      "evidence_fingerprint": "sha256:9c0b7aab4dc34eafd5298f62288fbe80af7d9c9ec43a8353cd91a0fb71798041"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-A-BEAUTIFUL-MIND-CAND-A-BEAUTIFUL-MIND-RM-REACTION-TAIL-02-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-PARTNER-HURT-420-3650",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-PARTNER-HURT-420-3650.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 420,
+      "source_out_ms": 3650,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-53190-56420"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-53190-56420": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-03",
+      "decision_id": "VCD-49a834fc38dfeb4a4c1c",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 53190,
+      "timeline_end_ms": 56420,
+      "evidence_fingerprint": "sha256:07c2b11c0a9838e223cd95cc87f228e693ff69e23cb5d85031ff9e481a334c4d"
+    },
+    {
+      "event_id": "EVT-CAND-A-BEAUTIFUL-MIND-RM-PORTRAIT-IDENTITY-SHOT-ABM-HOSPITAL-PAIN-PORTRAIT-01",
+      "presentation_unit_id": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+      "film_id": "FILM-A-BEAUTIFUL-MIND",
+      "source_asset_id": "ASSET-ABM-HOSPITAL-PAIN-14000-17232",
+      "source_file": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-PAIN-14000-17232.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 1040
+      },
+      "source_in_ms": 14000,
+      "source_out_ms": 17232,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-CLM-08-NO-JOY-HARM-56420-59652"
+      ],
+      "carrier_requirements": {
+        "CARRIER-CLM-08-NO-JOY-HARM-56420-59652": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1,
+          "identity_ref": "CHARACTER-JOHN-NASH"
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.3046875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49584042966365816,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49584042966365816,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.4940176965949241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.4940176965949241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-49a834fc38dfeb4a4c1c-04",
+      "decision_id": "VCD-49a834fc38dfeb4a4c1c",
+      "beat_id": "B08",
+      "claim_id": "CLM-08-NO-JOY-HARM",
+      "timeline_start_ms": 56420,
+      "timeline_end_ms": 59652,
+      "evidence_fingerprint": "sha256:ad4f41342ef9366568519f560d480890657441dfc821301394079d3be940cb9b"
+    }
+  ],
+  "status": "locked",
+  "edit_plan_fingerprint": "sha256:e6f1c8d7a0e622501f58971a59b6b3731399b27af93aa3db9e2f7baab27693c4"
+}

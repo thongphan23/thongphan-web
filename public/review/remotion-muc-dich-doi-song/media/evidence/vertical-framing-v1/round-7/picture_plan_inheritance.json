@@ -1,0 +1,43 @@
+{
+  "schema": "tpr.vertical_round_picture_inheritance.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 7,
+  "subtitle_source": "content/subtitles-social-safe.json",
+  "subtitle_source_sha256": "sha256:2d2ec2a1aee72d188e202093ed194f1286c131875c3cff0a62c2cb36632076d5",
+  "variants": [
+    {
+      "film": "soul",
+      "round7_variant_id": "soul-vertical-r7",
+      "picture_source_round": 6,
+      "picture_locked_plan_fingerprint": "sha256:6c0abe71bbdbeb202f1844b6ec654974fd1362c4f38c7b6519447519e7dcb8e1",
+      "round6_edit_plan_path": "variants-round-6/soul/content/vertical_edit_plan.json",
+      "round6_edit_plan_sha256": "sha256:8c954dbd097a6d38446ceb71de0f0828ade1c4ee5c74f6d2792ebe06611254a7",
+      "caption_plan_fingerprint": "sha256:bd6f507e6d636b37b0937df9a5ad24abe72c92178a791ca592a05687d5a1d49e",
+      "picture_change": "none",
+      "caption_change": "word_locked_social_mid_lower"
+    },
+    {
+      "film": "forrest-gump",
+      "round7_variant_id": "forrest-gump-vertical-r7",
+      "picture_source_round": 6,
+      "picture_locked_plan_fingerprint": "sha256:28eb2669ae8bc6751ac393e185c24ed1e3f01ba3812bcfd0eb9dfea95390a4d0",
+      "round6_edit_plan_path": "variants-round-6/forrest-gump/content/vertical_edit_plan.json",
+      "round6_edit_plan_sha256": "sha256:6ffcafd03c8cd8c2fc9c06d70a9d8d5b7f91696cc9195d953028fc467602ee95",
+      "caption_plan_fingerprint": "sha256:775d749b75ce9d3edbdcce7b0f1963bfe0f5f060feea8945483d86436f61c3cd",
+      "picture_change": "none",
+      "caption_change": "word_locked_social_mid_lower"
+    },
+    {
+      "film": "a-beautiful-mind",
+      "round7_variant_id": "a-beautiful-mind-vertical-r7",
+      "picture_source_round": 6,
+      "picture_locked_plan_fingerprint": "sha256:e6f1c8d7a0e622501f58971a59b6b3731399b27af93aa3db9e2f7baab27693c4",
+      "round6_edit_plan_path": "variants-round-6/a-beautiful-mind/content/vertical_edit_plan.json",
+      "round6_edit_plan_sha256": "sha256:b48577ff7ae91f5803cff06bd7238a34a2d3d0f2f915a0c78a0fc1333a2f22d2",
+      "caption_plan_fingerprint": "sha256:a53fd6d7bf97e54a1d339b8634c10df5d8994778802bdda4f4d3ae6624af29d3",
+      "picture_change": "none",
+      "caption_change": "word_locked_social_mid_lower"
+    }
+  ],
+  "status": "sealed"
+}

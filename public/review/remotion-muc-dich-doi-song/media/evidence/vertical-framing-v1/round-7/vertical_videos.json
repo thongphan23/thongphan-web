@@ -1,0 +1,5713 @@
+[
+  {
+    "compositionId": "SoulSocialSafeVerticalR7",
+    "variantId": "soul-vertical-r7",
+    "lockedPlanFingerprint": "sha256:767c28245b608ca1a6993435ca1cd3d686ab188d3accc056c383112b541ae474",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "VTI-41e1e1f84a6ed0588b53-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-41e1e1f84a6ed0588b53",
+        "startMs": 0,
+        "endMs": 751,
+        "sourceInMs": 3920,
+        "sourceOutMs": 4671,
+        "source": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.48771728515625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.48771728515625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.48203214285714285,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.48203214285714285,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:f3bd66cb767d21ef3934afb8803e38e3d2da3452bc8ca7fafd4a3efaadefb6bf"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-41e1e1f84a6ed0588b53-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-41e1e1f84a6ed0588b53",
+        "startMs": 751,
+        "endMs": 2961,
+        "sourceInMs": 4671,
+        "sourceOutMs": 6881,
+        "source": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:d04b8542ba3439ff6849c9e215a115f34ae7509be785cf5feac9ce4adb3dff74"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-41e1e1f84a6ed0588b53-03",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-41e1e1f84a6ed0588b53",
+        "startMs": 2961,
+        "endMs": 4440,
+        "sourceInMs": 6881,
+        "sourceOutMs": 8360,
+        "source": "footage-round5/soul/ASSET-SOUL-INWARD-3920-8360.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:90bfd3531de27f0243b1042c2d94dc3f337eb3cd272f79a4fe9b6e9da745de92"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-41e1e1f84a6ed0588b53-04",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-41e1e1f84a6ed0588b53",
+        "startMs": 4440,
+        "endMs": 6415,
+        "sourceInMs": 1420,
+        "sourceOutMs": 3395,
+        "source": "footage-round5/soul/ASSET-SOUL-DOROTHEA-STAGE-1420-5860.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.57359375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.57359375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6076571428571429,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6076571428571429,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ff053c8659107730819abce7727de3d275a1681f5c5ee87dd481450782117d33"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-41e1e1f84a6ed0588b53-05",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-41e1e1f84a6ed0588b53",
+        "startMs": 6415,
+        "endMs": 8880,
+        "sourceInMs": 3395,
+        "sourceOutMs": 5860,
+        "source": "footage-round5/soul/ASSET-SOUL-DOROTHEA-STAGE-1420-5860.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6810506273936b283d1b5959de0cc9d506e2568c0acd7fda217f1218a6295e6b"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-5c76f0b953e76d8790b5-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-5c76f0b953e76d8790b5",
+        "startMs": 8880,
+        "endMs": 12467,
+        "sourceInMs": 920,
+        "sourceOutMs": 4507,
+        "source": "footage-round5/soul/ASSET-SOUL-SENSORY-920-6900.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.6855306705832481,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6855306705832481,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.7714048666817801,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.7714048666817801,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:85affbe809928a1249cd42e5e4862a10806c681904e5575014bc39d42f66fcf1"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-5c76f0b953e76d8790b5-02",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-5c76f0b953e76d8790b5",
+        "startMs": 12467,
+        "endMs": 14321,
+        "sourceInMs": 4507,
+        "sourceOutMs": 6361,
+        "source": "footage-round5/soul/ASSET-SOUL-SENSORY-920-6900.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.42833129882812504,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.42833129882812504,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.39515892857142865,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.39515892857142865,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:bc63e9477ab23640824eecb5d26806f2510727c5ef39de1bf27cebaf8a3c5ed6"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-5c76f0b953e76d8790b5-03",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-5c76f0b953e76d8790b5",
+        "startMs": 14321,
+        "endMs": 14860,
+        "sourceInMs": 6361,
+        "sourceOutMs": 6900,
+        "source": "footage-round5/soul/ASSET-SOUL-SENSORY-920-6900.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.50666748046875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.50666748046875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5097535714285714,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5097535714285714,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:7e6c5c7d56f0312ac3ed1fe0dfa1e81229d2d87b0056d945291e2f6d10953e9d"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-567186a5d389857dea9d-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-567186a5d389857dea9d",
+        "startMs": 14860,
+        "endMs": 17070,
+        "sourceInMs": 9920,
+        "sourceOutMs": 12130,
+        "source": "footage-round5/soul/ASSET-SOUL-CLUB-9920-12130.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-17070",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4056640625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4056640625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.362,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.362,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:85ef7517c5a3c5f84dd0ebe301d4a2da2db074b27dae25cf9114f038f53a3baa"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-17070",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-567186a5d389857dea9d-02",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-567186a5d389857dea9d",
+        "startMs": 17070,
+        "endMs": 18697,
+        "sourceInMs": 1420,
+        "sourceOutMs": 3047,
+        "source": "footage-round5/soul/ASSET-SOUL-BARBER-1420-3630.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.6112109375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6112109375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6626857142857143,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6626857142857143,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:b46f9fb5f51cb67d123608f0956de98ba2302fd835e904100a43973844b38434"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-17070-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-567186a5d389857dea9d-03",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-567186a5d389857dea9d",
+        "startMs": 18697,
+        "endMs": 19280,
+        "sourceInMs": 3047,
+        "sourceOutMs": 3630,
+        "source": "footage-round5/soul/ASSET-SOUL-BARBER-1420-3630.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-17070-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.504552001953125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.504552001953125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5066589285714286,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5066589285714286,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ab745498a32b501774f3628ece7e455eee7acaa31eec65e8e4c5d8c5f4a43784"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-17070-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-8daa6c51d333054bacbf-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VCD-8daa6c51d333054bacbf",
+        "startMs": 19280,
+        "endMs": 23340,
+        "sourceInMs": 9420,
+        "sourceOutMs": 13480,
+        "source": "footage-round5/soul/ASSET-SOUL-AWAKE-9420-13480.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-04-AWAKE-19280-23340",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.47560943603515626,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.47560943603515626,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.46432008928571433,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.46432008928571433,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:14b6f4290f736ea99307d7545250748f2d0f881cb5bb49051027f2a4a9a4f19d"
+          ],
+          "semanticCarrier": "CARRIER-CLM-04-AWAKE-19280-23340",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-936191c61dadc3349ca3-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-936191c61dadc3349ca3",
+        "startMs": 23340,
+        "endMs": 28920,
+        "sourceInMs": 6920,
+        "sourceOutMs": 12500,
+        "source": "footage-round5/soul/ASSET-SOUL-CALM-6920-12500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5077451189979911,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5077451189979911,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5113300026484899,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5113300026484899,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ea15cfc483bda703fb22ec90d6fa59b93dda00db45c054dd7ea688feba6dc303"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-936191c61dadc3349ca3-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-936191c61dadc3349ca3",
+        "startMs": 28920,
+        "endMs": 30400,
+        "sourceInMs": 3430,
+        "sourceOutMs": 4910,
+        "source": "footage-round5/soul/ASSET-SOUL-STAGE-3430-10010.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.32821533203125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.32821533203125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.24870357142857138,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.24870357142857138,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6cccf859485854dcfa4c841a8a966c624a036d9ae401486efd65589a85be631a"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-936191c61dadc3349ca3-03",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-936191c61dadc3349ca3",
+        "startMs": 30400,
+        "endMs": 35500,
+        "sourceInMs": 4910,
+        "sourceOutMs": 10010,
+        "source": "footage-round5/soul/ASSET-SOUL-STAGE-3430-10010.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:2fd841ec86fde5233151c9284c1a671c50e15e4bcf0820f8a5c82b36ae1e52ef"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-f9e8abff621bcdb72821-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VCD-f9e8abff621bcdb72821",
+        "startMs": 35500,
+        "endMs": 38580,
+        "sourceInMs": 1420,
+        "sourceOutMs": 4500,
+        "source": "footage-round5/soul/ASSET-SOUL-TROPHY-1420-4500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.45171630859375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.45171630859375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.42936785714285713,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.42936785714285713,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:270c8a5a74ac076c9a6c9948a91ee2627512b0fab89611070337cab79244ce1c"
+          ],
+          "semanticCarrier": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 38580,
+        "endMs": 40780,
+        "sourceInMs": 2000,
+        "sourceOutMs": 4200,
+        "source": "footage-round5/soul/ASSET-SOUL-PORTRAIT-SAD-SOULS-2000-4200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-38580-40780",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:7c5f2875d8797a67362a057c4fa0216d44e2dcc1f0e2facd3b1fd43094898c22"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-38580-40780",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 40780,
+        "endMs": 42580,
+        "sourceInMs": 2220,
+        "sourceOutMs": 4020,
+        "source": "footage-round5/soul/ASSET-SOUL-DRAGGED-2220-4020.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-40780-42580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4338232421875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4338232421875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4031928571428572,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4031928571428572,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:3237acec4af00cef5b4195802eed25118f12d4002a03807fa12e6d66d81b26e6"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-40780-42580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 42580,
+        "endMs": 44180,
+        "sourceInMs": 4000,
+        "sourceOutMs": 5600,
+        "source": "footage-round5/soul/ASSET-SOUL-DISTRESS-CLOSEUP-4000-5600.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-42580-44180",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:02bbd18c04cd97398b22e30f924e2450d643ba2f9df06f8cce96c01b6498d436"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-42580-44180",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-04",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 44180,
+        "endMs": 45630,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2870,
+        "source": "footage-round5/soul/ASSET-SOUL-STRUGGLE-1420-2870.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-44180-45630",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:063e0526effb9bf8bf4e8a2f0a72fef9df795a60cbcc7976332886b8ae6bed6b"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-44180-45630",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-05",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 45630,
+        "endMs": 46980,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2770,
+        "source": "footage-round5/soul/ASSET-SOUL-CONFLICT-1420-2770.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-45630-46980",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:6ff716763b45b81f860350bc6450b5a3a493877542293c351771a5a8d3d7ab7f"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-45630-46980",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-06",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 46980,
+        "endMs": 48430,
+        "sourceInMs": 1420,
+        "sourceOutMs": 2870,
+        "source": "footage-round5/soul/ASSET-SOUL-OBSESSED-1420-2870.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-46980-48430",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:a2c7a1fbd49520279584d45a40aa2f43d5f9a36a859a2ca647e319dc26712052"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-46980-48430",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-643805aa680e084dc56c-07",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-643805aa680e084dc56c",
+        "startMs": 48430,
+        "endMs": 49960,
+        "sourceInMs": 6920,
+        "sourceOutMs": 8450,
+        "source": "footage-round5/soul/ASSET-SOUL-CONFRONT-6920-8450.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-48430-49960",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5724609375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5724609375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6060000000000001,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6060000000000001,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9eb465e30096fe0edd093de2a893b078f43f3f735a4c13c57f78e10f049b664d"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-48430-49960",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-afead7e88be4e9de071e-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-afead7e88be4e9de071e",
+        "startMs": 49960,
+        "endMs": 52045,
+        "sourceInMs": 1420,
+        "sourceOutMs": 3505,
+        "source": "footage-round5/soul/ASSET-SOUL-EMPTY-1420-5540.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5989074245095253,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5989074245095253,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6446874324253626,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6446874324253626,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:c8802cd55b4ac599fc958bcb948e083f0032f8166af1e6e6dfd21bc606144304"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-49960-54080",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-afead7e88be4e9de071e-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-afead7e88be4e9de071e",
+        "startMs": 52045,
+        "endMs": 54080,
+        "sourceInMs": 3505,
+        "sourceOutMs": 5540,
+        "source": "footage-round5/soul/ASSET-SOUL-EMPTY-1420-5540.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-49960-54080",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9b79bdb58457863881513a36334d50d5f8be22ae359e333fb058635f6a56267e"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-49960-54080",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-afead7e88be4e9de071e-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-afead7e88be4e9de071e",
+        "startMs": 54080,
+        "endMs": 54706,
+        "sourceInMs": 2920,
+        "sourceOutMs": 3546,
+        "source": "footage-round5/soul/ASSET-SOUL-FAMILY-COST-2920-5706.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4683832246810198,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4683832246810198,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.45374917439052037,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.45374917439052037,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:8f6f7597373cdc0bafea99b47799ee0f75495e7e712182aae43599e8240f72d8"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-54080-56866",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-afead7e88be4e9de071e-04",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-afead7e88be4e9de071e",
+        "startMs": 54706,
+        "endMs": 56866,
+        "sourceInMs": 3546,
+        "sourceOutMs": 5706,
+        "source": "footage-round5/soul/ASSET-SOUL-FAMILY-COST-2920-5706.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-54080-56866",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5806640625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5806640625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.618,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.618,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9c4e39ec9cb3fa4c1113d57ce48955ea03e1e4dde39d55bd6077e7f6ab4d58ad"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-54080-56866",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-afead7e88be4e9de071e-05",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-afead7e88be4e9de071e",
+        "startMs": 56866,
+        "endMs": 59652,
+        "sourceInMs": 2220,
+        "sourceOutMs": 5006,
+        "source": "footage-round5/soul/ASSET-SOUL-VOID-2220-5006.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-56866-59652",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5068359375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5068359375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.51,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.51,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.31640625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1080
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:e699b323bee114848b9ba80b97b0fc9a28d4d88b6e2b3aaeaee0ceb96b321e25"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-56866-59652",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 4100,
+        "text": "Điều quan trọng nhất mà bạn cần nhận"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 4100,
+        "endMs": 6600,
+        "text": "thức là: đời bạn có một mục đích bên"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 6600,
+        "endMs": 8680,
+        "text": "trong và một mục đích bên ngoài."
+      },
+      {
+        "id": "SUB004",
+        "startMs": 8880,
+        "endMs": 10520,
+        "text": "Mục đích bên trong là mục đích chính,"
+      },
+      {
+        "id": "SUB005",
+        "startMs": 10520,
+        "endMs": 12960,
+        "text": "và mục đích này có liên quan đến trạng"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 12960,
+        "endMs": 14860,
+        "text": "thái an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB007",
+        "startMs": 15360,
+        "endMs": 16940,
+        "text": "Mục đích bên ngoài dính tới những việc"
+      },
+      {
+        "id": "SUB008",
+        "startMs": 16940,
+        "endMs": 18820,
+        "text": "bạn làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB009",
+        "startMs": 19280,
+        "endMs": 20980,
+        "text": "Mục đích bên trong của bạn là tỉnh"
+      },
+      {
+        "id": "SUB010",
+        "startMs": 20980,
+        "endMs": 22900,
+        "text": "thức. Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 23340,
+        "endMs": 25200,
+        "text": "Mục đích bên ngoài của bạn có thể thay"
+      },
+      {
+        "id": "SUB012",
+        "startMs": 25200,
+        "endMs": 27220,
+        "text": "đổi theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB014",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB015",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB017",
+        "startMs": 35500,
+        "endMs": 37040,
+        "text": "Đó là cơ sở của những"
+      },
+      {
+        "id": "SUB018",
+        "startMs": 37040,
+        "endMs": 38020,
+        "text": "thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40520,
+        "text": "Nếu những gì bạn làm ở bên ngoài không"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40520,
+        "endMs": 42240,
+        "text": "có sự hòa điệu với nhịp sống của mục"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42240,
+        "endMs": 44120,
+        "text": "đích bên trong, thì muốn đạt được một"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44120,
+        "endMs": 46160,
+        "text": "điều gì đó, bạn sẽ phải mất rất nhiều"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 46160,
+        "endMs": 48760,
+        "text": "nỗ lực, phải đấu tranh hay dùng đến âm"
+      },
+      {
+        "id": "SUB024",
+        "startMs": 48760,
+        "endMs": 49900,
+        "text": "mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB025",
+        "startMs": 49960,
+        "endMs": 51680,
+        "text": "Nhưng làm như thế thì bạn không có"
+      },
+      {
+        "id": "SUB026",
+        "startMs": 51680,
+        "endMs": 53080,
+        "text": "được niềm vui khi công"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 53080,
+        "endMs": 54080,
+        "text": "việc được hoàn tất."
+      },
+      {
+        "id": "SUB028",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB029",
+        "startMs": 56620,
+        "endMs": 58260,
+        "text": "lại khổ đau cho bạn và"
+      },
+      {
+        "id": "SUB030",
+        "startMs": 58260,
+        "endMs": 59160,
+        "text": "cho những người chung quanh."
+      }
+    ],
+    "verticalCaptionLayout": {
+      "profileVersion": "social_ui_intersection.v1",
+      "planFingerprint": "sha256:bd6f507e6d636b37b0937df9a5ad24abe72c92178a791ca592a05687d5a1d49e",
+      "unifiedSafeRect": {
+        "x": 120,
+        "y": 270,
+        "width": 780,
+        "height": 990
+      },
+      "captionLane": {
+        "placement": "social_mid_lower",
+        "centerX": 510,
+        "centerY": 1180,
+        "maxWidth": 780,
+        "maxHeight": 106
+      },
+      "constraints": {
+        "maxLines": 1,
+        "maxLineChars": 38,
+        "minimumFontSizePx": 28
+      }
+    }
+  },
+  {
+    "compositionId": "ForrestGumpSocialSafeVerticalR7",
+    "variantId": "forrest-gump-vertical-r7",
+    "lockedPlanFingerprint": "sha256:52d7ff0c0bfc45ef7cbc0247e27a1db21333316d31c5890ee5790af595e83fa0",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "VTI-236faf51f50ea94b5e19-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-236faf51f50ea94b5e19",
+        "startMs": 0,
+        "endMs": 3174,
+        "sourceInMs": 4200,
+        "sourceOutMs": 7374,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-BENCH-REFLECTION-4200-8640.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4793190786242485,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4793190786242485,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4728217871037352,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4728217871037352,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:4c028b5ce20f1ba6e306e7a3d9209223c009b1bace460ddfd231c5957f352c72"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-236faf51f50ea94b5e19-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-236faf51f50ea94b5e19",
+        "startMs": 3174,
+        "endMs": 3587,
+        "sourceInMs": 7374,
+        "sourceOutMs": 7787,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-BENCH-REFLECTION-4200-8640.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.45865076571702956,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.45865076571702956,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.44566014385810865,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.44566014385810865,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:06c884b3e8ba36c0aa8c64295c7bbf2cf5a8d9f60fc46261a769d0231a953eea"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-236faf51f50ea94b5e19-03",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-236faf51f50ea94b5e19",
+        "startMs": 3587,
+        "endMs": 4440,
+        "sourceInMs": 7787,
+        "sourceOutMs": 8640,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-BENCH-REFLECTION-4200-8640.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "top",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.34201886296272277,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.34201886296272277,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.2923861854130238,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.2923861854130238,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:eba363b5210d356adb63eb017eaea3df4b03d640d88b2afe6492d074b22b7618"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-236faf51f50ea94b5e19-04",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-236faf51f50ea94b5e19",
+        "startMs": 4440,
+        "endMs": 4950,
+        "sourceInMs": 11000,
+        "sourceOutMs": 11510,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-PINGPONG-11000-15440.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:161471ac91aeb01ff623afc90cc75c32f79c61195688c6384b5b31783bbdd5d7"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-236faf51f50ea94b5e19-05",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-236faf51f50ea94b5e19",
+        "startMs": 4950,
+        "endMs": 8880,
+        "sourceInMs": 11510,
+        "sourceOutMs": 15440,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-PINGPONG-11000-15440.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.303678125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.303678125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.24200000000000005,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.24200000000000005,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:eb8ec30643f8725308b035a385b702920bd767de88202374f1dd5a02bc1c0cf6"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-557a7d7ca2fbcbec43c3-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-557a7d7ca2fbcbec43c3",
+        "startMs": 8880,
+        "endMs": 14860,
+        "sourceInMs": 8420,
+        "sourceOutMs": 14400,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RECOLLECTS-8420-14400.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4689723547548056,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4689723547548056,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4592244497804427,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4592244497804427,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:25534998d052aaa8a93ef52456bf08869e693b3a645de8eaf74fc5a5ddd9873c"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-60967022b1dd25e1d2e3-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-60967022b1dd25e1d2e3",
+        "startMs": 14860,
+        "endMs": 16826,
+        "sourceInMs": 920,
+        "sourceOutMs": 2886,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-MOW-920-5340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.647621875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.647621875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6940000000000001,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6940000000000001,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:54f85aa9510e7a464d4caa3e5c0b94b0a5b7783905ed79bfcd68e8242d990bbf"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-60967022b1dd25e1d2e3-02",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-60967022b1dd25e1d2e3",
+        "startMs": 16826,
+        "endMs": 17799,
+        "sourceInMs": 2886,
+        "sourceOutMs": 3859,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-MOW-920-5340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.57000625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.57000625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5920000000000001,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5920000000000001,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:e6acaf9b3c524e3bcd440948d9bcd9f4c2dc74e62d70376733ab64dfde203170"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-60967022b1dd25e1d2e3-03",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-60967022b1dd25e1d2e3",
+        "startMs": 17799,
+        "endMs": 19280,
+        "sourceInMs": 3859,
+        "sourceOutMs": 5340,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-MOW-920-5340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.513696875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.513696875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.518,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.518,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:d9b7343b6b52653e2b5d6bc2d3ddea710312a66fb83822976a1985fe384585f3"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-d13b8d9ea7abb698034a-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VCD-d13b8d9ea7abb698034a",
+        "startMs": 19280,
+        "endMs": 23340,
+        "sourceInMs": 4420,
+        "sourceOutMs": 8480,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-WATCH-SON-4420-8480.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-04-AWAKE-19280-23340",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5813805200159549,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5813805200159549,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6064558667556691,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6064558667556691,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ccc2dfd0478ca1ba93c3285bef8a04804fc083add106620930ef846c7559e041"
+          ],
+          "semanticCarrier": "CARRIER-CLM-04-AWAKE-19280-23340",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 23340,
+        "endMs": 23661,
+        "sourceInMs": 3420,
+        "sourceOutMs": 3741,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5040185546875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5040185546875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5052810574948665,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5052810574948665,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:d2f7c176c7dfc5e2a4a7aed2976a6e181b2a58812a4875d74d70bfa5958269dc"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 23661,
+        "endMs": 24299,
+        "sourceInMs": 3741,
+        "sourceOutMs": 4379,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.541090625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.541090625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.554,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.554,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:bc79e6a2383f5c0339f8010bde235aa1a2a4db31cab874c90ae0452068d38182"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-03",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 24299,
+        "endMs": 26949,
+        "sourceInMs": 4379,
+        "sourceOutMs": 7029,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.48478125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.48478125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.48,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.48,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:51728c576006192ce686c1739b4b7b9c1acc27eefefc0c2bb529489c9f97dc28"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-04",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 26949,
+        "endMs": 27719,
+        "sourceInMs": 7029,
+        "sourceOutMs": 7799,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4581934267282486,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4581934267282486,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.445059123421107,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.445059123421107,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:fce1ccb816446175dc00ffd288118e7ee561d88b1e4b5a458f157e4929ba9144"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-05",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 27719,
+        "endMs": 28920,
+        "sourceInMs": 7799,
+        "sourceOutMs": 9000,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-ALIGNED-RUN-3420-9000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "top",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.34216499119997024,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.34216499119997024,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.2925782225215215,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.2925782225215215,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:2fcc2917b4ee3214988ad88a5cd89b32e8f2af99e64c7c3e4a351956a4a821a1"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-06",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 28920,
+        "endMs": 33295,
+        "sourceInMs": 920,
+        "sourceOutMs": 5295,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-GRADUATION-920-7500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.513696875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.513696875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.518,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.518,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ff918cce3c8cbaccde9dc7d13c7937fbc056bcdb71e1b9c5a21c58ae366f64cb"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-ed23ff67dec39986d363-07",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-ed23ff67dec39986d363",
+        "startMs": 33295,
+        "endMs": 35500,
+        "sourceInMs": 5295,
+        "sourceOutMs": 7500,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-GRADUATION-920-7500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.57609375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.57609375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:95ec8c3d0f09affa8cb79a1cb7737ddf4d813d023fc843cee6a79eb7f6e90979"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-c34e9891edc01ef766c4-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VCD-c34e9891edc01ef766c4",
+        "startMs": 35500,
+        "endMs": 38580,
+        "sourceInMs": 1800,
+        "sourceOutMs": 4880,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-PORTRAIT-GRADUATION-1800-4880.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.49227234870195385,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49227234870195385,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4898445650292617,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4898445650292617,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:f222d931965b65570a2f0d0b35db6167d34eff0f87e3d44396eb455f0e4d60bd"
+          ],
+          "semanticCarrier": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+          "semanticBindingStatus": "reviewed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-71facd38192590cf8c8f-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-71facd38192590cf8c8f",
+        "startMs": 38580,
+        "endMs": 41235,
+        "sourceInMs": 580,
+        "sourceOutMs": 3235,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-WAR-580-3580.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.44835571289062504,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.44835571289062504,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.43244283341849776,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.43244283341849776,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:db3ba01059f0053552c25dbc4e9134b753727c318230ed79d5d5a03f503ec136"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-71facd38192590cf8c8f-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-71facd38192590cf8c8f",
+        "startMs": 41235,
+        "endMs": 41580,
+        "sourceInMs": 3235,
+        "sourceOutMs": 3580,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-WAR-580-3580.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-38580-41580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ac690767c4389ac40a928d66ea0f8f5f37a6a495d25981bba374075c45a3235e"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-38580-41580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-71facd38192590cf8c8f-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-71facd38192590cf8c8f",
+        "startMs": 41580,
+        "endMs": 44580,
+        "sourceInMs": 2580,
+        "sourceOutMs": 5580,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-DRILL-PRESSURE-2580-5580.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-41580-44580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.3270883165299892,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.3270883165299892,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.27276493342750124,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.27276493342750124,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:a1d0ecf2c8e2a4f0c4faffa0b8a2da51e7720fd28f078d370875fdf1b50b3e88"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-41580-44580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-71facd38192590cf8c8f-04",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-71facd38192590cf8c8f",
+        "startMs": 44580,
+        "endMs": 46382,
+        "sourceInMs": 1080,
+        "sourceOutMs": 2882,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-CONFRONTATION-1080-6460.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.27291838377714156,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.27291838377714156,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.2015765207748883,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.2015765207748883,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9ec2af5cada3b5e73cf22c7805bbaa318061c2b0498d68d0aea15b67c9f83b9b"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-71facd38192590cf8c8f-05",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-71facd38192590cf8c8f",
+        "startMs": 46382,
+        "endMs": 49960,
+        "sourceInMs": 2882,
+        "sourceOutMs": 6460,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-CONFRONTATION-1080-6460.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-44580-49960",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.37475442029535766,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.37475442029535766,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.33540621968999773,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.33540621968999773,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:eb91ddf22fce392dee8c24112a23a10a8977ac7983278bec4f61f56097b11de5"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-44580-49960",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 49960,
+        "endMs": 53160,
+        "sourceInMs": 920,
+        "sourceOutMs": 4120,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-NO-JOY-920-4120.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-49960-53160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.42011387437582015,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.42011387437582015,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.3950161798778745,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.3950161798778745,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:dcb69092eec948d19b1a4fd9675fb97f2631d6ded739d5e08ad73dc23fa1d7e9"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-49960-53160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 53160,
+        "endMs": 53505,
+        "sourceInMs": 5420,
+        "sourceOutMs": 5765,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.44924072265625004,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.44924072265625004,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.43360053653551356,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.43360053653551356,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:050c6105b86a3d4ab4e09373e7479465d45f19a67a72b5a4f1bfde4e30c9e1e0"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 53505,
+        "endMs": 54495,
+        "sourceInMs": 5765,
+        "sourceOutMs": 6755,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.29751139357686046,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.29751139357686046,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.23511965639078322,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.23511965639078322,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:e24d7ccab139872ae098fd82734ae0413b12ac71c48df8a842869cf545b89518"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-04",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 54495,
+        "endMs": 54825,
+        "sourceInMs": 6755,
+        "sourceOutMs": 7085,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.45901918262243274,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.45901918262243274,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.446391981355865,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.446391981355865,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:bb6dfcd841ba4430da078432aa60e6018c81d951ee532ed89ddd6983152af15f"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-05",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 54825,
+        "endMs": 55155,
+        "sourceInMs": 7085,
+        "sourceOutMs": 7415,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5546044921875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5546044921875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5714294839039346,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5714294839039346,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:31ff5c0fe09814d61890fefc3e106c0188b2fc60dc504c6f44cba419fa194174"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-06",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 55155,
+        "endMs": 55485,
+        "sourceInMs": 7415,
+        "sourceOutMs": 7745,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.49855712890625004,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49855712890625004,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.49811254471129285,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49811254471129285,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9c207b59a205644327368d898280970992950cc384b9216e73ea0c6bc4b22b89"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-07",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 55485,
+        "endMs": 56160,
+        "sourceInMs": 7745,
+        "sourceOutMs": 8420,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-RELATIONSHIP-CONFLICT-5420-8420.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53160-56160",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5859033203125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5859033203125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6123722534491569,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6123722534491569,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23554687500000002,
+          "sourceSize": {
+            "width": 1920,
+            "height": 804
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:73adf3c9a6fe78ffcaafaf78775a46b40ea602f84d110d98d06f89521c4d70e0"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53160-56160",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-3ac70af7798bda5bf3bd-08",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-3ac70af7798bda5bf3bd",
+        "startMs": 56160,
+        "endMs": 59652,
+        "sourceInMs": 920,
+        "sourceOutMs": 4412,
+        "source": "footage-round5/forrest-gump/ASSET-FORREST-LOSS-920-4412.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-56160-59652",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.6791967539116741,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6791967539116741,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.7354947073993253,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.7354947073993253,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.23906249999999998,
+          "sourceSize": {
+            "width": 1920,
+            "height": 816
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:df09ef05fdcf5ca2005dee126dae7fd29cfc49211b0a525738f53bb13c784f63"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-56160-59652",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 4100,
+        "text": "Điều quan trọng nhất mà bạn cần nhận"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 4100,
+        "endMs": 6600,
+        "text": "thức là: đời bạn có một mục đích bên"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 6600,
+        "endMs": 8680,
+        "text": "trong và một mục đích bên ngoài."
+      },
+      {
+        "id": "SUB004",
+        "startMs": 8880,
+        "endMs": 10520,
+        "text": "Mục đích bên trong là mục đích chính,"
+      },
+      {
+        "id": "SUB005",
+        "startMs": 10520,
+        "endMs": 12960,
+        "text": "và mục đích này có liên quan đến trạng"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 12960,
+        "endMs": 14860,
+        "text": "thái an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB007",
+        "startMs": 15360,
+        "endMs": 16940,
+        "text": "Mục đích bên ngoài dính tới những việc"
+      },
+      {
+        "id": "SUB008",
+        "startMs": 16940,
+        "endMs": 18820,
+        "text": "bạn làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB009",
+        "startMs": 19280,
+        "endMs": 20980,
+        "text": "Mục đích bên trong của bạn là tỉnh"
+      },
+      {
+        "id": "SUB010",
+        "startMs": 20980,
+        "endMs": 22900,
+        "text": "thức. Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 23340,
+        "endMs": 25200,
+        "text": "Mục đích bên ngoài của bạn có thể thay"
+      },
+      {
+        "id": "SUB012",
+        "startMs": 25200,
+        "endMs": 27220,
+        "text": "đổi theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB014",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB015",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB017",
+        "startMs": 35500,
+        "endMs": 37040,
+        "text": "Đó là cơ sở của những"
+      },
+      {
+        "id": "SUB018",
+        "startMs": 37040,
+        "endMs": 38020,
+        "text": "thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40520,
+        "text": "Nếu những gì bạn làm ở bên ngoài không"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40520,
+        "endMs": 42240,
+        "text": "có sự hòa điệu với nhịp sống của mục"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42240,
+        "endMs": 44120,
+        "text": "đích bên trong, thì muốn đạt được một"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44120,
+        "endMs": 46160,
+        "text": "điều gì đó, bạn sẽ phải mất rất nhiều"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 46160,
+        "endMs": 48760,
+        "text": "nỗ lực, phải đấu tranh hay dùng đến âm"
+      },
+      {
+        "id": "SUB024",
+        "startMs": 48760,
+        "endMs": 49900,
+        "text": "mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB025",
+        "startMs": 49960,
+        "endMs": 51680,
+        "text": "Nhưng làm như thế thì bạn không có"
+      },
+      {
+        "id": "SUB026",
+        "startMs": 51680,
+        "endMs": 53080,
+        "text": "được niềm vui khi công"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 53080,
+        "endMs": 54080,
+        "text": "việc được hoàn tất."
+      },
+      {
+        "id": "SUB028",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB029",
+        "startMs": 56620,
+        "endMs": 58260,
+        "text": "lại khổ đau cho bạn và"
+      },
+      {
+        "id": "SUB030",
+        "startMs": 58260,
+        "endMs": 59160,
+        "text": "cho những người chung quanh."
+      }
+    ],
+    "verticalCaptionLayout": {
+      "profileVersion": "social_ui_intersection.v1",
+      "planFingerprint": "sha256:775d749b75ce9d3edbdcce7b0f1963bfe0f5f060feea8945483d86436f61c3cd",
+      "unifiedSafeRect": {
+        "x": 120,
+        "y": 270,
+        "width": 780,
+        "height": 990
+      },
+      "captionLane": {
+        "placement": "social_mid_lower",
+        "centerX": 510,
+        "centerY": 1180,
+        "maxWidth": 780,
+        "maxHeight": 106
+      },
+      "constraints": {
+        "maxLines": 1,
+        "maxLineChars": 38,
+        "minimumFontSizePx": 28
+      }
+    }
+  },
+  {
+    "compositionId": "BeautifulMindSocialSafeVerticalR7",
+    "variantId": "a-beautiful-mind-vertical-r7",
+    "lockedPlanFingerprint": "sha256:b29f315be15fa499333a915eabd000c45c414bf469f2dab0d962adc1e850f5f3",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "durationMs": 59652,
+    "narrationPath": "audio/provided_voice.mp3",
+    "musicPath": "audio/reflection-bed.m4a",
+    "shots": [
+      {
+        "id": "VTI-d0b78df9f1b0663aeb21-01",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-d0b78df9f1b0663aeb21",
+        "startMs": 0,
+        "endMs": 4440,
+        "sourceInMs": 2200,
+        "sourceOutMs": 6640,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PORTRAIT-JOHN-INWARD-2200-6640.mp4",
+        "transitionIn": "fade_from_black",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-00000-04440",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5276996201276779,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5276996201276779,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5398376559139637,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5398376559139637,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:dd0fb7475dc0ff0df1b481c910f267dea89cfd8ab18ae92fad4165c1e128e452"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-00000-04440",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-d0b78df9f1b0663aeb21-02",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-d0b78df9f1b0663aeb21",
+        "startMs": 4440,
+        "endMs": 6904,
+        "sourceInMs": 500,
+        "sourceOutMs": 2964,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.454109375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.454109375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.434,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.434,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:951f6fd038f25a789f01184693951a0548a1fc8c2c2d5942cd11d2dc8ce64029"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-d0b78df9f1b0663aeb21-03",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-d0b78df9f1b0663aeb21",
+        "startMs": 6904,
+        "endMs": 7392,
+        "sourceInMs": 2964,
+        "sourceOutMs": 3452,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.3999127197265625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.3999127197265625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.3560542485955056,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.3560542485955056,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:7c62c04933161fec993be9b879b3c492036799d40558f5598382b48e3ea36655"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-d0b78df9f1b0663aeb21-04",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-d0b78df9f1b0663aeb21",
+        "startMs": 7392,
+        "endMs": 7880,
+        "sourceInMs": 3452,
+        "sourceOutMs": 3940,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.2805889892578125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.2805889892578125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.18444259129213483,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.18444259129213483,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:1c310083ad1a97981af5475b60e994b77aa7a4887f1375e90f506ca36874dc49"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-d0b78df9f1b0663aeb21-05",
+        "beatId": "B01",
+        "claimId": "CLM-01-TWO-PURPOSES",
+        "decisionId": "VCD-d0b78df9f1b0663aeb21",
+        "startMs": 7880,
+        "endMs": 8880,
+        "sourceInMs": 3940,
+        "sourceOutMs": 4940,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EQUATIONS-500-4940.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-01-TWO-PURPOSES-04440-08880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.543109375,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.543109375,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.562,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.562,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:bc09c7613dc4a3448f2ac153c77825f01a408a359f49a0a70908c7239b6e604a"
+          ],
+          "semanticCarrier": "CARRIER-CLM-01-TWO-PURPOSES-04440-08880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-c7937ae01eec7dfd08a3-01",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-c7937ae01eec7dfd08a3",
+        "startMs": 8880,
+        "endMs": 9464,
+        "sourceInMs": 8220,
+        "sourceOutMs": 8804,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.43559315614402294,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.43559315614402294,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4073699324318532,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4073699324318532,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:5ae529eb4f09511bf5fbef98023b0dbcbccefdbfd4432f7bc203668aac0bc98e"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-c7937ae01eec7dfd08a3-02",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-c7937ae01eec7dfd08a3",
+        "startMs": 9464,
+        "endMs": 12509,
+        "sourceInMs": 8804,
+        "sourceOutMs": 11849,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4974766665697098,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4974766665697098,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.49637093619014444,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49637093619014444,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:68c27ae2f101e04f07d975f1caf9765f43cfaf146df3eab2d7a1c4f82085e27d"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-c7937ae01eec7dfd08a3-03",
+        "beatId": "B02",
+        "claimId": "CLM-02-INNER-EASE",
+        "decisionId": "VCD-c7937ae01eec7dfd08a3",
+        "startMs": 12509,
+        "endMs": 14860,
+        "sourceInMs": 11849,
+        "sourceOutMs": 14200,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-QUIET-CLOSEUP-8220-14200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-02-INNER-EASE-08880-14860",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.509779642522335,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.509779642522335,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5140651038523469,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5140651038523469,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:11111f590c40f5487d95fd20bc58bfffaedcf1d5e6e25d36f9cac5ab21a476ab"
+          ],
+          "semanticCarrier": "CARRIER-CLM-02-INNER-EASE-08880-14860",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-40843a480eeea75d7991-01",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-40843a480eeea75d7991",
+        "startMs": 14860,
+        "endMs": 15652,
+        "sourceInMs": 8920,
+        "sourceOutMs": 9712,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:4d46e4b0158bdd0d369a55a5626e7558ce7a09f41ea990f3441e87cd791cc051"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-40843a480eeea75d7991-02",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-40843a480eeea75d7991",
+        "startMs": 15652,
+        "endMs": 18030,
+        "sourceInMs": 9712,
+        "sourceOutMs": 12090,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.522984619140625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.522984619140625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5330565308988764,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5330565308988764,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:14e600de29161e57a372ef5ba33db067235ad60f8dcc9ce309e77933f4269eb0"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-40843a480eeea75d7991-03",
+        "beatId": "B03",
+        "claimId": "CLM-03-OUTER-WORK",
+        "decisionId": "VCD-40843a480eeea75d7991",
+        "startMs": 18030,
+        "endMs": 19280,
+        "sourceInMs": 12090,
+        "sourceOutMs": 13340,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-LECTURE-8920-13340.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-03-OUTER-WORK-14860-19280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.345362548828125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.345362548828125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.2776000702247191,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.2776000702247191,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:869b8346eddc209c9ed6dcc1aeb33877e1b8a54e3f9927907d5ec4c2d1ab3199"
+          ],
+          "semanticCarrier": "CARRIER-CLM-03-OUTER-WORK-14860-19280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-2cc774bce2aef9fd2d8e-01",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VCD-2cc774bce2aef9fd2d8e",
+        "startMs": 19280,
+        "endMs": 22872,
+        "sourceInMs": 7420,
+        "sourceOutMs": 11012,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HEART-7420-11480.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-04-AWAKE-19280-23340",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:284e50f30598ab57ee79857ff9467958a17e21f89f7205b371ef99fb3dc26d23"
+          ],
+          "semanticCarrier": "CARRIER-CLM-04-AWAKE-19280-23340",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-2cc774bce2aef9fd2d8e-02",
+        "beatId": "B04",
+        "claimId": "CLM-04-AWAKE",
+        "decisionId": "VCD-2cc774bce2aef9fd2d8e",
+        "startMs": 22872,
+        "endMs": 23340,
+        "sourceInMs": 11012,
+        "sourceOutMs": 11480,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HEART-7420-11480.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-04-AWAKE-19280-23340",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4685414054989815,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4685414054989815,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4547561786951644,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4547561786951644,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:203743757a280c262c963b576568212e501e6a5a9b44d8be8a257e5db5d38b4e"
+          ],
+          "semanticCarrier": "CARRIER-CLM-04-AWAKE-19280-23340",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-4eca9fef6cd15f4a9b4a-01",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-4eca9fef6cd15f4a9b4a",
+        "startMs": 23340,
+        "endMs": 28920,
+        "sourceInMs": 14920,
+        "sourceOutMs": 20500,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-REAL-TOUCH-14920-20500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-23340-28920",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.46384420931339265,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.46384420931339265,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4480006605855535,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4480006605855535,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:46dc9267aae08544924fe48b8ccdb643e824031301c268a5fc5cad6a6dad605f"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-23340-28920",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-4eca9fef6cd15f4a9b4a-02",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-4eca9fef6cd15f4a9b4a",
+        "startMs": 28920,
+        "endMs": 32248,
+        "sourceInMs": 1620,
+        "sourceOutMs": 4948,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.442127685546875,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.442127685546875,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.41690795008412784,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.41690795008412784,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.303515625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1036
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:39ae2b0c436d692d68c47c982a991bd167620f2cc18a60929d1282f562dabc38"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-4eca9fef6cd15f4a9b4a-03",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-4eca9fef6cd15f4a9b4a",
+        "startMs": 32248,
+        "endMs": 33349,
+        "sourceInMs": 4948,
+        "sourceOutMs": 6049,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5843212890625,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5843212890625,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6210670218732474,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6210670218732474,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.303515625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1036
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:5ac9291c1dd514ca597d48ca11e264c35c0b452d6823cb0af0fe32cc64f511af"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-4eca9fef6cd15f4a9b4a-04",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-4eca9fef6cd15f4a9b4a",
+        "startMs": 33349,
+        "endMs": 33925,
+        "sourceInMs": 6049,
+        "sourceOutMs": 6625,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.303515625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1036
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:55c4ebb35caa257603e573a1f5286bc6f6da9edc8abc27e713db033b18cfb047"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-4eca9fef6cd15f4a9b4a-05",
+        "beatId": "B05",
+        "claimId": "CLM-05-CHANGE-ALIGN",
+        "decisionId": "VCD-4eca9fef6cd15f4a9b4a",
+        "startMs": 33925,
+        "endMs": 35500,
+        "sourceInMs": 6625,
+        "sourceOutMs": 8200,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PENS-1620-8200.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-05-CHANGE-ALIGN-28920-35500",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.518809814453125,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.518809814453125,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5270068003365115,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5270068003365115,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.303515625,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1036
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:c598157096b8317428f2fa3bc3951f6b4ae97cc057dfbae401bc6b274cc3a9b8"
+          ],
+          "semanticCarrier": "CARRIER-CLM-05-CHANGE-ALIGN-28920-35500",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-182b7594ef3975a274b3-01",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VCD-182b7594ef3975a274b3",
+        "startMs": 35500,
+        "endMs": 36876,
+        "sourceInMs": 6420,
+        "sourceOutMs": 7796,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-NOBEL-6420-9500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:11631cde791a3f7f9f679a7aa2aac82416270f858552ebef7120345cd9a73f28"
+          ],
+          "semanticCarrier": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-182b7594ef3975a274b3-02",
+        "beatId": "B06",
+        "claimId": "CLM-06-REAL-SUCCESS",
+        "decisionId": "VCD-182b7594ef3975a274b3",
+        "startMs": 36876,
+        "endMs": 38580,
+        "sourceInMs": 7796,
+        "sourceOutMs": 9500,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-NOBEL-6420-9500.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-06-REAL-SUCCESS-35500-38580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:09b64e1c11d55a981d684031c770e216e8d9871b412f1c620194701a6db440f0"
+          ],
+          "semanticCarrier": "CARRIER-CLM-06-REAL-SUCCESS-35500-38580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-01",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 38580,
+        "endMs": 40580,
+        "sourceInMs": 2920,
+        "sourceOutMs": 4920,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PRESSURE-2920-4920.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-38580-40580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:04180d35df8bf686edddf958e21af7d3185e1b4a468c6d7981c768d4cda327f3"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-38580-40580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-02",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 40580,
+        "endMs": 41164,
+        "sourceInMs": 4920,
+        "sourceOutMs": 5504,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-REALIZATION-4920-6620.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4958422699570656,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4958422699570656,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.49402034330903816,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49402034330903816,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:34dffe6a1688e1b49e2b911fa4d28deea3a25fccb1e4e080b68f876a50c18bab"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-40580-42280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-03",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 41164,
+        "endMs": 42280,
+        "sourceInMs": 5504,
+        "sourceOutMs": 6620,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-REALIZATION-4920-6620.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-40580-42280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5183965867757797,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5183965867757797,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5264580124415709,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5264580124415709,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:54df4889d983d85fd3ec6006ea90a4d86a494010cf327cea9049f7eb7862f751"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-40580-42280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-04",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 42280,
+        "endMs": 44280,
+        "sourceInMs": 5920,
+        "sourceOutMs": 7920,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-FAMILY-DANGER-5920-7920.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-42280-44280",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.428285251185298,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.428285251185298,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.39685968709795666,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.39685968709795666,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:789885d0d8998b675fbeb427089327d4404d8c90b4e6794cb1101444494b9225"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-42280-44280",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-05",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 44280,
+        "endMs": 45364,
+        "sourceInMs": 5920,
+        "sourceOutMs": 7004,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-FEAR-5920-7620.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.4316887628287077,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4316887628287077,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4017546251918493,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4017546251918493,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:fa4ac1839aac8b100b392afebe11230bf72d1a099b355383cb685d21b0feddc8"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-44280-45980",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-06",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 45364,
+        "endMs": 45980,
+        "sourceInMs": 7004,
+        "sourceOutMs": 7620,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-FEAR-5920-7620.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-44280-45980",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:8de465b2af2d7a6d788671449e4ee27af3469078275aa7b3ed45f5bfc64abbc0"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-44280-45980",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-07",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 45980,
+        "endMs": 47580,
+        "sourceInMs": 5420,
+        "sourceOutMs": 7020,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HALLUCINATIONS-5420-7020.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-45980-47580",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5696838727593422,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5696838727593422,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.6002195023954584,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.6002195023954584,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:99934d723305a474f020b4b135ea1ca477f00d0f7d9c0e23e23a003fde84430a"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-45980-47580",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-08",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 47580,
+        "endMs": 48880,
+        "sourceInMs": 8420,
+        "sourceOutMs": 9720,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-BLOODY-ALONE-8420-9720.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-47580-48880",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:054dbb20409ebfd399ba7f2836f180abb68e77c1df26f45226d9feb439df30ac"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-47580-48880",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-e6f69ec221b6eaa7c842-09",
+        "beatId": "B07",
+        "claimId": "CLM-07-MISALIGNMENT",
+        "decisionId": "VCD-e6f69ec221b6eaa7c842",
+        "startMs": 48880,
+        "endMs": 49960,
+        "sourceInMs": 920,
+        "sourceOutMs": 2000,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EVIDENCE-ROOM-920-2000.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-07-MISALIGNMENT-48880-49960",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:faa94a264420c09301c996eae4a26e0da6916d8b7793d0f0351d175866c9bd38"
+          ],
+          "semanticCarrier": "CARRIER-CLM-07-MISALIGNMENT-48880-49960",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-49a834fc38dfeb4a4c1c-01",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-49a834fc38dfeb4a4c1c",
+        "startMs": 49960,
+        "endMs": 51420,
+        "sourceInMs": 820,
+        "sourceOutMs": 2280,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EMPTY-HOME-820-4050.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:063511192b529fe71318cf78e53c7abd400bac4f755020994a8825e67517a5ab"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-49960-53190",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-49a834fc38dfeb4a4c1c-02",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-49a834fc38dfeb4a4c1c",
+        "startMs": 51420,
+        "endMs": 53190,
+        "sourceInMs": 2280,
+        "sourceOutMs": 4050,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-EMPTY-HOME-820-4050.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-49960-53190",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:9c0b7aab4dc34eafd5298f62288fbe80af7d9c9ec43a8353cd91a0fb71798041"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-49960-53190",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-49a834fc38dfeb4a4c1c-03",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-49a834fc38dfeb4a4c1c",
+        "startMs": 53190,
+        "endMs": 56420,
+        "sourceInMs": 420,
+        "sourceOutMs": 3650,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-PARTNER-HURT-420-3650.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-53190-56420",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.5,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.5,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:07c2b11c0a9838e223cd95cc87f228e693ff69e23cb5d85031ff9e481a334c4d"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-53190-56420",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      },
+      {
+        "id": "VTI-49a834fc38dfeb4a4c1c-04",
+        "beatId": "B08",
+        "claimId": "CLM-08-NO-JOY-HARM",
+        "decisionId": "VCD-49a834fc38dfeb4a4c1c",
+        "startMs": 56420,
+        "endMs": 59652,
+        "sourceInMs": 14000,
+        "sourceOutMs": 17232,
+        "source": "footage-round5/a-beautiful-mind/ASSET-ABM-HOSPITAL-PAIN-14000-17232.mp4",
+        "transitionIn": "hard_cut",
+        "motion": "hold",
+        "semanticRole": "UNIT-CLM-08-NO-JOY-HARM-56420-59652",
+        "verticalFrame": {
+          "strategy": "cover_static",
+          "frameMode": "cover_static",
+          "subtitlePlacement": "bottom",
+          "centers": [
+            {
+              "at": 0.0,
+              "x": 0.49584042966365816,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.49584042966365816,
+              "y": 0.5
+            }
+          ],
+          "rendererPositions": [
+            {
+              "at": 0.0,
+              "x": 0.4940176965949241,
+              "y": 0.5
+            },
+            {
+              "at": 1.0,
+              "x": 0.4940176965949241,
+              "y": 0.5
+            }
+          ],
+          "cropWindowWidth": 0.3046875,
+          "sourceSize": {
+            "width": 1920,
+            "height": 1040
+          },
+          "scale": 1.0,
+          "evidenceRefs": [
+            "sha256:ad4f41342ef9366568519f560d480890657441dfc821301394079d3be940cb9b"
+          ],
+          "semanticCarrier": "CARRIER-CLM-08-NO-JOY-HARM-56420-59652",
+          "semanticBindingStatus": "observed_carrier",
+          "motionPolicy": "static"
+        }
+      }
+    ],
+    "subtitles": [
+      {
+        "id": "SUB001",
+        "startMs": 2180,
+        "endMs": 4100,
+        "text": "Điều quan trọng nhất mà bạn cần nhận"
+      },
+      {
+        "id": "SUB002",
+        "startMs": 4100,
+        "endMs": 6600,
+        "text": "thức là: đời bạn có một mục đích bên"
+      },
+      {
+        "id": "SUB003",
+        "startMs": 6600,
+        "endMs": 8680,
+        "text": "trong và một mục đích bên ngoài."
+      },
+      {
+        "id": "SUB004",
+        "startMs": 8880,
+        "endMs": 10520,
+        "text": "Mục đích bên trong là mục đích chính,"
+      },
+      {
+        "id": "SUB005",
+        "startMs": 10520,
+        "endMs": 12960,
+        "text": "và mục đích này có liên quan đến trạng"
+      },
+      {
+        "id": "SUB006",
+        "startMs": 12960,
+        "endMs": 14860,
+        "text": "thái an nhiên tự tại của bạn."
+      },
+      {
+        "id": "SUB007",
+        "startMs": 15360,
+        "endMs": 16940,
+        "text": "Mục đích bên ngoài dính tới những việc"
+      },
+      {
+        "id": "SUB008",
+        "startMs": 16940,
+        "endMs": 18820,
+        "text": "bạn làm, và đây chỉ là mục đích phụ."
+      },
+      {
+        "id": "SUB009",
+        "startMs": 19280,
+        "endMs": 20980,
+        "text": "Mục đích bên trong của bạn là tỉnh"
+      },
+      {
+        "id": "SUB010",
+        "startMs": 20980,
+        "endMs": 22900,
+        "text": "thức. Chỉ đơn giản có vậy thôi."
+      },
+      {
+        "id": "SUB011",
+        "startMs": 23340,
+        "endMs": 25200,
+        "text": "Mục đích bên ngoài của bạn có thể thay"
+      },
+      {
+        "id": "SUB012",
+        "startMs": 25200,
+        "endMs": 27220,
+        "text": "đổi theo thời gian và thay đổi rất"
+      },
+      {
+        "id": "SUB013",
+        "startMs": 27220,
+        "endMs": 28200,
+        "text": "nhiều ở từng người."
+      },
+      {
+        "id": "SUB014",
+        "startMs": 28200,
+        "endMs": 30780,
+        "text": "Tìm ra và sống hòa điệu với nhịp sống"
+      },
+      {
+        "id": "SUB015",
+        "startMs": 30780,
+        "endMs": 33220,
+        "text": "của mục đích bên trong là cơ sở để bạn"
+      },
+      {
+        "id": "SUB016",
+        "startMs": 33220,
+        "endMs": 35320,
+        "text": "có thể hoàn thành mục đích bên ngoài."
+      },
+      {
+        "id": "SUB017",
+        "startMs": 35500,
+        "endMs": 37040,
+        "text": "Đó là cơ sở của những"
+      },
+      {
+        "id": "SUB018",
+        "startMs": 37040,
+        "endMs": 38020,
+        "text": "thành công thực sự."
+      },
+      {
+        "id": "SUB019",
+        "startMs": 38580,
+        "endMs": 40520,
+        "text": "Nếu những gì bạn làm ở bên ngoài không"
+      },
+      {
+        "id": "SUB020",
+        "startMs": 40520,
+        "endMs": 42240,
+        "text": "có sự hòa điệu với nhịp sống của mục"
+      },
+      {
+        "id": "SUB021",
+        "startMs": 42240,
+        "endMs": 44120,
+        "text": "đích bên trong, thì muốn đạt được một"
+      },
+      {
+        "id": "SUB022",
+        "startMs": 44120,
+        "endMs": 46160,
+        "text": "điều gì đó, bạn sẽ phải mất rất nhiều"
+      },
+      {
+        "id": "SUB023",
+        "startMs": 46160,
+        "endMs": 48760,
+        "text": "nỗ lực, phải đấu tranh hay dùng đến âm"
+      },
+      {
+        "id": "SUB024",
+        "startMs": 48760,
+        "endMs": 49900,
+        "text": "mưu và thủ đoạn."
+      },
+      {
+        "id": "SUB025",
+        "startMs": 49960,
+        "endMs": 51680,
+        "text": "Nhưng làm như thế thì bạn không có"
+      },
+      {
+        "id": "SUB026",
+        "startMs": 51680,
+        "endMs": 53080,
+        "text": "được niềm vui khi công"
+      },
+      {
+        "id": "SUB027",
+        "startMs": 53080,
+        "endMs": 54080,
+        "text": "việc được hoàn tất."
+      },
+      {
+        "id": "SUB028",
+        "startMs": 54080,
+        "endMs": 56620,
+        "text": "Và chắc chắn những kết quả ấy chỉ mang"
+      },
+      {
+        "id": "SUB029",
+        "startMs": 56620,
+        "endMs": 58260,
+        "text": "lại khổ đau cho bạn và"
+      },
+      {
+        "id": "SUB030",
+        "startMs": 58260,
+        "endMs": 59160,
+        "text": "cho những người chung quanh."
+      }
+    ],
+    "verticalCaptionLayout": {
+      "profileVersion": "social_ui_intersection.v1",
+      "planFingerprint": "sha256:a53fd6d7bf97e54a1d339b8634c10df5d8994778802bdda4f4d3ae6624af29d3",
+      "unifiedSafeRect": {
+        "x": 120,
+        "y": 270,
+        "width": 780,
+        "height": 990
+      },
+      "captionLane": {
+        "placement": "social_mid_lower",
+        "centerX": 510,
+        "centerY": 1180,
+        "maxWidth": 780,
+        "maxHeight": 106
+      },
+      "constraints": {
+        "maxLines": 1,
+        "maxLineChars": 38,
+        "minimumFontSizePx": 28
+      }
+    }
+  }
+]

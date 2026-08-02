@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-social-safe-subtitles-v1-a-beautiful-mind-round7",
+  "render_spec": {
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "profile_version": "social_ui_intersection.v1",
+  "platform_profiles": {
+    "instagram_reels": {
+      "authority": "meta_reels_safe_zone_plus_internal_ui_exclusion_v1",
+      "safe_rect": {
+        "x": 108,
+        "y": 270,
+        "width": 804,
+        "height": 1050
+      }
+    },
+    "tiktok_in_feed": {
+      "authority": "tiktok_in_feed_standard_ltr_2026_06",
+      "safe_rect": {
+        "x": 120,
+        "y": 240,
+        "width": 780,
+        "height": 1020
+      }
+    },
+    "youtube_shorts": {
+      "authority": "youtube_shorts_editor_ui_guides_plus_internal_exclusion_v1",
+      "safe_rect": {
+        "x": 108,
+        "y": 231,
+        "width": 804,
+        "height": 1185
+      }
+    }
+  },
+  "unified_safe_rect": {
+    "x": 120,
+    "y": 270,
+    "width": 780,
+    "height": 990
+  },
+  "caption_lane": {
+    "placement": "social_mid_lower",
+    "center_x": 510,
+    "center_y": 1180,
+    "allowed_center_y_range": [
+      1056,
+      1190
+    ],
+    "max_width": 780,
+    "max_height": 106
+  },
+  "constraints": {
+    "max_lines": 1,
+    "max_line_chars": 38,
+    "minimum_font_size_px": 28,
+    "carrier_conflict_policy": "replace_crop_or_source_not_ui_lane"
+  },
+  "status": "sealed",
+  "plan_fingerprint": "sha256:a53fd6d7bf97e54a1d339b8634c10df5d8994778802bdda4f4d3ae6624af29d3"
+}

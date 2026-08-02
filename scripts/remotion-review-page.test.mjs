@@ -19,6 +19,11 @@ const round6ContactSheetPages = {
   'forrest-gump': 6,
   'a-beautiful-mind': 6,
 }
+const round7ContactSheetPages = {
+  soul: 2,
+  'forrest-gump': 2,
+  'a-beautiful-mind': 2,
+}
 const videos = [
   'vertical-r1-soul-web.mp4',
   'vertical-r1-forrest-gump-web.mp4',
@@ -38,9 +43,12 @@ const videos = [
   'vertical-r6-soul-web.mp4',
   'vertical-r6-forrest-gump-web.mp4',
   'vertical-r6-a-beautiful-mind-web.mp4',
+  'vertical-r7-soul-web.mp4',
+  'vertical-r7-forrest-gump-web.mp4',
+  'vertical-r7-a-beautiful-mind-web.mp4',
 ]
 
-test('review route is noindex and exposes six rounds by three single-film videos', async () => {
+test('review route is noindex and exposes seven rounds by three single-film videos', async () => {
   const [page, gallery, redirects] = await Promise.all([
     readFile(new URL('../app/review/remotion-muc-dich-doi-song/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/remotion-review/VideoReviewGallery.tsx', import.meta.url), 'utf8'),
@@ -49,13 +57,13 @@ test('review route is noindex and exposes six rounds by three single-film videos
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
   assert.match(page, /<VideoReviewGallery\s*\/>/)
-  assert.match(page, /6 vòng × 3 phim/)
+  assert.match(page, /7 vòng × 3 phim/)
   assert.match(gallery, /aria-label="Chọn vòng cải tiến"/)
   assert.match(gallery, /aria-label="Chọn phim"/)
-  assert.equal((gallery.match(/id: 'r[123456]'/g) ?? []).length, 6)
+  assert.equal((gallery.match(/id: 'r[1234567]'/g) ?? []).length, 7)
   assert.equal((gallery.match(/id: '(?:soul|forrest-gump|a-beautiful-mind)'/g) ?? []).length, 3)
-  assert.equal((gallery.match(/vertical-r[123456]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 18)
-  assert.match(gallery, /useState<RoundId>\('r6'\)/)
+  assert.equal((gallery.match(/vertical-r[1234567]-(?:soul|forrest-gump|a-beautiful-mind)-web\.mp4/g) ?? []).length, 21)
+  assert.match(gallery, /useState<RoundId>\('r7'\)/)
   assert.match(gallery, /24\/51 di động/)
   assert.match(gallery, /0\/51 di động/)
   assert.match(gallery, /preload="metadata"/)
@@ -67,7 +75,7 @@ test('review route is noindex and exposes six rounds by three single-film videos
   assert.match(redirects, /^\/review \/review\/remotion-muc-dich-doi-song 302$/m)
 })
 
-test('all eighteen web videos are bounded, non-empty and have matching posters', async () => {
+test('all twenty-one web videos are bounded, non-empty and have matching posters', async () => {
   for (const filename of videos) {
     const video = new URL(filename, mediaRoot)
     const poster = new URL(filename.replace('-web.mp4', '-poster.jpg'), mediaRoot)
@@ -125,6 +133,22 @@ test('each round exposes its report, three plans and three contact sheets', asyn
         ),
       )
     }
+    await access(new URL(`round-7/${film}/vertical_composition_plan.json`, evidenceRoot))
+    await access(new URL(`round-7/${film}/vertical_edit_plan.json`, evidenceRoot))
+    await access(new URL(`round-7/${film}/vertical_semantic_pixel_qa.json`, evidenceRoot))
+    await access(new URL(`round-7/${film}/vertical_caption_layout.json`, evidenceRoot))
+    await access(new URL(`round-7/${film}/vertical_caption_safe_area_qa.json`, evidenceRoot))
+    for (let page = 1; page <= round7ContactSheetPages[film]; page += 1) {
+      await access(
+        new URL(
+          `round-7/${film}/contact-sheet-page-${String(page).padStart(2, '0')}.jpg`,
+          evidenceRoot,
+        ),
+      )
+    }
+    for (const platform of ['tiktok_in_feed', 'instagram_reels', 'youtube_shorts']) {
+      await access(new URL(`round-7/${film}/platform-overlays/${platform}-contact-sheet.jpg`, evidenceRoot))
+    }
   }
   await access(new URL('round-5/SELF-EVALUATION.md', evidenceRoot))
   await access(new URL('round-5/OWNER-REVIEW-PACKET.md', evidenceRoot))
@@ -133,6 +157,10 @@ test('each round exposes its report, three plans and three contact sheets', asyn
   await access(new URL('round-6/OWNER-REVIEW-PACKET.md', evidenceRoot))
   await access(new URL('round-6/manual_pixel_adjudication.json', evidenceRoot))
   await access(new URL('round-6/encoded_pixel_evidence.json', evidenceRoot))
+  await access(new URL('round-7/SELF-EVALUATION.md', evidenceRoot))
+  await access(new URL('round-7/OWNER-REVIEW-PACKET.md', evidenceRoot))
+  await access(new URL('round-7/encoded_caption_evidence.json', evidenceRoot))
+  await access(new URL('round-7/picture_plan_inheritance.json', evidenceRoot))
 })
 
 test('review layout keeps a stable 9:16 player and a one-column mobile reading order', async () => {

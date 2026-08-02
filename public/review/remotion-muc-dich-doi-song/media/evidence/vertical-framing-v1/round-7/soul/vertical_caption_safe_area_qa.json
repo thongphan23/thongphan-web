@@ -1,0 +1,549 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-vertical-social-safe-subtitles-v1-soul-round7",
+  "layout_plan_fingerprint": "sha256:bd6f507e6d636b37b0937df9a5ad24abe72c92178a791ca592a05687d5a1d49e",
+  "subtitle_results": [
+    {
+      "subtitle_id": "SUB001",
+      "at_ms": 3140,
+      "frame_sha256": "sha256:380ce9e5b0ffd49f3e3a23203c610b72f1f9241e430ba782d7811aada1104af8",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:4297d70d7394c5170ea1d250ff6740ac2e212412e254adbba8d6169eb192b4e2"
+    },
+    {
+      "subtitle_id": "SUB002",
+      "at_ms": 5350,
+      "frame_sha256": "sha256:abbc879c805bb36c72efa95289aeefde5d604c818377b989689220cb806c75e0",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:c4ca9f3a225e224c67be348d8181280fdb68f2dc913a384bcd66c7703dc5f80b"
+    },
+    {
+      "subtitle_id": "SUB003",
+      "at_ms": 7640,
+      "frame_sha256": "sha256:ee9d3fcd9fa9ecf629dca08c0058bd63197a5f57cb9addf99fff6058f33b3649",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:224f68e3cf89bf6a9a9465ec4e0b71e5de8103e5e4946e1434e92576565eaa74"
+    },
+    {
+      "subtitle_id": "SUB004",
+      "at_ms": 9700,
+      "frame_sha256": "sha256:35afe55582a4ed257bf218631cd1aaa14317fc2fb7c9fc2cea3422190e8fa537",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:17db051a3b7acb350bc553f8211855a4984df138150f47f05fb35b442484a8c9"
+    },
+    {
+      "subtitle_id": "SUB005",
+      "at_ms": 11740,
+      "frame_sha256": "sha256:20be08fed685efed867d5d8efd7a86f057a3c5392b7fe4fd3093ffbeb1658ee8",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:70ad751482817c66a34d76bfd55be4a57455b9a7e32a77b9c60ab09b42a07a1a"
+    },
+    {
+      "subtitle_id": "SUB006",
+      "at_ms": 13910,
+      "frame_sha256": "sha256:acaeeb1ddba64d237d7cec1bf80e4d23426b47da7a03eada86836187f2ce9a2a",
+      "bbox": {
+        "x": 164,
+        "y": 1144,
+        "width": 693,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:ac26bc49510ea7a16fa6f927d887cce6d8e509015d34c2f2773e35a3b55ea2be"
+    },
+    {
+      "subtitle_id": "SUB007",
+      "at_ms": 16150,
+      "frame_sha256": "sha256:05be7567bd98f3db5af66f84ee478a45bbb9f18e66991b3a346fe96103f57306",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:400b94786eac3350e739133912fdf995f91a31b133885fc7dcf3a94349b23940"
+    },
+    {
+      "subtitle_id": "SUB008",
+      "at_ms": 17880,
+      "frame_sha256": "sha256:40db9d5d7796a61f6717e6fc6281b443ed087ae80ec7a40cb8e10108ee40ec56",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:b9e9aa722a76399bfdb88e46f547e984f8e2a518a96f57c6ce22047afd03f539"
+    },
+    {
+      "subtitle_id": "SUB009",
+      "at_ms": 20130,
+      "frame_sha256": "sha256:f6652a649642cd79275a2029baefde2154d968697a5ebd35a82fa8354efe3975",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:62e6b5a1e6a235bab1656c2ab5c17fb0bc357d8ce08020f84846e28f7f933dcd"
+    },
+    {
+      "subtitle_id": "SUB010",
+      "at_ms": 21940,
+      "frame_sha256": "sha256:a501eb387953fc4dbf16b635e67106d034f2379aa3339aa25e030390d6e7c344",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:e24a57984d6f0c9421e655349a23d9c469503288127631cea837fba9dfad85f0"
+    },
+    {
+      "subtitle_id": "SUB011",
+      "at_ms": 24270,
+      "frame_sha256": "sha256:a9ea7e28ea00d5d0db98e937ab40b71ff9deedabb84e582b549b9b8b96feae61",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:30fc9c78e4931f7c6c44bbb14c34f828fe42e8b0646cd076db5a74cc64e520bd"
+    },
+    {
+      "subtitle_id": "SUB012",
+      "at_ms": 26210,
+      "frame_sha256": "sha256:f9976ae3b12c9e6bc065b79e6b728355f36720fea11c4e4008fc89eabcddb126",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:07c4963e0cd4aff4582d4b0fa85eec1c57924844509a33cef547b7742619dc41"
+    },
+    {
+      "subtitle_id": "SUB013",
+      "at_ms": 27710,
+      "frame_sha256": "sha256:6d9a53fdc2dbaba73dbf8c7f390b06266accd82121171f2067bb3978211cc5d6",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:be42b9484976448f50a9f9b7eaf4c6dceafb15f685eb5cd413d06207399660ae"
+    },
+    {
+      "subtitle_id": "SUB014",
+      "at_ms": 29490,
+      "frame_sha256": "sha256:ff7028b1c4521aab466a57e789973f9f193e439ad6c67c6482cd935e48000266",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:bf0e6e31d0de56893770d3491addd2dfc8f33f7da65a26b1f9d3b6598fe82950"
+    },
+    {
+      "subtitle_id": "SUB015",
+      "at_ms": 32000,
+      "frame_sha256": "sha256:9c5208c9ab0ab3159df225328b751779a9bfb7d582791d0b0e3aac8e9a72496d",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:10b2c7fd5ef8289a122d534604d478b96fe82642c8ca98a967fafd0b9af80578"
+    },
+    {
+      "subtitle_id": "SUB016",
+      "at_ms": 34270,
+      "frame_sha256": "sha256:5fc6579c38b25e703603a06dc8ff1e56510a790a8a4e37c29b311f95d0048123",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:e8a5d08e306ec4eecfa020b4c6daf2fc2c65cebc8a550394df773d760577a7a3"
+    },
+    {
+      "subtitle_id": "SUB017",
+      "at_ms": 36270,
+      "frame_sha256": "sha256:027968622e063d397c16e8a7dc987391e401cf1f191a89a7c86321c060d548b9",
+      "bbox": {
+        "x": 251,
+        "y": 1144,
+        "width": 519,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:fa8abe832bd134c7d3347f71c056fed77388f317b6d6f4289f2c58ebe01603f2"
+    },
+    {
+      "subtitle_id": "SUB018",
+      "at_ms": 37530,
+      "frame_sha256": "sha256:ee803371287d80f70566a09ab4e7d8e89e07a9e3b678665760dc237051dbe320",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:23b55bce7ce93039af2479b4209091f143794a9693320aabca9959dfde89849d"
+    },
+    {
+      "subtitle_id": "SUB019",
+      "at_ms": 39550,
+      "frame_sha256": "sha256:a0b8ce7853889028124f39fb0a3d9f780df227b8f48a8c279363c73f2495d61c",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:3a64e1e20025460c1a7592e65c6bb1e380a8b41fa87f6fc13d6b496b8a2b2e9f"
+    },
+    {
+      "subtitle_id": "SUB020",
+      "at_ms": 41380,
+      "frame_sha256": "sha256:417eed15d9f83ca2131483898d0b54d4290ed644ee87e13b0401a44f3f758012",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:2ffbc9b8b0a64e1017683288df5bfc6f794a0573a32259352691888bc87cefd1"
+    },
+    {
+      "subtitle_id": "SUB021",
+      "at_ms": 43180,
+      "frame_sha256": "sha256:89dc1042853a0d2c0769d1f5aafe7d28a0a3bbdfbe9848a5e55a3212c939bd33",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:051959c371362c23252cd5490819070e533da72cc55ebfb5f53f296d198c696e"
+    },
+    {
+      "subtitle_id": "SUB022",
+      "at_ms": 45140,
+      "frame_sha256": "sha256:497ec63b0f6e004031c3a4542278862e921f9fab1b3e312b89d074b9c328c947",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:9a8d44a156b74a55d98a89a6e6f0b8ba802c2c8412992c1e23ab0a3af20acc7c"
+    },
+    {
+      "subtitle_id": "SUB023",
+      "at_ms": 47460,
+      "frame_sha256": "sha256:bd749be00bf2a73282e784b2865e0312c267f7cb25f1735d8378c701c891eb78",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:f881f61fb60c92fd65ae85af37506d34e9cc8b80049495b5094327bb91d52681"
+    },
+    {
+      "subtitle_id": "SUB024",
+      "at_ms": 49330,
+      "frame_sha256": "sha256:d71b800a2ee5f7687eb1989da3c554534cba61b5413aba34db4a0fc2531e77f8",
+      "bbox": {
+        "x": 305,
+        "y": 1144,
+        "width": 411,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:a3269aac780cfcd6a8c872a777e229d0179091b4930c1bbcda56943ef0e725ac"
+    },
+    {
+      "subtitle_id": "SUB025",
+      "at_ms": 50820,
+      "frame_sha256": "sha256:bb7b4a8b1cf6e0dcde982163e79d34c5dba10e4932aa1cc25273aa9991b53115",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:2c1679412e5956cb927e2784d67e258a514c892759a9a50a3891b4b92a4fa4d2"
+    },
+    {
+      "subtitle_id": "SUB026",
+      "at_ms": 52380,
+      "frame_sha256": "sha256:97ccac5eccf4145d86de06566c2103b220ac8fc1f9adbedd2ef8ddf23e45e61b",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:82aa0cfe12db3793ada459dec5add3565348ae7aa6062ba76e00d9666ee4ad25"
+    },
+    {
+      "subtitle_id": "SUB027",
+      "at_ms": 53580,
+      "frame_sha256": "sha256:8c5251f396e7dae69110cd83b3c0849c86a5cd704af5f06eaa020899c0cdda0a",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:98df0a4ca734e276a4010e71a89c0f209fe1c7c4521c80d12839de362745ba7d"
+    },
+    {
+      "subtitle_id": "SUB028",
+      "at_ms": 55350,
+      "frame_sha256": "sha256:b7cb6cfe6f62ff85b2b5fcb92511d82b1c10b16f3ca48666585012c22966d506",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:ee7e778c70b517a96cb249d4ec9ee292a937d080be005f7e892f01295e70f33c"
+    },
+    {
+      "subtitle_id": "SUB029",
+      "at_ms": 57440,
+      "frame_sha256": "sha256:7816863f98b04dd090079cdfcaead0e5c1038a1c6ccdcce799704af70634d14b",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:e6f0fb4157f6aaf7a7d8f92e28f581920a5ee91657133c66510e14a38464e24b"
+    },
+    {
+      "subtitle_id": "SUB030",
+      "at_ms": 58710,
+      "frame_sha256": "sha256:c0dcd826e9c7d274b267fbede7d0618cb705a2cb55c5f5b09d8a4e5c9eac1403",
+      "bbox": {
+        "x": 175,
+        "y": 1144,
+        "width": 671,
+        "height": 72
+      },
+      "platform_status": {
+        "instagram_reels": "pass",
+        "tiktok_in_feed": "pass",
+        "youtube_shorts": "pass"
+      },
+      "status": "pass",
+      "evidence_fingerprint": "sha256:df4c1244a8196b83327fab3da49b6927a007f156d57d2f900b6a6cca58d97c32"
+    }
+  ],
+  "status": "pass",
+  "report_fingerprint": "sha256:68030394478e2ec272baf31ab7ecc13492bf3ea250c161dc92e62239cc805ba5"
+}

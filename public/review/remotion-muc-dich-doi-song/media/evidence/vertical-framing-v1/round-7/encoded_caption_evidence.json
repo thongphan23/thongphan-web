@@ -1,0 +1,4153 @@
+{
+  "schema": "tpr.vertical_social_caption_encoded_evidence.v1",
+  "run_id": "RUN-muc-dich-doi-song-vertical-framing-v1-20260801",
+  "round": 7,
+  "status": "pass",
+  "masters": [
+    {
+      "film": "soul",
+      "render_path": "rounds/round-7/renders/soul.mp4",
+      "render_sha256": "sha256:93e9548ad79cef65876e65b8535a9820cd338dfdb3fcaf7fef63c7e6733682f5",
+      "render_size_bytes": 35960097,
+      "caption_plan_fingerprint": "sha256:bd6f507e6d636b37b0937df9a5ad24abe72c92178a791ca592a05687d5a1d49e",
+      "caption_observation_count": 30,
+      "minimum_ocr_similarity": 1.0,
+      "ocr_failures": [],
+      "technical_checks": {
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "duration_matches_timeline": true,
+        "all_caption_bounds_safe": true,
+        "all_caption_text_present": true,
+        "all_subtitles_observed": true
+      },
+      "status": "pass",
+      "caption_contact_sheets": [
+        "audit/round-7/caption-contact-sheets/soul/page-01.jpg",
+        "audit/round-7/caption-contact-sheets/soul/page-02.jpg"
+      ],
+      "platform_overlay_sheets": {
+        "instagram_reels": "audit/round-7/platform-overlays/soul/instagram_reels-contact-sheet.jpg",
+        "tiktok_in_feed": "audit/round-7/platform-overlays/soul/tiktok_in_feed-contact-sheet.jpg",
+        "youtube_shorts": "audit/round-7/platform-overlays/soul/youtube_shorts-contact-sheet.jpg"
+      },
+      "observations": [
+        {
+          "subtitle_id": "SUB001",
+          "at_ms": 3140,
+          "text": "Điều quan trọng nhất mà bạn cần nhận",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:380ce9e5b0ffd49f3e3a23203c610b72f1f9241e430ba782d7811aada1104af8",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB001-03140ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7666,
+          "ocr": {
+            "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB002",
+          "at_ms": 5350,
+          "text": "thức là: đời bạn có một mục đích bên",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:abbc879c805bb36c72efa95289aeefde5d604c818377b989689220cb806c75e0",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB002-05350ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7785,
+          "ocr": {
+            "observed_text": "thức là: đời bạn có một mục đích bên",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB003",
+          "at_ms": 7640,
+          "text": "trong và một mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 37,
+          "frame_sha256": "sha256:ee9d3fcd9fa9ecf629dca08c0058bd63197a5f57cb9addf99fff6058f33b3649",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB003-07640ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7668,
+          "ocr": {
+            "observed_text": "trong và một mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB004",
+          "at_ms": 9700,
+          "text": "Mục đích bên trong là mục đích chính,",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:35afe55582a4ed257bf218631cd1aaa14317fc2fb7c9fc2cea3422190e8fa537",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB004-09700ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7866,
+          "ocr": {
+            "observed_text": "Mục đích bên trong là mục đích chính,",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB005",
+          "at_ms": 11740,
+          "text": "và mục đích này có liên quan đến trạng",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:20be08fed685efed867d5d8efd7a86f057a3c5392b7fe4fd3093ffbeb1658ee8",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB005-11740ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7914,
+          "ocr": {
+            "observed_text": "và mục đích này có liên quan đến trạng",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB006",
+          "at_ms": 13910,
+          "text": "thái an nhiên tự tại của bạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:acaeeb1ddba64d237d7cec1bf80e4d23426b47da7a03eada86836187f2ce9a2a",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB006-13910ms.jpg",
+          "bbox": {
+            "x": 164,
+            "y": 1144,
+            "width": 693,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7733,
+          "ocr": {
+            "observed_text": "thái an nhiên tự tại của bạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB007",
+          "at_ms": 16150,
+          "text": "Mục đích bên ngoài dính tới những việc",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:05be7567bd98f3db5af66f84ee478a45bbb9f18e66991b3a346fe96103f57306",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB007-16150ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7842,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài dính tới những việc",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB008",
+          "at_ms": 17880,
+          "text": "bạn làm, và đây chỉ là mục đích phụ.",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:40db9d5d7796a61f6717e6fc6281b443ed087ae80ec7a40cb8e10108ee40ec56",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB008-17880ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7863,
+          "ocr": {
+            "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB009",
+          "at_ms": 20130,
+          "text": "Mục đích bên trong của bạn là tỉnh",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:f6652a649642cd79275a2029baefde2154d968697a5ebd35a82fa8354efe3975",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB009-20130ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7715,
+          "ocr": {
+            "observed_text": "Mục đích bên trong của bạn là tỉnh",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB010",
+          "at_ms": 21940,
+          "text": "thức. Chỉ đơn giản có vậy thôi.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:a501eb387953fc4dbf16b635e67106d034f2379aa3339aa25e030390d6e7c344",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB010-21940ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7651,
+          "ocr": {
+            "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB011",
+          "at_ms": 24270,
+          "text": "Mục đích bên ngoài của bạn có thể thay",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:a9ea7e28ea00d5d0db98e937ab40b71ff9deedabb84e582b549b9b8b96feae61",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB011-24270ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7809,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB012",
+          "at_ms": 26210,
+          "text": "đổi theo thời gian và thay đổi rất",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:f9976ae3b12c9e6bc065b79e6b728355f36720fea11c4e4008fc89eabcddb126",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB012-26210ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7713,
+          "ocr": {
+            "observed_text": "đổi theo thời gian và thay đổi rất",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB013",
+          "at_ms": 27710,
+          "text": "nhiều ở từng người.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:6d9a53fdc2dbaba73dbf8c7f390b06266accd82121171f2067bb3978211cc5d6",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB013-27710ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7541,
+          "ocr": {
+            "observed_text": "nhiều ở từng người.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB014",
+          "at_ms": 29490,
+          "text": "Tìm ra và sống hòa điệu với nhịp sống",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:ff7028b1c4521aab466a57e789973f9f193e439ad6c67c6482cd935e48000266",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB014-29490ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7808,
+          "ocr": {
+            "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB015",
+          "at_ms": 32000,
+          "text": "của mục đích bên trong là cơ sở để bạn",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:9c5208c9ab0ab3159df225328b751779a9bfb7d582791d0b0e3aac8e9a72496d",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB015-32000ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7889,
+          "ocr": {
+            "observed_text": "của mục đích bên trong là cơ sở để bạn",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB016",
+          "at_ms": 34270,
+          "text": "có thể hoàn thành mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:5fc6579c38b25e703603a06dc8ff1e56510a790a8a4e37c29b311f95d0048123",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB016-34270ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7833,
+          "ocr": {
+            "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB017",
+          "at_ms": 36270,
+          "text": "Đó là cơ sở của những",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:027968622e063d397c16e8a7dc987391e401cf1f191a89a7c86321c060d548b9",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB017-36270ms.jpg",
+          "bbox": {
+            "x": 251,
+            "y": 1144,
+            "width": 519,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7326,
+          "ocr": {
+            "observed_text": "Đó là cơ sở của những",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB018",
+          "at_ms": 37530,
+          "text": "thành công thực sự.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:ee803371287d80f70566a09ab4e7d8e89e07a9e3b678665760dc237051dbe320",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB018-37530ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7314,
+          "ocr": {
+            "observed_text": "thành công thực sự.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB019",
+          "at_ms": 39550,
+          "text": "Nếu những gì bạn làm ở bên ngoài không",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:a0b8ce7853889028124f39fb0a3d9f780df227b8f48a8c279363c73f2495d61c",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB019-39550ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7547,
+          "ocr": {
+            "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB020",
+          "at_ms": 41380,
+          "text": "có sự hòa điệu với nhịp sống của mục",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:417eed15d9f83ca2131483898d0b54d4290ed644ee87e13b0401a44f3f758012",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB020-41380ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7761,
+          "ocr": {
+            "observed_text": "có sự hòa điệu với nhịp sống của mục",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB021",
+          "at_ms": 43180,
+          "text": "đích bên trong, thì muốn đạt được một",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:89dc1042853a0d2c0769d1f5aafe7d28a0a3bbdfbe9848a5e55a3212c939bd33",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB021-43180ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7632,
+          "ocr": {
+            "observed_text": "đích bên trong, thì muốn đạt được một",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB022",
+          "at_ms": 45140,
+          "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:497ec63b0f6e004031c3a4542278862e921f9fab1b3e312b89d074b9c328c947",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB022-45140ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7821,
+          "ocr": {
+            "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB023",
+          "at_ms": 47460,
+          "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:bd749be00bf2a73282e784b2865e0312c267f7cb25f1735d8378c701c891eb78",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB023-47460ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7612,
+          "ocr": {
+            "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB024",
+          "at_ms": 49330,
+          "text": "mưu và thủ đoạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:d71b800a2ee5f7687eb1989da3c554534cba61b5413aba34db4a0fc2531e77f8",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB024-49330ms.jpg",
+          "bbox": {
+            "x": 305,
+            "y": 1144,
+            "width": 411,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7505,
+          "ocr": {
+            "observed_text": "mưu và thủ đoạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB025",
+          "at_ms": 50820,
+          "text": "Nhưng làm như thế thì bạn không có",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:bb7b4a8b1cf6e0dcde982163e79d34c5dba10e4932aa1cc25273aa9991b53115",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB025-50820ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7647,
+          "ocr": {
+            "observed_text": "Nhưng làm như thế thì bạn không có",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB026",
+          "at_ms": 52380,
+          "text": "được niềm vui khi công",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:97ccac5eccf4145d86de06566c2103b220ac8fc1f9adbedd2ef8ddf23e45e61b",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB026-52380ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7519,
+          "ocr": {
+            "observed_text": "được niềm vui khi công",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB027",
+          "at_ms": 53580,
+          "text": "việc được hoàn tất.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:8c5251f396e7dae69110cd83b3c0849c86a5cd704af5f06eaa020899c0cdda0a",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB027-53580ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7568,
+          "ocr": {
+            "observed_text": "việc được hoàn tất.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB028",
+          "at_ms": 55350,
+          "text": "Và chắc chắn những kết quả ấy chỉ mang",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:b7cb6cfe6f62ff85b2b5fcb92511d82b1c10b16f3ca48666585012c22966d506",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB028-55350ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7768,
+          "ocr": {
+            "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB029",
+          "at_ms": 57440,
+          "text": "lại khổ đau cho bạn và",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:7816863f98b04dd090079cdfcaead0e5c1038a1c6ccdcce799704af70634d14b",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB029-57440ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7502,
+          "ocr": {
+            "observed_text": "lại khổ đau cho bạn và",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB030",
+          "at_ms": 58710,
+          "text": "cho những người chung quanh.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:c0dcd826e9c7d274b267fbede7d0618cb705a2cb55c5f5b09d8a4e5c9eac1403",
+          "frame_path": "audit/round-7/caption-frames/soul/SUB030-58710ms.jpg",
+          "bbox": {
+            "x": 175,
+            "y": 1144,
+            "width": 671,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7295,
+          "ocr": {
+            "observed_text": "cho những người chung quanh.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        }
+      ]
+    },
+    {
+      "film": "forrest-gump",
+      "render_path": "rounds/round-7/renders/forrest-gump.mp4",
+      "render_sha256": "sha256:642d23c0a6ec3ed4867006086eced9f1b84b9ed85452a1c03c974bd577f437ef",
+      "render_size_bytes": 46128862,
+      "caption_plan_fingerprint": "sha256:775d749b75ce9d3edbdcce7b0f1963bfe0f5f060feea8945483d86436f61c3cd",
+      "caption_observation_count": 30,
+      "minimum_ocr_similarity": 1.0,
+      "ocr_failures": [],
+      "technical_checks": {
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "duration_matches_timeline": true,
+        "all_caption_bounds_safe": true,
+        "all_caption_text_present": true,
+        "all_subtitles_observed": true
+      },
+      "status": "pass",
+      "caption_contact_sheets": [
+        "audit/round-7/caption-contact-sheets/forrest-gump/page-01.jpg",
+        "audit/round-7/caption-contact-sheets/forrest-gump/page-02.jpg"
+      ],
+      "platform_overlay_sheets": {
+        "instagram_reels": "audit/round-7/platform-overlays/forrest-gump/instagram_reels-contact-sheet.jpg",
+        "tiktok_in_feed": "audit/round-7/platform-overlays/forrest-gump/tiktok_in_feed-contact-sheet.jpg",
+        "youtube_shorts": "audit/round-7/platform-overlays/forrest-gump/youtube_shorts-contact-sheet.jpg"
+      },
+      "observations": [
+        {
+          "subtitle_id": "SUB001",
+          "at_ms": 3140,
+          "text": "Điều quan trọng nhất mà bạn cần nhận",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:2bba14c4f918225d2003f17d17740af50e2469b9951328d1f34bdade626ac976",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB001-03140ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7668,
+          "ocr": {
+            "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB002",
+          "at_ms": 5350,
+          "text": "thức là: đời bạn có một mục đích bên",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:b55266ed876465eb73925f1ee04a6c8a68e0bc805f17152aa843378a15d23e25",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB002-05350ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7748,
+          "ocr": {
+            "observed_text": "thức là: đời bạn có một mục đích bên",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB003",
+          "at_ms": 7640,
+          "text": "trong và một mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 37,
+          "frame_sha256": "sha256:6be72d242e679c3979c12ddddea1a24002408f79e31f83788a1b497e5b06be8d",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB003-07640ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7651,
+          "ocr": {
+            "observed_text": "trong và một mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB004",
+          "at_ms": 9700,
+          "text": "Mục đích bên trong là mục đích chính,",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:ccbec98cb882dc102135d057a7d9b18adee571a9f0bdb72eb2686e8c0213a6c5",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB004-09700ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.786,
+          "ocr": {
+            "observed_text": "Mục đích bên trong là mục đích chính,",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB005",
+          "at_ms": 11740,
+          "text": "và mục đích này có liên quan đến trạng",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:7fa010b3642ec9c785ba8650ffe716bdefc0128940de099b297472ca546bf83b",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB005-11740ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7906,
+          "ocr": {
+            "observed_text": "và mục đích này có liên quan đến trạng",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB006",
+          "at_ms": 13910,
+          "text": "thái an nhiên tự tại của bạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:5f97196f9eb7b8ad20a31035bba6f91e2cb2ff0087dbfc8fe1a46d4e634cce67",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB006-13910ms.jpg",
+          "bbox": {
+            "x": 164,
+            "y": 1144,
+            "width": 693,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7708,
+          "ocr": {
+            "observed_text": "thái an nhiên tự tại của bạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB007",
+          "at_ms": 16150,
+          "text": "Mục đích bên ngoài dính tới những việc",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:f95b292986654b3e7b5615b137c530c4a40c8447a733931737d3b4dd2a7a1b74",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB007-16150ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7848,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài dính tới những việc",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB008",
+          "at_ms": 17880,
+          "text": "bạn làm, và đây chỉ là mục đích phụ.",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:29d41953eddcf8b773fbaf144eb5cc54b913f18c71b07fe2caf89126ebbb27c6",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB008-17880ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7857,
+          "ocr": {
+            "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB009",
+          "at_ms": 20130,
+          "text": "Mục đích bên trong của bạn là tỉnh",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:794cd1bc6cbda1f3886db424590049cdd2a7c9b98367568ae6b663454b086467",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB009-20130ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7704,
+          "ocr": {
+            "observed_text": "Mục đích bên trong của bạn là tỉnh",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB010",
+          "at_ms": 21940,
+          "text": "thức. Chỉ đơn giản có vậy thôi.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:c96fd8f6558e13f6c4819cce6bd345a04bdef831529a1d6f2b60dd1fee1bb775",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB010-21940ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7638,
+          "ocr": {
+            "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB011",
+          "at_ms": 24270,
+          "text": "Mục đích bên ngoài của bạn có thể thay",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:d77ca489583da984c93c3a833defe826902b326f30d4a0f39f2066026db29fae",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB011-24270ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7849,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB012",
+          "at_ms": 26210,
+          "text": "đổi theo thời gian và thay đổi rất",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:cf5a0e8dc9e67fb5ecdb87c442ada83182503e11c63056e79381900d27409019",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB012-26210ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7758,
+          "ocr": {
+            "observed_text": "đổi theo thời gian và thay đổi rất",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB013",
+          "at_ms": 27710,
+          "text": "nhiều ở từng người.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:9f7e3bb3e68f200692fbd8fc973ad45583898861b7c23421702a891b1e4b1e2e",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB013-27710ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7535,
+          "ocr": {
+            "observed_text": "nhiều ở từng người.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB014",
+          "at_ms": 29490,
+          "text": "Tìm ra và sống hòa điệu với nhịp sống",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:0d2b8c42a8d615394d27b12a4d15fec566bd196dde77d50b3bedd050c3920fac",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB014-29490ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7922,
+          "ocr": {
+            "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB015",
+          "at_ms": 32000,
+          "text": "của mục đích bên trong là cơ sở để bạn",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:cadf2921cf59685ca031da9309b10d5dea25e1ee6631d3f7e68625d08c8a11e8",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB015-32000ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7887,
+          "ocr": {
+            "observed_text": "của mục đích bên trong là cơ sở để bạn",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB016",
+          "at_ms": 34270,
+          "text": "có thể hoàn thành mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:c120e976cdac02c199ef4d9e7a07be638ab1d93ee62487e1c1aef8da54f149fa",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB016-34270ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.783,
+          "ocr": {
+            "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB017",
+          "at_ms": 36270,
+          "text": "Đó là cơ sở của những",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:d8f60ed8a555b4604542881de25ad1c96ac50098c42f6c25903d9c92cdef7c91",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB017-36270ms.jpg",
+          "bbox": {
+            "x": 251,
+            "y": 1144,
+            "width": 519,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7665,
+          "ocr": {
+            "observed_text": "Đó là cơ sở của những",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB018",
+          "at_ms": 37530,
+          "text": "thành công thực sự.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:9ff1138d03c900147cb05cff3962729fc264b4ce1473cb9df4eeeaa8059d191f",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB018-37530ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7619,
+          "ocr": {
+            "observed_text": "thành công thực sự.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB019",
+          "at_ms": 39550,
+          "text": "Nếu những gì bạn làm ở bên ngoài không",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:153f182e32fecf399a2399540e2a26fbfb0113b978eef9e18e887254798d8497",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB019-39550ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7765,
+          "ocr": {
+            "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB020",
+          "at_ms": 41380,
+          "text": "có sự hòa điệu với nhịp sống của mục",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:453737aca168e653aa0b61a2b5eb81017c00863ac83078d45c057fa2db861599",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB020-41380ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7791,
+          "ocr": {
+            "observed_text": "có sự hòa điệu với nhịp sống của mục",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB021",
+          "at_ms": 43180,
+          "text": "đích bên trong, thì muốn đạt được một",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:b125d3be33365cd99ab5d4a1b9c815e9707f008c6513827519cada1ebfa022b5",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB021-43180ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7842,
+          "ocr": {
+            "observed_text": "đích bên trong, thì muốn đạt được một",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB022",
+          "at_ms": 45140,
+          "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:21c4a90547afbb84a954fb873371a3e8cc5369c99fc293dd0a7ae9364824df98",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB022-45140ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7834,
+          "ocr": {
+            "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB023",
+          "at_ms": 47460,
+          "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:7a34faebe59b3b9add40b301eb348f7ee057f9b34978435f806c68d0b25b2e7d",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB023-47460ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7874,
+          "ocr": {
+            "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB024",
+          "at_ms": 49330,
+          "text": "mưu và thủ đoạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:b4f3b5b86e4d3fd3996f3f3ac6a452cb8ab57966fdaf52640852be2da163a404",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB024-49330ms.jpg",
+          "bbox": {
+            "x": 305,
+            "y": 1144,
+            "width": 411,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.767,
+          "ocr": {
+            "observed_text": "mưu và thủ đoạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB025",
+          "at_ms": 50820,
+          "text": "Nhưng làm như thế thì bạn không có",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:c360e08b7b6cfcd542673da58fda60a254fca0c51882462dcfa687b4833946d0",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB025-50820ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.764,
+          "ocr": {
+            "observed_text": "Nhưng làm như thế thì bạn không có",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB026",
+          "at_ms": 52380,
+          "text": "được niềm vui khi công",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:df780b6685787e0242f88628be9ddf2deed0814f58aab371023bab76d7b4794d",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB026-52380ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7574,
+          "ocr": {
+            "observed_text": "được niềm vui khi công",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB027",
+          "at_ms": 53580,
+          "text": "việc được hoàn tất.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:47102d0f66fccedb9c15a61615020c9e34dc3a2e06b0951e075aabd2a8a06af3",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB027-53580ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7574,
+          "ocr": {
+            "observed_text": "việc được hoàn tất.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB028",
+          "at_ms": 55350,
+          "text": "Và chắc chắn những kết quả ấy chỉ mang",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:95296da51fc4e0bf80d5af053d0bc310628153af5bd1e47b5d8de0c0d7dc8bb6",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB028-55350ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.776,
+          "ocr": {
+            "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB029",
+          "at_ms": 57440,
+          "text": "lại khổ đau cho bạn và",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:36a42b9ba4fcb7638666f2c29b689a5fc0b4b80e0d3ed0ea191b651ce03d345d",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB029-57440ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7632,
+          "ocr": {
+            "observed_text": "lại khổ đau cho bạn và",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB030",
+          "at_ms": 58710,
+          "text": "cho những người chung quanh.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:89736a7533894d4f465ce7139dd3cdec33c25242d834079297b76a3d0e80bb2a",
+          "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB030-58710ms.jpg",
+          "bbox": {
+            "x": 175,
+            "y": 1144,
+            "width": 671,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7486,
+          "ocr": {
+            "observed_text": "cho những người chung quanh.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        }
+      ]
+    },
+    {
+      "film": "a-beautiful-mind",
+      "render_path": "rounds/round-7/renders/a-beautiful-mind.mp4",
+      "render_sha256": "sha256:1d5f420eb93c2d9280ef84e1c4d3c01a892246617e4857bf62fca5cb6583246b",
+      "render_size_bytes": 43755101,
+      "caption_plan_fingerprint": "sha256:a53fd6d7bf97e54a1d339b8634c10df5d8994778802bdda4f4d3ae6624af29d3",
+      "caption_observation_count": 30,
+      "minimum_ocr_similarity": 1.0,
+      "ocr_failures": [],
+      "technical_checks": {
+        "is_1080x1920_30fps": true,
+        "has_h264_video": true,
+        "has_aac_audio": true,
+        "duration_matches_timeline": true,
+        "all_caption_bounds_safe": true,
+        "all_caption_text_present": true,
+        "all_subtitles_observed": true
+      },
+      "status": "pass",
+      "caption_contact_sheets": [
+        "audit/round-7/caption-contact-sheets/a-beautiful-mind/page-01.jpg",
+        "audit/round-7/caption-contact-sheets/a-beautiful-mind/page-02.jpg"
+      ],
+      "platform_overlay_sheets": {
+        "instagram_reels": "audit/round-7/platform-overlays/a-beautiful-mind/instagram_reels-contact-sheet.jpg",
+        "tiktok_in_feed": "audit/round-7/platform-overlays/a-beautiful-mind/tiktok_in_feed-contact-sheet.jpg",
+        "youtube_shorts": "audit/round-7/platform-overlays/a-beautiful-mind/youtube_shorts-contact-sheet.jpg"
+      },
+      "observations": [
+        {
+          "subtitle_id": "SUB001",
+          "at_ms": 3140,
+          "text": "Điều quan trọng nhất mà bạn cần nhận",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:ad6dbaaf57390e26d77df564deff59700480f6f3dbae01bb43f57468e43cd50a",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB001-03140ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7665,
+          "ocr": {
+            "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB002",
+          "at_ms": 5350,
+          "text": "thức là: đời bạn có một mục đích bên",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:77885ff5d0d9b5398ab8b4f8e26c7be961ab2a90e57febe4a18fa2d9c51fdc6e",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB002-05350ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7805,
+          "ocr": {
+            "observed_text": "thức là: đời bạn có một mục đích bên",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB003",
+          "at_ms": 7640,
+          "text": "trong và một mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 37,
+          "frame_sha256": "sha256:22a803cd169eba00328234ffb002a6f7776f1b2fff992b095f30cf67cd8c9404",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB003-07640ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7662,
+          "ocr": {
+            "observed_text": "trong và một mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB004",
+          "at_ms": 9700,
+          "text": "Mục đích bên trong là mục đích chính,",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:43eaf83ce6b94c6ec8747ee4d8b3155f646056926ee82a69c83242581f5b8389",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB004-09700ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.788,
+          "ocr": {
+            "observed_text": "Mục đích bên trong là mục đích chính,",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB005",
+          "at_ms": 11740,
+          "text": "và mục đích này có liên quan đến trạng",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:2eb591b0b428d5d2151d54f0c7db934648a2704e01ee9264d4cab23ea988b2f1",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB005-11740ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.793,
+          "ocr": {
+            "observed_text": "và mục đích này có liên quan đến trạng",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB006",
+          "at_ms": 13910,
+          "text": "thái an nhiên tự tại của bạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:61afd69ab0d0ee604b5aedc6e70ffcbb97061d7cb9146b6adf58658e7d7b9202",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB006-13910ms.jpg",
+          "bbox": {
+            "x": 164,
+            "y": 1144,
+            "width": 693,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7736,
+          "ocr": {
+            "observed_text": "thái an nhiên tự tại của bạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB007",
+          "at_ms": 16150,
+          "text": "Mục đích bên ngoài dính tới những việc",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:febb5c6383b7daea7ab05c5389645042a1018e685cdb54fb5274802557623664",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB007-16150ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7841,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài dính tới những việc",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB008",
+          "at_ms": 17880,
+          "text": "bạn làm, và đây chỉ là mục đích phụ.",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:834f3b128f84a5a969bc759a49eb46f8092a1a80925f5323d7be217ed9d0a4ec",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB008-17880ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.787,
+          "ocr": {
+            "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB009",
+          "at_ms": 20130,
+          "text": "Mục đích bên trong của bạn là tỉnh",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:be0513c14c7b980510a720bcc018ff6be6934a15df8bd0ea68a9d4a50adda955",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB009-20130ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7727,
+          "ocr": {
+            "observed_text": "Mục đích bên trong của bạn là tỉnh",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB010",
+          "at_ms": 21940,
+          "text": "thức. Chỉ đơn giản có vậy thôi.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:4138bd757f0fd168c2a744b754ebc2472470e33bd35f7895702ab71c91384d85",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB010-21940ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7662,
+          "ocr": {
+            "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB011",
+          "at_ms": 24270,
+          "text": "Mục đích bên ngoài của bạn có thể thay",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:17278c75cf3050f58a52632326dcdd41cb5f4d2be21a02fc0fd9cc40e67ddee7",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB011-24270ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7852,
+          "ocr": {
+            "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB012",
+          "at_ms": 26210,
+          "text": "đổi theo thời gian và thay đổi rất",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:19ac41fcf18f244a66b14b42beae2349bfd03a6542a58e8b0250db646a522be5",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB012-26210ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7752,
+          "ocr": {
+            "observed_text": "đổi theo thời gian và thay đổi rất",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB013",
+          "at_ms": 27710,
+          "text": "nhiều ở từng người.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:91dee181931efb224ac216ef913f0362d6e07cdc9b574eb63bef6436af1fc63d",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB013-27710ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7569,
+          "ocr": {
+            "observed_text": "nhiều ở từng người.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB014",
+          "at_ms": 29490,
+          "text": "Tìm ra và sống hòa điệu với nhịp sống",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:e8157bde3c6a2c2da9237ffa0a770883b4b943aac90b46a9b78be0dc9e08510f",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB014-29490ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.784,
+          "ocr": {
+            "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB015",
+          "at_ms": 32000,
+          "text": "của mục đích bên trong là cơ sở để bạn",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:0314015f7a9281c1abf5a6abfb7e96785a1ffbb906a934539fd7a020cdb4bcf1",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB015-32000ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7884,
+          "ocr": {
+            "observed_text": "của mục đích bên trong là cơ sở để bạn",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB016",
+          "at_ms": 34270,
+          "text": "có thể hoàn thành mục đích bên ngoài.",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:f43b02cf7423987c1ce0465cf9640272099b777a07ee8389558a1d780dc13725",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB016-34270ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7831,
+          "ocr": {
+            "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB017",
+          "at_ms": 36270,
+          "text": "Đó là cơ sở của những",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:f576253a075d32efe24524a58d6406198e8c76bad2be8fadcb13772a56a0901b",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB017-36270ms.jpg",
+          "bbox": {
+            "x": 251,
+            "y": 1144,
+            "width": 519,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.759,
+          "ocr": {
+            "observed_text": "Đó là cơ sở của những",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB018",
+          "at_ms": 37530,
+          "text": "thành công thực sự.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:2d1972164b3f49d4b8388b69810873067d5c10e1253e966fd5c2e1371dcab4e7",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB018-37530ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.762,
+          "ocr": {
+            "observed_text": "thành công thực sự.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB019",
+          "at_ms": 39550,
+          "text": "Nếu những gì bạn làm ở bên ngoài không",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:800a5d55fe4de0db6ceb9887dec92719ebd4fe1e06c68206e571299686a333bc",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB019-39550ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7766,
+          "ocr": {
+            "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB020",
+          "at_ms": 41380,
+          "text": "có sự hòa điệu với nhịp sống của mục",
+          "line_count": 1,
+          "font_size_px": 33,
+          "frame_sha256": "sha256:f9ad49eb6cf08c3c411f85dda757e62d7fab6b5f6686d6f60b29ce06a8ead4af",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB020-41380ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 742,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7752,
+          "ocr": {
+            "observed_text": "có sự hòa điệu với nhịp sống của mục",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB021",
+          "at_ms": 43180,
+          "text": "đích bên trong, thì muốn đạt được một",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:20551b8dd788306719a76b27cf2630152e3150c90d41a7293a698cd92ced0cc6",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB021-43180ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7806,
+          "ocr": {
+            "observed_text": "đích bên trong, thì muốn đạt được một",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB022",
+          "at_ms": 45140,
+          "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+          "line_count": 1,
+          "font_size_px": 32,
+          "frame_sha256": "sha256:22e11fd11c492d1853d9f9111245957cd6df715b6d17ddf85f878e56485ad162",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB022-45140ms.jpg",
+          "bbox": {
+            "x": 141,
+            "y": 1144,
+            "width": 739,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7826,
+          "ocr": {
+            "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB023",
+          "at_ms": 47460,
+          "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:060b4acd9767585692072f9d017723ecf54b59db8380b3a9017529a6279b0673",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB023-47460ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7852,
+          "ocr": {
+            "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB024",
+          "at_ms": 49330,
+          "text": "mưu và thủ đoạn.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:d703d8428a937dca21f0d71c60c1bf0cd2f03a6d62dde3ea0b00b3c62784c533",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB024-49330ms.jpg",
+          "bbox": {
+            "x": 305,
+            "y": 1144,
+            "width": 411,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7655,
+          "ocr": {
+            "observed_text": "mưu và thủ đoạn.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB025",
+          "at_ms": 50820,
+          "text": "Nhưng làm như thế thì bạn không có",
+          "line_count": 1,
+          "font_size_px": 35,
+          "frame_sha256": "sha256:b35adacf17a758f9dbe3e4c1309c1db362173c7f23f29c79c0766a5c96515a39",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB025-50820ms.jpg",
+          "bbox": {
+            "x": 139,
+            "y": 1144,
+            "width": 743,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7643,
+          "ocr": {
+            "observed_text": "Nhưng làm như thế thì bạn không có",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB026",
+          "at_ms": 52380,
+          "text": "được niềm vui khi công",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:3cdb415cc3352f02c9027264f1d6a67cfeb69e75c31dc3b3fdd9b615208492e1",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB026-52380ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7573,
+          "ocr": {
+            "observed_text": "được niềm vui khi công",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB027",
+          "at_ms": 53580,
+          "text": "việc được hoàn tất.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:4e475e4d2006d6577b49f80ca2adaf59d9eec419705fa1f191a0dfee705fefe2",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB027-53580ms.jpg",
+          "bbox": {
+            "x": 272,
+            "y": 1144,
+            "width": 476,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7617,
+          "ocr": {
+            "observed_text": "việc được hoàn tất.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB028",
+          "at_ms": 55350,
+          "text": "Và chắc chắn những kết quả ấy chỉ mang",
+          "line_count": 1,
+          "font_size_px": 31,
+          "frame_sha256": "sha256:a089c45abc66fa24bd83ee059b180c44499ce27b0a45d520a8eb6539ea75d79a",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB028-55350ms.jpg",
+          "bbox": {
+            "x": 142,
+            "y": 1144,
+            "width": 736,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7771,
+          "ocr": {
+            "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB029",
+          "at_ms": 57440,
+          "text": "lại khổ đau cho bạn và",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:89f81e0a867c8d66a6c33c2e0c729b8ff59cae5d85d66c48697f0f6dd90d5203",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB029-57440ms.jpg",
+          "bbox": {
+            "x": 240,
+            "y": 1144,
+            "width": 541,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.765,
+          "ocr": {
+            "observed_text": "lại khổ đau cho bạn và",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        },
+        {
+          "subtitle_id": "SUB030",
+          "at_ms": 58710,
+          "text": "cho những người chung quanh.",
+          "line_count": 1,
+          "font_size_px": 38,
+          "frame_sha256": "sha256:de6e93839ab8b0149da9086c68821d772b7e000429814eac99f3fe394c27290d",
+          "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB030-58710ms.jpg",
+          "bbox": {
+            "x": 175,
+            "y": 1144,
+            "width": 671,
+            "height": 72
+          },
+          "paper_pixel_coverage_ratio": 0.7507,
+          "ocr": {
+            "observed_text": "cho những người chung quanh.",
+            "confidence": 1.0,
+            "normalized_similarity": 1.0,
+            "status": "pass"
+          }
+        }
+      ]
+    }
+  ],
+  "rendered_caption_observations": [
+    {
+      "film": "soul",
+      "subtitle_id": "SUB001",
+      "at_ms": 3140,
+      "text": "Điều quan trọng nhất mà bạn cần nhận",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:380ce9e5b0ffd49f3e3a23203c610b72f1f9241e430ba782d7811aada1104af8",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB001-03140ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7666,
+      "ocr": {
+        "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB002",
+      "at_ms": 5350,
+      "text": "thức là: đời bạn có một mục đích bên",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:abbc879c805bb36c72efa95289aeefde5d604c818377b989689220cb806c75e0",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB002-05350ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7785,
+      "ocr": {
+        "observed_text": "thức là: đời bạn có một mục đích bên",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB003",
+      "at_ms": 7640,
+      "text": "trong và một mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 37,
+      "frame_sha256": "sha256:ee9d3fcd9fa9ecf629dca08c0058bd63197a5f57cb9addf99fff6058f33b3649",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB003-07640ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7668,
+      "ocr": {
+        "observed_text": "trong và một mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB004",
+      "at_ms": 9700,
+      "text": "Mục đích bên trong là mục đích chính,",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:35afe55582a4ed257bf218631cd1aaa14317fc2fb7c9fc2cea3422190e8fa537",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB004-09700ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7866,
+      "ocr": {
+        "observed_text": "Mục đích bên trong là mục đích chính,",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB005",
+      "at_ms": 11740,
+      "text": "và mục đích này có liên quan đến trạng",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:20be08fed685efed867d5d8efd7a86f057a3c5392b7fe4fd3093ffbeb1658ee8",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB005-11740ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7914,
+      "ocr": {
+        "observed_text": "và mục đích này có liên quan đến trạng",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB006",
+      "at_ms": 13910,
+      "text": "thái an nhiên tự tại của bạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:acaeeb1ddba64d237d7cec1bf80e4d23426b47da7a03eada86836187f2ce9a2a",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB006-13910ms.jpg",
+      "bbox": {
+        "x": 164,
+        "y": 1144,
+        "width": 693,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7733,
+      "ocr": {
+        "observed_text": "thái an nhiên tự tại của bạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB007",
+      "at_ms": 16150,
+      "text": "Mục đích bên ngoài dính tới những việc",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:05be7567bd98f3db5af66f84ee478a45bbb9f18e66991b3a346fe96103f57306",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB007-16150ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7842,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài dính tới những việc",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB008",
+      "at_ms": 17880,
+      "text": "bạn làm, và đây chỉ là mục đích phụ.",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:40db9d5d7796a61f6717e6fc6281b443ed087ae80ec7a40cb8e10108ee40ec56",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB008-17880ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7863,
+      "ocr": {
+        "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB009",
+      "at_ms": 20130,
+      "text": "Mục đích bên trong của bạn là tỉnh",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:f6652a649642cd79275a2029baefde2154d968697a5ebd35a82fa8354efe3975",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB009-20130ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7715,
+      "ocr": {
+        "observed_text": "Mục đích bên trong của bạn là tỉnh",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB010",
+      "at_ms": 21940,
+      "text": "thức. Chỉ đơn giản có vậy thôi.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:a501eb387953fc4dbf16b635e67106d034f2379aa3339aa25e030390d6e7c344",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB010-21940ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7651,
+      "ocr": {
+        "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB011",
+      "at_ms": 24270,
+      "text": "Mục đích bên ngoài của bạn có thể thay",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:a9ea7e28ea00d5d0db98e937ab40b71ff9deedabb84e582b549b9b8b96feae61",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB011-24270ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7809,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB012",
+      "at_ms": 26210,
+      "text": "đổi theo thời gian và thay đổi rất",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:f9976ae3b12c9e6bc065b79e6b728355f36720fea11c4e4008fc89eabcddb126",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB012-26210ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7713,
+      "ocr": {
+        "observed_text": "đổi theo thời gian và thay đổi rất",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB013",
+      "at_ms": 27710,
+      "text": "nhiều ở từng người.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:6d9a53fdc2dbaba73dbf8c7f390b06266accd82121171f2067bb3978211cc5d6",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB013-27710ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7541,
+      "ocr": {
+        "observed_text": "nhiều ở từng người.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB014",
+      "at_ms": 29490,
+      "text": "Tìm ra và sống hòa điệu với nhịp sống",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:ff7028b1c4521aab466a57e789973f9f193e439ad6c67c6482cd935e48000266",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB014-29490ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7808,
+      "ocr": {
+        "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB015",
+      "at_ms": 32000,
+      "text": "của mục đích bên trong là cơ sở để bạn",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:9c5208c9ab0ab3159df225328b751779a9bfb7d582791d0b0e3aac8e9a72496d",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB015-32000ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7889,
+      "ocr": {
+        "observed_text": "của mục đích bên trong là cơ sở để bạn",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB016",
+      "at_ms": 34270,
+      "text": "có thể hoàn thành mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:5fc6579c38b25e703603a06dc8ff1e56510a790a8a4e37c29b311f95d0048123",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB016-34270ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7833,
+      "ocr": {
+        "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB017",
+      "at_ms": 36270,
+      "text": "Đó là cơ sở của những",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:027968622e063d397c16e8a7dc987391e401cf1f191a89a7c86321c060d548b9",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB017-36270ms.jpg",
+      "bbox": {
+        "x": 251,
+        "y": 1144,
+        "width": 519,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7326,
+      "ocr": {
+        "observed_text": "Đó là cơ sở của những",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB018",
+      "at_ms": 37530,
+      "text": "thành công thực sự.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:ee803371287d80f70566a09ab4e7d8e89e07a9e3b678665760dc237051dbe320",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB018-37530ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7314,
+      "ocr": {
+        "observed_text": "thành công thực sự.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB019",
+      "at_ms": 39550,
+      "text": "Nếu những gì bạn làm ở bên ngoài không",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:a0b8ce7853889028124f39fb0a3d9f780df227b8f48a8c279363c73f2495d61c",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB019-39550ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7547,
+      "ocr": {
+        "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB020",
+      "at_ms": 41380,
+      "text": "có sự hòa điệu với nhịp sống của mục",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:417eed15d9f83ca2131483898d0b54d4290ed644ee87e13b0401a44f3f758012",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB020-41380ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7761,
+      "ocr": {
+        "observed_text": "có sự hòa điệu với nhịp sống của mục",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB021",
+      "at_ms": 43180,
+      "text": "đích bên trong, thì muốn đạt được một",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:89dc1042853a0d2c0769d1f5aafe7d28a0a3bbdfbe9848a5e55a3212c939bd33",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB021-43180ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7632,
+      "ocr": {
+        "observed_text": "đích bên trong, thì muốn đạt được một",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB022",
+      "at_ms": 45140,
+      "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:497ec63b0f6e004031c3a4542278862e921f9fab1b3e312b89d074b9c328c947",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB022-45140ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7821,
+      "ocr": {
+        "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB023",
+      "at_ms": 47460,
+      "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:bd749be00bf2a73282e784b2865e0312c267f7cb25f1735d8378c701c891eb78",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB023-47460ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7612,
+      "ocr": {
+        "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB024",
+      "at_ms": 49330,
+      "text": "mưu và thủ đoạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:d71b800a2ee5f7687eb1989da3c554534cba61b5413aba34db4a0fc2531e77f8",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB024-49330ms.jpg",
+      "bbox": {
+        "x": 305,
+        "y": 1144,
+        "width": 411,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7505,
+      "ocr": {
+        "observed_text": "mưu và thủ đoạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB025",
+      "at_ms": 50820,
+      "text": "Nhưng làm như thế thì bạn không có",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:bb7b4a8b1cf6e0dcde982163e79d34c5dba10e4932aa1cc25273aa9991b53115",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB025-50820ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7647,
+      "ocr": {
+        "observed_text": "Nhưng làm như thế thì bạn không có",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB026",
+      "at_ms": 52380,
+      "text": "được niềm vui khi công",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:97ccac5eccf4145d86de06566c2103b220ac8fc1f9adbedd2ef8ddf23e45e61b",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB026-52380ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7519,
+      "ocr": {
+        "observed_text": "được niềm vui khi công",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB027",
+      "at_ms": 53580,
+      "text": "việc được hoàn tất.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:8c5251f396e7dae69110cd83b3c0849c86a5cd704af5f06eaa020899c0cdda0a",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB027-53580ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7568,
+      "ocr": {
+        "observed_text": "việc được hoàn tất.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB028",
+      "at_ms": 55350,
+      "text": "Và chắc chắn những kết quả ấy chỉ mang",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:b7cb6cfe6f62ff85b2b5fcb92511d82b1c10b16f3ca48666585012c22966d506",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB028-55350ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7768,
+      "ocr": {
+        "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB029",
+      "at_ms": 57440,
+      "text": "lại khổ đau cho bạn và",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:7816863f98b04dd090079cdfcaead0e5c1038a1c6ccdcce799704af70634d14b",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB029-57440ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7502,
+      "ocr": {
+        "observed_text": "lại khổ đau cho bạn và",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "soul",
+      "subtitle_id": "SUB030",
+      "at_ms": 58710,
+      "text": "cho những người chung quanh.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:c0dcd826e9c7d274b267fbede7d0618cb705a2cb55c5f5b09d8a4e5c9eac1403",
+      "frame_path": "audit/round-7/caption-frames/soul/SUB030-58710ms.jpg",
+      "bbox": {
+        "x": 175,
+        "y": 1144,
+        "width": 671,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7295,
+      "ocr": {
+        "observed_text": "cho những người chung quanh.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB001",
+      "at_ms": 3140,
+      "text": "Điều quan trọng nhất mà bạn cần nhận",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:2bba14c4f918225d2003f17d17740af50e2469b9951328d1f34bdade626ac976",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB001-03140ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7668,
+      "ocr": {
+        "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB002",
+      "at_ms": 5350,
+      "text": "thức là: đời bạn có một mục đích bên",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:b55266ed876465eb73925f1ee04a6c8a68e0bc805f17152aa843378a15d23e25",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB002-05350ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7748,
+      "ocr": {
+        "observed_text": "thức là: đời bạn có một mục đích bên",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB003",
+      "at_ms": 7640,
+      "text": "trong và một mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 37,
+      "frame_sha256": "sha256:6be72d242e679c3979c12ddddea1a24002408f79e31f83788a1b497e5b06be8d",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB003-07640ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7651,
+      "ocr": {
+        "observed_text": "trong và một mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB004",
+      "at_ms": 9700,
+      "text": "Mục đích bên trong là mục đích chính,",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:ccbec98cb882dc102135d057a7d9b18adee571a9f0bdb72eb2686e8c0213a6c5",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB004-09700ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.786,
+      "ocr": {
+        "observed_text": "Mục đích bên trong là mục đích chính,",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB005",
+      "at_ms": 11740,
+      "text": "và mục đích này có liên quan đến trạng",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:7fa010b3642ec9c785ba8650ffe716bdefc0128940de099b297472ca546bf83b",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB005-11740ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7906,
+      "ocr": {
+        "observed_text": "và mục đích này có liên quan đến trạng",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB006",
+      "at_ms": 13910,
+      "text": "thái an nhiên tự tại của bạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:5f97196f9eb7b8ad20a31035bba6f91e2cb2ff0087dbfc8fe1a46d4e634cce67",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB006-13910ms.jpg",
+      "bbox": {
+        "x": 164,
+        "y": 1144,
+        "width": 693,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7708,
+      "ocr": {
+        "observed_text": "thái an nhiên tự tại của bạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB007",
+      "at_ms": 16150,
+      "text": "Mục đích bên ngoài dính tới những việc",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:f95b292986654b3e7b5615b137c530c4a40c8447a733931737d3b4dd2a7a1b74",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB007-16150ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7848,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài dính tới những việc",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB008",
+      "at_ms": 17880,
+      "text": "bạn làm, và đây chỉ là mục đích phụ.",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:29d41953eddcf8b773fbaf144eb5cc54b913f18c71b07fe2caf89126ebbb27c6",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB008-17880ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7857,
+      "ocr": {
+        "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB009",
+      "at_ms": 20130,
+      "text": "Mục đích bên trong của bạn là tỉnh",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:794cd1bc6cbda1f3886db424590049cdd2a7c9b98367568ae6b663454b086467",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB009-20130ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7704,
+      "ocr": {
+        "observed_text": "Mục đích bên trong của bạn là tỉnh",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB010",
+      "at_ms": 21940,
+      "text": "thức. Chỉ đơn giản có vậy thôi.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:c96fd8f6558e13f6c4819cce6bd345a04bdef831529a1d6f2b60dd1fee1bb775",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB010-21940ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7638,
+      "ocr": {
+        "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB011",
+      "at_ms": 24270,
+      "text": "Mục đích bên ngoài của bạn có thể thay",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:d77ca489583da984c93c3a833defe826902b326f30d4a0f39f2066026db29fae",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB011-24270ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7849,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB012",
+      "at_ms": 26210,
+      "text": "đổi theo thời gian và thay đổi rất",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:cf5a0e8dc9e67fb5ecdb87c442ada83182503e11c63056e79381900d27409019",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB012-26210ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7758,
+      "ocr": {
+        "observed_text": "đổi theo thời gian và thay đổi rất",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB013",
+      "at_ms": 27710,
+      "text": "nhiều ở từng người.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:9f7e3bb3e68f200692fbd8fc973ad45583898861b7c23421702a891b1e4b1e2e",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB013-27710ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7535,
+      "ocr": {
+        "observed_text": "nhiều ở từng người.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB014",
+      "at_ms": 29490,
+      "text": "Tìm ra và sống hòa điệu với nhịp sống",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:0d2b8c42a8d615394d27b12a4d15fec566bd196dde77d50b3bedd050c3920fac",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB014-29490ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7922,
+      "ocr": {
+        "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB015",
+      "at_ms": 32000,
+      "text": "của mục đích bên trong là cơ sở để bạn",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:cadf2921cf59685ca031da9309b10d5dea25e1ee6631d3f7e68625d08c8a11e8",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB015-32000ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7887,
+      "ocr": {
+        "observed_text": "của mục đích bên trong là cơ sở để bạn",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB016",
+      "at_ms": 34270,
+      "text": "có thể hoàn thành mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:c120e976cdac02c199ef4d9e7a07be638ab1d93ee62487e1c1aef8da54f149fa",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB016-34270ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.783,
+      "ocr": {
+        "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB017",
+      "at_ms": 36270,
+      "text": "Đó là cơ sở của những",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:d8f60ed8a555b4604542881de25ad1c96ac50098c42f6c25903d9c92cdef7c91",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB017-36270ms.jpg",
+      "bbox": {
+        "x": 251,
+        "y": 1144,
+        "width": 519,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7665,
+      "ocr": {
+        "observed_text": "Đó là cơ sở của những",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB018",
+      "at_ms": 37530,
+      "text": "thành công thực sự.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:9ff1138d03c900147cb05cff3962729fc264b4ce1473cb9df4eeeaa8059d191f",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB018-37530ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7619,
+      "ocr": {
+        "observed_text": "thành công thực sự.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB019",
+      "at_ms": 39550,
+      "text": "Nếu những gì bạn làm ở bên ngoài không",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:153f182e32fecf399a2399540e2a26fbfb0113b978eef9e18e887254798d8497",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB019-39550ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7765,
+      "ocr": {
+        "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB020",
+      "at_ms": 41380,
+      "text": "có sự hòa điệu với nhịp sống của mục",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:453737aca168e653aa0b61a2b5eb81017c00863ac83078d45c057fa2db861599",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB020-41380ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7791,
+      "ocr": {
+        "observed_text": "có sự hòa điệu với nhịp sống của mục",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB021",
+      "at_ms": 43180,
+      "text": "đích bên trong, thì muốn đạt được một",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:b125d3be33365cd99ab5d4a1b9c815e9707f008c6513827519cada1ebfa022b5",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB021-43180ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7842,
+      "ocr": {
+        "observed_text": "đích bên trong, thì muốn đạt được một",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB022",
+      "at_ms": 45140,
+      "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:21c4a90547afbb84a954fb873371a3e8cc5369c99fc293dd0a7ae9364824df98",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB022-45140ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7834,
+      "ocr": {
+        "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB023",
+      "at_ms": 47460,
+      "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:7a34faebe59b3b9add40b301eb348f7ee057f9b34978435f806c68d0b25b2e7d",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB023-47460ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7874,
+      "ocr": {
+        "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB024",
+      "at_ms": 49330,
+      "text": "mưu và thủ đoạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:b4f3b5b86e4d3fd3996f3f3ac6a452cb8ab57966fdaf52640852be2da163a404",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB024-49330ms.jpg",
+      "bbox": {
+        "x": 305,
+        "y": 1144,
+        "width": 411,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.767,
+      "ocr": {
+        "observed_text": "mưu và thủ đoạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB025",
+      "at_ms": 50820,
+      "text": "Nhưng làm như thế thì bạn không có",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:c360e08b7b6cfcd542673da58fda60a254fca0c51882462dcfa687b4833946d0",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB025-50820ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.764,
+      "ocr": {
+        "observed_text": "Nhưng làm như thế thì bạn không có",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB026",
+      "at_ms": 52380,
+      "text": "được niềm vui khi công",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:df780b6685787e0242f88628be9ddf2deed0814f58aab371023bab76d7b4794d",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB026-52380ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7574,
+      "ocr": {
+        "observed_text": "được niềm vui khi công",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB027",
+      "at_ms": 53580,
+      "text": "việc được hoàn tất.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:47102d0f66fccedb9c15a61615020c9e34dc3a2e06b0951e075aabd2a8a06af3",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB027-53580ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7574,
+      "ocr": {
+        "observed_text": "việc được hoàn tất.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB028",
+      "at_ms": 55350,
+      "text": "Và chắc chắn những kết quả ấy chỉ mang",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:95296da51fc4e0bf80d5af053d0bc310628153af5bd1e47b5d8de0c0d7dc8bb6",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB028-55350ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.776,
+      "ocr": {
+        "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB029",
+      "at_ms": 57440,
+      "text": "lại khổ đau cho bạn và",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:36a42b9ba4fcb7638666f2c29b689a5fc0b4b80e0d3ed0ea191b651ce03d345d",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB029-57440ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7632,
+      "ocr": {
+        "observed_text": "lại khổ đau cho bạn và",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "forrest-gump",
+      "subtitle_id": "SUB030",
+      "at_ms": 58710,
+      "text": "cho những người chung quanh.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:89736a7533894d4f465ce7139dd3cdec33c25242d834079297b76a3d0e80bb2a",
+      "frame_path": "audit/round-7/caption-frames/forrest-gump/SUB030-58710ms.jpg",
+      "bbox": {
+        "x": 175,
+        "y": 1144,
+        "width": 671,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7486,
+      "ocr": {
+        "observed_text": "cho những người chung quanh.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB001",
+      "at_ms": 3140,
+      "text": "Điều quan trọng nhất mà bạn cần nhận",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:ad6dbaaf57390e26d77df564deff59700480f6f3dbae01bb43f57468e43cd50a",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB001-03140ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7665,
+      "ocr": {
+        "observed_text": "Điều quan trọng nhất mà bạn cần nhận",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB002",
+      "at_ms": 5350,
+      "text": "thức là: đời bạn có một mục đích bên",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:77885ff5d0d9b5398ab8b4f8e26c7be961ab2a90e57febe4a18fa2d9c51fdc6e",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB002-05350ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7805,
+      "ocr": {
+        "observed_text": "thức là: đời bạn có một mục đích bên",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB003",
+      "at_ms": 7640,
+      "text": "trong và một mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 37,
+      "frame_sha256": "sha256:22a803cd169eba00328234ffb002a6f7776f1b2fff992b095f30cf67cd8c9404",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB003-07640ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7662,
+      "ocr": {
+        "observed_text": "trong và một mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB004",
+      "at_ms": 9700,
+      "text": "Mục đích bên trong là mục đích chính,",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:43eaf83ce6b94c6ec8747ee4d8b3155f646056926ee82a69c83242581f5b8389",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB004-09700ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.788,
+      "ocr": {
+        "observed_text": "Mục đích bên trong là mục đích chính,",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB005",
+      "at_ms": 11740,
+      "text": "và mục đích này có liên quan đến trạng",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:2eb591b0b428d5d2151d54f0c7db934648a2704e01ee9264d4cab23ea988b2f1",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB005-11740ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.793,
+      "ocr": {
+        "observed_text": "và mục đích này có liên quan đến trạng",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB006",
+      "at_ms": 13910,
+      "text": "thái an nhiên tự tại của bạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:61afd69ab0d0ee604b5aedc6e70ffcbb97061d7cb9146b6adf58658e7d7b9202",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB006-13910ms.jpg",
+      "bbox": {
+        "x": 164,
+        "y": 1144,
+        "width": 693,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7736,
+      "ocr": {
+        "observed_text": "thái an nhiên tự tại của bạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB007",
+      "at_ms": 16150,
+      "text": "Mục đích bên ngoài dính tới những việc",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:febb5c6383b7daea7ab05c5389645042a1018e685cdb54fb5274802557623664",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB007-16150ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7841,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài dính tới những việc",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB008",
+      "at_ms": 17880,
+      "text": "bạn làm, và đây chỉ là mục đích phụ.",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:834f3b128f84a5a969bc759a49eb46f8092a1a80925f5323d7be217ed9d0a4ec",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB008-17880ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.787,
+      "ocr": {
+        "observed_text": "bạn làm, và đây chỉ là mục đích phụ.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB009",
+      "at_ms": 20130,
+      "text": "Mục đích bên trong của bạn là tỉnh",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:be0513c14c7b980510a720bcc018ff6be6934a15df8bd0ea68a9d4a50adda955",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB009-20130ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7727,
+      "ocr": {
+        "observed_text": "Mục đích bên trong của bạn là tỉnh",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB010",
+      "at_ms": 21940,
+      "text": "thức. Chỉ đơn giản có vậy thôi.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:4138bd757f0fd168c2a744b754ebc2472470e33bd35f7895702ab71c91384d85",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB010-21940ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7662,
+      "ocr": {
+        "observed_text": "thức. Chỉ đơn giản có vậy thôi.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB011",
+      "at_ms": 24270,
+      "text": "Mục đích bên ngoài của bạn có thể thay",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:17278c75cf3050f58a52632326dcdd41cb5f4d2be21a02fc0fd9cc40e67ddee7",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB011-24270ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7852,
+      "ocr": {
+        "observed_text": "Mục đích bên ngoài của bạn có thể thay",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB012",
+      "at_ms": 26210,
+      "text": "đổi theo thời gian và thay đổi rất",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:19ac41fcf18f244a66b14b42beae2349bfd03a6542a58e8b0250db646a522be5",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB012-26210ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7752,
+      "ocr": {
+        "observed_text": "đổi theo thời gian và thay đổi rất",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB013",
+      "at_ms": 27710,
+      "text": "nhiều ở từng người.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:91dee181931efb224ac216ef913f0362d6e07cdc9b574eb63bef6436af1fc63d",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB013-27710ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7569,
+      "ocr": {
+        "observed_text": "nhiều ở từng người.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB014",
+      "at_ms": 29490,
+      "text": "Tìm ra và sống hòa điệu với nhịp sống",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:e8157bde3c6a2c2da9237ffa0a770883b4b943aac90b46a9b78be0dc9e08510f",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB014-29490ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.784,
+      "ocr": {
+        "observed_text": "Tìm ra và sống hòa điệu với nhịp sống",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB015",
+      "at_ms": 32000,
+      "text": "của mục đích bên trong là cơ sở để bạn",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:0314015f7a9281c1abf5a6abfb7e96785a1ffbb906a934539fd7a020cdb4bcf1",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB015-32000ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7884,
+      "ocr": {
+        "observed_text": "của mục đích bên trong là cơ sở để bạn",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB016",
+      "at_ms": 34270,
+      "text": "có thể hoàn thành mục đích bên ngoài.",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:f43b02cf7423987c1ce0465cf9640272099b777a07ee8389558a1d780dc13725",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB016-34270ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7831,
+      "ocr": {
+        "observed_text": "có thể hoàn thành mục đích bên ngoài.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB017",
+      "at_ms": 36270,
+      "text": "Đó là cơ sở của những",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:f576253a075d32efe24524a58d6406198e8c76bad2be8fadcb13772a56a0901b",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB017-36270ms.jpg",
+      "bbox": {
+        "x": 251,
+        "y": 1144,
+        "width": 519,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.759,
+      "ocr": {
+        "observed_text": "Đó là cơ sở của những",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB018",
+      "at_ms": 37530,
+      "text": "thành công thực sự.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:2d1972164b3f49d4b8388b69810873067d5c10e1253e966fd5c2e1371dcab4e7",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB018-37530ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.762,
+      "ocr": {
+        "observed_text": "thành công thực sự.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB019",
+      "at_ms": 39550,
+      "text": "Nếu những gì bạn làm ở bên ngoài không",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:800a5d55fe4de0db6ceb9887dec92719ebd4fe1e06c68206e571299686a333bc",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB019-39550ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7766,
+      "ocr": {
+        "observed_text": "Nếu những gì bạn làm ở bên ngoài không",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB020",
+      "at_ms": 41380,
+      "text": "có sự hòa điệu với nhịp sống của mục",
+      "line_count": 1,
+      "font_size_px": 33,
+      "frame_sha256": "sha256:f9ad49eb6cf08c3c411f85dda757e62d7fab6b5f6686d6f60b29ce06a8ead4af",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB020-41380ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 742,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7752,
+      "ocr": {
+        "observed_text": "có sự hòa điệu với nhịp sống của mục",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB021",
+      "at_ms": 43180,
+      "text": "đích bên trong, thì muốn đạt được một",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:20551b8dd788306719a76b27cf2630152e3150c90d41a7293a698cd92ced0cc6",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB021-43180ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7806,
+      "ocr": {
+        "observed_text": "đích bên trong, thì muốn đạt được một",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB022",
+      "at_ms": 45140,
+      "text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+      "line_count": 1,
+      "font_size_px": 32,
+      "frame_sha256": "sha256:22e11fd11c492d1853d9f9111245957cd6df715b6d17ddf85f878e56485ad162",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB022-45140ms.jpg",
+      "bbox": {
+        "x": 141,
+        "y": 1144,
+        "width": 739,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7826,
+      "ocr": {
+        "observed_text": "điều gì đó, bạn sẽ phải mất rất nhiều",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB023",
+      "at_ms": 47460,
+      "text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:060b4acd9767585692072f9d017723ecf54b59db8380b3a9017529a6279b0673",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB023-47460ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7852,
+      "ocr": {
+        "observed_text": "nỗ lực, phải đấu tranh hay dùng đến âm",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB024",
+      "at_ms": 49330,
+      "text": "mưu và thủ đoạn.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:d703d8428a937dca21f0d71c60c1bf0cd2f03a6d62dde3ea0b00b3c62784c533",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB024-49330ms.jpg",
+      "bbox": {
+        "x": 305,
+        "y": 1144,
+        "width": 411,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7655,
+      "ocr": {
+        "observed_text": "mưu và thủ đoạn.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB025",
+      "at_ms": 50820,
+      "text": "Nhưng làm như thế thì bạn không có",
+      "line_count": 1,
+      "font_size_px": 35,
+      "frame_sha256": "sha256:b35adacf17a758f9dbe3e4c1309c1db362173c7f23f29c79c0766a5c96515a39",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB025-50820ms.jpg",
+      "bbox": {
+        "x": 139,
+        "y": 1144,
+        "width": 743,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7643,
+      "ocr": {
+        "observed_text": "Nhưng làm như thế thì bạn không có",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB026",
+      "at_ms": 52380,
+      "text": "được niềm vui khi công",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:3cdb415cc3352f02c9027264f1d6a67cfeb69e75c31dc3b3fdd9b615208492e1",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB026-52380ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7573,
+      "ocr": {
+        "observed_text": "được niềm vui khi công",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB027",
+      "at_ms": 53580,
+      "text": "việc được hoàn tất.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:4e475e4d2006d6577b49f80ca2adaf59d9eec419705fa1f191a0dfee705fefe2",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB027-53580ms.jpg",
+      "bbox": {
+        "x": 272,
+        "y": 1144,
+        "width": 476,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7617,
+      "ocr": {
+        "observed_text": "việc được hoàn tất.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB028",
+      "at_ms": 55350,
+      "text": "Và chắc chắn những kết quả ấy chỉ mang",
+      "line_count": 1,
+      "font_size_px": 31,
+      "frame_sha256": "sha256:a089c45abc66fa24bd83ee059b180c44499ce27b0a45d520a8eb6539ea75d79a",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB028-55350ms.jpg",
+      "bbox": {
+        "x": 142,
+        "y": 1144,
+        "width": 736,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7771,
+      "ocr": {
+        "observed_text": "Và chắc chắn những kết quả ấy chỉ mang",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB029",
+      "at_ms": 57440,
+      "text": "lại khổ đau cho bạn và",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:89f81e0a867c8d66a6c33c2e0c729b8ff59cae5d85d66c48697f0f6dd90d5203",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB029-57440ms.jpg",
+      "bbox": {
+        "x": 240,
+        "y": 1144,
+        "width": 541,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.765,
+      "ocr": {
+        "observed_text": "lại khổ đau cho bạn và",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    },
+    {
+      "film": "a-beautiful-mind",
+      "subtitle_id": "SUB030",
+      "at_ms": 58710,
+      "text": "cho những người chung quanh.",
+      "line_count": 1,
+      "font_size_px": 38,
+      "frame_sha256": "sha256:de6e93839ab8b0149da9086c68821d772b7e000429814eac99f3fe394c27290d",
+      "frame_path": "audit/round-7/caption-frames/a-beautiful-mind/SUB030-58710ms.jpg",
+      "bbox": {
+        "x": 175,
+        "y": 1144,
+        "width": 671,
+        "height": 72
+      },
+      "paper_pixel_coverage_ratio": 0.7507,
+      "ocr": {
+        "observed_text": "cho những người chung quanh.",
+        "confidence": 1.0,
+        "normalized_similarity": 1.0,
+        "status": "pass"
+      }
+    }
+  ]
+}
