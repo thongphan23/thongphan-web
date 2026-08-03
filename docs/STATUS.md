@@ -1,6 +1,24 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-02
+Last updated: 2026-08-03
+
+## Provided-voice Facebook Reel owner review - production release - 2026-08-03
+
+- Built an `88.213` second vertical video from the owner-provided Facebook Reel
+  audio, with one locked film (`Coco`), 26 shots from 13 source clips, no
+  overlapping source trims and no generated camera movement.
+- Published 45 one-line Vietnamese captions in the social-safe mid-lower lane.
+  Encoded QA passes H.264/AAC, 1080x1920, fast-start, black/silence detection,
+  timeline/trim parity, silent review and final contact-sheet review.
+- Added the noindex owner-review route `/review/cua-ban-la-gi` with the web
+  master, poster, source-casting board, shot plan, contact sheet and final QA
+  packet. Focused tests pass 2/2; full regression passes 251/251; TypeScript,
+  ESLint, 86-route static build and local/preview/production browser QA pass on
+  desktop and mobile.
+- Website implementation commit: `7dc5bb5`. Preview deployment: `38f3853e`.
+  Production deployment: `31755915`. Rollback deployment: `2620db95`.
+  Full evidence:
+  `docs/releases/PROVIDED_VOICE_FACEBOOK_REEL_OWNER_REVIEW_PRODUCTION_RELEASE-2026-08-03.md`.
 
 ## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02
 
