@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
+  "status": "approved",
+  "selection_mode": "open_casting",
+  "format_comparison_required": true,
+  "based_on": {
+    "meaning_beat_design": {
+      "path": "content/creative_plan.json",
+      "sha256": "419b5bba36e80ac04d3b5f4b2a32fbadcccc7f48913876adcb26cd8ad02fd4dd"
+    }
+  },
+  "anchor_candidate_id": "FILM-COCO",
+  "selected_candidate_ids": ["FILM-COCO"],
+  "portfolio_rationale_vi": "Chọn một phim duy nhất có thể kể trọn mạch ông bà, ký ức, mất mát, gặp lại và ôm nhau bằng hành động đọc được khi tắt tiếng.",
+  "selected_format_rationale_vi": "Hoạt hình giúp quan hệ giữa người sống, người đã khuất, bức ảnh và ký ức hiện ra trực tiếp mà không cần giải thích cốt truyện dài.",
+  "selected_tradeoffs_vi": [
+    "Hình ảnh thế giới linh hồn có thể tạo cảm giác siêu nhiên, nên chỉ dùng các cảnh gia đình và cảm xúc trực tiếp.",
+    "Nguồn phim rất rộng nên mỗi shot phải khóa crop tĩnh theo chủ thể để dùng tốt trong khung 9:16."
+  ],
+  "candidates": [
+    {
+      "candidate_id": "FILM-COCO",
+      "title": "Coco",
+      "format_type": "animation",
+      "availability_status": "observed_samples_available",
+      "selection_status": "selected_anchor",
+      "semantic_coverage_beat_ids": ["B01", "B02", "B03", "B04", "B05", "B06"],
+      "scores": {
+        "semantic_coverage": 4.9,
+        "emotional_range": 4.9,
+        "visual_coherence": 4.8,
+        "context_independence": 4.4,
+        "source_diversity": 4.8
+      },
+      "why_fit_vi": "Có ông bà, trẻ nhỏ, ảnh gia đình, sự biến mất, ký ức, đoàn tụ và cái ôm; các bằng chứng này đều quan sát được bằng hình câm.",
+      "rejection_reason_vi": null
+    },
+    {
+      "candidate_id": "FILM-MINARI",
+      "title": "Minari",
+      "format_type": "live_action",
+      "availability_status": "observed_samples_available",
+      "selection_status": "rejected",
+      "semantic_coverage_beat_ids": ["B01", "B02", "B05", "B06"],
+      "scores": {
+        "semantic_coverage": 3.6,
+        "emotional_range": 4.2,
+        "visual_coherence": 4.7,
+        "context_independence": 4.1,
+        "source_diversity": 3.7
+      },
+      "why_fit_vi": "Quan hệ bà cháu và đời sống gia đình rất gần gũi, nhưng nguồn quan sát thiếu bằng chứng trực tiếp cho sự mất mát không thể đảo ngược.",
+      "rejection_reason_vi": "Không đủ mật độ cảnh ảnh, vắng mặt và gặp lại để phủ toàn bộ voice mà không dựa vào thoại."
+    },
+    {
+      "candidate_id": "FILM-THE-FAREWELL",
+      "title": "The Farewell",
+      "format_type": "live_action",
+      "availability_status": "observed_samples_available",
+      "selection_status": "rejected",
+      "semantic_coverage_beat_ids": ["B01", "B02", "B03", "B06"],
+      "scores": {
+        "semantic_coverage": 4.0,
+        "emotional_range": 4.7,
+        "visual_coherence": 4.6,
+        "context_independence": 3.2,
+        "source_diversity": 3.9
+      },
+      "why_fit_vi": "Có bà cháu, xa cách và dự cảm chia ly, nhưng nhiều cảnh chỉ rõ nghĩa khi biết bệnh tình hoặc nghe hội thoại.",
+      "rejection_reason_vi": "Gánh nặng cốt truyện và thoại quá cao đối với video chỉ giữ voice tiếng Việt."
+    }
+  ]
+}
