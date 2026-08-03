@@ -1,0 +1,54 @@
+{
+  "schema_version": "tpr.final_video_qa.v1",
+  "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
+  "status": "PASS",
+  "master": {
+    "path": "remotion/renders/cua-ban-la-gi-final-v2.mp4",
+    "sha256": "3ca0371abe5a5f87811b7290e395a206fdae7af3c2cdf64dead8fb1f7f7d9070",
+    "duration_seconds": 88.213333,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "integrated_loudness_lufs": -14.2,
+    "fast_start": true
+  },
+  "editorial": {
+    "film_lock": "Coco",
+    "shots": 26,
+    "unique_source_clips": 13,
+    "overlapping_source_trims": 0,
+    "generated_camera_moves": 0,
+    "full_bleed_vertical_shots": 26,
+    "silent_review": "PASS"
+  },
+  "captions": {
+    "segments": 45,
+    "max_lines": 1,
+    "max_characters": 30,
+    "overlap_count": 0,
+    "anchor_x": 510,
+    "anchor_y": 1180,
+    "safe_area": "PASS"
+  },
+  "automated_checks": {
+    "typescript": "PASS",
+    "timeline_continuity": "PASS",
+    "source_trim_duration_parity": "PASS",
+    "black_interval_over_250ms": 0,
+    "silence_interval_over_1500ms_below_minus_45db": 0,
+    "final_contact_sheet_review": "PASS"
+  },
+  "lineage": {
+    "provided_audio_sha256": "3e7b1014e53534c02e43bfc7c11dea06f1328275f4aa355af154d9078591e7ed",
+    "transcript_sha256": "3712bae8ab6159301d780e522b764f9b63bd3f1ecd8cf9ef50fc500146bced27",
+    "voice_timeline_sha256": "32a3288748ff6bf4de3b867150eefacc481f2c4fde1a5b876d0c96a6607e173d",
+    "source_casting_board_sha256": "4ae3a758142637fd14f9bb79f903d16b1de7fe4d4d0693b60fb793321b9cd78f",
+    "production_shot_plan_sha256": "13b1a80352a084474e0e9b5b982d456624a0239c69d7738ef56ab35a9ae29dd9",
+    "subtitles_sha256": "fd4be4b119a2f5af2bfd020577847f4c71cd5f90433165b348827a697229e49e",
+    "contact_sheet_sha256": "17882466b33a8aad7a682bc1aef8542c779b78df38490645b9dcefd56d09acb0"
+  }
+}
