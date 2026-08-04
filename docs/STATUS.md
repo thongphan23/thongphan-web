@@ -1,6 +1,6 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-03
+Last updated: 2026-08-04
 
 ## Provided-voice Facebook Reel owner review - production release - 2026-08-03
 
@@ -19,6 +19,10 @@ Last updated: 2026-08-03
   Production deployment: `31755915`. Rollback deployment: `2620db95`.
   Full evidence:
   `docs/releases/PROVIDED_VOICE_FACEBOOK_REEL_OWNER_REVIEW_PRODUCTION_RELEASE-2026-08-03.md`.
+- On 2026-08-04, the canonical `/review` shortcut was moved from the historical
+  comparison gallery to `/review/cua-ban-la-gi`. Redirect regression and the
+  complete 251-test suite pass; commit `a1c8007` is deployed as production
+  deployment `b55cd4e5`. The previous review route remains available directly.
 
 ## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02
 
