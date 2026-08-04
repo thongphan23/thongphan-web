@@ -12,7 +12,9 @@ Last updated: 2026-08-04
   remain pending owner listening.
 - Focused page tests pass 3/3, TypeScript and focused ESLint pass, the static
   build completes with 85 routes, and desktop/mobile visual QA show no clipping
-  or overflow. Full evidence:
+  or overflow. Production deployment `50a31c4d` passes HTTP, complete audio
+  metadata and desktop/mobile browser QA at `https://thongphan.com/voice`.
+  Full evidence:
   `docs/releases/MEO-BEO-VOICE-REVIEW-2026-08-04.md`.
 
 ## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02

@@ -43,5 +43,24 @@ MOBILE_VISUAL_QA: PASS
 NOINDEX: PRESERVED
 ```
 
-Production deployment and HTTP/browser verification are recorded after the
-Cloudflare Pages handoff completes.
+## Production verification
+
+```text
+DEPLOYMENT: 50a31c4d
+PREVIEW_URL: https://50a31c4d.thongphan-com.pages.dev
+CUSTOM_DOMAIN: https://thongphan.com/voice
+PAGE_HTTP: 200
+AUDIO_HTTP: 200
+AUDIO_CONTENT_TYPE: audio/mpeg
+AUDIO_CONTENT_LENGTH: 2619117
+BROWSER_AUDIO_DURATION_SECONDS: 109.066375
+BROWSER_AUDIO_READY_STATE: 4
+MOBILE_SCROLL_WIDTH: 390
+MOBILE_CLIENT_WIDTH: 390
+PRODUCTION_DESKTOP_VISUAL_QA: PASS
+PRODUCTION_MOBILE_VISUAL_QA: PASS
+```
+
+The production HTML contains the expected title, voice alias, MP3 source and
+`noindex, nofollow, nocache` directive. Browser QA loaded the complete audio
+metadata and found no horizontal overflow at 390 px.
