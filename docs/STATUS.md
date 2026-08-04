@@ -6,9 +6,9 @@ Last updated: 2026-08-04
 
 - A fresh review route for `cua-ban-la-gi` is built from current `origin/main`.
 - The page references the content-addressed delivery
-  `cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4`; the retired v3 payload is removed and
-  rejected by a focused route test so an immutable browser cache cannot replay the
-  known-bad crop.
+  `cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4`; the current HTML and build output reject
+  the retired v3 reference. Cloudflare still retains the historical fingerprinted
+  object in immutable cache, but the revalidated page has no route to it.
 - Vertical evidence is exposed beside the video: 26 editorial shots are split
   into 46 static crop items, all 46 items have START/MID/END semantic pixel QA,
   all 45 caption observations pass encoded safe-area QA, and 27 face-required items
@@ -16,7 +16,11 @@ Last updated: 2026-08-04
 - Master v4 is `4ba72448acf2b75d99eaf7288110a0ec0ed6c4b07e11aa3d4fc48a25bb685fde`;
   the fast-start web payload is `21914025` bytes with SHA-256
   `5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703`.
-- Deployment and public read-back verification are pending for this correction.
+- Production deployment `a349e56e` is live. Public page, evidence and video probes
+  return `200`; Playwright loads the exact v4 source at `1080x1920`, `30 fps`,
+  `88.213` seconds with zero horizontal overflow. A complete public read-back is
+  `21914025` bytes and matches SHA-256
+  `5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

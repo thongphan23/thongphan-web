@@ -14,6 +14,7 @@ const evidence = [
   ['Gói owner review', 'owner-review-packet.md'],
   ['Incident crop và phụ đề', 'owner-feedback-crop-caption-incident.md'],
   ['Báo cáo QA cuối', 'final-video-qa.json'],
+  ['Biên nhận bản đang phát', 'review-publish-receipt.json'],
   ['Shot plan 26 cảnh', 'production-shot-plan.json'],
   ['Edit plan dọc 46 item', 'vertical-edit-plan.json'],
   ['Pixel QA START/MID/END', 'vertical-semantic-pixel-qa.json'],

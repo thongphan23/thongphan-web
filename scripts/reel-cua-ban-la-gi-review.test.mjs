@@ -35,6 +35,7 @@ test('review media and evidence are present and internally consistent', async ()
     'owner-review-packet.md',
     'owner-feedback-crop-caption-incident.md',
     'final-video-qa.json',
+    'review-publish-receipt.json',
     'production-shot-plan.json',
     'source-casting-board.json',
     'vertical-edit-plan.json',
@@ -82,4 +83,12 @@ test('review media and evidence are present and internally consistent', async ()
   assert.equal(qa.web_delivery.sha256, '5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703')
   assert.equal(qa.captions.encoded_pixel_observations, 45)
   assert.equal(qa.captions.voice_words_covered, qa.captions.voice_words_total)
+
+  const receipt = JSON.parse(
+    await readFile(new URL('evidence/review-publish-receipt.json', mediaRoot), 'utf8'),
+  )
+  assert.equal(receipt.status, 'PASS')
+  assert.equal(receipt.page_video_url.endsWith(videoName), true)
+  assert.equal(receipt.video_sha256, qa.web_delivery.sha256)
+  assert.equal(receipt.video_content_length, videoInfo.size)
 })

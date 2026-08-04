@@ -1,0 +1,19 @@
+{
+  "schema_version": "2.0.0",
+  "status": "PASS",
+  "page_url": "https://thongphan.com/review/cua-ban-la-gi",
+  "video_url": "https://thongphan.com/review/cua-ban-la-gi/media/cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4",
+  "page_video_url": "https://thongphan.com/review/cua-ban-la-gi/media/cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4",
+  "resolved_page_url": "https://thongphan.com/review/cua-ban-la-gi",
+  "resolved_video_url": "https://thongphan.com/review/cua-ban-la-gi/media/cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4",
+  "page_http_status": 200,
+  "video_http_status": 200,
+  "expected_video_sha256": "5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703",
+  "video_sha256": "5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703",
+  "video_content_length": 21914025,
+  "cache_control": "public, max-age=31536000, immutable",
+  "content_addressed": true,
+  "deployment_url": "https://a349e56e.thongphan-com.pages.dev",
+  "deployment_source_commit": "f3893bca3964ade4276a56db33e61c37521668f5",
+  "checked_at": "2026-08-04T18:25:22+07:00"
+}
