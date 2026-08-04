@@ -1,0 +1,2592 @@
+{
+  "schema_version": "1.0.0",
+  "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
+  "format": "vertical",
+  "render_spec": {
+    "format": "vertical",
+    "width": 1080,
+    "height": 1920,
+    "aspect_ratio": "9:16"
+  },
+  "composition_plan_fingerprint": "sha256:006f838e55a1607882ba462ae7e79df901b1640b8c0290dfcbd1539514983806",
+  "timeline_items": [
+    {
+      "event_id": "EVENT-SHOT-001-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-001-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-001-1",
+      "source_file": "footage/11437-mam-imelda.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 452
+      },
+      "source_in_ms": 8400,
+      "source_out_ms": 12080,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-001-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-001-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23541666666666666,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-0705568233c28bc72be3-01",
+      "decision_id": "VCD-0705568233c28bc72be3",
+      "beat_id": "B01-SHOT-001-1",
+      "claim_id": "CLM-SHOT-001-1",
+      "timeline_start_ms": 0,
+      "timeline_end_ms": 3680,
+      "evidence_fingerprint": "sha256:8f87edc5520af4beb0a83186271db77979d9efdea1e799b02725a9a451a48830"
+    },
+    {
+      "event_id": "EVENT-SHOT-002-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-002-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-002-1",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 3200,
+      "source_out_ms": 4420,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-002-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-002-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-40ca43df66b25d2502c6-01",
+      "decision_id": "VCD-40ca43df66b25d2502c6",
+      "beat_id": "B02-SHOT-002-1",
+      "claim_id": "CLM-SHOT-002-1",
+      "timeline_start_ms": 3680,
+      "timeline_end_ms": 4900,
+      "evidence_fingerprint": "sha256:3bf19227a8187a3082fe2fc868c65ad1d6b316b3c6d9c12559d9997cdb3494e1"
+    },
+    {
+      "event_id": "EVENT-SHOT-002-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-002-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-002-2",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 4420,
+      "source_out_ms": 5880,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-002-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-002-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-e9203b3e92d7a3db4201-01",
+      "decision_id": "VCD-e9203b3e92d7a3db4201",
+      "beat_id": "B02-SHOT-002-2",
+      "claim_id": "CLM-SHOT-002-2",
+      "timeline_start_ms": 4900,
+      "timeline_end_ms": 6360,
+      "evidence_fingerprint": "sha256:f868092a4f91fe15080f939e3f7c25b8799cad3046c12466c080bfe65ae109a2"
+    },
+    {
+      "event_id": "EVENT-SHOT-002-3",
+      "presentation_unit_id": "UNIT-VBC-SHOT-002-3",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-002-3",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 5880,
+      "source_out_ms": 7020,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-002-3"
+      ],
+      "carrier_requirements": {
+        "CARRIER-002-3": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.606663625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.606663625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6397435414534289,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6397435414534289,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ce1669d2b437ebaaa0c1-01",
+      "decision_id": "VCD-ce1669d2b437ebaaa0c1",
+      "beat_id": "B02-SHOT-002-3",
+      "claim_id": "CLM-SHOT-002-3",
+      "timeline_start_ms": 6360,
+      "timeline_end_ms": 7500,
+      "evidence_fingerprint": "sha256:73df81eebaa04c416a60ed80d566d71036f1de86940ba86b703f00737761a1da"
+    },
+    {
+      "event_id": "EVENT-SHOT-003-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-003-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-003-1",
+      "source_file": "footage/187827-are-kidding-a-minute-ago-i-thought-i-related-a-murderer.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 800
+      },
+      "source_in_ms": 0,
+      "source_out_ms": 960,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-003-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-003-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6006255,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6006255,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.631429224489796,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.631429224489796,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-aab4f83203b5ae989ad1-01",
+      "decision_id": "VCD-aab4f83203b5ae989ad1",
+      "beat_id": "B02-SHOT-003-1",
+      "claim_id": "CLM-SHOT-003-1",
+      "timeline_start_ms": 7500,
+      "timeline_end_ms": 8460,
+      "evidence_fingerprint": "sha256:ff2c7c8e4dd2f16404f905460e9b3cdcfdad7405d52ea422a0bfd85802a8631d"
+    },
+    {
+      "event_id": "EVENT-SHOT-003-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-003-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-003-2",
+      "source_file": "footage/187827-are-kidding-a-minute-ago-i-thought-i-related-a-murderer.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 800
+      },
+      "source_in_ms": 960,
+      "source_out_ms": 4000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-003-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-003-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6618755000000001,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6618755000000001,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.711429224489796,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.711429224489796,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ecff9aa6f9d756a8a288-01",
+      "decision_id": "VCD-ecff9aa6f9d756a8a288",
+      "beat_id": "B02-SHOT-003-2",
+      "claim_id": "CLM-SHOT-003-2",
+      "timeline_start_ms": 8460,
+      "timeline_end_ms": 11500,
+      "evidence_fingerprint": "sha256:fe0dc5b64ad678e1105fa09f6c2fcb1cf04ce66ffba27963ff79671b7dd69ab8"
+    },
+    {
+      "event_id": "EVENT-SHOT-004-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-004-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-004-1",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 200,
+      "source_out_ms": 2000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-004-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-004-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-48aac7c978cc1d37e6b8-01",
+      "decision_id": "VCD-48aac7c978cc1d37e6b8",
+      "beat_id": "B02-SHOT-004-1",
+      "claim_id": "CLM-SHOT-004-1",
+      "timeline_start_ms": 11500,
+      "timeline_end_ms": 13300,
+      "evidence_fingerprint": "sha256:9aaa024fed68c9474e97622f6d9c59e91942bdae97d890abf5e4d100ef23b257"
+    },
+    {
+      "event_id": "EVENT-SHOT-004-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-004-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-004-2",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 2000,
+      "source_out_ms": 3700,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-004-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-004-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-35b7c73262eaf52782ba-01",
+      "decision_id": "VCD-35b7c73262eaf52782ba",
+      "beat_id": "B02-SHOT-004-2",
+      "claim_id": "CLM-SHOT-004-2",
+      "timeline_start_ms": 13300,
+      "timeline_end_ms": 15000,
+      "evidence_fingerprint": "sha256:06028c601f644b610a0eda7cac0d3e7aaa891d3f4f5cefb2ea5912ec747656d5"
+    },
+    {
+      "event_id": "EVENT-SHOT-005A-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-005A-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-005A-1",
+      "source_file": "footage/187831-i-i-cant-forgive-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 800
+      },
+      "source_in_ms": 0,
+      "source_out_ms": 2400,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-005A-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-005A-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c6c9555bb9c66484574f-01",
+      "decision_id": "VCD-c6c9555bb9c66484574f",
+      "beat_id": "B02-SHOT-005A-1",
+      "claim_id": "CLM-SHOT-005A-1",
+      "timeline_start_ms": 15000,
+      "timeline_end_ms": 17400,
+      "evidence_fingerprint": "sha256:838159e2fb995415834d6fe572be9c08d09f2dab200bff4f6cb510cfcf651c1f"
+    },
+    {
+      "event_id": "EVENT-SHOT-005B-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-005B-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-005B-1",
+      "source_file": "footage/187831-i-i-cant-forgive-you.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 800
+      },
+      "source_in_ms": 2400,
+      "source_out_ms": 3740,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-005B-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-005B-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-065c1088686e73f412cb-01",
+      "decision_id": "VCD-065c1088686e73f412cb",
+      "beat_id": "B02-SHOT-005B-1",
+      "claim_id": "CLM-SHOT-005B-1",
+      "timeline_start_ms": 17400,
+      "timeline_end_ms": 18740,
+      "evidence_fingerprint": "sha256:bb1359522e5486fcdaec4270db65343d2c5cdb797d22a8a8db7a6879a7f6810c"
+    },
+    {
+      "event_id": "EVENT-SHOT-006-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-006-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-006-1",
+      "source_file": "footage/187847-aw-come.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 0,
+      "source_out_ms": 1460,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-006-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-006-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23554687500000002,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-2a10505400e5268e9c7b-01",
+      "decision_id": "VCD-2a10505400e5268e9c7b",
+      "beat_id": "B03-SHOT-006-1",
+      "claim_id": "CLM-SHOT-006-1",
+      "timeline_start_ms": 18740,
+      "timeline_end_ms": 20200,
+      "evidence_fingerprint": "sha256:14bc68f0d55edf348053b1646839dea72af6217069daf785ddaa2dfa32b63b9a"
+    },
+    {
+      "event_id": "EVENT-SHOT-006-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-006-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-006-2",
+      "source_file": "footage/187847-aw-come.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 1460,
+      "source_out_ms": 2760,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-006-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-006-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23554687500000002,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.24728143750000003,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.24728143750000003,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.16941261113949926,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.16941261113949926,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-1a5bbfcb288018e1cc3f-01",
+      "decision_id": "VCD-1a5bbfcb288018e1cc3f",
+      "beat_id": "B03-SHOT-006-2",
+      "claim_id": "CLM-SHOT-006-2",
+      "timeline_start_ms": 20200,
+      "timeline_end_ms": 21500,
+      "evidence_fingerprint": "sha256:3c5650466e84430362bb3e96f67d1106bcab9bc4156b3f37c028a34207227a40"
+    },
+    {
+      "event_id": "EVENT-SHOT-007-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-007-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-007-1",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 8000,
+      "source_out_ms": 9340,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-007-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-007-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-ffc9189dbb312b978cce-01",
+      "decision_id": "VCD-ffc9189dbb312b978cce",
+      "beat_id": "B04-SHOT-007-1",
+      "claim_id": "CLM-SHOT-007-1",
+      "timeline_start_ms": 21500,
+      "timeline_end_ms": 22840,
+      "evidence_fingerprint": "sha256:86dc76732bb139703f6c82214588639b6c0287f1300c6837305ad92ae5c7d3da"
+    },
+    {
+      "event_id": "EVENT-SHOT-007-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-007-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-007-2",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 9340,
+      "source_out_ms": 11010,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-007-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-007-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-687a5f94d7521d67ba68-01",
+      "decision_id": "VCD-687a5f94d7521d67ba68",
+      "beat_id": "B04-SHOT-007-2",
+      "claim_id": "CLM-SHOT-007-2",
+      "timeline_start_ms": 22840,
+      "timeline_end_ms": 24510,
+      "evidence_fingerprint": "sha256:2e34fbdea10ffaaa1f3d39a915fa7736f456150cb9822d6d4b45b7ebfeee258f"
+    },
+    {
+      "event_id": "EVENT-SHOT-007-3",
+      "presentation_unit_id": "UNIT-VBC-SHOT-007-3",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-007-3",
+      "source_file": "footage/5992249-miguel-mama.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 11010,
+      "source_out_ms": 12000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-007-3"
+      ],
+      "carrier_requirements": {
+        "CARRIER-007-3": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6295626249999999,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6295626249999999,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6697442784032752,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6697442784032752,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-6427347a6a77677f2a16-01",
+      "decision_id": "VCD-6427347a6a77677f2a16",
+      "beat_id": "B04-SHOT-007-3",
+      "claim_id": "CLM-SHOT-007-3",
+      "timeline_start_ms": 24510,
+      "timeline_end_ms": 25500,
+      "evidence_fingerprint": "sha256:257f4153f0671dd55ea5516ec2a126204b7a6cfcf538e1a4542372e7e76c3a5a"
+    },
+    {
+      "event_id": "EVENT-SHOT-008-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-008-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-008-1",
+      "source_file": "footage/187847-aw-come.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 3000,
+      "source_out_ms": 4000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-008-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-008-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23554687500000002,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3ae8c172b1ca200a8fc6-01",
+      "decision_id": "VCD-3ae8c172b1ca200a8fc6",
+      "beat_id": "B04-SHOT-008-1",
+      "claim_id": "CLM-SHOT-008-1",
+      "timeline_start_ms": 25500,
+      "timeline_end_ms": 26500,
+      "evidence_fingerprint": "sha256:414347c4c3a728fd0b0490099b38c1b2370fbac3bc984a367cc2d0d046d0a722"
+    },
+    {
+      "event_id": "EVENT-SHOT-008-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-008-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-008-2",
+      "source_file": "footage/187847-aw-come.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 804
+      },
+      "source_in_ms": 4000,
+      "source_out_ms": 7300,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-008-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-008-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23554687500000002,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-78cf90fa1c6f66b5265b-01",
+      "decision_id": "VCD-78cf90fa1c6f66b5265b",
+      "beat_id": "B04-SHOT-008-2",
+      "claim_id": "CLM-SHOT-008-2",
+      "timeline_start_ms": 26500,
+      "timeline_end_ms": 29800,
+      "evidence_fingerprint": "sha256:2d91b8e531de7b1506711b26582cad3ff9f574bcc33983696de7b7066ce56717"
+    },
+    {
+      "event_id": "EVENT-SHOT-009-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-009-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-009-1",
+      "source_file": "footage/561036-where-did-get-this-s14.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 1800,
+      "source_out_ms": 6000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-009-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-009-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-1664b18665b2741b958e-01",
+      "decision_id": "VCD-1664b18665b2741b958e",
+      "beat_id": "B04-SHOT-009-1",
+      "claim_id": "CLM-SHOT-009-1",
+      "timeline_start_ms": 29800,
+      "timeline_end_ms": 34000,
+      "evidence_fingerprint": "sha256:23d85796a12441db21756f16eab5b80b1b224bd00b23ada89b384b045d4ec779"
+    },
+    {
+      "event_id": "EVENT-SHOT-010-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-010-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-010-1",
+      "source_file": "footage/561036-where-did-get-this-s14.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 6000,
+      "source_out_ms": 9000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-010-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-010-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4155425facbb6f388510-01",
+      "decision_id": "VCD-4155425facbb6f388510",
+      "beat_id": "B04-SHOT-010-1",
+      "claim_id": "CLM-SHOT-010-1",
+      "timeline_start_ms": 34000,
+      "timeline_end_ms": 37000,
+      "evidence_fingerprint": "sha256:35dafe3456b07a59c52b8c1c75a29a783e622da366392f48f741670c22e7d280"
+    },
+    {
+      "event_id": "EVENT-SHOT-011-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-011-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-011-1",
+      "source_file": "footage/621-what-happened-your-dress-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 452
+      },
+      "source_in_ms": 35000,
+      "source_out_ms": 37400,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-011-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-011-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23541666666666666,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6610836666666667,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6610836666666667,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7106816348773842,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7106816348773842,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-5802a5bde28ce9330d79-01",
+      "decision_id": "VCD-5802a5bde28ce9330d79",
+      "beat_id": "B04-SHOT-011-1",
+      "claim_id": "CLM-SHOT-011-1",
+      "timeline_start_ms": 37000,
+      "timeline_end_ms": 39400,
+      "evidence_fingerprint": "sha256:eb16bcc994281be9f48217556fd461e898f2cf95167d022c47d37df31d724637"
+    },
+    {
+      "event_id": "EVENT-SHOT-012-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-012-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-012-1",
+      "source_file": "footage/621-what-happened-your-dress-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 452
+      },
+      "source_in_ms": 40800,
+      "source_out_ms": 43200,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-012-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-012-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23541666666666666,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.22422933333333334,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.22422933333333334,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.13931901907356947,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.13931901907356947,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-4234c38573b6cc2999ec-01",
+      "decision_id": "VCD-4234c38573b6cc2999ec",
+      "beat_id": "B04-SHOT-012-1",
+      "claim_id": "CLM-SHOT-012-1",
+      "timeline_start_ms": 39400,
+      "timeline_end_ms": 41800,
+      "evidence_fingerprint": "sha256:dc5766918f0fd6fb04b07fa70b022f75591c81382e091e39d0fd0a075b8ee658"
+    },
+    {
+      "event_id": "EVENT-SHOT-013-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-013-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-013-1",
+      "source_file": "footage/621-what-happened-your-dress-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 452
+      },
+      "source_in_ms": 45000,
+      "source_out_ms": 47400,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-013-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-013-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23541666666666666,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5158126666666667,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5158126666666667,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.520681416893733,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.520681416893733,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-839dccf71e33949f4fa9-01",
+      "decision_id": "VCD-839dccf71e33949f4fa9",
+      "beat_id": "B04-SHOT-013-1",
+      "claim_id": "CLM-SHOT-013-1",
+      "timeline_start_ms": 41800,
+      "timeline_end_ms": 44200,
+      "evidence_fingerprint": "sha256:21b7de9b30767f24582bc7041287e4599b30afeb6d1e49167a691951da8aeb40"
+    },
+    {
+      "event_id": "EVENT-SHOT-014-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-014-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-014-1",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 3800,
+      "source_out_ms": 4300,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-014-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-014-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.599031625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.599031625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6297446059365404,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6297446059365404,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-aef332a0c336f72f704b-01",
+      "decision_id": "VCD-aef332a0c336f72f704b",
+      "beat_id": "B04-SHOT-014-1",
+      "claim_id": "CLM-SHOT-014-1",
+      "timeline_start_ms": 44200,
+      "timeline_end_ms": 44700,
+      "evidence_fingerprint": "sha256:19e41ccf05f55dd084d6841200023a26423544e27eadaa46b5f496977bfb9947"
+    },
+    {
+      "event_id": "EVENT-SHOT-014-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-014-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-014-2",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 4300,
+      "source_out_ms": 7400,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-014-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-014-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.44676537499999996,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.44676537499999996,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.43025555783009206,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.43025555783009206,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-61a99b1129a737e86f36-01",
+      "decision_id": "VCD-61a99b1129a737e86f36",
+      "beat_id": "B04-SHOT-014-2",
+      "claim_id": "CLM-SHOT-014-2",
+      "timeline_start_ms": 44700,
+      "timeline_end_ms": 47800,
+      "evidence_fingerprint": "sha256:83dd6a6611f54b41a7e2a5ca3dc15cef322ae296b62db01f9fd775e042a3b53c"
+    },
+    {
+      "event_id": "EVENT-SHOT-015-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-015-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-015-1",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 10000,
+      "source_out_ms": 13720,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-015-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-015-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-98926c4bdab86c3adf8f-01",
+      "decision_id": "VCD-98926c4bdab86c3adf8f",
+      "beat_id": "B04-SHOT-015-1",
+      "claim_id": "CLM-SHOT-015-1",
+      "timeline_start_ms": 47800,
+      "timeline_end_ms": 51520,
+      "evidence_fingerprint": "sha256:ffcfdced6e985db87b2a3f374efdedd54b09b86be6ee407e44c8d9116c23b01d"
+    },
+    {
+      "event_id": "EVENT-SHOT-015-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-015-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-015-2",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 13720,
+      "source_out_ms": 15000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-015-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-015-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-b196b73f71b93edc7684-01",
+      "decision_id": "VCD-b196b73f71b93edc7684",
+      "beat_id": "B04-SHOT-015-2",
+      "claim_id": "CLM-SHOT-015-2",
+      "timeline_start_ms": 51520,
+      "timeline_end_ms": 52800,
+      "evidence_fingerprint": "sha256:d5accb77076ac33418d7786938ece645945ce3a8d751abb15e26d9a8f44d84f8"
+    },
+    {
+      "event_id": "EVENT-SHOT-016A-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-016A-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-016A-1",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 17600,
+      "source_out_ms": 18480,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-016A-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-016A-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-22f0c5187cab233084c1-01",
+      "decision_id": "VCD-22f0c5187cab233084c1",
+      "beat_id": "B04-SHOT-016A-1",
+      "claim_id": "CLM-SHOT-016A-1",
+      "timeline_start_ms": 52800,
+      "timeline_end_ms": 53680,
+      "evidence_fingerprint": "sha256:2b0c86f982d9bcee17e52d3a41f0cfc6258a5ee8816257467fb75c797c128c42"
+    },
+    {
+      "event_id": "EVENT-SHOT-016A-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-016A-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-016A-2",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 18480,
+      "source_out_ms": 19200,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-016A-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-016A-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.744054625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.744054625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.8197440327533264,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.8197440327533264,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3c8a8b303672becafb4f-01",
+      "decision_id": "VCD-3c8a8b303672becafb4f",
+      "beat_id": "B04-SHOT-016A-2",
+      "claim_id": "CLM-SHOT-016A-2",
+      "timeline_start_ms": 53680,
+      "timeline_end_ms": 54400,
+      "evidence_fingerprint": "sha256:b858ead3eb55753eed7666f3435e91106df72eb4db1c5333164400aae532eaba"
+    },
+    {
+      "event_id": "EVENT-SHOT-016B-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-016B-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-016B-1",
+      "source_file": "footage/561026-elena-whats-wrong-i-mija-i.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 19200,
+      "source_out_ms": 22000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-016B-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-016B-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d3068e6848dfef5a7bca-01",
+      "decision_id": "VCD-d3068e6848dfef5a7bca",
+      "beat_id": "B04-SHOT-016B-1",
+      "claim_id": "CLM-SHOT-016B-1",
+      "timeline_start_ms": 54400,
+      "timeline_end_ms": 57200,
+      "evidence_fingerprint": "sha256:ab16a25f0bc618e709ab4e46b0321fa1c70b8d0b01e39ef069f3bed2dc5e4ad4"
+    },
+    {
+      "event_id": "EVENT-SHOT-017-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-017-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-017-1",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 0,
+      "source_out_ms": 2330,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-017-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-017-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-efde608c7a0d74cd51c6-01",
+      "decision_id": "VCD-efde608c7a0d74cd51c6",
+      "beat_id": "B04-SHOT-017-1",
+      "claim_id": "CLM-SHOT-017-1",
+      "timeline_start_ms": 57200,
+      "timeline_end_ms": 59530,
+      "evidence_fingerprint": "sha256:6596fc471a12581ffc141503c1d5fe7e2635ee23c99e2a0017cae9ef4a0ee1d2"
+    },
+    {
+      "event_id": "EVENT-SHOT-017-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-017-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-017-2",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 2330,
+      "source_out_ms": 4760,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-017-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-017-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-1aa226eac4351f6b802e-01",
+      "decision_id": "VCD-1aa226eac4351f6b802e",
+      "beat_id": "B04-SHOT-017-2",
+      "claim_id": "CLM-SHOT-017-2",
+      "timeline_start_ms": 59530,
+      "timeline_end_ms": 61960,
+      "evidence_fingerprint": "sha256:38fc130d7405a84579c40425744340af679fcb6ff27aacb7afc14a04ea64d376"
+    },
+    {
+      "event_id": "EVENT-SHOT-018-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-018-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-018-1",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 4760,
+      "source_out_ms": 6210,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-018-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-018-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6295626249999999,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6295626249999999,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6697442784032752,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6697442784032752,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-2702303b2bfdae601982-01",
+      "decision_id": "VCD-2702303b2bfdae601982",
+      "beat_id": "B05-SHOT-018-1",
+      "claim_id": "CLM-SHOT-018-1",
+      "timeline_start_ms": 61960,
+      "timeline_end_ms": 63410,
+      "evidence_fingerprint": "sha256:259244141740f2f50991d40af57f3af140e337767b6a173847bc9089cd5de8b4"
+    },
+    {
+      "event_id": "EVENT-SHOT-018-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-018-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-018-2",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 6210,
+      "source_out_ms": 8670,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-018-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-018-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.599031625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.599031625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.6297446059365404,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.6297446059365404,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-9a21ef0ddb1163f9675a-01",
+      "decision_id": "VCD-9a21ef0ddb1163f9675a",
+      "beat_id": "B05-SHOT-018-2",
+      "claim_id": "CLM-SHOT-018-2",
+      "timeline_start_ms": 63410,
+      "timeline_end_ms": 65870,
+      "evidence_fingerprint": "sha256:f4184ec2d766576724eb5aa1128c8e6908282b8b3d0caddc08799a3f84811393"
+    },
+    {
+      "event_id": "EVENT-SHOT-018-3",
+      "presentation_unit_id": "UNIT-VBC-SHOT-018-3",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-018-3",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 8670,
+      "source_out_ms": 9000,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-018-3"
+      ],
+      "carrier_requirements": {
+        "CARRIER-018-3": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-b89d7216677953db1c92-01",
+      "decision_id": "VCD-b89d7216677953db1c92",
+      "beat_id": "B05-SHOT-018-3",
+      "claim_id": "CLM-SHOT-018-3",
+      "timeline_start_ms": 65870,
+      "timeline_end_ms": 66200,
+      "evidence_fingerprint": "sha256:8d1abf858ba08153169aa48e7810a775e09d196c276184357eac498c85997264"
+    },
+    {
+      "event_id": "EVENT-SHOT-019-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-019-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-019-1",
+      "source_file": "footage/561024-i-papa-i-a-musician.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 9200,
+      "source_out_ms": 12040,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-019-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-019-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-00acc78317bcf929f888-01",
+      "decision_id": "VCD-00acc78317bcf929f888",
+      "beat_id": "B05-SHOT-019-1",
+      "claim_id": "CLM-SHOT-019-1",
+      "timeline_start_ms": 66200,
+      "timeline_end_ms": 69040,
+      "evidence_fingerprint": "sha256:83807493927f4fd317efd90b111497a02b24328455261957908e890dd4459005"
+    },
+    {
+      "event_id": "EVENT-SHOT-020-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-020-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-020-1",
+      "source_file": "footage/561101-im-a-pretty-sorry-excuse-a-great-great-grandpa.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 0,
+      "source_out_ms": 540,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-020-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-020-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-c140dc25ee763811093e-01",
+      "decision_id": "VCD-c140dc25ee763811093e",
+      "beat_id": "B06-SHOT-020-1",
+      "claim_id": "CLM-SHOT-020-1",
+      "timeline_start_ms": 69040,
+      "timeline_end_ms": 69580,
+      "evidence_fingerprint": "sha256:ea97a61f06b013fc842a1c06705f2acdac7788f8cac4e2d989e80ae4c80da977"
+    },
+    {
+      "event_id": "EVENT-SHOT-020-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-020-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-020-2",
+      "source_file": "footage/561101-im-a-pretty-sorry-excuse-a-great-great-grandpa.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 540,
+      "source_out_ms": 3340,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-020-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-020-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-3f471de4ab915a31960b-01",
+      "decision_id": "VCD-3f471de4ab915a31960b",
+      "beat_id": "B06-SHOT-020-2",
+      "claim_id": "CLM-SHOT-020-2",
+      "timeline_start_ms": 69580,
+      "timeline_end_ms": 72380,
+      "evidence_fingerprint": "sha256:4ab361f1fcdc64a3086ddcbcf7513b66d1660059ecfbbab3259cf871a14f75fc"
+    },
+    {
+      "event_id": "EVENT-SHOT-020-3",
+      "presentation_unit_id": "UNIT-VBC-SHOT-020-3",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-020-3",
+      "source_file": "footage/561101-im-a-pretty-sorry-excuse-a-great-great-grandpa.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 3340,
+      "source_out_ms": 4660,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-020-3"
+      ],
+      "carrier_requirements": {
+        "CARRIER-020-3": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.49999999999999994,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-93fbe8a6fc8e72b024b5-01",
+      "decision_id": "VCD-93fbe8a6fc8e72b024b5",
+      "beat_id": "B06-SHOT-020-3",
+      "claim_id": "CLM-SHOT-020-3",
+      "timeline_start_ms": 72380,
+      "timeline_end_ms": 73700,
+      "evidence_fingerprint": "sha256:bab27a6c1ab5f7ec1d3c0425c9482f42813f6e9e2bec9e7f100c3949a1d8aa19"
+    },
+    {
+      "event_id": "EVENT-SHOT-021-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-021-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-021-1",
+      "source_file": "footage/623-i-give-you-blessing-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 450
+      },
+      "source_in_ms": 6000,
+      "source_out_ms": 7680,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-021-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-021-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-d845427c7729f150cd69-01",
+      "decision_id": "VCD-d845427c7729f150cd69",
+      "beat_id": "B06-SHOT-021-1",
+      "claim_id": "CLM-SHOT-021-1",
+      "timeline_start_ms": 73700,
+      "timeline_end_ms": 75380,
+      "evidence_fingerprint": "sha256:caf5ef4bbb206da7e89c1cd311c6b4c2aed9441ab0562b79efee17b51b7d7469"
+    },
+    {
+      "event_id": "EVENT-SHOT-021-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-021-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-021-2",
+      "source_file": "footage/623-i-give-you-blessing-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 450
+      },
+      "source_in_ms": 7680,
+      "source_out_ms": 9600,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-021-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-021-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-64505a7a70e59f903560-01",
+      "decision_id": "VCD-64505a7a70e59f903560",
+      "beat_id": "B06-SHOT-021-2",
+      "claim_id": "CLM-SHOT-021-2",
+      "timeline_start_ms": 75380,
+      "timeline_end_ms": 77300,
+      "evidence_fingerprint": "sha256:f7a8ddea5e816253d70630bcd5898a3dcdfa4e1243d80bf3c0ba567411c820c1"
+    },
+    {
+      "event_id": "EVENT-SHOT-021-3",
+      "presentation_unit_id": "UNIT-VBC-SHOT-021-3",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-021-3",
+      "source_file": "footage/623-i-give-you-blessing-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 450
+      },
+      "source_in_ms": 9600,
+      "source_out_ms": 10500,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-021-3"
+      ],
+      "carrier_requirements": {
+        "CARRIER-021-3": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-40e1551c9f49f4e53175-01",
+      "decision_id": "VCD-40e1551c9f49f4e53175",
+      "beat_id": "B06-SHOT-021-3",
+      "claim_id": "CLM-SHOT-021-3",
+      "timeline_start_ms": 77300,
+      "timeline_end_ms": 78200,
+      "evidence_fingerprint": "sha256:5c8212b5981f0d6dac52b7cecca75c21fdcb85523c358344c569f48aa7f5fd5d"
+    },
+    {
+      "event_id": "EVENT-SHOT-022A-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-022A-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-022A-1",
+      "source_file": "footage/623-i-give-you-blessing-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 450
+      },
+      "source_in_ms": 10500,
+      "source_out_ms": 12040,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-022A-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-022A-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-2d89444452ace9aeb45a-01",
+      "decision_id": "VCD-2d89444452ace9aeb45a",
+      "beat_id": "B06-SHOT-022A-1",
+      "claim_id": "CLM-SHOT-022A-1",
+      "timeline_start_ms": 78200,
+      "timeline_end_ms": 79740,
+      "evidence_fingerprint": "sha256:a7e27fed75143fa492b0d512b21912b0797694f24c9ef9d9dd10b15638838145"
+    },
+    {
+      "event_id": "EVENT-SHOT-022A-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-022A-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-022A-2",
+      "source_file": "footage/623-i-give-you-blessing-s2.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 450
+      },
+      "source_in_ms": 12040,
+      "source_out_ms": 12940,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-022A-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-022A-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.234375,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.5164065,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5214288979591837,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-63b252c0377e9433e15e-01",
+      "decision_id": "VCD-63b252c0377e9433e15e",
+      "beat_id": "B06-SHOT-022A-2",
+      "claim_id": "CLM-SHOT-022A-2",
+      "timeline_start_ms": 79740,
+      "timeline_end_ms": 80640,
+      "evidence_fingerprint": "sha256:d80e772a4b7a2b24e71103162b0797fd3870ffa98168a62121943d494bae7d8d"
+    },
+    {
+      "event_id": "EVENT-SHOT-022B-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-022B-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-022B-1",
+      "source_file": "footage/618-i-so-worried-s1.mp4",
+      "source_size": {
+        "width": 1080,
+        "height": 452
+      },
+      "source_in_ms": 6300,
+      "source_out_ms": 10140,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-022B-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-022B-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23541666666666666,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.6840206666666667,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.6840206666666667,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7406809809264305,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7406809809264305,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-44d23cdc6b5c1e555a9d-01",
+      "decision_id": "VCD-44d23cdc6b5c1e555a9d",
+      "beat_id": "B06-SHOT-022B-1",
+      "claim_id": "CLM-SHOT-022B-1",
+      "timeline_start_ms": 80640,
+      "timeline_end_ms": 84480,
+      "evidence_fingerprint": "sha256:8d6c0e6d6be632f9e14a3e849b9b780ee186e5ff8ae502210fb3e02651a9a023"
+    },
+    {
+      "event_id": "EVENT-SHOT-023-1",
+      "presentation_unit_id": "UNIT-VBC-SHOT-023-1",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-023-1",
+      "source_file": "footage/561081-nothing-mama-nothing-at-all.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 2300,
+      "source_out_ms": 5300,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-023-1"
+      ],
+      "carrier_requirements": {
+        "CARRIER-023-1": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.515070625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.5197445240532241,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-548fe55896869d02148c-01",
+      "decision_id": "VCD-548fe55896869d02148c",
+      "beat_id": "B06-SHOT-023-1",
+      "claim_id": "CLM-SHOT-023-1",
+      "timeline_start_ms": 84480,
+      "timeline_end_ms": 87480,
+      "evidence_fingerprint": "sha256:ddd102b5b7901fd5829335b2a7419cbb6c0bb55a06818d3078caeb53956546ed"
+    },
+    {
+      "event_id": "EVENT-SHOT-023-2",
+      "presentation_unit_id": "UNIT-VBC-SHOT-023-2",
+      "film_id": "FILM-COCO",
+      "source_asset_id": "ASSET-SHOT-023-2",
+      "source_file": "footage/561081-nothing-mama-nothing-at-all.mp4",
+      "source_size": {
+        "width": 1920,
+        "height": 808
+      },
+      "source_in_ms": 5300,
+      "source_out_ms": 5962,
+      "camera_strategy": "static_lock",
+      "frame_mode": "cover_static",
+      "semantic_carrier_ids": [
+        "CARRIER-023-2"
+      ],
+      "carrier_requirements": {
+        "CARRIER-023-2": {
+          "visibility_requirement": "face",
+          "minimum_temporal_presence": 1.0,
+          "primary": true,
+          "minimum_rendered_scale": 0.1
+        }
+      },
+      "subtitle_placement": "bottom",
+      "crop": {
+        "window": {
+          "width": 0.23671875,
+          "height": 1.0
+        },
+        "start_center": {
+          "x": 0.682992625,
+          "y": 0.5
+        },
+        "end_center": {
+          "x": 0.682992625,
+          "y": 0.5
+        },
+        "start_renderer_position": {
+          "x": 0.7397446878198567,
+          "y": 0.5
+        },
+        "end_renderer_position": {
+          "x": 0.7397446878198567,
+          "y": 0.5
+        }
+      },
+      "timeline_item_id": "VTI-619edd8781a8d7cd1c58-01",
+      "decision_id": "VCD-619edd8781a8d7cd1c58",
+      "beat_id": "B06-SHOT-023-2",
+      "claim_id": "CLM-SHOT-023-2",
+      "timeline_start_ms": 87480,
+      "timeline_end_ms": 88142,
+      "evidence_fingerprint": "sha256:86c702bef5782f377b154e0cead06cd26be3de247ba4dcaf0f2de3324a20c398"
+    }
+  ],
+  "status": "locked",
+  "edit_plan_fingerprint": "sha256:0f76a03da112d3ad1e3d0524c2df2df8b040be32dde03d0fbc007856976aa0a1"
+}

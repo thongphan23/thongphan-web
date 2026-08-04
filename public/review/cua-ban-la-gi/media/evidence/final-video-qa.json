@@ -1,0 +1,68 @@
+{
+  "schema_version": "tpr.final_video_qa.v2",
+  "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
+  "status": "PASS",
+  "master": {
+    "path": "remotion/renders/cua-ban-la-gi-final-v3.mp4",
+    "sha256": "3dec0c51959cc086882e6081894e0a4004b69ebab53a06b7ecdf46e303349493",
+    "duration_seconds": 88.213333,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "integrated_loudness_lufs": -14.2,
+    "fast_start": true
+  },
+  "editorial": {
+    "film_lock": "Coco",
+    "editorial_shots": 26,
+    "vertical_timeline_items": 46,
+    "unique_source_clips": 13,
+    "overlapping_source_trims": 0,
+    "generated_camera_moves": 0,
+    "full_bleed_vertical_shots": 46,
+    "native_cut_split_items": 20,
+    "silent_review": "PASS"
+  },
+  "captions": {
+    "segments": 45,
+    "voice_words_covered": 231,
+    "voice_words_total": 231,
+    "max_lines": 1,
+    "max_characters": 30,
+    "overlap_count": 0,
+    "anchor_x": 510,
+    "anchor_y": 1180,
+    "safe_area": "PASS",
+    "encoded_pixel_observations": 45
+  },
+  "automated_checks": {
+    "typescript": "PASS",
+    "timeline_continuity": "PASS",
+    "source_trim_duration_parity": "PASS",
+    "vertical_edit_plan_fingerprint": "PASS",
+    "vertical_semantic_pixel_qa": "PASS",
+    "vertical_caption_safe_area_qa": "PASS",
+    "black_interval_over_250ms": 0,
+    "blackdetect_pixel_threshold": 0.02,
+    "silence_interval_over_1500ms_below_minus_45db": 0,
+    "final_contact_sheet_review": "PASS"
+  },
+  "lineage": {
+    "provided_audio_sha256": "3e7b1014e53534c02e43bfc7c11dea06f1328275f4aa355af154d9078591e7ed",
+    "transcript_sha256": "3712bae8ab6159301d780e522b764f9b63bd3f1ecd8cf9ef50fc500146bced27",
+    "voice_timeline_sha256": "32a3288748ff6bf4de3b867150eefacc481f2c4fde1a5b876d0c96a6607e173d",
+    "source_casting_board_sha256": "4ae3a758142637fd14f9bb79f903d16b1de7fe4d4d0693b60fb793321b9cd78f",
+    "production_shot_plan_sha256": "13b1a80352a084474e0e9b5b982d456624a0239c69d7738ef56ab35a9ae29dd9",
+    "subtitles_sha256": "fd4be4b119a2f5af2bfd020577847f4c71cd5f90433165b348827a697229e49e",
+    "vertical_composition_plan_sha256": "e72c7373c6ed8a1fddd6bf609246da0a6d157421c5a4a1af5f3bef8a888b649a",
+    "vertical_edit_plan_sha256": "e4aa13efd9a65202cb1e2faf78ba3031672ee1443082dd20ef51ede3588287b9",
+    "vertical_semantic_pixel_qa_sha256": "4c79c4b1eae121547ad4a42da788dc177bec557ce520b3e696949fd771f49559",
+    "vertical_caption_safe_area_qa_sha256": "8270130d85a47f895f8bcdfaf31fe9583e3458ff900a016adb0b82a5bafc4a88",
+    "native_cut_and_crop_review_sha256": "0ec5f1fcf749f1f3ab29f15777c506f8d03c9521bf15bfc7b32fe70437b1ac36",
+    "contact_sheet_sha256": "970347b431b68364882c89fc81a83491e438c622c8acb228e92637a8e84c0fef"
+  }
+}

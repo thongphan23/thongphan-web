@@ -1,6 +1,20 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-28
+Last updated: 2026-08-04
+
+## Provided-voice review v3 — crop and caption recovery — 2026-08-04
+
+- A fresh review route for `cua-ban-la-gi` is built from current `origin/main`.
+- The page references the content-addressed delivery
+  `cua-ban-la-gi-coco-v3-5fe2405c693b.mp4`; the retired stable filename is
+  rejected by a focused route test so an immutable browser cache cannot replay an
+  older master.
+- Vertical evidence is exposed beside the video: 26 editorial shots are split
+  into 46 static crop items, all 46 items have START/MID/END semantic pixel QA,
+  and all 45 caption observations pass encoded safe-area QA.
+- Focused review-route tests pass `2/2`; the current-main production build passes
+  all `83/83` static routes. Deployment and public checksum verification are the
+  remaining steps for this recovery.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
