@@ -3,8 +3,8 @@ import VoiceReviewPlayer from '@/components/voice-review/VoiceReviewPlayer'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Voice Review · Thông Phan Remotion',
-  description: 'Ba bản voice nam dùng chung nội dung để owner đánh giá nhịp, khoảng nghỉ và độ tự nhiên.',
+  title: 'Mèo béo · Voice Review',
+  description: 'Bản kể chuyện nỗi nhớ nhà của người đi học xa, dùng profile giọng Mèo béo.',
   robots: { index: false, follow: false, nocache: true },
 }
 
@@ -12,29 +12,29 @@ export default function VoiceReviewPage() {
   return (
     <main className={styles.page}>
       <header className={styles.intro}>
-        <p className={styles.eyebrow}>TPR · OWNER VOICE REVIEW · V7</p>
-        <h1>Ba cách đọc.<br />Một nội dung.</h1>
+        <p className={styles.eyebrow}>TPR · OWNER VOICE REVIEW · MÈO BÉO</p>
+        <h1>Nỗi nhớ nhà<br />của người đi xa.</h1>
         <p className={styles.lede}>
-          Cùng một kịch bản và cùng một giọng nam. Ba bản dùng các cách diễn khác nhau
-          để so sánh độ tự nhiên, nhịp suy nghĩ và đường năng lượng.
+          Một câu chuyện về căn phòng trọ, mùi cơm từ phòng bên và cuộc gọi về nhà
+          mà ta vẫn thường trì hoãn. Bản này dùng profile giọng “Mèo béo”.
         </p>
         <dl className={styles.runFacts}>
-          <div><dt>Thời lượng</dt><dd>66,3–68,1 giây</dd></div>
-          <div><dt>Sai chữ ASR</dt><dd>0,085–0,764%</dd></div>
-          <div><dt>Đơn vị suy nghĩ</dt><dd>6 cụm ý · 6 khoảng lặng có chủ đích</dd></div>
+          <div><dt>Thời lượng</dt><dd>1 phút 49 giây</dd></div>
+          <div><dt>Sai chữ ASR</dt><dd>1,69% · đạt</dd></div>
+          <div><dt>Ý quan trọng</dt><dd>6/6 cụm được giữ trọn</dd></div>
         </dl>
       </header>
 
       <VoiceReviewPlayer />
 
       <section className={styles.questions} aria-labelledby="voice-review-questions">
-        <p className={styles.eyebrow}>Bốn tín hiệu cần chấm</p>
-        <h2 id="voice-review-questions">Tự nhiên · Dễ thở · Có nhịp · Có cảm</h2>
+        <p className={styles.eyebrow}>Bốn tín hiệu cần nghe</p>
+        <h2 id="voice-review-questions">Đúng giọng · Tự nhiên · Có nhịp · Có cảm</h2>
         <ol>
-          <li>Bản nào ít tạo cảm giác máy hoặc biến giọng nhất?</li>
-          <li>Bản nào có khoảng nghỉ giống một người đang thật sự suy nghĩ?</li>
-          <li>Bản nào điều tiết được lúc dồn, lúc thả mà không gây mệt?</li>
-          <li>Đoạn nào vẫn bị giật, kéo dài hoặc lướt qua ý kế tiếp?</li>
+          <li>Giọng đã đủ giống “Mèo béo” hay vẫn còn lệch màu giọng?</li>
+          <li>Khoảng nghỉ có giống một người đang thật sự nhớ và suy nghĩ?</li>
+          <li>Nhịp kể có điều tiết được lúc nén, lúc thả mà không gây mệt?</li>
+          <li>Đoạn nào vẫn bị máy, biến giọng, kéo dài hoặc lướt qua ý?</li>
         </ol>
       </section>
     </main>

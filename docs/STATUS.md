@@ -1,6 +1,19 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-02
+Last updated: 2026-08-04
+
+## Meo Beo homesickness voice owner review - 2026-08-04
+
+- Replaced the previous multi-candidate review surface with one focused
+  109-second story about a student missing home, using the owner-approved voice
+  alias `Meo beo`.
+- Objective audio gates pass: ASR CER is `0.016913`, all 6 critical phrases are
+  preserved and cadence QA passes. Identity, naturalness and emotional fit
+  remain pending owner listening.
+- Focused page tests pass 3/3, TypeScript and focused ESLint pass, the static
+  build completes with 85 routes, and desktop/mobile visual QA show no clipping
+  or overflow. Full evidence:
+  `docs/releases/MEO-BEO-VOICE-REVIEW-2026-08-04.md`.
 
 ## Remotion Full-Bleed Vertical Composition v3 owner-review - production release - 2026-08-02
 

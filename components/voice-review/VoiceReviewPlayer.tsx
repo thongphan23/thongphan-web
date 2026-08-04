@@ -4,9 +4,12 @@ import { useRef } from 'react'
 import styles from '@/app/voice/page.module.css'
 
 const tracks = [
-  { id: 'A', duration: '68,1 giây', src: '/voice/audio/A.mp3' },
-  { id: 'B', duration: '66,3 giây', src: '/voice/audio/B.mp3' },
-  { id: 'C', duration: '66,3 giây', src: '/voice/audio/C.mp3' },
+  {
+    id: 'MB',
+    name: 'Mèo béo',
+    duration: '1 phút 49 giây',
+    src: '/voice/audio/meo-beo-noi-nho-nha.mp3',
+  },
 ] as const
 
 export default function VoiceReviewPlayer() {
@@ -19,7 +22,7 @@ export default function VoiceReviewPlayer() {
   }
 
   return (
-    <section className={styles.playerList} aria-label="Ba bản voice cần so sánh">
+    <section className={styles.playerList} aria-label="Bản voice Mèo béo cần đánh giá">
       {tracks.map((track, index) => (
         <article className={styles.track} key={track.id}>
           <div className={styles.trackIdentity} aria-hidden="true">
@@ -28,7 +31,7 @@ export default function VoiceReviewPlayer() {
           </div>
           <div className={styles.trackBody}>
             <header>
-              <h2>Bản {track.id}</h2>
+              <h2>{track.name}</h2>
               <p>{track.duration}</p>
             </header>
             <audio
@@ -36,7 +39,7 @@ export default function VoiceReviewPlayer() {
               controls
               preload="metadata"
               onPlay={() => handlePlay(track.id)}
-              aria-label={`Phát bản voice ${track.id}`}
+              aria-label={`Phát bản voice ${track.name}`}
             >
               <source src={track.src} type="audio/mpeg" />
               Trình duyệt này không hỗ trợ âm thanh MP3.

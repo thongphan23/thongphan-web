@@ -3,25 +3,26 @@ import { access, readFile, stat } from 'node:fs/promises'
 import test from 'node:test'
 
 const audioRoot = new URL('../public/voice/audio/', import.meta.url)
-const tracks = ['A.mp3', 'B.mp3', 'C.mp3']
+const tracks = ['meo-beo-noi-nho-nha.mp3']
 
-test('voice review route is noindex and exposes three controlled tracks', async () => {
+test('voice review route is noindex and exposes the Mèo béo review track', async () => {
   const [page, player] = await Promise.all([
     readFile(new URL('../app/voice/page.tsx', import.meta.url), 'utf8'),
     readFile(new URL('../components/voice-review/VoiceReviewPlayer.tsx', import.meta.url), 'utf8'),
   ])
 
   assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/)
-  assert.match(page, /OWNER VOICE REVIEW · V7/)
-  assert.match(page, /6 cụm ý · 6 khoảng lặng có chủ đích/)
-  assert.match(page, /0,085–0,764%/)
+  assert.match(page, /OWNER VOICE REVIEW · MÈO BÉO/)
+  assert.match(page, /6\/6 cụm được giữ trọn/)
+  assert.match(page, /1,69% · đạt/)
   assert.match(page, /<VoiceReviewPlayer\s*\/>/)
-  assert.equal((player.match(/id:\s*['"][ABC]['"]/g) ?? []).length, 3)
+  assert.match(player, /id:\s*['"]MB['"]/)
+  assert.match(player, /name:\s*['"]Mèo béo['"]/)
   assert.equal((player.match(/preload="metadata"/g) ?? []).length, 1)
   assert.match(player, /controls/)
   assert.match(player, /onPlay=/)
-  assert.match(player, /68,1 giây/)
-  assert.equal((player.match(/66,3 giây/g) ?? []).length, 2)
+  assert.match(player, /1 phút 49 giây/)
+  assert.match(player, /meo-beo-noi-nho-nha\.mp3/)
   assert.doesNotMatch(player, /autoPlay/)
 })
 
