@@ -73,6 +73,7 @@ Video biến một ước muốn quay ngược thời gian thành một lời nh
 - `audit/vertical-caption-rendered-observations.json`
 - `audit/vertical_caption_safe_area_qa.json`
 - `evidence/final/final-video-qa.json`
+- `evidence/final/owner-feedback-crop-caption-incident.md`
 - `remotion/renders/final-contact-sheet-v3.jpg`
 
 ## Nội dung cần owner chấm

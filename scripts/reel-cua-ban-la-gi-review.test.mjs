@@ -28,6 +28,7 @@ test('review media and evidence are present and internally consistent', async ()
   const poster = new URL('cua-ban-la-gi-coco-poster.jpg', mediaRoot)
   const requiredEvidence = [
     'owner-review-packet.md',
+    'owner-feedback-crop-caption-incident.md',
     'final-video-qa.json',
     'production-shot-plan.json',
     'source-casting-board.json',
