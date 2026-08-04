@@ -3,8 +3,8 @@
   "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
   "status": "PASS",
   "master": {
-    "path": "remotion/renders/cua-ban-la-gi-final-v3.mp4",
-    "sha256": "3dec0c51959cc086882e6081894e0a4004b69ebab53a06b7ecdf46e303349493",
+    "path": "remotion/renders/cua-ban-la-gi-final-v4.mp4",
+    "sha256": "4ba72448acf2b75d99eaf7288110a0ec0ed6c4b07e11aa3d4fc48a25bb685fde",
     "duration_seconds": 88.213333,
     "width": 1080,
     "height": 1920,
@@ -16,6 +16,16 @@
     "integrated_loudness_lufs": -14.2,
     "fast_start": true
   },
+  "web_delivery": {
+    "filename": "cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4",
+    "sha256": "5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703",
+    "size_bytes": 21914025,
+    "duration_seconds": 88.213,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "fast_start": true
+  },
   "editorial": {
     "film_lock": "Coco",
     "editorial_shots": 26,
@@ -25,7 +35,12 @@
     "generated_camera_moves": 0,
     "full_bleed_vertical_shots": 46,
     "native_cut_split_items": 20,
-    "silent_review": "PASS"
+    "silent_review": "PASS",
+    "face_required_timeline_items": 27,
+    "encoded_start_mid_end_observations": 138,
+    "measured_face_observations": 81,
+    "face_boundary_pass_observations": 81,
+    "manual_face_and_head_review_pass_observations": 81
   },
   "captions": {
     "segments": 45,
@@ -46,6 +61,8 @@
     "vertical_edit_plan_fingerprint": "PASS",
     "vertical_semantic_pixel_qa": "PASS",
     "vertical_caption_safe_area_qa": "PASS",
+    "manual_face_and_head_review": "PASS",
+    "source_transition_free_face_review": "PASS",
     "black_interval_over_250ms": 0,
     "blackdetect_pixel_threshold": 0.02,
     "silence_interval_over_1500ms_below_minus_45db": 0,
@@ -58,11 +75,11 @@
     "source_casting_board_sha256": "4ae3a758142637fd14f9bb79f903d16b1de7fe4d4d0693b60fb793321b9cd78f",
     "production_shot_plan_sha256": "13b1a80352a084474e0e9b5b982d456624a0239c69d7738ef56ab35a9ae29dd9",
     "subtitles_sha256": "fd4be4b119a2f5af2bfd020577847f4c71cd5f90433165b348827a697229e49e",
-    "vertical_composition_plan_sha256": "e72c7373c6ed8a1fddd6bf609246da0a6d157421c5a4a1af5f3bef8a888b649a",
-    "vertical_edit_plan_sha256": "e4aa13efd9a65202cb1e2faf78ba3031672ee1443082dd20ef51ede3588287b9",
-    "vertical_semantic_pixel_qa_sha256": "4c79c4b1eae121547ad4a42da788dc177bec557ce520b3e696949fd771f49559",
+    "vertical_composition_plan_sha256": "cfae5cd612a5621df14dfc0215878ff155cb195d84c9bd1ddea24e02b4dc0c3d",
+    "vertical_edit_plan_sha256": "4374648c38aa98ebff90cea486eb8a7b8ffdaf333a2d3ebdaaf0052a4aee9b9d",
+    "vertical_semantic_pixel_qa_sha256": "c41bdb29536b5eaa995c7c2aa3d0860a1cfc364d2a6275c3fc7e6b1678ee3bbc",
     "vertical_caption_safe_area_qa_sha256": "8270130d85a47f895f8bcdfaf31fe9583e3458ff900a016adb0b82a5bafc4a88",
-    "native_cut_and_crop_review_sha256": "0ec5f1fcf749f1f3ab29f15777c506f8d03c9521bf15bfc7b32fe70437b1ac36",
-    "contact_sheet_sha256": "970347b431b68364882c89fc81a83491e438c622c8acb228e92637a8e84c0fef"
+    "vertical_rendered_observations_sha256": "7218fe3260943f4145bbd8e2b6d3b2b8c33d83ea08387dcb0142391754885895",
+    "contact_sheet_sha256": "4dac8acc3addb15e5afaddc0b77a951e7e6a9388d084df95e9878fe319a65046"
   }
 }

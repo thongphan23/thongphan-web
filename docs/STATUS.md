@@ -2,21 +2,21 @@
 
 Last updated: 2026-08-04
 
-## Provided-voice review v3 — crop and caption recovery — 2026-08-04
+## Provided-voice review v4 — face-safe crop recovery — 2026-08-04
 
 - A fresh review route for `cua-ban-la-gi` is built from current `origin/main`.
 - The page references the content-addressed delivery
-  `cua-ban-la-gi-coco-v3-5fe2405c693b.mp4`; the retired stable filename is
-  rejected by a focused route test so an immutable browser cache cannot replay an
-  older master.
+  `cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4`; the retired v3 payload is removed and
+  rejected by a focused route test so an immutable browser cache cannot replay the
+  known-bad crop.
 - Vertical evidence is exposed beside the video: 26 editorial shots are split
   into 46 static crop items, all 46 items have START/MID/END semantic pixel QA,
-  and all 45 caption observations pass encoded safe-area QA.
-- Focused review-route tests pass `2/2`; the current-main production build passes
-  all `83/83` static routes. Production deployment `f42d6430` is live at the
-  canonical review URL. Public page/video probes return `200/200`; the downloaded
-  payload is `15130021` bytes and matches SHA-256
-  `5fe2405c693b448a7b99fb83753ed2c80176a44f033f8011354085cc989a9994`.
+  all 45 caption observations pass encoded safe-area QA, and 27 face-required items
+  have 81/81 manual START/MID/END observations confirming a complete face and head.
+- Master v4 is `4ba72448acf2b75d99eaf7288110a0ec0ed6c4b07e11aa3d4fc48a25bb685fde`;
+  the fast-start web payload is `21914025` bytes with SHA-256
+  `5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703`.
+- Deployment and public read-back verification are pending for this correction.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

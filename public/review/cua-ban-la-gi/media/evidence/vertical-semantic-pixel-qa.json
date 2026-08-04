@@ -1,332 +1,470 @@
 {
   "schema_version": "1.0.0",
   "run_id": "RUN-cua-ban-la-gi-facebook-reel-20260803",
-  "composition_plan_fingerprint": "sha256:006f838e55a1607882ba462ae7e79df901b1640b8c0290dfcbd1539514983806",
-  "edit_plan_fingerprint": "sha256:0f76a03da112d3ad1e3d0524c2df2df8b040be32dde03d0fbc007856976aa0a1",
+  "composition_plan_fingerprint": "sha256:436ec6cf6dcd331e78d3667742e7937a6ffcaf20c03fae351859be22d602234c",
+  "edit_plan_fingerprint": "sha256:f2a0179b5a29dcbe5a7077846f387643808bb22effaee8205cb20be97a8ba031",
   "timeline_item_results": [
     {
       "timeline_item_id": "VTI-0705568233c28bc72be3-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:d3efd74b17d8c6f3508b2dd12991674c18ffc448b5bcaaaefe2d96ed462d6ff5"
+      "evidence_fingerprint": "sha256:3f7e470252f86afa0afa40828e9f87c3709d7f55134b3888efde53507aede5dc"
     },
     {
       "timeline_item_id": "VTI-40ca43df66b25d2502c6-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:cb4ac90b64f9c0436ca0d248a29572c64846d6effcf93748fcda9d6c7886642c"
+      "evidence_fingerprint": "sha256:8bc89373e9c26ffa5aaa7a6f952add5b9a481e0be15c717975055e744d75b4fc"
     },
     {
       "timeline_item_id": "VTI-e9203b3e92d7a3db4201-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:d217aa1e5703cd19deecc64029a9e12e6786548428742fd6d4d38419672598b1"
+      "evidence_fingerprint": "sha256:d286396a403e6b6f5483ff1454dcd53f778f8a37776a9301ad25d583d2ef5852"
     },
     {
       "timeline_item_id": "VTI-ce1669d2b437ebaaa0c1-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:294cff9ecdce9200f01b212d310248e2754912a1b7db87ce18065c71162d240f"
+      "evidence_fingerprint": "sha256:0e4ae3b01c653c62e15a5e4b28b8452aa40e9dc31637cc847acfdd765824f786"
     },
     {
       "timeline_item_id": "VTI-aab4f83203b5ae989ad1-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:6f1749ce3b3502c13cce54946c1e3ce1b1d3e60337d021db9f499b5aa4f751c9"
+      "evidence_fingerprint": "sha256:f330d29c420e7bf485e4f9bf9d82b386cbd511864482da81cc17ba6ff78dec6d"
     },
     {
       "timeline_item_id": "VTI-ecff9aa6f9d756a8a288-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:7140a84fd212b136841fda2b17abe0285fa9a4a9305f9e4bf7efa3f0f4fa60db"
+      "evidence_fingerprint": "sha256:51d1836975659377deefb8b5735659139b133090ebdd53d27854dabd3a614fd8"
     },
     {
       "timeline_item_id": "VTI-48aac7c978cc1d37e6b8-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:6937fc2299d553534d74166d2f705af518aa691cb6db2e465d031b0fec808aad"
+      "evidence_fingerprint": "sha256:67a21c461d4f5ac3a049ce747b86b44c1c83cf7460006871947f4ee81529031d"
     },
     {
       "timeline_item_id": "VTI-35b7c73262eaf52782ba-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:263dc443f9ea924c1fd4f3ea325ff0ef7cc957847238e5a3e1e4149ea3bc7b42"
+      "evidence_fingerprint": "sha256:8a573677a6f77b97f9678f0bff4ebbca9dd6afb2a166778cc628c58ff121087c"
     },
     {
       "timeline_item_id": "VTI-c6c9555bb9c66484574f-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:4c0a7d77091a10cdf880b74460817569d320369390c54231ef9334a5ab3685b1"
+      "evidence_fingerprint": "sha256:27fdcda92d70dce0853ac9e5d9b24f5aec4d513b6101376b8dad59359d47fd7a"
     },
     {
       "timeline_item_id": "VTI-065c1088686e73f412cb-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:c02744bccdd4e48f07458853249a24e150a09aa31fdc7bcbb8a4550909960be0"
+      "evidence_fingerprint": "sha256:331ea8ef9db283962b8575d9eb9b28f85f489f62076270f9c912c1172755cd55"
     },
     {
       "timeline_item_id": "VTI-2a10505400e5268e9c7b-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:8832a5d7071d0fffcc020a838fc2ff7f8524f9b8b9e6faac16e49e951991e6af"
+      "evidence_fingerprint": "sha256:1929d5ba99109547345d3af1116f4a278853342298baad2276ff54e1c7707044"
     },
     {
       "timeline_item_id": "VTI-1a5bbfcb288018e1cc3f-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:ccd45572cd585970c11ee5fe7403462b1861950da9b0117549abdc0c71581d88"
+      "evidence_fingerprint": "sha256:56a44f6e93008a927c863cd095ac3dcb6ec9e03fbf28ac7aa6318b4d3a371680"
     },
     {
       "timeline_item_id": "VTI-ffc9189dbb312b978cce-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:d9497e3b240b712a416164846423fb6c8cbe9d765863ae0e4b3ae0cbb2b23c6c"
+      "evidence_fingerprint": "sha256:0ca4cc8e1ce914f0cb4acc62b053d17f3d69bd2fc8b18febb877dfd7f367c4e0"
     },
     {
       "timeline_item_id": "VTI-687a5f94d7521d67ba68-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:75feee263b61a4462ec3e4bbc7b15b5e247f93e86fd97f41941cae6bbb19ec9c"
+      "evidence_fingerprint": "sha256:d7799330e6119fc5ec6ee0c1a3e19cfca2672800550647789efddb7fcb5c310a"
     },
     {
       "timeline_item_id": "VTI-6427347a6a77677f2a16-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:fc44edec03cdb875df5581d0603c327ec13da6072e89f5062b67844930c6b625"
+      "evidence_fingerprint": "sha256:6393e6717bb101a48c53c3ec20c85b923325d24b83a6c10670c251c09887b36b"
     },
     {
       "timeline_item_id": "VTI-3ae8c172b1ca200a8fc6-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:246c06ad1e204524178a7364b580cbe48956fc660adf2422d093dda5643b6ec0"
+      "evidence_fingerprint": "sha256:2e25720ead4a0a90f16b304a4eabc2367d73d680777b38d9af7b019f2a52712e"
     },
     {
       "timeline_item_id": "VTI-78cf90fa1c6f66b5265b-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:f02cc5c35f8810641d6dc0a485ad124ab862ce1bb0959cdc5da6e49635fd8186"
+      "evidence_fingerprint": "sha256:a8e6ddcd7ee42e4d7db6477e3d435f00a153627ab6d1df181ef9eee4db459cde"
     },
     {
       "timeline_item_id": "VTI-1664b18665b2741b958e-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:797f1a878cc1309a0e50a8b0cce55f54a408e45e2eda747d26970dc7253b6004"
+      "evidence_fingerprint": "sha256:008481bcf2098f9aced07018810b2923aac9355d6657493b219616ccf747c359"
     },
     {
       "timeline_item_id": "VTI-4155425facbb6f388510-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:996d29b92c714c1a9103d0bae5f4ffd954c48bbf6c1d18ada92d8d3ff13860c4"
+      "evidence_fingerprint": "sha256:c43545b868c242157d615014ff2c99c4f1e6311e1b9175250225cf640cb01618"
     },
     {
       "timeline_item_id": "VTI-5802a5bde28ce9330d79-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:93fb8b1737758c3c2cb7b09e905a300b81731e487ade04ff7f7e2646a4c7625a"
+      "evidence_fingerprint": "sha256:b7dca94c8beaa289ee7bbca2a1abc44f483538390073243ab15873d8ccfbb503"
     },
     {
       "timeline_item_id": "VTI-4234c38573b6cc2999ec-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:1bc898176f65f02454388f2016da37af281186cfc6eb9daa2c5b9893915f4326"
+      "evidence_fingerprint": "sha256:2de794f17a6849a6f7e0dd21bba21b6eb769edde8a569f16f43b1be5ba32c491"
     },
     {
       "timeline_item_id": "VTI-839dccf71e33949f4fa9-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:04fbd4b34db7f412149648378c6bce89f9b177bfb7f90b515b3b5f4d5f1c49c2"
+      "evidence_fingerprint": "sha256:20be6be3b438e65e8b65d80e269ed79f2e65e4f5faf945995fb7563ce241d036"
     },
     {
       "timeline_item_id": "VTI-aef332a0c336f72f704b-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:422d3e45a698ff948b926d73ac1db9dfb6f473296bb8114bc35758c905c99b01"
+      "evidence_fingerprint": "sha256:945edd550ac16ba9da75aafa8d979f1d87ff4acc6e012d46ac5dfb3e47d3d8f2"
     },
     {
       "timeline_item_id": "VTI-61a99b1129a737e86f36-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:5eff897a917847315e1260a7a8023753cfdbf7234346cc76776b34ba15175102"
+      "evidence_fingerprint": "sha256:396688454ab4e7687bb3c58ebe59e0b08176568cb5c7bb27fd21326bdcf516d5"
     },
     {
       "timeline_item_id": "VTI-98926c4bdab86c3adf8f-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:ce64ab20f50b1f738fc269fe91c723b08efcc8f2d2512648f430cb2ca1a627a4"
+      "evidence_fingerprint": "sha256:d9f2385c3ad644f299f730ba45b43d1323ca5ba29da6ac03f8184341da871d17"
     },
     {
       "timeline_item_id": "VTI-b196b73f71b93edc7684-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:38be7683c212894e303fc805970b7f32e325fc6869ddb20b1fed18524b606533"
+      "evidence_fingerprint": "sha256:8a416b4c9a11d30a9582909e828cad3eb3a97618db307d778b7a6c2aefcbbe1d"
     },
     {
       "timeline_item_id": "VTI-22f0c5187cab233084c1-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:b3f8954efb82e4e745ec4a3be68e4d09c7203ca7c625b25fe900657ffdf12415"
+      "evidence_fingerprint": "sha256:3b72fb3d7fca9ddfcbf616dfb9186dffdeb089f88b7d9880d84a565fbc0e2cec"
     },
     {
       "timeline_item_id": "VTI-3c8a8b303672becafb4f-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:06035fff67778f780e99d0ebb72f6b72c868ba52a3be2fa28b32dbb1166fb6ef"
+      "evidence_fingerprint": "sha256:c0a4a1157b9a636e4c5efab0e6873a32f0f08a45aae0ed465b404f8071b9a2fe"
     },
     {
       "timeline_item_id": "VTI-d3068e6848dfef5a7bca-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:56894f5a32ea3451f43cf786df97175e126d3f2039815a69def5db1e9d5c073e"
+      "evidence_fingerprint": "sha256:2a9979cc285bfe0487930f2053fed11c5a732df51b6c76e3cd24ee03d507a1f6"
     },
     {
       "timeline_item_id": "VTI-efde608c7a0d74cd51c6-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:8900df37abf1b7a1a506be440bbc0f5a5526be49674ac089327aa645e04f52a7"
+      "evidence_fingerprint": "sha256:e435c121c1e64e00f95b19e2de582a996e97e32b582abafb27f5da835886383f"
     },
     {
       "timeline_item_id": "VTI-1aa226eac4351f6b802e-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:3cd02e22195a31c3e7f831739398f39c2720c142eada8b02cbc8574e560984fc"
+      "evidence_fingerprint": "sha256:c44bdb4516456f9838dfff28508b608100beb0d2ea2c17ed3a454ac3dfe1b509"
     },
     {
       "timeline_item_id": "VTI-2702303b2bfdae601982-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:d641974fbaaeff6566d03d94682ee2bb6a6b8f7b2c553f9c2f2bebba43dc5795"
+      "evidence_fingerprint": "sha256:268280c137c0e03b0de2b39246cdff7e9da27f0fa74010bfe1df3829a8a454c9"
     },
     {
       "timeline_item_id": "VTI-9a21ef0ddb1163f9675a-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:a9ac24645f92027209728a5ae74e9bd8e2d098a04c1fd4accbf9fbc3948f6d30"
+      "evidence_fingerprint": "sha256:0ca73d53e4bbbe32c69d59880adb832e06a576402769be60dc672fb137a4150e"
     },
     {
       "timeline_item_id": "VTI-b89d7216677953db1c92-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:57a4d935679288221b1720843f9f1cafb555edb58e631416d5965f913e347725"
+      "evidence_fingerprint": "sha256:0b5580cbc890638b529666299d3a14ff39faf89e5199282557873351ee441b94"
     },
     {
       "timeline_item_id": "VTI-00acc78317bcf929f888-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:3f7affc583253702f31fb6d9100b5f025acbe6488a1a02b13c35676165b8190b"
+      "evidence_fingerprint": "sha256:11ed79787098fe6c595dbe237aa98396f08a414a90d13ed907c32979ac86b426"
     },
     {
       "timeline_item_id": "VTI-c140dc25ee763811093e-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:51ecc3737d7b9b6f4677e6a9a933e8c9d708226b50cdb86faed48ffbd7fd2798"
+      "evidence_fingerprint": "sha256:1ac24eb26ca5ba6bff345ed858aae148b0a60418d5f92badf6c90b7165b5dc22"
     },
     {
       "timeline_item_id": "VTI-3f471de4ab915a31960b-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:7a05fcbdb4b4e075009ec51bc058bf5214948f87e04b316a5b8f177c4665e8eb"
+      "evidence_fingerprint": "sha256:4b5dc20ca80283f7b86f6f35a69303d8c2d84b9d9c006fab996c1da916ded9ff"
     },
     {
       "timeline_item_id": "VTI-93fbe8a6fc8e72b024b5-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:2848ab497f6766713b95f76cadc9c731af1e1a02828be79f7b04b5ec4e9319d5"
+      "evidence_fingerprint": "sha256:bf50f8cb9534497918467b327eef725a6f20eb962a588351e2e9e0cebd5f8231"
     },
     {
       "timeline_item_id": "VTI-d845427c7729f150cd69-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:3516e1bb2663b1555c2c4eb60e43b9c59e047fdda7f3c28ee405a63aaa315677"
+      "evidence_fingerprint": "sha256:d403614161db86b9f437148187343ae7c9414dafa8c30e252237150a987c8c9c"
     },
     {
       "timeline_item_id": "VTI-64505a7a70e59f903560-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:f052f0dcc5849e3e70001021c1e8aeddcb57cd0fa1a58fb430b17f5a97c2225b"
+      "evidence_fingerprint": "sha256:8281ecfed0eb9432fe472be686547f9bba574741a804a39bf1a9543cf4dc23b3"
     },
     {
       "timeline_item_id": "VTI-40e1551c9f49f4e53175-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:f01d94387731f9bc7791142fde00d57b4f506d8f3eed562b3289bedfda9dc08a"
+      "evidence_fingerprint": "sha256:5fc210c9d05602f7af668e99fe3031a41ce0272bc7127a11d192e083422038de"
     },
     {
       "timeline_item_id": "VTI-2d89444452ace9aeb45a-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:274645290755889f0a3718633395717c8ebc6190e68f6db1ea2cb9dc202db63f"
+      "evidence_fingerprint": "sha256:130ea10efec3ef3d5a5cf06e44ac0d13f5ed3575dcfdf2ca6995538cf20df402"
     },
     {
       "timeline_item_id": "VTI-63b252c0377e9433e15e-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:372cbdd730b0324aa98d75bf0d82fb47bd19516ce7911dd048f5fd794c6dc007"
+      "evidence_fingerprint": "sha256:670e85d864c13f89320d9cd8300694193661ab1b6b92182cc136523bd44ce902"
     },
     {
       "timeline_item_id": "VTI-44d23cdc6b5c1e555a9d-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:743c90ac4496406d05ab944cd5e594a481ec5e5043014ab9247ced94bb4ecf16"
+      "evidence_fingerprint": "sha256:bb7d80e6b28401778e77ac6f639b924fb3b6bd1bd50a358d0effb5fd8c8bca92"
     },
     {
       "timeline_item_id": "VTI-548fe55896869d02148c-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 0,
+      "face_boundary_pass_count": 0,
+      "manual_face_review_pass_count": 0,
       "status": "pass",
-      "evidence_fingerprint": "sha256:086ce4c70167495ee330e642f5910a52e5ecf710a36729fdce0910ef5d5bbde8"
+      "evidence_fingerprint": "sha256:aa8b287a7d4c3926c11138e5f2458d224e3f3668f69ddfd4c3f291e6faebebaa"
     },
     {
       "timeline_item_id": "VTI-619edd8781a8d7cd1c58-01",
       "rendered_observation_count": 3,
       "carrier_pass_count": 3,
+      "measured_face_count": 3,
+      "face_boundary_pass_count": 3,
+      "manual_face_review_pass_count": 3,
       "status": "pass",
-      "evidence_fingerprint": "sha256:bfaa1bcfeaee25a0c367241dbf7bbf432a70050c46c61bbe53b42dd7813f5c51"
+      "evidence_fingerprint": "sha256:0c6e7ee038bb46bc043be782a5aa40fe953e57b2dc75454cd9b25e2829f860b3"
     }
   ],
   "status": "pass",
-  "report_fingerprint": "sha256:9f0b65e3aaaacd46a8e2ad1a2b06acf79bcd9dfb86b0201176069b0105cfac9a"
+  "report_fingerprint": "sha256:d0baee985185949805f95c363707388c39e27557035ea3ee5f25a85c735e7877"
 }

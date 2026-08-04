@@ -1,0 +1,4147 @@
+{
+  "schema_version": "1.0.0",
+  "method": "final_encoded_start_mid_late_manual_face_head_review",
+  "master_sha256": "sha256:4ba72448acf2b75d99eaf7288110a0ec0ed6c4b07e11aa3d4fc48a25bb685fde",
+  "contact_sheet_root": "/Users/rio/Movies/thong-phan-remotion-runs/cua-ban-la-gi-facebook-reel-20260803/audit/v14-final-encoded-contact",
+  "timeline_item_count": 46,
+  "face_required_item_count": 27,
+  "rendered_observations": [
+    {
+      "observation_id": "FINAL-V14-01-1",
+      "timeline_item_id": "VTI-0705568233c28bc72be3-01",
+      "at_ms": 294,
+      "frame_sha256": "sha256:35c2a3fec7d6f4e14f880a3eb0a3dec5738cd364c383e50f9845bea2cb7ff92f",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-001-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-01-2",
+      "timeline_item_id": "VTI-0705568233c28bc72be3-01",
+      "at_ms": 1840,
+      "frame_sha256": "sha256:bf2df021413c901d4077d741fcf974e445cf12f215c9aef0abb27f08ce5efd73",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-001-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-01-3",
+      "timeline_item_id": "VTI-0705568233c28bc72be3-01",
+      "at_ms": 2944,
+      "frame_sha256": "sha256:88773c95de0554c49bd72b2fe4c9bc594670f9971604455f081648cf8f77ea83",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-001-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-02-1",
+      "timeline_item_id": "VTI-40ca43df66b25d2502c6-01",
+      "at_ms": 3778,
+      "frame_sha256": "sha256:6b79d720a564dcd3587269b1e79f3e6ac447ea1f75acb4fa9f7b39ce71ff02e3",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-02-2",
+      "timeline_item_id": "VTI-40ca43df66b25d2502c6-01",
+      "at_ms": 4290,
+      "frame_sha256": "sha256:ade9610745c429cfbd9a11dc82dab5f25ae6fe912f05b0187b3239088ed9219c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-02-3",
+      "timeline_item_id": "VTI-40ca43df66b25d2502c6-01",
+      "at_ms": 4656,
+      "frame_sha256": "sha256:bdb05252f7cef5d18f1de72aa75aa30b2de377f5972895876f9816154af80421",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-03-1",
+      "timeline_item_id": "VTI-e9203b3e92d7a3db4201-01",
+      "at_ms": 5017,
+      "frame_sha256": "sha256:e6610332833d6f0776ef673df58ff302303d911732c60a167456aaa95d6e3cb2",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-03-2",
+      "timeline_item_id": "VTI-e9203b3e92d7a3db4201-01",
+      "at_ms": 5630,
+      "frame_sha256": "sha256:5c97edbc83654117210a1d4c6d58f540ab8e9454b66aaf7729e907e28b816933",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-03-3",
+      "timeline_item_id": "VTI-e9203b3e92d7a3db4201-01",
+      "at_ms": 6068,
+      "frame_sha256": "sha256:672050d4e8f22c5e70a8b26a1860295cc93a8d13d0c9e1b4faded599b2839904",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-04-1",
+      "timeline_item_id": "VTI-ce1669d2b437ebaaa0c1-01",
+      "at_ms": 6451,
+      "frame_sha256": "sha256:b1bfc840ed52f18ba5096ae43cc71360384f87ea2933f7202a64ed7b03544d61",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.54,
+            "width": 0.6,
+            "height": 0.27
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-04-2",
+      "timeline_item_id": "VTI-ce1669d2b437ebaaa0c1-01",
+      "at_ms": 6930,
+      "frame_sha256": "sha256:5c59638d0b7273bd01cff7a76d0cc5499cb8f868a00b764425532682a00955e6",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.54,
+            "width": 0.6,
+            "height": 0.27
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-04-3",
+      "timeline_item_id": "VTI-ce1669d2b437ebaaa0c1-01",
+      "at_ms": 7272,
+      "frame_sha256": "sha256:5bd66bb6a48a65773b5b0d2530130732fa5e1690fe774c1c17cf9dda2b620067",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.54,
+            "width": 0.6,
+            "height": 0.27
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-002-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-05-1",
+      "timeline_item_id": "VTI-aab4f83203b5ae989ad1-01",
+      "at_ms": 7577,
+      "frame_sha256": "sha256:37ad7a0573e7d375c97646ec676167e275e10a7f923f2311e22c801fdee298ae",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-05-2",
+      "timeline_item_id": "VTI-aab4f83203b5ae989ad1-01",
+      "at_ms": 7980,
+      "frame_sha256": "sha256:93cd65a74b9490459cd40b047d6bb44e9672b6f88945d04d3e5221bab8fa7388",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-05-3",
+      "timeline_item_id": "VTI-aab4f83203b5ae989ad1-01",
+      "at_ms": 8268,
+      "frame_sha256": "sha256:3d60fcd93da4ed2652711ffc0ec626818a00c5eaf244b49f0b46f21ab5fbfc10",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-06-1",
+      "timeline_item_id": "VTI-ecff9aa6f9d756a8a288-01",
+      "at_ms": 8703,
+      "frame_sha256": "sha256:80c365a3b94181829ad9579ca9f3889f5a46d0240883ca6ba4b668035b526277",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-06-2",
+      "timeline_item_id": "VTI-ecff9aa6f9d756a8a288-01",
+      "at_ms": 9980,
+      "frame_sha256": "sha256:1d1e7f6a262ccf474e5d9c2a6ac0c59744aeb7a857aabfccfc8ce45853e1ecd7",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-06-3",
+      "timeline_item_id": "VTI-ecff9aa6f9d756a8a288-01",
+      "at_ms": 10892,
+      "frame_sha256": "sha256:91e7a998adc17c4aef7675b667d111c4be1a0e39c97bfb7fb6345369a81d66af",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-003-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-07-1",
+      "timeline_item_id": "VTI-48aac7c978cc1d37e6b8-01",
+      "at_ms": 11644,
+      "frame_sha256": "sha256:ab1c8710b07c923eb861170a274de663443ca0135bed18e0a2030a6df3cee356",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-07-2",
+      "timeline_item_id": "VTI-48aac7c978cc1d37e6b8-01",
+      "at_ms": 12400,
+      "frame_sha256": "sha256:0c8903c289756aedaa15dcc496581774621273a18ab1710a84be6e95290d4f5b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-07-3",
+      "timeline_item_id": "VTI-48aac7c978cc1d37e6b8-01",
+      "at_ms": 12940,
+      "frame_sha256": "sha256:ec4850676906259bf5fe03b3e510a334f273a8bac32c02bc7a37eb79dc1e001a",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-08-1",
+      "timeline_item_id": "VTI-35b7c73262eaf52782ba-01",
+      "at_ms": 13436,
+      "frame_sha256": "sha256:596d7b1c8f9d19a6d7676484314b474728f4df7f02506956da31473714a3bb18",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-08-2",
+      "timeline_item_id": "VTI-35b7c73262eaf52782ba-01",
+      "at_ms": 14150,
+      "frame_sha256": "sha256:0a2d58c473f89755956c4138ee05d554020a7a62d301b7aef24509d05ac70767",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-08-3",
+      "timeline_item_id": "VTI-35b7c73262eaf52782ba-01",
+      "at_ms": 14660,
+      "frame_sha256": "sha256:c0a3ec9886d1ef125f2de072d0d198d14fdc57c75995d60580b9b344b71cc991",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-004-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-09-1",
+      "timeline_item_id": "VTI-c6c9555bb9c66484574f-01",
+      "at_ms": 15192,
+      "frame_sha256": "sha256:ef907cf87dd7cd68ad5573acce8e7fb731ff1949646522e35b337237d1438726",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.7,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-09-2",
+      "timeline_item_id": "VTI-c6c9555bb9c66484574f-01",
+      "at_ms": 16200,
+      "frame_sha256": "sha256:1a1a570110822f11ea919b465f756c4f91a2dd9f9663a6f3614cbcb57caa0a84",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.7,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-09-3",
+      "timeline_item_id": "VTI-c6c9555bb9c66484574f-01",
+      "at_ms": 16920,
+      "frame_sha256": "sha256:24a4c81f10e736fd4526585c5649764ea174854a6e3374a0cd1a52349074d0b4",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.7,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-10-1",
+      "timeline_item_id": "VTI-065c1088686e73f412cb-01",
+      "at_ms": 17507,
+      "frame_sha256": "sha256:7928b4305e2aeee0c8f746ee02a0610da7aca4f41a2547ee9c148ca57b198c6e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-10-2",
+      "timeline_item_id": "VTI-065c1088686e73f412cb-01",
+      "at_ms": 18070,
+      "frame_sha256": "sha256:fbeeb98d6406587e328a47ca3180f8d48f2488646179088a2930664474d4709c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-10-3",
+      "timeline_item_id": "VTI-065c1088686e73f412cb-01",
+      "at_ms": 18472,
+      "frame_sha256": "sha256:d516c561296d6e81de1aa03a52bfcc8da131de3c589f3998924349b7b326c8d8",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-005B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-11-1",
+      "timeline_item_id": "VTI-2a10505400e5268e9c7b-01",
+      "at_ms": 18857,
+      "frame_sha256": "sha256:4d18ba872d0e3ef2bcd2b1fc32e5952f75df3b8b880f29e5c2fad4cf68c76d0b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.6,
+            "width": 0.6,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-11-2",
+      "timeline_item_id": "VTI-2a10505400e5268e9c7b-01",
+      "at_ms": 19470,
+      "frame_sha256": "sha256:32cddff6d7108512e625f5a544ffa76d109b76e7b09da6f76d99dd674c3f2f79",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.6,
+            "width": 0.6,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-11-3",
+      "timeline_item_id": "VTI-2a10505400e5268e9c7b-01",
+      "at_ms": 19908,
+      "frame_sha256": "sha256:920a8c4f036435b31e73cf4d29df999b22b9085141ee9c779463440599be9bab",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.2,
+            "y": 0.6,
+            "width": 0.6,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-12-1",
+      "timeline_item_id": "VTI-1a5bbfcb288018e1cc3f-01",
+      "at_ms": 20304,
+      "frame_sha256": "sha256:36dd1821462da05b870411b582f38ec4f77d00c74f568ed9c9c8706617c6db1c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-12-2",
+      "timeline_item_id": "VTI-1a5bbfcb288018e1cc3f-01",
+      "at_ms": 20850,
+      "frame_sha256": "sha256:4a2da539719ecd9c59859ba6067658a9f68591d09e2c150bcf457a646c696662",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-12-3",
+      "timeline_item_id": "VTI-1a5bbfcb288018e1cc3f-01",
+      "at_ms": 21240,
+      "frame_sha256": "sha256:d8cb3c71e7b17b5d8fe7a920a1af7378b303979f0a2830366ef487ccaf0a0886",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-006-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-13-1",
+      "timeline_item_id": "VTI-ffc9189dbb312b978cce-01",
+      "at_ms": 21607,
+      "frame_sha256": "sha256:6246ee551c7205a243354be12ab7cd14ee7b1146ad9c1283ae4ff7a28998500d",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.5,
+            "width": 0.75,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-13-2",
+      "timeline_item_id": "VTI-ffc9189dbb312b978cce-01",
+      "at_ms": 22170,
+      "frame_sha256": "sha256:3c75720ffe629ead641638038e7364d88741ce695bd774d4b40ea70b34c64bf6",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.5,
+            "width": 0.75,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-13-3",
+      "timeline_item_id": "VTI-ffc9189dbb312b978cce-01",
+      "at_ms": 22572,
+      "frame_sha256": "sha256:13254fa04d1f7ca910828b6ca4fd7c1f6a2adc9fde7c5b9b180e6b1822500275",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.5,
+            "width": 0.75,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-14-1",
+      "timeline_item_id": "VTI-687a5f94d7521d67ba68-01",
+      "at_ms": 22974,
+      "frame_sha256": "sha256:5a7ade3450f7120abdb3c5ccd536376af021d052ecdbee09c1e65f47cc7062b8",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-14-2",
+      "timeline_item_id": "VTI-687a5f94d7521d67ba68-01",
+      "at_ms": 23675,
+      "frame_sha256": "sha256:82aa86133fcdc3cb5d70de26304eb0151bc6fe7d8f1896f596e90850d0913150",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-14-3",
+      "timeline_item_id": "VTI-687a5f94d7521d67ba68-01",
+      "at_ms": 24176,
+      "frame_sha256": "sha256:3b85341d49609c8bce7309bcc1ecd9a81619e169a3604ecc088dde8d8f94b83c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-15-1",
+      "timeline_item_id": "VTI-6427347a6a77677f2a16-01",
+      "at_ms": 24589,
+      "frame_sha256": "sha256:155fde1d9f0007cd6b5dab85d1de0f827b88c860a648ab2d5ebcbc7d4547adad",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-15-2",
+      "timeline_item_id": "VTI-6427347a6a77677f2a16-01",
+      "at_ms": 25005,
+      "frame_sha256": "sha256:7aee3498532c3ac92586a90b1a3109f125ef50e3c9908d8c7a1fc2c80e887b05",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-15-3",
+      "timeline_item_id": "VTI-6427347a6a77677f2a16-01",
+      "at_ms": 25302,
+      "frame_sha256": "sha256:38e899e172ff813dabf7ab4c592dfea8ee395f209f8296b0618fa7b8f3d56f1e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-007-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-16-1",
+      "timeline_item_id": "VTI-3ae8c172b1ca200a8fc6-01",
+      "at_ms": 25580,
+      "frame_sha256": "sha256:3c8297f9a0922614db63751d6efb3c39c4a999c53a8a734add963487035fda98",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-16-2",
+      "timeline_item_id": "VTI-3ae8c172b1ca200a8fc6-01",
+      "at_ms": 26000,
+      "frame_sha256": "sha256:d7573d71efb216970f3c4621929b79ab772faa9bc5b220ccb18c310e1c72a2e9",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-16-3",
+      "timeline_item_id": "VTI-3ae8c172b1ca200a8fc6-01",
+      "at_ms": 26300,
+      "frame_sha256": "sha256:2a4bb6ebf09f8885e4693f240d4f3a3554ac96609057391810de6dcda23279bf",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-17-1",
+      "timeline_item_id": "VTI-78cf90fa1c6f66b5265b-01",
+      "at_ms": 26764,
+      "frame_sha256": "sha256:9c002eec4595a16460a4d2e4e93a1794b5ab9ec5144fce5cdc20218d2b120af8",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-17-2",
+      "timeline_item_id": "VTI-78cf90fa1c6f66b5265b-01",
+      "at_ms": 28150,
+      "frame_sha256": "sha256:16b499f22e0ecfb9cdb7924db56ee6525d97994cca7cfe49ffc5538e3dd43372",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-17-3",
+      "timeline_item_id": "VTI-78cf90fa1c6f66b5265b-01",
+      "at_ms": 29140,
+      "frame_sha256": "sha256:6029b480425d0422ce11f6f4657174d9b10ad1530b36f403fd4b3aa6bd4a1d3b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-008-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-18-1",
+      "timeline_item_id": "VTI-1664b18665b2741b958e-01",
+      "at_ms": 30136,
+      "frame_sha256": "sha256:aaa7968ee632c0cdf2ebf6ff26a69a3fd5a688dbeef8d1217d38a45fbb423d3f",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-009-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-18-2",
+      "timeline_item_id": "VTI-1664b18665b2741b958e-01",
+      "at_ms": 31900,
+      "frame_sha256": "sha256:9c40e36987f2ae840eeaad99cf9781669755b918640c6a80972dc8e9ee320954",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-009-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-18-3",
+      "timeline_item_id": "VTI-1664b18665b2741b958e-01",
+      "at_ms": 33160,
+      "frame_sha256": "sha256:03fb8cd33b239bc52fdd16395adf68c25db11b1a3f9a048cf5bd66562a6b8e66",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-009-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-19-1",
+      "timeline_item_id": "VTI-4155425facbb6f388510-01",
+      "at_ms": 34240,
+      "frame_sha256": "sha256:1957752b4077608050249d5c64a281ee546b476ba6b5a221efe68e34a4347110",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-010-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-19-2",
+      "timeline_item_id": "VTI-4155425facbb6f388510-01",
+      "at_ms": 35500,
+      "frame_sha256": "sha256:467d50e2e8b2bca1c52e407507ea0f62a08a18612bcb1d87c8ce86250cbd0f56",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-010-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-19-3",
+      "timeline_item_id": "VTI-4155425facbb6f388510-01",
+      "at_ms": 36400,
+      "frame_sha256": "sha256:e7ba3b23eaa57428033a484f8e31409ebcdc08237d872159d904b49de99224f6",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-010-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-20-1",
+      "timeline_item_id": "VTI-5802a5bde28ce9330d79-01",
+      "at_ms": 37192,
+      "frame_sha256": "sha256:a786c6e1aeba92180fcc70038f2fcb38d96390af4e800eefae518b3d54454ebf",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.55,
+            "width": 0.5,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-011-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-20-2",
+      "timeline_item_id": "VTI-5802a5bde28ce9330d79-01",
+      "at_ms": 38200,
+      "frame_sha256": "sha256:050144e60e0ebfae73a80e3ea71776ec259b6ffa7267465d9fa540eb3820c0ff",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.55,
+            "width": 0.5,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-011-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-20-3",
+      "timeline_item_id": "VTI-5802a5bde28ce9330d79-01",
+      "at_ms": 38920,
+      "frame_sha256": "sha256:0182bd70fd29ccb5c2394ff4d7d8e1254221d8f6829220ef6cdaea655ea6351a",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.55,
+            "width": 0.5,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-011-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-21-1",
+      "timeline_item_id": "VTI-4234c38573b6cc2999ec-01",
+      "at_ms": 39592,
+      "frame_sha256": "sha256:0e4e101c6c8cde54f210f6729a7ed332731646eccd9b3ac1f06900d53fb13510",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.22,
+            "y": 0.55,
+            "width": 0.56,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-012-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-21-2",
+      "timeline_item_id": "VTI-4234c38573b6cc2999ec-01",
+      "at_ms": 40600,
+      "frame_sha256": "sha256:a5b0e4a66473b335b97e65fc17a61cad1ffabcfd56e0c88394d7f23d99b64864",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.22,
+            "y": 0.55,
+            "width": 0.56,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-012-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-21-3",
+      "timeline_item_id": "VTI-4234c38573b6cc2999ec-01",
+      "at_ms": 41320,
+      "frame_sha256": "sha256:843e18743c97d7f8a9d9ccd77d114ba9ae573244cac5160856fe9a892c4b8549",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.22,
+            "y": 0.55,
+            "width": 0.56,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-012-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-22-1",
+      "timeline_item_id": "VTI-839dccf71e33949f4fa9-01",
+      "at_ms": 41992,
+      "frame_sha256": "sha256:55e87e6b5cf78264be216b32552b6340cb46289f01d08590d8a494b1125a5976",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-013-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-22-2",
+      "timeline_item_id": "VTI-839dccf71e33949f4fa9-01",
+      "at_ms": 43000,
+      "frame_sha256": "sha256:98764b9dab5edbc908f2559b74a388b3bb9cd6191d121e3b0fdd6206f683c9ae",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-013-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-22-3",
+      "timeline_item_id": "VTI-839dccf71e33949f4fa9-01",
+      "at_ms": 43720,
+      "frame_sha256": "sha256:121e8237786e0952c549a2976751cf3cb3a1f2f54b3ff363114b27fd90078f4b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-013-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-23-1",
+      "timeline_item_id": "VTI-aef332a0c336f72f704b-01",
+      "at_ms": 44240,
+      "frame_sha256": "sha256:e8f751cdc772789528d0f378a518e1e8ba0fb33c432f9ea5a23585e6dbd65679",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.5,
+            "width": 0.64,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-23-2",
+      "timeline_item_id": "VTI-aef332a0c336f72f704b-01",
+      "at_ms": 44450,
+      "frame_sha256": "sha256:ec7c08200815407f65e99de6cc583d2c0902764bd76f39bcb4efcffdb05b418e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.5,
+            "width": 0.64,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-23-3",
+      "timeline_item_id": "VTI-aef332a0c336f72f704b-01",
+      "at_ms": 44600,
+      "frame_sha256": "sha256:c8520e77b114938df9224da35f28b13426d5d5253c2523a4fd1c26e31991fdbe",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.5,
+            "width": 0.64,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-24-1",
+      "timeline_item_id": "VTI-61a99b1129a737e86f36-01",
+      "at_ms": 44948,
+      "frame_sha256": "sha256:3f346dd55d5a58bf2960e409aa62a29a752419df9cd8b957effd73465eac83d5",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-24-2",
+      "timeline_item_id": "VTI-61a99b1129a737e86f36-01",
+      "at_ms": 46250,
+      "frame_sha256": "sha256:98b03f7a64a67d83103bb689db5e7910d1241229c228ab9207eae56fc9a200f7",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-24-3",
+      "timeline_item_id": "VTI-61a99b1129a737e86f36-01",
+      "at_ms": 47180,
+      "frame_sha256": "sha256:ef1a640fc9482ebf026d9e539c8e9955617a4f49c4e4b5ba290360e523e66b09",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-014-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-25-1",
+      "timeline_item_id": "VTI-98926c4bdab86c3adf8f-01",
+      "at_ms": 48098,
+      "frame_sha256": "sha256:63a48e723dc17515ddb3c585a92bb9a0f042fe36ffed1d3964001bf075998826",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.27,
+            "y": 0.57,
+            "width": 0.46,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-25-2",
+      "timeline_item_id": "VTI-98926c4bdab86c3adf8f-01",
+      "at_ms": 49660,
+      "frame_sha256": "sha256:c03543d35fedf9b913c64f2ef710cadd7a9ebb36412440650e779b104696e31e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.27,
+            "y": 0.57,
+            "width": 0.46,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-25-3",
+      "timeline_item_id": "VTI-98926c4bdab86c3adf8f-01",
+      "at_ms": 50776,
+      "frame_sha256": "sha256:b3df190e8740aed82dba5cb8fe0deef85bb2d1fd42b23b1fa89641d04517c5bb",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.27,
+            "y": 0.57,
+            "width": 0.46,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-26-1",
+      "timeline_item_id": "VTI-b196b73f71b93edc7684-01",
+      "at_ms": 51622,
+      "frame_sha256": "sha256:023bbb6fb5d9ced2f2d06e76fa3c0e4bb07d3f0778dbe685250eae9cf191ab14",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-26-2",
+      "timeline_item_id": "VTI-b196b73f71b93edc7684-01",
+      "at_ms": 52160,
+      "frame_sha256": "sha256:c0de5f81f32bc5ea399825a454f7a5ed5c0eb48c8d3782a50d721497048344ca",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-26-3",
+      "timeline_item_id": "VTI-b196b73f71b93edc7684-01",
+      "at_ms": 52544,
+      "frame_sha256": "sha256:99e7f1aa5e3865c289f77e47124e59eda2e61aaad1042af3a7b5202a966bff04",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-015-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-27-1",
+      "timeline_item_id": "VTI-22f0c5187cab233084c1-01",
+      "at_ms": 52870,
+      "frame_sha256": "sha256:733666c9fc3dd7d0c036809d4846baa1c5392b51a5b235eea83a505dbbdacfad",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-27-2",
+      "timeline_item_id": "VTI-22f0c5187cab233084c1-01",
+      "at_ms": 53240,
+      "frame_sha256": "sha256:4254f146be53acff5d3d6532e9d9ba993f9935700dcdb66ce1e7ba295c8891f9",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-27-3",
+      "timeline_item_id": "VTI-22f0c5187cab233084c1-01",
+      "at_ms": 53504,
+      "frame_sha256": "sha256:822e9b269bbbee9b9acaafdbb187aa625e01abe2ef0ddcdc45ac1a6408a0782b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.52,
+            "width": 0.7,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-28-1",
+      "timeline_item_id": "VTI-3c8a8b303672becafb4f-01",
+      "at_ms": 53738,
+      "frame_sha256": "sha256:11827fcb93435934fb33b3d979f615c83e98fcc4582d3e02cd42ccf879c606e3",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-28-2",
+      "timeline_item_id": "VTI-3c8a8b303672becafb4f-01",
+      "at_ms": 54040,
+      "frame_sha256": "sha256:bcb6ee6f2edb7b3d7974e63eb6e2baa847a6ca424132b6a9a8a69941089c5088",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-28-3",
+      "timeline_item_id": "VTI-3c8a8b303672becafb4f-01",
+      "at_ms": 54256,
+      "frame_sha256": "sha256:fcb82329bf47e52d1542a21e4aa053a52b09813c3ea3c34325ce6ce35ea0c550",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-29-1",
+      "timeline_item_id": "VTI-d3068e6848dfef5a7bca-01",
+      "at_ms": 54624,
+      "frame_sha256": "sha256:eb68ccf8da9d74ed0dbdb56ab810574ac4386f1456015013cd413ca56a4ae02f",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-29-2",
+      "timeline_item_id": "VTI-d3068e6848dfef5a7bca-01",
+      "at_ms": 55800,
+      "frame_sha256": "sha256:e2c39bdc680a2d385058a586aa018741b8b9bd352cb2d1f95ef670f47c6b8b6e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-29-3",
+      "timeline_item_id": "VTI-d3068e6848dfef5a7bca-01",
+      "at_ms": 56640,
+      "frame_sha256": "sha256:f6399776640f9cc3086c4255b5ac65fb41e60f37d2ca9bb8aaec5e868f27afff",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-016B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-30-1",
+      "timeline_item_id": "VTI-efde608c7a0d74cd51c6-01",
+      "at_ms": 57386,
+      "frame_sha256": "sha256:b5ec24db250da290d6a2725b670d7bb0bc401998f6912f0d26f8623818f00147",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-30-2",
+      "timeline_item_id": "VTI-efde608c7a0d74cd51c6-01",
+      "at_ms": 58365,
+      "frame_sha256": "sha256:e3b085ee7d5454baca5e1c7e7a9eb4cf35328fb2b99fc282926c29b74a2d12e5",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-30-3",
+      "timeline_item_id": "VTI-efde608c7a0d74cd51c6-01",
+      "at_ms": 59064,
+      "frame_sha256": "sha256:6eb13ea5d5c698acea51ae8834eac803aceaff2e80d80c8cd5ce3ff439df7895",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-31-1",
+      "timeline_item_id": "VTI-1aa226eac4351f6b802e-01",
+      "at_ms": 59724,
+      "frame_sha256": "sha256:814cfe11a9e221c88d4061a5f7f2665e3139912bef0e9d7967fbaa0ebd9a0fd4",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-31-2",
+      "timeline_item_id": "VTI-1aa226eac4351f6b802e-01",
+      "at_ms": 60745,
+      "frame_sha256": "sha256:d07e1fbd63579ebb76e968d159ac54d16d7fe66eba7b222f94cad02bc9b8d6c2",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-31-3",
+      "timeline_item_id": "VTI-1aa226eac4351f6b802e-01",
+      "at_ms": 61474,
+      "frame_sha256": "sha256:9e06b63a2c5456d8cdad0c33e204cfc85d7119a1d86f50d71b41cb57c65c7b99",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-017-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-32-1",
+      "timeline_item_id": "VTI-2702303b2bfdae601982-01",
+      "at_ms": 62076,
+      "frame_sha256": "sha256:f345f68f531220f2a828f820960b138863816122446a7e99703a7b3641e1788e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-32-2",
+      "timeline_item_id": "VTI-2702303b2bfdae601982-01",
+      "at_ms": 62685,
+      "frame_sha256": "sha256:6684ae28c2eea720e2558e6e8a385dae85c1848be041b15b3826064eb0ed0de9",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-32-3",
+      "timeline_item_id": "VTI-2702303b2bfdae601982-01",
+      "at_ms": 63120,
+      "frame_sha256": "sha256:f57451f73d40f133d42557810bbecfffc2cf1afc5f2ac999e80c3b35e85af499",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.25,
+            "y": 0.57,
+            "width": 0.5,
+            "height": 0.22
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-33-1",
+      "timeline_item_id": "VTI-9a21ef0ddb1163f9675a-01",
+      "at_ms": 63607,
+      "frame_sha256": "sha256:a3d9058d7e1522f3bec99bffab3385458ce7b90d03735b80ee2b1f6d8a8d0d8c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-33-2",
+      "timeline_item_id": "VTI-9a21ef0ddb1163f9675a-01",
+      "at_ms": 64640,
+      "frame_sha256": "sha256:55860c1e7d53f890850d6000dac78994eb436441345ebed3fc77d8e1527aa38d",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-33-3",
+      "timeline_item_id": "VTI-9a21ef0ddb1163f9675a-01",
+      "at_ms": 65378,
+      "frame_sha256": "sha256:e05333abe599ed482da80b0ad8fd9bd4ee5fbb1ccbabc91dfe33cf747db6a7af",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-34-1",
+      "timeline_item_id": "VTI-b89d7216677953db1c92-01",
+      "at_ms": 65896,
+      "frame_sha256": "sha256:c527084b47a01295ad48f17e5b8f32d309e7f321192687b3b7a76f2fa3cbcf45",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-34-2",
+      "timeline_item_id": "VTI-b89d7216677953db1c92-01",
+      "at_ms": 66035,
+      "frame_sha256": "sha256:e039aec1dcd328ebff1bd9ad445147b0ab546ba01b262af292191e956e549c4b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-34-3",
+      "timeline_item_id": "VTI-b89d7216677953db1c92-01",
+      "at_ms": 66134,
+      "frame_sha256": "sha256:b4c62bb54fd7a8c8c9ff78d0df8039f3e3e9009dda1a711f03d1967d499e9590",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-018-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-35-1",
+      "timeline_item_id": "VTI-00acc78317bcf929f888-01",
+      "at_ms": 66427,
+      "frame_sha256": "sha256:13d68875af7ede9dbcdce89f937772d340727f3f7ebc906a69288e9dc877d1ff",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-019-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-35-2",
+      "timeline_item_id": "VTI-00acc78317bcf929f888-01",
+      "at_ms": 67620,
+      "frame_sha256": "sha256:b506339e181d3715bd3573f503c27bf6459e33b1acb9d2ad0dadb5f0962ba221",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-019-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-35-3",
+      "timeline_item_id": "VTI-00acc78317bcf929f888-01",
+      "at_ms": 68472,
+      "frame_sha256": "sha256:08ae89d901f4797bd9c377ead8b7e332e3b65c11aa5ff1ae42501a0be2ec6f6b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-019-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-36-1",
+      "timeline_item_id": "VTI-c140dc25ee763811093e-01",
+      "at_ms": 69083,
+      "frame_sha256": "sha256:53d147c55964c7bed805384b13941156a2787a89adb46e52cb76ee94bad2fcf9",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-36-2",
+      "timeline_item_id": "VTI-c140dc25ee763811093e-01",
+      "at_ms": 69310,
+      "frame_sha256": "sha256:2a67c9dd0bf353a6756abf320ea0dd9eef600e6ee37ce6409a7b8a31bf435a1e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-36-3",
+      "timeline_item_id": "VTI-c140dc25ee763811093e-01",
+      "at_ms": 69472,
+      "frame_sha256": "sha256:89db29659e0a015f58a5797ad7e3ac3d60d6e54c2b61d5615b121d1b5e531c90",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.5,
+            "width": 0.7,
+            "height": 0.32
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-37-1",
+      "timeline_item_id": "VTI-3f471de4ab915a31960b-01",
+      "at_ms": 69804,
+      "frame_sha256": "sha256:71b57b66e01ac30a9ef60f5a64614cbddcccca5d2f36324991411d8a92dd172b",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-37-2",
+      "timeline_item_id": "VTI-3f471de4ab915a31960b-01",
+      "at_ms": 70980,
+      "frame_sha256": "sha256:a29eb7a732fcf088dd646da7bedc3cc94e97bf7a5d3d48afbfa838bf6f0cd773",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-37-3",
+      "timeline_item_id": "VTI-3f471de4ab915a31960b-01",
+      "at_ms": 71820,
+      "frame_sha256": "sha256:8aad9b18f60b5893a09143f4b842cae57e314d85972331c7cd9a42a3ecf52640",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.54,
+            "width": 0.64,
+            "height": 0.28
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-38-1",
+      "timeline_item_id": "VTI-93fbe8a6fc8e72b024b5-01",
+      "at_ms": 72486,
+      "frame_sha256": "sha256:74c014931a03be4690615898a6985b7f9e24e7b050ada8f38f16bda9649db649",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.52,
+            "width": 0.64,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-38-2",
+      "timeline_item_id": "VTI-93fbe8a6fc8e72b024b5-01",
+      "at_ms": 73040,
+      "frame_sha256": "sha256:a4901cc727781fd6f19e88183c4ea0aa28e44bed7451bd10ab2095875c932481",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.52,
+            "width": 0.64,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-38-3",
+      "timeline_item_id": "VTI-93fbe8a6fc8e72b024b5-01",
+      "at_ms": 73436,
+      "frame_sha256": "sha256:bc376f0c1b379a5d9eda25c2cff5e5fbd6b0c6c24a3d1fb5461d0042b80cf9a0",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.18,
+            "y": 0.52,
+            "width": 0.64,
+            "height": 0.3
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-020-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-39-1",
+      "timeline_item_id": "VTI-d845427c7729f150cd69-01",
+      "at_ms": 73834,
+      "frame_sha256": "sha256:f70e9cae70c1618d6364538a860850055fa638519325d1402286327cca579bc2",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.76,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-39-2",
+      "timeline_item_id": "VTI-d845427c7729f150cd69-01",
+      "at_ms": 74540,
+      "frame_sha256": "sha256:4d3abb773f6c84f77533d1d5903c49cad450b7b0f0aac7f6cd4fae8587ae51c9",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.76,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-39-3",
+      "timeline_item_id": "VTI-d845427c7729f150cd69-01",
+      "at_ms": 75044,
+      "frame_sha256": "sha256:e89b1adae2c648323f4f4032658fb08ce19be06ee9ef2d8bb0b41c8d32eb9e1e",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.48,
+            "width": 0.76,
+            "height": 0.36
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-40-1",
+      "timeline_item_id": "VTI-64505a7a70e59f903560-01",
+      "at_ms": 75534,
+      "frame_sha256": "sha256:16f6682af95afbe3e38c10c0cd8db07c15ff6502fd952614fb820fb637265dec",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.1,
+            "y": 0.24,
+            "width": 0.8,
+            "height": 0.6
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-40-2",
+      "timeline_item_id": "VTI-64505a7a70e59f903560-01",
+      "at_ms": 76340,
+      "frame_sha256": "sha256:d04f54edfb42c2995381696fd9c92d7641859dc2fab946de8ad204c2a5b7e9a5",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.1,
+            "y": 0.24,
+            "width": 0.8,
+            "height": 0.6
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-40-3",
+      "timeline_item_id": "VTI-64505a7a70e59f903560-01",
+      "at_ms": 76916,
+      "frame_sha256": "sha256:6ad25af5b762a17955901f4fe02a4f59ec810a4254b62a8d3d2e2f1a34a3fe56",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.1,
+            "y": 0.24,
+            "width": 0.8,
+            "height": 0.6
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-41-1",
+      "timeline_item_id": "VTI-40e1551c9f49f4e53175-01",
+      "at_ms": 77372,
+      "frame_sha256": "sha256:b48956351956d8ca419c271cdd1dc852ba552c2ae2b9b62bb0381296af42f6de",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.23,
+            "y": 0.54,
+            "width": 0.54,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-41-2",
+      "timeline_item_id": "VTI-40e1551c9f49f4e53175-01",
+      "at_ms": 77750,
+      "frame_sha256": "sha256:71275dfe4328dcc96663e2162f8e8a48530da311ecf6597996cc37836f38c65a",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.23,
+            "y": 0.54,
+            "width": 0.54,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-41-3",
+      "timeline_item_id": "VTI-40e1551c9f49f4e53175-01",
+      "at_ms": 78020,
+      "frame_sha256": "sha256:db32e2f1332c4049fc3c7873fb9873b4bde184e1d1604e63c275ac202122c22a",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.23,
+            "y": 0.54,
+            "width": 0.54,
+            "height": 0.24
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-021-3",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-42-1",
+      "timeline_item_id": "VTI-2d89444452ace9aeb45a-01",
+      "at_ms": 78323,
+      "frame_sha256": "sha256:cdea077c669d77b0a9d148fab74b46abb283cf4019be887672e579464fa443f7",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-42-2",
+      "timeline_item_id": "VTI-2d89444452ace9aeb45a-01",
+      "at_ms": 78970,
+      "frame_sha256": "sha256:64afe617eeef1cc890bb2435229a7a818f400e807bd9e996992458302d77f060",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-42-3",
+      "timeline_item_id": "VTI-2d89444452ace9aeb45a-01",
+      "at_ms": 79432,
+      "frame_sha256": "sha256:7d2a5e5bac5665ec297f1cea9a7451c5a20a2db1908574cf5b9131695863fa02",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-43-1",
+      "timeline_item_id": "VTI-63b252c0377e9433e15e-01",
+      "at_ms": 79812,
+      "frame_sha256": "sha256:2fca004c2fcd5a84928b2042f3bc30d707bb9f8dce0784925c29aa2a5f0c2cf5",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-43-2",
+      "timeline_item_id": "VTI-63b252c0377e9433e15e-01",
+      "at_ms": 80190,
+      "frame_sha256": "sha256:d6cb3749daca4f601b399259cdedd9e95727c3d2ce69300fac297ae0dc8dd92f",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-43-3",
+      "timeline_item_id": "VTI-63b252c0377e9433e15e-01",
+      "at_ms": 80460,
+      "frame_sha256": "sha256:437144625bc5647101cea0dfc8a3b95efdf82bd95a55c453411bb226f756f48c",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.12,
+            "y": 0.47,
+            "width": 0.76,
+            "height": 0.38
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022A-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-44-1",
+      "timeline_item_id": "VTI-44d23cdc6b5c1e555a9d-01",
+      "at_ms": 80947,
+      "frame_sha256": "sha256:8c6336a38e800f8ff05e9d56e8a239ceaffc7568881cd14f203c3d1ebe35a091",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-44-2",
+      "timeline_item_id": "VTI-44d23cdc6b5c1e555a9d-01",
+      "at_ms": 82560,
+      "frame_sha256": "sha256:1049fd2d46523adbc82d860b1521b0342930a2881cdc777a19d2d74e7f3ecc13",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-44-3",
+      "timeline_item_id": "VTI-44d23cdc6b5c1e555a9d-01",
+      "at_ms": 83712,
+      "frame_sha256": "sha256:9c7c24bf7798ee6134e30b6b93df30bfde914664f804b20d44006612e82bf581",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-022B-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-45-1",
+      "timeline_item_id": "VTI-548fe55896869d02148c-01",
+      "at_ms": 84720,
+      "frame_sha256": "sha256:b2dc734d5ba4b2cd23cbd05b0de54d25f8ee610766d2bbf8f7a80fc64da989d4",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-45-2",
+      "timeline_item_id": "VTI-548fe55896869d02148c-01",
+      "at_ms": 85980,
+      "frame_sha256": "sha256:d40ba6f14d1c396e9d2b4b5fed165f72b40c3f274074d7f088a774bba6dc72a5",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-45-3",
+      "timeline_item_id": "VTI-548fe55896869d02148c-01",
+      "at_ms": 86880,
+      "frame_sha256": "sha256:72cf8073de7177428a8bb8e54011e13edadee0aa8e15465c8f9521c8507fd776",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-1",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ]
+    },
+    {
+      "observation_id": "FINAL-V14-46-1",
+      "timeline_item_id": "VTI-619edd8781a8d7cd1c58-01",
+      "at_ms": 87533,
+      "frame_sha256": "sha256:ba3c7da64c87c5efda702c5a045eec8674fc0d6d76e8e962382aee42a25168a0",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-46-2",
+      "timeline_item_id": "VTI-619edd8781a8d7cd1c58-01",
+      "at_ms": 87811,
+      "frame_sha256": "sha256:ff472c70aa8aea6d604255b4b55632ff22122ecb38a36a9c9ff53ec18d355ddf",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    },
+    {
+      "observation_id": "FINAL-V14-46-3",
+      "timeline_item_id": "VTI-619edd8781a8d7cd1c58-01",
+      "at_ms": 88010,
+      "frame_sha256": "sha256:922fc482422c0bd56ccc4a3c0d4ce2b1bad25df337c35b8ef9600b04f81470ed",
+      "measurement": {
+        "method": "manual_encoded_frame_face_review",
+        "provider": "tpr-final-encoded-contact-review",
+        "provider_version": "v14-2026-08-04"
+      },
+      "detected_faces": [
+        {
+          "box": {
+            "x": 0.15,
+            "y": 0.49,
+            "width": 0.7,
+            "height": 0.34
+          },
+          "confidence": 1.0
+        }
+      ],
+      "carriers": [
+        {
+          "carrier_id": "CARRIER-023-2",
+          "rendered_completeness": 1.0,
+          "rendered_scale": 0.5,
+          "subtitle_overlap": false
+        }
+      ],
+      "manual_review": {
+        "reviewer_id": "codex-visual-review-2026-08-04",
+        "review_status": "pass",
+        "primary_face_complete": true,
+        "head_complete": true,
+        "source_transition_free": true
+      }
+    }
+  ]
+}

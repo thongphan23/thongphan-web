@@ -10,6 +10,8 @@
 - Cấu trúc biên tập: `26` shot từ `13` clip nguồn; sau khi tách native cut, renderer dùng `46` timeline item
 - Camera nhân tạo: `0`; mỗi timeline item dùng một crop dọc tĩnh đã khóa trong `vertical_edit_plan`
 - Phụ đề: `45` đoạn, mỗi đoạn đúng một dòng, tối đa `30` ký tự; phủ đủ `231/231` từ có timestamp
+- Master v4: `4ba72448acf2b75d99eaf7288110a0ec0ed6c4b07e11aa3d4fc48a25bb685fde`
+- Bản web fast-start: `5d6a41a8288f131b8a50dc7b4fb0013352efd8ac066f496f1ab0f5eb2976c703`
 
 ## Ý đồ truyền thông
 
@@ -38,6 +40,9 @@ Video biến một ước muốn quay ngược thời gian thành một lời nh
 - Source trim không trùng nhau: `PASS`
 - Crop dọc giữ chủ thể/ý nghĩa: `PASS` trên `46/46` timeline item
 - Kiểm tra khung mã hóa START/MID/END: `138/138` quan sát `PASS`
+- Cảnh bắt buộc có khuôn mặt: `27/27` timeline item có khuôn mặt nổi bật
+- Kiểm tra thủ công đủ mặt và đầu: `81/81` quan sát START/MID/END `PASS`
+- Khoảng an toàn khuôn mặt với biên khung: `81/81` quan sát `PASS`
 - Silent review: `PASS`
 - Không có đoạn đen dài hơn 250 ms: `PASS`
 - Không có khoảng im lặng dưới -45 dB dài hơn 1.5 giây: `PASS`
@@ -49,6 +54,10 @@ Video biến một ước muốn quay ngược thời gian thành một lời nh
 - Bỏ việc đưa `focus_x` thủ công thẳng vào CSS; renderer chỉ đọc tọa độ đã chuyển đổi và khóa trong `vertical_edit_plan`.
 - Tách các clip có thay đổi nhân vật hoặc góc máy tại native cut, nên không còn một crop tĩnh bị kéo qua nhiều chủ thể.
 - Thay kiểm tra JSON tự khai bằng kiểm tra pixel từ master thật ở START/MID/END.
+- Loại nguồn có khuôn mặt quá sát mép trước khi dựng; không cho phép crop dọc dựa
+  trên điểm giữa nếu đầu hoặc khuôn mặt không có khoảng an toàn.
+- Với mọi cảnh cần người, gate chỉ xanh khi có reviewer, đủ mặt, đủ đầu và không
+  đi qua native cut; thiếu một trường bằng chứng là fail-closed.
 - Đối chiếu bản có phụ đề với bản silent cùng frame và cùng CRF để chứng minh phụ đề thực sự đã được đốt vào hình.
 - Bản review dùng tên MP4 chứa SHA-256 rút gọn; không tái sử dụng URL `immutable` cũ.
 
@@ -74,7 +83,8 @@ Video biến một ước muốn quay ngược thời gian thành một lời nh
 - `audit/vertical_caption_safe_area_qa.json`
 - `evidence/final/final-video-qa.json`
 - `evidence/final/owner-feedback-crop-caption-incident.md`
-- `remotion/renders/final-contact-sheet-v3.jpg`
+- `audit/v14-final-encoded-contact/items-01.jpg` đến `items-06.jpg`
+- `remotion/renders/cua-ban-la-gi-final-v4.mp4`
 
 ## Nội dung cần owner chấm
 

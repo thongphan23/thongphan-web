@@ -17,9 +17,16 @@ const evidence = [
   ['Shot plan 26 cảnh', 'production-shot-plan.json'],
   ['Edit plan dọc 46 item', 'vertical-edit-plan.json'],
   ['Pixel QA START/MID/END', 'vertical-semantic-pixel-qa.json'],
+  ['Biên bản kiểm mặt và đầu', 'vertical-rendered-observations.json'],
   ['Pixel QA phụ đề', 'vertical-caption-safe-area-qa.json'],
   ['Quyết định chọn phim', 'source-casting-board.json'],
   ['Contact sheet cuối', 'final-contact-sheet.jpg'],
+  ['Kiểm mặt 1/6', 'face-review-contact-01.jpg'],
+  ['Kiểm mặt 2/6', 'face-review-contact-02.jpg'],
+  ['Kiểm mặt 3/6', 'face-review-contact-03.jpg'],
+  ['Kiểm mặt 4/6', 'face-review-contact-04.jpg'],
+  ['Kiểm mặt 5/6', 'face-review-contact-05.jpg'],
+  ['Kiểm mặt 6/6', 'face-review-contact-06.jpg'],
 ]
 
 export default function CuaBanLaGiReviewPage() {
@@ -41,14 +48,14 @@ export default function CuaBanLaGiReviewPage() {
             controls
             playsInline
             preload="metadata"
-            poster={`${mediaRoot}/cua-ban-la-gi-coco-poster.jpg`}
+            poster={`${mediaRoot}/cua-ban-la-gi-coco-v4-poster-07595f2cede5.jpg`}
           >
-            <source src={`${mediaRoot}/cua-ban-la-gi-coco-v3-5fe2405c693b.mp4`} type="video/mp4" />
+            <source src={`${mediaRoot}/cua-ban-la-gi-coco-v4-5d6a41a8288f.mp4`} type="video/mp4" />
           </video>
         </div>
 
         <div className={styles.detail}>
-          <p className={styles.eyebrow}>BẢN SỬA 3 · COCO · CROP LOCKED</p>
+          <p className={styles.eyebrow}>BẢN SỬA 4 · COCO · FACE-SAFE LOCKED</p>
           <h2 id="review-title">Điều còn lại sau một giấc mơ</h2>
           <p className={styles.summary}>
             Phim được chọn vì có đủ quan hệ ông bà - cháu, ảnh gia đình, mất mát, ký ức, gặp lại
@@ -62,6 +69,8 @@ export default function CuaBanLaGiReviewPage() {
             <div><dt>Cảnh lặp</dt><dd>0 trim chồng lặp</dd></div>
             <div><dt>Camera tạo thêm</dt><dd>0 chuyển động</dd></div>
             <div><dt>Phụ đề</dt><dd>45/45 đoạn · pixel verified</dd></div>
+            <div><dt>Cảnh cần khuôn mặt</dt><dd>27/27 cảnh · đủ mặt và đầu</dd></div>
+            <div><dt>Kiểm tra khuôn mặt</dt><dd>81/81 quan sát · thủ công</dd></div>
           </dl>
 
           <blockquote>
