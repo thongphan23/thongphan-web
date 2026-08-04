@@ -6,8 +6,8 @@ import styles from '@/app/voice/page.module.css'
 const tracks = [
   {
     id: 'MB',
-    name: 'Mèo béo',
-    duration: '1 phút 49 giây',
+    name: 'Mèo béo · bản v8',
+    duration: '2 phút',
     src: '/voice/audio/meo-beo-noi-nho-nha.mp3',
   },
 ] as const
