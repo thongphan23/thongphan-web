@@ -13,8 +13,10 @@ Last updated: 2026-08-04
   into 46 static crop items, all 46 items have START/MID/END semantic pixel QA,
   and all 45 caption observations pass encoded safe-area QA.
 - Focused review-route tests pass `2/2`; the current-main production build passes
-  all `83/83` static routes. Deployment and public checksum verification are the
-  remaining steps for this recovery.
+  all `83/83` static routes. Production deployment `f42d6430` is live at the
+  canonical review URL. Public page/video probes return `200/200`; the downloaded
+  payload is `15130021` bytes and matches SHA-256
+  `5fe2405c693b448a7b99fb83753ed2c80176a44f033f8011354085cc989a9994`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
