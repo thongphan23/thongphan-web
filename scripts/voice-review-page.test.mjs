@@ -3,7 +3,7 @@ import { access, readFile, stat } from 'node:fs/promises'
 import test from 'node:test'
 
 const audioRoot = new URL('../public/voice/audio/', import.meta.url)
-const tracks = ['meo-beo-noi-nho-nha.mp3']
+const tracks = ['meo-beo-noi-nho-nha-v8.mp3']
 
 test('voice review route is noindex and exposes the Mèo béo review track', async () => {
   const [page, player] = await Promise.all([
@@ -23,7 +23,7 @@ test('voice review route is noindex and exposes the Mèo béo review track', asy
   assert.match(player, /controls/)
   assert.match(player, /onPlay=/)
   assert.match(player, /2 phút/)
-  assert.match(player, /meo-beo-noi-nho-nha\.mp3/)
+  assert.match(player, /meo-beo-noi-nho-nha-v8\.mp3/)
   assert.doesNotMatch(player, /autoPlay/)
 })
 
