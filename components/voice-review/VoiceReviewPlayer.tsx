@@ -8,7 +8,7 @@ const tracks = [
     id: 'MB',
     name: 'Mèo béo · bản v8',
     duration: '2 phút',
-    src: '/voice/audio/meo-beo-noi-nho-nha-v8.mp3',
+    src: '/voice/audio/meo-beo-noi-nho-nha-terminal-v8.mp3',
   },
 ] as const
 
