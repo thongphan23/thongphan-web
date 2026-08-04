@@ -72,7 +72,7 @@ test('review route is noindex and exposes seven rounds by three single-film vide
   assert.match(gallery, /poster=\{media\.poster\}/)
   assert.match(gallery, /Chỉ phản hồi trực tiếp của anh mới/)
   assert.doesNotMatch(gallery, /autoPlay/)
-  assert.match(redirects, /^\/review \/review\/remotion-muc-dich-doi-song 302$/m)
+  assert.match(redirects, /^\/review \/review\/cua-ban-la-gi 302$/m)
 })
 
 test('all twenty-one web videos are bounded, non-empty and have matching posters', async () => {
