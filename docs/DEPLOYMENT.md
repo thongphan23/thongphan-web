@@ -15,7 +15,22 @@ Do not patch the generated production output or upload a manual homepage build t
 
 The game bundle is versioned as one immutable release unit. Build it in its source repository, replace the complete `public/game/` directory, and update `public/game/release.json` with the exact source commit. Never mix HTML from one game build with JS, CSS or PNG files from another.
 
-## Current Experience Hub release
+## Current site production release
+
+- Public URL: `https://thongphan.com`
+- Release: Content Workflow 7 Days
+- Pages source commit: `68d7f1eb0455fd6032759e3515016be93aa2867d`
+- Preview deployment: `52b3c7a3-9406-447d-8dff-fca758a7632f`
+- Preview URL: `https://52b3c7a3.thongphan-com.pages.dev`
+- Production deployment: `8c0f6b38-0475-4aed-8eea-017b300d4fa6`
+- Production origin: `https://8c0f6b38.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `4170518d-273d-42cc-9801-6af60493253a`
+- Release verification: 269/269 functional contracts, TypeScript, 91-page static
+  export, full release gate, local/preview/apex browser journeys and 30/30 origin,
+  apex and `www` route checks passed.
+- Full evidence: `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.
+
+## Experience Hub release baseline
 
 - Public URL: `https://thongphan.com`
 - Pages source commit: `b2aa9d9`
