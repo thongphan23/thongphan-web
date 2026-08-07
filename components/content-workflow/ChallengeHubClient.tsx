@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Check, RotateCcw } from 'lucide-react'
-import { CONTENT_WORKFLOW_DAYS } from '@/lib/content-workflow/content'
 import { nextChallengeDay, type ChallengeStateV1, type ReadinessKey } from '@/lib/content-workflow/model'
 import { clearChallengeState, readChallengeState, writeChallengeState } from '@/lib/content-workflow/storage'
 import styles from '@/app/challenge/content-workflow-7days/page.module.css'
@@ -25,9 +24,12 @@ export default function ChallengeHubClient() {
   const [storageWarning, setStorageWarning] = useState('')
 
   useEffect(() => {
-    const saved = readChallengeState()
-    setState(saved)
-    setReadiness(saved.readiness)
+    const timeout = window.setTimeout(() => {
+      const saved = readChallengeState()
+      setState(saved)
+      setReadiness(saved.readiness)
+    }, 0)
+    return () => window.clearTimeout(timeout)
   }, [])
 
   const completeCount = state?.completedDays.length ?? 0

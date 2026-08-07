@@ -280,8 +280,11 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
     }
   }
 
-  if (day === 5 && !hasText(artifacts.workflowPrompt, 200)) {
-    errors.push(error('workflowPrompt', 'Tạo và đọc lại Content Workflow Prompt trước khi tiếp tục.'))
+  if (day === 5) {
+    errors.push(...validateDay(4, state).errors)
+    if (!hasText(artifacts.workflowPrompt, 200)) {
+      errors.push(error('workflowPrompt', 'Tạo và đọc lại Content Workflow Prompt trước khi tiếp tục.'))
+    }
   }
 
   if (day === 6 && artifacts.drafts.filter(isReviewedDraft).length < 2) {

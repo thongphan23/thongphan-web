@@ -187,6 +187,13 @@ test('prompt assembly is deterministic and preserves the human decision point', 
   assert.match(prompt, new RegExp(state.artifacts.contentBrief.coreMessage))
 })
 
+test('day five cannot pass with a placeholder prompt assembled from an empty brief', () => {
+  const state = createEmptyChallengeState()
+  state.artifacts.workflowPrompt = assembleWorkflowPrompt(state)
+  assert.equal(validateDay(5, state).valid, false)
+  assert.ok(validateDay(5, state).errors.some(({ field }) => field.startsWith('contentBrief.')))
+})
+
 test('completion uses eight artifact categories and the approved six-of-eight required set', () => {
   assert.deepEqual(ARTIFACT_KEYS, [
     'customerFocus',
