@@ -1,6 +1,25 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-30
+Last updated: 2026-08-07
+
+## Content Workflow 7 Days — approved design, written spec pending review — 2026-08-07
+
+- Anh Thông approved a free, immediately accessible, self-guided Learning Studio at
+  `/challenge/content-workflow-7days`; it requires no account and keeps workbook
+  progress on the learner's device.
+- The product outcome is `Content Workflow Starter Kit v1.0`: customer focus,
+  evidence bank, content job, reusable brief, generated workflow prompt, three
+  reviewed drafts, a one-page workflow and a 14-day plan.
+- Scope deliberately excludes payment, cohort operations, live sessions, email,
+  community submission, server-side artifact storage and in-product AI generation.
+- Written design and acceptance contract:
+  `docs/superpowers/specs/2026-08-07-content-workflow-7days-design.md`.
+- Work is isolated on branch `agent/content-workflow-7days` at base `ed98550`; the
+  canonical dirty worktree and its unrelated TPR/Conan Maker files remain untouched.
+- Baseline initially exposed a missing local Playwright Chromium runtime; after
+  installing the required browser, the unchanged source passes 248/248 tests.
+- No application route, production artifact, Cloudflare resource or live website has
+  changed. Implementation remains blocked on anh Thông's review of the written spec.
 
 ## TPR Visual Selection + protected Control Room — production release — 2026-07-30
 
