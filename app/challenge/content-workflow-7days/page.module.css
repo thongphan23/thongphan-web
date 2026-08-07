@@ -11,10 +11,10 @@
   min-height: 100vh;
 }
 
-.hero { background: var(--cw-black); color: var(--cw-paper); min-height: min(820px, calc(100vh - 82px)); }
-.heroInner { align-items: center; display: grid; grid-template-columns: 1.03fr .97fr; margin: 0 auto; max-width: 1440px; min-height: inherit; padding: clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 6vw, 6rem); }
+.hero { background: var(--cw-black); color: var(--cw-paper); min-height: 600px; }
+.heroInner { align-items: center; display: grid; grid-template-columns: 1.03fr .97fr; margin: 0 auto; max-width: 1440px; min-height: inherit; padding: clamp(3rem, 5vw, 4.5rem) clamp(1.25rem, 6vw, 6rem); }
 .heroCopy { max-width: 690px; position: relative; z-index: 1; }
-.heroCopy h1 { color: inherit; font-family: var(--font-display); font-size: clamp(3.5rem, 6.6vw, 7.1rem); font-weight: 500; letter-spacing: -.06em; line-height: .87; margin: 0; }
+.heroCopy h1 { color: inherit; font-family: var(--font-display); font-size: clamp(3.5rem, 4.8vw, 4.6rem); font-weight: 500; letter-spacing: -.055em; line-height: .92; margin: 0; }
 .heroCopy > p { color: rgba(243, 238, 228, .74); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.55; margin: 2rem 0 1.65rem; max-width: 58ch; }
 .primaryAction { align-items: center; background: var(--cw-red); border: 1px solid #a7342a; color: #fff8ed !important; display: inline-flex; font-size: .95rem; font-weight: 800; justify-content: center; min-height: 52px; padding: .8rem 1.35rem; text-decoration: none; }
 .primaryAction:hover { background: #a7342a; }
@@ -81,6 +81,7 @@
 .resetDialog button:last-child { background: var(--cw-red); border-color: var(--cw-red); color: white; }
 
 @media (max-width: 900px) {
+  .hero { min-height: auto; }
   .heroInner { grid-template-columns: 1fr; padding-top: 4rem; }
   .heroCopy { max-width: 780px; }
   .heroAsset { margin: -2rem auto -1rem; max-width: 620px; order: 2; width: 100%; }
@@ -88,7 +89,6 @@
 }
 
 @media (max-width: 720px) {
-  .hero { min-height: auto; }
   .heroInner { padding-bottom: 2rem; }
   .heroCopy h1 { font-size: clamp(3rem, 15vw, 5rem); }
   .heroCopy small { line-height: 1.6; }

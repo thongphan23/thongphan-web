@@ -29,7 +29,8 @@
     "typecheck:brain2-workers": "tsc --noEmit -p tsconfig.brain2-workers.json",
     "audit:reading-rights": "node scripts/reading-rights-audit.mjs",
     "lint": "eslint . --max-warnings=0",
-    "qa:experiences": "node scripts/qa-experiences.mjs"
+    "qa:experiences": "node scripts/qa-experiences.mjs",
+    "qa:content-workflow": "node scripts/qa-content-workflow.mjs"
   },
   "keywords": [],
   "author": "",

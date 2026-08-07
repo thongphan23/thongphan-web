@@ -156,6 +156,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   const [saveStatus, setSaveStatus] = useState('Đang mở workbook local…')
   const [actionStatus, setActionStatus] = useState('')
   const [errors, setErrors] = useState<ValidationError[]>([])
+  const [editingCompletedKit, setEditingCompletedKit] = useState(false)
 
   useEffect(() => {
     const timeout = window.setTimeout(() => {
@@ -184,6 +185,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   const completedCount = state.completedDays.length
   const validation = validateDay(lesson.day, state)
   const nextDay = Math.min(7, lesson.day + 1)
+  const showCompletedKit = lesson.day === 7 && state.completedDays.includes(7) && !editingCompletedKit
 
   function updateState(recipe: (current: ChallengeStateV1) => ChallengeStateV1) {
     setState((current) => ({ ...recipe(current), updatedAt: new Date().toISOString() }))
@@ -208,6 +210,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
         ? current.completedDays
         : [...current.completedDays, lesson.day].sort((a, b) => a - b),
     }))
+    if (lesson.day === 7) setEditingCompletedKit(false)
     setActionStatus(`Ngày ${lesson.day} đã hoàn thành theo tiêu chí cấu trúc. Anh vẫn là người quyết định chất lượng cuối.`)
   }
 
@@ -312,29 +315,39 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
             <span>Dữ liệu chỉ lưu trong localStorage của trình duyệt này.</span>
           </header>
 
-          <div className={styles.formBody}>{renderDayForm(lesson.day, state, updateArtifact, errors, {
-            setActionStatus,
-            copyText,
-          })}</div>
+          {showCompletedKit ? (
+            <CompletionDesk state={state} onEdit={() => setEditingCompletedKit(true)} />
+          ) : (
+            <>
+              <div className={styles.formBody}>{renderDayForm(lesson.day, state, updateArtifact, errors, {
+                setActionStatus,
+                copyText,
+              })}</div>
 
-          <section className={styles.gateSection} aria-labelledby="gate-title">
-            <h3 id="gate-title"><span>04</span> Kiểm</h3>
-            <ul>{lesson.qualityGate.map((item) => <li key={item}>{item}</li>)}</ul>
-            {errors.length > 0 ? (
-              <div className={styles.errorSummary} role="alert" tabIndex={-1} ref={errorSummaryRef}>
-                <strong>Còn {errors.length} điểm cần sửa</strong>
-                <ul>{errors.map((item) => <li key={`${item.field}-${item.message}`}><a href={`#${fieldId(item.field)}`}>{item.message}</a></li>)}</ul>
-              </div>
-            ) : null}
-            <button className={styles.gateButton} type="button" onClick={runGate}>
-              {validation.valid ? 'Xác nhận hoàn thành ngày' : 'Chạy Quality Gate'} <Check aria-hidden="true" size={17} />
-            </button>
-            {state.completedDays.includes(lesson.day) ? (
-              <Link className={styles.nextButton} href={`${ROOT}/day-${String(nextDay).padStart(2, '0')}`}>
-                {lesson.day === 7 ? 'Xem lại Starter Kit' : `Sang Ngày ${String(nextDay).padStart(2, '0')}`} <ArrowRight aria-hidden="true" size={17} />
-              </Link>
-            ) : null}
-          </section>
+              <section className={styles.gateSection} aria-labelledby="gate-title">
+                <h3 id="gate-title"><span>04</span> Kiểm</h3>
+                <ul>{lesson.qualityGate.map((item) => <li key={item}>{item}</li>)}</ul>
+                {errors.length > 0 ? (
+                  <div className={styles.errorSummary} role="alert" tabIndex={-1} ref={errorSummaryRef}>
+                    <strong>Còn {errors.length} điểm cần sửa</strong>
+                    <ul>{errors.map((item) => <li key={`${item.field}-${item.message}`}><a href={`#${fieldId(item.field)}`}>{item.message}</a></li>)}</ul>
+                  </div>
+                ) : null}
+                <button className={styles.gateButton} type="button" onClick={runGate}>
+                  {validation.valid ? 'Xác nhận hoàn thành ngày' : 'Chạy Quality Gate'} <Check aria-hidden="true" size={17} />
+                </button>
+                {state.completedDays.includes(lesson.day) ? lesson.day === 7 ? (
+                  <button className={styles.nextButton} type="button" onClick={() => setEditingCompletedKit(false)}>
+                    Xem lại Starter Kit <ArrowRight aria-hidden="true" size={17} />
+                  </button>
+                ) : (
+                  <Link className={styles.nextButton} href={`${ROOT}/day-${String(nextDay).padStart(2, '0')}`}>
+                    Sang Ngày {String(nextDay).padStart(2, '0')} <ArrowRight aria-hidden="true" size={17} />
+                  </Link>
+                ) : null}
+              </section>
+            </>
+          )}
 
           <p className={styles.liveStatus} aria-live="polite">{actionStatus}</p>
           {lesson.day === 7 ? (
@@ -363,6 +376,33 @@ type ArtifactUpdater = <K extends keyof ChallengeStateV1['artifacts']>(key: K, v
 type FormActions = {
   setActionStatus: (status: string) => void
   copyText: (text: string, fallback?: HTMLTextAreaElement | null) => Promise<void>
+}
+
+function CompletionDesk({ state, onEdit }: { state: ChallengeStateV1; onEdit: () => void }) {
+  const coverage = getArtifactCoverage(state)
+  const completedArtifacts = Object.values(coverage).filter(Boolean).length
+  return (
+    <section className={styles.completionDesk} aria-labelledby="starter-kit-title">
+      <p>Assembly ledger · {completedArtifacts}/8 artifacts</p>
+      <h3 id="starter-kit-title">Content Workflow Starter Kit v1.0</h3>
+      <div className={styles.completionStatus}><Check aria-hidden="true" size={18} /> 7/7 ngày · Đã lưu trên thiết bị</div>
+      <ol>
+        {ARTIFACT_KEYS.map((key, index) => (
+          <li key={key} data-complete={coverage[key]}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{artifactLabels[key]}</strong>
+            <small>{coverage[key] ? 'Đã đóng gói' : 'Chưa đủ dữ liệu'}</small>
+          </li>
+        ))}
+      </ol>
+      <dl>
+        <div><dt>Mục tiêu</dt><dd>{state.artifacts.onePager.goal}</dd></div>
+        <div><dt>Nhịp dùng</dt><dd>{state.artifacts.onePager.cadence}</dd></div>
+        <div><dt>14 ngày tới</dt><dd>{state.artifacts.fourteenDayPlan.length} đề mục đã lên lịch</dd></div>
+      </dl>
+      <button className={styles.editKitButton} type="button" onClick={onEdit}>Chỉnh sửa dữ liệu Starter Kit</button>
+    </section>
+  )
 }
 
 function renderDayForm(day: ContentWorkflowDay['day'], state: ChallengeStateV1, update: ArtifactUpdater, errors: ValidationError[], actions: FormActions): ReactNode {

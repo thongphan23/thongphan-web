@@ -80,7 +80,7 @@
 .evidenceRow legend, .draftRow legend, .planSection legend { color: var(--cw-red); font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; padding: 0 .45rem; }
 .scoreGrid { display: grid; gap: .7rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .scoreGrid label { display: grid; gap: .35rem; }
-.addButton, .removeButton, .assembleButton, .copyButton, .gateButton, .nextButton, .exportActions button { align-items: center; border-radius: 0; cursor: pointer; display: inline-flex; font: 700 .78rem var(--font-be-vietnam); gap: .45rem; justify-content: center; min-height: 44px; padding: .65rem .85rem; text-decoration: none; }
+.addButton, .removeButton, .assembleButton, .copyButton, .gateButton, .nextButton, .exportActions button, .editKitButton { align-items: center; border-radius: 0; cursor: pointer; display: inline-flex; font: 700 .78rem var(--font-be-vietnam); gap: .45rem; justify-content: center; min-height: 44px; padding: .65rem .85rem; text-decoration: none; }
 .addButton, .removeButton { background: transparent; border: 1px solid var(--cw-line); color: var(--cw-ink); justify-self: start; }
 .removeButton { color: var(--cw-red); }
 .assembleButton { background: var(--cw-ink); border: 1px solid var(--cw-ink); color: var(--cw-paper); }
@@ -110,6 +110,22 @@
 .exportActions { display: grid; gap: .6rem; grid-template-columns: 1fr 1fr; }
 .exportActions button { background: var(--cw-ink); border: 1px solid var(--cw-ink); color: var(--cw-paper); }
 .exportActions button:last-child { background: transparent; color: var(--cw-ink); }
+
+.completionDesk { padding-top: 1.7rem; }
+.completionDesk > p { color: var(--cw-red); font-family: var(--font-mono); font-size: .66rem; font-weight: 700; letter-spacing: .08em; margin: 0; text-transform: uppercase; }
+.completionDesk > h3 { font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 4.4rem); font-weight: 600; letter-spacing: -.05em; line-height: .92; margin: .8rem 0 1.2rem; }
+.completionStatus { align-items: center; background: var(--cw-ink); color: var(--cw-paper); display: flex; font-family: var(--font-mono); font-size: .7rem; gap: .55rem; padding: .8rem 1rem; }
+.completionDesk ol { border-top: 2px solid var(--cw-ink); list-style: none; margin: 1.5rem 0; padding: 0; }
+.completionDesk li { align-items: center; border-bottom: 1px solid var(--cw-line); display: grid; gap: .7rem; grid-template-columns: 2rem minmax(0, 1fr) auto; min-height: 52px; }
+.completionDesk li > span { color: var(--cw-muted); font-family: var(--font-mono); font-size: .62rem; }
+.completionDesk li > strong { font-family: var(--font-display); font-size: 1rem; }
+.completionDesk li > small { color: var(--cw-red); font-size: .68rem; }
+.completionDesk li[data-complete='false'] { opacity: .5; }
+.completionDesk dl { border: 1px solid var(--cw-line); margin: 0 0 1rem; padding: 1rem; }
+.completionDesk dl > div { display: grid; gap: .8rem; grid-template-columns: 6rem 1fr; padding: .55rem 0; }
+.completionDesk dt { color: var(--cw-muted); font-family: var(--font-mono); font-size: .62rem; text-transform: uppercase; }
+.completionDesk dd { font-size: .8rem; line-height: 1.5; margin: 0; }
+.editKitButton { background: transparent; border: 1px solid var(--cw-ink); color: var(--cw-ink); width: 100%; }
 
 .resetDialog { background: var(--cw-paper); border: 1px solid var(--cw-ink); color: var(--cw-ink); max-width: 520px; padding: 2rem; width: calc(100% - 2rem); }
 .resetDialog::backdrop { background: rgba(9, 9, 8, .8); }
@@ -154,6 +170,8 @@
   .learnSection, .caseSection, .taskSection { padding: 2rem 0; }
   .artifactDesk > header h2 { font-size: 2.5rem; }
   .scoreGrid, .coverageLedger ul, .exportActions { grid-template-columns: 1fr; }
+  .completionDesk li { align-items: start; grid-template-columns: 1.7rem 1fr; padding: .7rem 0; }
+  .completionDesk li > small { grid-column: 2; }
   .field textarea, .field select, .field input, .scoreGrid select { max-width: 100%; min-height: 44px; }
   .evidenceRow, .draftRow, .planSection { padding: 1rem; }
 }
