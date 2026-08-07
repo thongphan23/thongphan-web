@@ -118,6 +118,7 @@
 .resetDialog div { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: flex-end; }
 .resetDialog button { background: transparent; border: 1px solid var(--cw-ink); color: inherit; cursor: pointer; font: 700 .8rem var(--font-be-vietnam); min-height: 44px; padding: .7rem .9rem; }
 .resetDialog button:last-child { background: var(--cw-red); border-color: var(--cw-red); color: white; }
+.completionHandoff { border-top: 1px solid rgba(243, 238, 228, .18); }
 
 @media (max-width: 1180px) {
   .workspace { grid-template-columns: 160px minmax(330px, .82fr) minmax(420px, 1.18fr); }

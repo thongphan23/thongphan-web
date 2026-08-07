@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import {
   type ChangeEvent,
   type ReactNode,
@@ -344,6 +345,10 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
           ) : null}
         </aside>
       </div>
+
+      {state.completedDays.includes(7) ? (
+        <ChapterHandoff journeyKey="content-workflow-challenge" tone="dark" className={styles.completionHandoff} />
+      ) : null}
 
       <dialog ref={resetDialogRef} className={styles.resetDialog} onCancel={() => resetDialogRef.current?.close()}>
         <h2>Xóa workbook trên thiết bị này?</h2>

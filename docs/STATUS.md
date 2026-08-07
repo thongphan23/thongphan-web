@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-07
 
-## Content Workflow 7 Days — approved specification, implementation planning — 2026-08-08
+## Content Workflow 7 Days — local release candidate — 2026-08-08
 
 - Anh Thông approved a free, immediately accessible, self-guided Learning Studio at
   `/challenge/content-workflow-7days`; it requires no account and keeps workbook
@@ -14,15 +14,21 @@ Last updated: 2026-08-07
   community submission, server-side artifact storage and in-product AI generation.
 - Written design and acceptance contract:
   `docs/superpowers/specs/2026-08-07-content-workflow-7days-design.md`.
-- Work is isolated on branch `agent/content-workflow-7days` at base `ed98550`; the
-  canonical dirty worktree and its unrelated TPR/Conan Maker files remain untouched.
-- Baseline initially exposed a missing local Playwright Chromium runtime; after
-  installing the required browser, the unchanged source passes 248/248 tests.
-- Anh Thông approved the written specification on 2026-08-08 and requested immediate
-  implementation. The task-by-task plan is tracked at
-  `docs/superpowers/plans/2026-08-08-content-workflow-7days.md`.
-- No application route, production artifact, Cloudflare resource or live website has
-  changed. UI implementation remains gated only on the required visual concept approval.
+- Work remains isolated on branch `agent/content-workflow-7days` at base `ed98550`;
+  the canonical dirty worktree and its unrelated TPR/Conan Maker files remain untouched.
+- Anh Thông approved the written specification and four-state visual contract on
+  2026-08-08. The accepted references now live in
+  `docs/visual/content-workflow-7days/`.
+- The hub, readiness/resume flow, seven open day routes, local workbook, Quality Gates,
+  Master Prompt assembly, three-run review, Starter Kit export, reset dialog, Experience
+  Registry, sitemap, route mode and post-completion journey are implemented.
+- Current evidence: focused product checks 27/27, journey 4/4, full suite 269/269,
+  TypeScript and lint pass; the production build emits 91 static pages including all
+  eight challenge routes. Release gates pass: build 6/6, SEO 4/4, bundle 3/3 and
+  Brain2 143/143.
+- Rendered browser QA, full repository release gates, preview deployment, production
+  promotion and live verification remain the next release steps. Evidence is tracked in
+  `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.
 
 ## TPR Visual Selection + protected Control Room — production release — 2026-07-30
 

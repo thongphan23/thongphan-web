@@ -8,6 +8,7 @@ export type JourneyKey =
   | 'asset-detail'
   | 'experiences'
   | 'challenge-detail'
+  | 'content-workflow-challenge'
   | 'blog'
   | 'blog-detail'
   | 'chat'
@@ -95,6 +96,18 @@ const actions = {
     reason: 'Đi tiếp trong môi trường có nhịp thực thi, phản hồi và người cùng làm.',
     eyebrow: 'Làm trong môi trường thật',
   },
+  contentWorkflowContinue: {
+    href: '/challenge/content-workflow-7days/day-07#field-plan-1-evidence',
+    label: 'Dùng tiếp trong 14 ngày',
+    reason: 'Dùng sáu evidence tiếp theo để kiểm tra workflow trong 14 ngày và ghi lại signal thật.',
+    eyebrow: 'Tiếp tục vòng lặp',
+  },
+  conanWorkflow: {
+    href: '/conanmaker/',
+    label: 'Xây workflow tiếp theo',
+    reason: 'Khi content workflow đã chạy, dùng Conan Maker để xây workflow doanh nghiệp tiếp theo đang phụ thuộc vào founder.',
+    eyebrow: 'Mở rộng hệ thống',
+  },
 } satisfies Record<string, JourneyAction>
 
 export const journeyHandoffs = {
@@ -160,6 +173,13 @@ export const journeyHandoffs = {
     description: 'Conan Maker tiếp nối phần thực hành bằng phản hồi, tiêu chuẩn đầu ra và cộng đồng cùng làm.',
     primary: actions.conan,
     secondary: [actions.assets, actions.chat],
+  },
+  'content-workflow-challenge': {
+    chapter: 'Sau Starter Kit v1.0',
+    title: 'Đừng cất workflow vào một thư mục rồi bắt đầu lại từ đầu.',
+    description: 'Dùng workflow thêm 14 ngày, quan sát signal và chỉ sửa phần thực tế chứng minh là chưa ổn.',
+    primary: actions.contentWorkflowContinue,
+    secondary: [actions.conanWorkflow],
   },
   blog: {
     chapter: 'Từ góc nhìn tới hệ thống',
