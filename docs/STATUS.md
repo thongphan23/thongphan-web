@@ -683,4 +683,9 @@ fallback remains in place. No historical evidence was fabricated.
 - Immutable origin, apex and `www` returned 30/30 HTTP 200 checks for the hub, all day
   routes, `/experiences` and `/sitemap.xml`; served HTML and hero hashes match the
   verified local artifact.
+- The challenge adds no dependency. A fresh shared-tree production audit reports
+  four high-severity advisory groups in existing Next/PostCSS/Sharp/js-yaml versions;
+  the static challenge adds no affected Server Action or upload surface. Remediation
+  is intentionally separated because the dry-run expands into a whole-site framework
+  and native image stack upgrade that requires its own release cycle.
 - Full evidence: `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.

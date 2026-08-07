@@ -31,6 +31,21 @@ Last updated: 2026-08-08
 - `npm run test:release`: pass — build 6/6, SEO 4/4, bundle 3/3 and Brain2 143/143.
 - `git diff --check`: pass.
 
+### Shared dependency maintenance boundary
+
+The challenge added no dependency. A post-release `npm audit --omit=dev` on the
+existing shared application tree reports four high-severity advisory groups in
+`next@16.2.10`, the pinned `postcss@8.5.10`, `sharp@0.34.5` and the transitive
+`js-yaml@3.15.0` used by `gray-matter`. `npm audit fix --dry-run` proposes a broad
+whole-site change including Next 16.3.0 and Sharp 0.35.3, so it was not applied as
+an unreviewed side effect of this challenge release.
+
+The released challenge is a static export, adds no Server Action or image-upload
+surface and stores learner input only in browser localStorage. The advisory cleanup
+therefore remains a separate shared-platform dependency upgrade that must run the
+full-site release matrix before a later production promotion; it is not represented
+as clean or silently auto-fixed here.
+
 ## Visual contract
 
 Accepted references:
