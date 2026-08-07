@@ -1,7 +1,7 @@
 # Conan Challenge — Content Workflow 7 Days Design
 
 **Ngày:** 07/08/2026
-**Trạng thái:** Thiết kế hội thoại và bản viết được anh Thông duyệt ngày 08/08/2026
+**Trạng thái:** Bản viết và visual contract được anh Thông duyệt ngày 08/08/2026
 **Phạm vi:** Trải nghiệm tự học miễn phí tại `thongphan.com/challenge/content-workflow-7days`
 **Nguồn nội dung:** Bản thiết kế challenge do anh Thông cung cấp trong attachment Codex ngày 07/08/2026
 **Nguồn định vị:** Brain2 canonical ngày 07/08/2026 về Conan School, Conan Maker và Established Builder
@@ -309,6 +309,20 @@ Trước khi viết UI production, phải tạo Image Gen concept cho ít nhất
 Concept được anh Thông duyệt là source of truth cho copy, hierarchy, palette,
 typography, spacing, container model, imagery và responsive behavior. Không triển khai
 UI trước approval này.
+
+### Visual contract đã duyệt ngày 08/08/2026
+
+1. Hub desktop: `docs/visual/content-workflow-7days/hub-desktop-approved.png`
+2. Workbench desktop: `docs/visual/content-workflow-7days/workbench-desktop-approved.png`
+3. Workbench mobile: `docs/visual/content-workflow-7days/workbench-mobile-approved.png`
+4. Ngày 7 hoàn thành: `docs/visual/content-workflow-7days/day-07-completion-approved.png`
+
+Các ảnh trên khóa art direction, hệ phân cấp, bố cục, nhịp khoảng trắng, màu sắc và
+mô hình container. Chữ do mô hình tạo ảnh tự điền không thay thế learner-facing copy,
+validation hoặc completion rule trong đặc tả này. UI production phải dùng nội dung và
+logic chính xác từ các mục 7–17; đặc biệt mobile không được sao chép validation mẫu
+không nhất quán trong ảnh, và Ngày 7 phải giữ quy tắc hoàn thành sáu-trong-tám cùng
+các artifact bắt buộc.
 
 ## 10. Dữ liệu và lưu trữ cục bộ
 
