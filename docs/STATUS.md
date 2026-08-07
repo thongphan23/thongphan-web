@@ -665,3 +665,22 @@ The homepage reel now uses six unique approved local derivatives with verified
 source hashes, rights status, captions and focal points. It animates only when the
 release manifest satisfies that complete contract; otherwise the truthful static
 fallback remains in place. No historical evidence was fabricated.
+
+## Content Workflow 7 Days — production release
+
+- Public self-guided challenge is live at
+  `https://thongphan.com/challenge/content-workflow-7days` with seven open day routes,
+  eight artifact categories, local-only persistence, deterministic Quality Gates,
+  Markdown export and confirmed reset.
+- Release source: `68d7f1e`; preview deployment:
+  `52b3c7a3-9406-447d-8dff-fca758a7632f`; production deployment:
+  `8c0f6b38-0475-4aed-8eea-017b300d4fa6`.
+- Pre-release rollback point retained:
+  `4170518d-273d-42cc-9801-6af60493253a` (source `40a8df2`).
+- Local, preview and apex browser journeys passed from readiness through Days 1–7,
+  refresh/resume, prompt copy, two reviewed drafts, 8/8 completion, Markdown export
+  and reset at 1440×900, 1280×800, 390×844 and 320×568.
+- Immutable origin, apex and `www` returned 30/30 HTTP 200 checks for the hub, all day
+  routes, `/experiences` and `/sitemap.xml`; served HTML and hero hashes match the
+  verified local artifact.
+- Full evidence: `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.

@@ -460,50 +460,50 @@ form framework mới cho một challenge.
 
 ### Product
 
-- [ ] Route gốc và đủ bảy route ngày trả về 200 trong static artifact.
-- [ ] Mỗi ngày có lesson, case, task, artifact, bản tối thiểu và Quality Gate thật.
-- [ ] Toàn bộ nội dung phản ánh đúng execution contract trong attachment.
-- [ ] Không có account, paywall, email requirement hoặc server-side artifact storage.
+- [x] Route gốc và đủ bảy route ngày trả về 200 trong static artifact.
+- [x] Mỗi ngày có lesson, case, task, artifact, bản tối thiểu và Quality Gate thật.
+- [x] Toàn bộ nội dung phản ánh đúng execution contract trong attachment.
+- [x] Không có account, paywall, email requirement hoặc server-side artifact storage.
 
 ### Workflow
 
-- [ ] Readiness check dẫn vào ngày 1 và không khóa người thiếu evidence.
-- [ ] Người học điền workbook, refresh và tiếp tục từ trạng thái đã lưu.
-- [ ] Ngày 5 tạo Master Prompt từ dữ liệu ngày 1–4 và cho phép chỉnh sửa.
-- [ ] Ngày 6 giữ ba draft, score và revision note độc lập.
-- [ ] Ngày 7 tạo One-Pager, kế hoạch 14 ngày và final completion state.
-- [ ] Export Markdown có đủ artifact và không chứa HTML thực thi.
-- [ ] Reset cần xác nhận và xóa đúng một key versioned.
+- [x] Readiness check dẫn vào ngày 1 và không khóa người thiếu evidence.
+- [x] Người học điền workbook, refresh và tiếp tục từ trạng thái đã lưu.
+- [x] Ngày 5 tạo Master Prompt từ dữ liệu ngày 1–4 và cho phép chỉnh sửa.
+- [x] Ngày 6 giữ ba draft, score và revision note độc lập.
+- [x] Ngày 7 tạo One-Pager, kế hoạch 14 ngày và final completion state.
+- [x] Export Markdown có đủ artifact và không chứa HTML thực thi.
+- [x] Reset cần xác nhận và xóa đúng một key versioned.
 
 ### Quality, privacy và safety
 
-- [ ] Corrupt/stale storage không làm crash UI.
-- [ ] localStorage/clipboard failure có fallback usable.
-- [ ] Không có workbook payload trong request, log hoặc generated server artifact.
-- [ ] User text không được render như HTML.
-- [ ] Completion không dựa trên scroll/time-on-page.
-- [ ] Case mô phỏng không bị trình bày như bằng chứng thật.
+- [x] Corrupt/stale storage không làm crash UI.
+- [x] localStorage/clipboard failure có fallback usable.
+- [x] Không có workbook payload trong request, log hoặc generated server artifact.
+- [x] User text không được render như HTML.
+- [x] Completion không dựa trên scroll/time-on-page.
+- [x] Case mô phỏng không bị trình bày như bằng chứng thật.
 
 ### Discovery và visual
 
-- [ ] Challenge xuất hiện đúng trong `/experiences`.
-- [ ] Sitemap, metadata, canonical, route mode và journey contracts được cập nhật.
-- [ ] Browser QA đạt ở 1440×900, 1280×800, 390×844 và 320×568.
-- [ ] Không horizontal overflow, clipped input, broken image hoặc console error.
-- [ ] Render desktop/mobile được so trực tiếp với concept đã duyệt bằng `view_image`.
-- [ ] Above-the-fold copy không lệch khỏi copy đã duyệt.
-- [ ] Core workflow được click-through từ readiness tới export.
+- [x] Challenge xuất hiện đúng trong `/experiences`.
+- [x] Sitemap, metadata, canonical, route mode và journey contracts được cập nhật.
+- [x] Browser QA đạt ở 1440×900, 1280×800, 390×844 và 320×568.
+- [x] Không horizontal overflow, clipped input, broken image hoặc console error.
+- [x] Render desktop/mobile được so trực tiếp với concept đã duyệt bằng `view_image`.
+- [x] Above-the-fold copy không lệch khỏi copy đã duyệt.
+- [x] Core workflow được click-through từ readiness tới export.
 
 ### Repository và release
 
-- [ ] Focused tests, full `npm test`, `npx tsc --noEmit`, `npm run lint`,
+- [x] Focused tests, full `npm test`, `npx tsc --noEmit`, `npm run lint`,
   `npm run build`, `npm run test:release` và `git diff --check` đều pass.
-- [ ] `docs/STATUS.md` và release QA report có evidence thật.
-- [ ] Commit chỉ chứa file trong phạm vi challenge.
-- [ ] Push branch, preview deploy, preview browser QA, production deploy và production
+- [x] `docs/STATUS.md` và release QA report có evidence thật.
+- [x] Commit chỉ chứa file trong phạm vi challenge.
+- [x] Push branch, preview deploy, preview browser QA, production deploy và production
   smoke được thực hiện theo `docs/DEPLOYMENT.md`.
-- [ ] Ghi lại previous deployment ID trước khi production promotion để rollback.
-- [ ] Production URL canonical trả 200 và toàn bộ bảy day route hoạt động.
+- [x] Ghi lại previous deployment ID trước khi production promotion để rollback.
+- [x] Production URL canonical trả 200 và toàn bộ bảy day route hoạt động.
 
 ## 18. Non-goals của bản self-guided v1
 
