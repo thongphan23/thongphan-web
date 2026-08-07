@@ -11,6 +11,7 @@ type _PublishedExperiencesStayReadonly = Assert<
 test('registry exposes stable versioned experiences with complete user-facing contracts', () => {
   assert.deepEqual(experiences.map(({ id }) => id), [
     'expertise-asset-map',
+    'content-workflow-7days',
     'brain2-21-days',
     'ai-foundation',
   ])
@@ -42,11 +43,11 @@ test('registry exposes stable versioned experiences with complete user-facing co
 test('Learn is fail-closed while always-available experiences remain public', () => {
   assert.deepEqual(
     getPublishedExperiences({ includeLearn: false }).map(({ id }) => id),
-    ['expertise-asset-map', 'brain2-21-days'],
+    ['expertise-asset-map', 'content-workflow-7days', 'brain2-21-days'],
   )
   assert.deepEqual(
     getPublishedExperiences({ includeLearn: true }).map(({ id }) => id),
-    ['expertise-asset-map', 'brain2-21-days', 'ai-foundation'],
+    ['expertise-asset-map', 'content-workflow-7days', 'brain2-21-days', 'ai-foundation'],
   )
 })
 

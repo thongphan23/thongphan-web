@@ -7,6 +7,11 @@ import { brain2LessonMetadata } from '@/lib/brain2/lessons'
 
 const BASE_URL = 'https://thongphan.com'
 const RELEASE_DATE = '2026-07-10'
+const CONTENT_WORKFLOW_RELEASE_DATE = '2026-08-08'
+const contentWorkflowRoutes = [
+  '/challenge/content-workflow-7days',
+  ...Array.from({ length: 7 }, (_, index) => `/challenge/content-workflow-7days/day-${String(index + 1).padStart(2, '0')}`),
+]
 
 export const dynamic = 'force-static'
 
@@ -46,5 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const publicBrain2Routes = brain2LessonMetadata
     .filter((lesson) => lesson.access === 'public')
     .map((lesson) => entry(`/brain2/21-ngay/${lesson.slug}`, RELEASE_DATE))
-  return [...staticRoutes, ...publicBrain2Routes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
+  const contentWorkflowEntries = contentWorkflowRoutes.map((pathname) => entry(pathname, CONTENT_WORKFLOW_RELEASE_DATE))
+  return [...staticRoutes, ...contentWorkflowEntries, ...publicBrain2Routes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
 }
