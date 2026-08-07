@@ -122,7 +122,8 @@ test('empty state is fresh, bounded and does not share mutable arrays', () => {
   assert.notEqual(first.completedDays, second.completedDays)
   assert.notEqual(first.artifacts.drafts, second.artifacts.drafts)
 
-  first.completedDays.push(1)
+  const mutableDays = first.completedDays as ChallengeStateV1['completedDays']
+  mutableDays.push(1)
   first.artifacts.evidenceBank.push({
     id: 'one', evidence: 'one', context: 'one', source: 'one', insight: 'one',
   })
