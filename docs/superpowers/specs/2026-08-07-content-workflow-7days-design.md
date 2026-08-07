@@ -1,7 +1,7 @@
 # Conan Challenge — Content Workflow 7 Days Design
 
 **Ngày:** 07/08/2026
-**Trạng thái:** Thiết kế hội thoại được anh Thông duyệt ngày 07/08/2026; chờ duyệt bản viết
+**Trạng thái:** Thiết kế hội thoại và bản viết được anh Thông duyệt ngày 08/08/2026
 **Phạm vi:** Trải nghiệm tự học miễn phí tại `thongphan.com/challenge/content-workflow-7days`
 **Nguồn nội dung:** Bản thiết kế challenge do anh Thông cung cấp trong attachment Codex ngày 07/08/2026
 **Nguồn định vị:** Brain2 canonical ngày 07/08/2026 về Conan School, Conan Maker và Established Builder

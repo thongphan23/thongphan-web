@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-07
 
-## Content Workflow 7 Days — approved design, written spec pending review — 2026-08-07
+## Content Workflow 7 Days — approved specification, implementation planning — 2026-08-08
 
 - Anh Thông approved a free, immediately accessible, self-guided Learning Studio at
   `/challenge/content-workflow-7days`; it requires no account and keeps workbook
@@ -18,8 +18,11 @@ Last updated: 2026-08-07
   canonical dirty worktree and its unrelated TPR/Conan Maker files remain untouched.
 - Baseline initially exposed a missing local Playwright Chromium runtime; after
   installing the required browser, the unchanged source passes 248/248 tests.
+- Anh Thông approved the written specification on 2026-08-08 and requested immediate
+  implementation. The task-by-task plan is tracked at
+  `docs/superpowers/plans/2026-08-08-content-workflow-7days.md`.
 - No application route, production artifact, Cloudflare resource or live website has
-  changed. Implementation remains blocked on anh Thông's review of the written spec.
+  changed. UI implementation remains gated only on the required visual concept approval.
 
 ## TPR Visual Selection + protected Control Room — production release — 2026-07-30
 
