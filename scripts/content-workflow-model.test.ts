@@ -194,7 +194,7 @@ test('day five cannot pass with a placeholder prompt assembled from an empty bri
   assert.ok(validateDay(5, state).errors.some(({ field }) => field.startsWith('contentBrief.')))
 })
 
-test('completion uses eight artifact categories and the approved six-of-eight required set', () => {
+test('completion keeps the six-of-eight rule but Day 7 also requires six continuation items', () => {
   assert.deepEqual(ARTIFACT_KEYS, [
     'customerFocus',
     'evidenceBank',
@@ -226,6 +226,15 @@ test('completion uses eight artifact categories and the approved six-of-eight re
   const coverage = getArtifactCoverage(state)
   assert.equal(Object.values(coverage).filter(Boolean).length, 7)
   assert.equal(canCompleteChallenge(state), true)
+  assert.equal(validateDay(7, state).valid, false)
+  assert.ok(validateDay(7, state).errors.some(({ field }) => field === 'fourteenDayPlan'))
+
+  state.artifacts.fourteenDayPlan = Array.from({ length: 6 }, (_, index) => ({
+    id: `plan-${index + 1}`,
+    evidence: `Evidence ưu tiên ${index + 1}`,
+    job: index % 2 === 0 ? 'recognize-problem' : 'understand-cause',
+    publishDate: `2026-08-${String(index + 10).padStart(2, '0')}`,
+  }))
   assert.equal(validateDay(7, state).valid, true)
 
   state.artifacts.evidenceBank = state.artifacts.evidenceBank.slice(0, 4)
@@ -241,4 +250,15 @@ test('next day recommends progress without creating route locks', () => {
   assert.equal(nextChallengeDay(state), 3)
   state.completedDays = [1, 2, 3, 4, 5, 6, 7]
   assert.equal(nextChallengeDay(state), 7)
+})
+
+test('resume keeps an unfinished current day before falling back to the first incomplete day', () => {
+  const state = createEmptyChallengeState()
+  state.completedDays = [1, 2]
+  state.currentDay = 4
+
+  assert.equal(nextChallengeDay(state), 4)
+
+  state.completedDays = [1, 2, 4]
+  assert.equal(nextChallengeDay(state), 3)
 })

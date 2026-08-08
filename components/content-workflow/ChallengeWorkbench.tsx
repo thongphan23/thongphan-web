@@ -151,10 +151,12 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   const router = useRouter()
   const errorSummaryRef = useRef<HTMLDivElement>(null)
   const resetDialogRef = useRef<HTMLDialogElement>(null)
+  const starterKitCopyRef = useRef<HTMLTextAreaElement>(null)
   const [state, setState] = useState<ChallengeStateV1>(() => createEmptyChallengeState())
   const [hydrated, setHydrated] = useState(false)
   const [saveStatus, setSaveStatus] = useState('Đang mở workbook local…')
   const [actionStatus, setActionStatus] = useState('')
+  const [manualCopyText, setManualCopyText] = useState('')
   const [errors, setErrors] = useState<ValidationError[]>([])
   const [editingCompletedKit, setEditingCompletedKit] = useState(false)
 
@@ -181,6 +183,12 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
     }, 450)
     return () => window.clearTimeout(timeout)
   }, [hydrated, state])
+
+  useEffect(() => {
+    if (!manualCopyText) return
+    starterKitCopyRef.current?.focus()
+    starterKitCopyRef.current?.select()
+  }, [manualCopyText])
 
   const completedCount = state.completedDays.length
   const validation = validateDay(lesson.day, state)
@@ -214,13 +222,18 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
     setActionStatus(`Ngày ${lesson.day} đã hoàn thành theo tiêu chí cấu trúc. Anh vẫn là người quyết định chất lượng cuối.`)
   }
 
-  async function copyText(text: string, fallback?: HTMLTextAreaElement | null) {
+  async function copyText(text: string, fallback?: HTMLTextAreaElement | null, revealStarterKitFallback = false) {
     try {
       await navigator.clipboard.writeText(text)
+      if (revealStarterKitFallback) setManualCopyText('')
       setActionStatus('Đã sao chép vào clipboard.')
     } catch {
-      fallback?.focus()
-      fallback?.select()
+      if (revealStarterKitFallback) {
+        setManualCopyText(text)
+      } else {
+        fallback?.focus()
+        fallback?.select()
+      }
       setActionStatus('Clipboard bị chặn. Nội dung đã được chọn; nhấn Ctrl/Cmd + C để sao chép thủ công.')
     }
   }
@@ -353,8 +366,15 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
           {lesson.day === 7 ? (
             <div className={styles.exportActions}>
               <button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Export Markdown</button>
-              <button type="button" onClick={() => copyText(buildStarterKitMarkdown(state))}><Clipboard aria-hidden="true" size={16} /> Copy Starter Kit</button>
+              <button type="button" onClick={() => copyText(buildStarterKitMarkdown(state), null, true)}><Clipboard aria-hidden="true" size={16} /> Copy Starter Kit</button>
             </div>
+          ) : null}
+          {manualCopyText ? (
+            <label className={styles.field}>
+              <span>Nội dung Starter Kit để sao chép thủ công</span>
+              <small>Nhấn Ctrl/Cmd + C; toàn bộ nội dung đã được chọn sẵn.</small>
+              <textarea ref={starterKitCopyRef} value={manualCopyText} readOnly rows={8} />
+            </label>
           ) : null}
         </aside>
       </div>

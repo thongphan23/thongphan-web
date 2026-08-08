@@ -178,6 +178,10 @@ function validEvidence(item: EvidenceItem): boolean {
   return hasText(item.evidence, 8) && hasText(item.context) && hasText(item.source) && hasText(item.insight, 8)
 }
 
+function validPlanItem(item: FourteenDayPlanItem): boolean {
+  return hasText(item.evidence) && item.job !== '' && hasText(item.publishDate, 10)
+}
+
 export function draftScore(draft: DraftReview): number {
   return Object.values(draft.scores).reduce<number>((total, score) => total + score, 0)
 }
@@ -202,7 +206,7 @@ export function getArtifactCoverage(state: ChallengeStateV1): ArtifactCoverage {
     workflowPrompt: hasText(state.artifacts.workflowPrompt, 200),
     reviewedDrafts: state.artifacts.drafts.filter(isReviewedDraft).length >= 2,
     onePager: [onePager.goal, onePager.inputs, onePager.steps, onePager.standards, onePager.aiRole, onePager.humanRole, onePager.cadence].every((value) => hasText(value)),
-    fourteenDayPlan: state.artifacts.fourteenDayPlan.filter((item) => hasText(item.evidence) && item.job !== '').length >= 6,
+    fourteenDayPlan: state.artifacts.fourteenDayPlan.filter(validPlanItem).length >= 6,
   }
 }
 
@@ -293,6 +297,7 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
 
   if (day === 7) {
     if (!canCompleteChallenge(state)) errors.push(error('artifacts', 'Hoàn thành sáu artifact bắt buộc trước khi đóng gói.'))
+    if (!getArtifactCoverage(state).fourteenDayPlan) errors.push(error('fourteenDayPlan', 'Tạo ít nhất sáu đề mục có evidence, Content Job và ngày dự kiến cho 14 ngày tiếp theo.'))
     if (artifacts.onePager.publishStatus === '') errors.push(error('onePager.publishStatus', 'Xác nhận đã đăng hoặc gửi content tới người thật.'))
     if (!hasText(artifacts.onePager.publishedUrlOrNote, 8)) errors.push(error('onePager.publishedUrlOrNote', 'Ghi URL hoặc cách anh đã đưa content tới người thật.'))
     if (!hasText(artifacts.onePager.signalNote, 8)) errors.push(error('onePager.signalNote', 'Ghi một signal ban đầu, kể cả khi không có phản ứng như dự đoán.'))
@@ -302,6 +307,7 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
 }
 
 export function nextChallengeDay(state: ChallengeStateV1): ChallengeDay {
+  if (!state.completedDays.includes(state.currentDay)) return state.currentDay
   const firstIncomplete = ([1, 2, 3, 4, 5, 6, 7] as const).find((day) => !state.completedDays.includes(day))
   return firstIncomplete ?? 7
 }

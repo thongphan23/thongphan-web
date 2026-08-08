@@ -208,7 +208,28 @@ try {
   assert(markdown.includes('Content Workflow Starter Kit'), 'day 7: export omitted title')
   await page.getByRole('button', { name: 'Copy Starter Kit' }).click()
   assert((await page.evaluate(() => navigator.clipboard.readText())).includes('Content Workflow Starter Kit'), 'day 7: copy starter kit failed')
-  evidence.workflow.push('day-07-complete-export-copy')
+  await page.evaluate(() => {
+    Object.defineProperty(navigator.clipboard, 'writeText', {
+      configurable: true,
+      value: async () => { throw new Error('forced clipboard denial') },
+    })
+  })
+  await page.getByRole('button', { name: 'Copy Starter Kit' }).click()
+  const manualCopy = page.getByLabel('Nội dung Starter Kit để sao chép thủ công')
+  await manualCopy.waitFor({ state: 'visible' })
+  const manualSelection = await manualCopy.evaluate((element) => {
+    const field = element
+    return {
+      focused: document.activeElement === field,
+      selectionStart: field.selectionStart,
+      selectionEnd: field.selectionEnd,
+      valueLength: field.value.length,
+    }
+  })
+  assert(manualSelection.focused, 'day 7: manual copy fallback is not focused')
+  assert(manualSelection.selectionStart === 0, 'day 7: manual copy fallback does not select from the start')
+  assert(manualSelection.selectionEnd === manualSelection.valueLength, 'day 7: manual copy fallback does not select all text')
+  evidence.workflow.push('day-07-complete-export-copy-fallback')
 
   await page.getByRole('button', { name: 'Đặt lại' }).click()
   await page.getByRole('button', { name: 'Giữ lại' }).click()
