@@ -2,6 +2,26 @@
 
 Last updated: 2026-08-08
 
+## Content Workflow 7 Days — curriculum redesign pending implementation — 2026-08-08
+
+- Anh Thông approved a new product goal: teach beginners how to design a reusable
+  workflow, using content workflow as the worked example rather than making customer
+  evidence or content strategy the core curriculum.
+- The approved seven-step spine is result → context → output contract → process map
+  → human/AI roles → test run → version and transfer. Core work remains 45–60
+  minutes/day with an optional 20–30 minute AI Deep Dive.
+- Conan School replaces the former composite Studio Mộc case. It demonstrates Learn
+  by Building and current Builder artifacts; Conan Maker appears only as a fit-based
+  path for Established Builders with an operating bottleneck.
+- Detailed curriculum is awaiting final review at
+  `docs/superpowers/specs/2026-08-08-content-workflow-7days-curriculum-redesign.md`.
+  Brain2/live-source selection and rejected stale claims are recorded under
+  `docs/content-workflow-7days-redesign/`.
+- No production code or live deployment has changed in this redesign phase. After
+  written approval, the work proceeds through implementation plan, code, complete
+  QA, preview, production promotion and apex/`www` verification as explicitly
+  authorized by anh Thông.
+
 ## Content Workflow 7 Days — Vietnamese learner-copy patch in production — 2026-08-08
 
 - Anh Thông approved a free, immediately accessible, self-guided Learning Studio at
