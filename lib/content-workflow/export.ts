@@ -1,4 +1,23 @@
-import { draftScore, type ChallengeStateV1 } from './model'
+import { draftScore, type ChallengeStateV1, type ContentJobType, type PublishStatus } from './model'
+
+const contentJobLabels: Record<Exclude<ContentJobType, ''>, string> = {
+  'recognize-problem': 'Nhận ra vấn đề',
+  'understand-cause': 'Hiểu nguyên nhân',
+  'try-next-step': 'Thử bước tiếp theo',
+}
+
+const publishStatusLabels: Record<Exclude<PublishStatus, ''>, string> = {
+  published: 'Đã đăng công khai',
+  sent: 'Đã gửi trực tiếp',
+}
+
+function contentJobLabel(value: ContentJobType): string {
+  return value ? contentJobLabels[value] : ''
+}
+
+function publishStatusLabel(value: PublishStatus): string {
+  return value ? publishStatusLabels[value] : ''
+}
 
 function safe(value: string): string {
   return value
@@ -23,16 +42,16 @@ export function buildStarterKitMarkdown(state: ChallengeStateV1): string {
   const brief = artifacts.contentBrief
   const onePager = artifacts.onePager
   const evidenceRows = artifacts.evidenceBank.length === 0
-    ? '_Chưa có evidence._'
+    ? '_Chưa có bằng chứng._'
     : artifacts.evidenceBank.map((item, index) => [
-      `### Evidence ${index + 1}`,
+      `### Bằng chứng ${index + 1}`,
       line('Bằng chứng', item.evidence),
       line('Hoàn cảnh', item.context),
       line('Nguồn', item.source),
       line('Có thể hiểu', item.insight),
     ].join('\n')).join('\n\n')
   const draftRows = artifacts.drafts.map((draft, index) => [
-    `### Draft ${index + 1} — ${draftScore(draft)}/12`,
+    `### Bản nháp ${index + 1} — ${draftScore(draft)}/12`,
     block(draft.draft),
     '',
     line('Quyết định sửa', draft.revisionNote),
@@ -40,64 +59,64 @@ export function buildStarterKitMarkdown(state: ChallengeStateV1): string {
   const planRows = artifacts.fourteenDayPlan.length === 0
     ? '_Chưa có đề mục._'
     : artifacts.fourteenDayPlan.map((item, index) =>
-      `${index + 1}. ${safe(item.evidence)} — ${safe(item.job)}${item.publishDate ? ` — ${safe(item.publishDate)}` : ''}`,
+      `${index + 1}. ${safe(item.evidence)} — ${safe(contentJobLabel(item.job))}${item.publishDate ? ` — ${safe(item.publishDate)}` : ''}`,
     ).join('\n')
 
-  return `# Content Workflow Starter Kit v1.0
+  return `# Bộ khởi đầu quy trình nội dung v1.0 (Content Workflow Starter Kit)
 
-> Dữ liệu được xuất từ trình duyệt của người học. Hãy giữ file này ở nơi an toàn và tự xác minh mọi claim trước khi xuất bản.
+> Dữ liệu được tải từ trình duyệt của người học. Hãy giữ tệp này ở nơi an toàn và tự xác minh mọi luận điểm trước khi xuất bản.
 
-## Customer Focus Card
+## Thẻ trọng tâm khách hàng (Customer Focus Card)
 
-${line('Business', focus.business)}
-${line('Offer', focus.offer)}
-${line('Customer', focus.customerGroup)}
+${line('Doanh nghiệp', focus.business)}
+${line('Sản phẩm đang bán', focus.offer)}
+${line('Khách hàng', focus.customerGroup)}
 ${line('Hoàn cảnh', focus.currentSituation)}
 ${line('Vấn đề', focus.primaryProblem)}
 ${line('Chuyển dịch', focus.desiredMovement)}
-${line('Customer Focus', focus.focusStatement)}
+${line('Trọng tâm khách hàng', focus.focusStatement)}
 
-## Customer Voice Mini Bank
+## Ngân hàng tiếng nói khách hàng (Customer Voice Mini Bank)
 
 ${evidenceRows}
 
-## Content Job Card
+## Thẻ nhiệm vụ nội dung (Content Job Card)
 
-${line('Evidence đã chọn', job.selectedEvidence)}
-${line('Content Job', job.job)}
+${line('Bằng chứng đã chọn', job.selectedEvidence)}
+${line('Nhiệm vụ nội dung', contentJobLabel(job.job))}
 ${line('Niềm tin trước', job.beliefBefore)}
 ${line('Chuyển dịch mong muốn', job.expectedShift)}
 ${line('Hành động tiếp theo', job.nextAction)}
 
-## Reusable Content Brief
+## Bản giao việc nội dung dùng lại được (Reusable Content Brief)
 
-${line('Business/offer', brief.businessOffer)}
-${line('Customer', brief.customer)}
+${line('Doanh nghiệp/sản phẩm', brief.businessOffer)}
+${line('Khách hàng', brief.customer)}
 ${line('Hoàn cảnh', brief.situation)}
 ${line('Điều họ đang nghĩ', brief.currentBelief)}
 ${line('Điều muốn họ hiểu', brief.desiredUnderstanding)}
-${line('Content Job', brief.contentJob)}
+${line('Nhiệm vụ nội dung', contentJobLabel(brief.contentJob))}
 ${line('Ý chính', brief.coreMessage)}
-${line('Customer evidence', brief.customerEvidence)}
+${line('Bằng chứng khách hàng', brief.customerEvidence)}
 ${line('Bằng chứng hỗ trợ', brief.supportingProof)}
 ${line('Giọng điệu', brief.voiceConstraints)}
 ${line('Phải có', brief.mustInclude)}
 ${line('Phải tránh', brief.mustAvoid)}
-${line('CTA', brief.callToAction)}
+${line('Lời kêu gọi hành động (CTA)', brief.callToAction)}
 ${line('Định dạng', brief.format)}
 ${line('Kênh', brief.channel)}
 
-## Content Workflow Prompt v1
+## Câu lệnh quy trình nội dung v1 (Content Workflow Prompt)
 
 ${block(artifacts.workflowPrompt)}
 
-## Drafts đã review
+## Các bản nháp đã đánh giá
 
 ${draftRows}
 
-${line('Workflow Feedback Log', artifacts.workflowFeedback)}
+${line('Nhật ký phản hồi quy trình', artifacts.workflowFeedback)}
 
-## Content Workflow One-Pager
+## Bản tóm tắt quy trình nội dung một trang (One-Pager)
 
 ${line('Mục tiêu', onePager.goal)}
 ${line('Đầu vào', onePager.inputs)}
@@ -106,11 +125,11 @@ ${line('Tiêu chuẩn', onePager.standards)}
 ${line('AI làm', onePager.aiRole)}
 ${line('Con người làm', onePager.humanRole)}
 ${line('Nhịp dùng', onePager.cadence)}
-${line('Trạng thái dùng ngoài đời', onePager.publishStatus)}
-${line('URL hoặc ghi chú', onePager.publishedUrlOrNote)}
-${line('Signal ban đầu', onePager.signalNote)}
+${line('Trạng thái dùng ngoài đời', publishStatusLabel(onePager.publishStatus))}
+${line('Địa chỉ web hoặc ghi chú', onePager.publishedUrlOrNote)}
+${line('Tín hiệu ban đầu', onePager.signalNote)}
 
-## Kế hoạch content 14 ngày
+## Kế hoạch nội dung 14 ngày
 
 ${planRows}
 `
@@ -118,5 +137,5 @@ ${planRows}
 
 export function starterKitFilename(now = new Date()): string {
   const stamp = now.toISOString().replace(/\.\d{3}Z$/, 'Z').replaceAll(':', '-')
-  return `content-workflow-starter-kit-${stamp}.md`
+  return `bo-khoi-dau-quy-trinh-noi-dung-${stamp}.md`
 }

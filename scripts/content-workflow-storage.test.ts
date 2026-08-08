@@ -171,25 +171,28 @@ test('Markdown export has all eight artifact sections and neutralizes HTML-like 
   const markdown = buildStarterKitMarkdown(state)
 
   for (const heading of [
-    'Customer Focus Card',
-    'Customer Voice Mini Bank',
-    'Content Job Card',
-    'Reusable Content Brief',
-    'Content Workflow Prompt v1',
-    'Drafts đã review',
-    'Content Workflow One-Pager',
-    'Kế hoạch content 14 ngày',
+    'Thẻ trọng tâm khách hàng',
+    'Ngân hàng tiếng nói khách hàng',
+    'Thẻ nhiệm vụ nội dung',
+    'Bản giao việc nội dung dùng lại được',
+    'Câu lệnh quy trình nội dung v1',
+    'Các bản nháp đã đánh giá',
+    'Bản tóm tắt quy trình nội dung một trang',
+    'Kế hoạch nội dung 14 ngày',
   ]) {
     assert.match(markdown, new RegExp(`## ${heading}`))
   }
   assert.doesNotMatch(markdown, /<script>/i)
   assert.match(markdown, /&lt;script&gt;/)
-  assert.match(markdown, /Dữ liệu được xuất từ trình duyệt/)
+  assert.match(markdown, /Dữ liệu được tải từ trình duyệt/)
+  assert.doesNotMatch(markdown, /\b(?:recognize-problem|understand-cause|try-next-step|published|sent)\b/)
+  assert.match(markdown, /Hiểu nguyên nhân/)
+  assert.match(markdown, /Đã gửi trực tiếp/)
 })
 
 test('filename is deterministic, UTC-safe and filesystem friendly', () => {
   assert.equal(
     starterKitFilename(new Date('2026-08-08T01:02:03.456Z')),
-    'content-workflow-starter-kit-2026-08-08T01-02-03Z.md',
+    'bo-khoi-dau-quy-trinh-noi-dung-2026-08-08T01-02-03Z.md',
   )
 })

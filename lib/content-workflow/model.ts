@@ -231,13 +231,13 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
 
   if (day === 1) {
     const fields: Array<[keyof CustomerFocus, string]> = [
-      ['business', 'Ghi business hoặc dự án sẽ dùng.'],
-      ['offer', 'Ghi một offer cụ thể.'],
+      ['business', 'Ghi doanh nghiệp hoặc dự án sẽ dùng.'],
+      ['offer', 'Ghi một sản phẩm hoặc dịch vụ cụ thể.'],
       ['customerGroup', 'Chọn một nhóm khách hàng cụ thể.'],
       ['currentSituation', 'Mô tả hoàn cảnh đang xảy ra.'],
       ['primaryProblem', 'Nêu vấn đề cụ thể.'],
       ['desiredMovement', 'Nêu chuyển dịch khách hàng muốn đạt tới.'],
-      ['focusStatement', 'Hoàn thành câu Customer Focus.'],
+      ['focusStatement', 'Hoàn thành câu trọng tâm khách hàng.'],
     ]
     for (const [field, message] of fields) {
       if (!hasText(artifacts.customerFocus[field])) errors.push(error(`customerFocus.${field}`, message))
@@ -246,16 +246,16 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
 
   if (day === 2) {
     const validRows = artifacts.evidenceBank.filter(validEvidence)
-    if (validRows.length < 3) errors.push(error('evidenceBank', 'Thêm ít nhất ba evidence thật.'))
+    if (validRows.length < 3) errors.push(error('evidenceBank', 'Thêm ít nhất ba bằng chứng thật.'))
     if (validRows.length < 5 && !hasText(artifacts.evidencePlan, 12)) {
-      errors.push(error('evidencePlan', 'Ghi kế hoạch cụ thể để tìm thêm evidence còn thiếu.'))
+      errors.push(error('evidencePlan', 'Ghi kế hoạch cụ thể để tìm thêm bằng chứng còn thiếu.'))
     }
   }
 
   if (day === 3) {
-    if (artifacts.contentJob.job === '') errors.push(error('contentJob.job', 'Chọn đúng một Content Job.'))
+    if (artifacts.contentJob.job === '') errors.push(error('contentJob.job', 'Chọn đúng một nhiệm vụ nội dung.'))
     for (const [field, message] of [
-      ['selectedEvidence', 'Chọn một evidence làm đầu vào.'],
+      ['selectedEvidence', 'Chọn một bằng chứng làm đầu vào.'],
       ['beliefBefore', 'Ghi cách hiểu hiện tại của khách hàng.'],
       ['expectedShift', 'Ghi điều muốn khách hàng hiểu khác đi.'],
       ['nextAction', 'Ghi một hành động nhỏ tiếp theo.'],
@@ -266,14 +266,14 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
 
   if (day === 4) {
     const requiredBriefFields: Array<[keyof ContentBrief, string]> = [
-      ['businessOffer', 'Ghi business hoặc offer.'],
-      ['customer', 'Ghi customer cụ thể.'],
+      ['businessOffer', 'Ghi doanh nghiệp hoặc sản phẩm đang bán.'],
+      ['customer', 'Ghi khách hàng cụ thể.'],
       ['situation', 'Ghi hoàn cảnh hiện tại.'],
-      ['currentBelief', 'Ghi điều customer đang nghĩ.'],
-      ['desiredUnderstanding', 'Ghi điều content muốn họ hiểu.'],
-      ['contentJob', 'Chọn Content Job.'],
+      ['currentBelief', 'Ghi điều khách hàng đang nghĩ.'],
+      ['desiredUnderstanding', 'Ghi điều nội dung muốn họ hiểu.'],
+      ['contentJob', 'Chọn nhiệm vụ nội dung.'],
       ['coreMessage', 'Khóa một ý chính.'],
-      ['customerEvidence', 'Đưa customer evidence vào brief.'],
+      ['customerEvidence', 'Đưa bằng chứng khách hàng vào bản giao việc.'],
       ['voiceConstraints', 'Ghi giới hạn giọng điệu.'],
       ['callToAction', 'Ghi hành động tiếp theo.'],
       ['format', 'Chọn định dạng hoặc độ dài.'],
@@ -287,20 +287,20 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV1): DayVali
   if (day === 5) {
     errors.push(...validateDay(4, state).errors)
     if (!hasText(artifacts.workflowPrompt, 200)) {
-      errors.push(error('workflowPrompt', 'Tạo và đọc lại Content Workflow Prompt trước khi tiếp tục.'))
+      errors.push(error('workflowPrompt', 'Tạo và đọc lại câu lệnh quy trình nội dung trước khi tiếp tục.'))
     }
   }
 
   if (day === 6 && artifacts.drafts.filter(isReviewedDraft).length < 2) {
-    errors.push(error('drafts', 'Cần ít nhất hai draft đạt 9/12, không điểm 0 và có quyết định sửa.'))
+    errors.push(error('drafts', 'Cần ít nhất hai bản nháp đạt 9/12, không điểm 0 và có quyết định sửa.'))
   }
 
   if (day === 7) {
-    if (!canCompleteChallenge(state)) errors.push(error('artifacts', 'Hoàn thành sáu artifact bắt buộc trước khi đóng gói.'))
-    if (!getArtifactCoverage(state).fourteenDayPlan) errors.push(error('fourteenDayPlan', 'Tạo ít nhất sáu đề mục có evidence, Content Job và ngày dự kiến cho 14 ngày tiếp theo.'))
-    if (artifacts.onePager.publishStatus === '') errors.push(error('onePager.publishStatus', 'Xác nhận đã đăng hoặc gửi content tới người thật.'))
-    if (!hasText(artifacts.onePager.publishedUrlOrNote, 8)) errors.push(error('onePager.publishedUrlOrNote', 'Ghi URL hoặc cách anh đã đưa content tới người thật.'))
-    if (!hasText(artifacts.onePager.signalNote, 8)) errors.push(error('onePager.signalNote', 'Ghi một signal ban đầu, kể cả khi không có phản ứng như dự đoán.'))
+    if (!canCompleteChallenge(state)) errors.push(error('artifacts', 'Hoàn thành sáu sản phẩm bắt buộc trước khi đóng gói.'))
+    if (!getArtifactCoverage(state).fourteenDayPlan) errors.push(error('fourteenDayPlan', 'Tạo ít nhất sáu đề mục có bằng chứng, nhiệm vụ nội dung và ngày dự kiến cho 14 ngày tiếp theo.'))
+    if (artifacts.onePager.publishStatus === '') errors.push(error('onePager.publishStatus', 'Xác nhận đã đăng hoặc gửi nội dung tới người thật.'))
+    if (!hasText(artifacts.onePager.publishedUrlOrNote, 8)) errors.push(error('onePager.publishedUrlOrNote', 'Ghi địa chỉ hoặc cách bạn đã đưa nội dung tới người thật.'))
+    if (!hasText(artifacts.onePager.signalNote, 8)) errors.push(error('onePager.signalNote', 'Ghi một tín hiệu ban đầu, kể cả khi không có phản ứng như dự đoán.'))
   }
 
   return { valid: errors.length === 0, errors }
@@ -318,42 +318,42 @@ function section(label: string, value: string): string {
 
 export function assembleWorkflowPrompt(state: ChallengeStateV1): string {
   const brief = state.artifacts.contentBrief
-  return `CONTENT WORKFLOW PROMPT v1
+  return `CÂU LỆNH QUY TRÌNH NỘI DUNG v1
 
-FLOW: BRIEF → 3 GÓC KHAI THÁC → OUTLINE → DRAFT → SELF-CHECK → REVISION REQUEST
+LUỒNG: BẢN GIAO VIỆC → 3 GÓC KHAI THÁC → DÀN Ý → BẢN NHÁP → TỰ KIỂM TRA → YÊU CẦU CHỈNH SỬA
 
-Bạn là trợ lý Content Workflow cho business của tôi. Hãy dùng đúng dữ liệu trong brief, chỉ ra phần còn thiếu và không tự bịa customer evidence.
+Bạn là trợ lý quy trình nội dung cho doanh nghiệp của tôi. Hãy dùng đúng dữ liệu trong bản giao việc, chỉ ra phần còn thiếu và không tự bịa bằng chứng khách hàng.
 
-BƯỚC 1 — KIỂM TRA BRIEF
-Không viết bài nếu thiếu customer, Content Job, ý chính hoặc evidence. Nêu ngắn gọn phần còn mơ hồ.
+BƯỚC 1 — KIỂM TRA BẢN GIAO VIỆC
+Không viết bài nếu thiếu khách hàng, nhiệm vụ nội dung, ý chính hoặc bằng chứng. Nêu ngắn gọn phần còn mơ hồ.
 
 BƯỚC 2 — ĐỀ XUẤT 3 GÓC KHAI THÁC
-Với mỗi góc, ghi luận điểm, cách mở bài và lý do phù hợp với customer cùng Content Job.
+Với mỗi góc, ghi luận điểm, cách mở bài và lý do phù hợp với khách hàng cùng nhiệm vụ nội dung.
 
 BƯỚC 3 — ĐIỂM CON NGƯỜI QUYẾT ĐỊNH
 CHỜ TÔI CHỌN MỘT GÓC. Không tự chọn thay tôi.
 
-BƯỚC 4 — OUTLINE
-Tạo outline gồm hook, tình huống, cách hiểu hiện tại, luận điểm mới, evidence, kết luận và hành động tiếp theo.
+BƯỚC 4 — DÀN Ý
+Tạo dàn ý gồm cách mở bài, tình huống, cách hiểu hiện tại, luận điểm mới, bằng chứng, kết luận và hành động tiếp theo.
 
-BƯỚC 5 — DRAFT
-Viết theo đúng định dạng, kênh và giới hạn giọng điệu trong brief.
+BƯỚC 5 — BẢN NHÁP
+Viết theo đúng định dạng, kênh và giới hạn giọng điệu trong bản giao việc.
 
-BƯỚC 6 — SELF-CHECK
-Kiểm tra: đúng customer; một ý chính; claim có evidence; giọng điệu phù hợp; CTA phù hợp Content Job.
+BƯỚC 6 — TỰ KIỂM TRA
+Kiểm tra: đúng khách hàng; một ý chính; luận điểm có bằng chứng; giọng điệu phù hợp; lời kêu gọi hành động phù hợp với nhiệm vụ nội dung.
 
-BƯỚC 7 — REVISION REQUEST
-Đề xuất một vòng sửa và ghi rõ điểm còn chưa chắc chắn. Không tự thêm số liệu, câu chuyện hoặc trích dẫn không có trong brief.
+BƯỚC 7 — YÊU CẦU CHỈNH SỬA
+Đề xuất một vòng sửa và ghi rõ điểm còn chưa chắc chắn. Không tự thêm số liệu, câu chuyện hoặc trích dẫn không có trong bản giao việc.
 
-CONTENT BRIEF
-${section('Business/offer', brief.businessOffer)}
-${section('Customer', brief.customer)}
+BẢN GIAO VIỆC NỘI DUNG
+${section('Doanh nghiệp/sản phẩm', brief.businessOffer)}
+${section('Khách hàng', brief.customer)}
 ${section('Hoàn cảnh', brief.situation)}
 ${section('Điều họ đang nghĩ', brief.currentBelief)}
 ${section('Điều muốn họ hiểu', brief.desiredUnderstanding)}
-${section('Content Job', brief.contentJob)}
+${section('Nhiệm vụ nội dung', brief.contentJob)}
 ${section('Ý chính', brief.coreMessage)}
-${section('Customer evidence', brief.customerEvidence)}
+${section('Bằng chứng khách hàng', brief.customerEvidence)}
 ${section('Bằng chứng hỗ trợ', brief.supportingProof)}
 ${section('Giọng điệu', brief.voiceConstraints)}
 ${section('Phải có', brief.mustInclude)}

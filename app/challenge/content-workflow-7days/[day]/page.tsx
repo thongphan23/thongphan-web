@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `/challenge/content-workflow-7days/${lesson.slug}`
   return {
-    title: `Ngày ${lesson.day}: ${lesson.title} — Content Workflow 7 Days`,
-    description: `${lesson.question} Tự tạo ${lesson.artifact} bằng dữ liệu thật của business.`,
+    title: `Ngày ${lesson.day}: ${lesson.title} — Quy trình nội dung 7 ngày`,
+    description: `${lesson.question} Tự tạo ${lesson.artifact} bằng dữ liệu thật của doanh nghiệp.`,
     alternates: { canonical },
     openGraph: {
       title: `Ngày ${lesson.day}: ${lesson.title}`,

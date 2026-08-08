@@ -98,7 +98,7 @@ test('curriculum exposes exactly seven open lesson routes with one complete dail
     assert.ok(lesson.artifact.length >= 10)
     assert.ok(lesson.learn.length >= 2)
     assert.ok(lesson.see.body.length >= 40)
-    assert.equal(lesson.see.label, 'Case mô phỏng')
+    assert.equal(lesson.see.label, 'Tình huống mô phỏng')
     assert.ok(lesson.do.length >= 1)
     assert.ok(lesson.qualityGate.length >= 1)
     assert.ok(lesson.minimum.length >= 20)
@@ -106,7 +106,7 @@ test('curriculum exposes exactly seven open lesson routes with one complete dail
 })
 
 test('simulated case is explicitly labeled and never presented as real proof', () => {
-  assert.equal(SIMULATED_CASE.label, 'Case mô phỏng')
+  assert.equal(SIMULATED_CASE.label, 'Tình huống mô phỏng')
   assert.equal(SIMULATED_CASE.isRealCustomerProof, false)
   assert.match(SIMULATED_CASE.disclosure, /không phải.*khách hàng thật/i)
 })
@@ -181,7 +181,7 @@ test('prompt assembly is deterministic and preserves the human decision point', 
   const prompt = assembleWorkflowPrompt(state)
 
   assert.equal(prompt, assembleWorkflowPrompt(state))
-  assert.match(prompt, /BRIEF → 3 GÓC KHAI THÁC → OUTLINE → DRAFT → SELF-CHECK → REVISION REQUEST/)
+  assert.match(prompt, /BẢN GIAO VIỆC → 3 GÓC KHAI THÁC → DÀN Ý → BẢN NHÁP → TỰ KIỂM TRA → YÊU CẦU CHỈNH SỬA/)
   assert.match(prompt, /CHỜ TÔI CHỌN MỘT GÓC/)
   assert.match(prompt, /Không tự thêm số liệu, câu chuyện hoặc trích dẫn/)
   assert.match(prompt, new RegExp(state.artifacts.contentBrief.coreMessage))

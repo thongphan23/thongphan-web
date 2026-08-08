@@ -10,10 +10,10 @@ import styles from '@/app/challenge/content-workflow-7days/page.module.css'
 
 const CHALLENGE_ROOT = '/challenge/content-workflow-7days'
 const readinessItems: ReadonlyArray<{ key: ReadinessKey; label: string; help: string }> = [
-  { key: 'offer', label: 'Tôi biết business/offer nào sẽ dùng.', help: 'Chọn một offer đang bán hoặc sắp kiểm chứng.' },
+  { key: 'offer', label: 'Tôi biết doanh nghiệp và sản phẩm nào sẽ dùng.', help: 'Chọn một sản phẩm đang bán hoặc sắp kiểm chứng.' },
   { key: 'customer', label: 'Tôi chọn được một nhóm khách hàng có thật.', help: 'Không cần rộng; cần một nhóm trong một hoàn cảnh cụ thể.' },
-  { key: 'evidence', label: 'Tôi có hoặc biết cách tìm customer evidence.', help: 'Inbox, bình luận, sales call, email hoặc cuộc trò chuyện trực tiếp.' },
-  { key: 'channel', label: 'Tôi có một kênh để đưa content tới người thật.', help: 'Có thể đăng công khai hoặc gửi trực tiếp cho khách hàng phù hợp.' },
+  { key: 'evidence', label: 'Tôi có hoặc biết cách tìm bằng chứng khách hàng.', help: 'Tin nhắn, bình luận, cuộc gọi bán hàng, thư điện tử hoặc cuộc trò chuyện trực tiếp.' },
+  { key: 'channel', label: 'Tôi có một kênh để đưa nội dung tới người thật.', help: 'Có thể đăng công khai hoặc gửi trực tiếp cho khách hàng phù hợp.' },
 ]
 
 export default function ChallengeHubClient() {
@@ -43,13 +43,13 @@ export default function ChallengeHubClient() {
       updatedAt: new Date().toISOString(),
       readiness,
     }
-    if (!writeChallengeState(updated)) setStorageWarning('Trình duyệt đang chặn lưu tiến độ. Anh vẫn học được, nhưng nên export Markdown trước khi đóng tab.')
+    if (!writeChallengeState(updated)) setStorageWarning('Trình duyệt đang chặn lưu tiến độ. Bạn vẫn học được, nhưng nên tải tệp văn bản (.md) trước khi đóng thẻ trình duyệt.')
     const day = nextChallengeDay(updated)
     router.push(`${CHALLENGE_ROOT}/day-${String(day).padStart(2, '0')}`)
   }
 
   function resetChallenge() {
-    if (!clearChallengeState()) setStorageWarning('Không thể xóa localStorage tự động. Anh có thể xóa dữ liệu trang trong cài đặt trình duyệt.')
+    if (!clearChallengeState()) setStorageWarning('Không thể tự động xóa bộ nhớ cục bộ (localStorage). Bạn có thể xóa dữ liệu trang trong cài đặt trình duyệt.')
     const fresh = readChallengeState({
       getItem: () => null,
       setItem: () => undefined,
@@ -63,9 +63,9 @@ export default function ChallengeHubClient() {
   return (
     <section className={styles.readinessSection} id="readiness" aria-labelledby="readiness-title">
       <div className={styles.readinessIntro}>
-        <p>Readiness Check</p>
-        <h2 id="readiness-title">Anh đang mang nguyên liệu gì vào bàn làm việc?</h2>
-        <p>Thiếu evidence không khóa challenge. Anh sẽ nhận một corrective path để tìm dữ liệu thật.</p>
+        <p>Kiểm tra mức sẵn sàng (Readiness Check)</p>
+        <h2 id="readiness-title">Bạn đang mang nguyên liệu gì vào bàn làm việc?</h2>
+        <p>Thiếu bằng chứng không khóa thử thách. Bạn sẽ nhận hướng dẫn bổ sung để tìm dữ liệu thật.</p>
         {hasProgress ? (
           <div className={styles.resumeNote}>
             <strong>Tiến độ trên thiết bị này: {completeCount}/7 ngày.</strong>
@@ -91,10 +91,10 @@ export default function ChallengeHubClient() {
         ))}
         {missing.length > 0 ? (
           <p className={styles.corrective} role="status">
-            Anh còn {missing.length} mục chưa có. Vẫn có thể bắt đầu; ở Ngày 2, hãy quay lại inbox, bình luận hoặc hỏi trực tiếp ba khách hàng.
+            Bạn còn {missing.length} mục chưa có. Vẫn có thể bắt đầu; ở Ngày 2, hãy quay lại tin nhắn, bình luận hoặc hỏi trực tiếp ba khách hàng.
           </p>
         ) : (
-          <p className={styles.ready} role="status">Đủ nguyên liệu để đi thẳng vào workflow.</p>
+          <p className={styles.ready} role="status">Đủ nguyên liệu để đi thẳng vào quy trình.</p>
         )}
         {storageWarning ? <p className={styles.storageWarning} role="alert">{storageWarning}</p> : null}
         <button className={styles.startButton} type="button" onClick={startChallenge}>
@@ -104,10 +104,10 @@ export default function ChallengeHubClient() {
 
       <dialog ref={dialogRef} className={styles.resetDialog} onCancel={() => dialogRef.current?.close()}>
         <h2>Đặt lại toàn bộ thử thách?</h2>
-        <p>Workbook và tiến độ đang lưu trên thiết bị này sẽ bị xóa. File Markdown đã export không bị ảnh hưởng.</p>
+        <p>Sổ bài tập và tiến độ đang lưu trên thiết bị này sẽ bị xóa. Tệp văn bản (.md) đã tải xuống không bị ảnh hưởng.</p>
         <div>
           <button type="button" onClick={() => dialogRef.current?.close()}>Giữ lại</button>
-          <button type="button" onClick={resetChallenge}>Xóa dữ liệu local</button>
+          <button type="button" onClick={resetChallenge}>Xóa dữ liệu trên thiết bị</button>
         </div>
       </dialog>
     </section>

@@ -46,21 +46,31 @@ import styles from './ContentWorkflow.module.css'
 const ROOT = '/challenge/content-workflow-7days'
 
 const artifactLabels = {
-  customerFocus: 'Customer Focus',
-  evidenceBank: 'Evidence Bank',
-  contentJob: 'Content Job',
-  contentBrief: 'Reusable Brief',
-  workflowPrompt: 'Workflow Prompt',
-  reviewedDrafts: '2 content đã review',
-  onePager: 'One-Page Workflow',
+  customerFocus: 'Trọng tâm khách hàng',
+  evidenceBank: 'Ngân hàng bằng chứng',
+  contentJob: 'Nhiệm vụ nội dung',
+  contentBrief: 'Bản giao việc dùng lại được',
+  workflowPrompt: 'Câu lệnh quy trình',
+  reviewedDrafts: '2 nội dung đã đánh giá',
+  onePager: 'Bản tóm tắt quy trình một trang',
   fourteenDayPlan: 'Kế hoạch 14 ngày',
 } as const
+
+const dayArtifactLabels = [
+  'Trọng tâm khách hàng',
+  'Ngân hàng tiếng nói khách hàng',
+  'Nhiệm vụ nội dung',
+  'Bản giao việc dùng lại được',
+  'Câu lệnh quy trình',
+  'Bản nháp và nhật ký phản hồi',
+  'Bộ khởi đầu quy trình nội dung',
+] as const
 
 const scoreLabels: ReadonlyArray<[keyof DraftReview['scores'], string]> = [
   ['rightCustomer', 'Đúng người'],
   ['rightProblem', 'Đúng vấn đề'],
   ['oneMainIdea', 'Một ý chính'],
-  ['hasEvidence', 'Có evidence'],
+  ['hasEvidence', 'Có bằng chứng'],
   ['specific', 'Không chung chung'],
   ['nextStepFits', 'Bước tiếp theo phù hợp'],
 ]
@@ -154,7 +164,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   const starterKitCopyRef = useRef<HTMLTextAreaElement>(null)
   const [state, setState] = useState<ChallengeStateV1>(() => createEmptyChallengeState())
   const [hydrated, setHydrated] = useState(false)
-  const [saveStatus, setSaveStatus] = useState('Đang mở workbook local…')
+  const [saveStatus, setSaveStatus] = useState('Đang mở sổ bài tập trên thiết bị…')
   const [actionStatus, setActionStatus] = useState('')
   const [manualCopyText, setManualCopyText] = useState('')
   const [errors, setErrors] = useState<ValidationError[]>([])
@@ -179,7 +189,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
       const saved = writeChallengeState(state)
       setSaveStatus(saved
         ? `Đã lưu trên thiết bị lúc ${new Intl.DateTimeFormat('vi', { hour: '2-digit', minute: '2-digit' }).format(new Date())}`
-        : 'Không thể lưu trên thiết bị · hãy export trước khi đóng tab')
+        : 'Không thể lưu trên thiết bị · hãy tải tệp trước khi đóng thẻ trình duyệt')
     }, 450)
     return () => window.clearTimeout(timeout)
   }, [hydrated, state])
@@ -208,7 +218,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
     const result = validateDay(lesson.day, state)
     setErrors(result.errors)
     if (!result.valid) {
-      setActionStatus('Quality Gate chưa qua. Đi tới các trường cần sửa trong danh sách dưới đây.')
+      setActionStatus('Chưa đạt tiêu chí kiểm tra. Đi tới các trường cần sửa trong danh sách dưới đây.')
       window.setTimeout(() => errorSummaryRef.current?.focus(), 0)
       return
     }
@@ -219,14 +229,14 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
         : [...current.completedDays, lesson.day].sort((a, b) => a - b),
     }))
     if (lesson.day === 7) setEditingCompletedKit(false)
-    setActionStatus(`Ngày ${lesson.day} đã hoàn thành theo tiêu chí cấu trúc. Anh vẫn là người quyết định chất lượng cuối.`)
+    setActionStatus(`Ngày ${lesson.day} đã hoàn thành theo tiêu chí cấu trúc. Bạn vẫn là người quyết định chất lượng cuối.`)
   }
 
   async function copyText(text: string, fallback?: HTMLTextAreaElement | null, revealStarterKitFallback = false) {
     try {
       await navigator.clipboard.writeText(text)
       if (revealStarterKitFallback) setManualCopyText('')
-      setActionStatus('Đã sao chép vào clipboard.')
+      setActionStatus('Đã sao chép vào bộ nhớ tạm (clipboard).')
     } catch {
       if (revealStarterKitFallback) {
         setManualCopyText(text)
@@ -234,7 +244,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
         fallback?.focus()
         fallback?.select()
       }
-      setActionStatus('Clipboard bị chặn. Nội dung đã được chọn; nhấn Ctrl/Cmd + C để sao chép thủ công.')
+      setActionStatus('Bộ nhớ tạm bị chặn. Nội dung đã được chọn; nhấn Ctrl/Cmd + C để sao chép thủ công.')
     }
   }
 
@@ -246,14 +256,14 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
     anchor.download = starterKitFilename()
     anchor.click()
     URL.revokeObjectURL(url)
-    setActionStatus('Starter Kit đã được export thành Markdown.')
+    setActionStatus('Bộ khởi đầu đã được tải thành tệp văn bản (.md).')
   }
 
   function resetChallenge() {
     const cleared = clearChallengeState()
     resetDialogRef.current?.close()
     if (!cleared) {
-      setActionStatus('Không thể xóa localStorage tự động. Hãy xóa dữ liệu trang trong cài đặt trình duyệt.')
+      setActionStatus('Không thể tự động xóa bộ nhớ cục bộ (localStorage). Hãy xóa dữ liệu trang trong cài đặt trình duyệt.')
       return
     }
     router.push(ROOT)
@@ -262,7 +272,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   return (
     <div className={styles.workbench} data-hydrated={hydrated}>
       <header className={styles.workbenchHeader}>
-        <Link href={ROOT}><ArrowLeft aria-hidden="true" size={17} /> Content Workflow 7 Days</Link>
+        <Link href={ROOT}><ArrowLeft aria-hidden="true" size={17} /> Quy trình nội dung 7 ngày</Link>
         <p aria-live="polite">{saveStatus}</p>
         <button type="button" onClick={() => resetDialogRef.current?.showModal()}><RotateCcw aria-hidden="true" size={15} /> Đặt lại</button>
       </header>
@@ -282,13 +292,13 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
                   <Link href={`${ROOT}/${item.slug}`}>
                     <span>{complete ? <Check aria-hidden="true" size={14} /> : String(item.day).padStart(2, '0')}</span>
                     <small>Ngày {item.day}</small>
-                    <strong>{item.artifact}</strong>
+                    <strong>{dayArtifactLabels[item.day - 1]}</strong>
                   </Link>
                 </li>
               )
             })}
           </ol>
-          <p>Tất cả ngày đều mở. Tiến độ chỉ khuyến nghị, không khóa route.</p>
+          <p>Tất cả ngày đều mở. Tiến độ chỉ là gợi ý, không khóa trang.</p>
         </nav>
 
         <main className={styles.lessonCanvas}>
@@ -321,11 +331,11 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
           </section>
         </main>
 
-        <aside className={styles.artifactDesk} aria-label={`Bàn làm việc ${lesson.artifact}`}>
+        <aside className={styles.artifactDesk} aria-label={`Bàn làm việc ${dayArtifactLabels[lesson.day - 1]}`}>
           <header>
-            <p>Artifact desk</p>
-            <h2>{lesson.artifact}</h2>
-            <span>Dữ liệu chỉ lưu trong localStorage của trình duyệt này.</span>
+            <p>Bàn tạo sản phẩm</p>
+            <h2>{dayArtifactLabels[lesson.day - 1]}</h2>
+            <span>Dữ liệu chỉ lưu trong bộ nhớ cục bộ (localStorage) của trình duyệt này.</span>
           </header>
 
           {showCompletedKit ? (
@@ -347,11 +357,11 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
                   </div>
                 ) : null}
                 <button className={styles.gateButton} type="button" onClick={runGate}>
-                  {validation.valid ? 'Xác nhận hoàn thành ngày' : 'Chạy Quality Gate'} <Check aria-hidden="true" size={17} />
+                  {validation.valid ? 'Xác nhận hoàn thành ngày' : 'Kiểm tra điều kiện hoàn thành'} <Check aria-hidden="true" size={17} />
                 </button>
                 {state.completedDays.includes(lesson.day) ? lesson.day === 7 ? (
                   <button className={styles.nextButton} type="button" onClick={() => setEditingCompletedKit(false)}>
-                    Xem lại Starter Kit <ArrowRight aria-hidden="true" size={17} />
+                    Xem lại bộ khởi đầu <ArrowRight aria-hidden="true" size={17} />
                   </button>
                 ) : (
                   <Link className={styles.nextButton} href={`${ROOT}/day-${String(nextDay).padStart(2, '0')}`}>
@@ -365,13 +375,13 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
           <p className={styles.liveStatus} aria-live="polite">{actionStatus}</p>
           {lesson.day === 7 ? (
             <div className={styles.exportActions}>
-              <button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Export Markdown</button>
-              <button type="button" onClick={() => copyText(buildStarterKitMarkdown(state), null, true)}><Clipboard aria-hidden="true" size={16} /> Copy Starter Kit</button>
+              <button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Tải bộ tài liệu (.md)</button>
+              <button type="button" onClick={() => copyText(buildStarterKitMarkdown(state), null, true)}><Clipboard aria-hidden="true" size={16} /> Sao chép bộ tài liệu</button>
             </div>
           ) : null}
           {manualCopyText ? (
             <label className={styles.field}>
-              <span>Nội dung Starter Kit để sao chép thủ công</span>
+              <span>Nội dung bộ khởi đầu để sao chép thủ công</span>
               <small>Nhấn Ctrl/Cmd + C; toàn bộ nội dung đã được chọn sẵn.</small>
               <textarea ref={starterKitCopyRef} value={manualCopyText} readOnly rows={8} />
             </label>
@@ -384,8 +394,8 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
       ) : null}
 
       <dialog ref={resetDialogRef} className={styles.resetDialog} onCancel={() => resetDialogRef.current?.close()}>
-        <h2>Xóa workbook trên thiết bị này?</h2>
-        <p>Toàn bộ readiness, artifact và tiến độ local sẽ mất. File Markdown đã export không bị ảnh hưởng.</p>
+        <h2>Xóa sổ bài tập trên thiết bị này?</h2>
+        <p>Toàn bộ mức sẵn sàng, sản phẩm và tiến độ trên thiết bị sẽ mất. Tệp văn bản (.md) đã tải xuống không bị ảnh hưởng.</p>
         <div><button type="button" onClick={() => resetDialogRef.current?.close()}>Giữ lại</button><button type="button" onClick={resetChallenge}>Xóa và về trang đầu</button></div>
       </dialog>
     </div>
@@ -403,8 +413,8 @@ function CompletionDesk({ state, onEdit }: { state: ChallengeStateV1; onEdit: ()
   const completedArtifacts = Object.values(coverage).filter(Boolean).length
   return (
     <section className={styles.completionDesk} aria-labelledby="starter-kit-title">
-      <p>Assembly ledger · {completedArtifacts}/8 artifacts</p>
-      <h3 id="starter-kit-title">Content Workflow Starter Kit v1.0</h3>
+      <p>Bảng đóng gói · {completedArtifacts}/8 sản phẩm</p>
+      <h3 id="starter-kit-title">Bộ khởi đầu quy trình nội dung v1.0</h3>
       <div className={styles.completionStatus}><Check aria-hidden="true" size={18} /> 7/7 ngày · Đã lưu trên thiết bị</div>
       <ol>
         {ARTIFACT_KEYS.map((key, index) => (
@@ -420,7 +430,7 @@ function CompletionDesk({ state, onEdit }: { state: ChallengeStateV1; onEdit: ()
         <div><dt>Nhịp dùng</dt><dd>{state.artifacts.onePager.cadence}</dd></div>
         <div><dt>14 ngày tới</dt><dd>{state.artifacts.fourteenDayPlan.length} đề mục đã lên lịch</dd></div>
       </dl>
-      <button className={styles.editKitButton} type="button" onClick={onEdit}>Chỉnh sửa dữ liệu Starter Kit</button>
+      <button className={styles.editKitButton} type="button" onClick={onEdit}>Chỉnh sửa dữ liệu bộ khởi đầu</button>
     </section>
   )
 }
@@ -437,13 +447,13 @@ function renderDayForm(day: ContentWorkflowDay['day'], state: ChallengeStateV1, 
 
 function DayOne({ value, update, errors }: { value: CustomerFocus; update: (value: CustomerFocus) => void; errors: ValidationError[] }) {
   const fields: Array<[keyof CustomerFocus, string, string]> = [
-    ['business', 'Business hoặc dự án', 'Business nào sẽ dùng workflow này?'],
-    ['offer', 'Offer đang bán', 'Chọn đúng một offer.'],
+    ['business', 'Doanh nghiệp hoặc dự án', 'Doanh nghiệp nào sẽ dùng quy trình này?'],
+    ['offer', 'Sản phẩm đang bán', 'Chọn đúng một sản phẩm hoặc dịch vụ.'],
     ['customerGroup', 'Nhóm khách hàng', 'Họ là ai trong hoàn cảnh cụ thể nào?'],
     ['currentSituation', 'Hoàn cảnh hiện tại', 'Chuyện gì đang xảy ra với họ?'],
     ['primaryProblem', 'Vấn đề chính', 'Điểm kẹt cụ thể là gì?'],
     ['desiredMovement', 'Chuyển dịch mong muốn', 'Họ muốn tiến tới đâu?'],
-    ['focusStatement', 'Câu Customer Focus', 'Tôi tạo content cho [nhóm người], khi họ đang [hoàn cảnh], muốn [tiến bộ], nhưng bị kẹt bởi [vấn đề].'],
+    ['focusStatement', 'Câu trọng tâm khách hàng', 'Tôi tạo nội dung cho [nhóm người], khi họ đang [hoàn cảnh], muốn [tiến bộ], nhưng bị kẹt bởi [vấn đề].'],
   ]
   return <div className={styles.fieldStack}>{fields.map(([key, label, description]) => <Field key={key} path={`customerFocus.${key}`} label={label} description={description} value={value[key]} error={errorFor(errors, `customerFocus.${key}`)} onChange={(next) => update({ ...value, [key]: next })} rows={key === 'focusStatement' ? 5 : 3} />)}</div>
 }
@@ -455,39 +465,39 @@ function DayTwo({ state, update, errors }: { state: ChallengeStateV1; update: Ar
   }
   return <div className={styles.fieldStack}>
     {rows.map((item, index) => <fieldset className={styles.evidenceRow} key={item.id}>
-      <legend>Evidence {String(index + 1).padStart(2, '0')}</legend>
+      <legend>Bằng chứng {String(index + 1).padStart(2, '0')}</legend>
       <Field path={`evidence-${index + 1}-evidence`} label="Câu nói hoặc hành vi thật" value={item.evidence} onChange={(value) => change(index, 'evidence', value)} />
       <Field path={`evidence-${index + 1}-context`} label="Hoàn cảnh" value={item.context} onChange={(value) => change(index, 'context', value)} />
       <Field path={`evidence-${index + 1}-source`} label="Nguồn" value={item.source} onChange={(value) => change(index, 'source', value)} />
       <Field path={`evidence-${index + 1}-insight`} label="Có thể hiểu gì?" value={item.insight} onChange={(value) => change(index, 'insight', value)} />
-      {rows.length > 3 ? <button className={styles.removeButton} type="button" onClick={() => update('evidenceBank', rows.filter((_, rowIndex) => rowIndex !== index))}><Trash2 aria-hidden="true" size={15} /> Xóa evidence</button> : null}
+      {rows.length > 3 ? <button className={styles.removeButton} type="button" onClick={() => update('evidenceBank', rows.filter((_, rowIndex) => rowIndex !== index))}><Trash2 aria-hidden="true" size={15} /> Xóa bằng chứng</button> : null}
     </fieldset>)}
     {errorFor(errors, 'evidenceBank') ? <p className={styles.inlineError} id={fieldId('evidenceBank')} role="alert">{errorFor(errors, 'evidenceBank')}</p> : null}
-    {rows.length < 20 ? <button className={styles.addButton} type="button" onClick={() => update('evidenceBank', [...rows, createEvidence(rows.length)])}><Plus aria-hidden="true" size={16} /> Thêm evidence</button> : null}
-    <Field path="evidencePlan" label="Kế hoạch tìm evidence còn thiếu" description="Bắt buộc khi mới có ba hoặc bốn evidence." value={state.artifacts.evidencePlan} error={errorFor(errors, 'evidencePlan')} onChange={(value) => update('evidencePlan', value)} />
+    {rows.length < 20 ? <button className={styles.addButton} type="button" onClick={() => update('evidenceBank', [...rows, createEvidence(rows.length)])}><Plus aria-hidden="true" size={16} /> Thêm bằng chứng</button> : null}
+    <Field path="evidencePlan" label="Kế hoạch tìm bằng chứng còn thiếu" description="Bắt buộc khi mới có ba hoặc bốn bằng chứng." value={state.artifacts.evidencePlan} error={errorFor(errors, 'evidencePlan')} onChange={(value) => update('evidencePlan', value)} />
   </div>
 }
 
 function DayThree({ value, update, errors }: { value: ContentJob; update: (value: ContentJob) => void; errors: ValidationError[] }) {
   return <div className={styles.fieldStack}>
-    <Field path="contentJob.selectedEvidence" label="Evidence đã chọn" value={value.selectedEvidence} error={errorFor(errors, 'contentJob.selectedEvidence')} onChange={(next) => update({ ...value, selectedEvidence: next })} />
-    <SelectField path="contentJob.job" label="Content Job chính" value={value.job} error={errorFor(errors, 'contentJob.job')} onChange={(next) => update({ ...value, job: next as ContentJob['job'] })}>
-      <option value="">Chọn một job</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp theo</option>
+    <Field path="contentJob.selectedEvidence" label="Bằng chứng đã chọn" value={value.selectedEvidence} error={errorFor(errors, 'contentJob.selectedEvidence')} onChange={(next) => update({ ...value, selectedEvidence: next })} />
+    <SelectField path="contentJob.job" label="Nhiệm vụ nội dung chính" value={value.job} error={errorFor(errors, 'contentJob.job')} onChange={(next) => update({ ...value, job: next as ContentJob['job'] })}>
+      <option value="">Chọn một nhiệm vụ</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp theo</option>
     </SelectField>
     <Field path="contentJob.beliefBefore" label="Khách hàng đang nghĩ gì?" value={value.beliefBefore} error={errorFor(errors, 'contentJob.beliefBefore')} onChange={(next) => update({ ...value, beliefBefore: next })} />
-    <Field path="contentJob.expectedShift" label="Sau content, muốn họ hiểu gì?" value={value.expectedShift} error={errorFor(errors, 'contentJob.expectedShift')} onChange={(next) => update({ ...value, expectedShift: next })} />
+    <Field path="contentJob.expectedShift" label="Sau nội dung này, muốn họ hiểu gì?" value={value.expectedShift} error={errorFor(errors, 'contentJob.expectedShift')} onChange={(next) => update({ ...value, expectedShift: next })} />
     <Field path="contentJob.nextAction" label="Hành động nhỏ tiếp theo" value={value.nextAction} error={errorFor(errors, 'contentJob.nextAction')} onChange={(next) => update({ ...value, nextAction: next })} />
   </div>
 }
 
 function DayFour({ value, update, errors }: { value: ContentBrief; update: (value: ContentBrief) => void; errors: ValidationError[] }) {
   const fields: Array<[keyof ContentBrief, string]> = [
-    ['businessOffer', 'Business / offer'], ['customer', 'Customer'], ['situation', 'Hoàn cảnh'], ['currentBelief', 'Điều họ đang nghĩ'], ['desiredUnderstanding', 'Điều muốn họ hiểu'], ['coreMessage', 'Ý chính'], ['customerEvidence', 'Customer evidence'], ['supportingProof', 'Bằng chứng hoặc ví dụ hỗ trợ'], ['voiceConstraints', 'Giọng điệu'], ['mustInclude', 'Phải có'], ['mustAvoid', 'Phải tránh'], ['callToAction', 'Hành động tiếp theo'], ['format', 'Độ dài / định dạng'], ['channel', 'Kênh'],
+    ['businessOffer', 'Doanh nghiệp / sản phẩm'], ['customer', 'Khách hàng'], ['situation', 'Hoàn cảnh'], ['currentBelief', 'Điều họ đang nghĩ'], ['desiredUnderstanding', 'Điều muốn họ hiểu'], ['coreMessage', 'Ý chính'], ['customerEvidence', 'Bằng chứng khách hàng'], ['supportingProof', 'Bằng chứng hoặc ví dụ hỗ trợ'], ['voiceConstraints', 'Giọng điệu'], ['mustInclude', 'Phải có'], ['mustAvoid', 'Phải tránh'], ['callToAction', 'Hành động tiếp theo'], ['format', 'Độ dài / định dạng'], ['channel', 'Kênh'],
   ]
   return <div className={styles.fieldStack}>
     {fields.slice(0, 5).map(([key, label]) => <Field key={key} path={`contentBrief.${key}`} label={label} value={value[key]} error={errorFor(errors, `contentBrief.${key}`)} onChange={(next) => update({ ...value, [key]: next })} />)}
-    <SelectField path="contentBrief.contentJob" label="Content Job" value={value.contentJob} error={errorFor(errors, 'contentBrief.contentJob')} onChange={(next) => update({ ...value, contentJob: next as ContentBrief['contentJob'] })}>
-      <option value="">Chọn một job</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp theo</option>
+    <SelectField path="contentBrief.contentJob" label="Nhiệm vụ nội dung" value={value.contentJob} error={errorFor(errors, 'contentBrief.contentJob')} onChange={(next) => update({ ...value, contentJob: next as ContentBrief['contentJob'] })}>
+      <option value="">Chọn một nhiệm vụ</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp theo</option>
     </SelectField>
     {fields.slice(5).map(([key, label]) => <Field key={key} path={`contentBrief.${key}`} label={label} value={value[key]} error={errorFor(errors, `contentBrief.${key}`)} onChange={(next) => update({ ...value, [key]: next })} />)}
   </div>
@@ -497,17 +507,17 @@ function DayFive({ state, update, actions, errors }: { state: ChallengeStateV1; 
   const prompt = state.artifacts.workflowPrompt
   return <div className={styles.fieldStack}>
     <button className={styles.assembleButton} type="button" onClick={() => {
-      if (prompt.trim()) { actions.setActionStatus('Prompt hiện tại được giữ nguyên để không ghi đè chỉnh sửa của anh.'); return }
+      if (prompt.trim()) { actions.setActionStatus('Câu lệnh hiện tại được giữ nguyên để không ghi đè chỉnh sửa của bạn.'); return }
       update('workflowPrompt', assembleWorkflowPrompt(state))
-      actions.setActionStatus('Đã lắp Prompt v1 từ Content Brief. Hãy đọc và sửa trước khi copy.')
-    }}>Lắp prompt từ Brief ngày 1–4</button>
+      actions.setActionStatus('Đã lắp câu lệnh v1 từ bản giao việc nội dung. Hãy đọc và sửa trước khi sao chép.')
+    }}>Lắp câu lệnh từ bản giao việc ngày 1–4</button>
     <label className={styles.field} htmlFor={fieldId('workflowPrompt')}>
-      <span>Content Workflow Prompt v1</span>
-      <small>Prompt được tạo một lần. Mọi chỉnh sửa sau đó đều được giữ lại.</small>
+      <span>Câu lệnh quy trình nội dung v1</span>
+      <small>Câu lệnh được tạo một lần. Mọi chỉnh sửa sau đó đều được giữ lại.</small>
       <textarea id={fieldId('workflowPrompt')} rows={28} value={prompt} aria-describedby={errorFor(errors, 'workflowPrompt') ? `${fieldId('workflowPrompt')}-error` : undefined} onChange={(event) => update('workflowPrompt', event.target.value)} />
       {errorFor(errors, 'workflowPrompt') ? <em id={`${fieldId('workflowPrompt')}-error`}>{errorFor(errors, 'workflowPrompt')}</em> : null}
     </label>
-    <button className={styles.copyButton} type="button" onClick={() => actions.copyText(prompt, document.getElementById(fieldId('workflowPrompt')) as HTMLTextAreaElement | null)}><Clipboard aria-hidden="true" size={16} /> Copy Master Prompt</button>
+    <button className={styles.copyButton} type="button" onClick={() => actions.copyText(prompt, document.getElementById(fieldId('workflowPrompt')) as HTMLTextAreaElement | null)}><Clipboard aria-hidden="true" size={16} /> Sao chép câu lệnh chính</button>
   </div>
 }
 
@@ -517,13 +527,13 @@ function DaySix({ state, update, errors }: { state: ChallengeStateV1; update: Ar
   }
   return <div className={styles.fieldStack}>
     {state.artifacts.drafts.map((draft, index) => <fieldset className={styles.draftRow} key={draft.id}>
-      <legend>Run {String(index + 1).padStart(2, '0')} · {draftScore(draft)}/12</legend>
-      <Field path={`draft-${index + 1}-content`} label="Bản content" value={draft.draft} onChange={(value) => changeDraft(index, { ...draft, draft: value })} rows={10} />
+      <legend>Lần chạy {String(index + 1).padStart(2, '0')} · {draftScore(draft)}/12</legend>
+      <Field path={`draft-${index + 1}-content`} label="Bản nội dung" value={draft.draft} onChange={(value) => changeDraft(index, { ...draft, draft: value })} rows={10} />
       <div className={styles.scoreGrid}>{scoreLabels.map(([key, label]) => <label key={key}><span>{label}</span><select value={draft.scores[key]} onChange={(event: ChangeEvent<HTMLSelectElement>) => changeDraft(index, { ...draft, scores: { ...draft.scores, [key]: Number(event.target.value) as DraftScore } })}><option value="0">0 · Không đạt</option><option value="1">1 · Cần sửa</option><option value="2">2 · Đạt</option></select></label>)}</div>
       <Field path={`draft-${index + 1}-revision`} label="Quyết định sửa của tôi" value={draft.revisionNote} onChange={(value) => changeDraft(index, { ...draft, revisionNote: value })} />
     </fieldset>)}
     {errorFor(errors, 'drafts') ? <p className={styles.inlineError} id={fieldId('drafts')} role="alert">{errorFor(errors, 'drafts')}</p> : null}
-    <Field path="workflowFeedback" label="Workflow Feedback Log" description="AI thường làm tốt gì, sai gì và workflow cần bổ sung gì?" value={state.artifacts.workflowFeedback} onChange={(value) => update('workflowFeedback', value)} rows={6} />
+    <Field path="workflowFeedback" label="Nhật ký phản hồi quy trình" description="AI thường làm tốt gì, sai gì và quy trình cần bổ sung gì?" value={state.artifacts.workflowFeedback} onChange={(value) => update('workflowFeedback', value)} rows={6} />
   </div>
 }
 
@@ -532,14 +542,14 @@ function DaySeven({ state, update, errors }: { state: ChallengeStateV1; update: 
   const onePager = state.artifacts.onePager
   const plan = state.artifacts.fourteenDayPlan
   const fields: Array<[keyof OnePager, string]> = [
-    ['selectedDraft', 'Content tốt nhất'], ['goal', 'Mục tiêu workflow'], ['inputs', 'Đầu vào'], ['steps', 'Các bước'], ['standards', 'Tiêu chuẩn'], ['aiRole', 'AI làm'], ['humanRole', 'Con người làm'], ['cadence', 'Nhịp dùng'], ['publishedUrlOrNote', 'URL hoặc cách đã đưa content tới người thật'], ['signalNote', 'Signal ban đầu'],
+    ['selectedDraft', 'Nội dung tốt nhất'], ['goal', 'Mục tiêu quy trình'], ['inputs', 'Đầu vào'], ['steps', 'Các bước'], ['standards', 'Tiêu chuẩn'], ['aiRole', 'AI làm'], ['humanRole', 'Con người làm'], ['cadence', 'Nhịp dùng'], ['publishedUrlOrNote', 'Địa chỉ hoặc cách đã đưa nội dung tới người thật'], ['signalNote', 'Tín hiệu ban đầu'],
   ]
   function changePlan(index: number, next: FourteenDayPlanItem) {
     update('fourteenDayPlan', plan.map((item, itemIndex) => itemIndex === index ? next : item))
   }
   return <div className={styles.fieldStack}>
     <div className={styles.coverageLedger} id={fieldId('artifacts')}>
-      <strong>{Object.values(coverage).filter(Boolean).length}/8 artifact có dữ liệu đạt gate</strong>
+      <strong>{Object.values(coverage).filter(Boolean).length}/8 sản phẩm đạt tiêu chí</strong>
       <ul>{ARTIFACT_KEYS.map((key) => <li key={key} data-complete={coverage[key]}><span>{coverage[key] ? <Check aria-hidden="true" size={13} /> : '—'}</span>{artifactLabels[key]}</li>)}</ul>
     </div>
     {fields.slice(0, 8).map(([key, label]) => <Field key={key} path={`onePager.${key}`} label={label} value={onePager[key]} error={errorFor(errors, `onePager.${key}`)} onChange={(value) => update('onePager', { ...onePager, [key]: value })} />)}
@@ -547,10 +557,10 @@ function DaySeven({ state, update, errors }: { state: ChallengeStateV1; update: 
       <option value="">Chưa xác nhận</option><option value="published">Đã đăng công khai</option><option value="sent">Đã gửi trực tiếp</option>
     </SelectField>
     {fields.slice(8).map(([key, label]) => <Field key={key} path={`onePager.${key}`} label={label} value={onePager[key]} error={errorFor(errors, `onePager.${key}`)} onChange={(value) => update('onePager', { ...onePager, [key]: value })} />)}
-    <fieldset className={styles.planSection}><legend>Kế hoạch content 14 ngày</legend>
+    <fieldset className={styles.planSection}><legend>Kế hoạch nội dung 14 ngày</legend>
       {plan.map((item, index) => <div className={styles.planRow} key={item.id}>
-        <Field path={`plan-${index + 1}-evidence`} label={`Evidence ${index + 1}`} value={item.evidence} onChange={(value) => changePlan(index, { ...item, evidence: value })} />
-        <SelectField path={`plan-${index + 1}-job`} label="Content Job" value={item.job} onChange={(value) => changePlan(index, { ...item, job: value as FourteenDayPlanItem['job'] })}><option value="">Chọn job</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp</option></SelectField>
+        <Field path={`plan-${index + 1}-evidence`} label={`Bằng chứng ${index + 1}`} value={item.evidence} onChange={(value) => changePlan(index, { ...item, evidence: value })} />
+        <SelectField path={`plan-${index + 1}-job`} label="Nhiệm vụ nội dung" value={item.job} onChange={(value) => changePlan(index, { ...item, job: value as FourteenDayPlanItem['job'] })}><option value="">Chọn nhiệm vụ</option><option value="recognize-problem">Nhận ra vấn đề</option><option value="understand-cause">Hiểu nguyên nhân</option><option value="try-next-step">Thử bước tiếp</option></SelectField>
         <label className={styles.field}><span>Ngày dự kiến</span><input type="date" value={item.publishDate} onChange={(event) => changePlan(index, { ...item, publishDate: event.target.value })} /></label>
         <button className={styles.removeButton} type="button" onClick={() => update('fourteenDayPlan', plan.filter((_, itemIndex) => itemIndex !== index))}><Trash2 aria-hidden="true" size={14} /> Xóa</button>
       </div>)}

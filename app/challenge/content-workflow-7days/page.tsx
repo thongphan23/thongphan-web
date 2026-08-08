@@ -6,12 +6,12 @@ import { CONTENT_WORKFLOW_DAYS } from '@/lib/content-workflow/content'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: '7 ngày tự xây Content Workflow đầu tiên bằng AI — Thông Phan',
-  description: 'Trải nghiệm tự học miễn phí giúp founder biến customer evidence, Content Job và tiêu chuẩn của business thành một workflow content AI có thể dùng lại.',
+  title: '7 ngày tự xây quy trình nội dung đầu tiên — Thông Phan',
+  description: 'Trải nghiệm tự học miễn phí giúp người sáng lập biến bằng chứng khách hàng, nhiệm vụ nội dung và tiêu chuẩn của doanh nghiệp thành một quy trình có AI hỗ trợ, có thể dùng lại.',
   alternates: { canonical: '/challenge/content-workflow-7days' },
   openGraph: {
-    title: '7 ngày tự xây Content Workflow đầu tiên bằng AI',
-    description: 'Mang một offer thật vào và tự tạo Content Workflow Starter Kit v1.0 ngay trên trình duyệt.',
+    title: '7 ngày tự xây quy trình nội dung đầu tiên',
+    description: 'Mang một sản phẩm hoặc dịch vụ đang bán vào và tự tạo bộ khởi đầu quy trình nội dung ngay trên trình duyệt.',
     url: '/challenge/content-workflow-7days',
     type: 'website',
   },
@@ -23,18 +23,19 @@ export default function ContentWorkflowChallengePage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <h1>7 ngày tự xây Content Workflow đầu tiên bằng AI</h1>
+            <h1>7 ngày tự xây quy trình nội dung đầu tiên</h1>
             <p>
-              Mang một offer thật vào. Biến customer evidence, mục tiêu content và
-              tiêu chuẩn của business thành một workflow AI đơn giản có thể dùng lại.
+              Mang một sản phẩm hoặc dịch vụ đang bán (offer) thật vào. Biến bằng chứng
+              khách hàng (customer evidence), mục tiêu nội dung và tiêu chuẩn của doanh
+              nghiệp thành một quy trình nội dung (Content Workflow) có trí tuệ nhân tạo (AI) hỗ trợ và có thể dùng lại.
             </p>
-            <a className={styles.primaryAction} href="#readiness">Bắt đầu với một offer</a>
+            <a className={styles.primaryAction} href="#readiness">Bắt đầu với một sản phẩm đang bán</a>
             <small>Miễn phí · Mở ngay · Không cần tài khoản · Dữ liệu chỉ lưu trên thiết bị này</small>
           </div>
           <figure className={styles.heroAsset}>
             <Image
               src="/images/challenges/content-workflow-7days-fieldbook.webp"
-              alt="Chồng hồ sơ Content Workflow buộc bằng sợi chỉ đỏ"
+              alt="Chồng hồ sơ quy trình nội dung buộc bằng sợi chỉ đỏ"
               width={1254}
               height={1254}
               priority
@@ -47,8 +48,8 @@ export default function ContentWorkflowChallengePage() {
 
       <section className={styles.outputSection} aria-labelledby="output-map-title">
         <div className={styles.sectionHeading}>
-          <p>7 ngày · 8 artifact · 1 Starter Kit</p>
-          <h2 id="output-map-title">Mỗi ngày khóa một quyết định của workflow.</h2>
+          <p>7 ngày · 8 sản phẩm · 1 bộ khởi đầu</p>
+          <h2 id="output-map-title">Mỗi ngày khóa một quyết định của quy trình.</h2>
         </div>
         <ol className={styles.dayRail}>
           {CONTENT_WORKFLOW_DAYS.map((lesson) => (
@@ -65,19 +66,19 @@ export default function ContentWorkflowChallengePage() {
 
       <section className={styles.boundarySection} aria-label="Ranh giới của thử thách">
         <article>
-          <h2>Anh sẽ không nhận</h2>
+          <h2>Bạn sẽ không nhận</h2>
           <ul>
-            <li>Một bộ prompt chung cho mọi business.</li>
-            <li>Lời hứa viral, tự động bán hàng hoặc content đạt chuẩn thị trường.</li>
-            <li>Một website AI viết bài thay anh.</li>
+            <li>Một bộ câu lệnh chung cho mọi doanh nghiệp.</li>
+            <li>Lời hứa lan truyền, tự động bán hàng hoặc nội dung chắc chắn hiệu quả.</li>
+            <li>Một trang web dùng AI viết bài thay bạn.</li>
           </ul>
         </article>
         <article>
-          <h2>Anh sẽ tự tạo</h2>
+          <h2>Bạn sẽ tự tạo</h2>
           <ul>
-            <li>Customer Focus, Evidence Bank và Content Job của chính business.</li>
-            <li>Reusable Brief, Workflow Prompt và ba draft đã tự review.</li>
-            <li>One-Pager cùng kế hoạch tiếp tục trong 14 ngày.</li>
+            <li>Trọng tâm khách hàng, ngân hàng bằng chứng và nhiệm vụ nội dung của chính doanh nghiệp.</li>
+            <li>Bản giao việc có thể dùng lại, câu lệnh quy trình và ba bản nháp đã tự đánh giá.</li>
+            <li>Bản tóm tắt một trang cùng kế hoạch tiếp tục trong 14 ngày.</li>
           </ul>
         </article>
       </section>
@@ -85,11 +86,11 @@ export default function ContentWorkflowChallengePage() {
       <section className={styles.fitSection}>
         <div>
           <h2>Phù hợp nếu</h2>
-          <p>Anh đang có business, một offer thật, customer evidence và quyền quyết định content.</p>
+          <p>Bạn đang có doanh nghiệp hoặc dự án, một sản phẩm thật, bằng chứng khách hàng và quyền quyết định nội dung.</p>
         </div>
         <div>
           <h2>Chưa phù hợp nếu</h2>
-          <p>Anh chưa có offer hoặc muốn AI tự nghĩ customer, claim và tiêu chuẩn thay mình.</p>
+          <p>Bạn chưa có sản phẩm để kiểm chứng hoặc muốn AI tự nghĩ khách hàng, luận điểm và tiêu chuẩn thay mình.</p>
         </div>
         <p className={styles.finalNote}>
           Tất cả bảy ngày đều mở. “7 ngày” là nhịp khuyến nghị, không phải lịch khóa bài.

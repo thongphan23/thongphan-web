@@ -99,13 +99,13 @@ const actions = {
   contentWorkflowContinue: {
     href: '/challenge/content-workflow-7days/day-07#field-plan-1-evidence',
     label: 'Dùng tiếp trong 14 ngày',
-    reason: 'Dùng sáu evidence tiếp theo để kiểm tra workflow trong 14 ngày và ghi lại signal thật.',
+    reason: 'Dùng sáu bằng chứng tiếp theo để kiểm tra quy trình trong 14 ngày và ghi lại tín hiệu thật.',
     eyebrow: 'Tiếp tục vòng lặp',
   },
   conanWorkflow: {
     href: '/conanmaker/',
-    label: 'Xây workflow tiếp theo',
-    reason: 'Khi content workflow đã chạy, dùng Conan Maker để xây workflow doanh nghiệp tiếp theo đang phụ thuộc vào founder.',
+    label: 'Xây quy trình tiếp theo',
+    reason: 'Khi quy trình nội dung đã chạy, dùng Conan Maker để xây quy trình doanh nghiệp tiếp theo đang phụ thuộc vào người sáng lập.',
     eyebrow: 'Mở rộng hệ thống',
   },
 } satisfies Record<string, JourneyAction>
@@ -175,9 +175,9 @@ export const journeyHandoffs = {
     secondary: [actions.assets, actions.chat],
   },
   'content-workflow-challenge': {
-    chapter: 'Sau Starter Kit v1.0',
-    title: 'Đừng cất workflow vào một thư mục rồi bắt đầu lại từ đầu.',
-    description: 'Dùng workflow thêm 14 ngày, quan sát signal và chỉ sửa phần thực tế chứng minh là chưa ổn.',
+    chapter: 'Sau bộ khởi đầu v1.0',
+    title: 'Đừng cất quy trình vào một thư mục rồi bắt đầu lại từ đầu.',
+    description: 'Dùng quy trình thêm 14 ngày, quan sát tín hiệu và chỉ sửa phần thực tế chứng minh là chưa ổn.',
     primary: actions.contentWorkflowContinue,
     secondary: [actions.conanWorkflow],
   },

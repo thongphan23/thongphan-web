@@ -15,9 +15,9 @@ test('hub route exposes the approved promise, canonical, readiness and seven ope
   ])
   const combined = `${page}\n${client}`
 
-  assert.match(page, /7 ngày tự xây Content Workflow đầu tiên bằng AI/)
+  assert.match(page, /7 ngày tự xây quy trình nội dung đầu tiên/)
   assert.match(page, /alternates:\s*\{ canonical: ['"]\/challenge\/content-workflow-7days['"] \}/)
-  assert.match(combined, /Bắt đầu với một offer/)
+  assert.match(combined, /Bắt đầu với một sản phẩm đang bán/)
   for (const key of ['offer', 'customer', 'evidence', 'channel']) assert.match(client, new RegExp(`['"]${key}['"]`))
   assert.match(page, /CONTENT_WORKFLOW_DAYS\.map/)
   assert.match(page, /content-workflow-7days\/\$\{lesson\.slug\}/)
