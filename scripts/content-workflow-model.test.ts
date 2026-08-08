@@ -200,6 +200,7 @@ test('day five instructions cover every stage and assembly is deterministic', ()
   assert.equal(first, assembleRunnableWorkflow(state))
   assert.match(first, /ĐIỂM CON NGƯỜI QUYẾT ĐỊNH/)
   assert.match(first, /Không thêm dữ liệu hoặc tuyên bố chưa được cung cấp/)
+  assert.match(first, /Con người thực hiện/)
   assert.match(first, new RegExp(state.artifacts.outputContract.purpose))
 
   state.artifacts.stepInstructions.pop()

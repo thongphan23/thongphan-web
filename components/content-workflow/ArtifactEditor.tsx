@@ -85,7 +85,7 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
   if (day === 5) {
     const instructions = artifacts.stepInstructions
     function syncInstructions() {
-      updateArtifacts({ stepInstructions: artifacts.workflowMap.map((stage, index) => instructions.find(({ stageId }) => stage.id) ?? newInstruction(stage.id, index)) })
+      updateArtifacts({ stepInstructions: artifacts.workflowMap.map((stage, index) => instructions.find((item) => item.stageId === stage.id) ?? newInstruction(stage.id, index)) })
       onStatus('Đã tạo một thẻ hướng dẫn cho mỗi bước trong Bản đồ workflow.')
     }
     function updateInstruction(index: number, next: StepInstruction) { updateArtifacts({ stepInstructions: instructions.map((item, itemIndex) => itemIndex === index ? next : item) }) }
@@ -94,7 +94,7 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
       updateArtifacts({ runnableWorkflow: assembleRunnableWorkflow(next) })
       onStatus('Đã ghép các thẻ thành Workflow có thể chạy. Hãy đọc lại trước khi dùng.')
     }
-    return <div className={styles.fieldStack} id={fieldId('runnableWorkflow')}>
+    return <div className={styles.fieldStack}>
       {(instructions.length !== artifacts.workflowMap.length || artifacts.workflowMap.some((stage) => !instructions.some(({ stageId }) => stageId === stage.id))) ? <button className={styles.assembleButton} type="button" onClick={syncInstructions}><Sparkles aria-hidden="true" size={16} /> Tạo thẻ theo bản đồ</button> : null}
       {instructions.map((item, index) => {
         const stage = artifacts.workflowMap.find(({ id }) => id === item.stageId)
@@ -113,7 +113,7 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
   if (day === 6) {
     const run = artifacts.testRun
     function updateRun(next: Partial<typeof run>) { updateArtifacts({ testRun: { ...run, ...next } }) }
-    function syncEntries() { updateRun({ entries: artifacts.workflowMap.map((stage, index) => run.entries.find(({ stageId }) => stage.id) ?? { id: `run-${Date.now()}-${index}`, stageId: stage.id, output: '', issue: '', intervention: '' }) }) }
+    function syncEntries() { updateRun({ entries: artifacts.workflowMap.map((stage, index) => run.entries.find((entry) => entry.stageId === stage.id) ?? { id: `run-${Date.now()}-${index}`, stageId: stage.id, output: '', issue: '', intervention: '' }) }) }
     return <div className={styles.fieldStack} id={fieldId('testRun')}>
       <Field path="testRun.runInput" label="Đầu vào dùng để chạy thử" value={run.runInput} onChange={(value) => updateRun({ runInput: value })} />
       {run.entries.length !== artifacts.workflowMap.length ? <button className={styles.assembleButton} type="button" onClick={syncEntries}><Plus aria-hidden="true" size={16} /> Tạo nhật ký theo từng bước</button> : null}

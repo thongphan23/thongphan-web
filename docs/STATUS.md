@@ -2,25 +2,31 @@
 
 Last updated: 2026-08-08
 
-## Content Workflow 7 Days — curriculum redesign pending implementation — 2026-08-08
+## Content Workflow 7 Days — curriculum redesign release candidate — 2026-08-08
 
-- Anh Thông approved a new product goal: teach beginners how to design a reusable
-  workflow, using content workflow as the worked example rather than making customer
-  evidence or content strategy the core curriculum.
-- The approved seven-step spine is result → context → output contract → process map
-  → human/AI roles → test run → version and transfer. Core work remains 45–60
-  minutes/day with an optional 20–30 minute AI Deep Dive.
-- Conan School replaces the former composite Studio Mộc case. It demonstrates Learn
-  by Building and current Builder artifacts; Conan Maker appears only as a fit-based
-  path for Established Builders with an operating bottleneck.
-- Detailed curriculum is awaiting final review at
-  `docs/superpowers/specs/2026-08-08-content-workflow-7days-curriculum-redesign.md`.
-  Brain2/live-source selection and rejected stale claims are recorded under
-  `docs/content-workflow-7days-redesign/`.
-- No production code or live deployment has changed in this redesign phase. After
-  written approval, the work proceeds through implementation plan, code, complete
-  QA, preview, production promotion and apex/`www` verification as explicitly
-  authorized by anh Thông.
+- The approved product now teaches beginners how to design a reusable workflow,
+  using content as the worked example instead of making customer evidence or content
+  strategy the core curriculum.
+- The seven-step spine is result → context → output contract → process map →
+  human/AI roles → test run → version and transfer. Every day has 45–60 minutes of
+  core work, an optional 20–30 minute AI lab, one deep concept, guided practice,
+  revision, quality gate and at least four usable resources.
+- Schema v2 owns seven independent artifacts and uses isolated local key
+  `tp.content-workflow-7days.v2`; legacy v1 progress is not migrated into false
+  completion. Reset removes only the explicit v1/v2 challenge keys.
+- Conan School is the continuous disclosed teaching case. Conan School is the fit
+  path for First-Time Builders; Conan Maker appears only for Established Builders
+  whose real company process still depends on founder context or judgment. The
+  challenge publishes no price or unverified outcome claim.
+- Local verification passes: 484/484 full-repository tests, TypeScript, zero-warning
+  lint, 91-route static production build and the complete browser workflow at
+  1440px plus responsive checks at 1280px, 390px and 320px. Browser QA covers all
+  seven completions, fail-closed validation, save/resume, assembly, clipboard,
+  Markdown export, transfer blueprint and v1/v2 reset.
+- Implementation follows the approved spec and plan in `docs/superpowers/`; current
+  phase is release candidate awaiting preview deployment, visual inspection,
+  production promotion and origin/apex/`www` verification already authorized by
+  anh Thông.
 
 ## Content Workflow 7 Days — Vietnamese learner-copy patch in production — 2026-08-08
 

@@ -21,7 +21,7 @@ function block(value: string): string {
 export function buildStarterKitMarkdown(state: ChallengeStateV2): string {
   const { workflowBrief: brief, contextPack: context, outputContract: contract, workflowMap, stepInstructions, runnableWorkflow, testRun, workflowKit } = state.artifacts
   const stages = workflowMap.length === 0 ? '_Chưa có bước._' : workflowMap.map((stage, index) => {
-    const instruction = stepInstructions.find(({ stageId }) => stage.id)
+    const instruction = stepInstructions.find((item) => item.stageId === stage.id)
     return [`### Bước ${index + 1}: ${safe(stage.name)}`, line('Đầu vào', stage.input), line('Chuyển đổi', stage.transformation), line('Đầu ra', stage.output), line('Quyết định của con người', stage.humanDecision), line('Cổng chất lượng', stage.qualityGate), line('Vai trò', instruction?.role ? roleLabels[instruction.role] : ''), line('Hướng dẫn', instruction?.instruction ?? ''), line('Tự kiểm tra', instruction?.selfCheck ?? '')].join('\n')
   }).join('\n\n')
   const runEntries = testRun.entries.length === 0 ? '_Chưa chạy thử._' : testRun.entries.map((entry, index) => [`### Bước thử ${index + 1}`, line('Đầu ra', entry.output), line('Vấn đề', entry.issue), line('Can thiệp', entry.intervention)].join('\n')).join('\n\n')

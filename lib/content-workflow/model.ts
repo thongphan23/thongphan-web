@@ -298,7 +298,7 @@ function stepRoleLabel(role: StepRole): string {
 export function assembleRunnableWorkflow(state: ChallengeStateV2): string {
   const { workflowBrief: brief, contextPack: context, outputContract: contract, workflowMap, stepInstructions } = state.artifacts
   const instructions = workflowMap.map((stage, index) => {
-    const item = stepInstructions.find(({ stageId }) => stage.id)
+    const item = stepInstructions.find((instruction) => instruction.stageId === stage.id)
     return `BƯỚC ${index + 1} — ${stage.name.toLocaleUpperCase('vi')}
 ${section('Vai trò thực hiện', stepRoleLabel(item?.role ?? ''))}
 ${section('Mục đích', item?.purpose ?? '')}
