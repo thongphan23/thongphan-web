@@ -36,19 +36,30 @@ test('lesson route statically publishes all seven unique canonical pages', async
 })
 
 test('workbench keeps workbook local, labels controls and provides accessible failure paths', async () => {
-  const [component, css] = await Promise.all([
+  const [component, editor, resources, css] = await Promise.all([
     source('components/content-workflow/ChallengeWorkbench.tsx'),
+    source('components/content-workflow/ArtifactEditor.tsx'),
+    source('components/content-workflow/LearningResources.tsx'),
     source('components/content-workflow/ContentWorkflow.module.css'),
   ])
-  assert.doesNotMatch(component, /dangerouslySetInnerHTML|\bfetch\s*\(|XMLHttpRequest|sendBeacon/)
-  assert.match(component, /<label/)
-  assert.match(component, /aria-describedby/)
+  const combined = `${component}\n${editor}\n${resources}`
+  assert.doesNotMatch(combined, /dangerouslySetInnerHTML|\bfetch\s*\(|XMLHttpRequest|sendBeacon/)
+  assert.match(editor, /<label/)
+  assert.match(editor, /aria-describedby/)
   assert.match(component, /aria-live/)
   assert.match(component, /role="alert"/)
-  assert.match(component, /navigator\.clipboard\.writeText/)
+  assert.match(combined, /navigator\.clipboard\.writeText/)
   assert.match(component, /buildStarterKitMarkdown/)
   assert.match(component, /clearChallengeState/)
   assert.match(component, /<dialog/)
+  assert.match(component, /lesson\.theory/)
+  assert.match(component, /lesson\.misconceptions/)
+  assert.match(component, /lesson\.aiLab/)
+  assert.match(component, /<LearningResources/)
+  assert.match(component, /<ArtifactEditor/)
+  assert.match(editor, /assembleRunnableWorkflow/)
+  assert.match(resources, /DAY_RESOURCES/)
+  assert.match(resources, /Sao chép tài nguyên/)
   assert.match(css, /min-height:\s*44px/)
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/)
   assert.match(css, /@media \(max-width:\s*720px\)/)

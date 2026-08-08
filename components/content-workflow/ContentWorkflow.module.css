@@ -55,12 +55,35 @@
 .learnSection blockquote { border-left: 4px solid var(--cw-red); font-family: var(--font-display); font-size: clamp(1.55rem, 2.4vw, 2.25rem); font-weight: 600; line-height: 1.2; margin: 0 0 1.8rem; padding-left: 1.2rem; }
 .learnSection ul, .taskSection ol { display: grid; gap: .85rem; margin: 0; padding-left: 1.25rem; }
 .learnSection li, .taskSection li { line-height: 1.65; padding-left: .35rem; }
+.theoryGrid { display: grid; gap: 1rem; }
+.theoryGrid article { border-left: 3px solid var(--cw-ink); padding-left: 1rem; }
+.theoryGrid h3 { font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 .4rem; }
+.theoryGrid p, .misconceptionList p { color: var(--cw-muted); line-height: 1.65; margin: 0; }
+.misconceptionList { display: grid; gap: .7rem; }
+.misconceptionList article { border: 1px solid var(--cw-line); padding: 1rem; }
+.misconceptionList strong { display: block; font-family: var(--font-display); margin-bottom: .35rem; }
 .caseSection > div { background: var(--cw-paper-deep); border: 1px solid var(--cw-line); padding: 1.5rem; }
 .caseSection small { color: var(--cw-red); font-family: var(--font-mono); font-size: .62rem; font-weight: 700; text-transform: uppercase; }
 .caseSection h3 { font-family: var(--font-display); font-size: 1.55rem; margin: .6rem 0 .8rem; }
 .caseSection p { line-height: 1.65; }
 .caseSection em { color: var(--cw-muted); display: block; font-size: .72rem; line-height: 1.5; margin-top: 1rem; }
 .taskSection > p { background: var(--cw-ink); color: var(--cw-paper); line-height: 1.55; margin-top: 1.5rem; padding: 1rem; }
+.aiLab, .resourcesSection { border-bottom: 1px solid var(--cw-line); padding: 2.4rem 0; }
+.aiLab h2, .resourcesSection h2 { color: inherit; font-family: var(--font-display); font-size: 1.45rem; margin: 0 0 .8rem; }
+.aiLab > p, .resourcesSection > p { color: var(--cw-muted); line-height: 1.6; }
+.aiLab pre, .resourceCard pre { background: var(--cw-ink); color: var(--cw-paper); font: 400 .78rem/1.65 var(--font-be-vietnam); margin: 1rem 0 0; overflow-x: auto; padding: 1rem; white-space: pre-wrap; word-break: break-word; }
+.resourceGrid { display: grid; gap: .75rem; }
+.resourceCard { border: 1px solid var(--cw-line); }
+.resourceCard summary { cursor: pointer; display: grid; gap: .25rem; min-height: 44px; padding: 1rem; }
+.resourceCard summary small { color: var(--cw-red); font-family: var(--font-mono); font-size: .6rem; font-weight: 700; text-transform: uppercase; }
+.resourceCard summary strong { font-family: var(--font-display); font-size: 1.05rem; }
+.resourceCard summary span { color: var(--cw-muted); font-size: .75rem; line-height: 1.45; }
+.resourceCard pre { margin: 0; }
+.resourceCard button { align-items: center; background: transparent; border: 0; border-top: 1px solid var(--cw-line); color: var(--cw-ink); cursor: pointer; display: flex; font: 700 .74rem var(--font-be-vietnam); gap: .4rem; min-height: 44px; padding: .65rem 1rem; width: 100%; }
+.resourceStatus { align-items: center; display: flex; gap: .4rem; min-height: 1.4rem; }
+.insideConan { background: var(--cw-paper-deep); border-top: 4px solid var(--cw-red); margin-top: 2.4rem; padding: 1.2rem; }
+.insideConan strong { color: var(--cw-red); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; }
+.insideConan p { line-height: 1.6; margin: .55rem 0 0; }
 
 .artifactDesk { align-self: start; background: #faf6ee; min-width: 0; padding: clamp(1.5rem, 3vw, 3rem); }
 .artifactDesk > header { border-bottom: 2px solid var(--cw-ink); padding-bottom: 1.5rem; }
@@ -76,8 +99,8 @@
 .field textarea:focus, .field select:focus, .field input:focus, .scoreGrid select:focus { border-color: var(--cw-red); outline: 3px solid rgba(141, 42, 34, .15); outline-offset: 1px; }
 .field textarea[aria-invalid='true'], .field select[aria-invalid='true'] { border-color: var(--cw-red); }
 .field em, .inlineError { color: #852019; font-size: .72rem; font-style: normal; line-height: 1.45; }
-.evidenceRow, .draftRow, .planSection { border: 1px solid var(--cw-line); display: grid; gap: 1rem; margin: 0; min-width: 0; padding: 1.2rem; }
-.evidenceRow legend, .draftRow legend, .planSection legend { color: var(--cw-red); font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; padding: 0 .45rem; }
+.evidenceRow, .draftRow, .planSection, .stageCard { border: 1px solid var(--cw-line); display: grid; gap: 1rem; margin: 0; min-width: 0; padding: 1.2rem; }
+.evidenceRow legend, .draftRow legend, .planSection legend, .stageCard legend { color: var(--cw-red); font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; padding: 0 .45rem; }
 .scoreGrid { display: grid; gap: .7rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .scoreGrid label { display: grid; gap: .35rem; }
 .addButton, .removeButton, .assembleButton, .copyButton, .gateButton, .nextButton, .exportActions button, .editKitButton { align-items: center; border-radius: 0; cursor: pointer; display: inline-flex; font: 700 .78rem var(--font-be-vietnam); gap: .45rem; justify-content: center; min-height: 44px; padding: .65rem .85rem; text-decoration: none; }
@@ -99,6 +122,7 @@
 .gateSection h3 span { color: var(--cw-red); }
 .gateSection > ul { display: grid; gap: .65rem; margin: 1rem 0 1.3rem; padding-left: 1.2rem; }
 .gateSection > ul li { color: var(--cw-muted); font-size: .78rem; line-height: 1.5; }
+.revisionPrompt { background: var(--cw-paper-deep); font-size: .78rem; line-height: 1.55; padding: .9rem; }
 .errorSummary { background: #ead8d4; border-left: 3px solid var(--cw-red); margin-bottom: 1rem; padding: 1rem; }
 .errorSummary:focus { outline: 3px solid rgba(141, 42, 34, .25); }
 .errorSummary strong { font-family: var(--font-display); }
@@ -173,12 +197,12 @@
   .completionDesk li { align-items: start; grid-template-columns: 1.7rem 1fr; padding: .7rem 0; }
   .completionDesk li > small { grid-column: 2; }
   .field textarea, .field select, .field input, .scoreGrid select { max-width: 100%; min-height: 44px; }
-  .evidenceRow, .draftRow, .planSection { padding: 1rem; }
+  .evidenceRow, .draftRow, .planSection, .stageCard { padding: 1rem; }
 }
 
 @media (max-width: 360px) {
   .lessonCanvas, .artifactDesk { padding-left: .8rem; padding-right: .8rem; }
-  .evidenceRow, .draftRow, .planSection { padding: .75rem; }
+  .evidenceRow, .draftRow, .planSection, .stageCard { padding: .75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
