@@ -14,7 +14,7 @@ import { clearChallengeState, readChallengeState, writeChallengeState } from '@/
 import styles from './ContentWorkflow.module.css'
 
 const ROOT = '/challenge/content-workflow-7days'
-const artifactLabels = ['Bản mô tả workflow', 'Hồ sơ bối cảnh', 'Hợp đồng đầu ra', 'Bản đồ workflow', 'Workflow có thể chạy', 'Nhật ký chạy thử', 'Bộ workflow hoàn chỉnh'] as const
+const artifactLabels = ['Bản mô tả quy trình', 'Hồ sơ bối cảnh', 'Hợp đồng đầu ra', 'Bản đồ quy trình', 'Quy trình có thể chạy', 'Nhật ký chạy thử', 'Bộ quy trình hoàn chỉnh'] as const
 
 export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflowDay }) {
   const router = useRouter()
@@ -39,7 +39,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
     if (!hydrated) return
     const timer = window.setTimeout(() => {
       const saved = writeChallengeState(state)
-      setSaveStatus(saved ? `Đã lưu trên thiết bị lúc ${new Intl.DateTimeFormat('vi', { hour: '2-digit', minute: '2-digit' }).format(new Date())}` : 'Không thể lưu tự động · hãy tải Bộ workflow trước khi đóng trình duyệt')
+      setSaveStatus(saved ? `Đã lưu trên thiết bị lúc ${new Intl.DateTimeFormat('vi', { hour: '2-digit', minute: '2-digit' }).format(new Date())}` : 'Không thể lưu tự động · hãy tải Bộ quy trình trước khi đóng trình duyệt')
     }, 450)
     return () => window.clearTimeout(timer)
   }, [hydrated, state])
@@ -64,11 +64,11 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
   function exportMarkdown() {
     const url = URL.createObjectURL(new Blob([buildStarterKitMarkdown(state)], { type: 'text/markdown;charset=utf-8' }))
     const anchor = document.createElement('a'); anchor.href = url; anchor.download = starterKitFilename(); anchor.click(); URL.revokeObjectURL(url)
-    setActionStatus('Đã tải Bộ workflow thành tệp Markdown (.md).')
+    setActionStatus('Đã tải Bộ quy trình thành tệp Markdown (.md).')
   }
 
   async function copyKit() {
-    try { await navigator.clipboard.writeText(buildStarterKitMarkdown(state)); setActionStatus('Đã sao chép toàn bộ Bộ workflow.') }
+    try { await navigator.clipboard.writeText(buildStarterKitMarkdown(state)); setActionStatus('Đã sao chép toàn bộ Bộ quy trình.') }
     catch { setActionStatus('Bộ nhớ tạm bị chặn. Hãy dùng nút tải tệp Markdown.') }
   }
 
@@ -84,7 +84,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
 
   return <div className={styles.workbench} data-hydrated={hydrated}>
     <header className={styles.workbenchHeader}>
-      <Link href={ROOT}><ArrowLeft aria-hidden="true" size={17} /> Workflow 7 ngày</Link>
+      <Link href={ROOT}><ArrowLeft aria-hidden="true" size={17} /> Quy trình 7 ngày</Link>
       <p aria-live="polite">{saveStatus}</p>
       <button type="button" onClick={() => resetDialogRef.current?.showModal()}><RotateCcw aria-hidden="true" size={15} /> Đặt lại</button>
     </header>
@@ -92,7 +92,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
       <nav className={styles.dayNav} aria-label="Bảy ngày thực hành">
         <div className={styles.progressSummary}><span>Tiến độ</span><strong>{completedCount}/7</strong><div><i style={{ width: `${completedCount / 7 * 100}%` }} /></div></div>
         <ol>{CONTENT_WORKFLOW_DAYS.map((item) => { const complete = state.completedDays.includes(item.day); return <li key={item.slug} data-current={item.day === lesson.day} data-complete={complete}><Link href={`${ROOT}/${item.slug}`}><span>{complete ? <Check aria-hidden="true" size={14} /> : String(item.day).padStart(2, '0')}</span><small>Ngày {item.day}</small><strong>{artifactLabels[item.day - 1]}</strong></Link></li> })}</ol>
-        <p>Tất cả ngày đều mở. Bạn có thể xem trước, nhưng sản phẩm cuối cần đủ bảy lớp.</p>
+        <p>Tất cả ngày đều mở. Bạn có thể xem trước, nhưng sản phẩm cuối cần đủ bảy lớp thiết kế.</p>
       </nav>
       <main className={styles.lessonCanvas}>
         <header className={styles.lessonHeader}><span>Ngày {String(lesson.day).padStart(2, '0')} / 07 · {lesson.duration}</span><h1>{lesson.title}</h1><p>{lesson.question}</p></header>
@@ -114,7 +114,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
           {state.completedDays.includes(lesson.day) && lesson.day < 7 ? <Link className={styles.nextButton} href={`${ROOT}/day-${String(nextDay).padStart(2, '0')}`}>Sang Ngày {String(nextDay).padStart(2, '0')} <ArrowRight aria-hidden="true" size={17} /></Link> : null}
         </section>
         <p className={styles.liveStatus} aria-live="polite">{actionStatus}</p>
-        {lesson.day === 7 ? <><div className={styles.coverageLedger}><strong>{Object.values(coverage).filter(Boolean).length}/7 sản phẩm đạt</strong><ul>{ARTIFACT_KEYS.map((key, index) => <li key={key} data-complete={coverage[key]}><span>{coverage[key] ? <Check aria-hidden="true" size={13} /> : '—'}</span>{artifactLabels[index]}</li>)}</ul></div><div className={styles.exportActions}><button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Tải tệp Markdown</button><button type="button" onClick={copyKit}><Clipboard aria-hidden="true" size={16} /> Sao chép Bộ workflow</button></div></> : null}
+        {lesson.day === 7 ? <><div className={styles.coverageLedger}><strong>{Object.values(coverage).filter(Boolean).length}/7 sản phẩm đạt</strong><ul>{ARTIFACT_KEYS.map((key, index) => <li key={key} data-complete={coverage[key]}><span>{coverage[key] ? <Check aria-hidden="true" size={13} /> : '—'}</span>{artifactLabels[index]}</li>)}</ul></div><div className={styles.exportActions}><button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Tải tệp Markdown</button><button type="button" onClick={copyKit}><Clipboard aria-hidden="true" size={16} /> Sao chép Bộ quy trình</button></div></> : null}
       </aside>
     </div>
     {state.completedDays.includes(7) ? <ChapterHandoff journeyKey="content-workflow-challenge" tone="dark" className={styles.completionHandoff} /> : null}

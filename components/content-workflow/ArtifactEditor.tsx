@@ -38,8 +38,8 @@ function SelectField({ path, label, value, onChange, children }: { path: string;
 }
 
 const labels = {
-  workflowBrief: [['workflowName', 'Tên workflow'], ['repeatedTask', 'Công việc lặp lại'], ['trigger', 'Điểm kích hoạt'], ['currentInputs', 'Đầu vào hiện có'], ['finalOutput', 'Đầu ra cuối'], ['outputUser', 'Người sử dụng đầu ra'], ['currentFriction', 'Vướng mắc hiện tại'], ['scope', 'Phạm vi trong bảy ngày'], ['nonGoals', 'Workflow này không làm']] as const,
-  contextPack: [['identityBusiness', 'Doanh nghiệp hoặc dự án'], ['expertiseOffer', 'Chuyên môn hoặc offer'], ['intendedAudience', 'Người nhận dự kiến'], ['knownContext', 'Điều đã biết'], ['currentAssumptions', 'Nhận định hiện tại'], ['voice', 'Giọng điệu'], ['mustDo', 'Phải làm'], ['mustNot', 'Không được làm'], ['references', 'Tài liệu tham chiếu'], ['gaps', 'Khoảng trống cần bổ sung']] as const,
+  workflowBrief: [['workflowName', 'Tên quy trình'], ['repeatedTask', 'Công việc lặp lại'], ['trigger', 'Điểm kích hoạt'], ['currentInputs', 'Đầu vào hiện có'], ['finalOutput', 'Đầu ra cuối'], ['outputUser', 'Người sử dụng đầu ra'], ['currentFriction', 'Vướng mắc hiện tại'], ['scope', 'Phạm vi trong bảy ngày'], ['nonGoals', 'Quy trình này không làm']] as const,
+  contextPack: [['identityBusiness', 'Doanh nghiệp hoặc dự án'], ['expertiseOffer', 'Chuyên môn hoặc sản phẩm'], ['intendedAudience', 'Người nhận dự kiến'], ['knownContext', 'Điều đã biết'], ['currentAssumptions', 'Nhận định hiện tại'], ['voice', 'Giọng điệu'], ['mustDo', 'Phải làm'], ['mustNot', 'Không được làm'], ['references', 'Tài liệu tham chiếu'], ['gaps', 'Khoảng trống cần bổ sung']] as const,
   outputContract: [['audience', 'Người sử dụng đầu ra'], ['purpose', 'Mục đích'], ['format', 'Định dạng'], ['structure', 'Cấu trúc'], ['mustInclude', 'Phải có'], ['mustAvoid', 'Phải tránh'], ['qualityCriteria', 'Tiêu chí chất lượng'], ['antiExample', 'Phản ví dụ không đạt']] as const,
 }
 
@@ -86,13 +86,13 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
     const instructions = artifacts.stepInstructions
     function syncInstructions() {
       updateArtifacts({ stepInstructions: artifacts.workflowMap.map((stage, index) => instructions.find((item) => item.stageId === stage.id) ?? newInstruction(stage.id, index)) })
-      onStatus('Đã tạo một thẻ hướng dẫn cho mỗi bước trong Bản đồ workflow.')
+      onStatus('Đã tạo một thẻ hướng dẫn cho mỗi bước trong Bản đồ quy trình.')
     }
     function updateInstruction(index: number, next: StepInstruction) { updateArtifacts({ stepInstructions: instructions.map((item, itemIndex) => itemIndex === index ? next : item) }) }
     function assemble() {
       const next = { ...state, artifacts: { ...artifacts, stepInstructions: instructions } }
       updateArtifacts({ runnableWorkflow: assembleRunnableWorkflow(next) })
-      onStatus('Đã ghép các thẻ thành Workflow có thể chạy. Hãy đọc lại trước khi dùng.')
+      onStatus('Đã ghép các thẻ thành Quy trình có thể chạy. Hãy đọc lại trước khi dùng.')
     }
     return <div className={styles.fieldStack}>
       {(instructions.length !== artifacts.workflowMap.length || artifacts.workflowMap.some((stage) => !instructions.some(({ stageId }) => stageId === stage.id))) ? <button className={styles.assembleButton} type="button" onClick={syncInstructions}><Sparkles aria-hidden="true" size={16} /> Tạo thẻ theo bản đồ</button> : null}
@@ -103,9 +103,9 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
           {([['purpose', 'Mục đích'], ['instruction', 'Hướng dẫn thực hiện'], ['outputFormat', 'Định dạng đầu ra'], ['selfCheck', 'Quy tắc tự kiểm'], ['handoff', 'Dữ liệu bàn giao']] as const).map(([key, label]) => <Field key={key} path={`stepInstructions.${index}.${key}`} label={label} value={item[key]} onChange={(value) => updateInstruction(index, { ...item, [key]: value })} />)}
         </fieldset>
       })}
-      <button className={styles.assembleButton} type="button" onClick={assemble}><Sparkles aria-hidden="true" size={16} /> Ghép thành Workflow có thể chạy</button>
-      <Field path="runnableWorkflow" label="Bản workflow hoàn chỉnh" rows={18} value={artifacts.runnableWorkflow} onChange={(value) => updateArtifacts({ runnableWorkflow: value })} />
-      <button className={styles.copyButton} type="button" onClick={async () => { try { await navigator.clipboard.writeText(artifacts.runnableWorkflow); onStatus('Đã sao chép Workflow có thể chạy.') } catch { onStatus('Bộ nhớ tạm bị chặn. Hãy chọn nội dung và sao chép thủ công.') } }}><Clipboard aria-hidden="true" size={15} /> Sao chép workflow</button>
+      <button className={styles.assembleButton} type="button" onClick={assemble}><Sparkles aria-hidden="true" size={16} /> Ghép thành Quy trình có thể chạy</button>
+      <Field path="runnableWorkflow" label="Bản quy trình hoàn chỉnh" rows={18} value={artifacts.runnableWorkflow} onChange={(value) => updateArtifacts({ runnableWorkflow: value })} />
+      <button className={styles.copyButton} type="button" onClick={async () => { try { await navigator.clipboard.writeText(artifacts.runnableWorkflow); onStatus('Đã sao chép Quy trình có thể chạy.') } catch { onStatus('Bộ nhớ tạm bị chặn. Hãy chọn nội dung và sao chép thủ công.') } }}><Clipboard aria-hidden="true" size={15} /> Sao chép quy trình</button>
       {rootError('runnableWorkflow') ? <p className={styles.inlineError} role="alert">{rootError('runnableWorkflow')}</p> : null}
     </div>
   }
@@ -133,7 +133,7 @@ export default function ArtifactEditor({ day, state, errors, onChange, onStatus 
   return <div className={styles.fieldStack} id={fieldId('workflowKit')}>
     {([['version', 'Phiên bản'], ['purpose', 'Mục đích'], ['preparation', 'Cần chuẩn bị'], ['runGuide', 'Hướng dẫn chạy'], ['commonFailures', 'Lỗi phổ biến và cách phục hồi'], ['updateTriggers', 'Khi nào cần cập nhật']] as const).map(([key, label]) => <Field key={key} path={`workflowKit.${key}`} label={label} value={kit[key]} onChange={(value) => updateArtifacts({ workflowKit: { ...kit, [key]: value } })} />)}
     <fieldset className={styles.stageCard}><legend>Bản thiết kế chuyển giao</legend>
-      {([['workflowName', 'Tên workflow khác'], ['result', 'Kết quả cần tạo'], ['context', 'Bối cảnh ổn định'], ['outputContract', 'Hợp đồng đầu ra'], ['stages', 'Các bước chính'], ['humanDecisions', 'Điểm con người quyết định'], ['testPlan', 'Kế hoạch chạy thử']] as const).map(([key, label]) => <Field key={key} path={`workflowKit.transferBlueprint.${key}`} label={label} value={transfer[key]} onChange={(value) => updateArtifacts({ workflowKit: { ...kit, transferBlueprint: { ...transfer, [key]: value } } })} />)}
+      {([['workflowName', 'Tên quy trình khác'], ['result', 'Kết quả cần tạo'], ['context', 'Bối cảnh ổn định'], ['outputContract', 'Hợp đồng đầu ra'], ['stages', 'Các bước chính'], ['humanDecisions', 'Điểm con người quyết định'], ['testPlan', 'Kế hoạch chạy thử']] as const).map(([key, label]) => <Field key={key} path={`workflowKit.transferBlueprint.${key}`} label={label} value={transfer[key]} onChange={(value) => updateArtifacts({ workflowKit: { ...kit, transferBlueprint: { ...transfer, [key]: value } } })} />)}
     </fieldset>
     {rootError('workflowKit') || rootError('artifacts') ? <p className={styles.inlineError} role="alert">{rootError('workflowKit') || rootError('artifacts')}</p> : null}
   </div>

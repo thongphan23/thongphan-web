@@ -21,7 +21,7 @@ export default function LearningResources({ day }: { day: ChallengeDay }) {
   return (
     <section className={styles.resourcesSection} aria-labelledby="resources-title">
       <h2 id="resources-title"><span>06</span> Tài nguyên để đi tiếp</h2>
-      <p>Mở từng thẻ để xem mẫu hoàn chỉnh. Bạn có thể sao chép và sửa trực tiếp cho trường hợp của mình.</p>
+      <p>Mở từng thẻ để xem mẫu hoàn chỉnh. Bạn có thể sao chép và sửa trực tiếp cho trường hợp của bạn.</p>
       <div className={styles.resourceGrid}>
         {DAY_RESOURCES[day].map((resource) => (
           <details key={resource.id} className={styles.resourceCard}>

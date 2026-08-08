@@ -34,6 +34,8 @@ async function inspectPage(page, name) {
   const text = await page.locator('body').innerText()
   assert(!/(^|\s)anh(?=\s|[.,!?;:])/iu.test(text), `${name}: gọi người học là “anh”`)
   assert(!/\b(?:shared|human|failureCategory|stepInstructions)\b/.test(text), `${name}: lộ nhãn nội bộ tiếng Anh`)
+  const vietnameseFirstText = text.replace(/\([^)]*\)/g, ' ')
+  assert(!/\b(?:workflow|content|concept|offer|claim|founder)\b/iu.test(vietnameseFirstText), `${name}: còn thuật ngữ tiếng Anh chưa có tiếng Việt đứng trước`)
   return state
 }
 async function openDay(page, day) {
@@ -70,14 +72,14 @@ try {
   assert(response?.ok(), `Trang tổng quan: HTTP ${response?.status()}`)
   evidence.viewports.push({ name: 'hub-1440x900', ...await inspectPage(page, 'Trang tổng quan') })
   await page.screenshot({ path: join(output, 'hub-1440x900.png'), animations: 'disabled', fullPage: true })
-  for (const label of ['Tôi chọn được một đầu ra content', 'Tôi có một ít dữ liệu', 'Tôi có thể dùng một công cụ', 'Tôi có thể dành 45–60 phút']) await page.getByLabel(label, { exact: false }).check()
+  for (const label of ['Tôi chọn được một đầu ra nội dung', 'Tôi có một ít dữ liệu', 'Tôi có thể dùng một công cụ', 'Tôi có thể dành 45–60 phút']) await page.getByLabel(label, { exact: false }).check()
   await page.getByRole('button', { name: 'Mở Ngày 01' }).click()
   await page.waitForURL(/day-01$/)
 
   await page.getByRole('button', { name: 'Kiểm tra và xác nhận hoàn thành' }).click()
   const gateError = page.getByText('Còn 1 điểm cần sửa', { exact: false })
   await gateError.waitFor()
-  assert((await page.locator('body').innerText()).includes('Hoàn thành bản mô tả workflow'), 'Ngày 1: thiếu phản hồi lỗi dễ hiểu')
+  assert((await page.locator('body').innerText()).includes('Hoàn thành bản mô tả quy trình'), 'Ngày 1: thiếu phản hồi lỗi dễ hiểu')
   const day1 = {
     workflowName: 'Workflow tạo bài học xây doanh nghiệp', repeatedTask: 'Biến một khái niệm Builder thành một bài học công khai.', trigger: 'Khi đội ngũ chọn được một khái niệm cần xuất bản.',
     currentInputs: 'Khái niệm nguồn, ghi chú và định vị Conan School.', finalOutput: 'Một bài học có ví dụ, hành động và sản phẩm đầu ra.', outputUser: 'Người xây doanh nghiệp lần đầu.',
@@ -120,10 +122,10 @@ try {
     const fields = { purpose: `Hoàn thành bước ${index + 1} đúng hợp đồng.`, instruction: 'Dùng dữ liệu được cung cấp, tạo phương án rồi chờ con người duyệt.', outputFormat: 'Một đầu ra có nhãn rõ ràng.', selfCheck: 'Không thêm dữ liệu hoặc tuyên bố chưa được cung cấp.', handoff: 'Chuyển toàn bộ đầu ra sang bước tiếp theo.' }
     for (const [key, value] of Object.entries(fields)) await fill(page, `field-stepInstructions-${index}-${key}`, value)
   }
-  await page.getByRole('button', { name: 'Ghép thành Workflow có thể chạy' }).click()
+  await page.getByRole('button', { name: 'Ghép thành Quy trình có thể chạy' }).click()
   const workflowBefore = await page.locator('#field-runnableWorkflow').inputValue()
   assert(workflowBefore.length > 1000, 'Ngày 5: workflow được ghép quá ngắn')
-  await page.getByRole('button', { name: 'Sao chép workflow' }).click()
+  await page.getByRole('button', { name: 'Sao chép quy trình' }).click()
   assert((await page.evaluate(() => navigator.clipboard.readText())).includes('NGUYÊN TẮC AN TOÀN'), 'Ngày 5: sao chép workflow thất bại')
   await completeGate(page, 5)
   await page.reload({ waitUntil: 'networkidle' }); await page.locator('[data-hydrated="true"]').waitFor()
@@ -160,8 +162,8 @@ try {
   const markdown = await readFile(downloadPath, 'utf8')
   assert(markdown.includes('Workflow xử lý biên bản họp'), 'Ngày 7: thiếu Bản thiết kế chuyển giao trong tệp xuất')
   assert(markdown.includes('## Nhật ký chạy thử'), 'Ngày 7: thiếu Nhật ký chạy thử trong tệp xuất')
-  await page.getByRole('button', { name: 'Sao chép Bộ workflow' }).click()
-  assert((await page.evaluate(() => navigator.clipboard.readText())).includes('Bộ workflow 7 ngày'), 'Ngày 7: sao chép bộ workflow thất bại')
+  await page.getByRole('button', { name: 'Sao chép Bộ quy trình' }).click()
+  assert((await page.evaluate(() => navigator.clipboard.readText())).includes('Bộ quy trình 7 ngày'), 'Ngày 7: sao chép bộ quy trình thất bại')
   evidence.workflow.push('ngay-07-dong-goi-xuat-sao-chep')
 
   await page.evaluate(([legacy]) => localStorage.setItem(legacy, '{"schemaVersion":1}'), [LEGACY_KEY])

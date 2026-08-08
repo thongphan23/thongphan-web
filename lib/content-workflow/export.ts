@@ -27,13 +27,13 @@ export function buildStarterKitMarkdown(state: ChallengeStateV2): string {
   const runEntries = testRun.entries.length === 0 ? '_Chưa chạy thử._' : testRun.entries.map((entry, index) => [`### Bước thử ${index + 1}`, line('Đầu ra', entry.output), line('Vấn đề', entry.issue), line('Can thiệp', entry.intervention)].join('\n')).join('\n\n')
   const transfer = workflowKit.transferBlueprint
 
-  return `# Bộ workflow 7 ngày v${safe(workflowKit.version || '1.0')}
+  return `# Bộ quy trình 7 ngày v${safe(workflowKit.version || '1.0')}
 
 > Dữ liệu được tải từ trình duyệt của bạn. Hãy giữ tệp này ở nơi an toàn và tự xác minh mọi thông tin trước khi sử dụng hoặc xuất bản.
 
-## Bản mô tả workflow
+## Bản mô tả quy trình
 
-${line('Tên workflow', brief.workflowName)}
+${line('Tên quy trình', brief.workflowName)}
 ${line('Công việc lặp lại', brief.repeatedTask)}
 ${line('Điểm kích hoạt', brief.trigger)}
 ${line('Đầu vào hiện có', brief.currentInputs)}
@@ -67,11 +67,11 @@ ${line('Phải tránh', contract.mustAvoid)}
 ${line('Tiêu chí chất lượng', contract.qualityCriteria)}
 ${line('Ví dụ không đạt', contract.antiExample)}
 
-## Bản đồ workflow
+## Bản đồ quy trình
 
 ${stages}
 
-## Workflow có thể chạy
+## Quy trình có thể chạy
 
 ${block(runnableWorkflow)}
 
@@ -86,7 +86,7 @@ ${line('Lỗi lớn nhất', testRun.biggestFailure)}
 ${line('Thay đổi đã làm', testRun.changeMade)}
 ${line('Kết quả chạy lại', testRun.rerunResult)}
 
-## Bộ workflow hoàn chỉnh
+## Bộ quy trình hoàn chỉnh
 
 ${line('Phiên bản', workflowKit.version)}
 ${line('Mục đích', workflowKit.purpose)}
@@ -97,7 +97,7 @@ ${line('Khi nào cần cập nhật', workflowKit.updateTriggers)}
 
 ## Bản thiết kế chuyển giao
 
-${line('Workflow mới', transfer.workflowName)}
+${line('Quy trình mới', transfer.workflowName)}
 ${line('Kết quả', transfer.result)}
 ${line('Bối cảnh', transfer.context)}
 ${line('Hợp đồng đầu ra', transfer.outputContract)}

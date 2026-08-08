@@ -266,17 +266,17 @@ export function validateDay(day: ChallengeDay, state: ChallengeStateV2): DayVali
     1: 'workflowBrief', 2: 'contextPack', 3: 'outputContract', 4: 'workflowMap', 5: 'runnableWorkflow', 6: 'testRun', 7: 'workflowKit',
   }
   const messages: Record<ChallengeDay, string> = {
-    1: 'Hoàn thành bản mô tả workflow với một công việc lặp lại, đầu vào, đầu ra và phạm vi rõ ràng.',
+    1: 'Hoàn thành bản mô tả quy trình với một công việc lặp lại, đầu vào, đầu ra và phạm vi rõ ràng.',
     2: 'Hoàn thành hồ sơ bối cảnh bằng dữ liệu, nhận định hoặc tài liệu bạn đang có.',
     3: 'Hoàn thành hợp đồng đầu ra để biết thế nào là một kết quả đạt yêu cầu.',
     4: 'Tạo từ bốn đến bảy bước, mỗi bước đủ đầu vào và đầu ra, cùng ít nhất hai cổng chất lượng.',
-    5: 'Viết hướng dẫn cho từng bước và tạo bản workflow có thể chạy được.',
+    5: 'Viết hướng dẫn cho từng bước và tạo bản quy trình có thể chạy được.',
     6: 'Ghi đầy đủ lần chạy thử, lỗi lớn nhất, thay đổi đã làm và kết quả chạy lại.',
-    7: 'Đóng gói workflow và chứng minh khả năng chuyển cấu trúc sang một công việc khác.',
+    7: 'Đóng gói quy trình và chứng minh khả năng chuyển cấu trúc sang một công việc khác.',
   }
   if (!coverage[dayArtifact[day]]) errors.push(error(dayArtifact[day], messages[day]))
   if (day === 7 && !canCompleteChallenge(state)) {
-    errors.push(error('artifacts', 'Hoàn thành đủ bảy sản phẩm để đóng gói workflow.'))
+    errors.push(error('artifacts', 'Hoàn thành đủ bảy sản phẩm để đóng gói quy trình.'))
   }
   return { valid: errors.length === 0, errors }
 }
@@ -312,7 +312,7 @@ ${section('Bàn giao', item?.handoff ?? '')}
 ${stage.humanDecision.trim() ? `ĐIỂM CON NGƯỜI QUYẾT ĐỊNH:\n${stage.humanDecision.trim()}` : ''}`
   }).join('\n\n')
 
-  return `WORKFLOW CÓ THỂ CHẠY — ${brief.workflowName || '[CHƯA ĐẶT TÊN]'}
+  return `QUY TRÌNH CÓ THỂ CHẠY (RUNNABLE WORKFLOW) — ${brief.workflowName || '[CHƯA ĐẶT TÊN]'}
 
 NGUYÊN TẮC AN TOÀN
 Chỉ dùng dữ liệu trong hồ sơ bối cảnh và đầu vào được cung cấp. Không thêm dữ liệu hoặc tuyên bố chưa được cung cấp. Nếu thiếu dữ liệu quan trọng, hãy nêu rõ phần thiếu và hỏi lại trước khi tiếp tục.

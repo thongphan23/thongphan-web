@@ -120,8 +120,8 @@ test('storage failures never throw and return safe status values', () => {
 test('Markdown export contains seven artifacts, transfer blueprint and safe text', () => {
   const markdown = buildStarterKitMarkdown(populatedState())
   for (const heading of [
-    'Bản mô tả workflow', 'Hồ sơ bối cảnh', 'Hợp đồng đầu ra', 'Bản đồ workflow',
-    'Workflow có thể chạy', 'Nhật ký chạy thử', 'Bộ workflow hoàn chỉnh', 'Bản thiết kế chuyển giao',
+    'Bản mô tả quy trình', 'Hồ sơ bối cảnh', 'Hợp đồng đầu ra', 'Bản đồ quy trình',
+    'Quy trình có thể chạy', 'Nhật ký chạy thử', 'Bộ quy trình hoàn chỉnh', 'Bản thiết kế chuyển giao',
   ]) assert.match(markdown, new RegExp(`## ${heading}`))
   assert.doesNotMatch(markdown, /<script>/i)
   assert.match(markdown, /&lt;script&gt;/)

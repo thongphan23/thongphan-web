@@ -10,7 +10,7 @@ import styles from '@/app/challenge/content-workflow-7days/page.module.css'
 
 const CHALLENGE_ROOT = '/challenge/content-workflow-7days'
 const readinessItems: ReadonlyArray<{ key: ReadinessKey; label: string; help: string }> = [
-  { key: 'outcome', label: 'Tôi chọn được một đầu ra content muốn làm lặp lại.', help: 'Ví dụ: bài chia sẻ chuyên môn, kịch bản video ngắn hoặc thư gửi khách hàng.' },
+  { key: 'outcome', label: 'Tôi chọn được một đầu ra nội dung muốn làm lặp lại.', help: 'Ví dụ: bài chia sẻ chuyên môn, kịch bản video ngắn hoặc thư gửi khách hàng.' },
   { key: 'materials', label: 'Tôi có một ít dữ liệu, ghi chú hoặc nhận định để bắt đầu.', help: 'Không cần bằng chứng khách hàng; có thể dùng hiểu biết đang nằm trong đầu bạn.' },
   { key: 'aiAccess', label: 'Tôi có thể dùng một công cụ trò chuyện AI.', help: 'AI chỉ hỗ trợ đào sâu; toàn bộ bài cốt lõi vẫn có thể tự làm.' },
   { key: 'time', label: 'Tôi có thể dành 45–60 phút mỗi ngày.', help: 'Phần đào sâu với AI thêm 20–30 phút là tùy chọn.' },
@@ -65,7 +65,7 @@ export default function ChallengeHubClient() {
       <div className={styles.readinessIntro}>
         <p>Kiểm tra mức sẵn sàng (Readiness Check)</p>
         <h2 id="readiness-title">Bạn đang mang nguyên liệu gì vào bàn làm việc?</h2>
-        <p>Bạn chưa cần bằng chứng khách hàng. Hãy bắt đầu bằng hiểu biết, nhận định và tài liệu mình đang có.</p>
+        <p>Bạn chưa cần bằng chứng khách hàng. Hãy bắt đầu bằng hiểu biết, nhận định và tài liệu bạn đang có.</p>
         {hasProgress ? (
           <div className={styles.resumeNote}>
             <strong>Tiến độ trên thiết bị này: {completeCount}/7 ngày.</strong>
