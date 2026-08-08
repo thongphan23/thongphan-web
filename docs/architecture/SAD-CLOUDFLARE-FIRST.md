@@ -1,9 +1,9 @@
 # System Architecture Document — Cloudflare-first
 
 **Document ID:** TPREAD-D10
-**Version:** 2.1.0
-**Status:** Target architecture reconciled with R0 evidence; owner ADR gates pending
-**Last updated:** 2026-07-26
+**Version:** 2.2.0
+**Status:** Target architecture reconciled with R0 baseline and R0.1A local source; production cutover pending
+**Last updated:** 2026-07-27
 
 ---
 
@@ -20,9 +20,9 @@ Xây Thongphan Read thành một hệ thống:
 - có thể trích xuất phương pháp cho Conan Maker;
 - chưa chịu chi phí/phức tạp của SaaS đa tenant.
 
-### 1.1. Current-state architecture verified in R0
+### 1.1. Current-state architecture verified in R0 and R0.1A source
 
-Target architecture trong tài liệu này không phải mô tả capability đã triển khai. Current state tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f` là:
+Target architecture trong tài liệu này không phải mô tả capability đã triển khai. R0 production baseline tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f` và R0.1A implemented source phải được đọc thành hai trạng thái riêng:
 
 ```text
 Git Markdown / JSON / TypeScript
@@ -37,25 +37,32 @@ thongphan-com-router catch-all
             │
 thongphan.com/library*
 
-Dedicated production Worker routes
-├── /api/signup                 → D1 + KV + rate limits
-├── /api/chat                   → Workers AI + Vectorize
-├── /api/embed                  → Workers AI + Vectorize mutation
-└── /brain2/21-ngay/api/*       → D1 + protected KV + signed session
+R0.1A implemented source (local only)
+├── /api/signup                 → persist registration only; zero queue insert
+├── /api/chat                   → binding-free 410 tombstone
+├── /api/embed                  → binding-free 410 tombstone
+├── /chat                       → static page + local deterministic model
+└── email migration             → legacy audience quarantined/non-sendable
+
+Production before R0.1B
+└── unchanged by R0.1A; the remediated source above is not yet deployed
 ```
 
 Current public Read plane đã có `/library`, `/library/read`, 14 note details và 13 reading details. `/read`, account, membership, entitlement, reader API và admin plane chưa tồn tại. Bookmark chỉ lưu ở browser `localStorage`.
 
-R0 cũng xác minh:
+R0 và R0.1A source evidence xác minh:
 
-- Pages preview và production đang dùng chung D1/KV; topology chưa đạt environment isolation target.
+- Pages preview và production đang dùng chung D1/KV; topology chưa đạt environment isolation target. Đây là R0.2, không phải phần của R0.1 endpoint binding removal.
 - R2 đang disabled; Queues không tồn tại; email cron rỗng và email Worker chưa deploy.
 - D1 hiện chỉ có schema blog-backup/challenge/signup/email/access, không có domain schema Thongphan Read R1.
 - Không có product analytics/Web Analytics beacon đã xác minh.
-- `/api/embed` hiện là unauthenticated production mutation boundary; đây là P0 cần quyết định riêng trước R1.
-- Existing AI routes không thuộc Thongphan Read MVP và không được thêm/sửa trong R0.
+- `/api/embed` returns `410` trong implemented source qua `workers/embed-vault.ts:1-3`; `/api/chat` dùng cùng contract tại `workers/api/chat.ts:1-3`. Shared handler trả fixed 410 và không đọc environment binding (`workers/security/disabled-endpoint.ts:22-50`).
+- Hai tombstone config không còn AI/Vectorize binding và không mở Workers.dev/preview URL (`wrangler.embed.toml:5-14`, `wrangler.chat.toml:5-14`). Đây là source-complete local evidence, không phải production-deploy evidence.
+- `/chat` vẫn là public static journey. Client gọi local turn trực tiếp (`app/chat/ChatClient.tsx:27-41`); API `/api/chat` bị disable không đồng nghĩa xóa page `/chat`.
+- Signup source chỉ batch registration statement (`workers/brain2-campaign.ts:269-294`). Success không cam kết delivery và không cấp marketing consent.
+- Local migration dùng `quarantined_legacy` và giá trị số tương đương `sendable = false`, còn sender chỉ chọn `audience_state = 'sendable' AND sendable = 1` (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`, `workers/api/email-drip.ts:133-181`). Queue delivery status không phải audience eligibility.
 
-Evidence chi tiết và command output: `docs/discovery/R0-AUDIT-REPORT.md`.
+R0 baseline evidence: `docs/discovery/R0-AUDIT-REPORT.md`. R0.1A source/local verification evidence: `docs/security/R0-1-IMPLEMENTATION-REPORT.md`.
 
 ---
 
@@ -302,7 +309,7 @@ Mỗi environment có:
 
 Không dùng production D1 cho local.
 
-**R0 actual:** local config có `preview_id` riêng cho KV, nhưng remote Pages root và `env.production` bind cùng D1/KV. Chưa có D1 staging/preview độc lập, R2/Queue riêng hoặc provider test credential boundary. Vì vậy mọi stateful R1 preview bị chặn cho tới khi ADR environment isolation được duyệt và resources được tách trong một release có thẩm quyền riêng.
+**R0/R0.1A actual:** local config có `preview_id` riêng cho KV, nhưng remote Pages root và `env.production` bind cùng D1/KV. R0.1A không thay topology này. Chưa có D1 staging/preview độc lập, R2/Queue riêng hoặc provider test credential boundary. Công việc tách environment được giữ nguyên là **R0.2 chưa bắt đầu**; nó không bị làm mờ bởi việc loại bindings khỏi hai endpoint ở R0.1A. Mọi stateful R1 preview vẫn bị chặn tới khi ADR environment isolation được duyệt và resources được tách trong một release có thẩm quyền riêng.
 
 ### 7.2. Suggested Worker boundaries
 
@@ -571,6 +578,26 @@ Workshop:
 ---
 
 ## 16. Email/notification architecture
+
+### Current R0.1A boundary
+
+```text
+Signup success
+→ registration persisted
+→ zero email queue row created
+→ Day 01 remains available on the website
+
+Legacy queue row in local migration fixture
+→ audience_state = quarantined_legacy
+→ sendable = false
+→ delivery status remains historical state only
+→ sender selection = impossible in R0.1A
+```
+
+Registration storage, delivery readiness and marketing consent are three distinct
+contracts. R0.1A proves only the first in source/local fixtures. The email Worker is
+undeployed, its cron list is empty (`wrangler.brain2-email.toml:32-33`), and no row may
+become audience-eligible without a later owner-approved consent contract and migration.
 
 ### Provider adapter
 

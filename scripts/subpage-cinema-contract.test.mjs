@@ -90,16 +90,14 @@ test('experience data and chat runtime have one source of truth', async () => {
   assert.doesNotMatch(chatPage, /['"]use client['"]/)
   assert.match(chatPage, /export const metadata/)
   assert.match(chatPage, /<ChatClient/)
-  assert.match(chatClient, /NEXT_PUBLIC_CHAT_API_URL/)
-  assert.match(chatClient, /JSON\.stringify\(\{ message: text \}\)/)
+  assert.doesNotMatch(chatClient, /NEXT_PUBLIC_CHAT_API_URL/)
+  assert.doesNotMatch(chatClient, /\bfetch\s*\(/)
+  assert.match(chatClient, /createLocalChatTurn\(text\)/)
   assert.doesNotMatch(read('components/SignupForm.module.css'), bannedVisuals, 'challenge signup must inherit the Cinema palette')
 
-  const { splitSseEvents } = await import(new URL('../app/chat/chat-model.ts', import.meta.url).href)
-  assert.equal(typeof splitSseEvents, 'function')
-  assert.deepEqual(splitSseEvents('data: {"response":"xin', '"}\n\ndata: [DONE]\n\n'), {
-    events: ['data: {"response":"xin"}', 'data: [DONE]'],
-    remainder: '',
-  })
+  const chatModel = await import(new URL('../app/chat/chat-model.ts', import.meta.url).href)
+  assert.equal(typeof chatModel.createLocalChatTurn, 'function')
+  assert.equal('splitSseEvents' in chatModel, false)
 })
 
 test('migrated routes override global Garden controls and experiences use real editorial imagery', () => {

@@ -1,11 +1,10 @@
 import manifest from '../content/brain2/manifest.json'
+import { BRAIN2_SIGNUP_SUCCESS_MESSAGE } from '../lib/brain2/signup-contract'
 
 export const BRAIN2_CAMPAIGN_VERSION = 'brain2-2026-v1'
 export const BRAIN2_CHALLENGE_SLUG = 'brain2-21-ngay'
 const PUBLIC_ORIGIN = 'https://thongphan.com'
 const TOTAL_DAYS = 21
-const DAY_ONE_DELAY_MS = 2 * 60 * 1000
-const VIETNAM_OFFSET_MS = 7 * 60 * 60 * 1000
 const MAX_SIGNUP_BYTES = 2_048
 
 export interface EmailTemplate {
@@ -110,46 +109,6 @@ export function personalizeBrain2Email(
   return body
     .replaceAll('{{name}}', escapeHtml(name))
     .replaceAll('{{unsubscribe_url}}', escapeHtml(unsubscribeUrl))
-}
-
-export function buildBrain2CampaignSchedule(signupAt: string): string[] {
-  const signupMs = Date.parse(signupAt)
-  if (!Number.isFinite(signupMs)) throw new Error('Signup time is invalid')
-  const localSignup = new Date(signupMs + VIETNAM_OFFSET_MS)
-  const year = localSignup.getUTCFullYear()
-  const month = localSignup.getUTCMonth()
-  const date = localSignup.getUTCDate()
-  return Array.from({ length: TOTAL_DAYS }, (_, index) => {
-    if (index === 0) return new Date(signupMs + DAY_ONE_DELAY_MS).toISOString()
-    return new Date(Date.UTC(year, month, date + index, 2, 0, 0, 0)).toISOString()
-  })
-}
-
-export function buildBrain2QueueStatements({
-  DB,
-  signupId,
-  signupAt,
-  randomUUID = crypto.randomUUID.bind(crypto),
-}: {
-  DB: DatabaseLike
-  signupId: string
-  signupAt: string
-  randomUUID?: () => string
-}): StatementLike[] {
-  const schedule = buildBrain2CampaignSchedule(signupAt)
-  return BRAIN2_EMAIL_TEMPLATES.map((template, index) => DB.prepare(
-    `INSERT INTO email_queue
-      (id, signup_id, day, subject, body, scheduled_at, status, campaign_version, attempt_count)
-     VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, 0)`,
-  ).bind(
-    randomUUID(),
-    signupId,
-    template.day,
-    template.subject,
-    template.body,
-    schedule[index],
-    BRAIN2_CAMPAIGN_VERSION,
-  ))
 }
 
 const RESPONSE_HEADERS = {
@@ -302,7 +261,10 @@ export async function handleBrain2SignupRequest(
 
     const now = (dependencies.now ?? (() => new Date()))()
     if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
-      return jsonResponse(503, { success: false, message: 'Không thể tạo lịch email lúc này' })
+      return jsonResponse(503, {
+        success: false,
+        message: 'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
+      })
     }
     const signupAt = now.toISOString()
     const randomUUID = dependencies.randomUUID ?? crypto.randomUUID.bind(crypto)
@@ -311,9 +273,8 @@ export async function handleBrain2SignupRequest(
       `INSERT INTO challenge_signups (id, challenge_id, name, email, current_day, signed_up_at)
        VALUES (?, ?, ?, ?, 0, ?)`,
     ).bind(signupId, challenge.id, name, email, signupAt)
-    const queueStatements = buildBrain2QueueStatements({ DB: env.DB, signupId, signupAt, randomUUID })
     try {
-      await env.DB.batch([signupStatement, ...queueStatements])
+      await env.DB.batch([signupStatement])
     } catch {
       try {
         if (await duplicateQuery()) {
@@ -331,7 +292,7 @@ export async function handleBrain2SignupRequest(
     }
     return jsonResponse(200, {
       success: true,
-      message: 'Đăng ký thành công. Email đầu tiên sẽ đến trong vòng 5 phút.',
+      message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
       signup_id: signupId,
     })
   } catch {

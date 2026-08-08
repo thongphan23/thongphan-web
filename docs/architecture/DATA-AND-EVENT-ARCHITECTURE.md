@@ -1,9 +1,9 @@
 # Data & Event Architecture
 
 **Document ID:** TPREAD-D11
-**Version:** 2.1.0
-**Status:** Target data architecture reconciled with R0 current-state evidence; physical R1 schema chưa được duyệt
-**Last updated:** 2026-07-26
+**Version:** 2.2.0
+**Status:** Target data architecture reconciled with R0 baseline and R0.1A local source; physical R1 schema chưa được duyệt
+**Last updated:** 2026-07-27
 
 ---
 
@@ -20,7 +20,7 @@ Thiết kế một nền dữ liệu:
 - có thể migration và rebuild projection;
 - hỗ trợ Codex triển khai theo release.
 
-### 1.1. Current data state verified in R0
+### 1.1. Current data state verified in R0 and R0.1A source
 
 Tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`, current state khác target architecture bên dưới:
 
@@ -37,12 +37,51 @@ Tại commit `c8b10f9e2d8f732f6c3cf6bf62802ac1bd6b562f`, current state khác tar
 | Subscription/entitlement | none | none | verified absent |
 | Reading session/evidence/profile | none | none | verified absent |
 | Challenge signup | production D1 | `challenge_signups` | 10 rows at audit time |
-| Email campaign | production D1 | 210 `legacy-v0` rows, all pending | sender absent; cron empty |
+| Email campaign production | production D1 | R0 baseline: 210 `legacy-v0` rows, all pending | unchanged by R0.1A; no production migration/deploy |
+| Email audience local source | migration + local SQLite fixture | legacy rows → `quarantined_legacy`, `sendable = false` | eligibility false regardless of delivery status |
 | Product analytics | none verified | none verified | event baseline missing |
 
 Remote D1 tables are limited to `posts`, `challenges`, `challenge_signups`, `email_queue`, `email_logs`, `brain2_access_failures`, `d1_migrations` and `_cf_KV`. There is no current R1 physical schema for user/account, workspace, membership, entitlement, reading, evidence, profile, recommendation, notification or product events.
 
-R0 did not create or migrate any table. The logical catalog in sections below remains a proposal pending ADR/SDD, not an instruction to create production schema.
+R0 did not create or migrate any table. R0.1A adds a forward-only migration to source and applies it only to a local SQLite fixture; it does not change production D1. The logical catalog in sections below remains a proposal pending ADR/SDD, not an instruction to create production schema.
+
+### 1.2. R0.1A current data flows: local source versus production
+
+```text
+Implemented signup source
+POST /api/signup
+→ validate/rate-limit
+→ INSERT challenge_signups only
+→ persisted-registration success
+→ zero INSERT email_queue
+→ visitor may continue to Day 01
+
+Implemented local email-integrity source
+legacy-v0 row
+→ audience_state = quarantined_legacy
+→ sendable = false
+→ pending/failed/bounced remains a delivery status, not consent
+→ sender query requires sendable audience + sendable flag
+→ zero eligible selection
+
+Production before R0.1B
+→ no R0.1A migration applied
+→ no R0.1A Worker deployed
+→ no email sent and no audience imported
+```
+
+Source evidence: signup batches only the registration insert
+(`workers/brain2-campaign.ts:269-294`); the local migration owns the quarantine and
+fail-closed triggers (`workers/migrations/0003_r0_1_email_integrity.sql:4-47`); every
+sender path requires the independent audience gate (`workers/api/email-drip.ts:133-181`,
+`workers/api/email-drip.ts:283-324`); cron remains empty
+(`wrangler.brain2-email.toml:32-33`). Registration storage does not establish email
+delivery readiness or marketing consent.
+
+Endpoint state is also split by surface: `/chat` remains a static local journey, while
+`/api/chat` and `/api/embed` return fixed 410 responses in implemented source. Those
+tombstones have not been production-deployed in R0.1A. Preview/production D1 isolation
+is a separate **R0.2** boundary and remains unresolved/unstarted.
 
 ---
 
@@ -921,6 +960,28 @@ Recommendation cache key includes profile/content model version to avoid stale.
 
 ## 24. Notification audience flow
 
+### Current R0.1A non-sendable boundary
+
+The target flow below is not active. Current source deliberately stops before audience
+creation:
+
+```text
+registration persisted
+→ no notification intent
+→ no email_queue insert
+
+legacy queue state
+→ quarantined_legacy
+→ sendable = false
+→ no audience preview
+→ no sender selection
+→ no provider call
+```
+
+`pending`, `failed`, `bounced` or any other delivery status cannot grant eligibility.
+Only a future owner-approved consent contract plus a new migration may introduce a
+sendable audience; R0.1A must not infer consent from registration or old queue state.
+
 ```text
 Publication event
 → find linked questions/topics
@@ -1284,8 +1345,8 @@ R0 facts now verified:
 - existing DB: one relevant production D1 with challenge/signup/email/access tables only.
 - content source: repository Markdown/JSON/TypeScript; D1 is not the public renderer.
 - auth provider: none for readers; Brain2 uses a separate access-code signed-cookie boundary.
-- Cloudflare bindings: Pages D1/KV; signup D1/KV/rate limits; Brain2 access D1/protected KV; chat/embed AI/Vectorize.
-- environment isolation: target not met; Pages preview and production share D1/KV.
+- Cloudflare bindings: Pages D1/KV; signup D1/KV/rate limits; Brain2 access D1/protected KV. R0.1A source removes AI/Vectorize bindings from chat/embed tombstones, but production cutover has not occurred.
+- environment isolation: target not met; Pages preview and production share D1/KV. This is the unstarted R0.2 boundary, independent from R0.1 endpoint binding removal.
 - R2/Queue: unavailable/not provisioned.
 
 SDD chỉ được tạo sau owner approval và sẽ phải produce:

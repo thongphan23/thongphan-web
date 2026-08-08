@@ -1,15 +1,14 @@
 name = "thongphan-chat-api"
 main = "workers/api/chat.ts"
-compatibility_date = "2025-01-01"
-compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2026-07-27"
+
+workers_dev = false
+preview_urls = false
+
+[observability]
+enabled = true
+head_sampling_rate = 0.1
 
 [[routes]]
 pattern = "thongphan.com/api/chat"
 zone_name = "thongphan.com"
-
-[ai]
-binding = "AI"
-
-[[vectorize]]
-binding = "BRAIN2_INDEX"
-index_name = "brain2-vault"

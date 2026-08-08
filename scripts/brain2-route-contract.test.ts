@@ -35,6 +35,15 @@ test('canonical Brain2 hub and all 21 static lesson shells exist', () => {
   assert.match(route, /Brain2ProtectedLesson/)
 })
 
+test('signup continuation resolves to the existing canonical Day 01 lesson', () => {
+  const signupContractPath = new URL('lib/brain2/signup-contract.ts', root)
+  assert.equal(existsSync(signupContractPath), true, 'signup contract module must exist')
+  const signupContract = read('lib/brain2/signup-contract.ts')
+
+  assert.match(signupContract, /BRAIN2_DAY_ONE_PATH\s*=\s*['"]\/brain2\/21-ngay\/ngay-01['"]/)
+  assert.ok(getBrain2LessonParams().some(({ day }) => day === 'ngay-01'))
+})
+
 test('hub states the truthful promise, access split and safe course data', () => {
   const page = read('app/brain2/21-ngay/page.tsx')
   const roadmap = read('components/brain2/Brain2Roadmap.tsx')
