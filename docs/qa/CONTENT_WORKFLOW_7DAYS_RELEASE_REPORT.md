@@ -10,9 +10,51 @@ Last updated: 2026-08-08
 - Initial release source commit: `68d7f1eb2005e6d9013c6d56f10cce4239adfc63` (`68d7f1e`).
 - Completion-patch source commit:
   `5cc5cc83739754139a33275431ef69474141d2df` (`5cc5cc8`).
-- Current Vietnamese learner-copy source commit:
+- Previous Vietnamese learner-copy source commit:
   `8790425ae4791e058433614ba3d8d8c905a5c4b7` (`8790425`).
+- Current curriculum-redesign source commit:
+  `6c1cee4c015aced3a7d96df1074462406c78fa38` (`6c1cee4`).
 - Cloudflare project: `thongphan-com`
+
+## Curriculum redesign production release — 2026-08-08
+
+This release replaces the earlier content-production curriculum with the approved
+beginner path for designing a reusable workflow, using content as the continuous
+worked example. Customer evidence is not a prerequisite: learners may begin with
+their own knowledge, assumptions, notes and permitted reference material. Each day
+contains one deep concept, a 45–60 minute core lesson, optional 20–30 minute AI lab,
+guided practice, revision, a deterministic quality gate and four reusable resources.
+
+The seven-artifact spine is workflow brief → context pack → output contract →
+workflow map → runnable workflow → test-run log → versioned workflow kit and transfer
+blueprint. Conan School is the disclosed continuous teaching case. Conan School is
+the primary continuation for first-time builders; Conan Maker is offered only to
+established builders whose operating process still depends on founder context or
+judgment. No price, customer result or unsupported performance claim is published.
+
+Release evidence:
+
+- `npx tsc --noEmit`, zero-warning lint, 484/484 full repository tests, the 91-route
+  static build and `npm run test:release` all pass.
+- The complete browser journey passes locally, on the immutable preview and on the
+  public apex. It covers all seven gates, save/resume, runnable-workflow assembly,
+  clipboard, Markdown export, transfer design and v1/v2 reset, plus 1280px, 390px
+  and 320px responsive checks.
+- Preview: `ac6d8353-4315-47d0-ad0e-b1a071ee23fc`,
+  `https://ac6d8353.thongphan-com.pages.dev`, branch alias
+  `https://preview-6c1cee4.thongphan-com.pages.dev`.
+- Production: `8d6ec958-b09b-49c8-8170-65711c55ee73`,
+  `https://8d6ec958.thongphan-com.pages.dev`.
+- Rollback: previous production `51ab2e91-83d6-4fcd-a8d3-fff3a9f03e04` remains an
+  immutable HTTP 200 artifact.
+- Immutable origin, apex and `www` passed 30/30 route checks. Hub, Day 01, Day 07
+  and the fieldbook asset matched byte-for-byte across all three serving layers:
+  - Hub: `a30ef1929f950864435602a0150abd99db03c0e7fc18d1ff65c5f0f606b770dc`.
+  - Day 01: `3b5564298e936b21d81567a37bb33e25a15bef9b673c7157588dd57459847cc9`.
+  - Day 07: `22553b21c815fbddbef812cf825bcb94f50ade8564bf2c3d16850424d2b18e14`.
+  - Fieldbook: `e5e3f25b3644d578ec3a08ff0b3bc779fb5439cb439d8d089216171aec269952`.
+- No migration, backend, account, payment, email, new secret or dependency was added.
+  Learner work remains on-device until explicitly copied or exported.
 
 ## Vietnamese learner-copy patch — 2026-08-08
 
@@ -111,8 +153,9 @@ Current served fingerprints:
 
 - Free, immediately accessible and self-guided.
 - No account, payment, email gate, API, database or in-product AI generation.
-- One versioned browser key: `tp.content-workflow-7days.v1`.
-- Seven open lesson routes and eight exportable artifact categories.
+- One current versioned browser key: `tp.content-workflow-7days.v2`; legacy v1 is
+  isolated and cleared only by the explicit challenge reset.
+- Seven open lesson routes and seven independent exportable artifact categories.
 - Deterministic structural Quality Gates; no scroll/time completion.
 - Workbook content stays in the browser unless the learner explicitly copies or exports it.
 

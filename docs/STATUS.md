@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-08
 
-## Content Workflow 7 Days — curriculum redesign release candidate — 2026-08-08
+## Content Workflow 7 Days — curriculum redesign in production — 2026-08-08
 
 - The approved product now teaches beginners how to design a reusable workflow,
   using content as the worked example instead of making customer evidence or content
@@ -23,10 +23,13 @@ Last updated: 2026-08-08
   1440px plus responsive checks at 1280px, 390px and 320px. Browser QA covers all
   seven completions, fail-closed validation, save/resume, assembly, clipboard,
   Markdown export, transfer blueprint and v1/v2 reset.
-- Implementation follows the approved spec and plan in `docs/superpowers/`; current
-  phase is release candidate awaiting preview deployment, visual inspection,
-  production promotion and origin/apex/`www` verification already authorized by
-  anh Thông.
+- Implementation follows the approved spec and plan in `docs/superpowers/`. Source
+  commit `6c1cee4` is pushed on `agent/content-workflow-7days`; preview deployment
+  `ac6d8353-4315-47d0-ad0e-b1a071ee23fc` and production deployment
+  `8d6ec958-b09b-49c8-8170-65711c55ee73` both pass the complete browser journey.
+  Immutable origin, apex and `www` pass 30/30 route checks and match the same hub,
+  Day 01, Day 07 and fieldbook fingerprints. Previous production
+  `51ab2e91-83d6-4fcd-a8d3-fff3a9f03e04` is the rollback point.
 
 ## Content Workflow 7 Days — Vietnamese learner-copy patch in production — 2026-08-08
 
