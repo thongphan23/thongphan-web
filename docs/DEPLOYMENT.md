@@ -18,17 +18,19 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 ## Current site production release
 
 - Public URL: `https://thongphan.com`
-- Release: Content Workflow 7 Days completion patch
-- Pages source commit: `5cc5cc83739754139a33275431ef69474141d2df`
-- Preview deployment: `e981f028-9ef6-431c-bfea-608a86fb77aa`
-- Preview URL: `https://e981f028.thongphan-com.pages.dev`
-- Production deployment: `40603e1e-45ee-40c2-87bd-1974aaab64e2`
-- Production origin: `https://40603e1e.thongphan-com.pages.dev`
-- Pre-release rollback deployment: `8c0f6b38-0475-4aed-8eea-017b300d4fa6`
+- Release: Content Workflow 7 Days Vietnamese learner-copy patch
+- Pages source commit: `8790425ae4791e058433614ba3d8d8c905a5c4b7`
+- Preview deployment: `c53deeb2-c64a-4903-8154-00d567dec987`
+- Preview URL: `https://c53deeb2.thongphan-com.pages.dev`
+- Production deployment: `51ab2e91-83d6-4fcd-a8d3-fff3a9f03e04`
+- Production origin: `https://51ab2e91.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `40603e1e-45ee-40c2-87bd-1974aaab64e2`
 - Release verification: 486/486 functional contracts, TypeScript, lint, 91-page
   static export and the full release gate passed. The complete browser workflow
   passed locally, on preview and on apex at four viewports; origin, apex and `www`
-  returned 30/30 route checks and converged to the same verified artifact.
+  returned 30/30 route checks and converged to the same verified artifact. Rendered
+  QA additionally rejects naked English learner copy, second-person `anh` and raw
+  internal enum values in the downloaded document.
 - Full evidence: `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.
 
 ## Experience Hub release baseline

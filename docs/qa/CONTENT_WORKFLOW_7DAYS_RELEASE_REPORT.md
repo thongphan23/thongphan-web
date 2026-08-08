@@ -8,9 +8,48 @@ Last updated: 2026-08-08
 - Source branch: `agent/content-workflow-7days`
 - Base commit: `ed985507b04c19cddd60ceb6442d28e65c38d397`
 - Initial release source commit: `68d7f1eb2005e6d9013c6d56f10cce4239adfc63` (`68d7f1e`).
-- Current completion-patch source commit:
+- Completion-patch source commit:
   `5cc5cc83739754139a33275431ef69474141d2df` (`5cc5cc8`).
+- Current Vietnamese learner-copy source commit:
+  `8790425ae4791e058433614ba3d8d8c905a5c4b7` (`8790425`).
 - Cloudflare project: `thongphan-com`
+
+## Vietnamese learner-copy patch — 2026-08-08
+
+Anh Thông's acceptance review identified two public-copy violations: English terms
+were interleaved without Vietnamese meaning, and learner instructions addressed the
+visitor as `anh` instead of `bạn`. Brain2 and the existing thongphan.com voice
+contract both already required Vietnamese-first website copy and the `bạn` address.
+
+The patch applies that contract to every learner-facing surface: hub and metadata,
+readiness, seven lesson contracts, workbench labels and statuses, validation errors,
+generated workflow prompt, Day 7 completion handoff and downloaded Markdown. Important
+lookup terms retain the original English only after a Vietnamese meaning in
+parentheses. Internal enum values such as `understand-cause` and `sent` are translated
+before export.
+
+Regression and release evidence:
+
+- The rendered QA runner removes parenthetical English glosses, then rejects the
+  known naked-English vocabulary and learner-facing `anh` on all eight routes. It
+  repeats the same audit after completion, clipboard fallback and on the downloaded
+  document.
+- The language check failed first on 18 naked-English groups on the hub. A separate
+  export test failed first on raw job and publish-status codes; both pass after the
+  corrections.
+- Full `npm test`, TypeScript, lint, 91-page build and `npm run test:release` pass.
+- Complete four-viewport browser QA passes locally, on preview and on production with
+  zero browser errors and zero failed responses.
+- Preview: `c53deeb2-c64a-4903-8154-00d567dec987`,
+  `https://c53deeb2.thongphan-com.pages.dev`.
+- Production: `51ab2e91-83d6-4fcd-a8d3-fff3a9f03e04`,
+  `https://51ab2e91.thongphan-com.pages.dev`.
+- Rollback: previous production `40603e1e-45ee-40c2-87bd-1974aaab64e2`.
+- Immutable production origin, apex and `www` passed 30/30 route checks and matched
+  the preview fingerprints immediately:
+  - Hub: `57655be82f0690d7f2d368439cd54660de402228063d71bd6d582c0c75cacbec`.
+  - Day 01: `ee55d98e3db73b79dbea089db8d21b30f5f21b9293e953762df35d48cc7ee1d4`.
+  - Day 07: `cd93449d2e60d3b068f31833a40aaab26230002942011b77c2ae3ceb56714087`.
 
 ## Completion patch release — 2026-08-08
 

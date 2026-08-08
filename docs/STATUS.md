@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-08
 
-## Content Workflow 7 Days — completion patch in production — 2026-08-08
+## Content Workflow 7 Days — Vietnamese learner-copy patch in production — 2026-08-08
 
 - Anh Thông approved a free, immediately accessible, self-guided Learning Studio at
   `/challenge/content-workflow-7days`; it requires no account and keeps workbook
@@ -16,7 +16,7 @@ Last updated: 2026-08-08
   `docs/superpowers/specs/2026-08-07-content-workflow-7days-design.md`.
 - Source remains isolated on pushed branch `agent/content-workflow-7days`; commit
   `8717e75` integrated current `origin/main` without touching the canonical dirty
-  worktree, and verified release source is `5cc5cc8`.
+  worktree, and verified production source is `8790425`.
 - Anh Thông approved the written specification and four-state visual contract on
   2026-08-08. The accepted references now live in
   `docs/visual/content-workflow-7days/`.
@@ -26,14 +26,21 @@ Last updated: 2026-08-08
 - The completion patch closes three false-finish/blocked-use gaps: Day 7 now requires
   six valid 14-day plan items, resume honors an unfinished `currentDay`, and a failed
   clipboard write reveals and selects a real manual-copy Starter Kit textarea.
+- The Vietnamese learner-copy patch makes Vietnamese the default across the hub,
+  seven lessons, validation messages, generated prompt, completion handoff and
+  downloaded document. Important English lookup terms appear only after a Vietnamese
+  meaning in parentheses; every learner-facing second-person address is `bạn`.
+- Rendered QA now fails on the known naked-English vocabulary or learner-facing
+  `anh`, and also audits the generated download. Internal job and publish-status
+  codes are translated before export.
 - Current evidence: 486/486 full-suite contracts, TypeScript, lint, 91-page static
   build and the complete release gate pass. The browser workflow passes locally, on
   preview and on production at four target viewports.
-- Production deployment `40603e1e-45ee-40c2-87bd-1974aaab64e2` is live at the public
+- Production deployment `51ab2e91-83d6-4fcd-a8d3-fff3a9f03e04` is live at the public
   route below. Immutable origin, apex and `www` return HTTP 200 and identical HTML
-  fingerprints for the hub, Day 1 and Day 7 after edge propagation.
-- Preview deployment is `e981f028-9ef6-431c-bfea-608a86fb77aa`; previous production
-  `8c0f6b38-0475-4aed-8eea-017b300d4fa6` remains the verified rollback artifact.
+  fingerprints for the hub, Day 1 and Day 7.
+- Preview deployment is `c53deeb2-c64a-4903-8154-00d567dec987`; previous production
+  `40603e1e-45ee-40c2-87bd-1974aaab64e2` remains the rollback artifact.
 - Full evidence is tracked in `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.
 
 ## TPR Visual Selection + protected Control Room — production release — 2026-07-30
