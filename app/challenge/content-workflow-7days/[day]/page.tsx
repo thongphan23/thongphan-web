@@ -18,11 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `/challenge/content-workflow-7days/${lesson.slug}`
   return {
     title: `Ngày ${lesson.day}: ${lesson.title} — Quy trình nội dung 7 ngày`,
-    description: `${lesson.question} Tự tạo ${lesson.artifact} bằng dữ liệu thật của doanh nghiệp.`,
+    description: `${lesson.question} Tự tạo ${lesson.artifact} bằng dữ liệu, tài liệu hoặc nhận định bạn đang có.`,
     alternates: { canonical },
     openGraph: {
       title: `Ngày ${lesson.day}: ${lesson.title}`,
-      description: lesson.threshold,
+      description: lesson.problem,
       url: canonical,
       type: 'article',
     },

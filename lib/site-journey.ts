@@ -96,17 +96,23 @@ const actions = {
     reason: 'Đi tiếp trong môi trường có nhịp thực thi, phản hồi và người cùng làm.',
     eyebrow: 'Làm trong môi trường thật',
   },
+  conanSchool: {
+    href: 'https://www.conan.school/',
+    label: 'Tiếp tục ở Conan School',
+    reason: 'Phù hợp với người xây lần đầu muốn tiếp tục học bằng cách tạo sản phẩm thật trong Hành trình Builder.',
+    eyebrow: 'Dành cho người xây lần đầu',
+  },
   contentWorkflowContinue: {
-    href: '/challenge/content-workflow-7days/day-07#field-plan-1-evidence',
-    label: 'Dùng tiếp trong 14 ngày',
-    reason: 'Dùng sáu bằng chứng tiếp theo để kiểm tra quy trình trong 14 ngày và ghi lại tín hiệu thật.',
-    eyebrow: 'Tiếp tục vòng lặp',
+    href: '/challenge/content-workflow-7days/day-07#field-workflowKit',
+    label: 'Tự chạy thêm 14 ngày',
+    reason: 'Chạy workflow thêm hai lần trong 14 ngày và mỗi lần chỉ sửa một điểm nghẽn quan trọng nhất.',
+    eyebrow: 'Đi tiếp độc lập',
   },
   conanWorkflow: {
     href: '/conanmaker/',
     label: 'Xây quy trình tiếp theo',
-    reason: 'Khi quy trình nội dung đã chạy, dùng Conan Maker để xây quy trình doanh nghiệp tiếp theo đang phụ thuộc vào người sáng lập.',
-    eyebrow: 'Mở rộng hệ thống',
+    reason: 'Phù hợp khi bạn đã có doanh nghiệp và một quy trình thật vẫn phụ thuộc bối cảnh hoặc phán đoán của người sáng lập.',
+    eyebrow: 'Dành cho người đã có doanh nghiệp',
   },
 } satisfies Record<string, JourneyAction>
 
@@ -175,11 +181,11 @@ export const journeyHandoffs = {
     secondary: [actions.assets, actions.chat],
   },
   'content-workflow-challenge': {
-    chapter: 'Sau bộ khởi đầu v1.0',
-    title: 'Đừng cất quy trình vào một thư mục rồi bắt đầu lại từ đầu.',
-    description: 'Dùng quy trình thêm 14 ngày, quan sát tín hiệu và chỉ sửa phần thực tế chứng minh là chưa ổn.',
-    primary: actions.contentWorkflowContinue,
-    secondary: [actions.conanWorkflow],
+    chapter: 'Sau Bộ workflow phiên bản 1',
+    title: 'Chọn đường đi theo đúng giai đoạn bạn đang xây.',
+    description: 'Người xây lần đầu, người đã có doanh nghiệp và người muốn tự đi tiếp cần ba môi trường khác nhau.',
+    primary: actions.conanSchool,
+    secondary: [actions.conanWorkflow, actions.contentWorkflowContinue],
   },
   blog: {
     chapter: 'Từ góc nhìn tới hệ thống',

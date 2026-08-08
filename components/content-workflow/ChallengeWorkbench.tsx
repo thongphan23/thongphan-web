@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, Check, Clipboard, Download, RotateCcw } from 'lucide-react'
+import ChapterHandoff from '@/components/journey/ChapterHandoff'
 import ArtifactEditor from './ArtifactEditor'
 import LearningResources from './LearningResources'
 import { CONTENT_WORKFLOW_DAYS, type ContentWorkflowDay } from '@/lib/content-workflow/content'
@@ -116,6 +117,7 @@ export default function ChallengeWorkbench({ lesson }: { lesson: ContentWorkflow
         {lesson.day === 7 ? <><div className={styles.coverageLedger}><strong>{Object.values(coverage).filter(Boolean).length}/7 sản phẩm đạt</strong><ul>{ARTIFACT_KEYS.map((key, index) => <li key={key} data-complete={coverage[key]}><span>{coverage[key] ? <Check aria-hidden="true" size={13} /> : '—'}</span>{artifactLabels[index]}</li>)}</ul></div><div className={styles.exportActions}><button type="button" onClick={exportMarkdown}><Download aria-hidden="true" size={16} /> Tải tệp Markdown</button><button type="button" onClick={copyKit}><Clipboard aria-hidden="true" size={16} /> Sao chép Bộ workflow</button></div></> : null}
       </aside>
     </div>
+    {state.completedDays.includes(7) ? <ChapterHandoff journeyKey="content-workflow-challenge" tone="dark" className={styles.completionHandoff} /> : null}
     <dialog ref={resetDialogRef} className={styles.resetDialog} onCancel={() => resetDialogRef.current?.close()}><h2>Xóa toàn bộ bài làm trên thiết bị này?</h2><p>Tiến độ và bảy sản phẩm trong trình duyệt sẽ mất. Tệp Markdown đã tải không bị ảnh hưởng.</p><div><button type="button" onClick={() => resetDialogRef.current?.close()}>Giữ lại</button><button type="button" onClick={resetChallenge}>Xóa và về trang đầu</button></div></dialog>
   </div>
 }

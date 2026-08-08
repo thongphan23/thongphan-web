@@ -53,10 +53,12 @@ test('known keys return stable handoffs', () => {
   assert.equal(getJourneyHandoff('experiences').primary.href, '/brain2/21-ngay')
   assert.equal(getJourneyHandoff('asset-detail').primary.href, '/experiences')
   const contentWorkflow = getJourneyHandoff('content-workflow-challenge')
-  assert.equal(contentWorkflow.primary.href, '/challenge/content-workflow-7days/day-07#field-plan-1-evidence')
-  assert.match(contentWorkflow.primary.reason, /14 ngày/i)
+  assert.equal(contentWorkflow.primary.href, 'https://www.conan.school/')
+  assert.match(contentWorkflow.primary.reason, /người xây lần đầu/i)
   assert.equal(contentWorkflow.secondary[0].href, '/conanmaker/')
-  assert.match(contentWorkflow.secondary[0].reason, /quy trình.*doanh nghiệp/i)
+  assert.match(contentWorkflow.secondary[0].reason, /đã có doanh nghiệp.*quy trình/i)
+  assert.equal(contentWorkflow.secondary[1].href, '/challenge/content-workflow-7days/day-07#field-workflowKit')
+  assert.match(contentWorkflow.secondary[1].reason, /14 ngày/i)
 })
 
 test('public source graph contains no duplicate Brain2 detail URL or fixed 15-minute promise', async () => {

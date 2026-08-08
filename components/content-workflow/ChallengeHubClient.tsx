@@ -4,23 +4,23 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Check, RotateCcw } from 'lucide-react'
-import { nextChallengeDay, type ChallengeStateV1, type ReadinessKey } from '@/lib/content-workflow/model'
+import { nextChallengeDay, type ChallengeStateV2, type ReadinessKey } from '@/lib/content-workflow/model'
 import { clearChallengeState, readChallengeState, writeChallengeState } from '@/lib/content-workflow/storage'
 import styles from '@/app/challenge/content-workflow-7days/page.module.css'
 
 const CHALLENGE_ROOT = '/challenge/content-workflow-7days'
 const readinessItems: ReadonlyArray<{ key: ReadinessKey; label: string; help: string }> = [
-  { key: 'offer', label: 'Tôi biết doanh nghiệp và sản phẩm nào sẽ dùng.', help: 'Chọn một sản phẩm đang bán hoặc sắp kiểm chứng.' },
-  { key: 'customer', label: 'Tôi chọn được một nhóm khách hàng có thật.', help: 'Không cần rộng; cần một nhóm trong một hoàn cảnh cụ thể.' },
-  { key: 'evidence', label: 'Tôi có hoặc biết cách tìm bằng chứng khách hàng.', help: 'Tin nhắn, bình luận, cuộc gọi bán hàng, thư điện tử hoặc cuộc trò chuyện trực tiếp.' },
-  { key: 'channel', label: 'Tôi có một kênh để đưa nội dung tới người thật.', help: 'Có thể đăng công khai hoặc gửi trực tiếp cho khách hàng phù hợp.' },
+  { key: 'outcome', label: 'Tôi chọn được một đầu ra content muốn làm lặp lại.', help: 'Ví dụ: bài chia sẻ chuyên môn, kịch bản video ngắn hoặc thư gửi khách hàng.' },
+  { key: 'materials', label: 'Tôi có một ít dữ liệu, ghi chú hoặc nhận định để bắt đầu.', help: 'Không cần bằng chứng khách hàng; có thể dùng hiểu biết đang nằm trong đầu bạn.' },
+  { key: 'aiAccess', label: 'Tôi có thể dùng một công cụ trò chuyện AI.', help: 'AI chỉ hỗ trợ đào sâu; toàn bộ bài cốt lõi vẫn có thể tự làm.' },
+  { key: 'time', label: 'Tôi có thể dành 45–60 phút mỗi ngày.', help: 'Phần đào sâu với AI thêm 20–30 phút là tùy chọn.' },
 ]
 
 export default function ChallengeHubClient() {
   const router = useRouter()
   const dialogRef = useRef<HTMLDialogElement>(null)
-  const [state, setState] = useState<ChallengeStateV1 | null>(null)
-  const [readiness, setReadiness] = useState<Record<ReadinessKey, boolean>>({ offer: false, customer: false, evidence: false, channel: false })
+  const [state, setState] = useState<ChallengeStateV2 | null>(null)
+  const [readiness, setReadiness] = useState<Record<ReadinessKey, boolean>>({ outcome: false, materials: false, aiAccess: false, time: false })
   const [storageWarning, setStorageWarning] = useState('')
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function ChallengeHubClient() {
 
   function startChallenge() {
     const current = state ?? readChallengeState()
-    const updated: ChallengeStateV1 = {
+    const updated: ChallengeStateV2 = {
       ...current,
       updatedAt: new Date().toISOString(),
       readiness,
@@ -65,7 +65,7 @@ export default function ChallengeHubClient() {
       <div className={styles.readinessIntro}>
         <p>Kiểm tra mức sẵn sàng (Readiness Check)</p>
         <h2 id="readiness-title">Bạn đang mang nguyên liệu gì vào bàn làm việc?</h2>
-        <p>Thiếu bằng chứng không khóa thử thách. Bạn sẽ nhận hướng dẫn bổ sung để tìm dữ liệu thật.</p>
+        <p>Bạn chưa cần bằng chứng khách hàng. Hãy bắt đầu bằng hiểu biết, nhận định và tài liệu mình đang có.</p>
         {hasProgress ? (
           <div className={styles.resumeNote}>
             <strong>Tiến độ trên thiết bị này: {completeCount}/7 ngày.</strong>
@@ -91,7 +91,7 @@ export default function ChallengeHubClient() {
         ))}
         {missing.length > 0 ? (
           <p className={styles.corrective} role="status">
-            Bạn còn {missing.length} mục chưa có. Vẫn có thể bắt đầu; ở Ngày 2, hãy quay lại tin nhắn, bình luận hoặc hỏi trực tiếp ba khách hàng.
+            Bạn còn {missing.length} mục chưa có. Vẫn có thể bắt đầu; mỗi ngày đều có bản mẫu và hướng dẫn gỡ vướng.
           </p>
         ) : (
           <p className={styles.ready} role="status">Đủ nguyên liệu để đi thẳng vào quy trình.</p>

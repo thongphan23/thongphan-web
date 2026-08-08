@@ -15,14 +15,19 @@ test('hub route exposes the approved promise, canonical, readiness and seven ope
   ])
   const combined = `${page}\n${client}`
 
-  assert.match(page, /7 ngày tự xây quy trình nội dung đầu tiên/)
+  assert.match(page, /7 ngày tự xây quy trình \(workflow\) đầu tiên/)
   assert.match(page, /alternates:\s*\{ canonical: ['"]\/challenge\/content-workflow-7days['"] \}/)
-  assert.match(combined, /Bắt đầu với một sản phẩm đang bán/)
-  for (const key of ['offer', 'customer', 'evidence', 'channel']) assert.match(client, new RegExp(`['"]${key}['"]`))
+  assert.match(combined, /Tự xây một workflow content có thể chạy lại/)
+  for (const key of ['outcome', 'materials', 'aiAccess', 'time']) assert.match(client, new RegExp(`['"]${key}['"]`))
+  assert.match(combined, /chưa cần bằng chứng khách hàng/i)
+  assert.match(combined, /45–60 phút/)
+  assert.match(combined, /20–30 phút.*tùy chọn/)
+  assert.match(page, /Bản mô tả workflow/)
+  assert.match(page, /Bản thiết kế chuyển giao/)
   assert.match(page, /CONTENT_WORKFLOW_DAYS\.map/)
   assert.match(page, /content-workflow-7days\/\$\{lesson\.slug\}/)
   assert.equal((page.match(/<h1\b/g) ?? []).length, 1)
-  assert.doesNotMatch(combined, /đăng ký|pricing|countdown|testimonial/i)
+  assert.doesNotMatch(combined, /pricing|countdown|testimonial|15 triệu|18 triệu/i)
 })
 
 test('lesson route statically publishes all seven unique canonical pages', async () => {
