@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
+import { CONTENT_WORKFLOW_DAYS, CONAN_SCHOOL_CASE } from '../lib/content-workflow/content'
+import { DAY_RESOURCES } from '../lib/content-workflow/resources'
 import {
   ARTIFACT_KEYS,
   assembleRunnableWorkflow,
@@ -24,6 +26,32 @@ function validStage(index: number): WorkflowStage {
     qualityGate: index <= 2 ? `Cổng chất lượng ${index}` : '',
   }
 }
+
+test('curriculum exposes seven open deep lessons and usable resources', () => {
+  assert.deepEqual(CONTENT_WORKFLOW_DAYS.map(({ slug }) => slug), [
+    'day-01', 'day-02', 'day-03', 'day-04', 'day-05', 'day-06', 'day-07',
+  ])
+  assert.equal(CONAN_SCHOOL_CASE.label, 'Tình huống Conan School')
+  assert.equal(CONAN_SCHOOL_CASE.isVerifiedOperatingProof, false)
+  assert.match(CONAN_SCHOOL_CASE.disclosure, /thiết kế.*giảng dạy/i)
+
+  for (const lesson of CONTENT_WORKFLOW_DAYS) {
+    assert.equal(lesson.locked, false)
+    assert.ok(lesson.title.length >= 20)
+    assert.ok(lesson.question.endsWith('?'))
+    assert.ok(lesson.problem.length >= 80)
+    assert.equal(lesson.theory.length, 3)
+    assert.ok(lesson.misconceptions.length >= 3)
+    assert.ok(lesson.practice.length >= 4)
+    assert.ok(lesson.qualityGate.length >= 3)
+    assert.equal(lesson.conanCase.label, 'Tình huống Conan School')
+    assert.match(lesson.conanCase.disclosure, /thiết kế.*giảng dạy/i)
+    assert.equal(lesson.aiLab.duration, '20–30 phút tùy chọn')
+    assert.ok(lesson.aiLab.prompt.length >= 120)
+    assert.ok(DAY_RESOURCES[lesson.day].length >= 4)
+    assert.ok(DAY_RESOURCES[lesson.day].every((resource) => resource.content.length >= 80))
+  }
+})
 
 function readyState(): ChallengeStateV2 {
   const state = createEmptyChallengeState(new Date('2026-08-08T01:02:03.000Z'))
