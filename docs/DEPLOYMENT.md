@@ -18,16 +18,17 @@ The game bundle is versioned as one immutable release unit. Build it in its sour
 ## Current site production release
 
 - Public URL: `https://thongphan.com`
-- Release: Content Workflow 7 Days
-- Pages source commit: `68d7f1eb0455fd6032759e3515016be93aa2867d`
-- Preview deployment: `52b3c7a3-9406-447d-8dff-fca758a7632f`
-- Preview URL: `https://52b3c7a3.thongphan-com.pages.dev`
-- Production deployment: `8c0f6b38-0475-4aed-8eea-017b300d4fa6`
-- Production origin: `https://8c0f6b38.thongphan-com.pages.dev`
-- Pre-release rollback deployment: `4170518d-273d-42cc-9801-6af60493253a`
-- Release verification: 269/269 functional contracts, TypeScript, 91-page static
-  export, full release gate, local/preview/apex browser journeys and 30/30 origin,
-  apex and `www` route checks passed.
+- Release: Content Workflow 7 Days completion patch
+- Pages source commit: `5cc5cc83739754139a33275431ef69474141d2df`
+- Preview deployment: `e981f028-9ef6-431c-bfea-608a86fb77aa`
+- Preview URL: `https://e981f028.thongphan-com.pages.dev`
+- Production deployment: `40603e1e-45ee-40c2-87bd-1974aaab64e2`
+- Production origin: `https://40603e1e.thongphan-com.pages.dev`
+- Pre-release rollback deployment: `8c0f6b38-0475-4aed-8eea-017b300d4fa6`
+- Release verification: 486/486 functional contracts, TypeScript, lint, 91-page
+  static export and the full release gate passed. The complete browser workflow
+  passed locally, on preview and on apex at four viewports; origin, apex and `www`
+  returned 30/30 route checks and converged to the same verified artifact.
 - Full evidence: `docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md`.
 
 ## Experience Hub release baseline

@@ -74,27 +74,27 @@
 - Consumes: approved visual thesis `Content Operations Fieldbook` and existing thongphan.com route chrome.
 - Produces: four accepted reference images plus a design inventory used by Tasks 4–6.
 
-- [ ] **Step 1: Generate the complete public hub desktop concept**
+- [x] **Step 1: Generate the complete public hub desktop concept**
 
 Use built-in Image Gen with a `ui-mockup` brief at a readable desktop aspect. Lock exact hero copy, readiness section, seven-day output map, one CTA and no invented proof, metrics, pricing, email form, hero kicker or badge.
 
-- [ ] **Step 2: Generate the lesson workbench desktop concept**
+- [x] **Step 2: Generate the lesson workbench desktop concept**
 
 Show the real three-region anatomy: seven-day rail, lesson canvas and artifact desk. Use realistic Vietnamese field labels from Day 4. Keep all form controls code-native in implementation.
 
-- [ ] **Step 3: Generate the lesson workbench mobile concept**
+- [x] **Step 3: Generate the lesson workbench mobile concept**
 
 Show 390 px behavior as one ordered column: progress, Học, Xem, Làm, Kiểm. Include focus/error/saved affordances without a sticky footer covering the form.
 
-- [ ] **Step 4: Generate the Day 7 completion concept**
+- [x] **Step 4: Generate the Day 7 completion concept**
 
 Show Starter Kit assembly, six-of-eight completion rule, Markdown export and 14-day continuation as a real success state, not confetti/gamification.
 
-- [ ] **Step 5: Inspect and obtain anh Thông's visual approval**
+- [x] **Step 5: Inspect and obtain anh Thông's visual approval**
 
 Use `view_image` on every concept. Reject unreadable, generic or off-contract images. Show the accepted set to anh Thông and stop before UI implementation until he explicitly approves it.
 
-- [ ] **Step 6: Commit the accepted concept contract**
+- [x] **Step 6: Commit the accepted concept contract**
 
 Run:
 
@@ -127,7 +127,7 @@ Expected: exactly the accepted concepts and spec path update are committed.
   - `assembleWorkflowPrompt(state: ChallengeStateV1): string`
   - `canCompleteChallenge(state: ChallengeStateV1): boolean`
 
-- [ ] **Step 1: Write the failing domain tests**
+- [x] **Step 1: Write the failing domain tests**
 
 Cover exact seven slugs, one threshold concept/artifact/gate per day, simulated-case labels, immutable empty state, fail-closed day values, no route locks, each day's minimum gate, six-of-eight final rule and deterministic prompt assembly.
 
@@ -142,7 +142,7 @@ assert.match(assembleWorkflowPrompt(readyState), /BRIEF → 3 GÓC KHAI THÁC �
 assert.equal(canCompleteChallenge(stateWithFiveArtifacts), false)
 ```
 
-- [ ] **Step 2: Run the focused test and verify red**
+- [x] **Step 2: Run the focused test and verify red**
 
 Run:
 
@@ -152,7 +152,7 @@ node --import tsx --test scripts/content-workflow-model.test.ts
 
 Expected: FAIL because the content/model modules do not exist.
 
-- [ ] **Step 3: Implement the smallest complete model**
+- [x] **Step 3: Implement the smallest complete model**
 
 Use explicit unions and bounded arrays. The core shape must start with:
 
@@ -170,11 +170,11 @@ export type ChallengeStateV1 = {
 
 Keep validation pure. Do not read browser globals from `model.ts`. Assemble the Master Prompt only from typed artifact fields and preserve user edits separately after initial generation.
 
-- [ ] **Step 4: Run the focused test and verify green**
+- [x] **Step 4: Run the focused test and verify green**
 
 Run the focused test. Expected: all model/content cases pass with zero failure.
 
-- [ ] **Step 5: Register the focused test and commit**
+- [x] **Step 5: Register the focused test and commit**
 
 Add the new model test to the existing `npm test` command without changing unrelated order.
 
@@ -207,11 +207,11 @@ git commit -m "feat: add content workflow curriculum model"
   - `buildStarterKitMarkdown(state: ChallengeStateV1): string`
   - `starterKitFilename(now?: Date): string`
 
-- [ ] **Step 1: Write the failing persistence/export tests**
+- [x] **Step 1: Write the failing persistence/export tests**
 
 Test malformed JSON, extra top-level keys, wrong schema, invalid timestamp, duplicate/out-of-range completed day, excessive evidence/drafts/plan arrays, wrong field types, storage read/write exceptions, exact-key clearing, HTML-like user text remaining inert Markdown text, full eight-section export and UTC timestamp filenames.
 
-- [ ] **Step 2: Run the focused test and verify red**
+- [x] **Step 2: Run the focused test and verify red**
 
 ```bash
 node --import tsx --test scripts/content-workflow-storage.test.ts
@@ -219,7 +219,7 @@ node --import tsx --test scripts/content-workflow-storage.test.ts
 
 Expected: FAIL because storage/export modules do not exist.
 
-- [ ] **Step 3: Implement parser, persistence and export**
+- [x] **Step 3: Implement parser, persistence and export**
 
 Use a small injected interface:
 
@@ -229,11 +229,11 @@ export type StorageLike = Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>
 
 On every parser violation return a new empty state. Bound evidence to 20 rows, drafts to exactly three slots, the 14-day plan to at most 14 rows and individual free-text fields to 20,000 characters. Catch storage and clipboard-adjacent failures without blocking lessons.
 
-- [ ] **Step 4: Run focused tests and verify green**
+- [x] **Step 4: Run focused tests and verify green**
 
 Expected: zero failures and no writes outside the single approved key.
 
-- [ ] **Step 5: Register and commit**
+- [x] **Step 5: Register and commit**
 
 ```bash
 git add lib/content-workflow/storage.ts lib/content-workflow/export.ts scripts/content-workflow-storage.test.ts package.json
@@ -264,29 +264,29 @@ git commit -m "feat: persist and export content workflow locally"
 - Consumes: curriculum, local state functions and accepted hub concept.
 - Produces: indexable hub, readiness interaction, resume link and Experience Hub entry.
 
-- [ ] **Step 1: Write failing route/discovery tests**
+- [x] **Step 1: Write failing route/discovery tests**
 
 Lock the exact root canonical, H1, primary CTA, readiness keys, seven route links, public registry contract, sitemap entries, evidence-dossier route mode, no signup/email/pricing text and no client-to-server mutation call.
 
-- [ ] **Step 2: Run focused tests and verify red**
+- [x] **Step 2: Run focused tests and verify red**
 
 ```bash
 node --import tsx --test scripts/content-workflow-route-contract.test.mjs scripts/experience-registry.test.ts scripts/site-route-mode.test.ts
 ```
 
-- [ ] **Step 3: Implement the server hub and discovery entries**
+- [x] **Step 3: Implement the server hub and discovery entries**
 
 Add registry item `content-workflow-7days` before gated Learn. Use generated/owned media only if its rights and physical file are present. Add eight sitemap paths with release date `2026-08-08`. Map both root and prefix to `evidence-dossier`.
 
-- [ ] **Step 4: Implement readiness/resume client behavior**
+- [x] **Step 4: Implement readiness/resume client behavior**
 
 Read state after hydration. The CTA writes readiness only when the visitor has changed it, then routes to Day 1 or the recommended next day. A missing readiness item shows a corrective message but does not disable navigation.
 
-- [ ] **Step 5: Implement accepted hub visuals**
+- [x] **Step 5: Implement accepted hub visuals**
 
 Match the accepted concept exactly: first viewport, section order, copy, palette, typography, spacing and media treatment. Keep one primary CTA and avoid invented badges/cards.
 
-- [ ] **Step 6: Verify focused tests and commit**
+- [x] **Step 6: Verify focused tests and commit**
 
 ```bash
 git add app/challenge components/content-workflow lib/experiences.ts lib/site-route-mode.ts app/sitemap.ts scripts/content-workflow-route-contract.test.mjs scripts/experience-registry.test.ts scripts/site-route-mode.test.ts package.json
@@ -311,43 +311,43 @@ git commit -m "feat: add content workflow challenge hub"
 - Consumes: `ContentWorkflowDay`, model validation, storage and export helpers.
 - Produces: fully interactive Day 1–7 workbench with local state and accessible feedback.
 
-- [ ] **Step 1: Expand failing route and privacy contracts**
+- [x] **Step 1: Expand failing route and privacy contracts**
 
 Assert seven static params, unique metadata/canonical, one H1, no `dangerouslySetInnerHTML`, no `fetch`/XHR/beacon in workbench, real labels/errors, 44 px control contract, reduced-motion CSS and one export/reset path.
 
-- [ ] **Step 2: Run focused tests and verify red**
+- [x] **Step 2: Run focused tests and verify red**
 
 Expected: lesson route/component assertions fail.
 
-- [ ] **Step 3: Implement route generation and lesson shell**
+- [x] **Step 3: Implement route generation and lesson shell**
 
 `generateStaticParams()` returns exact slugs. Unknown slugs call `notFound()`. Metadata uses the day's approved title and question without duplicating the hub description.
 
-- [ ] **Step 4: Implement client state orchestration**
+- [x] **Step 4: Implement client state orchestration**
 
 Hydrate once, record the current day, debounce autosave, render a saved timestamp, preserve use when storage fails and keep all days navigable. Use controlled inputs and immutable updates.
 
-- [ ] **Step 5: Implement Days 1–4 artifacts**
+- [x] **Step 5: Implement Days 1–4 artifacts**
 
 Render only the fields defined by the curriculum. Evidence rows support add/remove within 3–20 rows. Errors link to the field. Quality Gate focuses an error summary and never overwrites user text.
 
-- [ ] **Step 6: Implement Day 5 prompt assembly**
+- [x] **Step 6: Implement Day 5 prompt assembly**
 
 Generate once from Days 1–4 when the saved prompt is empty. Preserve manual edits after that point. Copy uses `navigator.clipboard.writeText` with selection/manual-copy fallback and a restrained live status.
 
-- [ ] **Step 7: Implement Day 6 three-run review**
+- [x] **Step 7: Implement Day 6 three-run review**
 
 Keep exactly three draft slots. Each slot stores draft, checklist booleans, bounded score and revision note. Completion requires two structurally reviewed drafts; copy must not claim market quality.
 
-- [ ] **Step 8: Implement Day 7 packaging**
+- [x] **Step 8: Implement Day 7 packaging**
 
 Render artifact coverage, publish/share state, signal note, One-Pager and 14-day plan. Export a Blob download with the generated Markdown filename. Reset uses a semantic dialog, clears exactly one storage key and returns to the empty hub state.
 
-- [ ] **Step 9: Apply accepted desktop/mobile/completion visuals**
+- [x] **Step 9: Apply accepted desktop/mobile/completion visuals**
 
 Preserve the accepted rail/canvas/artifact-desk container model. Mobile must follow `Học → Xem → Làm → Kiểm` and keep input widths within 320 px.
 
-- [ ] **Step 10: Verify focused tests and commit**
+- [x] **Step 10: Verify focused tests and commit**
 
 ```bash
 node --import tsx --test scripts/content-workflow-model.test.ts scripts/content-workflow-storage.test.ts scripts/content-workflow-route-contract.test.mjs
@@ -372,15 +372,15 @@ git commit -m "feat: add seven-day content workflow workbench"
 - Consumes: complete challenge and existing site journey.
 - Produces: one context-correct post-challenge handoff and traceable repository evidence.
 
-- [ ] **Step 1: Write the failing journey contract**
+- [x] **Step 1: Write the failing journey contract**
 
 Add `content-workflow-challenge` as a distinct `JourneyKey`. Its primary action is the 14-day continuation inside the challenge, and Conan Maker is secondary with reason tied to the next business workflow. Do not reuse the generic Brain2 challenge handoff.
 
-- [ ] **Step 2: Implement the journey and update status**
+- [x] **Step 2: Implement the journey and update status**
 
 Keep exactly one primary destination and no duplicates. Record file/test/build state without claiming production before deployment.
 
-- [ ] **Step 3: Run the focused and full gates**
+- [x] **Step 3: Run the focused and full gates**
 
 ```bash
 node --import tsx --test scripts/content-workflow-model.test.ts scripts/content-workflow-storage.test.ts scripts/content-workflow-route-contract.test.mjs scripts/experience-registry.test.ts scripts/site-route-mode.test.ts scripts/site-journey.test.ts
@@ -394,7 +394,7 @@ git diff --check
 
 Expected: every command exits 0; static output includes root plus seven lesson HTML files.
 
-- [ ] **Step 4: Commit the integrated release candidate**
+- [x] **Step 4: Commit the integrated release candidate**
 
 ```bash
 git add lib/site-journey.ts scripts/site-journey.test.ts docs/STATUS.md docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md
@@ -418,37 +418,37 @@ git commit -m "docs: record content workflow release candidate"
 - Consumes: exact `out/` artifact and four accepted concept images.
 - Produces: screenshots, workflow evidence and a zero-open-fixable-mismatch fidelity ledger.
 
-- [ ] **Step 1: Add the rendered QA runner**
+- [x] **Step 1: Add the rendered QA runner**
 
 Start a clean-URL static server, launch Playwright Chromium and test 1440×900,
 1280×800, 390×844 and 320×568. Capture hub, representative Day 4, Day 7 completion
 and mobile workbench screenshots under a dedicated temporary root.
 
-- [ ] **Step 2: Exercise the complete core workflow**
+- [x] **Step 2: Exercise the complete core workflow**
 
 Fill readiness, Days 1–5, refresh and verify resume, copy the Master Prompt, fill two
 reviewed drafts, assemble Day 7, download Markdown, verify content and then reset.
 Assert zero relevant console error, broken image, horizontal overflow or clipped
 primary control.
 
-- [ ] **Step 3: Inspect accepted concepts and renders together**
+- [x] **Step 3: Inspect accepted concepts and renders together**
 
 Use `view_image` on each accepted concept and its latest render in the same pass.
 Record at least: copy, first viewport composition, typography, palette, container
 model, asset treatment, responsive behavior, control styling and motion.
 
-- [ ] **Step 4: Fix every material mismatch and rerun**
+- [x] **Step 4: Fix every material mismatch and rerun**
 
 Repeat build/render/inspection until a skilled agency would sign off. No known fixable
 visual issue may remain in the final ledger.
 
-- [ ] **Step 5: Run accessibility and copy checks**
+- [x] **Step 5: Run accessibility and copy checks**
 
 Verify keyboard-only readiness, lesson navigation, error summary, copy fallback,
 dialog focus/escape and reduced motion. Diff above-the-fold visible copy against the
 accepted concept list.
 
-- [ ] **Step 6: Commit QA automation and fixes**
+- [x] **Step 6: Commit QA automation and fixes**
 
 ```bash
 git add scripts/qa-content-workflow.mjs package.json docs/qa/CONTENT_WORKFLOW_7DAYS_RELEASE_REPORT.md app/challenge components/content-workflow public/images/challenges
@@ -470,7 +470,7 @@ git commit -m "test: verify content workflow experience"
 - Consumes: exact verified commit and `out/` artifact.
 - Produces: GitHub branch, Cloudflare preview/production IDs, rollback point and live smoke evidence.
 
-- [ ] **Step 1: Re-run the final release gate on clean HEAD**
+- [x] **Step 1: Re-run the final release gate on clean HEAD**
 
 ```bash
 npm test
@@ -481,13 +481,13 @@ npm run test:release
 git diff --check
 ```
 
-- [ ] **Step 2: Push the exact branch**
+- [x] **Step 2: Push the exact branch**
 
 ```bash
 git push origin agent/content-workflow-7days
 ```
 
-- [ ] **Step 3: Capture rollback deployment**
+- [x] **Step 3: Capture rollback deployment**
 
 ```bash
 npx wrangler pages deployment list --project-name thongphan-com
@@ -495,7 +495,7 @@ npx wrangler pages deployment list --project-name thongphan-com
 
 Record the current production deployment ID before upload. Stop if it cannot be captured.
 
-- [ ] **Step 4: Deploy and test preview**
+- [x] **Step 4: Deploy and test preview**
 
 ```bash
 challenge_commit=$(git rev-parse HEAD)
@@ -505,20 +505,20 @@ npx wrangler pages deploy out --project-name thongphan-com --branch "preview-${c
 Run the full QA runner and HTTP smoke against the returned preview. Confirm the exact
 eight routes, `/experiences`, sitemap and disabled Learn boundaries.
 
-- [ ] **Step 5: Promote the verified commit to production**
+- [x] **Step 5: Promote the verified commit to production**
 
 ```bash
 challenge_commit=$(git rev-parse HEAD)
 npx wrangler pages deploy out --project-name thongphan-com --branch main --commit-hash "${challenge_commit}"
 ```
 
-- [ ] **Step 6: Verify canonical production**
+- [x] **Step 6: Verify canonical production**
 
 Check apex, `www` and Pages origin for root plus seven lesson routes. Verify canonical,
 static assets, local-only behavior, Experience Hub discovery, no console errors and
 one complete fresh-browser workflow through export.
 
-- [ ] **Step 7: Record and push release evidence**
+- [x] **Step 7: Record and push release evidence**
 
 Update the QA report and STATUS with exact source SHA, preview/production IDs, previous
 rollback ID, URLs, route fingerprints and pass/fail counts. Re-run document checks,

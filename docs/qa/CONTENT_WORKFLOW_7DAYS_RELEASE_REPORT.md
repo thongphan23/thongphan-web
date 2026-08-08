@@ -7,8 +7,66 @@ Last updated: 2026-08-08
 - Route: `https://thongphan.com/challenge/content-workflow-7days`
 - Source branch: `agent/content-workflow-7days`
 - Base commit: `ed985507b04c19cddd60ceb6442d28e65c38d397`
-- Release source commit: `68d7f1eb0455fd6032759e3515016be93aa2867d` (`68d7f1e`).
+- Initial release source commit: `68d7f1eb2005e6d9013c6d56f10cce4239adfc63` (`68d7f1e`).
+- Current completion-patch source commit:
+  `5cc5cc83739754139a33275431ef69474141d2df` (`5cc5cc8`).
 - Cloudflare project: `thongphan-com`
+
+## Completion patch release — 2026-08-08
+
+The initial release was re-audited before anh Thông's acceptance check. Three
+concrete gaps were reproduced with failing contracts before implementation:
+
+1. Day 7 could pass without six valid 14-day plan items.
+2. Resume selected the first incomplete day instead of an explicitly unfinished
+   `currentDay`.
+3. A rejected Clipboard API call claimed a manual fallback without rendering any
+   selectable fallback content.
+
+The completion patch adds structural six-item validation, current-day resume and a
+focused/selectable manual-copy textarea. Commit `8717e75` first integrated current
+`origin/main` (`c09481f`) so the release artifact would not roll back newer site work;
+commit `5cc5cc8` contains the tested corrections.
+
+Fresh verification on the integrated tree:
+
+- `npm test`: 486/486 pass on two serial confirmation runs.
+- `npx tsc --noEmit`, `npm run lint`, `npm run build` and
+  `npm run test:release`: pass; build emits 91 static pages.
+- `npm run qa:content-workflow`: pass locally, on immutable preview and on the public
+  apex, covering completion, refresh/resume, export, clipboard success and forced
+  clipboard-failure fallback at 1440×900, 1280×800, 390×844 and 320×568.
+- Preview: `e981f028-9ef6-431c-bfea-608a86fb77aa`,
+  `https://e981f028.thongphan-com.pages.dev`.
+- Production: `40603e1e-45ee-40c2-87bd-1974aaab64e2`,
+  `https://40603e1e.thongphan-com.pages.dev`.
+- Rollback: previous production `8c0f6b38-0475-4aed-8eea-017b300d4fa6` remains
+  immutable and returned HTTP 200 for the hub, Day 1 and Day 7 during the release.
+- Origin, apex and `www` passed all 30 route checks. After edge propagation, hub,
+  Day 1 and Day 7 HTML hashes matched exactly across all three hosts.
+
+Current served fingerprints:
+
+- Hub: `7e58ea50089ea6debec85c3213fc7fdeb701dd451854ea372ef41c8d16226ade`.
+- Day 01: `12e86e3df93398c9c57baa139ff9b0ae6281068bb9c4630e84cae3c900c96111`.
+- Day 07: `e8004343fba1076ec4265989b353f488660c36ed392d997c446a55ce508149f6`.
+
+### Release hypothesis, decision gate and rollback
+
+- Hypothesis: preventing incomplete 14-day plans, restoring the intended unfinished
+  day and exposing a real copy fallback removes false completion and blocked export
+  paths before learner acceptance.
+- Technical baseline and acceptance metric: the deterministic browser journey must
+  complete on all four viewports with zero relevant console/network error, and all
+  three public serving layers must return the exact verified artifact. Both gates pass.
+- Behavioral analytics are intentionally absent because this local-only, account-free
+  product does not add tracking or a backend. Learner feedback from anh Thông is the
+  next qualitative signal; no fabricated conversion baseline is claimed.
+- Roll back if a core route, resume, Quality Gate, copy or export flow regresses by
+  redeploying immutable artifact `8c0f6b38-0475-4aed-8eea-017b300d4fa6` to the
+  production branch, then rerun the same apex/`www` browser and route matrix. The
+  rollback artifact itself was read-verified; production was not deliberately rolled
+  back after a passing release.
 
 ## Product contract
 
@@ -33,10 +91,10 @@ Last updated: 2026-08-08
 
 ### Shared dependency maintenance boundary
 
-The challenge added no dependency. A post-release `npm audit --omit=dev` on the
-existing shared application tree reports four high-severity advisory groups in
-`next@16.2.10`, the pinned `postcss@8.5.10`, `sharp@0.34.5` and the transitive
-`js-yaml@3.15.0` used by `gray-matter`. `npm audit fix --dry-run` proposes a broad
+The challenge added no dependency. A fresh `npm audit --omit=dev` on the integrated
+shared application tree reports five high-severity advisory groups in `next`,
+`postcss`, `sharp`, `nanoid` and the transitive `js-yaml` used by `gray-matter`.
+`npm audit fix --dry-run` proposes a broad
 whole-site change including Next 16.3.0 and Sharp 0.35.3, so it was not applied as
 an unreviewed side effect of this challenge release.
 
