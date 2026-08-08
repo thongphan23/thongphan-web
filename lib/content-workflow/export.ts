@@ -1,141 +1,113 @@
-import { draftScore, type ChallengeStateV1, type ContentJobType, type PublishStatus } from './model'
+import type { ChallengeStateV2, StepRole, TestFailureCategory } from './model'
 
-const contentJobLabels: Record<Exclude<ContentJobType, ''>, string> = {
-  'recognize-problem': 'Nhận ra vấn đề',
-  'understand-cause': 'Hiểu nguyên nhân',
-  'try-next-step': 'Thử bước tiếp theo',
+const roleLabels: Record<Exclude<StepRole, ''>, string> = {
+  human: 'Con người thực hiện', ai: 'AI thực hiện', shared: 'AI và con người cùng làm', tool: 'Công cụ thực hiện',
 }
-
-const publishStatusLabels: Record<Exclude<PublishStatus, ''>, string> = {
-  published: 'Đã đăng công khai',
-  sent: 'Đã gửi trực tiếp',
-}
-
-function contentJobLabel(value: ContentJobType): string {
-  return value ? contentJobLabels[value] : ''
-}
-
-function publishStatusLabel(value: PublishStatus): string {
-  return value ? publishStatusLabels[value] : ''
+const failureLabels: Record<Exclude<TestFailureCategory, ''>, string> = {
+  context: 'Lỗi ở bối cảnh', input: 'Lỗi ở đầu vào', instruction: 'Lỗi ở hướng dẫn', handoff: 'Lỗi khi bàn giao',
+  role: 'Lỗi phân vai', gate: 'Lỗi ở cổng chất lượng', contract: 'Lỗi ở hợp đồng đầu ra',
 }
 
 function safe(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
+  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 }
-
 function line(label: string, value: string): string {
   return `- **${label}:** ${safe(value.trim()) || '_Chưa hoàn thành_'}`
 }
-
 function block(value: string): string {
-  const text = safe(value.trim()) || '_Chưa hoàn thành_'
-  return text.split('\n').map((row) => `    ${row}`).join('\n')
+  return (safe(value.trim()) || '_Chưa hoàn thành_').split('\n').map((row) => `    ${row}`).join('\n')
 }
 
-export function buildStarterKitMarkdown(state: ChallengeStateV1): string {
-  const { artifacts } = state
-  const focus = artifacts.customerFocus
-  const job = artifacts.contentJob
-  const brief = artifacts.contentBrief
-  const onePager = artifacts.onePager
-  const evidenceRows = artifacts.evidenceBank.length === 0
-    ? '_Chưa có bằng chứng._'
-    : artifacts.evidenceBank.map((item, index) => [
-      `### Bằng chứng ${index + 1}`,
-      line('Bằng chứng', item.evidence),
-      line('Hoàn cảnh', item.context),
-      line('Nguồn', item.source),
-      line('Có thể hiểu', item.insight),
-    ].join('\n')).join('\n\n')
-  const draftRows = artifacts.drafts.map((draft, index) => [
-    `### Bản nháp ${index + 1} — ${draftScore(draft)}/12`,
-    block(draft.draft),
-    '',
-    line('Quyết định sửa', draft.revisionNote),
-  ].join('\n')).join('\n\n')
-  const planRows = artifacts.fourteenDayPlan.length === 0
-    ? '_Chưa có đề mục._'
-    : artifacts.fourteenDayPlan.map((item, index) =>
-      `${index + 1}. ${safe(item.evidence)} — ${safe(contentJobLabel(item.job))}${item.publishDate ? ` — ${safe(item.publishDate)}` : ''}`,
-    ).join('\n')
+export function buildStarterKitMarkdown(state: ChallengeStateV2): string {
+  const { workflowBrief: brief, contextPack: context, outputContract: contract, workflowMap, stepInstructions, runnableWorkflow, testRun, workflowKit } = state.artifacts
+  const stages = workflowMap.length === 0 ? '_Chưa có bước._' : workflowMap.map((stage, index) => {
+    const instruction = stepInstructions.find(({ stageId }) => stage.id)
+    return [`### Bước ${index + 1}: ${safe(stage.name)}`, line('Đầu vào', stage.input), line('Chuyển đổi', stage.transformation), line('Đầu ra', stage.output), line('Quyết định của con người', stage.humanDecision), line('Cổng chất lượng', stage.qualityGate), line('Vai trò', instruction?.role ? roleLabels[instruction.role] : ''), line('Hướng dẫn', instruction?.instruction ?? ''), line('Tự kiểm tra', instruction?.selfCheck ?? '')].join('\n')
+  }).join('\n\n')
+  const runEntries = testRun.entries.length === 0 ? '_Chưa chạy thử._' : testRun.entries.map((entry, index) => [`### Bước thử ${index + 1}`, line('Đầu ra', entry.output), line('Vấn đề', entry.issue), line('Can thiệp', entry.intervention)].join('\n')).join('\n\n')
+  const transfer = workflowKit.transferBlueprint
 
-  return `# Bộ khởi đầu quy trình nội dung v1.0 (Content Workflow Starter Kit)
+  return `# Bộ workflow 7 ngày v${safe(workflowKit.version || '1.0')}
 
-> Dữ liệu được tải từ trình duyệt của người học. Hãy giữ tệp này ở nơi an toàn và tự xác minh mọi luận điểm trước khi xuất bản.
+> Dữ liệu được tải từ trình duyệt của bạn. Hãy giữ tệp này ở nơi an toàn và tự xác minh mọi thông tin trước khi sử dụng hoặc xuất bản.
 
-## Thẻ trọng tâm khách hàng (Customer Focus Card)
+## Bản mô tả workflow
 
-${line('Doanh nghiệp', focus.business)}
-${line('Sản phẩm đang bán', focus.offer)}
-${line('Khách hàng', focus.customerGroup)}
-${line('Hoàn cảnh', focus.currentSituation)}
-${line('Vấn đề', focus.primaryProblem)}
-${line('Chuyển dịch', focus.desiredMovement)}
-${line('Trọng tâm khách hàng', focus.focusStatement)}
+${line('Tên workflow', brief.workflowName)}
+${line('Công việc lặp lại', brief.repeatedTask)}
+${line('Điểm kích hoạt', brief.trigger)}
+${line('Đầu vào hiện có', brief.currentInputs)}
+${line('Đầu ra cuối', brief.finalOutput)}
+${line('Người dùng đầu ra', brief.outputUser)}
+${line('Vướng mắc hiện tại', brief.currentFriction)}
+${line('Phạm vi', brief.scope)}
+${line('Không làm', brief.nonGoals)}
 
-## Ngân hàng tiếng nói khách hàng (Customer Voice Mini Bank)
+## Hồ sơ bối cảnh
 
-${evidenceRows}
+${line('Doanh nghiệp hoặc dự án', context.identityBusiness)}
+${line('Chuyên môn hoặc sản phẩm', context.expertiseOffer)}
+${line('Người nhận', context.intendedAudience)}
+${line('Điều đã biết', context.knownContext)}
+${line('Nhận định hiện tại', context.currentAssumptions)}
+${line('Giọng điệu', context.voice)}
+${line('Phải làm', context.mustDo)}
+${line('Không được làm', context.mustNot)}
+${line('Tài liệu tham chiếu', context.references)}
+${line('Khoảng trống', context.gaps)}
 
-## Thẻ nhiệm vụ nội dung (Content Job Card)
+## Hợp đồng đầu ra
 
-${line('Bằng chứng đã chọn', job.selectedEvidence)}
-${line('Nhiệm vụ nội dung', contentJobLabel(job.job))}
-${line('Niềm tin trước', job.beliefBefore)}
-${line('Chuyển dịch mong muốn', job.expectedShift)}
-${line('Hành động tiếp theo', job.nextAction)}
+${line('Người dùng', contract.audience)}
+${line('Mục đích', contract.purpose)}
+${line('Định dạng', contract.format)}
+${line('Cấu trúc', contract.structure)}
+${line('Phải có', contract.mustInclude)}
+${line('Phải tránh', contract.mustAvoid)}
+${line('Tiêu chí chất lượng', contract.qualityCriteria)}
+${line('Ví dụ không đạt', contract.antiExample)}
 
-## Bản giao việc nội dung dùng lại được (Reusable Content Brief)
+## Bản đồ workflow
 
-${line('Doanh nghiệp/sản phẩm', brief.businessOffer)}
-${line('Khách hàng', brief.customer)}
-${line('Hoàn cảnh', brief.situation)}
-${line('Điều họ đang nghĩ', brief.currentBelief)}
-${line('Điều muốn họ hiểu', brief.desiredUnderstanding)}
-${line('Nhiệm vụ nội dung', contentJobLabel(brief.contentJob))}
-${line('Ý chính', brief.coreMessage)}
-${line('Bằng chứng khách hàng', brief.customerEvidence)}
-${line('Bằng chứng hỗ trợ', brief.supportingProof)}
-${line('Giọng điệu', brief.voiceConstraints)}
-${line('Phải có', brief.mustInclude)}
-${line('Phải tránh', brief.mustAvoid)}
-${line('Lời kêu gọi hành động (CTA)', brief.callToAction)}
-${line('Định dạng', brief.format)}
-${line('Kênh', brief.channel)}
+${stages}
 
-## Câu lệnh quy trình nội dung v1 (Content Workflow Prompt)
+## Workflow có thể chạy
 
-${block(artifacts.workflowPrompt)}
+${block(runnableWorkflow)}
 
-## Các bản nháp đã đánh giá
+## Nhật ký chạy thử
 
-${draftRows}
+${line('Đầu vào thử', testRun.runInput)}
+${runEntries}
 
-${line('Nhật ký phản hồi quy trình', artifacts.workflowFeedback)}
+${line('Đánh giá đầu ra', testRun.outputReview)}
+${line('Loại lỗi chính', testRun.failureCategory ? failureLabels[testRun.failureCategory] : '')}
+${line('Lỗi lớn nhất', testRun.biggestFailure)}
+${line('Thay đổi đã làm', testRun.changeMade)}
+${line('Kết quả chạy lại', testRun.rerunResult)}
 
-## Bản tóm tắt quy trình nội dung một trang (One-Pager)
+## Bộ workflow hoàn chỉnh
 
-${line('Mục tiêu', onePager.goal)}
-${line('Đầu vào', onePager.inputs)}
-${line('Các bước', onePager.steps)}
-${line('Tiêu chuẩn', onePager.standards)}
-${line('AI làm', onePager.aiRole)}
-${line('Con người làm', onePager.humanRole)}
-${line('Nhịp dùng', onePager.cadence)}
-${line('Trạng thái dùng ngoài đời', publishStatusLabel(onePager.publishStatus))}
-${line('Địa chỉ web hoặc ghi chú', onePager.publishedUrlOrNote)}
-${line('Tín hiệu ban đầu', onePager.signalNote)}
+${line('Phiên bản', workflowKit.version)}
+${line('Mục đích', workflowKit.purpose)}
+${line('Chuẩn bị', workflowKit.preparation)}
+${line('Cách chạy', workflowKit.runGuide)}
+${line('Lỗi thường gặp', workflowKit.commonFailures)}
+${line('Khi nào cần cập nhật', workflowKit.updateTriggers)}
 
-## Kế hoạch nội dung 14 ngày
+## Bản thiết kế chuyển giao
 
-${planRows}
+${line('Workflow mới', transfer.workflowName)}
+${line('Kết quả', transfer.result)}
+${line('Bối cảnh', transfer.context)}
+${line('Hợp đồng đầu ra', transfer.outputContract)}
+${line('Các bước', transfer.stages)}
+${line('Điểm con người quyết định', transfer.humanDecisions)}
+${line('Kế hoạch chạy thử', transfer.testPlan)}
 `
 }
 
 export function starterKitFilename(now = new Date()): string {
   const stamp = now.toISOString().replace(/\.\d{3}Z$/, 'Z').replaceAll(':', '-')
-  return `bo-khoi-dau-quy-trinh-noi-dung-${stamp}.md`
+  return `bo-workflow-7-ngay-${stamp}.md`
 }

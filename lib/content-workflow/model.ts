@@ -291,12 +291,16 @@ function section(label: string, value: string): string {
   return `${label}:\n${value.trim() || '[CHƯA CÓ DỮ LIỆU]'}`
 }
 
+function stepRoleLabel(role: StepRole): string {
+  return ({ human: 'Con người thực hiện', ai: 'AI thực hiện', shared: 'AI và con người cùng làm', tool: 'Công cụ thực hiện', '': '' } as const)[role]
+}
+
 export function assembleRunnableWorkflow(state: ChallengeStateV2): string {
   const { workflowBrief: brief, contextPack: context, outputContract: contract, workflowMap, stepInstructions } = state.artifacts
   const instructions = workflowMap.map((stage, index) => {
     const item = stepInstructions.find(({ stageId }) => stage.id)
     return `BƯỚC ${index + 1} — ${stage.name.toLocaleUpperCase('vi')}
-${section('Vai trò thực hiện', item?.role ?? '')}
+${section('Vai trò thực hiện', stepRoleLabel(item?.role ?? ''))}
 ${section('Mục đích', item?.purpose ?? '')}
 ${section('Đầu vào', stage.input)}
 ${section('Cách thực hiện', item?.instruction ?? '')}

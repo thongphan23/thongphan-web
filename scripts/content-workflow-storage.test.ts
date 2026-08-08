@@ -2,8 +2,9 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 
 import { buildStarterKitMarkdown, starterKitFilename } from '../lib/content-workflow/export'
-import { createEmptyChallengeState, type ChallengeStateV1 } from '../lib/content-workflow/model'
+import { assembleRunnableWorkflow, createEmptyChallengeState, type ChallengeStateV2 } from '../lib/content-workflow/model'
 import {
+  CONTENT_WORKFLOW_LEGACY_STORAGE_KEY,
   CONTENT_WORKFLOW_STORAGE_KEY,
   clearChallengeState,
   parseChallengeState,
@@ -12,187 +13,124 @@ import {
   type StorageLike,
 } from '../lib/content-workflow/storage'
 
-function populatedState(): ChallengeStateV1 {
+function populatedState(): ChallengeStateV2 {
   const state = createEmptyChallengeState(new Date('2026-08-08T01:02:03.000Z'))
-  state.currentDay = 5
-  state.completedDays = [1, 2, 3, 4]
-  state.readiness = { offer: true, customer: true, evidence: true, channel: true }
-  state.artifacts.customerFocus = {
-    business: 'Studio Mộc',
-    offer: 'Gói hệ thống thông điệp',
-    customerGroup: 'Founder công ty dịch vụ có đội content nhỏ',
-    currentSituation: 'Founder vẫn phải sửa gần hết bài',
-    primaryProblem: 'Thiếu evidence và tiêu chuẩn chung',
-    desiredMovement: 'Đội ngũ tự tạo content đúng người',
-    focusStatement: 'Tôi tạo content cho founder công ty dịch vụ có đội content nhỏ khi họ vẫn phải sửa gần hết bài.',
+  state.currentDay = 6
+  state.completedDays = [1, 2, 3, 4, 5]
+  state.readiness = { outcome: true, materials: true, aiAccess: true, time: true }
+  state.artifacts.workflowBrief = {
+    workflowName: '<script>alert("x")</script> Workflow bài học',
+    repeatedTask: 'Biến một khái niệm thành bài học.', trigger: 'Khi chọn được khái niệm.',
+    currentInputs: 'Khái niệm, ghi chú.', finalOutput: 'Bài học hoàn chỉnh.', outputUser: 'First-Time Builder.',
+    currentFriction: 'Bắt đầu từ trang trắng.', scope: 'Một bài học chữ.', nonGoals: 'Không tạo video.',
   }
-  state.artifacts.evidenceBank = [{
-    id: 'evidence-1',
-    evidence: '“Thuê người viết rồi nhưng vẫn phải sửa hết.”',
-    context: 'Sales call tháng 7',
-    source: 'Sales call',
-    insight: 'Founder đang là nút thắt duyệt bài.',
-  }]
-  state.artifacts.evidencePlan = 'Phỏng vấn thêm bốn khách hàng.'
-  state.artifacts.contentJob = {
-    selectedEvidence: state.artifacts.evidenceBank[0].evidence,
-    job: 'understand-cause',
-    beliefBefore: 'Nhân viên viết chưa đủ tốt.',
-    expectedShift: 'Brief thiếu evidence mới là nguyên nhân cần sửa trước.',
-    nextAction: 'Audit ba brief gần nhất.',
+  state.artifacts.contextPack = {
+    identityBusiness: 'Conan School', expertiseOffer: 'Giúp người mới xây doanh nghiệp.', intendedAudience: 'First-Time Builder.',
+    knownContext: 'Học bằng cách xây.', currentAssumptions: 'Đã dùng AI theo từng task.', voice: 'Rõ ràng, thực tế.',
+    mustDo: 'Dùng tiếng Việt.', mustNot: 'Không bịa thông tin.', references: 'Trang chủ Conan School.', gaps: 'Cần phản hồi sau khi thử.',
   }
-  state.artifacts.contentBrief = {
-    businessOffer: 'Gói hệ thống thông điệp',
-    customer: 'Founder công ty dịch vụ',
-    situation: 'Vẫn phải sửa gần hết bài',
-    currentBelief: 'Nhân viên viết chưa đủ tốt',
-    desiredUnderstanding: 'Brief thiếu evidence là nguyên nhân gốc',
-    contentJob: 'understand-cause',
-    coreMessage: 'Brief yếu biến founder thành nút thắt.',
-    customerEvidence: state.artifacts.evidenceBank[0].evidence,
-    supportingProof: 'Ba brief gần nhất không ghi evidence.',
-    voiceConstraints: 'Thẳng, cụ thể.',
-    mustInclude: 'Một câu khách hàng.',
-    mustAvoid: 'Không bịa số liệu.',
-    callToAction: 'Audit ba brief.',
-    format: 'Bài 700 chữ',
-    channel: 'Facebook',
+  state.artifacts.outputContract = {
+    audience: 'Người mới.', purpose: 'Hiểu concept và làm được.', format: 'Bài học web.', structure: 'Bài toán, lý thuyết, thực hành.',
+    mustInclude: 'Ví dụ và sản phẩm.', mustAvoid: 'Thuật ngữ không giải thích.', qualityCriteria: 'Tự làm không cần hướng dẫn.', antiExample: 'Chỉ có lý thuyết.',
   }
-  state.artifacts.workflowPrompt = 'CONTENT WORKFLOW PROMPT\n'.repeat(20)
-  state.artifacts.drafts[0].draft = 'Bản draft đầu tiên có evidence và luận điểm rõ ràng.'
-  state.artifacts.drafts[0].revisionNote = 'Đưa evidence lên trước phần giải thích.'
-  state.artifacts.drafts[1].draft = 'Bản draft thứ hai có một bước hành động cụ thể.'
-  state.artifacts.drafts[1].revisionNote = 'Rút ngắn CTA và làm rõ customer.'
-  state.artifacts.workflowFeedback = 'AI thường giải thích dài; cần đưa evidence lên sớm.'
-  state.artifacts.onePager = {
-    goal: 'Tạo content giúp founder hiểu nguyên nhân.',
-    inputs: 'Customer Focus, evidence, Content Job và brief.',
-    steps: 'Chọn evidence; điền brief; chạy prompt; chọn góc; sửa.',
-    standards: 'Đúng người; một ý; có evidence.',
-    aiRole: 'Kiểm tra brief, gợi ý góc, outline và draft.',
-    humanRole: 'Chọn evidence, xác minh claim và quyết định đăng.',
-    cadence: 'Ba content mỗi tuần.',
-    publishStatus: 'sent',
-    publishedUrlOrNote: 'Đã gửi cho ba khách hàng.',
-    signalNote: 'Một người hỏi xin mẫu audit.',
-    selectedDraft: 'Draft 1',
+  state.artifacts.workflowMap = Array.from({ length: 4 }, (_, index) => ({
+    id: `stage-${index + 1}`, name: `Bước ${index + 1}`, input: 'Đầu vào rõ ràng.', transformation: 'Thao tác chuyển đổi.',
+    output: 'Đầu ra kiểm tra được.', humanDecision: index === 1 ? 'Con người chọn phương án.' : 'Không có quyết định thêm.',
+    qualityGate: index < 2 ? `Cổng ${index + 1}` : '',
+  }))
+  state.artifacts.stepInstructions = state.artifacts.workflowMap.map((stage, index) => ({
+    id: `instruction-${index + 1}`, stageId: stage.id, role: index === 1 ? 'human' : 'shared',
+    purpose: 'Hoàn thành đúng bước.', instruction: 'Dùng dữ liệu được cung cấp để xử lý.',
+    outputFormat: 'Một đoạn có nhãn.', selfCheck: 'Không thêm thông tin.', handoff: 'Chuyển toàn bộ sang bước sau.',
+  }))
+  state.artifacts.runnableWorkflow = assembleRunnableWorkflow(state)
+  state.artifacts.testRun = {
+    runInput: 'Một khái niệm mẫu.',
+    entries: state.artifacts.workflowMap.map((stage, index) => ({ id: `run-${index + 1}`, stageId: stage.id, output: 'Đầu ra thử nghiệm.', issue: 'Một vấn đề được ghi nhận.', intervention: 'Một can thiệp rõ ràng.' })),
+    finalContent: 'Đây là đầu ra cuối cùng đủ dài để người dùng đọc, kiểm tra và so sánh với hợp đồng đầu ra đã đặt ra từ trước.'.repeat(2),
+    outputReview: 'Đạt cấu trúc nhưng ví dụ còn chung.', failureCategory: 'instruction', biggestFailure: 'Hướng dẫn còn quá rộng.',
+    changeMade: 'Bổ sung tiêu chí phân biệt.', rerunResult: 'Kết quả chạy lại rõ ràng hơn.',
   }
-  state.artifacts.fourteenDayPlan = [{
-    id: 'plan-1', evidence: 'Một câu hỏi từ sales call', job: 'recognize-problem', publishDate: '2026-08-10',
-  }]
+  state.artifacts.workflowKit = {
+    version: '1.0', purpose: 'Tạo bài học.', preparation: 'Chuẩn bị khái niệm và bối cảnh.', runGuide: 'Chạy từng bước và dừng để duyệt.',
+    commonFailures: 'Thiếu bối cảnh.', updateTriggers: 'Đổi khi đối tượng thay đổi.',
+    transferBlueprint: {
+      workflowName: 'Workflow xử lý biên bản họp', result: 'Danh sách việc có người phụ trách.', context: 'Dự án và thành viên.',
+      outputContract: 'Mỗi việc có chủ sở hữu.', stages: 'Nhận, tách, kiểm, gửi.', humanDecisions: 'Xác nhận người chịu trách nhiệm.', testPlan: 'Thử với một cuộc họp.',
+    },
+  }
   return state
 }
 
 class MemoryStorage implements StorageLike {
   data = new Map<string, string>()
   calls: Array<[method: string, key: string]> = []
-
-  getItem(key: string): string | null {
-    this.calls.push(['get', key])
-    return this.data.get(key) ?? null
-  }
-
-  setItem(key: string, value: string): void {
-    this.calls.push(['set', key])
-    this.data.set(key, value)
-  }
-
-  removeItem(key: string): void {
-    this.calls.push(['remove', key])
-    this.data.delete(key)
-  }
+  getItem(key: string) { this.calls.push(['get', key]); return this.data.get(key) ?? null }
+  setItem(key: string, value: string) { this.calls.push(['set', key]); this.data.set(key, value) }
+  removeItem(key: string) { this.calls.push(['remove', key]); this.data.delete(key) }
 }
 
-test('storage key is stable and parser round-trips an exact valid state', () => {
-  assert.equal(CONTENT_WORKFLOW_STORAGE_KEY, 'tp.content-workflow-7days.v1')
+test('schema v2 uses a new isolated key and round-trips exactly', () => {
+  assert.equal(CONTENT_WORKFLOW_STORAGE_KEY, 'tp.content-workflow-7days.v2')
+  assert.equal(CONTENT_WORKFLOW_LEGACY_STORAGE_KEY, 'tp.content-workflow-7days.v1')
   const state = populatedState()
   assert.deepEqual(parseChallengeState(JSON.stringify(state)), state)
 })
 
-test('parser fails closed for malformed, stale or structurally unsafe data', () => {
+test('parser fails closed for malformed, legacy, duplicate or unsafe data', () => {
   const state = populatedState()
   const invalidValues: unknown[] = [
-    null,
-    [],
-    { ...state, schemaVersion: 2 },
-    { ...state, updatedAt: 'not-a-date' },
-    { ...state, currentDay: 8 },
-    { ...state, completedDays: [1, 1] },
-    { ...state, completedDays: [0, 1] },
-    { ...state, readiness: { offer: true } },
-    { ...state, unexpected: true },
+    null, [], { ...state, schemaVersion: 1 }, { ...state, updatedAt: 'not-a-date' }, { ...state, currentDay: 8 },
+    { ...state, completedDays: [1, 1] }, { ...state, readiness: { outcome: true } }, { ...state, unexpected: true },
     { ...state, artifacts: { ...state.artifacts, unexpected: true } },
-    { ...state, artifacts: { ...state.artifacts, evidenceBank: Array.from({ length: 21 }, () => state.artifacts.evidenceBank[0]) } },
-    { ...state, artifacts: { ...state.artifacts, drafts: state.artifacts.drafts.slice(0, 2) } },
-    { ...state, artifacts: { ...state.artifacts, fourteenDayPlan: Array.from({ length: 15 }, () => state.artifacts.fourteenDayPlan[0]) } },
-    { ...state, artifacts: { ...state.artifacts, workflowPrompt: 'x'.repeat(20_001) } },
-    { ...state, artifacts: { ...state.artifacts, customerFocus: { ...state.artifacts.customerFocus, offer: 12 } } },
+    { ...state, artifacts: { ...state.artifacts, workflowMap: Array.from({ length: 8 }, () => state.artifacts.workflowMap[0]) } },
+    { ...state, artifacts: { ...state.artifacts, runnableWorkflow: 'x'.repeat(20_001) } },
+    { ...state, artifacts: { ...state.artifacts, workflowBrief: { ...state.artifacts.workflowBrief, scope: 12 } } },
   ]
-
   for (const invalid of invalidValues) {
-    const parsed = parseChallengeState(typeof invalid === 'string' ? invalid : JSON.stringify(invalid))
-    assert.equal(parsed.schemaVersion, 1)
+    const parsed = parseChallengeState(JSON.stringify(invalid))
+    assert.equal(parsed.schemaVersion, 2)
     assert.equal(parsed.currentDay, 1)
     assert.deepEqual(parsed.completedDays, [])
   }
-
-  assert.deepEqual(parseChallengeState('{broken'), createEmptyChallengeState(new Date(parseChallengeState('{broken').updatedAt)))
+  assert.equal(parseChallengeState('{broken').currentDay, 1)
 })
 
-test('read, write and clear touch exactly the approved key', () => {
+test('read and write touch v2 only, while reset clears v1 and v2 explicitly', () => {
   const storage = new MemoryStorage()
   const state = populatedState()
-
+  storage.data.set(CONTENT_WORKFLOW_LEGACY_STORAGE_KEY, '{"schemaVersion":1}')
   assert.equal(writeChallengeState(state, storage), true)
   assert.deepEqual(storage.calls, [['set', CONTENT_WORKFLOW_STORAGE_KEY]])
   assert.deepEqual(readChallengeState(storage), state)
   assert.deepEqual(storage.calls.at(-1), ['get', CONTENT_WORKFLOW_STORAGE_KEY])
   assert.equal(clearChallengeState(storage), true)
-  assert.deepEqual(storage.calls.at(-1), ['remove', CONTENT_WORKFLOW_STORAGE_KEY])
+  assert.deepEqual(storage.calls.slice(-2), [['remove', CONTENT_WORKFLOW_STORAGE_KEY], ['remove', CONTENT_WORKFLOW_LEGACY_STORAGE_KEY]])
   assert.equal(storage.data.size, 0)
 })
 
 test('storage failures never throw and return safe status values', () => {
-  const broken: StorageLike = {
-    getItem() { throw new Error('blocked') },
-    setItem() { throw new Error('quota') },
-    removeItem() { throw new Error('blocked') },
-  }
-
+  const broken: StorageLike = { getItem() { throw new Error('blocked') }, setItem() { throw new Error('quota') }, removeItem() { throw new Error('blocked') } }
   assert.doesNotThrow(() => readChallengeState(broken))
   assert.equal(readChallengeState(broken).currentDay, 1)
   assert.equal(writeChallengeState(populatedState(), broken), false)
   assert.equal(clearChallengeState(broken), false)
 })
 
-test('Markdown export has all eight artifact sections and neutralizes HTML-like input', () => {
-  const state = populatedState()
-  state.artifacts.customerFocus.business = '<script>alert("x")</script> Studio Mộc'
-  const markdown = buildStarterKitMarkdown(state)
-
+test('Markdown export contains seven artifacts, transfer blueprint and safe text', () => {
+  const markdown = buildStarterKitMarkdown(populatedState())
   for (const heading of [
-    'Thẻ trọng tâm khách hàng',
-    'Ngân hàng tiếng nói khách hàng',
-    'Thẻ nhiệm vụ nội dung',
-    'Bản giao việc nội dung dùng lại được',
-    'Câu lệnh quy trình nội dung v1',
-    'Các bản nháp đã đánh giá',
-    'Bản tóm tắt quy trình nội dung một trang',
-    'Kế hoạch nội dung 14 ngày',
-  ]) {
-    assert.match(markdown, new RegExp(`## ${heading}`))
-  }
+    'Bản mô tả workflow', 'Hồ sơ bối cảnh', 'Hợp đồng đầu ra', 'Bản đồ workflow',
+    'Workflow có thể chạy', 'Nhật ký chạy thử', 'Bộ workflow hoàn chỉnh', 'Bản thiết kế chuyển giao',
+  ]) assert.match(markdown, new RegExp(`## ${heading}`))
   assert.doesNotMatch(markdown, /<script>/i)
   assert.match(markdown, /&lt;script&gt;/)
   assert.match(markdown, /Dữ liệu được tải từ trình duyệt/)
-  assert.doesNotMatch(markdown, /\b(?:recognize-problem|understand-cause|try-next-step|published|sent)\b/)
-  assert.match(markdown, /Hiểu nguyên nhân/)
-  assert.match(markdown, /Đã gửi trực tiếp/)
+  assert.doesNotMatch(markdown, /failureCategory|stepInstructions|shared/)
+  assert.match(markdown, /Lỗi ở hướng dẫn/)
+  assert.match(markdown, /AI và con người cùng làm/)
 })
 
 test('filename is deterministic, UTC-safe and filesystem friendly', () => {
-  assert.equal(
-    starterKitFilename(new Date('2026-08-08T01:02:03.456Z')),
-    'bo-khoi-dau-quy-trinh-noi-dung-2026-08-08T01-02-03Z.md',
-  )
+  assert.equal(starterKitFilename(new Date('2026-08-08T01:02:03.456Z')), 'bo-workflow-7-ngay-2026-08-08T01-02-03Z.md')
 })
