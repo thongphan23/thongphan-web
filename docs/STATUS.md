@@ -2,6 +2,38 @@
 
 Last updated: 2026-08-13
 
+## VID Video-First Foundation — PARTIAL / BLOCKED_AT_WORKER_CUTOVER — 2026-08-13
+
+- Task 6 local verification is green: focused VID `97/97`, canonical full suite
+  `556/556`, release-gate contract `2/2`, bundle `3/3`, root and Worker
+  TypeScript, zero-warning lint, `88/88` build, secret scan, clean VID Worker
+  dry-run and five-viewport rendered QA all exit 0.
+- Production D1 migration `0002_vid_presentation.sql` applied successfully after
+  Time Travel bookmark
+  `00000016-00000048-000050c5-88b5feeddd4d4f4439cbc7d12272ac3f`.
+  Postflight preserves 4/4 videos and 4/4 `published/ready` rows, backfills all
+  focal values to `50/24`, reports zero invalid focal values and leaves no
+  unapplied VID migration.
+- Immutable Pages deployment `f280fa39-dbb8-4031-9955-b80bd7d3b45b` serves
+  source `600c2fb` at `https://f280fa39.thongphan-com.pages.dev`; home and watch
+  HTML are byte-identical with the verified local artifact. No Pages main/apex
+  or Learn deployment occurred.
+- The execution safety reviewer rejected the exact scoped production
+  `thongphan-vid` Worker deploy twice because task-relayed approval was not
+  accepted as a fresh authenticated user message. No workaround was attempted.
+  Active production therefore remains Worker version
+  `e9fedb7c-e756-4418-aa26-a15a64afc980` / deployment
+  `3f64a6c4-7b90-492a-a179-2d0cef5be750` at 100% traffic and continues serving
+  the prior page-shaped API.
+- No rollback was required: Worker traffic did not change; the new Pages artifact
+  is an unreferenced preview; migration `0002` is healthy and additive. Real
+  foundation cursor exhaustion, 390/1440 production hero, source-link/browser
+  console and Bunny GUID `f6c61cfc-4135-4b1c-a99e-130cba6b3196` playback/resume
+  evidence remain blocked at Worker cutover.
+- Evidence: `docs/qa/VID_VIDEO_FIRST_FOUNDATION_REPORT.md`,
+  `docs/releases/VID_VIDEO_FIRST_FOUNDATION_RELEASE_REPORT.md` and
+  `docs/STUCK_REPORT-2026-08-13-vid-worker-deploy-approval.md`.
+
 ## VID Video-First Intelligence & Watching Path — DESIGN APPROVED — 2026-08-12
 
 - The next VID release is now scoped video-first: completed video must be able to

@@ -12,7 +12,7 @@ pattern = "vid.thongphan.com/*"
 zone_name = "thongphan.com"
 
 [vars]
-PAGES_ORIGIN = "https://6e11cd9a.thongphan-com.pages.dev"
+PAGES_ORIGIN = "https://f280fa39.thongphan-com.pages.dev"
 BUNNY_LIBRARY_ID = "726519"
 BUNNY_CDN_HOST = "vz-1fb1e85d-0d0.b-cdn.net"
 
@@ -29,7 +29,7 @@ preview_urls = true
 routes = []
 
 [env.preview.vars]
-PAGES_ORIGIN = "https://6e11cd9a.thongphan-com.pages.dev"
+PAGES_ORIGIN = "https://f280fa39.thongphan-com.pages.dev"
 BUNNY_LIBRARY_ID = "726519"
 BUNNY_CDN_HOST = "vz-1fb1e85d-0d0.b-cdn.net"
 
