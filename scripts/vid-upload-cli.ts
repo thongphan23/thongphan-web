@@ -1,7 +1,9 @@
 import { lstat, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { parseArgs } from 'node:util'
+import { validateUploadManifest } from '../lib/vid/upload-manifest'
 import { runVidUpload } from './vid-upload'
+import { runVidUploadBatch } from './vid-upload-batch'
 
 async function readTextFile(filePath: string, label: string): Promise<string> {
   if (!path.isAbsolute(filePath)) throw new Error(`${label} path must be absolute`)
@@ -13,7 +15,7 @@ async function readTextFile(filePath: string, label: string): Promise<string> {
 }
 
 async function main() {
-  const { values } = parseArgs({
+  const { values, tokens } = parseArgs({
     options: {
       file: { type: 'string' },
       slug: { type: 'string' },
@@ -31,9 +33,34 @@ async function main() {
       'base-url': { type: 'string', default: 'https://vid.thongphan.com' },
       publish: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
+      manifest: { type: 'string' },
     },
     strict: true,
+    tokens: true,
   })
+  if (values.manifest) {
+    const singleFileFlags = new Set(['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'rights-status', 'rights-note-file', 'topic', 'tag', 'playlist', 'base-url', 'publish'])
+    for (const token of tokens) {
+      if (token.kind === 'option' && singleFileFlags.has(token.name)) {
+        throw new Error(`--manifest cannot be combined with --${token.name}`)
+      }
+    }
+    const manifestText = await readTextFile(values.manifest, 'Manifest')
+    let parsed: unknown
+    try {
+      parsed = JSON.parse(manifestText)
+    } catch {
+      throw new Error('Manifest must be valid JSON')
+    }
+    const manifest = validateUploadManifest(parsed)
+    const effectiveManifest = values['dry-run']
+      ? { ...manifest, videos: manifest.videos.map((video) => ({ ...video, dryRun: true })) }
+      : manifest
+    const result = await runVidUploadBatch(effectiveManifest, { runUpload: runVidUpload })
+    console.log(JSON.stringify(result))
+    if (result.failed.length > 0) process.exitCode = 1
+    return
+  }
   const required = ['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'rights-note-file'] as const
   for (const key of required) if (!values[key]) throw new Error(`Missing --${key}`)
   const result = await runVidUpload({
