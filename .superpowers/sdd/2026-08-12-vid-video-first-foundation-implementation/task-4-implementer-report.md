@@ -5,7 +5,9 @@
 PASS for Task 4 — implementation commits:
 
 - `405319424c59e9fa48aa56c146dca579ba01af5f` — initial implementation;
-- `b0485f00291629257914a3d14ec98354b2525cec` — review-round safety fixes.
+- `b0485f00291629257914a3d14ec98354b2525cec` — review-round safety fixes;
+- `253698ef875e33f4d617d94e71e1ccccd7da67fb` — review-round 2 direct-upload
+  and staging-race fixes.
 
 ## Scope delivered
 
@@ -28,15 +30,30 @@ PASS for Task 4 — implementation commits:
   `npm run vid:upload-batch -- /absolute/path/manifest.json --dry-run`; the
   package script has no incomplete hardcoded `--manifest` argument. The
   non-canonical package `--manifest` form fails with direct guidance.
-- Manifest signing origin is exactly `https://vid.thongphan.com`; arbitrary
-  HTTPS origins, paths, queries, fragments and credentials are rejected before
-  any secret or network dependency can run.
+- Manifest and direct single-upload signing origin is exactly
+  `https://vid.thongphan.com`; arbitrary HTTPS origins, paths, queries,
+  fragments and credentials are rejected before any secret or network
+  dependency can run.
 - Whole-manifest preflight records each source device/inode/size/mtime. At use,
-  one video at a time is opened with `O_RDONLY | O_NOFOLLOW`, checked against
-  that identity, copied from the bound descriptor into a process-private 0700
-  directory and 0600 file, rechecked, made read-only, then cleaned in `finally`.
-  A pre-open replacement fails closed; a post-open path swap cannot redirect
-  the descriptor bytes. Dry-run performs no staging.
+  `runVidUpload` opens one video at a time with `O_RDONLY | O_NOFOLLOW`, checks
+  it against that identity, and copies exactly the opened `fstat` size from the
+  bound descriptor into a process-private 0700 directory and 0600 file. It
+  rejects short, growing or identity-changing sources and verifies the staged
+  size before any secret or network access. A pre-open replacement fails
+  closed; a post-open path swap cannot redirect the descriptor bytes. Dry-run
+  performs no staging, and batch no longer performs a redundant second stage.
+- The explicit operator ceiling is 50 GiB per video. Manifest preflight and
+  direct upload both reject larger files before opening a staging target, while
+  the exact-byte copy bound prevents a growing or sparse oversized source from
+  consuming unbounded temporary disk.
+- The content digest is computed during descriptor-bound staging and provides
+  both the existing idempotency key and an explicit stable TUS resume
+  fingerprint. The random temporary path therefore does not break
+  `FileUrlStorage` resume identity.
+- Secure stage cleanup is always attempted after runtime success or failure.
+  Cleanup failure prevents a success result; a simultaneous upload and cleanup
+  failure becomes the sanitized explicit reason
+  `Secure video staging cleanup failed after upload failure`.
 - Custom focal metadata now reaches the new Worker draft/catalog path. A legacy
   Worker compatibility retry is allowed only for the exact 50/24 defaults and
   emits an explicit safe log; custom focal values such as 17/83 fail before TUS
@@ -57,18 +74,27 @@ produced an ambiguous parser error. Focal tests then failed because 17/83 were
 stripped, the default-only legacy fallback did not exist, and custom focal
 metadata could be silently lost against an older Worker.
 
+Review-round 2 RED isolated four direct-path gaps before implementation:
+arbitrary direct origins reached the fetch dependency; a sparse file above the
+operator ceiling was accepted; direct upload passed the original pathname to
+TUS; and cleanup failure was ignored. A second RED proved the whole-manifest
+preflight identity was not being carried to per-video use (`secretReads` became
+1 after replacing the regular file), and a cleanup-reporting RED returned the
+generic `Upload failed` instead of the sanitized combined cleanup failure.
+
 ## GREEN evidence
 
 | Command | Result |
 | --- | --- |
-| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts scripts/vid-worker.test.ts` | PASS, 34/34 |
-| `npm run vid:upload-batch -- /private/tmp/vid-manifest-fixture.json --dry-run` | PASS, output `{"published":[],"uploaded":[],"failed":[]}`; two items validated with zero staging/network/secret work |
-| `npx tsc --noEmit` | PASS |
+| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts scripts/vid-worker.test.ts` | PASS, 42/42 |
+| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts` | PASS, final rerun 30/30 |
+| `npm run vid:upload-batch -- /private/tmp/vid-task4-manifest.json --dry-run` | PASS, output `{"published":[],"uploaded":[],"failed":[]}`; two absolute `/private/tmp` items validated with zero staging/network/secret work |
+| `npx tsc --noEmit --incremental false` | PASS |
 | `npm run typecheck:vid-worker` | PASS |
 | `npm run lint` | PASS |
 | `npm run build` | PASS, 88/88 static pages |
 | `npm run test:secret-integrity` | PASS |
-| `npm test` | PARTIAL, canonical command includes and passes all 16 Task 4 batch tests; total 537/543 pass. Five unrelated environment failures are sandbox-denied Chromium Mach port / Wrangler localhost binds, and one pre-existing Task 6 release-gate source contract still expects `/320/`. |
+| `npm test` | PARTIAL, canonical command includes and passes all 18 Task 4 batch tests and all 12 direct upload tests; total 545/551 pass. Five unrelated environment failures are sandbox-denied Chromium Mach port / Wrangler localhost binds, and one Task 6 release-gate source contract still expects `/320/`; Task 6 owns that contract. |
 
 ## Protected concurrent changes
 
@@ -77,3 +103,7 @@ committed independently as `4dd0b4d`. Only after the parent explicitly reopened
 those files were they changed in the review fix, with tests for both legacy
 default compatibility and new-Worker 17/83 preservation. No live Bunny request,
 deployment, or other network mutation was made.
+
+The round-2 commit contains only the five Task 4 code/test files. The generated
+`tsconfig.tsbuildinfo` verification hunk was restored before commit. No live
+Bunny request, deploy, or production mutation was performed.
