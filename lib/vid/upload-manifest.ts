@@ -23,6 +23,7 @@ export type UploadManifestPreflight = {
 }
 
 export const VID_PRODUCTION_ORIGIN = 'https://vid.thongphan.com'
+export const MAX_VIDEO_FILE_BYTES = 50 * 1024 ** 3
 
 const ROOT_KEYS = new Set(['version', 'videos'])
 const VIDEO_KEYS = new Set([
@@ -88,6 +89,7 @@ function regularMp4Path(value: unknown): { filePath: string; identity: UploadFil
   if (details.isSymbolicLink()) throw new Error('Video file must not be a symlink')
   if (!details.isFile()) throw new Error('Video path must be a file')
   if (details.size <= 0) throw new Error('Video file is empty')
+  if (details.size > MAX_VIDEO_FILE_BYTES) throw new Error('Video file must not exceed 50 GiB')
   return {
     filePath: value,
     identity: { device: details.dev, inode: details.ino, size: details.size, modifiedAt: details.mtimeMs },

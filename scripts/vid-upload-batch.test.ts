@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict'
 import { spawn } from 'node:child_process'
-import { access, mkdtemp, open, readFile, rename, symlink, writeFile } from 'node:fs/promises'
+import { mkdtemp, rename, symlink, truncate, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
 import { validateUploadManifest, type VidUploadManifest } from '../lib/vid/upload-manifest'
 import { runVidUploadBatch } from './vid-upload-batch'
-import type { VidUploadOptions } from './vid-upload'
+import { runVidUpload, type VidUploadOptions } from './vid-upload'
 
 const metadata = {
   title: 'Tư duy AI',
@@ -114,6 +114,12 @@ test('manifest rejects duplicate slugs, non-regular paths, and more than 100 row
   assert.throws(() => validateUploadManifest(oversized), /at most 100/)
 })
 
+test('manifest preflight rejects a video above the 50 GiB operator ceiling', async () => {
+  const fixture = await fixtureManifest() as { version: number; videos: Array<Record<string, unknown>> }
+  await truncate(fixture.videos[0]!.filePath as string, 50 * 1024 ** 3 + 1)
+  assert.throws(() => validateUploadManifest(fixture), /must not exceed 50 GiB/)
+})
+
 test('batch validates all rows before upload and continues independent failures sequentially', async () => {
   const manifest = validateUploadManifest(await fixtureManifest(['video-a', 'video-b', 'video-c']))
   const started: string[] = []
@@ -137,6 +143,28 @@ test('batch validates all rows before upload and continues independent failures 
   assert.deepEqual(result.uploaded, ['video-c'])
   assert.deepEqual(result.failed, [{ slug: 'video-b', reason: 'Bunny processing failed' }])
   assert.equal(maxConcurrentUploads, 1)
+})
+
+test('batch fails closed when a regular source is replaced after whole-manifest preflight', async () => {
+  const manifest = await fixtureManifest() as VidUploadManifest
+  const sourcePath = manifest.videos[0]!.filePath
+  const movedPath = `${sourcePath}.original`
+  let secretReads = 0
+
+  const result = await runVidUploadBatch(manifest, {
+    runUpload: async (options, overrides) => {
+      await rename(sourcePath, movedPath)
+      await writeFile(sourcePath, Buffer.alloc(512, 9))
+      return runVidUpload(options, {
+        ...overrides,
+        readSecret: async () => { secretReads += 1; throw new Error('must not read secret') },
+        fetch: async () => { throw new Error('must not use network') },
+      })
+    },
+  })
+
+  assert.deepEqual(result.failed, [{ slug: 'video-a', reason: 'Upload failed' }])
+  assert.equal(secretReads, 0)
 })
 
 test('batch preserves custom focal metadata for the per-video upload path', async () => {
@@ -168,13 +196,10 @@ test('batch never calls upload for an invalid manifest and does not call dry-run
 
   const dryRun = validateUploadManifest(await fixtureManifest())
   dryRun.videos[0]!.dryRun = true
-  let secureOpenCalls = 0
   const dryRunResult = await runVidUploadBatch(dryRun, {
-    openSource: async () => { secureOpenCalls += 1; throw new Error('dry-run must not stage') },
     runUpload: async () => ({ status: 'dry-run' as const, fileSize: 512, slug: 'video-a' }),
   })
   assert.deepEqual(dryRunResult, { published: [], uploaded: [], failed: [] })
-  assert.equal(secureOpenCalls, 0)
 })
 
 test('batch returns a safe failure reason and does not retry a failed video', async () => {
@@ -190,72 +215,30 @@ test('batch returns a safe failure reason and does not retry a failed video', as
   assert.equal(calls, 1)
 })
 
-test('batch uploads bytes from the securely opened descriptor when source path is swapped after open', async () => {
-  const manifest = validateUploadManifest(await fixtureManifest())
-  const sourcePath = manifest.videos[0]!.filePath
-  const movedPath = `${sourcePath}.original`
-  const attackerPath = path.join(path.dirname(sourcePath), 'attacker.mp4')
-  await writeFile(attackerPath, Buffer.alloc(512, 9))
-  let stagedPath = ''
-  let uploadedBytes = Buffer.alloc(0)
-
-  const result = await runVidUploadBatch(manifest, {
-    openSource: async (filePath, flags) => {
-      const handle = await open(filePath, flags)
-      await rename(filePath, movedPath)
-      await symlink(attackerPath, filePath)
-      return handle
-    },
-    runUpload: async (options) => {
-      stagedPath = options.filePath
-      uploadedBytes = await readFile(options.filePath)
-      return { status: 'uploaded' as const, operationId: 'op', videoId: 'id' }
-    },
-  })
-
-  assert.deepEqual(result, { published: [], uploaded: ['video-a'], failed: [] })
-  assert.notEqual(stagedPath, sourcePath)
-  assert.deepEqual(uploadedBytes, Buffer.alloc(512, 1))
-  await assert.rejects(() => access(stagedPath), /ENOENT/)
-})
-
-test('batch fails closed when source becomes a symlink before secure open', async () => {
-  const manifest = validateUploadManifest(await fixtureManifest())
-  const sourcePath = manifest.videos[0]!.filePath
-  const movedPath = `${sourcePath}.original`
-  const attackerPath = path.join(path.dirname(sourcePath), 'attacker.mp4')
-  await writeFile(attackerPath, Buffer.alloc(512, 9))
-  let uploadCalls = 0
-
-  const result = await runVidUploadBatch(manifest, {
-    openSource: async (filePath, flags) => {
-      await rename(filePath, movedPath)
-      await symlink(attackerPath, filePath)
-      return open(filePath, flags)
-    },
-    runUpload: async () => { uploadCalls += 1; return { status: 'uploaded' as const, operationId: 'op', videoId: 'id' } },
-  })
-
-  assert.deepEqual(result, { published: [], uploaded: [], failed: [{ slug: 'video-a', reason: 'Upload failed' }] })
-  assert.equal(uploadCalls, 0)
-})
-
-test('batch stages and cleans only one video at a time', async () => {
+test('batch reports a secure cleanup failure and continues the next independent video', async () => {
   const manifest = validateUploadManifest(await fixtureManifest(['video-a', 'video-b']))
-  const sourcePaths = manifest.videos.map((video) => video.filePath)
-  const stagedPaths: string[] = []
-
   const result = await runVidUploadBatch(manifest, {
     runUpload: async (options) => {
-      assert.equal(sourcePaths.includes(options.filePath), false)
-      if (stagedPaths[0]) await assert.rejects(() => access(stagedPaths[0]!), /ENOENT/)
-      stagedPaths.push(options.filePath)
+      if (options.slug === 'video-a') throw new Error('Secure video staging cleanup failed')
       return { status: 'uploaded' as const, operationId: 'op', videoId: 'id' }
     },
   })
+  assert.deepEqual(result, {
+    published: [],
+    uploaded: ['video-b'],
+    failed: [{ slug: 'video-a', reason: 'Secure video staging cleanup failed' }],
+  })
+})
 
-  assert.deepEqual(result, { published: [], uploaded: ['video-a', 'video-b'], failed: [] })
-  for (const stagedPath of stagedPaths) await assert.rejects(() => access(stagedPath), /ENOENT/)
+test('batch preserves the sanitized combined cleanup failure reason', async () => {
+  const manifest = validateUploadManifest(await fixtureManifest())
+  const result = await runVidUploadBatch(manifest, {
+    runUpload: async () => { throw new Error('Secure video staging cleanup failed after upload failure') },
+  })
+  assert.deepEqual(result.failed, [{
+    slug: 'video-a',
+    reason: 'Secure video staging cleanup failed after upload failure',
+  }])
 })
 
 test('CLI dry-run validates a manifest without invoking the single-file mode', async () => {
@@ -284,6 +267,31 @@ test('CLI rejects a manifest mixed with an explicit single-file metadata flag', 
   const result = await runCli('--manifest', manifestPath, '--rights-status', 'owned')
   assert.equal(result.code, 1)
   assert.match(result.stderr, /--manifest cannot be combined with --rights-status/)
+})
+
+test('direct CLI rejects an arbitrary signing origin', async () => {
+  const directory = await mkdtemp(path.join(os.tmpdir(), 'vid-upload-cli-'))
+  const filePath = path.join(directory, 'video.mp4')
+  const descriptionPath = path.join(directory, 'description.txt')
+  const rightsNotePath = path.join(directory, 'rights-note.txt')
+  await writeFile(filePath, Buffer.alloc(512, 1))
+  await writeFile(descriptionPath, metadata.description)
+  await writeFile(rightsNotePath, metadata.rightsNote)
+  const result = await runCli(
+    '--file', filePath,
+    '--slug', 'video-a',
+    '--title', metadata.title,
+    '--description-file', descriptionPath,
+    '--source-title', metadata.sourceTitle,
+    '--source-creator', metadata.sourceCreator,
+    '--source-creator-url', metadata.sourceCreatorUrl,
+    '--source-url', metadata.sourceVideoUrl,
+    '--rights-note-file', rightsNotePath,
+    '--base-url', 'https://attacker.example',
+    '--dry-run',
+  )
+  assert.equal(result.code, 1)
+  assert.match(result.stderr, /base URL must be https:\/\/vid\.thongphan\.com/)
 })
 
 test('package batch command takes one absolute positional manifest path', async () => {

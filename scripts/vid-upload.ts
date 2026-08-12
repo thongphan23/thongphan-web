@@ -1,10 +1,11 @@
 import { createHash, createHmac, randomUUID as nodeRandomUUID } from 'node:crypto'
-import { createReadStream } from 'node:fs'
-import { lstat, mkdir, open } from 'node:fs/promises'
+import { constants, createReadStream, type Stats } from 'node:fs'
+import { chmod, lstat, mkdir, mkdtemp, open, rmdir, unlink, type FileHandle } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import * as tus from 'tus-js-client'
 import { validateDraftInput, type RightsStatus } from '../lib/vid/contracts'
+import { MAX_VIDEO_FILE_BYTES, VID_PRODUCTION_ORIGIN, type UploadFileIdentity } from '../lib/vid/upload-manifest'
 import { readVidAdminSecret } from './vid-keychain'
 
 export type VidUploadOptions = {
@@ -40,9 +41,19 @@ export type TusCredentials = {
 type UploadRequest = {
   filePath: string
   fileSize: number
+  resumeFingerprint: string
   title: string
   credentials: TusCredentials
   onProgress: (percent: number) => void
+}
+
+type FilePreflight = UploadFileIdentity
+
+type SecureStage = {
+  directory: string
+  filePath: string
+  fileSize: number
+  digest: string
 }
 
 type VidUploadDependencies = {
@@ -54,6 +65,9 @@ type VidUploadDependencies = {
   sleep: (milliseconds: number) => Promise<void>
   log: (message: string) => void
   maxPolls: number
+  openSource: (filePath: string, flags: number) => Promise<FileHandle>
+  cleanupStage: (stage: SecureStage) => Promise<void>
+  expectedFileIdentity?: UploadFileIdentity
 }
 
 const defaultDependencies: VidUploadDependencies = {
@@ -65,9 +79,11 @@ const defaultDependencies: VidUploadDependencies = {
   sleep: (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)),
   log: console.log,
   maxPolls: 120,
+  openSource: (filePath, flags) => open(filePath, flags),
+  cleanupStage: cleanupSecureStage,
 }
 
-async function validateFile(filePath: string): Promise<number> {
+async function validateFile(filePath: string): Promise<FilePreflight> {
   if (!path.isAbsolute(filePath)) throw new Error('Video path must be absolute')
   if (path.extname(filePath).toLowerCase() !== '.mp4') throw new Error('Video file must end in .mp4')
   const details = await lstat(filePath).catch(() => null)
@@ -75,19 +91,124 @@ async function validateFile(filePath: string): Promise<number> {
   if (details.isSymbolicLink()) throw new Error('Video file must not be a symlink')
   if (!details.isFile()) throw new Error('Video path must be a file')
   if (details.size <= 0) throw new Error('Video file is empty')
-  return details.size
+  if (details.size > MAX_VIDEO_FILE_BYTES) throw new Error('Video file must not exceed 50 GiB')
+  return { device: details.dev, inode: details.ino, size: details.size, modifiedAt: details.mtimeMs }
 }
 
-async function fileDigest(filePath: string): Promise<string> {
-  const digest = createHash('sha256')
-  for await (const chunk of createReadStream(filePath)) digest.update(chunk)
-  return digest.digest('hex')
+function matchesPreflight(details: Stats, preflight: FilePreflight): boolean {
+  return details.isFile()
+    && details.dev === preflight.device
+    && details.ino === preflight.inode
+    && details.size === preflight.size
+    && details.mtimeMs === preflight.modifiedAt
 }
 
 function safeBaseUrl(value: string): string {
-  const parsed = new URL(value)
-  if (parsed.protocol !== 'https:') throw new Error('Vid base URL must use HTTPS')
-  return parsed.origin
+  let parsed: URL
+  try {
+    parsed = new URL(value)
+  } catch {
+    throw new Error(`Vid base URL must be ${VID_PRODUCTION_ORIGIN}`)
+  }
+  if (
+    parsed.origin !== VID_PRODUCTION_ORIGIN
+    || parsed.pathname !== '/'
+    || parsed.search
+    || parsed.hash
+    || parsed.username
+    || parsed.password
+  ) throw new Error(`Vid base URL must be ${VID_PRODUCTION_ORIGIN}`)
+  return VID_PRODUCTION_ORIGIN
+}
+
+async function cleanupSecureStage(stage: SecureStage): Promise<void> {
+  let failure: unknown
+  try {
+    await unlink(stage.filePath)
+  } catch (error) {
+    if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) failure = error
+  }
+  try {
+    await rmdir(stage.directory)
+  } catch (error) {
+    if (!(error instanceof Error && 'code' in error && error.code === 'ENOENT')) failure ??= error
+  }
+  if (failure) throw new Error('Secure video staging cleanup failed')
+}
+
+async function stageVideoFile(
+  filePath: string,
+  preflight: FilePreflight,
+  dependencies: VidUploadDependencies,
+): Promise<SecureStage> {
+  if (typeof constants.O_NOFOLLOW !== 'number') throw new Error('Secure no-follow file opens are unavailable')
+  let source: FileHandle | undefined
+  let target: FileHandle | undefined
+  let stage: SecureStage | undefined
+  try {
+    source = await dependencies.openSource(filePath, constants.O_RDONLY | constants.O_NOFOLLOW)
+    const opened = await source.stat()
+    if (!matchesPreflight(opened, preflight)) throw new Error('Video source changed after validation')
+    if (opened.size <= 0 || opened.size > MAX_VIDEO_FILE_BYTES) throw new Error('Video source size is unsafe')
+
+    const directory = await mkdtemp(path.join(os.tmpdir(), 'vid-upload-stage-'))
+    const stagedPath = path.join(directory, 'video.mp4')
+    stage = { directory, filePath: stagedPath, fileSize: opened.size, digest: '' }
+    await chmod(directory, 0o700)
+    target = await open(
+      stagedPath,
+      constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW,
+      0o600,
+    )
+
+    const digest = createHash('sha256')
+    const buffer = Buffer.allocUnsafe(1024 * 1024)
+    let position = 0
+    while (position < opened.size) {
+      const length = Math.min(buffer.length, opened.size - position)
+      const { bytesRead } = await source.read(buffer, 0, length, position)
+      if (bytesRead <= 0) throw new Error('Video source changed during secure staging')
+      digest.update(buffer.subarray(0, bytesRead))
+      let written = 0
+      while (written < bytesRead) {
+        const { bytesWritten } = await target.write(buffer, written, bytesRead - written, position + written)
+        if (bytesWritten <= 0) throw new Error('Video staging write failed')
+        written += bytesWritten
+      }
+      position += bytesRead
+    }
+
+    await target.sync()
+    const extraByte = Buffer.allocUnsafe(1)
+    const [extraRead, sourceAfterCopy, targetAfterCopy] = await Promise.all([
+      source.read(extraByte, 0, 1, opened.size),
+      source.stat(),
+      target.stat(),
+    ])
+    if (
+      extraRead.bytesRead !== 0
+      || !matchesPreflight(sourceAfterCopy, preflight)
+      || targetAfterCopy.size !== opened.size
+    ) throw new Error('Video source changed during secure staging')
+
+    await target.close()
+    target = undefined
+    await source.close()
+    source = undefined
+    await chmod(stagedPath, 0o600)
+    stage.digest = digest.digest('hex')
+    return stage
+  } catch (error) {
+    let closeFailure = false
+    try { await target?.close() } catch { closeFailure = true }
+    try { await source?.close() } catch { closeFailure = true }
+    if (stage) {
+      try { await dependencies.cleanupStage(stage) } catch { throw new Error('Secure video staging cleanup failed') }
+    }
+    if (closeFailure) throw new Error('Secure video staging cleanup failed')
+    if (error instanceof Error && /^Video |^Secure /.test(error.message)) throw error
+    throw new Error('Video source could not be opened safely')
+  }
 }
 
 function signedHeaders(
@@ -164,6 +285,7 @@ async function uploadWithTus(request: UploadRequest): Promise<void> {
     const upload = new tus.Upload(createReadStream(request.filePath), {
       endpoint: request.credentials.endpoint,
       uploadSize: request.fileSize,
+      fingerprint: async () => request.resumeFingerprint,
       retryDelays: [0, 3_000, 5_000, 10_000, 20_000, 60_000],
       headers: {
         AuthorizationSignature: request.credentials.signature,
@@ -191,7 +313,17 @@ export async function runVidUpload(
   overrides: Partial<VidUploadDependencies> = {},
 ) {
   const dependencies = { ...defaultDependencies, ...overrides }
-  const fileSize = await validateFile(options.filePath)
+  const baseUrl = safeBaseUrl(options.baseUrl)
+  const filePreflight = await validateFile(options.filePath)
+  if (
+    dependencies.expectedFileIdentity
+    && (
+      filePreflight.device !== dependencies.expectedFileIdentity.device
+      || filePreflight.inode !== dependencies.expectedFileIdentity.inode
+      || filePreflight.size !== dependencies.expectedFileIdentity.size
+      || filePreflight.modifiedAt !== dependencies.expectedFileIdentity.modifiedAt
+    )
+  ) throw new Error('Video source changed after manifest preflight')
   const draft = validateDraftInput({
     slug: options.slug,
     title: options.title,
@@ -209,22 +341,38 @@ export async function runVidUpload(
     thumbnailFocalX: options.thumbnailFocalX,
     thumbnailFocalY: options.thumbnailFocalY,
   })
-  const baseUrl = safeBaseUrl(options.baseUrl)
-  if (options.dryRun) return { status: 'dry-run' as const, fileSize, slug: draft.slug }
+  if (options.dryRun) return { status: 'dry-run' as const, fileSize: filePreflight.size, slug: draft.slug }
 
+  const staged = await stageVideoFile(options.filePath, filePreflight, dependencies)
+  let uploadFailure: unknown
+  let uploadResult: Awaited<ReturnType<typeof uploadStagedVideo>> | undefined
+  try {
+    uploadResult = await uploadStagedVideo(staged, draft, baseUrl, options.publish, dependencies)
+  } catch (error) {
+    uploadFailure = error
+  }
+  try {
+    await dependencies.cleanupStage(staged)
+  } catch {
+    if (uploadFailure) throw new Error('Secure video staging cleanup failed after upload failure')
+    throw new Error('Secure video staging cleanup failed')
+  }
+  if (uploadFailure) throw uploadFailure
+  return uploadResult!
+}
+
+async function uploadStagedVideo(
+  staged: SecureStage,
+  draft: ReturnType<typeof validateDraftInput>,
+  baseUrl: string,
+  publish: boolean,
+  dependencies: VidUploadDependencies,
+) {
   const secret = await dependencies.readSecret()
-  const idempotencyKey = `upload:${draft.slug}:${(await fileDigest(options.filePath)).slice(0, 16)}`
+  const idempotencyKey = `upload:${draft.slug}:${staged.digest.slice(0, 16)}`
   let uploadResponse: Response
   try {
-    uploadResponse = await adminFetch(
-      baseUrl,
-      '/api/admin/uploads',
-      'POST',
-      JSON.stringify(draft),
-      idempotencyKey,
-      secret,
-      dependencies,
-    )
+    uploadResponse = await adminFetch(baseUrl, '/api/admin/uploads', 'POST', JSON.stringify(draft), idempotencyKey, secret, dependencies)
   } catch (error) {
     const legacyMetadataRejection = error instanceof VidAdminRequestError
       && error.status === 400
@@ -235,15 +383,7 @@ export async function runVidUpload(
     }
     dependencies.log('Vid upload compatibility mode: focal defaults omitted for legacy Worker')
     const { thumbnailFocalX: _thumbnailFocalX, thumbnailFocalY: _thumbnailFocalY, ...legacyDraft } = draft
-    uploadResponse = await adminFetch(
-      baseUrl,
-      '/api/admin/uploads',
-      'POST',
-      JSON.stringify(legacyDraft),
-      idempotencyKey,
-      secret,
-      dependencies,
-    )
+    uploadResponse = await adminFetch(baseUrl, '/api/admin/uploads', 'POST', JSON.stringify(legacyDraft), idempotencyKey, secret, dependencies)
   }
   const operation = await uploadResponse.json() as { operationId: string } & TusCredentials
   if (!operation.operationId || !operation.videoId || !/^[0-9a-f]{64}$/.test(operation.signature)) {
@@ -251,13 +391,14 @@ export async function runVidUpload(
   }
 
   await dependencies.uploadTus({
-    filePath: options.filePath,
-    fileSize,
+    filePath: staged.filePath,
+    fileSize: staged.fileSize,
+    resumeFingerprint: `vid-upload:${idempotencyKey}`,
     title: draft.title,
     credentials: operation,
     onProgress: (percent) => dependencies.log(`Tải video: ${percent}%`),
   })
-  if (!options.publish) return { status: 'uploaded' as const, operationId: operation.operationId, videoId: operation.videoId }
+  if (!publish) return { status: 'uploaded' as const, operationId: operation.operationId, videoId: operation.videoId }
 
   let ready = false
   for (let attempt = 0; attempt < dependencies.maxPolls; attempt += 1) {

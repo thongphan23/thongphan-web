@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { mkdtemp, symlink, writeFile } from 'node:fs/promises'
+import { access, appendFile, mkdtemp, open, readFile, rename, rm, stat, symlink, truncate, writeFile, type FileHandle } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
@@ -64,6 +64,143 @@ test('rejects relative, symlink, empty and non-MP4 input before network', async 
   await assert.rejects(() => runVidUpload({ ...options, filePath: emptyPath }), /empty/)
 })
 
+test('rejects a non-production direct upload origin before secrets or network', async () => {
+  const options = await fixtureOptions({ baseUrl: 'https://attacker.example' })
+  let secretReads = 0
+  let networkCalls = 0
+  await assert.rejects(() => runVidUpload(options, {
+    readSecret: async () => { secretReads += 1; return 'secret' },
+    fetch: async () => { networkCalls += 1; throw new Error('network forbidden') },
+  }), /base URL must be https:\/\/vid\.thongphan\.com/)
+  assert.equal(secretReads, 0)
+  assert.equal(networkCalls, 0)
+})
+
+test('rejects a video above the 50 GiB operator ceiling before staging or secrets', async () => {
+  const options = await fixtureOptions()
+  await truncate(options.filePath, 50 * 1024 ** 3 + 1)
+  let secretReads = 0
+  let secureOpenCalls = 0
+  await assert.rejects(() => runVidUpload(options, {
+    readSecret: async () => { secretReads += 1; return 'secret' },
+    openSource: async () => { secureOpenCalls += 1; throw new Error('must not open') },
+  }), /must not exceed 50 GiB/)
+  assert.equal(secretReads, 0)
+  assert.equal(secureOpenCalls, 0)
+})
+
+test('direct upload binds source bytes before a pathname swap and uses a stable content resume fingerprint', async () => {
+  const options = await fixtureOptions()
+  const originalBytes = Buffer.alloc(2_048, 1)
+  const attackerPath = path.join(path.dirname(options.filePath), 'attacker.mp4')
+  const movedPath = `${options.filePath}.original`
+  await writeFile(attackerPath, Buffer.alloc(2_048, 9))
+  let stagedPath = ''
+  let stagedDirectoryMode = 0
+  let stagedMode = 0
+  let uploadedBytes = Buffer.alloc(0)
+  let resumeFingerprint = ''
+
+  const result = await runVidUpload(options, {
+    openSource: async (filePath, flags) => {
+      const handle = await open(filePath, flags)
+      await rename(filePath, movedPath)
+      await symlink(attackerPath, filePath)
+      return handle
+    },
+    readSecret: async () => 'secret',
+    fetch: async () => Response.json({
+      operationId: 'operation-01', endpoint: 'https://video.bunnycdn.com/tusupload',
+      videoId: 'bunny-guid', libraryId: '123', expirationTime: 1, signature: 'a'.repeat(64),
+    }, { status: 201 }),
+    uploadTus: async (upload) => {
+      stagedPath = upload.filePath
+      stagedDirectoryMode = (await stat(path.dirname(upload.filePath))).mode & 0o777
+      stagedMode = (await stat(upload.filePath)).mode & 0o777
+      uploadedBytes = await readFile(upload.filePath)
+      resumeFingerprint = upload.resumeFingerprint
+    },
+  })
+
+  const digest = createHash('sha256').update(originalBytes).digest('hex').slice(0, 16)
+  assert.equal(result.status, 'uploaded')
+  assert.notEqual(stagedPath, options.filePath)
+  assert.equal(stagedDirectoryMode, 0o700)
+  assert.equal(stagedMode, 0o600)
+  assert.deepEqual(uploadedBytes, originalBytes)
+  assert.equal(resumeFingerprint, `vid-upload:upload:tu-duy-ai:${digest}`)
+  await assert.rejects(() => access(stagedPath), /ENOENT/)
+})
+
+test('fails closed when the opened source grows during bounded secure staging', async () => {
+  const options = await fixtureOptions()
+  let secretReads = 0
+  let stagedPath = ''
+
+  await assert.rejects(() => runVidUpload(options, {
+    openSource: async (filePath, flags) => {
+      const handle = await open(filePath, flags)
+      let firstRead = true
+      return {
+        stat: () => handle.stat(),
+        read: async (...args: Parameters<FileHandle['read']>) => {
+          if (firstRead) {
+            firstRead = false
+            await appendFile(filePath, Buffer.from([9]))
+          }
+          return handle.read(...args)
+        },
+        close: () => handle.close(),
+      } as FileHandle
+    },
+    readSecret: async () => { secretReads += 1; return 'secret' },
+    cleanupStage: async (stage) => {
+      stagedPath = stage.filePath
+      await rm(stage.directory, { recursive: true, force: true })
+    },
+  }), /Video source changed during secure staging/)
+
+  assert.equal(secretReads, 0)
+  await assert.rejects(() => access(stagedPath), /ENOENT/)
+})
+
+test('does not report upload success when secure staging cleanup fails', async () => {
+  const options = await fixtureOptions()
+  let stagedPath = ''
+  await assert.rejects(() => runVidUpload(options, {
+    readSecret: async () => 'secret',
+    fetch: async () => Response.json({
+      operationId: 'operation-01', endpoint: 'https://video.bunnycdn.com/tusupload',
+      videoId: 'bunny-guid', libraryId: '123', expirationTime: 1, signature: 'a'.repeat(64),
+    }, { status: 201 }),
+    uploadTus: async (upload) => { stagedPath = upload.filePath },
+    cleanupStage: async () => { throw new Error('private cleanup detail') },
+  }), /Secure video staging cleanup failed/)
+  if (stagedPath) await rm(path.dirname(stagedPath), { recursive: true, force: true })
+})
+
+test('combines upload and cleanup failures without exposing either private detail', async () => {
+  const options = await fixtureOptions()
+  let stagedPath = ''
+  const failure = await runVidUpload(options, {
+    readSecret: async () => 'secret',
+    fetch: async () => Response.json({
+      operationId: 'operation-01', endpoint: 'https://video.bunnycdn.com/tusupload',
+      videoId: 'bunny-guid', libraryId: '123', expirationTime: 1, signature: 'a'.repeat(64),
+    }, { status: 201 }),
+    uploadTus: async (upload) => {
+      stagedPath = upload.filePath
+      throw new Error('private upload token')
+    },
+    cleanupStage: async () => { throw new Error('private cleanup path') },
+  }).then(() => null, (error: unknown) => error)
+
+  assert.ok(failure instanceof Error)
+  assert.equal(failure.message, 'Secure video staging cleanup failed after upload failure')
+  assert.equal(failure.message.includes('private'), false)
+  if (stagedPath) await rm(path.dirname(stagedPath), { recursive: true, force: true })
+})
+
 test('signs admin calls, preserves custom focal metadata, polls ready and publishes without leaking secrets', async () => {
   const options = await fixtureOptions({ publish: true, thumbnailFocalX: 17, thumbnailFocalY: 83 })
   const requests: Request[] = []
@@ -92,7 +229,7 @@ test('signs admin calls, preserves custom focal metadata, polls ready and publis
     fetch: fetcher,
     uploadTus: async (upload) => {
       uploadCalls += 1
-      assert.equal(upload.filePath, options.filePath)
+      assert.notEqual(upload.filePath, options.filePath)
       assert.equal(upload.credentials.videoId, 'bunny-guid')
     },
     now: () => 1_786_500_000_000,
