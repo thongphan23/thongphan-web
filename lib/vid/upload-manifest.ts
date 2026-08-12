@@ -10,6 +10,20 @@ export type VidUploadManifest = {
   videos: VidUploadManifestVideo[]
 }
 
+export type UploadFileIdentity = {
+  device: number
+  inode: number
+  size: number
+  modifiedAt: number
+}
+
+export type UploadManifestPreflight = {
+  manifest: VidUploadManifest
+  fileIdentities: UploadFileIdentity[]
+}
+
+export const VID_PRODUCTION_ORIGIN = 'https://vid.thongphan.com'
+
 const ROOT_KEYS = new Set(['version', 'videos'])
 const VIDEO_KEYS = new Set([
   'baseUrl',
@@ -51,11 +65,18 @@ function httpsBaseUrl(value: unknown): string {
   } catch {
     throw new Error('baseUrl must be an HTTPS URL')
   }
-  if (parsed.protocol !== 'https:') throw new Error('baseUrl must be an HTTPS URL')
-  return parsed.origin
+  if (
+    parsed.origin !== VID_PRODUCTION_ORIGIN
+    || parsed.pathname !== '/'
+    || parsed.search
+    || parsed.hash
+    || parsed.username
+    || parsed.password
+  ) throw new Error(`baseUrl must be ${VID_PRODUCTION_ORIGIN}`)
+  return VID_PRODUCTION_ORIGIN
 }
 
-function regularMp4Path(value: unknown): string {
+function regularMp4Path(value: unknown): { filePath: string; identity: UploadFileIdentity } {
   if (typeof value !== 'string' || !path.isAbsolute(value)) throw new Error('Video path must be absolute')
   if (path.extname(value).toLowerCase() !== '.mp4') throw new Error('Video file must end in .mp4')
   let details: ReturnType<typeof lstatSync>
@@ -67,10 +88,13 @@ function regularMp4Path(value: unknown): string {
   if (details.isSymbolicLink()) throw new Error('Video file must not be a symlink')
   if (!details.isFile()) throw new Error('Video path must be a file')
   if (details.size <= 0) throw new Error('Video file is empty')
-  return value
+  return {
+    filePath: value,
+    identity: { device: details.dev, inode: details.ino, size: details.size, modifiedAt: details.mtimeMs },
+  }
 }
 
-function validateVideo(value: unknown): VidUploadManifestVideo {
+function validateVideo(value: unknown): { video: VidUploadManifestVideo; identity: UploadFileIdentity } {
   const input = record(value, 'Manifest video')
   for (const key of Object.keys(input)) {
     if (!VIDEO_KEYS.has(key)) throw new Error(`Unknown manifest video field: ${key}`)
@@ -92,18 +116,19 @@ function validateVideo(value: unknown): VidUploadManifestVideo {
     thumbnailFocalX: input.thumbnailFocalX,
     thumbnailFocalY: input.thumbnailFocalY,
   })
-  return {
+  const source = regularMp4Path(input.filePath)
+  return { video: {
     baseUrl: httpsBaseUrl(input.baseUrl),
-    filePath: regularMp4Path(input.filePath),
+    filePath: source.filePath,
     ...draft,
     thumbnailFocalX: draft.thumbnailFocalX ?? 50,
     thumbnailFocalY: draft.thumbnailFocalY ?? 24,
     publish: requiredBoolean(input.publish, 'publish'),
     dryRun: requiredBoolean(input.dryRun, 'dryRun'),
-  }
+  }, identity: source.identity }
 }
 
-export function validateUploadManifest(value: unknown): VidUploadManifest {
+export function preflightUploadManifest(value: unknown): UploadManifestPreflight {
   const input = record(value, 'Manifest')
   for (const key of Object.keys(input)) {
     if (!ROOT_KEYS.has(key)) throw new Error(`Unknown manifest field: ${key}`)
@@ -113,11 +138,19 @@ export function validateUploadManifest(value: unknown): VidUploadManifest {
   if (input.videos.length === 0) throw new Error('Manifest must contain at least one video')
   if (input.videos.length > 100) throw new Error('Manifest must contain at most 100 videos')
 
-  const videos = input.videos.map(validateVideo)
+  const validatedVideos = input.videos.map(validateVideo)
+  const videos = validatedVideos.map(({ video }) => video)
   const slugs = new Set<string>()
   for (const video of videos) {
     if (slugs.has(video.slug)) throw new Error(`Duplicate video slug: ${video.slug}`)
     slugs.add(video.slug)
   }
-  return { version: 1, videos }
+  return {
+    manifest: { version: 1, videos },
+    fileIdentities: validatedVideos.map(({ identity }) => identity),
+  }
+}
+
+export function validateUploadManifest(value: unknown): VidUploadManifest {
+  return preflightUploadManifest(value).manifest
 }

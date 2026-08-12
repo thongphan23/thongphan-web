@@ -64,8 +64,8 @@ test('rejects relative, symlink, empty and non-MP4 input before network', async 
   await assert.rejects(() => runVidUpload({ ...options, filePath: emptyPath }), /empty/)
 })
 
-test('signs admin calls, uploads through TUS, polls ready and publishes without leaking secrets', async () => {
-  const options = await fixtureOptions({ publish: true })
+test('signs admin calls, preserves custom focal metadata, polls ready and publishes without leaking secrets', async () => {
+  const options = await fixtureOptions({ publish: true, thumbnailFocalX: 17, thumbnailFocalY: 83 })
   const requests: Request[] = []
   const logs: string[] = []
   let uploadCalls = 0
@@ -107,12 +107,53 @@ test('signs admin calls, uploads through TUS, polls ready and publishes without 
   const contentDigest = createHash('sha256').update(Buffer.alloc(2_048, 1)).digest('hex').slice(0, 16)
   assert.equal(requests[0]?.headers.get('X-Vid-Idempotency-Key'), `upload:tu-duy-ai:${contentDigest}`)
   const uploadBody = await requests[0]!.clone().json() as Record<string, unknown>
-  assert.equal('thumbnailFocalX' in uploadBody, false)
-  assert.equal('thumbnailFocalY' in uploadBody, false)
+  assert.equal(uploadBody.thumbnailFocalX, 17)
+  assert.equal(uploadBody.thumbnailFocalY, 83)
   for (const request of requests) {
     assert.match(request.headers.get('X-Vid-Signature') ?? '', /^[0-9a-f]{64}$/)
   }
   assert.equal(logs.join('\n').includes('admin-secret'), false)
+})
+
+test('uses an explicit compatibility fallback only for default focal metadata', async () => {
+  const options = await fixtureOptions()
+  const requests: Request[] = []
+  const logs: string[] = []
+  const result = await runVidUpload(options, {
+    readSecret: async () => 'secret',
+    fetch: async (input, init) => {
+      const request = new Request(input, init)
+      requests.push(request)
+      if (requests.length === 1) return Response.json({ error: 'invalid_upload_metadata' }, { status: 400 })
+      return Response.json({
+        operationId: 'operation-01', endpoint: 'https://video.bunnycdn.com/tusupload',
+        videoId: 'bunny-guid', libraryId: '123', expirationTime: 1, signature: 'a'.repeat(64),
+      }, { status: 201 })
+    },
+    uploadTus: async () => undefined,
+    log: (message) => logs.push(message),
+  })
+
+  assert.equal(result.status, 'uploaded')
+  assert.equal(requests.length, 2)
+  const fullBody = await requests[0]!.clone().json() as Record<string, unknown>
+  const legacyBody = await requests[1]!.clone().json() as Record<string, unknown>
+  assert.equal(fullBody.thumbnailFocalX, 50)
+  assert.equal(fullBody.thumbnailFocalY, 24)
+  assert.equal('thumbnailFocalX' in legacyBody, false)
+  assert.equal('thumbnailFocalY' in legacyBody, false)
+  assert.match(logs.join('\n'), /compatibility mode/)
+})
+
+test('fails instead of silently losing custom focal metadata on a legacy Worker', async () => {
+  const options = await fixtureOptions({ thumbnailFocalX: 17, thumbnailFocalY: 83 })
+  let uploadCalls = 0
+  await assert.rejects(() => runVidUpload(options, {
+    readSecret: async () => 'secret',
+    fetch: async () => Response.json({ error: 'invalid_upload_metadata' }, { status: 400 }),
+    uploadTus: async () => { uploadCalls += 1 },
+  }), /Worker with focal metadata support must be deployed/)
+  assert.equal(uploadCalls, 0)
 })
 
 test('does not publish when processing never reaches ready', async () => {

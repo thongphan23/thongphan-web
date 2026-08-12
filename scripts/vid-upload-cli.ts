@@ -15,7 +15,7 @@ async function readTextFile(filePath: string, label: string): Promise<string> {
 }
 
 async function main() {
-  const { values, tokens } = parseArgs({
+  const { values, tokens, positionals } = parseArgs({
     options: {
       file: { type: 'string' },
       slug: { type: 'string' },
@@ -37,15 +37,22 @@ async function main() {
     },
     strict: true,
     tokens: true,
+    allowPositionals: true,
   })
-  if (values.manifest) {
+  if (positionals.length > 1) throw new Error('Only one positional manifest path is allowed')
+  if (values.manifest && positionals.length > 0) throw new Error('--manifest cannot be combined with a positional manifest path')
+  const manifestPath = values.manifest ?? positionals[0]
+  if (process.env.npm_lifecycle_event === 'vid:upload-batch' && values.manifest) {
+    throw new Error('vid:upload-batch expects an absolute positional manifest path')
+  }
+  if (manifestPath) {
     const singleFileFlags = new Set(['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'rights-status', 'rights-note-file', 'topic', 'tag', 'playlist', 'base-url', 'publish'])
     for (const token of tokens) {
       if (token.kind === 'option' && singleFileFlags.has(token.name)) {
         throw new Error(`--manifest cannot be combined with --${token.name}`)
       }
     }
-    const manifestText = await readTextFile(values.manifest, 'Manifest')
+    const manifestText = await readTextFile(manifestPath, 'Manifest')
     let parsed: unknown
     try {
       parsed = JSON.parse(manifestText)

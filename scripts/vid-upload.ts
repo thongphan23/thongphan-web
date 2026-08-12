@@ -23,6 +23,8 @@ export type VidUploadOptions = {
   topics: string[]
   tags: string[]
   playlists: string[]
+  thumbnailFocalX?: number
+  thumbnailFocalY?: number
   publish: boolean
   dryRun: boolean
 }
@@ -130,8 +132,23 @@ async function adminFetch(
     headers: signedHeaders(method, url, body, idempotencyKey, secret, dependencies),
     body: method === 'POST' ? body : undefined,
   }))
-  if (!response.ok) throw new Error(`Vid admin request failed with HTTP ${response.status}`)
+  if (!response.ok) {
+    let code: string | undefined
+    try {
+      const payload = await response.clone().json() as { error?: unknown }
+      if (typeof payload.error === 'string' && /^[a-z0-9_]{1,64}$/.test(payload.error)) code = payload.error
+    } catch {
+      // Error bodies are intentionally not retained or logged.
+    }
+    throw new VidAdminRequestError(response.status, code)
+  }
   return response
+}
+
+class VidAdminRequestError extends Error {
+  constructor(readonly status: number, readonly code?: string) {
+    super(`Vid admin request failed with HTTP ${status}`)
+  }
 }
 
 async function uploadWithTus(request: UploadRequest): Promise<void> {
@@ -189,22 +206,45 @@ export async function runVidUpload(
     topics: options.topics,
     tags: options.tags,
     playlists: options.playlists,
+    thumbnailFocalX: options.thumbnailFocalX,
+    thumbnailFocalY: options.thumbnailFocalY,
   })
   const baseUrl = safeBaseUrl(options.baseUrl)
   if (options.dryRun) return { status: 'dry-run' as const, fileSize, slug: draft.slug }
 
   const secret = await dependencies.readSecret()
   const idempotencyKey = `upload:${draft.slug}:${(await fileDigest(options.filePath)).slice(0, 16)}`
-  const { thumbnailFocalX: _thumbnailFocalX, thumbnailFocalY: _thumbnailFocalY, ...uploadDraft } = draft
-  const uploadResponse = await adminFetch(
-    baseUrl,
-    '/api/admin/uploads',
-    'POST',
-    JSON.stringify(uploadDraft),
-    idempotencyKey,
-    secret,
-    dependencies,
-  )
+  let uploadResponse: Response
+  try {
+    uploadResponse = await adminFetch(
+      baseUrl,
+      '/api/admin/uploads',
+      'POST',
+      JSON.stringify(draft),
+      idempotencyKey,
+      secret,
+      dependencies,
+    )
+  } catch (error) {
+    const legacyMetadataRejection = error instanceof VidAdminRequestError
+      && error.status === 400
+      && error.code === 'invalid_upload_metadata'
+    if (!legacyMetadataRejection) throw error
+    if (draft.thumbnailFocalX !== 50 || draft.thumbnailFocalY !== 24) {
+      throw new Error('Worker with focal metadata support must be deployed before uploading custom focal metadata')
+    }
+    dependencies.log('Vid upload compatibility mode: focal defaults omitted for legacy Worker')
+    const { thumbnailFocalX: _thumbnailFocalX, thumbnailFocalY: _thumbnailFocalY, ...legacyDraft } = draft
+    uploadResponse = await adminFetch(
+      baseUrl,
+      '/api/admin/uploads',
+      'POST',
+      JSON.stringify(legacyDraft),
+      idempotencyKey,
+      secret,
+      dependencies,
+    )
+  }
   const operation = await uploadResponse.json() as { operationId: string } & TusCredentials
   if (!operation.operationId || !operation.videoId || !/^[0-9a-f]{64}$/.test(operation.signature)) {
     throw new Error('Vid upload credentials are invalid')

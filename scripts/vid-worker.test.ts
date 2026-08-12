@@ -353,22 +353,26 @@ test('rejects proxy loops and non-HTTPS Pages origins', async () => {
 
 class AdminDatabase {
   readonly statements: string[] = []
+  readonly calls: Array<{ sql: string; values: unknown[] }> = []
   readonly seenNonces = new Set<string>()
   prepare(sql: string) {
     this.statements.push(sql)
     return {
-      bind: (...values: unknown[]) => ({
-        first: async () => null,
-        all: async () => ({ results: [] }),
-        run: async () => {
-          if (sql.includes('vid_admin_nonces')) {
-            const nonce = String(values[0])
-            if (this.seenNonces.has(nonce)) return { success: true, meta: { changes: 0 } }
-            this.seenNonces.add(nonce)
-          }
-          return { success: true, meta: { changes: 1 } }
-        },
-      }),
+      bind: (...values: unknown[]) => {
+        this.calls.push({ sql, values })
+        return {
+          first: async () => null,
+          all: async () => ({ results: [] }),
+          run: async () => {
+            if (sql.includes('vid_admin_nonces')) {
+              const nonce = String(values[0])
+              if (this.seenNonces.has(nonce)) return { success: true, meta: { changes: 0 } }
+              this.seenNonces.add(nonce)
+            }
+            return { success: true, meta: { changes: 1 } }
+          },
+        }
+      },
     }
   }
   async batch(statements: unknown[]) { return statements.map(() => ({ success: true })) }
@@ -410,6 +414,8 @@ test('creates one authenticated Bunny upload without exposing provider secrets',
     topics: ['ai'],
     tags: ['tư duy'],
     playlists: [],
+    thumbnailFocalX: 17,
+    thumbnailFocalY: 83,
   })
   const database = new AdminDatabase()
   const adminEnv = {
@@ -433,6 +439,9 @@ test('creates one authenticated Bunny upload without exposing provider secrets',
   assert.equal(payload.videoId, 'bunny-guid')
   assert.equal(JSON.stringify(payload).includes('bunny-secret'), false)
   assert.equal(database.statements.some((sql) => sql.includes('INSERT INTO vid_videos')), true)
+  const draftInsert = database.calls.find(({ sql }) => sql.includes('INSERT INTO vid_videos'))
+  assert.equal(draftInsert?.values[15], 17)
+  assert.equal(draftInsert?.values[16], 83)
 })
 
 test('accepts only signed Bunny webhook bodies', async () => {
