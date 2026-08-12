@@ -5,7 +5,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { getPlaylist, getVideo, listVideos } from '../../lib/vid/api-client'
 import type { PublicVideo } from '../../lib/vid/contracts'
 import { rankRelated } from '../../lib/vid/discovery'
-import BunnyPlayer from './BunnyPlayer'
+import { readLocalLibrary } from '../../lib/vid/local-library'
+import BunnyPlayer, { type PlaybackProgressEvent } from './BunnyPlayer'
 import VideoCard from './VideoCard'
 import styles from './Vid.module.css'
 import { useLocalLibraryState } from './useLocalLibraryState'
@@ -40,12 +41,13 @@ export default function WatchView() {
   const [playlistSlug, setPlaylistSlug] = useState<string | null>(null)
   const [previous, setPrevious] = useState<PublicVideo | null>(null)
   const [next, setNext] = useState<PublicVideo | null>(null)
-  const [requestedStart, setRequestedStart] = useState(0)
+  const [playerStart, setPlayerStart] = useState<{ slug: string; seconds: number } | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentTime, setCurrentTime] = useState(0)
   const [copied, setCopied] = useState<'link' | 'time' | null>(null)
-  const lastSavedSecond = useRef(0)
+  const lastSavedSecond = useRef<{ slug: string; seconds: number } | null>(null)
+  const lastPersistedCheckpoint = useRef<{ slug: string; seconds: number; duration: number } | null>(null)
   const { library, toggleLater, recordVideoProgress } = useLocalLibraryState()
 
   useEffect(() => {
@@ -67,12 +69,13 @@ export default function WatchView() {
     }
     void fetchWatchData(slug, list, controller.signal)
       .then((result) => {
+        const storedStart = readLocalLibrary(window.localStorage).progress.find((item) => item.slug === result.video.slug)?.seconds ?? 0
+        setPlayerStart({ slug: result.video.slug, seconds: Math.max(storedStart, sharedStart(params.get('t'))) })
         setVideo(result.video)
         setRelated(result.related)
         setPlaylistSlug(result.playlistSlug)
         setPrevious(result.previous)
         setNext(result.next)
-        setRequestedStart(sharedStart(params.get('t')))
       })
       .catch((reason: unknown) => {
         if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : 'Không tải được video.')
@@ -84,10 +87,16 @@ export default function WatchView() {
     return () => { window.clearTimeout(timeout); controller.abort() }
   }, [])
 
-  const handleTimeUpdate = useCallback(({ seconds, duration }: { seconds: number; duration: number }) => {
+  const handleTimeUpdate = useCallback(({ seconds, duration, reason }: PlaybackProgressEvent) => {
     setCurrentTime(seconds)
-    if (!video || Math.abs(seconds - lastSavedSecond.current) < 5) return
-    lastSavedSecond.current = seconds
+    if (!video) return
+    const lastCheckpoint = lastPersistedCheckpoint.current
+    if (lastCheckpoint?.slug === video.slug && lastCheckpoint.seconds === seconds && lastCheckpoint.duration === duration) return
+    const forced = reason !== 'timeupdate'
+    const lastCadence = lastSavedSecond.current?.slug === video.slug ? lastSavedSecond.current.seconds : 0
+    if (!forced && Math.abs(seconds - lastCadence) < 5) return
+    lastSavedSecond.current = { slug: video.slug, seconds }
+    lastPersistedCheckpoint.current = { slug: video.slug, seconds, duration }
     recordVideoProgress(video.slug, seconds, duration)
   }, [recordVideoProgress, video])
 
@@ -112,13 +121,13 @@ export default function WatchView() {
   if (error || !video) return <div className={styles.statePanel} role="alert"><h1>Không mở được video</h1><p>{error}</p><button type="button" onClick={() => window.location.reload()}>Thử lại</button></div>
 
   const saved = library.watchLater.includes(video.slug)
-  const prior = Math.max(library.progress.find(({ slug }) => slug === video.slug)?.seconds ?? 0, requestedStart)
+  const initialStart = playerStart?.slug === video.slug ? playerStart.seconds : 0
 
   return (
     <div className={styles.watchLayout}>
       <article className={styles.watchPrimary}>
         <div data-vid-player={video.slug}>
-          <BunnyPlayer playerUrl={video.playerUrl} title={video.title} startSeconds={prior} onTimeUpdate={handleTimeUpdate} />
+          <BunnyPlayer playerUrl={video.playerUrl} title={video.title} startSeconds={initialStart} onTimeUpdate={handleTimeUpdate} />
         </div>
         <header className={styles.watchHeader}>
           <p>{video.topics.map((topic) => <VidLink key={topic} href={`/topic?slug=${encodeURIComponent(topic)}`}>{topic}</VidLink>)}</p>

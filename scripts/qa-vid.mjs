@@ -91,39 +91,35 @@ function apiPayload(url, { invalidEmbed = false } = {}) {
   return { error: 'not_found' }
 }
 
-function playerFixture() {
-  return `(() => {
-    const clock = window.__vidQaPlayerClock = { seconds: 0, duration: 120, seek: null }
-    class Player {
-      constructor(frame) { this.frame = frame; this.handlers = new Map(); this.timer = null }
-      on(event, callback) {
-        const callbacks = this.handlers.get(event) ?? new Set()
-        callbacks.add(callback)
-        this.handlers.set(event, callbacks)
-        if (event === 'ready') queueMicrotask(() => { if (this.handlers.get(event)?.has(callback)) callback() })
-        if (event === 'timeupdate') this.startClock()
+function providerProtocolFixture() {
+  return `<!doctype html><html><body style="margin:0;background:#000;color:#ddd;display:grid;place-items:center;height:100vh;font:14px sans-serif">Player.js protocol fixture
+    <script src="https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js"></script>
+    <script>
+      const stats = { ready: false, listenerAdds: 0, seekValues: [], lastTime: null }
+      const report = () => parent.postMessage({ context: 'vid-qa-provider-stats', stats: { ...stats } }, '*')
+      addEventListener('message', (event) => {
+        let message = event.data
+        if (typeof message === 'string') try { message = JSON.parse(message) } catch { return }
+        if (message?.context !== 'player.js') return
+        if (message.method === 'addEventListener') stats.listenerAdds += 1
+        if (message.method === 'setCurrentTime') stats.seekValues.push(message.value)
+        report()
+      })
+      const adapter = new playerjs.MockAdapter()
+      const emit = adapter.receiver.emit.bind(adapter.receiver)
+      adapter.receiver.emit = (event, value) => {
+        if (event === 'timeupdate') stats.lastTime = value?.seconds ?? null
+        report()
+        return emit(event, value)
       }
-      off(event, callback) {
-        const callbacks = this.handlers.get(event)
-        if (!callbacks) return
-        if (callback) callbacks.delete(callback)
-        else callbacks.clear()
-        if (event === 'timeupdate' && callbacks.size === 0 && this.timer) {
-          clearInterval(this.timer)
-          this.timer = null
-        }
-      }
-      startClock() {
-        if (this.timer) return
-        this.timer = setInterval(() => {
-          clock.seconds += 1
-          for (const callback of this.handlers.get('timeupdate') ?? []) callback({ seconds: clock.seconds, duration: clock.duration })
-        }, 1000)
-      }
-      setCurrentTime(seconds) { clock.seek = seconds; clock.seconds = seconds }
-    }
-    window.playerjs = { Player }
-  })()`
+      window.__vidQaEmit = (event, value) => adapter.receiver.emit(event, value)
+      window.__vidQaStartPlayback = () => adapter.receiver.methods.play.call(adapter.receiver)
+      window.__vidQaPausePlayback = () => adapter.receiver.methods.pause.call(adapter.receiver)
+      stats.ready = true
+      adapter.ready()
+      report()
+    </script>
+  </body></html>`
 }
 
 async function installRoutes(page, { apiError = false, invalidEmbed = false, scriptError = false } = {}) {
@@ -134,12 +130,12 @@ async function installRoutes(page, { apiError = false, invalidEmbed = false, scr
   })
   await page.route('https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js', (route) => {
     if (scriptError) return route.abort('failed')
-    return route.fulfill({ status: 200, contentType: 'text/javascript', body: playerFixture() })
+    return route.continue()
   })
   await page.route('https://player.mediadelivery.net/**', (route) => route.fulfill({
     status: 200,
     contentType: 'text/html',
-    body: '<!doctype html><html><body style="margin:0;background:#000;color:#ddd;display:grid;place-items:center;height:100vh;font:14px sans-serif">Bunny Stream Player · QA</body></html>',
+    body: providerProtocolFixture(),
   }))
 }
 
@@ -200,6 +196,7 @@ async function assertFeaturedCopyLayout(page, name) {
 
 const browser = await chromium.launch({ headless: true, args: ['--host-resolver-rules=MAP vid.thongphan.com 127.0.0.1'] })
 const results = []
+let playbackPartial = null
 try {
   for (const viewport of [
     { name: 'desktop-1440', width: 1440, height: 900 },
@@ -230,60 +227,126 @@ try {
   }
 
   const interaction = await browser.newContext({ viewport: { width: 1440, height: 900 } })
-  await interaction.addInitScript(() => localStorage.clear())
+  await interaction.addInitScript(() => {
+    if (location.hostname !== 'vid.thongphan.com') return
+    const key = 'thongphan.vid.library.v1'
+    const originalSetItem = Storage.prototype.setItem
+    const originalAddEventListener = EventTarget.prototype.addEventListener
+    if (!localStorage.getItem(key)) {
+      originalSetItem.call(localStorage, key, JSON.stringify({ version: 1, progress: [{ slug: 'video-thu-1', seconds: 12, duration: 120, updatedAt: Date.now() }], watchLater: [] }))
+    }
+    window.__vidQaStorageWrites = 0
+    window.__vidQaProviderStats = null
+    window.__vidQaWindowMessageListenerAdds = 0
+    EventTarget.prototype.addEventListener = function (type, listener, options) {
+      if (this === window && type === 'message') window.__vidQaWindowMessageListenerAdds += 1
+      return originalAddEventListener.call(this, type, listener, options)
+    }
+    Storage.prototype.setItem = function (storageKey, value) {
+      if (storageKey === key) window.__vidQaStorageWrites += 1
+      return originalSetItem.call(this, storageKey, value)
+    }
+    addEventListener('message', (event) => {
+      if (event.data?.context === 'vid-qa-provider-stats') window.__vidQaProviderStats = event.data.stats
+    })
+  })
   const page = await interaction.newPage()
   const watchErrors = []
+  const playerNetworkFailures = []
   page.on('console', (message) => { if (message.type() === 'error') watchErrors.push(message.text()) })
   page.on('pageerror', (error) => watchErrors.push(error.message))
+  page.on('requestfailed', (request) => {
+    if (request.url().includes('assets.mediadelivery.net/playerjs')) playerNetworkFailures.push(`${request.url()} ${request.failure()?.errorText ?? 'request_failed'}`)
+  })
+  page.on('response', (response) => {
+    if (response.url().includes('assets.mediadelivery.net/playerjs') && !response.ok()) playerNetworkFailures.push(`${response.url()} HTTP_${response.status()}`)
+  })
   await installRoutes(page)
-  await page.goto(base, { waitUntil: 'networkidle' })
-  await page.locator('input[name="search_query"]').fill('Tư duy')
-  await Promise.all([page.waitForURL(/\/results/), page.locator('form[role="search"]').press('Enter')])
-  await page.locator('h1', { hasText: 'Tư duy' }).waitFor()
-  const sameViewRequest = page.waitForRequest((request) => {
-    const url = new URL(request.url())
-    return url.pathname === '/api/videos' && url.searchParams.get('q') === 'AI'
-  })
-  await page.evaluate(() => window.history.pushState(null, '', '/results?search_query=AI'))
-  await page.getByRole('heading', { name: 'Kết quả cho “AI”' }).waitFor()
-  await sameViewRequest
-  await page.goto(`${base}/watch?v=video-thu-1&list=nen-tang-ai`, { waitUntil: 'networkidle' })
-  const playerFrame = page.locator('[data-vid-player="video-thu-1"] iframe[title]')
-  await playerFrame.waitFor()
-  const initialPlayerFrame = await playerFrame.elementHandle()
-  assert.ok(initialPlayerFrame, 'watch: Bunny player iframe is missing')
-  await page.waitForFunction(() => window.__vidQaPlayerClock?.seconds >= 10)
-  const timeBeforeToggle = await page.evaluate(() => window.__vidQaPlayerClock?.seconds ?? 0)
-  await page.getByRole('button', { name: 'Xem sau', exact: true }).click()
-  assert.equal(
-    await page.evaluate((frame) => document.querySelector('[data-vid-player="video-thu-1"] iframe') === frame, initialPlayerFrame),
-    true,
-    'watch: Bunny player iframe identity changed',
-  )
-  await page.waitForFunction((minimumTime) => (window.__vidQaPlayerClock?.seconds ?? 0) >= minimumTime, timeBeforeToggle + 4)
-  const timeAfterToggle = await page.evaluate(() => window.__vidQaPlayerClock?.seconds ?? 0)
-  assert.ok(timeAfterToggle >= timeBeforeToggle + 4, `watch: provider current time did not advance ${JSON.stringify({ timeBeforeToggle, timeAfterToggle })}`)
-  const savedProgress = await page.evaluate(() => {
-    const library = JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}')
-    return library.progress?.find((item) => item.slug === 'video-thu-1')?.seconds ?? 0
-  })
-  assert.ok(savedProgress >= 10, `watch: progress was not persisted ${savedProgress}`)
-  await page.reload({ waitUntil: 'networkidle' })
-  await page.locator('[data-vid-player="video-thu-1"] iframe[title]').waitFor()
-  await page.waitForFunction(() => Number.isFinite(window.__vidQaPlayerClock?.seek))
-  const resumedAt = await page.evaluate(() => window.__vidQaPlayerClock?.seek ?? 0)
-  assert.ok(Math.abs(resumedAt - savedProgress) <= 5, `watch: reload did not resume close to saved progress ${JSON.stringify({ savedProgress, resumedAt })}`)
-  await page.locator('summary').click()
-  assert.equal(await page.locator('details').getAttribute('open'), '')
-  await page.locator('[data-vid-player="video-thu-1"] iframe[title]').scrollIntoViewIfNeeded()
-  const playerHit = await page.locator('[data-vid-player="video-thu-1"] iframe[title]').evaluate((frame) => {
-    const rect = frame.getBoundingClientRect()
-    const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
-    return { direct: hit === frame, hit: hit ? `${hit.tagName}.${hit.className}` : null, frame: { top: rect.top, bottom: rect.bottom, width: rect.width, height: rect.height } }
-  })
-  assert.equal(playerHit.direct, true, `watch: player pointer is blocked ${JSON.stringify(playerHit)}`)
-  assert.deepEqual(watchErrors, [], `watch: VID-owned console errors ${watchErrors.join('\n')}`)
-  await page.screenshot({ path: join(output, 'desktop-watch.png'), fullPage: true, animations: 'disabled' })
+  try {
+    await page.goto(base, { waitUntil: 'networkidle' })
+    await page.locator('input[name="search_query"]').fill('Tư duy')
+    await Promise.all([page.waitForURL(/\/results/), page.locator('form[role="search"]').press('Enter')])
+    await page.locator('h1', { hasText: 'Tư duy' }).waitFor()
+    const sameViewRequest = page.waitForRequest((request) => {
+      const url = new URL(request.url())
+      return url.pathname === '/api/videos' && url.searchParams.get('q') === 'AI'
+    })
+    await page.evaluate(() => window.history.pushState(null, '', '/results?search_query=AI'))
+    await page.getByRole('heading', { name: 'Kết quả cho “AI”' }).waitFor()
+    await sameViewRequest
+    await page.goto(`${base}/watch?v=video-thu-1&list=nen-tang-ai`, { waitUntil: 'networkidle' })
+    const playerFrame = page.locator('[data-vid-player="video-thu-1"] iframe[title]')
+    await playerFrame.waitFor()
+    const initialPlayerFrame = await playerFrame.elementHandle()
+    assert.ok(initialPlayerFrame, 'watch: Bunny player iframe is missing')
+    await page.waitForFunction(() => window.__vidQaProviderStats?.ready && window.__vidQaProviderStats.listenerAdds >= 4 && window.__vidQaProviderStats.seekValues.length === 1)
+    const baselinePlayerStats = await page.evaluate(() => ({ ...structuredClone(window.__vidQaProviderStats), messageListenerAdds: window.__vidQaWindowMessageListenerAdds }))
+    const providerFrame = page.frames().find((frame) => frame.url().startsWith('https://player.mediadelivery.net/embed/'))
+    assert.ok(providerFrame, 'watch: provider protocol iframe is missing')
+    await page.getByRole('button', { name: 'Xem sau', exact: true }).click()
+    await providerFrame.evaluate(() => window.__vidQaStartPlayback())
+    const timeBeforeToggle = baselinePlayerStats.seekValues[0]
+    await page.waitForFunction((minimumTime) => (window.__vidQaProviderStats?.lastTime ?? 0) >= minimumTime, timeBeforeToggle + 4)
+    const timeAfterToggle = await page.evaluate(() => window.__vidQaProviderStats.lastTime)
+    assert.ok(timeAfterToggle >= timeBeforeToggle + 4, `watch: provider current time did not advance ${JSON.stringify({ timeBeforeToggle, timeAfterToggle })}`)
+    assert.equal(
+      await page.evaluate((frame) => document.querySelector('[data-vid-player="video-thu-1"] iframe') === frame, initialPlayerFrame),
+      true,
+      'watch: Bunny player iframe identity changed',
+    )
+    const stablePlayerStats = await page.evaluate(() => ({ ...structuredClone(window.__vidQaProviderStats), messageListenerAdds: window.__vidQaWindowMessageListenerAdds }))
+    assert.equal(stablePlayerStats.messageListenerAdds, baselinePlayerStats.messageListenerAdds, 'watch: Player.js constructor listener changed after progress or toggle')
+    assert.equal(stablePlayerStats.listenerAdds, baselinePlayerStats.listenerAdds, 'watch: Player.js listener registration changed after progress or toggle')
+    assert.deepEqual(stablePlayerStats.seekValues, baselinePlayerStats.seekValues, 'watch: Player.js sought again after progress or toggle')
+
+    await providerFrame.evaluate(() => window.__vidQaPausePlayback())
+    await page.waitForFunction((seconds) => {
+      const library = JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}')
+      return library.progress?.find((item) => item.slug === 'video-thu-1')?.seconds === seconds
+    }, timeAfterToggle)
+    const pauseProgress = await page.evaluate(() => JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}').progress?.find((item) => item.slug === 'video-thu-1')?.seconds)
+    assert.equal(pauseProgress, timeAfterToggle, 'watch: pause checkpoint did not persist exact provider time')
+    const writesAfterPause = await page.evaluate(() => window.__vidQaStorageWrites)
+    await providerFrame.evaluate(() => window.__vidQaEmit('pause'))
+    await page.waitForTimeout(100)
+    assert.equal(await page.evaluate(() => window.__vidQaStorageWrites), writesAfterPause, 'watch: duplicate final checkpoint wrote local storage again')
+
+    const endedTime = timeAfterToggle + 2
+    await providerFrame.evaluate((seconds) => { window.__vidQaEmit('timeupdate', { seconds, duration: 120 }); window.__vidQaEmit('ended') }, endedTime)
+    await page.waitForFunction((seconds) => JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}').progress?.find((item) => item.slug === 'video-thu-1')?.seconds === seconds, endedTime)
+    assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}').progress?.find((item) => item.slug === 'video-thu-1')?.seconds), endedTime, 'watch: ended checkpoint did not persist exact provider time')
+
+    const pagehideTime = endedTime + 2
+    await providerFrame.evaluate((seconds) => window.__vidQaEmit('timeupdate', { seconds, duration: 120 }), pagehideTime)
+    await page.evaluate(() => dispatchEvent(new PageTransitionEvent('pagehide')))
+    await page.waitForFunction((seconds) => JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}').progress?.find((item) => item.slug === 'video-thu-1')?.seconds === seconds, pagehideTime)
+    assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}').progress?.find((item) => item.slug === 'video-thu-1')?.seconds), pagehideTime, 'watch: pagehide checkpoint did not persist exact provider time')
+    const writesAfterPagehide = await page.evaluate(() => window.__vidQaStorageWrites)
+    await page.evaluate(() => dispatchEvent(new PageTransitionEvent('pagehide')))
+    await page.waitForTimeout(100)
+    assert.equal(await page.evaluate(() => window.__vidQaStorageWrites), writesAfterPagehide, 'watch: duplicate final checkpoint wrote local storage again')
+
+    await page.reload({ waitUntil: 'networkidle' })
+    await page.locator('[data-vid-player="video-thu-1"] iframe[title]').waitFor()
+    await page.waitForFunction(() => window.__vidQaProviderStats?.seekValues.length === 1)
+    const resumedAt = await page.evaluate(() => window.__vidQaProviderStats.seekValues[0])
+    assert.ok(Math.abs(resumedAt - pagehideTime) <= 5, `watch: reload did not resume close to saved progress ${JSON.stringify({ savedProgress: pagehideTime, resumedAt })}`)
+    await page.locator('summary').click()
+    assert.equal(await page.locator('details').getAttribute('open'), '')
+    await page.locator('[data-vid-player="video-thu-1"] iframe[title]').scrollIntoViewIfNeeded()
+    const playerHit = await page.locator('[data-vid-player="video-thu-1"] iframe[title]').evaluate((frame) => {
+      const rect = frame.getBoundingClientRect()
+      const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
+      return { direct: hit === frame, hit: hit ? `${hit.tagName}.${hit.className}` : null, frame: { top: rect.top, bottom: rect.bottom, width: rect.width, height: rect.height } }
+    })
+    assert.equal(playerHit.direct, true, `watch: player pointer is blocked ${JSON.stringify(playerHit)}`)
+    assert.deepEqual(watchErrors, [], `watch: VID-owned console errors ${watchErrors.join('\n')}`)
+    await page.screenshot({ path: join(output, 'desktop-watch.png'), fullPage: true, animations: 'disabled' })
+  } catch (error) {
+    if (playerNetworkFailures.length === 0) throw error
+    playbackPartial = `official Player.js read failed: ${playerNetworkFailures.join('; ')}`
+    console.error(`VID_PLAYBACK_QA=PARTIAL reason=${playbackPartial}`)
+  }
   await interaction.close()
 
   const invalidPlayer = await browser.newContext({ viewport: { width: 390, height: 844 } })
@@ -334,8 +397,10 @@ try {
   assert.notEqual(focus.outline, 'none')
   await keyboard.close()
 
-  await writeFile(join(output, 'report.json'), `${JSON.stringify({ verdict: 'PASS', base, results }, null, 2)}\n`)
-  console.log(`VID_VISUAL_QA=PASS output=${output}`)
+  const verdict = playbackPartial ? 'PARTIAL' : 'PASS'
+  await writeFile(join(output, 'report.json'), `${JSON.stringify({ verdict, playbackPartial, base, results }, null, 2)}\n`)
+  console.log(`VID_VISUAL_QA=${verdict} output=${output}`)
+  if (playbackPartial) process.exitCode = 2
 } finally {
   await browser.close()
   await new Promise((resolveClose) => server.close(resolveClose))

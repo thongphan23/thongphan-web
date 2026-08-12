@@ -54,10 +54,46 @@ test('watch state updates cannot key or remount the Bunny player', async () => {
   assert.doesNotMatch(watch, /playerUrl=.*(?:library|watchLater)/)
   assert.match(watch, /data-vid-player={video\.slug}/)
   assert.match(player, /const onTimeUpdateRef/)
-  assert.match(player, /\[playerUrl, scriptReady, startSeconds\]/)
+  assert.match(watch, /readLocalLibrary\(window\.localStorage\)/)
+  assert.match(watch, /setPlayerStart\(\{ slug: result\.video\.slug, seconds:/)
+  assert.doesNotMatch(watch, /const prior = Math\.max\(library\.progress/)
+  assert.match(player, /const startSnapshotRef/)
+  assert.match(player, /scriptReady\s*&&\s*\(\s*<iframe/)
+  assert.match(player, /\[playerUrl, scriptReady\]/)
+  assert.doesNotMatch(player, /\[playerUrl, scriptReady, startSeconds\]/)
   assert.match(player, /playerError/)
   assert.match(player, /player\.on\('error'/)
   assert.doesNotMatch(player, /setInterval\(/)
+})
+
+test('final playback checkpoints bypass cadence without duplicate writes', async () => {
+  const [player, watch, qa] = await Promise.all([
+    readFile('components/vid/BunnyPlayer.tsx', 'utf8'),
+    readFile('components/vid/WatchView.tsx', 'utf8'),
+    readFile('scripts/qa-vid.mjs', 'utf8'),
+  ])
+
+  assert.match(player, /emitProgress\(data, 'timeupdate'\)/)
+  for (const reason of ['pause', 'ended', 'pagehide']) assert.match(player, new RegExp(`flush\\('${reason}'\\)`))
+  assert.match(watch, /reason !== 'timeupdate'/)
+  assert.match(watch, /lastPersistedCheckpoint/)
+  assert.match(qa, /watch: pause checkpoint did not persist exact provider time/)
+  assert.match(qa, /watch: ended checkpoint did not persist exact provider time/)
+  assert.match(qa, /watch: pagehide checkpoint did not persist exact provider time/)
+  assert.match(qa, /watch: duplicate final checkpoint wrote local storage again/)
+})
+
+test('playback lifecycle QA uses official Player.js across the iframe protocol', async () => {
+  const qa = await readFile('scripts/qa-vid.mjs', 'utf8')
+
+  assert.match(qa, /playerjs\.MockAdapter/)
+  assert.match(qa, /route\.continue\(\)/)
+  assert.match(qa, /watch: Player\.js constructor listener changed after progress or toggle/)
+  assert.match(qa, /watch: Player\.js listener registration changed after progress or toggle/)
+  assert.match(qa, /watch: Player\.js sought again after progress or toggle/)
+  assert.doesNotMatch(qa, /class Player\s*\{/)
+  assert.doesNotMatch(qa, /window\.__vidQaPlayerClock/)
+  assert.doesNotMatch(qa, /setInterval\(/)
 })
 
 test('provider error QA matches alert text without assuming an accessible name', async () => {

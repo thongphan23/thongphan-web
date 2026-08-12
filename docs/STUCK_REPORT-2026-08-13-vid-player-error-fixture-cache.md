@@ -54,3 +54,25 @@ a diagnostic rerun in a fresh Chromium process:
 The regression now locks `getByRole('alert').filter({ hasText: ... })`, and the
 full `npm run qa:vid` command passes with `VID_VISUAL_QA=PASS`. No timeout was
 increased and no cache, URL or player lifecycle behavior was changed.
+
+## Review correction — 2026-08-13
+
+The selector resolution above closed only the provider-error branch. Review
+correctly rejected the broader Task 5 PASS because live progress still changed
+`startSeconds`, final checkpoints still passed through the five-second cadence,
+and lifecycle QA used a parent-side fake Player/clock.
+
+Those defects are now corrected. QA loads official Player.js read-only from
+Bunny CDN and exercises its actual iframe `postMessage` client against an
+iframe-side official `playerjs.MockAdapter`. An initial protocol run revealed a
+separate load-order race (`ready=true`, zero observed listener registrations):
+the iframe could mount before Player.js initialized. Mounting the iframe only
+after `scriptReady` produced one initial seek and four stable provider-observed
+listener registrations. Progress and `Xem sau` produced no re-seek or
+re-registration, and forced `pause`, `ended` and `pagehide` checkpoints persisted
+exact positions without duplicate writes.
+
+The protocol fixture is deterministic evidence for lifecycle wiring, not proof
+of real Bunny media playback. That public read-only runtime proof remains Task 6.
+If the public Player.js GET fails, `qa:vid` records PARTIAL and exits non-zero;
+it does not fall back to the retired parent fake.
