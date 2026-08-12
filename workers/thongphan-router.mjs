@@ -1,4 +1,5 @@
 const PAGES_ORIGIN = 'https://thongphan-com.pages.dev'
+const PUBLIC_VIDEO_URL = 'https://vid.thongphan.com/watch?v=ky-thuat-prompting-claude-gauntlet-loop'
 const STATIC_PREFIXES = ['/assets/', '/images/']
 const STATIC_FILES = new Set(['/favicon.svg', '/robots.txt', '/sitemap.xml'])
 const FILE_EXTENSION_RE = /\.[a-zA-Z0-9]{2,10}$/
@@ -21,6 +22,11 @@ export function createThongphanRouter({ fetchImpl = fetch } = {}) {
   return {
     async fetch(request) {
       const incomingUrl = new URL(request.url)
+      if ((incomingUrl.pathname === '/video' || incomingUrl.pathname === '/video/')
+        && (request.method === 'GET' || request.method === 'HEAD')) {
+        return Response.redirect(PUBLIC_VIDEO_URL, 302)
+      }
+
       const targetUrl = new URL(PAGES_ORIGIN)
       targetUrl.pathname = incomingUrl.pathname
       targetUrl.search = incomingUrl.search

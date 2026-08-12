@@ -2,6 +2,28 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import test from 'node:test'
 
+test('public video shortcut redirects to the released Vietnamese dub', async () => {
+  const { createThongphanRouter } = await import('../workers/thongphan-router.mjs')
+  let originCalls = 0
+  const router = createThongphanRouter({
+    fetchImpl: async () => {
+      originCalls += 1
+      return new Response('unexpected')
+    },
+  })
+
+  for (const pathname of ['/video', '/video/']) {
+    const response = await router.fetch(new Request(`https://thongphan.com${pathname}`))
+
+    assert.equal(response.status, 302)
+    assert.equal(
+      response.headers.get('location'),
+      'https://vid.thongphan.com/watch?v=ky-thuat-prompting-claude-gauntlet-loop',
+    )
+  }
+  assert.equal(originCalls, 0)
+})
+
 test('custom-domain router preserves Pages redirects instead of flattening them to 200', async () => {
   const { createThongphanRouter } = await import('../workers/thongphan-router.mjs')
   let forwardedRequest
