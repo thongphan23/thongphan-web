@@ -1,6 +1,6 @@
 import { validateDraftInput } from '../../lib/vid/contracts'
 import { verifyAdminRequest } from './auth'
-import { buildTusAuthorization, createBunnyVideo, mapBunnyStatus, verifyBunnyWebhook } from './bunny'
+import { buildTusAuthorization, createBunnyVideo, getBunnyVideoDetails, mapBunnyStatus, verifyBunnyWebhook } from './bunny'
 import {
   archiveAdminVideo,
   createVideoDraft,
@@ -9,11 +9,13 @@ import {
   getPublicPlaylist,
   getPublicVideo,
   listPublicVideos,
+  listPublicVideoSlugs,
   listTopics,
   publishAdminVideo,
   updateVideoMediaStatus,
 } from './catalog'
 import { error, json } from './http'
+import { buildVidSitemap, rewriteWatchResponse } from './seo'
 import type { VidEnv } from './types'
 
 type VidDependencies = {
@@ -44,7 +46,10 @@ async function handlePublicApi(request: Request, env: VidEnv, url: URL): Promise
     const page = boundedInteger(url.searchParams.get('page'), 1, 1, 10_000)
     const pageSize = boundedInteger(url.searchParams.get('pageSize'), 24, 1, 48)
     if (page === null || pageSize === null) return error('invalid_pagination', 400)
-    return json(await listPublicVideos(env, page, pageSize), 200, 'public, max-age=60, stale-while-revalidate=300')
+    return json(await listPublicVideos(env, page, pageSize, {
+      query: url.searchParams.get('q')?.slice(0, 160) || undefined,
+      topic: url.searchParams.get('topic')?.slice(0, 64) || undefined,
+    }), 200, 'public, max-age=60, stale-while-revalidate=300')
   }
   if (url.pathname.startsWith('/api/videos/')) {
     const slug = decodeURIComponent(url.pathname.slice('/api/videos/'.length))
@@ -114,7 +119,7 @@ async function handleAdminApi(
   return error('method_not_allowed', 405)
 }
 
-async function handleBunnyWebhook(request: Request, env: VidEnv): Promise<Response> {
+async function handleBunnyWebhook(request: Request, env: VidEnv, fetcher: typeof fetch): Promise<Response> {
   if (request.method !== 'POST') return error('method_not_allowed', 405)
   const rawBody = await request.text()
   if (!await verifyBunnyWebhook(rawBody, request.headers, env)) return error('unauthorized', 401)
@@ -126,7 +131,9 @@ async function handleBunnyWebhook(request: Request, env: VidEnv): Promise<Respon
   }
   if (String(payload.VideoLibraryId) !== env.BUNNY_LIBRARY_ID) return error('wrong_library', 400)
   if (typeof payload.VideoGuid !== 'string' || !Number.isInteger(payload.Status)) return error('invalid_webhook', 400)
-  await updateVideoMediaStatus(env, payload.VideoGuid, mapBunnyStatus(Number(payload.Status)))
+  const mediaStatus = mapBunnyStatus(Number(payload.Status))
+  const media = mediaStatus === 'ready' ? await getBunnyVideoDetails(payload.VideoGuid, env, fetcher) : undefined
+  await updateVideoMediaStatus(env, payload.VideoGuid, mediaStatus, media)
   return new Response(null, { status: 204 })
 }
 
@@ -145,7 +152,13 @@ async function proxyStatic(request: Request, env: VidEnv, url: URL, fetcher: typ
   if (!origin) return error('static_origin_unavailable', 503)
   const mappedPath = SHELLS[url.pathname] ?? url.pathname
   const target = new URL(`${mappedPath}${url.search}`, origin)
-  return fetcher(new Request(target, request))
+  const response = await fetcher(new Request(target, request))
+  if (url.pathname === '/watch') {
+    const slug = url.searchParams.get('v') ?? ''
+    const video = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? await getPublicVideo(env, slug) : null
+    return video ? rewriteWatchResponse(response, video) : response
+  }
+  return response
 }
 
 export async function handleVidRequest(
@@ -154,7 +167,17 @@ export async function handleVidRequest(
   dependencies: VidDependencies = { fetch },
 ): Promise<Response> {
   const url = new URL(request.url)
-  if (url.pathname === '/api/webhooks/bunny') return handleBunnyWebhook(request, env)
+  if (url.pathname === '/robots.txt') {
+    return new Response('User-agent: *\nAllow: /\nDisallow: /api/admin/\nDisallow: /api/webhooks/\nSitemap: https://vid.thongphan.com/sitemap.xml\n', {
+      headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600' },
+    })
+  }
+  if (url.pathname === '/sitemap.xml') {
+    return new Response(buildVidSitemap(await listPublicVideoSlugs(env)), {
+      headers: { 'Content-Type': 'application/xml; charset=utf-8', 'Cache-Control': 'public, max-age=300' },
+    })
+  }
+  if (url.pathname === '/api/webhooks/bunny') return handleBunnyWebhook(request, env, dependencies.fetch)
   if (url.pathname.startsWith('/api/admin/')) return handleAdminApi(request, env, url, dependencies)
   if (url.pathname.startsWith('/api/')) return handlePublicApi(request, env, url)
   return proxyStatic(request, env, url, dependencies.fetch)

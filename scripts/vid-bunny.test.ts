@@ -4,6 +4,7 @@ import test from 'node:test'
 import {
   buildTusAuthorization,
   createBunnyVideo,
+  getBunnyVideoDetails,
   mapBunnyStatus,
   verifyBunnyWebhook,
 } from '../workers/vid/bunny'
@@ -29,6 +30,19 @@ test('creates a Bunny video using a server-only AccessKey', async () => {
   assert.equal(request?.url, 'https://video.bunnycdn.com/library/123/videos')
   assert.equal(request?.headers.get('AccessKey'), 'bunny-api-key')
   assert.deepEqual(await request?.json(), { title: 'Tiêu đề' })
+})
+
+test('reads encoded media details and derives only configured Bunny URLs', async () => {
+  const details = await getBunnyVideoDetails('video-guid', env, async () => Response.json({
+    length: 605.8,
+    thumbnailFileName: 'thumbnail_7.jpg',
+  }))
+  assert.deepEqual(details, {
+    durationSeconds: 606,
+    thumbnailUrl: 'https://media.example.com/video-guid/thumbnail_7.jpg',
+    previewUrl: 'https://media.example.com/video-guid/preview.webp',
+    playerUrl: 'https://player.mediadelivery.net/embed/123/video-guid',
+  })
 })
 
 test('builds the documented TUS SHA-256 signature', async () => {

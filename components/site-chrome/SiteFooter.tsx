@@ -13,7 +13,7 @@ export default function SiteFooter({ mode }: { mode: SiteRouteMode }) {
       </div>
       <nav aria-label="Liên kết cuối trang">
         {[...primaryNavigation, ...secondaryNavigation].map((link) =>
-          link.href === '/conanmaker/' ? (
+          ('external' in link && link.external) || link.href === '/conanmaker/' ? (
             <a key={link.href} href={link.href}>
               {link.label}
               <ArrowRight aria-hidden="true" size={15} strokeWidth={1.7} />

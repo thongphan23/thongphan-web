@@ -153,6 +153,16 @@ export function validateDraftInput(input: unknown): VideoDraftInput {
 
 export function toPublicVideo(record: VideoRecord): PublicVideo | null {
   if (record.status !== 'published' || record.mediaStatus !== 'ready' || !record.publishedAt) return null
+  if (record.durationSeconds <= 0) return null
+  try {
+    const thumbnail = new URL(record.thumbnailUrl)
+    const preview = new URL(record.previewUrl)
+    const player = new URL(record.playerUrl)
+    if (thumbnail.protocol !== 'https:' || preview.protocol !== 'https:') return null
+    if (player.protocol !== 'https:' || player.hostname !== 'player.mediadelivery.net' || !player.pathname.startsWith('/embed/')) return null
+  } catch {
+    return null
+  }
   return {
     slug: record.slug,
     title: record.title,

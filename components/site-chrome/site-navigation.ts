@@ -17,6 +17,7 @@ export function getPrimaryNavigation(includeLearn: boolean) {
 export const primaryNavigation = getPrimaryNavigation(learnPublicEnabled)
 
 export const secondaryNavigation = [
+  { href: 'https://vid.thongphan.com', label: 'Video tuyển chọn', external: true },
   { href: '/assets', label: 'Tài sản' },
   { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
   { href: '/conanmaker/', label: 'Conan Maker' },

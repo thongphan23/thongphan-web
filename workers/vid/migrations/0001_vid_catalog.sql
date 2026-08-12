@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS vid_videos (
   rights_status TEXT NOT NULL CHECK (rights_status IN ('owner-reviewed', 'owned', 'licensed', 'permission')),
   rights_note TEXT NOT NULL,
   tags_json TEXT NOT NULL DEFAULT '[]',
+  search_text TEXT NOT NULL DEFAULT '',
   duration_seconds INTEGER NOT NULL DEFAULT 0 CHECK (duration_seconds >= 0),
   thumbnail_url TEXT NOT NULL DEFAULT '',
   preview_url TEXT NOT NULL DEFAULT '',

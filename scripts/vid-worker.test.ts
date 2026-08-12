@@ -204,9 +204,15 @@ test('accepts only signed Bunny webhook bodies', async () => {
   const webhookEnv = {
     ...env(),
     VID_DB: new AdminDatabase() as unknown as VidEnv['VID_DB'],
+    BUNNY_STREAM_API_KEY: 'bunny-api-key',
     BUNNY_WEBHOOK_SECRET: 'bunny-read-key',
   }
   const signature = createHmac('sha256', 'bunny-read-key').update(rawBody).digest('hex')
+  let bunnyStatusRequests = 0
+  const fetcher = async () => {
+    bunnyStatusRequests += 1
+    return Response.json({ length: 600, thumbnailFileName: 'thumbnail.jpg' })
+  }
   const response = await handleVidRequest(
     new Request('https://vid.thongphan.com/api/webhooks/bunny', {
       method: 'POST',
@@ -218,8 +224,10 @@ test('accepts only signed Bunny webhook bodies', async () => {
       body: rawBody,
     }),
     webhookEnv,
+    { fetch: fetcher },
   )
   assert.equal(response.status, 204)
+  assert.equal(bunnyStatusRequests, 1)
 
   const rejected = await handleVidRequest(
     new Request('https://vid.thongphan.com/api/webhooks/bunny', { method: 'POST', body: rawBody }),

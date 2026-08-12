@@ -89,10 +89,11 @@ export default function MobileMenu({
 
         <nav className={styles.mobileNav} aria-label="Điều hướng chính trên di động">
           {primaryNavigation.map((link, index) => (
-            <Link key={link.href} href={link.href} onClick={closeMenu}>
-              <span>0{index + 1}</span>
-              {link.label}
-            </Link>
+            'external' in link && link.external ? (
+              <a key={link.href} href={link.href} onClick={closeMenu}><span>0{index + 1}</span>{link.label}</a>
+            ) : (
+              <Link key={link.href} href={link.href} onClick={closeMenu}><span>0{index + 1}</span>{link.label}</Link>
+            )
           ))}
         </nav>
 

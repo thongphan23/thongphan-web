@@ -1,4 +1,5 @@
 import { toPublicVideo, type CatalogPage, type MediaStatus, type RightsStatus, type VideoDraftInput, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
+import { normalizeVietnamese } from '../../lib/vid/discovery'
 import type { VidEnv } from './types'
 
 const BASE_SELECT = `
@@ -49,11 +50,28 @@ export function rowToVideoRecord(row: Record<string, unknown>): VideoRecord {
   }
 }
 
-export async function listPublicVideos(env: VidEnv, page: number, pageSize: number): Promise<CatalogPage> {
+export async function listPublicVideos(
+  env: VidEnv,
+  page: number,
+  pageSize: number,
+  filters: { query?: string; topic?: string } = {},
+): Promise<CatalogPage> {
   const offset = (page - 1) * pageSize
+  const clauses = ["v.status = 'published'", "v.media_status = 'ready'"]
+  const bindings: unknown[] = []
+  if (filters.query) {
+    clauses.push('v.search_text LIKE ?')
+    bindings.push(`%${normalizeVietnamese(filters.query)}%`)
+  }
+  if (filters.topic) {
+    clauses.push('EXISTS (SELECT 1 FROM vid_video_topics fvt WHERE fvt.video_id = v.id AND fvt.topic_slug = ?)')
+    bindings.push(filters.topic)
+  }
   const result = await env.VID_DB.prepare(
-    `${BASE_SELECT} WHERE v.status = 'published' AND v.media_status = 'ready' ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC LIMIT ? OFFSET ?`,
-  ).bind(pageSize, offset).all<Record<string, unknown>>()
+    `${BASE_SELECT.replace('SELECT v.*', 'SELECT v.*, COUNT(*) OVER() AS total_count')}
+     WHERE ${clauses.join(' AND ')}
+     ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC LIMIT ? OFFSET ?`,
+  ).bind(...bindings, pageSize, offset).all<Record<string, unknown>>()
   const items = ((result.results ?? []) as Record<string, unknown>[]).flatMap((row) => {
     try {
       const video = toPublicVideo(rowToVideoRecord(row))
@@ -62,7 +80,8 @@ export async function listPublicVideos(env: VidEnv, page: number, pageSize: numb
       return []
     }
   })
-  return { items, page, pageSize, total: items.length }
+  const total = Number((result.results?.[0] as Record<string, unknown> | undefined)?.total_count ?? items.length)
+  return { items, page, pageSize, total: Number.isFinite(total) ? total : items.length }
 }
 
 export async function getPublicVideo(env: VidEnv, slug: string) {
@@ -75,6 +94,18 @@ export async function getPublicVideo(env: VidEnv, slug: string) {
   } catch {
     return null
   }
+}
+
+export async function listPublicVideoSlugs(env: VidEnv) {
+  const result = await env.VID_DB.prepare(
+    `SELECT slug, updated_at FROM vid_videos
+     WHERE status = 'published' AND media_status = 'ready'
+       AND duration_seconds > 0 AND thumbnail_url != '' AND player_url != ''
+     ORDER BY published_at DESC`,
+  ).all<Record<string, unknown>>()
+  return (result.results ?? []).flatMap((row) => typeof row.slug === 'string' && typeof row.updated_at === 'string'
+    ? [{ slug: row.slug, updatedAt: row.updated_at }]
+    : [])
 }
 
 export async function listTopics(env: VidEnv) {
@@ -126,8 +157,8 @@ export async function createVideoDraft(
       `INSERT INTO vid_videos (
         id, slug, bunny_video_id, idempotency_key, title, description, source_title,
         source_creator, source_creator_url, source_video_url, translation_label,
-        rights_status, rights_note, tags_json, status, media_status, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
+        rights_status, rights_note, tags_json, search_text, status, media_status, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
     ).bind(
       values.id,
       input.slug,
@@ -143,6 +174,7 @@ export async function createVideoDraft(
       input.rightsStatus,
       input.rightsNote,
       JSON.stringify(input.tags),
+      normalizeVietnamese([input.title, input.description, input.sourceTitle, input.sourceCreator, ...input.topics, ...input.tags, ...input.playlists].join(' ')),
       values.now,
       values.now,
     ),
@@ -150,10 +182,15 @@ export async function createVideoDraft(
       env.VID_DB.prepare('INSERT OR IGNORE INTO vid_topics (slug, label) VALUES (?, ?)').bind(topic, topic),
       env.VID_DB.prepare('INSERT INTO vid_video_topics (video_id, topic_slug) VALUES (?, ?)').bind(values.id, topic),
     ]),
-    ...input.playlists.map((playlist) => env.VID_DB.prepare(
-      `INSERT INTO vid_playlist_videos (playlist_slug, video_id, position)
-       SELECT ?, ?, COALESCE(MAX(position), -1) + 1 FROM vid_playlist_videos WHERE playlist_slug = ?`,
-    ).bind(playlist, values.id, playlist)),
+    ...input.playlists.flatMap((playlist) => [
+      env.VID_DB.prepare(
+        'INSERT OR IGNORE INTO vid_playlists (slug, title, description, published, updated_at) VALUES (?, ?, ?, 1, ?)',
+      ).bind(playlist, playlist.replaceAll('-', ' '), '', values.now),
+      env.VID_DB.prepare(
+        `INSERT INTO vid_playlist_videos (playlist_slug, video_id, position)
+         SELECT ?, ?, COALESCE(MAX(position), -1) + 1 FROM vid_playlist_videos WHERE playlist_slug = ?`,
+      ).bind(playlist, values.id, playlist),
+    ]),
   ]
   await env.VID_DB.batch(statements)
 }
@@ -162,13 +199,25 @@ export async function updateVideoMediaStatus(
   env: VidEnv,
   bunnyVideoId: string,
   mediaStatus: MediaStatus,
+  media?: { durationSeconds: number; thumbnailUrl: string; previewUrl: string; playerUrl: string },
 ): Promise<void> {
   const status = mediaStatus === 'failed' ? 'failed' : mediaStatus === 'ready' ? 'ready' : 'processing'
   await env.VID_DB.prepare(
     `UPDATE vid_videos
-     SET media_status = ?, status = CASE WHEN status = 'published' THEN status ELSE ? END, updated_at = ?
+     SET media_status = ?, status = CASE WHEN status = 'published' THEN status ELSE ? END,
+       duration_seconds = COALESCE(?, duration_seconds), thumbnail_url = COALESCE(?, thumbnail_url),
+       preview_url = COALESCE(?, preview_url), player_url = COALESCE(?, player_url), updated_at = ?
      WHERE bunny_video_id = ? AND status != 'archived'`,
-  ).bind(mediaStatus, status, new Date().toISOString(), bunnyVideoId).run()
+  ).bind(
+    mediaStatus,
+    status,
+    media?.durationSeconds ?? null,
+    media?.thumbnailUrl ?? null,
+    media?.previewUrl ?? null,
+    media?.playerUrl ?? null,
+    new Date().toISOString(),
+    bunnyVideoId,
+  ).run()
 }
 
 export async function getAdminVideoStatus(env: VidEnv, id: string) {
@@ -181,7 +230,8 @@ export async function publishAdminVideo(env: VidEnv, id: string): Promise<boolea
   const result = await env.VID_DB.prepare(
     `UPDATE vid_videos SET status = 'published', published_at = COALESCE(published_at, ?), updated_at = ?
      WHERE id = ? AND media_status = 'ready' AND status IN ('ready', 'published')
-       AND source_creator != '' AND source_video_url != '' AND rights_status != ''`,
+       AND source_creator != '' AND source_video_url != '' AND rights_status != ''
+       AND duration_seconds > 0 AND thumbnail_url != '' AND preview_url != '' AND player_url != ''`,
   ).bind(new Date().toISOString(), new Date().toISOString(), id).run()
   return Number(result.meta.changes ?? 0) === 1
 }

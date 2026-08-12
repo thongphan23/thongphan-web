@@ -62,6 +62,9 @@ test('rejects unknown, unsafe and incomplete draft fields', () => {
 test('publishes only ready media with an exact safe DTO', () => {
   assert.equal(toPublicVideo({ ...published, status: 'processing' }), null)
   assert.equal(toPublicVideo({ ...published, mediaStatus: 'failed' }), null)
+  assert.equal(toPublicVideo({ ...published, durationSeconds: 0 }), null)
+  assert.equal(toPublicVideo({ ...published, thumbnailUrl: '' }), null)
+  assert.equal(toPublicVideo({ ...published, playerUrl: 'https://example.com/not-bunny' }), null)
 
   const publicVideo = toPublicVideo(published)
   assert.ok(publicVideo)

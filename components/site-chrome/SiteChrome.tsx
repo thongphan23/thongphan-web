@@ -19,6 +19,7 @@ function DefaultHeader() {
           <li><Link href="/diagnostic">Chẩn đoán AI</Link></li>
           <li><Link href="/blog">Bài viết</Link></li>
           <li><Link href="/library">Thư viện</Link></li>
+          <li><a href="https://vid.thongphan.com">Video</a></li>
           <li><Link href="/assets">Kho tài sản nhỏ</Link></li>
           <li><Link href="/brain2/21-ngay">21 ngày Brain2</Link></li>
           <li><Link href="/about">Về tui</Link></li>
@@ -45,6 +46,7 @@ function DefaultFooter() {
           <Link href="/diagnostic">Làm bài chẩn đoán</Link>
           <Link href="/blog">Bài viết</Link>
           <Link href="/library">Thư viện sống</Link>
+          <a href="https://vid.thongphan.com">Video tuyển chọn</a>
           <Link href="/assets">Kho tài sản nhỏ</Link>
           <Link href="/brain2/21-ngay">21 ngày Brain2</Link>
           <Link href="/chat">Bàn hỏi</Link>

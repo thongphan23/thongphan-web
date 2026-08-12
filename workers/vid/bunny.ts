@@ -81,10 +81,17 @@ export async function getBunnyVideoDetails(videoId: string, env: VidEnv, fetcher
   })
   if (!response.ok) throw new Error('bunny_status_failed')
   const payload = await response.json() as { length?: unknown; thumbnailFileName?: unknown }
+  const durationSeconds = Number.isFinite(payload.length) ? Math.round(Number(payload.length)) : 0
+  const thumbnailFileName = typeof payload.thumbnailFileName === 'string' && /^[a-zA-Z0-9._-]+$/.test(payload.thumbnailFileName)
+    ? payload.thumbnailFileName
+    : 'thumbnail.jpg'
+  if (durationSeconds <= 0 || !env.BUNNY_CDN_HOST || !/^[a-z0-9.-]+$/i.test(env.BUNNY_CDN_HOST)) {
+    throw new Error('bunny_status_invalid_response')
+  }
   return {
-    durationSeconds: Number.isFinite(payload.length) ? Number(payload.length) : 0,
-    thumbnailFileName: typeof payload.thumbnailFileName === 'string' && payload.thumbnailFileName
-      ? payload.thumbnailFileName
-      : 'thumbnail.jpg',
+    durationSeconds,
+    thumbnailUrl: `https://${env.BUNNY_CDN_HOST}/${videoId}/${thumbnailFileName}`,
+    previewUrl: `https://${env.BUNNY_CDN_HOST}/${videoId}/preview.webp`,
+    playerUrl: `https://player.mediadelivery.net/embed/${libraryId}/${videoId}`,
   }
 }

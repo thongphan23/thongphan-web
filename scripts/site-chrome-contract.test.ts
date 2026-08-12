@@ -57,6 +57,7 @@ test('navigation promotes real experiences and hides gated Learn cleanly', async
     { href: '/diagnostic', label: 'Chẩn đoán' },
   ])
   assert.deepEqual(secondaryNavigation, [
+    { href: 'https://vid.thongphan.com', label: 'Video tuyển chọn', external: true },
     { href: '/assets', label: 'Tài sản' },
     { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
     { href: '/conanmaker/', label: 'Conan Maker' },

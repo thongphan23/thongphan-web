@@ -85,7 +85,9 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
           <ul>
             {primaryNavigation.map((link) => (
               <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
+                {'external' in link && link.external
+                  ? <a href={link.href}>{link.label}</a>
+                  : <Link href={link.href}>{link.label}</Link>}
               </li>
             ))}
           </ul>
