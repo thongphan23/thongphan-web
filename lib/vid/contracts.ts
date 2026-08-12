@@ -61,6 +61,13 @@ export type CatalogPage = {
   total: number
 }
 
+export type CatalogSlice = {
+  items: PublicVideo[]
+  nextCursor: string | null
+  hasMore: boolean
+  policyVersion: 'vid-feed-v1'
+}
+
 export const PUBLIC_VIDEO_KEYS = [
   'slug',
   'title',

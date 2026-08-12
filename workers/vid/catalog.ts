@@ -1,4 +1,5 @@
-import { toPublicVideo, type CatalogPage, type MediaStatus, type RightsStatus, type VideoDraftInput, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
+import { catalogFingerprint, decodeCatalogCursor, encodeCatalogCursor, VID_FEED_POLICY } from '../../lib/vid/feed-cursor'
+import { toPublicVideo, type CatalogSlice, type MediaStatus, type RightsStatus, type VideoDraftInput, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
 import { normalizeVietnamese } from '../../lib/vid/discovery'
 import type { VidEnv } from './types'
 
@@ -52,29 +53,43 @@ export function rowToVideoRecord(row: Record<string, unknown>): VideoRecord {
   }
 }
 
-export async function listPublicVideos(
+export async function listPublicVideoFeed(
   env: VidEnv,
-  page: number,
-  pageSize: number,
-  filters: { query?: string; topic?: string } = {},
-): Promise<CatalogPage> {
-  const offset = (page - 1) * pageSize
+  input: { limit: number; cursor?: string; query?: string; topic?: string },
+): Promise<CatalogSlice> {
   const clauses = ["v.status = 'published'", "v.media_status = 'ready'"]
   const bindings: unknown[] = []
-  if (filters.query) {
+  const query = input.query?.trim() || undefined
+  const topic = input.topic?.trim().normalize('NFC').toLocaleLowerCase('vi') || undefined
+  if (query) {
     clauses.push('v.search_text LIKE ?')
-    bindings.push(`%${normalizeVietnamese(filters.query)}%`)
+    bindings.push(`%${normalizeVietnamese(query)}%`)
   }
-  if (filters.topic) {
+  if (topic) {
     clauses.push('EXISTS (SELECT 1 FROM vid_video_topics fvt WHERE fvt.video_id = v.id AND fvt.topic_slug = ?)')
-    bindings.push(filters.topic)
+    bindings.push(topic)
+  }
+  const fingerprint = catalogFingerprint({ query, topic })
+  if (input.cursor) {
+    const cursor = decodeCatalogCursor(input.cursor, fingerprint)
+    if (cursor.b === 0) {
+      clauses.push(`(v.featured_rank IS NULL
+        OR v.featured_rank > ?
+        OR (v.featured_rank = ? AND (v.published_at < ? OR (v.published_at = ? AND v.slug > ?))))`)
+      bindings.push(cursor.r, cursor.r, cursor.p, cursor.p, cursor.s)
+    } else {
+      clauses.push(`(v.featured_rank IS NULL
+        AND (v.published_at < ? OR (v.published_at = ? AND v.slug > ?)))`)
+      bindings.push(cursor.p, cursor.p, cursor.s)
+    }
   }
   const result = await env.VID_DB.prepare(
-    `${BASE_SELECT.replace('SELECT v.*', 'SELECT v.*, COUNT(*) OVER() AS total_count')}
+    `${BASE_SELECT}
      WHERE ${clauses.join(' AND ')}
-     ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC LIMIT ? OFFSET ?`,
-  ).bind(...bindings, pageSize, offset).all<Record<string, unknown>>()
-  const items = ((result.results ?? []) as Record<string, unknown>[]).flatMap((row) => {
+     ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC, v.slug ASC LIMIT ?`,
+  ).bind(...bindings, input.limit + 1).all<Record<string, unknown>>()
+  const rows = ((result.results ?? []) as Record<string, unknown>[]).slice(0, input.limit)
+  const items = rows.flatMap((row) => {
     try {
       const video = toPublicVideo(rowToVideoRecord(row))
       return video ? [video] : []
@@ -82,8 +97,21 @@ export async function listPublicVideos(
       return []
     }
   })
-  const total = Number((result.results?.[0] as Record<string, unknown> | undefined)?.total_count ?? items.length)
-  return { items, page, pageSize, total: Number.isFinite(total) ? total : items.length }
+  const last = items.at(-1)
+  const hasMore = Boolean(last) && (result.results?.length ?? 0) > input.limit
+  return {
+    items,
+    nextCursor: hasMore && last ? encodeCatalogCursor({
+      v: VID_FEED_POLICY,
+      f: fingerprint,
+      b: last.featuredRank === null ? 1 : 0,
+      r: last.featuredRank,
+      p: last.publishedAt,
+      s: last.slug,
+    }) : null,
+    hasMore,
+    policyVersion: VID_FEED_POLICY,
+  }
 }
 
 export async function getPublicVideo(env: VidEnv, slug: string) {

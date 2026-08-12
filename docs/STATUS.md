@@ -23,8 +23,12 @@ Last updated: 2026-08-12
   - `docs/superpowers/plans/2026-08-12-vid-video-first-foundation-implementation.md`;
   - `docs/superpowers/plans/2026-08-12-vid-content-intelligence-implementation.md`;
   - `docs/superpowers/plans/2026-08-12-vid-watching-path-experience-implementation.md`.
-- Implementation has not started for this release. The next gate is execution
-  mode selection, followed by Task 1 of the video-first foundation plan.
+- Implementation is underway in isolated task commits; the next release gate is
+  integration of the remaining approved foundation tasks.
+- Task 2 replaces the Worker catalog's page-number API with a versioned,
+  filter-bound cursor feed. Its D1 keyset ordering is stable across featured
+  and unfeatured records; the client migration remains the subsequent Task 3
+  gate. No Worker, D1, or Pages deployment occurred for this local change.
 
 ## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 

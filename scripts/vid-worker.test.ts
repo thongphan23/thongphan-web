@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { createHash, createHmac } from 'node:crypto'
 import test from 'node:test'
+import { catalogFingerprint, encodeCatalogCursor, VID_FEED_POLICY } from '../lib/vid/feed-cursor'
 import vidWorker, { handleVidRequest } from '../workers/vid/index'
 import type { VidEnv } from '../workers/vid/types'
 
@@ -46,6 +47,38 @@ class FakeDatabase {
   constructor(readonly rows: Record<string, unknown>[] = []) {}
   prepare() { return new FakeStatement(this.rows) }
 }
+
+class CursorFeedDatabase {
+  readonly calls: Array<{ sql: string; bindings: unknown[] }> = []
+  private requests = 0
+
+  prepare(sql: string) {
+    let bindings: unknown[] = []
+    return {
+      bind: (...values: unknown[]) => {
+        bindings = values
+        return {
+          all: async () => {
+            this.calls.push({ sql, bindings })
+            this.requests += 1
+            const results = sql.includes('v.featured_rank > ?')
+              ? cursorRows.slice(1)
+              : this.requests === 1 ? cursorRows : [cursorRows[2]]
+            return { results }
+          },
+          first: async () => null,
+          run: async () => ({ success: true }),
+        }
+      },
+    }
+  }
+}
+
+const cursorRows = [
+  { ...publishedRow, slug: 'featured-a', featured_rank: 1, published_at: '2026-08-12T03:00:00.000Z' },
+  { ...publishedRow, slug: 'recent-b', featured_rank: null, published_at: '2026-08-12T02:00:00.000Z' },
+  { ...publishedRow, slug: 'recent-c', featured_rank: null, published_at: '2026-08-12T01:00:00.000Z' },
+]
 
 function env(rows: Record<string, unknown>[] = []): VidEnv {
   return {
@@ -121,19 +154,99 @@ test('runtime adapter does not pass the Cloudflare execution context as fetch de
 test('public API returns only exact published ready DTOs with bounded caching', async () => {
   const draft = { ...publishedRow, slug: 'draft', status: 'draft' }
   const response = await handleVidRequest(
-    new Request('https://vid.thongphan.com/api/videos?page=1&pageSize=12'),
+    new Request('https://vid.thongphan.com/api/videos?limit=12'),
     env([publishedRow, draft]),
   )
   assert.equal(response.status, 200)
   assert.match(response.headers.get('cache-control') ?? '', /max-age=60/)
   assert.equal(response.headers.get('access-control-allow-origin'), 'https://vid.thongphan.com')
-  const body = await response.json() as { items: Array<{ slug: string }> }
+  const body = await response.json() as { items: Array<{ slug: string }>; nextCursor: string | null; hasMore: boolean; policyVersion: string }
   assert.deepEqual(body.items.map(({ slug }) => slug), ['tu-duy-ai'])
+  assert.equal(body.nextCursor, null)
+  assert.equal(body.hasMore, false)
+  assert.equal(body.policyVersion, 'vid-feed-v1')
+  assert.equal(JSON.stringify(body).includes('Owner reviewed'), false)
 })
 
-test('rejects invalid pagination and returns JSON 404 for unknown videos', async () => {
+test('cursor feed returns one extra row and advances without duplicates', async () => {
+  const database = new CursorFeedDatabase()
+  const cursorEnv = { ...env(), VID_DB: database as unknown as VidEnv['VID_DB'] }
+  const firstResponse = await handleVidRequest(
+    new Request('https://vid.thongphan.com/api/videos?limit=2&topic=AI&q=T%C6%B0%20duy'),
+    cursorEnv,
+  )
+  assert.equal(firstResponse.status, 200)
+  const first = await firstResponse.json() as { items: Array<{ slug: string }>; nextCursor: string | null; hasMore: boolean }
+  assert.deepEqual(first.items.map((item) => item.slug), ['featured-a', 'recent-b'])
+  assert.equal(first.hasMore, true)
+  assert.ok(first.nextCursor)
+
+  const secondResponse = await handleVidRequest(
+    new Request(`https://vid.thongphan.com/api/videos?limit=2&topic=AI&q=T%C6%B0%20duy&cursor=${encodeURIComponent(first.nextCursor)}`),
+    cursorEnv,
+  )
+  assert.equal(secondResponse.status, 200)
+  const second = await secondResponse.json() as { items: Array<{ slug: string }>; nextCursor: string | null; hasMore: boolean }
+  assert.deepEqual(second.items.map((item) => item.slug), ['recent-c'])
+  assert.equal(second.nextCursor, null)
+  assert.equal(second.hasMore, false)
+  assert.equal(new Set([...first.items, ...second.items].map((item) => item.slug)).size, 3)
+  assert.equal(database.calls[0]?.bindings.at(-1), 3)
+  assert.match(database.calls[0]?.sql ?? '', /ORDER BY v\.featured_rank IS NULL, v\.featured_rank, v\.published_at DESC, v\.slug ASC/)
+  assert.match(database.calls[1]?.sql ?? '', /v\.featured_rank IS NULL\s+AND \(v\.published_at < \? OR \(v\.published_at = \? AND v\.slug > \?\)\)/)
+})
+
+test('non-null featured ranks advance into later ranks and unfeatured records', async () => {
+  const database = new CursorFeedDatabase()
+  const cursorEnv = { ...env(), VID_DB: database as unknown as VidEnv['VID_DB'] }
+  const cursor = encodeCatalogCursor({
+    v: VID_FEED_POLICY,
+    f: catalogFingerprint({}),
+    b: 0,
+    r: 1,
+    p: '2026-08-12T03:00:00.000Z',
+    s: 'featured-a',
+  })
+
+  const response = await handleVidRequest(
+    new Request(`https://vid.thongphan.com/api/videos?limit=2&cursor=${encodeURIComponent(cursor)}`),
+    cursorEnv,
+  )
+  assert.equal(response.status, 200)
+  const payload = await response.json() as { items: Array<{ slug: string }> }
+  assert.deepEqual(payload.items.map((item) => item.slug), ['recent-b', 'recent-c'])
+  assert.match(database.calls[0]?.sql ?? '', /v\.featured_rank IS NULL\s+OR v\.featured_rank > \?\s+OR \(v\.featured_rank = \? AND \(v\.published_at < \? OR \(v\.published_at = \? AND v\.slug > \?\)\)\)/)
+  assert.deepEqual(database.calls[0]?.bindings.slice(-6), [1, 1, '2026-08-12T03:00:00.000Z', '2026-08-12T03:00:00.000Z', 'featured-a', 3])
+})
+
+test('rejects invalid cursor filters and limits before querying D1', async () => {
+  const database = new CursorFeedDatabase()
+  const cursorEnv = { ...env(), VID_DB: database as unknown as VidEnv['VID_DB'] }
+  const first = await handleVidRequest(new Request('https://vid.thongphan.com/api/videos?limit=2&topic=ai'), cursorEnv)
+  const firstPayload = await first.json() as { nextCursor: string }
+  const mismatched = await handleVidRequest(
+    new Request(`https://vid.thongphan.com/api/videos?limit=2&topic=content&cursor=${encodeURIComponent(firstPayload.nextCursor)}`),
+    cursorEnv,
+  )
+  assert.equal(mismatched.status, 400)
+  assert.deepEqual(await mismatched.json(), { error: 'invalid_cursor' })
+  assert.equal(database.calls.length, 1)
+
+  for (const value of ['0', '49', 'two']) {
+    const invalid = await handleVidRequest(new Request(`https://vid.thongphan.com/api/videos?limit=${value}`), cursorEnv)
+    assert.equal(invalid.status, 400)
+  }
+
+  for (const parameter of ['page=2', 'pageSize=12']) {
+    const legacy = await handleVidRequest(new Request(`https://vid.thongphan.com/api/videos?${parameter}`), cursorEnv)
+    assert.equal(legacy.status, 400)
+    assert.deepEqual(await legacy.json(), { error: 'invalid_pagination' })
+  }
+})
+
+test('rejects invalid cursor input and returns JSON 404 for unknown videos', async () => {
   const invalid = await handleVidRequest(
-    new Request('https://vid.thongphan.com/api/videos?pageSize=49'),
+    new Request('https://vid.thongphan.com/api/videos?cursor=not-a-valid-cursor'),
     env(),
   )
   assert.equal(invalid.status, 400)

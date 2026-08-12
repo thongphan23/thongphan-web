@@ -6,6 +6,12 @@ import {
   validateDraftInput,
   type VideoRecord,
 } from '../lib/vid/contracts'
+import {
+  catalogFingerprint,
+  decodeCatalogCursor,
+  encodeCatalogCursor,
+  VID_FEED_POLICY,
+} from '../lib/vid/feed-cursor'
 
 const validDraft = {
   slug: 'tu-duy-ai-co-ban',
@@ -39,6 +45,41 @@ const published: VideoRecord = {
   createdAt: '2026-08-12T07:00:00.000Z',
   updatedAt: '2026-08-12T08:00:00.000Z',
 }
+
+test('catalog cursor is opaque, UTF-8 safe, filter-bound and round-trips', () => {
+  const input = {
+    v: VID_FEED_POLICY,
+    f: 'topic=ai&q=%C4%91%E1%BA%B7c-bi%E1%BB%87t',
+    b: 1,
+    r: null,
+    p: '2026-08-12T00:00:00.000Z',
+    s: 'video-tu-duy',
+  } as const
+  const encoded = encodeCatalogCursor(input)
+
+  assert.equal(encoded.includes('video-tu-duy'), false)
+  assert.match(encoded, /^[A-Za-z0-9_-]+$/)
+  assert.deepEqual(decodeCatalogCursor(encoded, input.f), input)
+  assert.throws(() => decodeCatalogCursor(encoded, 'topic=content&q=%C4%91%E1%BA%B7c-bi%E1%BB%87t'), /cursor_filter_mismatch/)
+  assert.equal(catalogFingerprint({ topic: ' AI ', query: ' Tư duy AI ' }), 'topic=ai&q=tu%20duy%20ai')
+})
+
+test('catalog cursor rejects unknown keys, invalid versions and oversized payloads', () => {
+  const encodeRaw = (value: unknown) => Buffer.from(JSON.stringify(value), 'utf8').toString('base64url')
+  const valid = {
+    v: VID_FEED_POLICY,
+    f: 'topic=&q=',
+    b: 0,
+    r: 1,
+    p: '2026-08-12T00:00:00.000Z',
+    s: 'video-a',
+  }
+
+  assert.throws(() => decodeCatalogCursor(encodeRaw({ ...valid, unexpected: true }), valid.f), /invalid_cursor/)
+  assert.throws(() => decodeCatalogCursor(encodeRaw({ ...valid, v: 'vid-feed-v0' }), valid.f), /invalid_cursor/)
+  assert.throws(() => decodeCatalogCursor(encodeRaw({ ...valid, r: null }), valid.f), /invalid_cursor/)
+  assert.throws(() => decodeCatalogCursor(encodeRaw({ ...valid, s: 'x'.repeat(1_100) }), valid.f), /invalid_cursor/)
+})
 
 test('validates a complete owner-reviewed draft', () => {
   assert.deepEqual(validateDraftInput(validDraft), {

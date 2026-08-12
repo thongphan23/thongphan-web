@@ -8,7 +8,7 @@ import {
   getAdminVideoStatus,
   getPublicPlaylist,
   getPublicVideo,
-  listPublicVideos,
+  listPublicVideoFeed,
   listPublicVideoSlugs,
   listTopics,
   publishAdminVideo,
@@ -43,13 +43,22 @@ async function handlePublicApi(request: Request, env: VidEnv, url: URL): Promise
   if (url.pathname === '/api/health') return json({ ok: true }, 200, 'public, max-age=30')
   if (url.pathname === '/api/topics') return json({ items: await listTopics(env) }, 200, 'public, max-age=300')
   if (url.pathname === '/api/videos') {
-    const page = boundedInteger(url.searchParams.get('page'), 1, 1, 10_000)
-    const pageSize = boundedInteger(url.searchParams.get('pageSize'), 24, 1, 48)
-    if (page === null || pageSize === null) return error('invalid_pagination', 400)
-    return json(await listPublicVideos(env, page, pageSize, {
-      query: url.searchParams.get('q')?.slice(0, 160) || undefined,
-      topic: url.searchParams.get('topic')?.slice(0, 64) || undefined,
-    }), 200, 'public, max-age=60, stale-while-revalidate=300')
+    if (url.searchParams.has('page') || url.searchParams.has('pageSize')) return error('invalid_pagination', 400)
+    const limit = boundedInteger(url.searchParams.get('limit'), 24, 1, 48)
+    if (limit === null) return error('invalid_pagination', 400)
+    try {
+      return json(await listPublicVideoFeed(env, {
+        limit,
+        cursor: url.searchParams.get('cursor') || undefined,
+        query: url.searchParams.get('q')?.slice(0, 160) || undefined,
+        topic: url.searchParams.get('topic')?.slice(0, 64) || undefined,
+      }), 200, 'public, max-age=60, stale-while-revalidate=300')
+    } catch (failure) {
+      if (failure instanceof Error && (failure.message === 'invalid_cursor' || failure.message === 'cursor_filter_mismatch')) {
+        return error('invalid_cursor', 400)
+      }
+      throw failure
+    }
   }
   if (url.pathname.startsWith('/api/videos/')) {
     const slug = decodeURIComponent(url.pathname.slice('/api/videos/'.length))
