@@ -29,6 +29,8 @@ export type VideoDraftInput = {
   topics: string[]
   tags: string[]
   playlists: string[]
+  thumbnailFocalX?: number
+  thumbnailFocalY?: number
 }
 
 export type VideoRecord = VideoDraftInput & {
@@ -71,6 +73,8 @@ export const PUBLIC_VIDEO_KEYS = [
   'topics',
   'tags',
   'playlists',
+  'thumbnailFocalX',
+  'thumbnailFocalY',
   'durationSeconds',
   'thumbnailUrl',
   'previewUrl',
@@ -93,6 +97,8 @@ const DRAFT_KEYS = new Set<keyof VideoDraftInput>([
   'topics',
   'tags',
   'playlists',
+  'thumbnailFocalX',
+  'thumbnailFocalY',
 ])
 
 function requiredString(value: unknown, field: string, maxLength: number): string {
@@ -122,6 +128,14 @@ function stringList(value: unknown, field: string, maximum: number, required: bo
   return result
 }
 
+function focalPercentage(value: unknown, field: string, fallback: number): number {
+  if (value === undefined) return fallback
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 100) {
+    throw new Error(`${field} must be between 0 and 100`)
+  }
+  return value
+}
+
 export function validateDraftInput(input: unknown): VideoDraftInput {
   if (!input || typeof input !== 'object' || Array.isArray(input)) throw new Error('Draft must be an object')
   const record = input as Record<string, unknown>
@@ -148,6 +162,8 @@ export function validateDraftInput(input: unknown): VideoDraftInput {
     topics: stringList(record.topics, 'topics', 8, true),
     tags: stringList(record.tags, 'tags', 16, false),
     playlists: stringList(record.playlists, 'playlists', 12, false),
+    thumbnailFocalX: focalPercentage(record.thumbnailFocalX, 'thumbnailFocalX', 50),
+    thumbnailFocalY: focalPercentage(record.thumbnailFocalY, 'thumbnailFocalY', 24),
   }
 }
 
@@ -180,6 +196,8 @@ export function toPublicVideo(record: VideoRecord): PublicVideo | null {
     previewUrl: record.previewUrl,
     playerUrl: record.playerUrl,
     featuredRank: record.featuredRank,
+    thumbnailFocalX: focalPercentage(record.thumbnailFocalX, 'thumbnailFocalX', 50),
+    thumbnailFocalY: focalPercentage(record.thumbnailFocalY, 'thumbnailFocalY', 24),
     publishedAt: record.publishedAt,
   }
 }

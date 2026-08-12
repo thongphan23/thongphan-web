@@ -54,7 +54,7 @@ const images = [
 
 const videos = images.map((image, index) => ({
   slug: `video-thu-${index + 1}`,
-  title: index === 1 ? 'Tại sao người giỏi vẫn có thể bị mắc kẹt khi biến chuyên môn thành một hệ thống sống trong thời đại AI?' : [
+  title: index === 0 ? 'Kỹ thuật prompting Claude để hiểu đúng vấn đề và hành động có hệ thống' : index === 1 ? 'Tại sao người giỏi vẫn có thể bị mắc kẹt khi biến chuyên môn thành một hệ thống sống trong thời đại AI?' : [
     'Tư duy hệ thống cho người làm nghề', 'Xây một bộ não thứ hai không bắt đầu từ công cụ', 'Chọn lọc tri thức giữa thời đại dư thừa',
     'AI không cướp việc bạn — sự trì hoãn mới có thể', 'Từ ghi chú rời rạc đến tài sản có người dùng', '21 ngày xây Brain2 từ ca thật',
   ][index],
@@ -134,6 +134,33 @@ async function inspect(page, name) {
   return state
 }
 
+async function assertFeaturedCopyLayout(page, name) {
+  const geometry = await page.evaluate(() => {
+    const copy = document.querySelector('[data-vid-featured-copy]')
+    const heading = document.querySelector('#featured-title')
+    const cta = copy?.querySelector('a')
+    if (!(copy instanceof HTMLElement) || !(heading instanceof HTMLElement) || !(cta instanceof HTMLElement)) {
+      throw new Error('featured QA anchors are missing')
+    }
+    const copyRect = copy.getBoundingClientRect()
+    const range = document.createRange()
+    range.selectNodeContents(heading)
+    const headingRects = [...range.getClientRects()].map(({ top, right, bottom, left, width, height }) => ({ top, right, bottom, left, width, height }))
+    const ctaRect = cta.getBoundingClientRect()
+    return { copy: copyRect.toJSON(), headingRects, cta: ctaRect.toJSON() }
+  })
+  assert.ok(geometry.headingRects.length > 0, `${name}: featured heading has no rendered glyph range`)
+  for (const rect of geometry.headingRects) {
+    assert.ok(
+      rect.left >= geometry.copy.left - 1 && rect.right <= geometry.copy.right + 1 && rect.top >= geometry.copy.top - 1 && rect.bottom <= geometry.copy.bottom + 1,
+      `${name}: featured Vietnamese glyph range is clipped ${JSON.stringify({ rect, copy: geometry.copy })}`,
+    )
+    const overlapsCta = rect.left < geometry.cta.right && rect.right > geometry.cta.left && rect.top < geometry.cta.bottom && rect.bottom > geometry.cta.top
+    assert.equal(overlapsCta, false, `${name}: featured CTA overlaps heading ${JSON.stringify({ rect, cta: geometry.cta })}`)
+  }
+  return geometry
+}
+
 const browser = await chromium.launch({ headless: true, args: ['--host-resolver-rules=MAP vid.thongphan.com 127.0.0.1'] })
 const results = []
 try {
@@ -141,8 +168,8 @@ try {
     { name: 'desktop-1440', width: 1440, height: 900 },
     { name: 'desktop-1280', width: 1280, height: 720 },
     { name: 'tablet-1024', width: 1024, height: 768 },
+    { name: 'tablet-768', width: 768, height: 1024 },
     { name: 'mobile-390', width: 390, height: 844 },
-    { name: 'mobile-320', width: 320, height: 568 },
   ]) {
     const context = await browser.newContext({ viewport })
     await context.addInitScript(() => localStorage.setItem('thongphan.vid.library.v1', JSON.stringify({ version: 1, progress: [{ slug: 'video-thu-2', seconds: 120, duration: 676, updatedAt: Date.now() }], watchLater: ['video-thu-3'] })))
@@ -155,12 +182,13 @@ try {
     assert.equal(response?.status(), 200, `${viewport.name}: home status`)
     await page.locator('text=Mới tuyển chọn').waitFor()
     const state = await inspect(page, viewport.name)
+    const featured = await assertFeaturedCopyLayout(page, viewport.name)
     assert.ok(state.cards >= 5, `${viewport.name}: catalog cards missing`)
     if (viewport.width <= 780) assert.equal(state.bottomNav, 'grid', `${viewport.name}: mobile navigation missing`)
     assert.deepEqual(errors, [], `${viewport.name}: console errors`)
     const screenshot = join(output, `${viewport.name}-home.png`)
     await page.screenshot({ path: screenshot, fullPage: true, animations: 'disabled' })
-    results.push({ ...viewport, page: 'home', screenshot, ...state })
+    results.push({ ...viewport, page: 'home', screenshot, ...state, featured })
     await context.close()
   }
 

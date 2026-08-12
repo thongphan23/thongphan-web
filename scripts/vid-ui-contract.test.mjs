@@ -37,6 +37,18 @@ test('catalog experience has real cards, progress, delayed preview and complete 
   assert.match(css, /\.relatedRail > h2\s*\{[^}]*color:\s*#e8dfcf/s)
 })
 
+test('featured copy remains in normal flow and only media is cropped', async () => {
+  const [view, css] = await Promise.all([
+    readFile('components/vid/HomeView.tsx', 'utf8'),
+    readFile('components/vid/Vid.module.css', 'utf8'),
+  ])
+  assert.match(view, /data-vid-featured-copy/)
+  assert.match(view, /data-vid-featured-media/)
+  assert.doesNotMatch(css, /\.featured\s*\{[^}]*max-height:/s)
+  assert.match(css, /\.featuredImage\s*\{[^}]*overflow:\s*hidden/s)
+  assert.match(css, /\.featured h1\s*\{[^}]*line-height:\s*1\.0[5-9]/s)
+})
+
 test('visible catalog states are natural and never impersonate social features', async () => {
   const sources = await Promise.all([
     'components/vid/HomeView.tsx',

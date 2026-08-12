@@ -2,7 +2,7 @@
 
 import { ArrowRight, Play } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import { listTopics, listVideos, type PublicTopic } from '../../lib/vid/api-client'
 import type { PublicVideo } from '../../lib/vid/contracts'
 import VideoGrid from './VideoGrid'
@@ -68,11 +68,16 @@ export default function HomeView() {
 
       {featured && (
         <section className={styles.featured} aria-labelledby="featured-title">
-          <span className={styles.featuredImage} aria-hidden="true">
+          <span
+            className={styles.featuredImage}
+            data-vid-featured-media
+            aria-hidden="true"
+            style={{ '--focal-x': `${featured.thumbnailFocalX ?? 50}%`, '--focal-y': `${featured.thumbnailFocalY ?? 24}%` } as CSSProperties}
+          >
             <Image src={featured.thumbnailUrl} alt="" fill unoptimized priority sizes="(max-width: 780px) 100vw, 56vw" />
           </span>
           <span className={styles.featuredShade} aria-hidden="true" />
-          <div>
+          <div data-vid-featured-copy>
             <p>SUẤT CHIẾU NỔI BẬT</p>
             <h1 id="featured-title">{featured.title}</h1>
             <span>{featured.sourceCreator} · {featured.topics[0]}</span>

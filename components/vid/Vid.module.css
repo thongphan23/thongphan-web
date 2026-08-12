@@ -211,11 +211,10 @@
 
 .featured {
   position: relative;
-  min-height: clamp(320px, 46vh, 520px);
-  max-height: 52vh;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
+  min-height: clamp(360px, 46vh, 560px);
+  display: grid;
+  align-items: end;
+  overflow: visible;
   border: 1px solid rgba(232, 223, 207, .15);
   border-radius: 6px;
   background: #15120f;
@@ -224,9 +223,11 @@
 .featuredImage {
   position: absolute;
   inset: 0 0 0 44%;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
-.featuredImage img { object-fit: cover; object-position: center 24%; }
+.featuredImage img { object-fit: cover; object-position: var(--focal-x, 50%) var(--focal-y, 24%); }
 
 .featuredShade {
   position: absolute;
@@ -257,7 +258,8 @@
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(2.2rem, 5vw, 4.9rem);
   font-weight: 500;
-  line-height: .96;
+  line-height: 1.08;
+  padding-block: .08em;
   text-wrap: balance;
 }
 
@@ -656,7 +658,6 @@
   .bottomNav svg { width: 19px; }
   .featured {
     min-height: 0;
-    max-height: none;
     display: grid;
     align-items: stretch;
   }
@@ -666,7 +667,7 @@
     width: 100%;
     aspect-ratio: 16 / 9;
   }
-  .featuredImage img { object-position: center 20%; }
+  .featuredImage img { object-position: var(--focal-x, 50%) var(--focal-y, 24%); }
   .featuredShade { background: linear-gradient(0deg, rgba(7, 7, 6, .75) 0%, transparent 42%); }
   .featured > div { width: 100%; padding: 1.25rem; background: #0d0c0a; }
   .featured h1 { font-size: clamp(2rem, 9vw, 3.2rem); }

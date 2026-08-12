@@ -44,6 +44,8 @@ export function rowToVideoRecord(row: Record<string, unknown>): VideoRecord {
     status: stringValue(row, 'status') as VideoStatus,
     mediaStatus: stringValue(row, 'media_status') as MediaStatus,
     featuredRank: row.featured_rank === null ? null : Number(row.featured_rank),
+    thumbnailFocalX: row.thumbnail_focal_x === undefined || row.thumbnail_focal_x === null ? 50 : Number(row.thumbnail_focal_x),
+    thumbnailFocalY: row.thumbnail_focal_y === undefined || row.thumbnail_focal_y === null ? 24 : Number(row.thumbnail_focal_y),
     publishedAt: row.published_at === null ? null : stringValue(row, 'published_at'),
     createdAt: stringValue(row, 'created_at'),
     updatedAt: stringValue(row, 'updated_at'),
@@ -157,8 +159,8 @@ export async function createVideoDraft(
       `INSERT INTO vid_videos (
         id, slug, bunny_video_id, idempotency_key, title, description, source_title,
         source_creator, source_creator_url, source_video_url, translation_label,
-        rights_status, rights_note, tags_json, search_text, status, media_status, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
+        rights_status, rights_note, tags_json, search_text, thumbnail_focal_x, thumbnail_focal_y, status, media_status, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
     ).bind(
       values.id,
       input.slug,
@@ -175,6 +177,8 @@ export async function createVideoDraft(
       input.rightsNote,
       JSON.stringify(input.tags),
       normalizeVietnamese([input.title, input.description, input.sourceTitle, input.sourceCreator, ...input.topics, ...input.tags, ...input.playlists].join(' ')),
+      input.thumbnailFocalX ?? 50,
+      input.thumbnailFocalY ?? 24,
       values.now,
       values.now,
     ),
