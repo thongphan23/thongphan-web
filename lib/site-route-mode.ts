@@ -3,12 +3,14 @@ export type SiteRouteMode =
   | 'cinema-dark'
   | 'evidence-dossier'
   | 'learning-dossier'
+  | 'video-platform'
   | 'editorial-light'
   | 'legacy'
   | 'default'
 
 const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
   '/conanmaker': 'standalone',
+  '/vid': 'video-platform',
   '/': 'cinema-dark',
   '/about': 'cinema-dark',
   '/diagnostic': 'evidence-dossier',
@@ -26,6 +28,7 @@ const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
 
 const prefixRouteModes: ReadonlyArray<readonly [prefix: string, mode: SiteRouteMode]> = [
   ['/conanmaker', 'standalone'],
+  ['/vid', 'video-platform'],
   ['/assets', 'evidence-dossier'],
   ['/learn', 'learning-dossier'],
   ['/experiences', 'evidence-dossier'],
@@ -44,5 +47,5 @@ export function routeModeForPath(pathname: string): SiteRouteMode {
 
 export function isUnifiedRouteEnabled(pathname: string): boolean {
   const mode = routeModeForPath(pathname)
-  return mode !== 'legacy' && mode !== 'standalone'
+  return mode !== 'legacy' && mode !== 'standalone' && mode !== 'video-platform'
 }

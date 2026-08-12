@@ -85,6 +85,8 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
   const mode = routeModeForPath(pathname)
   const isUnified = isUnifiedRouteEnabled(pathname)
 
+  if (mode === 'video-platform') return <>{children}</>
+
   return (
     <div
       className={`${styles.siteShell} ${isUnified ? '' : legacyFontClassName}`}
