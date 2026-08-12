@@ -195,11 +195,12 @@ export async function runVidUpload(
 
   const secret = await dependencies.readSecret()
   const idempotencyKey = `upload:${draft.slug}:${(await fileDigest(options.filePath)).slice(0, 16)}`
+  const { thumbnailFocalX: _thumbnailFocalX, thumbnailFocalY: _thumbnailFocalY, ...uploadDraft } = draft
   const uploadResponse = await adminFetch(
     baseUrl,
     '/api/admin/uploads',
     'POST',
-    JSON.stringify(draft),
+    JSON.stringify(uploadDraft),
     idempotencyKey,
     secret,
     dependencies,

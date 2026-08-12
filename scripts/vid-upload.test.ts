@@ -106,6 +106,9 @@ test('signs admin calls, uploads through TUS, polls ready and publishes without 
   assert.equal(requests.length, 3)
   const contentDigest = createHash('sha256').update(Buffer.alloc(2_048, 1)).digest('hex').slice(0, 16)
   assert.equal(requests[0]?.headers.get('X-Vid-Idempotency-Key'), `upload:tu-duy-ai:${contentDigest}`)
+  const uploadBody = await requests[0]!.clone().json() as Record<string, unknown>
+  assert.equal('thumbnailFocalX' in uploadBody, false)
+  assert.equal('thumbnailFocalY' in uploadBody, false)
   for (const request of requests) {
     assert.match(request.headers.get('X-Vid-Signature') ?? '', /^[0-9a-f]{64}$/)
   }
