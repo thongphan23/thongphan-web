@@ -2,6 +2,24 @@
 
 Last updated: 2026-08-12
 
+## VID Video-First Intelligence & Watching Path — DESIGN APPROVED — 2026-08-12
+
+- The next VID release is now scoped video-first: completed video must be able to
+  upload directly to Bunny, publish at M0, play smoothly, remain scientifically
+  organized and load through a cursor-based continuous discovery feed.
+- Transcript/AI enrichment, semantic relationships and curated watching paths are
+  additive. They must not block an otherwise valid M0 publish.
+- Viewer personalization, server-side profiles and behavioral collection remain
+  explicitly deferred until there is sufficient user volume, consent policy and
+  evaluation evidence.
+- Current production media already lives in Bunny Stream, while D1 owns catalog
+  metadata. The public replacement video is Bunny GUID
+  `f6c61cfc-4135-4b1c-a99e-130cba6b3196`.
+- Written design capturing the conversation-approved direction:
+  `docs/superpowers/specs/2026-08-12-vid-video-first-intelligence-watching-path-design.md`.
+- Implementation has not started for this release. The written spec still needs
+  the user review gate before an implementation plan is produced.
+
 ## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 
 - Anh Thông authorized autonomous implementation of a public YouTube-familiar
