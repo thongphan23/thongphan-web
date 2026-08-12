@@ -1,30 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { getPlaylist, listVideos } from '../../lib/vid/api-client'
+import { getPlaylist } from '../../lib/vid/api-client'
 import type { PublicVideo } from '../../lib/vid/contracts'
-import { filterVideos } from '../../lib/vid/discovery'
+import InfiniteVideoFeed from './InfiniteVideoFeed'
 import VideoGrid from './VideoGrid'
 import styles from './Vid.module.css'
+import { type FeedFilters, useInfiniteVideoFeed } from './useInfiniteVideoFeed'
 import { useLocalLibraryState } from './useLocalLibraryState'
 
-async function fetchCatalogView(view: 'results' | 'topic' | 'playlist', signal: AbortSignal) {
+function catalogParameters(view: 'results' | 'topic' | 'playlist') {
   const params = new URLSearchParams(window.location.search)
-  if (view === 'playlist') {
-    const slug = params.get('list') || 'all'
-    if (slug !== 'all') {
-      const playlist = await getPlaylist(slug, { signal })
-      return { videos: playlist.items, heading: playlist.title }
-    }
-    const catalog = await listVideos({ pageSize: 48 }, { signal })
-    return { videos: catalog.items, heading: 'Danh sách phát' }
-  }
   const query = view === 'results' ? params.get('search_query')?.trim() ?? '' : ''
   const topic = view === 'topic' ? params.get('slug') ?? 'all' : undefined
-  const selectedTopic = topic === 'all' ? undefined : topic
-  const catalog = await listVideos({ pageSize: 48, query, topic: selectedTopic }, { signal })
   return {
-    videos: filterVideos(catalog.items, query, selectedTopic),
+    filters: { limit: 24, query, topic: topic === 'all' ? undefined : topic } satisfies FeedFilters,
     heading: view === 'results'
       ? (query ? `Kết quả cho “${query}”` : 'Tìm trong thư viện')
       : topic === 'all' ? 'Tất cả chủ đề' : `Chủ đề: ${topic}`,
@@ -32,38 +22,53 @@ async function fetchCatalogView(view: 'results' | 'topic' | 'playlist', signal: 
 }
 
 export default function CatalogView({ view }: { view: 'results' | 'topic' | 'playlist' }) {
-  const [videos, setVideos] = useState<PublicVideo[]>([])
+  const [filters, setFilters] = useState<FeedFilters>({ limit: 24 })
   const [heading, setHeading] = useState('Tất cả video')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [playlist, setPlaylist] = useState<{ title: string; items: PublicVideo[] } | null>(null)
+  const [playlistError, setPlaylistError] = useState<string | null>(null)
+  const feed = useInfiniteVideoFeed(filters)
   const { library, toggleLater } = useLocalLibraryState()
 
   useEffect(() => {
     const controller = new AbortController()
-    const timeout = window.setTimeout(() => {
-      controller.abort()
-      setError('Kết nối mất quá nhiều thời gian. Hãy thử lại.')
-      setLoading(false)
-    }, 8_000)
-    void fetchCatalogView(view, controller.signal)
-      .then((result) => {
-        setVideos(result.videos)
-        setHeading(result.heading)
-      })
-      .catch((reason: unknown) => {
-        if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : 'Kết nối bị gián đoạn.')
-      })
-      .finally(() => {
-        window.clearTimeout(timeout)
-        if (!controller.signal.aborted) setLoading(false)
-      })
-    return () => { window.clearTimeout(timeout); controller.abort() }
+    queueMicrotask(() => {
+      if (controller.signal.aborted) return
+      if (view !== 'playlist') {
+        const next = catalogParameters(view)
+        setFilters(next.filters)
+        setHeading(next.heading)
+        setPlaylist(null)
+        return
+      }
+      const slug = new URLSearchParams(window.location.search).get('list') || 'all'
+      if (slug === 'all') {
+        setFilters({ limit: 24 })
+        setHeading('Danh sách phát')
+        setPlaylist(null)
+        return
+      }
+      setPlaylist(null)
+      setPlaylistError(null)
+      void getPlaylist(slug, { signal: controller.signal })
+        .then((result) => {
+          setHeading(result.title)
+          setPlaylist(result)
+        })
+        .catch((reason: unknown) => {
+          if (!controller.signal.aborted) setPlaylistError(reason instanceof Error ? reason.message : 'Không tải được danh sách phát.')
+        })
+    })
+    return () => controller.abort()
   }, [view])
 
   return (
     <section className={styles.catalogPage} aria-labelledby="catalog-title">
       <header className={styles.pageHeading}><p>THÔNG PHAN SCREENING ROOM</p><h1 id="catalog-title">{heading}</h1></header>
-      <VideoGrid videos={videos} library={library} loading={loading} error={error} emptyTitle="Chưa có video phù hợp" emptyBody="Thử một từ khóa hoặc chủ đề khác trong thư viện." onRetry={() => window.location.reload()} onToggleWatchLater={toggleLater} />
+      {view === 'playlist' && playlist
+        ? <VideoGrid videos={playlist.items} library={library} onToggleWatchLater={toggleLater} />
+        : playlistError
+          ? <VideoGrid videos={[]} library={library} error={playlistError} onRetry={() => window.location.reload()} />
+          : <InfiniteVideoFeed feed={feed} filters={filters} library={library} emptyTitle="Chưa có video phù hợp" emptyBody="Thử một từ khóa hoặc chủ đề khác trong thư viện." onToggleWatchLater={toggleLater} />}
     </section>
   )
 }

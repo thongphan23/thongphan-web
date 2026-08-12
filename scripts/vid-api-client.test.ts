@@ -2,6 +2,8 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 
 import { getPlaylist, getVideo, listTopics, listVideos } from '../lib/vid/api-client'
+import { mergeVideos, stableFeedFilterKey } from '../components/vid/useInfiniteVideoFeed'
+import { columnCountForWidth, visibleRowRange } from '../lib/vid/virtual-grid'
 
 const video = {
   slug: 'tu-duy-he-thong',
@@ -34,18 +36,62 @@ function rawResponse(value: unknown): Response {
   return { ok: true, status: 200, json: async () => value } as Response
 }
 
-test('catalog client uses same-origin public endpoints and no-store semantics', async () => {
+test('catalog client sends an opaque cursor and parses the versioned catalog slice', async () => {
   const calls: Array<{ input: string; init?: RequestInit }> = []
   const fetcher: typeof fetch = async (input, init) => {
     calls.push({ input: String(input), init })
-    return jsonResponse({ items: [video], page: 2, pageSize: 12, total: 13 })
+    return jsonResponse({
+      items: [video],
+      nextCursor: 'next-opaque-cursor',
+      hasMore: true,
+      policyVersion: 'vid-feed-v1',
+    })
   }
 
-  const result = await listVideos({ page: 2, pageSize: 12 }, { fetcher })
+  const result = await listVideos({ limit: 24, cursor: 'opaque-cursor', topic: 'ai' }, { fetcher })
   assert.equal(result.items[0]?.slug, video.slug)
-  assert.equal(result.total, 13)
-  assert.equal(calls[0]?.input, '/api/videos?page=2&pageSize=12')
+  assert.equal(result.nextCursor, 'next-opaque-cursor')
+  assert.equal(result.hasMore, true)
+  assert.equal(result.policyVersion, 'vid-feed-v1')
+  assert.equal(calls[0]?.input, '/api/videos?limit=24&cursor=opaque-cursor&topic=ai')
   assert.equal(calls[0]?.init?.cache, 'no-store')
+})
+
+test('catalog client fails closed on malformed cursor-feed metadata', async () => {
+  for (const payload of [
+    { items: [video], nextCursor: 4, hasMore: true, policyVersion: 'vid-feed-v1' },
+    { items: [video], nextCursor: null, hasMore: 'yes', policyVersion: 'vid-feed-v1' },
+    { items: [video], nextCursor: null, hasMore: true, policyVersion: 'vid-feed-v1' },
+    { items: [video], nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v2' },
+  ]) {
+    await assert.rejects(
+      () => listVideos({}, { fetcher: async () => jsonResponse(payload) }),
+      /Invalid catalog payload/,
+    )
+  }
+})
+
+test('feed filter identity is stable and slug dedupe preserves first response order', () => {
+  assert.equal(
+    stableFeedFilterKey({ query: '  AI native ', topic: '  tu-duy ', limit: 24 }),
+    stableFeedFilterKey({ limit: 24, topic: 'tu-duy', query: 'AI native' }),
+  )
+  assert.notEqual(
+    stableFeedFilterKey({ query: 'a|', topic: 'b', limit: 24 }),
+    stableFeedFilterKey({ query: 'a', topic: '|b', limit: 24 }),
+  )
+  const duplicate = { ...video, slug: 'trung-lap', title: 'Bản sau không được thay thế' }
+  const items = mergeVideos([video, duplicate], [{ ...video, slug: 'moi' }, { ...duplicate, title: 'Bản trùng' }])
+  assert.deepEqual(items.map((item) => item.slug), [video.slug, duplicate.slug, 'moi'])
+  assert.equal(items[1]?.title, duplicate.title)
+})
+
+test('responsive virtual ranges use exact grid breakpoints and bounded row slices', () => {
+  assert.deepEqual([580, 581, 940, 941, 1180, 1181].map(columnCountForWidth), [1, 2, 2, 3, 3, 4])
+  assert.deepEqual(
+    visibleRowRange({ itemCount: 100, columns: 4, rowHeight: 100, rowGap: 20, scrollTop: 450, viewportHeight: 300, overscanRows: 1 }),
+    { start: 2, end: 8, total: 25 },
+  )
 })
 
 test('detail, topic and playlist clients validate public payloads', async () => {

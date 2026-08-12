@@ -8,7 +8,7 @@ import styles from './Vid.module.css'
 import { useLocalLibraryState } from './useLocalLibraryState'
 
 async function fetchLibraryVideos(signal: AbortSignal) {
-  return (await listVideos({ pageSize: 48 }, { signal })).items
+  return (await listVideos({ limit: 24 }, { signal })).items
 }
 
 export default function LocalLibraryView() {

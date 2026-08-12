@@ -3,6 +3,17 @@ import type { LocalLibrary } from '../../lib/vid/local-library'
 import VideoCard from './VideoCard'
 import styles from './Vid.module.css'
 
+export type VideoGridProps = {
+  videos: PublicVideo[]
+  library: LocalLibrary
+  loading?: boolean
+  error?: string | null
+  emptyTitle?: string
+  emptyBody?: string
+  onRetry?: () => void
+  onToggleWatchLater?: (slug: string) => void
+}
+
 export default function VideoGrid({
   videos,
   library,
@@ -12,16 +23,7 @@ export default function VideoGrid({
   emptyBody = 'Thư viện đang được tuyển chọn. Video mới sẽ xuất hiện tại đây khi đã hoàn chỉnh.',
   onRetry,
   onToggleWatchLater,
-}: {
-  videos: PublicVideo[]
-  library: LocalLibrary
-  loading?: boolean
-  error?: string | null
-  emptyTitle?: string
-  emptyBody?: string
-  onRetry?: () => void
-  onToggleWatchLater?: (slug: string) => void
-}) {
+}: VideoGridProps) {
   if (loading) {
     return <div className={styles.videoGrid} aria-live="polite" aria-busy="true">{Array.from({ length: 8 }, (_, index) => <span className={styles.skeletonCard} key={index} />)}</div>
   }

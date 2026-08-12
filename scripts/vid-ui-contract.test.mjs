@@ -23,7 +23,7 @@ test('catalog experience has real cards, progress, delayed preview and complete 
   assert.match(home, /Mới tuyển chọn/)
   assert.match(home, /Xem tiếp/)
   assert.match(home, /Theo chủ đề/)
-  assert.match(catalog, /filterVideos/)
+  assert.match(catalog, /InfiniteVideoFeed/)
   assert.match(library, /useLocalLibraryState/)
   assert.match(css, /aspect-ratio:\s*16\s*\/\s*9/)
   assert.match(css, /-webkit-line-clamp:\s*2/)
@@ -59,4 +59,33 @@ test('visible catalog states are natural and never impersonate social features',
   const source = sources.join('\n')
   for (const text of ['Thử lại', 'Chưa có video', 'Xem sau']) assert.match(source, new RegExp(text))
   assert.doesNotMatch(source, /Đăng nhập|Bình luận|Đăng ký kênh|Theo dõi/)
+})
+
+test('continuous discovery keeps a cancellable accessible feed and virtualizes only long grids', async () => {
+  const [home, catalog, feed, hook, virtual, css] = await Promise.all([
+    readFile('components/vid/HomeView.tsx', 'utf8'),
+    readFile('components/vid/CatalogView.tsx', 'utf8'),
+    readFile('components/vid/InfiniteVideoFeed.tsx', 'utf8'),
+    readFile('components/vid/useInfiniteVideoFeed.ts', 'utf8'),
+    readFile('components/vid/VirtualVideoGrid.tsx', 'utf8'),
+    readFile('components/vid/Vid.module.css', 'utf8'),
+  ])
+  const visibleFeed = [home, catalog].join('\n')
+  assert.match(visibleFeed, /InfiniteVideoFeed/)
+  assert.match(feed, /data-vid-feed-sentinel/)
+  assert.match(feed, /rootMargin:\s*'800px 0px'/)
+  assert.match(feed, /aria-live="polite"/)
+  assert.match(feed, /<button[^>]*>Tải thêm video<\/button>/)
+  assert.match(hook, /new AbortController/)
+  assert.match(hook, /controller\.abort\(\)/)
+  assert.match(hook, /mergeVideos/)
+  assert.match(hook, /'exhausted'/)
+  assert.match(virtual, /virtualizationThreshold\s*=\s*48/)
+  assert.match(virtual, /ResizeObserver/)
+  assert.match(virtual, /window\.scrollY/)
+  assert.match(virtual, /data-visible-row-range/)
+  assert.match(css, /@media \(max-width: 1180px\)/)
+  assert.match(css, /@media \(max-width: 940px\)/)
+  assert.match(css, /@media \(max-width: 580px\)/)
+  assert.doesNotMatch([feed, virtual].join('\n'), /<video\b/i)
 })

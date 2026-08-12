@@ -81,7 +81,7 @@ function apiPayload(url) {
     const query = (url.searchParams.get('q') ?? '').toLocaleLowerCase('vi')
     const topic = url.searchParams.get('topic')
     const items = videos.filter((video) => (!query || `${video.title} ${video.description}`.toLocaleLowerCase('vi').includes(query)) && (!topic || video.topics.includes(topic)))
-    return { items, page: 1, pageSize: 48, total: items.length }
+    return { items, nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v1' }
   }
   if (url.pathname.startsWith('/api/videos/')) return videos.find(({ slug }) => slug === decodeURIComponent(url.pathname.split('/').at(-1) ?? '')) ?? { error: 'not_found' }
   if (url.pathname.startsWith('/api/playlists/')) return { slug: 'nen-tang-ai', title: 'Nền tảng AI', description: 'Một lộ trình video có thứ tự.', items: videos }

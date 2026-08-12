@@ -332,6 +332,15 @@
   gap: clamp(1.4rem, 2.4vw, 2.2rem) clamp(.8rem, 1.6vw, 1.35rem);
 }
 
+.virtualGrid { min-width: 0; }
+
+.infiniteFeed { display: grid; gap: 1rem; }
+.feedSentinel { block-size: 1px; }
+.feedControls { display: grid; justify-items: center; gap: .7rem; color: #9d958a; font-size: .82rem; text-align: center; }
+.feedControls p { margin: 0; }
+.feedControls button { min-height: 44px; padding: .6rem 1rem; border: 1px solid rgba(232, 223, 207, .28); border-radius: 4px; background: transparent; color: #e8dfcf; font: inherit; font-weight: 700; cursor: pointer; }
+.feedControls button:focus-visible { outline: 2px solid #eee5d6; outline-offset: 3px; }
+
 .videoCard { min-width: 0; position: relative; }
 
 .thumbnailLink { display: block; color: inherit; text-decoration: none; }

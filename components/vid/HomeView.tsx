@@ -3,50 +3,30 @@
 import { ArrowRight, Play } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState, type CSSProperties } from 'react'
-import { listTopics, listVideos, type PublicTopic } from '../../lib/vid/api-client'
-import type { PublicVideo } from '../../lib/vid/contracts'
+import { listTopics, type PublicTopic } from '../../lib/vid/api-client'
+import InfiniteVideoFeed from './InfiniteVideoFeed'
 import VideoGrid from './VideoGrid'
 import styles from './Vid.module.css'
+import { useInfiniteVideoFeed } from './useInfiniteVideoFeed'
 import { useLocalLibraryState } from './useLocalLibraryState'
 import VidLink from './VidLink'
 
-async function fetchHomeData(signal: AbortSignal) {
-  const [catalog, topics] = await Promise.all([
-    listVideos({ pageSize: 48 }, { signal }),
-    listTopics({ signal }),
-  ])
-  return { videos: catalog.items, topics: topics.filter(({ videoCount }) => videoCount > 0) }
-}
+const homeFilters = { limit: 24 }
 
 export default function HomeView() {
-  const [videos, setVideos] = useState<PublicVideo[]>([])
+  const feed = useInfiniteVideoFeed(homeFilters)
   const [topics, setTopics] = useState<PublicTopic[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
   const { library, toggleLater } = useLocalLibraryState()
 
   useEffect(() => {
     const controller = new AbortController()
-    const timeout = window.setTimeout(() => {
-      controller.abort()
-      setError('Kết nối mất quá nhiều thời gian. Hãy thử lại.')
-      setLoading(false)
-    }, 8_000)
-    void fetchHomeData(controller.signal)
-      .then((result) => {
-        setVideos(result.videos)
-        setTopics(result.topics)
-      })
-      .catch((reason: unknown) => {
-        if (!controller.signal.aborted) setError(reason instanceof Error ? reason.message : 'Kết nối bị gián đoạn.')
-      })
-      .finally(() => {
-        window.clearTimeout(timeout)
-        if (!controller.signal.aborted) setLoading(false)
-      })
-    return () => { window.clearTimeout(timeout); controller.abort() }
+    void listTopics({ signal: controller.signal })
+      .then((items) => setTopics(items.filter(({ videoCount }) => videoCount > 0)))
+      .catch(() => undefined)
+    return () => controller.abort()
   }, [])
 
+  const videos = feed.items
   const featured = videos.find(({ featuredRank }) => featuredRank !== null) ?? videos[0]
   const videosWithoutFeatured = featured ? videos.filter(({ slug }) => slug !== featured.slug) : videos
   const recent = videosWithoutFeatured.length ? videosWithoutFeatured : videos
@@ -58,6 +38,11 @@ export default function HomeView() {
     topic,
     videos: videos.filter((video) => video.topics.includes(topic.slug)).slice(0, 4),
   })).filter(({ videos: items }) => items.length)
+  const hiddenSlugs = new Set([
+    featured?.slug,
+    ...recent.slice(0, 8).map(({ slug }) => slug),
+    ...topicLanes.flatMap(({ videos: items }) => items.map(({ slug }) => slug)),
+  ].filter((slug): slug is string => Boolean(slug)))
 
   return (
     <div className={styles.viewStack}>
@@ -86,13 +71,13 @@ export default function HomeView() {
         </section>
       )}
 
-      <section aria-labelledby="recent-title">
+      {feed.status !== 'error' && <section aria-labelledby="recent-title">
         <header className={styles.sectionHeading}>
           <div><p>VỪA LÊN KỆ</p><h2 id="recent-title">Mới tuyển chọn</h2></div>
           {!!recent.length && <VidLink href="/topic?slug=all">Xem tất cả <ArrowRight aria-hidden="true" /></VidLink>}
         </header>
-        <VideoGrid videos={recent.slice(0, 8)} library={library} loading={loading} error={error} onRetry={() => window.location.reload()} onToggleWatchLater={toggleLater} />
-      </section>
+        <VideoGrid videos={recent.slice(0, 8)} library={library} loading={feed.status === 'loading'} onToggleWatchLater={toggleLater} />
+      </section>}
 
       {!!continuing.length && <section aria-labelledby="home-continue-title">
         <header className={styles.sectionHeading}><div><p>ĐANG XEM</p><h2 id="home-continue-title">Xem tiếp</h2></div><VidLink href="/library?tab=continue">Mở thư viện <ArrowRight aria-hidden="true" /></VidLink></header>
@@ -107,10 +92,10 @@ export default function HomeView() {
         </div>)}
       </section>}
 
-      {recent.length > 8 && <section aria-labelledby="all-videos-title">
+      <section aria-labelledby="all-videos-title">
         <header className={styles.sectionHeading}><div><p>TOÀN BỘ THƯ VIỆN</p><h2 id="all-videos-title">Chiếu tiếp</h2></div></header>
-        <VideoGrid videos={recent.slice(8)} library={library} onToggleWatchLater={toggleLater} />
-      </section>}
+        <InfiniteVideoFeed feed={feed} filters={homeFilters} library={library} hiddenSlugs={hiddenSlugs} emptyTitle="Chưa có video phù hợp" emptyBody="Thư viện đang được tuyển chọn." onToggleWatchLater={toggleLater} />
+      </section>
     </div>
   )
 }

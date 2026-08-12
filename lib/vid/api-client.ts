@@ -1,10 +1,10 @@
-import type { CatalogPage, PublicVideo } from './contracts'
+import type { CatalogSlice, PublicVideo } from './contracts'
 
 export type PublicTopic = { slug: string; label: string; videoCount: number }
 export type PublicPlaylist = { slug: string; title: string; description: string; items: PublicVideo[] }
 
 type ClientOptions = { fetcher?: typeof fetch; signal?: AbortSignal }
-type CatalogQuery = { page?: number; pageSize?: number; query?: string; topic?: string }
+export type CatalogQuery = { cursor?: string; limit?: number; query?: string; topic?: string }
 
 function objectValue(value: unknown, label: string): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`Invalid ${label} payload`)
@@ -64,19 +64,23 @@ async function request(path: string, options: ClientOptions): Promise<unknown> {
   return response.json()
 }
 
-export async function listVideos(query: CatalogQuery = {}, options: ClientOptions = {}): Promise<CatalogPage> {
+export async function listVideos(query: CatalogQuery = {}, options: ClientOptions = {}): Promise<CatalogSlice> {
   const params = new URLSearchParams()
-  if (query.page) params.set('page', String(query.page))
-  if (query.pageSize) params.set('pageSize', String(query.pageSize))
+  if (query.limit) params.set('limit', String(query.limit))
+  if (query.cursor) params.set('cursor', query.cursor)
   if (query.query?.trim()) params.set('q', query.query.trim())
   if (query.topic?.trim()) params.set('topic', query.topic.trim())
   const payload = objectValue(await request(`/api/videos${params.size ? `?${params}` : ''}`, options), 'catalog')
   if (!Array.isArray(payload.items)) throw new Error('Invalid catalog payload')
-  const page = Number(payload.page)
-  const pageSize = Number(payload.pageSize)
-  const total = Number(payload.total)
-  if (![page, pageSize, total].every(Number.isFinite)) throw new Error('Invalid catalog payload')
-  return { items: payload.items.map(publicVideo), page, pageSize, total }
+  if (payload.nextCursor !== null && typeof payload.nextCursor !== 'string') throw new Error('Invalid catalog payload')
+  if (payload.hasMore === true && payload.nextCursor === null) throw new Error('Invalid catalog payload')
+  if (typeof payload.hasMore !== 'boolean' || payload.policyVersion !== 'vid-feed-v1') throw new Error('Invalid catalog payload')
+  return {
+    items: payload.items.map(publicVideo),
+    nextCursor: payload.nextCursor,
+    hasMore: payload.hasMore,
+    policyVersion: payload.policyVersion,
+  }
 }
 
 export async function getVideo(slug: string, options: ClientOptions = {}): Promise<PublicVideo> {
