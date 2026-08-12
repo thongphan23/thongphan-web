@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash, createHmac } from 'node:crypto'
 import test from 'node:test'
 import { handleVidRequest } from '../workers/vid/index'
 import type { VidEnv } from '../workers/vid/types'
@@ -112,4 +113,117 @@ test('rejects proxy loops and non-HTTPS Pages origins', async () => {
     const response = await handleVidRequest(new Request('https://vid.thongphan.com/'), badEnv)
     assert.equal(response.status, 503)
   }
+})
+
+class AdminDatabase {
+  readonly statements: string[] = []
+  readonly seenNonces = new Set<string>()
+  prepare(sql: string) {
+    this.statements.push(sql)
+    return {
+      bind: (...values: unknown[]) => ({
+        first: async () => null,
+        all: async () => ({ results: [] }),
+        run: async () => {
+          if (sql.includes('vid_admin_nonces')) {
+            const nonce = String(values[0])
+            if (this.seenNonces.has(nonce)) return { success: true, meta: { changes: 0 } }
+            this.seenNonces.add(nonce)
+          }
+          return { success: true, meta: { changes: 1 } }
+        },
+      }),
+    }
+  }
+  async batch(statements: unknown[]) { return statements.map(() => ({ success: true })) }
+}
+
+function signAdminBody(body: string) {
+  const timestamp = Math.floor(Date.now() / 1000)
+  const nonce = 'nonce-route-12345678'
+  const idempotencyKey = 'upload-route-01'
+  const canonical = [
+    'POST',
+    '/api/admin/uploads',
+    String(timestamp),
+    nonce,
+    idempotencyKey,
+    createHash('sha256').update(body).digest('hex'),
+  ].join('\n')
+  return {
+    'Content-Type': 'application/json',
+    'X-Vid-Timestamp': String(timestamp),
+    'X-Vid-Nonce': nonce,
+    'X-Vid-Idempotency-Key': idempotencyKey,
+    'X-Vid-Signature': createHmac('sha256', 'unit-test-admin-secret-32-characters').update(canonical).digest('hex'),
+  }
+}
+
+test('creates one authenticated Bunny upload without exposing provider secrets', async () => {
+  const body = JSON.stringify({
+    slug: 'tu-duy-ai',
+    title: 'Tư duy AI',
+    description: 'Mô tả',
+    sourceTitle: 'Original',
+    sourceCreator: 'Creator',
+    sourceCreatorUrl: 'https://example.com/creator',
+    sourceVideoUrl: 'https://example.com/video',
+    translationLabel: 'Bản thuyết minh tiếng Việt do Thông Phan tuyển chọn',
+    rightsStatus: 'owner-reviewed',
+    rightsNote: 'Owner reviewed',
+    topics: ['ai'],
+    tags: ['tư duy'],
+    playlists: [],
+  })
+  const database = new AdminDatabase()
+  const adminEnv = {
+    ...env(),
+    VID_DB: database as unknown as D1Database,
+    VID_ADMIN_HMAC_SECRET: 'unit-test-admin-secret-32-characters',
+    BUNNY_STREAM_API_KEY: 'bunny-secret',
+  }
+  const fetcher = async () => Response.json({ guid: 'bunny-guid' })
+  const response = await handleVidRequest(
+    new Request('https://vid.thongphan.com/api/admin/uploads', {
+      method: 'POST',
+      headers: signAdminBody(body),
+      body,
+    }),
+    adminEnv,
+    { fetch: fetcher },
+  )
+  assert.equal(response.status, 201)
+  const payload = await response.json() as Record<string, unknown>
+  assert.equal(payload.videoId, 'bunny-guid')
+  assert.equal(JSON.stringify(payload).includes('bunny-secret'), false)
+  assert.equal(database.statements.some((sql) => sql.includes('INSERT INTO vid_videos')), true)
+})
+
+test('accepts only signed Bunny webhook bodies', async () => {
+  const rawBody = JSON.stringify({ VideoLibraryId: 123, VideoGuid: 'bunny-guid', Status: 3 })
+  const webhookEnv = {
+    ...env(),
+    VID_DB: new AdminDatabase() as unknown as D1Database,
+    BUNNY_WEBHOOK_SECRET: 'bunny-read-key',
+  }
+  const signature = createHmac('sha256', 'bunny-read-key').update(rawBody).digest('hex')
+  const response = await handleVidRequest(
+    new Request('https://vid.thongphan.com/api/webhooks/bunny', {
+      method: 'POST',
+      headers: {
+        'X-BunnyStream-Signature-Version': 'v1',
+        'X-BunnyStream-Signature-Algorithm': 'hmac-sha256',
+        'X-BunnyStream-Signature': signature,
+      },
+      body: rawBody,
+    }),
+    webhookEnv,
+  )
+  assert.equal(response.status, 204)
+
+  const rejected = await handleVidRequest(
+    new Request('https://vid.thongphan.com/api/webhooks/bunny', { method: 'POST', body: rawBody }),
+    webhookEnv,
+  )
+  assert.equal(rejected.status, 401)
 })

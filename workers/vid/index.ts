@@ -1,4 +1,18 @@
-import { getPublicPlaylist, getPublicVideo, listPublicVideos, listTopics } from './catalog'
+import { validateDraftInput } from '../../lib/vid/contracts'
+import { verifyAdminRequest } from './auth'
+import { buildTusAuthorization, createBunnyVideo, mapBunnyStatus, verifyBunnyWebhook } from './bunny'
+import {
+  archiveAdminVideo,
+  createVideoDraft,
+  findVideoByIdempotency,
+  getAdminVideoStatus,
+  getPublicPlaylist,
+  getPublicVideo,
+  listPublicVideos,
+  listTopics,
+  publishAdminVideo,
+  updateVideoMediaStatus,
+} from './catalog'
 import { error, json } from './http'
 import type { VidEnv } from './types'
 
@@ -46,6 +60,76 @@ async function handlePublicApi(request: Request, env: VidEnv, url: URL): Promise
   return error('api_not_found', 404)
 }
 
+async function handleAdminApi(
+  request: Request,
+  env: VidEnv,
+  url: URL,
+  dependencies: VidDependencies,
+): Promise<Response> {
+  const rawBody = await request.text()
+  if (new TextEncoder().encode(rawBody).byteLength > 64 * 1024) return error('body_too_large', 413)
+  if (!await verifyAdminRequest(request, rawBody, env)) return error('unauthorized', 401)
+
+  if (url.pathname === '/api/admin/uploads' && request.method === 'POST') {
+    let input: ReturnType<typeof validateDraftInput>
+    try {
+      input = validateDraftInput(JSON.parse(rawBody))
+    } catch {
+      return error('invalid_upload_metadata', 400)
+    }
+    const idempotencyKey = request.headers.get('X-Vid-Idempotency-Key')!
+    const existing = await findVideoByIdempotency(env, idempotencyKey)
+    const videoId = typeof existing?.bunny_video_id === 'string'
+      ? existing.bunny_video_id
+      : (await createBunnyVideo({ title: input.title }, env, dependencies.fetch)).videoId
+    const operationId = typeof existing?.id === 'string' ? existing.id : crypto.randomUUID()
+    if (!existing) {
+      await createVideoDraft(env, input, {
+        id: operationId,
+        bunnyVideoId: videoId,
+        idempotencyKey,
+        now: new Date().toISOString(),
+      })
+    }
+    const expirationTime = Math.floor(Date.now() / 1000) + 86_400
+    return json(
+      { operationId, ...(await buildTusAuthorization(videoId, expirationTime, env)) },
+      existing ? 200 : 201,
+    )
+  }
+
+  const match = url.pathname.match(/^\/api\/admin\/videos\/([^/]+)\/(status|publish|archive)$/)
+  if (!match) return error('admin_not_found', 404)
+  const [, id, action] = match
+  if (action === 'status' && request.method === 'GET') {
+    const status = await getAdminVideoStatus(env, id)
+    return status ? json(status) : error('video_not_found', 404)
+  }
+  if (action === 'publish' && request.method === 'POST') {
+    return await publishAdminVideo(env, id) ? json({ ok: true }) : error('video_not_ready', 409)
+  }
+  if (action === 'archive' && request.method === 'POST') {
+    return await archiveAdminVideo(env, id) ? json({ ok: true }) : error('video_not_found', 404)
+  }
+  return error('method_not_allowed', 405)
+}
+
+async function handleBunnyWebhook(request: Request, env: VidEnv): Promise<Response> {
+  if (request.method !== 'POST') return error('method_not_allowed', 405)
+  const rawBody = await request.text()
+  if (!await verifyBunnyWebhook(rawBody, request.headers, env)) return error('unauthorized', 401)
+  let payload: { VideoLibraryId?: unknown; VideoGuid?: unknown; Status?: unknown }
+  try {
+    payload = JSON.parse(rawBody)
+  } catch {
+    return error('invalid_json', 400)
+  }
+  if (String(payload.VideoLibraryId) !== env.BUNNY_LIBRARY_ID) return error('wrong_library', 400)
+  if (typeof payload.VideoGuid !== 'string' || !Number.isInteger(payload.Status)) return error('invalid_webhook', 400)
+  await updateVideoMediaStatus(env, payload.VideoGuid, mapBunnyStatus(Number(payload.Status)))
+  return new Response(null, { status: 204 })
+}
+
 function pagesOrigin(requestUrl: URL, value: string): URL | null {
   try {
     const origin = new URL(value)
@@ -70,6 +154,8 @@ export async function handleVidRequest(
   dependencies: VidDependencies = { fetch },
 ): Promise<Response> {
   const url = new URL(request.url)
+  if (url.pathname === '/api/webhooks/bunny') return handleBunnyWebhook(request, env)
+  if (url.pathname.startsWith('/api/admin/')) return handleAdminApi(request, env, url, dependencies)
   if (url.pathname.startsWith('/api/')) return handlePublicApi(request, env, url)
   return proxyStatic(request, env, url, dependencies.fetch)
 }

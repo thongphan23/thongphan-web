@@ -1,4 +1,4 @@
-import { toPublicVideo, type CatalogPage, type MediaStatus, type RightsStatus, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
+import { toPublicVideo, type CatalogPage, type MediaStatus, type RightsStatus, type VideoDraftInput, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
 import type { VidEnv } from './types'
 
 const BASE_SELECT = `
@@ -108,4 +108,87 @@ export async function getPublicPlaylist(env: VidEnv, slug: string) {
     }
   })
   return { ...playlist, items }
+}
+
+export async function findVideoByIdempotency(env: VidEnv, idempotencyKey: string) {
+  return env.VID_DB.prepare(
+    'SELECT id, bunny_video_id, status, media_status FROM vid_videos WHERE idempotency_key = ? LIMIT 1',
+  ).bind(idempotencyKey).first<Record<string, unknown>>()
+}
+
+export async function createVideoDraft(
+  env: VidEnv,
+  input: VideoDraftInput,
+  values: { id: string; bunnyVideoId: string; idempotencyKey: string; now: string },
+): Promise<void> {
+  const statements = [
+    env.VID_DB.prepare(
+      `INSERT INTO vid_videos (
+        id, slug, bunny_video_id, idempotency_key, title, description, source_title,
+        source_creator, source_creator_url, source_video_url, translation_label,
+        rights_status, rights_note, tags_json, status, media_status, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
+    ).bind(
+      values.id,
+      input.slug,
+      values.bunnyVideoId,
+      values.idempotencyKey,
+      input.title,
+      input.description,
+      input.sourceTitle,
+      input.sourceCreator,
+      input.sourceCreatorUrl,
+      input.sourceVideoUrl,
+      input.translationLabel,
+      input.rightsStatus,
+      input.rightsNote,
+      JSON.stringify(input.tags),
+      values.now,
+      values.now,
+    ),
+    ...input.topics.flatMap((topic) => [
+      env.VID_DB.prepare('INSERT OR IGNORE INTO vid_topics (slug, label) VALUES (?, ?)').bind(topic, topic),
+      env.VID_DB.prepare('INSERT INTO vid_video_topics (video_id, topic_slug) VALUES (?, ?)').bind(values.id, topic),
+    ]),
+    ...input.playlists.map((playlist) => env.VID_DB.prepare(
+      `INSERT INTO vid_playlist_videos (playlist_slug, video_id, position)
+       SELECT ?, ?, COALESCE(MAX(position), -1) + 1 FROM vid_playlist_videos WHERE playlist_slug = ?`,
+    ).bind(playlist, values.id, playlist)),
+  ]
+  await env.VID_DB.batch(statements)
+}
+
+export async function updateVideoMediaStatus(
+  env: VidEnv,
+  bunnyVideoId: string,
+  mediaStatus: MediaStatus,
+): Promise<void> {
+  const status = mediaStatus === 'failed' ? 'failed' : mediaStatus === 'ready' ? 'ready' : 'processing'
+  await env.VID_DB.prepare(
+    `UPDATE vid_videos
+     SET media_status = ?, status = CASE WHEN status = 'published' THEN status ELSE ? END, updated_at = ?
+     WHERE bunny_video_id = ? AND status != 'archived'`,
+  ).bind(mediaStatus, status, new Date().toISOString(), bunnyVideoId).run()
+}
+
+export async function getAdminVideoStatus(env: VidEnv, id: string) {
+  return env.VID_DB.prepare(
+    'SELECT id, slug, bunny_video_id, status, media_status, updated_at FROM vid_videos WHERE id = ? LIMIT 1',
+  ).bind(id).first<Record<string, unknown>>()
+}
+
+export async function publishAdminVideo(env: VidEnv, id: string): Promise<boolean> {
+  const result = await env.VID_DB.prepare(
+    `UPDATE vid_videos SET status = 'published', published_at = COALESCE(published_at, ?), updated_at = ?
+     WHERE id = ? AND media_status = 'ready' AND status IN ('ready', 'published')
+       AND source_creator != '' AND source_video_url != '' AND rights_status != ''`,
+  ).bind(new Date().toISOString(), new Date().toISOString(), id).run()
+  return Number(result.meta.changes ?? 0) === 1
+}
+
+export async function archiveAdminVideo(env: VidEnv, id: string): Promise<boolean> {
+  const result = await env.VID_DB.prepare(
+    `UPDATE vid_videos SET status = 'archived', updated_at = ? WHERE id = ? AND status != 'archived'`,
+  ).bind(new Date().toISOString(), id).run()
+  return Number(result.meta.changes ?? 0) === 1
 }
