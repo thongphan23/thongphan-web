@@ -45,6 +45,10 @@ Last updated: 2026-08-12
   Worker/D1/Pages preview branch and did not deploy the main thongphan.com or Learn
   surfaces. Evidence: `docs/qa/VID_SCREENING_ROOM_REPORT.md` and
   `docs/releases/VID_SCREENING_ROOM_RELEASE_REPORT.md`.
+- A short public entry route at `https://thongphan.com/video` now redirects to the
+  published Gauntlet Loop watch page. The final Vietnamese narration candidate is
+  being promoted through Bunny Stream as a replacement media object while the
+  previous GUID remains available for rollback until playback verification passes.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
