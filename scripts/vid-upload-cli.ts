@@ -30,6 +30,7 @@ async function main() {
       topic: { type: 'string', multiple: true },
       tag: { type: 'string', multiple: true },
       playlist: { type: 'string', multiple: true },
+      'thumbnail-url': { type: 'string' },
       'base-url': { type: 'string', default: 'https://vid.thongphan.com' },
       publish: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
@@ -46,7 +47,7 @@ async function main() {
     throw new Error('vid:upload-batch expects an absolute positional manifest path')
   }
   if (manifestPath) {
-    const singleFileFlags = new Set(['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'rights-status', 'rights-note-file', 'topic', 'tag', 'playlist', 'base-url', 'publish'])
+    const singleFileFlags = new Set(['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'thumbnail-url', 'rights-status', 'rights-note-file', 'topic', 'tag', 'playlist', 'base-url', 'publish'])
     for (const token of tokens) {
       if (token.kind === 'option' && singleFileFlags.has(token.name)) {
         throw new Error(`--manifest cannot be combined with --${token.name}`)
@@ -86,6 +87,7 @@ async function main() {
     topics: values.topic ?? [],
     tags: values.tag ?? [],
     playlists: values.playlist ?? [],
+    thumbnailUrl: values['thumbnail-url'],
     publish: values.publish!,
     dryRun: values['dry-run']!,
   })

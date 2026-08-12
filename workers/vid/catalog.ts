@@ -219,8 +219,8 @@ export async function createVideoDraft(
       `INSERT INTO vid_videos (
         id, slug, bunny_video_id, idempotency_key, title, description, source_title,
         source_creator, source_creator_url, source_video_url, translation_label,
-        rights_status, rights_note, tags_json, search_text, thumbnail_focal_x, thumbnail_focal_y, status, media_status, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
+        rights_status, rights_note, tags_json, search_text, thumbnail_url, thumbnail_focal_x, thumbnail_focal_y, status, media_status, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'uploading', 'pending', ?, ?)`,
     ).bind(
       values.id,
       input.slug,
@@ -237,6 +237,7 @@ export async function createVideoDraft(
       input.rightsNote,
       JSON.stringify(input.tags),
       normalizeVietnamese([input.title, input.description, input.sourceTitle, input.sourceCreator, ...input.topics, ...input.tags, ...input.playlists].join(' ')),
+      input.thumbnailUrl ?? '',
       input.thumbnailFocalX ?? 50,
       input.thumbnailFocalY ?? 24,
       values.now,
@@ -269,7 +270,7 @@ export async function updateVideoMediaStatus(
   await env.VID_DB.prepare(
     `UPDATE vid_videos
      SET media_status = ?, status = CASE WHEN status = 'published' THEN status ELSE ? END,
-       duration_seconds = COALESCE(?, duration_seconds), thumbnail_url = COALESCE(?, thumbnail_url),
+       duration_seconds = COALESCE(?, duration_seconds), thumbnail_url = CASE WHEN thumbnail_url = '' THEN COALESCE(?, thumbnail_url) ELSE thumbnail_url END,
        preview_url = COALESCE(?, preview_url), player_url = COALESCE(?, player_url), updated_at = ?
      WHERE bunny_video_id = ? AND status != 'archived'`,
   ).bind(
@@ -291,12 +292,22 @@ export async function getAdminVideoStatus(env: VidEnv, id: string) {
 }
 
 export async function publishAdminVideo(env: VidEnv, id: string): Promise<boolean> {
-  const result = await env.VID_DB.prepare(
+  const now = new Date().toISOString()
+  const publish = env.VID_DB.prepare(
     `UPDATE vid_videos SET status = 'published', published_at = COALESCE(published_at, ?), updated_at = ?
      WHERE id = ? AND media_status = 'ready' AND status IN ('ready', 'published')
        AND source_creator != '' AND source_video_url != '' AND rights_status != ''
        AND duration_seconds > 0 AND thumbnail_url != '' AND preview_url != '' AND player_url != ''`,
-  ).bind(new Date().toISOString(), new Date().toISOString(), id).run()
+  ).bind(now, now, id)
+  const archiveOlder = env.VID_DB.prepare(
+    `UPDATE vid_videos SET status = 'archived', updated_at = ?
+     WHERE status = 'published' AND source_video_url = (
+       SELECT source_video_url FROM vid_videos WHERE id = ?
+     ) AND id != ? AND EXISTS (
+       SELECT 1 FROM vid_videos WHERE id = ? AND status = 'published'
+     )`,
+  ).bind(now, id, id, id)
+  const [result] = await env.VID_DB.batch([publish, archiveOlder])
   return Number(result.meta.changes ?? 0) === 1
 }
 

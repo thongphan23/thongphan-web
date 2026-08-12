@@ -24,6 +24,7 @@ export type VidUploadOptions = {
   topics: string[]
   tags: string[]
   playlists: string[]
+  thumbnailUrl?: string
   thumbnailFocalX?: number
   thumbnailFocalY?: number
   publish: boolean
@@ -378,6 +379,7 @@ export async function runVidUpload(
     topics: options.topics,
     tags: options.tags,
     playlists: options.playlists,
+    thumbnailUrl: options.thumbnailUrl,
     thumbnailFocalX: options.thumbnailFocalX,
     thumbnailFocalY: options.thumbnailFocalY,
   })

@@ -29,6 +29,7 @@ export type VideoDraftInput = {
   topics: string[]
   tags: string[]
   playlists: string[]
+  thumbnailUrl?: string
   thumbnailFocalX?: number
   thumbnailFocalY?: number
 }
@@ -104,6 +105,7 @@ const DRAFT_KEYS = new Set<keyof VideoDraftInput>([
   'topics',
   'tags',
   'playlists',
+  'thumbnailUrl',
   'thumbnailFocalX',
   'thumbnailFocalY',
 ])
@@ -169,6 +171,7 @@ export function validateDraftInput(input: unknown): VideoDraftInput {
     topics: stringList(record.topics, 'topics', 8, true),
     tags: stringList(record.tags, 'tags', 16, false),
     playlists: stringList(record.playlists, 'playlists', 12, false),
+    thumbnailUrl: record.thumbnailUrl === undefined ? undefined : httpsUrl(record.thumbnailUrl, 'thumbnailUrl'),
     thumbnailFocalX: focalPercentage(record.thumbnailFocalX, 'thumbnailFocalX', 50),
     thumbnailFocalY: focalPercentage(record.thumbnailFocalY, 'thumbnailFocalY', 24),
   }

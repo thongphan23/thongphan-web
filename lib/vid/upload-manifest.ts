@@ -42,6 +42,7 @@ const VIDEO_KEYS = new Set([
   'topics',
   'tags',
   'playlists',
+  'thumbnailUrl',
   'thumbnailFocalX',
   'thumbnailFocalY',
   'publish',
@@ -115,6 +116,7 @@ function validateVideo(value: unknown): { video: VidUploadManifestVideo; identit
     topics: input.topics,
     tags: input.tags,
     playlists: input.playlists,
+    thumbnailUrl: input.thumbnailUrl,
     thumbnailFocalX: input.thumbnailFocalX,
     thumbnailFocalY: input.thumbnailFocalY,
   })

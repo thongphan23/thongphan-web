@@ -21,6 +21,7 @@ const metadata = {
   topics: ['ai'],
   tags: ['tư duy'],
   playlists: [],
+  thumbnailUrl: 'https://i.ytimg.com/vi/abc123/maxresdefault.jpg',
 }
 
 async function fixtureManifest(slugs: string[] = ['video-a']): Promise<unknown> {
@@ -71,6 +72,7 @@ test('manifest validates every M0 field and applies focal defaults before upload
   assert.equal(manifest.version, 1)
   assert.equal(manifest.videos[0]?.thumbnailFocalX, 50)
   assert.equal(manifest.videos[0]?.thumbnailFocalY, 24)
+  assert.equal(manifest.videos[0]?.thumbnailUrl, 'https://i.ytimg.com/vi/abc123/maxresdefault.jpg')
 })
 
 test('manifest rejects unknown root and item keys', async () => {

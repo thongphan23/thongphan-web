@@ -4,7 +4,7 @@ import { createRequire } from 'node:module'
 import type { SQLInputValue } from 'node:sqlite'
 import test from 'node:test'
 import vidWorker, { handleVidRequest } from '../workers/vid/index'
-import { listPublicVideoFeed } from '../workers/vid/catalog'
+import { listPublicVideoFeed, publishAdminVideo } from '../workers/vid/catalog'
 import type { VidEnv } from '../workers/vid/types'
 
 const originalEmitWarning = process.emitWarning
@@ -79,6 +79,7 @@ class CursorFeedDatabase {
       },
     }
   }
+
 }
 
 const cursorRows = [
@@ -137,6 +138,13 @@ class SqliteD1Database {
       }),
     }
   }
+
+  async batch(statements: Array<{ run: () => Promise<unknown> }>) {
+    return Promise.all(statements.map(async (statement) => {
+      const result = await statement.run() as { changes: number | bigint }
+      return { success: true, meta: { changes: Number(result.changes) } }
+    }))
+  }
 }
 
 function sqliteEnv(database: SqliteD1Database): VidEnv {
@@ -151,6 +159,40 @@ function env(rows: Record<string, unknown>[] = []): VidEnv {
     BUNNY_CDN_HOST: 'media.example.com',
   }
 }
+
+test('publishing a replacement archives every older public record for the same source', async () => {
+  const database = new SqliteD1Database()
+  database.insert('old-copy', null, '2026-08-12T00:00:00.000Z')
+  database.insert('new-copy', null, '2026-08-13T00:00:00.000Z', {
+    status: 'ready',
+    published_at: null,
+  })
+
+  assert.equal(await publishAdminVideo(sqliteEnv(database), 'id-new-copy'), true)
+  const rows = database.database.prepare(
+    'SELECT slug, status FROM vid_videos ORDER BY slug',
+  ).all().map((row) => ({ slug: String(row.slug), status: String(row.status) }))
+  assert.deepEqual(rows, [
+    { slug: 'new-copy', status: 'published' },
+    { slug: 'old-copy', status: 'archived' },
+  ])
+})
+
+test('a failed replacement promotion never archives the valid public video', async () => {
+  const database = new SqliteD1Database()
+  database.insert('old-copy', null, '2026-08-12T00:00:00.000Z')
+  database.insert('broken-copy', null, '2026-08-13T00:00:00.000Z', {
+    status: 'ready',
+    media_status: 'failed',
+    published_at: null,
+  })
+
+  assert.equal(await publishAdminVideo(sqliteEnv(database), 'id-broken-copy'), false)
+  const old = database.database.prepare(
+    "SELECT status FROM vid_videos WHERE slug = 'old-copy'",
+  ).get() as { status: string }
+  assert.equal(old.status, 'published')
+})
 
 test('maps public subdomain routes to exact static Vid shells', async () => {
   const seen: string[] = []
@@ -375,7 +417,9 @@ class AdminDatabase {
       },
     }
   }
-  async batch(statements: unknown[]) { return statements.map(() => ({ success: true })) }
+  async batch(statements: unknown[]) {
+    return statements.map(() => ({ success: true, meta: { changes: 1 } }))
+  }
 }
 
 function signAdminBody(body: string) {
@@ -414,6 +458,7 @@ test('creates one authenticated Bunny upload without exposing provider secrets',
     topics: ['ai'],
     tags: ['tư duy'],
     playlists: [],
+    thumbnailUrl: 'https://i.ytimg.com/vi/abc123/maxresdefault.jpg',
     thumbnailFocalX: 17,
     thumbnailFocalY: 83,
   })
@@ -440,8 +485,9 @@ test('creates one authenticated Bunny upload without exposing provider secrets',
   assert.equal(JSON.stringify(payload).includes('bunny-secret'), false)
   assert.equal(database.statements.some((sql) => sql.includes('INSERT INTO vid_videos')), true)
   const draftInsert = database.calls.find(({ sql }) => sql.includes('INSERT INTO vid_videos'))
-  assert.equal(draftInsert?.values[15], 17)
-  assert.equal(draftInsert?.values[16], 83)
+  assert.equal(draftInsert?.values[15], 'https://i.ytimg.com/vi/abc123/maxresdefault.jpg')
+  assert.equal(draftInsert?.values[16], 17)
+  assert.equal(draftInsert?.values[17], 83)
 })
 
 test('accepts only signed Bunny webhook bodies', async () => {

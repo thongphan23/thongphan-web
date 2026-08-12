@@ -27,6 +27,7 @@ const validDraft = {
   topics: ['ai'],
   tags: ['tư duy'],
   playlists: ['nen-tang-ai'],
+  thumbnailUrl: 'https://i.ytimg.com/vi/abc123/maxresdefault.jpg',
 }
 
 const published: VideoRecord = {
@@ -117,6 +118,10 @@ test('defaults thumbnail focal points and accepts inclusive percentage bounds', 
 })
 
 test('rejects unknown, unsafe and incomplete draft fields', () => {
+  assert.throws(
+    () => validateDraftInput({ ...validDraft, thumbnailUrl: 'http://i.ytimg.com/unsafe.jpg' }),
+    /thumbnailUrl must be an HTTPS URL/,
+  )
   assert.throws(
     () => validateDraftInput({ ...validDraft, sourceVideoUrl: 'http://example.com/video' }),
     /sourceVideoUrl must be an HTTPS URL/,
