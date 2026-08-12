@@ -101,7 +101,7 @@ copy, secret, admin-fetch and TUS counters remain zero.
 
 | Command | Result |
 | --- | --- |
-| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts scripts/vid-worker.test.ts` | PASS, 42/42 |
+| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts scripts/vid-worker.test.ts` | PASS, 43/43 |
 | `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts` | PASS, final rerun 31/31 |
 | `npm run vid:upload-batch -- /private/tmp/vid-task4-manifest.json --dry-run` | PASS, output `{"published":[],"uploaded":[],"failed":[]}`; two absolute `/private/tmp` items validated with zero staging/network/secret work |
 | `npx tsc --noEmit --incremental false` | PASS |
@@ -109,7 +109,7 @@ copy, secret, admin-fetch and TUS counters remain zero.
 | `npm run lint` | PASS |
 | `npm run build` | PASS, 88/88 static pages |
 | `npm run test:secret-integrity` | PASS |
-| `npm test` | PARTIAL, canonical command includes and passes all 18 Task 4 batch tests and all 12 direct upload tests; total 545/551 pass. Five unrelated environment failures are sandbox-denied Chromium Mach port / Wrangler localhost binds, and one Task 6 release-gate source contract still expects `/320/`; Task 6 owns that contract. |
+| `npm test` | PARTIAL, canonical command includes and passes all 18 Task 4 batch tests and all 13 direct upload tests; total 546/552 pass. Five unrelated environment failures are sandbox-denied Chromium Mach port / Wrangler localhost binds, and one Task 6 release-gate source contract still expects `/320/`; Task 6 owns that contract. |
 
 ## Protected concurrent changes
 
