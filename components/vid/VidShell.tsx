@@ -12,9 +12,9 @@ import {
   PanelLeftOpen,
   Search,
 } from 'lucide-react'
-import Link from 'next/link'
 import { type FormEvent, type ReactNode, useState } from 'react'
 import styles from './Vid.module.css'
+import VidLink from './VidLink'
 
 const navigation = [
   { href: '/', label: 'Trang chủ', icon: Home },
@@ -47,9 +47,9 @@ export default function VidShell({ children }: { children: ReactNode }) {
         >
           {collapsed ? <PanelLeftOpen aria-hidden="true" /> : <PanelLeftClose aria-hidden="true" />}
         </button>
-        <Link href="/" className={styles.wordmark} aria-label="VID Thông Phan — Trang chủ">
+        <VidLink href="/" className={styles.wordmark} aria-label="VID Thông Phan — Trang chủ">
           <strong>VID</strong><span>·</span> THÔNG PHAN
-        </Link>
+        </VidLink>
         <form className={`${styles.search} ${searchOpen ? styles.searchOpen : ''}`} action="/results" onSubmit={submitSearch} role="search">
           <label className={styles.srOnly} htmlFor="vid-search">Tìm video</label>
           <input id="vid-search" name="search_query" type="search" placeholder="Tìm trong thư viện tuyển chọn" autoComplete="off" />
@@ -66,9 +66,9 @@ export default function VidShell({ children }: { children: ReactNode }) {
       <aside className={styles.sidebar} aria-label="Điều hướng video">
         <nav>
           {navigation.map(({ href, label, icon: Icon }) => (
-            <Link key={href} href={href} title={collapsed ? label : undefined}>
+            <VidLink key={href} href={href} title={collapsed ? label : undefined}>
               <Icon aria-hidden="true" /><span>{label}</span>
-            </Link>
+            </VidLink>
           ))}
         </nav>
         <p><Menu aria-hidden="true" /> Video đã hoàn chỉnh · nguồn rõ ràng</p>
@@ -77,9 +77,9 @@ export default function VidShell({ children }: { children: ReactNode }) {
       <main id="vid-main" className={styles.main} tabIndex={-1}>{children}</main>
 
       <nav className={styles.bottomNav} aria-label="Điều hướng video trên di động">
-        <Link href="/"><Home aria-hidden="true" /><span>Trang chủ</span></Link>
-        <Link href="/topic?slug=all"><Compass aria-hidden="true" /><span>Chủ đề</span></Link>
-        <Link href="/library"><ListVideo aria-hidden="true" /><span>Thư viện</span></Link>
+        <VidLink href="/"><Home aria-hidden="true" /><span>Trang chủ</span></VidLink>
+        <VidLink href="/topic?slug=all"><Compass aria-hidden="true" /><span>Chủ đề</span></VidLink>
+        <VidLink href="/library"><ListVideo aria-hidden="true" /><span>Thư viện</span></VidLink>
       </nav>
     </div>
   )
