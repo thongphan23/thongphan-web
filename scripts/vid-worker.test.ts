@@ -49,7 +49,7 @@ class FakeDatabase {
 
 function env(rows: Record<string, unknown>[] = []): VidEnv {
   return {
-    VID_DB: new FakeDatabase(rows) as unknown as D1Database,
+    VID_DB: new FakeDatabase(rows) as unknown as VidEnv['VID_DB'],
     PAGES_ORIGIN: 'https://pages.example.com',
     BUNNY_LIBRARY_ID: '123',
     BUNNY_CDN_HOST: 'media.example.com',
@@ -178,7 +178,7 @@ test('creates one authenticated Bunny upload without exposing provider secrets',
   const database = new AdminDatabase()
   const adminEnv = {
     ...env(),
-    VID_DB: database as unknown as D1Database,
+    VID_DB: database as unknown as VidEnv['VID_DB'],
     VID_ADMIN_HMAC_SECRET: 'unit-test-admin-secret-32-characters',
     BUNNY_STREAM_API_KEY: 'bunny-secret',
   }
@@ -203,7 +203,7 @@ test('accepts only signed Bunny webhook bodies', async () => {
   const rawBody = JSON.stringify({ VideoLibraryId: 123, VideoGuid: 'bunny-guid', Status: 3 })
   const webhookEnv = {
     ...env(),
-    VID_DB: new AdminDatabase() as unknown as D1Database,
+    VID_DB: new AdminDatabase() as unknown as VidEnv['VID_DB'],
     BUNNY_WEBHOOK_SECRET: 'bunny-read-key',
   }
   const signature = createHmac('sha256', 'bunny-read-key').update(rawBody).digest('hex')

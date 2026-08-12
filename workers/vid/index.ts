@@ -160,6 +160,8 @@ export async function handleVidRequest(
   return proxyStatic(request, env, url, dependencies.fetch)
 }
 
-export default {
+const vidWorker = {
   fetch: handleVidRequest,
 }
+
+export default vidWorker

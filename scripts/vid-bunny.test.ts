@@ -10,7 +10,7 @@ import {
 import type { VidEnv } from '../workers/vid/types'
 
 const env = {
-  VID_DB: {} as D1Database,
+  VID_DB: {} as VidEnv['VID_DB'],
   PAGES_ORIGIN: 'https://pages.example.com',
   BUNNY_LIBRARY_ID: '123',
   BUNNY_CDN_HOST: 'media.example.com',

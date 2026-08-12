@@ -54,7 +54,7 @@ export async function listPublicVideos(env: VidEnv, page: number, pageSize: numb
   const result = await env.VID_DB.prepare(
     `${BASE_SELECT} WHERE v.status = 'published' AND v.media_status = 'ready' ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC LIMIT ? OFFSET ?`,
   ).bind(pageSize, offset).all<Record<string, unknown>>()
-  const items = (result.results ?? []).flatMap((row) => {
+  const items = ((result.results ?? []) as Record<string, unknown>[]).flatMap((row) => {
     try {
       const video = toPublicVideo(rowToVideoRecord(row))
       return video ? [video] : []
@@ -99,7 +99,7 @@ export async function getPublicPlaylist(env: VidEnv, slug: string) {
      WHERE pv.playlist_slug = ? AND v.status = 'published' AND v.media_status = 'ready'
      ORDER BY pv.position`,
   ).bind(slug).all<Record<string, unknown>>()
-  const items = (result.results ?? []).flatMap((row) => {
+  const items = ((result.results ?? []) as Record<string, unknown>[]).flatMap((row) => {
     try {
       const video = toPublicVideo(rowToVideoRecord(row))
       return video ? [video] : []

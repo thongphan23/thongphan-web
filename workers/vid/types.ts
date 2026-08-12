@@ -1,4 +1,5 @@
 import type { MediaStatus, VideoRecord } from '../../lib/vid/contracts'
+import type { D1Database } from '@cloudflare/workers-types'
 
 export type VidEnv = {
   VID_DB: D1Database

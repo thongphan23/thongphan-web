@@ -49,8 +49,8 @@ export type VideoRecord = VideoDraftInput & {
 
 export type PublicVideo = Omit<
   VideoRecord,
-  'id' | 'bunnyVideoId' | 'idempotencyKey' | 'rightsNote' | 'rightsStatus' | 'status' | 'mediaStatus' | 'createdAt' | 'updatedAt'
->
+  'id' | 'bunnyVideoId' | 'idempotencyKey' | 'rightsNote' | 'rightsStatus' | 'status' | 'mediaStatus' | 'createdAt' | 'updatedAt' | 'publishedAt'
+> & { publishedAt: string }
 
 export type CatalogPage = {
   items: PublicVideo[]

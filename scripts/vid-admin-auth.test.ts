@@ -21,7 +21,7 @@ class NonceDatabase {
 
 function env(database = new NonceDatabase()): VidEnv {
   return {
-    VID_DB: database as unknown as D1Database,
+    VID_DB: database as unknown as VidEnv['VID_DB'],
     PAGES_ORIGIN: 'https://pages.example.com',
     BUNNY_LIBRARY_ID: '123',
     BUNNY_CDN_HOST: 'media.example.com',
