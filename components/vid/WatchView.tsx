@@ -14,7 +14,7 @@ import VidLink from './VidLink'
 async function fetchWatchData(slug: string, playlistSlug: string | null, signal: AbortSignal) {
   const [video, catalog, playlist] = await Promise.all([
     getVideo(slug, { signal }),
-    listVideos({ limit: 24 }, { signal }),
+    listVideos({ limit: 48 }, { signal }),
     playlistSlug ? getPlaylist(playlistSlug, { signal }) : Promise.resolve(null),
   ])
   const ranked = rankRelated(video, catalog.items)

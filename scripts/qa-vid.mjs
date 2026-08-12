@@ -200,6 +200,13 @@ try {
   await page.locator('input[name="search_query"]').fill('Tư duy')
   await Promise.all([page.waitForURL(/\/results/), page.locator('form[role="search"]').press('Enter')])
   await page.locator('h1', { hasText: 'Tư duy' }).waitFor()
+  const sameViewRequest = page.waitForRequest((request) => {
+    const url = new URL(request.url())
+    return url.pathname === '/api/videos' && url.searchParams.get('q') === 'AI'
+  })
+  await page.evaluate(() => window.history.pushState(null, '', '/results?search_query=AI'))
+  await page.getByRole('heading', { name: 'Kết quả cho “AI”' }).waitFor()
+  await sameViewRequest
   await page.goto(`${base}/watch?v=video-thu-1&list=nen-tang-ai`, { waitUntil: 'networkidle' })
   await page.locator('iframe[title]').waitFor()
   await page.locator('summary').click()

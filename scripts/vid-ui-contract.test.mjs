@@ -14,6 +14,7 @@ test('catalog experience has real cards, progress, delayed preview and complete 
   ])
 
   assert.doesNotMatch(app, /Nội dung đang được kết nối/)
+  assert.match(app, /<Suspense[^>]*fallback=/)
   assert.match(card, /650/)
   assert.match(card, /prefers-reduced-motion/)
   assert.match(card, /watchLater/)
@@ -62,9 +63,11 @@ test('visible catalog states are natural and never impersonate social features',
 })
 
 test('continuous discovery keeps a cancellable accessible feed and virtualizes only long grids', async () => {
-  const [home, catalog, feed, hook, virtual, css] = await Promise.all([
+  const [home, catalog, library, watch, feed, hook, virtual, css] = await Promise.all([
     readFile('components/vid/HomeView.tsx', 'utf8'),
     readFile('components/vid/CatalogView.tsx', 'utf8'),
+    readFile('components/vid/LocalLibraryView.tsx', 'utf8'),
+    readFile('components/vid/WatchView.tsx', 'utf8'),
     readFile('components/vid/InfiniteVideoFeed.tsx', 'utf8'),
     readFile('components/vid/useInfiniteVideoFeed.ts', 'utf8'),
     readFile('components/vid/VirtualVideoGrid.tsx', 'utf8'),
@@ -72,6 +75,9 @@ test('continuous discovery keeps a cancellable accessible feed and virtualizes o
   ])
   const visibleFeed = [home, catalog].join('\n')
   assert.match(visibleFeed, /InfiniteVideoFeed/)
+  assert.match(catalog, /useSearchParams\(\)/)
+  assert.match(library, /listVideos\(\{ limit: 48 \}/)
+  assert.match(watch, /listVideos\(\{ limit: 48 \}/)
   assert.match(feed, /data-vid-feed-sentinel/)
   assert.match(feed, /rootMargin:\s*'800px 0px'/)
   assert.match(feed, /aria-live="polite"/)

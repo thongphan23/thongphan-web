@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 
 import { getPlaylist, getVideo, listTopics, listVideos } from '../lib/vid/api-client'
+import { catalogParameters } from '../lib/vid/catalog-view'
 import { mergeVideos, stableFeedFilterKey } from '../components/vid/useInfiniteVideoFeed'
 import { columnCountForWidth, visibleRowRange } from '../lib/vid/virtual-grid'
 
@@ -60,8 +61,11 @@ test('catalog client sends an opaque cursor and parses the versioned catalog sli
 test('catalog client fails closed on malformed cursor-feed metadata', async () => {
   for (const payload of [
     { items: [video], nextCursor: 4, hasMore: true, policyVersion: 'vid-feed-v1' },
+    { items: [video], nextCursor: '', hasMore: true, policyVersion: 'vid-feed-v1' },
+    { items: [video], nextCursor: 'unexpected', hasMore: false, policyVersion: 'vid-feed-v1' },
     { items: [video], nextCursor: null, hasMore: 'yes', policyVersion: 'vid-feed-v1' },
     { items: [video], nextCursor: null, hasMore: true, policyVersion: 'vid-feed-v1' },
+    { items: [video], hasMore: false, policyVersion: 'vid-feed-v1' },
     { items: [video], nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v2' },
   ]) {
     await assert.rejects(
@@ -69,6 +73,43 @@ test('catalog client fails closed on malformed cursor-feed metadata', async () =
       /Invalid catalog payload/,
     )
   }
+})
+
+test('catalog client accepts only the exact active and exhausted cursor states', async () => {
+  const active = await listVideos({}, { fetcher: async () => jsonResponse({ items: [video], nextCursor: 'opaque', hasMore: true, policyVersion: 'vid-feed-v1' }) })
+  const exhausted = await listVideos({}, { fetcher: async () => jsonResponse({ items: [video], nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v1' }) })
+  assert.equal(active.nextCursor, 'opaque')
+  assert.equal(active.hasMore, true)
+  assert.equal(exhausted.nextCursor, null)
+  assert.equal(exhausted.hasMore, false)
+})
+
+test('supporting catalog reads retain all 48 candidate slots', async () => {
+  const items = Array.from({ length: 48 }, (_, index) => ({ ...video, slug: `video-${index + 1}` }))
+  let seenUrl = ''
+  const result = await listVideos({ limit: 48 }, {
+    fetcher: async (input) => {
+      seenUrl = String(input)
+      return jsonResponse({ items, nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v1' })
+    },
+  })
+  assert.equal(seenUrl, '/api/videos?limit=48')
+  assert.equal(result.items.length, 48)
+  assert.equal(result.items[47]?.slug, 'video-48')
+})
+
+test('catalog URL mapping changes same-view topic and search feed identity', () => {
+  const firstTopic = catalogParameters('topic', new URLSearchParams('slug=ai'))
+  const nextTopic = catalogParameters('topic', new URLSearchParams('slug=tu-duy'))
+  const firstSearch = catalogParameters('results', new URLSearchParams('search_query=AI'))
+  const nextSearch = catalogParameters('results', new URLSearchParams('search_query=Brain2'))
+
+  assert.equal(firstTopic.heading, 'Chủ đề: ai')
+  assert.equal(nextTopic.heading, 'Chủ đề: tu-duy')
+  assert.notEqual(stableFeedFilterKey(firstTopic.filters), stableFeedFilterKey(nextTopic.filters))
+  assert.equal(firstSearch.heading, 'Kết quả cho “AI”')
+  assert.equal(nextSearch.heading, 'Kết quả cho “Brain2”')
+  assert.notEqual(stableFeedFilterKey(firstSearch.filters), stableFeedFilterKey(nextSearch.filters))
 })
 
 test('feed filter identity is stable and slug dedupe preserves first response order', () => {

@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import VidShell from './VidShell'
 import CatalogView from './CatalogView'
 import HomeView from './HomeView'
@@ -15,7 +16,7 @@ export default function VidApp({ initialView }: { initialView: VidView }) {
       ? <LocalLibraryView />
       : initialView === 'watch'
         ? <WatchView />
-        : <CatalogView view={initialView} />
+        : <Suspense fallback={<div aria-live="polite">Đang tải thư viện video.</div>}><CatalogView view={initialView} /></Suspense>
 
   return (
     <VidShell>

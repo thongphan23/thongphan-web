@@ -72,13 +72,15 @@ export async function listVideos(query: CatalogQuery = {}, options: ClientOption
   if (query.topic?.trim()) params.set('topic', query.topic.trim())
   const payload = objectValue(await request(`/api/videos${params.size ? `?${params}` : ''}`, options), 'catalog')
   if (!Array.isArray(payload.items)) throw new Error('Invalid catalog payload')
-  if (payload.nextCursor !== null && typeof payload.nextCursor !== 'string') throw new Error('Invalid catalog payload')
-  if (payload.hasMore === true && payload.nextCursor === null) throw new Error('Invalid catalog payload')
-  if (typeof payload.hasMore !== 'boolean' || payload.policyVersion !== 'vid-feed-v1') throw new Error('Invalid catalog payload')
+  const active = payload.hasMore === true && typeof payload.nextCursor === 'string' && payload.nextCursor.length > 0
+  const exhausted = payload.hasMore === false && payload.nextCursor === null
+  if ((!active && !exhausted) || payload.policyVersion !== 'vid-feed-v1') throw new Error('Invalid catalog payload')
+  const nextCursor = active ? payload.nextCursor as string : null
+  const hasMore = active
   return {
     items: payload.items.map(publicVideo),
-    nextCursor: payload.nextCursor,
-    hasMore: payload.hasMore,
+    nextCursor,
+    hasMore,
     policyVersion: payload.policyVersion,
   }
 }
