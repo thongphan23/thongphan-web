@@ -1,6 +1,6 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-12
+Last updated: 2026-08-13
 
 ## VID Video-First Intelligence & Watching Path — DESIGN APPROVED — 2026-08-12
 
@@ -25,6 +25,11 @@ Last updated: 2026-08-12
   - `docs/superpowers/plans/2026-08-12-vid-watching-path-experience-implementation.md`.
 - Implementation is underway in isolated task commits; the next release gate is
   integration of the remaining approved foundation tasks.
+- Task 4 secure staging now checks the `statfs` capacity of its actual private
+  staging volume before copying: descriptor-bound source size plus a fixed
+  512 MiB safety reserve is required. The local regression confirms an
+  insufficient volume performs no source copy, secret read, admin request or
+  TUS upload; no network or deployment action occurred.
 - Task 2 replaces the Worker catalog's page-number API with a versioned,
   filter-bound cursor feed. Its D1 keyset ordering is stable across featured
   and unfeatured records; the client migration remains the subsequent Task 3

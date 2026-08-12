@@ -8,6 +8,8 @@ PASS for Task 4 — implementation commits:
 - `b0485f00291629257914a3d14ec98354b2525cec` — review-round safety fixes;
 - `253698ef875e33f4d617d94e71e1ccccd7da67fb` — review-round 2 direct-upload
   and staging-race fixes.
+- `8bdad0c0d0eac8f84b8c675fdb6b57bacefdc07f` — review-round 3 free-space
+  preflight fix.
 
 ## Scope delivered
 
@@ -46,6 +48,13 @@ PASS for Task 4 — implementation commits:
   direct upload both reject larger files before opening a staging target, while
   the exact-byte copy bound prevents a growing or sparse oversized source from
   consuming unbounded temporary disk.
+- Before the first source byte is copied, staging measures the filesystem of the
+  actual newly-created private staging directory with `statfs`. It requires the
+  descriptor-bound expected size plus a deterministic 512 MiB safety reserve
+  for filesystem metadata and cleanup, rejects unsafe/inexact arithmetic, and
+  fails closed with a sanitized operator-facing error if capacity is unavailable.
+  The free-space reader is dependency-injected; its low-space regression proves
+  zero source reads, secret reads, admin fetches and TUS calls.
 - The content digest is computed during descriptor-bound staging and provides
   both the existing idempotency key and an explicit stable TUS resume
   fingerprint. The random temporary path therefore does not break
@@ -82,12 +91,18 @@ preflight identity was not being carried to per-video use (`secretReads` became
 1 after replacing the regular file), and a cleanup-reporting RED returned the
 generic `Upload failed` instead of the sanitized combined cleanup failure.
 
+Review-round 3 RED proved a valid sub-50-GiB source could proceed despite an
+injected staging volume reporting only 2 KiB free: the test failed with `Missing
+expected rejection.` before the preflight existed. The final regression supplies
+the free-space function directly and asserts the sanitized rejection while all
+copy, secret, admin-fetch and TUS counters remain zero.
+
 ## GREEN evidence
 
 | Command | Result |
 | --- | --- |
 | `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts scripts/vid-worker.test.ts` | PASS, 42/42 |
-| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts` | PASS, final rerun 30/30 |
+| `node --import tsx --test scripts/vid-upload.test.ts scripts/vid-upload-batch.test.ts` | PASS, final rerun 31/31 |
 | `npm run vid:upload-batch -- /private/tmp/vid-task4-manifest.json --dry-run` | PASS, output `{"published":[],"uploaded":[],"failed":[]}`; two absolute `/private/tmp` items validated with zero staging/network/secret work |
 | `npx tsc --noEmit --incremental false` | PASS |
 | `npm run typecheck:vid-worker` | PASS |
