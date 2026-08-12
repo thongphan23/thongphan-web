@@ -1,6 +1,29 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-28
+Last updated: 2026-08-12
+
+## vid.thongphan.com Screening Room — implementation authorized — 2026-08-12
+
+- Anh Thông authorized autonomous implementation of a public YouTube-familiar
+  video library at `vid.thongphan.com`, while retaining the Thong Phan Unified
+  Cinema identity.
+- Input is a completed MP4 produced outside this product, including by the local
+  `youtube-vietnam` skill. Vid does not translate, dub or edit video.
+- Bunny Stream owns media storage/transcoding/playback; a dedicated Cloudflare
+  Worker and D1 own routing, catalog, publish state and secure Codex-operated
+  uploads. Viewer accounts and social features are out of R1.
+- Source creator, original URL, translation label and owner-reviewed rights state
+  are mandatory before publish. Secrets/video files must never enter Git or the
+  browser bundle.
+- Work is isolated on `feature/vid-thongphan-stream` at
+  `.worktrees/vid-thongphan-stream`; unrelated Brain2, Learn and Conan worktree
+  changes are outside scope.
+- Approved design:
+  `docs/superpowers/specs/2026-08-12-vid-thongphan-bunny-stream-design.md`.
+- Baseline code tests pass 455/458. The three failures are environment-only at
+  task start: two Playwright launches are blocked by the macOS sandbox Mach port,
+  and one pinned-Wrangler fixture cannot start before worktree dependencies are
+  installed. No product assertion failed.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
