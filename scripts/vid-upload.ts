@@ -76,6 +76,12 @@ async function validateFile(filePath: string): Promise<number> {
   return details.size
 }
 
+async function fileDigest(filePath: string): Promise<string> {
+  const digest = createHash('sha256')
+  for await (const chunk of createReadStream(filePath)) digest.update(chunk)
+  return digest.digest('hex')
+}
+
 function safeBaseUrl(value: string): string {
   const parsed = new URL(value)
   if (parsed.protocol !== 'https:') throw new Error('Vid base URL must use HTTPS')
@@ -188,7 +194,7 @@ export async function runVidUpload(
   if (options.dryRun) return { status: 'dry-run' as const, fileSize, slug: draft.slug }
 
   const secret = await dependencies.readSecret()
-  const idempotencyKey = `upload:${draft.slug}:${createHash('sha256').update(`${options.filePath}:${fileSize}`).digest('hex').slice(0, 16)}`
+  const idempotencyKey = `upload:${draft.slug}:${(await fileDigest(options.filePath)).slice(0, 16)}`
   const uploadResponse = await adminFetch(
     baseUrl,
     '/api/admin/uploads',

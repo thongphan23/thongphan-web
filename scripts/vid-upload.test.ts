@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { mkdtemp, symlink, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
@@ -103,6 +104,8 @@ test('signs admin calls, uploads through TUS, polls ready and publishes without 
   assert.deepEqual(result, { status: 'published', operationId: 'operation-01', videoId: 'bunny-guid' })
   assert.equal(uploadCalls, 1)
   assert.equal(requests.length, 3)
+  const contentDigest = createHash('sha256').update(Buffer.alloc(2_048, 1)).digest('hex').slice(0, 16)
+  assert.equal(requests[0]?.headers.get('X-Vid-Idempotency-Key'), `upload:tu-duy-ai:${contentDigest}`)
   for (const request of requests) {
     assert.match(request.headers.get('X-Vid-Signature') ?? '', /^[0-9a-f]{64}$/)
   }
