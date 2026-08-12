@@ -1,0 +1,23 @@
+name = "thongphan-vid"
+main = "workers/vid/index.ts"
+compatibility_date = "2026-08-12"
+workers_dev = false
+preview_urls = false
+
+[observability]
+enabled = true
+
+[[routes]]
+pattern = "vid.thongphan.com/*"
+zone_name = "thongphan.com"
+
+[vars]
+PAGES_ORIGIN = "https://thongphan-com.pages.dev"
+BUNNY_LIBRARY_ID = "configure-before-deploy"
+BUNNY_CDN_HOST = "configure-before-deploy"
+
+[[d1_databases]]
+binding = "VID_DB"
+database_name = "thongphan-vid"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "workers/vid/migrations"

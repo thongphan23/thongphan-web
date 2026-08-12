@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": false,
+    "plugins": [],
+    "types": ["@cloudflare/workers-types"]
+  },
+  "include": [
+    "lib/vid/contracts.ts",
+    "workers/vid/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}
