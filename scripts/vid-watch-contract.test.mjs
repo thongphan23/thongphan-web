@@ -39,3 +39,30 @@ test('watch view exposes provenance, sharing and related discovery', async () =>
   ]) assert.match(source, new RegExp(token))
   assert.match(source, /rel="noopener noreferrer"/)
 })
+
+test('watch state updates cannot key or remount the Bunny player', async () => {
+  const [player, watch, qa] = await Promise.all([
+    readFile('components/vid/BunnyPlayer.tsx', 'utf8'),
+    readFile('components/vid/WatchView.tsx', 'utf8'),
+    readFile('scripts/qa-vid.mjs', 'utf8'),
+  ])
+
+  assert.match(qa, /watch: Bunny player iframe identity changed/)
+  assert.match(qa, /watch: provider current time did not advance/)
+  assert.match(qa, /watch: reload did not resume close to saved progress/)
+  assert.doesNotMatch(watch, /<BunnyPlayer[^>]*key=/)
+  assert.doesNotMatch(watch, /playerUrl=.*(?:library|watchLater)/)
+  assert.match(watch, /data-vid-player={video\.slug}/)
+  assert.match(player, /const onTimeUpdateRef/)
+  assert.match(player, /\[playerUrl, scriptReady, startSeconds\]/)
+  assert.match(player, /playerError/)
+  assert.match(player, /player\.on\('error'/)
+  assert.doesNotMatch(player, /setInterval\(/)
+})
+
+test('provider error QA matches alert text without assuming an accessible name', async () => {
+  const qa = await readFile('scripts/qa-vid.mjs', 'utf8')
+
+  assert.match(qa, /getByRole\('alert'\)\.filter\(\{ hasText:/)
+  assert.doesNotMatch(qa, /getByRole\('alert', \{ name:/)
+})

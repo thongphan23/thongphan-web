@@ -34,6 +34,13 @@ Last updated: 2026-08-13
   filter-bound cursor feed. Its D1 keyset ordering is stable across featured
   and unfeatured records; the client migration remains the subsequent Task 3
   gate. No Worker, D1, or Pages deployment occurred for this local change.
+- Task 5 now locks a stable Bunny iframe/player identity across local progress
+  and `Xem sau` state changes, provider-clock advancement, persisted progress,
+  reload resume and bounded player errors. The earlier provider-error timeout
+  was a Playwright accessible-name locator error rather than browser/Next Script
+  cache behavior; focused tests pass 4/4, `qa:vid` reports PASS and the 88-page
+  build remains green. Production runtime verification remains Task 6 scope;
+  no deployment or network mutation occurred.
 
 ## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 

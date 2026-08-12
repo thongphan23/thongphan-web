@@ -75,7 +75,7 @@ const videos = images.map((image, index) => ({
   publishedAt: new Date(Date.UTC(2026, 7, 12 - index)).toISOString(),
 }))
 
-function apiPayload(url) {
+function apiPayload(url, { invalidEmbed = false } = {}) {
   if (url.pathname === '/api/topics') return { items: [{ slug: 'tu-duy', label: 'Tư duy', video_count: 3 }, { slug: 'ai', label: 'AI', video_count: 3 }] }
   if (url.pathname === '/api/videos') {
     const query = (url.searchParams.get('q') ?? '').toLocaleLowerCase('vi')
@@ -83,22 +83,59 @@ function apiPayload(url) {
     const items = videos.filter((video) => (!query || `${video.title} ${video.description}`.toLocaleLowerCase('vi').includes(query)) && (!topic || video.topics.includes(topic)))
     return { items, nextCursor: null, hasMore: false, policyVersion: 'vid-feed-v1' }
   }
-  if (url.pathname.startsWith('/api/videos/')) return videos.find(({ slug }) => slug === decodeURIComponent(url.pathname.split('/').at(-1) ?? '')) ?? { error: 'not_found' }
+  if (url.pathname.startsWith('/api/videos/')) {
+    const video = videos.find(({ slug }) => slug === decodeURIComponent(url.pathname.split('/').at(-1) ?? ''))
+    return video ? invalidEmbed ? { ...video, playerUrl: 'https://example.com/not-a-bunny-player' } : video : { error: 'not_found' }
+  }
   if (url.pathname.startsWith('/api/playlists/')) return { slug: 'nen-tang-ai', title: 'Nền tảng AI', description: 'Một lộ trình video có thứ tự.', items: videos }
   return { error: 'not_found' }
 }
 
-async function installRoutes(page, { apiError = false } = {}) {
+function playerFixture() {
+  return `(() => {
+    const clock = window.__vidQaPlayerClock = { seconds: 0, duration: 120, seek: null }
+    class Player {
+      constructor(frame) { this.frame = frame; this.handlers = new Map(); this.timer = null }
+      on(event, callback) {
+        const callbacks = this.handlers.get(event) ?? new Set()
+        callbacks.add(callback)
+        this.handlers.set(event, callbacks)
+        if (event === 'ready') queueMicrotask(() => { if (this.handlers.get(event)?.has(callback)) callback() })
+        if (event === 'timeupdate') this.startClock()
+      }
+      off(event, callback) {
+        const callbacks = this.handlers.get(event)
+        if (!callbacks) return
+        if (callback) callbacks.delete(callback)
+        else callbacks.clear()
+        if (event === 'timeupdate' && callbacks.size === 0 && this.timer) {
+          clearInterval(this.timer)
+          this.timer = null
+        }
+      }
+      startClock() {
+        if (this.timer) return
+        this.timer = setInterval(() => {
+          clock.seconds += 1
+          for (const callback of this.handlers.get('timeupdate') ?? []) callback({ seconds: clock.seconds, duration: clock.duration })
+        }, 1000)
+      }
+      setCurrentTime(seconds) { clock.seek = seconds; clock.seconds = seconds }
+    }
+    window.playerjs = { Player }
+  })()`
+}
+
+async function installRoutes(page, { apiError = false, invalidEmbed = false, scriptError = false } = {}) {
   await page.route(`${base}/api/**`, async (route) => {
     if (apiError) return route.fulfill({ status: 503, contentType: 'application/json', body: '{"error":"unavailable"}' })
-    const payload = apiPayload(new URL(route.request().url()))
+    const payload = apiPayload(new URL(route.request().url()), { invalidEmbed })
     return route.fulfill({ status: 'error' in payload ? 404 : 200, contentType: 'application/json', body: JSON.stringify(payload) })
   })
-  await page.route('https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js', (route) => route.fulfill({
-    status: 200,
-    contentType: 'text/javascript',
-    body: 'window.playerjs={Player:class{constructor(){this.h={}}on(e,f){this.h[e]=f;if(e==="ready")setTimeout(f,0)}off(e){delete this.h[e]}setCurrentTime(){}}}',
-  }))
+  await page.route('https://assets.mediadelivery.net/playerjs/playerjs-latest.min.js', (route) => {
+    if (scriptError) return route.abort('failed')
+    return route.fulfill({ status: 200, contentType: 'text/javascript', body: playerFixture() })
+  })
   await page.route('https://player.mediadelivery.net/**', (route) => route.fulfill({
     status: 200,
     contentType: 'text/html',
@@ -195,6 +232,9 @@ try {
   const interaction = await browser.newContext({ viewport: { width: 1440, height: 900 } })
   await interaction.addInitScript(() => localStorage.clear())
   const page = await interaction.newPage()
+  const watchErrors = []
+  page.on('console', (message) => { if (message.type() === 'error') watchErrors.push(message.text()) })
+  page.on('pageerror', (error) => watchErrors.push(error.message))
   await installRoutes(page)
   await page.goto(base, { waitUntil: 'networkidle' })
   await page.locator('input[name="search_query"]').fill('Tư duy')
@@ -208,18 +248,62 @@ try {
   await page.getByRole('heading', { name: 'Kết quả cho “AI”' }).waitFor()
   await sameViewRequest
   await page.goto(`${base}/watch?v=video-thu-1&list=nen-tang-ai`, { waitUntil: 'networkidle' })
-  await page.locator('iframe[title]').waitFor()
+  const playerFrame = page.locator('[data-vid-player="video-thu-1"] iframe[title]')
+  await playerFrame.waitFor()
+  const initialPlayerFrame = await playerFrame.elementHandle()
+  assert.ok(initialPlayerFrame, 'watch: Bunny player iframe is missing')
+  await page.waitForFunction(() => window.__vidQaPlayerClock?.seconds >= 10)
+  const timeBeforeToggle = await page.evaluate(() => window.__vidQaPlayerClock?.seconds ?? 0)
+  await page.getByRole('button', { name: 'Xem sau', exact: true }).click()
+  assert.equal(
+    await page.evaluate((frame) => document.querySelector('[data-vid-player="video-thu-1"] iframe') === frame, initialPlayerFrame),
+    true,
+    'watch: Bunny player iframe identity changed',
+  )
+  await page.waitForFunction((minimumTime) => (window.__vidQaPlayerClock?.seconds ?? 0) >= minimumTime, timeBeforeToggle + 4)
+  const timeAfterToggle = await page.evaluate(() => window.__vidQaPlayerClock?.seconds ?? 0)
+  assert.ok(timeAfterToggle >= timeBeforeToggle + 4, `watch: provider current time did not advance ${JSON.stringify({ timeBeforeToggle, timeAfterToggle })}`)
+  const savedProgress = await page.evaluate(() => {
+    const library = JSON.parse(localStorage.getItem('thongphan.vid.library.v1') ?? '{}')
+    return library.progress?.find((item) => item.slug === 'video-thu-1')?.seconds ?? 0
+  })
+  assert.ok(savedProgress >= 10, `watch: progress was not persisted ${savedProgress}`)
+  await page.reload({ waitUntil: 'networkidle' })
+  await page.locator('[data-vid-player="video-thu-1"] iframe[title]').waitFor()
+  await page.waitForFunction(() => Number.isFinite(window.__vidQaPlayerClock?.seek))
+  const resumedAt = await page.evaluate(() => window.__vidQaPlayerClock?.seek ?? 0)
+  assert.ok(Math.abs(resumedAt - savedProgress) <= 5, `watch: reload did not resume close to saved progress ${JSON.stringify({ savedProgress, resumedAt })}`)
   await page.locator('summary').click()
   assert.equal(await page.locator('details').getAttribute('open'), '')
-  await page.locator('iframe[title]').scrollIntoViewIfNeeded()
-  const playerHit = await page.locator('iframe[title]').evaluate((frame) => {
+  await page.locator('[data-vid-player="video-thu-1"] iframe[title]').scrollIntoViewIfNeeded()
+  const playerHit = await page.locator('[data-vid-player="video-thu-1"] iframe[title]').evaluate((frame) => {
     const rect = frame.getBoundingClientRect()
     const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
     return { direct: hit === frame, hit: hit ? `${hit.tagName}.${hit.className}` : null, frame: { top: rect.top, bottom: rect.bottom, width: rect.width, height: rect.height } }
   })
   assert.equal(playerHit.direct, true, `watch: player pointer is blocked ${JSON.stringify(playerHit)}`)
+  assert.deepEqual(watchErrors, [], `watch: VID-owned console errors ${watchErrors.join('\n')}`)
   await page.screenshot({ path: join(output, 'desktop-watch.png'), fullPage: true, animations: 'disabled' })
   await interaction.close()
+
+  const invalidPlayer = await browser.newContext({ viewport: { width: 390, height: 844 } })
+  const invalidPlayerPage = await invalidPlayer.newPage()
+  await installRoutes(invalidPlayerPage, { invalidEmbed: true })
+  await invalidPlayerPage.goto(`${base}/watch?v=video-thu-1`, { waitUntil: 'networkidle' })
+  await invalidPlayerPage.getByText('Nguồn phát video không hợp lệ.', { exact: true }).waitFor()
+  assert.equal(await invalidPlayerPage.locator('[data-vid-player] iframe').count(), 0, 'watch: invalid embed still renders an iframe')
+  await invalidPlayer.close()
+
+  const failedPlayerBrowser = await chromium.launch({ headless: true, args: ['--host-resolver-rules=MAP vid.thongphan.com 127.0.0.1'] })
+  const failedPlayer = await failedPlayerBrowser.newContext({ viewport: { width: 390, height: 844 } })
+  const failedPlayerPage = await failedPlayer.newPage()
+  await installRoutes(failedPlayerPage, { scriptError: true })
+  await failedPlayerPage.goto(`${base}/watch?v=video-thu-1`, { waitUntil: 'networkidle' })
+  const failedPlayerAlert = failedPlayerPage.getByRole('alert').filter({ hasText: 'Không thể phát video lúc này. Hãy thử lại sau.' })
+  await failedPlayerAlert.waitFor()
+  assert.doesNotMatch(await failedPlayerAlert.textContent() ?? '', /mediadelivery|playerjs|embed/i, 'watch: player error leaks provider details')
+  await failedPlayer.close()
+  await failedPlayerBrowser.close()
 
   const reduced = await browser.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' })
   const reducedPage = await reduced.newPage()

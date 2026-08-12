@@ -117,7 +117,9 @@ export default function WatchView() {
   return (
     <div className={styles.watchLayout}>
       <article className={styles.watchPrimary}>
-        <BunnyPlayer playerUrl={video.playerUrl} title={video.title} startSeconds={prior} onTimeUpdate={handleTimeUpdate} />
+        <div data-vid-player={video.slug}>
+          <BunnyPlayer playerUrl={video.playerUrl} title={video.title} startSeconds={prior} onTimeUpdate={handleTimeUpdate} />
+        </div>
         <header className={styles.watchHeader}>
           <p>{video.topics.map((topic) => <VidLink key={topic} href={`/topic?slug=${encodeURIComponent(topic)}`}>{topic}</VidLink>)}</p>
           <h1>{video.title}</h1>
