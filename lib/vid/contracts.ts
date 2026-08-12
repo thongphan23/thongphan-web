@@ -28,6 +28,7 @@ export type VideoDraftInput = {
   rightsNote: string
   topics: string[]
   tags: string[]
+  playlists: string[]
 }
 
 export type VideoRecord = VideoDraftInput & {
@@ -69,6 +70,7 @@ export const PUBLIC_VIDEO_KEYS = [
   'translationLabel',
   'topics',
   'tags',
+  'playlists',
   'durationSeconds',
   'thumbnailUrl',
   'previewUrl',
@@ -90,6 +92,7 @@ const DRAFT_KEYS = new Set<keyof VideoDraftInput>([
   'rightsNote',
   'topics',
   'tags',
+  'playlists',
 ])
 
 function requiredString(value: unknown, field: string, maxLength: number): string {
@@ -144,6 +147,7 @@ export function validateDraftInput(input: unknown): VideoDraftInput {
     rightsNote: requiredString(record.rightsNote, 'rightsNote', 2_000),
     topics: stringList(record.topics, 'topics', 8, true),
     tags: stringList(record.tags, 'tags', 16, false),
+    playlists: stringList(record.playlists, 'playlists', 12, false),
   }
 }
 
@@ -160,6 +164,7 @@ export function toPublicVideo(record: VideoRecord): PublicVideo | null {
     translationLabel: record.translationLabel,
     topics: [...record.topics],
     tags: [...record.tags],
+    playlists: [...record.playlists],
     durationSeconds: record.durationSeconds,
     thumbnailUrl: record.thumbnailUrl,
     previewUrl: record.previewUrl,

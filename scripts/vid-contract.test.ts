@@ -20,6 +20,7 @@ const validDraft = {
   rightsNote: 'Nguồn và phạm vi sử dụng đã được chủ sở hữu rà soát.',
   topics: ['ai'],
   tags: ['tư duy'],
+  playlists: ['nen-tang-ai'],
 }
 
 const published: VideoRecord = {
@@ -69,4 +70,5 @@ test('publishes only ready media with an exact safe DTO', () => {
   assert.equal('idempotencyKey' in publicVideo, false)
   assert.equal('id' in publicVideo, false)
   assert.equal('bunnyVideoId' in publicVideo, false)
+  assert.deepEqual(publicVideo.playlists, ['nen-tang-ai'])
 })
