@@ -17,8 +17,14 @@ Last updated: 2026-08-12
   `f6c61cfc-4135-4b1c-a99e-130cba6b3196`.
 - Written design capturing the conversation-approved direction:
   `docs/superpowers/specs/2026-08-12-vid-video-first-intelligence-watching-path-design.md`.
-- Implementation has not started for this release. The written spec still needs
-  the user review gate before an implementation plan is produced.
+- The user approved the written spec. Implementation is decomposed into three
+  independently releasable plans, in order: video-first foundation, content
+  intelligence, then watching-path experience:
+  - `docs/superpowers/plans/2026-08-12-vid-video-first-foundation-implementation.md`;
+  - `docs/superpowers/plans/2026-08-12-vid-content-intelligence-implementation.md`;
+  - `docs/superpowers/plans/2026-08-12-vid-watching-path-experience-implementation.md`.
+- Implementation has not started for this release. The next gate is execution
+  mode selection, followed by Task 1 of the video-first foundation plan.
 
 ## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 
