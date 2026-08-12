@@ -12,12 +12,29 @@ pattern = "vid.thongphan.com/*"
 zone_name = "thongphan.com"
 
 [vars]
-PAGES_ORIGIN = "https://thongphan-com.pages.dev"
-BUNNY_LIBRARY_ID = "configure-before-deploy"
-BUNNY_CDN_HOST = "configure-before-deploy"
+PAGES_ORIGIN = "https://6e11cd9a.thongphan-com.pages.dev"
+BUNNY_LIBRARY_ID = "726519"
+BUNNY_CDN_HOST = "vz-1fb1e85d-0d0.b-cdn.net"
 
 [[d1_databases]]
 binding = "VID_DB"
 database_name = "thongphan-vid"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "cfcb0914-6d71-4c3d-bd02-d7e1fe9d8997"
+migrations_dir = "workers/vid/migrations"
+
+[env.preview]
+name = "thongphan-vid-preview"
+workers_dev = true
+preview_urls = true
+routes = []
+
+[env.preview.vars]
+PAGES_ORIGIN = "https://6e11cd9a.thongphan-com.pages.dev"
+BUNNY_LIBRARY_ID = "726519"
+BUNNY_CDN_HOST = "vz-1fb1e85d-0d0.b-cdn.net"
+
+[[env.preview.d1_databases]]
+binding = "VID_DB"
+database_name = "thongphan-vid-preview"
+database_id = "f7ef9fb7-0988-4bf5-a611-79beb61c9ef4"
 migrations_dir = "workers/vid/migrations"

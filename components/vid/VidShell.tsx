@@ -34,7 +34,7 @@ export default function VidShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className={styles.platform} data-sidebar-collapsed={collapsed}>
+    <div className={styles.platform} data-vid-platform data-sidebar-collapsed={collapsed}>
       <a className={styles.skipLink} href="#vid-main">Bỏ qua điều hướng</a>
       <span className={styles.projectorBeam} aria-hidden="true" />
 

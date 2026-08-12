@@ -84,9 +84,10 @@ type SiteChromeProps = {
 export default function SiteChrome({ children, legacyFontClassName, pathnameOverride }: SiteChromeProps) {
   const detectedPathname = usePathname()
   const pathname = pathnameOverride ?? detectedPathname
-  const isVidHost = typeof window !== 'undefined' && window.location.hostname === 'vid.thongphan.com'
-  const mode = isVidHost ? 'video-platform' : routeModeForPath(pathname)
-  const isUnified = !isVidHost && isUnifiedRouteEnabled(pathname)
+  const hasVidPlatform = typeof document !== 'undefined' && document.querySelector('[data-vid-platform]') !== null
+  const isVidSurface = hasVidPlatform || (typeof window !== 'undefined' && window.location.hostname === 'vid.thongphan.com')
+  const mode = isVidSurface ? 'video-platform' : routeModeForPath(pathname)
+  const isUnified = !isVidSurface && isUnifiedRouteEnabled(pathname)
 
   if (mode === 'video-platform') return <>{children}</>
 

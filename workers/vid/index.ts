@@ -23,12 +23,12 @@ type VidDependencies = {
 }
 
 const SHELLS: Readonly<Record<string, string>> = {
-  '/': '/vid/index.html',
-  '/watch': '/vid/watch.html',
-  '/results': '/vid/results.html',
-  '/topic': '/vid/topic.html',
-  '/playlist': '/vid/playlist.html',
-  '/library': '/vid/library.html',
+  '/': '/vid',
+  '/watch': '/vid/watch',
+  '/results': '/vid/results',
+  '/topic': '/vid/topic',
+  '/playlist': '/vid/playlist',
+  '/library': '/vid/library',
 }
 
 function boundedInteger(value: string | null, fallback: number, minimum: number, maximum: number): number | null {
@@ -152,7 +152,16 @@ async function proxyStatic(request: Request, env: VidEnv, url: URL, fetcher: typ
   if (!origin) return error('static_origin_unavailable', 503)
   const mappedPath = SHELLS[url.pathname] ?? url.pathname
   const target = new URL(`${mappedPath}${url.search}`, origin)
-  const response = await fetcher(new Request(target, request))
+  const headers = new Headers()
+  for (const name of ['accept', 'if-modified-since', 'if-none-match', 'range'] as const) {
+    const value = request.headers.get(name)
+    if (value) headers.set(name, value)
+  }
+  const response = await fetcher(new Request(target, {
+    method: request.method === 'HEAD' ? 'HEAD' : 'GET',
+    headers,
+    redirect: 'manual',
+  }))
   if (url.pathname === '/watch') {
     const slug = url.searchParams.get('v') ?? ''
     const video = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) ? await getPublicVideo(env, slug) : null
@@ -184,7 +193,9 @@ export async function handleVidRequest(
 }
 
 const vidWorker = {
-  fetch: handleVidRequest,
+  fetch(request: Request, env: VidEnv): Promise<Response> {
+    return handleVidRequest(request, env)
+  },
 }
 
 export default vidWorker

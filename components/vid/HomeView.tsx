@@ -48,7 +48,8 @@ export default function HomeView() {
   }, [])
 
   const featured = videos.find(({ featuredRank }) => featuredRank !== null) ?? videos[0]
-  const recent = featured ? videos.filter(({ slug }) => slug !== featured.slug) : videos
+  const videosWithoutFeatured = featured ? videos.filter(({ slug }) => slug !== featured.slug) : videos
+  const recent = videosWithoutFeatured.length ? videosWithoutFeatured : videos
   const continuing = library.progress.flatMap((progress) => {
     const item = videos.find(({ slug }) => slug === progress.slug)
     return item ? [item] : []

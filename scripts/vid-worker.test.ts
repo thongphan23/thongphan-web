@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { createHash, createHmac } from 'node:crypto'
 import test from 'node:test'
-import { handleVidRequest } from '../workers/vid/index'
+import vidWorker, { handleVidRequest } from '../workers/vid/index'
 import type { VidEnv } from '../workers/vid/types'
 
 const publishedRow = {
@@ -65,17 +65,56 @@ test('maps public subdomain routes to exact static Vid shells', async () => {
   }
 
   for (const [path, expected] of [
-    ['/', '/vid/index.html'],
-    ['/watch?v=tu-duy-ai', '/vid/watch.html?v=tu-duy-ai'],
-    ['/results?search_query=ai', '/vid/results.html?search_query=ai'],
-    ['/topic?slug=ai', '/vid/topic.html?slug=ai'],
-    ['/playlist?list=foundation', '/vid/playlist.html?list=foundation'],
-    ['/library', '/vid/library.html'],
+    ['/', '/vid'],
+    ['/watch?v=tu-duy-ai', '/vid/watch?v=tu-duy-ai'],
+    ['/results?search_query=ai', '/vid/results?search_query=ai'],
+    ['/topic?slug=ai', '/vid/topic?slug=ai'],
+    ['/playlist?list=foundation', '/vid/playlist?list=foundation'],
+    ['/library', '/vid/library'],
     ['/_next/static/app.js', '/_next/static/app.js'],
   ] as const) {
     const response = await handleVidRequest(new Request(`https://vid.thongphan.com${path}`), env(), { fetch: fetcher })
     assert.equal(response.status, 200)
     assert.equal(seen.at(-1), expected)
+  }
+})
+
+test('static proxy forwards only cache and representation headers to Pages', async () => {
+  let forwarded: Headers | undefined
+  await handleVidRequest(
+    new Request('https://vid.thongphan.com/', {
+      headers: {
+        Accept: 'text/html',
+        'If-None-Match': '"asset-etag"',
+        Cookie: 'private-session=must-not-leak',
+        'X-Untrusted': 'must-not-leak',
+      },
+    }),
+    env(),
+    { fetch: async (input) => {
+      forwarded = new Headers(input instanceof Request ? input.headers : undefined)
+      return new Response('shell')
+    } },
+  )
+  assert.equal(forwarded?.get('accept'), 'text/html')
+  assert.equal(forwarded?.get('if-none-match'), '"asset-etag"')
+  assert.equal(forwarded?.has('cookie'), false)
+  assert.equal(forwarded?.has('x-untrusted'), false)
+})
+
+test('runtime adapter does not pass the Cloudflare execution context as fetch dependencies', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async () => new Response('shell', { status: 200 })
+  try {
+    const response = await (vidWorker.fetch as (...args: unknown[]) => Promise<Response>)(
+      new Request('https://vid.thongphan.com/'),
+      env(),
+      { waitUntil() {} },
+    )
+    assert.equal(response.status, 200)
+    assert.equal(await response.text(), 'shell')
+  } finally {
+    globalThis.fetch = originalFetch
   }
 })
 
