@@ -1,6 +1,6 @@
 import { createHash, createHmac, randomUUID as nodeRandomUUID } from 'node:crypto'
 import { constants, createReadStream, type Stats } from 'node:fs'
-import { chmod, lstat, mkdir, mkdtemp, open, rmdir, unlink, type FileHandle } from 'node:fs/promises'
+import { chmod, lstat, mkdir, mkdtemp, open, rmdir, statfs, unlink, type FileHandle } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
 import * as tus from 'tus-js-client'
@@ -56,6 +56,9 @@ type SecureStage = {
   digest: string
 }
 
+// Staging needs the source bytes plus this headroom for filesystem metadata and cleanup.
+const SECURE_STAGING_SAFETY_RESERVE_BYTES = 512 * 1024 ** 2
+
 type VidUploadDependencies = {
   readSecret: () => Promise<string>
   fetch: typeof fetch
@@ -66,6 +69,7 @@ type VidUploadDependencies = {
   log: (message: string) => void
   maxPolls: number
   openSource: (filePath: string, flags: number) => Promise<FileHandle>
+  getFreeStagingBytes: (directory: string) => Promise<number>
   cleanupStage: (stage: SecureStage) => Promise<void>
   expectedFileIdentity?: UploadFileIdentity
 }
@@ -80,6 +84,7 @@ const defaultDependencies: VidUploadDependencies = {
   log: console.log,
   maxPolls: 120,
   openSource: (filePath, flags) => open(filePath, flags),
+  getFreeStagingBytes: freeStagingBytes,
   cleanupStage: cleanupSecureStage,
 }
 
@@ -136,6 +141,40 @@ async function cleanupSecureStage(stage: SecureStage): Promise<void> {
   if (failure) throw new Error('Secure video staging cleanup failed')
 }
 
+async function freeStagingBytes(directory: string): Promise<number> {
+  const filesystem = await statfs(directory)
+  const availableBlocks = filesystem.bavail
+  const blockSize = filesystem.bsize
+  if (
+    !Number.isSafeInteger(availableBlocks)
+    || !Number.isSafeInteger(blockSize)
+    || availableBlocks < 0
+    || blockSize <= 0
+    || availableBlocks > Math.floor(Number.MAX_SAFE_INTEGER / blockSize)
+  ) throw new Error('Secure video staging free space could not be verified')
+  return availableBlocks * blockSize
+}
+
+async function verifySecureStagingCapacity(
+  directory: string,
+  expectedFileSize: number,
+  dependencies: VidUploadDependencies,
+): Promise<void> {
+  let availableBytes: number
+  try {
+    availableBytes = await dependencies.getFreeStagingBytes(directory)
+  } catch {
+    throw new Error('Secure video staging free space could not be verified')
+  }
+  if (
+    !Number.isSafeInteger(expectedFileSize)
+    || !Number.isSafeInteger(availableBytes)
+    || availableBytes < 0
+    || expectedFileSize > Number.MAX_SAFE_INTEGER - SECURE_STAGING_SAFETY_RESERVE_BYTES
+    || availableBytes < expectedFileSize + SECURE_STAGING_SAFETY_RESERVE_BYTES
+  ) throw new Error('Secure video staging free space is insufficient')
+}
+
 async function stageVideoFile(
   filePath: string,
   preflight: FilePreflight,
@@ -155,6 +194,7 @@ async function stageVideoFile(
     const stagedPath = path.join(directory, 'video.mp4')
     stage = { directory, filePath: stagedPath, fileSize: opened.size, digest: '' }
     await chmod(directory, 0o700)
+    await verifySecureStagingCapacity(directory, opened.size, dependencies)
     target = await open(
       stagedPath,
       constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW,

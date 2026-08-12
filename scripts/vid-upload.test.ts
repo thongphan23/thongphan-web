@@ -89,6 +89,43 @@ test('rejects a video above the 50 GiB operator ceiling before staging or secret
   assert.equal(secureOpenCalls, 0)
 })
 
+test('fails closed before copying or uploading when secure staging lacks its safety reserve', async () => {
+  const options = await fixtureOptions()
+  let sourceReads = 0
+  let secretReads = 0
+  let networkCalls = 0
+  let tusUploads = 0
+
+  await assert.rejects(() => runVidUpload(options, {
+    openSource: async (filePath, flags) => {
+      const handle = await open(filePath, flags)
+      return {
+        stat: () => handle.stat(),
+        read: async (...args: Parameters<FileHandle['read']>) => {
+          sourceReads += 1
+          return handle.read(...args)
+        },
+        close: () => handle.close(),
+      } as FileHandle
+    },
+    getFreeStagingBytes: async () => 2_048,
+    readSecret: async () => { secretReads += 1; return 'secret' },
+    fetch: async () => {
+      networkCalls += 1
+      return Response.json({
+        operationId: 'operation-01', endpoint: 'https://video.bunnycdn.com/tusupload',
+        videoId: 'bunny-guid', libraryId: '123', expirationTime: 1, signature: 'a'.repeat(64),
+      }, { status: 201 })
+    },
+    uploadTus: async () => { tusUploads += 1 },
+  }), /Secure video staging free space is insufficient$/)
+
+  assert.equal(sourceReads, 0)
+  assert.equal(secretReads, 0)
+  assert.equal(networkCalls, 0)
+  assert.equal(tusUploads, 0)
+})
+
 test('direct upload binds source bytes before a pathname swap and uses a stable content resume fingerprint', async () => {
   const options = await fixtureOptions()
   const originalBytes = Buffer.alloc(2_048, 1)
