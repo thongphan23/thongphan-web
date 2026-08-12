@@ -1,9 +1,16 @@
 import assert from 'node:assert/strict'
 import { createHash, createHmac } from 'node:crypto'
+import { createRequire } from 'node:module'
+import type { SQLInputValue } from 'node:sqlite'
 import test from 'node:test'
-import { catalogFingerprint, encodeCatalogCursor, VID_FEED_POLICY } from '../lib/vid/feed-cursor'
 import vidWorker, { handleVidRequest } from '../workers/vid/index'
+import { listPublicVideoFeed } from '../workers/vid/catalog'
 import type { VidEnv } from '../workers/vid/types'
+
+const originalEmitWarning = process.emitWarning
+process.emitWarning = (() => undefined) as typeof process.emitWarning
+const { DatabaseSync } = createRequire(import.meta.url)('node:sqlite') as typeof import('node:sqlite')
+process.emitWarning = originalEmitWarning
 
 const publishedRow = {
   id: 'vid_01',
@@ -79,6 +86,62 @@ const cursorRows = [
   { ...publishedRow, slug: 'recent-b', featured_rank: null, published_at: '2026-08-12T02:00:00.000Z' },
   { ...publishedRow, slug: 'recent-c', featured_rank: null, published_at: '2026-08-12T01:00:00.000Z' },
 ]
+
+class SqliteD1Database {
+  readonly database = new DatabaseSync(':memory:')
+
+  constructor() {
+    this.database.exec(`
+      CREATE TABLE vid_videos (
+        id TEXT PRIMARY KEY, slug TEXT NOT NULL UNIQUE, bunny_video_id TEXT NOT NULL UNIQUE,
+        idempotency_key TEXT NOT NULL UNIQUE, title TEXT NOT NULL, description TEXT NOT NULL,
+        source_title TEXT NOT NULL, source_creator TEXT NOT NULL, source_creator_url TEXT NOT NULL,
+        source_video_url TEXT NOT NULL, translation_label TEXT NOT NULL, rights_status TEXT NOT NULL,
+        rights_note TEXT NOT NULL, tags_json TEXT NOT NULL, search_text TEXT NOT NULL,
+        duration_seconds INTEGER NOT NULL, thumbnail_url TEXT NOT NULL, preview_url TEXT NOT NULL,
+        player_url TEXT NOT NULL, status TEXT NOT NULL, media_status TEXT NOT NULL,
+        featured_rank INTEGER, thumbnail_focal_x INTEGER NOT NULL, thumbnail_focal_y INTEGER NOT NULL,
+        published_at TEXT, created_at TEXT NOT NULL, updated_at TEXT NOT NULL
+      );
+      CREATE TABLE vid_video_topics (video_id TEXT NOT NULL, topic_slug TEXT NOT NULL);
+      CREATE TABLE vid_playlist_videos (video_id TEXT NOT NULL, playlist_slug TEXT NOT NULL);
+    `)
+  }
+
+  insert(slug: string, featuredRank: number | null, publishedAt: string, overrides: Record<string, unknown> = {}) {
+    const row = { ...publishedRow, ...overrides, id: `id-${slug}`, slug, bunny_video_id: `bunny-${slug}`, idempotency_key: `idem-${slug}`, featured_rank: featuredRank, published_at: publishedAt }
+    this.database.prepare(`
+      INSERT INTO vid_videos (
+        id, slug, bunny_video_id, idempotency_key, title, description, source_title,
+        source_creator, source_creator_url, source_video_url, translation_label,
+        rights_status, rights_note, tags_json, search_text, duration_seconds,
+        thumbnail_url, preview_url, player_url, status, media_status, featured_rank,
+        thumbnail_focal_x, thumbnail_focal_y, published_at, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 50, 24, ?, ?, ?)
+    `).run(
+      row.id, row.slug, row.bunny_video_id, row.idempotency_key, row.title, row.description,
+      row.source_title, row.source_creator, row.source_creator_url, row.source_video_url,
+      row.translation_label, row.rights_status, row.rights_note, row.tags_json, 'search',
+      row.duration_seconds, row.thumbnail_url, row.preview_url, row.player_url, row.status,
+      row.media_status, row.featured_rank, row.published_at, row.created_at, row.updated_at,
+    )
+  }
+
+  prepare(sql: string) {
+    const statement = this.database.prepare(sql)
+    return {
+      bind: (...values: unknown[]) => ({
+        all: async () => ({ results: statement.all(...values as SQLInputValue[]) as Record<string, unknown>[] }),
+        first: async () => statement.get(...values as SQLInputValue[]) as Record<string, unknown> | undefined,
+        run: async () => statement.run(...values as SQLInputValue[]),
+      }),
+    }
+  }
+}
+
+function sqliteEnv(database: SqliteD1Database): VidEnv {
+  return { ...env(), VID_DB: database as unknown as VidEnv['VID_DB'] }
+}
 
 function env(rows: Record<string, unknown>[] = []): VidEnv {
   return {
@@ -191,32 +254,53 @@ test('cursor feed returns one extra row and advances without duplicates', async 
   assert.equal(second.nextCursor, null)
   assert.equal(second.hasMore, false)
   assert.equal(new Set([...first.items, ...second.items].map((item) => item.slug)).size, 3)
-  assert.equal(database.calls[0]?.bindings.at(-1), 3)
-  assert.match(database.calls[0]?.sql ?? '', /ORDER BY v\.featured_rank IS NULL, v\.featured_rank, v\.published_at DESC, v\.slug ASC/)
-  assert.match(database.calls[1]?.sql ?? '', /v\.featured_rank IS NULL\s+AND \(v\.published_at < \? OR \(v\.published_at = \? AND v\.slug > \?\)\)/)
 })
 
-test('non-null featured ranks advance into later ranks and unfeatured records', async () => {
-  const database = new CursorFeedDatabase()
-  const cursorEnv = { ...env(), VID_DB: database as unknown as VidEnv['VID_DB'] }
-  const cursor = encodeCatalogCursor({
-    v: VID_FEED_POLICY,
-    f: catalogFingerprint({}),
-    b: 0,
-    r: 1,
-    p: '2026-08-12T03:00:00.000Z',
-    s: 'featured-a',
-  })
+test('SQLite keyset preserves exact ranked and unranked order across insertions', async () => {
+  const database = new SqliteD1Database()
+  database.insert('ranked-a', 1, '2026-08-12T04:00:00.000Z')
+  database.insert('ranked-b', 1, '2026-08-12T04:00:00.000Z')
+  database.insert('ranked-c', 1, '2026-08-12T03:00:00.000Z')
+  database.insert('ranked-d', 2, '2026-08-12T05:00:00.000Z')
+  database.insert('unranked-a', null, '2026-08-12T05:00:00.000Z')
+  database.insert('unranked-b', null, '2026-08-12T05:00:00.000Z')
+  database.insert('unranked-c', null, '2026-08-12T04:00:00.000Z')
 
-  const response = await handleVidRequest(
-    new Request(`https://vid.thongphan.com/api/videos?limit=2&cursor=${encodeURIComponent(cursor)}`),
-    cursorEnv,
-  )
-  assert.equal(response.status, 200)
-  const payload = await response.json() as { items: Array<{ slug: string }> }
-  assert.deepEqual(payload.items.map((item) => item.slug), ['recent-b', 'recent-c'])
-  assert.match(database.calls[0]?.sql ?? '', /v\.featured_rank IS NULL\s+OR v\.featured_rank > \?\s+OR \(v\.featured_rank = \? AND \(v\.published_at < \? OR \(v\.published_at = \? AND v\.slug > \?\)\)\)/)
-  assert.deepEqual(database.calls[0]?.bindings.slice(-6), [1, 1, '2026-08-12T03:00:00.000Z', '2026-08-12T03:00:00.000Z', 'featured-a', 3])
+  const first = await listPublicVideoFeed(sqliteEnv(database), { limit: 3 })
+  assert.deepEqual(first.items.map(({ slug }) => slug), ['ranked-a', 'ranked-b', 'ranked-c'])
+  assert.equal(first.hasMore, true)
+
+  database.insert('ranked-before', 1, '2026-08-12T06:00:00.000Z')
+  database.insert('ranked-after', 1, '2026-08-12T02:00:00.000Z')
+  const second = await listPublicVideoFeed(sqliteEnv(database), { limit: 3, cursor: first.nextCursor! })
+  const third = await listPublicVideoFeed(sqliteEnv(database), { limit: 3, cursor: second.nextCursor! })
+  const slugs = [...first.items, ...second.items, ...third.items].map(({ slug }) => slug)
+
+  assert.deepEqual(second.items.map(({ slug }) => slug), ['ranked-after', 'ranked-d', 'unranked-a'])
+  assert.deepEqual(third.items.map(({ slug }) => slug), ['unranked-b', 'unranked-c'])
+  assert.equal(third.hasMore, false)
+  assert.equal(third.nextCursor, null)
+  assert.equal(new Set(slugs).size, slugs.length)
+  assert.equal(slugs.includes('ranked-before'), false)
+})
+
+test('bounded feed scan reaches valid rows after malformed public candidates', async () => {
+  const database = new SqliteD1Database()
+  for (let index = 1; index <= 48; index += 1) {
+    database.insert(`invalid-${String(index).padStart(2, '0')}`, index, '2026-08-12T04:00:00.000Z', { thumbnail_url: '' })
+  }
+  database.insert('valid-49', 49, '2026-08-12T04:00:00.000Z')
+  database.insert('valid-50', 50, '2026-08-12T04:00:00.000Z')
+
+  const first = await listPublicVideoFeed(sqliteEnv(database), { limit: 1 })
+  const second = await listPublicVideoFeed(sqliteEnv(database), { limit: 1, cursor: first.nextCursor! })
+
+  assert.deepEqual(first.items.map(({ slug }) => slug), ['valid-49'])
+  assert.equal(first.hasMore, true)
+  assert.ok(first.nextCursor)
+  assert.deepEqual(second.items.map(({ slug }) => slug), ['valid-50'])
+  assert.equal(second.hasMore, false)
+  assert.equal(second.nextCursor, null)
 })
 
 test('rejects invalid cursor filters and limits before querying D1', async () => {

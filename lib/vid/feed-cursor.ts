@@ -13,6 +13,7 @@ export type CatalogCursor = {
 
 const CURSOR_KEYS = ['v', 'f', 'b', 'r', 'p', 's'] as const
 const MAX_CURSOR_BYTES = 1_024
+const MAX_CURSOR_ENCODED_CHARS = Math.ceil(MAX_CURSOR_BYTES * 8 / 6)
 const utf8 = new TextEncoder()
 const utf8Decoder = new TextDecoder('utf-8', { fatal: true })
 
@@ -27,6 +28,7 @@ function toBase64Url(bytes: Uint8Array): string {
 }
 
 function fromBase64Url(value: string): Uint8Array {
+  if (value.length > MAX_CURSOR_ENCODED_CHARS) invalidCursor()
   if (!/^[A-Za-z0-9_-]+$/.test(value)) invalidCursor()
   const base64 = value.replaceAll('-', '+').replaceAll('_', '/') + '='.repeat((4 - value.length % 4) % 4)
   let binary: string

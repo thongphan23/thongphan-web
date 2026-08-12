@@ -81,6 +81,23 @@ test('catalog cursor rejects unknown keys, invalid versions and oversized payloa
   assert.throws(() => decodeCatalogCursor(encodeRaw({ ...valid, s: 'x'.repeat(1_100) }), valid.f), /invalid_cursor/)
 })
 
+test('catalog cursor rejects oversized encoded input before base64 decoding', () => {
+  const originalAtob = globalThis.atob
+  let decodeCalls = 0
+  globalThis.atob = () => {
+    decodeCalls += 1
+    throw new Error('decoder_must_not_run')
+  }
+  try {
+    assert.throws(() => decodeCatalogCursor('A'.repeat(1_367), 'topic=&q='), /invalid_cursor/)
+    assert.equal(decodeCalls, 0)
+    assert.throws(() => decodeCatalogCursor('A'.repeat(1_366), 'topic=&q='), /invalid_cursor/)
+    assert.equal(decodeCalls, 1)
+  } finally {
+    globalThis.atob = originalAtob
+  }
+})
+
 test('validates a complete owner-reviewed draft', () => {
   assert.deepEqual(validateDraftInput(validDraft), {
     ...validDraft,

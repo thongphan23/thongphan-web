@@ -1,4 +1,4 @@
-import { catalogFingerprint, decodeCatalogCursor, encodeCatalogCursor, VID_FEED_POLICY } from '../../lib/vid/feed-cursor'
+import { catalogFingerprint, decodeCatalogCursor, encodeCatalogCursor, VID_FEED_POLICY, type CatalogCursor } from '../../lib/vid/feed-cursor'
 import { toPublicVideo, type CatalogSlice, type MediaStatus, type RightsStatus, type VideoDraftInput, type VideoRecord, type VideoStatus } from '../../lib/vid/contracts'
 import { normalizeVietnamese } from '../../lib/vid/discovery'
 import type { VidEnv } from './types'
@@ -8,6 +8,9 @@ const BASE_SELECT = `
     COALESCE((SELECT json_group_array(topic_slug) FROM vid_video_topics WHERE video_id = v.id), '[]') AS topics_json,
     COALESCE((SELECT json_group_array(playlist_slug) FROM vid_playlist_videos WHERE video_id = v.id), '[]') AS playlists_json
   FROM vid_videos v`
+
+const FEED_SCAN_BATCH_SIZE = 49
+const MAX_FEED_SCAN_BATCHES = 8
 
 function stringValue(row: Record<string, unknown>, key: string): string {
   if (typeof row[key] !== 'string') throw new Error(`invalid_${key}`)
@@ -57,58 +60,87 @@ export async function listPublicVideoFeed(
   env: VidEnv,
   input: { limit: number; cursor?: string; query?: string; topic?: string },
 ): Promise<CatalogSlice> {
-  const clauses = ["v.status = 'published'", "v.media_status = 'ready'"]
-  const bindings: unknown[] = []
+  const baseClauses = ["v.status = 'published'", "v.media_status = 'ready'", 'v.published_at IS NOT NULL']
+  const baseBindings: unknown[] = []
   const query = input.query?.trim() || undefined
   const topic = input.topic?.trim().normalize('NFC').toLocaleLowerCase('vi') || undefined
   if (query) {
-    clauses.push('v.search_text LIKE ?')
-    bindings.push(`%${normalizeVietnamese(query)}%`)
+    baseClauses.push('v.search_text LIKE ?')
+    baseBindings.push(`%${normalizeVietnamese(query)}%`)
   }
   if (topic) {
-    clauses.push('EXISTS (SELECT 1 FROM vid_video_topics fvt WHERE fvt.video_id = v.id AND fvt.topic_slug = ?)')
-    bindings.push(topic)
+    baseClauses.push('EXISTS (SELECT 1 FROM vid_video_topics fvt WHERE fvt.video_id = v.id AND fvt.topic_slug = ?)')
+    baseBindings.push(topic)
   }
   const fingerprint = catalogFingerprint({ query, topic })
-  if (input.cursor) {
-    const cursor = decodeCatalogCursor(input.cursor, fingerprint)
-    if (cursor.b === 0) {
+  let scanCursor = input.cursor ? decodeCatalogCursor(input.cursor, fingerprint) : undefined
+  const items: CatalogSlice['items'] = []
+  let hasMore = false
+  let continuationCursor: CatalogCursor | undefined
+
+  for (let batch = 0; batch < MAX_FEED_SCAN_BATCHES && items.length <= input.limit; batch += 1) {
+    const clauses = [...baseClauses]
+    const bindings = [...baseBindings]
+    if (scanCursor?.b === 0) {
       clauses.push(`(v.featured_rank IS NULL
         OR v.featured_rank > ?
         OR (v.featured_rank = ? AND (v.published_at < ? OR (v.published_at = ? AND v.slug > ?))))`)
-      bindings.push(cursor.r, cursor.r, cursor.p, cursor.p, cursor.s)
-    } else {
+      bindings.push(scanCursor.r, scanCursor.r, scanCursor.p, scanCursor.p, scanCursor.s)
+    } else if (scanCursor?.b === 1) {
       clauses.push(`(v.featured_rank IS NULL
         AND (v.published_at < ? OR (v.published_at = ? AND v.slug > ?)))`)
-      bindings.push(cursor.p, cursor.p, cursor.s)
+      bindings.push(scanCursor.p, scanCursor.p, scanCursor.s)
     }
+
+    const result = await env.VID_DB.prepare(
+      `${BASE_SELECT}
+       WHERE ${clauses.join(' AND ')}
+       ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC, v.slug ASC LIMIT ?`,
+    ).bind(...bindings, FEED_SCAN_BATCH_SIZE).all<Record<string, unknown>>()
+    const rows = (result.results ?? []) as Record<string, unknown>[]
+
+    for (const row of rows) {
+      try {
+        const video = toPublicVideo(rowToVideoRecord(row))
+        if (video) items.push(video)
+      } catch {
+        // A malformed historical row must not make later valid public videos unreachable.
+      }
+      if (items.length > input.limit) {
+        hasMore = true
+        break
+      }
+    }
+
+    if (hasMore || rows.length < FEED_SCAN_BATCH_SIZE) break
+    const lastRow = rows.at(-1)!
+    scanCursor = {
+      v: VID_FEED_POLICY,
+      f: fingerprint,
+      b: lastRow.featured_rank === null ? 1 : 0,
+      r: lastRow.featured_rank === null ? null : Number(lastRow.featured_rank),
+      p: stringValue(lastRow, 'published_at'),
+      s: stringValue(lastRow, 'slug'),
+    }
+    continuationCursor = scanCursor
+    if (batch === MAX_FEED_SCAN_BATCHES - 1) hasMore = true
   }
-  const result = await env.VID_DB.prepare(
-    `${BASE_SELECT}
-     WHERE ${clauses.join(' AND ')}
-     ORDER BY v.featured_rank IS NULL, v.featured_rank, v.published_at DESC, v.slug ASC LIMIT ?`,
-  ).bind(...bindings, input.limit + 1).all<Record<string, unknown>>()
-  const rows = ((result.results ?? []) as Record<string, unknown>[]).slice(0, input.limit)
-  const items = rows.flatMap((row) => {
-    try {
-      const video = toPublicVideo(rowToVideoRecord(row))
-      return video ? [video] : []
-    } catch {
-      return []
-    }
-  })
-  const last = items.at(-1)
-  const hasMore = Boolean(last) && (result.results?.length ?? 0) > input.limit
-  return {
-    items,
-    nextCursor: hasMore && last ? encodeCatalogCursor({
+
+  const returnedItems = items.slice(0, input.limit)
+  const last = returnedItems.at(-1)
+  if (hasMore && items.length > input.limit && last) {
+    continuationCursor = {
       v: VID_FEED_POLICY,
       f: fingerprint,
       b: last.featuredRank === null ? 1 : 0,
       r: last.featuredRank,
       p: last.publishedAt,
       s: last.slug,
-    }) : null,
+    }
+  }
+  return {
+    items: returnedItems,
+    nextCursor: hasMore && continuationCursor ? encodeCatalogCursor(continuationCursor) : null,
     hasMore,
     policyVersion: VID_FEED_POLICY,
   }
