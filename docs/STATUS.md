@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-12
 
-## vid.thongphan.com Screening Room — PASS_LOCAL / external PARTIAL — 2026-08-12
+## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 
 - Anh Thông authorized autonomous implementation of a public YouTube-familiar
   video library at `vid.thongphan.com`, while retaining the Thong Phan Unified
@@ -23,20 +23,28 @@ Last updated: 2026-08-12
 - Public catalog, search, topic/playlist/library, watch experience, Bunny Player.js
   bridge, source disclosure, local progress/watch-later, VideoObject/sitemap,
   signed admin API, webhook lifecycle and resumable Codex upload command are
-  implemented and committed through Task 9.
+  implemented, committed and released.
 - The final visual pass fixed the production-host double header, dark inherited
   headings, hero text/face collision and face-sensitive thumbnail crop. Mobile
   now stacks the complete image above hero copy; desktop keeps copy and subject in
   separate visual zones.
-- Release gate passes locally: focused VID `40/40`, full repo `498/498`, app and
+- Release gate passes locally: focused VID `42/42`, full repo `500/500`, app and
   Worker TypeScript, lint, Next.js 16.3.0 build `88/88`, bundle `3/3`, secret scan,
   Wrangler dry-run, diff check and visual/interaction QA at five viewports. `npm
   audit` reports zero vulnerabilities across production and development packages.
-- External release remains `PARTIAL`: Cloudflare auth and DNS authority exist, but
-  the hostname currently returns 502; `thongphan-vid` Worker and D1 do not exist,
-  the admin Keychain secret is absent, Bunny vars are placeholders and no
-  owner-approved finished MP4 is available. No placeholder deploy or fake release
-  was performed. Evidence: `docs/qa/VID_SCREENING_ROOM_REPORT.md`.
+- Production is live at `https://vid.thongphan.com`. Active Worker version
+  `e9fedb7c-e756-4418-aa26-a15a64afc980` serves 100% traffic with valid D1,
+  Pages and Bunny bindings; rollback version is
+  `40d42cab-7217-448d-997e-985aebdc6f11`.
+- The first approved completed video is published and playable from Bunny Stream
+  GUID `3c5ae7cc-54d1-4d45-830e-56a784a70e47`. Production home, search, library,
+  watch, robots and sitemap return HTTP 200; signed admin status returns 200 and
+  signed Bunny webhook returns 204. Public DTO exposes no private rights note.
+- Pages immutable deployment `6e11cd9a-4a14-4534-b70b-6eab7c4e0a6e` matches
+  production HTML byte-for-byte. This cutover touched only the isolated VID
+  Worker/D1/Pages preview branch and did not deploy the main thongphan.com or Learn
+  surfaces. Evidence: `docs/qa/VID_SCREENING_ROOM_REPORT.md` and
+  `docs/releases/VID_SCREENING_ROOM_RELEASE_REPORT.md`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

@@ -523,24 +523,24 @@ Check only presence of required Keychain services, Wrangler auth, Bunny library
 and Cloudflare bindings. Missing authority stops external mutation and becomes an
 explicit owner action; it is never silently substituted.
 
-- [ ] **Step 2: Provision preview**
+- [x] **Step 2: Provision preview**
 
 Create preview D1, apply only `workers/vid/migrations`, set Worker secrets/vars,
 deploy preview route and upload one owner-approved real MP4. Verify Bunny
 processing → ready → published and no private field in public API.
 
-- [ ] **Step 3: Run preview smoke**
+- [x] **Step 3: Run preview smoke**
 
 Verify upload resume, webhook auth, source disclosure, home/search/watch, mobile,
 reduced motion, canonical, VideoObject, sitemap, cache and artifact fingerprints.
 
-- [ ] **Step 4: Cut production only after preview PASS**
+- [x] **Step 4: Cut production only after preview PASS**
 
 Apply production migration, set secrets, deploy the exact Worker artifact, attach
 `vid.thongphan.com/*`, publish the approved first video and verify DNS/TLS, API,
 Bunny playback, route hashes and rollback version.
 
-- [ ] **Step 5: Record live evidence and commit**
+- [x] **Step 5: Record live evidence and commit**
 
 Report immutable Worker version, D1 ID, Pages source SHA, public Bunny GUID,
 fingerprints, smoke results and rollback IDs. If credentials/domain/approved video
