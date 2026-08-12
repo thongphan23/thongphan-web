@@ -28,6 +28,16 @@ Last updated: 2026-08-12
 
 ## vid.thongphan.com Screening Room — PASS_PRODUCTION — 2026-08-12
 
+- Dubbing now treats VID publication as part of the completion transaction:
+  every validated output invokes the official resumable upload/publish path and
+  must read back the exact public slug/player before reporting success. Local
+  MP4 remains recoverable when publication fails.
+- The local upload client now binds idempotency to the MP4 content SHA instead
+  of its local path/size. Moving the same artifact cannot create a duplicate,
+  while a changed artifact gets a new rollback-safe Dubbing slug and preserves
+  older catalog and Bunny records. This client change is verified locally and
+  does not require a Worker deployment.
+
 - Anh Thông authorized autonomous implementation of a public YouTube-familiar
   video library at `vid.thongphan.com`, while retaining the Thong Phan Unified
   Cinema identity.
