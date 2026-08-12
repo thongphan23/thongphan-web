@@ -67,7 +67,9 @@ export default function HomeView() {
 
       {featured && (
         <section className={styles.featured} aria-labelledby="featured-title">
-          <Image src={featured.thumbnailUrl} alt="" fill unoptimized priority sizes="(max-width: 780px) 100vw, 75vw" />
+          <span className={styles.featuredImage} aria-hidden="true">
+            <Image src={featured.thumbnailUrl} alt="" fill unoptimized priority sizes="(max-width: 780px) 100vw, 56vw" />
+          </span>
           <span className={styles.featuredShade} aria-hidden="true" />
           <div>
             <p>SUẤT CHIẾU NỔI BẬT</p>

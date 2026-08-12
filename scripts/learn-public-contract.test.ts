@@ -81,6 +81,7 @@ test('Learn keeps its route mode while primary navigation hides it until release
   ])
   assert.equal(getPrimaryNavigation(true).filter(({ href }) => href === '/learn').length, 1)
   assert.deepEqual(secondaryNavigation, [
+    { href: 'https://vid.thongphan.com', label: 'Video tuyển chọn', external: true },
     { href: '/assets', label: 'Tài sản' },
     { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
     { href: '/conanmaker/', label: 'Conan Maker' },

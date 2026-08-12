@@ -84,8 +84,9 @@ type SiteChromeProps = {
 export default function SiteChrome({ children, legacyFontClassName, pathnameOverride }: SiteChromeProps) {
   const detectedPathname = usePathname()
   const pathname = pathnameOverride ?? detectedPathname
-  const mode = routeModeForPath(pathname)
-  const isUnified = isUnifiedRouteEnabled(pathname)
+  const isVidHost = typeof window !== 'undefined' && window.location.hostname === 'vid.thongphan.com'
+  const mode = isVidHost ? 'video-platform' : routeModeForPath(pathname)
+  const isUnified = !isVidHost && isUnifiedRouteEnabled(pathname)
 
   if (mode === 'video-platform') return <>{children}</>
 

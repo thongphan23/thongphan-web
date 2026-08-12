@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-12
 
-## vid.thongphan.com Screening Room — implementation authorized — 2026-08-12
+## vid.thongphan.com Screening Room — PASS_LOCAL / external PARTIAL — 2026-08-12
 
 - Anh Thông authorized autonomous implementation of a public YouTube-familiar
   video library at `vid.thongphan.com`, while retaining the Thong Phan Unified
@@ -20,10 +20,23 @@ Last updated: 2026-08-12
   changes are outside scope.
 - Approved design:
   `docs/superpowers/specs/2026-08-12-vid-thongphan-bunny-stream-design.md`.
-- Baseline code tests pass 455/458. The three failures are environment-only at
-  task start: two Playwright launches are blocked by the macOS sandbox Mach port,
-  and one pinned-Wrangler fixture cannot start before worktree dependencies are
-  installed. No product assertion failed.
+- Public catalog, search, topic/playlist/library, watch experience, Bunny Player.js
+  bridge, source disclosure, local progress/watch-later, VideoObject/sitemap,
+  signed admin API, webhook lifecycle and resumable Codex upload command are
+  implemented and committed through Task 9.
+- The final visual pass fixed the production-host double header, dark inherited
+  headings, hero text/face collision and face-sensitive thumbnail crop. Mobile
+  now stacks the complete image above hero copy; desktop keeps copy and subject in
+  separate visual zones.
+- Release gate passes locally: focused VID `40/40`, full repo `498/498`, app and
+  Worker TypeScript, lint, Next.js 16.3.0 build `88/88`, bundle `3/3`, secret scan,
+  Wrangler dry-run, diff check and visual/interaction QA at five viewports. `npm
+  audit` reports zero vulnerabilities across production and development packages.
+- External release remains `PARTIAL`: Cloudflare auth and DNS authority exist, but
+  the hostname currently returns 502; `thongphan-vid` Worker and D1 do not exist,
+  the admin Keychain secret is absent, Bunny vars are placeholders and no
+  owner-approved finished MP4 is available. No placeholder deploy or fake release
+  was performed. Evidence: `docs/qa/VID_SCREENING_ROOM_REPORT.md`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

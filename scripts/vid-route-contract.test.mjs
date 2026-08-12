@@ -29,6 +29,7 @@ test('Vid bypasses the general SiteChrome and owns one standalone shell', async 
   assert.match(modes, /'video-platform'/)
   assert.match(modes, /'\/vid': 'video-platform'/)
   assert.match(chrome, /mode === 'video-platform'/)
+  assert.match(chrome, /window\.location\.hostname === 'vid\.thongphan\.com'/)
   assert.match(shell, />VID<\/strong><span>·<\/span> THÔNG PHAN/)
   for (const label of ['Trang chủ', 'Chủ đề', 'Danh sách phát', 'Xem tiếp', 'Xem sau']) {
     assert.match(shell, new RegExp(label))
