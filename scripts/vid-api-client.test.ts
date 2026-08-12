@@ -30,6 +30,10 @@ function jsonResponse(value: unknown, status = 200) {
   })
 }
 
+function rawResponse(value: unknown): Response {
+  return { ok: true, status: 200, json: async () => value } as Response
+}
+
 test('catalog client uses same-origin public endpoints and no-store semantics', async () => {
   const calls: Array<{ input: string; init?: RequestInit }> = []
   const fetcher: typeof fetch = async (input, init) => {
@@ -55,6 +59,26 @@ test('detail, topic and playlist clients validate public payloads', async () => 
   assert.equal((await getVideo(video.slug, { fetcher })).slug, video.slug)
   assert.equal((await listTopics({ fetcher }))[0]?.videoCount, 4)
   assert.equal((await getPlaylist('ai-foundation', { fetcher })).items.length, 1)
+})
+
+test('detail client preserves non-default integer focal percentages', async () => {
+  const result = await getVideo(video.slug, {
+    fetcher: async () => jsonResponse({ ...video, thumbnailFocalX: 17, thumbnailFocalY: 83 }),
+  })
+  assert.equal(result.thumbnailFocalX, 17)
+  assert.equal(result.thumbnailFocalY, 83)
+})
+
+test('video client rejects malformed focal percentages without coercion', async () => {
+  for (const key of ['thumbnailFocalX', 'thumbnailFocalY']) {
+    for (const value of [null, true, '50', 50.5, -1, 101, Number.NaN, Number.POSITIVE_INFINITY]) {
+      await assert.rejects(
+        () => getVideo(video.slug, { fetcher: async () => rawResponse({ ...video, [key]: value }) }),
+        /Invalid video payload/,
+        `accepted malformed ${key} value ${String(value)}`,
+      )
+    }
+  }
 })
 
 test('catalog client fails closed on HTTP and malformed payloads', async () => {

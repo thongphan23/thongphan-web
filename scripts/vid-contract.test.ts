@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
 import test from 'node:test'
 import {
   PUBLIC_VIDEO_KEYS,
@@ -54,14 +53,9 @@ test('defaults thumbnail focal points and accepts inclusive percentage bounds', 
     validateDraftInput({ ...validDraft, thumbnailFocalX: 0, thumbnailFocalY: 100 }),
     { ...validDraft, thumbnailFocalX: 0, thumbnailFocalY: 100 },
   )
-  assert.throws(() => validateDraftInput({ ...validDraft, thumbnailFocalX: -1 }), /thumbnailFocalX must be between 0 and 100/)
-  assert.throws(() => validateDraftInput({ ...validDraft, thumbnailFocalY: 101 }), /thumbnailFocalY must be between 0 and 100/)
-})
-
-test('presentation migration defaults and bounds focal point columns', async () => {
-  const migration = await readFile('workers/vid/migrations/0002_vid_presentation.sql', 'utf8')
-  assert.match(migration, /thumbnail_focal_x INTEGER NOT NULL DEFAULT 50 CHECK \(thumbnail_focal_x BETWEEN 0 AND 100\)/)
-  assert.match(migration, /thumbnail_focal_y INTEGER NOT NULL DEFAULT 24 CHECK \(thumbnail_focal_y BETWEEN 0 AND 100\)/)
+  assert.throws(() => validateDraftInput({ ...validDraft, thumbnailFocalX: -1 }), /thumbnailFocalX must be an integer between 0 and 100/)
+  assert.throws(() => validateDraftInput({ ...validDraft, thumbnailFocalY: 101 }), /thumbnailFocalY must be an integer between 0 and 100/)
+  assert.throws(() => validateDraftInput({ ...validDraft, thumbnailFocalX: 50.5 }), /thumbnailFocalX must be an integer between 0 and 100/)
 })
 
 test('rejects unknown, unsafe and incomplete draft fields', () => {

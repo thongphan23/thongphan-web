@@ -24,8 +24,8 @@ function stringList(record: Record<string, unknown>, key: string, label: string)
 
 function focalPercentage(record: Record<string, unknown>, key: string, fallback: number): number {
   if (record[key] === undefined) return fallback
-  const value = Number(record[key])
-  if (!Number.isFinite(value) || value < 0 || value > 100) throw new Error('Invalid video payload')
+  const value = record[key]
+  if (typeof value !== 'number' || !Number.isInteger(value) || value < 0 || value > 100) throw new Error('Invalid video payload')
   return value
 }
 

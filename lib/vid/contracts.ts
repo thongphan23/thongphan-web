@@ -130,8 +130,8 @@ function stringList(value: unknown, field: string, maximum: number, required: bo
 
 function focalPercentage(value: unknown, field: string, fallback: number): number {
   if (value === undefined) return fallback
-  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 100) {
-    throw new Error(`${field} must be between 0 and 100`)
+  if (typeof value !== 'number' || !Number.isInteger(value) || value < 0 || value > 100) {
+    throw new Error(`${field} must be an integer between 0 and 100`)
   }
   return value
 }
