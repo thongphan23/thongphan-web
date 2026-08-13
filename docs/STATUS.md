@@ -2,12 +2,11 @@
 
 Last updated: 2026-08-13
 
-## VID featured first-fold correction — VERIFIED_LOCAL / RELEASE_PENDING — 2026-08-13
+## VID featured first-fold correction — PASS_PRODUCTION — 2026-08-13
 
-- Production was reproduced at 1366×768 with the live Yuval Noah Harari title:
+- The pre-fix production defect was reproduced at 1366×768 with the live Yuval Noah Harari title:
   the featured block grew to about 692px and ended at 922px, leaving 154px
-  below the initial viewport. The production shell is still serving the older
-  unbounded presentation bundle.
+  below the initial viewport.
 - The verified bundle keeps the same live video in a 340px desktop poster and
   removes the duplicated pipe-delimited speaker from its headline. The poster
   now reads `50 năm tới: Nhân loại, AI và quyền lực` / `Yuval Noah Harari`
@@ -25,9 +24,21 @@ Last updated: 2026-08-13
 - Immutable Pages preview `2890c9f8-266e-4e31-8b5e-72ac97ecd0db` was uploaded
   from source `fe9dc3c` at `https://2890c9f8.thongphan-com.pages.dev`. Remote
   `/vid.html` and `/vid/watch.html` SHA-256 hashes exactly match the verified
-  local artifact. The Worker config now points at that immutable origin; its
-  focused contracts `26/26`, Worker TypeScript and Wrangler dry-run pass. The
-  production Worker traffic change remains the final release boundary.
+  local artifact. The production Worker now serves that immutable origin as
+  version `6f043e7f-aa37-4926-9e0c-7654af87e9d4`, deployment
+  `196b5f1a-1af8-4f60-bce8-b08ed50a3da2`, at 100% traffic. The immediate
+  rollback target is version `0c443ff4-6c15-48a9-8d4b-376cf69c9b13`.
+- Post-cutover Browser inspection passes at 1366×768 and 390×844: the featured
+  frame ends at about 571px and 575px respectively, stays wholly above the
+  fold, and leaves the next collection heading visible. The CTA opens the
+  Harari watch route and mounts the Bunny player without console warnings,
+  framework overlays or horizontal overflow.
+- The final production release gate passes: focused VID `108/108`, canonical
+  repository tests `567/567`, root and Worker TypeScript, zero-warning lint,
+  `88/88` build, bundle `3/3`, secret scan, Worker dry-run, five-viewport visual
+  QA, cursor exhaustion, seven public routes and current released Bunny GUID
+  `54dedf9a-563c-44ca-9d49-24ddecddb4d8`. This entry supersedes the pending
+  release boundary in the historical correction entries below.
 
 ## VID featured-poster density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
 
