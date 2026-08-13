@@ -59,3 +59,17 @@ test('getFeaturedPresentation bounds an uncurated headline without altering its 
     },
   )
 })
+
+test('getFeaturedPresentation removes a pipe-delimited speaker from the current featured headline', () => {
+  assert.deepEqual(
+    getFeaturedPresentation({
+      title: '50 năm tới: Nhân loại, AI và quyền lực | Yuval Noah Harari (The next 50 years: humanity, AI, power | Yuval Noah Harari)',
+      sourceTitle: 'The next 50 years: humanity, AI, power | Yuval Noah Harari',
+      sourceCreator: 'Yuval Noah Harari',
+    }),
+    {
+      headline: '50 năm tới: Nhân loại, AI và quyền lực',
+      speaker: 'Yuval Noah Harari',
+    },
+  )
+})

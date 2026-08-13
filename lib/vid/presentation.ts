@@ -42,7 +42,11 @@ export function getFeaturedPresentation(video: {
   const editorial = featuredEditorialBySourceTitle[normalized(video.sourceTitle)]
   if (editorial) return editorial
 
-  const title = compactVideoTitle(video)
+  const compactTitle = compactVideoTitle(video)
+  const pipeAttribution = compactTitle.match(/\s+\|\s+(.+)$/u)
+  const title = pipeAttribution && normalized(pipeAttribution[1]) === normalized(video.sourceCreator)
+    ? compactTitle.slice(0, pipeAttribution.index).trim()
+    : compactTitle
   if (title.length <= FEATURED_TITLE_LIMIT) {
     return { headline: title, speaker: video.sourceCreator }
   }

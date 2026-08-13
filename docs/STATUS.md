@@ -2,6 +2,27 @@
 
 Last updated: 2026-08-13
 
+## VID featured first-fold correction — VERIFIED_LOCAL / RELEASE_PENDING — 2026-08-13
+
+- Production was reproduced at 1366×768 with the live Yuval Noah Harari title:
+  the featured block grew to about 692px and ended at 922px, leaving 154px
+  below the initial viewport. The production shell is still serving the older
+  unbounded presentation bundle.
+- The verified bundle keeps the same live video in a 340px desktop poster and
+  removes the duplicated pipe-delimited speaker from its headline. The poster
+  now reads `50 năm tới: Nhân loại, AI và quyền lực` / `Yuval Noah Harari`
+  instead of truncating midway through the speaker name.
+- Rendered QA now fails whenever the featured frame extends below the initial
+  viewport. It passes at 1440×900, 1280×720, 1024×768, 768×1024 and 390×844.
+  Direct Browser inspection with production data also passes at 1366×768
+  (poster bottom about 571px) and 390×844 (poster bottom about 575px); image,
+  two-line headline, speaker and CTA are all visible without scrolling, with
+  no console warning/error or horizontal overflow. `Xem ngay` reaches the
+  correct Harari watch page and mounts the player.
+- Fresh verification passes: presentation `6/6`, canonical repository tests
+  `567/567`, zero-warning lint, root and VID Worker TypeScript, `88/88` build,
+  `qa:vid` and diff check.
+
 ## VID featured-poster density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
 
 - The previous title correction prevented overflow but still treated the

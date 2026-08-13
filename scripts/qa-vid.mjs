@@ -54,13 +54,13 @@ const images = [
 
 const videos = images.map((image, index) => ({
   slug: `video-thu-${index + 1}`,
-  title: index === 0 ? 'Nguyên tắc ứng phó với trật tự thế giới đang thay đổi - Theo Ray Dalio (Principles for Dealing with the Changing World Order by Ray Dalio)' : index === 1 ? 'Tại sao người giỏi vẫn có thể bị mắc kẹt khi biến chuyên môn thành một hệ thống sống trong thời đại AI?' : [
+  title: index === 0 ? '50 năm tới: Nhân loại, AI và quyền lực | Yuval Noah Harari (The next 50 years: humanity, AI, power | Yuval Noah Harari)' : index === 1 ? 'Tại sao người giỏi vẫn có thể bị mắc kẹt khi biến chuyên môn thành một hệ thống sống trong thời đại AI?' : [
     'Tư duy hệ thống cho người làm nghề', 'Xây một bộ não thứ hai không bắt đầu từ công cụ', 'Chọn lọc tri thức giữa thời đại dư thừa',
     'AI không cướp việc bạn — sự trì hoãn mới có thể', 'Từ ghi chú rời rạc đến tài sản có người dùng', '21 ngày xây Brain2 từ ca thật',
   ][index],
   description: 'Một video chuyên sâu được tuyển chọn để giúp người xem hiểu bản chất, nhìn thấy ứng dụng và có bước tiếp theo rõ ràng.',
-  sourceTitle: index === 0 ? 'Principles for Dealing with the Changing World Order by Ray Dalio' : `Original Video ${index + 1}`,
-  sourceCreator: index === 0 ? 'Principles by Ray Dalio' : index % 2 ? 'The Knowledge Project' : 'Original Creator',
+  sourceTitle: index === 0 ? 'The next 50 years: humanity, AI, power | Yuval Noah Harari' : `Original Video ${index + 1}`,
+  sourceCreator: index === 0 ? 'Yuval Noah Harari' : index % 2 ? 'The Knowledge Project' : 'Original Creator',
   sourceCreatorUrl: 'https://www.youtube.com/@creator',
   sourceVideoUrl: `https://www.youtube.com/watch?v=source${index + 1}`,
   translationLabel: 'Bản thuyết minh tiếng Việt do Thông Phan tuyển chọn',
@@ -169,12 +169,14 @@ async function inspect(page, name) {
 
 async function assertFeaturedCopyLayout(page, name) {
   const geometry = await page.evaluate(() => {
+    const featured = document.querySelector("section[aria-labelledby='featured-title']")
     const copy = document.querySelector('[data-vid-featured-copy]')
     const heading = document.querySelector('#featured-title')
     const cta = copy?.querySelector('a')
-    if (!(copy instanceof HTMLElement) || !(heading instanceof HTMLElement) || !(cta instanceof HTMLElement)) {
+    if (!(featured instanceof HTMLElement) || !(copy instanceof HTMLElement) || !(heading instanceof HTMLElement) || !(cta instanceof HTMLElement)) {
       throw new Error('featured QA anchors are missing')
     }
+    const featuredRect = featured.getBoundingClientRect()
     const copyRect = copy.getBoundingClientRect()
     const range = document.createRange()
     range.selectNodeContents(heading)
@@ -182,6 +184,8 @@ async function assertFeaturedCopyLayout(page, name) {
     const ctaRect = cta.getBoundingClientRect()
     const lineHeight = Number.parseFloat(getComputedStyle(heading).lineHeight)
     return {
+      featured: featuredRect.toJSON(),
+      viewportHeight: innerHeight,
       copy: copyRect.toJSON(),
       heading: heading.getBoundingClientRect().toJSON(),
       headingText: heading.textContent?.trim(),
@@ -190,7 +194,8 @@ async function assertFeaturedCopyLayout(page, name) {
       cta: ctaRect.toJSON(),
     }
   })
-  assert.equal(geometry.headingText, 'Trật tự thế giới đang thay đổi', `${name}: featured poster uses an unedited long title`)
+  assert.equal(geometry.headingText, '50 năm tới: Nhân loại, AI và quyền lực', `${name}: featured poster uses an unedited long title`)
+  assert.ok(geometry.featured.bottom <= geometry.viewportHeight, `${name}: featured poster extends below the initial viewport ${JSON.stringify({ featured: geometry.featured, viewportHeight: geometry.viewportHeight })}`)
   assert.ok(geometry.headingRects.length > 0, `${name}: featured heading has no rendered glyph range`)
   assert.ok(geometry.headingRects.length <= 2, `${name}: featured heading exceeds two lines ${JSON.stringify(geometry)}`)
   assert.ok(geometry.copy.height <= (name === 'mobile-390' ? 210 : 310), `${name}: featured copy is too tall ${JSON.stringify(geometry.copy)}`)
