@@ -211,7 +211,7 @@
 
 .featured {
   position: relative;
-  min-height: clamp(360px, 46vh, 560px);
+  min-height: clamp(340px, 42vh, 500px);
   display: grid;
   align-items: end;
   overflow: visible;
@@ -238,8 +238,8 @@
 .featured > div {
   position: relative;
   z-index: 1;
-  width: min(620px, 72%);
-  padding: clamp(1.35rem, 4vw, 3.4rem);
+  width: min(560px, 66%);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
 }
 
 .featured p,
@@ -254,9 +254,13 @@
 
 .featured h1 {
   margin: .55rem 0 .75rem;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   color: #f0e7d9;
   font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.2rem, 5vw, 4.9rem);
+  font-size: clamp(2rem, 3.8vw, 3.8rem);
   font-weight: 500;
   line-height: 1.08;
   padding-block: .08em;
@@ -515,7 +519,7 @@
 .watchHeader > p { display: flex; gap: .6rem; margin: 0 0 .5rem; }
 .watchHeader > p a { color: #c94b44; font-size: .72rem; text-decoration: none; text-transform: uppercase; letter-spacing: .08em; }
 .watchHeader > p a { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; padding: 0 .5rem; }
-.watchHeader h1 { max-width: 1000px; margin: 0; color: #f0e7d9; font-size: clamp(1.35rem, 2.5vw, 2.3rem); line-height: 1.2; text-wrap: balance; }
+.watchHeader h1 { max-width: 1000px; margin: 0; display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; color: #f0e7d9; font-size: clamp(1.35rem, 2.5vw, 2.3rem); line-height: 1.2; text-wrap: balance; }
 
 .watchActions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
 .watchActions button {
@@ -678,8 +682,9 @@
   }
   .featuredImage img { object-position: var(--focal-x, 50%) var(--focal-y, 24%); }
   .featuredShade { background: linear-gradient(0deg, rgba(7, 7, 6, .75) 0%, transparent 42%); }
-  .featured > div { width: 100%; padding: 1.25rem; background: #0d0c0a; }
-  .featured h1 { font-size: clamp(2rem, 9vw, 3.2rem); }
+  .featured > div { width: 100%; padding: 1rem 1.1rem 1.15rem; background: #0d0c0a; }
+  .featured h1 { font-size: clamp(1.7rem, 7vw, 2.25rem); line-height: 1.05; }
+  .featured a { margin-top: 1rem; }
   .playerFrame,
   .playerError,
   .playerLoading { margin-inline: -.8rem; width: calc(100% + 1.6rem); border-radius: 0; }

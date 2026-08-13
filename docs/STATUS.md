@@ -2,6 +2,34 @@
 
 Last updated: 2026-08-13
 
+## VID title-density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
+
+- Production inspection reproduced the current featured-title defect with the
+  Ray Dalio video: the display title duplicated the full English source title
+  and visible attribution even though both already exist as separate metadata.
+  At the observed 1200px desktop viewport the heading occupied about 463px; at
+  390px it occupied about 271px and pushed the action to the bottom edge.
+- VID now derives a presentation-only compact title: it removes an exact
+  duplicated trailing source title, removes a visible `Theo/By` attribution,
+  and applies a bounded word-safe fallback. The original title remains intact
+  in D1 and in the element tooltip; source creator and original title remain in
+  the provenance block.
+- Home featured, cards and watch view share the compact title. Featured and
+  watch headings have a three-line visual guard; featured type, width, padding
+  and mobile rhythm are reduced so copy cannot dominate the media.
+- TDD evidence: the new presentation contract failed before the helper existed,
+  then passed `3/3`. The rendered regression failed first because the featured
+  block exceeded the three-line/height budget, then `qa:vid` passed at
+  1440/1280/1024/768/390. Browser readback against production metadata measured
+  mobile featured copy at about 219px and desktop at about 385px, with zero
+  horizontal overflow, no console warning/error and the compact title preserved
+  after navigating to the watch page.
+- Fresh verification passes: full repository test command, zero-warning lint,
+  root and VID Worker TypeScript, `88/88` build, `qa:vid`, and diff check.
+- This correction is not yet live. The production Worker remains on the prior
+  immutable Pages origin until the separately blocked `thongphan-vid` Worker
+  cutover receives an accepted fresh production approval.
+
 ## VID Video-First Foundation — PARTIAL / BLOCKED_AT_WORKER_CUTOVER — 2026-08-13
 
 - Task 6 local verification is green: focused VID `97/97`, canonical full suite

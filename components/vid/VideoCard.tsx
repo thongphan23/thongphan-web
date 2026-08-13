@@ -4,6 +4,7 @@ import { Bookmark, BookmarkCheck, Play } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import type { PublicVideo } from '../../lib/vid/contracts'
+import { compactVideoTitle } from '../../lib/vid/presentation'
 import styles from './Vid.module.css'
 import VidLink from './VidLink'
 
@@ -29,6 +30,7 @@ export default function VideoCard({
   onToggleWatchLater?: (slug: string) => void
   priority?: boolean
 }) {
+  const displayTitle = compactVideoTitle(video)
   const [previewing, setPreviewing] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -56,7 +58,7 @@ export default function VideoCard({
 
   return (
     <article className={styles.videoCard} onMouseEnter={startPreview} onMouseLeave={stopPreview} onFocus={startPreview} onBlur={stopPreview}>
-      <VidLink className={styles.thumbnailLink} href={`/watch?v=${encodeURIComponent(video.slug)}`} aria-label={`Xem ${video.title}`}>
+      <VidLink className={styles.thumbnailLink} href={`/watch?v=${encodeURIComponent(video.slug)}`} aria-label={`Xem ${displayTitle}`}>
         <span className={`${styles.thumbnail} ${imageFailed ? styles.thumbnailFallback : ''}`}>
           {!imageFailed && (
             <Image
@@ -81,14 +83,14 @@ export default function VideoCard({
       </VidLink>
       <div className={styles.cardBody}>
         <div>
-          <VidLink className={styles.cardTitle} href={`/watch?v=${encodeURIComponent(video.slug)}`}>{video.title}</VidLink>
+          <VidLink className={styles.cardTitle} href={`/watch?v=${encodeURIComponent(video.slug)}`} title={video.title}>{displayTitle}</VidLink>
           <p>{video.sourceCreator}</p>
         </div>
         {onToggleWatchLater && (
           <button
             type="button"
             className={styles.saveButton}
-            aria-label={watchLater ? `Bỏ ${video.title} khỏi Xem sau` : `Lưu ${video.title} để xem sau`}
+            aria-label={watchLater ? `Bỏ ${displayTitle} khỏi Xem sau` : `Lưu ${displayTitle} để xem sau`}
             aria-pressed={watchLater}
             onClick={() => onToggleWatchLater(video.slug)}
           >

@@ -6,6 +6,7 @@ import { getPlaylist, getVideo, listVideos } from '../../lib/vid/api-client'
 import type { PublicVideo } from '../../lib/vid/contracts'
 import { rankRelated } from '../../lib/vid/discovery'
 import { readLocalLibrary } from '../../lib/vid/local-library'
+import { compactVideoTitle } from '../../lib/vid/presentation'
 import BunnyPlayer, { type PlaybackProgressEvent } from './BunnyPlayer'
 import VideoCard from './VideoCard'
 import styles from './Vid.module.css'
@@ -122,6 +123,7 @@ export default function WatchView() {
 
   const saved = library.watchLater.includes(video.slug)
   const initialStart = playerStart?.slug === video.slug ? playerStart.seconds : 0
+  const displayTitle = compactVideoTitle(video)
 
   return (
     <div className={styles.watchLayout}>
@@ -131,7 +133,7 @@ export default function WatchView() {
         </div>
         <header className={styles.watchHeader}>
           <p>{video.topics.map((topic) => <VidLink key={topic} href={`/topic?slug=${encodeURIComponent(topic)}`}>{topic}</VidLink>)}</p>
-          <h1>{video.title}</h1>
+          <h1 title={video.title}>{displayTitle}</h1>
           <div className={styles.watchActions}>
             <button type="button" onClick={() => toggleLater(video.slug)} aria-pressed={saved}>{saved ? <BookmarkCheck aria-hidden="true" /> : <Bookmark aria-hidden="true" />}{saved ? 'Đã lưu' : 'Xem sau'}</button>
             <button type="button" onClick={() => void copyUrl('link')}>{copied === 'link' ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}Sao chép liên kết</button>
