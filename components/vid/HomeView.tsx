@@ -4,7 +4,7 @@ import { ArrowRight, Play } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState, type CSSProperties } from 'react'
 import { listTopics, type PublicTopic } from '../../lib/vid/api-client'
-import { compactVideoTitle } from '../../lib/vid/presentation'
+import { getFeaturedPresentation } from '../../lib/vid/presentation'
 import InfiniteVideoFeed from './InfiniteVideoFeed'
 import VideoGrid from './VideoGrid'
 import styles from './Vid.module.css'
@@ -29,7 +29,7 @@ export default function HomeView() {
 
   const videos = feed.items
   const featured = videos.find(({ featuredRank }) => featuredRank !== null) ?? videos[0]
-  const featuredTitle = featured ? compactVideoTitle(featured) : ''
+  const featuredPresentation = featured ? getFeaturedPresentation(featured) : null
   const videosWithoutFeatured = featured ? videos.filter(({ slug }) => slug !== featured.slug) : videos
   const recent = videosWithoutFeatured.length ? videosWithoutFeatured : videos
   const continuing = library.progress.flatMap((progress) => {
@@ -65,9 +65,9 @@ export default function HomeView() {
           </span>
           <span className={styles.featuredShade} aria-hidden="true" />
           <div data-vid-featured-copy>
-            <p>SUẤT CHIẾU NỔI BẬT</p>
-            <h1 id="featured-title" title={featured.title}>{featuredTitle}</h1>
-            <span>{featured.sourceCreator} · {featured.topics[0]}</span>
+            <p>NỔI BẬT</p>
+            <h1 id="featured-title" title={featured.title}>{featuredPresentation?.headline}</h1>
+            <span>{featuredPresentation?.speaker}</span>
             <VidLink href={`/watch?v=${encodeURIComponent(featured.slug)}`}><Play fill="currentColor" aria-hidden="true" /> Xem ngay</VidLink>
           </div>
         </section>

@@ -1,4 +1,12 @@
 const DISPLAY_TITLE_LIMIT = 88
+const FEATURED_TITLE_LIMIT = 48
+
+const featuredEditorialBySourceTitle: Record<string, { headline: string; speaker: string }> = {
+  'principles for dealing with the changing world order by ray dalio': {
+    headline: 'Trật tự thế giới đang thay đổi',
+    speaker: 'Ray Dalio',
+  },
+}
 
 function normalized(value: string) {
   return value.trim().replace(/\s+/g, ' ').toLocaleLowerCase('vi')
@@ -24,4 +32,25 @@ export function compactVideoTitle({
   const candidate = displayTitle.slice(0, DISPLAY_TITLE_LIMIT - 1)
   const lastSpace = candidate.lastIndexOf(' ')
   return `${candidate.slice(0, lastSpace > 56 ? lastSpace : DISPLAY_TITLE_LIMIT - 1).trimEnd()}…`
+}
+
+export function getFeaturedPresentation(video: {
+  title: string
+  sourceTitle: string
+  sourceCreator: string
+}) {
+  const editorial = featuredEditorialBySourceTitle[normalized(video.sourceTitle)]
+  if (editorial) return editorial
+
+  const title = compactVideoTitle(video)
+  if (title.length <= FEATURED_TITLE_LIMIT) {
+    return { headline: title, speaker: video.sourceCreator }
+  }
+
+  const candidate = title.slice(0, FEATURED_TITLE_LIMIT - 1)
+  const lastSpace = candidate.lastIndexOf(' ')
+  return {
+    headline: `${candidate.slice(0, lastSpace > 28 ? lastSpace : FEATURED_TITLE_LIMIT - 1).trimEnd()}…`,
+    speaker: video.sourceCreator,
+  }
 }

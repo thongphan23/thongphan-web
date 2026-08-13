@@ -181,11 +181,19 @@ async function assertFeaturedCopyLayout(page, name) {
     const headingRects = [...range.getClientRects()].map(({ top, right, bottom, left, width, height }) => ({ top, right, bottom, left, width, height }))
     const ctaRect = cta.getBoundingClientRect()
     const lineHeight = Number.parseFloat(getComputedStyle(heading).lineHeight)
-    return { copy: copyRect.toJSON(), heading: heading.getBoundingClientRect().toJSON(), lineHeight, headingRects, cta: ctaRect.toJSON() }
+    return {
+      copy: copyRect.toJSON(),
+      heading: heading.getBoundingClientRect().toJSON(),
+      headingText: heading.textContent?.trim(),
+      lineHeight,
+      headingRects,
+      cta: ctaRect.toJSON(),
+    }
   })
+  assert.equal(geometry.headingText, 'Trật tự thế giới đang thay đổi', `${name}: featured poster uses an unedited long title`)
   assert.ok(geometry.headingRects.length > 0, `${name}: featured heading has no rendered glyph range`)
-  assert.ok(geometry.headingRects.length <= 3, `${name}: featured heading exceeds three lines ${JSON.stringify(geometry)}`)
-  assert.ok(geometry.copy.height <= (name === 'mobile-390' ? 250 : 390), `${name}: featured copy is too tall ${JSON.stringify(geometry.copy)}`)
+  assert.ok(geometry.headingRects.length <= 2, `${name}: featured heading exceeds two lines ${JSON.stringify(geometry)}`)
+  assert.ok(geometry.copy.height <= (name === 'mobile-390' ? 210 : 310), `${name}: featured copy is too tall ${JSON.stringify(geometry.copy)}`)
   for (const rect of geometry.headingRects) {
     assert.ok(
       rect.left >= geometry.copy.left - 1 && rect.right <= geometry.copy.right + 1 && rect.top >= geometry.copy.top - 1 && rect.bottom <= geometry.copy.bottom + 1,

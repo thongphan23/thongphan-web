@@ -34,7 +34,7 @@ test('Vid release gate covers the complete video-first foundation and production
   for (const viewport of ['1440', '1280', '1024', '768', '390']) assert.match(qa, new RegExp(`(?:width|name):[^\\n]*${viewport}`))
   assert.doesNotMatch(qa, /name:\s*['"](?:mobile-)?320/)
   assert.match(qa, /Nguyên tắc ứng phó với trật tự thế giới đang thay đổi - Theo Ray Dalio/)
-  assert.match(qa, /featured heading exceeds three lines/)
+  assert.match(qa, /featured heading exceeds two lines/)
   assert.match(qa, /featured copy is too tall/)
   assert.match(qa, /reducedMotion/)
   assert.match(qa, /provider current time did not advance/)

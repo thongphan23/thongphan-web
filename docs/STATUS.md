@@ -2,6 +2,28 @@
 
 Last updated: 2026-08-13
 
+## VID featured-poster density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
+
+- The previous title correction prevented overflow but still treated the
+  featured slot like a shortened catalog card. The featured slot now has its
+  own editorial presentation: one short `NỔI BẬT` kicker, a one-to-two-line
+  headline, the speaker name and one `Xem ngay` action. Topic and translation
+  labels no longer compete with the poster.
+- The current Ray Dalio feature renders as `Trật tự thế giới đang thay đổi` /
+  `Ray Dalio`; uncurated future features receive a word-safe 48-character
+  fallback instead of reusing an 88-character card title.
+- TDD evidence: the presentation suite failed because the featured presenter
+  did not exist, then passed `5/5`. Rendered QA passed at
+  1440/1280/1024/768/390 with a two-line ceiling and tighter copy-height budget.
+  Browser inspection against current production metadata measured one line /
+  about 179px copy at 390px and two lines / about 304px at 1440px, with no CTA
+  overlap, horizontal overflow or console errors; `Xem ngay` reached the real
+  watch slug and mounted the player.
+- Fresh verification passes: canonical repository tests `563/563`, zero-warning
+  lint, root and VID Worker TypeScript, `88/88` build and `qa:vid`.
+- This correction is committed only after verification and is not live until
+  the separately blocked production `thongphan-vid` Worker cutover is approved.
+
 ## VID title-density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
 
 - Production inspection reproduced the current featured-title defect with the
