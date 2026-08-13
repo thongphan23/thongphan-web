@@ -134,7 +134,10 @@ class SqliteD1Database {
       bind: (...values: unknown[]) => ({
         all: async () => ({ results: statement.all(...values as SQLInputValue[]) as Record<string, unknown>[] }),
         first: async () => statement.get(...values as SQLInputValue[]) as Record<string, unknown> | undefined,
-        run: async () => statement.run(...values as SQLInputValue[]),
+        run: async () => {
+          const result = statement.run(...values as SQLInputValue[])
+          return { ...result, success: true, meta: { changes: Number(result.changes) } }
+        },
       }),
     }
   }
@@ -422,13 +425,17 @@ class AdminDatabase {
   }
 }
 
-function signAdminBody(body: string) {
+function signAdminRequest(
+  method: string,
+  path: string,
+  body: string,
+  idempotencyKey = 'upload-route-01',
+  nonce = 'nonce-route-12345678',
+) {
   const timestamp = Math.floor(Date.now() / 1000)
-  const nonce = 'nonce-route-12345678'
-  const idempotencyKey = 'upload-route-01'
   const canonical = [
-    'POST',
-    '/api/admin/uploads',
+    method,
+    path,
     String(timestamp),
     nonce,
     idempotencyKey,
@@ -442,6 +449,95 @@ function signAdminBody(body: string) {
     'X-Vid-Signature': createHmac('sha256', 'unit-test-admin-secret-32-characters').update(canonical).digest('hex'),
   }
 }
+
+function signAdminBody(body: string) {
+  return signAdminRequest('POST', '/api/admin/uploads', body)
+}
+
+test('admin status reconciles a missed ready webhook directly from Bunny', async () => {
+  const database = new SqliteD1Database()
+  database.database.exec(`
+    CREATE TABLE vid_admin_nonces (nonce TEXT PRIMARY KEY, expires_at INTEGER NOT NULL);
+  `)
+  database.insert('recover-ready', null, '2026-08-13T00:00:00.000Z', {
+    status: 'processing',
+    media_status: 'processing',
+    published_at: null,
+    thumbnail_url: 'https://i.ytimg.com/vi/source/maxresdefault.jpg',
+    preview_url: '',
+    player_url: '',
+    duration_seconds: 0,
+  })
+  const operationId = 'id-recover-ready'
+  const path = `/api/admin/videos/${operationId}/status`
+  let providerCalls = 0
+  const response = await handleVidRequest(
+    new Request(`https://vid.thongphan.com${path}`, {
+      headers: signAdminRequest('GET', path, '', 'status-reconcile-01'),
+    }),
+    {
+      ...sqliteEnv(database),
+      VID_ADMIN_HMAC_SECRET: 'unit-test-admin-secret-32-characters',
+      BUNNY_STREAM_API_KEY: 'bunny-secret',
+    },
+    { fetch: async () => {
+      providerCalls += 1
+      return Response.json({ status: 3, length: 605.8, thumbnailFileName: 'thumbnail.jpg' })
+    } },
+  )
+  assert.equal(response.status, 200)
+  assert.equal(providerCalls, 1)
+  const body = await response.json() as Record<string, unknown>
+  assert.equal(body.media_status, 'ready')
+  assert.equal(body.status, 'ready')
+  const stored = database.database.prepare(
+    'SELECT duration_seconds, thumbnail_url, preview_url, player_url FROM vid_videos WHERE id = ?',
+  ).get(operationId) as Record<string, unknown>
+  assert.equal(stored.duration_seconds, 606)
+  assert.equal(stored.thumbnail_url, 'https://i.ytimg.com/vi/source/maxresdefault.jpg')
+  assert.match(String(stored.preview_url), /preview\.webp$/)
+  assert.match(String(stored.player_url), /bunny-recover-ready$/)
+})
+
+test('a stale provider poll cannot downgrade a concurrent terminal webhook state', async () => {
+  const database = new SqliteD1Database()
+  database.database.exec(`
+    CREATE TABLE vid_admin_nonces (nonce TEXT PRIMARY KEY, expires_at INTEGER NOT NULL);
+  `)
+  database.insert('race-ready', null, '2026-08-13T00:00:00.000Z', {
+    status: 'processing',
+    media_status: 'processing',
+    published_at: null,
+  })
+  const operationId = 'id-race-ready'
+  const path = `/api/admin/videos/${operationId}/status`
+  const response = await handleVidRequest(
+    new Request(`https://vid.thongphan.com${path}`, {
+      headers: signAdminRequest(
+        'GET',
+        path,
+        '',
+        'status-race-ready-01',
+        'nonce-route-race-ready',
+      ),
+    }),
+    {
+      ...sqliteEnv(database),
+      VID_ADMIN_HMAC_SECRET: 'unit-test-admin-secret-32-characters',
+      BUNNY_STREAM_API_KEY: 'bunny-secret',
+    },
+    { fetch: async () => {
+      database.database.prepare(
+        "UPDATE vid_videos SET status = 'ready', media_status = 'ready' WHERE id = ?",
+      ).run(operationId)
+      return Response.json({ status: 2, length: 605.8 })
+    } },
+  )
+  assert.equal(response.status, 200)
+  const body = await response.json() as Record<string, unknown>
+  assert.equal(body.media_status, 'ready')
+  assert.equal(body.status, 'ready')
+})
 
 test('creates one authenticated Bunny upload without exposing provider secrets', async () => {
   const body = JSON.stringify({

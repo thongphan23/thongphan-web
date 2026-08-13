@@ -74,13 +74,7 @@ export function mapBunnyStatus(status: number): MediaStatus {
   return 'processing'
 }
 
-export async function getBunnyVideoDetails(videoId: string, env: VidEnv, fetcher: typeof fetch = fetch) {
-  const { libraryId, apiKey } = requireBunny(env)
-  const response = await fetcher(`https://video.bunnycdn.com/library/${libraryId}/videos/${videoId}`, {
-    headers: { Accept: 'application/json', AccessKey: apiKey },
-  })
-  if (!response.ok) throw new Error('bunny_status_failed')
-  const payload = await response.json() as { length?: unknown; thumbnailFileName?: unknown }
+function mediaDetailsFromPayload(videoId: string, env: VidEnv, payload: { length?: unknown; thumbnailFileName?: unknown }) {
   const durationSeconds = Number.isFinite(payload.length) ? Math.round(Number(payload.length)) : 0
   const thumbnailFileName = typeof payload.thumbnailFileName === 'string' && /^[a-zA-Z0-9._-]+$/.test(payload.thumbnailFileName)
     ? payload.thumbnailFileName
@@ -92,6 +86,28 @@ export async function getBunnyVideoDetails(videoId: string, env: VidEnv, fetcher
     durationSeconds,
     thumbnailUrl: `https://${env.BUNNY_CDN_HOST}/${videoId}/${thumbnailFileName}`,
     previewUrl: `https://${env.BUNNY_CDN_HOST}/${videoId}/preview.webp`,
-    playerUrl: `https://player.mediadelivery.net/embed/${libraryId}/${videoId}`,
+    playerUrl: `https://player.mediadelivery.net/embed/${env.BUNNY_LIBRARY_ID}/${videoId}`,
   }
+}
+
+async function readBunnyVideo(videoId: string, env: VidEnv, fetcher: typeof fetch) {
+  const { libraryId, apiKey } = requireBunny(env)
+  const response = await fetcher(`https://video.bunnycdn.com/library/${libraryId}/videos/${videoId}`, {
+    headers: { Accept: 'application/json', AccessKey: apiKey },
+  })
+  if (!response.ok) throw new Error('bunny_status_failed')
+  return response.json() as Promise<{ status?: unknown; length?: unknown; thumbnailFileName?: unknown }>
+}
+
+export async function getBunnyVideoDetails(videoId: string, env: VidEnv, fetcher: typeof fetch = fetch) {
+  return mediaDetailsFromPayload(videoId, env, await readBunnyVideo(videoId, env, fetcher))
+}
+
+export async function getBunnyVideoStatus(videoId: string, env: VidEnv, fetcher: typeof fetch = fetch) {
+  const payload = await readBunnyVideo(videoId, env, fetcher)
+  if (!Number.isInteger(payload.status)) throw new Error('bunny_status_invalid_response')
+  const mediaStatus = mapBunnyStatus(Number(payload.status))
+  return mediaStatus === 'ready'
+    ? { mediaStatus, media: mediaDetailsFromPayload(videoId, env, payload) }
+    : { mediaStatus }
 }

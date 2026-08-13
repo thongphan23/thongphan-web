@@ -265,6 +265,7 @@ export async function updateVideoMediaStatus(
   bunnyVideoId: string,
   mediaStatus: MediaStatus,
   media?: { durationSeconds: number; thumbnailUrl: string; previewUrl: string; playerUrl: string },
+  onlyIfNonterminal = false,
 ): Promise<void> {
   const status = mediaStatus === 'failed' ? 'failed' : mediaStatus === 'ready' ? 'ready' : 'processing'
   await env.VID_DB.prepare(
@@ -272,7 +273,8 @@ export async function updateVideoMediaStatus(
      SET media_status = ?, status = CASE WHEN status = 'published' THEN status ELSE ? END,
        duration_seconds = COALESCE(?, duration_seconds), thumbnail_url = CASE WHEN thumbnail_url = '' THEN COALESCE(?, thumbnail_url) ELSE thumbnail_url END,
        preview_url = COALESCE(?, preview_url), player_url = COALESCE(?, player_url), updated_at = ?
-     WHERE bunny_video_id = ? AND status != 'archived'`,
+     WHERE bunny_video_id = ? AND status != 'archived'
+       AND (? = 0 OR media_status NOT IN ('ready', 'failed'))`,
   ).bind(
     mediaStatus,
     status,
@@ -282,6 +284,7 @@ export async function updateVideoMediaStatus(
     media?.playerUrl ?? null,
     new Date().toISOString(),
     bunnyVideoId,
+    onlyIfNonterminal ? 1 : 0,
   ).run()
 }
 

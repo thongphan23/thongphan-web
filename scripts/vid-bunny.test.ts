@@ -5,6 +5,7 @@ import {
   buildTusAuthorization,
   createBunnyVideo,
   getBunnyVideoDetails,
+  getBunnyVideoStatus,
   mapBunnyStatus,
   verifyBunnyWebhook,
 } from '../workers/vid/bunny'
@@ -43,6 +44,29 @@ test('reads encoded media details and derives only configured Bunny URLs', async
     previewUrl: 'https://media.example.com/video-guid/preview.webp',
     playerUrl: 'https://player.mediadelivery.net/embed/123/video-guid',
   })
+})
+
+test('reads Bunny lifecycle status and returns media only when encoding is ready', async () => {
+  const ready = await getBunnyVideoStatus('video-guid', env, async () => Response.json({
+    status: 3,
+    length: 605.8,
+    thumbnailFileName: 'thumbnail_7.jpg',
+  }))
+  assert.deepEqual(ready, {
+    mediaStatus: 'ready',
+    media: {
+      durationSeconds: 606,
+      thumbnailUrl: 'https://media.example.com/video-guid/thumbnail_7.jpg',
+      previewUrl: 'https://media.example.com/video-guid/preview.webp',
+      playerUrl: 'https://player.mediadelivery.net/embed/123/video-guid',
+    },
+  })
+  const processing = await getBunnyVideoStatus(
+    'video-guid',
+    env,
+    async () => Response.json({ status: 2, length: 605.8 }),
+  )
+  assert.deepEqual(processing, { mediaStatus: 'processing' })
 })
 
 test('builds the documented TUS SHA-256 signature', async () => {

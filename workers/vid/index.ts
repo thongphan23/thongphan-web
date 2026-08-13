@@ -1,6 +1,6 @@
 import { validateDraftInput } from '../../lib/vid/contracts'
 import { verifyAdminRequest } from './auth'
-import { buildTusAuthorization, createBunnyVideo, getBunnyVideoDetails, mapBunnyStatus, verifyBunnyWebhook } from './bunny'
+import { buildTusAuthorization, createBunnyVideo, getBunnyVideoDetails, getBunnyVideoStatus, mapBunnyStatus, verifyBunnyWebhook } from './bunny'
 import {
   archiveAdminVideo,
   createVideoDraft,
@@ -116,7 +116,21 @@ async function handleAdminApi(
   if (!match) return error('admin_not_found', 404)
   const [, id, action] = match
   if (action === 'status' && request.method === 'GET') {
-    const status = await getAdminVideoStatus(env, id)
+    let status = await getAdminVideoStatus(env, id)
+    if (status && status.media_status !== 'ready' && status.media_status !== 'failed') {
+      const bunnyVideoId = status.bunny_video_id
+      if (typeof bunnyVideoId === 'string' && bunnyVideoId) {
+        const providerStatus = await getBunnyVideoStatus(bunnyVideoId, env, dependencies.fetch)
+        await updateVideoMediaStatus(
+          env,
+          bunnyVideoId,
+          providerStatus.mediaStatus,
+          providerStatus.media,
+          true,
+        )
+        status = await getAdminVideoStatus(env, id)
+      }
+    }
     return status ? json(status) : error('video_not_found', 404)
   }
   if (action === 'publish' && request.method === 'POST') {
