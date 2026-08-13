@@ -22,6 +22,12 @@ Last updated: 2026-08-13
 - Fresh verification passes: presentation `6/6`, canonical repository tests
   `567/567`, zero-warning lint, root and VID Worker TypeScript, `88/88` build,
   `qa:vid` and diff check.
+- Immutable Pages preview `2890c9f8-266e-4e31-8b5e-72ac97ecd0db` was uploaded
+  from source `fe9dc3c` at `https://2890c9f8.thongphan-com.pages.dev`. Remote
+  `/vid.html` and `/vid/watch.html` SHA-256 hashes exactly match the verified
+  local artifact. The Worker config now points at that immutable origin; its
+  focused contracts `26/26`, Worker TypeScript and Wrangler dry-run pass. The
+  production Worker traffic change remains the final release boundary.
 
 ## VID featured-poster density correction — VERIFIED_LOCAL / PENDING_PRODUCTION_CUTOVER — 2026-08-13
 
