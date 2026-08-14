@@ -2,7 +2,7 @@ import { lstat, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { parseArgs } from 'node:util'
 import { validateUploadManifest } from '../lib/vid/upload-manifest'
-import { runVidUpload } from './vid-upload'
+import { runVidReconcile, runVidUpload } from './vid-upload'
 import { runVidUploadBatch } from './vid-upload-batch'
 
 async function readTextFile(filePath: string, label: string): Promise<string> {
@@ -35,6 +35,7 @@ async function main() {
       publish: { type: 'boolean', default: false },
       'dry-run': { type: 'boolean', default: false },
       manifest: { type: 'string' },
+      'operation-id': { type: 'string' },
     },
     strict: true,
     tokens: true,
@@ -67,6 +68,21 @@ async function main() {
     const result = await runVidUploadBatch(effectiveManifest, { runUpload: runVidUpload })
     console.log(JSON.stringify(result))
     if (result.failed.length > 0) process.exitCode = 1
+    return
+  }
+  if (values['operation-id']) {
+    const forbidden = new Set(['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'thumbnail-url', 'rights-status', 'rights-note-file', 'topic', 'tag', 'playlist', 'manifest', 'dry-run'])
+    for (const token of tokens) {
+      if (token.kind === 'option' && forbidden.has(token.name)) {
+        throw new Error(`--operation-id cannot be combined with --${token.name}`)
+      }
+    }
+    const result = await runVidReconcile({
+      baseUrl: values['base-url']!,
+      operationId: values['operation-id'],
+      publish: values.publish!,
+    })
+    console.log(JSON.stringify(result))
     return
   }
   const required = ['file', 'slug', 'title', 'description-file', 'source-title', 'source-creator', 'source-creator-url', 'source-url', 'rights-note-file'] as const

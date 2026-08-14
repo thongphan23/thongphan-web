@@ -4,7 +4,7 @@ import { access, appendFile, mkdtemp, open, readFile, rename, rm, stat, symlink,
 import os from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
-import { runVidUpload, type VidUploadOptions } from './vid-upload'
+import { runVidReconcile, runVidUpload, type VidUploadOptions } from './vid-upload'
 
 const metadata = {
   slug: 'tu-duy-ai',
@@ -349,4 +349,54 @@ test('does not publish when processing never reaches ready', async () => {
     sleep: async () => undefined,
     maxPolls: 2,
   }), /not ready/)
+})
+
+test('reconciles and publishes an existing ready operation without uploading bytes', async () => {
+  const operationId = '12345678-1234-4234-9234-123456789012'
+  const requests: Request[] = []
+  let uploadCalls = 0
+
+  const result = await runVidReconcile(
+    { baseUrl: 'https://vid.thongphan.com', operationId, publish: true },
+    {
+      readSecret: async () => 'secret',
+      fetch: async (input, init) => {
+        const request = new Request(input, init)
+        requests.push(request)
+        return Response.json({ media_status: 'ready' })
+      },
+      uploadTus: async () => {
+        uploadCalls += 1
+      },
+      sleep: async () => undefined,
+    },
+  )
+
+  assert.deepEqual(result, { status: 'published', operationId })
+  assert.equal(uploadCalls, 0)
+  assert.equal(requests.length, 2)
+  assert.match(requests[0]!.url, new RegExp(`/api/admin/videos/${operationId}/status$`))
+  assert.match(requests[1]!.url, new RegExp(`/api/admin/videos/${operationId}/publish$`))
+})
+
+test('reconcile waits within its bound and fails closed on provider failure', async () => {
+  const operationId = '12345678-1234-4234-9234-123456789012'
+  let calls = 0
+
+  await assert.rejects(
+    () => runVidReconcile(
+      { baseUrl: 'https://vid.thongphan.com', operationId, publish: true },
+      {
+        readSecret: async () => 'secret',
+        fetch: async () => {
+          calls += 1
+          return Response.json({ media_status: calls === 1 ? 'processing' : 'failed' })
+        },
+        sleep: async () => undefined,
+        maxPolls: 2,
+      },
+    ),
+    /processing failed/,
+  )
+  assert.equal(calls, 2)
 })

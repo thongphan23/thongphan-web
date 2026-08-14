@@ -31,6 +31,12 @@ export type VidUploadOptions = {
   dryRun: boolean
 }
 
+export type VidReconcileOptions = {
+  baseUrl: string
+  operationId: string
+  publish: boolean
+}
+
 export type TusCredentials = {
   endpoint: string
   videoId: string
@@ -401,6 +407,51 @@ export async function runVidUpload(
   }
   if (uploadFailure) throw uploadFailure
   return uploadResult!
+}
+
+export async function runVidReconcile(
+  options: VidReconcileOptions,
+  overrides: Partial<VidUploadDependencies> = {},
+) {
+  const dependencies = { ...defaultDependencies, ...overrides }
+  const baseUrl = safeBaseUrl(options.baseUrl)
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(options.operationId)) {
+    throw new Error('Vid operation ID is invalid')
+  }
+  const secret = await dependencies.readSecret()
+  const idempotencyKey = `reconcile:${options.operationId}`
+  let ready = false
+  for (let attempt = 0; attempt < dependencies.maxPolls; attempt += 1) {
+    const response = await adminFetch(
+      baseUrl,
+      `/api/admin/videos/${options.operationId}/status`,
+      'GET',
+      '',
+      `${idempotencyKey}:status:${attempt}`,
+      secret,
+      dependencies,
+    )
+    const status = await response.json() as { media_status?: string; mediaStatus?: string }
+    const mediaStatus = status.media_status ?? status.mediaStatus
+    if (mediaStatus === 'ready') {
+      ready = true
+      break
+    }
+    if (mediaStatus === 'failed') throw new Error('Bunny processing failed')
+    await dependencies.sleep(10_000)
+  }
+  if (!ready) throw new Error('Video is not ready for publish')
+  if (!options.publish) return { status: 'ready' as const, operationId: options.operationId }
+  await adminFetch(
+    baseUrl,
+    `/api/admin/videos/${options.operationId}/publish`,
+    'POST',
+    '',
+    `${idempotencyKey}:publish`,
+    secret,
+    dependencies,
+  )
+  return { status: 'published' as const, operationId: options.operationId }
 }
 
 async function uploadStagedVideo(
