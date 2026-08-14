@@ -1,6 +1,27 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-08-13
+Last updated: 2026-08-14
+
+## Thong Phan tailored AI workforce repositioning - WRITTEN SPEC FOR OWNER REVIEW - 2026-08-14
+
+- Anh Thông approved the strategic and visual direction for a complete brand
+  repositioning around tailored AI employees for CEOs and business owners.
+- The new public promise supersedes the prior `biến chuyên môn thành tài sản`
+  positioning at the umbrella-brand layer while preserving Read, Vid, Learn,
+  Conan Maker and the 21-day Brain2 challenge as products, proof or experiences.
+- The approved visual direction is Executive AI Atelier: an executive tailoring
+  language, clear commercial journey and restrained operations-room motion.
+- Phòng Marketing AI may đo is the first public offer. It is truthfully framed as
+  a limited bespoke engagement ready for suitable clients, not a fully packaged
+  product with invented pricing or outcomes.
+- The agreed entry journey is a short company diagnostic that collects website,
+  Facebook page, marketing-team context, bottleneck and standards. The system
+  prepares a preliminary assessment; Thông reviews it before results are sent or
+  booking is opened.
+- The written system design is awaiting owner review at
+  `docs/superpowers/specs/2026-08-14-thongphan-tailored-ai-workforce-brand-system-design.md`.
+- No production source, route, schema, Worker, Pages project or Learn runtime was
+  changed by this design step.
 
 ## VID featured first-fold correction — PASS_PRODUCTION — 2026-08-13
 
