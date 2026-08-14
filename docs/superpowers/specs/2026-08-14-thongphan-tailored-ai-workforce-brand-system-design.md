@@ -2,7 +2,7 @@
 
 **Ngày:** 14/08/2026
 
-**Trạng thái:** Chờ anh Thông duyệt bản viết
+**Trạng thái:** Đã được anh Thông duyệt ngày 14/08/2026
 
 **Chủ sở hữu:** Thông Phan
 

@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-14
 
-## Thong Phan tailored AI workforce repositioning - WRITTEN SPEC FOR OWNER REVIEW - 2026-08-14
+## Thong Phan tailored AI workforce repositioning - SPEC APPROVED / IMPLEMENTATION PLANNED - 2026-08-14
 
 - Anh Thông approved the strategic and visual direction for a complete brand
   repositioning around tailored AI employees for CEOs and business owners.
@@ -18,10 +18,18 @@ Last updated: 2026-08-14
   Facebook page, marketing-team context, bottleneck and standards. The system
   prepares a preliminary assessment; Thông reviews it before results are sent or
   booking is opened.
-- The written system design is awaiting owner review at
+- Anh Thông approved the written system design at
   `docs/superpowers/specs/2026-08-14-thongphan-tailored-ai-workforce-brand-system-design.md`.
+- Implementation is decomposed into four independently releasable plans:
+  - brand authority, Executive AI Atelier shell and homepage;
+  - Marketing AI diagnostic and truthful bespoke offer;
+  - evidence system and public subpage unification;
+  - collateral, ecosystem handoffs and production release hardening.
+- Implementation must start from a clean `origin/main` worktree. The current
+  planning branch contains unrelated VID history and must not be pushed or used
+  as the production integration branch.
 - No production source, route, schema, Worker, Pages project or Learn runtime was
-  changed by this design step.
+  changed by the specification and planning steps.
 
 ## VID featured first-fold correction — PASS_PRODUCTION — 2026-08-13
 
