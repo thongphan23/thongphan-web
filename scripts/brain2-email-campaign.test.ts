@@ -6,6 +6,7 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 import manifest from '../content/brain2/manifest.json'
+import { BRAIN2_SIGNUP_SUCCESS_MESSAGE } from '../lib/brain2/signup-contract'
 import {
   BRAIN2_CAMPAIGN_VERSION,
   BRAIN2_CHALLENGE_SLUG,
@@ -146,82 +147,96 @@ test('inert campaign personalization escapes user input', () => {
   assert.match(personalized, /x=1&amp;y=2/)
 })
 
-test('signup persists one registration, prepares no email queue row and returns the truthful contract', async () => {
+test('signup gateway mode sends a least-privilege command and never touches D1 directly', async () => {
   const DB = new SignupDatabase()
+  const audienceToken = ['audience', 'gateway', 'fixture', 'token', '20260823'].join('-')
   const deleted: string[] = []
-  let sequence = 0
-  const env = {
-    ...signupEnv(DB),
-    KV: { delete: async (key: string) => { deleted.push(key) } },
-  }
+  const calls: Array<{ url: string; init?: RequestInit }> = []
   const request = new Request(`${ORIGIN}/api/signup`, {
     method: 'POST',
-    headers: signupHeaders,
-    body: JSON.stringify({ challenge_slug: BRAIN2_CHALLENGE_SLUG, name: ' Anh Thông ', email: 'TEST@EXAMPLE.COM ' }),
-  })
-  const response = await handleBrain2SignupRequest(request, env as never, {
-    now: () => new Date('2026-07-12T00:00:00.000Z'),
-    randomUUID: () => `00000000-0000-4000-8000-${String(sequence += 1).padStart(12, '0')}`,
-  })
-  assert.equal(response.status, 200)
-  const responseJson = await response.clone().json() as Record<string, unknown>
-  assert.deepEqual(Object.keys(responseJson).sort(), ['message', 'signup_id', 'success'])
-  assert.equal(
-    responseJson.message,
-    'Đã ghi nhận đăng ký. Email tự động hiện chưa được kích hoạt; bạn có thể bắt đầu Ngày 01 ngay trên website.',
-  )
-  assert.equal(DB.batches.length, 1)
-  assert.equal(DB.batches[0].length, 1)
-  assert.match(DB.batches[0][0].query, /INSERT INTO challenge_signups/i)
-  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
-  assert.ok(DB.prepared.some((statement) => statement.values.includes('test@example.com')))
-  assert.deepEqual(deleted, ['challenge:brain2-21-ngay'])
-
-  const duplicateDB = new SignupDatabase()
-  duplicateDB.duplicate = true
-  const duplicateRequest = new Request(`${ORIGIN}/api/signup`, {
-    method: 'POST',
-    headers: signupHeaders,
-    body: JSON.stringify({ challenge_slug: BRAIN2_CHALLENGE_SLUG, name: 'Anh Thông', email: 'test@example.com' }),
-  })
-  const duplicate = await handleBrain2SignupRequest(duplicateRequest, signupEnv(duplicateDB, { KV: env.KV }) as never)
-  assert.equal(duplicate.status, 409)
-  const duplicateJson = await duplicate.json() as Record<string, unknown>
-  assert.deepEqual(Object.keys(duplicateJson).sort(), ['message', 'success'])
-  assert.equal(duplicateJson.success, false)
-  assert.equal(duplicateDB.batches.length, 0)
-})
-
-test('signup invalid time fails before registration with current registration wording', async () => {
-  const DB = new SignupDatabase()
-  const request = new Request(`${ORIGIN}/api/signup`, {
-    method: 'POST',
-    headers: signupHeaders,
+    headers: {
+      ...signupHeaders,
+      'Idempotency-Key': 'browser-signup-attempt-01',
+    },
     body: JSON.stringify({
       challenge_slug: BRAIN2_CHALLENGE_SLUG,
-      name: 'Anh Thông',
-      email: 'invalid-time@example.com',
+      name: ' Anh Thông ',
+      email: 'OWNER@EXAMPLE.COM ',
     }),
   })
-
-  const response = await handleBrain2SignupRequest(request, signupEnv(DB) as never, {
-    now: () => new Date(Number.NaN),
-  })
-  const responseJson = await response.json() as Record<string, unknown>
-
-  assert.equal(response.status, 503)
-  assert.equal(responseJson.success, false)
-  assert.equal(
-    responseJson.message,
-    'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
+  const response = await handleBrain2SignupRequest(
+    request,
+    {
+      ...signupEnv(DB),
+      DATA_PLATFORM_URL: 'https://api.thongphan.com',
+      DATA_PLATFORM_AUDIENCE_TOKEN: audienceToken,
+      KV: { delete: async (key: string) => { deleted.push(key) } },
+    } as never,
+    {
+      randomUUID: () => '00000000-0000-4000-8000-000000000099',
+      fetch: async (input, init) => {
+        calls.push({ url: String(input), init })
+        return Response.json({
+          data: {
+            signupId: '00000000-0000-4000-8000-000000000010',
+            challengeSlug: BRAIN2_CHALLENGE_SLUG,
+            status: 'registered',
+            signedUpAt: '2026-08-23T10:00:00.000Z',
+          },
+          replay: false,
+        }, { status: 201 })
+      },
+    },
   )
+
+  assert.equal(response.status, 200)
+  assert.equal(DB.prepared.length, 0)
   assert.equal(DB.batches.length, 0)
-  assert.equal(DB.prepared.some((statement) => /INSERT INTO challenge_signups/i.test(statement.query)), false)
-  assert.equal(DB.prepared.some((statement) => /INSERT INTO email_queue/i.test(statement.query)), false)
-  assert.doesNotMatch(String(responseJson.message), /lịch email/i)
+  assert.equal(calls.length, 1)
+  assert.equal(calls[0].url, 'https://api.thongphan.com/v1/audience/challenge-signups')
+  const headers = new Headers(calls[0].init?.headers)
+  assert.equal(headers.get('authorization'), `Bearer ${audienceToken}`)
+  assert.equal(headers.get('idempotency-key'), 'browser-signup-attempt-01')
+  assert.equal(headers.get('x-request-id'), '00000000-0000-4000-8000-000000000099')
+  assert.deepEqual(JSON.parse(String(calls[0].init?.body)), {
+    challengeSlug: BRAIN2_CHALLENGE_SLUG,
+    name: 'Anh Thông',
+    email: 'owner@example.com',
+    source: 'thongphan.com',
+    consentVersion: 'audience-challenge-registration-v1',
+  })
+  assert.deepEqual(deleted, ['challenge:brain2-21-ngay'])
+  assert.deepEqual(await response.json(), {
+    success: true,
+    message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+    signup_id: '00000000-0000-4000-8000-000000000010',
+  })
 })
 
-test('signup bounds streaming bodies, rejects control characters and resolves transaction races safely', async () => {
+test('signup gateway mode fails closed when its isolated credential is absent', async () => {
+  const DB = new SignupDatabase()
+  const response = await handleBrain2SignupRequest(
+    new Request(`${ORIGIN}/api/signup`, {
+      method: 'POST',
+      headers: signupHeaders,
+      body: JSON.stringify({
+        challenge_slug: BRAIN2_CHALLENGE_SLUG,
+        name: 'Anh Thông',
+        email: 'owner@example.com',
+      }),
+    }),
+    {
+      ...signupEnv(DB),
+      DATA_PLATFORM_URL: 'https://api.thongphan.com',
+    } as never,
+  )
+
+  assert.equal(response.status, 503)
+  assert.equal(DB.prepared.length, 0)
+  assert.equal(DB.batches.length, 0)
+})
+
+test('signup bounds streaming bodies and rejects control characters before the gateway', async () => {
   const oversizedDB = new SignupDatabase()
   const oversized = new Request(`${ORIGIN}/api/signup`, {
     method: 'POST',
@@ -249,24 +264,6 @@ test('signup bounds streaming bodies, rejects control characters and resolves tr
   })
   assert.equal((await handleBrain2SignupRequest(invalidName, signupEnv(new SignupDatabase()) as never)).status, 400)
 
-  const racedDB = new SignupDatabase()
-  racedDB.failBatch = true
-  racedDB.duplicateAfterBatchFailure = true
-  const raced = new Request(`${ORIGIN}/api/signup`, {
-    method: 'POST',
-    headers: signupHeaders,
-    body: JSON.stringify({ challenge_slug: BRAIN2_CHALLENGE_SLUG, name: 'Anh Thông', email: 'RACE@example.com' }),
-  })
-  assert.equal((await handleBrain2SignupRequest(raced, signupEnv(racedDB) as never)).status, 409)
-
-  const failedDB = new SignupDatabase()
-  failedDB.failBatch = true
-  const failed = new Request(`${ORIGIN}/api/signup`, {
-    method: 'POST',
-    headers: signupHeaders,
-    body: JSON.stringify({ challenge_slug: BRAIN2_CHALLENGE_SLUG, name: 'Anh Thông', email: 'failed@example.com' }),
-  })
-  assert.equal((await handleBrain2SignupRequest(failed, signupEnv(failedDB) as never)).status, 503)
 })
 
 test('signup rate limits abuse and returns stable JSON when infrastructure fails', async () => {
@@ -284,18 +281,6 @@ test('signup rate limits abuse and returns stable JSON when infrastructure fails
   assert.equal(blockedDB.prepared.length, 0)
   assert.equal(blockedIp.calls.length, 1)
   assert.doesNotMatch(blockedIp.calls[0], /203\.0\.113\.17|safe@example\.com/)
-
-  const readFailureDB = new SignupDatabase()
-  readFailureDB.failChallengeRead = true
-  const readFailure = await handleBrain2SignupRequest(request(), signupEnv(readFailureDB) as never)
-  assert.equal(readFailure.status, 503)
-  assert.deepEqual(Object.keys(await readFailure.json()).sort(), ['message', 'success'])
-
-  const recheckFailureDB = new SignupDatabase()
-  recheckFailureDB.failBatch = true
-  recheckFailureDB.failDuplicateReadAfterBatch = true
-  const recheckFailure = await handleBrain2SignupRequest(request(), signupEnv(recheckFailureDB) as never)
-  assert.equal(recheckFailure.status, 503)
 
   const limiterFailure = await handleBrain2SignupRequest(
     request(),

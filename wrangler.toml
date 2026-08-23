@@ -2,6 +2,9 @@ name = "thongphan-com"
 compatibility_date = "2025-01-01"
 pages_build_output_dir = "out"
 
+[vars]
+DATA_PLATFORM_URL = "https://api.thongphan.com"
+
 # D1 Database binding for Pages Functions
 [[d1_databases]]
 binding = "DB"

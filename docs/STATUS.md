@@ -1,8 +1,52 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-28
+Last updated: 2026-08-23
+
+## Audience signup Data Platform strangler — PRODUCTION PASS
+
+- The first bounded existing-project migration is live: only `POST /api/signup`
+  now writes through `api.thongphan.com`. Public Git content, Read packages,
+  Brain2 file-native content, browser state, access control and email delivery
+  are unchanged.
+- The signup Worker keeps same-origin validation and its two Cloudflare rate
+  limits, then forwards a strict command using one isolated server secret. Its
+  existing public success/error DTO remains stable; gateway mode executes zero
+  direct D1 statements, sends the versioned registration consent, and missing
+  secret fails closed. The source contains no direct-D1 fallback.
+- Data Platform keeps the existing `thongphan-db` as the Audience canonical
+  store. It adds normalized uniqueness, idempotency, audit, outbox and quarantine
+  controls rather than copying PII into the central registry database. The
+  governance migration adds trace/sensitivity/retention metadata, and the live
+  staging and production Queue paths each have one published event, one delivery
+  and zero missing delivery.
+- The mode-0600 pre-migration export restores with integrity `ok`, zero foreign-
+  key findings, 12 signup rows and 210 inert email rows. The additive production
+  migration kept both duplicate source rows, created 11 normalized keys and
+  exactly 1 quarantine record.
+- Public live acceptance returned the unchanged website success DTO for first
+  write and exact replay with the same signup ID, then `409` for a fresh-key
+  duplicate. Exact D1 read-back shows 13 total signups, 12 keys, 1 quarantine,
+  1 production receipt/audit/outbox event, 210 email-queue rows and 0 email logs.
+- Final Worker version `43e91f35-8cb2-4276-995b-4d8ea005fd3c` is live at 100%
+  with KV, both rate limiters, `DATA_PLATFORM_URL` and its isolated secret, but no
+  D1 binding. Production signup can no longer bypass the gateway.
+- Exact production rollback/forward passed. Baseline signup version
+  `de33ff1a-91d2-42f2-8c71-d549bc3cd44a` returned the existing direct-D1
+  duplicate `409`; exact seven-principal Data Platform baseline stayed healthy
+  with Audience revoked. Data Platform retention version
+  `2dab3a2d-1801-47a1-a77d-87628aa78836` and the final signup version are now at
+  100%, with health/Learning `200`, Audience validation `422`, signup GET `405`
+  and exact 24h/90d/365d cleanup boundary coverage.
+- Full tests pass 458/458; both TypeScript gates, secret-integrity
+  scan, Wrangler no-D1 dry-run and live method/origin/duplicate checks pass. No
+  Pages deployment, email activation, new Cloudflare resource or paid service was
+  used. Private backup and cutover evidence is under
+  `/Users/rio/Private/thongphan-audience-cutover-20260823`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
+
+The recovery notes below are historical R0.1 evidence and are superseded for the
+signup surface by the live Audience section above.
 
 ### R0.1B RECOVERY IN PROGRESS — CUTOVER INCOMPLETE
 
