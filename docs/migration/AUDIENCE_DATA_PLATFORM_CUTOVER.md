@@ -1,7 +1,7 @@
 # Audience signup -> Data Platform cutover
 
 - Updated: 2026-08-23
-- Current verdict: `LOCAL_PASS_LIVE_NOT_CUT_OVER`
+- Current verdict: `PRODUCTION_PASS`
 - Public surface: `POST https://thongphan.com/api/signup`
 - Canonical domain owner: Audience
 - Canonical production store: existing D1 `thongphan-db`
@@ -31,7 +31,7 @@ website BFF keeps abuse protection. The gateway owns schema validation,
 normalization, identity from the authenticated consumer, idempotency, uniqueness,
 audit and the atomic canonical commit.
 
-## Verified current production inventory
+## Verified pre-cutover production inventory
 
 Read-only Wrangler queries were pinned by the existing signup config to D1 UUID
 `7cffb7f5-c48b-49c2-b215-9611abd734a5` and wrote zero rows.
@@ -72,17 +72,20 @@ row, returned `integrity_check=ok` and had zero foreign-key findings.
 
 - The BFF gateway mode performs no D1 statement and forwards only the approved
   command DTO with bearer, request and idempotency headers.
-- Missing gateway credential fails closed; the legacy direct-D1 branch remains
-  only as a version rollback path until live acceptance and a separately reviewed
-  binding retirement.
+- Missing gateway credential fails closed. The source retains a bounded legacy
+  branch for historical rollback compatibility, but the live signup Worker has no
+  D1 binding and therefore cannot execute it.
 - The browser keeps one random idempotency key across a retry and rotates it when
   form input changes.
 - Data Platform Node contract, Workers+D1 integration and TypeScript gates pass.
 - Website signup tests and both website TypeScript gates pass.
 
-## One reviewed live sequence
+## Reviewed live sequence — executed 2026-08-23
 
-No item below has been executed by this implementation task.
+Items 1–8 and 10 completed. Item 9 remained a conditional incident response; its
+credential rollback/forward behavior was rehearsed on staging with new immutable
+versions because Cloudflare correctly refused unsafe activation of a historical
+version whose secret had changed.
 
 1. Snapshot both Worker traffic baselines and the production consumer directory.
 2. Bind `AUDIENCE_DB` in staging to the existing staging Data Platform D1 to avoid
@@ -113,7 +116,36 @@ No item below has been executed by this implementation task.
 10. After a stable acceptance window, remove direct signup D1 authority in a
     separate task. Keep D1 on Pages only while `/api/challenges` still needs it.
 
+## Production result
+
+- Durable private evidence and mode-0600 pre/post SQL exports are under
+  `/Users/rio/Private/thongphan-audience-cutover-20260823`.
+- The pre-migration backup SHA-256 is
+  `e5802c372c2035432c13403d9e3ab3456745f64d54747538af5afa06634538f8`;
+  isolated restore returned integrity `ok`, zero foreign-key findings, 12 signups
+  and 210 email-queue rows. The immediate Time Travel bookmark is recorded in the
+  private manifest.
+- The migration retained 12 source signups, created 11 normalized keys and 1
+  quarantine row, and changed neither the 210 inert email rows nor the old website
+  migration ledger.
+- Data Platform production version
+  `e5849065-6a6a-4b2e-a7e3-0d7cf6d4bfbb` preserves Reach and all five Learning
+  roles and adds only the isolated Audience principal/binding.
+- Signup Worker version `ac79e610-2ed4-4c4e-bc99-6dde54463fd7` is live at 100%
+  with no D1 binding. The exact public first write/replay returned the same signup
+  ID; a fresh key returned `409`. Final counts are 13 signups, 12 keys, 1
+  quarantine, 1 production receipt/audit/outbox event, 210 email-queue rows and 0
+  email logs.
+- Staging rollback version `97c06b38-8daf-41d6-b9fc-ce8d2dde0faa` kept health and
+  Learning at `200` while revoking Audience to `401`; restored version
+  `821b2ba5-70ce-4287-8cdd-3229a591bd8d` returned Audience to authenticated
+  validation and is live at 100%.
+- No Pages deployment, new Cloudflare resource, paid plan or email activation was
+  used.
+
 ## Stop conditions
+
+These were the live execution gates. None triggered during the completed cutover.
 
 Stop before mutation if the backup cannot be restored, the D1 bookmark or binding
 identity is uncertain, consumer preservation is not exact, staging modifies

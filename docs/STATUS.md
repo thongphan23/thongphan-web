@@ -2,12 +2,12 @@
 
 Last updated: 2026-08-23
 
-## Audience signup Data Platform strangler — LOCAL PASS / LIVE NOT CUT OVER
+## Audience signup Data Platform strangler — PRODUCTION PASS
 
-- A clean branch from current `origin/main` implements the first bounded
-  existing-project migration: only `POST /api/signup` moves toward
-  `api.thongphan.com`. Public Git content, Read packages, Brain2 file-native
-  content, browser state, access control and email delivery are unchanged.
+- The first bounded existing-project migration is live: only `POST /api/signup`
+  now writes through `api.thongphan.com`. Public Git content, Read packages,
+  Brain2 file-native content, browser state, access control and email delivery
+  are unchanged.
 - The signup Worker keeps same-origin validation and its two Cloudflare rate
   limits, then forwards a strict command using one isolated server secret. Its
   existing public success/error DTO remains stable; gateway mode executes zero
@@ -15,18 +15,23 @@ Last updated: 2026-08-23
 - Data Platform keeps the existing `thongphan-db` as the Audience canonical
   store. It adds normalized uniqueness, idempotency, audit, outbox and quarantine
   controls rather than copying PII into the central registry database.
-- Read-only production inventory reports 12 signup rows representing 11
-  normalized challenge/email identities and one extra duplicate. The additive
-  migration keeps both rows, selects one canonical uniqueness owner and marks the
-  other for review; no cleanup is implicit.
-- Focused website signup tests and both TypeScript gates pass. A production-like
-  SQLite migration reports integrity `ok`, preserves both source rows and creates
-  the exact key/quarantine split.
-- No secret, migration, Worker version, Pages deployment, route or production row
-  changed. Live status stays `NOT_CUT_OVER` until the single reviewed sequence in
-  `docs/migration/AUDIENCE_DATA_PLATFORM_CUTOVER.md` passes staging, backup,
-  production migration, two-Worker promotion, synthetic reconciliation and
-  rollback read-back.
+- The mode-0600 pre-migration export restores with integrity `ok`, zero foreign-
+  key findings, 12 signup rows and 210 inert email rows. The additive production
+  migration kept both duplicate source rows, created 11 normalized keys and
+  exactly 1 quarantine record.
+- Public live acceptance returned the unchanged website success DTO for first
+  write and exact replay with the same signup ID, then `409` for a fresh-key
+  duplicate. Exact D1 read-back shows 13 total signups, 12 keys, 1 quarantine,
+  1 production receipt/audit/outbox event, 210 email-queue rows and 0 email logs.
+- Final Worker version `ac79e610-2ed4-4c4e-bc99-6dde54463fd7` is live at 100%
+  with KV, both rate limiters, `DATA_PLATFORM_URL` and its isolated secret, but no
+  D1 binding. Production signup can no longer bypass the gateway. Rollback version
+  `4f5dfc57-d6b3-454f-8ca7-39b318115f5c` is retained.
+- Focused signup tests pass 15/15, the Worker TypeScript gate, secret-integrity
+  scan, Wrangler no-D1 dry-run and live method/origin/duplicate checks pass. No
+  Pages deployment, email activation, new Cloudflare resource or paid service was
+  used. Private backup and cutover evidence is under
+  `/Users/rio/Private/thongphan-audience-cutover-20260823`.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 
