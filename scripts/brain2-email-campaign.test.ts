@@ -6,6 +6,7 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 import manifest from '../content/brain2/manifest.json'
+import { BRAIN2_SIGNUP_SUCCESS_MESSAGE } from '../lib/brain2/signup-contract'
 import {
   BRAIN2_CAMPAIGN_VERSION,
   BRAIN2_CHALLENGE_SLUG,
@@ -190,6 +191,94 @@ test('signup persists one registration, prepares no email queue row and returns 
   assert.deepEqual(Object.keys(duplicateJson).sort(), ['message', 'success'])
   assert.equal(duplicateJson.success, false)
   assert.equal(duplicateDB.batches.length, 0)
+})
+
+test('signup gateway mode sends a least-privilege command and never touches D1 directly', async () => {
+  const DB = new SignupDatabase()
+  const audienceToken = ['audience', 'gateway', 'fixture', 'token', '20260823'].join('-')
+  const deleted: string[] = []
+  const calls: Array<{ url: string; init?: RequestInit }> = []
+  const request = new Request(`${ORIGIN}/api/signup`, {
+    method: 'POST',
+    headers: {
+      ...signupHeaders,
+      'Idempotency-Key': 'browser-signup-attempt-01',
+    },
+    body: JSON.stringify({
+      challenge_slug: BRAIN2_CHALLENGE_SLUG,
+      name: ' Anh Thông ',
+      email: 'OWNER@EXAMPLE.COM ',
+    }),
+  })
+  const response = await handleBrain2SignupRequest(
+    request,
+    {
+      ...signupEnv(DB),
+      DATA_PLATFORM_URL: 'https://api.thongphan.com',
+      DATA_PLATFORM_AUDIENCE_TOKEN: audienceToken,
+      KV: { delete: async (key: string) => { deleted.push(key) } },
+    } as never,
+    {
+      randomUUID: () => '00000000-0000-4000-8000-000000000099',
+      fetch: async (input, init) => {
+        calls.push({ url: String(input), init })
+        return Response.json({
+          data: {
+            signupId: '00000000-0000-4000-8000-000000000010',
+            challengeSlug: BRAIN2_CHALLENGE_SLUG,
+            status: 'registered',
+            signedUpAt: '2026-08-23T10:00:00.000Z',
+          },
+          replay: false,
+        }, { status: 201 })
+      },
+    },
+  )
+
+  assert.equal(response.status, 200)
+  assert.equal(DB.prepared.length, 0)
+  assert.equal(DB.batches.length, 0)
+  assert.equal(calls.length, 1)
+  assert.equal(calls[0].url, 'https://api.thongphan.com/v1/audience/challenge-signups')
+  const headers = new Headers(calls[0].init?.headers)
+  assert.equal(headers.get('authorization'), `Bearer ${audienceToken}`)
+  assert.equal(headers.get('idempotency-key'), 'browser-signup-attempt-01')
+  assert.equal(headers.get('x-request-id'), '00000000-0000-4000-8000-000000000099')
+  assert.deepEqual(JSON.parse(String(calls[0].init?.body)), {
+    challengeSlug: BRAIN2_CHALLENGE_SLUG,
+    name: 'Anh Thông',
+    email: 'owner@example.com',
+    source: 'thongphan.com',
+  })
+  assert.deepEqual(deleted, ['challenge:brain2-21-ngay'])
+  assert.deepEqual(await response.json(), {
+    success: true,
+    message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+    signup_id: '00000000-0000-4000-8000-000000000010',
+  })
+})
+
+test('signup gateway mode fails closed when its isolated credential is absent', async () => {
+  const DB = new SignupDatabase()
+  const response = await handleBrain2SignupRequest(
+    new Request(`${ORIGIN}/api/signup`, {
+      method: 'POST',
+      headers: signupHeaders,
+      body: JSON.stringify({
+        challenge_slug: BRAIN2_CHALLENGE_SLUG,
+        name: 'Anh Thông',
+        email: 'owner@example.com',
+      }),
+    }),
+    {
+      ...signupEnv(DB),
+      DATA_PLATFORM_URL: 'https://api.thongphan.com',
+    } as never,
+  )
+
+  assert.equal(response.status, 503)
+  assert.equal(DB.prepared.length, 0)
+  assert.equal(DB.batches.length, 0)
 })
 
 test('signup invalid time fails before registration with current registration wording', async () => {

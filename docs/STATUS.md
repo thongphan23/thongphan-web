@@ -1,6 +1,32 @@
 # thongphan.com — Unified Cinema status
 
-Last updated: 2026-07-28
+Last updated: 2026-08-23
+
+## Audience signup Data Platform strangler — LOCAL PASS / LIVE NOT CUT OVER
+
+- A clean branch from current `origin/main` implements the first bounded
+  existing-project migration: only `POST /api/signup` moves toward
+  `api.thongphan.com`. Public Git content, Read packages, Brain2 file-native
+  content, browser state, access control and email delivery are unchanged.
+- The signup Worker keeps same-origin validation and its two Cloudflare rate
+  limits, then forwards a strict command using one isolated server secret. Its
+  existing public success/error DTO remains stable; gateway mode executes zero
+  direct D1 statements and missing secret fails closed.
+- Data Platform keeps the existing `thongphan-db` as the Audience canonical
+  store. It adds normalized uniqueness, idempotency, audit, outbox and quarantine
+  controls rather than copying PII into the central registry database.
+- Read-only production inventory reports 12 signup rows representing 11
+  normalized challenge/email identities and one extra duplicate. The additive
+  migration keeps both rows, selects one canonical uniqueness owner and marks the
+  other for review; no cleanup is implicit.
+- Focused website signup tests and both TypeScript gates pass. A production-like
+  SQLite migration reports integrity `ok`, preserves both source rows and creates
+  the exact key/quarantine split.
+- No secret, migration, Worker version, Pages deployment, route or production row
+  changed. Live status stays `NOT_CUT_OVER` until the single reviewed sequence in
+  `docs/migration/AUDIENCE_DATA_PLATFORM_CUTOVER.md` passes staging, backup,
+  production migration, two-Worker promotion, synthetic reconciliation and
+  rollback read-back.
 
 ## Thongphan Read Foundation v2 — Release 0 audit — 2026-07-26
 

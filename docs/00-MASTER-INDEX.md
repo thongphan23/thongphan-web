@@ -79,6 +79,13 @@ phép implementation/production cutover):
 - `/docs/security/R0-1-OWNER-ACTION-CHECKLIST.md` — checklist approval, credential, branch, clean-SHA và production gates của chủ dự án.
 - R0.H1 Public History Remediation là backlog phá hủy lịch sử, cần approval riêng, không chặn R0.1A/R0.1B/R0.2/PRD-R1 sau khi credential rotation và current-tree controls đã pass.
 
+Data Platform migration artifact (không thay đổi bộ 13 foundation documents):
+
+- `/docs/migration/AUDIENCE_DATA_PLATFORM_CUTOVER.md` — inventory, ownership,
+  additive schema, acceptance, rollback and stop conditions for the bounded
+  `thongphan.com/api/signup` strangler slice. Its current authority is local
+  implementation only; it does not authorize a production mutation or deploy.
+
 ---
 
 ## 4. Thẩm quyền theo loại quyết định

@@ -11,8 +11,10 @@ giá trị vận hành.
   script, internal route hay replacement writer được hỗ trợ.
 - `/chat` vẫn là hành trình public chạy local bằng model tất định; client không có
   nhánh gọi lại remote chat.
-- Truthful signup source chỉ lưu một registration, tạo zero queue rows, không hứa
-  delivery và không tuyên bố marketing consent.
+- Truthful signup source giữ same-origin/rate-limit ở BFF rồi, khi gateway config
+  đầy đủ, gửi một command có idempotency tới `api.thongphan.com`. Gateway mới là
+  bên lưu registration; zero queue rows, không hứa delivery và không tuyên bố
+  marketing consent. Nhánh D1 trực tiếp chỉ còn là rollback source trước cutover.
 - Migration source `0003_r0_1_email_integrity.sql` tồn tại. Khi được áp dụng trong
   một cutover riêng, nó đặt legacy rows thành `quarantined_legacy`/`sendable = 0`
   và fail closed với mọi mutation tạo sendable state.
@@ -20,6 +22,10 @@ giá trị vận hành.
   `audience_state = 'sendable' AND sendable = 1`. Cron trong source giữ rỗng.
 
 ## Current production state
+
+- Audience Data Platform slice chưa deploy: production signup Worker vẫn dùng
+  direct D1 path. Read-only audit ngày 2026-08-23 thấy 12 signup rows, 11
+  normalized identities và 1 extra duplicate row; không có production write.
 
 - R0.1B recovery is in progress; cutover is incomplete.
 - The embed/chat/signup versions are deployed, and the official read-only recovery passed.
@@ -47,8 +53,9 @@ giá trị vận hành.
 | Tombstone ingestion đã ngừng | `workers/embed-vault.ts` | `wrangler.embed.toml` |
 | Tombstone chat từ xa đã ngừng | `workers/api/chat.ts` | `wrangler.chat.toml` |
 
-Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, chỉ ghi signup,
-rồi mới xóa cache theo kiểu best-effort. Mã sender giữ queue UUID làm khóa
+Signup có hai rate-limit binding, chuẩn hóa email về chữ thường, chuyển business
+command tới gateway bằng một consumer secret riêng, rồi mới xóa cache theo kiểu
+best-effort. Mã sender giữ queue UUID làm khóa
 idempotency Brevo, nhưng toàn bộ claim/update/expire đều cần cặp predicate
 `audience_state = 'sendable' AND sendable = 1`; migration R0.1 chặn việc tạo cặp
 trạng thái này.
