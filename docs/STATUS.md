@@ -33,9 +33,10 @@ Last updated: 2026-08-23
 - Exact production rollback/forward passed. Baseline signup version
   `de33ff1a-91d2-42f2-8c71-d549bc3cd44a` returned the existing direct-D1
   duplicate `409`; exact seven-principal Data Platform baseline stayed healthy
-  with Audience revoked. The final Data Platform and signup versions were then
-  restored at 100%, with health/Learning `200`, Audience validation `422` and
-  signup GET `405`.
+  with Audience revoked. Data Platform retention version
+  `2dab3a2d-1801-47a1-a77d-87628aa78836` and the final signup version are now at
+  100%, with health/Learning `200`, Audience validation `422`, signup GET `405`
+  and exact 24h/90d/365d cleanup boundary coverage.
 - Full tests pass 458/458; both TypeScript gates, secret-integrity
   scan, Wrangler no-D1 dry-run and live method/origin/duplicate checks pass. No
   Pages deployment, email activation, new Cloudflare resource or paid service was

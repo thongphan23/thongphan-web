@@ -137,6 +137,11 @@ final versions were promoted again.
 - Data Platform production version
   `f3fe0caa-631d-4755-a360-22faad85bbe2` preserves Reach and all five Learning
   roles and adds only the isolated Audience principal/binding.
+- Retention correction version `2dab3a2d-1801-47a1-a77d-87628aa78836` supersedes
+  that runtime at 100% in deployment `cce1227f-9db3-4cce-9db9-685c52d50797`.
+  It normalizes mixed SQLite/ISO timestamps at the exact 24h/90d/365d cleanup
+  boundaries; signed upload provenance, bindings, domain, Cron and Queue were
+  provider-read back before release PASS.
 - Signup Worker version `43e91f35-8cb2-4276-995b-4d8ea005fd3c` is live at 100%
   with no D1 binding. The exact public first write/replay returned the same signup
   ID; a fresh key returned `409`. Final counts are 13 signups, 12 keys, 1
