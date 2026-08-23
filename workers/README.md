@@ -12,9 +12,9 @@ giá trị vận hành.
 - `/chat` vẫn là hành trình public chạy local bằng model tất định; client không có
   nhánh gọi lại remote chat.
 - Truthful signup source giữ same-origin/rate-limit ở BFF rồi, khi gateway config
-  đầy đủ, gửi một command có idempotency tới `api.thongphan.com`. Gateway mới là
+  đầy đủ, gửi một command có idempotency tới `api.thongphan.com`. Gateway là
   bên lưu registration; zero queue rows, không hứa delivery và không tuyên bố
-  marketing consent. Nhánh D1 trực tiếp chỉ còn là rollback source trước cutover.
+  marketing consent. Source production không còn nhánh ghi D1 trực tiếp.
 - Migration source `0003_r0_1_email_integrity.sql` tồn tại. Khi được áp dụng trong
   một cutover riêng, nó đặt legacy rows thành `quarantined_legacy`/`sendable = 0`
   và fail closed với mọi mutation tạo sendable state.
@@ -23,9 +23,10 @@ giá trị vận hành.
 
 ## Current production state
 
-- Audience Data Platform slice chưa deploy: production signup Worker vẫn dùng
-  direct D1 path. Read-only audit ngày 2026-08-23 thấy 12 signup rows, 11
-  normalized identities và 1 extra duplicate row; không có production write.
+- Audience Data Platform slice đang live: production signup Worker gọi gateway
+  bằng principal `audience:signup` riêng và không có D1 binding. Migration giữ 12
+  source rows, tạo 11 normalized identities cùng 1 quarantine; public synthetic
+  acceptance thêm đúng 1 signup có receipt/audit/outbox tương ứng.
 
 - R0.1B recovery is in progress; cutover is incomplete.
 - The embed/chat/signup versions are deployed, and the official read-only recovery passed.

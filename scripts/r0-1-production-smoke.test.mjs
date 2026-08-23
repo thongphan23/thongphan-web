@@ -145,39 +145,9 @@ function controlledSignupFixture({
 
 function actualSignupWorkerFixture() {
   const state = { signups: [], queueRows: 0 }
-  const statement = (query) => {
-    const entry = {
-      query,
-      values: [],
-      bind(...values) {
-        this.values = values
-        return this
-      },
-      async first() {
-        if (query.includes('SELECT id, duration_days FROM challenges')) {
-          return { id: 'brain2-21', duration_days: 21 }
-        }
-        if (query.includes('SELECT id FROM challenge_signups')) {
-          const [, email] = this.values
-          return state.signups.find((row) => row.email.toLowerCase() === String(email).toLowerCase()) ?? null
-        }
-        throw new Error('unexpected Worker query')
-      },
-    }
-    return entry
-  }
   const env = {
-    DB: {
-      prepare: statement,
-      async batch(statements) {
-        assert.equal(statements.length, 1)
-        const [signup] = statements
-        assert.match(signup.query, /INSERT INTO challenge_signups/)
-        const [id, challengeId, name, email, signedUpAt] = signup.values
-        state.signups.push({ id, challengeId, name, email, signedUpAt })
-        return []
-      },
-    },
+    DATA_PLATFORM_URL: 'https://api.thongphan.com',
+    DATA_PLATFORM_AUDIENCE_TOKEN: 'audience-gateway-production-smoke-fixture-token',
     KV: { async delete() {} },
     SIGNUP_IP_RATE_LIMITER: { async limit() { return { success: true } } },
     SIGNUP_EMAIL_RATE_LIMITER: { async limit() { return { success: true } } },
@@ -189,8 +159,28 @@ function actualSignupWorkerFixture() {
       new Request(input, { ...init, headers }),
       env,
       {
-        now: () => new Date('2026-07-27T00:00:00.000Z'),
         randomUUID: () => SIGNUP_IDS.worker,
+        fetch: async (_gatewayUrl, gatewayInit) => {
+          const body = JSON.parse(String(gatewayInit?.body))
+          assert.equal(body.consentVersion, 'audience-challenge-registration-v1')
+          state.signups.push({
+            id: SIGNUP_IDS.worker,
+            challengeId: 'brain2-21',
+            name: body.name,
+            email: body.email,
+            signedUpAt: '2026-08-23T10:00:00.000Z',
+          })
+          return Response.json({
+            data: {
+              signupId: SIGNUP_IDS.worker,
+              challengeSlug: 'brain2-21-ngay',
+              status: 'registered',
+              signedUpAt: '2026-08-23T10:00:00.000Z',
+            },
+            replay: false,
+            traceId: 'production-smoke-trace',
+          }, { status: 201 })
+        },
       },
     )
   }
@@ -273,37 +263,9 @@ async function preMigrationSqliteFixture(fixtureRoot) {
   `).all().map((row) => ({ ...row }))
   const sqlErrors = []
 
-  const createStatement = (query) => {
-    const entry = {
-      query,
-      values: [],
-      bind(...values) {
-        entry.values = values
-        return entry
-      },
-      async first() {
-        return database.prepare(query).get(...entry.values) ?? null
-      },
-    }
-    return entry
-  }
   const environment = {
-    DB: {
-      prepare: createStatement,
-      async batch(statements) {
-        database.exec('BEGIN')
-        try {
-          for (const statement of statements) {
-            database.prepare(statement.query).run(...statement.values)
-          }
-          database.exec('COMMIT')
-          return []
-        } catch (error) {
-          database.exec('ROLLBACK')
-          throw error
-        }
-      },
-    },
+    DATA_PLATFORM_URL: 'https://api.thongphan.com',
+    DATA_PLATFORM_AUDIENCE_TOKEN: 'audience-gateway-sqlite-smoke-fixture-token',
     KV: { async delete() {} },
     SIGNUP_IP_RATE_LIMITER: { async limit() { return { success: true } } },
     SIGNUP_EMAIL_RATE_LIMITER: { async limit() { return { success: true } } },
@@ -315,8 +277,30 @@ async function preMigrationSqliteFixture(fixtureRoot) {
       new Request(input, { ...init, headers }),
       environment,
       {
-        now: () => new Date('2026-07-27T00:00:00.000Z'),
         randomUUID: () => SIGNUP_IDS.preMigration,
+        fetch: async (_gatewayUrl, gatewayInit) => {
+          const body = JSON.parse(String(gatewayInit?.body))
+          database.prepare(
+            `INSERT INTO challenge_signups
+               (id, challenge_id, name, email, current_day, signed_up_at)
+             VALUES (?, 'brain2-21', ?, ?, 0, ?)`,
+          ).run(
+            SIGNUP_IDS.preMigration,
+            body.name,
+            body.email,
+            '2026-08-23T10:00:00.000Z',
+          )
+          return Response.json({
+            data: {
+              signupId: SIGNUP_IDS.preMigration,
+              challengeSlug: 'brain2-21-ngay',
+              status: 'registered',
+              signedUpAt: '2026-08-23T10:00:00.000Z',
+            },
+            replay: false,
+            traceId: 'sqlite-smoke-trace',
+          }, { status: 201 })
+        },
       },
     )
   }

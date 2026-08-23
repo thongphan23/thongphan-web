@@ -53,7 +53,7 @@ printed into task evidence.
 
 ## Migration behavior
 
-The Data Platform domain migration creates:
+The Data Platform domain migrations create:
 
 - `audience_signup_keys`: one normalized challenge/email claim pointing to the
   canonical legacy or newly created signup;
@@ -61,6 +61,8 @@ The Data Platform domain migration creates:
 - `audience_audit_log`: actor, consumer, action, subject and request lineage;
 - `audience_outbox_events`: PII-minimized domain change record;
 - `audience_data_quality_quarantine`: explicit review state for source conflicts.
+- consent, trace, schema/transform version, sensitivity and retention metadata;
+- four machine-readable data policies and an idempotent Queue delivery ledger.
 
 It does not delete or overwrite `challenge_signups`. For a legacy normalized
 duplicate, the earliest stable row becomes the uniqueness owner and every extra
@@ -72,9 +74,9 @@ row, returned `integrity_check=ok` and had zero foreign-key findings.
 
 - The BFF gateway mode performs no D1 statement and forwards only the approved
   command DTO with bearer, request and idempotency headers.
-- Missing gateway credential fails closed. The source retains a bounded legacy
-  branch for historical rollback compatibility, but the live signup Worker has no
-  D1 binding and therefore cannot execute it.
+- Missing gateway credential fails closed. The source contains no direct-D1
+  registration fallback; rollback is an explicit immutable Worker version
+  operation, not hidden authority inside the live consumer.
 - The browser keeps one random idempotency key across a retry and rotates it when
   form input changes.
 - Data Platform Node contract, Workers+D1 integration and TypeScript gates pass.
@@ -82,10 +84,9 @@ row, returned `integrity_check=ok` and had zero foreign-key findings.
 
 ## Reviewed live sequence — executed 2026-08-23
 
-Items 1–8 and 10 completed. Item 9 remained a conditional incident response; its
-credential rollback/forward behavior was rehearsed on staging with new immutable
-versions because Cloudflare correctly refused unsafe activation of a historical
-version whose secret had changed.
+Items 1–10 completed. Credential rollback/forward was first rehearsed on staging,
+then both production traffic baselines were restored and verified before the
+final versions were promoted again.
 
 1. Snapshot both Worker traffic baselines and the production consumer directory.
 2. Bind `AUDIENCE_DB` in staging to the existing staging Data Platform D1 to avoid
@@ -125,27 +126,44 @@ version whose secret had changed.
   isolated restore returned integrity `ok`, zero foreign-key findings, 12 signups
   and 210 email-queue rows. The immediate Time Travel bookmark is recorded in the
   private manifest.
-- The migration retained 12 source signups, created 11 normalized keys and 1
+- The two migrations retained 12 source signups, created 11 normalized keys and 1
   quarantine row, and changed neither the 210 inert email rows nor the old website
   migration ledger.
+- Governance used Time Travel bookmark
+  `0000004d-00000000-000050d0-72441c593a910093a90335956fe8abaa`; its final
+  mode-0600 export SHA-256 is
+  `88f07ef109da7d766400c02595f82db86c71d30be7ee11a215486fc74186d4ff`
+  and restores with integrity `ok`, 13 signups, 4 policies and 1 delivery.
 - Data Platform production version
-  `e5849065-6a6a-4b2e-a7e3-0d7cf6d4bfbb` preserves Reach and all five Learning
+  `f3fe0caa-631d-4755-a360-22faad85bbe2` preserves Reach and all five Learning
   roles and adds only the isolated Audience principal/binding.
-- Signup Worker version `ac79e610-2ed4-4c4e-bc99-6dde54463fd7` is live at 100%
+- Signup Worker version `43e91f35-8cb2-4276-995b-4d8ea005fd3c` is live at 100%
   with no D1 binding. The exact public first write/replay returned the same signup
   ID; a fresh key returned `409`. Final counts are 13 signups, 12 keys, 1
   quarantine, 1 production receipt/audit/outbox event, 210 email-queue rows and 0
   email logs.
 - Staging rollback version `97c06b38-8daf-41d6-b9fc-ce8d2dde0faa` kept health and
   Learning at `200` while revoking Audience to `401`; restored version
-  `821b2ba5-70ce-4287-8cdd-3229a591bd8d` returned Audience to authenticated
-  validation and is live at 100%.
+  `1a7ad139-b81b-413c-8031-d9ee56dfa2c1` returned Audience to authenticated
+  validation and is live at 100%. A consent-versioned staging write/replay passed,
+  and the Queue read-back has one published event, one delivery, zero mismatch.
+- Production Cron/Queue independently changed the retained Audience event to
+  `published`, wrote one idempotent delivery receipt and left zero published
+  events without delivery evidence.
+- Production signup baseline `de33ff1a-91d2-42f2-8c71-d549bc3cd44a` restored the
+  direct-D1 path and returned the labelled duplicate `409`. Data Platform baseline
+  `09de7b84-6249-4e17-b80c-bd5ddc0da037` restored the exact seven-principal
+  pre-cutover contract with health/Learning `200` and Audience `401`; both final
+  versions were then restored and provider-read back at 100%.
 - No Pages deployment, new Cloudflare resource, paid plan or email activation was
   used.
 
 ## Stop conditions
 
-These were the live execution gates. None triggered during the completed cutover.
+These were the live execution gates. The initial rollback rehearsal stopped when
+the old parser rejected an eight-principal directory; current traffic was restored
+immediately, then the drill was rerun with the exact seven-principal baseline and
+passed. No data mutation or loss occurred from that stopped attempt.
 
 Stop before mutation if the backup cannot be restored, the D1 bookmark or binding
 identity is uncertain, consumer preservation is not exact, staging modifies

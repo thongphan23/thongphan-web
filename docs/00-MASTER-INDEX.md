@@ -83,8 +83,10 @@ Data Platform migration artifact (không thay đổi bộ 13 foundation document
 
 - `/docs/migration/AUDIENCE_DATA_PLATFORM_CUTOVER.md` — inventory, ownership,
   additive schema, acceptance, rollback and stop conditions for the bounded
-  `thongphan.com/api/signup` strangler slice. Its current authority is local
-  implementation only; it does not authorize a production mutation or deploy.
+  `thongphan.com/api/signup` strangler slice. The production cutover is live;
+  the final signup Worker has no direct D1 authority. The document records the
+  remaining hardening/rollback closure evidence rather than authorizing another
+  independent mutation path.
 
 ---
 

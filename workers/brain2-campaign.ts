@@ -14,18 +14,7 @@ export interface EmailTemplate {
   body: string
 }
 
-interface StatementLike {
-  bind(...values: unknown[]): StatementLike
-  first<T = Record<string, unknown>>(): Promise<T | null>
-}
-
-interface DatabaseLike {
-  prepare(query: string): StatementLike
-  batch(statements: StatementLike[]): Promise<unknown>
-}
-
 interface SignupEnv {
-  DB?: DatabaseLike
   KV?: { delete(key: string): Promise<unknown> }
   SIGNUP_IP_RATE_LIMITER: { limit(input: { key: string }): Promise<{ success: boolean }> }
   SIGNUP_EMAIL_RATE_LIMITER: { limit(input: { key: string }): Promise<{ success: boolean }> }
@@ -255,6 +244,7 @@ const registerThroughDataPlatform = async (
       name: signup.name,
       email: signup.email,
       source: 'thongphan.com',
+      consentVersion: 'audience-challenge-registration-v1',
     }),
   })
   const responseBody = await response.json().catch(() => null) as {
@@ -332,69 +322,12 @@ export async function handleBrain2SignupRequest(
       )
     }
 
-    if (env.DATA_PLATFORM_URL || env.DATA_PLATFORM_AUDIENCE_TOKEN) {
-      return await registerThroughDataPlatform(
-        request,
-        env,
-        { challengeSlug: BRAIN2_CHALLENGE_SLUG, name, email },
-        dependencies,
-      )
-    }
-
-    if (!env.DB) {
-      return jsonResponse(503, { success: false, message: 'Hệ thống đăng ký đang tạm gián đoạn. Vui lòng thử lại.' })
-    }
-    const db = env.DB
-
-    const challenge = await db.prepare(
-      'SELECT id, duration_days FROM challenges WHERE slug = ? AND is_active = 1',
-    ).bind(BRAIN2_CHALLENGE_SLUG).first<{ id: string; duration_days: number }>()
-    if (!challenge || challenge.duration_days !== TOTAL_DAYS) {
-      return jsonResponse(503, { success: false, message: 'Lộ trình hiện chưa nhận đăng ký' })
-    }
-    const duplicateQuery = () => db.prepare(
-      'SELECT id FROM challenge_signups WHERE challenge_id = ? AND lower(email) = lower(?)',
-    ).bind(challenge.id, email).first<{ id: string }>()
-    if (await duplicateQuery()) {
-      return jsonResponse(409, { success: false, message: 'Email này đã đăng ký lộ trình rồi' })
-    }
-
-    const now = (dependencies.now ?? (() => new Date()))()
-    if (!(now instanceof Date) || !Number.isFinite(now.getTime())) {
-      return jsonResponse(503, {
-        success: false,
-        message: 'Không thể xác định thời điểm đăng ký lúc này. Vui lòng thử lại.',
-      })
-    }
-    const signupAt = now.toISOString()
-    const randomUUID = dependencies.randomUUID ?? crypto.randomUUID.bind(crypto)
-    const signupId = randomUUID()
-    const signupStatement = db.prepare(
-      `INSERT INTO challenge_signups (id, challenge_id, name, email, current_day, signed_up_at)
-       VALUES (?, ?, ?, ?, 0, ?)`,
-    ).bind(signupId, challenge.id, name, email, signupAt)
-    try {
-      await db.batch([signupStatement])
-    } catch {
-      try {
-        if (await duplicateQuery()) {
-          return jsonResponse(409, { success: false, message: 'Email này đã đăng ký lộ trình rồi' })
-        }
-      } catch {
-        // The stable 503 below covers both the failed transaction and failed recheck.
-      }
-      return jsonResponse(503, { success: false, message: 'Đăng ký chưa được lưu. Vui lòng thử lại.' })
-    }
-    try {
-      await env.KV?.delete(`challenge:${BRAIN2_CHALLENGE_SLUG}`)
-    } catch {
-      // Cache invalidation is best-effort after the D1 transaction has committed.
-    }
-    return jsonResponse(200, {
-      success: true,
-      message: BRAIN2_SIGNUP_SUCCESS_MESSAGE,
-      signup_id: signupId,
-    })
+    return await registerThroughDataPlatform(
+      request,
+      env,
+      { challengeSlug: BRAIN2_CHALLENGE_SLUG, name, email },
+      dependencies,
+    )
   } catch {
     return jsonResponse(503, { success: false, message: 'Hệ thống đăng ký đang tạm gián đoạn. Vui lòng thử lại.' })
   }
