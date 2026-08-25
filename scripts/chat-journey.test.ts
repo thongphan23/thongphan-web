@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import test from 'node:test'
-import { createLocalChatTurn, splitSseEvents } from '../app/chat/chat-model'
+import { createLocalChatTurn } from '../app/chat/chat-model'
 
 test('local chat turns include three unique contextual recommendations', () => {
   const turn = createLocalChatTurn('Tui muốn đóng gói một sản phẩm nhỏ từ chuyên môn')
@@ -14,11 +14,12 @@ test('local chat turns include three unique contextual recommendations', () => {
   assert.ok(turn.recommendations.every((action) => !action.external))
 })
 
-test('stream parser preserves complete server-sent events', () => {
-  assert.deepEqual(splitSseEvents('data: {"response":"xin', '"}\n\ndata: [DONE]\n\n'), {
-    events: ['data: {"response":"xin"}', 'data: [DONE]'],
-    remainder: '',
-  })
+test('chat client has no remote reactivation branch', () => {
+  const source = readFileSync(new URL('../app/chat/ChatClient.tsx', import.meta.url), 'utf8')
+
+  assert.doesNotMatch(source, /NEXT_PUBLIC_CHAT_API_URL/)
+  assert.doesNotMatch(source, /\bfetch\s*\(/)
+  assert.match(source, /createLocalChatTurn\(text\)/)
 })
 
 test('chat renders standalone Conan recommendations without Next prefetch', () => {

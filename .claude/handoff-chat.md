@@ -806,7 +806,7 @@ curl -X POST https://thongphan-chat-api.YOUR_SUBDOMAIN.workers.dev/api/chat \
 ✅ Mobile responsive (375px tested)
 ✅ Build passes (`npm run build` ✓)
 ✅ QA vòng 2-4 passed with mock data
-✅ Valid CLOUDFLARE_API_TOKEN found: `4amZNilWUAFKArBy8BObgdQD4N8_0SFnnVNzjkpZ`
+✅ Valid CLOUDFLARE_API_TOKEN found: `[REDACTED — credential invalid]`
 
 **BLOCKED:**
 ❌ Worker deployment requires workers.dev subdomain registration
@@ -815,11 +815,11 @@ curl -X POST https://thongphan-chat-api.YOUR_SUBDOMAIN.workers.dev/api/chat \
 
 ❌ Vectorize embedding requires deployed worker or manual script run
    → Script ready: `scripts/embed-brain2.ts`
-   → Command: `CLOUDFLARE_API_TOKEN="4amZNilWUAFKArBy8BObgdQD4N8_0SFnnVNzjkpZ" npx tsx scripts/embed-brain2.ts`
+   → Command: `CLOUDFLARE_API_TOKEN="$CLOUDFLARE_API_TOKEN" npx tsx scripts/embed-brain2.ts`
 
 **NEXT STEPS (Manual):**
 1. Register workers.dev subdomain at Cloudflare dashboard
-2. Run: `CLOUDFLARE_API_TOKEN="4amZNilWUAFKArBy8BObgdQD4N8_0SFnnVNzjkpZ" npx wrangler deploy --config wrangler.chat.toml`
+2. Run: `CLOUDFLARE_API_TOKEN="$CLOUDFLARE_API_TOKEN" npx wrangler deploy --config wrangler.chat.toml`
 3. Run embed script to populate Vectorize with Brain2 vault data
 4. Update `app/api/chat/route.ts` with deployed worker URL
 5. Test RAG quality with real data

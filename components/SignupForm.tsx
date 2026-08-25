@@ -1,6 +1,11 @@
 'use client'
 
-import { useState, FormEvent } from 'react'
+import { useRef, useState, FormEvent } from 'react'
+import {
+  BRAIN2_DAY_ONE_PATH,
+  BRAIN2_SIGNUP_DATA_NOTICE,
+  BRAIN2_SIGNUP_SUCCESS_MESSAGE,
+} from '@/lib/brain2/signup-contract'
 import styles from './SignupForm.module.css'
 
 interface SignupFormProps {
@@ -31,6 +36,7 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [isSuccess, setIsSuccess] = useState(false)
+  const signupAttemptKey = useRef<string | null>(null)
 
   // Client-side validation
   const validateForm = (): boolean => {
@@ -70,10 +76,14 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
     let userMessage = NETWORK_FALLBACK
 
     try {
+      signupAttemptKey.current ??= crypto.randomUUID()
       // Call signup API
       const response = await fetch('/api/signup', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Idempotency-Key': signupAttemptKey.current,
+        },
         body: JSON.stringify({
           challenge_slug: challengeSlug,
           name: formData.name.trim(),
@@ -99,6 +109,7 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
   }
 
   const handleInputChange = (field: keyof FormData, value: string) => {
+    signupAttemptKey.current = null
     setFormData(prev => ({ ...prev, [field]: value }))
     // Clear error when user starts typing
     if (errors[field]) {
@@ -112,13 +123,9 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
       <div className={styles.signupForm}>
         <div className={styles.successMessage}>
           <h3>Đăng ký thành công!</h3>
-          <p>
-            Email đầu tiên sẽ đến hộp thư của bạn trong vòng 5 phút.
-            <br />
-            Khi hoàn thành 21 ngày, bước tiếp theo là vào Conan Maker để biến Brain2 thành đầu ra thật.
-          </p>
-          <a href="/conanmaker/" className="btn-outline">
-            Xem Conan Maker
+          <p>{BRAIN2_SIGNUP_SUCCESS_MESSAGE}</p>
+          <a href={BRAIN2_DAY_ONE_PATH} className="btn-outline">
+            Bắt đầu Ngày 01
           </a>
         </div>
       </div>
@@ -134,7 +141,11 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <form
+        onSubmit={handleSubmit}
+        className={styles.form}
+        aria-describedby="brain2-signup-data-notice"
+      >
         <div className={styles.formGroup}>
           <label htmlFor="name" className={styles.label}>
             Tên của bạn
@@ -180,6 +191,9 @@ export default function SignupForm({ challengeSlug }: SignupFormProps) {
           {isSubmitting ? 'Đang xử lý...' : 'Đăng ký ngay →'}
         </button>
       </form>
+      <p id="brain2-signup-data-notice">
+        {BRAIN2_SIGNUP_DATA_NOTICE}
+      </p>
     </div>
   )
 }

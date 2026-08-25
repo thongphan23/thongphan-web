@@ -140,6 +140,8 @@ WHERE id = (
   FROM email_queue q
   JOIN challenge_signups s ON s.id = q.signup_id
   WHERE q.campaign_version = 'brain2-2026-v1'
+    AND q.audience_state = 'sendable'
+    AND q.sendable = 1
     AND q.status = 'pending'
     AND q.scheduled_at <= ?
     AND q.attempt_count < 3
@@ -150,6 +152,8 @@ WHERE id = (
   LIMIT 1
 )
 AND campaign_version = 'brain2-2026-v1'
+AND audience_state = 'sendable'
+AND sendable = 1
 AND status = 'pending'
 AND attempt_count < 3
 AND (last_attempt_at IS NULL OR last_attempt_at <= ?)
@@ -160,6 +164,8 @@ export const EMAIL_OWNED_UPDATE_SQL = `UPDATE email_queue
 SET status = ?, error_message = ?
 WHERE id = ?
   AND campaign_version = 'brain2-2026-v1'
+  AND audience_state = 'sendable'
+  AND sendable = 1
   AND status = 'pending'
   AND attempt_count = ?
   AND last_attempt_at = ?`
@@ -167,6 +173,8 @@ WHERE id = ?
 export const EMAIL_EXPIRE_SQL = `UPDATE email_queue
 SET status = 'failed', error_message = 'delivery_unknown'
 WHERE campaign_version = 'brain2-2026-v1'
+  AND audience_state = 'sendable'
+  AND sendable = 1
   AND status = 'pending'
   AND attempt_count > 0
   AND last_attempt_at <= ?
@@ -276,6 +284,8 @@ export async function processPendingEmails(
               SET status = 'sent', sent_at = ?, error_message = NULL
             WHERE id = ?
               AND campaign_version = 'brain2-2026-v1'
+              AND audience_state = 'sendable'
+              AND sendable = 1
               AND status = 'pending'
               AND attempt_count = ?
               AND last_attempt_at = ?`,
@@ -287,6 +297,8 @@ export async function processPendingEmails(
               SELECT 1 FROM email_queue
                WHERE id = ?
                  AND campaign_version = 'brain2-2026-v1'
+                 AND audience_state = 'sendable'
+                 AND sendable = 1
                  AND status = 'sent'
                  AND attempt_count = ?
                  AND last_attempt_at = ?
@@ -302,6 +314,8 @@ export async function processPendingEmails(
                 SELECT 1 FROM email_queue
                  WHERE id = ?
                    AND campaign_version = 'brain2-2026-v1'
+                   AND audience_state = 'sendable'
+                   AND sendable = 1
                    AND status = 'sent'
                    AND attempt_count = ?
                    AND last_attempt_at = ?

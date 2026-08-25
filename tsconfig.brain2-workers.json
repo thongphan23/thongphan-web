@@ -2,14 +2,20 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "incremental": false,
-    "plugins": []
+    "plugins": [],
+    "types": [
+      "@cloudflare/workers-types"
+    ]
   },
   "include": [
     "workers/brain2-campaign.ts",
     "workers/brain2-access/**/*.ts",
     "workers/api/signup.ts",
+    "workers/api/chat.ts",
     "workers/api/email-content.ts",
     "workers/api/email-drip.ts",
+    "workers/embed-vault.ts",
+    "workers/security/**/*.ts",
     "functions/api/signup.ts"
   ],
   "exclude": [

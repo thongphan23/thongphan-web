@@ -11,13 +11,6 @@ export type ChatTurn = {
   recommendations: JourneyAction[]
 }
 
-export function splitSseEvents(remainder: string, chunk: string) {
-  const blocks = `${remainder}${chunk}`.split(/\r?\n\r?\n/)
-  const nextRemainder = blocks.pop() ?? ''
-  const events = blocks.flatMap((block) => block.split(/\r?\n/).filter((line) => line.startsWith('data: ')))
-  return { events, remainder: nextRemainder }
-}
-
 export const suggestedQuestions = [
   'Tui có chuyên môn nhưng chưa biết nên bắt đầu từ đâu.',
   'Tui có nhiều ghi chú nhưng Brain2 vẫn chưa dùng được.',
