@@ -1,11 +1,11 @@
 # thongphan.com — Unified Cinema status
 
-## Public System Note — 2026-08-25 — LOCAL PASS / PRODUCTION GATE
+## Public System Note — 2026-08-25 — LOCAL PASS / DEPLOY BLOCKED
 
 - Added `/system-note`, which fetches `homepage-demo` at runtime only from `https://api.thongphan.com/v1/public/notes/homepage-demo`.
 - The page contains no embedded `abc` fallback and surfaces API failure instead of creating a competing source of truth.
 - Contract test, TypeScript production build and direct desktop/mobile browser inspection pass. The title contrast was corrected after rendered inspection.
-- No Pages deployment has been performed yet.
+- No Pages deployment has been performed: the upstream Data Worker release is blocked at its mandatory provider-readback gate, so publishing this page would expose a known unavailable dependency.
 
 Last updated: 2026-07-30
 
