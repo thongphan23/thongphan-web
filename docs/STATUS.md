@@ -1,11 +1,12 @@
 # thongphan.com — Unified Cinema status
 
-## Public System Note — 2026-08-25 — LOCAL PASS / DEPLOY BLOCKED
+## Public System Note — 2026-08-25 — PASS_PRODUCTION
 
 - Added `/system-note`, which fetches `homepage-demo` at runtime only from `https://api.thongphan.com/v1/public/notes/homepage-demo`.
 - The page contains no embedded `abc` fallback and surfaces API failure instead of creating a competing source of truth.
-- Contract test, TypeScript production build and direct desktop/mobile browser inspection pass. The title contrast was corrected after rendered inspection.
-- No Pages deployment has been performed: the upstream Data Worker release is blocked at its mandatory provider-readback gate, so publishing this page would expose a known unavailable dependency.
+- Contract test, 458-test merged-main suite, lint, TypeScript production build, secret scan and direct desktop/mobile browser inspection pass. The title contrast and React effect release gate were corrected after rendered and static inspection.
+- Commit `7fa8adbe8001655ca1a121f05f5324bf6e9228ba` is pushed to `origin/main`; Pages production deployment `ab029379` serves `/system-note` on the canonical domain.
+- Live browser read-back renders `abc`, canonical ID `homepage-demo`, version `1`, with no horizontal overflow at `390×844`. The page contains no embedded data fallback and continues to fail visibly if the API is unavailable.
 
 Last updated: 2026-08-25
 
