@@ -1,5 +1,12 @@
 # thongphan.com — Unified Cinema status
 
+## Public System Note — 2026-08-25 — LOCAL PASS / PRODUCTION GATE
+
+- Added `/system-note`, which fetches `homepage-demo` at runtime only from `https://api.thongphan.com/v1/public/notes/homepage-demo`.
+- The page contains no embedded `abc` fallback and surfaces API failure instead of creating a competing source of truth.
+- Contract test, TypeScript production build and direct desktop/mobile browser inspection pass. The title contrast was corrected after rendered inspection.
+- No Pages deployment has been performed yet.
+
 Last updated: 2026-07-30
 
 ## TPR Visual Selection + protected Control Room — release candidate — 2026-07-30
