@@ -1,12 +1,13 @@
 # thongphan.com — Unified Cinema status
 
-## Ebook phân tích đối thủ và thấu hiểu khách hàng — sẵn sàng phát hành — 2026-08-26
+## Ebook phân tích đối thủ và thấu hiểu khách hàng — PASS_PRODUCTION — 2026-08-26
 
 - Thêm trang giới thiệu công khai tại `/ebooks/phan-tich-doi-thu-tim-insight-khach-hang`, nối từ Thư viện; có bản đọc trực tuyến tĩnh và bản PDF tải xuống.
 - Bản đọc giữ nguyên 48 trang, 7 ảnh tư liệu có nguồn và bộ phông tiếng Việt đã kiểm chứng của ebook gốc. Tài sản được đặt ở các đường dẫn tách biệt để không xung đột với trang Next.js tĩnh.
 - Kiểm tra cục bộ đạt: hợp đồng ebook 3/3, toàn bộ bộ kiểm thử 458/458, ESLint, TypeScript và bản dựng 85 tuyến.
 - Kiểm tra trình duyệt trên môi trường mô phỏng Cloudflare Pages đạt ở 1440×900 và 390×844: trang giới thiệu, mục Thư viện và bản đọc trả 200; không tràn ngang, không lỗi console; ảnh chụp được lưu tại `qa/ebook-release/`.
-- Trạng thái: bản dựng đã đủ điều kiện triển khai sản xuất theo yêu cầu trực tiếp của chủ sở hữu; cần bổ sung mã triển khai và kiểm tra URL công khai sau khi phát hành.
+- Commit `bf65aae9773cb295879fd99360263c67b8eac590` đã được đẩy lên `origin/main`; Pages production `a4d23033` phục vụ đúng bản dựng đã kiểm chứng, với `ab029379` là mốc quay lui trước đó.
+- Kiểm tra sau phát hành đạt trên origin bất biến, apex và `www`: trang giới thiệu, bản đọc và PDF đều trả 200; PDF đúng `application/pdf` và 7.651.579 byte. Trình duyệt thật trên apex ở 1440×900 và 390×844 không tràn ngang, không lỗi console, canonical đúng; ảnh chụp sản xuất nằm trong `qa/ebook-release/`.
 
 ## Public System Note — 2026-08-25 — PASS_PRODUCTION
 
