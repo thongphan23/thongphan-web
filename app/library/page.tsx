@@ -191,6 +191,23 @@ export default function LibraryPage() {
           />
         </div>
 
+        <section className={styles.ebookFeature} aria-labelledby="ebook-feature-title" data-motion-reveal="drift">
+          <img
+            src="/images/ebooks/phan-tich-doi-thu-tim-insight-khach-hang-cover.jpg"
+            alt="Lối đi đông người giữa các quầy hàng trong Chợ Bến Thành"
+            width="1920"
+            height="1280"
+          />
+          <div>
+            <p>Ebook mới · Thông Phan</p>
+            <h2 id="ebook-feature-title">Đừng soi đối thủ để bắt chước</h2>
+            <span>Từ tín hiệu thị trường đến nội dung có phép thử — kèm sáu chương và phiếu thực hành.</span>
+            <Link href="/ebooks/phan-tich-doi-thu-tim-insight-khach-hang" data-motion-action>
+              Mở ebook miễn phí <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </section>
+
         <div className={styles.filmRaster}>
           <img
             src="/images/library/library-film-archive-v1.webp"

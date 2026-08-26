@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/chat',
     '/library',
     '/library/read',
+    '/ebooks/phan-tich-doi-thu-tim-insight-khach-hang',
     '/blog',
   ].map((pathname) => entry(pathname, RELEASE_DATE))
 
