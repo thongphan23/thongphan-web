@@ -1,5 +1,12 @@
 # thongphan.com — Unified Cinema status
 
+## Mã truy cập Brain2 Challenges — kiểm tra production — 2026-10-02
+
+- Mã hiện có trong Keychain đăng nhập thành công trên apex và www. Đọc lại phiên hợp lệ, mở đủ 14/14 bài ngày 8–21 và đối chiếu checksum đều đạt. Mã sai, phiên giả mạo và origin khác vẫn bị chặn.
+- 54/54 điều kiện HTTP thực tế và 13/13 kiểm thử Worker đạt. Không thay credential, route, dữ liệu bài, cấu hình mạng hoặc deploy.
+- Trạng thái `PARTIAL` cho đầu cuối: DNS công khai hoạt động, nhưng mạng hiện tại còn timeout và chưa xác minh được UI nhập mã trên trình duyệt.
+- Báo cáo và bằng chứng an toàn: `docs/discovery/BRAIN2-ACCESS-HEALTH-20261002.md` và file JSON cùng tên.
+
 Last updated: 2026-07-30
 
 ## TPR Visual Selection + protected Control Room — production release — 2026-07-30

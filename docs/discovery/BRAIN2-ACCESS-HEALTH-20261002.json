@@ -1,0 +1,335 @@
+{
+  "checkedAt": "2026-10-02T14:10:54.062926+00:00",
+  "transport": "HTTPS with public Cloudflare DoH; system network unchanged",
+  "checks": [
+    {
+      "name": "public_hub",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "no_session_access",
+      "actual": 401,
+      "expected": 401,
+      "pass": true
+    },
+    {
+      "name": "no_session_private_lesson",
+      "actual": 401,
+      "expected": 401,
+      "pass": true
+    },
+    {
+      "name": "existing_code_login",
+      "actual": 204,
+      "expected": 204,
+      "pass": true
+    },
+    {
+      "name": "secure_cookie_flags",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "signed_session_readback",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-08_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-08_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-08_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-09_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-09_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-09_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-10_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-10_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-10_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-11_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-11_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-11_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-12_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-12_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-12_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-13_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-13_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-13_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-14_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-14_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-14_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-15_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-15_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-15_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-16_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-16_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-16_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-17_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-17_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-17_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-18_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-18_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-18_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-19_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-19_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-19_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-20_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-20_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-20_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-21_status",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "name": "ngay-21_checksum",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "ngay-21_private_cache",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "tampered_session_denied",
+      "actual": 401,
+      "expected": 401,
+      "pass": true
+    },
+    {
+      "name": "wrong_code_denied",
+      "actual": 401,
+      "expected": 401,
+      "pass": true
+    },
+    {
+      "name": "foreign_origin_denied",
+      "actual": 403,
+      "expected": 403,
+      "pass": true
+    },
+    {
+      "name": "logout_cookie_cleared",
+      "actual": true,
+      "expected": true,
+      "pass": true
+    },
+    {
+      "name": "www_existing_code_login",
+      "actual": 204,
+      "expected": 204,
+      "pass": true
+    },
+    {
+      "name": "www_private_lesson",
+      "actual": 200,
+      "expected": 200,
+      "pass": true
+    }
+  ],
+  "systemDnsProbe": {
+    "status": 0,
+    "curlExit": 28
+  },
+  "functionalPass": true
+}
