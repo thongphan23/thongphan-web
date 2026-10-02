@@ -1,5 +1,12 @@
 # thongphan.com — Unified Cinema status
 
+## Mã Brain2 do chủ dự án chỉ định — đồng bộ production — 2026-10-02
+
+- Đã đồng bộ hash lên Worker và xác nhận mã trong Keychain khớp yêu cầu của anh Thông. Giá trị mã trùng với mã đang có nên phiên hợp lệ được giữ nguyên.
+- Worker version `d5404242-ee49-4f3d-8e5e-04b9fe22e0a0` chạy 100% traffic. Kiểm tra sau đồng bộ đạt 54/54 điều kiện HTTP, 14/14 bài bảo vệ khớp checksum. Mã sai và phiên giả mạo vẫn bị chặn.
+- Trạng thái `PASS` cho đồng bộ và luồng truy cập Brain2. DNS hệ thống đã tải được trang và giao diện nhập mã thực tế mở bài ngày 8 thành công. Không đổi cấu hình mạng hoặc UI.
+- Báo cáo mới bổ sung phần trình duyệt còn thiếu trong kiểm tra trước cùng ngày: `docs/discovery/BRAIN2-ACCESS-SYNC-20261002.md` và JSON cùng tên. Mã, hash và cookie không được ghi vào Git.
+
 ## Mã truy cập Brain2 Challenges — kiểm tra production — 2026-10-02
 
 - Mã hiện có trong Keychain đăng nhập thành công trên apex và www. Đọc lại phiên hợp lệ, mở đủ 14/14 bài ngày 8–21 và đối chiếu checksum đều đạt. Mã sai, phiên giả mạo và origin khác vẫn bị chặn.
