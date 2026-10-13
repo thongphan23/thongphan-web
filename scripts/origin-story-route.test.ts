@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises'
 import test from 'node:test'
 
 import { originStoryPublic } from '../lib/origin-story-evidence'
+import { aboutPathContent } from '../lib/two-path-content'
 
 const ROOT = new URL('../', import.meta.url)
 const DEBT_PHRASE = 'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.'
@@ -38,7 +39,7 @@ test('about consumes exactly five evidence-backed acts without factual component
   assert.doesNotMatch(page, /const chapters|chapterGrid|proofGrid|aboutProof/)
 })
 
-test('origin film uses truthful artifact branches and only Act 5 may render the generated metaphor', async () => {
+test('origin film uses truthful artifact branches and only Act 5 data carries the generated metaphor', async () => {
   const story = await source('components/origin-story/OriginStory.tsx')
   assert.match(story, /asset\.kind === ['"]press-card['"]/)
   assert.match(story, /target="_blank"/)
@@ -53,18 +54,26 @@ test('origin film uses truthful artifact branches and only Act 5 may render the 
   assert.ok(originStoryPublic.acts[4].assets.some((asset) => asset.kind === 'generated-metaphor'))
 })
 
-test('about closes with one tracked Brain2 primary action and one untracked proof action', async () => {
-  const [story, tracked] = await Promise.all([
+test('about hides generated art and the retired Conan Maker claim from the public story', async () => {
+  const story = await source('components/origin-story/OriginStory.tsx')
+  assert.match(story, /const hiddenClaimIds = new Set\(\[[^\]]*'conan-maker-handoff'/)
+  assert.match(story, /hiddenClaimIds\.has\(claim\.id\)/)
+  assert.match(story, /!asset\.generated/)
+})
+
+test('about closes with the two-path doors and one untracked proof action', async () => {
+  const [page, story] = await Promise.all([
+    source('app/about/page.tsx'),
     source('components/origin-story/OriginStory.tsx'),
-    source('components/origin-story/OriginStoryTrackedLink.tsx'),
   ])
-  assert.equal((story.match(/href="\/brain2\/21-ngay"/g) ?? []).length, 1)
-  assert.equal((story.match(/href="\/library\/proof-stack-thong-phan-2026"/g) ?? []).length, 1)
-  assert.match(story, /<OriginStoryTrackedLink[\s\S]*href="\/brain2\/21-ngay"/)
-  assert.match(tracked, /origin_story_brain2_clicked/)
-  assert.equal((tracked.match(/origin_story_brain2_clicked/g) ?? []).length, 1)
-  assert.doesNotMatch(tracked, /detail:|eventDetail|claim|visitor/)
-  assert.doesNotMatch(story, /<OriginStoryTrackedLink[^>]*proof-stack/)
+  assert.match(page, /title="Tui là người dẫn đường, vì tui đã đi sai đủ nhiều\."/)
+  assert.match(story, /aboutPathContent\.title/)
+  assert.match(story, /aboutPathContent\.paragraphs\.map/)
+  assert.match(story, /<PathDoors variant="closing" placement="closing"/)
+  assert.equal(aboutPathContent.proofLink.href, '/library/proof-stack-thong-phan-2026')
+  assert.equal((story.match(/href=\{aboutPathContent\.proofLink\.href\}/g) ?? []).length, 1)
+  assert.doesNotMatch(`${page}\n${story}`, /Đừng để thêm một bài học nào biến mất\.|\/brain2\/21-ngay|OriginStoryTrackedLink/)
+  assert.equal(existsSync(new URL('../components/origin-story/OriginStoryTrackedLink.tsx', import.meta.url)), false)
 })
 
 test('about treats the standalone Conan Maker build as a document link', async () => {

@@ -66,6 +66,24 @@
   grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
 }
 
+/* An act without real photographs puts its heading beside the testimony instead. */
+.actGrid[data-has-assets='false'] {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 821px) {
+  .actGrid[data-has-assets='false'] .actCopy {
+    align-items: start;
+    column-gap: clamp(2rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+  }
+
+  .actGrid[data-has-assets='false'] .claims {
+    margin-top: 0;
+  }
+}
+
 .act:nth-of-type(odd) .actCopy {
   order: 2;
 }
@@ -81,7 +99,7 @@
 
 .actHeader > p,
 .pressCard > span,
-.closing span {
+.closingCopy > span {
   color: var(--cinema-oxblood);
   font-family: var(--font-mono);
   font-size: .7rem;
@@ -260,7 +278,7 @@
   border: 1px solid var(--brand-line-dark);
   display: grid;
   gap: clamp(2rem, 5vw, 5rem);
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, .82fr);
   margin: clamp(4rem, 8vw, 8rem) 0 0;
   padding: clamp(2rem, 5vw, 4.5rem);
 }
@@ -276,19 +294,22 @@
 }
 
 .closing p {
-  color: color-mix(in srgb, var(--cinema-paper) 68%, transparent);
+  color: color-mix(in srgb, var(--cinema-paper) 76%, transparent);
   line-height: 1.7;
   margin: 0;
   max-width: 58ch;
 }
 
+.closing p + p {
+  margin-top: 1rem;
+}
+
 .closingActions {
   display: grid;
   gap: .8rem;
-  min-width: min(100%, 280px);
+  min-width: 0;
 }
 
-.primaryAction,
 .secondaryAction {
   align-items: center;
   display: inline-flex;
@@ -299,11 +320,6 @@
   padding: .8rem 1.1rem;
   text-align: center;
   text-decoration: none;
-}
-
-.primaryAction {
-  background: var(--cinema-oxblood);
-  color: #fff8ec;
 }
 
 .secondaryAction {
@@ -319,7 +335,6 @@
 
 .sourceLink:focus-visible,
 .pressCard:focus-visible,
-.primaryAction:focus-visible,
 .secondaryAction:focus-visible {
   outline: 3px solid var(--brand-focus);
   outline-offset: 4px;
@@ -342,7 +357,6 @@
   }
 
   .closingActions {
-    min-width: 0;
     width: 100%;
   }
 }

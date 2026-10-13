@@ -41,13 +41,14 @@ test('unified routes load a real mono font and semantic oxblood token', () => {
   assert.match(tokens, /--brand-oxblood:\s*#7b2d1c/)
 })
 
-test('About closes with the dedicated Brain2 origin handoff', () => {
+test('About closes with the two-path doors instead of a chapter handoff', () => {
   const page = read('app/about/page.tsx')
   const story = read('components/origin-story/OriginStory.tsx')
 
   assert.match(page, /<OriginStory\s*\/>/)
-  assert.match(story, /<OriginStoryTrackedLink[\s\S]*href="\/brain2\/21-ngay"/)
-  assert.match(story, /href="\/library\/proof-stack-thong-phan-2026"/)
+  assert.match(story, /<PathDoors variant="closing"/)
+  assert.match(story, /href=\{aboutPathContent\.proofLink\.href\}/)
+  assert.doesNotMatch(story, /OriginStoryTrackedLink/)
   assert.doesNotMatch(page, /ChapterHandoff/)
 })
 

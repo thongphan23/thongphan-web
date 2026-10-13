@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { DossierFolio } from '@/components/dossier/DossierFolio'
+import PathDoors from '@/components/two-path/PathDoors'
 import {
   originStoryPublic,
   type PublicOriginAsset,
   type PublicOriginClaim,
 } from '@/lib/origin-story-evidence'
-import OriginStoryTrackedLink from './OriginStoryTrackedLink'
+import { aboutPathContent } from '@/lib/two-path-content'
 import styles from './OriginStory.module.css'
 
 type PressArtifact = Extract<PublicOriginAsset, { kind: 'press-card' }>
@@ -21,6 +22,16 @@ const sourceTypeLabels: Record<PublicOriginClaim['sourceType'], string> = {
 }
 
 const revealModes = ['mask', 'fade', 'drift', 'fade', 'mask'] as const
+
+// Kept in the evidence file, hidden from the page: Conan now lives at conan.school,
+// and the site only shows real photographs, never AI-generated art.
+const hiddenClaimIds = new Set(['conan-maker-handoff'])
+
+const publicActs = originStoryPublic.acts.map((act) => ({
+  ...act,
+  claims: act.claims.filter((claim) => !hiddenClaimIds.has(claim.id)),
+  assets: act.assets.filter((asset) => !asset.generated),
+}))
 
 function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
   const label = `${sourceTypeLabels[claim.sourceType]} · ${claim.sourceLabel}`
@@ -124,8 +135,9 @@ export default function OriginStory() {
         </div>
       </DossierFolio>
 
-      {originStoryPublic.acts.map((act, index) => {
+      {publicActs.map((act, index) => {
         const tone = index % 2 === 0 ? 'paper' : 'dark'
+        const hasAssets = act.assets.length > 0
         return (
           <DossierFolio
             key={act.id}
@@ -137,6 +149,7 @@ export default function OriginStory() {
             <div
               className={styles.actGrid}
               data-origin-act={act.id}
+              data-has-assets={hasAssets}
               data-motion-reveal={revealModes[index]}
               id={`origin-act-${act.id}`}
             >
@@ -154,26 +167,26 @@ export default function OriginStory() {
                   ))}
                 </ol>
               </div>
-              <div className={styles.assetGrid}>
-                {act.assets.map((asset) => <OriginAsset key={asset.id} asset={asset} />)}
-              </div>
+              {hasAssets ? (
+                <div className={styles.assetGrid}>
+                  {act.assets.map((asset) => <OriginAsset key={asset.id} asset={asset} />)}
+                </div>
+              ) : null}
             </div>
           </DossierFolio>
         )
       })}
 
       <section className={styles.closing} aria-labelledby="origin-story-closing" data-motion-reveal="fade">
-        <div>
+        <div className={styles.closingCopy}>
           <span>Hồi tiếp theo thuộc về bạn</span>
-          <h2 id="origin-story-closing">Đừng để thêm một bài học nào biến mất.</h2>
-          <p>Brain2 bắt đầu bằng việc giữ lại điều bạn đã sống, nối nó với việc đang làm và biến nó thành một đầu ra có thể dùng.</p>
+          <h2 id="origin-story-closing">{aboutPathContent.title}</h2>
+          {aboutPathContent.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
         <div className={styles.closingActions}>
-          <OriginStoryTrackedLink className={styles.primaryAction} href="/brain2/21-ngay" data-motion-action>
-            Bắt đầu 21 ngày Brain2 <ArrowRight aria-hidden="true" size={18} />
-          </OriginStoryTrackedLink>
-          <Link className={styles.secondaryAction} href="/library/proof-stack-thong-phan-2026" data-motion-action>
-            Xem nguồn và bằng chứng
+          <PathDoors variant="closing" placement="closing" />
+          <Link className={styles.secondaryAction} href={aboutPathContent.proofLink.href} data-motion-action>
+            {aboutPathContent.proofLink.label}
           </Link>
         </div>
       </section>
