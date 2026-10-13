@@ -1,0 +1,21 @@
+[
+  { "id": "home-hero", "src": "dqh179-blurred.jpg", "box": [0, 0.09, 1, 0.94], "ratio": "16:9", "width": 1920, "budget": 184320 },
+  { "id": "home-hero-mobile", "src": "dqh179-blurred.jpg", "ratio": "4:5", "focal": [0.78, 0.5], "width": 900, "budget": 184320 },
+  { "id": "founder-portrait", "src": "speaker-blurred.jpg", "box": [0.22, 0.25, 0.76, 0.725], "ratio": "4:5", "focal": [0.5, 0.45], "width": 736, "budget": 143360 },
+  { "id": "door-tensai", "src": "author-book.webp", "boxPx": [200, 0, 1000, 800], "ratio": "4:5", "focal": [0.52, 0.5], "width": 640, "budget": 143360 },
+  { "id": "door-conan", "src": "conan-589d3613.jpg", "ratio": "4:5", "focal": [0.42, 0.5], "width": 960, "budget": 143360 },
+  { "id": "field-content-class", "src": "conan-239f4131.jpg", "ratio": "3:2", "focal": [0.5, 0.65], "width": 1200, "budget": 143360 },
+  { "id": "tensai-map", "src": "tensai-live-map.png", "boxPx": [305, 0, 1385, 867], "width": 1080, "quality": 88, "budget": 143360 },
+  { "id": "tensai-lesson", "src": "tensai-live-lesson-intro.png", "boxPx": [600, 0, 1540, 867], "width": 940, "quality": 88, "budget": 143360 },
+  { "id": "conan-hero", "src": "conan-98a49e1f.jpg", "ratio": "16:9", "focal": [0.5, 0.6], "width": 1920, "budget": 184320 },
+  { "id": "conan-hero-mobile", "src": "conan-98a49e1f.jpg", "box": [0, 0.22, 1, 1], "ratio": "4:5", "focal": [0.45, 0.5], "width": 840, "budget": 184320 },
+  { "id": "gallery-ai-factory", "src": "conan-589d3613.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "gallery-ai-factory-design", "src": "conan-bce04c9f.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "gallery-decision-making", "src": "conan-a6c20418.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "gallery-content-flow-haus", "src": "conan-239f4131.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "gallery-katinat", "src": "conan-52eb03ee.jpg", "ratio": "4:3", "focal": [0.5, 0.55], "width": 1200, "budget": 122880 },
+  { "id": "gallery-manulife", "src": "conan-1f236f14.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "gallery-after-class", "src": "conan-22cbf614.jpg", "ratio": "4:3", "width": 1200, "budget": 122880 },
+  { "id": "mentor-dac-nguyen", "src": "mentor-dac-nguyen.jpg", "ratio": "4:5", "focal": [0.5, 0.4], "width": 384, "budget": 61440 },
+  { "id": "mentor-thong-phan", "src": "mentor-thong-phan.jpg", "boxPx": [0, 12, 384, 472], "ratio": "4:5", "width": 368, "budget": 61440 }
+]

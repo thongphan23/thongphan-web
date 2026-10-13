@@ -194,7 +194,6 @@ export const conanContent = {
       'gallery-ai-factory',
       'gallery-decision-making',
       'gallery-content-flow-haus',
-      'gallery-saigon',
       'gallery-manulife',
       'gallery-katinat',
       'gallery-ai-factory-design',

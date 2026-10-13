@@ -157,7 +157,7 @@ Nguồn đối chiếu ngày 13/10/2026: HTML và chuỗi i18n đang chạy củ
    - Bỏ câu hỏi của khóa "Ideas" vì conan.school đang ghi "Sắp có".
 5. **Gallery** (`h2` "Ở Conan, việc học diễn ra như thế này"), ảnh từ album công khai "Cộng đồng có gì hay?" của conan.school:
    - Lớp học: `589d3613` "Lớp học AI Factory tại Hà Nội", `bce04c9f` (chú thích trung tính "Lớp AI Factory Design · Hà Nội · 2025").
-   - Offline: `a6c20418` "Offline Hà Nội 2026 · Trao đổi về Decision Making", `239f4131` "Offline Hà Nội 2026 · Cùng học viết Content · Flow Haus", `52eb03ee` "Offline Hà Nội 2026 · KATINAT Kim Mã", `98a49e1f` "Offline Sài Gòn 2026 · Second Brain và Business".
+   - Offline: `a6c20418` "Offline Hà Nội 2026 · Trao đổi về Decision Making", `239f4131` "Offline Hà Nội 2026 · Cùng học viết Content · Flow Haus", `52eb03ee` "Offline Hà Nội 2026 · KATINAT Kim Mã". Ảnh `98a49e1f` (Offline Sài Gòn 2026) đã là ảnh màn hình đầu nên không lặp lại trong gallery.
    - Đào tạo doanh nghiệp: `1f236f14` "Training Content cho các MDRT tại Manulife · TECOS Building".
    - Sau giờ học: `22cbf614` "Đi ăn sau những giờ học căng thẳng".
    - Chú thích dạng "Tên sự kiện · nội dung hoặc địa điểm", chỉ ghi năm có trong tên sự kiện. Không in ngày cụ thể vì trường ngày trong CMS của album không đáng tin (hai buổi ở hai thành phố cùng ghi 12/06/2026).
@@ -329,11 +329,11 @@ Cổng consent đặt ở bước cuối `test:release` để mọi cổng kỹ 
 | Chân dung thư founder | `/Users/rio/assets/branding/thongphan-speaker-hires.jpg` (1365×2048) | Crop 4:5 bỏ dòng "TĂNG 50% LỢI NHUẬN" trên slide; khán giả quay lưng | `thong-only` |
 | Cửa Tensai | `public/images/homepage/proof/thong-author-book-3x2-v1.webp` | Crop 4:5 | `thong-only` |
 | Cửa Conan | Album conan.school, "Lớp học AI Factory tại Hà Nội" (`589d3613`) | Crop 4:5 | `pending-owner-consent` |
-| Màn hình đầu `/conan` | Album conan.school, "Offline Sài Gòn 2026" (`98a49e1f`) | Crop 16:9 và 4:5 | `pending-owner-consent` |
+| Màn hình đầu `/conan` | Album conan.school, "Offline Sài Gòn 2026" (`98a49e1f`) | Crop 16:9 (1792×1008, nguồn chỉ rộng 1800px) và 4:5 (840×1050, bỏ phần trần) | `pending-owner-consent` |
 | "Việc thật" trên `/` | Album conan.school, "Offline Hà Nội 2026 · Cùng học viết Content · Flow Haus" (`239f4131`) | 3:2 | `pending-owner-consent` |
-| Gallery `/conan` | 8 ảnh liệt kê ở mục 2.3 (`589d3613`, `bce04c9f`, `a6c20418`, `239f4131`, `52eb03ee`, `98a49e1f`, `1f236f14`, `22cbf614`) | 4:3 | `pending-owner-consent` |
+| Gallery `/conan` | 7 ảnh liệt kê ở mục 2.3 (`589d3613`, `bce04c9f`, `a6c20418`, `239f4131`, `52eb03ee`, `1f236f14`, `22cbf614`) | 4:3 | `pending-owner-consent` |
 | Mentor Conan | Ảnh mentor trên conan.school: Đắc Nguyễn, Thông Phan | 4:5 | Đắc Nguyễn `pending-owner-consent`; Thông `thong-only` |
-| Màn hình đầu `/tensai` | `/Users/rio/Projects/tensai-home/docs/positioning-v8/release/screens/live-map.png` (1905×867): bản đồ khóa Định vị trên learn.thongphan.com | Crop vùng nội dung (x≈320–1370), xuất ~1600px rộng | `none` |
+| Màn hình đầu `/tensai` | `/Users/rio/Projects/tensai-home/docs/positioning-v8/release/screens/live-map.png` (1905×867): bản đồ khóa Định vị trên learn.thongphan.com | Crop vùng nội dung (x 305–1385), xuất đúng 1080×867, không phóng to | `none` |
 | Mục "Cách học" `/tensai` | `.../release/screens/live-lesson-intro.png` (1905×867): mở đầu bài "Khách hiểu sản phẩm theo cách nào?" | Crop vùng nội dung | `none` |
 
 Ảnh chụp app Tensai đã tự xem ngày 13/10/2026: không có tên, email hay dữ liệu học viên; Bé Lửa xuất hiện vì nằm sẵn trong giao diện app, không dùng Bé Lửa ở chỗ khác trên thongphan.com. Repo tensai-home chỉ đọc; ảnh được copy rồi xử lý trong worktree này.
@@ -347,7 +347,7 @@ Không dùng `screenforge-production-3x2-v1.webp` cho Tensai (không phải sả
 - Ảnh màn hình đầu: ≤180KB mỗi biến thể (desktop 1920×1080, mobile 900×1125).
 - Ảnh cửa, chân dung, "Việc thật": ≤140KB.
 - Ảnh gallery: ≤120KB (1200×900).
-- Mentor: ≤60KB (480×600, nguồn chỉ 384px nên xuất đúng 384px, không phóng to).
+- Mentor: ≤60KB, tỉ lệ 4:5, không phóng to vì nguồn chỉ rộng 384px: Đắc Nguyễn 384×480; Thông Phan 368×460 (cắt bỏ dải sáng 12px ở mép trên ảnh nguồn).
 - Định dạng webp; giữ tỷ lệ gốc trong manifest.
 
 ### 5.3 Consent
