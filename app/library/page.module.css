@@ -87,6 +87,11 @@
   border-color: var(--brand-text-on-paper);
 }
 
+/* The site shell makes every link inherit its colour; the button needs light text on both fills. */
+.libraryPage .hero .primaryCta {
+  color: var(--brand-reading-paper);
+}
+
 .featured {
   align-self: center;
   border-left: 1px solid var(--brand-line-paper);

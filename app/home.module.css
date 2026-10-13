@@ -140,3 +140,17 @@
     padding-top: 80px;
   }
 }
+
+/* On short phones the words climb onto the photo, so the ink veil starts where they do. */
+@media (max-width: 767px) and (max-height: 760px) {
+  .heroShade {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 7, 6, 0.5) 0%,
+      rgba(7, 7, 6, 0.42) 8%,
+      rgba(7, 7, 6, 0.76) 17%,
+      rgba(7, 7, 6, 0.86) 48%,
+      var(--brand-ink) 68%
+    );
+  }
+}

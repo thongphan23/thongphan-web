@@ -65,18 +65,20 @@
 }
 
 .doorShade {
-  background: linear-gradient(180deg, rgba(7, 7, 6, 0) 28%, rgba(7, 7, 6, 0.62) 58%, rgba(7, 7, 6, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(7, 7, 6, 0) 36%, rgba(7, 7, 6, 0.45) 100%);
   inset: 0;
   position: absolute;
   z-index: -1;
 }
 
+/* The text block carries its own ink veil, so the label stays readable however tall the copy runs. */
 .doorText {
+  background: linear-gradient(180deg, rgba(7, 7, 6, 0) 0, rgba(7, 7, 6, 0.76) 2.75rem, rgba(7, 7, 6, 0.9) 100%);
   bottom: 0;
   display: grid;
   gap: 0.3rem;
   left: 0;
-  padding: clamp(0.85rem, 1.6vw, 1.15rem);
+  padding: 3.25rem clamp(0.85rem, 1.6vw, 1.15rem) clamp(0.85rem, 1.6vw, 1.15rem);
   position: absolute;
   right: 0;
 }
@@ -522,6 +524,17 @@
   color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
   font-size: 0.9rem;
   margin: 0;
+}
+
+/* Below 390px a half-width door cannot fit the mark and "Conan School" on one line; the arrow keeps the colour. */
+@media (max-width: 389px) {
+  .doorProduct {
+    letter-spacing: 0.08em;
+  }
+
+  .doorProduct::before {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

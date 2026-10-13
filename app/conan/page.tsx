@@ -111,7 +111,7 @@ export default function ConanPage() {
       </section>
 
       <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors">
-        <div className={styles.inner}>
+        <div className={`${styles.inner} ${styles.mentorsInner}`}>
           <h2 id="conan-mentors" className={styles.sectionTitle} data-motion-reveal="mask">
             {mentors.title}
           </h2>

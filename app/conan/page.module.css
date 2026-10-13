@@ -46,7 +46,8 @@
 
 .heroShade {
   background:
-    linear-gradient(0deg, rgba(7, 7, 6, 0.96) 0%, rgba(7, 7, 6, 0.8) 24%, rgba(7, 7, 6, 0.18) 48%, rgba(7, 7, 6, 0.05) 70%, rgba(7, 7, 6, 0.3) 100%),
+    /* The words are bottom-aligned, so the fade is measured up from the bottom edge, not by hero height. */
+    linear-gradient(0deg, rgba(7, 7, 6, 0.96) 0, rgba(7, 7, 6, 0.86) 12rem, rgba(7, 7, 6, 0.6) 20rem, rgba(7, 7, 6, 0.16) 28rem, rgba(7, 7, 6, 0.05) 36rem, rgba(7, 7, 6, 0.3) 100%),
     linear-gradient(90deg, rgba(7, 7, 6, 0.55) 0%, rgba(7, 7, 6, 0) 45%);
   inset: 0;
   position: absolute;
@@ -174,8 +175,14 @@
     height: var(--hero-photo-height);
   }
 
+  /* The words start 9rem above the photo's bottom edge, so the fade is measured from there. */
   .heroShade {
-    background: linear-gradient(180deg, rgba(7, 7, 6, 0) 45%, rgba(7, 7, 6, 0.75) 80%, var(--brand-ink) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(7, 7, 6, 0) calc(100% - 13rem),
+      rgba(7, 7, 6, 0.84) calc(100% - 8.75rem),
+      var(--brand-ink) 100%
+    );
   }
 
   .heroContent {
@@ -324,6 +331,20 @@
   font-size: 0.95rem;
   line-height: 1.5;
   padding: 0.3rem 0;
+}
+
+/* Two small portraits leave half the row empty on desktop, so the title takes that half. */
+@media (min-width: 1000px) {
+  .mentorsInner {
+    align-items: start;
+    column-gap: clamp(3rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .mentorsInner .sectionTitle {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: 640px) {

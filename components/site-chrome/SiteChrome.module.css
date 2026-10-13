@@ -289,6 +289,8 @@
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   font-weight: 600;
   letter-spacing: 0.08em;
+  /* Even padding keeps the text centred while the link meets the 44px touch target. */
+  padding-block: 0.5rem;
   text-decoration: none;
 }
 
