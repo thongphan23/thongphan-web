@@ -19,7 +19,6 @@ export default defineConfig([
     files: [
       'app/blog/**/*.tsx',
       'app/library/**/*.tsx',
-      'components/home-cinema/HomeCinema.tsx',
       'components/library/ReadingBody.tsx',
       'components/two-path/TwoPathPhoto.tsx',
     ],

@@ -68,9 +68,9 @@ test('motion atmosphere has one guarded pointer runtime with teardown', async ()
 })
 
 test('approved actions and surfaces opt into bounded hover and focus physics', async () => {
-  const [home, proof, handoff, library, aboutPage, aboutStory, css] = await Promise.all([
-    readProjectFile('components/home-cinema/HomeCinema.tsx'),
-    readProjectFile('components/home-cinema/ProofContactSheet.tsx'),
+  const [doors, gallery, handoff, library, aboutPage, aboutStory, css] = await Promise.all([
+    readProjectFile('components/two-path/PathDoors.tsx'),
+    readProjectFile('components/two-path/PhotoGallery.tsx'),
     readProjectFile('components/journey/ChapterHandoff.tsx'),
     readProjectFile('app/library/page.tsx'),
     readProjectFile('app/about/page.tsx'),
@@ -79,9 +79,8 @@ test('approved actions and surfaces opt into bounded hover and focus physics', a
   ])
   const about = `${aboutPage}\n${aboutStory}`
 
-  assert.match(home, /data-motion-action/)
-  assert.match(home, /data-motion-surface/)
-  assert.match(proof, /data-motion-surface/)
+  assert.match(doors, /data-motion-action/)
+  assert.match(gallery, /data-motion-surface/)
   assert.match(handoff, /data-motion-action/)
   assert.match(handoff, /data-motion-surface/)
   assert.match(library, /data-motion-action/)
@@ -95,15 +94,17 @@ test('approved actions and surfaces opt into bounded hover and focus physics', a
 })
 
 test('GSAP scroll choreography is lazy, bounded, varied and reversible', async () => {
-  const [scrollSource, homeSource, librarySource, aboutPageSource, aboutStorySource, handoffSource] = await Promise.all([
+  const [scrollSource, homePage, founderLetter, librarySource, aboutPageSource, aboutStorySource, handoffSource] = await Promise.all([
     readProjectFile('components/ScrollAnimations.tsx'),
-    readProjectFile('components/home-cinema/HomeCinema.tsx'),
+    readProjectFile('app/page.tsx'),
+    readProjectFile('components/two-path/FounderLetter.tsx'),
     readProjectFile('app/library/page.tsx'),
     readProjectFile('app/about/page.tsx'),
     readProjectFile('components/origin-story/OriginStory.tsx'),
     readProjectFile('components/journey/ChapterHandoff.tsx'),
   ])
   const aboutSource = `${aboutPageSource}\n${aboutStorySource}`
+  const homeSource = `${homePage}\n${founderLetter}`
 
   assert.match(scrollSource, /import\('gsap'\)/)
   assert.match(scrollSource, /import\('gsap\/ScrollTrigger'\)/)

@@ -7,6 +7,8 @@ const root = new URL('../', import.meta.url)
 const out = new URL('out/', root)
 const routeFiles = [
   'index.html',
+  'tensai.html',
+  'conan.html',
   'about.html',
   'diagnostic.html',
   'library.html',

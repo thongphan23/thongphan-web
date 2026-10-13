@@ -2,9 +2,11 @@ import assert from 'node:assert/strict'
 import { access, readFile, stat } from 'node:fs/promises'
 import { gzipSync } from 'node:zlib'
 import test from 'node:test'
+import { twoPathPhotos } from '../lib/two-path-photos.ts'
 
 const root = new URL('../', import.meta.url)
 const out = new URL('out/', root)
+const twoPathPages = ['index.html', 'tensai.html', 'conan.html']
 
 async function requireBuildFile(path) {
   try {
@@ -14,42 +16,45 @@ async function requireBuildFile(path) {
   }
 }
 
-test('static homepage build keeps one promise, one h1 and no hero video', async () => {
-  await requireBuildFile('index.html')
-  const html = await readFile(new URL('index.html', out), 'utf8')
+async function readBuildFile(path) {
+  await requireBuildFile(path)
+  return readFile(new URL(path, out), 'utf8')
+}
 
-  assert.match(html, /Biến chuyên môn thật thành/)
-  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1)
-  assert.doesNotMatch(html, /<video(?:\s|>)/i)
-})
+test('two-path pages each ship one h1, no video and both doors', async () => {
+  for (const page of twoPathPages) {
+    const html = await readBuildFile(page)
 
-test('static homepage build renders the compact ACT 03 origin bridge exactly once', async () => {
-  await requireBuildFile('index.html')
-  const html = await readFile(new URL('index.html', out), 'utf8')
-  const bridge = html.match(/<aside[^>]*data-home-origin-bridge[^>]*>[\s\S]*?<\/aside>/)?.[0] ?? ''
-
-  assert.ok(bridge, 'ACT 03 origin bridge is missing from the static homepage')
-  assert.equal((html.match(/data-home-section(?:=|\s|>)/g) ?? []).length, 6)
-  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1)
-  assert.equal((bridge.match(/href="\/about"/g) ?? []).length, 1)
-
-  for (const line of [
-    'Thắng sự chú ý. Thua sản phẩm cốt lõi.',
-    'Hơn 2 tỷ nợ. Mười năm sau vẫn chưa trả hết.',
-    'Brain2 bắt đầu từ quyết định không bỏ phí bài học đó.',
-  ]) {
-    assert.equal((bridge.match(new RegExp(line.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) ?? []).length, 1)
+    assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, `${page} should have exactly one h1`)
+    assert.doesNotMatch(html, /<video(?:\s|>)/i, `${page} should not ship a video`)
+    assert.match(html, /href="\/tensai"/, `${page} should link the Tensai door`)
+    assert.match(html, /href="\/conan"/, `${page} should link the Conan door`)
   }
 })
 
+test('the retired homepage promises stay out of the static build', async () => {
+  for (const page of twoPathPages) {
+    const html = await readBuildFile(page)
+
+    assert.doesNotMatch(html, /Biến chuyên môn thật thành/, `${page} still carries the retired promise`)
+    assert.doesNotMatch(html, /AI PHẢI RA TIỀN/i, `${page} still carries the retired slogan`)
+    assert.doesNotMatch(html, /data-home-section/, `${page} still renders the evidence-cinema homepage`)
+  }
+})
+
+test('branch pages send readers to their product with two-path attribution', async () => {
+  const tensai = await readBuildFile('tensai.html')
+  const conan = await readBuildFile('conan.html')
+
+  assert.match(tensai, /href="https:\/\/learn\.thongphan\.com\/\?[^"]*utm_campaign=two-path/)
+  assert.match(conan, /href="https:\/\/www\.conan\.school\/\?[^"]*utm_campaign=two-path/)
+})
+
 test('static build contains every local Next, Conan Maker and Crown game asset reference', async () => {
-  await requireBuildFile('index.html')
-  await requireBuildFile('conanmaker/index.html')
-  await requireBuildFile('game/index.html')
   const pages = ['index.html', 'conanmaker/index.html', 'game/index.html']
 
   for (const page of pages) {
-    const html = await readFile(new URL(page, out), 'utf8')
+    const html = await readBuildFile(page)
     const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)]
       .map(([, ref]) => ref.split('?')[0])
       .filter((ref) => ref.startsWith('/_next/') || ref.startsWith('/conanmaker/assets/') || ref.startsWith('/game/assets/'))
@@ -59,32 +64,22 @@ test('static build contains every local Next, Conan Maker and Crown game asset r
   }
 })
 
-test('homepage ships fingerprinted hero sources under desktop and mobile budgets', async () => {
-  const budgets = [
-    ['images/homepage/evidence-cinema-hero-v3.webp', 180 * 1024],
-    ['images/homepage/evidence-cinema-hero-v3-mobile.webp', 180 * 1024],
-    ['images/homepage/evidence-cinema-film-texture-v2.webp', 60 * 1024],
-    ['images/homepage/evidence-cinema-stamp-v4.png', 80 * 1024],
-    ['images/homepage/proof/thong-stage-3x2-v1.webp', 140 * 1024],
-    ['images/homepage/proof/thong-author-book-3x2-v1.webp', 100 * 1024],
-    ['images/homepage/proof/screenforge-production-3x2-v1.webp', 160 * 1024],
-    ['images/homepage/evidence-cinema-signature-v3.png', 40 * 1024],
-    ['images/homepage/evidence-cinema-arrow-v2.png', 20 * 1024],
-    ['images/homepage/evidence-cinema-outer-frame-v2.png', 350 * 1024],
-    ['images/homepage/evidence-cinema-conan-portrait-v2.webp', 300 * 1024],
-  ]
+test('two-path photos ship inside their manifest budgets', async () => {
+  const photos = Object.values(twoPathPhotos)
+  assert.ok(photos.length > 0, 'two-path photo manifest is empty')
 
-  for (const [path, budget] of budgets) {
+  for (const photo of photos) {
+    const path = photo.src.slice(1)
     await requireBuildFile(path)
     const info = await stat(new URL(path, out))
-    assert.ok(info.size <= budget, `${path} is ${info.size} bytes; budget is ${budget}`)
+    assert.ok(info.size <= photo.budgetBytes, `${path} is ${info.size} bytes; budget is ${photo.budgetBytes}`)
   }
 })
 
 test('homepage route JavaScript stays within the interaction budget', async () => {
   const scriptRefs = (html) => [...html.matchAll(/<script[^>]+src="([^"]+\.js)"/g)].map(([, ref]) => ref)
-  const homepageRefs = scriptRefs(await readFile(new URL('index.html', out), 'utf8'))
-  const sharedRefs = new Set(scriptRefs(await readFile(new URL('about.html', out), 'utf8')))
+  const homepageRefs = scriptRefs(await readBuildFile('index.html'))
+  const sharedRefs = new Set(scriptRefs(await readBuildFile('about.html')))
   const pageChunks = homepageRefs.filter((ref) => !sharedRefs.has(ref))
   assert.ok(pageChunks.length > 0, 'homepage-only interaction chunk not found')
 
