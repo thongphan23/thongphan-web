@@ -99,8 +99,10 @@ export default function ScrollAnimations() {
 
           if (scrollProfile === 'minimal' && !explicitVariant) return
 
+          // Calm pages keep reveals within 16px and 400ms.
+          const calm = target.closest('[data-motion-tempo="calm"]') !== null
           const from = variant === 'drift'
-            ? { opacity: 0, x: 28 }
+            ? { opacity: 0, x: calm ? 16 : 28 }
             : variant === 'mask'
               ? { opacity: 0, clipPath: 'inset(0 0 100% 0)' }
               : variant === 'focus'
@@ -111,7 +113,7 @@ export default function ScrollAnimations() {
 
           gsap.fromTo(target, from, {
             clipPath: 'inset(0 0 0% 0)',
-            duration: variant === 'focus' ? 0.84 : 0.72,
+            duration: calm ? 0.4 : variant === 'focus' ? 0.84 : 0.72,
             ease: 'power3.out',
             filter: 'blur(0px)',
             opacity: 1,

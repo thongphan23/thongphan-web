@@ -7,6 +7,7 @@ import { brain2LessonMetadata } from '@/lib/brain2/lessons'
 
 const BASE_URL = 'https://thongphan.com'
 const RELEASE_DATE = '2026-07-10'
+const TWO_PATH_RELEASE_DATE = '2026-10-13'
 
 export const dynamic = 'force-static'
 
@@ -31,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/ebooks/phan-tich-doi-thu-tim-insight-khach-hang',
     '/blog',
   ].map((pathname) => entry(pathname, RELEASE_DATE))
+  const branchRoutes = ['/tensai', '/conan'].map((pathname) => entry(pathname, TWO_PATH_RELEASE_DATE))
 
   const blogRoutes = getAllPosts().map((post) =>
     entry(`/blog/${post.slug}`, post.updatedAt ?? post.publishedAt),
@@ -47,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const publicBrain2Routes = brain2LessonMetadata
     .filter((lesson) => lesson.access === 'public')
     .map((lesson) => entry(`/brain2/21-ngay/${lesson.slug}`, RELEASE_DATE))
-  return [...staticRoutes, ...publicBrain2Routes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
+  return [...staticRoutes, ...branchRoutes, ...publicBrain2Routes, ...blogRoutes, ...noteRoutes, ...readingRoutes, ...assetRoutes]
 }

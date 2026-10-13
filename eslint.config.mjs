@@ -21,6 +21,7 @@ export default defineConfig([
       'app/library/**/*.tsx',
       'components/home-cinema/HomeCinema.tsx',
       'components/library/ReadingBody.tsx',
+      'components/two-path/TwoPathPhoto.tsx',
     ],
     rules: {
       // These static-export editorial images own explicit dimensions and runtime fallbacks.

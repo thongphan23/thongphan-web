@@ -1,0 +1,142 @@
+.page {
+  --door-overlap: clamp(2.5rem, 7svh, 4.5rem);
+  background: var(--brand-ink);
+  color: var(--brand-paper);
+  overflow-x: clip;
+}
+
+/* First screen: a full-bleed real photo; the doors straddle its bottom edge. */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(100svh - var(--door-overlap) - 1.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+.heroMedia {
+  background: var(--brand-ink);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Parallax moves the photo down by up to 12px, so it starts 12px above the frame. */
+.heroPhoto {
+  inset: -12px 0 0;
+  position: absolute;
+}
+
+.heroPhoto picture,
+.heroPhoto img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.heroPhoto img {
+  object-fit: cover;
+  object-position: 80% 45%;
+}
+
+.heroShade {
+  background:
+    linear-gradient(90deg, rgba(7, 7, 6, 0.94) 0%, rgba(7, 7, 6, 0.78) 34%, rgba(7, 7, 6, 0.18) 64%, rgba(7, 7, 6, 0) 80%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0.55) 0%, rgba(7, 7, 6, 0) 22%, rgba(7, 7, 6, 0) 62%, rgba(7, 7, 6, 0.86) 100%);
+  inset: 0;
+  position: absolute;
+}
+
+.heroContent {
+  box-sizing: border-box;
+  margin: 0 auto calc(-1 * var(--door-overlap));
+  max-width: 1320px;
+  padding: 96px var(--brand-space-inline) 0;
+  width: 100%;
+}
+
+.eyebrow {
+  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.15rem, 3.4vw + 0.9rem, 3.9rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+  margin: 0;
+  max-width: 13em;
+}
+
+.title em {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* The doors overlap onto the letter's paper; this band starts the paper early. */
+.afterHero {
+  background: var(--brand-reading-paper);
+  padding-top: var(--door-overlap);
+}
+
+.closing {
+  --closing-focus: var(--brand-text-on-paper);
+  background: var(--brand-reading-paper-deep);
+  color: var(--brand-text-on-paper);
+  padding: var(--brand-space-section) var(--brand-space-inline);
+}
+
+.closingInner {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+.closingTitle {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+  margin: 0 0 clamp(1.75rem, 3.5vw, 2.75rem);
+  max-width: 16ch;
+}
+
+@media (max-width: 767px) {
+  /* The portrait crop sits at the top; text and doors rise out of the ink below it. */
+  .heroPhoto {
+    bottom: auto;
+    height: min(125vw, 72%);
+  }
+
+  .heroPhoto img {
+    object-position: 65% 30%;
+  }
+
+  .heroShade {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 7, 6, 0.5) 0%,
+      rgba(7, 7, 6, 0) 16%,
+      rgba(7, 7, 6, 0) 34%,
+      rgba(7, 7, 6, 0.82) 56%,
+      var(--brand-ink) 72%
+    );
+  }
+
+  .heroContent {
+    padding-top: 80px;
+  }
+}

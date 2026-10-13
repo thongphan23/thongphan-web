@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const SITE_URL = 'https://thongphan.com'
 export const SITE_NAME = 'Thông Phan'
 export const DEFAULT_DESCRIPTION =
-  'Biến chuyên môn thật thành nội dung, tài sản số và cơ hội xứng đáng bằng AI và một hệ thống có bằng chứng.'
+  'Thông Phan dẫn đường cho người đi làm học dùng AI cho việc thật cùng Tensai, và cho người đang hoặc muốn kinh doanh xây doanh nghiệp trong kỷ nguyên AI cùng Conan School.'
 
 type PageMetadataInput = {
   title: string
@@ -81,5 +81,28 @@ export function buildAboutPageStructuredData() {
     inLanguage: 'vi-VN',
     mainEntity: { '@id': personId },
     about: { '@id': personId },
+  }
+}
+
+export function buildBranchPageStructuredData({
+  name,
+  description,
+  pathname,
+}: {
+  name: string
+  description: string
+  pathname: string
+}) {
+  const url = absoluteUrl(pathname)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: 'vi-VN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/about#person` },
   }
 }

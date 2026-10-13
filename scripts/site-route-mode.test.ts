@@ -9,6 +9,8 @@ const routeModeCases: Array<[pathname: string, expected: SiteRouteMode]> = [
   ['/conanmaker/workbench', 'standalone'],
   ['/', 'cinema-dark'],
   ['/about', 'cinema-dark'],
+  ['/tensai', 'editorial-light'],
+  ['/conan', 'cinema-dark'],
   ['/diagnostic', 'evidence-dossier'],
   ['/learn', 'learning-dossier'],
   ['/learn/diagnostic', 'learning-dossier'],
@@ -41,7 +43,7 @@ test('routeModeForPath honors every exact and prefix route contract', () => {
 })
 
 test('the unified shell is the safe default while explicit legacy and standalone routes stay isolated', () => {
-  const enabled = ['/', '/about', '/diagnostic', '/learn', '/learn/diagnostic', '/assets', '/assets/offer-map', '/experiences', '/experiences/brain2', '/brain2/21-ngay', '/brain2/21-ngay/ngay-01', '/chat', '/library', '/library/read', '/library/read/deep-work', '/library/a-living-note', '/blog', '/blog/a-field-note', '/about/team', '/diagnostic/results', '/chat/thread', '/unknown']
+  const enabled = ['/', '/tensai', '/conan', '/about', '/diagnostic', '/learn', '/learn/diagnostic', '/assets', '/assets/offer-map', '/experiences', '/experiences/brain2', '/brain2/21-ngay', '/brain2/21-ngay/ngay-01', '/chat', '/library', '/library/read', '/library/read/deep-work', '/library/a-living-note', '/blog', '/blog/a-field-note', '/about/team', '/diagnostic/results', '/chat/thread', '/unknown']
   const disabled = ['/classic', '/concept', '/co-che-tep-moi.html', '/conanmaker', '/conanmaker/']
 
   for (const pathname of enabled) assert.equal(isUnifiedRouteEnabled(pathname), true, pathname)

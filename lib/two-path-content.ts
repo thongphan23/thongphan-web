@@ -35,6 +35,7 @@ const doors = [
 export const homeContent = {
   eyebrow: 'Thông Phan · người dẫn đường',
   title: 'AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ở phía nào?',
+  hero: { photoId: 'home-hero', mobilePhotoId: 'home-hero-mobile' },
   doors,
   resume: { prefix: 'Lần trước bạn xem', action: 'Tiếp tục' },
   letter: {
@@ -137,12 +138,24 @@ export const tensaiContent = {
   },
 } as const
 
+// The first item is shown large; the rest are grouped by kind of activity.
+const galleryItems = [
+  { photoId: 'gallery-ai-factory', kind: 'Lớp học' },
+  { photoId: 'gallery-ai-factory-design', kind: 'Lớp học' },
+  { photoId: 'gallery-decision-making', kind: 'Offline' },
+  { photoId: 'gallery-content-flow-haus', kind: 'Offline' },
+  { photoId: 'gallery-katinat', kind: 'Offline' },
+  { photoId: 'gallery-manulife', kind: 'Đào tạo doanh nghiệp' },
+  { photoId: 'gallery-after-class', kind: 'Sau giờ học' },
+] as const
+
 export const conanContent = {
   eyebrow: 'Conan School · cộng đồng cho người xây doanh nghiệp',
   title: 'Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.',
   lead: 'Conan School là cộng đồng dành cho những người bắt đầu hành trình xây dựng doanh nghiệp trong kỷ nguyên AI. Bạn học business bằng cách hiểu khách hàng, thiết kế offer, xây sản phẩm thật và cải tiến với AI.',
   primaryCta: 'Vào Conan School',
   heroPhotoId: 'conan-hero',
+  heroMobilePhotoId: 'conan-hero-mobile',
   // Source: Brain2 note 02-Projects/Conan School.md (not yet published on the Conan School site).
   principle: {
     text: 'Chúng tôi không hứa giúp bạn đi nhanh nhất. Chúng tôi giúp bạn không đi sai.',
@@ -190,15 +203,8 @@ export const conanContent = {
   },
   gallery: {
     title: 'Ở Conan, việc học diễn ra như thế này',
-    photoIds: [
-      'gallery-ai-factory',
-      'gallery-decision-making',
-      'gallery-content-flow-haus',
-      'gallery-manulife',
-      'gallery-katinat',
-      'gallery-ai-factory-design',
-      'gallery-after-class',
-    ],
+    items: galleryItems,
+    photoIds: galleryItems.map((item) => item.photoId),
   },
   mentors: {
     title: 'Người dẫn đường',

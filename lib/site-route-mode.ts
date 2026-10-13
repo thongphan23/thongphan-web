@@ -12,6 +12,8 @@ const exactRouteModes: Readonly<Record<string, SiteRouteMode>> = {
   '/tpr': 'standalone',
   '/': 'cinema-dark',
   '/about': 'cinema-dark',
+  '/tensai': 'editorial-light',
+  '/conan': 'cinema-dark',
   '/diagnostic': 'evidence-dossier',
   '/learn': 'learning-dossier',
   '/assets': 'evidence-dossier',

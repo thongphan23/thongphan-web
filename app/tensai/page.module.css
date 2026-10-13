@@ -1,0 +1,336 @@
+.page {
+  --tensai-muted: #5f574d;
+  background: var(--brand-reading-paper);
+  color: var(--brand-text-on-paper);
+  overflow-x: clip;
+}
+
+.inner {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+/* Split first screen: words on the left, the real app on the right (below on phones). */
+
+.hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin: 0 auto;
+  max-width: 1320px;
+  padding: clamp(2rem, 5vw, 4.5rem) var(--brand-space-inline) clamp(3.5rem, 7vw, 6rem);
+}
+
+.eyebrow,
+.situationCourse {
+  align-items: center;
+  color: var(--path-accent);
+  display: flex;
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 0.6rem;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  margin: 0 0 1.1rem;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  background: var(--path-cta-bg);
+  border: 1px solid var(--path-accent);
+  content: '';
+  flex: none;
+  height: 0.6rem;
+  width: 0.6rem;
+}
+
+.title {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.5rem, 4.6vw + 0.4rem, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  margin: 0;
+  max-width: 12em;
+}
+
+.lead {
+  font-size: clamp(1.04rem, 1.2vw, 1.15rem);
+  line-height: 1.72;
+  margin: 1.4rem 0 0;
+  max-width: 34rem;
+}
+
+.actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2rem;
+}
+
+/* `.page[data-path]` outranks the unified shell's `a { color: inherit }` (0,2,1). */
+.page[data-path] .primaryCta,
+.page[data-path] .primaryCta:hover {
+  align-items: center;
+  background: var(--path-cta-bg);
+  border-radius: 6px;
+  color: var(--path-cta-fg);
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 0.55rem;
+  min-height: 52px;
+  padding: 0 1.4rem;
+  text-decoration: none;
+}
+
+.primaryCta:focus-visible {
+  outline: 2px solid var(--path-accent);
+  outline-offset: var(--brand-focus-offset);
+}
+
+.secondaryLink,
+.secondaryLink:hover,
+.crossLink,
+.crossLink:hover {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  font-weight: 700;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--path-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.secondaryLink:focus-visible,
+.crossLink:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.launchNote {
+  color: var(--tensai-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 1.25rem 0 0;
+}
+
+.heroFigure {
+  margin: 0;
+}
+
+.heroImage {
+  border: 1px solid var(--brand-line-paper);
+  border-radius: 8px;
+  box-shadow: 0 30px 60px -36px rgba(7, 59, 47, 0.45);
+  width: 100%;
+}
+
+.heroFigure figcaption,
+.methodFigure figcaption,
+.note {
+  color: var(--tensai-muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 960px) {
+  /* Fill the first screen so the split reads as one deliberate frame. */
+  .hero {
+    align-content: center;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    min-height: min(calc(100svh - 96px), 860px);
+  }
+}
+
+/* Sections */
+
+.section {
+  padding: var(--brand-space-section) var(--brand-space-inline);
+}
+
+.sectionTitle,
+.closingTitle {
+  color: inherit;
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  max-width: 18ch;
+}
+
+.situations,
+.courses,
+.lessons,
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.situations {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.situation {
+  border-top: 2px solid var(--path-accent);
+  padding-top: 1.25rem;
+}
+
+.problem {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.18;
+  margin: 0 0 1.25rem;
+}
+
+.situationCourse {
+  margin-bottom: 0.5rem;
+}
+
+.lessons li {
+  border-top: 1px solid var(--brand-line-paper);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: 0.6rem 0;
+}
+
+@media (min-width: 900px) {
+  .situations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.coursesBand {
+  background: var(--brand-reading-paper-deep);
+}
+
+.courses {
+  border-bottom: 1px solid var(--brand-line-paper);
+}
+
+.course {
+  border-top: 1px solid var(--brand-line-paper);
+  display: grid;
+  gap: 0.35rem 2rem;
+  padding: 1.5rem 0;
+}
+
+.courseName {
+  color: inherit;
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.courseTagline {
+  line-height: 1.55;
+  margin: 0;
+}
+
+.courseMeta {
+  color: var(--tensai-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .course {
+    align-items: baseline;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+  }
+
+  .courseMeta {
+    text-align: right;
+  }
+}
+
+.methodGrid {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.steps {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.step {
+  column-gap: 1.1rem;
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+}
+
+.stepNumber {
+  color: var(--path-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  grid-row: span 2;
+  letter-spacing: 0.08em;
+  padding-top: 0.3rem;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.stepBody {
+  line-height: 1.6;
+  margin: 0.25rem 0 0;
+}
+
+.methodFigure {
+  background: var(--brand-reading-paper);
+  border: 1px solid var(--brand-line-paper);
+  border-radius: 8px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.methodFigure img {
+  width: 100%;
+}
+
+.methodFigure figcaption {
+  margin: 0;
+  padding: 0.75rem 1rem 0.9rem;
+}
+
+@media (min-width: 960px) {
+  .methodGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+}
+
+/* Closing band in Tensai's own ink green, where the lime button reads best. */
+
+.closing {
+  background: var(--path-accent);
+  color: var(--brand-paper);
+  padding: var(--brand-space-section) var(--brand-space-inline);
+}
+
+.closing .primaryCta:focus-visible,
+.closing .crossLink:focus-visible {
+  outline-color: var(--brand-paper);
+}
+
+.closing .crossLink {
+  text-decoration-color: var(--path-cta-bg);
+}

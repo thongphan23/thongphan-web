@@ -25,6 +25,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin', 'vietnamese'],
   weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-cormorant',
   display: 'swap',
   preload: false,
@@ -75,9 +76,9 @@ const legacyFontClassName = `${inter.variable} ${lora.variable} ${jetBrainsMono.
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Thông Phan — Biến kiến thức thành tài sản và dòng tiền',
+  title: 'Thông Phan — Người dẫn đường cho người đi làm và người kinh doanh trong kỷ nguyên AI',
   description: DEFAULT_DESCRIPTION,
-  keywords: ['AI', 'chuyên môn', 'tài sản số', 'dòng tiền thứ 2', 'Brain2', 'Thông Phan', 'Conan School'],
+  keywords: ['AI', 'AI cho người đi làm', 'kinh doanh trong kỷ nguyên AI', 'Tensai', 'Conan School', 'Thông Phan'],
   authors: [{ name: 'Thông Phan' }],
   openGraph: {
     siteName: 'Thông Phan',
