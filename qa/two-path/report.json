@@ -1,0 +1,4391 @@
+{
+  "generatedAt": "2026-10-13T04:30:59.398Z",
+  "source": "out/ (static export)",
+  "browser": "154.0.8037.98",
+  "failureCount": 0,
+  "pages": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": [
+        {
+          "path": "tensai",
+          "top": 572,
+          "bottom": 876,
+          "inView": true
+        },
+        {
+          "path": "conan",
+          "top": 572,
+          "bottom": 876,
+          "inView": true
+        }
+      ],
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.77,
+            "median": 7.92,
+            "min": 7.72
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.36,
+            "median": 7.54,
+            "min": 7.27
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.73,
+            "median": 8.18,
+            "min": 7.59
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 62.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 8.74,
+            "median": 13.35,
+            "min": 6.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 62.4,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 7.63,
+            "median": 13.36,
+            "min": 1.03
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.49,
+            "median": 12.92,
+            "min": 8.93
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 24.48,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 10.36,
+            "median": 13.06,
+            "min": 9.23
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Học dùng AI cho việc thật mỗi ngày, cùng Tensai.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.38,
+            "median": 8.42,
+            "min": 6.95
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.64,
+            "median": 12.32,
+            "min": 8.43
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 24.48,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 10.13,
+            "median": 12.38,
+            "min": 8.91
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp trong kỷ nguyên AI, cùng Conan School.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.74,
+            "median": 9.4,
+            "min": 7.86
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-11",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.68,
+            "min": 9.59
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-12",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.68,
+            "min": 9.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-13",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.76,
+            "median": 4.82,
+            "min": 4.7
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-14",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.73,
+            "median": 4.79,
+            "min": 4.7
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.72,
+            "median": 7.87,
+            "min": 7.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.03,
+            "median": 7.23,
+            "min": 7.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.27,
+            "median": 8.48,
+            "min": 6.88
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 57.92,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.41,
+            "median": 13.2,
+            "min": 5.87
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 57.92,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 8.35,
+            "median": 13.54,
+            "min": 1.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.24,
+            "median": 12.62,
+            "min": 8.89
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 21.76,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.84,
+            "median": 11.61,
+            "min": 8.06
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Học dùng AI cho việc thật mỗi ngày, cùng Tensai.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.53,
+            "median": 8.74,
+            "min": 6.69
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.19,
+            "median": 13.23,
+            "min": 8.4
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 21.76,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.95,
+            "median": 12.53,
+            "min": 8.25
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp trong kỷ nguyên AI, cùng Conan School.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.68,
+            "median": 9.04,
+            "min": 6.99
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-11",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.57,
+            "median": 9.66,
+            "min": 9.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-12",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.57,
+            "median": 9.66,
+            "min": 9.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-13",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.76,
+            "median": 4.82,
+            "min": 4.73
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-14",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.76,
+            "median": 4.82,
+            "min": 4.7
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.72,
+            "median": 7.87,
+            "min": 7.65
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.21,
+            "median": 7.42,
+            "min": 7.21
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.37,
+            "median": 8.13,
+            "min": 6.98
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 49.216,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 7.39,
+            "median": 12.93,
+            "min": 5.81
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 49.216,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 8.51,
+            "median": 12.81,
+            "min": 1.02
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.54,
+            "median": 12.73,
+            "min": 8.03
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.25,
+            "median": 13,
+            "min": 9.1
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Học dùng AI cho việc thật mỗi ngày, cùng Tensai.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.51,
+            "median": 8.67,
+            "min": 6.93
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.98,
+            "median": 12.98,
+            "min": 8.29
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.02,
+            "median": 12.86,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp trong kỷ nguyên AI, cùng Conan School.",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.79,
+            "median": 8.96,
+            "min": 7.3
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-11",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.61,
+            "min": 9.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-12",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 30.72,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.68,
+            "min": 9.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-13",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.76,
+            "median": 4.82,
+            "min": 4.7
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-14",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 30.72,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.76,
+            "median": 4.82,
+            "min": 4.7
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": [
+        {
+          "path": "tensai",
+          "top": 604,
+          "bottom": 820,
+          "inView": true
+        },
+        {
+          "path": "conan",
+          "top": 604,
+          "bottom": 820,
+          "inView": true
+        }
+      ],
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.01,
+            "median": 6.92,
+            "min": 5.33
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.52,
+            "median": 11.26,
+            "min": 8.25
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 12.23,
+            "median": 14.11,
+            "min": 1.09
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.75,
+            "median": 13.06,
+            "min": 10.02
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.21,
+            "median": 13.02,
+            "min": 10.62
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.86,
+            "median": 11.69,
+            "min": 9.09
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.34,
+            "median": 13.94,
+            "min": 10.03
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.55,
+            "median": 9.01,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 8.66,
+            "median": 9.08,
+            "min": 8.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.58,
+            "median": 4.7,
+            "min": 4.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.58,
+            "median": 4.76,
+            "min": 4.5
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 7.19,
+            "median": 7.65,
+            "min": 6.76
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 11.57,
+            "median": 13.29,
+            "min": 10.24
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 12.63,
+            "median": 13.55,
+            "min": 1.13
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.5,
+            "median": 12.74,
+            "min": 9.68
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.08,
+            "median": 12.86,
+            "min": 10.36
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.57,
+            "median": 11.31,
+            "min": 9
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.06,
+            "median": 13.75,
+            "min": 9.61
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.6,
+            "median": 9.16,
+            "min": 8.46
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 8.74,
+            "median": 9.23,
+            "min": 8.59
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.55,
+            "median": 4.67,
+            "min": 4.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.58,
+            "median": 4.73,
+            "min": 4.52
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Thông Phan · người dẫn đường",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.57,
+            "median": 7.17,
+            "min": 5.14
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 10.05,
+            "median": 11.35,
+            "min": 7.48
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bạn đang đứng ở phía nào?",
+          "placement": "first-view",
+          "fontSize": 34.4,
+          "fontWeight": 500,
+          "required": 3,
+          "contrast": {
+            "p05": 11.77,
+            "median": 13.11,
+            "min": 1.02
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.42,
+            "median": 12.73,
+            "min": 8.45
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.05,
+            "median": 13.18,
+            "min": 10.16
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "first-view",
+          "fontSize": 11.2,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.92,
+            "median": 11.83,
+            "min": 8.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đang hoặc muốn kinh doanh",
+          "placement": "first-view",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.43,
+            "median": 12.68,
+            "min": 8.74
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.34,
+            "median": 8.67,
+            "min": 8.26
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 8.49,
+            "median": 8.76,
+            "min": 8.34
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.61,
+            "median": 4.76,
+            "min": 4.53
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-10",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.64,
+            "median": 4.82,
+            "min": 4.55
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.19,
+            "median": 6.19,
+            "min": 6.19
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.67,
+            "median": 10.82,
+            "min": 10.67
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 72,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.85,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 17.28,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.77,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.45,
+            "median": 9.53,
+            "min": 9.45
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.74,
+            "median": 15.89,
+            "min": 15.74
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "first-view",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.05,
+            "median": 6.15,
+            "min": 6.05
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.02,
+            "median": 5.45,
+            "min": 4.97
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.61,
+            "min": 9.59
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.19,
+            "median": 6.19,
+            "min": 6.19
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.75,
+            "median": 10.82,
+            "min": 10.75
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 65.28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.85,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 16.64,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.85,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.52,
+            "median": 9.59,
+            "min": 9.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.74,
+            "median": 15.85,
+            "min": 15.74
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "first-view",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.05,
+            "median": 6.15,
+            "min": 6.05
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.02,
+            "median": 5.45,
+            "min": 4.97
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.66,
+            "min": 9.59
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.19,
+            "median": 6.19,
+            "min": 6.19
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.74,
+            "median": 10.82,
+            "min": 10.67
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 53.504,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.85,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 16.64,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.74,
+            "median": 15.89,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.45,
+            "median": 9.59,
+            "min": 9.45
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.77,
+            "min": 15.63
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "first-view",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.09,
+            "median": 6.13,
+            "min": 6.05
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-8",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "first-view",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.98,
+            "median": 5.45,
+            "min": 4.88
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-9",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.59,
+            "median": 9.59,
+            "min": 9.52
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.75,
+            "median": 10.84,
+            "min": 10.67
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.85,
+            "min": 15.49
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 16.64,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.49,
+            "median": 15.63,
+            "min": 15.28
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.29,
+            "median": 9.38,
+            "min": 9.22
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.39,
+            "median": 15.52,
+            "min": 15.28
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "first-view",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.95,
+            "median": 6.01,
+            "min": 5.94
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "scrolled",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.95,
+            "median": 5.38,
+            "min": 4.85
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.39,
+            "min": 9.31
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.75,
+            "median": 10.84,
+            "min": 10.67
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.63,
+            "median": 15.77,
+            "min": 15.49
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 16.64,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.49,
+            "median": 15.62,
+            "min": 15.36
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.29,
+            "median": 9.38,
+            "min": 9.24
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.39,
+            "median": 15.51,
+            "min": 15.35
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "first-view",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.95,
+            "median": 6.01,
+            "min": 5.95
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "scrolled",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.96,
+            "median": 5.39,
+            "min": 4.85
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.45,
+            "min": 9.24
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/tensai",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai · cho người đi làm",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.75,
+            "median": 10.84,
+            "min": 10.67
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bất kỳ ai cũng là thiên tài nếu được học đúng cách.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 15.52,
+            "median": 15.74,
+            "min": 15.38
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai là nơi tui đặt những bài học ngắn để bạn dùng AI cho ",
+          "placement": "first-view",
+          "fontSize": 16.64,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.39,
+            "median": 15.52,
+            "min": 15.25
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.29,
+            "median": 9.29,
+            "min": 9.29
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xem các khóa đang mở",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 15.39,
+            "median": 15.52,
+            "min": 15.36
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai mở từ 30/09/2026. Bạn là một trong những người học đầ",
+          "placement": "scrolled",
+          "fontSize": 14.08,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.97,
+            "median": 6.04,
+            "min": 5.91
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Bản đồ khóa Định vị trên Tensai",
+          "placement": "scrolled",
+          "fontSize": 13.44,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.94,
+            "median": 5.36,
+            "min": 4.82
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-7",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Học thử miễn phí",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.43,
+            "min": 9.29
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.01,
+            "median": 12.26,
+            "min": 8.08
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 75.52,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 11.8,
+            "median": 14.49,
+            "min": 8.75
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "first-view",
+          "fontSize": 17.28,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6,
+            "median": 9.47,
+            "min": 5.1
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.88,
+            "median": 4.94,
+            "min": 4.88
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.68,
+            "median": 13.92,
+            "min": 7.98
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 67.84,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 12.66,
+            "median": 14.49,
+            "min": 10.88
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "first-view",
+          "fontSize": 16.32,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.96,
+            "median": 9.29,
+            "min": 4.65
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.04,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.91
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.42,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.91,
+            "median": 13.52,
+            "min": 11.17
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 55.552,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 13.16,
+            "median": 14.61,
+            "min": 11.62
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "first-view",
+          "fontSize": 16.32,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 6.39,
+            "median": 9.6,
+            "min": 4.24
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.04,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-6",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.88,
+            "median": 4.92,
+            "min": 4.88
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.49,
+            "median": 12.4,
+            "min": 9.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 14.11,
+            "median": 14.74,
+            "min": 12.4
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "first-view",
+          "fontSize": 16.32,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.61,
+            "median": 11.66,
+            "min": 11.55
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "first-view",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.95,
+            "min": 4.89
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 10.49,
+            "median": 12.43,
+            "min": 9.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 14.13,
+            "median": 14.74,
+            "min": 12.35
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "scrolled",
+          "fontSize": 16.32,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.52,
+            "median": 11.63,
+            "min": 11.52
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.91
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.91,
+            "median": 4.97,
+            "min": 4.91
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/conan",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School · cộng đồng cho người xây doanh nghiệp",
+          "placement": "first-view",
+          "fontSize": 11.84,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.13,
+            "median": 12.39,
+            "min": 8.96
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Xây doanh nghiệp đầu tiên trong kỷ nguyên AI.",
+          "placement": "first-view",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 13.52,
+            "median": 14.74,
+            "min": 12.27
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School là cộng đồng dành cho những người bắt đầu hành ",
+          "placement": "scrolled",
+          "fontSize": 16.32,
+          "fontWeight": 400,
+          "required": 4.5,
+          "contrast": {
+            "p05": 11.54,
+            "median": 11.63,
+            "min": 11.46
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "hero",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.94,
+            "median": 5.01,
+            "min": 4.94
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "cta",
+          "inHeader": false,
+          "productLink": true,
+          "text": "Vào Conan School",
+          "placement": "scrolled",
+          "fontSize": 16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.89
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.66,
+            "median": 9.66,
+            "min": 9.66
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.57,
+            "median": 9.66,
+            "min": 9.57
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 38.4,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.01,
+            "min": 5.01
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.42,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.5,
+            "median": 9.59,
+            "min": 9.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 30.72,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.5,
+            "median": 9.59,
+            "min": 9.5
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-4",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.04,
+            "min": 5.01
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-5",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 30.72,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 5.01,
+            "median": 5.04,
+            "min": 4.98
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.38,
+            "min": 9.31
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.32,
+            "median": 9.39,
+            "min": 9.22
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.97,
+            "min": 4.92
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.91,
+            "median": 4.97,
+            "min": 4.89
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.45,
+            "min": 9.24
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.46,
+            "min": 9.31
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.94,
+            "median": 4.97,
+            "min": 4.92
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.91
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/about",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi đi làm",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.38,
+            "min": 9.31
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tensai",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 9.31,
+            "median": 9.39,
+            "min": 9.31
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-2",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Tôi kinh doanh",
+          "placement": "scrolled",
+          "fontSize": 12.16,
+          "fontWeight": 700,
+          "required": 4.5,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.92
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-3",
+          "group": "door",
+          "inHeader": false,
+          "productLink": false,
+          "text": "Conan School",
+          "placement": "scrolled",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "required": 3,
+          "contrast": {
+            "p05": 4.92,
+            "median": 4.98,
+            "min": 4.92
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/library",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.44,
+            "median": 8.44,
+            "min": 8.44
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/blog",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "1440x900",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "1280x720",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "1024x768",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [
+        {
+          "id": "leaf-0",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Đi làm",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        },
+        {
+          "id": "leaf-1",
+          "group": "switch",
+          "inHeader": true,
+          "productLink": true,
+          "text": "Kinh doanh",
+          "placement": "first-view",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "required": 4.5,
+          "contrast": {
+            "p05": 8.42,
+            "median": 8.44,
+            "min": 8.42
+          },
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "390x844",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "390x664",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "route": "/diagnostic",
+      "viewport": "320x568",
+      "overflowX": 0,
+      "h1Count": 1,
+      "brokenImages": [],
+      "smallTargets": [],
+      "wrappedDoorLabels": [],
+      "doors": null,
+      "contrast": [],
+      "errors": [],
+      "failures": []
+    }
+  ],
+  "keyboard": {
+    "visited": [
+      {
+        "text": "Thông Phan — Trang chủ",
+        "inHeader": true,
+        "door": null,
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "Đi làm",
+        "inHeader": true,
+        "door": null,
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "Kinh doanh",
+        "inHeader": true,
+        "door": null,
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "Về Thông",
+        "inHeader": true,
+        "door": null,
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "Thêm",
+        "inHeader": true,
+        "door": null,
+        "isMore": true,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "TensaiTôi đi làmHọc dùng AI cho việc thậ",
+        "inHeader": false,
+        "door": "tensai",
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      },
+      {
+        "text": "Conan SchoolTôi đang hoặc muốn kinh doan",
+        "inHeader": false,
+        "door": "conan",
+        "isMore": false,
+        "isMenuTrigger": false,
+        "inMoreMenu": false,
+        "inDialog": false,
+        "focusVisible": true,
+        "indicator": true
+      }
+    ],
+    "failures": []
+  },
+  "storage": {
+    "remembered": [
+      {
+        "route": "/conan",
+        "label": "Conan School",
+        "shown": true,
+        "href": "/conan",
+        "stayed": true
+      },
+      {
+        "route": "/tensai",
+        "label": "Tensai",
+        "shown": true,
+        "href": "/tensai",
+        "stayed": true
+      }
+    ],
+    "blocked": {
+      "pageErrors": [],
+      "resumeShown": false,
+      "doorsShown": 2
+    },
+    "failures": []
+  }
+}

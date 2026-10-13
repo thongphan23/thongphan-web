@@ -19,3 +19,6 @@ artifacts/
 .playwright-cli/
 output/playwright/
 .worktrees/
+
+# Two-path QA: full-page screenshots are regenerated locally by scripts/qa-two-path.mjs.
+qa/two-path/full/

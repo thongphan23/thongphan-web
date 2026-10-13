@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Đối chiếu Mobbin — thongphan.com hai con đường</title>
+<style>
+  :root { --ink: #070706; --paper: #f3efe6; --line: #d8cfbf; --muted: #5d574d; --match: #1f6b45; --adapt: #8a4b10; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1200px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 12px; }
+  .lede { color: var(--muted); max-width: 70ch; margin: 0 0 8px; }
+  .row { border-top: 1px solid var(--line); padding: 28px 0; display: grid; gap: 20px; }
+  @media (min-width: 900px) { .row { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } }
+  h2 { font-size: 1.2rem; margin: 0 0 6px; }
+  .shots { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+  .shots figure { margin: 0; flex: 1 1 260px; }
+  .shots figure.narrow { flex: 0 1 180px; }
+  .shots img { width: 100%; height: auto; display: block; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .verdict { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; color: #fff; }
+  .verdict.match { background: var(--match); }
+  .verdict.adapt { background: var(--adapt); }
+  ul.refs { padding-left: 18px; margin: 8px 0; }
+  ul.refs li { margin-bottom: 4px; }
+  a { color: #0b4f8a; }
+  p { margin: 8px 0; }
+  .note { font-size: 0.9rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Đối chiếu mẫu Mobbin — thongphan.com hai con đường</h1>
+  <p class="lede">Mỗi hàng ghép ảnh chụp thật của bản dựng tĩnh (<code>out/</code>, Chrome cục bộ, 13/10/2026) với mẫu Mobbin theo spec mục 8. Ảnh của mình nằm trong <code>ours/</code>, tạo lại bằng <code>node scripts/qa-mobbin-crops.mjs</code>.</p>
+  <p class="lede">Ảnh mẫu Mobbin <strong>không được tải về hay nhúng vào đây</strong> (đường dẫn ảnh của MCP hết hạn và ảnh thuộc quyền của Mobbin/chủ trang). Mỗi mẫu có liên kết <code>mobbin_url</code> để mở bản gốc. Mọi mẫu đã được xem trực tiếp qua Mobbin MCP ngày 13/10/2026; đây là ảnh tĩnh nên không suy ra chuyển động từ mẫu.</p>
+  <p class="lede"><span class="verdict match">Khớp</span> = lấy đúng cấu trúc của mẫu. <span class="verdict adapt">Phỏng theo</span> = lấy cơ chế nhưng đổi bố cục có chủ đích, lý do ghi trong hàng.</p>
+
+  <section class="row" aria-labelledby="r-switch">
+    <div class="shots">
+      <figure><img src="ours/switch-1440.jpg" alt="Header 1440px với công tắc Đi làm | Kinh doanh ở giữa"><figcaption>Header, 1440px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-switch">Công tắc nhóm người đọc trên header</h2>
+      <span class="verdict adapt">Phỏng theo</span>
+      <ul class="refs"><li>Klarna — <a href="https://mobbin.com/sites/sections/b955d30d-fd93-4b0d-99df-857e6aa81c91">b955d30d</a></li></ul>
+      <p>Klarna đặt "For shoppers | For business" thành dòng chữ nhỏ trên cùng. Mình giữ cơ chế hai nhóm người đọc nhưng làm thành nút chia đoạn (segmented control) dạng viên thuốc ở giữa header, tô màu theo nhánh đang xem, vì hai con đường là trục chính của cả trang. Trên mobile công tắc chuyển vào menu.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-home-hero">
+    <div class="shots">
+      <figure><img src="ours/home-hero-1440.jpg" alt="Màn hình đầu trang chủ 1440×900"><figcaption>Trang chủ, màn hình đầu 1440×900</figcaption></figure>
+      <figure class="narrow"><img src="ours/home-hero-390.jpg" alt="Màn hình đầu trang chủ 390×844"><figcaption>390×844</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-home-hero">Màn hình đầu trang chủ và hai cửa</h2>
+      <span class="verdict adapt">Phỏng theo</span>
+      <ul class="refs">
+        <li>Square (ảnh tràn viền, tiêu đề lớn góc trái) — <a href="https://mobbin.com/sites/sections/29337e63-1f63-4b05-bdfd-672cd2a1f5ed">29337e63</a></li>
+        <li>Contra (hai lựa chọn cạnh nhau) — <a href="https://mobbin.com/sites/sections/0e71cc83-e290-499f-8060-cdae5f763d98">0e71cc83</a></li>
+        <li>Seed (panel ảnh có tiêu đề trong ảnh) — <a href="https://mobbin.com/sites/sections/2787e930-75cc-4a53-af4e-378b8cfdc22c">2787e930</a></li>
+      </ul>
+      <p>Lấy ảnh tràn viền và tiêu đề lớn góc trái của Square, với ảnh thật của Thông ở vai người dẫn đường. Seed và Contra chia hai nửa màn hình cho hai lựa chọn; mình làm hai cửa thành thẻ ảnh đè lên mép dưới màn hình đầu, nhỏ hơn (khoảng 242px ở 1440) để mắt người đọc gặp người dẫn đường trước rồi mới chọn đường. Cả hai cửa vẫn nằm trong màn hình đầu ở 1440×900 và 390×844 (đã kiểm bằng <code>scripts/qa-two-path.mjs</code>).</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-tensai">
+    <div class="shots">
+      <figure><img src="ours/tensai-hero-1440.jpg" alt="Màn hình đầu /tensai 1440×900"><figcaption>/tensai, 1440×900</figcaption></figure>
+      <figure class="narrow"><img src="ours/tensai-hero-390.jpg" alt="Màn hình đầu /tensai 390×844"><figcaption>390×844</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-tensai">Màn hình đầu /tensai</h2>
+      <span class="verdict adapt">Phỏng theo</span>
+      <ul class="refs">
+        <li>Square, màn hình đầu chia đôi (mẫu trong spec) — <a href="https://mobbin.com/sites/sections/2db28706-46d4-4ca6-b94d-74d7fce42780">2db28706</a></li>
+        <li>PayPal (gần nhất khi đối chiếu) — <a href="https://mobbin.com/sites/sections/0894c801-6fba-4711-be07-06450a4bed55">0894c801</a></li>
+      </ul>
+      <p>Square dùng hai nửa ảnh với chữ ở giữa. Mình giữ ý chia đôi nhưng đặt chữ bên trái và ảnh chụp giao diện thật của learn.thongphan.com bên phải, vì người đi làm cần thấy sản phẩm họ sẽ dùng. Bố cục cuối cùng gần PayPal 0894c801 hơn Square.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-conan">
+    <div class="shots">
+      <figure><img src="ours/conan-hero-1440.jpg" alt="Màn hình đầu /conan 1440×900"><figcaption>/conan, 1440×900</figcaption></figure>
+      <figure class="narrow"><img src="ours/conan-hero-390.jpg" alt="Màn hình đầu /conan 390×844"><figcaption>390×844</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-conan">Màn hình đầu /conan</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs">
+        <li>Rivian (mẫu trong spec) — <a href="https://mobbin.com/sites/sections/cb7032a4-86c3-4b9a-8641-04ade2ebc1a4">cb7032a4</a></li>
+        <li>Rivian (xem lại khi đối chiếu) — <a href="https://mobbin.com/sites/sections/a67b1738-47a5-450a-b81b-a5991e4f31aa">a67b1738</a></li>
+      </ul>
+      <p>Đúng nhịp Rivian: ảnh lớn tràn viền, chữ ít. Ảnh là buổi học thật của lớp Conan; tiêu đề ở góc dưới trái, mô tả và CTA ở góc dưới phải, lớp phủ ink để chữ đủ tương phản. Lúc đối chiếu, tìm kiếm không trả lại cb7032a4 nên so với a67b1738 cùng trang Rivian.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-letter">
+    <div class="shots">
+      <figure><img src="ours/home-letter-1440.jpg" alt="Thư của Thông trên trang chủ, 1440px"><figcaption>Thư founder, 1440px</figcaption></figure>
+      <figure class="narrow"><img src="ours/home-letter-390.jpg" alt="Thư của Thông trên trang chủ, 390px"><figcaption>390px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-letter">Thư của người dẫn đường</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs">
+        <li>Patch — <a href="https://mobbin.com/sites/sections/c0d0e236-a289-4cdc-8bfa-731de969cf49">c0d0e236</a></li>
+        <li>incident.io — <a href="https://mobbin.com/sites/sections/67e11461-af20-4b7e-8e9a-8f0cdc669a8d">67e11461</a></li>
+        <li>KÖPPEN — <a href="https://mobbin.com/sites/sections/81d6349f-9811-4b17-9b2d-327dbabfa4fa">81d6349f</a></li>
+        <li>Zellerfeld — <a href="https://mobbin.com/sites/sections/09a9a70b-70f6-49d9-8966-d5524e46f120">09a9a70b</a></li>
+      </ul>
+      <p>Tiêu đề và chân dung bên trái, thư bên phải trên nền giấy, chữ ký gõ (không giả viết tay). Trên mobile xếp dọc. Zellerfeld được xem lúc viết spec, chưa xem lại cạnh ảnh chụp này.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-fieldnotes">
+    <div class="shots">
+      <figure><img src="ours/home-fieldnotes-1440.jpg" alt="Khối Việc thật, không phải lời hứa, 1440px"><figcaption>Việc thật, 1440px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-fieldnotes">Chú thích ảnh và sự kiện</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs">
+        <li>Aino (chú thích dưới ảnh) — <a href="https://mobbin.com/sites/sections/6e82f83c-f6fb-410d-ad9c-cdd19a453bb8">6e82f83c</a></li>
+        <li>Pentagram (dòng meta sự kiện) — <a href="https://mobbin.com/sites/sections/0dcc75b6-c115-40f0-af00-fc6d69e50fd0">0dcc75b6</a></li>
+      </ul>
+      <p>Chú thích nằm dưới ảnh theo kiểu Aino, một dòng meta theo kiểu Pentagram: tên sự kiện · nội dung buổi · địa điểm. Chỉ in năm khi năm có trong tên sự kiện, không in ngày cụ thể. Hai mẫu này được xem lúc viết spec, chưa xem lại cạnh ảnh chụp này.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-gallery">
+    <div class="shots">
+      <figure><img src="ours/conan-gallery-1440.jpg" alt="Gallery lớp Conan trên /conan, 1440px"><figcaption>/conan gallery, 1440px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-gallery">Gallery lớp học</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs"><li>Plain — <a href="https://mobbin.com/sites/sections/6849b42b-fd97-486b-b6a9-df81b07e7480">6849b42b</a></li></ul>
+      <p>Nền tối, một ảnh dẫn rộng, lưới ba cột ảnh thật, chú thích nhỏ có nhãn loại hoạt động. Khác Plain: chú thích nằm dưới ảnh thay vì chip đè lên ảnh, nên không che người trong ảnh và chữ luôn nằm trên nền tối đồng nhất.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-mentors">
+    <div class="shots">
+      <figure><img src="ours/conan-mentors-1440.jpg" alt="Khối người dẫn đường trên /conan, 1440px"><figcaption>/conan người dẫn đường, 1440px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-mentors">Người dẫn đường của Conan</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs">
+        <li>Upwork (mẫu trong spec) — <a href="https://mobbin.com/sites/sections/5cca6507-8115-448d-b83c-6a7da8081572">5cca6507</a></li>
+        <li>ClassPass (mẫu trong spec) — <a href="https://mobbin.com/sites/sections/2c544a1e-a7a8-4078-9a4a-76122e4971ea">2c544a1e</a></li>
+        <li>ClassPass, lưới lãnh đạo (xem lại khi đối chiếu) — <a href="https://mobbin.com/sites/sections/de72c2f3-eb5d-4e1e-a709-d9ad2021e2ea">de72c2f3</a></li>
+        <li>Discord (xem lại khi đối chiếu) — <a href="https://mobbin.com/sites/sections/383bbdc4-7307-4c6a-af8a-198c131d40c8">383bbdc4</a></li>
+      </ul>
+      <p>Chân dung, tên và vai trò như lưới ClassPass; không có sao đánh giá hay con số. Vì chỉ có hai người, ở desktop tiêu đề chiếm cột trái (5/12) và hai chân dung ở cột phải để hàng không bị trống một nửa.</p>
+    </div>
+  </section>
+
+  <section class="row" aria-labelledby="r-closing">
+    <div class="shots">
+      <figure><img src="ours/home-closing-1440.jpg" alt="Khối kết trang chủ với hai nút Tensai và Conan School, 1440px"><figcaption>Kết trang chủ, 1440px</figcaption></figure>
+    </div>
+    <div>
+      <h2 id="r-closing">Kết trang bằng hai nút</h2>
+      <span class="verdict match">Khớp</span>
+      <ul class="refs">
+        <li>Square (mẫu trong spec) — <a href="https://mobbin.com/sites/sections/05188221-44f8-4e82-8cfb-78a99afc647c">05188221</a></li>
+        <li>Contra, hai thẻ CTA (xem lại khi đối chiếu) — <a href="https://mobbin.com/sites/sections/193edebf-b737-4c2f-a78f-6c46f43c0dc5">193edebf</a></li>
+      </ul>
+      <p>Hai khối CTA lớn song song cuối trang, lặp lại hai cửa: Tensai màu chanh, Conan School màu đất nung, mỗi khối có nhãn người đọc ("Tôi đi làm", "Tôi kinh doanh").</p>
+    </div>
+  </section>
+
+  <p class="note">Ảnh toàn trang và màn hình đầu của mọi route/viewport nằm ở <code>../first/</code> (màn hình đầu, có commit) và <code>../full/</code> (toàn trang, chỉ tạo cục bộ). Kết quả kiểm tra máy: <code>../report.json</code>. Đánh giá "khớp/phỏng theo" là nhận định của agent khi tự so ảnh; chưa phải duyệt thẩm mỹ của anh Thông.</p>
+</main>
+</body>
+</html>
