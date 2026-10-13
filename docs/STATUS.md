@@ -1,5 +1,15 @@
 # thongphan.com — Unified Cinema status
 
+## Tái dựng thongphan.com theo hai con đường — PARTIAL, chờ duyệt — 2026-10-13
+
+- **Kết quả:** trang chủ hai cửa (Tensai cho người đi làm → learn.thongphan.com; Conan School cho người kinh doanh → conan.school), hai trang nhánh `/tensai` và `/conan`, `/about` viết lại theo câu chuyện người dẫn đường, header có công tắc "Đi làm | Kinh doanh" (mobile chuyển vào menu) và nút "Thêm". Trang chủ cũ (evidence cinema) đã gỡ. Spec: `docs/superpowers/specs/2026-10-13-thongphan-two-path-rebuild-design.md`; plan: `docs/superpowers/plans/` cùng ngày.
+- **Nhánh:** `feature/two-path-rebuild` trong worktree `.worktrees/two-path-rebuild`, base `origin/main` `106eb01`, 10 commit đến `36428bc`. **Chưa push, chưa deploy.**
+- **Kiểm chứng máy (13/10/2026):** `npm test` 452/454 (2 lỗi nền có từ trước: `qa-experiences-safety` thiếu binary Playwright); `tsc --noEmit`, lint, `test:build` 7/7, `test:seo` 4/4, `test:brain2` 145/145, secret-integrity đạt; bản dựng 87 trang tĩnh. `test:bundle` lỗi nền có từ `bf65aae` (bìa ebook 772 KB > 500 KB), không do nhánh này. `npm ci` chưa chạy lại trong phiên.
+- **QA hình ảnh:** `node scripts/qa-two-path.mjs` chạy 7 route × 6 viewport, bàn phím và nhớ lối đi: 0 lỗi (`qa/two-path/report.json`, ảnh màn hình đầu trong `qa/two-path/first/`). Tấm đối chiếu Mobbin: `qa/two-path/mobbin/index.html` (ảnh của mình + liên kết mẫu, không tải ảnh Mobbin).
+- **Cổng 1 — consent ảnh (BLOCKED):** `npm run test:photo-consent` cố ý đỏ cho 12 ảnh có mặt người lạ rõ nét (`conan-hero`, `conan-hero-mobile`, 7 ảnh gallery, `mentor-dac-nguyen`, `door-conan`, `field-content-class`). Repo `thongphan23/thongphan-web` là **public**, nên push nhánh cũng là công bố các ảnh này; không push cho đến khi anh Thông xác nhận consent (hoặc yêu cầu làm mờ/thay ảnh).
+- **Cổng 2 — deploy:** sau consent và push, xin duyệt preview `npx wrangler pages deploy out --project-name thongphan-com --branch preview-<commit> --commit-hash <commit>`, rồi duyệt production riêng. Trước khi deploy production phải ghi mã deployment production hiện hành làm mốc quay lui (mục ebook bên dưới ghi `a4d23033`, cần kiểm lại bằng wrangler).
+- **Chưa có:** duyệt thẩm mỹ, giọng chữ và thông điệp của anh Thông; câu chữ trên trang do agent viết theo giọng "tui" của người dẫn đường.
+
 ## Ebook phân tích đối thủ và thấu hiểu khách hàng — PASS_PRODUCTION — 2026-08-26
 
 - Thêm trang giới thiệu công khai tại `/ebooks/phan-tich-doi-thu-tim-insight-khach-hang`, nối từ Thư viện; có bản đọc trực tuyến tĩnh và bản PDF tải xuống.
