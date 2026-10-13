@@ -185,11 +185,16 @@
 }
 
 .cinemaHeader {
+  --header-fg: var(--brand-paper);
+  --header-muted: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  --header-line: var(--brand-line-dark);
+  --header-surface: var(--brand-ink-raised);
   -webkit-backdrop-filter: blur(16px) saturate(1.08);
   backdrop-filter: blur(16px) saturate(1.08);
   background: rgba(7, 7, 6, 0.68);
   border-bottom: 1px solid transparent;
-  color: var(--brand-paper);
+  color: var(--header-fg);
+  font-family: var(--font-be-vietnam), Arial, sans-serif;
   left: 0;
   position: fixed;
   right: 0;
@@ -243,16 +248,34 @@
   font-family: var(--font-newsreader), Georgia, serif;
 }
 
-.cinemaHeader[data-route-mode='editorial-light'] .desktopNav a {
-  color: color-mix(in srgb, var(--brand-paper) 82%, transparent);
-  font-size: 0.92rem;
+/* Tensai's branch page keeps its reading paper all the way up into the header. */
+.cinemaHeader[data-path-route='tensai'],
+.cinemaHeader[data-path-route='tensai'][data-header-scrolled='true'] {
+  --header-fg: var(--brand-text-on-paper);
+  --header-muted: #5f574d;
+  --header-line: var(--brand-line-paper);
+  --header-surface: var(--brand-reading-paper);
+  /* Opaque: any translucency lets the ink shell behind it grey the paper. */
+  background: var(--brand-reading-paper);
+  border-bottom: 1px solid var(--brand-line-paper);
+}
+
+.cinemaHeader[data-path-route='tensai'][data-header-scrolled='true'] {
+  box-shadow: 0 18px 44px rgba(23, 20, 16, 0.08);
+}
+
+/* /tensai loads Cormorant, not Newsreader; keep the wordmark in a loaded family. */
+.cinemaHeader[data-path-route='tensai'] .cinemaWordmark,
+.cinemaFooter[data-path-route='tensai'] .footerName {
+  font-family: var(--font-cormorant), Georgia, serif;
 }
 
 .cinemaHeaderInner {
   align-items: center;
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
+  column-gap: 1.5rem;
+  display: grid;
+  /* Side columns never squeeze below their content, so wordmarks stay on one line. */
+  grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr);
   min-height: 82px;
   padding: 0 var(--brand-space-inline);
   transition: min-height 220ms var(--brand-motion-ease);
@@ -260,7 +283,8 @@
 
 .cinemaWordmark {
   color: inherit;
-  flex: 0 0 auto;
+  grid-column: 1;
+  justify-self: start;
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
   font-weight: 600;
@@ -289,72 +313,186 @@
   letter-spacing: -0.025em;
 }
 
-.desktopNav ul {
+/* The path switch: two doors, coloured by branch once a reader is on one. */
+.pathSwitch {
   align-items: center;
-  display: flex;
-  gap: clamp(1.1rem, 2.4vw, 2.4rem);
-  list-style: none;
+  border: 1px solid var(--header-line);
+  border-radius: 999px;
+  display: none;
+  gap: 0.2rem;
+  grid-column: 2;
+  padding: 0.2rem;
 }
 
-.desktopNav a,
-.chapterNav a {
-  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
+.pathSwitch a {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 1.05rem;
+  text-decoration: none;
+  transition:
+    background-color var(--brand-motion-fast) var(--brand-motion-ease),
+    color var(--brand-motion-fast) var(--brand-motion-ease);
+  white-space: nowrap;
+}
+
+.pathSwitch a::before {
+  background: var(--switch-dot);
+  border-radius: 50%;
+  content: '';
+  flex: none;
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+.pathSwitch a[data-path='tensai'] {
+  --switch-dot: #c3f331;
+}
+
+.pathSwitch a[data-path='conan'] {
+  --switch-dot: #d94f2b;
+}
+
+/* Colour rules sit at (0,3,0)+ so the shell's `a { color: inherit }` cannot win. */
+.cinemaHeader .pathSwitch .pathLink {
+  color: var(--header-muted);
+}
+
+.cinemaHeader .pathSwitch .pathLink:hover {
+  background: color-mix(in srgb, var(--header-fg) 9%, transparent);
+  color: var(--header-fg);
+}
+
+.cinemaHeader .pathSwitch .pathLink[data-path='tensai'][aria-current='page'] {
+  --switch-dot: #073b2f;
+  background: #c3f331;
+  color: #073b2f;
+}
+
+.cinemaHeader .pathSwitch .pathLink[data-path='conan'][aria-current='page'] {
+  --switch-dot: #ffffff;
+  background: #c4441f;
+  color: #ffffff;
+}
+
+.cinemaHeader[data-path-route='tensai'] .pathSwitch .pathLink[data-path='tensai'] {
+  --switch-dot: #073b2f;
+}
+
+.desktopNav {
+  align-items: center;
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  grid-column: 3;
+  justify-self: end;
+}
+
+.aboutLink {
+  align-items: center;
   display: inline-flex;
   font-size: 0.875rem;
   min-height: 44px;
   text-decoration: none;
-}
-
-.desktopNav a {
-  align-items: center;
   white-space: nowrap;
 }
 
-.desktopNav a:hover,
-.desktopNav a:focus-visible,
-.chapterNav a:hover,
-.chapterNav a:focus-visible,
-.chapterNav .activeLink {
-  color: var(--brand-paper);
+.cinemaHeader .desktopNav .aboutLink {
+  color: var(--header-muted);
 }
 
-.chapterNav {
-  align-items: center;
-  border-bottom: 1px solid var(--brand-line-dark);
-  border-top: 1px solid var(--brand-line-dark);
-  display: flex;
-  gap: clamp(1rem, 2.5vw, 2.5rem);
-  margin: 0 var(--brand-space-inline);
+.cinemaHeader .desktopNav .aboutLink:hover,
+.cinemaHeader .desktopNav .aboutLink[aria-current='page'] {
+  color: var(--header-fg);
 }
 
-.chapterNav a {
-  align-items: center;
+.cinemaHeader .desktopNav .aboutLink[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-color: var(--brand-lacquer-bright);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
+}
+
+.more {
   position: relative;
 }
 
-.chapterNav a::after {
-  background: var(--brand-lacquer-bright);
-  bottom: -1px;
-  content: '';
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%) scaleX(0);
+.moreTrigger {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--header-muted);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.875rem;
+  gap: 0.3rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.25rem;
+}
+
+.moreTrigger:hover,
+.moreTrigger[aria-expanded='true'] {
+  color: var(--header-fg);
+}
+
+.moreTrigger svg {
   transition: transform var(--brand-motion-fast) var(--brand-motion-ease);
-  width: 0.9rem;
 }
 
-.chapterNav .activeLink::after {
-  transform: translateX(-50%) scaleX(1);
+.moreTrigger[aria-expanded='true'] svg {
+  transform: rotate(180deg);
 }
 
-.desktopNav a:focus-visible,
-.chapterNav a:focus-visible,
+.moreMenu {
+  background: var(--header-surface);
+  border: 1px solid var(--header-line);
+  border-radius: 8px;
+  box-shadow: 0 24px 48px rgba(7, 7, 6, 0.28);
+  list-style: none;
+  margin: 0;
+  min-width: 13.5rem;
+  padding: 0.4rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+}
+
+.moreMenu[hidden] {
+  display: none;
+}
+
+.moreMenu a {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  font-size: 0.92rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cinemaHeader .moreMenu a:hover,
+.cinemaHeader .moreMenu a[aria-current='page'] {
+  background: color-mix(in srgb, var(--header-fg) 9%, transparent);
+}
+
+.pathSwitch a:focus-visible,
+.aboutLink:focus-visible,
+.moreTrigger:focus-visible,
+.moreMenu a:focus-visible,
 .menuTrigger:focus-visible,
 .menuClose:focus-visible,
-.mobileNav a:focus-visible,
-.mobileSecondaryNav a:focus-visible,
-.mobileChapterNav a:focus-visible {
+.mobilePathNav a:focus-visible,
+.mobileNav a:focus-visible {
   outline: var(--brand-focus-ring-dark);
   outline-offset: var(--brand-focus-offset);
 }
@@ -362,9 +500,11 @@
 .menuTrigger {
   align-items: center;
   background: transparent;
-  border: 1px solid var(--brand-line-dark);
-  color: var(--brand-paper);
+  border: 1px solid var(--header-line);
+  color: var(--header-fg);
   display: none;
+  grid-column: 3;
+  justify-self: end;
   font: inherit;
   font-size: 0.875rem;
   gap: 0.45rem;
@@ -419,74 +559,80 @@
   min-width: 44px;
 }
 
+.mobilePathNav {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 0 1.5rem;
+}
+
+.mobilePathNav a {
+  border-radius: 8px;
+  display: grid;
+  gap: 0.4rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 1rem 1.25rem 1.15rem;
+  text-decoration: none;
+}
+
+.menuDialog .mobilePathNav a[data-path='tensai'] {
+  background: #c3f331;
+  color: #073b2f;
+}
+
+.menuDialog .mobilePathNav a[data-path='conan'] {
+  background: #c4441f;
+  color: #ffffff;
+}
+
+.menuDialog .mobilePathNav a[aria-current='page'] {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.mobilePathNav a span:first-child {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mobilePathNav a span:last-child {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(2rem, 9vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
 .mobileNav {
+  border-top: 1px solid var(--brand-line-dark);
   display: grid;
 }
 
 .mobileNav a {
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid var(--brand-line-dark);
-  color: var(--brand-paper);
   display: flex;
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.1rem, 10vw, 4rem);
-  gap: 1rem;
-  min-height: 72px;
-  min-width: 44px;
-  padding: 0.75rem 0;
-  text-decoration: none;
-}
-
-.mobileNav a span {
-  color: var(--brand-lacquer-bright);
-  font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-}
-
-.mobileSecondaryNav {
-  border-top: 1px solid var(--brand-line-dark);
-  display: grid;
-  gap: .2rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-}
-
-.mobileSecondaryNav a {
-  align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 76%, transparent);
-  display: flex;
-  min-height: 44px;
+  font-size: 1.05rem;
+  min-height: 56px;
   min-width: 44px;
   text-decoration: none;
 }
 
-.mobileChapterNav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  padding-top: 1.25rem;
-}
-
-.mobileChapterNav a {
-  align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
-  display: inline-flex;
-  font-size: 0.875rem;
-  min-height: 44px;
-  min-width: 44px;
-  text-decoration: none;
+.menuDialog .mobileNav a[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-color: var(--brand-lacquer-bright);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.45em;
 }
 
 .cinemaFooter {
-  align-items: end;
   background: var(--brand-ink);
   border-top: 1px solid var(--brand-line-dark);
-  color: color-mix(in srgb, var(--brand-paper) 68%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
   display: grid;
   font-family: var(--font-be-vietnam), sans-serif;
-  gap: 2rem;
-  grid-template-columns: 1fr minmax(18rem, 0.75fr);
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   padding: var(--brand-space-section) var(--brand-space-inline) 2rem;
   position: relative;
   z-index: 2;
@@ -498,31 +644,121 @@
   font-size: clamp(2.5rem, 5vw, 5rem);
   letter-spacing: -0.03em;
   line-height: 1;
-  margin-bottom: 0.75rem;
+  margin: 0 0 1rem;
 }
 
-.cinemaFooter nav {
+.footerTagline {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 24rem;
+}
+
+.footerColumns {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  /* The path column carries the longest labels; give it room to stay on one line. */
+  grid-template-columns: minmax(0, 1.35fr) repeat(2, minmax(0, 1fr));
 }
 
-.cinemaFooter a {
-  align-items: center;
-  border-bottom: 1px solid var(--brand-line-dark);
+.footerHeading {
   color: var(--brand-paper);
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
+  font-family: var(--font-be-vietnam), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.footerColumn ul {
+  display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footerColumn a {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35rem;
   min-height: 44px;
-  padding-right: 0.5rem;
   text-decoration: none;
 }
 
-.copyright {
+.cinemaFooter .footerColumn a:hover {
+  color: var(--brand-paper);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footerPath {
+  display: grid;
+}
+
+.footerPath + .footerPath {
   border-top: 1px solid var(--brand-line-dark);
-  font-size: 0.75rem;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+}
+
+.cinemaFooter .footerPath a:first-child {
+  color: var(--brand-paper);
+  font-weight: 600;
+  gap: 0.55rem;
+}
+
+.footerPath a:first-child::before {
+  background: var(--footer-dot);
+  border-radius: 50%;
+  content: '';
+  flex: none;
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+.footerPath[data-path='tensai'] {
+  --footer-dot: #c3f331;
+}
+
+.footerPath[data-path='conan'] {
+  --footer-dot: #d94f2b;
+}
+
+.footerOutbound {
+  font-size: 0.85rem;
+  padding-left: 1rem;
+}
+
+.footerBase {
+  align-items: center;
+  border-top: 1px solid var(--brand-line-dark);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  gap: 0.5rem 1.5rem;
   grid-column: 1 / -1;
-  padding-top: 1.25rem;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.copyright {
+  margin: 0;
+}
+
+.footerUtility {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--brand-line-dark);
+  text-underline-offset: 0.3em;
+}
+
+.cinemaFooter a:focus-visible {
+  outline: var(--brand-focus-ring-dark);
+  outline-offset: var(--brand-focus-offset);
 }
 
 .siteShell [data-motion-action],
@@ -628,8 +864,7 @@
     min-height: 64px;
   }
 
-  .desktopNav,
-  .chapterNav {
+  .desktopNav {
     display: none;
   }
 
@@ -638,12 +873,23 @@
   }
 
   .cinemaFooter {
-    align-items: start;
     grid-template-columns: 1fr;
   }
+}
 
-  .cinemaFooter nav {
-    grid-template-columns: 1fr;
+@media (min-width: 640px) {
+  .pathSwitch {
+    display: flex;
+  }
+}
+
+@media (max-width: 639px) {
+  .footerColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footerColumn:first-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -670,7 +916,8 @@
 
   .cinemaHeader,
   .cinemaHeaderInner,
-  .chapterNav a::after {
+  .pathSwitch a,
+  .moreTrigger svg {
     transition: none;
   }
 

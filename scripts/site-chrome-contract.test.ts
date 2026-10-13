@@ -13,54 +13,69 @@ async function readProjectFile(path: string) {
   }
 }
 
-test('primary and homepage chapter navigation expose the complete route contract', async () => {
-  const { getPrimaryNavigation, homepageChapterNavigation } = await import(
-    '../components/site-chrome/site-navigation'
-  )
-  const home = await readProjectFile('components/home-cinema/HomeCinema.tsx')
-
-  assert.deepEqual(getPrimaryNavigation(false), [
-    { href: '/about', label: 'Câu chuyện' },
-    { href: '/library', label: 'Thư viện' },
-    { href: '/experiences', label: 'Trải nghiệm' },
-    { href: '/diagnostic', label: 'Chẩn đoán' },
-  ])
-  assert.deepEqual(
-    homepageChapterNavigation.map(({ href }) => href),
-    ['#story', '#mirror', '#proof', '#method', '#paths', '#conan'],
-  )
-  for (const { section } of homepageChapterNavigation) {
-    assert.match(
-      home,
-      new RegExp(`<section[^>]*id=["']${section}["'][^>]*data-home-section`),
-      section,
-    )
-  }
-})
-
-test('navigation promotes real experiences and hides gated Learn cleanly', async () => {
-  const { getPrimaryNavigation, secondaryNavigation } = await import(
+test('two-path navigation exposes the path switch, about link and the more list', async () => {
+  const { pathNavigation, aboutNavigation, getMoreNavigation } = await import(
     '../components/site-chrome/site-navigation'
   )
 
-  assert.deepEqual(getPrimaryNavigation(false), [
-    { href: '/about', label: 'Câu chuyện' },
+  assert.deepEqual(pathNavigation, [
+    { href: '/tensai', label: 'Đi làm', path: 'tensai' },
+    { href: '/conan', label: 'Kinh doanh', path: 'conan' },
+  ])
+  assert.deepEqual(aboutNavigation, { href: '/about', label: 'Về Thông' })
+  assert.deepEqual(getMoreNavigation(false), [
     { href: '/library', label: 'Thư viện' },
     { href: '/experiences', label: 'Trải nghiệm' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
+    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
   ])
-  assert.deepEqual(getPrimaryNavigation(true), [
-    { href: '/about', label: 'Câu chuyện' },
+  assert.deepEqual(getMoreNavigation(true), [
     { href: '/library', label: 'Thư viện' },
     { href: '/experiences', label: 'Trải nghiệm' },
     { href: '/learn', label: 'Học' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
-  ])
-  assert.deepEqual(secondaryNavigation, [
-    { href: '/assets', label: 'Tài sản' },
     { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
-    { href: '/conanmaker/', label: 'Conan Maker' },
   ])
+})
+
+test('footer navigation keeps legacy destinations reachable and Conan Maker as a utility link', async () => {
+  const { footerExploreNavigation, footerUtilityNavigation, socialNavigation } = await import(
+    '../components/site-chrome/site-navigation'
+  )
+
+  assert.deepEqual(footerExploreNavigation, [
+    { href: '/about', label: 'Về Thông' },
+    { href: '/library', label: 'Thư viện' },
+    { href: '/blog', label: 'Bài viết' },
+    { href: '/experiences', label: 'Trải nghiệm' },
+    { href: '/diagnostic', label: 'Chẩn đoán' },
+    { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
+    { href: '/assets', label: 'Tài sản' },
+    { href: '/chat', label: 'Bàn hỏi' },
+  ])
+  assert.deepEqual(footerUtilityNavigation, [{ href: '/conanmaker/', label: 'Conan Maker' }])
+  assert.deepEqual(socialNavigation, [
+    { href: 'https://facebook.com/thongphan23', label: 'Facebook' },
+    { href: 'https://linkedin.com/in/thongphan', label: 'LinkedIn' },
+    { href: 'https://m.me/thongphan.88', label: 'Messenger' },
+  ])
+})
+
+test('site navigation drops the old chapter and primary/secondary lists', async () => {
+  const navigation = await import('../components/site-chrome/site-navigation')
+  const sources = await Promise.all(
+    ['SiteHeader.tsx', 'MobileMenu.tsx', 'SiteFooter.tsx', 'site-navigation.ts'].map((file) =>
+      readProjectFile(`components/site-chrome/${file}`),
+    ),
+  )
+
+  for (const removed of ['homepageChapterNavigation', 'primaryNavigation', 'secondaryNavigation', 'getPrimaryNavigation']) {
+    assert.equal(removed in navigation, false, removed)
+    for (const source of sources) assert.doesNotMatch(source, new RegExp(removed))
+  }
+  for (const source of sources) {
+    assert.doesNotMatch(source, /Biến chuyên môn thật thành tài sản|AI PHẢI RA TIỀN/i)
+  }
 })
 
 test('unified shell is route-mode themed while legacy routes keep their old shell', async () => {
@@ -76,9 +91,10 @@ test('unified shell is route-mode themed while legacy routes keep their old shel
   assert.match(chrome, /<DefaultFooter\s*\/>/)
   assert.equal((chrome.match(/<main\b/g) ?? []).length, 1)
 
-  assert.match(header, /primaryNavigation\.map/)
-  assert.match(header, /homepageChapterNavigation\.map/)
-  assert.match(header, /pathname === '\/'/)
+  assert.match(header, /pathNavigation\.map/)
+  assert.match(header, /aria-current=\{pathname === link\.href \? 'page' : undefined\}/)
+  assert.match(header, /aboutNavigation/)
+  assert.match(header, /moreNavigation\.map/)
   assert.match(footer, /<footer\b/)
   assert.equal((footer.match(/<footer\b/g) ?? []).length, 1)
 })
@@ -125,10 +141,35 @@ test('mobile menu traps focus, closes with Escape, locks scroll, and restores fo
   assert.match(css, /\.menuDialog\s*\{[\s\S]*?min-height:\s*100dvh/)
 })
 
-test('every mobile menu control has a 44 by 44 pixel minimum target', async () => {
+test('mobile menu opens with the two path doors before About and the more list', async () => {
+  const menu = await readProjectFile('components/site-chrome/MobileMenu.tsx')
+
+  const pathIndex = menu.indexOf('pathNavigation.map')
+  const aboutIndex = menu.indexOf('aboutNavigation.href')
+  const moreIndex = menu.indexOf('moreNavigation.map')
+  assert.ok(pathIndex > 0, 'menu renders pathNavigation')
+  assert.ok(aboutIndex > pathIndex, 'path doors come before About')
+  assert.ok(moreIndex > aboutIndex, 'About comes before the more list')
+  assert.match(menu, /Tôi \{link\.label\.toLowerCase\(\)\}/)
+  assert.match(menu, /PATH_LABELS\[link\.path\]/)
+  assert.doesNotMatch(menu, /conanmaker/)
+})
+
+test('header more menu is a disclosure that closes on Escape and outside pointerdown', async () => {
+  const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
+
+  assert.match(header, /aria-controls="site-more-menu"/)
+  assert.match(header, /aria-expanded=\{moreOpen\}/)
+  assert.match(header, /id="site-more-menu"/)
+  assert.match(header, /event\.key === 'Escape'[\s\S]*?moreTriggerRef\.current\?\.focus\(\)/)
+  assert.match(header, /addEventListener\('pointerdown'/)
+  assert.match(header, /removeEventListener\('pointerdown'/)
+})
+
+test('every header and menu control has a 44 by 44 pixel minimum target', async () => {
   const css = await readProjectFile('components/site-chrome/SiteChrome.module.css')
 
-  for (const selector of ['menuTrigger', 'menuClose', 'mobileNav a', 'mobileSecondaryNav a', 'mobileChapterNav a']) {
+  for (const selector of ['menuTrigger', 'menuClose', 'mobilePathNav a', 'mobileNav a', 'moreTrigger', 'moreMenu a', 'pathSwitch a']) {
     const escapedSelector = selector.replace('.', '\\.').replace(' ', '\\s+')
     const rule = new RegExp(`\\.${escapedSelector}\\s*\\{[\\s\\S]*?\\}`, 'i')
     const match = css.match(rule)?.[0] ?? ''
@@ -223,15 +264,14 @@ test('site chrome uses only direct Lucide menu, close, and arrow icons', async (
   assert.doesNotMatch(source, /\b(?:Search|Home|BookOpen|Sparkles|User)\b/)
 })
 
-test('standalone Conan Maker links preserve their canonical trailing slash', async () => {
-  const header = await readProjectFile('components/site-chrome/SiteHeader.tsx')
-  const sources = await Promise.all([
-    readProjectFile('components/site-chrome/MobileMenu.tsx'),
-    readProjectFile('components/site-chrome/SiteFooter.tsx'),
-  ])
+test('footer keeps four blocks with the guide tagline and a plain Conan Maker anchor', async () => {
+  const footer = await readProjectFile('components/site-chrome/SiteFooter.tsx')
 
-  assert.doesNotMatch(header, /link\.href === '\/conanmaker\/'/)
-  for (const source of sources) {
-    assert.match(source, /link\.href === '\/conanmaker\/'[\s\S]*?<a[\s\S]*?href=\{link\.href\}/)
-  }
+  assert.match(footer, /Người dẫn đường cho người đi làm và người kinh doanh trong kỷ nguyên AI\./)
+  for (const heading of ['Hai con đường', 'Khám phá', 'Kết nối']) assert.match(footer, new RegExp(heading))
+  assert.match(footer, /kind="door"[\s\S]*?placement="footer"/)
+  assert.match(footer, /kind="outbound"[\s\S]*?placement="footer"/)
+  assert.match(footer, /footerExploreNavigation\.map/)
+  assert.match(footer, /socialNavigation\.map[\s\S]*?rel="noopener noreferrer"/)
+  assert.match(footer, /footerUtilityNavigation\.map[\s\S]*?<a[\s\S]*?href=\{link\.href\}/)
 })

@@ -111,7 +111,7 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
       {isUnified ? <MotionAtmosphere pathname={pathname} mode={mode} /> : null}
       {isUnified ? <SiteHeader mode={mode} pathname={pathname} /> : <DefaultHeader />}
       <main className={isUnified ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
-      {isUnified ? <SiteFooter mode={mode} /> : <DefaultFooter />}
+      {isUnified ? <SiteFooter mode={mode} pathname={pathname} /> : <DefaultFooter />}
     </div>
   )
 }

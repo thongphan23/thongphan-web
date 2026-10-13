@@ -65,24 +65,19 @@ test('Learn routes ship discovery, diagnostic, free entry and three static cours
   assert.match(course, /notFound\(\)/)
 })
 
-test('Learn keeps its route mode while primary navigation hides it until release', async () => {
-  const [{ routeModeForPath }, { getPrimaryNavigation, secondaryNavigation }] = await Promise.all([
+test('Learn keeps its route mode while the more menu hides it until release', async () => {
+  const [{ routeModeForPath }, { getMoreNavigation }] = await Promise.all([
     import('../lib/site-route-mode'),
     import('../components/site-chrome/site-navigation'),
   ])
 
   assert.equal(routeModeForPath('/learn'), 'learning-dossier')
   assert.equal(routeModeForPath('/learn/diagnostic'), 'learning-dossier')
-  assert.deepEqual(getPrimaryNavigation(false), [
-    { href: '/about', label: 'Câu chuyện' },
+  assert.deepEqual(getMoreNavigation(false), [
     { href: '/library', label: 'Thư viện' },
     { href: '/experiences', label: 'Trải nghiệm' },
     { href: '/diagnostic', label: 'Chẩn đoán' },
-  ])
-  assert.equal(getPrimaryNavigation(true).filter(({ href }) => href === '/learn').length, 1)
-  assert.deepEqual(secondaryNavigation, [
-    { href: '/assets', label: 'Tài sản' },
     { href: '/brain2/21-ngay', label: '21 ngày Brain2' },
-    { href: '/conanmaker/', label: 'Conan Maker' },
   ])
+  assert.equal(getMoreNavigation(true).filter(({ href }) => href === '/learn').length, 1)
 })

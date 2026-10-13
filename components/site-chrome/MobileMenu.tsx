@@ -3,21 +3,23 @@
 import Link from 'next/link'
 import { X } from 'lucide-react'
 import { useCallback, useEffect, useRef, type RefObject } from 'react'
+import PathLink from '@/components/two-path/PathLink'
+import { PATH_LABELS } from '@/lib/two-path-links'
 import { resolveMenuKeyAction } from './mobile-menu-focus'
-import { homepageChapterNavigation, primaryNavigation, secondaryNavigation } from './site-navigation'
+import { aboutNavigation, moreNavigation, pathNavigation } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
 type MobileMenuProps = {
   open: boolean
   onClose: () => void
-  showHomepageChapters: boolean
+  pathname: string
   triggerRef: RefObject<HTMLButtonElement | null>
 }
 
 export default function MobileMenu({
   open,
   onClose,
-  showHomepageChapters,
+  pathname,
   triggerRef,
 }: MobileMenuProps) {
   const dialogRef = useRef<HTMLDivElement>(null)
@@ -87,34 +89,42 @@ export default function MobileMenu({
           </button>
         </div>
 
+        <nav className={styles.mobilePathNav} aria-label="Hai con đường">
+          {pathNavigation.map((link) => (
+            <PathLink
+              key={link.href}
+              path={link.path}
+              kind="door"
+              placement="nav"
+              data-path={link.path}
+              aria-current={pathname === link.href ? 'page' : undefined}
+              onClick={closeMenu}
+            >
+              <span>Tôi {link.label.toLowerCase()}</span>{' '}
+              <span>{PATH_LABELS[link.path]}</span>
+            </PathLink>
+          ))}
+        </nav>
+
         <nav className={styles.mobileNav} aria-label="Điều hướng chính trên di động">
-          {primaryNavigation.map((link, index) => (
-            <Link key={link.href} href={link.href} onClick={closeMenu}>
-              <span>0{index + 1}</span>
+          <Link
+            href={aboutNavigation.href}
+            aria-current={pathname === aboutNavigation.href ? 'page' : undefined}
+            onClick={closeMenu}
+          >
+            {aboutNavigation.label}
+          </Link>
+          {moreNavigation.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={pathname === link.href ? 'page' : undefined}
+              onClick={closeMenu}
+            >
               {link.label}
             </Link>
           ))}
         </nav>
-
-        <nav className={styles.mobileSecondaryNav} aria-label="Điểm đến mở rộng">
-          {secondaryNavigation.map((link) =>
-            link.href === '/conanmaker/' ? (
-              <a key={link.href} href={link.href} onClick={closeMenu}>{link.label}</a>
-            ) : (
-              <Link key={link.href} href={link.href} onClick={closeMenu}>{link.label}</Link>
-            ),
-          )}
-        </nav>
-
-        {showHomepageChapters ? (
-          <nav className={styles.mobileChapterNav} aria-label="Các chương trên trang chủ">
-            {homepageChapterNavigation.map((link) => (
-              <Link key={link.href} href={link.href} onClick={closeMenu}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        ) : null}
       </div>
     </div>
   )

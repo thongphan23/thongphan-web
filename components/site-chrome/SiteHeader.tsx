@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { Menu } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { ChevronDown, Menu } from 'lucide-react'
+import { useEffect, useRef, useState, type FocusEvent } from 'react'
+import PathLink from '@/components/two-path/PathLink'
 import type { SiteRouteMode } from '@/lib/site-route-mode'
 import MobileMenu from './MobileMenu'
-import { homepageChapterNavigation, primaryNavigation } from './site-navigation'
+import { aboutNavigation, moreNavigation, pathNavigation, pathRouteFor } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
 type SiteHeaderProps = {
@@ -15,11 +16,14 @@ type SiteHeaderProps = {
 
 export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('story')
+  // Remember which page the more menu was opened on, so a route change closes it.
+  const [moreOpenFor, setMoreOpenFor] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const triggerRef = useRef<HTMLButtonElement>(null)
-  const isHomepage = pathname === '/'
+  const moreRef = useRef<HTMLDivElement>(null)
+  const moreTriggerRef = useRef<HTMLButtonElement>(null)
   const isLibrary = pathname.startsWith('/library')
+  const moreOpen = moreOpenFor === pathname
 
   useEffect(() => {
     let frame = 0
@@ -42,29 +46,36 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   }, [])
 
   useEffect(() => {
-    if (!isHomepage) return
+    if (!moreOpen) return
 
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-home-section]'))
-    if (!sections.length) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMoreOpenFor(null)
+        moreTriggerRef.current?.focus()
+      }
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible?.target.id) setActiveSection(visible.target.id)
-      },
-      { rootMargin: '-18% 0px -68%', threshold: [0, 0.2, 0.55] },
-    )
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!moreRef.current?.contains(event.target as Node)) setMoreOpenFor(null)
+    }
 
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [isHomepage])
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('pointerdown', handlePointerDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('pointerdown', handlePointerDown)
+    }
+  }, [moreOpen])
+
+  const closeMoreOnFocusLeave = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setMoreOpenFor(null)
+  }
 
   return (
     <header
       className={styles.cinemaHeader}
       data-route-mode={mode}
+      data-path-route={pathRouteFor(pathname)}
       data-header-scrolled={scrolled}
     >
       <div className={styles.cinemaHeaderInner}>
@@ -81,14 +92,57 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
           ) : 'THÔNG PHAN'}
         </Link>
 
+        <nav className={styles.pathSwitch} aria-label="Hai con đường">
+          {pathNavigation.map((link) => (
+            <PathLink
+              key={link.href}
+              path={link.path}
+              kind="door"
+              placement="nav"
+              className={styles.pathLink}
+              aria-current={pathname === link.href ? 'page' : undefined}
+              data-path={link.path}
+            >
+              {link.label}
+            </PathLink>
+          ))}
+        </nav>
+
         <nav className={styles.desktopNav} aria-label="Điều hướng chính">
-          <ul>
-            {primaryNavigation.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
+          <Link
+            href={aboutNavigation.href}
+            className={styles.aboutLink}
+            aria-current={pathname === aboutNavigation.href ? 'page' : undefined}
+          >
+            {aboutNavigation.label}
+          </Link>
+
+          <div className={styles.more} ref={moreRef} onBlur={closeMoreOnFocusLeave}>
+            <button
+              ref={moreTriggerRef}
+              type="button"
+              className={styles.moreTrigger}
+              aria-expanded={moreOpen}
+              aria-controls="site-more-menu"
+              onClick={() => setMoreOpenFor(moreOpen ? null : pathname)}
+            >
+              Thêm
+              <ChevronDown aria-hidden="true" size={16} strokeWidth={1.8} />
+            </button>
+            <ul id="site-more-menu" className={styles.moreMenu} hidden={!moreOpen}>
+              {moreNavigation.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    onClick={() => setMoreOpenFor(null)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
 
         <button
@@ -105,25 +159,10 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
         </button>
       </div>
 
-      {isHomepage ? (
-        <nav className={styles.chapterNav} aria-label="Các chương trên trang chủ">
-          {homepageChapterNavigation.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={activeSection === link.section ? styles.activeLink : undefined}
-              aria-current={activeSection === link.section ? 'location' : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      ) : null}
-
       <MobileMenu
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
-        showHomepageChapters={isHomepage}
+        pathname={pathname}
         triggerRef={triggerRef}
       />
     </header>

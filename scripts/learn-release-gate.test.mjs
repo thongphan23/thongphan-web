@@ -22,13 +22,13 @@ test('Learn stays fail-closed until its independent PWA is released', () => {
 })
 
 test('disabled Learn is absent from discovery and recommendations', async () => {
-  const { getPrimaryNavigation } = await import('../components/site-chrome/site-navigation.ts')
+  const { getMoreNavigation } = await import('../components/site-chrome/site-navigation.ts')
   const sitemap = read('app/sitemap.ts')
   const journey = read('lib/site-journey.ts')
   const diagnostic = read('app/diagnostic/diagnostic-model.ts')
 
-  assert.equal(getPrimaryNavigation(false).some(({ href }) => href === '/learn'), false)
-  assert.equal(getPrimaryNavigation(true).filter(({ href }) => href === '/learn').length, 1)
+  assert.equal(getMoreNavigation(false).some(({ href }) => href === '/learn'), false)
+  assert.equal(getMoreNavigation(true).filter(({ href }) => href === '/learn').length, 1)
   assert.doesNotMatch(sitemap, /['"]\/learn(?:\/|['"])/)
   assert.doesNotMatch(journey, /href: ['"]\/learn['"]/)
   assert.doesNotMatch(diagnostic, /href: ['"]\/learn['"]/)
