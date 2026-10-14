@@ -12,28 +12,41 @@
   --path-accent: #d94f2b;
 }
 
-/* Hero doors: two photo cards that open the branch pages. */
+/* Hero doors: two glass cards on the home stage. Wide screens pin them to the bottom corners
+   (Tensai left, Conan right, matching the pools of light); tablets set them in a row under the
+   question; phones drop the photo and keep two compact text cards side by side. */
 
 .doors {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(1.5rem, 3.5svh, 2.5rem);
+  justify-content: center;
+  margin-top: clamp(1.25rem, 3svh, 2rem);
 }
 
 .door {
   --door-accent: var(--brand-paper);
-  aspect-ratio: 4 / 5;
-  background: var(--brand-ink-raised);
-  border: 1px solid var(--brand-line-dark);
-  border-radius: 6px;
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  align-items: center;
+  backdrop-filter: blur(18px) saturate(1.15);
+  background: rgba(18, 17, 15, 0.58);
+  border: 1px solid rgba(232, 223, 207, 0.16);
+  border-radius: 14px;
+  box-sizing: border-box;
   color: var(--brand-paper);
-  display: block;
+  display: grid;
+  gap: 0 1rem;
+  grid-template-columns: 4.75rem minmax(0, 1fr);
   isolation: isolate;
   overflow: hidden;
+  padding: 0.625rem 0.875rem 0.625rem 0.625rem;
   position: relative;
+  text-align: left;
   text-decoration: none;
-  transition: border-color var(--brand-motion-fast) var(--brand-motion-ease);
+  transition:
+    background-color 500ms var(--brand-motion-ease),
+    border-color 500ms var(--brand-motion-ease);
+  width: var(--stage-door-w, 19rem);
 }
 
 .door[data-path-door='tensai'] {
@@ -44,8 +57,10 @@
   --door-accent: #d94f2b;
 }
 
-.door:hover {
-  border-color: var(--door-accent);
+.door:hover,
+.door:focus-visible {
+  background: color-mix(in srgb, var(--door-accent) 12%, rgba(18, 17, 15, 0.66));
+  border-color: color-mix(in srgb, var(--door-accent) 70%, transparent);
   color: var(--brand-paper);
 }
 
@@ -55,32 +70,38 @@
 }
 
 .doorPhoto {
-  height: 100%;
-  inset: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  display: block;
+  filter: var(--brand-photo-grade);
+  height: auto;
   object-fit: cover;
-  position: absolute;
   transition: transform 600ms var(--brand-motion-ease);
   width: 100%;
-  z-index: -2;
 }
 
+/* A thin accent line along the bottom edge; it fills from the left on hover. */
 .doorShade {
-  background: linear-gradient(180deg, rgba(7, 7, 6, 0) 36%, rgba(7, 7, 6, 0.45) 100%);
-  inset: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-/* The text block carries its own ink veil, so the label stays readable however tall the copy runs. */
-.doorText {
-  background: linear-gradient(180deg, rgba(7, 7, 6, 0) 0, rgba(7, 7, 6, 0.76) 2.75rem, rgba(7, 7, 6, 0.9) 100%);
+  background: var(--door-accent);
   bottom: 0;
-  display: grid;
-  gap: 0.3rem;
+  height: 2px;
   left: 0;
-  padding: 3.25rem clamp(0.85rem, 1.6vw, 1.15rem) clamp(0.85rem, 1.6vw, 1.15rem);
   position: absolute;
   right: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 700ms var(--brand-motion-ease);
+}
+
+.door:hover .doorShade,
+.door:focus-visible .doorShade {
+  transform: scaleX(1);
+}
+
+.doorText {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
 }
 
 .doorProduct {
@@ -89,10 +110,12 @@
   display: flex;
   gap: 0.5rem;
   font-family: var(--font-be-vietnam);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.2;
+  /* Leaves room for the arrow in the top-right corner. */
+  padding-right: 1.75rem;
   text-transform: uppercase;
 }
 
@@ -109,22 +132,24 @@
 .doorLabel {
   display: block;
   font-family: var(--font-cormorant);
-  font-size: clamp(1.25rem, 1.7vw, 1.6rem);
+  font-size: 1.45rem;
   font-weight: 600;
-  line-height: 1.06;
+  line-height: 1.02;
+  text-wrap: balance;
 }
 
 .doorDescription {
-  color: color-mix(in srgb, var(--brand-paper) 80%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 74%, transparent);
   display: block;
-  font-size: 0.84rem;
-  line-height: 1.45;
+  font-size: 0.8125rem;
+  line-height: 1.4;
 }
 
 .doorArrow {
   color: var(--door-accent);
-  display: block;
-  margin-top: 0.3rem;
+  position: absolute;
+  right: 0.9rem;
+  top: 0.9rem;
   transition: transform var(--brand-motion-fast) var(--brand-motion-ease);
 }
 
@@ -140,7 +165,7 @@
 
 /* Pointer light that follows the tilt (fine pointers only; the engine sets --tilt-x/y). */
 .doorGlare {
-  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 30%), rgba(255, 252, 240, 0.32), transparent 58%);
+  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 30%), rgba(255, 252, 240, 0.2), transparent 62%);
   inset: 0;
   mix-blend-mode: soft-light;
   opacity: 0;
@@ -154,36 +179,49 @@
   opacity: 1;
 }
 
-@media (min-width: 768px) {
+/* Wide screens: the nav spans the stage and parks one door in each bottom corner. */
+@media (min-width: 1200px) {
   .doors {
-    grid-template-columns: repeat(2, clamp(11.5rem, 29svh, 18rem));
+    align-items: stretch;
+    bottom: clamp(1.5rem, 4svh, 2.75rem);
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    left: var(--brand-space-inline);
+    margin: 0;
+    pointer-events: none;
+    position: absolute;
+    right: var(--brand-space-inline);
+  }
+
+  .door {
+    pointer-events: auto;
   }
 }
 
-/* Intro: the doors rise out of a clip after the headline has started. */
+/* Intro: the doors rise out of a clip once the question has started. */
 @media (prefers-reduced-motion: no-preference) {
   :global(html.motion) .door {
     animation: doorRise 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    animation-delay: 0.95s;
+    animation-delay: 1.15s;
   }
 
   :global(html.motion) .door + .door {
-    animation-delay: 1.08s;
+    animation-delay: 1.27s;
   }
 
   :global(html.motion) .door .doorPhoto {
-    animation: doorSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.95s backwards;
+    animation: doorSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) 1.15s backwards;
   }
 }
 
 @keyframes doorRise {
   from {
-    clip-path: inset(100% 0 0 0 round 6px);
-    translate: 0 2.5rem;
+    clip-path: inset(100% 0 0 0 round 14px);
+    translate: 0 2rem;
   }
 
   to {
-    clip-path: inset(0 0 0 0 round 6px);
+    clip-path: inset(0 0 0 0 round 14px);
     translate: 0 0;
   }
 }
@@ -195,8 +233,52 @@
 }
 
 @media (max-width: 767px) {
-  .doorDescription {
+  .doors {
+    display: grid;
+    gap: 0.625rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .door {
+    align-content: space-between;
+    align-items: stretch;
+    gap: 0.85rem;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 6.5rem;
+    padding: 0.85rem 0.85rem 0.8rem;
+    width: auto;
+  }
+
+  .doorPhoto,
+  .doorDescription,
+  .doorProduct::before {
     display: none;
+  }
+
+  .doorProduct {
+    letter-spacing: 0.12em;
+    padding-right: 0;
+  }
+
+  /* Without the mark, the branch colour moves to the card's top edge. */
+  .doorShade {
+    bottom: auto;
+    top: 0;
+    transform: scaleX(0.18);
+  }
+
+  .doorText {
+    align-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .doorLabel {
+    font-size: 1.28rem;
+  }
+
+  .doorArrow {
+    position: static;
   }
 }
 
@@ -483,6 +565,7 @@
 
 .letterPortrait img {
   display: block;
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -545,10 +628,10 @@
 }
 
 .signatureRole {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  opacity: 0.68;
+  opacity: 0.72;
   text-transform: uppercase;
 }
 
@@ -635,6 +718,7 @@
 
 .fieldPhotoFrame img {
   display: block;
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -680,12 +764,12 @@
 .fieldStatLabel {
   flex-basis: 100%;
   font-family: var(--font-be-vietnam);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.3;
   margin-top: 0.9rem;
-  opacity: 0.7;
+  opacity: 0.74;
   text-transform: uppercase;
 }
 
@@ -709,6 +793,23 @@
   .fieldGrid {
     align-items: start;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+
+  /* The photo stays in view while the two claims scroll past it. */
+  .fieldPhoto {
+    position: sticky;
+    top: 6.5rem;
+  }
+
+  .fieldPhotoFrame {
+    aspect-ratio: auto;
+    height: min(68svh, 46rem);
+  }
+
+  .fieldCards {
+    padding-top: clamp(1rem, 4svh, 3rem);
+    gap: clamp(4rem, 12svh, 8rem);
+    padding-bottom: clamp(2rem, 8svh, 6rem);
   }
 }
 
@@ -755,13 +856,13 @@
 }
 
 .marqueeWord {
-  color: color-mix(in srgb, var(--brand-paper) 62%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
   font-style: italic;
   font-weight: 400;
 }
 
 .marqueeProduct {
-  -webkit-text-stroke: 1.2px var(--brand-paper);
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--brand-paper) 88%, transparent);
   color: transparent;
   font-weight: 600;
 }
@@ -864,6 +965,7 @@
 
 .reelMedia img {
   display: block;
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -998,12 +1100,22 @@
   transform-origin: 0 50%;
 }
 
-/* Gallery: an editorial wall. A wide lead photo, then frames of different sizes on a 12-column grid. */
+/* Gallery: an editorial wall. A wide lead photo, then three columns that drift apart as they pass
+   (data-speed on the columns, wide screens only). */
 
 .gallery {
   display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.galleryColumns {
+  display: grid;
   gap: clamp(2rem, 5vw, 3rem);
-  grid-template-columns: minmax(0, 1fr);
+}
+
+.galleryColumn {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1027,6 +1139,7 @@
 
 .galleryMedia img {
   aspect-ratio: var(--gallery-ratio, 4 / 3);
+  filter: var(--brand-photo-grade);
   height: auto;
   object-fit: cover;
 }
@@ -1034,7 +1147,7 @@
 .galleryFigure figcaption {
   color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
   display: flex;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   gap: 0.9rem;
   line-height: 1.5;
   padding-top: 0.9rem;
@@ -1056,7 +1169,7 @@
 
 .galleryKind {
   color: var(--brand-paper);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1070,49 +1183,43 @@
   .galleryLead {
     --gallery-ratio: 16 / 9;
   }
+
+  /* Mid widths: each column's pair sits side by side, so the wall reads as rows of two. */
+  .galleryColumn {
+    align-items: start;
+    column-gap: clamp(1.25rem, 3vw, 2.5rem);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-@media (min-width: 1024px) {
-  .gallery {
-    align-items: start;
-    column-gap: clamp(1.25rem, 2.4vw, 2.5rem);
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    row-gap: clamp(3.5rem, 7vw, 7rem);
-  }
-
+/* Same breakpoint as the engine's DESKTOP, where data-speed-wide columns start to drift. */
+@media (min-width: 900px) {
   .galleryLead {
     --gallery-ratio: 21 / 9;
-    grid-column: 1 / -1;
   }
 
-  .gallery > li:nth-child(2) {
-    grid-column: 1 / span 7;
+  .galleryColumns {
+    align-items: start;
+    column-gap: clamp(1.5rem, 2.6vw, 2.75rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .gallery > li:nth-child(3) {
-    --gallery-ratio: 4 / 5;
-    grid-column: 9 / span 4;
-    margin-top: clamp(6rem, 12vw, 12rem);
+  .galleryColumn {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(3rem, 6vw, 5.5rem);
   }
 
-  .gallery > li:nth-child(4) {
-    --gallery-ratio: 4 / 5;
-    grid-column: 2 / span 4;
+  .galleryColumn .galleryFigure {
+    --gallery-ratio: var(--gallery-ratio-wide, 4 / 5);
   }
 
-  .gallery > li:nth-child(5) {
-    grid-column: 7 / span 6;
-    margin-top: clamp(4rem, 9vw, 9rem);
+  /* Staggered starts, so the three columns never line up even before they drift. */
+  .galleryColumn:nth-child(2) {
+    margin-top: clamp(5rem, 10vw, 9rem);
   }
 
-  .gallery > li:nth-child(6) {
-    grid-column: 1 / span 6;
-  }
-
-  .gallery > li:nth-child(7) {
-    --gallery-ratio: 4 / 5;
-    grid-column: 8 / span 4;
-    margin-top: clamp(5rem, 10vw, 10rem);
+  .galleryColumn:nth-child(3) {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
   }
 }
 
@@ -1145,6 +1252,7 @@
 
 .mentorPhoto {
   aspect-ratio: 4 / 5;
+  filter: var(--brand-photo-grade);
   height: auto;
   object-fit: cover;
 }
@@ -1277,6 +1385,7 @@
 }
 
 .guideImage img {
+  filter: var(--brand-photo-grade);
   object-fit: cover;
 }
 

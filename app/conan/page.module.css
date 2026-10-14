@@ -62,8 +62,12 @@
   position: absolute;
 }
 
-/* Load choreography: a lacquer sheet and the ink lift off the photo while it settles from a zoom. */
-.heroCurtain {
+/* Load choreography: the room is first seen through the letters of "Conan" cut out of an ink
+   sheet; the camera then flies through the stem of the a (transform-origin) until the sheet is
+   gone. The word is the Cormorant Garamond italic 600 outline (viewBox 40 -660 2340 700), so it
+   needs no font load. The origin is that stem's thickest point, (1356, -348) in the viewBox,
+   measured from the centre of a word var(--mask-w) wide. */
+.heroMask {
   display: none;
   inset: 0;
   pointer-events: none;
@@ -71,25 +75,39 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  :global(html.motion) .heroCurtain {
-    animation: curtainLift 1.3s cubic-bezier(0.76, 0, 0.24, 1) 0.15s forwards;
-    background: linear-gradient(180deg, var(--brand-ink) 0 86%, var(--path-cta-bg) 86% 100%);
+  :global(html.motion) .heroMask {
+    --mask-w: min(84vw, 150svh);
+    --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E");
+    animation:
+      maskZoom 1.3s cubic-bezier(0.7, 0, 0.84, 0) 0.6s forwards,
+      maskFade 0.35s linear 1.6s forwards;
+    background: var(--brand-ink);
     display: block;
-    transform-origin: 50% 0%;
+    -webkit-mask: var(--word) center / var(--mask-w) auto no-repeat, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: var(--word) center / var(--mask-w) auto no-repeat exclude, linear-gradient(#000 0 0);
+    transform-origin: calc(50% + var(--mask-w) * 0.0624) calc(50% - var(--mask-w) * 0.0162);
+    will-change: transform;
   }
 
   :global(html.motion) .heroPicture {
-    animation: photoSettle 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+    animation: photoSettle 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
   }
 
   :global(html.motion) .heroShade {
-    animation: shadeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+    animation: shadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s backwards;
   }
 }
 
-@keyframes curtainLift {
+@keyframes maskZoom {
   to {
-    scale: 1 0;
+    transform: scale(48);
+  }
+}
+
+@keyframes maskFade {
+  to {
+    opacity: 0;
     visibility: hidden;
   }
 }
@@ -102,7 +120,7 @@
 
 @keyframes shadeIn {
   from {
-    opacity: 0.35;
+    opacity: 0;
   }
 }
 
@@ -110,7 +128,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1360px;
-  padding: 6rem var(--brand-space-inline) clamp(2.5rem, 6vw, 4.5rem);
+  padding: 6rem var(--brand-space-inline) max(3rem, 6svh);
   position: relative;
   width: 100%;
 }
@@ -120,7 +138,7 @@
   align-items: center;
   color: var(--brand-paper);
   display: flex;
-  font-size: 0.74rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   gap: 0.6rem;
   letter-spacing: 0.16em;
@@ -141,7 +159,7 @@
 .title {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.9rem, 1rem + 5.2vw, 6.6rem);
+  font-size: clamp(2.9rem, min(1rem + 5.2vw, 10.5svh), 6.6rem);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 0.98;
@@ -381,10 +399,31 @@
   max-width: 34rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 999px) {
   .audiences {
     column-gap: clamp(2rem, 5vw, 5rem);
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Wide screens: the title holds still on the left while the two answers pass on the right. */
+@media (min-width: 1000px) {
+  .audiencesGrid {
+    align-items: start;
+    column-gap: clamp(3rem, 6vw, 7rem);
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .stickyHead {
+    margin-bottom: 0;
+    position: sticky;
+    top: 18svh;
+  }
+
+  .audiences {
+    gap: clamp(4rem, 8vw, 7rem);
+    padding-top: clamp(4rem, 10svh, 8rem);
   }
 }
 
@@ -501,9 +540,14 @@
   scroll-snap-align: start;
 }
 
+/* Numerals are outlined in paper; the one crossing the middle of the pinned track
+   (data-current, set by the engine) fills with lacquer. */
 .stageNumber {
-  -webkit-text-stroke: 1px var(--path-accent);
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--brand-paper) 55%, transparent);
   color: transparent;
+  transition:
+    color 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-text-stroke-color 600ms cubic-bezier(0.16, 1, 0.3, 1);
   display: block;
   font-family: var(--font-cormorant);
   font-size: clamp(6rem, 4rem + 8vw, 15rem);
@@ -511,6 +555,11 @@
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 0.8;
+}
+
+.stage[data-current] .stageNumber {
+  -webkit-text-stroke-color: var(--path-accent);
+  color: var(--path-accent);
 }
 
 .stageName {
@@ -561,6 +610,13 @@
 
   .journey:not([data-hscroll-active='true']) .stageNumber {
     font-size: clamp(5rem, 7vw, 7rem);
+  }
+
+  /* Five columns are narrow: the longest stage name must fit on one line without breaking a word. */
+  .journey:not([data-hscroll-active='true']) .stageName {
+    font-size: clamp(1.6rem, 0.9rem + 1.15vw, 2.3rem);
+    overflow-wrap: normal;
+    word-break: keep-all;
   }
 }
 
@@ -648,10 +704,11 @@
   }
 }
 
-/* Closing: the invitation, with the name sinking huge and faint into the foot of the page. */
+/* Closing: a sheet of paper laid over the ink (data-curtain), with the name sinking huge into its foot. */
 
 .closing {
-  border-top: 1px solid var(--brand-line-dark);
+  background: var(--brand-paper);
+  color: var(--brand-ink);
   overflow: hidden;
   padding: var(--brand-space-section) var(--brand-space-inline) clamp(8rem, 22vw, 18rem);
   position: relative;
@@ -663,6 +720,7 @@
 }
 
 .closingTitle {
+  color: var(--brand-ink);
   font-size: clamp(3rem, 1rem + 6vw, 7.5rem);
   line-height: 0.96;
   max-width: 12ch;
@@ -672,9 +730,20 @@
   margin-top: clamp(2rem, 4vw, 3rem);
 }
 
+.page[data-path] .closing .crossLink,
+.page[data-path] .closing .crossLink:hover {
+  color: var(--brand-ink);
+}
+
+.closing .primaryCta:focus-visible,
+.closing .crossLink:focus-visible {
+  outline: var(--brand-focus-ring-paper);
+}
+
+/* Ink on paper: the word sinks off the bottom edge straight into the ink footer below. */
 .closingMark {
   bottom: -0.2em;
-  color: var(--path-accent);
+  color: var(--brand-ink);
   font-family: var(--font-cormorant);
   font-size: clamp(9rem, 32vw, 30rem);
   font-style: italic;
@@ -682,7 +751,7 @@
   letter-spacing: -0.04em;
   line-height: 0.8;
   margin: 0;
-  opacity: 0.18;
+  opacity: 1;
   pointer-events: none;
   position: absolute;
   right: -0.04em;

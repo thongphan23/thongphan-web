@@ -1,5 +1,6 @@
+import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Star } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import JsonLd from '@/components/seo/JsonLd'
 import PathLink from '@/components/two-path/PathLink'
@@ -31,12 +32,25 @@ const titleTail = tensaiContent.title.slice(accentAt + accent.length).trimStart(
 
 export default function TensaiPage() {
   const { situations, courses, method, closing } = tensaiContent
+  // The hero screen is the Định vị map, so its callout quotes that course's own counts.
+  const mapCourse = courses.items.find((course) => course.name === 'Định vị') ?? courses.items[0]
   return (
     <div className={`${twoPath.branch} ${styles.page}`} data-path="tensai" data-motion-stage>
       <PathMemory path="tensai" />
       <JsonLd data={buildBranchPageStructuredData({ name: 'Tensai', description, pathname: '/tensai' })} />
 
-      <section className={styles.hero} aria-labelledby="tensai-title">
+      {/* The stage: the real app floats as a tilted screen that turns to face the reader as they
+          scroll (deviceStage in signatures.ts); 天才, the word Tensai comes from, stands beside it. */}
+      <section className={styles.hero} aria-labelledby="tensai-title" data-device-stage>
+        <p className={`${styles.kanji} intro-fade`} aria-hidden="true">
+          <span className={styles.kanjiChar} data-speed="0.12">
+            天
+          </span>
+          <span className={styles.kanjiChar} data-speed="0.26">
+            才
+          </span>
+          <span className={styles.kanjiGloss}>Tensai · thiên tài</span>
+        </p>
         <div className={styles.heroText} data-scroll-out="24">
           <p className={`${styles.eyebrow} intro-fade`}>{tensaiContent.eyebrow}</p>
           <h1 id="tensai-title" className={styles.title}>
@@ -68,22 +82,39 @@ export default function TensaiPage() {
           <p className={`${styles.launchNote} intro-fade`}>{tensaiContent.launchNote}</p>
         </div>
         <figure className={styles.heroFigure}>
-          <div className={`${styles.heroFrame} intro-clip`} data-tilt="3">
-            <TwoPathPhoto
-              id={tensaiContent.heroPhotoId}
-              priority
-              sizes="(max-width: 959px) 100vw, 720px"
-              className={styles.heroImage}
-            />
-            <span className={styles.heroGlare} aria-hidden="true" />
+          <span className={styles.heroGlow} aria-hidden="true" />
+          <div className={styles.device} data-device>
+            <div className={`${styles.heroFrame} intro-clip`} data-tilt="3">
+              <TwoPathPhoto
+                id={tensaiContent.heroPhotoId}
+                priority
+                sizes="(max-width: 959px) 100vw, 720px"
+                className={styles.heroImage}
+              />
+              <span className={styles.heroGlare} aria-hidden="true" />
+            </div>
           </div>
+          {/* data-speed moves the outer chip, so the intro runs on the inner one (GSAP folds a CSS
+              translate on the element it drives into its own transform). */}
+          <p className={`${styles.callout} ${styles.calloutCourse}`} aria-hidden="true" data-speed="-0.1">
+            <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
+              <span className={styles.calloutDot} />
+              Khóa {mapCourse.name} · {mapCourse.lessonCount} bài · {mapCourse.gateCount} màn vượt ải
+            </span>
+          </p>
+          <p className={`${styles.callout} ${styles.calloutGate}`} aria-hidden="true" data-speed="0.14">
+            <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.3s' } as CSSProperties}>
+              <Star size={16} strokeWidth={2.2} />
+              {tensaiContent.heroCallout}
+            </span>
+          </p>
           <figcaption className="intro-fade">{photo(tensaiContent.heroPhotoId).caption}</figcaption>
         </figure>
       </section>
 
-      <section className={styles.section} aria-labelledby="tensai-situations">
-        <div className={styles.inner}>
-          <div className={styles.sectionHead}>
+      <section className={`${styles.section} ${styles.situationsBand}`} aria-labelledby="tensai-situations" data-curtain>
+        <div className={`${styles.inner} ${styles.situationsGrid}`}>
+          <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
               01 — Tình huống
             </p>
@@ -165,8 +196,9 @@ export default function TensaiPage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="tensai-method">
-        <div className={`${styles.inner} ${styles.methodGrid}`}>
+      <section className={`${styles.section} ${styles.methodBand}`} aria-labelledby="tensai-method">
+        {/* Each step that reaches the middle of the screen swaps the sticky screen to its own crop. */}
+        <div className={`${styles.inner} ${styles.methodGrid}`} data-swap>
           <div className={styles.methodText}>
             <div className={styles.sectionHead}>
               <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -178,7 +210,7 @@ export default function TensaiPage() {
             </div>
             <ol className={styles.steps}>
               {method.steps.map((step, index) => (
-                <li key={step.title} className={styles.step} data-motion-reveal="drift">
+                <li key={step.title} className={styles.step} data-swap-step>
                   <span className={styles.stepNumber} aria-hidden="true">
                     {pad(index + 1)}
                   </span>
@@ -190,16 +222,52 @@ export default function TensaiPage() {
           </div>
           <figure className={styles.methodFigure}>
             <div className={styles.methodFrame} data-img-reveal="center">
-              <div data-reveal-media>
-                <TwoPathPhoto id={method.photoId} sizes="(max-width: 959px) 100vw, 620px" />
+              <div className={styles.swapLayers} data-reveal-media>
+                {method.frames.map((frame, index) => (
+                  <div key={`${frame.photoId}-${index}`} className={styles.swapLayer} data-swap-layer>
+                    <div
+                      className={styles.swapCanvas}
+                      style={
+                        {
+                          '--zoom': frame.zoom,
+                          '--origin': frame.origin,
+                          '--position': 'position' in frame ? frame.position : undefined,
+                        } as CSSProperties
+                      }
+                    >
+                      <TwoPathPhoto
+                        id={frame.photoId}
+                        sizes="(max-width: 959px) 100vw, 680px"
+                        decorative={index > 0}
+                      />
+                      <span
+                        className={styles.swapFocus}
+                        aria-hidden="true"
+                        style={{
+                          left: `${frame.focus.x}%`,
+                          top: `${frame.focus.y}%`,
+                          width: `${frame.focus.w}%`,
+                          height: `${frame.focus.h}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
+              <ol className={styles.swapProgress} aria-hidden="true">
+                {method.steps.map((step, index) => (
+                  <li key={step.title} data-swap-dot>
+                    <span>{pad(index + 1)}</span>
+                  </li>
+                ))}
+              </ol>
             </div>
-            <figcaption>{photo(method.photoId).caption}</figcaption>
+            <figcaption>{method.caption}</figcaption>
           </figure>
         </div>
       </section>
 
-      <section className={styles.closing} aria-labelledby="tensai-closing">
+      <section className={styles.closing} aria-labelledby="tensai-closing" data-curtain>
         <div className={`${styles.inner} ${styles.closingInner}`}>
           <h2 id="tensai-closing" className={styles.closingTitle} data-split>
             {closing.title}

@@ -35,7 +35,7 @@ const doors = [
 export const homeContent = {
   eyebrow: 'Thông Phan · người dẫn đường',
   title: 'AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ở phía nào?',
-  hero: { photoId: 'home-hero', mobilePhotoId: 'home-hero-mobile', scrollCue: 'Cuộn để đọc thư' },
+  hero: { photoId: 'home-stage-hero', mobilePhotoId: 'home-stage-hero-mobile', scrollCue: 'Cuộn để đọc thư' },
   doors,
   resume: { prefix: 'Lần trước bạn xem', action: 'Tiếp tục' },
   letter: {
@@ -103,6 +103,8 @@ export const tensaiContent = {
   secondaryCta: { label: 'Xem các khóa đang mở', href: '#khoa-hoc' },
   launchNote: 'Tensai mở từ 30/09/2026. Bạn là một trong những người học đầu tiên.',
   heroPhotoId: 'tensai-map',
+  // Read off the real map screen in the hero: one floats beside it as a callout.
+  heroCallout: 'Cứ 3 bài, một màn vượt ải.',
   situations: {
     title: 'Bạn có đang gặp một trong ba chuyện này?',
     items: [
@@ -158,7 +160,22 @@ export const tensaiContent = {
       { title: 'Thử ngay trong bài.', body: 'Bạn chạm, chọn, viết thử; sai thì sửa tiếp.' },
       { title: 'Vượt ải để biết mình làm được.', body: 'Cứ vài bài có một màn vượt ải với tình huống mới.' },
     ],
-    photoId: 'tensai-lesson',
+    // The sticky screen beside the steps: one real screen per step, pushed in a little toward the part
+    // the step is about, which a lime ring marks. `focus` is in % of the 940×867 frame before the
+    // push-in; the wider map is cover-cropped into it from its right edge (`position`) so the crop
+    // falls on the sidebar's edge instead of through a line of text.
+    frames: [
+      { photoId: 'tensai-lesson', zoom: 1, origin: '50% 0%', focus: { x: 7.5, y: 2.5, w: 58, h: 15 } },
+      { photoId: 'tensai-lesson', zoom: 1.16, origin: '50% 60%', focus: { x: 8, y: 46, w: 85, h: 25 } },
+      {
+        photoId: 'tensai-map',
+        zoom: 1.15,
+        origin: '100% 100%',
+        position: '100% 50%',
+        focus: { x: 67, y: 86.5, w: 23, h: 8.5 },
+      },
+    ],
+    caption: 'Màn hình thật của Tensai, chụp từ app ngày 01/10/2026.',
   },
   closing: {
     title: 'Bắt đầu bằng một bài ngắn.',

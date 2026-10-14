@@ -28,25 +28,41 @@ const titleQuestion = homeContent.title.slice(titleBreak + 1)
 export default function HomePage() {
   return (
     <div className={styles.page} data-motion-stage>
-      <section className={styles.hero} aria-labelledby="home-title">
-        <div className={styles.heroMedia}>
-          <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="2.2">
-            <HeroPicture id={homeContent.hero.photoId} mobileId={homeContent.hero.mobilePhotoId} />
-          </div>
-          <div className={styles.heroShade} aria-hidden="true" />
-          <div className={styles.heroCurtain} aria-hidden="true" />
+      {/* The stage: Thông stands in front of his own name. The engine (signatures.ts) moves the
+          layers and the light with the pointer and parts the name as the reader scrolls away. */}
+      <section className={styles.hero} aria-labelledby="home-title" data-stage>
+        <div className={styles.stage} aria-hidden="true">
+          <span className={styles.stageAura} data-stage-aura="tensai" />
+          <span className={styles.stageAura} data-stage-aura="conan" />
+          <p className={styles.masthead} data-stage-depth="-0.5">
+            <span className={styles.mastheadPart} data-stage-part="left">
+              <span className={styles.mastheadWord}>Thông</span>
+            </span>
+            <span className={styles.mastheadPart} data-stage-part="right">
+              <span className={styles.mastheadWord}>Phan</span>
+            </span>
+          </p>
         </div>
+        <div className={styles.stagePerson} data-stage-depth="1">
+          <div className={styles.stagePersonInner} data-stage-person>
+            <HeroPicture id={homeContent.hero.photoId} mobileId={homeContent.hero.mobilePhotoId} className={styles.stagePicture} />
+            <span className={styles.stageLight} aria-hidden="true" />
+          </div>
+        </div>
+        <div className={styles.stageFloor} aria-hidden="true" />
         <div className={styles.heroContent}>
-          <div className={styles.heroCopy} data-scroll-out="36">
+          <div className={styles.heroCopy} data-scroll-out="24">
             <p className={`${styles.eyebrow} intro-fade`}>{homeContent.eyebrow}</p>
             <h1 id="home-title" className={styles.title}>
-              <SplitWords text={titleLead} />{' '}
+              <span className={styles.titleLead}>
+                <SplitWords text={titleLead} />
+              </span>{' '}
               <em>
                 <SplitWords text={titleQuestion} start={wordCount(titleLead)} />
               </em>
             </h1>
+            <PathResume copy={homeContent.resume} />
           </div>
-          <PathResume copy={homeContent.resume} />
           <PathDoors variant="hero" placement="door" />
         </div>
         <p className={`${styles.scrollCue} intro-fade`} aria-hidden="true">
@@ -55,7 +71,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <div className={styles.afterHero}>
+      <div className={styles.afterHero} data-curtain>
         <FounderLetter />
       </div>
 
@@ -67,7 +83,7 @@ export default function HomePage() {
 
       <RealWorkReel />
 
-      <section className={styles.closing} aria-labelledby="home-closing-title">
+      <section className={styles.closing} aria-labelledby="home-closing-title" data-curtain>
         <div className={styles.closingInner}>
           <p className={styles.closingEyebrow} data-motion-reveal="mask">
             {homeContent.closing.eyebrow}

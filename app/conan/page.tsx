@@ -47,12 +47,16 @@ export default function ConanPage() {
             <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
           </div>
           <div className={styles.heroShade} aria-hidden="true" />
-          <div className={styles.heroCurtain} aria-hidden="true" />
+          {/* Load: the room is first seen through the letters of "Conan", then the camera flies
+              through the stem of the a and the ink falls away (page.module.css, heroMask). */}
+          <div className={styles.heroMask} aria-hidden="true" />
         </div>
         <div className={styles.heroContent} data-scroll-out="22">
           <div>
-            <p className={`${styles.eyebrow} intro-fade`}>{conanContent.eyebrow}</p>
-            <h1 id="conan-title" className={styles.title}>
+            <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '1.35s' } as CSSProperties}>
+              {conanContent.eyebrow}
+            </p>
+            <h1 id="conan-title" className={styles.title} style={{ '--intro-base': '1.45s' } as CSSProperties}>
               <SplitWords text={titleHead} />{' '}
               <em>
                 <SplitWords text={accent} start={wordCount(titleHead)} />
@@ -60,8 +64,10 @@ export default function ConanPage() {
             </h1>
           </div>
           <div>
-            <p className={`${styles.lead} intro-fade`}>{conanContent.lead}</p>
-            <div className={`${styles.actions} intro-fade`}>
+            <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '1.75s' } as CSSProperties}>
+              {conanContent.lead}
+            </p>
+            <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1.9s' } as CSSProperties}>
               <PathLink
                 path="conan"
                 kind="outbound"
@@ -92,8 +98,8 @@ export default function ConanPage() {
       </section>
 
       <section className={styles.section} aria-labelledby="conan-audiences">
-        <div className={styles.inner}>
-          <div className={styles.sectionHead}>
+        <div className={`${styles.inner} ${styles.audiencesGrid}`}>
+          <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
               01 — Dành cho ai
             </p>
@@ -150,7 +156,7 @@ export default function ConanPage() {
           </header>
           <ol className={styles.stages}>
             {journey.stages.map((stage) => (
-              <li key={stage.number} className={styles.stage}>
+              <li key={stage.number} className={styles.stage} data-hscroll-item>
                 <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
                   {stage.number}
                 </span>
@@ -197,7 +203,7 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={styles.closing} aria-labelledby="conan-closing">
+      <section className={styles.closing} aria-labelledby="conan-closing" data-curtain>
         <div className={`${styles.inner} ${styles.closingInner}`}>
           <h2 id="conan-closing" className={styles.closingTitle} data-split>
             {closing.title}

@@ -8,30 +8,341 @@
   overflow: clip;
 }
 
-.shell {
+/* First screen: the confession on the left, the man on the right, the five acts as a table of contents. */
+
+.hero {
+  box-sizing: border-box;
+  display: grid;
+  gap: clamp(2.5rem, 4.5vw, 4rem);
+  grid-template-rows: 1fr auto;
   margin: 0 auto;
-  max-width: 1320px;
-  padding: 82px clamp(1rem, 4vw, 3rem) 6rem;
+  max-width: 1440px;
+  /* The shell already pads the main element by the header height, so the hero fills the rest of the screen. */
+  min-height: calc(100svh - 82px);
+  padding: clamp(1.25rem, 2.5vw, 2.25rem) var(--brand-space-inline) clamp(1.5rem, 2.5vw, 2.25rem);
+  position: relative;
 }
 
-.inlineCta {
+.heroGrid {
+  align-items: end;
+  display: grid;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  position: relative;
+  z-index: 1;
+}
+
+.heroCopy {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.heroMeta {
   align-items: center;
-  color: var(--cinema-oxblood);
-  display: inline-flex;
-  font-weight: 800;
-  gap: .5rem;
-  margin-top: 1.5rem;
-  min-height: 44px;
-  text-underline-offset: .28em;
+  border-top: 1px solid var(--cinema-line);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  /* The rule lines up with the top of the portrait; the confession sits on the baseline below. */
+  margin-bottom: auto;
+  padding-top: 1rem;
 }
 
-.inlineCta:focus-visible {
+.eyebrow {
+  align-items: center;
+  color: var(--cinema-paper);
+  display: flex;
+  font-size: 0.74rem;
+  font-weight: 700;
+  gap: 0.6rem;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  background: var(--cinema-oxblood);
+  content: '';
+  flex: none;
+  height: 2px;
+  width: 1.4rem;
+}
+
+.folio {
+  color: var(--cinema-muted);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.22em;
+}
+
+.title {
+  color: var(--cinema-paper);
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(2.75rem, 0.9rem + 6.2vw, 8rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.title em {
+  color: var(--cinema-oxblood);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.heroFoot {
+  align-items: end;
+  display: grid;
+  gap: 1.5rem 2.5rem;
+  grid-template-columns: minmax(0, 31rem) auto;
+  justify-content: space-between;
+}
+
+.lead {
+  color: var(--cinema-muted);
+  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.12rem);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Colour rules sit at (0,3,0) so the shell's `a { color: inherit }` cannot win. */
+.page .hero .startCta {
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--brand-paper) 34%, transparent);
+  border-radius: 999px;
+  color: var(--cinema-paper);
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 1.6rem;
+  text-decoration: none;
+  transition:
+    background-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.page .hero .startCta:hover {
+  background: var(--cinema-paper);
+  border-color: var(--cinema-paper);
+  color: var(--cinema-ink);
+}
+
+.page .hero .startCta:focus-visible,
+.page .hero .actLink:focus-visible {
   outline: 3px solid var(--brand-focus);
   outline-offset: 4px;
 }
 
+.startInner {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.6rem;
+}
+
+.portrait {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.portraitFrame {
+  background: var(--brand-ink-raised);
+  border-radius: 10px;
+  height: clamp(24rem, calc(100svh - 82px - 16rem), 46rem);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Parallax pushes the photo down as the hero leaves, so it starts above the frame. */
+.portraitPhoto {
+  inset: -28px 0 0;
+  position: absolute;
+}
+
+.portraitImage {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.portraitCaption {
+  border-top: 1px solid var(--cinema-line);
+  color: var(--cinema-muted);
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: 600;
+  justify-content: space-between;
+  letter-spacing: 0.18em;
+  padding-top: 0.8rem;
+  text-transform: uppercase;
+}
+
+.portraitCaption span:first-child {
+  color: var(--cinema-paper);
+}
+
+/* The five acts double as a table of contents; each rule fills with lacquer on hover. */
+.acts {
+  position: relative;
+  z-index: 1;
+}
+
+.actList {
+  display: grid;
+  gap: 0 clamp(1rem, 2vw, 1.75rem);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page .hero .actLink {
+  align-items: start;
+  color: var(--cinema-paper);
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  min-height: 44px;
+  padding: 1.1rem 0 0.35rem;
+  position: relative;
+  text-decoration: none;
+}
+
+.actRule {
+  background: var(--cinema-line);
+  height: 1px;
+  inset: 0 0 auto;
+  position: absolute;
+}
+
+.actRule::after {
+  background: var(--cinema-oxblood);
+  content: '';
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.actNumber {
+  color: var(--cinema-oxblood);
+  /* Digits are not tabular in this face, so a fixed width keeps every title on one edge. */
+  min-width: 2.1em;
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding-top: 0.35em;
+}
+
+.actTitle {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.05rem, 0.75rem + 0.55vw, 1.4rem);
+  font-weight: 500;
+  line-height: 1.12;
+  transition: translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.actArrow {
+  margin-top: 0.2rem;
+  opacity: 0.35;
+  transition:
+    opacity 300ms ease,
+    translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.actLink:hover .actRule::after,
+.actLink:focus-visible .actRule::after {
+  transform: scaleX(1);
+}
+
+.actLink:hover .actTitle {
+  translate: 0.35rem 0;
+}
+
+.actLink:hover .actArrow {
+  opacity: 1;
+  translate: 3px -3px;
+}
+
+.shell {
+  margin: 0 auto;
+  max-width: 1320px;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem) 6rem;
+}
+
+@media (max-width: 1100px) {
+  .actList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 0.5rem;
+  }
+}
+
+/* Phones and small tablets: headline, then the portrait, then the lead and the acts as a list. */
+@media (max-width: 899px) {
+  .hero {
+    gap: 2.75rem;
+    grid-template-rows: auto;
+    min-height: 0;
+    padding-top: 1.75rem;
+  }
+
+  .heroGrid {
+    align-items: stretch;
+    gap: 1.75rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroCopy {
+    display: contents;
+  }
+
+  .heroMeta {
+    order: 1;
+  }
+
+  .title {
+    order: 2;
+  }
+
+  .portrait {
+    order: 3;
+  }
+
+  .heroFoot {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    order: 4;
+  }
+
+  .portraitFrame {
+    aspect-ratio: 4 / 5;
+    height: auto;
+    max-height: 64svh;
+  }
+
+  .actList {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
+
+  .page .hero .actLink {
+    padding-bottom: 1rem;
+  }
+}
+
 @media (max-width: 680px) {
   .shell {
-    padding-top: 72px;
+    padding-top: 1.5rem;
   }
 }

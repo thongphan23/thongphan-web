@@ -75,7 +75,7 @@ test('every photo id referenced by page content exists in the manifest', () => {
     homeContent.guide.photoId,
     ...homeContent.reel.photoIds,
     tensaiContent.heroPhotoId,
-    tensaiContent.method.photoId,
+    ...tensaiContent.method.frames.map((frame) => frame.photoId),
     conanContent.heroPhotoId,
     ...conanContent.gallery.photoIds,
     ...conanContent.mentors.people.map((person) => person.photoId),

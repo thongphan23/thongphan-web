@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
+import { curtains, deviceStage, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -179,18 +180,23 @@ function blockReveals(root: HTMLElement) {
 }
 
 // Depth: elements drift at their own speed, photos slide inside their frames.
-function parallax(root: HTMLElement) {
+// data-speed-wide limits the drift to wide screens, for columns that stack on a phone.
+function parallax(root: HTMLElement, mm: gsap.MatchMedia) {
   root.querySelectorAll<HTMLElement>('[data-speed]').forEach((el) => {
     const speed = numberAttr(el, 'speed', 0.1)
-    gsap.fromTo(
-      el,
-      { y: () => -speed * window.innerHeight * 0.5 },
-      {
-        y: () => speed * window.innerHeight * 0.5,
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true },
-      },
-    )
+    const drift = () => {
+      gsap.fromTo(
+        el,
+        { y: () => -speed * window.innerHeight * 0.5 },
+        {
+          y: () => speed * window.innerHeight * 0.5,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true, invalidateOnRefresh: true },
+        },
+      )
+    }
+    if (el.hasAttribute('data-speed-wide')) mm.add(DESKTOP, drift)
+    else drift()
   })
 
   root.querySelectorAll<HTMLElement>('[data-parallax-frame]').forEach((frame) => {
@@ -333,9 +339,21 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           },
         )
       })
+      // The item crossing the middle of the screen is marked current, so CSS can light it up.
+      const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
+      items.forEach((item) => {
+        ScrollTrigger.create({
+          trigger: item,
+          containerAnimation: tween,
+          start: 'left 62%',
+          end: 'right 62%',
+          onToggle: (self) => item.toggleAttribute('data-current', self.isActive),
+        })
+      })
       return () => {
         delete section.dataset.hscrollActive
         section.style.removeProperty('--hscroll-progress')
+        items.forEach((item) => item.removeAttribute('data-current'))
       }
     })
   })
@@ -392,7 +410,8 @@ function counters(root: HTMLElement) {
       value: target,
       duration: 2.2,
       ease: 'expo.out',
-      scrollTrigger: onEnter(el, 'top 92%'),
+      // Fires as the number enters the screen, so a reader never stops on the 0 it starts from.
+      scrollTrigger: onEnter(el, 'top bottom'),
       onUpdate: () => {
         el.textContent = formatter.format(Math.round(state.value))
       },
@@ -655,13 +674,13 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     scrollOut(root)
     imageReveals(root)
     blockReveals(root)
-    parallax(root)
+    parallax(root, mm)
     zoomReveals(root, mm)
     horizontalScroll(root, mm)
     stackCards(root, mm)
     themeShifts(root)
     counters(root)
-    extra.push(marquees(root), velocitySkew(root))
+    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), curtains(root))
     if (finePointer) extra.push(magnetic(root), tilt(root), hoverReveal(root))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.

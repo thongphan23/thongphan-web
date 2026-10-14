@@ -186,11 +186,11 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
 @media (prefers-reduced-motion: no-preference) {
   html.motion .intro-word > span {
     animation: intro-word-rise 1.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    animation-delay: calc(0.45s + var(--i, 0) * 0.055s);
+    animation-delay: calc(var(--intro-base, 0.45s) + var(--i, 0) * 0.055s);
   }
 
   html.motion .intro-fade {
-    animation: intro-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+    animation: intro-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--intro-delay, 0.3s) backwards;
   }
 
   /* A first-screen photo opens from a smaller window while the image settles. */

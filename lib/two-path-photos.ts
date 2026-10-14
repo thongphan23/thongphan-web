@@ -46,6 +46,27 @@ const records = [
     budgetBytes: 180 * KB,
   },
   {
+    // Transparent cut-out: the stage hero sets Thông in front of his name, so only he is kept.
+    id: 'home-stage-hero',
+    width: 1098,
+    height: 1200,
+    alt: 'Thông Phan cầm micro, đang nói trên sân khấu tối',
+    source:
+      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền làm mềm 1.2px',
+    faces: 'thong-only',
+    budgetBytes: 180 * KB,
+  },
+  {
+    id: 'home-stage-hero-mobile',
+    width: 787,
+    height: 860,
+    alt: 'Thông Phan cầm micro, đang nói trên sân khấu tối',
+    source:
+      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền làm mềm 1.2px',
+    faces: 'thong-only',
+    budgetBytes: 180 * KB,
+  },
+  {
     id: 'founder-portrait',
     width: 736,
     height: 920,
