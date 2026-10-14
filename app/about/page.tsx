@@ -14,7 +14,7 @@ export const metadata = createPageMetadata({
 
 export default function AboutPage() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-motion-stage>
       <div className={styles.shell}>
         <DossierHeader
           tone="dark"

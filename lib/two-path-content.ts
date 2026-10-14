@@ -35,7 +35,7 @@ const doors = [
 export const homeContent = {
   eyebrow: 'Thông Phan · người dẫn đường',
   title: 'AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ở phía nào?',
-  hero: { photoId: 'home-hero', mobilePhotoId: 'home-hero-mobile' },
+  hero: { photoId: 'home-hero', mobilePhotoId: 'home-hero-mobile', scrollCue: 'Cuộn để đọc thư' },
   doors,
   resume: { prefix: 'Lần trước bạn xem', action: 'Tiếp tục' },
   letter: {
@@ -47,27 +47,52 @@ export const homeContent = {
       'Chọn một cửa. Tui đi cùng bạn đoạn đầu.',
     ],
     signature: 'Thông Phan',
+    signatureRole: 'Người dẫn đường',
     portraitId: 'founder-portrait',
   },
+  // The locked positioning set as one big line; the class photo opens out of the gap between
+  // the words as the reader scrolls, then fills the screen.
+  guide: { lead: 'Người', tail: 'dẫn đường', photoId: 'gallery-ai-factory' },
+  // The two moving bands between the letter and the field notes repeat the two doors.
+  marquee: [
+    { path: 'tensai', words: ['Tôi đi làm', 'Tensai'] },
+    { path: 'conan', words: ['Tôi kinh doanh', 'Conan School'] },
+  ],
   fieldNotes: {
     title: 'Việc thật, không phải lời hứa',
     photoId: 'field-content-class',
     cards: [
       {
         claimId: 'rebuild-twelve-thousand-shares',
+        // The figure repeats the number already in the claim text, counted up on scroll.
+        stat: { value: 12000, suffix: '+', label: 'lượt chia sẻ' },
         text: 'Một bài viết vượt 12.000 lượt chia sẻ sau 14 tháng gần như không ai đọc.',
         href: '/about#origin-act-rebuilding',
         linkLabel: 'Đọc trong câu chuyện',
       },
       {
         claimId: 'brain2-twenty-one-outputs',
+        stat: { value: 21, suffix: '', label: 'đầu ra trong 21 ngày' },
         text: 'Brain2 đang chạy thật: 21 ngày, 21 đầu ra quan sát được.',
         href: '/brain2/21-ngay',
         linkLabel: 'Xem lộ trình 21 ngày',
       },
     ],
   },
-  closing: { title: 'Bắt đầu từ chỗ bạn đang đứng' },
+  reel: {
+    eyebrow: 'Ghi lại từ lớp học',
+    title: 'Hình thật. Người thật. Việc thật.',
+    lead: 'Không có ảnh dựng. Đây là những buổi học, buổi offline và những bữa ăn sau giờ học đã diễn ra.',
+    link: { label: 'Xem Conan School', href: '/conan' },
+    photoIds: [
+      'gallery-decision-making',
+      'gallery-manulife',
+      'gallery-katinat',
+      'gallery-ai-factory-design',
+      'gallery-after-class',
+    ],
+  },
+  closing: { eyebrow: 'Hai con đường', title: 'Bắt đầu từ chỗ bạn đang đứng' },
 } as const
 
 export const tensaiContent = {
@@ -105,19 +130,22 @@ export const tensaiContent = {
       {
         name: 'Workflow AI cơ bản',
         tagline: 'Hiểu từ gốc. Thiết kế có lý do. Tự làm báo cáo của bạn.',
-        scale: '15 bài, 5 màn vượt ải',
+        lessonCount: 15,
+        gateCount: 5,
         opensOn: '30/09/2026',
       },
       {
         name: 'Hiểu về AI',
         tagline: 'Hiểu cách LLM hoạt động. Dùng AI có căn cứ.',
-        scale: '6 bài, 2 màn vượt ải',
+        lessonCount: 6,
+        gateCount: 2,
         opensOn: '30/09/2026',
       },
       {
         name: 'Định vị',
         tagline: 'Để mỗi nội dung có một lý do.',
-        scale: '12 bài, 4 màn vượt ải',
+        lessonCount: 12,
+        gateCount: 4,
         opensOn: '01/10/2026',
       },
     ],

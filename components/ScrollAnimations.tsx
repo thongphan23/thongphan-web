@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 const revealSelector = [
@@ -19,15 +20,23 @@ function revealFinalState(targets: HTMLElement[]) {
   })
 }
 
+// Showcase pages ([data-motion-stage]) are animated by components/motion/engine.ts instead.
+function outsideStage(target: HTMLElement) {
+  return target.closest('[data-motion-stage]') === null
+}
+
 export default function ScrollAnimations() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
     const progressBar = document.querySelector<HTMLElement>('[data-scroll-progress]')
     const unifiedShell = document.querySelector<HTMLElement>('[data-site-shell="unified"]')
     const revealTargets = Array.from(document.querySelectorAll<HTMLElement>(revealSelector))
+      .filter(outsideStage)
     const parallaxTargets = Array.from(
       document.querySelectorAll<HTMLElement>('[data-motion-parallax]'),
-    )
+    ).filter(outsideStage)
     let disposed = false
     let progressFrame = 0
     let setupGeneration = 0
@@ -164,7 +173,7 @@ export default function ScrollAnimations() {
       if (progressFrame) window.cancelAnimationFrame(progressFrame)
       disposeCinemaMotion()
     }
-  }, [])
+  }, [pathname])
 
   return null
 }

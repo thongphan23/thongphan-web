@@ -8,6 +8,8 @@ import { isUnifiedRouteEnabled, routeModeForPath } from '@/lib/site-route-mode'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import MotionAtmosphere from './MotionAtmosphere'
+import MotionKernel from '@/components/motion/MotionKernel'
+import RouteCurtain from '@/components/motion/RouteCurtain'
 import styles from './SiteChrome.module.css'
 
 function DefaultHeader() {
@@ -109,6 +111,8 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
         </div>
       ) : null}
       {isUnified ? <MotionAtmosphere pathname={pathname} mode={mode} /> : null}
+      <MotionKernel pathname={pathname} />
+      {isUnified ? <RouteCurtain pathname={pathname} /> : null}
       {isUnified ? <SiteHeader mode={mode} pathname={pathname} /> : <DefaultHeader />}
       <main className={isUnified ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
       {isUnified ? <SiteFooter mode={mode} pathname={pathname} /> : <DefaultFooter />}

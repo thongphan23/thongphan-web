@@ -42,6 +42,52 @@
   object-position: 80% 45%;
 }
 
+/* Load choreography: the photo settles from a slow zoom while an ink curtain lifts off it.
+   Individual transform properties compose with the parallax transform the engine sets. */
+.heroCurtain {
+  background: var(--brand-ink);
+  display: none;
+  inset: 0;
+  position: absolute;
+  transform-origin: 50% 0%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .heroCurtain {
+    animation: curtainLift 1.35s cubic-bezier(0.76, 0, 0.24, 1) 0.1s forwards;
+    display: block;
+  }
+
+  :global(html.motion) .heroPhoto picture {
+    animation: photoSettle 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+    display: block;
+    height: 100%;
+  }
+
+  :global(html.motion) .heroShade {
+    animation: shadeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+  }
+}
+
+@keyframes curtainLift {
+  to {
+    scale: 1 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes photoSettle {
+  from {
+    scale: 1.22;
+  }
+}
+
+@keyframes shadeIn {
+  from {
+    opacity: 0.35;
+  }
+}
+
 .heroShade {
   background:
     linear-gradient(90deg, rgba(7, 7, 6, 0.94) 0%, rgba(7, 7, 6, 0.78) 34%, rgba(7, 7, 6, 0.18) 64%, rgba(7, 7, 6, 0) 80%),
@@ -68,21 +114,78 @@
   text-transform: uppercase;
 }
 
+.heroCopy {
+  will-change: transform;
+}
+
 .title {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.15rem, 3.4vw + 0.9rem, 3.9rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.04;
+  font-size: clamp(2.3rem, 1rem + 4.4vw, 5.4rem);
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  line-height: 0.98;
   margin: 0;
-  max-width: 13em;
+  max-width: 12.5em;
 }
 
 .title em {
   display: block;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+/* Scroll cue at the right edge of the first screen (wide screens only). */
+.scrollCue {
+  align-items: center;
+  bottom: calc(var(--door-overlap) + 2.5rem);
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  display: none;
+  flex-direction: column;
+  font-size: 0.68rem;
+  font-weight: 700;
+  gap: 1rem;
+  letter-spacing: 0.18em;
+  margin: 0;
+  position: absolute;
+  right: var(--brand-space-inline);
+  text-transform: uppercase;
+}
+
+.scrollCue span:first-child {
+  writing-mode: vertical-rl;
+}
+
+.scrollCueLine {
+  background: color-mix(in srgb, var(--brand-paper) 22%, transparent);
+  display: block;
+  height: 4.5rem;
+  overflow: hidden;
+  position: relative;
+  width: 1px;
+}
+
+.scrollCueLine::after {
+  animation: cueTravel 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  background: var(--brand-paper);
+  content: '';
+  height: 45%;
+  left: 0;
+  position: absolute;
+  top: -45%;
+  width: 100%;
+}
+
+@keyframes cueTravel {
+  to {
+    top: 100%;
+  }
+}
+
+@media (min-width: 1100px) and (min-height: 700px) {
+  .scrollCue {
+    display: flex;
+  }
 }
 
 /* The doors overlap onto the letter's paper; this band starts the paper early. */
@@ -93,25 +196,36 @@
 
 .closing {
   --closing-focus: var(--brand-text-on-paper);
+  --closing-line: color-mix(in srgb, var(--brand-text-on-paper) 24%, transparent);
   background: var(--brand-reading-paper-deep);
   color: var(--brand-text-on-paper);
-  padding: var(--brand-space-section) var(--brand-space-inline);
+  padding: var(--brand-space-section) var(--brand-space-inline) clamp(4rem, 9vw, 8rem);
 }
 
 .closingInner {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1320px;
+}
+
+.closingEyebrow {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  margin: 0 0 1.25rem;
+  opacity: 0.7;
+  text-transform: uppercase;
 }
 
 .closingTitle {
   color: var(--brand-text-on-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.04;
-  margin: 0 0 clamp(1.75rem, 3.5vw, 2.75rem);
-  max-width: 16ch;
+  font-size: clamp(2.8rem, 1.2rem + 6vw, 7.6rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  margin: 0 0 clamp(2.5rem, 6vw, 5rem);
+  max-width: 13ch;
 }
 
 @media (max-width: 767px) {

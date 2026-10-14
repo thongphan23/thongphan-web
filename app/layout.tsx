@@ -72,6 +72,10 @@ const lora = Lora({
   preload: false,
 })
 
+// Runs before first paint: opt into motion pre-states only when reduced motion is off,
+// and fall back to the static page if the engine has not started within four seconds.
+const MOTION_BOOT = `(function(){var d=document.documentElement;try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');setTimeout(function(){if(!d.hasAttribute('data-motion-ready'))d.classList.remove('motion')},4000)}catch(e){}})()`
+
 const legacyFontClassName = `${inter.variable} ${lora.variable} ${jetBrainsMono.variable}`
 
 export const metadata: Metadata = {
@@ -93,7 +97,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: MOTION_BOOT }} />
+      </head>
       <body className={`${beVietnamPro.variable} ${cormorantGaramond.variable} ${newsreader.variable} ${ibmPlexMono.variable}`}>
         <ScrollAnimations />
         <SiteChrome legacyFontClassName={legacyFontClassName}>{children}</SiteChrome>

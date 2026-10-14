@@ -72,6 +72,8 @@ test('every photo id referenced by page content exists in the manifest', () => {
     ...homeContent.doors.map((door) => door.photoId),
     homeContent.letter.portraitId,
     homeContent.fieldNotes.photoId,
+    homeContent.guide.photoId,
+    ...homeContent.reel.photoIds,
     tensaiContent.heroPhotoId,
     tensaiContent.method.photoId,
     conanContent.heroPhotoId,

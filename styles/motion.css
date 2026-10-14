@@ -1,0 +1,344 @@
+/* Motion engine support: smooth scroll, pre-reveal states and the custom cursor.
+   html.motion is set by the inline head script only when reduced motion is off,
+   and removed again if the engine never starts, so content is never stuck hidden. */
+
+html:has([data-site-shell='unified'][data-route-mode='cinema-dark']),
+html:has([data-site-shell='unified'][data-route-mode='cinema-dark']) body {
+  background: var(--brand-ink);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Hidden until the engine has split or clipped them; the engine animates them in. */
+html.motion [data-motion-stage] [data-split]:not([data-split-ready]),
+html.motion [data-motion-stage] [data-scrub-words]:not([data-split-ready]) {
+  visibility: hidden;
+}
+
+html.motion:not([data-motion-ready]) [data-motion-stage] [data-img-reveal] {
+  clip-path: inset(100% 0% 0% 0%);
+}
+
+html.motion:not([data-motion-ready]) [data-motion-stage] [data-reveal-children] > *,
+html.motion:not([data-motion-ready]) [data-motion-stage] [data-motion-reveal] {
+  opacity: 0;
+}
+
+.motion-line {
+  display: block;
+  will-change: transform;
+}
+
+.motion-word {
+  will-change: opacity;
+}
+
+/* WebGL photo surface (see gl-photo.ts): sits exactly over the <img> it redraws. */
+.gl-photo {
+  display: block;
+  height: 100%;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+
+/* Custom cursor: fine pointers only, never under reduced motion. */
+html[data-cursor-mode='custom'] [data-motion-stage],
+html[data-cursor-mode='custom'] [data-motion-stage] a,
+html[data-cursor-mode='custom'] [data-motion-stage] button {
+  cursor: none;
+}
+
+.motion-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms var(--brand-motion-ease);
+}
+
+.motion-cursor[data-visible='true'] {
+  opacity: 1;
+}
+
+.motion-cursor__dot,
+.motion-cursor__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  will-change: transform;
+}
+
+.motion-cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #f4efe4;
+  mix-blend-mode: difference;
+}
+
+.motion-cursor__ring {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  place-items: center;
+  border: 1px solid rgba(244, 239, 228, 0.55);
+  mix-blend-mode: difference;
+  transition:
+    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 300ms ease,
+    border-color 300ms ease;
+}
+
+.motion-cursor[data-state='link'] .motion-cursor__ring {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-color: rgba(244, 239, 228, 0.9);
+}
+
+.motion-cursor[data-state='label'] .motion-cursor__ring {
+  width: 104px;
+  height: 104px;
+  margin: -52px 0 0 -52px;
+  border-color: transparent;
+  background: #f4efe4;
+  mix-blend-mode: normal;
+}
+
+.motion-cursor[data-state='label'][data-tone='lime'] .motion-cursor__ring {
+  background: #c3f331;
+}
+
+.motion-cursor[data-state='label'][data-tone='lacquer'] .motion-cursor__ring {
+  background: #c4441f;
+}
+
+.motion-cursor[data-state='label'] .motion-cursor__dot {
+  opacity: 0;
+}
+
+.motion-cursor[data-pressed='true'] .motion-cursor__ring {
+  transform-origin: center;
+  scale: 0.86;
+}
+
+.motion-cursor__label {
+  color: #070706;
+  font: 600 0.72rem/1.1 var(--font-be-vietnam), system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 200ms ease 80ms;
+}
+
+.motion-cursor[data-state='label'][data-tone='lacquer'] .motion-cursor__label {
+  color: #fff;
+}
+
+.motion-cursor[data-state='label'] .motion-cursor__label {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-cursor {
+    display: none;
+  }
+}
+
+/* First-screen headline: each word rises out of its own mask on first paint (pure CSS,
+   see SplitWords). Padding plus a matching negative margin keeps descenders and
+   Vietnamese diacritics inside the mask without moving the words. */
+.intro-word {
+  display: inline-block;
+  margin: -0.16em -0.06em;
+  overflow: clip;
+  padding: 0.16em 0.06em;
+  vertical-align: top;
+}
+
+.intro-word > span {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.motion .intro-word > span {
+    animation: intro-word-rise 1.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: calc(0.45s + var(--i, 0) * 0.055s);
+  }
+
+  html.motion .intro-fade {
+    animation: intro-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+  }
+
+  /* A first-screen photo opens from a smaller window while the image settles. */
+  html.motion .intro-clip {
+    animation: intro-clip 1.6s cubic-bezier(0.76, 0, 0.24, 1) 0.35s backwards;
+  }
+
+  html.motion .intro-clip img {
+    animation: intro-settle 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
+  }
+}
+
+@keyframes intro-clip {
+  from {
+    clip-path: inset(16% 12% 16% 12% round 10px);
+  }
+
+  to {
+    clip-path: inset(0% 0% 0% 0% round 10px);
+  }
+}
+
+@keyframes intro-settle {
+  from {
+    scale: 1.24;
+  }
+}
+
+@keyframes intro-word-rise {
+  from {
+    rotate: 4deg;
+    translate: 0 115%;
+  }
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+}
+
+/* Route curtain (see RouteCurtain.tsx): a tinted lead sheet and an ink panel rise over the
+   page, the destination is named, then both lift off the next page. */
+.route-curtain {
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  visibility: hidden;
+  z-index: 2147482000;
+}
+
+.route-curtain[data-state='cover'],
+.route-curtain[data-state='reveal'] {
+  visibility: visible;
+}
+
+.route-curtain[data-state='cover'] {
+  pointer-events: auto;
+}
+
+.route-curtain__lead,
+.route-curtain__panel {
+  clip-path: inset(100% 0% 0% 0%);
+  inset: 0;
+  position: absolute;
+}
+
+.route-curtain__lead {
+  background: var(--brand-paper);
+}
+
+.route-curtain[data-tone='lime'] .route-curtain__lead {
+  background: #c3f331;
+}
+
+.route-curtain[data-tone='lacquer'] .route-curtain__lead {
+  background: #c4441f;
+}
+
+.route-curtain__panel {
+  align-content: center;
+  background: var(--brand-ink);
+  color: var(--brand-paper);
+  display: grid;
+  justify-items: center;
+  row-gap: 1.25rem;
+}
+
+.route-curtain[data-state='cover'] .route-curtain__lead {
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 620ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.route-curtain[data-state='cover'] .route-curtain__panel {
+  clip-path: inset(0% 0% 0% 0%);
+  transition: clip-path 620ms cubic-bezier(0.76, 0, 0.24, 1) 110ms;
+}
+
+.route-curtain[data-state='reveal'] .route-curtain__lead,
+.route-curtain[data-state='reveal'] .route-curtain__panel {
+  clip-path: inset(0% 0% 100% 0%);
+}
+
+.route-curtain[data-state='reveal'] .route-curtain__panel {
+  transition: clip-path 760ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.route-curtain[data-state='reveal'] .route-curtain__lead {
+  transition: clip-path 760ms cubic-bezier(0.76, 0, 0.24, 1) 120ms;
+}
+
+.route-curtain__mark {
+  font: 600 0.7rem/1 var(--font-be-vietnam), system-ui, sans-serif;
+  letter-spacing: 0.3em;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.route-curtain__mask {
+  display: block;
+  overflow: clip;
+  padding: 0.12em 0.1em 0.2em;
+}
+
+.route-curtain__label {
+  display: block;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(3rem, 1.6rem + 6vw, 8rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  translate: 0 110%;
+}
+
+.route-curtain[data-state='cover'] .route-curtain__label {
+  transition: translate 700ms cubic-bezier(0.16, 1, 0.3, 1) 300ms;
+  translate: 0 0;
+}
+
+.route-curtain[data-state='reveal'] .route-curtain__label {
+  transition: translate 520ms cubic-bezier(0.7, 0, 0.84, 0);
+  translate: 0 -110%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-curtain {
+    display: none;
+  }
+}

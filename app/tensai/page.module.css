@@ -1,5 +1,6 @@
 .page {
   --tensai-muted: #5f574d;
+  --tensai-rule: rgba(23, 20, 16, 0.22);
   background: var(--brand-reading-paper);
   color: var(--brand-text-on-paper);
   overflow-x: clip;
@@ -7,7 +8,7 @@
 
 .inner {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1240px;
 }
 
 /* Split first screen: words on the left, the real app on the right (below on phones). */
@@ -15,21 +16,22 @@
 .hero {
   align-items: center;
   display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(2.25rem, 4vw, 4rem);
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: 1360px;
   padding: clamp(2rem, 5vw, 4.5rem) var(--brand-space-inline) clamp(3.5rem, 7vw, 6rem);
 }
 
 .eyebrow,
-.situationCourse {
+.situationCourse,
+.sectionMark {
   align-items: center;
   color: var(--path-accent);
   display: flex;
   font-size: 0.74rem;
   font-weight: 700;
   gap: 0.6rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   line-height: 1.3;
   margin: 0 0 1.1rem;
   text-transform: uppercase;
@@ -47,18 +49,24 @@
 .title {
   color: var(--brand-text-on-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.5rem, 4.6vw + 0.4rem, 4.5rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
+  font-size: clamp(2.9rem, 1rem + 4.4vw, 5.8rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
   margin: 0;
-  max-width: 12em;
+  max-width: 11em;
+}
+
+.title em {
+  color: var(--path-accent);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .lead {
   font-size: clamp(1.04rem, 1.2vw, 1.15rem);
   line-height: 1.72;
-  margin: 1.4rem 0 0;
+  margin: 1.6rem 0 0;
   max-width: 34rem;
 }
 
@@ -75,15 +83,28 @@
 .page[data-path] .primaryCta:hover {
   align-items: center;
   background: var(--path-cta-bg);
-  border-radius: 6px;
+  border-radius: 999px;
   color: var(--path-cta-fg);
   display: inline-flex;
   font-size: 1rem;
   font-weight: 700;
-  gap: 0.55rem;
-  min-height: 52px;
-  padding: 0 1.4rem;
+  min-height: 56px;
+  padding: 0 1.6rem;
   text-decoration: none;
+}
+
+.ctaInner {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.55rem;
+}
+
+.ctaInner svg {
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primaryCta:hover .ctaInner svg {
+  transform: translateX(4px);
 }
 
 .primaryCta:focus-visible {
@@ -123,11 +144,34 @@
   margin: 0;
 }
 
-.heroImage {
+.heroFrame {
   border: 1px solid var(--brand-line-paper);
-  border-radius: 8px;
-  box-shadow: 0 30px 60px -36px rgba(7, 59, 47, 0.45);
+  border-radius: 10px;
+  box-shadow:
+    0 40px 80px -48px rgba(7, 59, 47, 0.55),
+    0 12px 24px -18px rgba(7, 59, 47, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.heroImage {
+  display: block;
   width: 100%;
+}
+
+/* Pointer light that follows the tilt (the engine sets --tilt-x/y on fine pointers). */
+.heroGlare {
+  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 30%), rgba(255, 255, 255, 0.4), transparent 58%);
+  inset: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 400ms ease;
+}
+
+.heroFrame:hover .heroGlare {
+  opacity: 1;
 }
 
 .heroFigure figcaption,
@@ -136,7 +180,7 @@
   color: var(--tensai-muted);
   font-size: 0.84rem;
   line-height: 1.45;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
 }
 
 @media (min-width: 960px) {
@@ -144,7 +188,7 @@
   .hero {
     align-content: center;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-    min-height: min(calc(100svh - 96px), 860px);
+    min-height: min(calc(100svh - 96px), 900px);
   }
 }
 
@@ -154,16 +198,20 @@
   padding: var(--brand-space-section) var(--brand-space-inline);
 }
 
+.sectionHead {
+  margin-bottom: clamp(2.25rem, 5vw, 4.5rem);
+}
+
 .sectionTitle,
 .closingTitle {
   color: inherit;
   font-family: var(--font-cormorant);
-  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-  margin: 0 0 clamp(2rem, 4vw, 3rem);
-  max-width: 18ch;
+  font-size: clamp(2.5rem, 1rem + 4vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  max-width: 16ch;
 }
 
 .situations,
@@ -175,26 +223,49 @@
   padding: 0;
 }
 
+/* Situations: an editorial index; each problem lights up word by word as it scrolls past. */
+
 .situations {
-  display: grid;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--tensai-rule);
 }
 
 .situation {
-  border-top: 2px solid var(--path-accent);
-  padding-top: 1.25rem;
+  display: grid;
+  gap: 1rem 2.5rem;
+  padding: clamp(1.75rem, 4.5vw, 3.5rem) 0;
+  position: relative;
+}
+
+.rowLine {
+  background: var(--tensai-rule);
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.situationIndex,
+.courseIndex {
+  color: var(--path-accent);
+  font-family: var(--font-cormorant);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1;
 }
 
 .problem {
   font-family: var(--font-cormorant);
-  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.9rem, 1rem + 2.8vw, 3.5rem);
   font-weight: 500;
-  line-height: 1.18;
-  margin: 0 0 1.25rem;
+  letter-spacing: -0.015em;
+  line-height: 1.06;
+  margin: 0;
+  max-width: 19ch;
 }
 
 .situationCourse {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .lessons li {
@@ -205,116 +276,206 @@
 }
 
 @media (min-width: 900px) {
-  .situations {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .situation {
+    align-items: start;
+    grid-template-columns: 4rem minmax(0, 7fr) minmax(0, 3fr);
+  }
+
+  .situationIndex {
+    padding-top: 0.7rem;
+  }
+
+  .situationAnswer {
+    padding-top: 0.8rem;
   }
 }
+
+/* Courses: large index rows; hovering one floods it with Tensai lime. */
 
 .coursesBand {
   background: var(--brand-reading-paper-deep);
 }
 
 .courses {
-  border-bottom: 1px solid var(--brand-line-paper);
+  border-bottom: 1px solid var(--tensai-rule);
 }
 
 .course {
-  border-top: 1px solid var(--brand-line-paper);
+  border-top: 1px solid var(--tensai-rule);
+}
+
+.page[data-path] .courseLink,
+.page[data-path] .courseLink:hover {
+  color: inherit;
   display: grid;
-  gap: 0.35rem 2rem;
-  padding: 1.5rem 0;
+  gap: 0.75rem 2rem;
+  isolation: isolate;
+  padding: clamp(1.5rem, 3.5vw, 2.75rem) 0;
+  position: relative;
+  text-decoration: none;
+}
+
+.courseLink::before {
+  background: var(--path-cta-bg);
+  content: '';
+  inset: 0 calc(-1 * var(--brand-space-inline));
+  position: absolute;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.courseLink:hover::before,
+.courseLink:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.courseLink:focus-visible {
+  outline: 2px solid var(--path-accent);
+  outline-offset: 4px;
 }
 
 .courseName {
   color: inherit;
   font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 2.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.1;
+  font-size: clamp(2.2rem, 1rem + 3.6vw, 4.4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
   margin: 0;
+  transition: transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.courseLink:hover .courseName {
+  transform: translateX(0.6rem);
 }
 
 .courseTagline {
   line-height: 1.55;
-  margin: 0;
+  margin: 0.6rem 0 0;
+  max-width: 34ch;
 }
 
 .courseMeta {
+  align-items: baseline;
   color: var(--tensai-muted);
+  display: flex;
+  flex-wrap: wrap;
   font-size: 0.9rem;
-  margin: 0;
+  gap: 0.4rem 1.25rem;
+}
+
+.courseStat strong {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: 2.1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1;
+  margin-right: 0.15rem;
+}
+
+.courseOpens {
+  flex-basis: 100%;
+}
+
+.courseLink:hover .courseMeta {
+  color: var(--path-accent);
+}
+
+.courseArrow {
+  color: var(--path-accent);
+  position: absolute;
+  right: 0;
+  top: clamp(1.5rem, 3.5vw, 2.75rem);
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.courseLink:hover .courseArrow {
+  transform: rotate(45deg);
 }
 
 @media (min-width: 900px) {
-  .course {
-    align-items: baseline;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+  .page[data-path] .courseLink {
+    align-items: center;
+    grid-template-columns: 4rem minmax(0, 6fr) minmax(0, 4fr) 3rem;
   }
 
-  .courseMeta {
-    text-align: right;
+  .courseArrow {
+    grid-column: 4;
+    justify-self: end;
+    position: static;
   }
 }
+
+/* Method: steps scroll by while the real lesson screen holds still beside them. */
 
 .methodGrid {
-  align-items: center;
   display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-}
-
-.steps {
-  display: grid;
-  gap: 1.5rem;
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .step {
-  column-gap: 1.1rem;
+  border-top: 1px solid var(--tensai-rule);
+  column-gap: 1.25rem;
   display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
 }
 
 .stepNumber {
   color: var(--path-accent);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-family: var(--font-cormorant);
+  font-size: 2.4rem;
+  font-style: italic;
   grid-row: span 2;
-  letter-spacing: 0.08em;
-  padding-top: 0.3rem;
+  line-height: 1;
 }
 
 .stepTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.4;
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.6rem, 1rem + 1.4vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.1;
   margin: 0;
 }
 
 .stepBody {
-  line-height: 1.6;
-  margin: 0.25rem 0 0;
+  line-height: 1.65;
+  margin: 0.5rem 0 0;
+  max-width: 36ch;
 }
 
 .methodFigure {
-  background: var(--brand-reading-paper);
-  border: 1px solid var(--brand-line-paper);
-  border-radius: 8px;
   margin: 0;
+}
+
+.methodFrame {
+  background: var(--brand-reading-paper-deep);
+  border: 1px solid var(--brand-line-paper);
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.methodFigure img {
+.methodFrame img {
+  display: block;
   width: 100%;
-}
-
-.methodFigure figcaption {
-  margin: 0;
-  padding: 0.75rem 1rem 0.9rem;
 }
 
 @media (min-width: 960px) {
   .methodGrid {
+    align-items: start;
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .step {
+    min-height: 26svh;
+  }
+
+  .methodFigure {
+    position: sticky;
+    top: 14svh;
   }
 }
 
@@ -323,7 +484,24 @@
 .closing {
   background: var(--path-accent);
   color: var(--brand-paper);
-  padding: var(--brand-space-section) var(--brand-space-inline);
+  overflow: hidden;
+  padding: var(--brand-space-section) var(--brand-space-inline) clamp(8rem, 22vw, 18rem);
+  position: relative;
+}
+
+.closingInner {
+  position: relative;
+  z-index: 1;
+}
+
+.closingTitle {
+  color: var(--brand-paper);
+  font-size: clamp(3rem, 1rem + 6vw, 7.5rem);
+  max-width: 12ch;
+}
+
+.closing .actions {
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 .closing .primaryCta:focus-visible,
@@ -333,4 +511,23 @@
 
 .closing .crossLink {
   text-decoration-color: var(--path-cta-bg);
+}
+
+/* The name, set huge and faint, sinks into the bottom of the band. */
+.closingMark {
+  bottom: -0.2em;
+  color: var(--path-cta-bg);
+  font-family: var(--font-cormorant);
+  font-size: clamp(9rem, 32vw, 30rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  margin: 0;
+  opacity: 0.16;
+  pointer-events: none;
+  position: absolute;
+  right: -0.04em;
+  user-select: none;
+  white-space: nowrap;
 }

@@ -25,11 +25,12 @@ test('each route renders exactly one h1 and shared components never add another'
   }
 })
 
-test('branch pages carry their path accent, calm tempo and remember the visit', () => {
+test('branch pages carry their path accent, the motion stage and remember the visit', () => {
   for (const path of ['tensai', 'conan']) {
     const source = read(routes[path].page)
     assert.match(source, new RegExp(`data-path="${path}"`), path)
-    assert.match(source, /data-motion-tempo="calm"/, path)
+    assert.match(source, /data-motion-stage/, path)
+    assert.doesNotMatch(source, /data-motion-tempo="calm"/, path)
     assert.match(source, new RegExp(`<PathMemory path="${path}" />`), path)
     assert.match(source, /buildBranchPageStructuredData\(/, path)
     assert.match(source, /<PathLink[\s\S]*?kind="outbound"/, path)
@@ -40,7 +41,9 @@ test('branch pages carry their path accent, calm tempo and remember the visit', 
 test('the homepage offers both doors without choosing a path for the visitor', () => {
   const source = read(routes.home.page)
   assert.doesNotMatch(source, /data-path=/)
-  assert.match(source, /data-motion-tempo="calm"/)
+  // Every route in the two-path set is a motion stage; the calm tempo is for other pages.
+  assert.match(source, /data-motion-stage/)
+  assert.doesNotMatch(source, /data-motion-tempo="calm"/)
   assert.match(source, /<PathDoors variant="hero" placement="door" \/>/)
   assert.match(source, /<PathDoors variant="closing" placement="closing" \/>/)
   assert.match(source, /<PathResume copy=\{homeContent\.resume\} \/>/)

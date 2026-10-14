@@ -1,5 +1,6 @@
 .page {
   --conan-muted: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  --conan-soft: color-mix(in srgb, var(--brand-paper) 86%, transparent);
   background: var(--brand-ink);
   color: var(--brand-paper);
   overflow-x: clip;
@@ -7,12 +8,12 @@
 
 .inner {
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1240px;
 }
 
 .wideInner {
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: 1360px;
 }
 
 /* First screen: a full-bleed offline class, words low on the left over ink. */
@@ -21,15 +22,22 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: min(calc(100svh - 82px), 900px);
+  min-height: min(calc(100svh - 82px), 920px);
   position: relative;
 }
 
 .heroMedia {
+  background: var(--brand-ink);
   inset: 0;
   overflow: hidden;
   position: absolute;
   z-index: 0;
+}
+
+/* Parallax pushes the photo down as the hero leaves, so it starts above the frame. */
+.heroPhoto {
+  inset: -12px 0 0;
+  position: absolute;
 }
 
 .heroPicture,
@@ -50,32 +58,79 @@
     linear-gradient(0deg, rgba(7, 7, 6, 0.96) 0, rgba(7, 7, 6, 0.86) 12rem, rgba(7, 7, 6, 0.6) 20rem, rgba(7, 7, 6, 0.16) 28rem, rgba(7, 7, 6, 0.05) 36rem, rgba(7, 7, 6, 0.3) 100%),
     linear-gradient(90deg, rgba(7, 7, 6, 0.55) 0%, rgba(7, 7, 6, 0) 45%);
   inset: 0;
+  pointer-events: none;
   position: absolute;
+}
+
+/* Load choreography: a lacquer sheet and the ink lift off the photo while it settles from a zoom. */
+.heroCurtain {
+  display: none;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .heroCurtain {
+    animation: curtainLift 1.3s cubic-bezier(0.76, 0, 0.24, 1) 0.15s forwards;
+    background: linear-gradient(180deg, var(--brand-ink) 0 86%, var(--path-cta-bg) 86% 100%);
+    display: block;
+    transform-origin: 50% 0%;
+  }
+
+  :global(html.motion) .heroPicture {
+    animation: photoSettle 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+  }
+
+  :global(html.motion) .heroShade {
+    animation: shadeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+  }
+}
+
+@keyframes curtainLift {
+  to {
+    scale: 1 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes photoSettle {
+  from {
+    scale: 1.2;
+  }
+}
+
+@keyframes shadeIn {
+  from {
+    opacity: 0.35;
+  }
 }
 
 .heroContent {
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1320px;
+  max-width: 1360px;
   padding: 6rem var(--brand-space-inline) clamp(2.5rem, 6vw, 4.5rem);
   position: relative;
   width: 100%;
 }
 
-.eyebrow {
+.eyebrow,
+.sectionMark {
   align-items: center;
   color: var(--brand-paper);
   display: flex;
   font-size: 0.74rem;
   font-weight: 700;
   gap: 0.6rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   line-height: 1.3;
   margin: 0 0 1.1rem;
   text-transform: uppercase;
 }
 
-.eyebrow::before {
+.eyebrow::before,
+.sectionMark::before {
   background: var(--path-accent);
   content: '';
   flex: none;
@@ -86,16 +141,22 @@
 .title {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.5rem, 4.8vw + 0.4rem, 4.8rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
+  font-size: clamp(2.9rem, 1rem + 5.2vw, 6.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
   margin: 0;
-  max-width: 13em;
+  max-width: 12em;
+}
+
+.title em {
+  color: var(--path-accent);
+  font-style: italic;
+  font-weight: 500;
 }
 
 .lead {
-  color: color-mix(in srgb, var(--brand-paper) 88%, transparent);
+  color: var(--conan-soft);
   font-size: clamp(1.02rem, 1.2vw, 1.14rem);
   line-height: 1.7;
   margin: 1.3rem 0 0;
@@ -115,15 +176,28 @@
 .page[data-path] .primaryCta:hover {
   align-items: center;
   background: var(--path-cta-bg);
-  border-radius: 6px;
+  border-radius: 999px;
   color: var(--path-cta-fg);
   display: inline-flex;
   font-size: 1rem;
   font-weight: 700;
-  gap: 0.55rem;
-  min-height: 52px;
-  padding: 0 1.4rem;
+  min-height: 56px;
+  padding: 0 1.6rem;
   text-decoration: none;
+}
+
+.ctaInner {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.55rem;
+}
+
+.ctaInner svg {
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primaryCta:hover .ctaInner svg {
+  transform: translateX(4px);
 }
 
 .primaryCta:focus-visible,
@@ -132,8 +206,8 @@
   outline-offset: var(--brand-focus-offset);
 }
 
-.crossLink,
-.crossLink:hover {
+.page[data-path] .crossLink,
+.page[data-path] .crossLink:hover {
   align-items: center;
   color: var(--brand-paper);
   display: inline-flex;
@@ -206,29 +280,28 @@
   padding: var(--brand-space-section) var(--brand-space-inline);
 }
 
-.sectionTitle,
-.closingTitle {
-  color: inherit;
-  font-family: var(--font-cormorant);
-  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-  margin: 0 0 clamp(2rem, 4vw, 3rem);
-  max-width: 18ch;
+.sectionHead {
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
 }
 
-.sectionLead {
-  color: var(--conan-muted);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin: calc(-1 * clamp(1rem, 2vw, 1.5rem)) 0 clamp(2rem, 4vw, 3rem);
-  max-width: 44rem;
+.sectionTitle,
+.closingTitle,
+.journeyTitle {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.5rem, 1rem + 4vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  max-width: 16ch;
 }
+
+/* Principle: one sentence, set large, lights up word by word as it is read. */
 
 .principle {
   border-bottom: 1px solid var(--brand-line-dark);
-  padding: clamp(4rem, 8vw, 7rem) var(--brand-space-inline);
+  padding: clamp(6rem, 14vw, 12rem) var(--brand-space-inline);
 }
 
 .principle figure {
@@ -236,29 +309,21 @@
 }
 
 .quote {
-  border-left: 2px solid var(--path-accent);
-  margin: 0;
-  padding-left: clamp(1.25rem, 3vw, 2.25rem);
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
 }
 
 .quote p {
+  color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  font-size: clamp(2.4rem, 1rem + 4.6vw, 6.4rem);
   font-weight: 500;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   margin: 0;
-  max-width: 24ch;
+  max-width: 17ch;
 }
 
-.quoteSource {
-  color: var(--conan-muted);
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  margin-top: 1.4rem;
-  padding-left: clamp(1.25rem, 3vw, 2.25rem);
-  text-transform: uppercase;
-}
+/* Audiences: two rows that draw their own rule as they arrive. */
 
 .audiences,
 .stages,
@@ -270,27 +335,47 @@
 
 .audiences {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(2.5rem, 5vw, 4rem);
 }
 
 .audience {
-  border-top: 2px solid var(--path-accent);
-  padding-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  position: relative;
 }
 
-.audienceTitle,
-.stageName {
-  color: inherit;
+.rowLine {
+  background: var(--brand-line-dark);
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.audienceIndex {
+  color: var(--path-accent);
   font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 2.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.1;
-  margin: 0 0 0.75rem;
+  font-size: 2.2rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+.audienceTitle {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 1rem + 2.4vw, 3.3rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+  margin: 0;
+  max-width: 14ch;
 }
 
 .audience p {
-  color: color-mix(in srgb, var(--brand-paper) 86%, transparent);
+  color: var(--conan-soft);
+  font-size: 1.05rem;
   line-height: 1.7;
   margin: 0;
   max-width: 34rem;
@@ -298,42 +383,256 @@
 
 @media (min-width: 768px) {
   .audiences {
+    column-gap: clamp(2rem, 5vw, 5rem);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-.journeyBand,
+/* Band: the five stage names as moving type, leaning with scroll speed. */
+
+.band {
+  border-top: 1px solid var(--brand-line-dark);
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+.bandRow {
+  display: flex;
+  white-space: nowrap;
+}
+
+.bandTrack {
+  align-items: center;
+  display: flex;
+  flex: none;
+  will-change: transform;
+}
+
+.bandWord {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.2rem, 1.6rem + 7.5vw, 10.5rem);
+  font-style: italic;
+  font-weight: 500;
+  gap: 0.45em;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  padding-inline: 0.22em;
+}
+
+.bandWord:nth-child(odd) {
+  color: var(--brand-paper);
+}
+
+.bandWord:nth-child(even) {
+  -webkit-text-stroke: 1.2px var(--brand-paper);
+  color: transparent;
+}
+
+.bandWord::after {
+  background: var(--path-accent);
+  border-radius: 999px;
+  content: '';
+  flex: none;
+  height: 0.13em;
+  width: 0.13em;
+}
+
+/* Journey: on wide screens the section pins and the five stages travel past sideways;
+   on phones the stages are a native swipe row under the intro. */
+
+.journey {
+  background: var(--brand-ink-raised);
+  overflow: hidden;
+  padding: var(--brand-space-section) 0;
+  position: relative;
+}
+
+.journeyTrack {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.journeyIntro {
+  padding-inline: var(--brand-space-inline);
+}
+
+.journeyTitle {
+  max-width: 13ch;
+}
+
+.journeyLead {
+  color: var(--conan-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1.5rem 0 0;
+  max-width: 38rem;
+}
+
+.stages {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding-inline: var(--brand-space-inline);
+  scroll-padding-inline: var(--brand-space-inline);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.stages::-webkit-scrollbar {
+  display: none;
+}
+
+.stages::after {
+  content: '';
+  flex: 0 0 1px;
+}
+
+.stage {
+  border-top: 1px solid var(--path-accent);
+  display: flex;
+  flex: 0 0 min(80vw, 22rem);
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  scroll-snap-align: start;
+}
+
+.stageNumber {
+  -webkit-text-stroke: 1px var(--path-accent);
+  color: transparent;
+  display: block;
+  font-family: var(--font-cormorant);
+  font-size: clamp(6rem, 4rem + 8vw, 15rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+}
+
+.stageName {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 1rem + 2.2vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 0;
+}
+
+.questions {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.questions li {
+  border-top: 1px solid var(--brand-line-dark);
+  color: var(--conan-soft);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  padding: 0.65rem 0;
+}
+
+.journeyProgress {
+  display: none;
+}
+
+/* Wide screens without the pin (reduced motion): the five stages as a calm grid. */
+@media (min-width: 900px) {
+  .journey:not([data-hscroll-active='true']) .journeyTrack {
+    margin: 0 auto;
+    max-width: calc(1240px + 2 * var(--brand-space-inline));
+  }
+
+  .journey:not([data-hscroll-active='true']) .stages {
+    display: grid;
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .journey:not([data-hscroll-active='true']) .stages::after {
+    display: none;
+  }
+
+  .journey:not([data-hscroll-active='true']) .stageNumber {
+    font-size: clamp(5rem, 7vw, 7rem);
+  }
+}
+
+.journey[data-hscroll-active='true'] {
+  align-items: center;
+  display: flex;
+  height: 100svh;
+  padding: 0;
+}
+
+.journey[data-hscroll-active='true'] .journeyTrack {
+  align-items: center;
+  display: flex;
+  gap: 0;
+  width: 100%;
+}
+
+.journey[data-hscroll-active='true'] .journeyIntro {
+  flex: 0 0 38vw;
+  margin-right: 5vw;
+}
+
+.journey[data-hscroll-active='true'] .stages {
+  flex: none;
+  gap: 0;
+  overflow: visible;
+  padding: 0;
+  scroll-snap-type: none;
+}
+
+.journey[data-hscroll-active='true'] .stages::after {
+  flex-basis: var(--brand-space-inline);
+}
+
+/* Pinned: each stage is a tall column with its numeral at the top and its questions at the foot. */
+.journey[data-hscroll-active='true'] .stage {
+  border-left: 1px solid var(--brand-line-dark);
+  border-top: 0;
+  flex-basis: clamp(22rem, 30vw, 32rem);
+  height: 72svh;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 2.6vw, 2.75rem);
+}
+
+.journey[data-hscroll-active='true'] .stageName {
+  margin-top: auto;
+}
+
+.journey[data-hscroll-active='true'] .journeyProgress {
+  background: var(--brand-line-dark);
+  bottom: 6svh;
+  display: block;
+  height: 1px;
+  left: var(--brand-space-inline);
+  position: absolute;
+  right: var(--brand-space-inline);
+}
+
+.journeyProgress span {
+  background: var(--path-accent);
+  display: block;
+  height: 100%;
+  transform: scaleX(var(--hscroll-progress, 0));
+  transform-origin: 0 50%;
+}
+
+/* Mentors: the title takes the left half, two large portraits the right. */
+
 .mentorsBand {
   background: var(--brand-ink-raised);
 }
 
-.stages {
-  display: grid;
-  gap: 0;
-}
-
-.stage {
-  border-top: 1px solid var(--brand-line-dark);
-  padding: 1.4rem 0 1.6rem;
-}
-
-.stageNumber {
-  color: var(--conan-muted);
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.6rem;
-}
-
-.questions li {
-  color: color-mix(in srgb, var(--brand-paper) 86%, transparent);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  padding: 0.3rem 0;
-}
-
-/* Two small portraits leave half the row empty on desktop, so the title takes that half. */
 @media (min-width: 1000px) {
   .mentorsInner {
     align-items: start;
@@ -342,30 +641,51 @@
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   }
 
-  .mentorsInner .sectionTitle {
+  .mentorsInner .sectionHead {
     margin-bottom: 0;
+    position: sticky;
+    top: 18svh;
   }
 }
 
-@media (min-width: 640px) {
-  .stages {
-    column-gap: 2rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1100px) {
-  .stages {
-    column-gap: 1.5rem;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .stage {
-    border-top-color: var(--path-accent);
-  }
-}
+/* Closing: the invitation, with the name sinking huge and faint into the foot of the page. */
 
 .closing {
   border-top: 1px solid var(--brand-line-dark);
-  padding: var(--brand-space-section) var(--brand-space-inline);
+  overflow: hidden;
+  padding: var(--brand-space-section) var(--brand-space-inline) clamp(8rem, 22vw, 18rem);
+  position: relative;
+}
+
+.closingInner {
+  position: relative;
+  z-index: 1;
+}
+
+.closingTitle {
+  font-size: clamp(3rem, 1rem + 6vw, 7.5rem);
+  line-height: 0.96;
+  max-width: 12ch;
+}
+
+.closing .actions {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.closingMark {
+  bottom: -0.2em;
+  color: var(--path-accent);
+  font-family: var(--font-cormorant);
+  font-size: clamp(9rem, 32vw, 30rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  margin: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  position: absolute;
+  right: -0.04em;
+  user-select: none;
+  white-space: nowrap;
 }

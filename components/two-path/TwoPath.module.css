@@ -138,9 +138,59 @@
   transform: translateX(4px);
 }
 
+/* Pointer light that follows the tilt (fine pointers only; the engine sets --tilt-x/y). */
+.doorGlare {
+  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 30%), rgba(255, 252, 240, 0.32), transparent 58%);
+  inset: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 420ms var(--brand-motion-ease);
+  z-index: -1;
+}
+
+.door:hover .doorGlare {
+  opacity: 1;
+}
+
 @media (min-width: 768px) {
   .doors {
-    grid-template-columns: repeat(2, clamp(11rem, 27svh, 16.5rem));
+    grid-template-columns: repeat(2, clamp(11.5rem, 29svh, 18rem));
+  }
+}
+
+/* Intro: the doors rise out of a clip after the headline has started. */
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .door {
+    animation: doorRise 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: 0.95s;
+  }
+
+  :global(html.motion) .door + .door {
+    animation-delay: 1.08s;
+  }
+
+  :global(html.motion) .door .doorPhoto {
+    animation: doorSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.95s backwards;
+  }
+}
+
+@keyframes doorRise {
+  from {
+    clip-path: inset(100% 0 0 0 round 6px);
+    translate: 0 2.5rem;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0 round 6px);
+    translate: 0 0;
+  }
+}
+
+@keyframes doorSettle {
+  from {
+    scale: 1.28;
   }
 }
 
@@ -191,9 +241,15 @@
   outline-offset: 2px;
 }
 
-/* Closing doors: two solid buttons that end a page. */
+/* Closing doors: two solid buttons in narrow containers (phones, the About column),
+   editorial rows with a photo that follows the pointer in wide ones. */
 
 .closingDoors {
+  container-type: inline-size;
+  position: relative;
+}
+
+.closingList {
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
@@ -204,28 +260,39 @@
   border-radius: 6px;
   display: flex;
   gap: 1rem;
+  isolation: isolate;
   justify-content: space-between;
   min-height: 5.5rem;
+  overflow: hidden;
   padding: 1.1rem 1.4rem;
+  position: relative;
   text-decoration: none;
 }
 
-/* Scoped under .closingDoors to outrank the unified shell's `a { color: inherit }` (0,2,1). */
-.closingDoors .closingDoor[data-path-door='tensai'],
-.closingDoors .closingDoor[data-path-door='tensai']:hover {
-  background: #c3f331;
-  color: #073b2f;
+.closingDoor[data-path-door='tensai'] {
+  --row-accent: #c3f331;
+  --row-fg: #073b2f;
 }
 
-.closingDoors .closingDoor[data-path-door='conan'],
-.closingDoors .closingDoor[data-path-door='conan']:hover {
-  background: #c4441f;
-  color: #ffffff;
+.closingDoor[data-path-door='conan'] {
+  --row-accent: #c4441f;
+  --row-fg: #ffffff;
+}
+
+/* Scoped under .closingDoors to outrank the unified shell's `a { color: inherit }` (0,2,1). */
+.closingDoors .closingDoor[data-path-door] {
+  background: var(--row-accent);
+  color: var(--row-fg);
 }
 
 .closingDoor:focus-visible {
   outline: 2px solid var(--closing-focus, var(--brand-paper));
   outline-offset: var(--brand-focus-offset);
+}
+
+.closingDoorIndex,
+.closingDoorDescription {
+  display: none;
 }
 
 .closingDoorText {
@@ -249,6 +316,139 @@
   line-height: 1;
 }
 
+.closingDoorArrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closingDoor:hover .closingDoorArrow {
+  transform: translateX(4px);
+}
+
+.closingFloat {
+  display: none;
+}
+
+@container (min-width: 46rem) {
+  .closingList {
+    border-top: 1px solid var(--closing-line, color-mix(in srgb, currentColor 22%, transparent));
+    display: block;
+  }
+
+  .closingDoors .closingDoor[data-path-door] {
+    align-items: center;
+    background: transparent;
+    border-bottom: 1px solid var(--closing-line, color-mix(in srgb, currentColor 22%, transparent));
+    border-radius: 0;
+    color: inherit;
+    display: grid;
+    gap: clamp(1rem, 3cqi, 3rem);
+    grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 16rem) 4.75rem;
+    min-height: 0;
+    padding: clamp(1.75rem, 3.6cqi, 2.75rem) clamp(0.75rem, 1.6cqi, 1.5rem);
+    transition: color 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* The accent fills the row from the bottom on hover or keyboard focus. */
+  .closingDoor::before {
+    background: var(--row-accent);
+    content: '';
+    inset: 0;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+
+  .closingDoors .closingDoor[data-path-door]:hover,
+  .closingDoors .closingDoor[data-path-door]:focus-visible {
+    color: var(--row-fg);
+  }
+
+  .closingDoor:hover::before,
+  .closingDoor:focus-visible::before {
+    transform: scaleY(1);
+    transform-origin: 50% 0%;
+  }
+
+  .closingDoorIndex {
+    align-self: start;
+    display: block;
+    font-family: var(--font-be-vietnam);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    opacity: 0.6;
+    padding-top: 0.9rem;
+  }
+
+  .closingDoorText {
+    gap: 0.5rem;
+  }
+
+  .closingDoorTarget {
+    font-size: clamp(3rem, 9.2cqi, 7.6rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    transition: translate 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .closingDoor:hover .closingDoorTarget,
+  .closingDoor:focus-visible .closingDoorTarget {
+    translate: 1.25rem 0;
+  }
+
+  .closingDoorDescription {
+    display: block;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    opacity: 0.8;
+  }
+
+  .closingDoorArrow {
+    aspect-ratio: 1;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    width: 4.75rem;
+  }
+
+  .closingDoor:hover .closingDoorArrow,
+  .closingDoor:focus-visible .closingDoorArrow {
+    transform: rotate(-45deg);
+  }
+
+  .closingFloat {
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    display: block;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: clamp(11rem, 20cqi, 16rem);
+    z-index: 2;
+  }
+
+  .closingFloatMedia {
+    inset: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  .closingFloatMedia img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
 /* Founder letter on reading paper. */
 
 .letter {
@@ -259,69 +459,112 @@
 
 .letterInner {
   display: grid;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  gap: clamp(2.25rem, 5vw, 5rem);
   margin: 0 auto;
-  max-width: 1180px;
-}
-
-.letterTitle {
-  color: var(--brand-text-on-paper);
-  font-family: var(--font-cormorant);
-  font-size: clamp(2.3rem, 4.6vw, 3.9rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
-  margin: 0;
-  max-width: 12ch;
+  max-width: 1240px;
 }
 
 .letterPortrait {
   aspect-ratio: 4 / 5;
   background: var(--brand-reading-paper-deep);
   border-radius: 4px;
-  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
-  max-width: min(60vw, 360px);
+  margin: 0;
+  max-width: min(64vw, 380px);
   overflow: hidden;
+  position: relative;
+}
+
+/* Wrapper for the settle zoom of an image reveal; the image inside keeps its parallax. */
+.revealMedia {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .letterPortrait img {
+  display: block;
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
 .letterBody {
-  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  max-width: 46rem;
+}
+
+.letterTitle {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.6rem, 1.4rem + 4.6vw, 5.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  margin: 0 0 clamp(1.75rem, 3.5vw, 3rem);
+  max-width: 11ch;
+}
+
+.letterLead {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.45rem, 1rem + 1.5vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.letterRest {
+  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
   max-width: 36rem;
 }
 
-.letterBody p {
+.letterRest p {
   line-height: 1.78;
   margin: 0 0 1.25em;
 }
 
-.letterBody .signature {
+.signature {
+  display: grid;
+  gap: 0.35rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  max-width: 22rem;
+}
+
+.signatureLine {
+  background: currentColor;
+  display: block;
+  height: 1px;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+.signatureName {
   font-family: var(--font-cormorant);
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-style: italic;
   font-weight: 500;
-  line-height: 1.1;
-  margin: 2rem 0 0;
+  line-height: 1.05;
+}
+
+.signatureRole {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  opacity: 0.68;
+  text-transform: uppercase;
 }
 
 @media (min-width: 1024px) {
   .letterInner {
     align-items: start;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
   }
 
-  .letterHead {
+  .letterAside {
     position: sticky;
     top: 7rem;
   }
 
   .letterBody {
-    padding-top: 0.6rem;
+    padding-top: 0.4rem;
   }
 }
 
@@ -335,12 +578,12 @@
 .sectionTitle {
   color: inherit;
   font-family: var(--font-cormorant);
-  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.04;
-  margin: 0 0 clamp(2rem, 4vw, 3rem);
-  max-width: 18ch;
+  font-size: clamp(2.6rem, 1.4rem + 4.6vw, 5.6rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  margin: 0 0 clamp(2.5rem, 5vw, 4.5rem);
+  max-width: 13ch;
 }
 
 .textLink {
@@ -365,7 +608,7 @@
   outline-offset: 2px;
 }
 
-/* Field notes: one real photo next to two checked claims. */
+/* Field notes: one real photo next to two checked claims with their numbers. */
 
 .fieldNotes {
   background: var(--brand-ink);
@@ -375,24 +618,35 @@
 
 .fieldGrid {
   display: grid;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
 }
 
 .fieldPhoto {
-  background: var(--brand-ink-raised);
-  border: 1px solid var(--brand-line-dark);
-  border-radius: 6px;
   margin: 0;
-  overflow: hidden;
 }
 
-.fieldPhoto img {
+.fieldPhotoFrame {
   aspect-ratio: 3 / 2;
+  background: var(--brand-ink-raised);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.fieldPhotoFrame img {
+  display: block;
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.fieldPhoto figcaption,
+.fieldPhoto figcaption {
+  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  padding-top: 0.9rem;
+}
+
 .galleryFigure figcaption {
   color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
   font-size: 0.84rem;
@@ -402,34 +656,353 @@
 
 .fieldCards {
   display: grid;
-  gap: 0.5rem;
+  gap: clamp(2.5rem, 5vw, 3.75rem);
 }
 
 .fieldCard {
-  border-top: 1px solid var(--brand-line-dark);
-  padding: 1.4rem 0 0.5rem;
+  min-width: 0;
 }
 
-.fieldCard p {
+.fieldStat {
+  align-items: baseline;
+  column-gap: 0.12em;
+  display: flex;
+  flex-wrap: wrap;
   font-family: var(--font-cormorant);
-  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-size: clamp(4rem, 2.6rem + 5vw, 7.4rem);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 500;
-  line-height: 1.18;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  margin: 0;
+}
+
+.fieldStatLabel {
+  flex-basis: 100%;
+  font-family: var(--font-be-vietnam);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  margin-top: 0.9rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+
+.fieldRule {
+  background: var(--brand-line-dark);
+  display: block;
+  height: 1px;
+  margin: 1.4rem 0 1.2rem;
+}
+
+.fieldClaim {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.35rem, 1rem + 1vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.22;
   margin: 0 0 0.6rem;
+  max-width: 26ch;
 }
 
 @media (min-width: 900px) {
   .fieldGrid {
-    align-items: end;
+    align-items: start;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   }
 }
 
-/* Gallery: one wide lead photo, then a calm grid. */
+/* Marquee: the two doors as moving type, one band per path. */
+
+.marquee {
+  background: var(--brand-ink);
+  color: var(--brand-paper);
+  display: grid;
+  overflow: hidden;
+  padding: clamp(4.5rem, 10vw, 9rem) 0 clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.marqueeRow[data-path='tensai'] {
+  --marquee-accent: #c3f331;
+}
+
+.marqueeRow[data-path='conan'] {
+  --marquee-accent: #d94f2b;
+}
+
+.marqueeRow {
+  display: flex;
+  white-space: nowrap;
+}
+
+.marqueeTrack {
+  align-items: center;
+  display: flex;
+  flex: none;
+  will-change: transform;
+}
+
+.marqueeWord,
+.marqueeProduct {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 1.6rem + 7vw, 9.5rem);
+  gap: 0.5em;
+  line-height: 1.08;
+  padding-inline: 0.25em;
+}
+
+.marqueeWord {
+  color: color-mix(in srgb, var(--brand-paper) 62%, transparent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.marqueeProduct {
+  -webkit-text-stroke: 1.2px var(--brand-paper);
+  color: transparent;
+  font-weight: 600;
+}
+
+.marqueeProduct::after {
+  background: var(--marquee-accent);
+  border-radius: 999px;
+  content: '';
+  flex: none;
+  height: 0.14em;
+  width: 0.14em;
+}
+
+/* Reel: real class photos. A swipe row by default; pinned and scroll-driven on wide screens. */
+
+.reel {
+  background: var(--brand-ink);
+  color: var(--brand-paper);
+  overflow: hidden;
+  padding: var(--brand-space-section) 0;
+  position: relative;
+}
+
+.reelTrack {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.25rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0 var(--brand-space-inline);
+  scroll-padding-inline: var(--brand-space-inline);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.reelTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.reelTrack::after {
+  content: '';
+  flex: 0 0 1px;
+}
+
+.reelIntro {
+  display: flex;
+  flex: 0 0 min(84vw, 25rem);
+  flex-direction: column;
+  gap: 1.1rem;
+  justify-content: flex-end;
+  scroll-snap-align: start;
+}
+
+.reelEyebrow {
+  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.reelTitle {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.6rem, 1.4rem + 4vw, 5.2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  margin: 0;
+  max-width: 9ch;
+}
+
+.reelLead {
+  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 32ch;
+}
+
+.reelItem {
+  flex: 0 0 min(82vw, 34rem);
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.reelFrame {
+  aspect-ratio: 4 / 3;
+  background: var(--brand-ink-raised);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Wider than its frame so the photo can travel inside it while the reel moves. */
+.reelMedia {
+  height: 100%;
+  margin-left: -9%;
+  width: 118%;
+}
+
+.reelMedia img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.reelItem figcaption {
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  display: flex;
+  font-size: 0.84rem;
+  gap: 0.9rem;
+  line-height: 1.45;
+  padding-top: 0.9rem;
+}
+
+.reelIndex {
+  color: var(--brand-paper);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+.reelProgress {
+  display: none;
+}
+
+/* Phones: the intro stays put on its own row while the photos swipe underneath it. */
+@media (max-width: 899px) {
+  .reelTrack {
+    display: grid;
+    grid-template-columns: repeat(var(--reel-count, 6), min(82vw, 34rem));
+    grid-template-rows: auto auto;
+    row-gap: clamp(2rem, 6vw, 3rem);
+  }
+
+  .reelTrack::after {
+    display: none;
+  }
+
+  .reelIntro {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    left: var(--brand-space-inline);
+    max-width: calc(100vw - 2 * var(--brand-space-inline));
+    position: sticky;
+  }
+
+  .reelItem {
+    grid-row: 2;
+  }
+}
+
+/* Wide screens without the pinned reel (reduced motion): a calm three-column grid. */
+@media (min-width: 900px) {
+  .reel:not([data-hscroll-active='true']) .reelTrack {
+    display: grid;
+    gap: clamp(1.5rem, 2.4vw, 2.25rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .reel:not([data-hscroll-active='true']) .reelTrack::after {
+    display: none;
+  }
+
+  .reel:not([data-hscroll-active='true']) .reelIntro {
+    grid-column: 1 / -1;
+    margin-bottom: clamp(1rem, 3vw, 2.5rem);
+  }
+}
+
+.reel[data-hscroll-active='true'] {
+  align-items: center;
+  display: flex;
+  height: 100svh;
+  padding: 0;
+}
+
+.reel[data-hscroll-active='true'] .reelTrack {
+  align-items: center;
+  overflow: visible;
+  scroll-snap-type: none;
+  width: 100%;
+}
+
+.reel[data-hscroll-active='true'] .reelIntro {
+  align-self: center;
+  flex-basis: 27vw;
+  margin-right: 4vw;
+}
+
+/* Pinned: photo heights follow the viewport so the band fills the screen, in a staggered rhythm. */
+.reel[data-hscroll-active='true'] .reelFrame {
+  aspect-ratio: auto;
+  height: var(--reel-frame-h, 60svh);
+}
+
+.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n + 1) {
+  --reel-frame-h: 64svh;
+  flex-basis: 44vw;
+}
+
+.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n + 2) {
+  --reel-frame-h: 44svh;
+  align-self: flex-end;
+  flex-basis: 27vw;
+  margin-bottom: 8svh;
+}
+
+.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n) {
+  --reel-frame-h: 54svh;
+  align-self: flex-start;
+  flex-basis: 34vw;
+  margin-top: 8svh;
+}
+
+.reel[data-hscroll-active='true'] .reelProgress {
+  background: var(--brand-line-dark);
+  bottom: 5svh;
+  display: block;
+  height: 1px;
+  left: var(--brand-space-inline);
+  position: absolute;
+  right: var(--brand-space-inline);
+}
+
+.reelProgress span {
+  background: var(--brand-paper);
+  display: block;
+  height: 100%;
+  transform: scaleX(var(--hscroll-progress, 0));
+  transform-origin: 0 50%;
+}
+
+/* Gallery: an editorial wall. A wide lead photo, then frames of different sizes on a 12-column grid. */
 
 .gallery {
   display: grid;
-  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  gap: clamp(2rem, 5vw, 3rem);
   grid-template-columns: minmax(0, 1fr);
   list-style: none;
   margin: 0;
@@ -437,59 +1010,109 @@
 }
 
 .galleryFigure {
-  background: var(--brand-ink-raised);
-  border: 1px solid var(--brand-line-dark);
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   margin: 0;
+}
+
+.galleryFrame {
+  background: var(--brand-ink-raised);
+  border-radius: 6px;
   overflow: hidden;
 }
 
-.galleryFigure img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.galleryMedia,
+.galleryMedia img {
+  display: block;
   width: 100%;
 }
 
+.galleryMedia img {
+  aspect-ratio: var(--gallery-ratio, 4 / 3);
+  height: auto;
+  object-fit: cover;
+}
+
 .galleryFigure figcaption {
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  display: flex;
+  font-size: 0.86rem;
+  gap: 0.9rem;
+  line-height: 1.5;
+  padding-top: 0.9rem;
+}
+
+.galleryFigure figcaption > span:last-child {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.25rem;
+}
+
+.galleryIndex {
+  color: var(--path-accent, var(--brand-paper));
+  flex: none;
+  font-family: var(--font-cormorant);
+  font-size: 1.25rem;
+  font-style: italic;
+  line-height: 1.1;
 }
 
 .galleryKind {
-  align-items: center;
   color: var(--brand-paper);
-  display: flex;
-  gap: 0.5rem;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
+.galleryLead {
+  --gallery-ratio: 16 / 10;
+}
+
 @media (min-width: 640px) {
-  .gallery {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .galleryLead {
-    grid-column: span 2;
-  }
-
-  .galleryLead .galleryFigure img {
-    aspect-ratio: 16 / 9;
+    --gallery-ratio: 16 / 9;
   }
 }
 
 @media (min-width: 1024px) {
   .gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    column-gap: clamp(1.25rem, 2.4vw, 2.5rem);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    row-gap: clamp(3.5rem, 7vw, 7rem);
   }
 
   .galleryLead {
-    grid-column: span 3;
+    --gallery-ratio: 21 / 9;
+    grid-column: 1 / -1;
+  }
+
+  .gallery > li:nth-child(2) {
+    grid-column: 1 / span 7;
+  }
+
+  .gallery > li:nth-child(3) {
+    --gallery-ratio: 4 / 5;
+    grid-column: 9 / span 4;
+    margin-top: clamp(6rem, 12vw, 12rem);
+  }
+
+  .gallery > li:nth-child(4) {
+    --gallery-ratio: 4 / 5;
+    grid-column: 2 / span 4;
+  }
+
+  .gallery > li:nth-child(5) {
+    grid-column: 7 / span 6;
+    margin-top: clamp(4rem, 9vw, 9rem);
+  }
+
+  .gallery > li:nth-child(6) {
+    grid-column: 1 / span 6;
+  }
+
+  .gallery > li:nth-child(7) {
+    --gallery-ratio: 4 / 5;
+    grid-column: 8 / span 4;
+    margin-top: clamp(5rem, 10vw, 10rem);
   }
 }
 
@@ -497,34 +1120,51 @@
 
 .mentors {
   display: grid;
-  gap: clamp(1rem, 3vw, 2rem);
-  grid-template-columns: repeat(2, minmax(0, 240px));
+  gap: clamp(1rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(2, minmax(0, 340px));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.mentorPhoto {
-  aspect-ratio: 4 / 5;
+.mentor:nth-child(2) {
+  margin-top: clamp(2.5rem, 8vw, 7rem);
+}
+
+.mentorFrame {
   background: var(--brand-ink-raised);
   border-radius: 6px;
-  object-fit: cover;
+  overflow: hidden;
+}
+
+.mentorMedia,
+.mentorPhoto {
+  display: block;
   width: 100%;
 }
 
+.mentorPhoto {
+  aspect-ratio: 4 / 5;
+  height: auto;
+  object-fit: cover;
+}
+
 .mentorName {
+  color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: clamp(1.6rem, 1rem + 1.4vw, 2.3rem);
+  font-weight: 500;
   line-height: 1.1;
-  margin: 0.9rem 0 0.2rem;
+  margin: 1rem 0 0.2rem;
 }
 
 .mentorRole {
   color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
   font-size: 0.9rem;
+  letter-spacing: 0.04em;
   margin: 0;
 }
+
 
 /* Below 390px a half-width door cannot fit the mark and "Conan School" on one line; the arrow keeps the colour. */
 @media (max-width: 389px) {
@@ -549,5 +1189,175 @@
   .door:hover .doorArrow,
   .door:focus-visible .doorArrow {
     transform: none;
+  }
+
+  .doorGlare,
+  .closingDoor,
+  .closingDoor::before,
+  .closingDoorArrow,
+  .closingDoorTarget {
+    transition: none;
+  }
+
+  .closingDoor:hover .closingDoorArrow,
+  .closingDoor:focus-visible .closingDoorArrow {
+    transform: none;
+  }
+
+  .closingDoor:hover .closingDoorTarget,
+  .closingDoor:focus-visible .closingDoorTarget {
+    translate: none;
+  }
+
+  /* Without scroll-linked motion the marquee is a still, cropped line of type. */
+  .marqueeTrack {
+    will-change: auto;
+  }
+}
+
+/* Guide: "Người [photo] dẫn đường". Static by default: the line above the full photo. The
+   engine sets data-zoom-active, pins the stage and opens the photo out of the slot. */
+
+.guide {
+  background: var(--brand-ink);
+  color: var(--brand-paper);
+  padding: var(--brand-space-section) var(--brand-space-inline) 0;
+  position: relative;
+}
+
+.guideStage {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.guideTitle {
+  align-items: center;
+  color: var(--brand-paper);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-cormorant);
+  font-size: clamp(4rem, 1rem + 9vw, 11rem);
+  font-weight: 400;
+  gap: 0 0.18em;
+  justify-content: center;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  margin: 0;
+  text-align: center;
+}
+
+.guideWord {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.guideTitle em {
+  font-style: italic;
+}
+
+.guideSlot {
+  display: none;
+}
+
+.guideMedia {
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.guideImage,
+.guideImage img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.guideImage img {
+  object-fit: cover;
+}
+
+.guideScrim {
+  background: linear-gradient(180deg, rgb(7 7 6 / 0) 45%, rgb(7 7 6 / 0.72));
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.guideCaption {
+  bottom: 0;
+  color: var(--brand-paper);
+  display: grid;
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.6rem);
+  font-style: italic;
+  gap: 0.6rem;
+  left: 0;
+  line-height: 1.05;
+  max-width: 34rem;
+  padding: clamp(1.25rem, 4vw, 3.5rem);
+  position: absolute;
+}
+
+.guideCaptionMark {
+  font-family: var(--font-be-vietnam);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  opacity: 0.78;
+  text-transform: uppercase;
+}
+
+.guide[data-zoom-active='true'] {
+  height: 100vh;
+  height: 100svh;
+  overflow: clip;
+  padding: 0;
+}
+
+.guide[data-zoom-active='true'] .guideStage {
+  height: 100%;
+  max-width: none;
+  place-items: center;
+  position: relative;
+}
+
+.guide[data-zoom-active='true'] .guideTitle {
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+}
+
+.guide[data-zoom-active='true'] .guideSlot {
+  aspect-ratio: 4 / 3;
+  display: inline-block;
+  width: clamp(7rem, 15vw, 16rem);
+}
+
+.guide[data-zoom-active='true'] .guideMedia {
+  aspect-ratio: auto;
+  border-radius: 0;
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.guide[data-zoom-active='true'] .guideImage {
+  will-change: transform;
+}
+
+@media (max-width: 899px) {
+  .guide[data-zoom-active='true'] .guideTitle {
+    flex-direction: column;
+    font-size: clamp(3.6rem, 18vw, 7rem);
+    gap: 0.12em;
+  }
+
+  .guide[data-zoom-active='true'] .guideSlot {
+    width: min(58vw, 15rem);
   }
 }
