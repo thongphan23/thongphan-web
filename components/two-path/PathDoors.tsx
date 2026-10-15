@@ -4,7 +4,7 @@ import { PATH_LABELS, type PathKey, type Placement } from '@/lib/two-path-links'
 import PathLink from './PathLink'
 import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
-import home from './HomeSections.module.css'
+import home from './PathDoorsHero.module.css'
 
 type PathDoorsProps = {
   // hero: two large buttons under the first-screen question; closing: two large rows that end a page.
