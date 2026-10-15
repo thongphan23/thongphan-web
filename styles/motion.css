@@ -86,6 +86,13 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
   opacity: 1;
 }
 
+/* Resting: the mouse has not moved for a moment. A ring wrapped round a button or carrying a
+   label still says something, so only the bare pointer fades. */
+.motion-cursor[data-visible='true'][data-rest='true']:not([data-state='stick']):not([data-state='label']) {
+  opacity: 0;
+  transition-duration: 600ms;
+}
+
 .motion-cursor__dot,
 .motion-cursor__ring {
   position: absolute;

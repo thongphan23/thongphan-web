@@ -78,11 +78,16 @@ export default function TensaiPage() {
           </p>
         </div>
         {/* The card is real text and real choices, not a screenshot: it stays sharp at any scale and
-            answers the way the app does. The pointer leans it a little (data-tilt). */}
+            answers the way the app does. The pointer leans it a little (data-tilt) and a soft light
+            follows it across the face. */}
         <div className={styles.lessonSlot}>
           <span className={styles.heroGlow} aria-hidden="true" data-lesson-glow />
           <div className={styles.lessonCard} data-lesson-card>
-            <div data-tilt="2.5">
+            {/* A sticker on the card's corner says it can be played; it peels off once anyone answers. */}
+            <span className={styles.tryTag} aria-hidden="true">
+              {tensaiContent.lesson.tryTag}
+            </span>
+            <div className={styles.lessonTilt} data-tilt="3.5">
               <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
                 <TensaiLesson />
               </div>
@@ -93,7 +98,8 @@ export default function TensaiPage() {
             shows a mark, not an empty panel. */}
         <div className={styles.portal} data-lesson-portal aria-hidden="true">
           <span className={styles.portalMark} data-lesson-portal-mark>
-            天才
+            <span className={styles.portalGlyph} data-kanji-write>{tensaiContent.portal.mark}</span>
+            <span className={styles.portalGloss}>{tensaiContent.portal.gloss}</span>
           </span>
         </div>
       </section>
@@ -111,6 +117,16 @@ export default function TensaiPage() {
             <h2 id="tensai-situations" className={styles.sectionTitle} data-split>
               {situations.title}
             </h2>
+            {/* The course each card leads to, lit in turn as its card takes the top of the pile, so
+                the held column keeps pace with the cards (stackCards marks data-current). */}
+            <ol className={styles.situationRail} data-stack-rail aria-hidden="true">
+              {situations.items.map((item, index) => (
+                <li key={item.course}>
+                  <span>{pad(index + 1)}</span>
+                  Khóa {item.course}
+                </li>
+              ))}
+            </ol>
           </div>
           {/* Each problem is a card that holds under the heading while the next one slides over it,
               so the three read as a pile the reader works through (stackCards in engine.ts). */}
@@ -119,6 +135,7 @@ export default function TensaiPage() {
             data-stack
             data-stack-scale="0.94"
             data-stack-opacity="1"
+            data-stack-dim="0.9"
             data-stack-start="top 55%"
           >
             {situations.items.map((item, index) => (
@@ -132,7 +149,7 @@ export default function TensaiPage() {
                   <span className={styles.situationIndex}>{pad(index + 1)}</span>
                   <span className={styles.situationTotal}>/ {pad(situations.items.length)}</span>
                 </p>
-                <p className={styles.problem} data-scrub-words data-scrub-from="0.6" data-scrub-end="top 45%">
+                <p className={styles.problem} data-scrub-words data-scrub-from="0.72" data-scrub-end="top 78%">
                   {item.problem}
                 </p>
                 <div className={styles.situationAnswer}>
@@ -234,14 +251,12 @@ export default function TensaiPage() {
                         {
                           '--zoom': frame.zoom,
                           '--origin': frame.origin,
-                          '--position': 'position' in frame ? frame.position : undefined,
                         } as CSSProperties
                       }
                     >
                       <TwoPathPhoto
                         id={frame.photoId}
                         sizes="(max-width: 959px) 100vw, 820px"
-                        decorative={index > 0}
                       />
                       <span
                         className={styles.swapFocus}
@@ -257,6 +272,9 @@ export default function TensaiPage() {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* The step marks sit under the screen, not on it, so they never cover the ring. */}
+            <figcaption className={styles.methodMeta}>
               <ol className={styles.swapProgress} aria-hidden="true">
                 {method.steps.map((step, index) => (
                   <li key={step.title} data-swap-dot>
@@ -264,8 +282,8 @@ export default function TensaiPage() {
                   </li>
                 ))}
               </ol>
-            </div>
-            <figcaption>{method.caption}</figcaption>
+              <span className={styles.methodCaption}>{method.caption}</span>
+            </figcaption>
           </figure>
         </div>
       </section>

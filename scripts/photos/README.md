@@ -56,6 +56,7 @@ người. Máy dò mặt bỏ sót mặt nhỏ, nghiêng hoặc bị che, nên k
 | `founder-portrait` | `assets/branding/thongphan-speaker-hires.jpg`, nền slide đã làm mờ |
 | `door-tensai` | `public/images/homepage/proof/thong-author-book-3x2-v1.webp` |
 | `tensai-map`, `tensai-stage`, `tensai-lesson` | Ảnh chụp app Tensai live 01/10/2026 (`tensai-home/docs/positioning-v8/release/screens/`) |
+| `tensai-step-intro`, `tensai-step-exercise`, `tensai-step-map` | Cùng bộ ảnh chụp app trên, cắt sát vùng chính rồi phóng lanczos lên 1120×1013 để chữ đọc được trong khung; chữ bị cắt ở cạnh mờ dần vào màu nền `#f9faf5`. Tạo bằng `TENSAI_SCREENS=<tensai-home>/docs/positioning-v8/release/screens scripts/photos/tensai-step-crops.sh`, không có job trong `jobs.json` |
 | `door-conan`, `conan-hero*`, `field-content-class`, `gallery-*` | Album công khai "Cộng đồng có gì hay?" trên conan.school (URL từng ảnh ghi trong manifest) |
 | `mentor-dac-nguyen`, `mentor-thong-phan` | `https://image.conan.school/mentors/` |
 

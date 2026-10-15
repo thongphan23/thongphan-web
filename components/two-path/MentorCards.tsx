@@ -29,7 +29,7 @@ export default function MentorCards({ people }: MentorCardsProps) {
             data-tilt="4"
           >
             <div className={styles.mentorMedia} data-reveal-media>
-              <TwoPathPhoto id={person.photoId} sizes="(max-width: 639px) 46vw, 360px" className={styles.mentorPhoto} />
+              <TwoPathPhoto id={person.photoId} sizes="(max-width: 639px) 46vw, 440px" className={styles.mentorPhoto} />
             </div>
           </div>
           <p className={styles.mentorName}>{person.name}</p>

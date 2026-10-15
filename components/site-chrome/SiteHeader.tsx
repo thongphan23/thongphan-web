@@ -26,6 +26,9 @@ function sampleTone(header: HTMLElement): { tone: HeaderTone; ground?: string } 
     .elementsFromPoint(window.innerWidth / 2, y)
     .find((node) => !header.contains(node) && !node.closest('[data-header-ignore]'))
   for (let node = under ?? null; node; node = node.parentElement) {
+    // Follow the section ground, not a button, thumbnail or card that happens to sit under the header.
+    // Controls are skipped outright: on a phone a primary CTA spans well over half the width.
+    if (node.matches('a, button') || node.getBoundingClientRect().width < window.innerWidth * 0.6) continue
     const rgb = parseBackground(getComputedStyle(node).backgroundColor)
     if (!rgb) continue
     const tone = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2] > 0.5 ? 'light' : 'dark'
@@ -58,6 +61,9 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [tone, setTone] = useState<HeaderTone | undefined>(undefined)
   const [ground, setGround] = useState<string | undefined>(undefined)
+  // On the two-path pages the bar slides away while reading down and returns on any upward
+  // scroll, so it never sits across a pinned heading, a photo or the footer's first line.
+  const [hidden, setHidden] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const moreRef = useRef<HTMLDivElement>(null)
@@ -67,10 +73,17 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
 
   useEffect(() => {
     let frame = 0
+    let lastY = window.scrollY
 
     const update = () => {
       frame = 0
-      setScrolled(window.scrollY > 24)
+      const y = window.scrollY
+      setScrolled(y > 24)
+      if (toneRoutes.has(pathname)) {
+        if (y < 160 || lastY - y > 6) setHidden(false)
+        else if (y - lastY > 6) setHidden(true)
+      }
+      lastY = y
       if (toneRoutes.has(pathname) && headerRef.current) {
         const sample = sampleTone(headerRef.current)
         setTone(sample?.tone)
@@ -127,6 +140,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
       data-route-mode={mode}
       data-path-route={pathRouteFor(pathname)}
       data-header-scrolled={scrolled}
+      data-header-hidden={hidden && !menuOpen && !moreOpen ? 'true' : undefined}
       data-header-tone={toneRoutes.has(pathname) ? tone : undefined}
       style={toneRoutes.has(pathname) && ground ? ({ '--header-ground': ground } as CSSProperties) : undefined}
     >

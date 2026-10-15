@@ -298,6 +298,15 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
         const hole = slot.getBoundingClientRect()
         return `inset(${hole.top - box.top}px ${box.right - hole.right}px ${box.bottom - hole.bottom}px ${hole.left - box.left}px round 6px)`
       }
+      // On a wide screen the photo stops a margin short of the edges, a framed print under the
+      // header rather than a bleed; on a phone it fills the screen.
+      const toFrame = () => {
+        if (!wide) return 'inset(0px 0px 0px 0px round 0px)'
+        const side = Math.round(window.innerWidth * 0.05)
+        const top = Math.round(Math.max(76, window.innerHeight * 0.1))
+        const bottom = Math.round(window.innerHeight * 0.05)
+        return `inset(${top}px ${side}px ${bottom}px ${side}px round 14px)`
+      }
       const part = (sign: number) =>
         wide
           ? { x: () => sign * window.innerWidth * 0.32, yPercent: 0 }
@@ -308,14 +317,14 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: under ? '+=210%' : '+=110%',
+            end: under ? '+=200%' : '+=105%',
             pin: true,
             scrub: 0.9,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         })
-        .fromTo(media, { clipPath: fromSlot }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', ease: 'power3.inOut', duration: 1 }, lead)
+        .fromTo(media, { clipPath: fromSlot }, { clipPath: toFrame, ease: 'power3.inOut', duration: 1 }, lead)
         .fromTo(image, { scale: 1.5 }, { scale: 1.08, ease: 'power2.inOut', duration: 1.1 }, lead)
         // The words part as the hole opens but are gone before the photo fills the screen, so
         // no letter is ever left floating over the face.
@@ -324,7 +333,7 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
         .to([left, right], { autoAlpha: 0, duration: 0.42 }, lead + 0.05)
         .fromTo(after, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.3, stagger: 0.06 }, lead + 0.95)
         // The hold before the pin lets go keeps the camera drifting instead of freezing.
-        .to(image, { scale: 1, ease: 'sine.out', duration: 0.4 }, lead + 1.1)
+        .to(image, { scale: 1, ease: 'sine.out', duration: 0.25 }, lead + 1.1)
       return () => {
         delete section.dataset.zoomActive
       }
@@ -362,11 +371,15 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
       }
       // --hscroll-edge: where each item's left edge sits in the window, in item widths (0 = on the
       // window's left edge, negative = already sliding out), so CSS can retire an item as it leaves.
+      // --hscroll-room is the same for the right edge (negative = still arriving).
       const edges = () => {
         const x = Number(gsap.getProperty(track, 'x')) || 0
         items.forEach((item, i) => {
-          const edge = gsap.utils.clamp(-1, 1, (lefts[i] + x) / (item.offsetWidth || 1))
+          const width = item.offsetWidth || 1
+          const edge = gsap.utils.clamp(-1, 1, (lefts[i] + x) / width)
+          const room = gsap.utils.clamp(-1, 1, (track.clientWidth - lefts[i] - x - width) / width)
           item.style.setProperty('--hscroll-edge', edge.toFixed(3))
+          item.style.setProperty('--hscroll-room', room.toFixed(3))
         })
       }
       const nearest = (progress: number) =>
@@ -501,6 +514,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
         items.forEach((item) => {
           item.removeAttribute('data-current')
           item.style.removeProperty('--hscroll-edge')
+          item.style.removeProperty('--hscroll-room')
         })
       }
     })
@@ -516,6 +530,21 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
 function stackCards(root: HTMLElement, mm: gsap.MatchMedia) {
   root.querySelectorAll<HTMLElement>('[data-stack]').forEach((stack) => {
     const cards = Array.from(stack.querySelectorAll<HTMLElement>('[data-stack-card]'))
+    // A rail elsewhere in the section ([data-stack-rail]) follows the card on top of the pile.
+    const rail = Array.from(stack.closest('section')?.querySelectorAll<HTMLElement>('[data-stack-rail] > li') ?? [])
+    if (rail.length) {
+      const mark = (index: number) => rail.forEach((item, i) => item.toggleAttribute('data-current', i === index))
+      mark(0)
+      cards.forEach((card, index) => {
+        if (!index) return
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 45%',
+          onEnter: () => mark(index),
+          onLeaveBack: () => mark(index - 1),
+        })
+      })
+    }
     mm.add(stack.dataset.stackMedia ?? DESKTOP, () => {
       cards.forEach((card, index) => {
         const next = cards[index + 1]
@@ -531,14 +560,15 @@ function stackCards(root: HTMLElement, mm: gsap.MatchMedia) {
               }
             : { trigger: next, start: stack.dataset.stackStart ?? 'top bottom', end: 'top 20%', scrub: true }
         // The filter starts from an explicit brightness(1): tweening from `none` reads as brightness(0)
-        // and flashes the card near black at the start of the step back.
+        // and flashes the card near black at the start of the step back. Light cards step back less
+        // (data-stack-dim), or cream turns to dull grey.
         gsap.fromTo(
           card,
           { filter: 'brightness(1)' },
           {
             scale: numberAttr(stack, 'stackScale', 0.92 + index * 0.015),
             opacity: numberAttr(stack, 'stackOpacity', 0.45),
-            filter: 'brightness(0.7)',
+            filter: `brightness(${numberAttr(stack, 'stackDim', 0.7)})`,
             ease: 'none',
             immediateRender: false,
             scrollTrigger,
@@ -818,10 +848,19 @@ function startCursor() {
   const quiet = () => {
     ring.dataset.quiet = 'true'
   }
+  // A mouse left still is set down: after a short rest the cursor fades, so it never sits on
+  // top of the words the reader is scrolling through. The next move brings it straight back.
+  let restTimer = 0
+  const rest = () => {
+    ring.dataset.rest = 'true'
+  }
   const move = (event: PointerEvent) => {
     if (event.pointerType !== 'mouse') return
     ring.dataset.visible = 'true'
     delete ring.dataset.quiet
+    delete ring.dataset.rest
+    window.clearTimeout(restTimer)
+    restTimer = window.setTimeout(rest, 1600)
     dx(event.clientX)
     dy(event.clientY)
     if (stuck) {
@@ -877,6 +916,7 @@ function startCursor() {
   window.addEventListener('pointerdown', press, { passive: true })
   window.addEventListener('pointerup', release, { passive: true })
   cursorCleanup = () => {
+    window.clearTimeout(restTimer)
     window.removeEventListener('pointermove', move)
     window.removeEventListener('scroll', quiet)
     document.removeEventListener('pointerover', over)

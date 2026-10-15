@@ -30,7 +30,7 @@ export default function AboutPage() {
           <div className={styles.heroCopy} data-scroll-out="18">
             <div className={`${styles.heroMeta} intro-fade`}>
               <span className={styles.eyebrow}>Hồ sơ nguồn gốc</span>
-              <span className={styles.folio}>TP / ORIGIN / 01</span>
+              <span className={styles.folio}>Thông Phan · Người dẫn đường</span>
             </div>
             <h1 id="about-title" className={styles.title}>
               <SplitWords text={titleHead} />{' '}

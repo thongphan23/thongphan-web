@@ -1,7 +1,7 @@
-/* The origin story: a principle on paper, five acts that alternate between dark and paper, and a
-   paper closing that opens onto the two paths. Every section paints its own tone and is laid over
-   the one before it like a sheet, rounded at the top; with motion the paper sheets also open like a
-   curtain as they arrive (data-curtain), so a change of tone is always an edge, never a fade. */
+/* The origin story: a principle on paper, five acts on one dark stage, and a paper closing that
+   opens onto the two paths. Every section is laid over the one before it like a sheet, rounded at
+   the top; the ground changes only twice (into the acts and out of them), and with motion those
+   two sheets open like a curtain as they arrive (data-curtain), so a change of tone is an edge. */
 
 .story {
   --os-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -15,8 +15,7 @@
   scroll-margin-top: 5rem;
 }
 
-.prologue,
-.act[data-tone='paper'] {
+.prologue {
   --os-fg: #171410;
   --os-muted: rgba(23, 20, 16, 0.78);
   --os-line: rgba(23, 20, 16, 0.18);
@@ -27,6 +26,11 @@
 
 .act[data-tone='dark'] {
   background: var(--brand-ink);
+}
+
+/* Between two dark acts the seam is a hairline that follows the rounded top, not a change of ground. */
+.act[data-tone='dark'] ~ .act[data-tone='dark'] {
+  box-shadow: inset 0 1px 0 var(--os-line);
 }
 
 /* Each sheet overlaps the bottom of the one before it, so its rounded corners show the tone under it. */
@@ -205,10 +209,6 @@
   color: var(--cinema-paper);
 }
 
-.act[data-tone='paper'] .actHeader h2 {
-  color: var(--brand-text-on-paper);
-}
-
 .actBody {
   min-width: 0;
 }
@@ -256,7 +256,7 @@
 .verdict {
   justify-items: center;
   margin: 0 auto;
-  max-width: 62rem;
+  max-width: 82rem;
   padding-block: clamp(2.5rem, 4.5vw, 4rem) 0;
   text-align: center;
 }
@@ -264,7 +264,7 @@
 .verdict p {
   color: var(--os-fg);
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(4rem, 1rem + 9vw, 10.5rem);
+  font-size: clamp(4rem, 0.5rem + 13vw, 14rem);
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -280,10 +280,10 @@
 
 .verdictRest {
   color: var(--os-accent);
-  font-size: 0.46em;
+  font-size: 0.4em;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-top: 0.35em;
+  margin-top: 0.3em;
 }
 
 .story .claim.verdict .sourceLink,
@@ -298,14 +298,18 @@
   display: grid;
   gap: 0.75rem;
   justify-items: center;
-  margin-bottom: clamp(0.5rem, 1.5vw, 1.25rem);
-  width: min(22rem, 70vw);
+  margin-bottom: clamp(0.25rem, 1vw, 0.75rem);
+  width: min(30rem, 80vw);
 }
 
+/* The year is the figure that moves, so it is set as large as a title, on the label's baseline. */
 .clockLabel {
+  align-items: baseline;
   color: var(--os-muted);
+  display: flex;
   font-family: var(--font-mono);
   font-size: 0.9375rem;
+  gap: 0.6em;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -313,11 +317,13 @@
 .clockValue {
   color: var(--os-accent);
   display: inline-block;
-  font-size: 1.6em;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.04em;
-  margin-inline: 0.3em;
-  vertical-align: -0.12em;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(4.5rem, 2rem + 5vw, 7.5rem);
+  font-style: normal;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
 }
 
 .clockTrack {
@@ -341,7 +347,7 @@
 }
 
 :global(html.motion) .verdictStage {
-  height: 190svh;
+  height: 170svh;
   margin-top: clamp(1rem, 3vw, 3rem);
 }
 
@@ -356,28 +362,35 @@
 
 /* The act after the cost rises over it while it is still held, with a shadow on its leading edge. */
 :global(html.motion) .act[data-sheet-over] {
-  box-shadow: 0 -2.5rem 5rem -2rem rgba(0, 0, 0, 0.55);
-  margin-top: -60svh;
+  box-shadow:
+    inset 0 1px 0 var(--os-line),
+    0 -2.5rem 5rem -2rem rgba(0, 0, 0, 0.55);
+  margin-top: -42svh;
   z-index: 1;
 }
 
 @media (min-width: 1024px) {
   :global(html.motion) .verdictStage {
-    height: 200svh;
+    height: 175svh;
   }
 
   :global(html.motion) .act[data-sheet-over] {
-    margin-top: -64svh;
+    margin-top: -44svh;
   }
 }
 
+/* Provenance is the page's proof, so it is set as a citation: a lacquer rule on its left edge,
+   light enough to read at a glance. */
 .sourceLabel,
 .story .claim .sourceLink {
-  color: var(--os-muted);
+  border-left: 2px solid color-mix(in srgb, var(--os-accent) 80%, transparent);
+  color: color-mix(in srgb, var(--os-fg) 86%, transparent);
   font-family: var(--font-mono);
   font-size: 0.9375rem;
+  justify-self: start;
   letter-spacing: 0.02em;
   line-height: 1.5;
+  padding: 0.1rem 0 0.1rem 0.85rem;
 }
 
 .story .claim .sourceLink {
@@ -445,8 +458,8 @@
   color: #1b1712;
   display: grid;
   gap: clamp(1rem, 1.6vw, 1.35rem);
-  max-width: 38rem;
-  padding: clamp(1.4rem, 2.4vw, 2rem) clamp(1.35rem, 2.6vw, 2.2rem) clamp(1.2rem, 2vw, 1.6rem);
+  max-width: 42rem;
+  padding: clamp(1.4rem, 2.6vw, 2.4rem) clamp(1.35rem, 2.8vw, 2.6rem) clamp(1.2rem, 2.2vw, 1.9rem);
   position: relative;
   rotate: var(--tilt, 0deg);
   text-decoration: none;
@@ -525,7 +538,7 @@
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 1.15rem + 1.25vw, 2.45rem);
+  font-size: clamp(1.6rem, 1.1rem + 1.5vw, 2.8rem);
   font-weight: 600;
   letter-spacing: -0.016em;
   line-height: 1.1;
@@ -567,7 +580,7 @@
   display: grid;
   gap: 0.9rem;
   margin: 0;
-  max-width: 40rem;
+  max-width: 46rem;
   padding: clamp(0.6rem, 1.1vw, 0.9rem) clamp(0.6rem, 1.1vw, 0.9rem) clamp(1rem, 1.6vw, 1.35rem);
   position: relative;
   rotate: 1.4deg;
@@ -1006,9 +1019,13 @@
     transform-origin: 50% 0;
   }
 
-  /* The right column gives the rail its own lane. */
+  /* The right column gives the rail its own lane. Each act opens with its header, claims and
+     clipping on the screen's middle band rather than hugging the top, and the header holds there
+     while the act is read. */
   .act {
+    padding-bottom: clamp(3rem, 5vw, 5rem);
     padding-right: calc(var(--brand-space-inline) + 3rem);
+    padding-top: max(clamp(4.5rem, 7vw, 6.5rem), 50svh - 19rem);
   }
 
   .actGrid {
@@ -1018,7 +1035,7 @@
 
   .actHeader {
     position: sticky;
-    top: 6.5rem;
+    top: max(6.5rem, 50svh - 12rem);
   }
 
   /* An act with evidence reads in three columns: the number and title held on the left, the
@@ -1027,7 +1044,7 @@
   .actGrid[data-has-assets='true'] {
     align-items: stretch;
     column-gap: clamp(2rem, 3.4vw, 3.5rem);
-    grid-template-columns: minmax(0, 3.3fr) minmax(0, 4.3fr) minmax(0, 4.4fr);
+    grid-template-columns: minmax(0, 3fr) minmax(0, 3.7fr) minmax(0, 5.3fr);
   }
 
   .actGrid[data-has-assets='true'] .actBody {
@@ -1045,7 +1062,7 @@
 
   .stackCard {
     position: sticky;
-    top: calc(max(7rem, 50svh - 12rem) + var(--stack-i, 0) * 2.25rem);
+    top: calc(max(7rem, 50svh - 12.5rem) + var(--stack-i, 0) * 2.25rem);
   }
 
   .stackMark {
@@ -1057,12 +1074,12 @@
      settling a little lower so the first one's masthead still shows. Its claim is spread to meet
      it, so each clipping arrives beside the line it proves. */
   :global(html.motion) .stackMark {
-    height: 55svh;
+    height: 38svh;
   }
 
   :global(html.motion) .actGrid[data-stacked='true'] .assets,
   :global(html.motion) .actGrid[data-stacked='true'] .claims {
-    padding-bottom: 32svh;
+    padding-bottom: 12svh;
   }
 
   .actGrid[data-stacked='true'] .claims {
@@ -1071,7 +1088,7 @@
 
   /* One piece of evidence still holds for a while beside the claims. */
   :global(html.motion) .actGrid[data-stacked='false'] .assets {
-    padding-bottom: 18svh;
+    padding-bottom: 6svh;
   }
 }
 

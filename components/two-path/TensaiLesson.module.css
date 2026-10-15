@@ -261,7 +261,50 @@
   }
 }
 
-/* Replies share one grid cell, so the card's height never jumps when one replaces another. */
+/* While nobody has answered, the keys light up A → B → C in a slow wave so the card reads as
+   something to press, not a picture of one. Hovering the choices hands control back. */
+@media (prefers-reduced-motion: no-preference) {
+  .card[data-state='idle']:not([data-demo]) .option .key {
+    animation: key-invite 3.6s ease-in-out infinite;
+  }
+
+  .card[data-state='idle']:not([data-demo]) .option:nth-of-type(1) .key {
+    animation-delay: 1.6s;
+  }
+
+  .card[data-state='idle']:not([data-demo]) .option:nth-of-type(2) .key {
+    animation-delay: 1.78s;
+  }
+
+  .card[data-state='idle']:not([data-demo]) .option:nth-of-type(3) .key {
+    animation-delay: 1.96s;
+  }
+
+  .card[data-state='idle']:not([data-demo]) .choices:hover .key {
+    animation: none;
+  }
+}
+
+@keyframes key-invite {
+  0%,
+  70%,
+  100% {
+    background: rgba(7, 59, 47, 0.07);
+    transform: none;
+  }
+  78% {
+    background: var(--lesson-lime);
+    transform: translateY(-2px);
+  }
+  86% {
+    background: rgba(7, 59, 47, 0.07);
+    transform: none;
+  }
+}
+
+/* Before an answer the card ends on the course path. The app's verdict then rises from the card's
+   foot as a sheet over the lower answers, the way the app's own reply slides up, so the card keeps
+   its height and needs no empty room held for the longest reply. */
 .replies {
   display: grid;
 }
@@ -291,25 +334,39 @@
 
 .idle {
   align-content: center;
-  background: rgba(7, 59, 47, 0.04);
+  background: rgba(195, 243, 49, 0.16);
+  border: 1.5px dashed rgba(7, 59, 47, 0.18);
   display: grid;
   gap: 0.9rem;
   padding: 0.85rem 1.1rem 0.95rem;
 }
 
 .encourage {
-  color: var(--lesson-muted);
+  color: var(--lesson-ink);
   font-size: 0.9375rem;
+  font-weight: 600;
   line-height: 1.5;
   margin: 0;
 }
 
+/* The verdict sheet rises from the card's lower edge. It drops the stacking cell: on an
+   absolutely placed box inside a grid card, line 1 is the content edge while 'auto' is the
+   padding edge, which would leave the sheet hanging off-centre. */
 .right,
 .wrong {
   align-content: start;
+  border-radius: 20px 20px 23px 23px;
+  bottom: 0;
+  box-shadow: 0 -18px 34px -22px rgba(7, 59, 47, 0.55);
   display: grid;
   gap: 0.6rem;
-  padding: 0.95rem 1.1rem 1rem;
+  grid-area: auto;
+  left: 0;
+  padding: 1.15rem 1.4rem 1.3rem;
+  position: absolute;
+  right: 0;
+  transform: translateY(22px);
+  z-index: 2;
 }
 
 .right {
@@ -472,15 +529,69 @@
 }
 
 .path li[data-step='current'] .node {
+  background: var(--lesson-lime);
   border-color: var(--lesson-ink);
-  box-shadow: 0 0 0 4px rgba(195, 243, 49, 0.55);
+  box-shadow: 0 0 0 4px rgba(195, 243, 49, 0.45);
   color: var(--lesson-ink);
+}
+
+/* The lesson you are on breathes, the way the app marks the next step on its map. */
+@media (prefers-reduced-motion: no-preference) {
+  .card[data-state='idle'] .path li[data-step='current'] .node {
+    animation: node-breathe 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes node-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(195, 243, 49, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(195, 243, 49, 0.18);
+  }
 }
 
 .gate .node {
   background: #fff6dc;
   border-color: #c99a3b;
   color: #9a6d17;
+}
+
+/* Roomy screens set the lesson a size up, so it reads at a glance beside the headline. */
+@media (min-width: 960px) and (min-height: 821px) {
+  .context,
+  .encourage,
+  .verdict,
+  .remember {
+    font-size: 1.0625rem;
+  }
+
+  .optionText {
+    font-size: 1.1875rem;
+    line-height: 1.32;
+  }
+
+  .question {
+    font-size: clamp(1.5rem, 0.6rem + 1.5vw, 1.95rem);
+  }
+
+  .progressLabel,
+  .label,
+  .path li {
+    font-size: 0.9375rem;
+  }
+
+  .key {
+    font-size: 1.0625rem;
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  .option {
+    grid-template-columns: 2.4rem minmax(0, 1fr);
+    min-height: 3.9rem;
+  }
 }
 
 @media (max-width: 520px) {
@@ -493,6 +604,12 @@
     gap: 0.75rem;
     margin: 0 -1.1rem;
     padding: 0 1.1rem 0.85rem;
+  }
+
+  .right,
+  .wrong {
+    border-radius: 18px 18px 19px 19px;
+    padding: 1rem 1.1rem 1.15rem;
   }
 
   .label {

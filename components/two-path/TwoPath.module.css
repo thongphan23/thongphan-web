@@ -39,16 +39,16 @@
   gap: 0 0.95rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
   isolation: isolate;
-  min-height: 5rem;
+  min-height: 5.5rem;
   overflow: hidden;
-  padding: 0.5rem;
+  padding: 0.55rem;
   position: relative;
   text-align: left;
   text-decoration: none;
   transition:
     border-color 500ms var(--brand-motion-ease),
     color 420ms var(--brand-motion-ease);
-  width: min(100%, 27rem);
+  width: min(100%, 30rem);
 }
 
 .door[data-path-door='tensai'] {
@@ -76,7 +76,7 @@
 /* The flood: a circle of the branch colour that grows out of the arrow. */
 .doorFill {
   background: var(--door-accent);
-  clip-path: circle(0% at calc(100% - 2.5rem) 50%);
+  clip-path: circle(0% at calc(100% - 2.75rem) 50%);
   inset: 0;
   position: absolute;
   transition: clip-path 700ms var(--brand-motion-ease);
@@ -85,7 +85,7 @@
 
 .door:hover .doorFill,
 .door:focus-visible .doorFill {
-  clip-path: circle(140% at calc(100% - 2.5rem) 50%);
+  clip-path: circle(140% at calc(100% - 2.75rem) 50%);
 }
 
 .doorPhoto {
@@ -93,21 +93,30 @@
   border-radius: 999px;
   display: block;
   filter: var(--brand-photo-grade);
-  height: 4rem;
+  height: 4.4rem;
   object-fit: cover;
-  width: 4rem;
+  width: 4.4rem;
 }
 
 .doorText {
+  color: var(--brand-paper);
   display: grid;
   gap: 0.2rem;
   min-width: 0;
+  transition: color 420ms var(--brand-motion-ease);
+}
+
+/* The text colour lives on the span, not the link: the shared shell sets every link inside it to
+   inherit at a higher specificity, which left the label pale on the lime flood. */
+.door:hover .doorText,
+.door:focus-visible .doorText {
+  color: var(--door-on-accent);
 }
 
 .doorProduct {
   color: color-mix(in srgb, currentColor 92%, transparent);
   font-family: var(--font-be-vietnam);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.2;
@@ -117,7 +126,7 @@
 .doorLabel {
   display: block;
   font-family: var(--font-be-vietnam);
-  font-size: 1.1875rem;
+  font-size: 1.375rem;
   font-weight: 600;
   line-height: 1.25;
   text-wrap: balance;
@@ -128,12 +137,12 @@
   border-radius: 999px;
   color: var(--door-on-accent);
   display: grid;
-  height: 4rem;
+  height: 4.4rem;
   place-items: center;
   transition:
     background-color 420ms var(--brand-motion-ease),
     color 420ms var(--brand-motion-ease);
-  width: 4rem;
+  width: 4.4rem;
 }
 
 .doorArrow svg {
@@ -519,7 +528,9 @@
 
 .letterPortrait img {
   display: block;
-  filter: var(--brand-photo-grade);
+  /* A step deeper than the shared grade: the bookstore shot is brighter and warmer than the stage
+     above, and at the shared grade the two read as different shoots. */
+  filter: saturate(0.6) sepia(0.2) contrast(1.1) brightness(0.95);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -546,6 +557,7 @@
   font-weight: 500;
   line-height: 1.3;
   margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
+  text-wrap: balance;
 }
 
 .letterLead + .letterLead,
@@ -570,7 +582,7 @@
 .letterPull p {
   color: var(--brand-lacquer);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.5rem, 1.3rem + 3.6vw, 4.6rem);
+  font-size: clamp(2.75rem, 1rem + 4.6vw, 5.75rem);
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -581,9 +593,9 @@
 }
 
 .letterRest {
-  color: #2a2420;
-  font-size: clamp(1.1875rem, 1.02rem + 0.42vw, 1.375rem);
-  max-width: 34em;
+  color: #241f1b;
+  font-size: clamp(1.25rem, 1.04rem + 0.52vw, 1.5rem);
+  max-width: 32em;
 }
 
 .letterRest p {
@@ -670,7 +682,7 @@
   align-items: center;
   color: inherit;
   display: inline-flex;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   gap: 0.45rem;
   min-height: 44px;
@@ -700,7 +712,8 @@
 @media (min-width: 900px) {
   .fieldNotes {
     padding-bottom: clamp(1.5rem, 3vw, 3rem);
-    padding-top: clamp(4.5rem, 12svh, 8.5rem);
+    /* Clear air under the marquee, so the title never shares a frame with the moving type. */
+    padding-top: clamp(5rem, 16svh, 11rem);
   }
 }
 
@@ -833,7 +846,7 @@
   color: var(--brand-paper);
   display: grid;
   overflow: hidden;
-  padding: clamp(4.5rem, 10vw, 9rem) 0 clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(1.5rem, 4vw, 3.5rem);
 }
 
 .marqueeRow[data-path='tensai'] {
@@ -862,22 +875,22 @@
   display: inline-flex;
   flex: none;
   font-family: var(--font-cormorant);
-  font-size: clamp(3rem, 1.6rem + 7vw, 9.5rem);
+  font-size: clamp(2.6rem, 1.2rem + 4.4vw, 6rem);
   gap: 0.5em;
-  line-height: 1.08;
+  line-height: 1.1;
   padding-inline: 0.25em;
 }
 
 .marqueeWord {
-  color: color-mix(in srgb, var(--brand-paper) 58%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
   font-style: italic;
   font-weight: 400;
 }
 
-/* The product names carry the band in the same serif, set upright, and are the only words
-   in the path's own colour. */
+/* The product names carry the band in the same serif, set upright in full paper; the path's own
+   colour is kept to the dot after each name, so the band reads as two tones, not four. */
 .marqueeProduct {
-  color: var(--marquee-accent);
+  color: var(--brand-paper);
   font-style: normal;
   font-weight: 500;
   letter-spacing: -0.03em;
@@ -888,9 +901,8 @@
   border-radius: 999px;
   content: '';
   flex: none;
-  height: 0.1em;
-  opacity: 0.7;
-  width: 0.1em;
+  height: 0.12em;
+  width: 0.12em;
 }
 
 /* Reel: real class photos. Words on top and a swipe row by default; on wide screens with motion
@@ -984,7 +996,7 @@
 .reelButton {
   align-items: center;
   background: transparent;
-  border: 1px solid rgba(232, 223, 207, 0.36);
+  border: 1.5px solid rgba(232, 223, 207, 0.62);
   border-radius: 999px;
   color: var(--brand-paper);
   cursor: pointer;
@@ -1126,38 +1138,87 @@
   }
 }
 
-/* The top padding matches the header so the band sits in the middle of what is visible. */
+/* Pinned on a wide screen: the words run across the top, the photos travel through a full-width
+   window below and the one at rest sits in the middle with a neighbour waiting either side. The
+   counter and progress bar sit at the foot of the screen. The top padding clears the header. */
 .reel[data-hscroll-active='true'] {
-  align-items: center;
-  display: grid;
-  grid-template-columns: minmax(0, 31vw) minmax(0, 1fr);
+  /* As wide as the window under the words allows: the screen less the header, intro and foot. */
+  --reel-w: min(64vw, calc((88svh - 16.75rem) * 1.6));
+  display: flex;
+  flex-direction: column;
   height: 100svh;
-  padding: 4.75rem 0 0;
+  padding: 5.75rem 0 clamp(3.75rem, 9svh, 5rem);
 }
 
 .reel[data-hscroll-active='true'] .reelIntro {
-  margin: 0;
+  align-items: end;
+  column-gap: 5vw;
+  display: grid;
+  grid-template-areas:
+    'eyebrow lead'
+    'title lead'
+    'title link';
+  grid-template-columns: minmax(0, 1fr) minmax(0, 27rem);
+  margin: 0 0 clamp(1rem, 3svh, 2rem);
   max-width: none;
-  padding: 0 2.5vw 0 var(--brand-space-inline);
-  position: relative;
-  z-index: 1;
+  padding: 0 var(--brand-space-inline);
+  row-gap: 0.85rem;
 }
 
-/* The window the photos travel through, cut clean at the edge of the words' column. */
+.reel[data-hscroll-active='true'] .reelEyebrow {
+  grid-area: eyebrow;
+}
+
+.reel[data-hscroll-active='true'] .reelTitle {
+  font-size: clamp(2.75rem, 1rem + 3.4vw, 4.75rem);
+  grid-area: title;
+  max-width: 16ch;
+}
+
+.reel[data-hscroll-active='true'] .reelLead {
+  align-self: end;
+  grid-area: lead;
+}
+
+.reel[data-hscroll-active='true'] .reelIntro > a {
+  grid-area: link;
+  justify-self: start;
+}
+
+.reel[data-hscroll-active='true'] .reelControls {
+  bottom: clamp(1.1rem, 2.6svh, 1.75rem);
+  left: 50%;
+  margin: 0;
+  max-width: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(30rem, 80vw);
+}
+
+/* The window the photos travel through. Its edges dissolve rather than cut, so a neighbour
+   reads as the next photo waiting, not as a sliver cropped off by the frame. */
 .reel[data-hscroll-active='true'] .reelViewport {
   align-items: center;
-  border-left: 1px solid var(--brand-line-dark);
   display: flex;
-  height: 100%;
+  flex: 1 1 auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3vw, #000 calc(100% - 3vw), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 3vw, #000 calc(100% - 3vw), transparent 100%);
+  min-height: 0;
   overflow: hidden;
 }
 
+/* Half a window of room before the first photo and after the last, so every photo, the first and
+   the last included, comes to rest in the middle. */
 .reel[data-hscroll-active='true'] .reelTrack {
-  align-items: center;
+  align-items: flex-start;
   overflow: visible;
-  padding: 0 var(--brand-space-inline) 0 4vw;
+  padding: 0 0 0 calc(50% - var(--reel-w) / 2);
   scroll-snap-type: none;
   width: 100%;
+}
+
+.reel[data-hscroll-active='true'] .reelTrack::after {
+  flex-basis: calc(50vw - var(--reel-w) / 2 - clamp(1rem, 2.4vw, 2.25rem));
 }
 
 /* Pinned on a desktop the row can be pulled sideways with the mouse (engine: horizontalScroll). */
@@ -1171,23 +1232,23 @@
 }
 
 .reel[data-hscroll-dragging='true'] .reelFrame {
-  transform: scale(0.86);
+  transform: scale(0.82);
 }
 
-/* Pinned: one frame size for the whole series, its height following the viewport. The frame in
-   the middle fills most of the window; its neighbours only show an edge either side. */
+/* Pinned: one frame size for the whole series, its height following the viewport. */
 .reel[data-hscroll-active='true'] .reelItem {
-  flex-basis: min(52vw, calc(66svh * 4 / 3));
+  flex-basis: var(--reel-w);
 }
 
 .reel[data-hscroll-active='true'] .reelFrame {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
 }
 
-/* The photo at rest in the middle is full size and in colour; the ones either side wait a step
-   back in the series' warm monochrome and bloom as they arrive. */
+/* The photo at rest in the middle is full size and lit; the neighbours wait a small step back,
+   still clearly photos, and come up into the light as they arrive. */
 .reel[data-hscroll-active='true'] .reelItem {
-  opacity: 0.78;
+  opacity: 0.86;
+  position: relative;
   transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1197,20 +1258,47 @@
 }
 
 .reel[data-hscroll-active='true'] .reelMedia img {
-  filter: var(--brand-photo-mono);
+  filter: var(--brand-photo-grade) brightness(0.86);
 }
 
 .reel[data-hscroll-active='true'] .reelItem[data-current] {
   opacity: 1;
 }
 
-/* Only the photo at rest is captioned; a neighbour's line would be cut by the window's edge. */
-.reel[data-hscroll-active='true'] .reelItem figcaption {
+/* A shade along the foot of the photo at rest, for the caption laid over it. */
+.reel[data-hscroll-active='true'] .reelFrame::before {
+  background: linear-gradient(0deg, rgb(12 10 9 / 0.78) 0, rgb(12 10 9 / 0.38) 22%, transparent 42%);
+  content: '';
+  inset: 0;
   opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 700ms ease;
+  z-index: 1;
+}
+
+.reel[data-hscroll-active='true'] .reelItem[data-current] .reelFrame::before {
+  opacity: 1;
+}
+
+/* Only the photo at rest is captioned, laid over its foot so the frame can take the full height. */
+.reel[data-hscroll-active='true'] .reelItem figcaption {
+  bottom: clamp(1.1rem, 2.4vw, 2rem);
+  color: #f4efe7;
+  font-size: clamp(1.125rem, 0.7rem + 0.6vw, 1.375rem);
+  left: clamp(1.25rem, 2.6vw, 2.25rem);
+  line-height: 1.4;
+  max-width: 40rem;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: clamp(1.25rem, 2.6vw, 2.25rem);
+  text-shadow: 0 1px 14px rgb(0 0 0 / 0.45);
   transform: translateY(0.5rem);
   transition:
     opacity 500ms ease,
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
 }
 
 .reel[data-hscroll-active='true'] .reelItem[data-current] figcaption {
@@ -1235,7 +1323,7 @@
 
 .gallery {
   /* One warm grade over every frame, so phone shots from different rooms read as one series. */
-  --gallery-grade: saturate(0.66) sepia(0.18) contrast(1.08) brightness(0.94);
+  --gallery-grade: saturate(0.74) sepia(0.2) contrast(1.06) brightness(1.06);
   position: relative;
 }
 
@@ -1400,7 +1488,7 @@
   .gallery[data-light-active] {
     --light-top: clamp(5.5rem, 13svh, 8rem);
     --light-bottom: clamp(2rem, 7svh, 4rem);
-    --light-thumb: clamp(4.5rem, 5.4vw, 5.75rem);
+    --light-thumb: clamp(6.5rem, 8.6vw, 9rem);
     --light-sheet: calc(var(--light-thumb) * 0.75 + 2.75rem);
     --light-h: calc(100svh - var(--light-top) - var(--light-bottom) - var(--light-sheet));
     --light-gap: clamp(2.5rem, 5vw, 5rem);
@@ -1500,7 +1588,7 @@
 
   .gallery[data-light-active] .galleryKind {
     font-family: var(--font-be-vietnam);
-    font-size: 0.9375rem;
+    font-size: 1rem;
     font-style: normal;
   }
 
@@ -1607,10 +1695,11 @@
   .lightThumb img {
     aspect-ratio: 4 / 3;
     display: block;
-    filter: grayscale(1) brightness(0.8);
+    /* The sheet keeps the series' colour, a stop darker, so each frame is recognisable before it is chosen. */
+    filter: var(--gallery-grade) brightness(0.72);
     height: auto;
     object-fit: cover;
-    opacity: 0.6;
+    opacity: 0.85;
     transition:
       filter 500ms ease,
       opacity 500ms ease;
@@ -1652,7 +1741,7 @@
 /* The second portrait steps down, so the pair reads as a spread rather than a row of tiles. */
 @media (min-width: 640px) {
   .mentor:nth-child(2) {
-    margin-top: clamp(3rem, 9vw, 7.5rem);
+    margin-top: clamp(2.5rem, 6vw, 5rem);
   }
 }
 
@@ -1698,8 +1787,10 @@
   filter: var(--brand-photo-mono);
 }
 
+/* In colour the pair still shares one warm grade, so two rooms shot under different light read
+   as one spread. */
 .mentor[data-in-focus] .mentorPhoto {
-  filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
+  filter: saturate(0.78) sepia(0.2) contrast(1.06) brightness(1.04);
 }
 
 .mentor[data-in-focus] .mentorFrame::after {
@@ -1708,7 +1799,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .mentor:hover .mentorPhoto {
-    filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
+    filter: saturate(0.78) sepia(0.2) contrast(1.06) brightness(1.04);
   }
 
   .mentor:hover .mentorFrame::after {
@@ -1719,16 +1810,16 @@
 .mentorName {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 1rem + 1.4vw, 2.3rem);
+  font-size: clamp(1.6rem, 0.9rem + 1.9vw, 2.9rem);
   font-weight: 500;
-  line-height: 1.1;
-  margin: 1rem 0 0.25rem;
+  line-height: 1.05;
+  margin: 1.1rem 0 0.35rem;
 }
 
 .mentorRole {
-  color: color-mix(in srgb, var(--brand-paper) 74%, transparent);
-  font-size: 0.9375rem;
-  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--brand-paper) 86%, transparent);
+  font-size: clamp(1rem, 0.85rem + 0.4vw, 1.25rem);
+  letter-spacing: 0.03em;
   margin: 0;
 }
 
@@ -1832,7 +1923,7 @@
 }
 
 .guideScrim {
-  background: linear-gradient(180deg, rgb(7 7 6 / 0) 40%, rgb(7 7 6 / 0.82));
+  background: linear-gradient(180deg, rgb(7 7 6 / 0) 38%, rgb(7 7 6 / 0.5) 62%, rgb(7 7 6 / 0.9));
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -1855,7 +1946,7 @@
 
 .guideCaptionMark {
   font-family: var(--font-be-vietnam);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.24em;
@@ -1894,7 +1985,8 @@
 .guide[data-zoom-active='true'] .guideSlot {
   aspect-ratio: 4 / 3;
   display: inline-block;
-  width: clamp(7rem, 15vw, 16rem);
+  /* Large enough to show the room, so the opening reads as the photo coming out of the line. */
+  width: clamp(9rem, 19vw, 20rem);
 }
 
 .guide[data-zoom-active='true'] .guideMedia {
@@ -1907,6 +1999,14 @@
 
 .guide[data-zoom-active='true'] .guideImage {
   will-change: transform;
+}
+
+/* On a wide screen the photo settles into a frame inset from the screen's edges (see
+   zoomReveals), so the caption sits inside that frame rather than at the screen's corner. */
+@media (min-width: 900px) {
+  .guide[data-zoom-active='true'] .guideCaption {
+    padding: 0 0 calc(5vh + clamp(1.5rem, 3vw, 2.75rem)) calc(5vw + clamp(1.5rem, 3vw, 2.75rem));
+  }
 }
 
 @media (max-width: 899px) {

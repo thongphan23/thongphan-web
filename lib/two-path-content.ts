@@ -92,7 +92,6 @@ export const homeContent = {
       'gallery-decision-making',
       'gallery-manulife',
       'gallery-katinat',
-      'gallery-ai-factory-design',
       'gallery-after-class',
     ],
   },
@@ -106,6 +105,8 @@ export const tensaiContent = {
   primaryCta: 'Học thử miễn phí',
   secondaryCta: { label: 'Xem các khóa đang mở', href: '#khoa-hoc' },
   launchNote: 'Tensai mở từ 30/09/2026. Bạn là một trong những người học đầu tiên.',
+  // The word the name comes from, shown big as the hero's green sheet opens, with how to read it.
+  portal: { mark: '天才', gloss: 'tensai · thiên tài' },
   // Step pos-v8-1-1 of the live Định vị course, word for word (tensai-home:
   // docs/positioning-course/course.json, version dinh-vi-20261001-v8). Option A is the answer the
   // app accepts; each `feedback` is the app's own reply to that pick, `remember` its debrief.
@@ -151,6 +152,7 @@ export const tensaiContent = {
     rememberLabel: 'Ghi nhớ',
     retry: 'Chọn lại',
     encouragement: 'Cứ thử, sai cũng được. Mình nhìn kết quả rồi sửa tiếp.',
+    tryTag: 'Thử ngay · bấm một đáp án',
     continue: 'Học tiếp bài này trên Tensai',
     path: ['Bài 1', 'Bài 2', 'Bài 3'],
     gate: 'Vượt ải',
@@ -211,20 +213,13 @@ export const tensaiContent = {
       { title: 'Thử ngay trong bài.', body: 'Bạn chạm, chọn, viết thử; sai thì sửa tiếp.' },
       { title: 'Vượt ải để biết mình làm được.', body: 'Cứ vài bài có một màn vượt ải với tình huống mới.' },
     ],
-    // The sticky screen beside the steps: one real screen per step, pushed in a little toward the part
-    // the step is about, which a lime ring marks. `focus` is in % of the 940×867 frame before the
-    // push-in; the wider map is cover-cropped into it from its right edge (`position`) so the crop
-    // falls on the sidebar's edge instead of through a line of text.
+    // The sticky screen beside the steps: one real screen per step, cut wide enough that no line of the
+    // app's own type is lost at an edge, with a lime ring on it. `focus` is in
+    // % of the frame; `origin` steers the settle-in and any zoom.
     frames: [
-      { photoId: 'tensai-lesson', zoom: 1.14, origin: '50% 0%', focus: { x: 7.5, y: 2.5, w: 58, h: 15 } },
-      { photoId: 'tensai-lesson', zoom: 1.16, origin: '50% 60%', focus: { x: 8, y: 46, w: 85, h: 25 } },
-      {
-        photoId: 'tensai-map',
-        zoom: 1.4,
-        origin: '100% 100%',
-        position: '100% 50%',
-        focus: { x: 67, y: 86.5, w: 23, h: 8.5 },
-      },
+      { photoId: 'tensai-step-intro', zoom: 1, origin: '30% 12%', focus: { x: 1.4, y: 1.6, w: 69, h: 19.6 } },
+      { photoId: 'tensai-step-exercise', zoom: 1, origin: '50% 78%', focus: { x: 1.2, y: 67.5, w: 97.6, h: 22.1 } },
+      { photoId: 'tensai-step-map', zoom: 1.18, origin: '82% 92%', focus: { x: 63.6, y: 88.6, w: 25.2, h: 7 } },
     ],
     caption: 'Màn hình thật của Tensai, chụp từ app ngày 01/10/2026.',
   },

@@ -77,6 +77,14 @@
   z-index: 500;
 }
 
+/* On the Tensai page the reading line takes the course lime (with a fine green edge so it still
+   reads over paper), not the lacquer red that belongs to Conan. */
+.siteShell:has([data-path='tensai'][data-motion-stage]) .cinemaProgress {
+  background: #c3f331;
+  box-shadow: 0 1px 0 rgba(7, 59, 47, 0.45);
+  height: 3px;
+}
+
 .cinemaMain {
   background: var(--brand-ink);
   font-family: var(--font-be-vietnam), Arial, sans-serif;
@@ -89,6 +97,9 @@
   --motion-ambient-opacity: 1;
   --motion-pointer-opacity: 0;
   inset: 0;
+  /* Screen, not normal: the red bloom and the pointer glow light the ink grounds but add almost
+     nothing over the paper sheets, where a translucent red otherwise reads as a pink stain. */
+  mix-blend-mode: screen;
   overflow: clip;
   pointer-events: none;
   position: fixed;
@@ -203,8 +214,15 @@
     background-color 220ms var(--brand-motion-ease),
     border-color 220ms var(--brand-motion-ease),
     box-shadow 220ms var(--brand-motion-ease),
-    color 220ms var(--brand-motion-ease);
+    color 220ms var(--brand-motion-ease),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 400;
+}
+
+/* Keyboard users always keep the bar: focus inside it pulls it back into view. */
+.cinemaHeader[data-header-hidden='true']:not(:focus-within) {
+  /* The extra distance carries the scrolled-state drop shadow out of view as well. */
+  transform: translateY(calc(-100% - 72px));
 }
 
 .cinemaHeader[data-route-mode='editorial-light'] {

@@ -63,15 +63,16 @@
   opacity: 0.08;
 }
 
-/* The name, set behind him like a poster masthead, split so his head fills the gap between
-   the two words. Decorative: the eyebrow carries the name for readers. */
+/* The name, set behind him like a poster masthead, split round his head with the inner letters
+   tucked a little behind his hair, the way a magazine cover overlaps its cover star. Decorative:
+   the eyebrow carries the name for readers. */
 .masthead {
   color: var(--brand-paper);
   display: grid;
   font-family: var(--font-cormorant);
-  font-size: min(15vw, 30svh);
+  font-size: min(14vw, 30svh);
   font-weight: 500;
-  grid-template-columns: minmax(0, 1fr) calc(var(--person-h) * 0.38) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) calc(var(--person-h) * 0.29) minmax(0, 1fr);
   left: 0;
   letter-spacing: -0.04em;
   line-height: 0.8;
@@ -171,11 +172,16 @@
 }
 
 /* The floor: from his chest down he sinks into ink, so the question and the doors sit on a
-   solid ground rather than over the jacket and the mic. */
+   solid ground rather than over the jacket and the mic. No side vignette: it greyed the outer
+   letters of "Thông", which reaches nearer the edge than "Phan", and the name read uneven. */
 .stageFloor {
-  background:
-    linear-gradient(180deg, rgba(7, 7, 6, 0) 46%, rgba(7, 7, 6, 0.8) 61%, rgba(7, 7, 6, 0.96) 70%, var(--brand-ink) 78%),
-    linear-gradient(90deg, rgba(7, 7, 6, 0.5) 0%, rgba(7, 7, 6, 0) 24%, rgba(7, 7, 6, 0) 76%, rgba(7, 7, 6, 0.5) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 7, 6, 0) 44%,
+    rgba(7, 7, 6, 0.84) 58%,
+    rgba(7, 7, 6, 0.97) 67%,
+    var(--brand-ink) 76%
+  );
   inset: 0;
   pointer-events: none;
   position: absolute;

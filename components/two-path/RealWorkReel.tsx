@@ -9,6 +9,13 @@ import styles from './TwoPath.module.css'
 
 const pad = (value: number) => String(value).padStart(2, '0')
 
+// Lines may only break between the title's short sentences, never inside one.
+const keepSentences = (text: string) =>
+  text
+    .split('. ')
+    .map((sentence) => sentence.replaceAll(' ', '\u00a0'))
+    .join('. ')
+
 // A reel of real class photos. On wide screens the section pins: the words hold still on the left
 // while the photos travel past them with the scroll and settle one at a time in the middle. On
 // phones it is a native swipe row with snap points under the words.
@@ -26,7 +33,7 @@ export default function RealWorkReel() {
           {reel.eyebrow}
         </p>
         <h2 id="real-work-title" className={styles.reelTitle} data-split>
-          {reel.title}
+          {keepSentences(reel.title)}
         </h2>
         <p className={styles.reelLead} data-motion-reveal="drift">
           {reel.lead}
@@ -45,7 +52,7 @@ export default function RealWorkReel() {
               <figure key={id} className={styles.reelItem} data-hscroll-item>
                 <div className={styles.reelFrame}>
                   <div className={styles.reelMedia} data-hscroll-media>
-                    <TwoPathPhoto id={id} sizes="(max-width: 899px) 82vw, 42vw" />
+                    <TwoPathPhoto id={id} sizes="(max-width: 899px) 82vw, 64vw" />
                   </div>
                 </div>
                 <figcaption>

@@ -25,7 +25,7 @@ export default function FounderLetter() {
           <h2 id="founder-letter-title" className={styles.letterTitle} data-split>
             {letter.title}
           </h2>
-          <p className={styles.letterLead} data-scrub-words data-scrub-from="0.55" data-scrub-end="top 58%">
+          <p className={styles.letterLead} data-scrub-words data-scrub-from="0.72" data-scrub-end="top 64%">
             {leadBefore}
           </p>
           <blockquote className={styles.letterPull}>

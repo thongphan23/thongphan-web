@@ -3,6 +3,7 @@
 // are reverted with the page; listeners and ticker callbacks are removed by the returned cleanup.
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { kanjiWriter } from './kanji-write'
 
 type Cleanup = () => void
 
@@ -88,6 +89,9 @@ export function maskFlight(root: HTMLElement): Cleanup {
   const hero = root.querySelector<HTMLElement>('[data-mask-flight]')
   if (!hero) return () => {}
   const sheet = hero.querySelector<HTMLElement>('[data-mask-sheet]')
+  const outline = hero.querySelector<HTMLElement>('[data-mask-outline]')
+  const shade = hero.querySelector<HTMLElement>('[data-mask-shade]')
+  const sheen = hero.querySelector<HTMLElement>('[data-mask-sheen]')
   const words = hero.querySelector<HTMLElement>('[data-mask-out]')
   const leave = (start: () => number) => {
     if (!words) return
@@ -122,11 +126,38 @@ export function maskFlight(root: HTMLElement): Cleanup {
         anticipatePin: 1,
       },
     })
+    const flying = outline ? [sheet, outline] : [sheet]
     flight
-      .fromTo(sheet, { scale: 1 }, { scale: 24, duration: 0.7, ease: 'power2.in' }, 0)
-      .fromTo(sheet, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.32, ease: 'power1.inOut' }, 0.3)
+      .fromTo(flying, { scale: 1 }, { scale: 24, duration: 0.7, ease: 'power2.in' }, 0)
+      .fromTo(flying, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.32, ease: 'power1.inOut' }, 0.3)
       .to({}, { duration: 0.3 }, 0.7)
+    // While the ink sheet covers everything but the letters, the words below sit on ink, so the
+    // shade can wait: the room inside the letters shows at full light, and darkens as the sheet goes.
+    if (shade) flight.fromTo(shade, { opacity: 0.2 }, { opacity: 1, duration: 0.4, ease: 'power1.inOut' }, 0.15)
+    if (sheen) flight.fromTo(sheen, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.2 }, 0.1)
     leave(() => flight.scrollTrigger?.end ?? 0)
+  })
+  // With a mouse, the room behind the letters drifts against the pointer (--pan-x/--pan-y in -1..1,
+  // read by the photo's translate in page.module.css), so the word reads as a window, not a print.
+  mm.add(`${WIDE} and ${FINE_POINTER}`, () => {
+    const panX = gsap.quickTo(hero, '--pan-x', { duration: 1.1, ease: 'power3' })
+    const panY = gsap.quickTo(hero, '--pan-y', { duration: 1.1, ease: 'power3' })
+    const move = (event: PointerEvent) => {
+      const box = hero.getBoundingClientRect()
+      panX(((event.clientX - box.left) / box.width) * 2 - 1)
+      panY(((event.clientY - box.top) / box.height) * 2 - 1)
+    }
+    const rest = () => {
+      panX(0)
+      panY(0)
+    }
+    hero.addEventListener('pointermove', move)
+    hero.addEventListener('pointerleave', rest)
+    return () => {
+      hero.removeEventListener('pointermove', move)
+      hero.removeEventListener('pointerleave', rest)
+      gsap.set(hero, { '--pan-x': 0, '--pan-y': 0 })
+    }
   })
   mm.add(`not all and ${WIDE}`, () => leave(() => 0))
   return () => mm.revert()
@@ -141,7 +172,8 @@ export function maskFlight(root: HTMLElement): Cleanup {
 // - "iris": a disc rising from the middle of the top edge and widening until it fills the screen.
 // - "wipe": the new tone sweeps in from the left edge.
 // [data-sheet-over] on a section lays it over a held element of the one before it
-// ([data-sheet-under], e.g. a sticky line), which steps back and dims as the sheet rises.
+// ([data-sheet-under], e.g. a sticky line), which steps back and is gone before the sheet's
+// content arrives, so the two never show as a double exposure.
 export function curtains(root: HTMLElement): Cleanup {
   const mm = gsap.matchMedia()
   const drawn: HTMLElement[] = []
@@ -195,7 +227,7 @@ export function curtains(root: HTMLElement): Cleanup {
     gsap.fromTo(
       under,
       { opacity: 1, scale: 1 },
-      { opacity: 0.25, scale: 0.94, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 30%', scrub: true } },
+      { opacity: 0, scale: 0.92, ease: 'power1.in', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 45%', scrub: true } },
     )
   }
   return () => {
@@ -208,9 +240,9 @@ export function curtains(root: HTMLElement): Cleanup {
 // - Wide screens pin the hero. A little way in, the card answers itself once as a demo (the
 //   `lesson:demo` event on [data-lesson-root]; a visitor's own pick is never undone). The words and
 //   天才 step back while the card moves to the centre; then a sheet of the band's green
-//   ([data-lesson-portal]) settles over the reply panel and opens out to fill the screen, and the
-//   band that follows ([data-lesson-next]) rises over it with its content, so the answer becomes the
-//   page.
+//   ([data-lesson-portal]) settles over the whole card, matching its box and corners, and opens out to
+//   fill the screen, and the band that follows ([data-lesson-next]) rises over it with its content,
+//   so the card itself becomes the page.
 // - Phones keep the card still and lay the band down like a sheet of paper (as curtains does).
 export function lessonStage(root: HTMLElement): Cleanup {
   const stage = root.querySelector<HTMLElement>('[data-lesson-stage]')
@@ -218,7 +250,6 @@ export function lessonStage(root: HTMLElement): Cleanup {
   if (!stage || !card) return () => {}
 
   const lesson = card.querySelector<HTMLElement>('[data-lesson-root]')
-  const replies = card.querySelector<HTMLElement>('[data-lesson-replies]')
   const words = stage.querySelector<HTMLElement>('[data-lesson-words]')
   const aside = stage.querySelector<HTMLElement>('[data-lesson-aside]')
   const portal = stage.querySelector<HTMLElement>('[data-lesson-portal]')
@@ -231,7 +262,7 @@ export function lessonStage(root: HTMLElement): Cleanup {
     // The stage sits just under the fixed header; pinning from where it rests starts the sequence with
     // the first scroll.
     const restTop = Math.max(0, stage.getBoundingClientRect().top + window.scrollY)
-    const length = 1.4
+    const length = 1.25
     // Offsets from layout boxes, so they ignore this timeline's own transforms and read the same
     // whether or not the stage is pinned.
     const within = (el: HTMLElement, ancestor: HTMLElement) => {
@@ -253,46 +284,54 @@ export function lessonStage(root: HTMLElement): Cleanup {
         y: room() / 2 - (at.top + card.offsetHeight / 2),
       }
     }
-    // The reply panel's box once the card has arrived (scaled about its centre), in the portal's
-    // coordinates: the portal spans the viewport from the stage's top edge.
-    const replyBox = () => {
+    // The card's own face (the lesson sheet) once the card has arrived (scaled about its centre), in
+    // the portal's coordinates: the portal spans the whole viewport, from above the stage's top edge.
+    const face = lesson ?? card
+    const cardBox = () => {
       const scale = fit()
-      const box = replies ? within(replies, card) : { left: 0, top: 0 }
-      const width = (replies ?? card).offsetWidth * scale
-      const height = (replies ?? card).offsetHeight * scale
-      const left = window.innerWidth / 2 - (card.offsetWidth * scale) / 2 + box.left * scale
-      const top = room() / 2 - (card.offsetHeight * scale) / 2 + box.top * scale
-      return { left, top, width, height, scale }
+      const at = face === card ? { left: 0, top: 0 } : within(face, card)
+      const left = window.innerWidth / 2 - (card.offsetWidth * scale) / 2 + at.left * scale
+      const top = restTop + room() / 2 - (card.offsetHeight * scale) / 2 + at.top * scale
+      const radius = (Number.parseFloat(getComputedStyle(face).borderTopLeftRadius) || 16) * scale
+      return { left, top, width: face.offsetWidth * scale, height: face.offsetHeight * scale, radius }
     }
     const portalSize = () => ({ width: portal?.offsetWidth ?? window.innerWidth, height: portal?.offsetHeight ?? window.innerHeight })
     const opening = () => {
-      const { left, top, width, height, scale } = replyBox()
+      const { left, top, width, height, radius } = cardBox()
       const size = portalSize()
-      return `inset(${top}px ${size.width - left - width}px ${size.height - top - height}px ${left}px round ${16 * scale}px)`
+      return `inset(${top}px ${size.width - left - width}px ${size.height - top - height}px ${left}px round ${radius}px)`
     }
-    // Where the mark starts: small and centred in the reply panel. The mark and the opening move on
-    // the same tween and ease, and each edge of both boxes moves linearly between two nested states,
-    // so the mark stays inside the opening the whole way instead of being cut by its edge.
+    // Where the mark starts: centred on the card. The mark and the opening move on the same tween and
+    // ease, and each edge of both boxes moves linearly between two nested states, so the mark stays
+    // inside the opening the whole way instead of being cut by its edge.
     const markStart = () => {
       if (!portalMark) return { x: 0, y: 0, scale: 1 }
-      const box = replyBox()
+      const box = cardBox()
       const size = portalSize()
       return {
         x: box.left + box.width / 2 - size.width / 2,
         y: box.top + box.height / 2 - size.height / 2,
-        scale: Math.min((box.width * 0.8) / portalMark.offsetWidth, (box.height * 0.72) / portalMark.offsetHeight),
+        scale: Math.min((box.width * 0.62) / portalMark.offsetWidth, (box.height * 0.5) / portalMark.offsetHeight),
       }
     }
 
     // The band's edge reaches the bottom of the screen at 56% of the pinned scroll, while the sheet is
     // still opening, so its first line rises in just as the green fills the screen.
-    // The sheet fills the screen under the header, so 天才 grows in the middle of what is visible.
+    // The sheet fills the whole screen, up over the band the header leaves when it hides on the way
+    // down, so 天才 is written in the middle of a screen that is all green.
     const lift = () => {
       if (next) next.style.marginTop = `${Math.min(0, window.innerHeight - restTop - stage.offsetHeight - 0.44 * length * window.innerHeight)}px`
-      if (portal) portal.style.height = `${room()}px`
+      if (portal) {
+        portal.style.top = `${-restTop}px`
+        portal.style.height = `${window.innerHeight}px`
+      }
     }
     lift()
     ScrollTrigger.addEventListener('refreshInit', lift)
+
+    const glyph = portalMark?.querySelector<HTMLElement>('[data-kanji-write]')
+    const writer = glyph ? kanjiWriter(glyph) : null
+    writer?.draw(0)
 
     let played = false
     const demo = (play: boolean) => {
@@ -323,37 +362,68 @@ export function lessonStage(root: HTMLElement): Cleanup {
     if (words) timeline.to(words, { x: () => -window.innerWidth * 0.06, opacity: 0, duration: 0.18 }, 0.12)
     if (aside) timeline.to(aside, { x: () => window.innerWidth * 0.04, opacity: 0, duration: 0.18 }, 0.12)
     if (glow) timeline.to(glow, { opacity: 0, duration: 0.18 }, 0.12)
+    // At rest the card stands a little back and turned towards the words, an object on the page
+    // rather than a panel in a grid; it squares up to the reader as it comes forward to the middle.
+    gsap.set(card, { transformPerspective: 1600, rotationY: -8, rotationX: 3, rotation: 0.6, scale: 0.94 })
     timeline.to(
       card,
-      { x: () => cardShift().x, y: () => cardShift().y, scale: fit, duration: 0.2, ease: 'power2.inOut' },
+      {
+        x: () => cardShift().x,
+        y: () => cardShift().y,
+        scale: fit,
+        rotationY: 0,
+        rotationX: 0,
+        rotation: 0,
+        duration: 0.2,
+        ease: 'power2.inOut',
+      },
       0.12,
     )
     if (portal) {
-      // The sheet first fades in exactly over the reply, so the reply's words go quietly instead of
-      // vanishing in one frame, then opens out.
+      // The sheet first floods the card in place, edge for edge and corner for corner, so the card
+      // reads as turning green rather than being covered; then it opens out.
       timeline
         .fromTo(portal, { opacity: 0, clipPath: opening }, { opacity: 1, clipPath: opening, duration: 0.06 }, 0.36)
         .to(portal, { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 0.18, ease: 'power2.inOut' }, 0.42)
-      // The card steps forward and dissolves as the sheet opens, so the green never cuts it in half.
-      timeline.to(card, { opacity: 0, scale: () => fit() * 1.08, duration: 0.14, ease: 'power1.in' }, 0.37)
-      // 天才 opens with the sheet, then rises at the band's own pace (1.4 screens per unit of progress),
-      // keeping a fixed gap above its edge while it fades, so the green under it is never empty.
+      // Under the flooded sheet the card goes, so nothing of it shows once the sheet opens.
+      timeline.to(card, { opacity: 0, duration: 0.04 }, 0.41)
+      // 天才 opens with the sheet, then rises at the band's own pace (`length` screens per unit of
+      // progress), keeping a fixed gap above its edge. It stays at full strength until the band's
+      // first lines are in, then blurs out fast, so it never reads as a dull ghost on the green.
       if (portalMark) {
         timeline
           .fromTo(
             portalMark,
-            { x: () => markStart().x, y: () => markStart().y, scale: () => markStart().scale, opacity: 0 },
-            { x: 0, y: 0, scale: 1, opacity: 0.92, duration: 0.18, ease: 'power2.inOut' },
+            { x: () => markStart().x, y: () => markStart().y, scale: () => markStart().scale },
+            { x: 0, y: 0, scale: 1, duration: 0.18, ease: 'power2.inOut' },
             0.42,
           )
-          .to(portalMark, { y: () => -0.56 * window.innerHeight, duration: 0.4 }, 0.6)
-          .to(portalMark, { opacity: 0, duration: 0.32 }, 0.6)
+          // The mark lights at full strength early, so a stop mid-opening shows lime, not a grey ghost.
+          .fromTo(portalMark, { opacity: 0 }, { opacity: 1, duration: 0.03, ease: 'power1.out' }, 0.42)
+          .to(portalMark, { y: () => -0.4 * length * window.innerHeight, duration: 0.4 }, 0.6)
+          // Then it dissolves out of focus in one quick breath, so no frame shows a half-cut glyph.
+          .fromTo(
+            portalMark,
+            { opacity: 1, filter: 'blur(0px)', scale: 1 },
+            { opacity: 0, filter: 'blur(18px)', scale: 0.94, duration: 0.07, ease: 'power2.in', immediateRender: false },
+            0.76,
+          )
+        // The brush writes 天才 stroke by stroke while the sheet opens and the mark grows.
+        if (writer) {
+          const hand = { progress: 0 }
+          timeline.fromTo(
+            hand,
+            { progress: 0 },
+            { progress: 1, duration: 0.24, onUpdate: () => writer.draw(hand.progress) },
+            0.42,
+          )
+        }
       }
     }
     timeline.to({}, { duration: 0.36 }, 0.64)
 
-    // With a mouse, the pool of lime leans after the pointer (eased), so the card looks lit from
-    // wherever the reader is looking.
+    // With a mouse, the lime bloom slides a few px away from the pointer (eased), like light cast
+    // from where the hand is, a layer of depth behind the card's own tilt.
     let unfollow = () => {}
     if (glow && glow.parentElement && window.matchMedia(FINE_POINTER).matches) {
       const slot = glow.parentElement
@@ -361,8 +431,8 @@ export function lessonStage(root: HTMLElement): Cleanup {
       const toY = gsap.quickTo(glow, 'y', { duration: 1.2, ease: 'power3.out' })
       const follow = (event: PointerEvent) => {
         const box = slot.getBoundingClientRect()
-        toX(gsap.utils.clamp(-200, 200, (event.clientX - (box.left + box.width / 2)) * 0.4))
-        toY(gsap.utils.clamp(-140, 140, (event.clientY - (box.top + box.height / 2)) * 0.4))
+        toX(gsap.utils.clamp(-12, 12, (box.left + box.width / 2 - event.clientX) * 0.03))
+        toY(gsap.utils.clamp(-10, 10, (box.top + box.height / 2 - event.clientY) * 0.03))
       }
       const rest = () => {
         toX(0)
@@ -379,9 +449,13 @@ export function lessonStage(root: HTMLElement): Cleanup {
 
     return () => {
       unfollow()
+      writer?.destroy()
       ScrollTrigger.removeEventListener('refreshInit', lift)
       if (next) next.style.marginTop = ''
-      if (portal) portal.style.height = ''
+      if (portal) {
+        portal.style.top = ''
+        portal.style.height = ''
+      }
       demo(false)
     }
   })
@@ -408,6 +482,12 @@ export function lessonStage(root: HTMLElement): Cleanup {
 // - Each link's --progress tracks how far its act has been read.
 // - Each act's numeral ([data-chapter-numeral]) fills with lacquer (--fill) as the act arrives.
 // - The rail shows only while the acts fill the screen (data-visible).
+// - On wide screens, where each act's header ([data-chapter-head]) and evidence
+//   ([data-chapter-assets]) are held mid-screen, they fade and lift only in the act's last stretch,
+//   so an act is never left half-faded while it is still being read.
+// - An act that ends on a held line ([data-scrub-stage]) hands over to it as a scene: the act's
+//   columns stay at full strength until the stage is halfway up the screen, fade out quickly, and
+//   only then does the line fade up.
 export function chapterRail(root: HTMLElement): Cleanup {
   const container = root.querySelector<HTMLElement>('[data-chapters]')
   const rail = container?.querySelector<HTMLElement>('[data-chapter-rail]')
@@ -463,7 +543,43 @@ export function chapterRail(root: HTMLElement): Cleanup {
     },
   })
 
+  chapters.forEach((chapter) => {
+    const stage = chapter.querySelector<HTMLElement>('[data-scrub-stage]')
+    const columns = chapter.querySelector<HTMLElement>('[data-origin-act]')
+    const line = stage?.querySelector<HTMLElement>('[data-sheet-under] > *')
+    if (!stage || !columns || !line) return
+    gsap.fromTo(
+      columns,
+      { opacity: 1 },
+      { opacity: 0, ease: 'none', scrollTrigger: { trigger: stage, start: 'top 48%', end: 'top 22%', scrub: true } },
+    )
+    gsap.fromTo(
+      line,
+      { opacity: 0, y: 56 },
+      { opacity: 1, y: 0, ease: 'none', scrollTrigger: { trigger: stage, start: 'top 30%', end: 'top -4%', scrub: true } },
+    )
+  })
+
+  const mm = gsap.matchMedia()
+  mm.add(WIDE, () => {
+    chapters.forEach((chapter) => {
+      const held = chapter.querySelectorAll<HTMLElement>('[data-chapter-head], [data-chapter-assets]')
+      if (!held.length) return
+      gsap.fromTo(
+        held,
+        { autoAlpha: 1, y: 0 },
+        {
+          autoAlpha: 0,
+          y: -48,
+          ease: 'power1.in',
+          scrollTrigger: { trigger: chapter, start: 'bottom 62%', end: 'bottom 38%', scrub: true },
+        },
+      )
+    })
+  })
+
   return () => {
+    mm.revert()
     delete rail.dataset.visible
     rail.style.removeProperty('--active')
     links.forEach((link) => {
@@ -475,13 +591,14 @@ export function chapterRail(root: HTMLElement): Cleanup {
 
 // Light table ([data-light-table], Conan): class photos ([data-light-item]) laid one over another.
 // - Wide screens set data-light-active (CSS stacks the photos in one frame) and pin the table.
-//   Scrolling slides each photo up over the last inside its clip ([data-light-clip]); the photo
-//   rises into place ([data-light-media]) while the one beneath drifts up and dims
-//   ([data-light-shade]). Each photo rests on screen for a moment before the next one arrives.
+//   The pin is split into one stretch of scroll per photo. Crossing into the next stretch plays a
+//   short, timed cut: the new photo slides up over the last inside its clip ([data-light-clip])
+//   and settles from a slight zoom ([data-light-media]), while the one beneath drifts up and dims
+//   ([data-light-shade]). Scrolling back plays it in reverse. Because the cut runs on time, not
+//   on the scrollbar, the table can never come to rest on half of one photo over another.
 // - The photo in view gets data-current (earlier ones data-past), which swaps the caption; the
 //   table's --light-index rolls the counter and --light-progress fills the contact sheet's rule.
-// - A thumbnail ([data-light-thumb]) glides to its photo, and a stop between two photos settles on
-//   the nearer one, so the table never rests on half a photo.
+// - A thumbnail ([data-light-thumb]) glides the page to the middle of its photo's stretch.
 // - Phones and narrow screens keep the plain sequence of photos.
 export function lightTable(root: HTMLElement, glide: ((y: number, duration: number) => void) | null): Cleanup {
   const table = root.querySelector<HTMLElement>('[data-light-table]')
@@ -494,21 +611,24 @@ export function lightTable(root: HTMLElement, glide: ((y: number, duration: numb
   const shades = pick('[data-light-shade]')
   const thumbs = Array.from(table.querySelectorAll<HTMLElement>('[data-light-thumb]'))
 
-  const steps = items.length - 1
-  const hold = 0.3
-  const total = steps + hold
-  // Where photo i rests, as progress through the pin: halfway through its moment of stillness.
-  const rest = (index: number) => (index + hold / 2) / total
+  const count = items.length
+  // The middle of photo i's stretch of the pin.
+  const rest = (index: number) => (index + 0.5) / count
+  const SHOWN = 'inset(0% 0% 0% 0%)'
+  const HIDDEN = 'inset(100% 0% 0% 0%)'
+  const CUT = { duration: 0.95, ease: 'power3.inOut', overwrite: 'auto' as const }
 
   const mm = gsap.matchMedia()
   mm.add(WIDE, () => {
     // Set before the trigger measures, so the pin and its spacing are taken from the stacked table.
     table.dataset.lightActive = 'true'
+    clips.forEach((clip, index) => clip && gsap.set(clip, { clipPath: index === 0 ? SHOWN : HIDDEN }))
+
     let current = -1
-    const mark = (progress: number) => {
-      table.style.setProperty('--light-progress', progress.toFixed(4))
-      const index = gsap.utils.clamp(0, steps, Math.floor(progress * total + (1 - hold) / 2))
-      if (index === current) return
+    // Lay the stack out for photo `index`: everything up to it uncovered, the ones beneath it
+    // drifted and dimmed, the ones after it waiting below the frame. `animate` false jumps there.
+    const show = (index: number, animate: boolean) => {
+      const from = current
       current = index
       table.style.setProperty('--light-index', String(index))
       items.forEach((item, itemIndex) => {
@@ -519,87 +639,49 @@ export function lightTable(root: HTMLElement, glide: ((y: number, duration: numb
         if (thumbIndex === index) thumb.setAttribute('aria-current', 'true')
         else thumb.removeAttribute('aria-current')
       })
+      const to = animate ? (target: gsap.TweenTarget, vars: gsap.TweenVars) => gsap.to(target, { ...CUT, ...vars }) : gsap.set
+      items.forEach((_, i) => {
+        const clip = clips[i]
+        const photo = media[i]
+        const shade = shades[i]
+        if (clip && i > 0) to(clip, { clipPath: i <= index ? SHOWN : HIDDEN })
+        // Only the photo arriving now settles from the zoom; the rest hold or drift.
+        if (photo && animate && i === index && index > from) {
+          gsap.fromTo(photo, { yPercent: 14, scale: 1.14 }, { ...CUT, duration: 1.15, ease: 'power3.out', yPercent: 0, scale: 1 })
+        } else if (photo) {
+          to(photo, { yPercent: i < index ? -7 : 0, scale: 1 })
+        }
+        if (shade) to(shade, { opacity: i < index ? 0.72 : 0 })
+      })
     }
 
-    let settling = false
-    let settleTimer = 0
-    let settleDone = 0
-    const goTo = (index: number, duration: number) => {
-      const trigger = timeline.scrollTrigger
-      if (!trigger) return
-      const y = trigger.start + rest(index) * (trigger.end - trigger.start)
-      if (glide) {
-        settling = true
-        window.clearTimeout(settleDone)
-        settleDone = window.setTimeout(() => (settling = false), duration * 1000 + 120)
-        glide(y, duration)
-      } else {
-        window.scrollTo({ top: y, behavior: 'smooth' })
-      }
-    }
-    // Only with smooth scrolling: a native glide fights the reader's own wheel.
-    const settleSoon = () => {
-      if (!glide) return
-      window.clearTimeout(settleTimer)
-      settleTimer = window.setTimeout(() => {
-        const trigger = timeline.scrollTrigger
-        if (settling || !trigger?.isActive) return
-        const index = gsap.utils.clamp(0, steps, Math.round(trigger.progress * total - hold / 2))
-        const y = trigger.start + rest(index) * (trigger.end - trigger.start)
-        if (Math.abs(trigger.scroll() - y) > 6) goTo(index, 0.7)
-      }, 220)
-    }
-
-    const timeline = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: table,
-        start: 'top top',
-        end: () => `+=${total * 0.54 * window.innerHeight}`,
-        pin: true,
-        // Sits below the Conan journey's pin: a priority puts every trigger in page order, and 0
-        // keeps this one after the pins above it, so its start includes their spacing.
-        refreshPriority: 0,
-        scrub: 0.6,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          mark(self.progress)
-          settleSoon()
-        },
-        onRefresh: (self) => {
-          current = -1
-          mark(self.progress)
-        },
+    const trigger = ScrollTrigger.create({
+      trigger: table,
+      start: 'top top',
+      end: () => `+=${count * 0.42 * window.innerHeight}`,
+      pin: true,
+      // Sits below the Conan journey's pin: a priority puts every trigger in page order, and 0
+      // keeps this one after the pins above it, so its start includes their spacing.
+      refreshPriority: 0,
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+      onUpdate: (self) => {
+        table.style.setProperty('--light-progress', self.progress.toFixed(4))
+        const index = gsap.utils.clamp(0, count - 1, Math.floor(self.progress * count))
+        if (index !== current) show(index, true)
+      },
+      onRefresh: (self) => {
+        table.style.setProperty('--light-progress', self.progress.toFixed(4))
+        show(gsap.utils.clamp(0, count - 1, Math.floor(self.progress * count)), false)
       },
     })
-    for (let index = 1; index <= steps; index++) {
-      const at = index - 1 + hold
-      const span = 1 - hold
-      const clip = clips[index]
-      const rising = media[index]
-      const below = media[index - 1]
-      const shade = shades[index - 1]
-      if (clip) {
-        timeline.fromTo(
-          clip,
-          { clipPath: 'inset(100% 0% 0% 0%)' },
-          { clipPath: 'inset(0% 0% 0% 0%)', duration: span, ease: 'power2.inOut' },
-          at,
-        )
-      }
-      if (rising) {
-        timeline.fromTo(rising, { yPercent: 16, scale: 1.16 }, { yPercent: 0, scale: 1, duration: span, ease: 'power2.out' }, at)
-      }
-      if (below) timeline.to(below, { yPercent: -8, duration: span, ease: 'power2.inOut' }, at)
-      if (shade) timeline.fromTo(shade, { opacity: 0 }, { opacity: 0.7, duration: span, ease: 'power1.in' }, at)
-    }
-    // The last photo rests as long as the others before the pin lets go.
-    timeline.to({}, { duration: hold }, steps)
 
     const onThumb = (event: Event) => {
       const index = Number((event.currentTarget as HTMLElement).dataset.lightThumb)
-      if (Number.isFinite(index)) goTo(index, 1.1)
+      if (!Number.isFinite(index)) return
+      const y = trigger.start + rest(index) * (trigger.end - trigger.start)
+      if (glide) glide(y, 1.1)
+      else window.scrollTo({ top: y, behavior: 'smooth' })
     }
     thumbs.forEach((thumb) => thumb.addEventListener('click', onThumb))
 
@@ -608,8 +690,8 @@ export function lightTable(root: HTMLElement, glide: ((y: number, duration: numb
         thumb.removeEventListener('click', onThumb)
         thumb.removeAttribute('aria-current')
       })
-      window.clearTimeout(settleTimer)
-      window.clearTimeout(settleDone)
+      gsap.killTweensOf([...clips, ...media, ...shades].filter(Boolean))
+      gsap.set([...clips, ...media, ...shades].filter(Boolean), { clearProps: 'all' })
       delete table.dataset.lightActive
       table.style.removeProperty('--light-progress')
       table.style.removeProperty('--light-index')

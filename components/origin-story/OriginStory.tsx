@@ -39,15 +39,11 @@ const publicActs = originStoryPublic.acts.map((act) => {
   return { ...act, claims, assets }
 })
 
-// The low points (the leap, the debt, the system that came out of it) sit in the dark; the
-// openings sit on paper. Each act is a sheet laid over the last.
-const toneOf = (index: number) => (index % 2 === 0 ? 'dark' : 'paper')
-
-// With motion, each act arrives its own way (see curtains in the motion signatures), so five
-// changes of tone never repeat one trick: the first dark act opens like an iris, the first paper
-// one turns over the act before it like a page, the cost sweeps in from the edge, the rebuilding
-// is laid over the held cost (data-sheet-over, below), and the system opens as a plain sheet.
-const ENTRANCES = ['iris', 'sheet', 'wipe', '', ''] as const
+// The principle and the closing choice sit on paper; the five acts share one dark stage, so the
+// story reads as one place and the move from act to act is carried by the numerals and the rail,
+// not by flipping the ground. Only the first act needs an entrance: it is laid over the paper
+// principle as a rounded sheet (the default curtain in the motion signatures).
+const ACT_TONE = 'dark'
 
 const pad = (value: number) => String(value).padStart(2, '0')
 
@@ -55,7 +51,9 @@ const pad = (value: number) => String(value).padStart(2, '0')
 const CLIPPING_TILTS = ['-2.2deg', '1.6deg', '-1deg'] as const
 
 function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
-  const label = `${sourceTypeLabels[claim.sourceType]} · ${claim.sourceLabel}`
+  // A source label that already names its kind ("Lời kể cá nhân, …") is not prefixed with it again.
+  const kind = sourceTypeLabels[claim.sourceType]
+  const label = claim.sourceLabel.startsWith(kind) ? claim.sourceLabel : `${kind} · ${claim.sourceLabel}`
   if (!claim.publicHref) return <span className={styles.sourceLabel}>{label}</span>
   if (claim.publicHref.startsWith('https://')) {
     return (
@@ -138,6 +136,7 @@ function ImageCard({ asset }: { asset: ImageArtifact }) {
             height={asset.height}
             alt={asset.alt}
             sizes="(max-width: 1023px) 92vw, 52vw"
+            loading="eager"
             style={{ objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%` }}
           />
         </div>
@@ -212,7 +211,6 @@ export default function OriginStory() {
         </nav>
 
         {publicActs.map((act, index) => {
-          const tone = toneOf(index)
           const hasAssets = act.assets.length > 0
           const titleId = `origin-act-${act.id}-title`
           const verdict = act.claims.find((claim) => claim.id === VERDICT_CLAIM)
@@ -222,8 +220,8 @@ export default function OriginStory() {
             <section
               key={act.id}
               className={styles.act}
-              data-tone={tone}
-              data-curtain={overVerdict ? undefined : ENTRANCES[index % ENTRANCES.length]}
+              data-tone={ACT_TONE}
+              data-curtain={index === 0 ? '' : undefined}
               data-sheet-over={overVerdict ? '' : undefined}
               data-has-verdict={verdict ? '' : undefined}
               data-chapter
@@ -231,7 +229,7 @@ export default function OriginStory() {
               aria-labelledby={titleId}
             >
               <div className={styles.actGrid} data-origin-act={act.id} data-has-assets={hasAssets} data-stacked={stacked}>
-                <header className={styles.actHeader}>
+                <header className={styles.actHeader} data-chapter-head>
                   <p className={styles.actLabel}>{act.label}</p>
                   <p className={styles.numeral} data-chapter-numeral aria-hidden="true">
                     <span className={styles.numeralOutline}>{pad(index + 1)}</span>
@@ -259,6 +257,7 @@ export default function OriginStory() {
                   {hasAssets ? (
                     <div
                       className={styles.assets}
+                      data-chapter-assets
                       data-assets={act.assets.length}
                       data-stack={stacked ? '' : undefined}
                       data-stack-media="(min-width: 1024px)"
@@ -291,8 +290,8 @@ export default function OriginStory() {
                           className={styles.verdictClock}
                           data-scroll-count
                           data-count-from="1"
-                          data-count-start="top 45%"
-                          data-count-end="top -25%"
+                          data-count-start="top 70%"
+                          data-count-end="top 10%"
                           aria-hidden="true"
                         >
                           <span className={styles.clockLabel}>
@@ -303,7 +302,7 @@ export default function OriginStory() {
                           </span>
                         </div>
                       ) : null}
-                      <p data-scrub-words data-scrub-from="0.5" data-scrub-start="top 45%" data-scrub-end="top -25%">
+                      <p data-scrub-words data-scrub-from="0.5" data-scrub-start="top 70%" data-scrub-end="top 10%">
                         {verdictLines(verdict.text).map((line, lineIndex) => (
                           <Fragment key={line}>
                             {lineIndex ? ' ' : null}

@@ -33,10 +33,13 @@ const titleHead = conanContent.title.slice(0, accentAt).trimEnd()
 
 // Each half of the stage band must be wider than the widest screen before it is doubled.
 const BAND_REPEAT = 2
+// The English row is set smaller, so it needs more turns to fill the same width.
+const TERM_REPEAT = 4
 
 export default function ConanPage() {
   const { principle, audiences, journey, gallery, mentors, closing } = conanContent
   const bandHalf = Array.from({ length: BAND_REPEAT }, () => journey.stages.map((stage) => stage.gloss)).flat()
+  const termHalf = Array.from({ length: TERM_REPEAT }, () => journey.stages.map((stage) => stage.name)).flat()
   return (
     <div className={`${twoPath.branch} ${styles.page}`} data-path="conan" data-motion-stage>
       <PathMemory path="conan" />
@@ -47,18 +50,20 @@ export default function ConanPage() {
           <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="2.4">
             <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
           </div>
-          <div className={styles.heroShade} aria-hidden="true" />
+          <div className={styles.heroShade} aria-hidden="true" data-mask-shade />
+          <div className={styles.heroSheen} aria-hidden="true" data-mask-sheen />
           {/* The room is first seen through the letters of "Conan", then the camera flies through
               the stem of the a and the ink falls away: by the reader's scroll on wide screens
               (maskFlight in signatures.ts), on load elsewhere (page.module.css, heroMask). */}
           <div className={styles.heroMask} aria-hidden="true" data-mask-sheet />
+          <div className={styles.heroOutline} aria-hidden="true" data-mask-outline />
         </div>
         <div className={styles.heroContent} data-mask-out>
           <div>
-            <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '1.35s' } as CSSProperties}>
+            <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.55s' } as CSSProperties}>
               {conanContent.eyebrow}
             </p>
-            <h1 id="conan-title" className={styles.title} style={{ '--intro-base': '1.45s' } as CSSProperties}>
+            <h1 id="conan-title" className={styles.title} style={{ '--intro-base': '0.65s' } as CSSProperties}>
               <SplitWords text={titleHead} />{' '}
               <em>
                 <SplitWords text={accent} start={wordCount(titleHead)} />
@@ -66,10 +71,10 @@ export default function ConanPage() {
             </h1>
           </div>
           <div className={styles.heroAside}>
-            <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '1.75s' } as CSSProperties}>
+            <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.95s' } as CSSProperties}>
               {conanContent.lead}
             </p>
-            <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1.9s' } as CSSProperties}>
+            <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
               <PathLink
                 path="conan"
                 kind="outbound"
@@ -103,7 +108,7 @@ export default function ConanPage() {
           <figure className={styles.principlePhoto} data-motion-surface>
             <div className={styles.principleFrame} data-img-reveal="right" data-parallax-frame="7">
               <div data-reveal-media>
-                <TwoPathPhoto id={principle.photoId} sizes="(max-width: 999px) 80vw, 440px" />
+                <TwoPathPhoto id={principle.photoId} sizes="(max-width: 999px) 80vw, 600px" />
               </div>
             </div>
             <figcaption className={styles.principleCaption}>{photo(principle.photoId).caption}</figcaption>
@@ -148,6 +153,15 @@ export default function ConanPage() {
             ))}
           </div>
         </div>
+        <div className={styles.termRow} data-marquee="reverse" data-marquee-duration="56" lang="en">
+          <div className={styles.bandTrack} data-marquee-track>
+            {[...termHalf, ...termHalf].map((name, index) => (
+              <span key={index} className={styles.termWord}>
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Wide screens: the intro holds still on the left with a rolling stage counter while the
@@ -156,7 +170,7 @@ export default function ConanPage() {
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
-        data-hscroll-pace="1.35"
+        data-hscroll-pace="1.5"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
         <div className={styles.journeyLayout}>
@@ -216,6 +230,20 @@ export default function ConanPage() {
         </div>
       </section>
 
+      <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors">
+        <div className={`${styles.inner} ${styles.mentorsInner}`}>
+          <div className={styles.sectionHead}>
+            <p className={styles.sectionMark} data-motion-reveal="mask">
+              03 — Đi cùng bạn
+            </p>
+            <h2 id="conan-mentors" className={styles.sectionTitle} data-split>
+              {mentors.title}
+            </h2>
+          </div>
+          <MentorCards people={mentors.people} />
+        </div>
+      </section>
+
       <section className={`${styles.section} ${styles.gallerySection}`} aria-labelledby="conan-gallery">
         <div className={styles.wideInner}>
           <PhotoGallery
@@ -223,7 +251,7 @@ export default function ConanPage() {
             head={
               <div className={`${styles.sectionHead} ${styles.galleryHead}`}>
                 <p className={styles.sectionMark} data-motion-reveal="mask">
-                  03 — Lớp học thật
+                  04 — Lớp học thật
                 </p>
                 <h2 id="conan-gallery" className={styles.sectionTitle} data-split>
                   {gallery.title}
@@ -231,20 +259,6 @@ export default function ConanPage() {
               </div>
             }
           />
-        </div>
-      </section>
-
-      <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors">
-        <div className={`${styles.inner} ${styles.mentorsInner}`}>
-          <div className={styles.sectionHead}>
-            <p className={styles.sectionMark} data-motion-reveal="mask">
-              04 — Người dẫn đường
-            </p>
-            <h2 id="conan-mentors" className={styles.sectionTitle} data-split>
-              {mentors.title}
-            </h2>
-          </div>
-          <MentorCards people={mentors.people} />
         </div>
       </section>
 
@@ -272,8 +286,9 @@ export default function ConanPage() {
             </PathLink>
           </div>
         </div>
-        <p className={styles.closingMark} aria-hidden="true" data-speed="-0.12">
-          Conan
+        <p className={styles.closingMark} aria-hidden="true" data-scroll-fill>
+          <span className={styles.closingMarkLine}>Conan</span>
+          <span className={styles.closingMarkFill}>Conan</span>
         </p>
       </section>
     </div>
