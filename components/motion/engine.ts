@@ -351,6 +351,8 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
     if (!track) return
     // data-hscroll-pace stretches the pinned scroll past the track's own width, so each item dwells longer.
     const pace = Number(section.dataset.hscrollPace ?? 1) || 1
+    // data-hscroll-scrub sets how many seconds the row trails the scrollbar (default 0.8).
+    const scrub = Number(section.dataset.hscrollScrub ?? 0.8) || 0.8
     const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
     const counter = section.querySelector<HTMLElement>('[data-hscroll-current]')
     const prev = section.querySelector<HTMLButtonElement>('[data-hscroll-prev]')
@@ -427,7 +429,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           start: 'top top',
           end: () => `+=${distance() * pace}`,
           pin: true,
-          scrub: 0.8,
+          scrub,
           invalidateOnRefresh: true,
           anticipatePin: 1,
           onUpdate: (self) => {

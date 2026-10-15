@@ -83,6 +83,8 @@ export function stageHero(root: HTMLElement): Cleanup {
 //   the camera into the letters (the sheet's CSS transform-origin) while the ink thins away, and
 //   the whole photo rests a moment before the pin lets go.
 // - Narrower screens keep the load flight in page.module.css.
+// - With a mouse, a lens follows the pointer: a soft hole in the sheet that shows the room in
+//   colour (--lens-x/--lens-y in percent of the sheet, --lens-on 0 to 1; page.module.css draws it).
 // - Everywhere, the words ([data-mask-out]) drift up and dim as the hero leaves.
 export function maskFlight(root: HTMLElement): Cleanup {
   const hero = root.querySelector<HTMLElement>('[data-mask-flight]')
@@ -116,7 +118,7 @@ export function maskFlight(root: HTMLElement): Cleanup {
       scrollTrigger: {
         trigger: hero,
         start: 'top top',
-        end: () => `+=${window.innerHeight * 0.85}`,
+        end: () => `+=${window.innerHeight * 0.7}`,
         pin: true,
         // The first pin on the page: refreshed before the triggers below so they measure with its spacing.
         refreshPriority: 1,
@@ -141,21 +143,82 @@ export function maskFlight(root: HTMLElement): Cleanup {
   mm.add(`${WIDE} and ${FINE_POINTER}`, () => {
     const panX = gsap.quickTo(hero, '--pan-x', { duration: 1.1, ease: 'power3' })
     const panY = gsap.quickTo(hero, '--pan-y', { duration: 1.1, ease: 'power3' })
+    // The lens is placed from the sheet's own box on every frame, so it stays under the pointer
+    // while the sheet leans or flies; the pointer is only remembered here.
+    const lens = { x: 50, y: 50, on: 0 }
+    const pointer = { x: 0, y: 0, inside: false }
+    // After the pointer leaves, the lens holds for a beat and then closes slowly, so it reads as a
+    // lens closing, not as a flicker.
+    let holdUntil = 0
+    let running = false
+    const write = () => {
+      hero.style.setProperty('--lens-x', lens.x.toFixed(2))
+      hero.style.setProperty('--lens-y', lens.y.toFixed(2))
+      hero.style.setProperty('--lens-on', lens.on.toFixed(3))
+    }
+    const aim = () => {
+      const box = (sheet ?? hero).getBoundingClientRect()
+      // The lens stays over the lettering band: with the pointer on the words or the call below
+      // it, it rests on the lower strokes of the word, never on the ink under the letters.
+      return {
+        x: gsap.utils.clamp(0, 100, ((pointer.x - box.left) / Math.max(1, box.width)) * 100),
+        y: gsap.utils.clamp(8, 66, ((pointer.y - box.top) / Math.max(1, box.height)) * 100),
+      }
+    }
+    const tick = (_time: number, delta: number) => {
+      const follow = 1 - Math.pow(0.78, delta / 16.7)
+      const holding = !pointer.inside && performance.now() < holdUntil
+      const fade = pointer.inside ? 1 - Math.pow(0.9, delta / 16.7) : 1 - Math.pow(0.955, delta / 16.7)
+      if (pointer.inside) {
+        const to = aim()
+        lens.x += (to.x - lens.x) * follow
+        lens.y += (to.y - lens.y) * follow
+      }
+      if (!holding) lens.on += ((pointer.inside ? 1 : 0) - lens.on) * fade
+      if (!pointer.inside && !holding && lens.on < 0.01) {
+        lens.on = 0
+        gsap.ticker.remove(tick)
+        running = false
+      }
+      write()
+    }
+    const wake = () => {
+      if (running) return
+      running = true
+      gsap.ticker.add(tick)
+    }
     const move = (event: PointerEvent) => {
       const box = hero.getBoundingClientRect()
       panX(((event.clientX - box.left) / box.width) * 2 - 1)
       panY(((event.clientY - box.top) / box.height) * 2 - 1)
+      pointer.x = event.clientX
+      pointer.y = event.clientY
+      if (!pointer.inside) {
+        // The lens opens where the pointer came in, instead of sweeping from where it last was.
+        pointer.inside = true
+        const to = aim()
+        lens.x = to.x
+        lens.y = to.y
+      }
+      wake()
     }
     const rest = () => {
       panX(0)
       panY(0)
+      pointer.inside = false
+      holdUntil = performance.now() + 1100
+      wake()
     }
     hero.addEventListener('pointermove', move)
     hero.addEventListener('pointerleave', rest)
     return () => {
       hero.removeEventListener('pointermove', move)
       hero.removeEventListener('pointerleave', rest)
+      gsap.ticker.remove(tick)
       gsap.set(hero, { '--pan-x': 0, '--pan-y': 0 })
+      hero.style.removeProperty('--lens-x')
+      hero.style.removeProperty('--lens-y')
+      hero.style.removeProperty('--lens-on')
     }
   })
   mm.add(`not all and ${WIDE}`, () => leave(() => 0))
@@ -374,6 +437,8 @@ export function lightTable(root: HTMLElement, glide: ((y: number, duration: numb
   const thumbs = Array.from(table.querySelectorAll<HTMLElement>('[data-light-thumb]'))
 
   const count = items.length
+  // Each photo's stretch of the pin, in screens; data-light-pace on the table sets it (default 0.42).
+  const pace = Number(table.dataset.lightPace ?? 0.42) || 0.42
   // The middle of photo i's stretch of the pin.
   const rest = (index: number) => (index + 0.5) / count
   const SHOWN = 'inset(0% 0% 0% 0%)'
@@ -420,7 +485,7 @@ export function lightTable(root: HTMLElement, glide: ((y: number, duration: numb
     const trigger = ScrollTrigger.create({
       trigger: table,
       start: 'top top',
-      end: () => `+=${count * 0.42 * window.innerHeight}`,
+      end: () => `+=${count * pace * window.innerHeight}`,
       pin: true,
       // Sits below the Conan journey's pin: a priority puts every trigger in page order, and 0
       // keeps this one after the pins above it, so its start includes their spacing.

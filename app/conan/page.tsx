@@ -35,6 +35,8 @@ const titleHead = conanContent.title.slice(0, accentAt).trimEnd()
 const BAND_REPEAT = 2
 // The English row is set smaller, so it needs more turns to fill the same width.
 const TERM_REPEAT = 4
+// The class that opens the page closes it too, beside the call; none of the gallery's photos repeats.
+const closingPhotoId = 'conan-hero'
 
 export default function ConanPage() {
   const { principle, audiences, journey, gallery, mentors, closing } = conanContent
@@ -46,9 +48,13 @@ export default function ConanPage() {
       <JsonLd data={buildBranchPageStructuredData({ name: 'Conan School', description, pathname: '/conan' })} />
 
       <section className={styles.hero} aria-labelledby="conan-title" data-mask-flight>
-        <div className={styles.heroMedia}>
-          <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="2.4">
-            <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
+        <div className={styles.heroMedia} data-cursor="Cuộn" data-cursor-tone="lacquer">
+          {/* The drift wraps the photo, not the photo itself: the GL layer paints over the picture
+              and would hide any motion given to it. */}
+          <div className={styles.heroDrift}>
+            <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="1.1">
+              <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
+            </div>
           </div>
           <div className={styles.heroShade} aria-hidden="true" data-mask-shade />
           <div className={styles.heroSheen} aria-hidden="true" data-mask-sheen />
@@ -57,13 +63,14 @@ export default function ConanPage() {
               (maskFlight in signatures.ts), on load elsewhere (page.module.css, heroMask). */}
           <div className={styles.heroMask} aria-hidden="true" data-mask-sheet />
           <div className={styles.heroOutline} aria-hidden="true" data-mask-outline />
+          <p className={styles.heroTag}>{photo(conanContent.heroPhotoId).caption}</p>
         </div>
         <div className={styles.heroContent} data-mask-out>
           <div>
-            <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.55s' } as CSSProperties}>
+            <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.15s' } as CSSProperties}>
               {conanContent.eyebrow}
             </p>
-            <h1 id="conan-title" className={styles.title} style={{ '--intro-base': '0.65s' } as CSSProperties}>
+            <h1 id="conan-title" className={styles.title} style={{ '--intro-base': '0.28s' } as CSSProperties}>
               <SplitWords text={titleHead} />{' '}
               <em>
                 <SplitWords text={accent} start={wordCount(titleHead)} />
@@ -71,10 +78,10 @@ export default function ConanPage() {
             </h1>
           </div>
           <div className={styles.heroAside}>
-            <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.95s' } as CSSProperties}>
+            <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.5s' } as CSSProperties}>
               {conanContent.lead}
             </p>
-            <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
+            <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '0.62s' } as CSSProperties}>
               <PathLink
                 path="conan"
                 kind="outbound"
@@ -170,7 +177,8 @@ export default function ConanPage() {
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
-        data-hscroll-pace="1.5"
+        data-hscroll-pace="0.75"
+        data-hscroll-scrub="0.35"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
         <div className={styles.journeyLayout}>
@@ -205,10 +213,14 @@ export default function ConanPage() {
               </span>
             </div>
           </header>
-          <div className={styles.journeyWindow}>
+          <div className={styles.journeyWindow} data-cursor="Kéo" data-cursor-tone="light">
             <ol className={styles.stages} data-hscroll-track>
-              {journey.stages.map((stage) => (
-                <li key={stage.number} className={styles.stage} data-hscroll-item>
+              {journey.stages.map((stage, index) => (
+                <li key={stage.number} className={styles.stage} data-hscroll-item data-asks={stage.questions.length}>
+                  <span className={styles.stageBanner}>
+                    <span>Giai đoạn {stage.number}</span>
+                    <span className={styles.stageCount}>{stage.questions.length} câu hỏi</span>
+                  </span>
                   <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
                     {stage.number}
                   </span>
@@ -223,6 +235,25 @@ export default function ConanPage() {
                       <li key={question}>{question}</li>
                     ))}
                   </ul>
+                  {/* The card's foot, after the pager under a course card: how far along the five
+                      stages this one is, and which comes next. */}
+                  <span className={styles.stageFoot} aria-hidden="true">
+                    <span className={styles.stagePips}>
+                      {journey.stages.map((other, at) => (
+                        <span key={other.number} data-on={at <= index ? '' : undefined} />
+                      ))}
+                    </span>
+                    <span className={styles.stageNext}>
+                      {journey.stages[index + 1] ? (
+                        <>
+                          Tiếp theo
+                          <strong>{journey.stages[index + 1].gloss}</strong>
+                        </>
+                      ) : (
+                        'Giai đoạn cuối'
+                      )}
+                    </span>
+                  </span>
                 </li>
               ))}
             </ol>
@@ -230,7 +261,8 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors">
+      {/* data-scroll-fill: --fill runs 0 to 1 over the band, and the portraits warm into colour on it. */}
+      <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors" data-scroll-fill>
         <div className={`${styles.inner} ${styles.mentorsInner}`}>
           <div className={styles.sectionHead}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -248,6 +280,7 @@ export default function ConanPage() {
         <div className={styles.wideInner}>
           <PhotoGallery
             items={gallery.items}
+            pace={0.24}
             head={
               <div className={`${styles.sectionHead} ${styles.galleryHead}`}>
                 <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -264,27 +297,38 @@ export default function ConanPage() {
 
       <section className={styles.closing} aria-labelledby="conan-closing" data-curtain>
         <div className={`${styles.inner} ${styles.closingInner}`}>
-          <h2 id="conan-closing" className={styles.closingTitle} data-split>
-            {closing.title}
-          </h2>
-          <div className={styles.actions}>
-            <PathLink
-              path="conan"
-              kind="outbound"
-              placement="closing"
-              className={styles.primaryCta}
-              data-motion-action
-              data-magnetic="0.3"
-            >
-              <span className={styles.ctaInner} data-magnetic-inner>
-                {conanContent.primaryCta}
-                <ArrowRight aria-hidden="true" size={18} />
-              </span>
-            </PathLink>
-            <PathLink path="tensai" kind="door" placement="page" className={styles.crossLink}>
-              {closing.crossLink.label}
-            </PathLink>
+          <div className={styles.closingCopy}>
+            <h2 id="conan-closing" className={styles.closingTitle} data-split>
+              {closing.title}
+            </h2>
+            <div className={styles.actions}>
+              <PathLink
+                path="conan"
+                kind="outbound"
+                placement="closing"
+                className={styles.primaryCta}
+                data-motion-action
+                data-magnetic="0.3"
+              >
+                <span className={styles.ctaInner} data-magnetic-inner>
+                  {conanContent.primaryCta}
+                  <ArrowRight aria-hidden="true" size={18} />
+                </span>
+              </PathLink>
+              <PathLink path="tensai" kind="door" placement="page" className={styles.crossLink}>
+                {closing.crossLink.label}
+              </PathLink>
+            </div>
           </div>
+          {/* The same people who open the page close it. */}
+          <figure className={styles.closingPhoto} data-motion-surface>
+            <div className={styles.closingFrame} data-img-reveal="left" data-parallax-frame="6">
+              <div data-reveal-media>
+                <TwoPathPhoto id={closingPhotoId} sizes="(max-width: 999px) 92vw, 560px" />
+              </div>
+            </div>
+            <figcaption className={styles.closingCaption}>{photo(closingPhotoId).caption}</figcaption>
+          </figure>
         </div>
         <p className={styles.closingMark} aria-hidden="true" data-scroll-fill>
           <span className={styles.closingMarkLine}>Conan</span>

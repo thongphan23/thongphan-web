@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import { photo, type TwoPathPhotoId } from '@/lib/two-path-photos'
 import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
+import show from './ConanShowcase.module.css'
 
 type GalleryItem = { photoId: TwoPathPhotoId; kind: string }
 
@@ -11,6 +12,8 @@ type PhotoGalleryProps = {
   // The section's heading. It stands above the photos, and on the light table it heads the left
   // column above the counter, so the table opens with its own title.
   head?: ReactNode
+  // Screens of scrolling each photo holds on the light table (lightTable's default is 0.42).
+  pace?: number
 }
 
 const pad = (value: number) => String(value).padStart(2, '0')
@@ -19,16 +22,21 @@ const pad = (value: number) => String(value).padStart(2, '0')
 // it: each photo slides up over the last inside one large frame while the counter rolls, the
 // caption swaps and the contact sheet marks the photo in view; a thumbnail glides to its photo.
 // Otherwise the photos stand in sequence: a swipe rail on phones, a lead over a grid above that.
-export default function PhotoGallery({ items, head }: PhotoGalleryProps) {
+export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
   return (
-    <div className={styles.gallery} data-light-table style={{ '--gallery-count': items.length } as CSSProperties}>
+    <div
+      className={`${styles.gallery} ${show.table}`}
+      data-light-table
+      data-light-pace={pace}
+      style={{ '--gallery-count': items.length } as CSSProperties}
+    >
       {head ? <div className={styles.lightHead}>{head}</div> : null}
       <ol className={styles.galleryList}>
         {items.map((item, index) => (
           <li key={item.photoId} className={styles.galleryItem} data-light-item>
             <figure className={styles.galleryFigure} data-motion-surface>
               <div className={styles.galleryClip} data-light-clip>
-                <div className={styles.galleryFrame} data-img-reveal={index === 0 ? 'center' : 'up'}>
+                <div className={`${styles.galleryFrame} ${show.frame}`} data-img-reveal={index === 0 ? 'center' : 'up'}>
                   <div className={styles.galleryMedia} data-reveal-media>
                     <div className={styles.galleryShift} data-light-media>
                       <TwoPathPhoto
@@ -66,7 +74,7 @@ export default function PhotoGallery({ items, head }: PhotoGalleryProps) {
           <li key={item.photoId}>
             <button
               type="button"
-              className={styles.lightThumb}
+              className={`${styles.lightThumb} ${show.thumb}`}
               data-light-thumb={index}
               aria-label={`Ảnh ${pad(index + 1)}: ${photo(item.photoId).caption}`}
             >
