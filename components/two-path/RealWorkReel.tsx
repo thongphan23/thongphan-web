@@ -38,7 +38,7 @@ export default function RealWorkReel() {
         {reel.photoIds.map((id, index) => {
           const item = photo(id)
           return (
-            <figure key={id} className={styles.reelItem}>
+            <figure key={id} className={styles.reelItem} data-hscroll-item>
               <div className={styles.reelFrame}>
                 <div className={styles.reelMedia} data-hscroll-media>
                   <TwoPathPhoto id={id} sizes="(max-width: 899px) 82vw, 46vw" />

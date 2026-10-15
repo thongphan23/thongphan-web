@@ -40,7 +40,8 @@ const publicActs = originStoryPublic.acts.map((act) => {
 })
 
 // The low points (the leap, the debt, the system that came out of it) sit in the dark; the
-// openings sit on paper. With motion on, the page background eases between the two.
+// openings sit on paper. Each act is a sheet laid over the last; with motion, the paper ones open
+// like a curtain as they arrive.
 const toneOf = (index: number) => (index % 2 === 0 ? 'dark' : 'paper')
 
 const pad = (value: number) => String(value).padStart(2, '0')
@@ -66,7 +67,10 @@ function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
   return <Link className={styles.sourceLink} href={claim.publicHref}>{label}</Link>
 }
 
-// A newspaper clipping: masthead over a double rule, the headline, a hint of the columns below.
+// Where the original article lives, as a reader would type it.
+const hostOf = (href: string) => new URL(href).hostname.replace(/^www\./, '')
+
+// A newspaper clipping: masthead over a double rule, the headline, and where to read the rest.
 function PressCard({ asset, index }: { asset: PressArtifact; index: number }) {
   const [outlet, date] = asset.sourceLabel.split(' · ')
   return (
@@ -90,9 +94,11 @@ function PressCard({ asset, index }: { asset: PressArtifact; index: number }) {
         </span>
         <span className={styles.kicker}>Trích hồ sơ báo chí</span>
         <h3 className={styles.headline}>{asset.headline}</h3>
-        <span className={styles.columns} aria-hidden="true" />
         <span className={styles.readOriginal}>
-          Đọc bài gốc <ExternalLink aria-hidden="true" size={14} />
+          <span className={styles.readLabel}>
+            Đọc bài gốc <ExternalLink aria-hidden="true" size={14} />
+          </span>
+          <span className={styles.host}>{hostOf(asset.publicHref)}</span>
         </span>
       </a>
     </div>
@@ -135,7 +141,7 @@ function OriginAsset({ asset, index }: { asset: PublicOriginAsset; index: number
 export default function OriginStory() {
   return (
     <div className={styles.story} id="origin-story">
-      <section className={styles.prologue} data-tone="paper" data-theme-shift="paper" data-curtain aria-labelledby="origin-principle">
+      <section className={styles.prologue} data-tone="paper" data-curtain aria-labelledby="origin-principle">
         <figure className={styles.prologueInner}>
           <figcaption id="origin-principle" className={styles.prologueMark} data-motion-reveal="mask">
             00 — Nguyên tắc vận hành
@@ -197,7 +203,7 @@ export default function OriginStory() {
               key={act.id}
               className={styles.act}
               data-tone={tone}
-              data-theme-shift={tone}
+              data-curtain={tone === 'paper' ? '' : undefined}
               data-chapter
               id={`origin-act-${act.id}`}
               aria-labelledby={titleId}
@@ -241,12 +247,7 @@ export default function OriginStory() {
         })}
       </div>
 
-      <section
-        className={styles.closing}
-        aria-labelledby="origin-story-closing"
-        data-curtain
-        data-theme-shift="dark"
-      >
+      <section className={styles.closing} aria-labelledby="origin-story-closing" data-curtain>
         <div className={styles.closingInner}>
           <p className={styles.closingEyebrow} data-motion-reveal="mask">
             Hồi tiếp theo thuộc về bạn

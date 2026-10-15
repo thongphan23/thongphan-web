@@ -6,32 +6,17 @@ import styles from './TwoPath.module.css'
 type GalleryItem = { photoId: TwoPathPhotoId; kind: string }
 
 type PhotoGalleryProps = {
-  // The first item is shown large across the wall; the rest fill three columns in order.
+  // The first item is shown large across the wall; the rest alternate between two columns.
   items: readonly GalleryItem[]
 }
 
 // Each frame opens from a different edge so the wall reads as a sequence, not a grid.
-const OPENINGS = ['center', 'up', 'right', 'up', 'left', 'up', 'right'] as const
+const OPENINGS = ['center', 'left', 'right', 'left', 'right', 'left', 'right'] as const
 
-// The three columns scroll at different speeds (data-speed, the engine's parallax), so the
-// wall shears as it passes. The first column keeps pace with the page.
-const COLUMN_SPEEDS = [undefined, '-0.14', '0.06'] as const
-
-// Wide-screen frame shapes per column, alternated so no two neighbours share a ratio.
-const COLUMN_RATIOS = [
-  ['4 / 3', '4 / 5'],
-  ['4 / 5', '4 / 3'],
-  ['4 / 3', '4 / 5'],
-] as const
-
-function GalleryFigure({ item, index, ratio }: { item: GalleryItem; index: number; ratio?: string }) {
+function GalleryFigure({ item, index }: { item: GalleryItem; index: number }) {
   const lead = index === 0
   return (
-    <figure
-      className={styles.galleryFigure}
-      data-motion-surface
-      style={ratio ? ({ '--gallery-ratio-wide': ratio } as CSSProperties) : undefined}
-    >
+    <figure className={styles.galleryFigure} data-motion-surface>
       <div
         className={styles.galleryFrame}
         data-img-reveal={OPENINGS[index % OPENINGS.length]}
@@ -40,7 +25,7 @@ function GalleryFigure({ item, index, ratio }: { item: GalleryItem; index: numbe
         <div className={styles.galleryMedia} data-reveal-media>
           <TwoPathPhoto
             id={item.photoId}
-            sizes={lead ? '(max-width: 1359px) 100vw, 1360px' : '(max-width: 1023px) 100vw, 440px'}
+            sizes={lead ? '(max-width: 639px) 84vw, (max-width: 1359px) 100vw, 1360px' : '(max-width: 639px) 84vw, (max-width: 899px) 50vw, 760px'}
           />
         </div>
       </div>
@@ -55,11 +40,14 @@ function GalleryFigure({ item, index, ratio }: { item: GalleryItem; index: numbe
   )
 }
 
-// An editorial wall of real class photos: a wide lead, then three columns that drift apart.
+// An editorial wall of real class photos: a wide lead, then a broad and a narrow column that
+// drift apart as they pass (data-speed on the narrow one, wide screens only). On phones every
+// frame joins one swipe rail in reading order (--gallery-order).
 export default function PhotoGallery({ items }: PhotoGalleryProps) {
   const [lead, ...rest] = items
-  const perColumn = Math.ceil(rest.length / COLUMN_SPEEDS.length)
-  const columns = COLUMN_SPEEDS.map((_, column) => rest.slice(column * perColumn, (column + 1) * perColumn))
+  const columns = [0, 1].map((column) =>
+    rest.map((item, at) => ({ item, index: at + 1 })).filter((_, at) => at % 2 === column),
+  )
   return (
     <div className={styles.gallery}>
       {lead ? (
@@ -72,16 +60,12 @@ export default function PhotoGallery({ items }: PhotoGalleryProps) {
           <ul
             key={columnIndex}
             className={styles.galleryColumn}
-            data-speed={COLUMN_SPEEDS[columnIndex]}
-            data-speed-wide={COLUMN_SPEEDS[columnIndex] ? '' : undefined}
+            data-speed={columnIndex === 1 ? '-0.08' : undefined}
+            data-speed-wide={columnIndex === 1 ? '' : undefined}
           >
-            {column.map((item, row) => (
-              <li key={item.photoId}>
-                <GalleryFigure
-                  item={item}
-                  index={1 + columnIndex * perColumn + row}
-                  ratio={COLUMN_RATIOS[columnIndex]?.[row]}
-                />
+            {column.map(({ item, index }) => (
+              <li key={item.photoId} style={{ '--gallery-order': index } as CSSProperties}>
+                <GalleryFigure item={item} index={index} />
               </li>
             ))}
           </ul>

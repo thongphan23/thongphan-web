@@ -36,6 +36,7 @@
 
 /* Parallax pushes the photo down as the hero leaves, so it starts above the frame. */
 .heroPhoto {
+  filter: saturate(0.78) contrast(1.08) brightness(0.93);
   inset: -12px 0 0;
   position: absolute;
 }
@@ -55,8 +56,8 @@
 .heroShade {
   background:
     /* The words are bottom-aligned, so the fade is measured up from the bottom edge, not by hero height. */
-    linear-gradient(0deg, rgba(7, 7, 6, 0.96) 0, rgba(7, 7, 6, 0.86) 12rem, rgba(7, 7, 6, 0.6) 20rem, rgba(7, 7, 6, 0.16) 28rem, rgba(7, 7, 6, 0.05) 36rem, rgba(7, 7, 6, 0.3) 100%),
-    linear-gradient(90deg, rgba(7, 7, 6, 0.55) 0%, rgba(7, 7, 6, 0) 45%);
+    linear-gradient(0deg, rgba(7, 7, 6, 0.97) 0, rgba(7, 7, 6, 0.9) 12rem, rgba(7, 7, 6, 0.68) 21rem, rgba(7, 7, 6, 0.22) 30rem, rgba(7, 7, 6, 0.06) 38rem, rgba(7, 7, 6, 0.34) 100%),
+    linear-gradient(90deg, rgba(7, 7, 6, 0.6) 0%, rgba(7, 7, 6, 0) 48%);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -96,6 +97,18 @@
 
   :global(html.motion) .heroShade {
     animation: shadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s backwards;
+  }
+
+  /* The glass panel arrives just before its words, after the letter mask has gone. */
+  :global(html.motion) .heroAside {
+    animation: asideIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.55s backwards;
+  }
+}
+
+@keyframes asideIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
   }
 }
 
@@ -138,7 +151,7 @@
   align-items: center;
   color: var(--brand-paper);
   display: flex;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   gap: 0.6rem;
   letter-spacing: 0.16em;
@@ -154,6 +167,10 @@
   flex: none;
   height: 2px;
   width: 1.4rem;
+}
+
+.eyebrow {
+  font-size: 0.9375rem;
 }
 
 .title {
@@ -247,11 +264,25 @@
   }
 
   .lead {
+    color: var(--brand-paper);
     margin-top: 0;
   }
 
   .actions {
     margin-top: 1.5rem;
+  }
+
+  /* The lead sits on a smoked-glass panel so it reads cleanly over the faces in the photo. */
+  .heroAside {
+    -webkit-backdrop-filter: blur(18px) saturate(1.1);
+    backdrop-filter: blur(18px) saturate(1.1);
+    background: rgba(7, 7, 6, 0.72);
+    border-top: 2px solid var(--path-accent);
+    padding: 1.7rem 1.9rem 1.9rem;
+  }
+
+  .heroAside .lead {
+    font-size: clamp(1.0625rem, 0.55rem + 0.62vw, 1.1875rem);
   }
 }
 
@@ -319,11 +350,56 @@
 
 .principle {
   border-bottom: 1px solid var(--brand-line-dark);
-  padding: clamp(6rem, 14vw, 12rem) var(--brand-space-inline);
+  padding: clamp(4.5rem, 8vw, 7rem) var(--brand-space-inline);
 }
 
 .principle figure {
-  margin: 0 auto;
+  margin: 0;
+}
+
+.principleGrid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.principleFrame {
+  aspect-ratio: 4 / 5;
+  background: var(--brand-ink-raised);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.principleFrame > div {
+  height: 100%;
+}
+
+.principleFrame img {
+  display: block;
+  filter: saturate(0.72) sepia(0.2) contrast(1.08) brightness(0.92);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.principleCaption {
+  color: var(--conan-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-top: 0.9rem;
+}
+
+@media (max-width: 999px) {
+  .principlePhoto {
+    max-width: 26rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .principleGrid {
+    align-items: center;
+    column-gap: clamp(3rem, 6vw, 6rem);
+    grid-template-columns: minmax(0, 7.4fr) minmax(0, 4fr);
+  }
 }
 
 .quote {
@@ -393,7 +469,7 @@
 
 .audience p {
   color: var(--conan-soft);
-  font-size: 1.05rem;
+  font-size: clamp(1.0625rem, 0.95rem + 0.3vw, 1.1875rem);
   line-height: 1.7;
   margin: 0;
   max-width: 34rem;
@@ -422,8 +498,8 @@
   }
 
   .audiences {
-    gap: clamp(4rem, 8vw, 7rem);
-    padding-top: clamp(4rem, 10svh, 8rem);
+    gap: clamp(3.5rem, 7vw, 6rem);
+    padding-top: clamp(1.5rem, 4svh, 3rem);
   }
 }
 
@@ -479,8 +555,9 @@
   width: 0.13em;
 }
 
-/* Journey: on wide screens the section pins and the five stages travel past sideways;
-   on phones the stages are a native swipe row under the intro. */
+/* Journey: on wide screens the section pins; the intro holds still on the left with a rolling
+   stage counter while the five stages travel through a window on the right. On phones the
+   stages are a native swipe row under the intro. */
 
 .journey {
   background: var(--brand-ink-raised);
@@ -489,9 +566,15 @@
   position: relative;
 }
 
-.journeyTrack {
+.journeyLayout {
   display: grid;
   gap: clamp(2.5rem, 6vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* The swipe row inside must not widen the grid column to its own length. */
+.journeyWindow {
+  min-width: 0;
 }
 
 .journeyIntro {
@@ -504,10 +587,14 @@
 
 .journeyLead {
   color: var(--conan-muted);
-  font-size: 1.05rem;
+  font-size: clamp(1.0625rem, 0.95rem + 0.3vw, 1.1875rem);
   line-height: 1.7;
   margin: 1.5rem 0 0;
   max-width: 38rem;
+}
+
+.journeyMeter {
+  display: none;
 }
 
 .stages {
@@ -540,14 +627,10 @@
   scroll-snap-align: start;
 }
 
-/* Numerals are a quiet paper tint with a clear paper edge; the one crossing the middle of the
-   pinned track (data-current, set by the engine) fills with the path colour. */
+/* Numerals are solid paper at rest; the current stage (data-current, set by the engine from the
+   pinned progress) fills with the path colour. */
 .stageNumber {
-  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--brand-paper) 78%, transparent);
-  color: color-mix(in srgb, var(--brand-paper) 12%, transparent);
-  transition:
-    color 600ms cubic-bezier(0.16, 1, 0.3, 1),
-    -webkit-text-stroke-color 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  color: color-mix(in srgb, var(--brand-paper) 46%, transparent);
   display: block;
   font-family: var(--font-cormorant);
   font-size: clamp(6rem, 4rem + 8vw, 15rem);
@@ -555,10 +638,10 @@
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 0.8;
+  transition: color 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .stage[data-current] .stageNumber {
-  -webkit-text-stroke-color: var(--path-accent);
   color: var(--path-accent);
 }
 
@@ -580,18 +663,14 @@
 .questions li {
   border-top: 1px solid var(--brand-line-dark);
   color: var(--conan-soft);
-  font-size: 0.98rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
-  padding: 0.65rem 0;
-}
-
-.journeyProgress {
-  display: none;
+  padding: 0.7rem 0;
 }
 
 /* Wide screens without the pin (reduced motion): the five stages as a calm grid. */
 @media (min-width: 900px) {
-  .journey:not([data-hscroll-active='true']) .journeyTrack {
+  .journey:not([data-hscroll-active='true']) .journeyLayout {
     margin: 0 auto;
     max-width: calc(1240px + 2 * var(--brand-space-inline));
   }
@@ -621,58 +700,101 @@
 }
 
 .journey[data-hscroll-active='true'] {
-  align-items: center;
-  display: flex;
   height: 100svh;
   padding: 0;
 }
 
-.journey[data-hscroll-active='true'] .journeyTrack {
-  align-items: center;
-  display: flex;
+.journey[data-hscroll-active='true'] .journeyLayout {
   gap: 0;
-  width: 100%;
+  grid-template-columns: minmax(0, 34vw) minmax(0, 1fr);
+  height: 100%;
 }
 
 .journey[data-hscroll-active='true'] .journeyIntro {
-  flex: 0 0 38vw;
-  margin-right: 5vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 5.5rem clamp(1.5rem, 3vw, 3rem) max(2.5rem, 6svh) var(--brand-space-inline);
 }
 
-.journey[data-hscroll-active='true'] .stages {
-  flex: none;
-  gap: 0;
-  overflow: visible;
-  padding: 0;
-  scroll-snap-type: none;
+.journey[data-hscroll-active='true'] .journeyTitle {
+  font-size: clamp(2.4rem, 3.3vw, 3.6rem);
 }
 
-.journey[data-hscroll-active='true'] .stages::after {
-  flex-basis: var(--brand-space-inline);
+.journey[data-hscroll-active='true'] .journeyLead {
+  font-size: 1.0625rem;
+  margin-top: 1.25rem;
 }
 
-/* Pinned: each stage is a tall column with its numeral at the top and its questions at the foot. */
-.journey[data-hscroll-active='true'] .stage {
-  border-left: 1px solid var(--brand-line-dark);
-  border-top: 0;
-  flex-basis: clamp(22rem, 30vw, 32rem);
-  height: min(62svh, 40rem);
-  justify-content: space-between;
-  padding: 0 clamp(1.5rem, 2.6vw, 2.75rem);
+/* The counter: the stage number and name roll up a line at a time as the stages pass. */
+.journey[data-hscroll-active='true'] .journeyMeter {
+  align-items: baseline;
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-areas: 'count total' 'name name' 'bar bar';
+  grid-template-columns: auto 1fr;
+  margin-top: clamp(2rem, 6svh, 4rem);
 }
 
-.journey[data-hscroll-active='true'] .stageName {
-  margin-top: auto;
-}
-
-.journey[data-hscroll-active='true'] .journeyProgress {
-  background: var(--brand-line-dark);
-  bottom: 6svh;
+.meterCount,
+.meterName {
+  --roll-line: 1em;
   display: block;
-  height: 1px;
-  left: var(--brand-space-inline);
-  position: absolute;
-  right: var(--brand-space-inline);
+  height: var(--roll-line);
+  line-height: var(--roll-line);
+  overflow: hidden;
+}
+
+.meterCount {
+  color: var(--path-accent);
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  font-style: italic;
+  font-weight: 500;
+  grid-area: count;
+  letter-spacing: -0.03em;
+}
+
+.meterName {
+  --roll-line: 1.25em;
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+  font-weight: 500;
+  grid-area: name;
+  margin-top: 0.35rem;
+}
+
+.meterRoll {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--hscroll-index, 0) * var(--roll-line) * -1));
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.meterRoll span {
+  display: block;
+  height: var(--roll-line);
+  white-space: nowrap;
+}
+
+.meterTotal {
+  color: var(--conan-muted);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  grid-area: total;
+  letter-spacing: 0.14em;
+}
+
+.journeyProgress {
+  background: var(--brand-line-dark);
+  display: block;
+  grid-area: bar;
+  height: 2px;
+  margin-top: 1.25rem;
+  max-width: 22rem;
 }
 
 .journeyProgress span {
@@ -681,6 +803,74 @@
   height: 100%;
   transform: scaleX(var(--hscroll-progress, 0));
   transform-origin: 0 50%;
+}
+
+/* The window fades its edges so a stage slides in from soft light rather than a hard cut. */
+.journey[data-hscroll-active='true'] .journeyWindow {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 1.25rem, #000 4.5rem, #000 calc(100% - 7rem), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, transparent 1.25rem, #000 4.5rem, #000 calc(100% - 7rem), transparent 100%);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.journey[data-hscroll-active='true'] .stages {
+  flex: 1 1 auto;
+  gap: 0;
+  min-width: 0;
+  overflow: visible;
+  padding: 0 0 0 4rem;
+  scroll-snap-type: none;
+}
+
+.journey[data-hscroll-active='true'] .stages::after {
+  flex-basis: 8rem;
+}
+
+/* Pinned: each stage is a tall column with its numeral at the top and its questions at the foot. */
+.journey[data-hscroll-active='true'] .stage {
+  border-left: 1px solid var(--brand-line-dark);
+  transition: border-color 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 0;
+  box-sizing: border-box;
+  flex: 0 0 clamp(19rem, 25vw, 27rem);
+  height: min(64svh, 40rem);
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 2.4vw, 2.5rem);
+}
+
+.journey[data-hscroll-active='true'] .stageNumber {
+  font-size: clamp(6rem, 9vw, 11rem);
+}
+
+.journey[data-hscroll-active='true'] .stageName {
+  margin-top: auto;
+}
+
+.journey[data-hscroll-active='true'] .questions {
+  opacity: 0.78;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journey[data-hscroll-active='true'] .stage[data-current] .questions {
+  opacity: 1;
+}
+
+.journey[data-hscroll-active='true'] .stage[data-current] {
+  border-left-color: var(--path-accent);
+}
+
+/* A stage the reader has moved past dims back, so the current one leads without the row emptying. */
+.journey[data-hscroll-active='true'] .stage {
+  transition:
+    border-color 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journey[data-hscroll-active='true'] .stage:has(~ .stage[data-current]) {
+  opacity: 0.32;
 }
 
 /* Mentors: the title takes the left half, two large portraits the right. */

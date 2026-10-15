@@ -9,6 +9,34 @@ import MobileMenu from './MobileMenu'
 import { aboutNavigation, moreNavigation, pathNavigation, pathRouteFor } from './site-navigation'
 import styles from './SiteChrome.module.css'
 
+type HeaderTone = 'dark' | 'light'
+
+// The two-path pages alternate ink and paper grounds; on them the header takes the tone of
+// whatever sits just below it, so it never cuts a paper bar across the dark footer (or the reverse).
+const toneRoutes = new Set(['/', '/tensai', '/conan', '/about'])
+
+function sampleTone(header: HTMLElement): HeaderTone | undefined {
+  const y = header.getBoundingClientRect().bottom + 2
+  const under = document
+    .elementsFromPoint(window.innerWidth / 2, y)
+    .find((node) => !header.contains(node))
+  for (let node = under ?? null; node; node = node.parentElement) {
+    const rgb = parseBackground(getComputedStyle(node).backgroundColor)
+    if (rgb) return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2] > 0.5 ? 'light' : 'dark'
+  }
+  return undefined
+}
+
+// Returns 0–1 channels for a mostly opaque background, from either rgb() or (color-mix) color(srgb).
+function parseBackground(value: string): [number, number, number] | undefined {
+  const legacy = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/.exec(value)
+  const modern = /color\(srgb ([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+))?/.exec(value)
+  const match = legacy ?? modern
+  if (!match || (match[4] !== undefined && Number(match[4]) < 0.5)) return undefined
+  const scale = legacy ? 255 : 1
+  return [Number(match[1]) / scale, Number(match[2]) / scale, Number(match[3]) / scale]
+}
+
 type SiteHeaderProps = {
   mode: SiteRouteMode
   pathname: string
@@ -19,6 +47,8 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   // Remember which page the more menu was opened on, so a route change closes it.
   const [moreOpenFor, setMoreOpenFor] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [tone, setTone] = useState<HeaderTone | undefined>(undefined)
+  const headerRef = useRef<HTMLElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const moreRef = useRef<HTMLDivElement>(null)
   const moreTriggerRef = useRef<HTMLButtonElement>(null)
@@ -31,6 +61,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
     const update = () => {
       frame = 0
       setScrolled(window.scrollY > 24)
+      if (toneRoutes.has(pathname) && headerRef.current) setTone(sampleTone(headerRef.current))
     }
 
     const schedule = () => {
@@ -39,11 +70,15 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
 
     update()
     window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    window.addEventListener('load', schedule)
     return () => {
       window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      window.removeEventListener('load', schedule)
       if (frame) window.cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     if (!moreOpen) return
@@ -73,10 +108,12 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
 
   return (
     <header
+      ref={headerRef}
       className={styles.cinemaHeader}
       data-route-mode={mode}
       data-path-route={pathRouteFor(pathname)}
       data-header-scrolled={scrolled}
+      data-header-tone={toneRoutes.has(pathname) ? tone : undefined}
     >
       <div className={styles.cinemaHeaderInner}>
         <Link

@@ -102,7 +102,7 @@ export const tensaiContent = {
   primaryCta: 'Học thử miễn phí',
   secondaryCta: { label: 'Xem các khóa đang mở', href: '#khoa-hoc' },
   launchNote: 'Tensai mở từ 30/09/2026. Bạn là một trong những người học đầu tiên.',
-  heroPhotoId: 'tensai-map',
+  heroPhotoId: 'tensai-stage',
   // Read off the real map screen in the hero: one floats beside it as a callout.
   heroCallout: 'Cứ 3 bài, một màn vượt ải.',
   // Copied word for word from the live exercise screen (tensai-home: docs/positioning-v8/release/
@@ -229,6 +229,7 @@ export const conanContent = {
   principle: {
     text: 'Chúng tôi không hứa giúp bạn đi nhanh nhất. Chúng tôi giúp bạn không đi sai.',
     source: 'Kim chỉ nam của Conan School',
+    photoId: 'door-conan',
   },
   audiences: {
     title: 'Conan School dành cho ai',

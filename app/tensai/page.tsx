@@ -40,10 +40,11 @@ export default function TensaiPage() {
       <PathMemory path="tensai" />
       <JsonLd data={buildBranchPageStructuredData({ name: 'Tensai', description, pathname: '/tensai' })} />
 
-      {/* The stage: the real app floats as a tilted screen that turns to face the reader as they
-          scroll (deviceStage in signatures.ts); 天才, the word Tensai comes from, stands beside it. */}
+      {/* The stage: the real app floats as a tilted screen; on wide screens the hero pins while the
+          screen squares up and moves to the centre (deviceStage in signatures.ts). 天才, the word
+          Tensai comes from, stands beside it. */}
       <section className={styles.hero} aria-labelledby="tensai-title" data-device-stage>
-        <p className={`${styles.kanji} intro-fade`} aria-hidden="true">
+        <p className={`${styles.kanji} intro-fade`} aria-hidden="true" data-device-aside>
           <span className={styles.kanjiChar} data-speed="0.12">
             天
           </span>
@@ -52,7 +53,7 @@ export default function TensaiPage() {
           </span>
           <span className={styles.kanjiGloss}>Tensai · thiên tài</span>
         </p>
-        <div className={styles.heroText} data-scroll-out="24">
+        <div className={styles.heroText} data-device-words>
           <p className={`${styles.eyebrow} intro-fade`}>{tensaiContent.eyebrow}</p>
           <h1 id="tensai-title" className={styles.title}>
             <SplitWords text={titleHead} />{' '}
@@ -88,16 +89,16 @@ export default function TensaiPage() {
         </div>
         {/* Three depths: the map screen at the back, a real lesson question lifted out of the app in
             front (it can be answered), and two facts floating between. The pointer separates them
-            (data-depth); scroll pulls them apart (data-speed). */}
-        <figure className={styles.heroFigure} data-depth-stage>
+            (data-depth); on wide screens the question rises into place during the pinned scroll. */}
+        <figure className={styles.heroFigure} data-depth-stage data-device-figure>
           <span className={styles.heroGlow} aria-hidden="true" />
           <div data-depth="0.3">
             <div className={styles.device} data-device>
-              <div className={`${styles.heroFrame} intro-clip`} data-tilt="3">
+              <div className={`${styles.heroFrame} intro-clip`} data-tilt="7">
                 <TwoPathPhoto
                   id={tensaiContent.heroPhotoId}
                   priority
-                  sizes="(max-width: 959px) 100vw, 720px"
+                  sizes="(max-width: 959px) 100vw, 860px"
                   className={styles.heroImage}
                 />
                 <span className={styles.heroGlare} aria-hidden="true" />
@@ -106,7 +107,12 @@ export default function TensaiPage() {
           </div>
           {/* data-speed moves the outer chip, so the intro runs on the inner one (GSAP folds a CSS
               translate on the element it drives into its own transform). */}
-          <p className={`${styles.callout} ${styles.calloutCourse}`} aria-hidden="true" data-speed="-0.1">
+          <p
+            className={`${styles.callout} ${styles.calloutCourse}`}
+            aria-hidden="true"
+            data-speed="-0.1"
+            data-device-drift="-0.1"
+          >
             <span className={styles.depthLayer} data-depth="0.7">
               <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
                 <span className={styles.calloutDot} />
@@ -114,7 +120,12 @@ export default function TensaiPage() {
               </span>
             </span>
           </p>
-          <p className={`${styles.callout} ${styles.calloutGate}`} aria-hidden="true" data-speed="0.14">
+          <p
+            className={`${styles.callout} ${styles.calloutGate}`}
+            aria-hidden="true"
+            data-speed="0.14"
+            data-device-drift="0.05"
+          >
             <span className={styles.depthLayer} data-depth="0.9">
               <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.3s' } as CSSProperties}>
                 <Star size={16} strokeWidth={2.2} />
@@ -122,7 +133,7 @@ export default function TensaiPage() {
               </span>
             </span>
           </p>
-          <div className={styles.tryCard} data-speed="-0.08" data-speed-wide>
+          <div className={styles.tryCard} data-device-card>
             <div data-depth="1.2">
               <div className="intro-fade" style={{ '--intro-delay': '1.45s' } as CSSProperties}>
                 <TensaiTryCard />
@@ -258,7 +269,7 @@ export default function TensaiPage() {
                     >
                       <TwoPathPhoto
                         id={frame.photoId}
-                        sizes="(max-width: 959px) 100vw, 680px"
+                        sizes="(max-width: 959px) 100vw, 820px"
                         decorative={index > 0}
                       />
                       <span
@@ -312,8 +323,10 @@ export default function TensaiPage() {
             </PathLink>
           </div>
         </div>
-        <p className={styles.closingMark} aria-hidden="true" data-speed="-0.12">
-          Tensai
+        {/* The name, outlined, fills with ink from left to right as it rises (scrollFill). */}
+        <p className={styles.closingMark} aria-hidden="true" data-scroll-fill>
+          <span className={styles.closingMarkLine}>Tensai</span>
+          <span className={styles.closingMarkFill}>Tensai</span>
         </p>
       </section>
     </div>

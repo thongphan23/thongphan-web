@@ -7,6 +7,14 @@ html:has([data-site-shell='unified'][data-route-mode='cinema-dark']) body {
   background: var(--brand-ink);
 }
 
+/* Wide screens: the stage pages let their type grow with the window (16px at 1280, 18px from
+   1600), so a laptop reads them like a spread rather than a narrow layout left at phone size. */
+@media (min-width: 1280px) {
+  html:has([data-motion-stage]) {
+    font-size: clamp(100%, 0.5rem + 0.625vw, 112.5%);
+  }
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

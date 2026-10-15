@@ -117,6 +117,16 @@ const records = [
     budgetBytes: 140 * KB,
   },
   {
+    id: 'tensai-stage',
+    width: 810,
+    height: 720,
+    alt: 'Màn hình Tensai: phần "Hiểu đúng định vị" của khóa Định vị, bài tiếp theo "Định vị là gì?" và nút Bắt đầu khám phá',
+    caption: 'Bản đồ khóa Định vị trên Tensai',
+    source: 'tensai-home: docs/positioning-v8/release/screens/live-map.png (chụp app live 01/10/2026), cắt sát phần bản đồ',
+    faces: 'none',
+    budgetBytes: 140 * KB,
+  },
+  {
     id: 'tensai-lesson',
     width: 940,
     height: 867,

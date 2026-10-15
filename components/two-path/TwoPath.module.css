@@ -35,8 +35,8 @@
   box-sizing: border-box;
   color: var(--brand-paper);
   display: grid;
-  gap: 0 1rem;
-  grid-template-columns: 4.75rem minmax(0, 1fr);
+  gap: 0 1.1rem;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   isolation: isolate;
   overflow: hidden;
   padding: 0.625rem 0.875rem 0.625rem 0.625rem;
@@ -110,7 +110,7 @@
   display: flex;
   gap: 0.5rem;
   font-family: var(--font-be-vietnam);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.2;
@@ -132,16 +132,16 @@
 .doorLabel {
   display: block;
   font-family: var(--font-cormorant);
-  font-size: 1.45rem;
+  font-size: 1.65rem;
   font-weight: 600;
   line-height: 1.02;
   text-wrap: balance;
 }
 
 .doorDescription {
-  color: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 82%, transparent);
   display: block;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.4;
 }
 
@@ -384,7 +384,7 @@
 
 .closingDoorLabel {
   font-family: var(--font-be-vietnam);
-  font-size: 0.76rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   line-height: 1.2;
@@ -460,7 +460,7 @@
     align-self: start;
     display: block;
     font-family: var(--font-be-vietnam);
-    font-size: 0.78rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     opacity: 0.6;
@@ -551,9 +551,20 @@
   background: var(--brand-reading-paper-deep);
   border-radius: 4px;
   margin: 0;
-  max-width: min(64vw, 380px);
+  max-width: min(72vw, 460px);
   overflow: hidden;
   position: relative;
+}
+
+/* The stage behind the portrait is slide-teal; a warm ink duotone lays the photo into the paper
+   the letter is written on, the same treatment the mentor portraits wear on the dark bands. */
+.letterPortrait::after {
+  background: linear-gradient(180deg, rgba(176, 118, 70, 0.2), rgba(58, 34, 18, 0.34));
+  content: '';
+  inset: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
 }
 
 /* Wrapper for the settle zoom of an image reveal; the image inside keeps its parallax. */
@@ -565,7 +576,7 @@
 
 .letterPortrait img {
   display: block;
-  filter: var(--brand-photo-grade);
+  filter: grayscale(1) contrast(1.14) brightness(1.04);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -595,8 +606,9 @@
 }
 
 .letterRest {
-  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
-  max-width: 36rem;
+  color: #2a2420;
+  font-size: clamp(1.06rem, 0.98rem + 0.3vw, 1.2rem);
+  max-width: 40rem;
 }
 
 .letterRest p {
@@ -628,7 +640,7 @@
 }
 
 .signatureRole {
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   opacity: 0.72;
@@ -638,7 +650,7 @@
 @media (min-width: 1024px) {
   .letterInner {
     align-items: start;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   }
 
   .letterAside {
@@ -699,6 +711,13 @@
   padding: var(--brand-space-section) var(--brand-space-inline);
 }
 
+/* The reel that follows centres itself in a full screen, which already gives the breathing room. */
+@media (min-width: 900px) {
+  .fieldNotes {
+    padding-bottom: clamp(1.5rem, 3vw, 3rem);
+  }
+}
+
 .fieldGrid {
   display: grid;
   gap: clamp(3rem, 7vw, 6.5rem);
@@ -730,13 +749,6 @@
   font-size: 0.9375rem;
   line-height: 1.45;
   padding-top: 0.9rem;
-}
-
-.galleryFigure figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  padding: 0.85rem 1rem 1rem;
 }
 
 .fieldCards {
@@ -871,28 +883,28 @@
 }
 
 .marqueeWord {
-  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 58%, transparent);
   font-style: italic;
   font-weight: 400;
 }
 
-/* The product names are the loud half of each band: solid, in the path's own colour. */
+/* The product names carry the band in the same serif, set upright, and are the only words
+   in the path's own colour. */
 .marqueeProduct {
   color: var(--marquee-accent);
-  font-family: var(--font-be-vietnam);
-  font-size: clamp(2.6rem, 1.3rem + 6.4vw, 8.6rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 .marqueeProduct::after {
-  background: var(--brand-paper);
+  background: var(--marquee-accent);
   border-radius: 999px;
   content: '';
   flex: none;
-  height: 0.14em;
-  width: 0.14em;
+  height: 0.1em;
+  opacity: 0.7;
+  width: 0.1em;
 }
 
 /* Reel: real class photos. A swipe row by default; pinned and scroll-driven on wide screens. */
@@ -935,8 +947,8 @@
 }
 
 .reelEyebrow {
-  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
-  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.3;
@@ -984,9 +996,11 @@
 
 .reelMedia img {
   display: block;
-  filter: var(--brand-photo-grade);
+  /* Phone snapshots from different rooms share one warm grade; the photo in focus lifts out of it. */
+  filter: saturate(0.68) sepia(0.26) contrast(1.1) brightness(0.9);
   height: 100%;
   object-fit: cover;
+  transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
   width: 100%;
 }
 
@@ -1101,11 +1115,24 @@
   margin-top: 8svh;
 }
 
+.reel[data-hscroll-active='true'] .reelItem {
+  opacity: 0.5;
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reel[data-hscroll-active='true'] .reelItem[data-current] {
+  opacity: 1;
+}
+
+.reel[data-hscroll-active='true'] .reelItem[data-current] .reelMedia img {
+  filter: var(--brand-photo-grade);
+}
+
 .reel[data-hscroll-active='true'] .reelProgress {
   background: var(--brand-line-dark);
   bottom: 5svh;
   display: block;
-  height: 1px;
+  height: 2px;
   left: var(--brand-space-inline);
   position: absolute;
   right: var(--brand-space-inline);
@@ -1119,10 +1146,12 @@
   transform-origin: 0 50%;
 }
 
-/* Gallery: an editorial wall. A wide lead photo, then three columns that drift apart as they pass
-   (data-speed on the columns, wide screens only). */
+/* Gallery: an editorial wall. A wide lead photo, then a broad and a narrow column that drift
+   apart as they pass (data-speed on the narrow one, wide screens only). Every frame shares one
+   warm grade and lifts to fuller colour under a pointer. Phones get a single swipe rail. */
 
 .gallery {
+  --gallery-grade: saturate(0.68) sepia(0.26) contrast(1.1) brightness(0.9);
   display: grid;
   gap: clamp(2.5rem, 6vw, 5rem);
 }
@@ -1148,6 +1177,18 @@
   background: var(--brand-ink-raised);
   border-radius: 6px;
   overflow: hidden;
+  position: relative;
+}
+
+/* A warm multiply wash ties photos from different rooms and cameras into one roll of film. */
+.galleryFrame::after {
+  background: linear-gradient(160deg, rgba(150, 92, 52, 0.22), rgba(40, 22, 12, 0.26));
+  content: '';
+  inset: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .galleryMedia,
@@ -1158,9 +1199,23 @@
 
 .galleryMedia img {
   aspect-ratio: var(--gallery-ratio, 4 / 3);
-  filter: var(--brand-photo-grade);
+  filter: var(--gallery-grade);
   height: auto;
   object-fit: cover;
+  transition:
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .galleryFigure:hover .galleryMedia img {
+    filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
+    transform: scale(1.03);
+  }
+
+  .galleryFigure:hover .galleryFrame::after {
+    opacity: 0.35;
+  }
 }
 
 .galleryFigure figcaption {
@@ -1169,33 +1224,68 @@
   font-size: 0.9375rem;
   gap: 0.9rem;
   line-height: 1.5;
-  padding-top: 0.9rem;
+  padding: 0.95rem 0 0;
 }
 
 .galleryFigure figcaption > span:last-child {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.3rem;
 }
 
 .galleryIndex {
   color: var(--path-accent, var(--brand-paper));
   flex: none;
   font-family: var(--font-cormorant);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-style: italic;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .galleryKind {
   color: var(--brand-paper);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.galleryLead {
-  --gallery-ratio: 16 / 10;
+/* Phones: every frame joins one swipe rail in reading order; the next frame peeks in from the edge. */
+@media (max-width: 639px) {
+  .gallery {
+    display: flex;
+    gap: 1rem;
+    margin-inline: calc(var(--brand-space-inline) * -1);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-inline: var(--brand-space-inline);
+    scroll-padding-inline: var(--brand-space-inline);
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery::after {
+    content: '';
+    flex: 0 0 1px;
+  }
+
+  .galleryColumns,
+  .galleryColumn {
+    display: contents;
+  }
+
+  .galleryLead,
+  .galleryColumn > li {
+    flex: 0 0 84vw;
+    scroll-snap-align: start;
+  }
+
+  .galleryColumn > li {
+    order: var(--gallery-order, 0);
+  }
 }
 
 @media (min-width: 640px) {
@@ -1203,64 +1293,68 @@
     --gallery-ratio: 16 / 9;
   }
 
-  /* Mid widths: each column's pair sits side by side, so the wall reads as rows of two. */
-  .galleryColumn {
+  .galleryColumns {
     align-items: start;
     column-gap: clamp(1.25rem, 3vw, 2.5rem);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Same breakpoint as the engine's DESKTOP, where data-speed-wide columns start to drift. */
+/* Same breakpoint as the engine's DESKTOP, where the data-speed-wide column starts to drift. */
 @media (min-width: 900px) {
   .galleryLead {
     --gallery-ratio: 21 / 9;
   }
 
   .galleryColumns {
-    align-items: start;
-    column-gap: clamp(1.5rem, 2.6vw, 2.75rem);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(2rem, 4vw, 4.5rem);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   }
 
   .galleryColumn {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: clamp(3rem, 6vw, 5.5rem);
+    row-gap: clamp(2.5rem, 5vw, 4.5rem);
   }
 
-  .galleryColumn .galleryFigure {
-    --gallery-ratio: var(--gallery-ratio-wide, 4 / 5);
+  /* Frame ratios keep the broad and narrow columns ending level; the narrow one starts lower,
+     so the two never line up even before they drift. */
+  .galleryColumn:nth-child(1) {
+    --gallery-ratio: 3 / 2;
   }
 
-  /* Staggered starts, so the three columns never line up even before they drift. */
   .galleryColumn:nth-child(2) {
-    margin-top: clamp(5rem, 10vw, 9rem);
-  }
-
-  .galleryColumn:nth-child(3) {
-    margin-top: clamp(2rem, 4vw, 3.5rem);
+    --gallery-ratio: 6 / 5;
+    margin-top: clamp(4rem, 8vw, 7rem);
   }
 }
 
-/* Mentors. */
+/* Mentors: two portraits of equal weight, set in one black-and-white grade with a warm tint so
+   two different rooms read as one pair; colour returns under a pointer. */
 
 .mentors {
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(2, minmax(0, 340px));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
   margin: 0;
+  max-width: 720px;
   padding: 0;
-}
-
-.mentor:nth-child(2) {
-  margin-top: clamp(2.5rem, 8vw, 7rem);
 }
 
 .mentorFrame {
   background: var(--brand-ink-raised);
   border-radius: 6px;
   overflow: hidden;
+  position: relative;
+}
+
+.mentorFrame::after {
+  background: linear-gradient(180deg, rgba(150, 92, 52, 0.16), rgba(40, 22, 12, 0.3));
+  content: '';
+  inset: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mentorMedia,
@@ -1271,9 +1365,28 @@
 
 .mentorPhoto {
   aspect-ratio: 4 / 5;
-  filter: var(--brand-photo-grade);
+  filter: grayscale(1) contrast(1.1) brightness(0.96);
   height: auto;
   object-fit: cover;
+  transition:
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The two source portraits are framed differently; this brings the faces to the same size and height. */
+.mentor[data-face='close'] .mentorPhoto {
+  transform: translateY(4%) scale(1.18);
+  transform-origin: 50% 30%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mentor:hover .mentorPhoto {
+    filter: var(--brand-photo-grade);
+  }
+
+  .mentor:hover .mentorFrame::after {
+    opacity: 0;
+  }
 }
 
 .mentorName {
@@ -1282,12 +1395,12 @@
   font-size: clamp(1.6rem, 1rem + 1.4vw, 2.3rem);
   font-weight: 500;
   line-height: 1.1;
-  margin: 1rem 0 0.2rem;
+  margin: 1rem 0 0.25rem;
 }
 
 .mentorRole {
-  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
-  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  font-size: 0.9375rem;
   letter-spacing: 0.04em;
   margin: 0;
 }
@@ -1409,7 +1522,7 @@
 }
 
 .guideScrim {
-  background: linear-gradient(180deg, rgb(7 7 6 / 0) 45%, rgb(7 7 6 / 0.72));
+  background: linear-gradient(180deg, rgb(7 7 6 / 0) 40%, rgb(7 7 6 / 0.82));
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -1432,7 +1545,7 @@
 
 .guideCaptionMark {
   font-family: var(--font-be-vietnam);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.24em;
@@ -1445,6 +1558,14 @@
   height: 100svh;
   overflow: clip;
   padding: 0;
+}
+
+/* Tucked one screen up under the sheet before it (which sits at z-index 1), so the line is
+   already in place when the sheet lifts away instead of scrolling up out of an empty band. */
+.guide[data-zoom-active='true'][data-zoom-under] {
+  margin-top: -100vh;
+  margin-top: -100svh;
+  z-index: 0;
 }
 
 .guide[data-zoom-active='true'] .guideStage {

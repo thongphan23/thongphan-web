@@ -71,7 +71,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <div className={styles.afterHero} data-curtain>
+      <div className={styles.afterHero} data-curtain="sheet">
         <FounderLetter />
       </div>
 

@@ -202,7 +202,8 @@
   transition:
     background-color 220ms var(--brand-motion-ease),
     border-color 220ms var(--brand-motion-ease),
-    box-shadow 220ms var(--brand-motion-ease);
+    box-shadow 220ms var(--brand-motion-ease),
+    color 220ms var(--brand-motion-ease);
   z-index: 400;
 }
 
@@ -263,6 +264,40 @@
 
 .cinemaHeader[data-path-route='tensai'][data-header-scrolled='true'] {
   box-shadow: 0 18px 44px rgba(23, 20, 16, 0.08);
+}
+
+/* On the two-path pages the header follows the ground beneath it (SiteHeader samples it):
+   paper over paper or lime, ink over ink and the footer, whatever the route's resting tone. */
+.cinemaHeader[data-header-tone='light'][data-header-scrolled] {
+  --header-fg: var(--brand-text-on-paper);
+  --header-muted: #5f574d;
+  --header-line: var(--brand-line-paper);
+  --header-surface: var(--brand-reading-paper);
+  background: var(--brand-reading-paper);
+  border-bottom: 1px solid var(--brand-line-paper);
+  box-shadow: none;
+}
+
+.cinemaHeader[data-header-tone='dark'][data-header-scrolled] {
+  --header-fg: var(--brand-paper);
+  --header-muted: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  --header-line: var(--brand-line-dark);
+  --header-surface: var(--brand-ink-raised);
+  background: rgba(7, 7, 6, 0.9);
+  border-bottom: 1px solid var(--brand-line-dark);
+  box-shadow: none;
+}
+
+/* The tone flips at once as a boundary passes under the header: a cross-fade from ink to paper
+   would show a grey bar for a few frames. */
+.cinemaHeader[data-header-tone] {
+  transition: box-shadow 220ms var(--brand-motion-ease);
+}
+
+/* At the very top of the dark pages the header stays a veil over the hero, not a bar. */
+.cinemaHeader[data-header-tone='dark'][data-header-scrolled='false']:not([data-path-route='tensai']) {
+  background: rgba(7, 7, 6, 0.68);
+  border-bottom-color: transparent;
 }
 
 /* /tensai loads Cormorant, not Newsreader; keep the wordmark in a loaded family. */

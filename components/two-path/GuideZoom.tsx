@@ -4,13 +4,15 @@ import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
 
 // "Người [photo] dẫn đường": the positioning line with a small window between its words. When
-// the motion engine runs, the section pins and the window opens until the class photo fills
-// the screen; without it (or under reduced motion) the line sits above the full photo.
+// the motion engine runs, the section starts one screen up, beneath the letter sheet before it
+// (data-zoom-under), pins, and is uncovered as the sheet lifts off; then the window opens until
+// the class photo fills the screen. Without the engine (or under reduced motion) the line sits
+// above the full photo.
 export default function GuideZoom() {
   const { guide } = homeContent
   const item = photo(guide.photoId)
   return (
-    <section className={styles.guide} aria-labelledby="guide-title" data-zoom-reveal>
+    <section className={styles.guide} aria-labelledby="guide-title" data-zoom-reveal data-zoom-under>
       <div className={styles.guideStage} data-zoom-stage>
         <h2 id="guide-title" className={styles.guideTitle}>
           <span className={styles.guideWord} data-zoom-left>

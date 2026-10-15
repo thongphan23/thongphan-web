@@ -13,11 +13,12 @@
   --mx: 0.5;
   --my: 0.5;
   --stage-gutter: var(--brand-space-inline);
-  --stage-door-w: clamp(18rem, 23vw, 23rem);
+  --stage-door-w: clamp(19rem, 25vw, 25rem);
   /* Height of the cut-out; the gap in the name is sized to his head. */
   --person-h: min(86svh, 66vw);
   background:
-    radial-gradient(ellipse 34% 50% at 50% 44%, #1d1a15 0%, rgba(7, 7, 6, 0) 74%),
+    radial-gradient(ellipse 22% 30% at 50% 30%, rgba(122, 74, 42, 0.42) 0%, rgba(122, 74, 42, 0) 72%),
+    radial-gradient(ellipse 34% 50% at 50% 44%, #221d16 0%, rgba(7, 7, 6, 0) 74%),
     var(--brand-ink);
   display: flex;
   flex-direction: column;
@@ -70,7 +71,7 @@
   font-family: var(--font-cormorant);
   font-size: min(15vw, 30svh);
   font-weight: 500;
-  grid-template-columns: minmax(0, 1fr) calc(var(--person-h) * 0.25) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) calc(var(--person-h) * 0.38) minmax(0, 1fr);
   left: 0;
   letter-spacing: -0.04em;
   line-height: 0.8;
@@ -105,9 +106,10 @@
   aspect-ratio: 1098 / 1200;
   bottom: 0;
   height: var(--person-h);
-  /* The face sits at 42% of the cut-out's width (0.3843 of its height); this puts it on the
-     centre line. No translate here: GSAP owns this element's transform. */
-  left: calc(50% - var(--person-h) * 0.3843);
+  /* The head's mass is centred 0.46 of the cut-out's height from its left edge (measured from
+     the alpha channel); this puts it on the centre line, in the gap of the name. No translate
+     here: GSAP owns this element's transform. */
+  left: calc(50% - var(--person-h) * 0.46);
   position: absolute;
   z-index: 1;
 }
@@ -126,6 +128,9 @@
 }
 
 .stagePicture img {
+  /* The source is a low-key stage shot; lift it so the face carries without the jacket
+     dissolving into the page. */
+  filter: brightness(1.12) contrast(1.06) saturate(0.94);
   object-fit: contain;
   object-position: 50% 100%;
 }
@@ -148,7 +153,7 @@
     );
   inset: 0;
   mask: url('/images/two-path/home-stage-rim.webp') center / 100% 100% no-repeat;
-  opacity: 0.7;
+  opacity: 0.85;
   pointer-events: none;
   position: absolute;
 }
@@ -180,15 +185,26 @@
   justify-items: center;
   margin: 0 auto;
   max-width: min(44rem, 100%);
+  position: relative;
   text-align: center;
   will-change: transform;
 }
 
+/* A soft pool of ink under the copy so it reads over the jacket and the mic. */
+.heroCopy::before {
+  background: radial-gradient(ellipse 50% 50% at 50% 55%, rgba(7, 7, 6, 0.82) 0%, rgba(7, 7, 6, 0.5) 52%, rgba(7, 7, 6, 0) 100%);
+  content: '';
+  inset: -3.5rem -9rem -2rem;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
 .eyebrow {
   align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 88%, transparent);
   display: flex;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   font-weight: 700;
   gap: 0.75rem;
   letter-spacing: 0.18em;
@@ -218,10 +234,10 @@
 
 /* The first sentence is the setup, set small and plain; the question is the headline. */
 .titleLead {
-  color: color-mix(in srgb, var(--brand-paper) 82%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 92%, transparent);
   display: block;
   font-family: var(--font-be-vietnam);
-  font-size: clamp(0.98rem, 0.9rem + 0.25vw, 1.12rem);
+  font-size: clamp(1.05rem, 0.9rem + 0.4vw, 1.3rem);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.45;
@@ -237,13 +253,13 @@
 /* Scroll cue at the right edge of the first screen (wide screens only). */
 .scrollCue {
   align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 88%, transparent);
   display: none;
   flex-direction: column;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  gap: 1rem;
-  letter-spacing: 0.18em;
+  gap: 1.25rem;
+  letter-spacing: 0.2em;
   margin: 0;
   position: absolute;
   right: var(--stage-gutter);
@@ -257,9 +273,9 @@
 }
 
 .scrollCueLine {
-  background: color-mix(in srgb, var(--brand-paper) 22%, transparent);
+  background: color-mix(in srgb, var(--brand-paper) 30%, transparent);
   display: block;
-  height: 4.5rem;
+  height: 6.5rem;
   overflow: hidden;
   position: relative;
   width: 1px;
@@ -387,7 +403,7 @@
   }
 
   .eyebrow {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     margin-bottom: 0.75rem;
   }
 
@@ -407,8 +423,15 @@
 }
 
 /* The doors on the stage are compact cards, so the letter starts straight after the hero. */
+/* The letter is a sheet laid over the stage (data-curtain="sheet"): rounded, above the
+   pinned hero, and clipped without becoming a scroller so the portrait can still stick. */
 .afterHero {
   background: var(--brand-reading-paper);
+  /* The bottom corners round off into the ink of the next scene. */
+  border-radius: clamp(1.25rem, 2.6vw, 2.5rem);
+  overflow: clip;
+  position: relative;
+  z-index: 1;
 }
 
 .closing {
@@ -425,12 +448,12 @@
 }
 
 .closingEyebrow {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.3;
   margin: 0 0 1.25rem;
-  opacity: 0.7;
+  opacity: 0.8;
   text-transform: uppercase;
 }
 

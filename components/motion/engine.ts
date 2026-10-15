@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
-import { chapterRail, curtains, deviceStage, stageHero, stickySwap } from './signatures'
+import { chapterRail, curtains, deviceStage, scrollFill, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -96,12 +96,15 @@ function scrubWords(root: HTMLElement) {
         el.dataset.splitReady = 'true'
         return gsap.fromTo(
           self.words,
-          { opacity: 0.16 },
+          // Words rest legible (0.34) and finish lighting before the line reaches mid-screen,
+          // so no statement is ever read while still half-ghosted.
+          { opacity: 0.34 },
           {
             opacity: 1,
             ease: 'none',
             stagger: 0.12,
-            scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 42%', scrub: true },
+            // data-scrub-end lets a statement high on its page finish sooner.
+            scrollTrigger: { trigger: el, start: 'top 90%', end: el.dataset.scrubEnd ?? 'center 55%', scrub: true },
           },
         )
       },
@@ -262,6 +265,10 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
     const left = section.querySelector('[data-zoom-left]')
     const right = section.querySelector('[data-zoom-right]')
     const after = section.querySelectorAll('[data-zoom-after]')
+    // data-zoom-under: the section starts one screen up beneath the sheet before it (CSS), so
+    // the first screen of the pin only uncovers the line; the zoom waits for that to finish.
+    const under = section.hasAttribute('data-zoom-under')
+    const lead = under ? 1.3 : 0
     mm.add({ wide: DESKTOP, narrow: '(max-width: 899px)' }, (context) => {
       const wide = Boolean(context.conditions?.wide)
       section.dataset.zoomActive = 'true'
@@ -280,19 +287,19 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: '+=170%',
+            end: under ? '+=210%' : '+=110%',
             pin: true,
             scrub: 0.9,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         })
-        .fromTo(media, { clipPath: fromSlot }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', ease: 'power3.inOut', duration: 1 }, 0)
-        .fromTo(image, { scale: 1.5 }, { scale: 1, ease: 'power2.inOut', duration: 1.1 }, 0)
-        .to(left, { ...part(-1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, 0.05)
-        .to(right, { ...part(1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, 0.05)
-        .fromTo(after, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.3, stagger: 0.06 }, 0.95)
-        .to({}, { duration: 0.35 })
+        .fromTo(media, { clipPath: fromSlot }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', ease: 'power3.inOut', duration: 1 }, lead)
+        .fromTo(image, { scale: 1.5 }, { scale: 1, ease: 'power2.inOut', duration: 1.1 }, lead)
+        .to(left, { ...part(-1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, lead + 0.05)
+        .to(right, { ...part(1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, lead + 0.05)
+        .fromTo(after, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.3, stagger: 0.06 }, lead + 0.95)
+        .to({}, { duration: 0.2 })
       return () => {
         delete section.dataset.zoomActive
       }
@@ -305,21 +312,35 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
   root.querySelectorAll<HTMLElement>('[data-hscroll]').forEach((section) => {
     const track = section.querySelector<HTMLElement>('[data-hscroll-track]')
     if (!track) return
+    // data-hscroll-pace stretches the pinned scroll past the track's own width, so each item dwells longer.
+    const pace = Number(section.dataset.hscrollPace ?? 1) || 1
+    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
     mm.add(DESKTOP, () => {
       const distance = () => Math.max(0, track.scrollWidth - track.clientWidth)
       section.dataset.hscrollActive = 'true'
+      // The current item follows progress, so the first is current at the start and the last at the end.
+      let current = -1
+      const mark = (progress: number) => {
+        section.style.setProperty('--hscroll-progress', progress.toFixed(4))
+        const next = Math.round(progress * Math.max(0, items.length - 1))
+        if (next === current || !items.length) return
+        current = next
+        items.forEach((item, index) => item.toggleAttribute('data-current', index === next))
+        section.style.setProperty('--hscroll-index', String(next))
+      }
       const tween = gsap.to(track, {
         x: () => -distance(),
         ease: 'none',
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: () => `+=${distance()}`,
+          end: () => `+=${distance() * pace}`,
           pin: true,
           scrub: 0.8,
           invalidateOnRefresh: true,
           anticipatePin: 1,
-          onUpdate: (self) => section.style.setProperty('--hscroll-progress', self.progress.toFixed(4)),
+          onUpdate: (self) => mark(self.progress),
+          onRefresh: (self) => mark(self.progress),
         },
       })
       track.querySelectorAll<HTMLElement>('[data-hscroll-media]').forEach((media) => {
@@ -339,20 +360,10 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           },
         )
       })
-      // The item crossing the middle of the screen is marked current, so CSS can light it up.
-      const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
-      items.forEach((item) => {
-        ScrollTrigger.create({
-          trigger: item,
-          containerAnimation: tween,
-          start: 'left 62%',
-          end: 'right 62%',
-          onToggle: (self) => item.toggleAttribute('data-current', self.isActive),
-        })
-      })
       return () => {
         delete section.dataset.hscrollActive
         section.style.removeProperty('--hscroll-progress')
+        section.style.removeProperty('--hscroll-index')
         items.forEach((item) => item.removeAttribute('data-current'))
       }
     })
@@ -383,22 +394,6 @@ function stackCards(root: HTMLElement, mm: gsap.MatchMedia) {
   })
 }
 
-// Section colour handoffs: the page background eases between themes as sections arrive.
-function themeShifts(root: HTMLElement) {
-  root.querySelectorAll<HTMLElement>('[data-theme-shift]').forEach((section) => {
-    const target = section.closest<HTMLElement>('[data-motion-stage]')
-    if (!target) return
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top 55%',
-      end: 'bottom 55%',
-      onToggle: (self) => {
-        if (self.isActive) target.dataset.stageTheme = section.dataset.themeShift
-      },
-    })
-  })
-}
-
 // Real numbers count up when they arrive. Markup carries the final value for no-JS and SEO.
 function counters(root: HTMLElement) {
   const formatter = new Intl.NumberFormat('vi-VN')
@@ -408,8 +403,9 @@ function counters(root: HTMLElement) {
     el.textContent = formatter.format(0)
     gsap.to(state, {
       value: target,
-      duration: 2.2,
-      ease: 'expo.out',
+      // Short and without a long tail, so the figure settles before the reader's eye lands on it.
+      duration: 1.4,
+      ease: 'power3.out',
       // Fires as the number enters the screen, so a reader never stops on the 0 it starts from.
       scrollTrigger: onEnter(el, 'top bottom'),
       onUpdate: () => {
@@ -715,9 +711,8 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     zoomReveals(root, mm)
     horizontalScroll(root, mm)
     stackCards(root, mm)
-    themeShifts(root)
     counters(root)
-    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), chapterRail(root), curtains(root))
+    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), chapterRail(root), curtains(root), scrollFill(root))
     if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.

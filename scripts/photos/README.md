@@ -55,7 +55,7 @@ người. Máy dò mặt bỏ sót mặt nhỏ, nghiêng hoặc bị che, nên k
 | `home-hero`, `home-hero-mobile` | `DQH179.JPG` do Thông cung cấp, khán giả đã làm mờ |
 | `founder-portrait` | `assets/branding/thongphan-speaker-hires.jpg`, nền slide đã làm mờ |
 | `door-tensai` | `public/images/homepage/proof/thong-author-book-3x2-v1.webp` |
-| `tensai-map`, `tensai-lesson` | Ảnh chụp app Tensai live 01/10/2026 (`tensai-home/docs/positioning-v8/release/screens/`) |
+| `tensai-map`, `tensai-stage`, `tensai-lesson` | Ảnh chụp app Tensai live 01/10/2026 (`tensai-home/docs/positioning-v8/release/screens/`) |
 | `door-conan`, `conan-hero*`, `field-content-class`, `gallery-*` | Album công khai "Cộng đồng có gì hay?" trên conan.school (URL từng ảnh ghi trong manifest) |
 | `mentor-dac-nguyen`, `mentor-thong-phan` | `https://image.conan.school/mentors/` |
 

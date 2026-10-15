@@ -24,8 +24,8 @@ const pad = (value: number) => String(value).padStart(2, '0')
 
 export default function AboutPage() {
   return (
-    <div className={styles.page} data-motion-stage data-stage-theme="dark">
-      <section className={styles.hero} aria-labelledby="about-title" data-theme-shift="dark">
+    <div className={styles.page} data-motion-stage>
+      <section className={styles.hero} aria-labelledby="about-title">
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy} data-scroll-out="18">
             <div className={`${styles.heroMeta} intro-fade`}>

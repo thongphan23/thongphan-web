@@ -60,7 +60,7 @@ test('face status matches who is in the frame', () => {
   for (const id of ['founder-portrait', 'door-tensai', 'mentor-thong-phan'] as const) {
     assert.equal(photo(id).faces, 'thong-only', id)
   }
-  for (const id of ['tensai-map', 'tensai-lesson'] as const) assert.equal(photo(id).faces, 'none', id)
+  for (const id of ['tensai-map', 'tensai-stage', 'tensai-lesson'] as const) assert.equal(photo(id).faces, 'none', id)
   // Conan School group photos stay gated until Thông confirms consent; never silently downgraded.
   for (const id of ['door-conan', 'conan-hero', 'conan-hero-mobile', 'field-content-class', 'mentor-dac-nguyen'] as const) {
     assert.ok(['pending-owner-consent', 'consent-confirmed'].includes(photo(id).faces), id)
@@ -77,6 +77,7 @@ test('every photo id referenced by page content exists in the manifest', () => {
     tensaiContent.heroPhotoId,
     ...tensaiContent.method.frames.map((frame) => frame.photoId),
     conanContent.heroPhotoId,
+    conanContent.principle.photoId,
     ...conanContent.gallery.photoIds,
     ...conanContent.mentors.people.map((person) => person.photoId),
   ]

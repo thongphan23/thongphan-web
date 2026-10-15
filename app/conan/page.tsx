@@ -7,9 +7,10 @@ import MentorCards from '@/components/two-path/MentorCards'
 import PathLink from '@/components/two-path/PathLink'
 import PathMemory from '@/components/two-path/PathMemory'
 import PhotoGallery from '@/components/two-path/PhotoGallery'
-import { HeroPicture } from '@/components/two-path/TwoPathPhoto'
+import TwoPathPhoto, { HeroPicture } from '@/components/two-path/TwoPathPhoto'
 import twoPath from '@/components/two-path/TwoPath.module.css'
 import { conanContent } from '@/lib/two-path-content'
+import { photo } from '@/lib/two-path-photos'
 import { buildBranchPageStructuredData, createPageMetadata } from '@/lib/seo'
 import styles from './page.module.css'
 
@@ -63,7 +64,7 @@ export default function ConanPage() {
               </em>
             </h1>
           </div>
-          <div>
+          <div className={styles.heroAside}>
             <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '1.75s' } as CSSProperties}>
               {conanContent.lead}
             </p>
@@ -86,15 +87,27 @@ export default function ConanPage() {
         </div>
       </section>
 
+      {/* The school's rule beside a real class at work: the words light up as they are read while
+          the photo opens from the right edge and drifts inside its frame. */}
       <section className={styles.principle} aria-labelledby="conan-principle">
-        <figure className={styles.inner}>
-          <figcaption id="conan-principle" className={styles.sectionMark} data-motion-reveal="mask">
-            {principle.source}
-          </figcaption>
-          <blockquote className={styles.quote}>
-            <p data-scrub-words>{principle.text}</p>
-          </blockquote>
-        </figure>
+        <div className={`${styles.inner} ${styles.principleGrid}`}>
+          <figure className={styles.principleQuote}>
+            <figcaption id="conan-principle" className={styles.sectionMark} data-motion-reveal="mask">
+              {principle.source}
+            </figcaption>
+            <blockquote className={styles.quote}>
+              <p data-scrub-words>{principle.text}</p>
+            </blockquote>
+          </figure>
+          <figure className={styles.principlePhoto} data-motion-surface>
+            <div className={styles.principleFrame} data-img-reveal="right" data-parallax-frame="7">
+              <div data-reveal-media>
+                <TwoPathPhoto id={principle.photoId} sizes="(max-width: 999px) 80vw, 440px" />
+              </div>
+            </div>
+            <figcaption className={styles.principleCaption}>{photo(principle.photoId).caption}</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section className={styles.section} aria-labelledby="conan-audiences">
@@ -136,13 +149,16 @@ export default function ConanPage() {
         </div>
       </div>
 
+      {/* Wide screens: the intro holds still on the left with a rolling stage counter while the
+          five stages travel through the window on the right (data-hscroll on the stage list). */}
       <section
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
+        data-hscroll-pace="1.7"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
-        <div className={styles.journeyTrack} data-hscroll-track>
+        <div className={styles.journeyLayout}>
           <header className={styles.journeyIntro}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
               02 — Hành trình
@@ -153,25 +169,44 @@ export default function ConanPage() {
             <p className={styles.journeyLead} data-motion-reveal="drift">
               {journey.lead}
             </p>
-          </header>
-          <ol className={styles.stages}>
-            {journey.stages.map((stage) => (
-              <li key={stage.number} className={styles.stage} data-hscroll-item>
-                <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
-                  {stage.number}
-                </span>
-                <h3 className={styles.stageName}>{stage.name}</h3>
-                <ul className={styles.questions}>
-                  {stage.questions.map((question) => (
-                    <li key={question}>{question}</li>
+            <div className={styles.journeyMeter} aria-hidden="true">
+              <span className={styles.meterCount}>
+                <span className={styles.meterRoll}>
+                  {journey.stages.map((stage) => (
+                    <span key={stage.number}>{stage.number}</span>
                   ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className={styles.journeyProgress} aria-hidden="true">
-          <span />
+                </span>
+              </span>
+              <span className={styles.meterTotal}>/ {pad(journey.stages.length)}</span>
+              <span className={styles.meterName}>
+                <span className={styles.meterRoll}>
+                  {journey.stages.map((stage) => (
+                    <span key={stage.number}>{stage.name}</span>
+                  ))}
+                </span>
+              </span>
+              <span className={styles.journeyProgress}>
+                <span />
+              </span>
+            </div>
+          </header>
+          <div className={styles.journeyWindow}>
+            <ol className={styles.stages} data-hscroll-track>
+              {journey.stages.map((stage) => (
+                <li key={stage.number} className={styles.stage} data-hscroll-item>
+                  <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
+                    {stage.number}
+                  </span>
+                  <h3 className={styles.stageName}>{stage.name}</h3>
+                  <ul className={styles.questions}>
+                    {stage.questions.map((question) => (
+                      <li key={question}>{question}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 

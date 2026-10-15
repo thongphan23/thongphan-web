@@ -13,7 +13,7 @@ export default function FounderLetter() {
         <div className={styles.letterAside}>
           <figure className={styles.letterPortrait} data-img-reveal="up" data-parallax-frame="5">
             <span className={styles.revealMedia} data-reveal-media>
-              <TwoPathPhoto id={letter.portraitId} sizes="(max-width: 1023px) 60vw, 380px" />
+              <TwoPathPhoto id={letter.portraitId} sizes="(max-width: 1023px) 72vw, 460px" />
             </span>
           </figure>
         </div>
@@ -21,7 +21,7 @@ export default function FounderLetter() {
           <h2 id="founder-letter-title" className={styles.letterTitle} data-split>
             {letter.title}
           </h2>
-          <p className={styles.letterLead} data-scrub-words>
+          <p className={styles.letterLead} data-scrub-words data-scrub-end="center 72%">
             {lead}
           </p>
           <div className={styles.letterRest} data-reveal-children data-stagger="0.14">
