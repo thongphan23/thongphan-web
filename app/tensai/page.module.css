@@ -253,8 +253,22 @@
 }
 
 .calloutGate {
-  bottom: 3.2rem;
+  /* Phones: the lesson card hangs below the screen, so the chip is placed from the screen's top
+     (the map is 1080x867). */
   right: 0.5rem;
+  top: calc((100vw - 2 * var(--brand-space-inline)) * 0.8 - 4.25rem);
+}
+
+.depthLayer {
+  display: block;
+}
+
+/* The lesson question in front of the screen: below it on phones, over its lower left on wide
+   screens, reaching past the frame toward the headline. */
+.tryCard {
+  margin: -3.25rem 0.5rem 0 1rem;
+  position: relative;
+  z-index: 3;
 }
 
 .calloutGate .calloutInner {
@@ -347,6 +361,21 @@
   .calloutGate {
     bottom: 18%;
     right: -2rem;
+    top: auto;
+  }
+
+  .tryCard {
+    bottom: -2.75rem;
+    left: -3.25rem;
+    margin: 0;
+    position: absolute;
+    width: min(23.5rem, 66%);
+  }
+
+  .heroFigure figcaption {
+    margin-left: auto;
+    max-width: 14rem;
+    text-align: right;
   }
 
   .calloutInner {
@@ -832,7 +861,7 @@
   background: var(--path-cta-bg);
   color: var(--path-accent);
   overflow: hidden;
-  padding: var(--brand-space-section) var(--brand-space-inline) clamp(8rem, 22vw, 18rem);
+  padding: var(--brand-space-section) var(--brand-space-inline) clamp(10rem, 30vw, 26rem);
   position: relative;
 }
 
@@ -867,18 +896,19 @@
   text-decoration-color: var(--path-accent);
 }
 
-/* The name, set huge and faint, sinks into the bottom of the band. */
+/* The name, set huge and faint, rests whole on the floor of the band: the footer's own
+   signature follows right after, so nothing here should read as cut off. */
 .closingMark {
-  bottom: -0.2em;
+  bottom: clamp(0.75rem, 2.5vw, 2.25rem);
   color: var(--path-accent);
   font-family: var(--font-cormorant);
-  font-size: clamp(9rem, 32vw, 30rem);
+  font-size: clamp(8rem, 30vw, 27rem);
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.04em;
-  line-height: 0.8;
+  line-height: 0.9;
   margin: 0;
-  opacity: 0.12;
+  opacity: 0.14;
   pointer-events: none;
   position: absolute;
   right: -0.04em;

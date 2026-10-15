@@ -105,6 +105,30 @@ export const tensaiContent = {
   heroPhotoId: 'tensai-map',
   // Read off the real map screen in the hero: one floats beside it as a callout.
   heroCallout: 'Cứ 3 bài, một màn vượt ải.',
+  // Copied word for word from the live exercise screen (tensai-home: docs/positioning-v8/release/
+  // screens/live-exercise.png). The page only lets the visitor pick; the verdict stays in the app.
+  tryCard: {
+    lesson: 'Bài 1 · Định vị',
+    label: 'Minh họa',
+    scenario: [
+      { text: 'Bếp Gọn bán cơm trưa đặt trước. Khách ' },
+      { text: 'nghỉ trưa ngắn', strong: true },
+      { text: ' thường ngại ' },
+      { text: 'xếp hàng', strong: true },
+      { text: ' ở căn tin.' },
+    ],
+    question: 'Cách giới thiệu nào làm rõ lý do nhóm khách này cân nhắc Bếp Gọn?',
+    options: [
+      { key: 'A', text: 'Bữa trưa đặt trước, giao theo giờ hẹn cho người có giờ nghỉ ngắn.' },
+      { key: 'B', text: 'Bữa trưa ngon miệng, nhiều món cho mọi người ở mọi nơi.' },
+    ],
+    check: 'Kiểm tra cách hiểu',
+    encouragement: 'Cứ thử, sai cũng được. Mình nhìn kết quả rồi sửa tiếp.',
+    // Ours, not the app's: once a choice is made, the check moves to the real lesson.
+    pickHint: 'Chọn A hoặc B',
+    checkLive: 'Kiểm tra trong bài thật',
+    handoff: 'Bài này nằm trong khóa Định vị trên Tensai.',
+  },
   situations: {
     title: 'Bạn có đang gặp một trong ba chuyện này?',
     items: [

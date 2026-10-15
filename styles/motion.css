@@ -186,7 +186,7 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
 @media (prefers-reduced-motion: no-preference) {
   html.motion .intro-word > span {
     animation: intro-word-rise 1.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    animation-delay: calc(var(--intro-base, 0.45s) + var(--i, 0) * 0.055s);
+    animation-delay: calc(var(--i, 0) * 0.055s + var(--intro-base, 0.45s));
   }
 
   html.motion .intro-fade {

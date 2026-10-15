@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import PathLink from '@/components/two-path/PathLink'
+import FooterWordmark from './FooterWordmark'
 import { CONAN_URL, PATH_LABELS, TENSAI_URL } from '@/lib/two-path-links'
 import type { SiteRouteMode } from '@/lib/site-route-mode'
 import {
@@ -26,7 +27,6 @@ export default function SiteFooter({ mode, pathname }: SiteFooterProps) {
   return (
     <footer className={styles.cinemaFooter} data-route-mode={mode} data-path-route={pathRouteFor(pathname)}>
       <div className={styles.footerBrand}>
-        <p className={styles.footerName}>THÔNG PHAN</p>
         <p className={styles.footerTagline}>
           Người dẫn đường cho người đi làm và người kinh doanh trong kỷ nguyên AI.
         </p>
@@ -75,6 +75,8 @@ export default function SiteFooter({ mode, pathname }: SiteFooterProps) {
           </ul>
         </div>
       </nav>
+
+      <FooterWordmark />
 
       <div className={styles.footerBase}>
         <p className={styles.copyright}>© 2026 · Làm thật, trả giá thật, hệ thống thật.</p>

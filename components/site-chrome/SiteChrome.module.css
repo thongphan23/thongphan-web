@@ -244,7 +244,8 @@
 }
 
 .cinemaHeader[data-route-mode='editorial-light'] .cinemaWordmark,
-.cinemaFooter[data-route-mode='editorial-light'] .footerName {
+.cinemaFooter[data-route-mode='editorial-light'] .footerName,
+.cinemaFooter[data-route-mode='editorial-light'] .footerTagline {
   font-family: var(--font-newsreader), Georgia, serif;
 }
 
@@ -266,7 +267,8 @@
 
 /* /tensai loads Cormorant, not Newsreader; keep the wordmark in a loaded family. */
 .cinemaHeader[data-path-route='tensai'] .cinemaWordmark,
-.cinemaFooter[data-path-route='tensai'] .footerName {
+.cinemaFooter[data-path-route='tensai'] .footerName,
+.cinemaFooter[data-path-route='tensai'] .footerTagline {
   font-family: var(--font-cormorant), Georgia, serif;
 }
 
@@ -628,32 +630,99 @@
 }
 
 .cinemaFooter {
+  --footer-accent: var(--brand-lacquer-bright);
   background: var(--brand-ink);
   border-top: 1px solid var(--brand-line-dark);
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  /* The giant name is sized in container units so it always spans the footer's own width. */
+  container-type: inline-size;
   display: grid;
   font-family: var(--font-be-vietnam), sans-serif;
   gap: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 4rem);
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  padding: var(--brand-space-section) var(--brand-space-inline) 2rem;
+  overflow: hidden;
+  padding: clamp(4rem, 9vw, 7.5rem) var(--brand-space-inline) 1.5rem;
   position: relative;
   z-index: 2;
 }
 
-.footerName {
-  color: var(--brand-paper);
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin: 0 0 1rem;
+.cinemaFooter[data-path-route='tensai'] {
+  --footer-accent: #c3f331;
+}
+
+.cinemaFooter[data-path-route='conan'] {
+  --footer-accent: #e2643f;
+}
+
+.srOnly {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .footerTagline {
-  font-size: 1rem;
-  line-height: 1.6;
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.75rem, 1.1rem + 2.1vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
   margin: 0;
-  max-width: 24rem;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+
+/* Full-bleed signature: one line that fills the footer edge to edge. The em ratio is the
+   measured advance of THÔNG PHAN in each family, so the line lands on the content width. */
+.footerName {
+  --name-fit: 0.1515;
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: calc(100cqi * var(--name-fit));
+  font-weight: 500;
+  grid-column: 1 / -1;
+  letter-spacing: -0.035em;
+  line-height: 0.82;
+  margin: clamp(0.5rem, 2vw, 1.5rem) 0 0;
+  /* Room above the caps for the circumflex on Ô; the mask clips only the rising letters. */
+  overflow: hidden;
+  padding-top: 0.14em;
+  white-space: nowrap;
+}
+
+.footerNameLetters {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerNameLetter {
+  display: inline-block;
+  transition:
+    color 360ms var(--brand-motion-ease),
+    translate 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0ms, calc(var(--i) * 45ms);
+}
+
+.footerNameGap {
+  width: 0.22em;
+}
+
+:global(html.motion) .footerName[data-in='false'] .footerNameLetter {
+  translate: 0 108%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footerName[data-in='true'] .footerNameLetter:hover {
+    color: var(--footer-accent);
+    transition-delay: 0ms;
+    translate: 0 -0.05em;
+  }
 }
 
 .footerColumns {
@@ -664,13 +733,13 @@
 }
 
 .footerHeading {
-  color: var(--brand-paper);
+  color: color-mix(in srgb, var(--brand-paper) 58%, transparent);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8125rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   line-height: 1.3;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
   text-transform: uppercase;
 }
 
@@ -681,18 +750,23 @@
   padding: 0;
 }
 
-.footerColumn a {
+.cinemaFooter .footerColumn a {
   align-items: center;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 82% / 0 1px;
   display: inline-flex;
+  font-size: 0.9375rem;
   gap: 0.35rem;
   min-height: 44px;
   text-decoration: none;
+  transition:
+    background-size 420ms var(--brand-motion-ease),
+    color 240ms ease;
 }
 
-.cinemaFooter .footerColumn a:hover {
+.cinemaFooter .footerColumn a:hover,
+.cinemaFooter .footerColumn a:focus-visible {
+  background-size: 100% 1px;
   color: var(--brand-paper);
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
 }
 
 .footerPath {
@@ -725,11 +799,11 @@
 }
 
 .footerPath[data-path='conan'] {
-  --footer-dot: #d94f2b;
+  --footer-dot: #e2643f;
 }
 
-.footerOutbound {
-  font-size: 0.85rem;
+.cinemaFooter .footerPath .footerOutbound {
+  font-size: 0.875rem;
   padding-left: 1rem;
 }
 
@@ -738,7 +812,7 @@
   border-top: 1px solid var(--brand-line-dark);
   display: flex;
   flex-wrap: wrap;
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   gap: 0.5rem 1.5rem;
   grid-column: 1 / -1;
   justify-content: space-between;

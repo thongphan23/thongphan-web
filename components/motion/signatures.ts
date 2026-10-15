@@ -117,6 +117,77 @@ export function deviceStage(root: HTMLElement): Cleanup {
   return () => {}
 }
 
+// Chapter rail ([data-chapters]): a reading-progress pill for the about page's five acts.
+// - Each act ([data-chapter]) that crosses the reading line becomes the rail's --active row, so
+//   the number and title roll to it, and its link ([data-chapter-link]) gets aria-current.
+// - Each link's --progress tracks how far its act has been read.
+// - Each act's numeral ([data-chapter-numeral]) fills with lacquer (--fill) as the act arrives.
+// - The rail shows only while the acts fill the screen (data-visible).
+export function chapterRail(root: HTMLElement): Cleanup {
+  const container = root.querySelector<HTMLElement>('[data-chapters]')
+  const rail = container?.querySelector<HTMLElement>('[data-chapter-rail]')
+  if (!container || !rail) return () => {}
+  const chapters = Array.from(container.querySelectorAll<HTMLElement>('[data-chapter]'))
+  const links = Array.from(rail.querySelectorAll<HTMLElement>('[data-chapter-link]'))
+
+  const activate = (index: number) => {
+    rail.style.setProperty('--active', String(index))
+    links.forEach((link, linkIndex) => {
+      if (linkIndex === index) link.setAttribute('aria-current', 'step')
+      else link.removeAttribute('aria-current')
+    })
+  }
+
+  chapters.forEach((chapter, index) => {
+    const link = links[index]
+    const setProgress = (progress: number) => link?.style.setProperty('--progress', progress.toFixed(3))
+    ScrollTrigger.create({
+      trigger: chapter,
+      start: 'top 55%',
+      end: 'bottom 55%',
+      onToggle: (self) => {
+        if (self.isActive) activate(index)
+      },
+      onUpdate: (self) => setProgress(self.progress),
+      onLeave: () => setProgress(1),
+      onLeaveBack: () => setProgress(0),
+      onRefresh: (self) => setProgress(self.progress),
+    })
+
+    const numeral = chapter.querySelector<HTMLElement>('[data-chapter-numeral]')
+    if (numeral) {
+      gsap.fromTo(
+        numeral,
+        { '--fill': 0 },
+        {
+          '--fill': 1,
+          ease: 'none',
+          scrollTrigger: { trigger: chapter, start: 'top 70%', end: 'center 40%', scrub: true },
+        },
+      )
+    }
+  })
+
+  ScrollTrigger.create({
+    trigger: container,
+    start: 'top 60%',
+    end: 'bottom bottom',
+    onToggle: (self) => {
+      if (self.isActive) rail.dataset.visible = ''
+      else delete rail.dataset.visible
+    },
+  })
+
+  return () => {
+    delete rail.dataset.visible
+    rail.style.removeProperty('--active')
+    links.forEach((link) => {
+      link.removeAttribute('aria-current')
+      link.style.removeProperty('--progress')
+    })
+  }
+}
+
 // Sticky swap ([data-swap]): as each step ([data-swap-step]) crosses the reading line, the root's
 // data-swap-active switches to its index; CSS wipes in the matching screen and dims the others.
 export function stickySwap(root: HTMLElement): Cleanup {

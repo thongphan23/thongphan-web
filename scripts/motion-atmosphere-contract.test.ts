@@ -113,7 +113,9 @@ test('GSAP scroll choreography is lazy, bounded, varied and reversible', async (
   assert.match(scrollSource, /trigger\.kill\(\)/)
   assert.match(scrollSource, /Math\.min\(18,/)
   assert.match(scrollSource, /:\s*\{ opacity:\s*0\.72,\s*y:\s*12 \}/)
-  assert.match(homeSource, /data-motion-parallax/)
+  // The home hero's depth is the stage signature: layers drift apart and the portrait sinks as it scrolls away.
+  assert.match(homeSource, /data-stage-depth/)
+  assert.match(homeSource, /data-stage-person/)
   assert.match(homeSource, /data-motion-reveal="mask"/)
   assert.match(homeSource, /data-motion-reveal="drift"/)
   assert.match(librarySource, /data-motion-reveal=/)

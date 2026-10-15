@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
-import { curtains, deviceStage, stageHero, stickySwap } from './signatures'
+import { chapterRail, curtains, deviceStage, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -501,7 +501,10 @@ function tilt(root: HTMLElement): Cleanup {
     const max = numberAttr(el, 'tilt', 6)
     const rx = gsap.quickTo(el, 'rotationX', { duration: 0.8, ease: 'power3.out' })
     const ry = gsap.quickTo(el, 'rotationY', { duration: 0.8, ease: 'power3.out' })
-    gsap.set(el, { transformPerspective: 1100 })
+    // GSAP folds the computed CSS `translate` into its transform on first touch. Cards that rise in
+    // with a CSS intro would keep the intro's start offset for good, so the offset is zeroed here
+    // (the inline `translate: none` GSAP leaves loses to the running intro until it ends).
+    gsap.set(el, { transformPerspective: 1100, x: 0, y: 0 })
     const move = (event: PointerEvent) => {
       const box = el.getBoundingClientRect()
       const px = (event.clientX - box.left) / box.width - 0.5
@@ -520,6 +523,40 @@ function tilt(root: HTMLElement): Cleanup {
     cleanups.push(() => {
       el.removeEventListener('pointermove', move)
       el.removeEventListener('pointerleave', leave)
+    })
+  })
+  return () => cleanups.forEach((fn) => fn())
+}
+
+// Depth: layers of a stage shift against the pointer by their depth, so the scene reads as
+// stacked sheets (near layers move most). Layers must not carry another GSAP x/y (data-speed
+// moves y), so they wrap whatever animates inside them.
+function depth(root: HTMLElement): Cleanup {
+  const cleanups: Cleanup[] = []
+  root.querySelectorAll<HTMLElement>('[data-depth-stage]').forEach((stage) => {
+    const area = stage.closest<HTMLElement>('section') ?? stage
+    const layers = Array.from(stage.querySelectorAll<HTMLElement>('[data-depth]')).map((el) => ({
+      amount: numberAttr(el, 'depth', 0.5),
+      x: gsap.quickTo(el, 'x', { duration: 1.1, ease: 'power3.out' }),
+      y: gsap.quickTo(el, 'y', { duration: 1.1, ease: 'power3.out' }),
+      el,
+    }))
+    const move = (event: PointerEvent) => {
+      const box = stage.getBoundingClientRect()
+      const nx = gsap.utils.clamp(-1, 1, (event.clientX - (box.left + box.width / 2)) / (box.width / 2))
+      const ny = gsap.utils.clamp(-1, 1, (event.clientY - (box.top + box.height / 2)) / (box.height / 2))
+      layers.forEach((layer) => {
+        layer.x(-nx * layer.amount * 18)
+        layer.y(-ny * layer.amount * 12)
+      })
+    }
+    const leave = () => layers.forEach((layer) => (layer.x(0), layer.y(0)))
+    area.addEventListener('pointermove', move)
+    area.addEventListener('pointerleave', leave)
+    cleanups.push(() => {
+      area.removeEventListener('pointermove', move)
+      area.removeEventListener('pointerleave', leave)
+      gsap.set(layers.map((layer) => layer.el), { clearProps: 'transform' })
     })
   })
   return () => cleanups.forEach((fn) => fn())
@@ -680,8 +717,8 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     stackCards(root, mm)
     themeShifts(root)
     counters(root)
-    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), curtains(root))
-    if (finePointer) extra.push(magnetic(root), tilt(root), hoverReveal(root))
+    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), chapterRail(root), curtains(root))
+    if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData

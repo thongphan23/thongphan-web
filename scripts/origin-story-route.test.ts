@@ -66,7 +66,8 @@ test('about closes with the two-path doors and one untracked proof action', asyn
     source('app/about/page.tsx'),
     source('components/origin-story/OriginStory.tsx'),
   ])
-  assert.match(page, /title="Tui là người dẫn đường, vì tui đã đi sai đủ nhiều\."/)
+  assert.match(page, /const titleHead = 'Tui là người dẫn đường, vì tui'/)
+  assert.match(page, /const titleAccent = 'đã đi sai đủ nhiều\.'/)
   assert.match(story, /aboutPathContent\.title/)
   assert.match(story, /aboutPathContent\.paragraphs\.map/)
   assert.match(story, /<PathDoors variant="closing" placement="closing"/)
@@ -93,7 +94,9 @@ test('about keeps one outer heading path, no nested main and removes the stale m
     source('components/dossier/DossierHeader.tsx'),
   ])
   assert.equal((dossierHeader.match(/<h1\b/g) ?? []).length, 1)
-  assert.equal((`${page}\n${story}`.match(/<h1\b/g) ?? []).length, 0)
+  // The page owns the only h1 (the confession); the story starts at h2.
+  assert.equal((page.match(/<h1\b/g) ?? []).length, 1)
+  assert.equal((story.match(/<h1\b/g) ?? []).length, 0)
   assert.equal((`${page}\n${story}`.match(/<main\b/g) ?? []).length, 0)
   assert.ok(existsSync(new URL('../components/origin-story/OriginStory.module.css', import.meta.url)))
   assert.match(

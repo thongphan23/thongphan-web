@@ -540,11 +540,11 @@
   scroll-snap-align: start;
 }
 
-/* Numerals are outlined in paper; the one crossing the middle of the pinned track
-   (data-current, set by the engine) fills with lacquer. */
+/* Numerals are a quiet paper tint with a clear paper edge; the one crossing the middle of the
+   pinned track (data-current, set by the engine) fills with the path colour. */
 .stageNumber {
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--brand-paper) 55%, transparent);
-  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 12%, transparent);
   transition:
     color 600ms cubic-bezier(0.16, 1, 0.3, 1),
     -webkit-text-stroke-color 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -656,7 +656,7 @@
   border-left: 1px solid var(--brand-line-dark);
   border-top: 0;
   flex-basis: clamp(22rem, 30vw, 32rem);
-  height: 72svh;
+  height: min(62svh, 40rem);
   justify-content: space-between;
   padding: 0 clamp(1.5rem, 2.6vw, 2.75rem);
 }

@@ -1,0 +1,252 @@
+/* A lesson question lifted out of the app: the app's cream sheet, its green ink, its lettered
+   answers with a pressed lower edge. Text stays at reading size (15px and up). */
+.card {
+  --try-ink: #073b2f;
+  --try-lime: #c3f331;
+  --try-muted: #4f5b52;
+  --try-line: rgba(7, 59, 47, 0.16);
+  background: #fbfaf5;
+  border: 1px solid var(--try-line);
+  border-radius: 20px;
+  box-shadow:
+    0 50px 90px -40px rgba(7, 59, 47, 0.55),
+    0 18px 36px -24px rgba(7, 59, 47, 0.4),
+    0 0 0 6px rgba(255, 255, 255, 0.6);
+  color: var(--try-ink);
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 1.15rem 1.25rem 1.1rem;
+}
+
+.top {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lesson {
+  align-items: center;
+  background: var(--try-ink);
+  border-radius: 999px;
+  color: var(--try-lime);
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  gap: 0.45rem;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.75rem;
+}
+
+.lesson::before {
+  background: var(--try-lime);
+  border-radius: 50%;
+  content: '';
+  height: 0.45rem;
+  width: 0.45rem;
+}
+
+.label {
+  border: 1px dashed var(--try-line);
+  border-radius: 999px;
+  color: var(--try-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+}
+
+.scenario {
+  color: var(--try-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.scenario strong {
+  color: var(--try-ink);
+}
+
+.choices {
+  border: 0;
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.question {
+  color: var(--try-ink);
+  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.28;
+  margin-bottom: 0.35rem;
+  padding: 0;
+  text-wrap: balance;
+}
+
+.option {
+  align-items: start;
+  background: #fff;
+  border: 1.5px solid var(--try-line);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 rgba(7, 59, 47, 0.14);
+  cursor: pointer;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  padding: 0.8rem 0.9rem;
+  position: relative;
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    translate 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.option input {
+  appearance: none;
+  border-radius: 14px;
+  cursor: pointer;
+  inset: 0;
+  margin: 0;
+  position: absolute;
+}
+
+.option input:focus-visible {
+  outline: 3px solid var(--try-ink);
+  outline-offset: 3px;
+}
+
+.key {
+  align-items: center;
+  border: 1.5px solid var(--try-line);
+  border-radius: 8px;
+  color: var(--try-muted);
+  display: inline-flex;
+  font-size: 0.8rem;
+  font-weight: 800;
+  height: 1.7rem;
+  justify-content: center;
+  transition:
+    background-color 260ms ease,
+    border-color 260ms ease,
+    color 260ms ease,
+    scale 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  width: 1.7rem;
+}
+
+.optionText {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  padding-top: 0.12rem;
+}
+
+@media (hover: hover) {
+  .option:hover {
+    border-color: rgba(7, 59, 47, 0.42);
+    translate: 0 -2px;
+    box-shadow: 0 5px 0 rgba(7, 59, 47, 0.16);
+  }
+}
+
+.option:active {
+  box-shadow: 0 1px 0 rgba(7, 59, 47, 0.14);
+  translate: 0 2px;
+}
+
+.option:has(input:checked) {
+  background: #f1fbd6;
+  border-color: var(--try-ink);
+  box-shadow: 0 3px 0 var(--try-ink);
+}
+
+.option:has(input:checked) .key {
+  background: var(--try-lime);
+  border-color: var(--try-ink);
+  color: var(--try-ink);
+  scale: 1.12;
+}
+
+.foot {
+  align-items: center;
+  border-top: 1px solid var(--try-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.9rem;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+}
+
+/* Grey until an answer is picked, as in the app; then lime and live (it opens the real lesson). */
+.card .check {
+  align-items: center;
+  background: #e3e6df;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 3px 0 rgba(7, 59, 47, 0.14);
+  color: #6b7369;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0 1.05rem;
+  text-decoration: none;
+  transition:
+    background-color 320ms ease,
+    box-shadow 320ms ease,
+    translate 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card a.check {
+  animation: check-ready 620ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: var(--try-lime);
+  box-shadow: 0 3px 0 var(--try-ink);
+  color: var(--try-ink);
+}
+
+.card a.check:hover {
+  translate: 0 -2px;
+  box-shadow: 0 5px 0 var(--try-ink);
+}
+
+.card a.check:focus-visible {
+  outline: 3px solid var(--try-ink);
+  outline-offset: 3px;
+}
+
+.note {
+  color: var(--try-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.encouragement {
+  color: var(--try-muted);
+  font-size: 0.8125rem;
+  font-style: italic;
+  margin: -0.15rem 0 0;
+}
+
+@keyframes check-ready {
+  from {
+    scale: 0.92;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option,
+  .key,
+  .card .check {
+    transition: none;
+  }
+
+  .card a.check {
+    animation: none;
+  }
+}

@@ -691,7 +691,7 @@
   outline-offset: 2px;
 }
 
-/* Field notes: one real photo next to two checked claims with their numbers. */
+/* Field notes: two checked numbers side by side, then the room they came from as one wide photo. */
 
 .fieldNotes {
   background: var(--brand-ink);
@@ -701,15 +701,16 @@
 
 .fieldGrid {
   display: grid;
-  gap: clamp(2.5rem, 5vw, 5rem);
+  gap: clamp(3rem, 7vw, 6.5rem);
 }
 
 .fieldPhoto {
   margin: 0;
+  position: relative;
 }
 
 .fieldPhotoFrame {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   background: var(--brand-ink-raised);
   border-radius: 6px;
   overflow: hidden;
@@ -725,91 +726,105 @@
 }
 
 .fieldPhoto figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
-  font-size: 0.84rem;
+  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
+  font-size: 0.9375rem;
   line-height: 1.45;
   padding-top: 0.9rem;
 }
 
 .galleryFigure figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
-  font-size: 0.84rem;
+  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
+  font-size: 0.9375rem;
   line-height: 1.45;
   padding: 0.85rem 1rem 1rem;
 }
 
 .fieldCards {
+  border-top: 1px solid var(--brand-line-dark);
   display: grid;
-  gap: clamp(2.5rem, 5vw, 3.75rem);
 }
 
 .fieldCard {
+  border-bottom: 1px solid var(--brand-line-dark);
   min-width: 0;
+  padding: clamp(2rem, 6vw, 3rem) 0;
 }
 
 .fieldStat {
   align-items: baseline;
-  column-gap: 0.12em;
+  column-gap: 0.08em;
   display: flex;
   flex-wrap: wrap;
   font-family: var(--font-cormorant);
-  font-size: clamp(4rem, 2.6rem + 5vw, 7.4rem);
+  font-size: clamp(5rem, 3rem + 9vw, 13rem);
   font-variant-numeric: lining-nums tabular-nums;
   font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
   margin: 0;
 }
 
 .fieldStatLabel {
   flex-basis: 100%;
   font-family: var(--font-be-vietnam);
-  font-size: 0.78rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.3;
-  margin-top: 0.9rem;
-  opacity: 0.74;
+  margin-top: 1.1rem;
+  opacity: 0.78;
   text-transform: uppercase;
 }
 
 .fieldRule {
-  background: var(--brand-line-dark);
+  background: var(--brand-lacquer-bright);
   display: block;
-  height: 1px;
-  margin: 1.4rem 0 1.2rem;
+  height: 2px;
+  margin: 1.5rem 0 1.25rem;
+  width: 3.5rem;
 }
 
 .fieldClaim {
   font-family: var(--font-cormorant);
-  font-size: clamp(1.35rem, 1rem + 1vw, 1.7rem);
+  font-size: clamp(1.4rem, 1rem + 1vw, 1.85rem);
   font-weight: 500;
   line-height: 1.22;
-  margin: 0 0 0.6rem;
-  max-width: 26ch;
+  margin: 0 0 0.8rem;
+  max-width: 28ch;
 }
 
 @media (min-width: 900px) {
-  .fieldGrid {
-    align-items: start;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  }
-
-  /* The photo stays in view while the two claims scroll past it. */
-  .fieldPhoto {
-    position: sticky;
-    top: 6.5rem;
-  }
-
-  .fieldPhotoFrame {
-    aspect-ratio: auto;
-    height: min(68svh, 46rem);
-  }
-
+  /* The two numbers share one ruled band, split by a hairline. */
   .fieldCards {
-    padding-top: clamp(1rem, 4svh, 3rem);
-    gap: clamp(4rem, 12svh, 8rem);
-    padding-bottom: clamp(2rem, 8svh, 6rem);
+    border-bottom: 1px solid var(--brand-line-dark);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fieldCard {
+    border-bottom: 0;
+    padding: clamp(2.5rem, 5svh, 4rem) clamp(1.5rem, 4vw, 4rem) clamp(2.5rem, 5svh, 4rem) 0;
+  }
+
+  .fieldCard + .fieldCard {
+    border-left: 1px solid var(--brand-line-dark);
+    padding-left: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  /* A cinema-wide frame; the caption sits on the photo over a soft scrim. */
+  .fieldPhotoFrame {
+    aspect-ratio: 21 / 9;
+  }
+
+  .fieldPhoto figcaption {
+    background: linear-gradient(to top, rgb(7 7 6 / 0.82), rgb(7 7 6 / 0));
+    border-radius: 0 0 6px 6px;
+    bottom: 0;
+    color: var(--brand-paper);
+    left: 0;
+    padding: 4rem clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+    pointer-events: none;
+    position: absolute;
+    right: 0;
   }
 }
 
@@ -828,7 +843,7 @@
 }
 
 .marqueeRow[data-path='conan'] {
-  --marquee-accent: #d94f2b;
+  --marquee-accent: #ef5b33;
 }
 
 .marqueeRow {
@@ -861,14 +876,18 @@
   font-weight: 400;
 }
 
+/* The product names are the loud half of each band: solid, in the path's own colour. */
 .marqueeProduct {
-  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--brand-paper) 88%, transparent);
-  color: transparent;
-  font-weight: 600;
+  color: var(--marquee-accent);
+  font-family: var(--font-be-vietnam);
+  font-size: clamp(2.6rem, 1.3rem + 6.4vw, 8.6rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
 }
 
 .marqueeProduct::after {
-  background: var(--marquee-accent);
+  background: var(--brand-paper);
   border-radius: 999px;
   content: '';
   flex: none;
@@ -917,7 +936,7 @@
 
 .reelEyebrow {
   color: color-mix(in srgb, var(--brand-paper) 70%, transparent);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.3;
@@ -972,9 +991,9 @@
 }
 
 .reelItem figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
   display: flex;
-  font-size: 0.84rem;
+  font-size: 0.9375rem;
   gap: 0.9rem;
   line-height: 1.45;
   padding-top: 0.9rem;
@@ -1145,9 +1164,9 @@
 }
 
 .galleryFigure figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   gap: 0.9rem;
   line-height: 1.5;
   padding-top: 0.9rem;
@@ -1413,7 +1432,7 @@
 
 .guideCaptionMark {
   font-family: var(--font-be-vietnam);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.24em;

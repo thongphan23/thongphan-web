@@ -22,7 +22,7 @@ test('the motion engine is loaded on demand and never under reduced motion', () 
 
 test('pointer-only effects stay behind the fine-pointer query', () => {
   assert.match(engine, /FINE_POINTER = '\(hover: hover\) and \(pointer: fine\)'/)
-  assert.match(engine, /if \(finePointer\) extra\.push\(magnetic\(root\), tilt\(root\), hoverReveal\(root\)\)/)
+  assert.match(engine, /if \(finePointer\) extra\.push\(magnetic\(root\), tilt\(root\), depth\(root\), hoverReveal\(root\)\)/)
   assert.match(engine, /if \(finePointer\) startCursor\(\)/)
 })
 

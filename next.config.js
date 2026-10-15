@@ -4,6 +4,7 @@ const nextConfig = {
   output: 'export',
   experimental: {
     globalNotFound: true,
+    cssChunking: false,
   },
   images: {
     unoptimized: true,

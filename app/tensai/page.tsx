@@ -5,6 +5,7 @@ import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import JsonLd from '@/components/seo/JsonLd'
 import PathLink from '@/components/two-path/PathLink'
 import PathMemory from '@/components/two-path/PathMemory'
+import TensaiTryCard from '@/components/two-path/TensaiTryCard'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import twoPath from '@/components/two-path/TwoPath.module.css'
 import { photo } from '@/lib/two-path-photos'
@@ -60,8 +61,10 @@ export default function TensaiPage() {
             </em>{' '}
             <SplitWords text={titleTail} start={wordCount(titleHead) + wordCount(accent)} />
           </h1>
-          <p className={`${styles.lead} intro-fade`}>{tensaiContent.lead}</p>
-          <div className={styles.actions}>
+          <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.85s' } as CSSProperties}>
+            {tensaiContent.lead}
+          </p>
+          <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1s' } as CSSProperties}>
             <PathLink
               path="tensai"
               kind="outbound"
@@ -79,35 +82,53 @@ export default function TensaiPage() {
               {tensaiContent.secondaryCta.label}
             </a>
           </div>
-          <p className={`${styles.launchNote} intro-fade`}>{tensaiContent.launchNote}</p>
+          <p className={`${styles.launchNote} intro-fade`} style={{ '--intro-delay': '1.15s' } as CSSProperties}>
+            {tensaiContent.launchNote}
+          </p>
         </div>
-        <figure className={styles.heroFigure}>
+        {/* Three depths: the map screen at the back, a real lesson question lifted out of the app in
+            front (it can be answered), and two facts floating between. The pointer separates them
+            (data-depth); scroll pulls them apart (data-speed). */}
+        <figure className={styles.heroFigure} data-depth-stage>
           <span className={styles.heroGlow} aria-hidden="true" />
-          <div className={styles.device} data-device>
-            <div className={`${styles.heroFrame} intro-clip`} data-tilt="3">
-              <TwoPathPhoto
-                id={tensaiContent.heroPhotoId}
-                priority
-                sizes="(max-width: 959px) 100vw, 720px"
-                className={styles.heroImage}
-              />
-              <span className={styles.heroGlare} aria-hidden="true" />
+          <div data-depth="0.3">
+            <div className={styles.device} data-device>
+              <div className={`${styles.heroFrame} intro-clip`} data-tilt="3">
+                <TwoPathPhoto
+                  id={tensaiContent.heroPhotoId}
+                  priority
+                  sizes="(max-width: 959px) 100vw, 720px"
+                  className={styles.heroImage}
+                />
+                <span className={styles.heroGlare} aria-hidden="true" />
+              </div>
             </div>
           </div>
           {/* data-speed moves the outer chip, so the intro runs on the inner one (GSAP folds a CSS
               translate on the element it drives into its own transform). */}
           <p className={`${styles.callout} ${styles.calloutCourse}`} aria-hidden="true" data-speed="-0.1">
-            <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
-              <span className={styles.calloutDot} />
-              Khóa {mapCourse.name} · {mapCourse.lessonCount} bài · {mapCourse.gateCount} màn vượt ải
+            <span className={styles.depthLayer} data-depth="0.7">
+              <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
+                <span className={styles.calloutDot} />
+                Khóa {mapCourse.name} · {mapCourse.lessonCount} bài · {mapCourse.gateCount} màn vượt ải
+              </span>
             </span>
           </p>
           <p className={`${styles.callout} ${styles.calloutGate}`} aria-hidden="true" data-speed="0.14">
-            <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.3s' } as CSSProperties}>
-              <Star size={16} strokeWidth={2.2} />
-              {tensaiContent.heroCallout}
+            <span className={styles.depthLayer} data-depth="0.9">
+              <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.3s' } as CSSProperties}>
+                <Star size={16} strokeWidth={2.2} />
+                {tensaiContent.heroCallout}
+              </span>
             </span>
           </p>
+          <div className={styles.tryCard} data-speed="-0.08" data-speed-wide>
+            <div data-depth="1.2">
+              <div className="intro-fade" style={{ '--intro-delay': '1.45s' } as CSSProperties}>
+                <TensaiTryCard />
+              </div>
+            </div>
+          </div>
           <figcaption className="intro-fade">{photo(tensaiContent.heroPhotoId).caption}</figcaption>
         </figure>
       </section>
