@@ -88,6 +88,7 @@ export const homeContent = {
     title: 'Hình thật. Người thật. Việc thật.',
     lead: 'Không có ảnh dựng. Đây là những buổi học, buổi offline và những bữa ăn sau giờ học đã diễn ra.',
     link: { label: 'Xem Conan School', href: '/conan' },
+    hint: { fine: 'Kéo ngang hoặc dùng mũi tên', touch: 'Vuốt ngang để xem tiếp' },
     photoIds: [
       'gallery-decision-making',
       'gallery-manulife',

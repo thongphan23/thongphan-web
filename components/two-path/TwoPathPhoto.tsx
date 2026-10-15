@@ -11,11 +11,14 @@ type TwoPathPhotoProps = {
   sizes: string
   className?: string
   priority?: boolean
+  // Below-the-fold photos on the home page: fetched right after the first screen at low priority, so a
+  // fast scroll never meets an empty frame, without competing with the hero for bandwidth.
+  eager?: boolean
   // Decorative photos sit inside a link or next to text that already says what they show.
   decorative?: boolean
 }
 
-export default function TwoPathPhoto({ id, sizes, className, priority = false, decorative = false }: TwoPathPhotoProps) {
+export default function TwoPathPhoto({ id, sizes, className, priority = false, eager = false, decorative = false }: TwoPathPhotoProps) {
   const item = photo(id)
   return (
     <Image
@@ -26,6 +29,7 @@ export default function TwoPathPhoto({ id, sizes, className, priority = false, d
       sizes={sizes}
       className={className}
       priority={priority}
+      {...(eager && !priority ? { loading: 'eager' as const, fetchPriority: 'low' as const } : {})}
       style={focalStyle(item)}
     />
   )

@@ -4,6 +4,7 @@ import { PATH_LABELS, type PathKey, type Placement } from '@/lib/two-path-links'
 import PathLink from './PathLink'
 import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
+import home from './HomeSections.module.css'
 
 type PathDoorsProps = {
   // hero: two large buttons under the first-screen question; closing: two large rows that end a page.
@@ -63,25 +64,31 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
   }
 
   return (
-    <nav className={styles.doors} aria-label="Chọn con đường của bạn">
+    <nav className={`${styles.doors} ${home.heroDoors}`} aria-label="Chọn con đường của bạn">
       {homeContent.doors.map((door) => (
         <PathLink
           key={door.path}
           path={door.path}
           kind="door"
           placement={placement}
-          className={styles.door}
+          className={`${styles.door} ${home.heroDoor}`}
           data-path-door={door.path}
           data-magnetic="0.14"
         >
           <span className={styles.doorFill} aria-hidden="true" />
-          <TwoPathPhoto id={door.photoId} decorative priority sizes="56px" className={styles.doorPhoto} />
+          <TwoPathPhoto
+            id={door.photoId}
+            decorative
+            priority
+            sizes="96px"
+            className={`${styles.doorPhoto} ${home.heroPhoto}`}
+          />
           <span className={styles.doorText} data-magnetic-inner>
-            <span className={styles.doorProduct}>{PATH_LABELS[door.path]}</span>
-            <span className={styles.doorLabel}>{door.label}</span>
+            <span className={`${styles.doorProduct} ${home.heroProduct}`}>{PATH_LABELS[door.path]}</span>
+            <span className={`${styles.doorLabel} ${home.heroLabel}`}>{door.label}</span>
           </span>
-          <span className={styles.doorArrow} aria-hidden="true">
-            <ArrowRight size={22} />
+          <span className={`${styles.doorArrow} ${home.heroArrow}`} aria-hidden="true">
+            <ArrowRight size={28} />
           </span>
         </PathLink>
       ))}

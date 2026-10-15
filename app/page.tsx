@@ -3,6 +3,7 @@ import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import FieldNotes from '@/components/two-path/FieldNotes'
 import FounderLetter from '@/components/two-path/FounderLetter'
 import GuideZoom from '@/components/two-path/GuideZoom'
+import HeroStageFx from '@/components/two-path/HeroStageFx'
 import PathDoors from '@/components/two-path/PathDoors'
 import PathMarquee from '@/components/two-path/PathMarquee'
 import PathResume from '@/components/two-path/PathResume'
@@ -31,6 +32,7 @@ export default function HomePage() {
       {/* The stage: Thông stands in front of his own name. The engine (signatures.ts) moves the
           layers and the light with the pointer and parts the name as the reader scrolls away. */}
       <section className={styles.hero} aria-labelledby="home-title" data-stage>
+        <HeroStageFx />
         <div className={styles.stage} aria-hidden="true">
           <span className={styles.stageAura} data-stage-aura="tensai" />
           <span className={styles.stageAura} data-stage-aura="conan" />
@@ -47,6 +49,7 @@ export default function HomePage() {
           <div className={styles.stagePersonInner} data-stage-person>
             <HeroPicture id={homeContent.hero.photoId} mobileId={homeContent.hero.mobilePhotoId} className={styles.stagePicture} />
             <span className={styles.stageSpot} aria-hidden="true" />
+            <span className={styles.stageLamp} aria-hidden="true" />
             <span className={styles.stageLight} aria-hidden="true" />
           </div>
         </div>
@@ -62,9 +65,11 @@ export default function HomePage() {
                 <SplitWords text={titleQuestion} start={wordCount(titleLead)} />
               </em>
             </h1>
-            <PathResume copy={homeContent.resume} />
           </div>
           <PathDoors variant="hero" placement="door" />
+          <div className={styles.resumeDock}>
+            <PathResume copy={homeContent.resume} />
+          </div>
         </div>
         <p className={`${styles.scrollCue} intro-fade`} aria-hidden="true">
           <span>{homeContent.hero.scrollCue}</span>

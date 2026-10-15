@@ -1,54 +1,92 @@
 import { homeContent } from '@/lib/two-path-content'
+import { PATH_LABELS, type PathKey } from '@/lib/two-path-links'
 import TwoPathPhoto from './TwoPathPhoto'
-import styles from './TwoPath.module.css'
+import home from './HomeSections.module.css'
 
-// The letter reads like a page: the opening lights up word by word as it scrolls through, the
-// debt breaks out of it as a pull quote, the middle reads as one column of large type, and the
-// stage photo stays beside it on wide screens.
+// The letter is told in four beats, one idea per screen:
+//   1. who is writing (the portrait, the title and the first sentence, lit word by word),
+//   2. the number (a lacquer band that holds the screen while the debt lights up word by word),
+//   3. what he lost (one large sentence),
+//   4. what he chose: the two paths as two ruled rows, the closing line, the signature.
+// Without the motion engine (or under reduced motion) every beat is simply a tall, fully lit block.
+const PATH_ORDER: PathKey[] = ['tensai', 'conan']
+
 export default function FounderLetter() {
   const { letter } = homeContent
   const [lead, ...rest] = letter.paragraphs
   const [leadBefore, leadAfter] = lead.split(letter.pullQuote).map((part) => part.trim())
-  const middle = rest.slice(0, -1)
+  const [stakes, paths] = rest.slice(0, -1)
   const last = rest[rest.length - 1]
+  // "Nếu bạn đi làm, ... . Nếu bạn đang hoặc muốn kinh doanh, ..." becomes one row per path.
+  const pathRows = (paths ?? '').split(/(?<=\.)\s+(?=Nếu)/).filter(Boolean)
+  const closingLines = last.split(/(?<=\.)\s+/).filter(Boolean)
+
   return (
-    <section className={styles.letter} aria-labelledby="founder-letter-title">
-      <div className={styles.letterInner}>
-        <div className={styles.letterAside}>
-          <figure className={styles.letterPortrait} data-img-reveal="up" data-parallax-frame="5">
-            <span className={styles.revealMedia} data-reveal-media>
-              <TwoPathPhoto id={letter.portraitId} sizes="(max-width: 1023px) 86vw, 520px" />
-            </span>
-          </figure>
-        </div>
-        <div className={styles.letterBody}>
-          <h2 id="founder-letter-title" className={styles.letterTitle} data-split>
+    <section className={home.letter} aria-labelledby="founder-letter-title">
+      <div className={home.letterOpen}>
+        <figure className={home.letterPortrait} data-img-reveal="up" data-parallax-frame="5">
+          <span className={home.letterPortraitMedia} data-reveal-media>
+            <TwoPathPhoto id={letter.portraitId} eager sizes="(max-width: 899px) 86vw, 36rem" />
+          </span>
+        </figure>
+        <div className={home.letterOpenBody}>
+          <h2 id="founder-letter-title" className={home.letterTitle} data-split>
             {letter.title}
           </h2>
-          <p className={styles.letterLead} data-scrub-words data-scrub-from="0.72" data-scrub-end="top 64%">
+          <p className={home.letterLead} data-scrub-words data-scrub-from="0.3" data-scrub-end="top 60%">
             {leadBefore}
           </p>
-          <blockquote className={styles.letterPull}>
-            <span className={styles.letterPullRule} data-draw-line aria-hidden="true" />
-            <p data-split>{letter.pullQuote}</p>
-          </blockquote>
-          <p className={styles.letterLead} data-motion-reveal="drift">
-            {leadAfter}
-          </p>
-          <div className={styles.letterRest} data-reveal-children data-stagger="0.14">
-            {middle.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <p className={styles.letterLast} data-motion-reveal="drift">
-            {last}
-          </p>
-          <p className={styles.signature} data-motion-reveal="drift">
-            <span className={styles.signatureLine} data-draw-line aria-hidden="true" />
-            <span className={styles.signatureName}>{letter.signature}</span>
-            <span className={styles.signatureRole}>{letter.signatureRole}</span>
-          </p>
         </div>
+      </div>
+
+      <div className={home.debt} data-scrub-stage>
+        <div className={home.debtSticky}>
+          <blockquote className={home.debtQuote}>
+            <span className={home.debtRule} data-draw-line aria-hidden="true" />
+            <p data-scrub-words data-scrub-from="0.2" data-scrub-start="top 25%" data-scrub-end="bottom 100%">
+              {letter.pullQuote}
+            </p>
+          </blockquote>
+          <span className={home.debtProgress} aria-hidden="true" />
+        </div>
+      </div>
+
+      <div className={home.letterClose}>
+        <p className={home.afterLead} data-motion-reveal="drift">
+          {leadAfter}
+        </p>
+        {stakes ? (
+          <p className={home.stakes} data-motion-reveal="drift">
+            {stakes}
+          </p>
+        ) : null}
+        {pathRows.length ? (
+          <div className={home.pathRows} data-reveal-children data-stagger="0.16">
+            {pathRows.map((row, index) => {
+              const path = PATH_ORDER[index] ?? 'tensai'
+              return (
+                <p key={row} className={home.pathRow} data-path={path}>
+                  <span className={home.pathTag} aria-hidden="true">
+                    {PATH_LABELS[path]}
+                  </span>
+                  <span className={home.pathText}>{row}</span>
+                </p>
+              )
+            })}
+          </div>
+        ) : null}
+        <p className={home.choice} data-motion-reveal="drift">
+          {closingLines.map((line) => (
+            <span key={line} className={home.choiceLine}>
+              {line}
+            </span>
+          ))}
+        </p>
+        <p className={home.signature} data-motion-reveal="drift">
+          <span className={home.signatureLine} data-draw-line aria-hidden="true" />
+          <span className={home.signatureName}>{letter.signature}</span>
+          <span className={home.signatureRole}>{letter.signatureRole}</span>
+        </p>
       </div>
     </section>
   )

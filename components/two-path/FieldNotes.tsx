@@ -4,47 +4,53 @@ import { homeContent } from '@/lib/two-path-content'
 import { photo } from '@/lib/two-path-photos'
 import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
+import home from './HomeSections.module.css'
 
 const formatter = new Intl.NumberFormat('vi-VN')
 
-// Two checked numbers side by side, then the room they came from as one wide photo.
+// Two checked numbers, each on its own ruled row with the name of the number set beside it, then
+// the room they came from as one wide band of photo running to the edges of the screen.
 export default function FieldNotes() {
   const { fieldNotes } = homeContent
   return (
-    <section className={styles.fieldNotes} aria-labelledby="field-notes-title">
-      <div className={styles.sectionInner}>
-        <h2 id="field-notes-title" className={styles.sectionTitle} data-split>
+    <section className={`${styles.fieldNotes} ${home.stats}`} aria-labelledby="field-notes-title">
+      <div className={`${styles.sectionInner} ${home.statsInner}`}>
+        <h2 id="field-notes-title" className={`${styles.sectionTitle} ${home.statsTitle}`} data-split>
           {fieldNotes.title}
         </h2>
-        <div className={styles.fieldGrid}>
-          <div className={styles.fieldCards} data-reveal-children data-stagger="0.16">
-            {fieldNotes.cards.map((card) => (
-              <article key={card.claimId} className={styles.fieldCard}>
-                {/* The claim text below already states the number, so the counter is visual only. */}
-                <p className={styles.fieldStat} aria-hidden="true">
+        <div className={home.statRows}>
+          {fieldNotes.cards.map((card) => (
+            <article key={card.claimId} className={home.statRow}>
+              <span className={home.statRule} data-draw-line aria-hidden="true" />
+              {/* The claim text below already states the number, so the counter is visual only. */}
+              <p className={home.stat} aria-hidden="true">
+                <span className={home.statNumber}>
                   <span data-count={card.stat.value}>{formatter.format(card.stat.value)}</span>
                   {card.stat.suffix}
-                  <span className={styles.fieldStatLabel}>{card.stat.label}</span>
-                </p>
-                <span className={styles.fieldRule} data-draw-line aria-hidden="true" />
-                <p className={styles.fieldClaim}>{card.text}</p>
+                </span>
+                <span className={home.statLabel}>{card.stat.label}</span>
+              </p>
+              <div className={home.statBody} data-motion-reveal="drift">
+                <p className={home.statClaim}>{card.text}</p>
                 <Link href={card.href} className={styles.textLink} data-motion-action>
                   {card.linkLabel}
-                  <ArrowRight aria-hidden="true" size={16} />
+                  <ArrowRight aria-hidden="true" size={18} />
                 </Link>
-              </article>
-            ))}
-          </div>
-          <figure className={styles.fieldPhoto} data-motion-surface>
-            <div className={styles.fieldPhotoFrame} data-img-reveal="left" data-parallax-frame="7">
-              <span className={styles.revealMedia} data-reveal-media>
-                <TwoPathPhoto id={fieldNotes.photoId} sizes="(max-width: 899px) 100vw, 92vw" />
-              </span>
-            </div>
-            <figcaption data-motion-reveal>{photo(fieldNotes.photoId).caption}</figcaption>
-          </figure>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
+      <figure className={home.statPhoto} data-motion-surface>
+        <div className={home.statPhotoFrame} data-img-reveal="left" data-parallax-frame="7">
+          <span className={styles.revealMedia} data-reveal-media>
+            <TwoPathPhoto id={fieldNotes.photoId} eager sizes="100vw" />
+          </span>
+        </div>
+        <figcaption className={home.statCaption} data-motion-reveal>
+          {photo(fieldNotes.photoId).caption}
+        </figcaption>
+      </figure>
     </section>
   )
 }

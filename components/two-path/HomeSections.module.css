@@ -1,0 +1,1162 @@
+/* The homepage's own scenes. The pieces both branch pages share stay in TwoPath.module.css; what is
+   here only applies on `/`. Sizes are chosen to be read when the whole page is shrunk to a thumbnail:
+   one idea per screen, display type at 90px and up, body copy at 28px and up on wide screens.
+
+   Rhythm of the page, top to bottom:
+   hero (ink) / letter (paper) / debt (lacquer) / letter close (paper) / guide (ink) /
+   tapes (lime + lacquer on ink) / stats (ink) / reel (ink) / closing (deep paper). */
+
+/* ------------------------------------------------------------------ hero doors */
+
+/* Two big pills under the question. The shared `.door` rules still own colour, hover flood and
+   the intro; these only change scale, so every selector here is `.heroDoors .x` (one class more). */
+.heroDoors {
+  gap: 1rem;
+  margin-top: clamp(1.25rem, 3svh, 2rem);
+}
+
+.heroDoors .heroDoor {
+  background: rgb(12 11 10 / 0.8);
+  box-shadow:
+    inset 0 0 0 1px rgb(232 223 207 / 0.22),
+    0 1.25rem 3rem rgb(0 0 0 / 0.45);
+  gap: 0 1.15rem;
+  min-height: 6.75rem;
+  padding: 0.65rem;
+  width: min(100%, 33rem);
+}
+
+.heroDoors .heroPhoto {
+  height: 5.4rem;
+  width: 5.4rem;
+}
+
+.heroDoors .heroArrow {
+  height: 5.4rem;
+  width: 5.4rem;
+}
+
+.heroDoors .heroProduct {
+  font-size: 1.0625rem;
+  letter-spacing: 0.16em;
+}
+
+.heroDoors .heroLabel {
+  font-size: clamp(1.5rem, 1.05rem + 0.95vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* Pills react to the pointer before the flood: they lift and the photo leans in. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .heroDoors .heroDoor {
+    transition:
+      border-color 500ms var(--brand-motion-ease),
+      color 420ms var(--brand-motion-ease),
+      box-shadow 600ms var(--brand-motion-ease);
+  }
+
+  .heroDoors .heroDoor:hover {
+    box-shadow:
+      inset 0 0 0 1px rgb(232 223 207 / 0),
+      0 1.75rem 4rem rgb(0 0 0 / 0.55);
+  }
+
+  .heroDoors .heroPhoto {
+    transition: scale 700ms var(--brand-motion-ease);
+  }
+
+  .heroDoors .heroDoor:hover .heroPhoto {
+    scale: 1.12;
+  }
+}
+
+@media (max-width: 1099px) and (min-width: 768px) {
+  .heroDoors .heroDoor {
+    min-height: 6rem;
+    width: min(100%, 27rem);
+  }
+
+  .heroDoors .heroPhoto,
+  .heroDoors .heroArrow {
+    height: 4.75rem;
+    width: 4.75rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroDoors {
+    gap: 0.625rem;
+    margin-top: 1.125rem;
+  }
+
+  .heroDoors .heroDoor {
+    gap: 0 0.8rem;
+    min-height: 4.9rem;
+    padding: 0.45rem;
+    width: 100%;
+  }
+
+  .heroDoors .heroPhoto,
+  .heroDoors .heroArrow {
+    height: 3.9rem;
+    width: 3.9rem;
+  }
+
+  .heroDoors .heroProduct {
+    font-size: 0.875rem;
+  }
+
+  .heroDoors .heroLabel {
+    font-size: 1.5rem;
+  }
+}
+
+/* ------------------------------------------------------------------ letter */
+
+.letter {
+  background: var(--brand-reading-paper);
+  color: var(--brand-text-on-paper);
+}
+
+/* Beat 1: who is writing. The portrait is big enough to be a face, not a thumbnail. */
+.letterOpen {
+  align-items: center;
+  display: grid;
+  gap: clamp(2rem, 5vw, 6rem);
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: clamp(3rem, 7svh, 5.5rem) var(--brand-space-inline) clamp(2.5rem, 5svh, 4rem);
+}
+
+.letterPortrait {
+  aspect-ratio: 4 / 5;
+  background: var(--brand-reading-paper-deep);
+  border-radius: 6px;
+  box-shadow: 0 2.5rem 5rem -2rem rgb(40 22 12 / 0.45);
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  width: min(100%, 32rem);
+}
+
+/* A soft ink fall at the foot settles the portrait onto the paper. */
+.letterPortrait::after {
+  background: linear-gradient(180deg, transparent 60%, rgb(40 22 12 / 0.34));
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.letterPortraitMedia {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.letterPortrait img {
+  display: block;
+  /* The bookshop shot is brighter and warmer than the stage above; one step deeper keeps them one shoot. */
+  filter: saturate(0.62) sepia(0.2) contrast(1.1) brightness(0.96);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.letterOpenBody {
+  min-width: 0;
+}
+
+.letterTitle {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.1rem, 1rem + 6.4vw, 7.6rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+  margin: 0 0 clamp(1.5rem, 3.2vw, 3rem);
+  max-width: 9.5ch;
+  text-wrap: balance;
+}
+
+.letterLead {
+  color: #241f1b;
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.9rem, 1rem + 2.5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.16;
+  margin: 0;
+  max-width: 17em;
+  text-wrap: balance;
+}
+
+@media (min-width: 900px) {
+  .letterOpen {
+    grid-template-columns: min(32rem, 40vw, 52svh) minmax(0, 1fr);
+  }
+}
+
+/* Beat 2: the number. A full-screen lacquer band that holds still while the debt lights up word
+   by word. Without the engine it is one calm block. */
+.debt {
+  background: var(--brand-lacquer);
+  color: var(--brand-reading-paper);
+  isolation: isolate;
+  overflow: clip;
+  padding: clamp(5rem, 16svh, 9rem) var(--brand-space-inline);
+  position: relative;
+}
+
+.debt::before {
+  background-image: var(--brand-grain);
+  content: '';
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.debtSticky {
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.debtQuote {
+  margin: 0 auto;
+  max-width: 1360px;
+  width: 100%;
+}
+
+.debtRule {
+  background: var(--brand-reading-paper);
+  display: block;
+  height: 3px;
+  margin-bottom: clamp(1.25rem, 3vw, 2.25rem);
+  width: clamp(4rem, 9vw, 8rem);
+}
+
+.debtQuote p {
+  color: var(--brand-reading-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.5rem, 0.8rem + 13vw, 15rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.028em;
+  line-height: 0.95;
+  margin: 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.debtProgress {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .debt {
+    height: 112vh;
+    height: 112svh;
+    padding: 0;
+  }
+
+  :global(html.motion) .debtSticky {
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    padding: 0 var(--brand-space-inline);
+    position: sticky;
+    top: 0;
+  }
+
+  /* Progress hairline along the foot of the held screen, where the browser can scrub it by scroll. */
+  @supports (animation-timeline: view()) {
+    :global(html.motion) .debt {
+      view-timeline: --debt block;
+    }
+
+    :global(html.motion) .debtProgress {
+      background: rgb(243 239 230 / 0.28);
+      bottom: clamp(1.5rem, 5svh, 3.25rem);
+      display: block;
+      height: 2px;
+      left: var(--brand-space-inline);
+      position: absolute;
+      right: var(--brand-space-inline);
+    }
+
+    :global(html.motion) .debtProgress::after {
+      animation: debtFill linear both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --debt;
+      background: var(--brand-reading-paper);
+      content: '';
+      inset: 0;
+      position: absolute;
+      transform-origin: 0 50%;
+    }
+  }
+}
+
+@keyframes debtFill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Beat 3: what he lost and what he chose. */
+.letterClose {
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: clamp(3rem, 6.5svh, 5rem) var(--brand-space-inline) clamp(3rem, 7svh, 5rem);
+}
+
+.afterLead {
+  color: var(--brand-text-on-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.1rem, 1rem + 3vw, 4.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 clamp(2rem, 4.5svh, 3.25rem);
+  max-width: 26ch;
+  text-wrap: balance;
+}
+
+.stakes {
+  color: #241f1b;
+  font-size: clamp(1.375rem, 0.9rem + 1.1vw, 2.05rem);
+  line-height: 1.5;
+  margin: 0 0 clamp(2rem, 4.5svh, 3.25rem);
+  max-width: 34em;
+  text-wrap: pretty;
+}
+
+/* The two paths as two ruled rows: the name in its own colour, then what it is for. */
+.pathRows {
+  border-top: 1px solid rgb(23 20 16 / 0.28);
+  display: grid;
+  margin: 0 0 clamp(2.5rem, 6svh, 4.5rem);
+}
+
+.pathRow {
+  align-items: baseline;
+  border-bottom: 1px solid rgb(23 20 16 / 0.28);
+  color: #241f1b;
+  display: grid;
+  gap: 0.9rem clamp(1.5rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+  padding: clamp(1.25rem, 3.4svh, 2rem) 0;
+}
+
+.pathRow[data-path='tensai'] {
+  --tag-bg: #c3f331;
+  --tag-fg: #073b2f;
+}
+
+.pathRow[data-path='conan'] {
+  --tag-bg: #c4441f;
+  --tag-fg: #ffffff;
+}
+
+.pathTag {
+  background: var(--tag-bg);
+  border-radius: 999px;
+  color: var(--tag-fg);
+  font-family: var(--font-be-vietnam);
+  font-size: clamp(0.9375rem, 0.82rem + 0.3vw, 1.125rem);
+  font-weight: 700;
+  justify-self: start;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  padding: 0.85em 1.3em;
+  text-transform: uppercase;
+}
+
+.pathText {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.7rem, 1rem + 1.9vw, 2.9rem);
+  font-weight: 500;
+  line-height: 1.16;
+  max-width: 28em;
+  text-wrap: pretty;
+}
+
+@media (min-width: 900px) {
+  .pathRow {
+    align-items: center;
+    grid-template-columns: clamp(11rem, 17vw, 16rem) minmax(0, 1fr);
+  }
+}
+
+.choice {
+  color: var(--brand-text-on-paper);
+  display: grid;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 1rem + 5.2vw, 6.9rem);
+  font-weight: 500;
+  gap: 0.02em;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  margin: 0;
+}
+
+.choiceLine:last-child {
+  color: var(--brand-lacquer);
+  font-style: italic;
+}
+
+.signature {
+  display: grid;
+  gap: 0.4rem;
+  margin: clamp(2rem, 4.5svh, 3rem) 0 0;
+  max-width: 22rem;
+}
+
+.signatureLine {
+  background: currentColor;
+  display: block;
+  height: 1px;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.signatureName {
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 1.4rem + 1.4vw, 2.75rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.signatureRole {
+  color: #4a4038;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ guide ("Người [photo] dẫn đường") */
+
+/* The room's faces sit in the upper left of the class photo; the crop keeps them in frame at every size. */
+.guide.guide .guideImage img {
+  object-position: 36% 20%;
+}
+
+/* The caption over the photo reads at a glance: a deep scrim under it and a real line height on the
+   small caps line above it. Doubled class names beat the shared guide rules (one class and an attribute). */
+.guide.guide .guideScrim {
+  background: linear-gradient(180deg, rgb(0 0 0 / 0) 46%, rgb(0 0 0 / 0.5) 72%, rgb(0 0 0 / 0.82));
+}
+
+.guide.guide .guideCaption {
+  font-size: clamp(1.9rem, 1rem + 2.3vw, 3.6rem);
+  line-height: 1.06;
+  max-width: min(100%, 64rem);
+  text-wrap: balance;
+  text-shadow: 0 0.08em 0.6em rgb(0 0 0 / 0.55);
+}
+
+.guide.guide .guideCaptionMark {
+  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.1875rem);
+  line-height: 1.35;
+  opacity: 0.96;
+}
+
+@media (max-width: 899px) {
+  .guide.guide .guideCaptionMark {
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Scroll-driven version. The section is one screen plus the run the photo needs; its stage sticks for
+   that run (sticky, not pinned by script) and one timeline over the run drives the whole opening:
+   the slot widens to the frame, the image settles from the faces to the room, the words part and
+   go, then the caption comes up. It starts on the first frame of the pin and holds only briefly at
+   the end. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    :global(html.motion) .guide.guide {
+      --guide-run: 50svh;
+      --slot-w: clamp(10rem, 24vw, 26rem);
+      --slot-h: calc(var(--slot-w) * 0.75);
+      --frame-top: max(76px, 10svh);
+      --frame-side: 5vw;
+      --frame-bottom: 5svh;
+      --frame-radius: 14px;
+      /* Image layer: at the start it is a little smaller than the screen and shifted so the faces
+         sit in the slot; at the end it just covers the frame. Both ends keep the clip inside the layer. */
+      --img-s0: 0.72;
+      --img-x0: 6.5%;
+      --img-y0: 12.1%;
+      --img-s1: 0.92;
+      --img-y1: calc((var(--frame-top) - var(--frame-bottom)) / 2);
+      --part-x: 34vw;
+      --part-y: 0px;
+      height: calc(100svh + var(--guide-run));
+      overflow: visible;
+      padding: 0;
+      view-timeline: --guide block;
+    }
+
+    :global(html.motion) .guide.guide .guideStage {
+      display: block;
+      height: 100svh;
+      max-width: none;
+      position: sticky;
+      top: 0;
+    }
+
+    /* Three columns with the slot in the middle one keep the slot on the middle of the stage, which
+       is where the clip below opens from. */
+    :global(html.motion) .guide.guide .guideTitle {
+      align-items: center;
+      column-gap: 0.14em;
+      display: grid;
+      font-size: clamp(3.4rem, 0.5rem + 8vw, 10rem);
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      height: 100%;
+      justify-content: normal;
+      padding-inline: var(--brand-space-inline);
+      pointer-events: none;
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+
+    :global(html.motion) .guide.guide .guideSlot {
+      aspect-ratio: 4 / 3;
+      display: block;
+      width: var(--slot-w);
+    }
+
+    :global(html.motion) .guide.guide .guideLeft {
+      animation: guidePartLeft cubic-bezier(0.5, 0, 0.9, 0.4) both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --guide;
+      justify-self: end;
+    }
+
+    :global(html.motion) .guide.guide .guideRight {
+      animation: guidePartRight cubic-bezier(0.5, 0, 0.9, 0.4) both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --guide;
+      justify-self: start;
+    }
+
+    :global(html.motion) .guide.guide .guideMedia {
+      animation: guideOpen linear both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --guide;
+      aspect-ratio: auto;
+      border-radius: 0;
+      clip-path: inset(calc(50% - var(--slot-h) / 2) calc(50% - var(--slot-w) / 2) round 6px);
+      inset: 0;
+      position: absolute;
+      z-index: 1;
+    }
+
+    :global(html.motion) .guide.guide .guideImage {
+      animation: guideLayer linear both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --guide;
+      inset: 0;
+      position: absolute;
+      scale: var(--img-s0);
+      translate: var(--img-x0) var(--img-y0);
+      will-change: scale, translate;
+    }
+
+    :global(html.motion) .guide.guide .guideScrim,
+    :global(html.motion) .guide.guide .guideCaption {
+      animation: guideAfter linear both;
+      animation-range: contain 0% contain 100%;
+      animation-timeline: --guide;
+    }
+
+    @media (min-width: 900px) {
+      :global(html.motion) .guide.guide .guideCaption {
+        padding: 0 0 calc(5svh + clamp(1.5rem, 3vw, 2.75rem)) calc(5vw + clamp(1.5rem, 3vw, 2.75rem));
+      }
+    }
+
+    @media (max-width: 899px) {
+      :global(html.motion) .guide.guide {
+        --guide-run: 48svh;
+        --slot-w: min(66vw, 17rem);
+        --frame-top: 0px;
+        --frame-side: 0px;
+        --frame-bottom: 0px;
+        --frame-radius: 0px;
+        --img-x0: 0%;
+        --img-y0: 13.7%;
+        --img-s1: 1;
+        --part-x: 0px;
+        --part-y: 30svh;
+      }
+
+      :global(html.motion) .guide.guide .guideTitle {
+        font-size: clamp(3.8rem, 19vw, 7.4rem);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+        justify-items: center;
+        row-gap: 0.1em;
+      }
+
+      :global(html.motion) .guide.guide .guideLeft {
+        align-self: end;
+        justify-self: center;
+      }
+
+      :global(html.motion) .guide.guide .guideRight {
+        align-self: start;
+        justify-self: center;
+      }
+    }
+
+    @keyframes guideOpen {
+      0% {
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+        clip-path: inset(calc(50% - var(--slot-h) / 2) calc(50% - var(--slot-w) / 2) round 6px);
+      }
+
+      62%,
+      100% {
+        clip-path: inset(var(--frame-top) var(--frame-side) var(--frame-bottom) var(--frame-side) round var(--frame-radius));
+      }
+    }
+
+    /* Same easing and same stops as the clip: that keeps the clip inside the layer for the whole move. */
+    @keyframes guideLayer {
+      0% {
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+        scale: var(--img-s0);
+        translate: var(--img-x0) var(--img-y0);
+      }
+
+      62%,
+      100% {
+        scale: var(--img-s1);
+        translate: 0% var(--img-y1);
+      }
+    }
+
+    @keyframes guidePartLeft {
+      0% {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      38%,
+      100% {
+        opacity: 0;
+        translate: calc(var(--part-x) * -1) calc(var(--part-y) * -1);
+      }
+    }
+
+    @keyframes guidePartRight {
+      0% {
+        opacity: 1;
+        translate: 0 0;
+      }
+
+      38%,
+      100% {
+        opacity: 0;
+        translate: var(--part-x) var(--part-y);
+      }
+    }
+
+    @keyframes guideAfter {
+      0%,
+      54% {
+        opacity: 0;
+        translate: 0 24px;
+      }
+
+      74%,
+      100% {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ tapes (the two paths as moving type) */
+
+.tapes {
+  background: var(--brand-ink);
+  display: grid;
+  gap: clamp(0.9rem, 3.4vw, 3rem);
+  overflow: hidden;
+  padding: clamp(3rem, 6.5svh, 5rem) 0;
+}
+
+/* Each strip is a little wider than the page, so its tilted ends never leave a gap at the edges. */
+.tape {
+  display: flex;
+  margin-inline: -5%;
+  white-space: nowrap;
+  width: 110%;
+}
+
+.tape[data-path='tensai'] {
+  --tape-bg: #c3f331;
+  --tape-fg: #073b2f;
+  rotate: -1.6deg;
+}
+
+.tape[data-path='conan'] {
+  --tape-bg: #c4441f;
+  --tape-fg: #ffffff;
+  rotate: 1.6deg;
+}
+
+.tapeTrack {
+  align-items: center;
+  background: var(--tape-bg);
+  color: var(--tape-fg);
+  display: flex;
+  flex: none;
+  padding-block: 0.1em;
+  will-change: transform;
+}
+
+.tapeWord,
+.tapeProduct {
+  align-items: center;
+  display: inline-flex;
+  flex: none;
+  font-family: var(--font-cormorant);
+  font-size: clamp(3.2rem, 1.2rem + 5.8vw, 8rem);
+  gap: 0.45em;
+  line-height: 1.12;
+  padding-inline: 0.28em;
+}
+
+.tapeWord {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.tapeProduct {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.tapeProduct::after {
+  background: currentColor;
+  border-radius: 999px;
+  content: '';
+  flex: none;
+  height: 0.14em;
+  margin-left: 0.2em;
+  width: 0.14em;
+}
+
+/* ------------------------------------------------------------------ stats (field notes) */
+
+.stats.stats {
+  padding: clamp(4.5rem, 10svh, 7rem) 0 0;
+}
+
+.statsInner {
+  padding-inline: var(--brand-space-inline);
+}
+
+.statsTitle.statsTitle {
+  font-size: clamp(3rem, 1rem + 6vw, 7.4rem);
+  line-height: 0.96;
+  margin-bottom: clamp(2rem, 5svh, 3.5rem);
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.statRows {
+  display: grid;
+}
+
+.statRow {
+  align-items: end;
+  border-top: 1px solid var(--brand-line-dark);
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 3.5rem);
+  padding: clamp(1.5rem, 4.5svh, 3rem) 0 clamp(1.75rem, 4.5svh, 3.25rem);
+  position: relative;
+}
+
+.statRow:last-child {
+  border-bottom: 1px solid var(--brand-line-dark);
+}
+
+/* A short lacquer segment draws along the hairline above each figure. */
+.statRule {
+  background: var(--brand-lacquer-bright);
+  display: block;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: -2px;
+  width: clamp(4rem, 9vw, 8rem);
+}
+
+.stat {
+  align-items: baseline;
+  column-gap: 0.28em;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  min-width: 0;
+}
+
+.statNumber {
+  font-family: var(--font-cormorant);
+  font-size: clamp(6rem, 2rem + 13.5vw, 17rem);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+}
+
+.statLabel {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 1.2rem + 2.2vw, 3.6rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.statBody {
+  max-width: 30rem;
+}
+
+.statClaim {
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.6rem, 1rem + 1.35vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 1.1rem;
+}
+
+.statBody a {
+  font-size: 1.0625rem;
+}
+
+@media (min-width: 900px) {
+  .statRow {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  }
+
+  .statBody {
+    padding-bottom: 0.4rem;
+  }
+}
+
+/* On a wide screen the title is set down the left and holds still while the two numbers pass on the
+   right, so the first screen of the section already shows a title and a figure instead of a title
+   and an empty field. */
+@media (min-width: 1100px) {
+  .statsInner.statsInner {
+    align-items: start;
+    column-gap: clamp(3rem, 6vw, 7rem);
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    max-width: 1560px;
+  }
+
+  .statsTitle.statsTitle {
+    align-self: start;
+    font-size: clamp(4rem, 1rem + 6.4vw, 9.5rem);
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    max-width: none;
+    position: sticky;
+    top: clamp(5.5rem, 17svh, 9rem);
+  }
+
+  .statRows {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .statRow {
+    align-items: start;
+    gap: clamp(1rem, 2.4svh, 1.75rem);
+    grid-template-columns: minmax(0, 1fr);
+    padding: clamp(1.25rem, 3.6svh, 2.4rem) 0 clamp(1.5rem, 4svh, 2.6rem);
+  }
+
+  .stat {
+    align-items: baseline;
+    column-gap: 0.3em;
+  }
+
+  .statNumber {
+    font-size: clamp(6rem, 1rem + 8.6vw, 11rem);
+  }
+
+  .statBody {
+    max-width: 34rem;
+    padding-bottom: 0;
+  }
+}
+
+/* The room the numbers came from: a wide band right to the edges of the screen. */
+.statPhoto {
+  margin: clamp(2rem, 4.5svh, 3.25rem) auto 0;
+  position: relative;
+  width: min(100%, 1200px);
+}
+
+.statPhotoFrame {
+  aspect-ratio: 4 / 3;
+  background: var(--brand-ink-raised);
+  overflow: hidden;
+  position: relative;
+}
+
+.statPhotoFrame img {
+  display: block;
+  filter: saturate(0.8) sepia(0.2) contrast(1.1) brightness(1.02);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* One surface for every phone snapshot: grain over the frame, a scrim under the caption. */
+.statPhotoFrame::after {
+  background-image: var(--brand-grain);
+  content: '';
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.24;
+  pointer-events: none;
+  position: absolute;
+}
+
+.statCaption {
+  background: linear-gradient(to top, rgb(7 7 6 / 0.88), rgb(7 7 6 / 0));
+  bottom: 0;
+  color: var(--brand-paper);
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.4rem, 1rem + 1vw, 2.1rem);
+  font-style: italic;
+  left: 0;
+  line-height: 1.2;
+  padding: 4rem var(--brand-space-inline) clamp(1.1rem, 2.6vw, 2rem);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+@media (min-width: 900px) {
+  .statPhotoFrame {
+    aspect-ratio: 2.5 / 1;
+    max-height: 82svh;
+  }
+}
+
+/* Capped at the source's own width, the frame sits inside the page with a soft corner. */
+@media (min-width: 1300px) {
+  .statPhotoFrame {
+    border-radius: 8px;
+  }
+}
+
+/* ------------------------------------------------------------------ reel */
+
+/* Captions get a size you can read, a lighter edge mask and a hint that the row can be pulled. The
+   rules are doubled (`.x.x`) to win over the shared reel rules without touching them. */
+.reel.reel {
+  /* Nothing here is pinned by a clipping box: the engine pins this section, and a pinned node with
+     overflow hidden shifts the whole page when it goes fixed. The row clips itself instead. */
+  overflow: visible;
+  padding-top: clamp(5rem, 11svh, 8rem);
+}
+
+.reel.reel[data-hscroll-active='true'] {
+  --reel-w: min(64vw, calc((88svh - 18.5rem) * 1.6));
+  padding-top: 5.5rem;
+}
+
+.reel.reel[data-hscroll-active='true'] .reelIntro {
+  margin-bottom: clamp(0.5rem, 2svh, 1.25rem);
+}
+
+.reelTitle.reelTitle {
+  font-size: clamp(3rem, 1.2rem + 4.8vw, 6.4rem);
+}
+
+.reel.reel[data-hscroll-active='true'] .reelTitle {
+  font-size: clamp(3rem, 1rem + 4vw, 5.6rem);
+}
+
+.reelLead.reelLead {
+  color: #ece6da;
+  font-size: clamp(1.1875rem, 1rem + 0.5vw, 1.5rem);
+  max-width: 30ch;
+}
+
+.reelEyebrow.reelEyebrow {
+  color: var(--brand-paper);
+  font-size: 1rem;
+}
+
+.reelViewportHome.reelViewportHome {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1.6vw, #000 calc(100% - 1.6vw), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 1.6vw, #000 calc(100% - 1.6vw), transparent 100%);
+}
+
+.reel.reel .reelMediaHome img {
+  filter: saturate(0.82) sepia(0.2) contrast(1.1) brightness(1.04);
+}
+
+/* The caption rides on the photo over a scrim, so it never competes with a busy background. */
+.reelItem.reelItem {
+  position: relative;
+}
+
+.reelCaption.reelCaption {
+  align-items: baseline;
+  background: linear-gradient(to top, rgb(7 7 6 / 0.84) 0, rgb(7 7 6 / 0.6) 50%, rgb(7 7 6 / 0));
+  bottom: 0;
+  color: #fff;
+  display: flex;
+  font-family: var(--font-be-vietnam);
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3rem);
+  font-weight: 500;
+  gap: 0.9rem;
+  left: 0;
+  line-height: 1.35;
+  padding: 3rem clamp(1rem, 2vw, 1.75rem) clamp(0.9rem, 1.8vw, 1.4rem);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.55),
+    0 2px 18px rgb(0 0 0 / 0.6);
+  z-index: 2;
+}
+
+.reelCaption .reelIndexHome {
+  color: var(--brand-paper);
+  flex: none;
+  font-family: var(--font-be-vietnam);
+  font-size: 1rem;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Pinned: the shared shade already darkens the foot of the photo at rest, so the caption sits on that
+   instead of a box of its own and takes the desktop size. */
+.reel.reel[data-hscroll-active='true'] .reelItem.reelItem .reelCaption {
+  background: none;
+  font-size: clamp(1.1875rem, 0.8rem + 0.55vw, 1.4rem);
+  max-width: 46rem;
+}
+
+.reelHint {
+  align-items: center;
+  background: rgb(232 223 207 / 0.1);
+  border: 1px solid rgb(232 223 207 / 0.36);
+  border-radius: 999px;
+  color: var(--brand-paper);
+  display: none;
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 0.7rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 0.7rem 1.15rem;
+}
+
+.reelHintArrows {
+  animation: reelNudge 2.4s var(--brand-motion-ease) infinite;
+  display: inline-flex;
+}
+
+@keyframes reelNudge {
+  0%,
+  100% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reelHintArrows {
+    animation: none;
+  }
+}
+
+.reelHintFine {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reelHintFine {
+    display: inline;
+  }
+
+  .reelHintTouch {
+    display: none;
+  }
+}
+
+/* Where the row can be moved by hand the hint sits at the foot of the screen, next to the counter. */
+.reel.reel[data-hscroll-active='true'] .reelHint {
+  bottom: clamp(0.9rem, 2.2svh, 1.5rem);
+  display: inline-flex;
+  position: absolute;
+  right: var(--brand-space-inline);
+  z-index: 3;
+}
+
+@media (max-width: 899px) {
+  .reel.reel .reelHint {
+    display: inline-flex;
+    margin: 1.25rem var(--brand-space-inline) 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .reel.reel:not([data-hscroll-active='true']) .reelHint {
+    display: none;
+  }
+
+  /* Without the pinned row (reduced motion) the four photos sit as a 2 x 2 grid, never three and an orphan. */
+  .reel.reel:not([data-hscroll-active='true']) .reelTrackHome.reelTrackHome {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* On a phone the gaps between the tapes, the figures and the reel are tightened, so no screen is
+   mostly black. */
+@media (max-width: 767px) {
+  .tapes {
+    padding: 4.5rem 0 3.25rem;
+  }
+
+  .stats.stats {
+    padding-top: 3.25rem;
+  }
+}

@@ -12,13 +12,16 @@
 .hero {
   --mx: 0.5;
   --my: 0.5;
+  /* Eased pointer (or idle drift) in -1..1, written by HeroStageFx. */
+  --hx: 0;
+  --hy: 0;
   --stage-gutter: var(--brand-space-inline);
   /* Height of the cut-out; the gap in the name is sized to his head. Taller than the screen on
      wide viewports: his head and shoulders fill the stage and the rest sinks into the floor. */
   --person-h: min(104svh, 78vw);
   background:
-    radial-gradient(ellipse 22% 30% at 50% 30%, rgba(122, 74, 42, 0.42) 0%, rgba(122, 74, 42, 0) 72%),
-    radial-gradient(ellipse 34% 50% at 50% 44%, #221d16 0%, rgba(7, 7, 6, 0) 74%),
+    radial-gradient(ellipse 22% 30% at 50% 30%, rgba(104, 72, 52, 0.26) 0%, rgba(104, 72, 52, 0) 72%),
+    radial-gradient(ellipse 34% 50% at 50% 44%, #1d1a16 0%, rgba(7, 7, 6, 0) 74%),
     var(--brand-ink);
   display: flex;
   flex-direction: column;
@@ -87,6 +90,9 @@
 
 .mastheadPart {
   display: block;
+  /* The name slides against the portrait: the engine owns transform here (scroll parting), so the
+     pointer response rides on the individual translate property. */
+  translate: calc(var(--hx) * -1.6vw) calc(var(--hy) * -0.7vw);
 }
 
 .mastheadPart[data-stage-part='left'] {
@@ -119,6 +125,16 @@
 
 .stagePersonInner {
   height: 100%;
+  /* Below the chin he dissolves into the ink, measured on the cut-out itself (chin 0.37 of its
+     height, microphone head 0.38 to 0.45), so the microphone is gone on every screen shape. */
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 36.5%,
+    rgba(0, 0, 0, 0.6) 38%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 42%
+  );
   position: relative;
   transform-origin: 50% 100%;
 }
@@ -130,10 +146,18 @@
   width: 100%;
 }
 
+/* He turns a few degrees towards the pointer and the whole figure slides with it. */
+.stagePicture {
+  rotate: calc(var(--hx) * 0.8deg);
+  transform-origin: 50% 100%;
+  translate: calc(var(--hx) * 1vw) calc(var(--hy) * 0.5vw);
+  will-change: translate, rotate;
+}
+
 .stagePicture img {
-  /* The source is a low-key stage shot: lift the shadows (more light, a touch less contrast) so the
-     face reads first; the spot below and the floor keep the jacket from competing with it. */
-  filter: brightness(1.3) contrast(1.02) saturate(0.94);
+  /* The source is a low-key stage shot: lift the shadows so the face reads first, but not so far
+     that the sensor noise blooms; the lamp and the spot do the rest. */
+  filter: brightness(1.3) contrast(1.05) saturate(0.9);
   object-fit: contain;
   object-position: 50% 100%;
 }
@@ -144,8 +168,8 @@
   background:
     radial-gradient(
       ellipse 70% 60% at calc(var(--mx) * 100%) calc(var(--my) * 60%),
-      rgba(255, 244, 222, 0.22),
-      rgba(255, 244, 222, 0) 64%
+      rgba(226, 236, 252, 0.2),
+      rgba(226, 236, 252, 0) 64%
     ),
     linear-gradient(
       90deg,
@@ -162,10 +186,27 @@
   position: absolute;
 }
 
-/* A warm spot on his face, so it is the brightest thing on the stage. */
-.stageSpot {
-  background: radial-gradient(ellipse 26% 18% at 50% 26%, rgba(255, 234, 204, 0.42), rgba(255, 234, 204, 0) 70%);
+/* A lamp that follows the pointer across his face and shoulders. Soft-light over transparent
+   pixels paints the source colour itself, so both lights are cut to the silhouette with the
+   cut-out's own alpha: they lift the face and can never float beside it as a halo. */
+.stageLamp {
+  background: radial-gradient(
+    ellipse 40% 30% at calc(50% + var(--hx) * 22%) calc(30% + var(--hy) * 12%),
+    rgba(236, 240, 248, 0.5),
+    rgba(236, 240, 248, 0) 72%
+  );
   inset: 0;
+  mask: url('/images/two-path/home-stage-hero.webp') center / 100% 100% no-repeat;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* A soft spot on his face, so it is the brightest thing on the stage. */
+.stageSpot {
+  background: radial-gradient(ellipse 26% 18% at 50% 26%, rgba(244, 240, 232, 0.4), rgba(244, 240, 232, 0) 70%);
+  inset: 0;
+  mask: url('/images/two-path/home-stage-hero.webp') center / 100% 100% no-repeat;
   mix-blend-mode: soft-light;
   pointer-events: none;
   position: absolute;
@@ -175,14 +216,31 @@
    solid ground rather than over the jacket and the mic. No side vignette: it greyed the outer
    letters of "Thông", which reaches nearer the edge than "Phan", and the name read uneven. */
 .stageFloor {
+  /* The portrait already dissolves under the chin (stagePersonInner); the floor only has to hand
+     the ink on to the question, so his chin stays clear and lit. */
   background: linear-gradient(
     180deg,
     rgba(7, 7, 6, 0) 44%,
-    rgba(7, 7, 6, 0.84) 58%,
-    rgba(7, 7, 6, 0.97) 67%,
-    var(--brand-ink) 76%
+    rgba(7, 7, 6, 0.5) 49%,
+    rgba(7, 7, 6, 0.92) 54%,
+    var(--brand-ink) 59%
   );
   inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* A film grain over the stage, kept off his face: on a face the jury read it as noise in the
+   picture, so the centre of the stage is cut out of it. Under the copy, over the floor. */
+.hero::after {
+  background-image: var(--brand-grain);
+  background-size: 160px 160px;
+  content: '';
+  inset: 0;
+  mask-image: radial-gradient(ellipse 20% 34% at 50% 34%, transparent 62%, #000 100%);
+  mix-blend-mode: overlay;
+  opacity: 0.14;
   pointer-events: none;
   position: absolute;
   z-index: 2;
@@ -193,7 +251,8 @@
   display: grid;
   margin: 0 auto;
   max-width: 1600px;
-  padding: 0 var(--stage-gutter) clamp(1.5rem, 4svh, 2.75rem);
+  /* The foot holds the "continue where you left off" line (absolute, so it never moves the layout). */
+  padding: 0 var(--stage-gutter) clamp(3.25rem, 7svh, 4rem);
   position: relative;
   width: 100%;
   z-index: 3;
@@ -203,17 +262,32 @@
   display: grid;
   justify-items: center;
   margin: 0 auto;
-  max-width: min(62rem, 100%);
+  max-width: min(74rem, 100%);
   position: relative;
   text-align: center;
   will-change: transform;
 }
 
+/* Returning readers see "Lần trước bạn xem ..." here; first-time readers see only the margin. */
+.resumeDock {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.resumeDock > * {
+  pointer-events: auto;
+}
+
 /* A soft pool of ink under the copy so it reads over the jacket and the mic. */
 .heroCopy::before {
-  background: radial-gradient(ellipse 50% 50% at 50% 55%, rgba(7, 7, 6, 0.82) 0%, rgba(7, 7, 6, 0.5) 52%, rgba(7, 7, 6, 0) 100%);
+  background: radial-gradient(ellipse 50% 50% at 50% 58%, rgba(7, 7, 6, 0.9) 0%, rgba(7, 7, 6, 0.62) 52%, rgba(7, 7, 6, 0) 100%);
   content: '';
-  inset: -3.5rem -9rem -2rem;
+  inset: -4.5rem -10rem -3rem;
   pointer-events: none;
   position: absolute;
   z-index: -1;
@@ -223,12 +297,12 @@
   align-items: center;
   color: color-mix(in srgb, var(--brand-paper) 94%, transparent);
   display: flex;
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  gap: 0.75rem;
+  gap: 0.85rem;
   letter-spacing: 0.18em;
   line-height: 1.3;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1rem;
   text-transform: uppercase;
 }
 
@@ -237,13 +311,13 @@
   background: color-mix(in srgb, var(--brand-paper) 40%, transparent);
   content: '';
   height: 1px;
-  width: 1.75rem;
+  width: 2.25rem;
 }
 
 .title {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.6rem, 0.8rem + 3.9vw, 5.25rem);
+  font-size: clamp(2.6rem, 0.8rem + 4.8vw, 6.4rem);
   font-weight: 500;
   letter-spacing: -0.022em;
   line-height: 0.98;
@@ -256,11 +330,11 @@
   color: color-mix(in srgb, var(--brand-paper) 94%, transparent);
   display: block;
   font-family: var(--font-be-vietnam);
-  font-size: clamp(1.3rem, 0.95rem + 0.85vw, 1.8rem);
+  font-size: clamp(1.4rem, 0.9rem + 1.25vw, 2.4rem);
   font-weight: 500;
-  letter-spacing: -0.005em;
-  line-height: 1.4;
-  margin-bottom: 0.6rem;
+  letter-spacing: -0.008em;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 
 .title em {
@@ -269,54 +343,54 @@
   font-weight: 400;
 }
 
-/* Scroll cue in the margin right of the doors (wide screens only): a short line that keeps
-   travelling, then the word. */
+/* Scroll cue in the right-hand margin (wide screens only): a vertical line that keeps travelling
+   downwards above the word. */
 .scrollCue {
   align-items: center;
-  /* Level with the middle of the doors, in the margin to their right. */
-  bottom: calc(clamp(1.5rem, 4svh, 2.75rem) + 2.5rem - 0.6em);
+  bottom: clamp(3.25rem, 8svh, 5.5rem);
   color: var(--brand-paper);
   display: none;
   font-size: 0.9375rem;
   font-weight: 600;
   gap: 1rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   margin: 0;
   position: absolute;
-  right: var(--stage-gutter);
+  right: calc(var(--stage-gutter) * 0.42);
   text-shadow: 0 1px 12px rgba(10, 9, 8, 0.6);
   text-transform: uppercase;
+  writing-mode: vertical-rl;
   z-index: 3;
 }
 
 .scrollCueLine {
   background: color-mix(in srgb, var(--brand-paper) 30%, transparent);
   display: block;
-  height: 1px;
+  height: 4.5rem;
   order: -1;
   overflow: hidden;
   position: relative;
-  width: 2.5rem;
+  width: 1px;
 }
 
 .scrollCueLine::after {
   animation: cueTravel 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   background: var(--brand-paper);
   content: '';
-  height: 100%;
-  left: -45%;
+  height: 45%;
+  left: 0;
   position: absolute;
-  top: 0;
-  width: 45%;
+  top: -45%;
+  width: 100%;
 }
 
 @keyframes cueTravel {
   to {
-    left: 100%;
+    top: 100%;
   }
 }
 
-@media (min-width: 1100px) and (min-height: 700px) {
+@media (min-width: 1280px) and (min-height: 700px) {
   .scrollCue {
     display: flex;
   }
@@ -325,23 +399,23 @@
 /* Load choreography: the name rises, Thông steps out of the dark, the rim light comes on last. */
 @media (prefers-reduced-motion: no-preference) {
   :global(html.motion) .mastheadWord {
-    animation: mastheadRise 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+    animation: mastheadRise 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s backwards;
   }
 
   :global(html.motion) .mastheadPart + .mastheadPart .mastheadWord {
-    animation-delay: 0.27s;
+    animation-delay: 0.17s;
   }
 
   :global(html.motion) .stagePicture img {
-    animation: stageStepIn 2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
+    animation: stageStepIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
   :global(html.motion) .stageLight {
-    animation: stageLightOn 1.6s ease 1.3s backwards;
+    animation: stageLightOn 1.4s ease 0.7s backwards;
   }
 
   :global(html.motion) .stageAura {
-    animation: stageLightOn 2s ease 0.9s backwards;
+    animation: stageLightOn 1.8s ease 0.5s backwards;
   }
 }
 
@@ -359,9 +433,9 @@
 
 @keyframes stageStepIn {
   from {
-    filter: brightness(0);
-    scale: 1.06;
-    translate: 0 2%;
+    filter: brightness(0.28);
+    scale: 1.04;
+    translate: 0 1.5%;
   }
 }
 
@@ -383,16 +457,29 @@
 
 @media (max-width: 767px) {
   .hero {
-    --person-h: min(60svh, 122vw);
+    /* A larger portrait than before (the jury found him small); his head is clear of the foot of
+       the name, and the copy starts under his chin so the face is never behind a line of text. */
+    --person-h: min(68svh, 138vw);
+    --person-top: calc(60px + 42vw);
+    padding-top: calc(var(--person-top) + var(--person-h) * 0.375);
+  }
+
+  .mastheadPart {
+    translate: calc(var(--hx) * -2vw) calc(var(--hy) * -0.8vw);
+  }
+
+  .stagePicture {
+    rotate: calc(var(--hx) * 0.6deg);
+    translate: calc(var(--hx) * 1.8vw) calc(var(--hy) * 0.8vw);
   }
 
   .masthead {
     display: flex;
     flex-direction: column;
-    font-size: 31vw;
+    font-size: 29vw;
     line-height: 0.84;
     padding: 0.08em var(--stage-gutter) 0;
-    top: 64px;
+    top: 60px;
   }
 
   .mastheadPart[data-stage-part='left'] {
@@ -403,10 +490,10 @@
     align-self: flex-end;
   }
 
-  /* He stands just under the name, his hair brushing the foot of "Phan". */
+  /* He stands just under the name: his hair meets the baseline of "Phan" and no more. */
   .stagePerson {
     bottom: auto;
-    top: calc(64px + 38vw);
+    top: var(--person-top);
   }
 
   .stageLight {
@@ -414,16 +501,20 @@
   }
 
   .stageFloor {
-    background: linear-gradient(180deg, rgba(7, 7, 6, 0) 38%, rgba(7, 7, 6, 0.8) 54%, var(--brand-ink) 66%);
+    background: linear-gradient(180deg, rgba(7, 7, 6, 0) 46%, rgba(7, 7, 6, 0.85) 56%, var(--brand-ink) 64%);
   }
 
   .heroContent {
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
   }
 
   .eyebrow {
     font-size: 0.8125rem;
+    gap: 0.6rem;
+    letter-spacing: 0.12em;
     margin-bottom: 0.75rem;
+    text-align: center;
+    text-wrap: balance;
   }
 
   .eyebrow::before,
@@ -432,11 +523,11 @@
   }
 
   .title {
-    font-size: clamp(2.3rem, 10.5vw, 2.9rem);
+    font-size: clamp(2.4rem, 11vw, 3rem);
   }
 
   .titleLead {
-    font-size: 1.0625rem;
+    font-size: 1.2rem;
     margin-bottom: 0.4rem;
   }
 }
@@ -458,7 +549,7 @@
   --closing-line: color-mix(in srgb, var(--brand-text-on-paper) 24%, transparent);
   background: var(--brand-reading-paper-deep);
   color: var(--brand-text-on-paper);
-  padding: var(--brand-space-section) var(--brand-space-inline) clamp(4rem, 9vw, 8rem);
+  padding: clamp(2.5rem, 6svh, 4.5rem) var(--brand-space-inline) clamp(3.5rem, 7vw, 6.5rem);
 }
 
 .closingInner {
@@ -467,22 +558,22 @@
 }
 
 .closingEyebrow {
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   line-height: 1.3;
   margin: 0 0 1.25rem;
-  opacity: 0.8;
+  opacity: 0.86;
   text-transform: uppercase;
 }
 
 .closingTitle {
   color: var(--brand-text-on-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.8rem, 1.2rem + 6vw, 7.6rem);
+  font-size: clamp(3.1rem, 1.2rem + 5.6vw, 7.4rem);
   font-weight: 500;
   letter-spacing: -0.025em;
-  line-height: 0.95;
-  margin: 0 0 clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.94;
+  margin: 0 0 clamp(1.5rem, 3.3vw, 2.75rem);
   max-width: 13ch;
 }
