@@ -4,8 +4,8 @@
   overflow-x: clip;
 }
 
-/* First screen: a stage. Thông stands in front of his own name, the question sits at his feet
-   and the two doors wait in the corners. Without the engine (no JS, reduced motion) it is a
+/* First screen: a stage. Thông stands in front of his own name; below him the floor turns to ink
+   and carries the question with the two doors right under it. Without the engine (no JS, reduced motion) it is a
    finished still; with it, the pointer moves the light and the layers (--mx/--my, --lx/--ly,
    data-stage-side) and scrolling away parts the name around him. */
 
@@ -13,9 +13,9 @@
   --mx: 0.5;
   --my: 0.5;
   --stage-gutter: var(--brand-space-inline);
-  --stage-door-w: clamp(19rem, 25vw, 25rem);
-  /* Height of the cut-out; the gap in the name is sized to his head. */
-  --person-h: min(86svh, 66vw);
+  /* Height of the cut-out; the gap in the name is sized to his head. Taller than the screen on
+     wide viewports: his head and shoulders fill the stage and the rest sinks into the floor. */
+  --person-h: min(104svh, 78vw);
   background:
     radial-gradient(ellipse 22% 30% at 50% 30%, rgba(122, 74, 42, 0.42) 0%, rgba(122, 74, 42, 0) 72%),
     radial-gradient(ellipse 34% 50% at 50% 44%, #221d16 0%, rgba(7, 7, 6, 0) 74%),
@@ -80,7 +80,7 @@
   padding-top: 0.12em;
   position: absolute;
   right: 0;
-  top: clamp(72px, 12svh, 132px);
+  top: clamp(64px, 9svh, 116px);
   white-space: nowrap;
 }
 
@@ -104,8 +104,10 @@
 
 .stagePerson {
   aspect-ratio: 1098 / 1200;
-  bottom: 0;
+  /* Hung from the top, just under the header, so his face sits high whatever the screen's height;
+     below the chest he runs off the foot of the stage under the floor's ink. */
   height: var(--person-h);
+  top: clamp(52px, 7svh, 92px);
   /* The head's mass is centred 0.46 of the cut-out's height from its left edge (measured from
      the alpha channel); this puts it on the centre line, in the gap of the name. No translate
      here: GSAP owns this element's transform. */
@@ -128,9 +130,9 @@
 }
 
 .stagePicture img {
-  /* The source is a low-key stage shot; lift it so the face carries without the jacket
-     dissolving into the page. */
-  filter: brightness(1.12) contrast(1.06) saturate(0.94);
+  /* The source is a low-key stage shot: lift the shadows (more light, a touch less contrast) so the
+     face reads first; the spot below and the floor keep the jacket from competing with it. */
+  filter: brightness(1.3) contrast(1.02) saturate(0.94);
   object-fit: contain;
   object-position: 50% 100%;
 }
@@ -141,8 +143,8 @@
   background:
     radial-gradient(
       ellipse 70% 60% at calc(var(--mx) * 100%) calc(var(--my) * 60%),
-      rgba(255, 244, 222, 0.45),
-      rgba(255, 244, 222, 0) 70%
+      rgba(255, 244, 222, 0.22),
+      rgba(255, 244, 222, 0) 64%
     ),
     linear-gradient(
       90deg,
@@ -153,15 +155,26 @@
     );
   inset: 0;
   mask: url('/images/two-path/home-stage-rim.webp') center / 100% 100% no-repeat;
-  opacity: 0.85;
+  /* A thin edge, not a halo: the critics read a brighter rim as an airbrushed glow. */
+  opacity: 0.58;
   pointer-events: none;
   position: absolute;
 }
 
-/* The floor: his lower body sinks into ink so the question and the doors read cleanly. */
+/* A warm spot on his face, so it is the brightest thing on the stage. */
+.stageSpot {
+  background: radial-gradient(ellipse 26% 18% at 50% 26%, rgba(255, 234, 204, 0.42), rgba(255, 234, 204, 0) 70%);
+  inset: 0;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* The floor: from his chest down he sinks into ink, so the question and the doors sit on a
+   solid ground rather than over the jacket and the mic. */
 .stageFloor {
   background:
-    linear-gradient(180deg, rgba(7, 7, 6, 0) 52%, rgba(7, 7, 6, 0.72) 70%, var(--brand-ink) 90%),
+    linear-gradient(180deg, rgba(7, 7, 6, 0) 46%, rgba(7, 7, 6, 0.8) 61%, rgba(7, 7, 6, 0.96) 70%, var(--brand-ink) 78%),
     linear-gradient(90deg, rgba(7, 7, 6, 0.5) 0%, rgba(7, 7, 6, 0) 24%, rgba(7, 7, 6, 0) 76%, rgba(7, 7, 6, 0.5) 100%);
   inset: 0;
   pointer-events: none;
@@ -184,7 +197,7 @@
   display: grid;
   justify-items: center;
   margin: 0 auto;
-  max-width: min(44rem, 100%);
+  max-width: min(62rem, 100%);
   position: relative;
   text-align: center;
   will-change: transform;
@@ -202,9 +215,9 @@
 
 .eyebrow {
   align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 88%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 94%, transparent);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   gap: 0.75rem;
   letter-spacing: 0.18em;
@@ -224,7 +237,7 @@
 .title {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.6rem, 1rem + 3.6vw, 5rem);
+  font-size: clamp(2.6rem, 0.8rem + 3.9vw, 5.25rem);
   font-weight: 500;
   letter-spacing: -0.022em;
   line-height: 0.98;
@@ -232,16 +245,16 @@
   text-wrap: balance;
 }
 
-/* The first sentence is the setup, set small and plain; the question is the headline. */
+/* One lockup: the first sentence is the setup, plain and readable; the question is the headline. */
 .titleLead {
-  color: color-mix(in srgb, var(--brand-paper) 92%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 94%, transparent);
   display: block;
   font-family: var(--font-be-vietnam);
-  font-size: clamp(1.05rem, 0.9rem + 0.4vw, 1.3rem);
+  font-size: clamp(1.3rem, 0.95rem + 0.85vw, 1.8rem);
   font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.45;
-  margin-bottom: 0.65rem;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
 }
 
 .title em {
@@ -250,64 +263,56 @@
   font-weight: 400;
 }
 
-/* Scroll cue at the right edge of the first screen (wide screens only). */
+/* Scroll cue in the margin right of the doors (wide screens only): a short line that keeps
+   travelling, then the word. */
 .scrollCue {
   align-items: center;
-  color: color-mix(in srgb, var(--brand-paper) 88%, transparent);
+  /* Level with the middle of the doors, in the margin to their right. */
+  bottom: calc(clamp(1.5rem, 4svh, 2.75rem) + 2.5rem - 0.6em);
+  color: var(--brand-paper);
   display: none;
-  flex-direction: column;
-  font-size: 0.875rem;
-  font-weight: 700;
-  gap: 1.25rem;
-  letter-spacing: 0.2em;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  gap: 1rem;
+  letter-spacing: 0.16em;
   margin: 0;
   position: absolute;
   right: var(--stage-gutter);
+  text-shadow: 0 1px 12px rgba(10, 9, 8, 0.6);
   text-transform: uppercase;
-  top: 40%;
   z-index: 3;
-}
-
-.scrollCue span:first-child {
-  writing-mode: vertical-rl;
 }
 
 .scrollCueLine {
   background: color-mix(in srgb, var(--brand-paper) 30%, transparent);
   display: block;
-  height: 6.5rem;
+  height: 1px;
+  order: -1;
   overflow: hidden;
   position: relative;
-  width: 1px;
+  width: 2.5rem;
 }
 
 .scrollCueLine::after {
   animation: cueTravel 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   background: var(--brand-paper);
   content: '';
-  height: 45%;
-  left: 0;
+  height: 100%;
+  left: -45%;
   position: absolute;
-  top: -45%;
-  width: 100%;
+  top: 0;
+  width: 45%;
 }
 
 @keyframes cueTravel {
   to {
-    top: 100%;
+    left: 100%;
   }
 }
 
 @media (min-width: 1100px) and (min-height: 700px) {
   .scrollCue {
     display: flex;
-  }
-}
-
-/* Wide screens: the doors sit in the bottom corners, so the question keeps to the centre column. */
-@media (min-width: 1200px) {
-  .heroCopy {
-    max-width: min(44rem, calc(100% - 2 * (var(--stage-door-w) + 1rem)));
   }
 }
 
@@ -362,6 +367,14 @@
 
 /* Phones: the name stacks into two lines on either side of him, he is framed to the chest,
    and the question and the doors fill the ink below. */
+/* Between phone and wide desktop the gap for his head takes a bigger share of the line, so the
+   name steps down to keep "Thông" off the left edge. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .masthead {
+    font-size: min(13.4vw, 30svh);
+  }
+}
+
 @media (max-width: 767px) {
   .hero {
     --person-h: min(60svh, 122vw);
@@ -417,7 +430,7 @@
   }
 
   .titleLead {
-    font-size: 0.95rem;
+    font-size: 1.0625rem;
     margin-bottom: 0.4rem;
   }
 }

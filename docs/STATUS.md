@@ -1,5 +1,34 @@
 # thongphan.com — Unified Cinema status
 
+## Nâng cấp tương tác cuộn mức đoạt giải — đang làm (PARTIAL) — 2026-10-15
+
+- **Phạm vi:** `/`, `/tensai`, `/conan`, `/about`, header và footer; trên nhánh `feature/two-path-rebuild`. Spec: `docs/superpowers/specs/2026-10-14-thongphan-award-motion-design.md`.
+- **Preview đã được anh duyệt:** `https://preview-two-path.thongphan-com.pages.dev` (Cloudflare Pages, nhánh `preview-two-path`). Production chưa deploy. Chưa push, vì vẫn chờ consent ảnh.
+- **Đợt 15/10:**
+  - Dải ảnh "việc thật": cột chữ đứng yên, ảnh trượt ngang trong khung có mặt nạ (mask), kèm bộ đếm, thanh tiến trình và nút trước/sau.
+    - Nút chạy được cả khi khung đang ghim trên desktop, khi vuốt trên mobile, và ở chế độ giảm chuyển động.
+  - Phần kết trang chủ và trang Về Thông là hai tấm màu (Tensai xanh/lime, Conan đỏ sơn mài) có ảnh thật nghiêng.
+    - Rê chuột hoặc focus bàn phím: tấm được chọn mở rộng, ảnh đứng thẳng, mũi tên đổi màu.
+    - Hiệu ứng rê chuột chỉ bật trên thiết bị có chuột (`hover: hover`).
+  - Trang Về Thông vẫn render claim qua `act.claims.map`, đúng hợp đồng test.
+- **Kiểm chứng máy:**
+  - `tsc` sạch.
+  - Test 551/555 (chạy lại 15/10 sau khi build lại `out/`). 4 lỗi đều đã biết: 2 lỗi thiếu Playwright headless shell (241, 242) và 2 lỗi consent ảnh có khuôn mặt (487, 488).
+  - Ảnh chụp thật ở 1440×900 và 390×844, cả chế độ giảm chuyển động.
+- **Điểm LLM critic vòng 4** (chấm mù, không thay duyệt của anh):
+
+  | Trang | Điểm |
+  |---|---|
+  | Lando (tham chiếu) | 8.35 |
+  | Trevor (tham chiếu) | 8.08 |
+  | Won (tham chiếu) | 7.52 |
+  | Trang chủ | 7.40 |
+  | Về Thông | 7.27 |
+  | Conan | 7.15 |
+  | Tensai | 6.94 |
+
+  Vòng 5 đang chạy.
+
 ## Tái dựng thongphan.com theo hai con đường — PARTIAL, chờ duyệt — 2026-10-13
 
 - **Kết quả:** trang chủ hai cửa (Tensai cho người đi làm → learn.thongphan.com; Conan School cho người kinh doanh → conan.school), hai trang nhánh `/tensai` và `/conan`, `/about` viết lại theo câu chuyện người dẫn đường, header có công tắc "Đi làm | Kinh doanh" (mobile chuyển vào menu) và nút "Thêm". Trang chủ cũ (evidence cinema) đã gỡ. Spec: `docs/superpowers/specs/2026-10-13-thongphan-two-path-rebuild-design.md`; plan: `docs/superpowers/plans/` cùng ngày.

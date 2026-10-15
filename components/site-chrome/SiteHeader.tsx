@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { ChevronDown, Menu } from 'lucide-react'
-import { useEffect, useRef, useState, type FocusEvent } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type FocusEvent } from 'react'
 import PathLink from '@/components/two-path/PathLink'
 import type { SiteRouteMode } from '@/lib/site-route-mode'
 import MobileMenu from './MobileMenu'
@@ -13,16 +13,25 @@ type HeaderTone = 'dark' | 'light'
 
 // The two-path pages alternate ink and paper grounds; on them the header takes the tone of
 // whatever sits just below it, so it never cuts a paper bar across the dark footer (or the reverse).
+// Objects laid on a ground (a press clipping, a pinned print) carry data-header-ignore: the header
+// reads the ground beneath them, not the paper card passing under it.
 const toneRoutes = new Set(['/', '/tensai', '/conan', '/about'])
 
-function sampleTone(header: HTMLElement): HeaderTone | undefined {
+// The header also takes the ground's colour (ink, Tensai's deep green, a darker paper band), so no
+// bar of another shade sits across a section; a saturated light ground (the lime course row) keeps
+// the reading paper instead of turning the whole header lime.
+function sampleTone(header: HTMLElement): { tone: HeaderTone; ground?: string } | undefined {
   const y = header.getBoundingClientRect().bottom + 2
   const under = document
     .elementsFromPoint(window.innerWidth / 2, y)
-    .find((node) => !header.contains(node))
+    .find((node) => !header.contains(node) && !node.closest('[data-header-ignore]'))
   for (let node = under ?? null; node; node = node.parentElement) {
     const rgb = parseBackground(getComputedStyle(node).backgroundColor)
-    if (rgb) return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2] > 0.5 ? 'light' : 'dark'
+    if (!rgb) continue
+    const tone = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2] > 0.5 ? 'light' : 'dark'
+    const vivid = Math.max(...rgb) - Math.min(...rgb) > 0.2
+    const ground = tone === 'light' && vivid ? undefined : `rgb(${rgb.map((channel) => Math.round(channel * 255)).join(' ')})`
+    return { tone, ground }
   }
   return undefined
 }
@@ -48,6 +57,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const [moreOpenFor, setMoreOpenFor] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const [tone, setTone] = useState<HeaderTone | undefined>(undefined)
+  const [ground, setGround] = useState<string | undefined>(undefined)
   const headerRef = useRef<HTMLElement>(null)
   const triggerRef = useRef<HTMLButtonElement>(null)
   const moreRef = useRef<HTMLDivElement>(null)
@@ -61,7 +71,11 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
     const update = () => {
       frame = 0
       setScrolled(window.scrollY > 24)
-      if (toneRoutes.has(pathname) && headerRef.current) setTone(sampleTone(headerRef.current))
+      if (toneRoutes.has(pathname) && headerRef.current) {
+        const sample = sampleTone(headerRef.current)
+        setTone(sample?.tone)
+        setGround(sample?.ground)
+      }
     }
 
     const schedule = () => {
@@ -114,6 +128,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
       data-path-route={pathRouteFor(pathname)}
       data-header-scrolled={scrolled}
       data-header-tone={toneRoutes.has(pathname) ? tone : undefined}
+      style={toneRoutes.has(pathname) && ground ? ({ '--header-ground': ground } as CSSProperties) : undefined}
     >
       <div className={styles.cinemaHeaderInner}>
         <Link

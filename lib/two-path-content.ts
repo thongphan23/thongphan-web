@@ -35,7 +35,7 @@ const doors = [
 export const homeContent = {
   eyebrow: 'Thông Phan · người dẫn đường',
   title: 'AI đang đổi cách chúng ta làm việc và làm ăn. Bạn đang đứng ở phía nào?',
-  hero: { photoId: 'home-stage-hero', mobilePhotoId: 'home-stage-hero-mobile', scrollCue: 'Cuộn để đọc thư' },
+  hero: { photoId: 'home-stage-hero', mobilePhotoId: 'home-stage-hero-mobile', scrollCue: 'Cuộn' },
   doors,
   resume: { prefix: 'Lần trước bạn xem', action: 'Tiếp tục' },
   letter: {
@@ -46,9 +46,13 @@ export const homeContent = {
       'Nếu bạn đi làm, Tensai giúp bạn học dùng AI cho chính công việc mỗi ngày, từng bài ngắn một. Nếu bạn đang hoặc muốn kinh doanh, Conan School là cộng đồng nơi bạn xây doanh nghiệp cùng những người đang làm thật.',
       'Chọn một cửa. Tui đi cùng bạn đoạn đầu.',
     ],
+    // The debt line inside the first paragraph, set apart as the letter's pull quote.
+    pullQuote: claimText('hstl-debt'),
     signature: 'Thông Phan',
     signatureRole: 'Người dẫn đường',
-    portraitId: 'founder-portrait',
+    // A letter is signed face to face: the sharp bookshop portrait, not the stage seen from behind,
+    // whose blurred audience read as an image that never finished loading.
+    portraitId: 'door-tensai',
   },
   // The locked positioning set as one big line; the class photo opens out of the gap between
   // the words as the reader scrolls, then fills the screen.
@@ -102,32 +106,55 @@ export const tensaiContent = {
   primaryCta: 'Học thử miễn phí',
   secondaryCta: { label: 'Xem các khóa đang mở', href: '#khoa-hoc' },
   launchNote: 'Tensai mở từ 30/09/2026. Bạn là một trong những người học đầu tiên.',
-  heroPhotoId: 'tensai-stage',
-  // Read off the real map screen in the hero: one floats beside it as a callout.
-  heroCallout: 'Cứ 3 bài, một màn vượt ải.',
-  // Copied word for word from the live exercise screen (tensai-home: docs/positioning-v8/release/
-  // screens/live-exercise.png). The page only lets the visitor pick; the verdict stays in the app.
-  tryCard: {
-    lesson: 'Bài 1 · Định vị',
+  // Step pos-v8-1-1 of the live Định vị course, word for word (tensai-home:
+  // docs/positioning-course/course.json, version dinh-vi-20261001-v8). Option A is the answer the
+  // app accepts; each `feedback` is the app's own reply to that pick, `remember` its debrief.
+  lesson: {
+    chip: 'Bài 1 · Định vị',
     label: 'Minh họa',
-    scenario: [
+    context: [
       { text: 'Bếp Gọn bán cơm trưa đặt trước. Khách ' },
       { text: 'nghỉ trưa ngắn', strong: true },
       { text: ' thường ngại ' },
       { text: 'xếp hàng', strong: true },
-      { text: ' ở căn tin.' },
+      { text: ' ở căn tin. Đội vận hành có thể giao theo khung giờ hẹn trong một cụm văn phòng.' },
     ],
     question: 'Cách giới thiệu nào làm rõ lý do nhóm khách này cân nhắc Bếp Gọn?',
+    lead: 'Bạn hãy chọn cách giải thích phù hợp với dữ kiện.',
     options: [
-      { key: 'A', text: 'Bữa trưa đặt trước, giao theo giờ hẹn cho người có giờ nghỉ ngắn.' },
-      { key: 'B', text: 'Bữa trưa ngon miệng, nhiều món cho mọi người ở mọi nơi.' },
+      {
+        key: 'A',
+        text: 'Bữa trưa đặt trước, giao theo giờ hẹn cho người có giờ nghỉ ngắn.',
+        correct: true,
+        feedback: 'Câu này nối một nhóm khách, giá trị họ cần và cách phục vụ đang có.',
+      },
+      {
+        key: 'B',
+        text: 'Bữa trưa ngon miệng, nhiều món cho mọi người ở mọi nơi.',
+        correct: false,
+        feedback:
+          'Câu này mở rộng cả khách hàng lẫn phạm vi giao vượt quá dữ kiện. Nó chưa chỉ rõ giá trị trong giờ nghỉ ngắn.',
+      },
+      {
+        key: 'C',
+        text: 'Bữa trưa phong cách, thiết kế đẹp cho người thích trải nghiệm mới.',
+        correct: false,
+        feedback:
+          'Thiết kế đẹp có thể hữu ích nhưng chưa giải quyết điều khiến nhóm khách trong đề phải cân nhắc.',
+      },
     ],
-    check: 'Kiểm tra cách hiểu',
+    remember: 'Định vị có ý nghĩa khi khách hàng nhận ra sản phẩm tạo giá trị gì trong hoàn cảnh của họ.',
+    // Ours, not the lesson's: the verdict words the app also uses, and the course's rhythm
+    // (12 lessons, a gate after every three).
+    right: 'Đúng rồi.',
+    wrong: 'Chưa đúng.',
+    rememberLabel: 'Ghi nhớ',
+    retry: 'Chọn lại',
     encouragement: 'Cứ thử, sai cũng được. Mình nhìn kết quả rồi sửa tiếp.',
-    // Ours, not the app's: once a choice is made, the check moves to the real lesson.
-    pickHint: 'Chọn A hoặc B',
-    checkLive: 'Kiểm tra trong bài thật',
-    handoff: 'Bài này nằm trong khóa Định vị trên Tensai.',
+    continue: 'Học tiếp bài này trên Tensai',
+    path: ['Bài 1', 'Bài 2', 'Bài 3'],
+    gate: 'Vượt ải',
+    pathNote: 'Cứ 3 bài, một màn vượt ải.',
   },
   situations: {
     title: 'Bạn có đang gặp một trong ba chuyện này?',
@@ -189,11 +216,11 @@ export const tensaiContent = {
     // push-in; the wider map is cover-cropped into it from its right edge (`position`) so the crop
     // falls on the sidebar's edge instead of through a line of text.
     frames: [
-      { photoId: 'tensai-lesson', zoom: 1, origin: '50% 0%', focus: { x: 7.5, y: 2.5, w: 58, h: 15 } },
+      { photoId: 'tensai-lesson', zoom: 1.14, origin: '50% 0%', focus: { x: 7.5, y: 2.5, w: 58, h: 15 } },
       { photoId: 'tensai-lesson', zoom: 1.16, origin: '50% 60%', focus: { x: 8, y: 46, w: 85, h: 25 } },
       {
         photoId: 'tensai-map',
-        zoom: 1.15,
+        zoom: 1.4,
         origin: '100% 100%',
         position: '100% 50%',
         focus: { x: 67, y: 86.5, w: 23, h: 8.5 },
@@ -207,9 +234,9 @@ export const tensaiContent = {
   },
 } as const
 
-// The first item is shown large; the rest are grouped by kind of activity.
+// Reading order of the light table. The AI Factory class photo is left out here because the
+// principle already shows it (door-conan is a crop of the same frame).
 const galleryItems = [
-  { photoId: 'gallery-ai-factory', kind: 'Lớp học' },
   { photoId: 'gallery-ai-factory-design', kind: 'Lớp học' },
   { photoId: 'gallery-decision-making', kind: 'Offline' },
   { photoId: 'gallery-content-flow-haus', kind: 'Offline' },
@@ -247,28 +274,42 @@ export const conanContent = {
   journey: {
     title: 'Từ một câu hỏi đến năng lực của một Builder.',
     lead: 'Mỗi khóa học trả lời một Clarity Question. Đi hết chuỗi này, bạn xây đủ năng lực để học, nghĩ, hiểu người, chọn đúng cuộc chơi, tạo offer, truyền đạt và xây thứ chạy được.',
+    // Stage names and questions are verbatim from the Conan School site; gloss is the Vietnamese reading shown first.
     stages: [
       {
         number: '01',
         name: 'Learn & Think',
+        gloss: 'Học & nghĩ',
         questions: ['Tôi có biết học không?', 'Tôi có nghĩ rõ không?', 'Điều tôi tin có đứng vững không?'],
       },
-      { number: '02', name: 'Understand', questions: ['Tôi có hiểu người không?', 'Tôi có hiểu đúng problem không?'] },
+      {
+        number: '02',
+        name: 'Understand',
+        gloss: 'Thấu hiểu',
+        questions: ['Tôi có hiểu người không?', 'Tôi có hiểu đúng problem không?'],
+      },
       {
         number: '03',
         name: 'Choose & Create',
+        gloss: 'Chọn & tạo',
         questions: ['Tôi có chọn đúng game không?', 'Tôi có tạo thứ đáng mua không?'],
       },
       {
         number: '04',
         name: 'Communicate & Sell',
+        gloss: 'Truyền đạt & bán',
         questions: [
           'Tôi có biết cần nói gì không?',
           'Tôi có làm người khác nhìn thấy không?',
           'Tôi có hiểu vì sao họ quyết định mua không?',
         ],
       },
-      { number: '05', name: 'Build', questions: ['Tôi có thể biến idea thành thứ chạy được không?'] },
+      {
+        number: '05',
+        name: 'Build',
+        gloss: 'Xây dựng',
+        questions: ['Tôi có thể biến idea thành thứ chạy được không?'],
+      },
     ],
   },
   gallery: {

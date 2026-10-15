@@ -77,26 +77,111 @@ export function stageHero(root: HTMLElement): Cleanup {
   }
 }
 
-// Curtains ([data-curtain]): a section that follows a dark stage opens like a sheet of paper
-// being laid down, from an inset rounded card to the full bleed as its top reaches the upper third.
-// data-curtain="sheet" goes further on wide screens: the stage before it holds still and dims while
-// the sheet slides up over it, so the page turns instead of cutting from ink to paper.
+// Mask flight ([data-mask-flight], Conan): the room is first seen through the letters of "Conan"
+// cut out of an ink sheet ([data-mask-sheet]).
+// - On wide screens the sheet holds still until the reader scrolls: the hero pins, the scroll flies
+//   the camera into the letters (the sheet's CSS transform-origin) while the ink thins away, and
+//   the whole photo rests a moment before the pin lets go.
+// - Narrower screens keep the load flight in page.module.css.
+// - Everywhere, the words ([data-mask-out]) drift up and dim as the hero leaves.
+export function maskFlight(root: HTMLElement): Cleanup {
+  const hero = root.querySelector<HTMLElement>('[data-mask-flight]')
+  if (!hero) return () => {}
+  const sheet = hero.querySelector<HTMLElement>('[data-mask-sheet]')
+  const words = hero.querySelector<HTMLElement>('[data-mask-out]')
+  const leave = (start: () => number) => {
+    if (!words) return
+    gsap.to(words, {
+      y: () => -window.innerHeight * 0.11,
+      opacity: 0.12,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: hero,
+        start,
+        end: () => start() + hero.offsetHeight,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    })
+  }
+
+  const mm = gsap.matchMedia()
+  mm.add(WIDE, () => {
+    if (!sheet) return
+    const flight = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: () => `+=${window.innerHeight * 0.85}`,
+        pin: true,
+        // The first pin on the page: refreshed before the triggers below so they measure with its spacing.
+        refreshPriority: 1,
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+      },
+    })
+    flight
+      .fromTo(sheet, { scale: 1 }, { scale: 24, duration: 0.7, ease: 'power2.in' }, 0)
+      .fromTo(sheet, { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.32, ease: 'power1.inOut' }, 0.3)
+      .to({}, { duration: 0.3 }, 0.7)
+    leave(() => flight.scrollTrigger?.end ?? 0)
+  })
+  mm.add(`not all and ${WIDE}`, () => leave(() => 0))
+  return () => mm.revert()
+}
+
+// Curtains ([data-curtain]): a section that follows another tone arrives through a shaped window
+// that opens fully as its top reaches the upper third. The value picks the window:
+// - "" (default) and "sheet": an inset rounded card widening to the full bleed, like a sheet of
+//   paper being laid down. "sheet" goes further on wide screens: the section before it holds its
+//   last screen still and dims while the sheet slides up over it, so the page turns instead of
+//   cutting from one tone to the next.
+// - "iris": a disc rising from the middle of the top edge and widening until it fills the screen.
+// - "wipe": the new tone sweeps in from the left edge.
+// [data-sheet-over] on a section lays it over a held element of the one before it
+// ([data-sheet-under], e.g. a sticky line), which steps back and dims as the sheet rises.
 export function curtains(root: HTMLElement): Cleanup {
   const mm = gsap.matchMedia()
+  const drawn: HTMLElement[] = []
+  const entry = { start: 'top bottom', end: 'top 30%', scrub: true } as const
   for (const el of root.querySelectorAll<HTMLElement>('[data-curtain]')) {
-    gsap.fromTo(
-      el,
-      { clipPath: 'inset(0% 6% 0% 6% round 28px)' },
-      {
-        clipPath: 'inset(0% 0% 0% 0% round 0px)',
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 30%', scrub: true },
-      },
-    )
-    const under = el.dataset.curtain === 'sheet' ? el.previousElementSibling : null
+    const shape = el.dataset.curtain
+    if (shape === 'iris') {
+      // Measured in pixels against the part of the section on screen, so the disc reaches the
+      // corners exactly as the window ends; then the clip comes off entirely.
+      const draw = (progress: number) => {
+        if (progress >= 1) {
+          el.style.removeProperty('clip-path')
+          return
+        }
+        const reach = Math.hypot(el.offsetWidth / 2, window.innerHeight * 0.7)
+        el.style.clipPath = `circle(${(progress * reach).toFixed(1)}px at 50% 0%)`
+      }
+      drawn.push(el)
+      ScrollTrigger.create({
+        trigger: el,
+        start: entry.start,
+        end: entry.end,
+        onUpdate: (self) => draw(self.progress),
+        onRefresh: (self) => draw(self.progress),
+      })
+    } else {
+      const from = shape === 'wipe' ? 'inset(0% 100% 0% 0% round 0px)' : 'inset(0% 6% 0% 6% round 28px)'
+      gsap.fromTo(
+        el,
+        { clipPath: from },
+        { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: el, ...entry } },
+      )
+    }
+    const under = shape === 'sheet' ? el.previousElementSibling : null
     if (!(under instanceof HTMLElement)) continue
     mm.add(WIDE, () => {
-      ScrollTrigger.create({ trigger: under, start: 'top top', end: 'bottom top', pin: true, pinSpacing: false })
+      // A section taller than the screen holds only its last screen, so it is never frozen
+      // half-read.
+      const hold = () => (under.offsetHeight > window.innerHeight + 1 ? 'bottom bottom' : 'top top')
+      ScrollTrigger.create({ trigger: under, start: hold, end: 'bottom top', pin: true, pinSpacing: false })
       gsap.fromTo(
         under,
         { opacity: 1 },
@@ -104,40 +189,55 @@ export function curtains(root: HTMLElement): Cleanup {
       )
     })
   }
-  return () => mm.revert()
+  for (const el of root.querySelectorAll<HTMLElement>('[data-sheet-over]')) {
+    const under = el.previousElementSibling?.querySelector<HTMLElement>('[data-sheet-under]')
+    if (!under) continue
+    gsap.fromTo(
+      under,
+      { opacity: 1, scale: 1 },
+      { opacity: 0.25, scale: 0.94, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 30%', scrub: true } },
+    )
+  }
+  return () => {
+    mm.revert()
+    drawn.forEach((el) => el.style.removeProperty('clip-path'))
+  }
 }
 
-// Tensai stage ([data-device-stage]): the real app screen ([data-device]) starts turned away like a
-// device on a desk. Explicit from/to values, because GSAP cannot reliably read a 3D rotation back
-// out of the CSS matrix it starts from.
-// - Wide screens pin the hero. The words step back to the left; the screen squares up, grows and
-//   settles right of centre; then the lesson question ([data-device-card]) rises out of it into the
-//   space on the left, where it can be answered. The chips only move on x, because their y belongs to
-//   the scroll parallax (data-speed).
-// - Phones keep the plain turn while the hero scrolls away, with the words fading out above it.
-export function deviceStage(root: HTMLElement): Cleanup {
-  const stage = root.querySelector<HTMLElement>('[data-device-stage]')
-  const device = stage?.querySelector<HTMLElement>('[data-device]')
-  if (!stage || !device) return () => {}
+// Tensai stage ([data-lesson-stage]): the hero holds a real lesson card ([data-lesson-card]).
+// - Wide screens pin the hero. A little way in, the card answers itself once as a demo (the
+//   `lesson:demo` event on [data-lesson-root]; a visitor's own pick is never undone). The words and
+//   天才 step back while the card moves to the centre; then a sheet of the band's green
+//   ([data-lesson-portal]) settles over the reply panel and opens out to fill the screen, and the
+//   band that follows ([data-lesson-next]) rises over it with its content, so the answer becomes the
+//   page.
+// - Phones keep the card still and lay the band down like a sheet of paper (as curtains does).
+export function lessonStage(root: HTMLElement): Cleanup {
+  const stage = root.querySelector<HTMLElement>('[data-lesson-stage]')
+  const card = stage?.querySelector<HTMLElement>('[data-lesson-card]')
+  if (!stage || !card) return () => {}
 
-  const words = stage.querySelector<HTMLElement>('[data-device-words]')
-  const figure = stage.querySelector<HTMLElement>('[data-device-figure]')
-  const card = stage.querySelector<HTMLElement>('[data-device-card]')
-  const aside = stage.querySelectorAll<HTMLElement>('[data-device-aside] > *')
-  const drift = Array.from(stage.querySelectorAll<HTMLElement>('[data-device-drift]'))
+  const lesson = card.querySelector<HTMLElement>('[data-lesson-root]')
+  const replies = card.querySelector<HTMLElement>('[data-lesson-replies]')
+  const words = stage.querySelector<HTMLElement>('[data-lesson-words]')
+  const aside = stage.querySelector<HTMLElement>('[data-lesson-aside]')
+  const portal = stage.querySelector<HTMLElement>('[data-lesson-portal]')
+  const portalMark = portal?.querySelector<HTMLElement>('[data-lesson-portal-mark]')
+  const glow = stage.querySelector<HTMLElement>('[data-lesson-glow]')
+  const next = root.querySelector<HTMLElement>('[data-lesson-next]')
   const mm = gsap.matchMedia()
 
   mm.add('(min-width: 960px)', () => {
-    if (!figure) return
     // The stage sits just under the fixed header; pinning from where it rests starts the sequence with
     // the first scroll.
     const restTop = Math.max(0, stage.getBoundingClientRect().top + window.scrollY)
-    // Offsets inside the stage, from layout boxes, so they ignore this timeline's own transforms and
-    // read the same whether or not the stage is pinned.
-    const within = (el: HTMLElement) => {
+    const length = 1.4
+    // Offsets from layout boxes, so they ignore this timeline's own transforms and read the same
+    // whether or not the stage is pinned.
+    const within = (el: HTMLElement, ancestor: HTMLElement) => {
       let left = 0
       let top = 0
-      for (let node: HTMLElement | null = el; node && node !== stage; node = node.offsetParent as HTMLElement | null) {
+      for (let node: HTMLElement | null = el; node && node !== ancestor; node = node.offsetParent as HTMLElement | null) {
         left += node.offsetLeft
         top += node.offsetTop
       }
@@ -145,18 +245,60 @@ export function deviceStage(root: HTMLElement): Cleanup {
     }
     const stageLeft = () => (window.innerWidth - stage.offsetWidth) / 2
     const room = () => window.innerHeight - restTop
-    const grow = () =>
-      gsap.utils.clamp(
-        1,
-        1.36,
-        Math.min((window.innerWidth * 0.56) / device.offsetWidth, (room() - 96) / device.offsetHeight),
-      )
-    const deviceShift = () => {
-      const at = within(device)
+    const fit = () => Math.min(1.06, (room() - 48) / card.offsetHeight)
+    const cardShift = () => {
+      const at = within(card, stage)
       return {
-        x: window.innerWidth * 0.62 - (stageLeft() + at.left + device.offsetWidth / 2),
-        y: room() / 2 - (at.top + device.offsetHeight / 2),
+        x: window.innerWidth / 2 - (stageLeft() + at.left + card.offsetWidth / 2),
+        y: room() / 2 - (at.top + card.offsetHeight / 2),
       }
+    }
+    // The reply panel's box once the card has arrived (scaled about its centre), in the portal's
+    // coordinates: the portal spans the viewport from the stage's top edge.
+    const replyBox = () => {
+      const scale = fit()
+      const box = replies ? within(replies, card) : { left: 0, top: 0 }
+      const width = (replies ?? card).offsetWidth * scale
+      const height = (replies ?? card).offsetHeight * scale
+      const left = window.innerWidth / 2 - (card.offsetWidth * scale) / 2 + box.left * scale
+      const top = room() / 2 - (card.offsetHeight * scale) / 2 + box.top * scale
+      return { left, top, width, height, scale }
+    }
+    const portalSize = () => ({ width: portal?.offsetWidth ?? window.innerWidth, height: portal?.offsetHeight ?? window.innerHeight })
+    const opening = () => {
+      const { left, top, width, height, scale } = replyBox()
+      const size = portalSize()
+      return `inset(${top}px ${size.width - left - width}px ${size.height - top - height}px ${left}px round ${16 * scale}px)`
+    }
+    // Where the mark starts: small and centred in the reply panel. The mark and the opening move on
+    // the same tween and ease, and each edge of both boxes moves linearly between two nested states,
+    // so the mark stays inside the opening the whole way instead of being cut by its edge.
+    const markStart = () => {
+      if (!portalMark) return { x: 0, y: 0, scale: 1 }
+      const box = replyBox()
+      const size = portalSize()
+      return {
+        x: box.left + box.width / 2 - size.width / 2,
+        y: box.top + box.height / 2 - size.height / 2,
+        scale: Math.min((box.width * 0.8) / portalMark.offsetWidth, (box.height * 0.72) / portalMark.offsetHeight),
+      }
+    }
+
+    // The band's edge reaches the bottom of the screen at 56% of the pinned scroll, while the sheet is
+    // still opening, so its first line rises in just as the green fills the screen.
+    // The sheet fills the screen under the header, so 天才 grows in the middle of what is visible.
+    const lift = () => {
+      if (next) next.style.marginTop = `${Math.min(0, window.innerHeight - restTop - stage.offsetHeight - 0.44 * length * window.innerHeight)}px`
+      if (portal) portal.style.height = `${room()}px`
+    }
+    lift()
+    ScrollTrigger.addEventListener('refreshInit', lift)
+
+    let played = false
+    const demo = (play: boolean) => {
+      if (played === play) return
+      played = play
+      lesson?.dispatchEvent(new CustomEvent('lesson:demo', { detail: { play } }))
     }
 
     const timeline = gsap.timeline({
@@ -164,63 +306,97 @@ export function deviceStage(root: HTMLElement): Cleanup {
       scrollTrigger: {
         trigger: stage,
         start: () => `top ${restTop}px`,
-        end: '+=130%',
+        end: () => `+=${length * window.innerHeight}`,
         pin: true,
+        // This pin is created after the page's other triggers but sits above them. Naming a priority
+        // makes ScrollTrigger sort every trigger by page position on refresh, so the ones below
+        // measure with this pin's spacing in place instead of firing a whole pin-length early.
+        refreshPriority: 1,
         scrub: true,
         invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          if (self.progress > 0.06) demo(true)
+          else if (self.progress < 0.03) demo(false)
+        },
       },
     })
-    if (words) timeline.to(words, { x: () => -window.innerWidth * 0.08, opacity: 0, duration: 0.4 }, 0)
-    if (aside.length) timeline.to(aside, { x: () => window.innerWidth * 0.06, opacity: 0, duration: 0.4 }, 0)
-    timeline
-      .to(figure, { x: () => deviceShift().x, y: () => deviceShift().y, duration: 0.65, ease: 'power1.inOut' }, 0)
-      .fromTo(
-        device,
-        { rotationY: -16, rotationX: 8, transformPerspective: 1600, scale: 1 },
-        { rotationY: 0, rotationX: 0, scale: grow, duration: 0.65, ease: 'power1.inOut' },
-        0,
-      )
-    drift.forEach((el) => {
-      const toward = Number(el.dataset.deviceDrift ?? 0)
-      timeline.to(el, { x: () => toward * window.innerWidth, duration: 0.65 }, 0)
-    })
-    if (card) {
-      // The card lives inside the figure, so its target is measured from the figure's own move.
-      // Short screens shrink the card to fit under the header (scaled from its top-left corner).
-      const fit = () => Math.min(1, (room() - 40) / card.offsetHeight)
-      const cardShift = () => {
-        const at = within(card)
-        const figureMove = deviceShift()
-        return {
-          x: window.innerWidth * 0.07 - (stageLeft() + at.left) - figureMove.x,
-          y: (room() - card.offsetHeight * fit()) / 2 - at.top - figureMove.y,
-        }
+    if (words) timeline.to(words, { x: () => -window.innerWidth * 0.06, opacity: 0, duration: 0.18 }, 0.12)
+    if (aside) timeline.to(aside, { x: () => window.innerWidth * 0.04, opacity: 0, duration: 0.18 }, 0.12)
+    if (glow) timeline.to(glow, { opacity: 0, duration: 0.18 }, 0.12)
+    timeline.to(
+      card,
+      { x: () => cardShift().x, y: () => cardShift().y, scale: fit, duration: 0.2, ease: 'power2.inOut' },
+      0.12,
+    )
+    if (portal) {
+      // The sheet first fades in exactly over the reply, so the reply's words go quietly instead of
+      // vanishing in one frame, then opens out.
+      timeline
+        .fromTo(portal, { opacity: 0, clipPath: opening }, { opacity: 1, clipPath: opening, duration: 0.06 }, 0.36)
+        .to(portal, { clipPath: 'inset(0px 0px 0px 0px round 0px)', duration: 0.18, ease: 'power2.inOut' }, 0.42)
+      // The card steps forward and dissolves as the sheet opens, so the green never cuts it in half.
+      timeline.to(card, { opacity: 0, scale: () => fit() * 1.08, duration: 0.14, ease: 'power1.in' }, 0.37)
+      // 天才 opens with the sheet, then rises at the band's own pace (1.4 screens per unit of progress),
+      // keeping a fixed gap above its edge while it fades, so the green under it is never empty.
+      if (portalMark) {
+        timeline
+          .fromTo(
+            portalMark,
+            { x: () => markStart().x, y: () => markStart().y, scale: () => markStart().scale, opacity: 0 },
+            { x: 0, y: 0, scale: 1, opacity: 0.92, duration: 0.18, ease: 'power2.inOut' },
+            0.42,
+          )
+          .to(portalMark, { y: () => -0.56 * window.innerHeight, duration: 0.4 }, 0.6)
+          .to(portalMark, { opacity: 0, duration: 0.32 }, 0.6)
       }
-      gsap.set(card, { transformOrigin: '0 0' })
-      timeline.fromTo(
-        card,
-        {
-          x: () => cardShift().x + window.innerWidth * 0.04,
-          y: () => cardShift().y + window.innerHeight * 0.4,
-          rotation: 4,
-          scale: fit,
-          opacity: 0,
-        },
-        { x: () => cardShift().x, y: () => cardShift().y, rotation: 0, scale: fit, opacity: 1, duration: 0.4, ease: 'power2.out' },
-        0.45,
-      )
-      timeline.to({}, { duration: 0.15 })
+    }
+    timeline.to({}, { duration: 0.36 }, 0.64)
+
+    // With a mouse, the pool of lime leans after the pointer (eased), so the card looks lit from
+    // wherever the reader is looking.
+    let unfollow = () => {}
+    if (glow && glow.parentElement && window.matchMedia(FINE_POINTER).matches) {
+      const slot = glow.parentElement
+      const toX = gsap.quickTo(glow, 'x', { duration: 1.2, ease: 'power3.out' })
+      const toY = gsap.quickTo(glow, 'y', { duration: 1.2, ease: 'power3.out' })
+      const follow = (event: PointerEvent) => {
+        const box = slot.getBoundingClientRect()
+        toX(gsap.utils.clamp(-200, 200, (event.clientX - (box.left + box.width / 2)) * 0.4))
+        toY(gsap.utils.clamp(-140, 140, (event.clientY - (box.top + box.height / 2)) * 0.4))
+      }
+      const rest = () => {
+        toX(0)
+        toY(0)
+      }
+      stage.addEventListener('pointermove', follow, { passive: true })
+      stage.addEventListener('pointerleave', rest)
+      unfollow = () => {
+        stage.removeEventListener('pointermove', follow)
+        stage.removeEventListener('pointerleave', rest)
+        gsap.set(glow, { clearProps: 'x,y' })
+      }
+    }
+
+    return () => {
+      unfollow()
+      ScrollTrigger.removeEventListener('refreshInit', lift)
+      if (next) next.style.marginTop = ''
+      if (portal) portal.style.height = ''
+      demo(false)
     }
   })
 
   mm.add('(max-width: 959px)', () => {
-    const scroll = { trigger: stage, start: 'top top', end: 'bottom top', scrub: true, invalidateOnRefresh: true }
+    if (!next) return
     gsap.fromTo(
-      device,
-      { rotationY: -7, rotationX: 5, transformPerspective: 1600, scale: 1, yPercent: 0 },
-      { rotationY: 0, rotationX: 0, scale: 1.02, yPercent: -2, ease: 'none', scrollTrigger: { ...scroll, end: 'bottom 20%' } },
+      next,
+      { clipPath: 'inset(0% 6% 0% 6% round 28px)' },
+      {
+        clipPath: 'inset(0% 0% 0% 0% round 0px)',
+        ease: 'none',
+        scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 30%', scrub: true },
+      },
     )
-    if (words) gsap.to(words, { y: () => -window.innerHeight * 0.12, opacity: 0.12, ease: 'none', scrollTrigger: scroll })
   })
 
   return () => mm.revert()
@@ -297,6 +473,155 @@ export function chapterRail(root: HTMLElement): Cleanup {
   }
 }
 
+// Light table ([data-light-table], Conan): class photos ([data-light-item]) laid one over another.
+// - Wide screens set data-light-active (CSS stacks the photos in one frame) and pin the table.
+//   Scrolling slides each photo up over the last inside its clip ([data-light-clip]); the photo
+//   rises into place ([data-light-media]) while the one beneath drifts up and dims
+//   ([data-light-shade]). Each photo rests on screen for a moment before the next one arrives.
+// - The photo in view gets data-current (earlier ones data-past), which swaps the caption; the
+//   table's --light-index rolls the counter and --light-progress fills the contact sheet's rule.
+// - A thumbnail ([data-light-thumb]) glides to its photo, and a stop between two photos settles on
+//   the nearer one, so the table never rests on half a photo.
+// - Phones and narrow screens keep the plain sequence of photos.
+export function lightTable(root: HTMLElement, glide: ((y: number, duration: number) => void) | null): Cleanup {
+  const table = root.querySelector<HTMLElement>('[data-light-table]')
+  if (!table) return () => {}
+  const items = Array.from(table.querySelectorAll<HTMLElement>('[data-light-item]'))
+  if (items.length < 2) return () => {}
+  const pick = (selector: string) => items.map((item) => item.querySelector<HTMLElement>(selector))
+  const clips = pick('[data-light-clip]')
+  const media = pick('[data-light-media]')
+  const shades = pick('[data-light-shade]')
+  const thumbs = Array.from(table.querySelectorAll<HTMLElement>('[data-light-thumb]'))
+
+  const steps = items.length - 1
+  const hold = 0.3
+  const total = steps + hold
+  // Where photo i rests, as progress through the pin: halfway through its moment of stillness.
+  const rest = (index: number) => (index + hold / 2) / total
+
+  const mm = gsap.matchMedia()
+  mm.add(WIDE, () => {
+    // Set before the trigger measures, so the pin and its spacing are taken from the stacked table.
+    table.dataset.lightActive = 'true'
+    let current = -1
+    const mark = (progress: number) => {
+      table.style.setProperty('--light-progress', progress.toFixed(4))
+      const index = gsap.utils.clamp(0, steps, Math.floor(progress * total + (1 - hold) / 2))
+      if (index === current) return
+      current = index
+      table.style.setProperty('--light-index', String(index))
+      items.forEach((item, itemIndex) => {
+        item.toggleAttribute('data-current', itemIndex === index)
+        item.toggleAttribute('data-past', itemIndex < index)
+      })
+      thumbs.forEach((thumb, thumbIndex) => {
+        if (thumbIndex === index) thumb.setAttribute('aria-current', 'true')
+        else thumb.removeAttribute('aria-current')
+      })
+    }
+
+    let settling = false
+    let settleTimer = 0
+    let settleDone = 0
+    const goTo = (index: number, duration: number) => {
+      const trigger = timeline.scrollTrigger
+      if (!trigger) return
+      const y = trigger.start + rest(index) * (trigger.end - trigger.start)
+      if (glide) {
+        settling = true
+        window.clearTimeout(settleDone)
+        settleDone = window.setTimeout(() => (settling = false), duration * 1000 + 120)
+        glide(y, duration)
+      } else {
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+    }
+    // Only with smooth scrolling: a native glide fights the reader's own wheel.
+    const settleSoon = () => {
+      if (!glide) return
+      window.clearTimeout(settleTimer)
+      settleTimer = window.setTimeout(() => {
+        const trigger = timeline.scrollTrigger
+        if (settling || !trigger?.isActive) return
+        const index = gsap.utils.clamp(0, steps, Math.round(trigger.progress * total - hold / 2))
+        const y = trigger.start + rest(index) * (trigger.end - trigger.start)
+        if (Math.abs(trigger.scroll() - y) > 6) goTo(index, 0.7)
+      }, 220)
+    }
+
+    const timeline = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: table,
+        start: 'top top',
+        end: () => `+=${total * 0.54 * window.innerHeight}`,
+        pin: true,
+        // Sits below the Conan journey's pin: a priority puts every trigger in page order, and 0
+        // keeps this one after the pins above it, so its start includes their spacing.
+        refreshPriority: 0,
+        scrub: 0.6,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          mark(self.progress)
+          settleSoon()
+        },
+        onRefresh: (self) => {
+          current = -1
+          mark(self.progress)
+        },
+      },
+    })
+    for (let index = 1; index <= steps; index++) {
+      const at = index - 1 + hold
+      const span = 1 - hold
+      const clip = clips[index]
+      const rising = media[index]
+      const below = media[index - 1]
+      const shade = shades[index - 1]
+      if (clip) {
+        timeline.fromTo(
+          clip,
+          { clipPath: 'inset(100% 0% 0% 0%)' },
+          { clipPath: 'inset(0% 0% 0% 0%)', duration: span, ease: 'power2.inOut' },
+          at,
+        )
+      }
+      if (rising) {
+        timeline.fromTo(rising, { yPercent: 16, scale: 1.16 }, { yPercent: 0, scale: 1, duration: span, ease: 'power2.out' }, at)
+      }
+      if (below) timeline.to(below, { yPercent: -8, duration: span, ease: 'power2.inOut' }, at)
+      if (shade) timeline.fromTo(shade, { opacity: 0 }, { opacity: 0.7, duration: span, ease: 'power1.in' }, at)
+    }
+    // The last photo rests as long as the others before the pin lets go.
+    timeline.to({}, { duration: hold }, steps)
+
+    const onThumb = (event: Event) => {
+      const index = Number((event.currentTarget as HTMLElement).dataset.lightThumb)
+      if (Number.isFinite(index)) goTo(index, 1.1)
+    }
+    thumbs.forEach((thumb) => thumb.addEventListener('click', onThumb))
+
+    return () => {
+      thumbs.forEach((thumb) => {
+        thumb.removeEventListener('click', onThumb)
+        thumb.removeAttribute('aria-current')
+      })
+      window.clearTimeout(settleTimer)
+      window.clearTimeout(settleDone)
+      delete table.dataset.lightActive
+      table.style.removeProperty('--light-progress')
+      table.style.removeProperty('--light-index')
+      items.forEach((item) => {
+        item.removeAttribute('data-current')
+        item.removeAttribute('data-past')
+      })
+    }
+  })
+  return () => mm.revert()
+}
+
 // Scroll fill ([data-scroll-fill]): a large outlined word fills in (--fill, 0 to 1) as it rises
 // through the screen. CSS owns the look; without motion --fill keeps its full default.
 export function scrollFill(root: HTMLElement): Cleanup {
@@ -308,6 +633,39 @@ export function scrollFill(root: HTMLElement): Cleanup {
     )
   }
   return () => {}
+}
+
+// Scroll count ([data-scroll-count]): a figure counts from data-count-from to its own number while
+// its stage ([data-scrub-stage]) scrolls through data-count-start/end, and --count (0 to 1) tracks
+// it for a bar. The markup holds the final figure, so without motion it simply reads complete.
+export function scrollCount(root: HTMLElement): Cleanup {
+  const counts = Array.from(root.querySelectorAll<HTMLElement>('[data-scroll-count]'))
+  for (const el of counts) {
+    const value = el.querySelector<HTMLElement>('[data-count-value]')
+    if (!value) continue
+    const to = Number(value.textContent)
+    const from = Number(el.dataset.countFrom ?? 0)
+    const pad = value.textContent?.length ?? 1
+    const draw = (progress: number) => {
+      value.textContent = String(Math.round(from + (to - from) * progress)).padStart(pad, '0')
+      el.style.setProperty('--count', progress.toFixed(3))
+    }
+    ScrollTrigger.create({
+      trigger: el.closest<HTMLElement>('[data-scrub-stage]') ?? el,
+      start: el.dataset.countStart ?? 'top 80%',
+      end: el.dataset.countEnd ?? 'center 50%',
+      onUpdate: (self) => draw(self.progress),
+      onRefresh: (self) => draw(self.progress),
+    })
+    el.dataset.countTo = String(to)
+  }
+  return () => {
+    for (const el of counts) {
+      const value = el.querySelector<HTMLElement>('[data-count-value]')
+      if (value && el.dataset.countTo) value.textContent = el.dataset.countTo
+      el.style.removeProperty('--count')
+    }
+  }
 }
 
 // Sticky swap ([data-swap]): as each step ([data-swap-step]) crosses the reading line, the root's

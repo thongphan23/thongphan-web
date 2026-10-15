@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { photo, type TwoPathPhotoId } from '@/lib/two-path-photos'
 import TwoPathPhoto from './TwoPathPhoto'
 import styles from './TwoPath.module.css'
@@ -6,71 +6,75 @@ import styles from './TwoPath.module.css'
 type GalleryItem = { photoId: TwoPathPhotoId; kind: string }
 
 type PhotoGalleryProps = {
-  // The first item is shown large across the wall; the rest alternate between two columns.
+  // In reading order. Without the light table the first one leads, larger than the rest.
   items: readonly GalleryItem[]
+  // The section's heading. It stands above the photos, and on the light table it heads the left
+  // column above the counter, so the table opens with its own title.
+  head?: ReactNode
 }
 
-// Each frame opens from a different edge so the wall reads as a sequence, not a grid.
-const OPENINGS = ['center', 'left', 'right', 'left', 'right', 'left', 'right'] as const
+const pad = (value: number) => String(value).padStart(2, '0')
 
-function GalleryFigure({ item, index }: { item: GalleryItem; index: number }) {
-  const lead = index === 0
+// A light table of real class photos. On wide screens with motion, lightTable (signatures.ts) pins
+// it: each photo slides up over the last inside one large frame while the counter rolls, the
+// caption swaps and the contact sheet marks the photo in view; a thumbnail glides to its photo.
+// Otherwise the photos stand in sequence: a swipe rail on phones, a lead over a grid above that.
+export default function PhotoGallery({ items, head }: PhotoGalleryProps) {
   return (
-    <figure className={styles.galleryFigure} data-motion-surface>
-      <div
-        className={styles.galleryFrame}
-        data-img-reveal={OPENINGS[index % OPENINGS.length]}
-        data-parallax-frame={lead ? '6' : undefined}
-      >
-        <div className={styles.galleryMedia} data-reveal-media>
-          <TwoPathPhoto
-            id={item.photoId}
-            sizes={lead ? '(max-width: 639px) 84vw, (max-width: 1359px) 100vw, 1360px' : '(max-width: 639px) 84vw, (max-width: 899px) 50vw, 760px'}
-          />
-        </div>
-      </div>
-      <figcaption>
-        <span className={styles.galleryIndex}>{String(index + 1).padStart(2, '0')}</span>
-        <span>
-          <span className={styles.galleryKind}>{item.kind}</span>
-          {photo(item.photoId).caption}
-        </span>
-      </figcaption>
-    </figure>
-  )
-}
-
-// An editorial wall of real class photos: a wide lead, then a broad and a narrow column that
-// drift apart as they pass (data-speed on the narrow one, wide screens only). On phones every
-// frame joins one swipe rail in reading order (--gallery-order).
-export default function PhotoGallery({ items }: PhotoGalleryProps) {
-  const [lead, ...rest] = items
-  const columns = [0, 1].map((column) =>
-    rest.map((item, at) => ({ item, index: at + 1 })).filter((_, at) => at % 2 === column),
-  )
-  return (
-    <div className={styles.gallery}>
-      {lead ? (
-        <div className={styles.galleryLead}>
-          <GalleryFigure item={lead} index={0} />
-        </div>
-      ) : null}
-      <div className={styles.galleryColumns}>
-        {columns.map((column, columnIndex) => (
-          <ul
-            key={columnIndex}
-            className={styles.galleryColumn}
-            data-speed={columnIndex === 1 ? '-0.08' : undefined}
-            data-speed-wide={columnIndex === 1 ? '' : undefined}
-          >
-            {column.map(({ item, index }) => (
-              <li key={item.photoId} style={{ '--gallery-order': index } as CSSProperties}>
-                <GalleryFigure item={item} index={index} />
-              </li>
-            ))}
-          </ul>
+    <div className={styles.gallery} data-light-table style={{ '--gallery-count': items.length } as CSSProperties}>
+      {head ? <div className={styles.lightHead}>{head}</div> : null}
+      <ol className={styles.galleryList}>
+        {items.map((item, index) => (
+          <li key={item.photoId} className={styles.galleryItem} data-light-item>
+            <figure className={styles.galleryFigure} data-motion-surface>
+              <div className={styles.galleryClip} data-light-clip>
+                <div className={styles.galleryFrame} data-img-reveal={index === 0 ? 'center' : 'up'}>
+                  <div className={styles.galleryMedia} data-reveal-media>
+                    <div className={styles.galleryShift} data-light-media>
+                      <TwoPathPhoto
+                        id={item.photoId}
+                        sizes="(max-width: 639px) 84vw, (max-width: 899px) 100vw, 920px"
+                      />
+                    </div>
+                  </div>
+                  <span className={styles.galleryShade} data-light-shade aria-hidden="true" />
+                </div>
+              </div>
+              <figcaption>
+                <span className={styles.galleryIndex}>{pad(index + 1)}</span>
+                <span>
+                  <span className={styles.galleryKind}>{item.kind}</span>
+                  {photo(item.photoId).caption}
+                </span>
+              </figcaption>
+            </figure>
+          </li>
         ))}
-      </div>
+      </ol>
+
+      {/* Light table only: the rolling counter and the contact sheet. */}
+      <p className={styles.lightCounter} aria-hidden="true">
+        <span className={styles.lightRoll}>
+          {items.map((item, index) => (
+            <span key={item.photoId}>{pad(index + 1)}</span>
+          ))}
+        </span>
+        <span className={styles.lightTotal}>/ {pad(items.length)}</span>
+      </p>
+      <ol className={styles.lightSheet} aria-label="Chọn ảnh lớp học">
+        {items.map((item, index) => (
+          <li key={item.photoId}>
+            <button
+              type="button"
+              className={styles.lightThumb}
+              data-light-thumb={index}
+              aria-label={`Ảnh ${pad(index + 1)}: ${photo(item.photoId).caption}`}
+            >
+              <TwoPathPhoto id={item.photoId} sizes="96px" decorative />
+            </button>
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }

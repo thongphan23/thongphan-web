@@ -48,8 +48,6 @@ export default function AboutPage() {
                 href="#origin-story"
                 data-motion-action
                 data-magnetic="0.25"
-                data-cursor="Đọc"
-                data-cursor-tone="lacquer"
               >
                 <span className={styles.startInner} data-magnetic-inner>
                   Bắt đầu câu chuyện
@@ -62,7 +60,7 @@ export default function AboutPage() {
           <figure className={styles.portrait}>
             <div className={`${styles.portraitFrame} intro-clip`}>
               <div className={styles.portraitPhoto} data-motion-parallax data-parallax-max="10" data-gl-photo data-gl-delay="2.2">
-                <TwoPathPhoto id="founder-portrait" sizes="(max-width: 899px) 92vw, 38vw" className={styles.portraitImage} priority />
+                <TwoPathPhoto id="founder-portrait" sizes="(max-width: 899px) 92vw, 52vw" className={styles.portraitImage} priority />
               </div>
             </div>
             <figcaption className={`${styles.portraitCaption} intro-fade`}>

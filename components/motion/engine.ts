@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
-import { chapterRail, curtains, deviceStage, scrollFill, stageHero, stickySwap } from './signatures'
+import { chapterRail, curtains, lessonStage, lightTable, maskFlight, scrollCount, scrollFill, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -96,15 +96,22 @@ function scrubWords(root: HTMLElement) {
         el.dataset.splitReady = 'true'
         return gsap.fromTo(
           self.words,
-          // Words rest legible (0.34) and finish lighting before the line reaches mid-screen,
-          // so no statement is ever read while still half-ghosted.
-          { opacity: 0.34 },
+          // Words rest legible (0.42, or data-scrub-from for display-size lines that must hold
+          // contrast mid-reveal) and finish lighting before the line reaches mid-screen, so no
+          // statement is ever read while still half-ghosted.
+          { opacity: Number(el.dataset.scrubFrom ?? 0.42) },
           {
             opacity: 1,
             ease: 'none',
             stagger: 0.12,
-            // data-scrub-end lets a statement high on its page finish sooner.
-            scrollTrigger: { trigger: el, start: 'top 90%', end: el.dataset.scrubEnd ?? 'center 55%', scrub: true },
+            // data-scrub-end lets a statement high on its page finish sooner. A line held on screen
+            // by a taller [data-scrub-stage] reads against the stage instead (data-scrub-start too).
+            scrollTrigger: {
+              trigger: el.closest<HTMLElement>('[data-scrub-stage]') ?? el,
+              start: el.dataset.scrubStart ?? 'top 90%',
+              end: el.dataset.scrubEnd ?? 'center 55%',
+              scrub: true,
+            },
           },
         )
       },
@@ -202,6 +209,20 @@ function parallax(root: HTMLElement, mm: gsap.MatchMedia) {
     else drift()
   })
 
+  // A round mark (a seal, a stamp) turns as it passes, as if rolled across the page by the scroll.
+  root.querySelectorAll<HTMLElement>('[data-spin]').forEach((el) => {
+    const turn = numberAttr(el, 'spin', 90)
+    gsap.fromTo(
+      el,
+      { rotation: -turn / 2 },
+      {
+        rotation: turn / 2,
+        ease: 'none',
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 0.6 },
+      },
+    )
+  })
+
   root.querySelectorAll<HTMLElement>('[data-parallax-frame]').forEach((frame) => {
     const media = frame.querySelector('img, picture, video, canvas')
     if (!media) return
@@ -295,11 +316,15 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
           },
         })
         .fromTo(media, { clipPath: fromSlot }, { clipPath: 'inset(0px 0px 0px 0px round 0px)', ease: 'power3.inOut', duration: 1 }, lead)
-        .fromTo(image, { scale: 1.5 }, { scale: 1, ease: 'power2.inOut', duration: 1.1 }, lead)
-        .to(left, { ...part(-1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, lead + 0.05)
-        .to(right, { ...part(1), autoAlpha: 0, ease: 'power2.in', duration: 0.75 }, lead + 0.05)
+        .fromTo(image, { scale: 1.5 }, { scale: 1.08, ease: 'power2.inOut', duration: 1.1 }, lead)
+        // The words part as the hole opens but are gone before the photo fills the screen, so
+        // no letter is ever left floating over the face.
+        .to(left, { ...part(-1), ease: 'power2.in', duration: 0.75 }, lead + 0.05)
+        .to(right, { ...part(1), ease: 'power2.in', duration: 0.75 }, lead + 0.05)
+        .to([left, right], { autoAlpha: 0, duration: 0.42 }, lead + 0.05)
         .fromTo(after, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, ease: 'power2.out', duration: 0.3, stagger: 0.06 }, lead + 0.95)
-        .to({}, { duration: 0.2 })
+        // The hold before the pin lets go keeps the camera drifting instead of freezing.
+        .to(image, { scale: 1, ease: 'sine.out', duration: 0.4 }, lead + 1.1)
       return () => {
         delete section.dataset.zoomActive
       }
@@ -307,7 +332,10 @@ function zoomReveals(root: HTMLElement, mm: gsap.MatchMedia) {
   })
 }
 
-// Pinned sections whose content travels sideways while the page scrolls down.
+// Pinned sections whose content travels sideways while the page scrolls down. Each item has a
+// resting point (its centre in the middle of the track's window); the item nearest the scroll is
+// current, the scroll settles on a resting point when the reader stops, and arrows inside the
+// section (an 'hscroll:step' event from ReelControls) move one item at a time.
 function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
   root.querySelectorAll<HTMLElement>('[data-hscroll]').forEach((section) => {
     const track = section.querySelector<HTMLElement>('[data-hscroll-track]')
@@ -315,22 +343,72 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
     // data-hscroll-pace stretches the pinned scroll past the track's own width, so each item dwells longer.
     const pace = Number(section.dataset.hscrollPace ?? 1) || 1
     const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
+    const counter = section.querySelector<HTMLElement>('[data-hscroll-current]')
+    const prev = section.querySelector<HTMLButtonElement>('[data-hscroll-prev]')
+    const next = section.querySelector<HTMLButtonElement>('[data-hscroll-next]')
     mm.add(DESKTOP, () => {
       const distance = () => Math.max(0, track.scrollWidth - track.clientWidth)
       section.dataset.hscrollActive = 'true'
-      // The current item follows progress, so the first is current at the start and the last at the end.
+      let points: number[] = items.map(() => 0)
+      let lefts: number[] = items.map(() => 0)
+      const measure = () => {
+        const room = distance()
+        points = items.map((item) =>
+          room > 0 ? gsap.utils.clamp(0, 1, (item.offsetLeft + item.offsetWidth / 2 - track.clientWidth / 2) / room) : 0,
+        )
+        // Rect difference, so the track's own transform and offsetParent drop out.
+        const origin = track.getBoundingClientRect().left
+        lefts = items.map((item) => item.getBoundingClientRect().left - origin)
+      }
+      // --hscroll-edge: where each item's left edge sits in the window, in item widths (0 = on the
+      // window's left edge, negative = already sliding out), so CSS can retire an item as it leaves.
+      const edges = () => {
+        const x = Number(gsap.getProperty(track, 'x')) || 0
+        items.forEach((item, i) => {
+          const edge = gsap.utils.clamp(-1, 1, (lefts[i] + x) / (item.offsetWidth || 1))
+          item.style.setProperty('--hscroll-edge', edge.toFixed(3))
+        })
+      }
+      const nearest = (progress: number) =>
+        points.reduce((best, point, index) => (Math.abs(point - progress) < Math.abs(points[best] - progress) ? index : best), 0)
       let current = -1
       const mark = (progress: number) => {
         section.style.setProperty('--hscroll-progress', progress.toFixed(4))
-        const next = Math.round(progress * Math.max(0, items.length - 1))
-        if (next === current || !items.length) return
-        current = next
-        items.forEach((item, index) => item.toggleAttribute('data-current', index === next))
-        section.style.setProperty('--hscroll-index', String(next))
+        const index = nearest(progress)
+        if (index === current || !items.length) return
+        current = index
+        items.forEach((item, i) => item.toggleAttribute('data-current', i === index))
+        section.style.setProperty('--hscroll-index', String(index))
+        if (counter) counter.textContent = String(index + 1).padStart(2, '0')
+        if (prev) prev.disabled = index === 0
+        if (next) next.disabled = index === items.length - 1
+      }
+      let trigger: ScrollTrigger | undefined
+      const scrollToPoint = (index: number, duration: number) => {
+        if (!trigger) return
+        const y = trigger.start + (trigger.end - trigger.start) * points[index]
+        if (lenis) lenis.scrollTo(y, { duration })
+        else window.scrollTo({ top: y, behavior: 'smooth' })
+      }
+      // Once the reader stops inside the pinned stretch, glide to the nearest resting point.
+      let settleTimer = 0
+      let settling = false
+      const settleSoon = (self: ScrollTrigger) => {
+        window.clearTimeout(settleTimer)
+        if (settling || !lenis) return
+        settleTimer = window.setTimeout(() => {
+          if (!self.isActive || self.progress <= 0 || self.progress >= 1) return
+          const index = nearest(self.progress)
+          if (Math.abs(points[index] - self.progress) * (self.end - self.start) < 6) return
+          settling = true
+          scrollToPoint(index, 0.7)
+          window.setTimeout(() => (settling = false), 760)
+        }, 180)
       }
       const tween = gsap.to(track, {
         x: () => -distance(),
         ease: 'none',
+        onUpdate: edges,
         scrollTrigger: {
           trigger: section,
           start: 'top top',
@@ -339,10 +417,60 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           scrub: 0.8,
           invalidateOnRefresh: true,
           anticipatePin: 1,
-          onUpdate: (self) => mark(self.progress),
-          onRefresh: (self) => mark(self.progress),
+          onUpdate: (self) => {
+            mark(self.progress)
+            settleSoon(self)
+          },
+          onRefresh: (self) => {
+            measure()
+            current = -1
+            mark(self.progress)
+            edges()
+          },
         },
       })
+      const onStep = (event: Event) => {
+        const direction = (event as CustomEvent<number>).detail
+        const target = gsap.utils.clamp(0, items.length - 1, Math.max(0, current) + direction)
+        settling = true
+        scrollToPoint(target, 1)
+        window.setTimeout(() => (settling = false), 1060)
+      }
+      trigger = tween.scrollTrigger
+      section.addEventListener('hscroll:step', onStep)
+      // Mouse drag: pulling the row sideways moves the page by the matching scroll distance (one
+      // pixel of track is `pace` pixels of scroll), and letting go glides to the nearest photo.
+      const viewport = track.parentElement ?? track
+      let drag: { x: number; y: number; moved: boolean } | null = null
+      const dragStart = (event: PointerEvent) => {
+        if (event.pointerType !== 'mouse' || event.button !== 0 || !trigger) return
+        // Not `isActive`: resting exactly on the pin's first frame counts as outside it.
+        const y = lenis?.scroll ?? window.scrollY
+        if (y < trigger.start - 2 || y > trigger.end + 2) return
+        drag = { x: event.clientX, y, moved: false }
+        section.dataset.hscrollDragging = 'true'
+      }
+      const dragMove = (event: PointerEvent) => {
+        if (!drag || !trigger) return
+        const dx = event.clientX - drag.x
+        if (Math.abs(dx) > 4) drag.moved = true
+        const y = gsap.utils.clamp(trigger.start + 1, trigger.end - 1, drag.y - dx * pace * 1.4)
+        if (lenis) lenis.scrollTo(y, { immediate: true, force: true })
+        else window.scrollTo(0, y)
+      }
+      const dragEnd = () => {
+        if (!drag || !trigger) return
+        const moved = drag.moved
+        drag = null
+        delete section.dataset.hscrollDragging
+        if (!moved) return
+        settling = true
+        scrollToPoint(nearest(trigger.progress), 0.8)
+        window.setTimeout(() => (settling = false), 860)
+      }
+      viewport.addEventListener('pointerdown', dragStart)
+      window.addEventListener('pointermove', dragMove, { passive: true })
+      window.addEventListener('pointerup', dragEnd)
       track.querySelectorAll<HTMLElement>('[data-hscroll-media]').forEach((media) => {
         gsap.fromTo(
           media,
@@ -361,40 +489,80 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
         )
       })
       return () => {
+        window.clearTimeout(settleTimer)
+        section.removeEventListener('hscroll:step', onStep)
+        viewport.removeEventListener('pointerdown', dragStart)
+        window.removeEventListener('pointermove', dragMove)
+        window.removeEventListener('pointerup', dragEnd)
+        delete section.dataset.hscrollDragging
         delete section.dataset.hscrollActive
         section.style.removeProperty('--hscroll-progress')
         section.style.removeProperty('--hscroll-index')
-        items.forEach((item) => item.removeAttribute('data-current'))
+        items.forEach((item) => {
+          item.removeAttribute('data-current')
+          item.style.removeProperty('--hscroll-edge')
+        })
       }
     })
   })
 }
 
 // Stacked cards: each card pins under the header while the next one slides over it.
+// Sticky cards ([data-stack-card] with position: sticky) give no stable box to measure, so a card
+// may be preceded by a spacer ([data-stack-mark]) whose bottom is where that card starts in the
+// flow; the card before it then steps back from the moment it enters until it settles at its own
+// sticky top. data-stack-media, data-stack-scale and data-stack-opacity tune one pile, and
+// data-stack-start holds a card at full strength until the next one is that far up the screen.
 function stackCards(root: HTMLElement, mm: gsap.MatchMedia) {
   root.querySelectorAll<HTMLElement>('[data-stack]').forEach((stack) => {
     const cards = Array.from(stack.querySelectorAll<HTMLElement>('[data-stack-card]'))
-    mm.add(DESKTOP, () => {
+    mm.add(stack.dataset.stackMedia ?? DESKTOP, () => {
       cards.forEach((card, index) => {
-        if (index === cards.length - 1) return
-        gsap.to(card, {
-          scale: 0.92 + index * 0.015,
-          opacity: 0.45,
-          filter: 'brightness(0.7)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: cards[index + 1],
-            start: 'top bottom',
-            end: 'top 20%',
-            scrub: true,
+        const next = cards[index + 1]
+        if (!next) return
+        const mark = next.previousElementSibling
+        const scrollTrigger: ScrollTrigger.Vars =
+          mark instanceof HTMLElement && mark.matches('[data-stack-mark]')
+            ? {
+                trigger: mark,
+                start: 'bottom bottom',
+                end: () => `bottom ${parseFloat(getComputedStyle(next).top) || window.innerHeight * 0.2}px`,
+                scrub: true,
+              }
+            : { trigger: next, start: stack.dataset.stackStart ?? 'top bottom', end: 'top 20%', scrub: true }
+        // The filter starts from an explicit brightness(1): tweening from `none` reads as brightness(0)
+        // and flashes the card near black at the start of the step back.
+        gsap.fromTo(
+          card,
+          { filter: 'brightness(1)' },
+          {
+            scale: numberAttr(stack, 'stackScale', 0.92 + index * 0.015),
+            opacity: numberAttr(stack, 'stackOpacity', 0.45),
+            filter: 'brightness(0.7)',
+            ease: 'none',
+            immediateRender: false,
+            scrollTrigger,
           },
-        })
+        )
       })
     })
   })
 }
 
 // Real numbers count up when they arrive. Markup carries the final value for no-JS and SEO.
+// data-focus-bloom: an element is marked data-in-focus while it crosses the middle of the
+// screen, so a photo can wake into colour as the reader reaches it (touch screens included).
+function focusBloom(root: HTMLElement) {
+  root.querySelectorAll<HTMLElement>('[data-focus-bloom]').forEach((el) => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 68%',
+      end: 'bottom 32%',
+      onToggle: (self) => el.toggleAttribute('data-in-focus', self.isActive),
+    })
+  })
+}
+
 function counters(root: HTMLElement) {
   const formatter = new Intl.NumberFormat('vi-VN')
   root.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
@@ -616,6 +784,8 @@ function hoverReveal(root: HTMLElement): Cleanup {
 
 // The cursor lives for the whole session: a dot that tracks the pointer exactly and a
 // ring that trails it, grows over links and shows a short label over [data-cursor] targets.
+// Over a magnetic button that already says what it does, the ring wraps the button's outline
+// instead, so it never covers the label.
 let cursorCleanup: Cleanup | null = null
 
 function startCursor() {
@@ -630,25 +800,62 @@ function startCursor() {
   const halo = ring.querySelector<HTMLElement>('.motion-cursor__ring')!
   const dx = gsap.quickSetter(dot, 'x', 'px')
   const dy = gsap.quickSetter(dot, 'y', 'px')
-  const hx = gsap.quickTo(halo, 'x', { duration: 0.42, ease: 'power3.out' })
-  const hy = gsap.quickTo(halo, 'y', { duration: 0.42, ease: 'power3.out' })
+  const hx = gsap.quickTo(halo, 'x', { duration: 0.24, ease: 'power3.out' })
+  const hy = gsap.quickTo(halo, 'y', { duration: 0.24, ease: 'power3.out' })
   document.documentElement.dataset.cursorMode = 'custom'
+  let stuck: HTMLElement | null = null
+  const unstick = () => {
+    if (!stuck) return
+    stuck = null
+    halo.style.removeProperty('width')
+    halo.style.removeProperty('height')
+    halo.style.removeProperty('margin')
+  }
 
+  // Scrolling under a still mouse makes the browser fire pointerover on whatever slides beneath
+  // it, which would pop a label over the content being read. Labels stay folded until the mouse
+  // itself moves again.
+  const quiet = () => {
+    ring.dataset.quiet = 'true'
+  }
   const move = (event: PointerEvent) => {
     if (event.pointerType !== 'mouse') return
     ring.dataset.visible = 'true'
+    delete ring.dataset.quiet
     dx(event.clientX)
     dy(event.clientY)
+    if (stuck) {
+      // The button itself leans toward the pointer, so its box is read fresh on every move.
+      const box = stuck.getBoundingClientRect()
+      const cx = box.left + box.width / 2
+      const cy = box.top + box.height / 2
+      const w = box.width + 16
+      const h = box.height + 16
+      halo.style.width = `${w}px`
+      halo.style.height = `${h}px`
+      halo.style.margin = `${-h / 2}px 0 0 ${-w / 2}px`
+      hx(cx + (event.clientX - cx) * 0.1)
+      hy(cy + (event.clientY - cy) * 0.1)
+      return
+    }
     hx(event.clientX)
     hy(event.clientY)
   }
   const over = (event: PointerEvent) => {
     const target = (event.target as Element | null)?.closest<HTMLElement>('[data-cursor], a, button, [role="button"], summary')
     if (!target) {
+      unstick()
       ring.dataset.state = 'idle'
       label.textContent = ''
       return
     }
+    if (!target.dataset.cursor && target.matches('[data-magnetic]')) {
+      stuck = target
+      ring.dataset.state = 'stick'
+      label.textContent = ''
+      return
+    }
+    unstick()
     const text = target.dataset.cursor
     ring.dataset.state = text ? 'label' : 'link'
     ring.dataset.tone = target.closest<HTMLElement>('[data-cursor-tone]')?.dataset.cursorTone ?? 'light'
@@ -664,12 +871,14 @@ function startCursor() {
     ring.dataset.pressed = 'false'
   }
   window.addEventListener('pointermove', move, { passive: true })
+  window.addEventListener('scroll', quiet, { passive: true })
   document.addEventListener('pointerover', over, { passive: true })
   document.documentElement.addEventListener('pointerleave', leaveWindow)
   window.addEventListener('pointerdown', press, { passive: true })
   window.addEventListener('pointerup', release, { passive: true })
   cursorCleanup = () => {
     window.removeEventListener('pointermove', move)
+    window.removeEventListener('scroll', quiet)
     document.removeEventListener('pointerover', over)
     document.documentElement.removeEventListener('pointerleave', leaveWindow)
     window.removeEventListener('pointerdown', press)
@@ -712,7 +921,10 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     horizontalScroll(root, mm)
     stackCards(root, mm)
     counters(root)
-    extra.push(marquees(root), velocitySkew(root), stageHero(root), deviceStage(root), stickySwap(root), chapterRail(root), curtains(root), scrollFill(root))
+    focusBloom(root)
+    // The light table glides with Lenis where it runs, so a settle eases like the reader's own scroll.
+    const glide = lenis ? (y: number, duration: number) => lenis?.scrollTo(y, { duration }) : null
+    extra.push(marquees(root), velocitySkew(root), stageHero(root), maskFlight(root), lessonStage(root), stickySwap(root), chapterRail(root), lightTable(root, glide), curtains(root), scrollFill(root), scrollCount(root))
     if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.

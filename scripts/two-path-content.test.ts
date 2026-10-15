@@ -159,3 +159,13 @@ test('only lib/two-path-links.ts spells the outbound destinations', async () => 
     assert.doesNotMatch(await readProjectFile(file), /learn\.thongphan\.com|conan\.school/, file)
   }
 })
+
+test('the Tensai hero lesson keeps one accepted answer and the app’s reply to every pick', () => {
+  const { options, remember } = tensaiContent.lesson
+  assert.deepEqual(
+    options.filter((option) => option.correct).map((option) => option.key),
+    ['A'],
+  )
+  for (const option of options) assert.ok(option.feedback.length > 20, option.key)
+  assert.match(remember, /^Định vị có ý nghĩa/)
+})

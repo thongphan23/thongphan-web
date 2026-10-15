@@ -34,7 +34,8 @@ const records = [
     source: 'Ảnh gốc DQH179.JPG do Thông cung cấp (không commit); khán giả đã làm mờ bằng scripts/photos/blur-audience.py',
     faces: 'blurred',
     budgetBytes: 180 * KB,
-    focal: { x: 0.8, y: 0.45 },
+    // Holds him on the right third of the letter's 4:5 crop with the hall opening to his left.
+    focal: { x: 0.86, y: 0.5 },
   },
   {
     id: 'home-hero-mobile',

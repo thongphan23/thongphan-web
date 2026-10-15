@@ -1,14 +1,13 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
-import { ArrowRight, ArrowUpRight, Star } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import JsonLd from '@/components/seo/JsonLd'
 import PathLink from '@/components/two-path/PathLink'
 import PathMemory from '@/components/two-path/PathMemory'
-import TensaiTryCard from '@/components/two-path/TensaiTryCard'
+import TensaiLesson from '@/components/two-path/TensaiLesson'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import twoPath from '@/components/two-path/TwoPath.module.css'
-import { photo } from '@/lib/two-path-photos'
 import { tensaiContent } from '@/lib/two-path-content'
 import { buildBranchPageStructuredData, createPageMetadata } from '@/lib/seo'
 import styles from './page.module.css'
@@ -33,39 +32,30 @@ const titleTail = tensaiContent.title.slice(accentAt + accent.length).trimStart(
 
 export default function TensaiPage() {
   const { situations, courses, method, closing } = tensaiContent
-  // The hero screen is the Định vị map, so its callout quotes that course's own counts.
-  const mapCourse = courses.items.find((course) => course.name === 'Định vị') ?? courses.items[0]
   return (
     <div className={`${twoPath.branch} ${styles.page}`} data-path="tensai" data-motion-stage>
       <PathMemory path="tensai" />
       <JsonLd data={buildBranchPageStructuredData({ name: 'Tensai', description, pathname: '/tensai' })} />
 
-      {/* The stage: the real app floats as a tilted screen; on wide screens the hero pins while the
-          screen squares up and moves to the centre (deviceStage in signatures.ts). 天才, the word
-          Tensai comes from, stands beside it. */}
-      <section className={styles.hero} aria-labelledby="tensai-title" data-device-stage>
-        <p className={`${styles.kanji} intro-fade`} aria-hidden="true" data-device-aside>
-          <span className={styles.kanjiChar} data-speed="0.12">
-            天
-          </span>
-          <span className={styles.kanjiChar} data-speed="0.26">
-            才
-          </span>
-          <span className={styles.kanjiGloss}>Tensai · thiên tài</span>
-        </p>
-        <div className={styles.heroText} data-device-words>
-          <p className={`${styles.eyebrow} intro-fade`}>{tensaiContent.eyebrow}</p>
-          <h1 id="tensai-title" className={styles.title}>
+      {/* The stage: the first exercise of the live Định vị course, playable right here. On wide
+          screens the hero pins, the card moves to the centre and answers itself once as a demo, then
+          opens into the green of the next band (lessonStage in signatures.ts). */}
+      <section className={styles.hero} aria-labelledby="tensai-title" data-lesson-stage>
+        <div className={styles.heroText} data-lesson-words>
+          <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.1s' } as CSSProperties}>
+            {tensaiContent.eyebrow}
+          </p>
+          <h1 id="tensai-title" className={styles.title} style={{ '--intro-base': '0.18s' } as CSSProperties}>
             <SplitWords text={titleHead} />{' '}
             <em>
               <SplitWords text={accent} start={wordCount(titleHead)} />
             </em>{' '}
             <SplitWords text={titleTail} start={wordCount(titleHead) + wordCount(accent)} />
           </h1>
-          <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.85s' } as CSSProperties}>
+          <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.55s' } as CSSProperties}>
             {tensaiContent.lead}
           </p>
-          <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '1s' } as CSSProperties}>
+          <div className={`${styles.actions} intro-fade`} style={{ '--intro-delay': '0.68s' } as CSSProperties}>
             <PathLink
               path="tensai"
               kind="outbound"
@@ -83,68 +73,36 @@ export default function TensaiPage() {
               {tensaiContent.secondaryCta.label}
             </a>
           </div>
-          <p className={`${styles.launchNote} intro-fade`} style={{ '--intro-delay': '1.15s' } as CSSProperties}>
+          <p className={`${styles.launchNote} intro-fade`} style={{ '--intro-delay': '0.8s' } as CSSProperties}>
             {tensaiContent.launchNote}
           </p>
         </div>
-        {/* Three depths: the map screen at the back, a real lesson question lifted out of the app in
-            front (it can be answered), and two facts floating between. The pointer separates them
-            (data-depth); on wide screens the question rises into place during the pinned scroll. */}
-        <figure className={styles.heroFigure} data-depth-stage data-device-figure>
-          <span className={styles.heroGlow} aria-hidden="true" />
-          <div data-depth="0.3">
-            <div className={styles.device} data-device>
-              <div className={`${styles.heroFrame} intro-clip`} data-tilt="7">
-                <TwoPathPhoto
-                  id={tensaiContent.heroPhotoId}
-                  priority
-                  sizes="(max-width: 959px) 100vw, 860px"
-                  className={styles.heroImage}
-                />
-                <span className={styles.heroGlare} aria-hidden="true" />
+        {/* The card is real text and real choices, not a screenshot: it stays sharp at any scale and
+            answers the way the app does. The pointer leans it a little (data-tilt). */}
+        <div className={styles.lessonSlot}>
+          <span className={styles.heroGlow} aria-hidden="true" data-lesson-glow />
+          <div className={styles.lessonCard} data-lesson-card>
+            <div data-tilt="2.5">
+              <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
+                <TensaiLesson />
               </div>
             </div>
           </div>
-          {/* data-speed moves the outer chip, so the intro runs on the inner one (GSAP folds a CSS
-              translate on the element it drives into its own transform). */}
-          <p
-            className={`${styles.callout} ${styles.calloutCourse}`}
-            aria-hidden="true"
-            data-speed="-0.1"
-            data-device-drift="-0.1"
-          >
-            <span className={styles.depthLayer} data-depth="0.7">
-              <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.1s' } as CSSProperties}>
-                <span className={styles.calloutDot} />
-                Khóa {mapCourse.name} · {mapCourse.lessonCount} bài · {mapCourse.gateCount} màn vượt ải
-              </span>
-            </span>
-          </p>
-          <p
-            className={`${styles.callout} ${styles.calloutGate}`}
-            aria-hidden="true"
-            data-speed="0.14"
-            data-device-drift="0.05"
-          >
-            <span className={styles.depthLayer} data-depth="0.9">
-              <span className={`${styles.calloutInner} intro-fade`} style={{ '--intro-delay': '1.3s' } as CSSProperties}>
-                <Star size={16} strokeWidth={2.2} />
-                {tensaiContent.heroCallout}
-              </span>
-            </span>
-          </p>
-          <div className={styles.tryCard} data-device-card>
-            <div data-depth="1.2">
-              <div className="intro-fade" style={{ '--intro-delay': '1.45s' } as CSSProperties}>
-                <TensaiTryCard />
-              </div>
-            </div>
-          </div>
-          <figcaption className="intro-fade">{photo(tensaiContent.heroPhotoId).caption}</figcaption>
-        </figure>
+        </div>
+        {/* 天才, the word Tensai comes from, grows with the sheet as it opens, so a stop mid-scroll
+            shows a mark, not an empty panel. */}
+        <div className={styles.portal} data-lesson-portal aria-hidden="true">
+          <span className={styles.portalMark} data-lesson-portal-mark>
+            天才
+          </span>
+        </div>
       </section>
 
-      <section className={`${styles.section} ${styles.situationsBand}`} aria-labelledby="tensai-situations" data-curtain>
+      <section
+        className={`${styles.section} ${styles.situationsBand}`}
+        aria-labelledby="tensai-situations"
+        data-lesson-next
+      >
         <div className={`${styles.inner} ${styles.situationsGrid}`}>
           <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -154,17 +112,30 @@ export default function TensaiPage() {
               {situations.title}
             </h2>
           </div>
-          <ol className={styles.situations}>
+          {/* Each problem is a card that holds under the heading while the next one slides over it,
+              so the three read as a pile the reader works through (stackCards in engine.ts). */}
+          <ol
+            className={styles.situations}
+            data-stack
+            data-stack-scale="0.94"
+            data-stack-opacity="1"
+            data-stack-start="top 55%"
+          >
             {situations.items.map((item, index) => (
-              <li key={item.course} className={styles.situation}>
-                <span className={styles.rowLine} data-draw-line aria-hidden="true" />
-                <span className={styles.situationIndex} aria-hidden="true">
-                  {pad(index + 1)}
-                </span>
-                <p className={styles.problem} data-scrub-words>
+              <li
+                key={item.course}
+                className={styles.situation}
+                data-stack-card
+                style={{ '--stack-i': index } as CSSProperties}
+              >
+                <p className={styles.situationTop} aria-hidden="true">
+                  <span className={styles.situationIndex}>{pad(index + 1)}</span>
+                  <span className={styles.situationTotal}>/ {pad(situations.items.length)}</span>
+                </p>
+                <p className={styles.problem} data-scrub-words data-scrub-from="0.6" data-scrub-end="top 45%">
                   {item.problem}
                 </p>
-                <div className={styles.situationAnswer} data-motion-reveal="drift">
+                <div className={styles.situationAnswer}>
                   <p className={styles.situationCourse}>Khóa {item.course}</p>
                   <ul className={styles.lessons}>
                     {item.lessons.map((lesson) => (
@@ -201,7 +172,7 @@ export default function TensaiPage() {
                   placement="page"
                   className={styles.courseLink}
                   data-cursor="Vào học"
-                  data-cursor-tone="lime"
+                  data-cursor-tone="ink"
                 >
                   <span className={styles.courseIndex} aria-hidden="true">
                     {pad(index + 1)}

@@ -12,56 +12,60 @@
   --path-accent: #d94f2b;
 }
 
-/* Hero doors: two glass cards on the home stage. Wide screens pin them to the bottom corners
-   (Tensai left, Conan right, matching the pools of light); tablets set them in a row under the
-   question; phones drop the photo and keep two compact text cards side by side. */
+/* Hero doors: two large buttons under the question, side by side from tablets up and stacked on
+   phones. Each carries a small real photo, the branch over the reader's own words, and an arrow
+   in the branch colour; hovering or focusing blooms that colour out of the arrow across the button. */
 
 .doors {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.875rem;
   justify-content: center;
-  margin-top: clamp(1.25rem, 3svh, 2rem);
+  margin-top: clamp(1.5rem, 3.5svh, 2.25rem);
 }
 
 .door {
   --door-accent: var(--brand-paper);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  --door-on-accent: var(--brand-ink);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
   align-items: center;
-  backdrop-filter: blur(18px) saturate(1.15);
-  background: rgba(18, 17, 15, 0.58);
-  border: 1px solid rgba(232, 223, 207, 0.16);
-  border-radius: 14px;
+  backdrop-filter: blur(16px) saturate(1.1);
+  background: rgba(20, 19, 17, 0.62);
+  border: 1px solid rgba(232, 223, 207, 0.3);
+  border-radius: 999px;
   box-sizing: border-box;
   color: var(--brand-paper);
   display: grid;
-  gap: 0 1.1rem;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0 0.95rem;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   isolation: isolate;
+  min-height: 5rem;
   overflow: hidden;
-  padding: 0.625rem 0.875rem 0.625rem 0.625rem;
+  padding: 0.5rem;
   position: relative;
   text-align: left;
   text-decoration: none;
   transition:
-    background-color 500ms var(--brand-motion-ease),
-    border-color 500ms var(--brand-motion-ease);
-  width: var(--stage-door-w, 19rem);
+    border-color 500ms var(--brand-motion-ease),
+    color 420ms var(--brand-motion-ease);
+  width: min(100%, 27rem);
 }
 
 .door[data-path-door='tensai'] {
   --door-accent: #c3f331;
+  --door-on-accent: #073b2f;
 }
 
+/* The deeper lacquer keeps white text above 4.5:1 once the button is flooded. */
 .door[data-path-door='conan'] {
-  --door-accent: #d94f2b;
+  --door-accent: #c4441f;
+  --door-on-accent: #ffffff;
 }
 
 .door:hover,
 .door:focus-visible {
-  background: color-mix(in srgb, var(--door-accent) 12%, rgba(18, 17, 15, 0.66));
-  border-color: color-mix(in srgb, var(--door-accent) 70%, transparent);
-  color: var(--brand-paper);
+  border-color: var(--door-accent);
+  color: var(--door-on-accent);
 }
 
 .door:focus-visible {
@@ -69,217 +73,147 @@
   outline-offset: var(--brand-focus-offset);
 }
 
+/* The flood: a circle of the branch colour that grows out of the arrow. */
+.doorFill {
+  background: var(--door-accent);
+  clip-path: circle(0% at calc(100% - 2.5rem) 50%);
+  inset: 0;
+  position: absolute;
+  transition: clip-path 700ms var(--brand-motion-ease);
+  z-index: -1;
+}
+
+.door:hover .doorFill,
+.door:focus-visible .doorFill {
+  clip-path: circle(140% at calc(100% - 2.5rem) 50%);
+}
+
 .doorPhoto {
-  aspect-ratio: 4 / 5;
-  border-radius: 8px;
+  aspect-ratio: 1;
+  border-radius: 999px;
   display: block;
   filter: var(--brand-photo-grade);
-  height: auto;
+  height: 4rem;
   object-fit: cover;
-  transition: transform 600ms var(--brand-motion-ease);
-  width: 100%;
-}
-
-/* A thin accent line along the bottom edge; it fills from the left on hover. */
-.doorShade {
-  background: var(--door-accent);
-  bottom: 0;
-  height: 2px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform 700ms var(--brand-motion-ease);
-}
-
-.door:hover .doorShade,
-.door:focus-visible .doorShade {
-  transform: scaleX(1);
+  width: 4rem;
 }
 
 .doorText {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.2rem;
   min-width: 0;
 }
 
 .doorProduct {
-  align-items: center;
-  color: var(--brand-paper);
-  display: flex;
-  gap: 0.5rem;
+  color: color-mix(in srgb, currentColor 92%, transparent);
   font-family: var(--font-be-vietnam);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.2;
-  /* Leaves room for the arrow in the top-right corner. */
-  padding-right: 1.75rem;
   text-transform: uppercase;
 }
 
+.doorLabel {
+  display: block;
+  font-family: var(--font-be-vietnam);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.doorArrow {
+  background: var(--door-accent);
+  border-radius: 999px;
+  color: var(--door-on-accent);
+  display: grid;
+  height: 4rem;
+  place-items: center;
+  transition:
+    background-color 420ms var(--brand-motion-ease),
+    color 420ms var(--brand-motion-ease);
+  width: 4rem;
+}
+
+.doorArrow svg {
+  transition: transform 500ms var(--brand-motion-ease);
+}
+
+.door:hover .doorArrow,
+.door:focus-visible .doorArrow {
+  background: var(--door-on-accent);
+  color: var(--door-accent);
+}
+
+.door:hover .doorArrow svg,
+.door:focus-visible .doorArrow svg {
+  transform: translateX(3px);
+}
+
+/* Intro: the buttons rise out of a clip once the question has started. */
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .door {
+    animation: doorRise 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: 1.1s;
+  }
+
+  :global(html.motion) .door + .door {
+    animation-delay: 1.22s;
+  }
+}
+
+@keyframes doorRise {
+  from {
+    clip-path: inset(100% 0 0 0 round 999px);
+    translate: 0 1.5rem;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0 round 999px);
+    translate: 0 0;
+  }
+}
+
+/* Phones: the two buttons stack full width under the question. */
+@media (max-width: 767px) {
+  .doors {
+    display: grid;
+    gap: 0.625rem;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 1.25rem;
+  }
+
+  .door {
+    gap: 0 0.75rem;
+    min-height: 4rem;
+    padding: 0.4rem;
+    width: 100%;
+  }
+
+  .doorPhoto,
+  .doorArrow {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .doorFill {
+    clip-path: circle(0% at calc(100% - 1.9rem) 50%);
+  }
+
+  .door:hover .doorFill,
+  .door:focus-visible .doorFill {
+    clip-path: circle(140% at calc(100% - 1.9rem) 50%);
+  }
+}
+
 /* The branch colour is a small mark, never the text colour (Conan red is below 4.5:1 on ink). */
-.doorProduct::before,
 .galleryKind::before {
   background: var(--door-accent, var(--path-accent));
   content: '';
   flex: none;
   height: 2px;
   width: 1.1rem;
-}
-
-.doorLabel {
-  display: block;
-  font-family: var(--font-cormorant);
-  font-size: 1.65rem;
-  font-weight: 600;
-  line-height: 1.02;
-  text-wrap: balance;
-}
-
-.doorDescription {
-  color: color-mix(in srgb, var(--brand-paper) 82%, transparent);
-  display: block;
-  font-size: 0.9375rem;
-  line-height: 1.4;
-}
-
-.doorArrow {
-  color: var(--door-accent);
-  position: absolute;
-  right: 0.9rem;
-  top: 0.9rem;
-  transition: transform var(--brand-motion-fast) var(--brand-motion-ease);
-}
-
-.door:hover .doorPhoto,
-.door:focus-visible .doorPhoto {
-  transform: scale(1.03);
-}
-
-.door:hover .doorArrow,
-.door:focus-visible .doorArrow {
-  transform: translateX(4px);
-}
-
-/* Pointer light that follows the tilt (fine pointers only; the engine sets --tilt-x/y). */
-.doorGlare {
-  background: radial-gradient(circle at var(--tilt-x, 50%) var(--tilt-y, 30%), rgba(255, 252, 240, 0.2), transparent 62%);
-  inset: 0;
-  mix-blend-mode: soft-light;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 420ms var(--brand-motion-ease);
-  z-index: -1;
-}
-
-.door:hover .doorGlare {
-  opacity: 1;
-}
-
-/* Wide screens: the nav spans the stage and parks one door in each bottom corner. */
-@media (min-width: 1200px) {
-  .doors {
-    align-items: stretch;
-    bottom: clamp(1.5rem, 4svh, 2.75rem);
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    left: var(--brand-space-inline);
-    margin: 0;
-    pointer-events: none;
-    position: absolute;
-    right: var(--brand-space-inline);
-  }
-
-  .door {
-    pointer-events: auto;
-  }
-}
-
-/* Intro: the doors rise out of a clip once the question has started. */
-@media (prefers-reduced-motion: no-preference) {
-  :global(html.motion) .door {
-    animation: doorRise 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    animation-delay: 1.15s;
-  }
-
-  :global(html.motion) .door + .door {
-    animation-delay: 1.27s;
-  }
-
-  :global(html.motion) .door .doorPhoto {
-    animation: doorSettle 2.2s cubic-bezier(0.16, 1, 0.3, 1) 1.15s backwards;
-  }
-}
-
-@keyframes doorRise {
-  from {
-    clip-path: inset(100% 0 0 0 round 14px);
-    translate: 0 2rem;
-  }
-
-  to {
-    clip-path: inset(0 0 0 0 round 14px);
-    translate: 0 0;
-  }
-}
-
-@keyframes doorSettle {
-  from {
-    scale: 1.28;
-  }
-}
-
-@media (max-width: 767px) {
-  .doors {
-    display: grid;
-    gap: 0.625rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 1rem;
-  }
-
-  .door {
-    align-content: space-between;
-    align-items: stretch;
-    gap: 0.85rem;
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 6.5rem;
-    padding: 0.85rem 0.85rem 0.8rem;
-    width: auto;
-  }
-
-  .doorPhoto,
-  .doorDescription,
-  .doorProduct::before {
-    display: none;
-  }
-
-  .doorProduct {
-    letter-spacing: 0.12em;
-    padding-right: 0;
-  }
-
-  /* Without the mark, the branch colour moves to the card's top edge. */
-  .doorShade {
-    bottom: auto;
-    top: 0;
-    transform: scaleX(0.18);
-  }
-
-  .doorText {
-    align-content: space-between;
-    gap: 0.6rem;
-  }
-
-  .doorLabel {
-    font-size: 1.28rem;
-  }
-
-  .doorArrow {
-    position: static;
-  }
 }
 
 /* "Continue where you left off": the box keeps its height so nothing shifts when it fills in. */
@@ -323,8 +257,9 @@
   outline-offset: 2px;
 }
 
-/* Closing doors: two solid buttons in narrow containers (phones, the About column),
-   editorial rows with a photo that follows the pointer in wide ones. */
+/* Closing doors: two panels in the path's own colour, each with a framed photo. Stacked in narrow
+   containers (phones); side by side in wide ones, where the panel under the pointer or keyboard
+   focus opens wider and the other gives way. Type inside sizes to its own panel (cqi). */
 
 .closingDoors {
   container-type: inline-size;
@@ -334,37 +269,47 @@
 .closingList {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
 }
 
 .closingDoor {
-  align-items: center;
-  border-radius: 6px;
-  display: flex;
-  gap: 1rem;
+  align-items: start;
+  border-radius: 10px;
+  container-type: inline-size;
+  display: grid;
+  gap: 1.25rem 1rem;
+  grid-template-areas:
+    'head photo'
+    'foot arrow';
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto 1fr;
   isolation: isolate;
-  justify-content: space-between;
-  min-height: 5.5rem;
+  min-height: 17rem;
   overflow: hidden;
-  padding: 1.1rem 1.4rem;
+  padding: clamp(1.25rem, 6cqi, 2.75rem);
   position: relative;
   text-decoration: none;
 }
 
 .closingDoor[data-path-door='tensai'] {
-  --row-accent: #c3f331;
-  --row-fg: #073b2f;
+  --door-bg: #073b2f;
+  --door-ink: #e8dfcf;
+  --door-accent: #c3f331;
+  --door-on-accent: #073b2f;
+  --door-tilt: -2.5deg;
 }
 
 .closingDoor[data-path-door='conan'] {
-  --row-accent: #c4441f;
-  --row-fg: #ffffff;
+  --door-bg: var(--brand-lacquer);
+  --door-ink: #fff6ec;
+  --door-accent: #fff6ec;
+  --door-on-accent: var(--brand-lacquer);
+  --door-tilt: 2.5deg;
 }
 
 /* Scoped under .closingDoors to outrank the unified shell's `a { color: inherit }` (0,2,1). */
 .closingDoors .closingDoor[data-path-door] {
-  background: var(--row-accent);
-  color: var(--row-fg);
+  background: var(--door-bg);
+  color: var(--door-ink);
 }
 
 .closingDoor:focus-visible {
@@ -372,162 +317,161 @@
   outline-offset: var(--brand-focus-offset);
 }
 
+.closingDoorHead {
+  align-items: baseline;
+  display: flex;
+  gap: 0.9rem;
+  grid-area: head;
+}
+
 .closingDoorIndex,
-.closingDoorDescription {
-  display: none;
-}
-
-.closingDoorText {
-  display: grid;
-  gap: 0.25rem;
-}
-
 .closingDoorLabel {
   font-family: var(--font-be-vietnam);
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
+.closingDoorIndex {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+/* A print laid on the panel a little crooked; it straightens and leans in when the door opens. */
+.closingDoorPhoto {
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  box-shadow: 0 1.25rem 2.5rem rgb(0 0 0 / 0.28);
+  display: block;
+  grid-area: photo;
+  justify-self: end;
+  overflow: hidden;
+  rotate: var(--door-tilt);
+  transition:
+    rotate 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    scale 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: clamp(6.5rem, 36cqi, 19rem);
+}
+
+.closingDoorPhoto img {
+  display: block;
+  filter: var(--brand-photo-grade);
+  height: 100%;
+  object-fit: cover;
+  scale: 1.12;
+  transition: scale 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.closingDoorFoot {
+  align-self: end;
+  display: grid;
+  gap: 0.9rem;
+  grid-area: foot;
+}
+
 .closingDoorTarget {
+  color: var(--door-accent);
   font-family: var(--font-cormorant);
-  font-size: clamp(1.75rem, 3vw, 2.4rem);
-  font-weight: 600;
-  line-height: 1;
+  font-size: clamp(2.75rem, 15cqi, 8.5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 0.88;
+}
+
+.closingDoorDescription {
+  color: color-mix(in srgb, var(--door-ink) 88%, transparent);
+  font-size: clamp(0.98rem, 0.92rem + 0.2vw, 1.0625rem);
+  line-height: 1.55;
+  max-width: 28ch;
 }
 
 .closingDoorArrow {
+  align-self: end;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 999px;
   display: grid;
   flex: none;
+  grid-area: arrow;
+  justify-self: end;
   place-items: center;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    background-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    rotate 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: clamp(3.25rem, 12cqi, 4.75rem);
 }
 
-.closingDoor:hover .closingDoorArrow {
-  transform: translateX(4px);
+/* Hover only where there is a real pointer, so a tap on a touch screen does not leave a panel
+   stuck open; keyboard focus gets the same state everywhere. */
+.closingDoor:focus-visible .closingDoorArrow {
+  background: var(--door-accent);
+  border-color: var(--door-accent);
+  color: var(--door-on-accent);
+  rotate: -45deg;
 }
 
-.closingFloat {
-  display: none;
+.closingDoor:focus-visible .closingDoorPhoto {
+  rotate: 0deg;
+  scale: 1.04;
+}
+
+.closingDoor:focus-visible .closingDoorPhoto img {
+  scale: 1;
+}
+
+@media (hover: hover) {
+  .closingDoor:hover .closingDoorArrow {
+    background: var(--door-accent);
+    border-color: var(--door-accent);
+    color: var(--door-on-accent);
+    rotate: -45deg;
+  }
+
+  .closingDoor:hover .closingDoorPhoto {
+    rotate: 0deg;
+    scale: 1.04;
+  }
+
+  .closingDoor:hover .closingDoorPhoto img {
+    scale: 1;
+  }
 }
 
 @container (min-width: 46rem) {
   .closingList {
-    border-top: 1px solid var(--closing-line, color-mix(in srgb, currentColor 22%, transparent));
-    display: block;
+    display: flex;
+    gap: clamp(0.75rem, 1.2cqi, 1.25rem);
+    height: clamp(28rem, 66svh, 42rem);
   }
 
-  .closingDoors .closingDoor[data-path-door] {
-    align-items: center;
-    background: transparent;
-    border-bottom: 1px solid var(--closing-line, color-mix(in srgb, currentColor 22%, transparent));
-    border-radius: 0;
-    color: inherit;
-    display: grid;
-    gap: clamp(1rem, 3cqi, 3rem);
-    grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 16rem) 4.75rem;
+  .closingDoor {
+    flex: 1 1 0;
     min-height: 0;
-    padding: clamp(1.75rem, 3.6cqi, 2.75rem) clamp(0.75rem, 1.6cqi, 1.5rem);
-    transition: color 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 0;
+    transition: flex-grow 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* The accent fills the row from the bottom on hover or keyboard focus. */
-  .closingDoor::before {
-    background: var(--row-accent);
-    content: '';
-    inset: 0;
-    position: absolute;
-    transform: scaleY(0);
-    transform-origin: 50% 100%;
-    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: -1;
+  .closingList:has(.closingDoor:focus-visible) .closingDoor {
+    flex-grow: 0.78;
   }
 
-  .closingDoors .closingDoor[data-path-door]:hover,
-  .closingDoors .closingDoor[data-path-door]:focus-visible {
-    color: var(--row-fg);
+  .closingList:has(.closingDoor:focus-visible) .closingDoor:focus-visible {
+    flex-grow: 1.4;
   }
 
-  .closingDoor:hover::before,
-  .closingDoor:focus-visible::before {
-    transform: scaleY(1);
-    transform-origin: 50% 0%;
-  }
+  @media (hover: hover) {
+    .closingList:has(.closingDoor:hover) .closingDoor {
+      flex-grow: 0.78;
+    }
 
-  .closingDoorIndex {
-    align-self: start;
-    display: block;
-    font-family: var(--font-be-vietnam);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    opacity: 0.6;
-    padding-top: 0.9rem;
-  }
-
-  .closingDoorText {
-    gap: 0.5rem;
-  }
-
-  .closingDoorTarget {
-    font-size: clamp(3rem, 9.2cqi, 7.6rem);
-    font-weight: 500;
-    letter-spacing: -0.025em;
-    line-height: 0.92;
-    transition: translate 700ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .closingDoor:hover .closingDoorTarget,
-  .closingDoor:focus-visible .closingDoorTarget {
-    translate: 1.25rem 0;
-  }
-
-  .closingDoorDescription {
-    display: block;
-    font-size: 0.98rem;
-    line-height: 1.55;
-    opacity: 0.8;
-  }
-
-  .closingDoorArrow {
-    aspect-ratio: 1;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    width: 4.75rem;
-  }
-
-  .closingDoor:hover .closingDoorArrow,
-  .closingDoor:focus-visible .closingDoorArrow {
-    transform: rotate(-45deg);
-  }
-
-  .closingFloat {
-    aspect-ratio: 4 / 5;
-    border-radius: 6px;
-    display: block;
-    left: 0;
-    overflow: hidden;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    width: clamp(11rem, 20cqi, 16rem);
-    z-index: 2;
-  }
-
-  .closingFloatMedia {
-    inset: 0;
-    opacity: 0;
-    position: absolute;
-  }
-
-  .closingFloatMedia img {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
+    .closingList:has(.closingDoor:hover) .closingDoor:hover {
+      flex-grow: 1.4;
+    }
   }
 }
 
@@ -551,18 +495,17 @@
   background: var(--brand-reading-paper-deep);
   border-radius: 4px;
   margin: 0;
-  max-width: min(72vw, 460px);
+  max-width: min(86vw, 520px);
   overflow: hidden;
   position: relative;
 }
 
-/* The stage behind the portrait is slide-teal; a warm ink duotone lays the photo into the paper
-   the letter is written on, the same treatment the mentor portraits wear on the dark bands. */
+/* The portrait keeps its warm colour under the shared brand grade; a soft ink fall at the foot
+   settles it onto the paper the letter is written on. */
 .letterPortrait::after {
-  background: linear-gradient(180deg, rgba(176, 118, 70, 0.2), rgba(58, 34, 18, 0.34));
+  background: linear-gradient(180deg, transparent 58%, rgba(40, 22, 12, 0.32));
   content: '';
   inset: 0;
-  mix-blend-mode: multiply;
   pointer-events: none;
   position: absolute;
 }
@@ -576,7 +519,7 @@
 
 .letterPortrait img {
   display: block;
-  filter: grayscale(1) contrast(1.14) brightness(1.04);
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -605,15 +548,57 @@
   margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
 }
 
+.letterLead + .letterLead,
+.letterPull + .letterLead {
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+
+/* The debt breaks out of the opening paragraph: the one line in the letter set large, in lacquer
+   on the paper, under a short rule that draws in. */
+.letterPull {
+  margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.letterPullRule {
+  background: var(--brand-lacquer);
+  display: block;
+  height: 2px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  width: 4rem;
+}
+
+.letterPull p {
+  color: var(--brand-lacquer);
+  font-family: var(--font-cormorant);
+  font-size: clamp(2.5rem, 1.3rem + 3.6vw, 4.6rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  margin: 0;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
 .letterRest {
   color: #2a2420;
-  font-size: clamp(1.06rem, 0.98rem + 0.3vw, 1.2rem);
-  max-width: 40rem;
+  font-size: clamp(1.1875rem, 1.02rem + 0.42vw, 1.375rem);
+  max-width: 34em;
 }
 
 .letterRest p {
-  line-height: 1.78;
-  margin: 0 0 1.25em;
+  line-height: 1.62;
+  margin: 0 0 1.1em;
+  text-wrap: pretty;
+}
+
+.letterLast {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: clamp(0.75rem, 2vw, 1.5rem) 0 0;
 }
 
 .signature {
@@ -640,10 +625,10 @@
 }
 
 .signatureRole {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  opacity: 0.72;
+  opacity: 0.84;
   text-transform: uppercase;
 }
 
@@ -715,6 +700,7 @@
 @media (min-width: 900px) {
   .fieldNotes {
     padding-bottom: clamp(1.5rem, 3vw, 3rem);
+    padding-top: clamp(4.5rem, 12svh, 8.5rem);
   }
 }
 
@@ -779,12 +765,12 @@
 .fieldStatLabel {
   flex-basis: 100%;
   font-family: var(--font-be-vietnam);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.3;
-  margin-top: 1.1rem;
-  opacity: 0.78;
+  margin-top: 1.25rem;
+  opacity: 0.86;
   text-transform: uppercase;
 }
 
@@ -798,11 +784,11 @@
 
 .fieldClaim {
   font-family: var(--font-cormorant);
-  font-size: clamp(1.4rem, 1rem + 1vw, 1.85rem);
+  font-size: clamp(1.5rem, 1.05rem + 1.1vw, 2.1rem);
   font-weight: 500;
-  line-height: 1.22;
-  margin: 0 0 0.8rem;
-  max-width: 28ch;
+  line-height: 1.2;
+  margin: 0 0 0.9rem;
+  max-width: 26ch;
 }
 
 @media (min-width: 900px) {
@@ -907,7 +893,8 @@
   width: 0.1em;
 }
 
-/* Reel: real class photos. A swipe row by default; pinned and scroll-driven on wide screens. */
+/* Reel: real class photos. Words on top and a swipe row by default; on wide screens with motion
+   the words hold a left column while the photos travel through a window beside them. */
 
 .reel {
   background: var(--brand-ink);
@@ -917,33 +904,13 @@
   position: relative;
 }
 
-.reelTrack {
-  display: flex;
-  gap: clamp(1rem, 2.4vw, 2.25rem);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  padding: 0 var(--brand-space-inline);
-  scroll-padding-inline: var(--brand-space-inline);
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.reelTrack::-webkit-scrollbar {
-  display: none;
-}
-
-.reelTrack::after {
-  content: '';
-  flex: 0 0 1px;
-}
-
 .reelIntro {
   display: flex;
-  flex: 0 0 min(84vw, 25rem);
   flex-direction: column;
   gap: 1.1rem;
-  justify-content: flex-end;
-  scroll-snap-align: start;
+  margin: 0 0 clamp(2rem, 6vw, 3rem);
+  max-width: 40rem;
+  padding: 0 var(--brand-space-inline);
 }
 
 .reelEyebrow {
@@ -968,10 +935,119 @@
 }
 
 .reelLead {
-  color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
+  color: #d9d3c9;
+  font-size: clamp(1.0625rem, 0.98rem + 0.25vw, 1.1875rem);
   line-height: 1.6;
   margin: 0;
   max-width: 32ch;
+}
+
+/* Counter, a thick progress bar and two round arrows. */
+.reelControls {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto minmax(3rem, 1fr) auto auto;
+  margin-top: clamp(0.5rem, 2svh, 1.5rem);
+  max-width: 26rem;
+}
+
+.reelCounter {
+  color: #d9d3c9;
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.reelCounter span {
+  color: var(--brand-paper);
+  font-weight: 700;
+}
+
+.reelProgress {
+  background: var(--brand-line-dark);
+  border-radius: 4px;
+  display: block;
+  height: 4px;
+  overflow: hidden;
+}
+
+.reelProgress span {
+  background: var(--brand-paper);
+  display: block;
+  height: 100%;
+  transform: scaleX(var(--hscroll-progress, 0));
+  transform-origin: 0 50%;
+}
+
+.reelButton {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(232, 223, 207, 0.36);
+  border-radius: 999px;
+  color: var(--brand-paper);
+  cursor: pointer;
+  display: inline-flex;
+  height: 3rem;
+  justify-content: center;
+  padding: 0;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    opacity 300ms ease;
+  width: 3rem;
+}
+
+.reelButton:focus-visible {
+  background: var(--brand-paper);
+  border-color: var(--brand-paper);
+  color: var(--brand-ink);
+}
+
+/* Touch screens keep :hover after a tap, so the fill only follows a real pointer. */
+@media (hover: hover) {
+  .reelButton:hover:not(:disabled) {
+    background: var(--brand-paper);
+    border-color: var(--brand-paper);
+    color: var(--brand-ink);
+  }
+}
+
+.reelButton:focus-visible {
+  outline: var(--brand-focus-ring-dark);
+  outline-offset: 3px;
+}
+
+.reelButton:disabled {
+  cursor: default;
+  opacity: 0.32;
+}
+
+.reelViewport {
+  position: relative;
+}
+
+.reelTrack {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.25rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0 var(--brand-space-inline);
+  position: relative;
+  scroll-padding-inline: var(--brand-space-inline);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.reelTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.reelTrack::after {
+  content: '';
+  flex: 0 0 1px;
 }
 
 .reelItem {
@@ -985,6 +1061,19 @@
   background: var(--brand-ink-raised);
   border-radius: 6px;
   overflow: hidden;
+  position: relative;
+}
+
+/* Film grain over every frame, so phone snapshots share one surface as well as one grade. */
+.reelFrame::after,
+.galleryFrame::before {
+  background-image: var(--brand-grain);
+  content: '';
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.26;
+  pointer-events: none;
+  position: absolute;
 }
 
 /* Wider than its frame so the photo can travel inside it while the reel moves. */
@@ -994,10 +1083,10 @@
   width: 118%;
 }
 
+/* Phone snapshots from different rooms share the site's one photo grade. */
 .reelMedia img {
   display: block;
-  /* Phone snapshots from different rooms share one warm grade; the photo in focus lifts out of it. */
-  filter: saturate(0.68) sepia(0.26) contrast(1.1) brightness(0.9);
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1005,9 +1094,9 @@
 }
 
 .reelItem figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
+  color: #d9d3c9;
   display: flex;
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   gap: 0.9rem;
   line-height: 1.45;
   padding-top: 0.9rem;
@@ -1017,40 +1106,11 @@
   color: var(--brand-paper);
   flex: none;
   font-variant-numeric: tabular-nums;
+  font-weight: 700;
   letter-spacing: 0.06em;
 }
 
-.reelProgress {
-  display: none;
-}
-
-/* Phones: the intro stays put on its own row while the photos swipe underneath it. */
-@media (max-width: 899px) {
-  .reelTrack {
-    display: grid;
-    grid-template-columns: repeat(var(--reel-count, 6), min(82vw, 34rem));
-    grid-template-rows: auto auto;
-    row-gap: clamp(2rem, 6vw, 3rem);
-  }
-
-  .reelTrack::after {
-    display: none;
-  }
-
-  .reelIntro {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    left: var(--brand-space-inline);
-    max-width: calc(100vw - 2 * var(--brand-space-inline));
-    position: sticky;
-  }
-
-  .reelItem {
-    grid-row: 2;
-  }
-}
-
-/* Wide screens without the pinned reel (reduced motion): a calm three-column grid. */
+/* Wide screens without the pinned reel (reduced motion): a calm three-column grid, no arrows. */
 @media (min-width: 900px) {
   .reel:not([data-hscroll-active='true']) .reelTrack {
     display: grid;
@@ -1060,108 +1120,126 @@
     scroll-snap-type: none;
   }
 
-  .reel:not([data-hscroll-active='true']) .reelTrack::after {
+  .reel:not([data-hscroll-active='true']) .reelTrack::after,
+  .reel:not([data-hscroll-active='true']) .reelControls {
     display: none;
-  }
-
-  .reel:not([data-hscroll-active='true']) .reelIntro {
-    grid-column: 1 / -1;
-    margin-bottom: clamp(1rem, 3vw, 2.5rem);
   }
 }
 
+/* The top padding matches the header so the band sits in the middle of what is visible. */
 .reel[data-hscroll-active='true'] {
   align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 31vw) minmax(0, 1fr);
   height: 100svh;
-  padding: 0;
+  padding: 4.75rem 0 0;
+}
+
+.reel[data-hscroll-active='true'] .reelIntro {
+  margin: 0;
+  max-width: none;
+  padding: 0 2.5vw 0 var(--brand-space-inline);
+  position: relative;
+  z-index: 1;
+}
+
+/* The window the photos travel through, cut clean at the edge of the words' column. */
+.reel[data-hscroll-active='true'] .reelViewport {
+  align-items: center;
+  border-left: 1px solid var(--brand-line-dark);
+  display: flex;
+  height: 100%;
+  overflow: hidden;
 }
 
 .reel[data-hscroll-active='true'] .reelTrack {
   align-items: center;
   overflow: visible;
+  padding: 0 var(--brand-space-inline) 0 4vw;
   scroll-snap-type: none;
   width: 100%;
 }
 
-.reel[data-hscroll-active='true'] .reelIntro {
-  align-self: center;
-  flex-basis: 27vw;
-  margin-right: 4vw;
+/* Pinned on a desktop the row can be pulled sideways with the mouse (engine: horizontalScroll). */
+.reel[data-hscroll-active='true'] .reelViewport {
+  touch-action: pan-y;
+  user-select: none;
 }
 
-/* Pinned: photo heights follow the viewport so the band fills the screen, in a staggered rhythm. */
-.reel[data-hscroll-active='true'] .reelFrame {
-  aspect-ratio: auto;
-  height: var(--reel-frame-h, 60svh);
+.reel[data-hscroll-active='true'] .reelMedia img {
+  -webkit-user-drag: none;
 }
 
-.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n + 1) {
-  --reel-frame-h: 64svh;
-  flex-basis: 44vw;
+.reel[data-hscroll-dragging='true'] .reelFrame {
+  transform: scale(0.86);
 }
 
-.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n + 2) {
-  --reel-frame-h: 44svh;
-  align-self: flex-end;
-  flex-basis: 27vw;
-  margin-bottom: 8svh;
-}
-
-.reel[data-hscroll-active='true'] .reelItem:nth-of-type(3n) {
-  --reel-frame-h: 54svh;
-  align-self: flex-start;
-  flex-basis: 34vw;
-  margin-top: 8svh;
-}
-
+/* Pinned: one frame size for the whole series, its height following the viewport. The frame in
+   the middle fills most of the window; its neighbours only show an edge either side. */
 .reel[data-hscroll-active='true'] .reelItem {
-  opacity: 0.5;
+  flex-basis: min(52vw, calc(66svh * 4 / 3));
+}
+
+.reel[data-hscroll-active='true'] .reelFrame {
+  aspect-ratio: 4 / 3;
+}
+
+/* The photo at rest in the middle is full size and in colour; the ones either side wait a step
+   back in the series' warm monochrome and bloom as they arrive. */
+.reel[data-hscroll-active='true'] .reelItem {
+  opacity: 0.78;
   transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reel[data-hscroll-active='true'] .reelFrame {
+  transform: scale(0.9);
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reel[data-hscroll-active='true'] .reelMedia img {
+  filter: var(--brand-photo-mono);
 }
 
 .reel[data-hscroll-active='true'] .reelItem[data-current] {
   opacity: 1;
 }
 
+/* Only the photo at rest is captioned; a neighbour's line would be cut by the window's edge. */
+.reel[data-hscroll-active='true'] .reelItem figcaption {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 500ms ease,
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reel[data-hscroll-active='true'] .reelItem[data-current] figcaption {
+  opacity: 1;
+  transform: none;
+  transition-delay: 160ms;
+}
+
+.reel[data-hscroll-active='true'] .reelItem[data-current] .reelFrame {
+  transform: none;
+}
+
 .reel[data-hscroll-active='true'] .reelItem[data-current] .reelMedia img {
   filter: var(--brand-photo-grade);
 }
 
-.reel[data-hscroll-active='true'] .reelProgress {
-  background: var(--brand-line-dark);
-  bottom: 5svh;
-  display: block;
-  height: 2px;
-  left: var(--brand-space-inline);
-  position: absolute;
-  right: var(--brand-space-inline);
-}
-
-.reelProgress span {
-  background: var(--brand-paper);
-  display: block;
-  height: 100%;
-  transform: scaleX(var(--hscroll-progress, 0));
-  transform-origin: 0 50%;
-}
-
-/* Gallery: an editorial wall. A wide lead photo, then a broad and a narrow column that drift
-   apart as they pass (data-speed on the narrow one, wide screens only). Every frame shares one
-   warm grade and lifts to fuller colour under a pointer. Phones get a single swipe rail. */
+/* Gallery: a light table of class photos. Without the engine they stand in sequence: a swipe rail
+   on phones, a wide lead over a two-column grid above that, all in the series' warm grade. On wide
+   screens with motion, lightTable (signatures.ts) sets data-light-active and pins the table: one
+   large frame on the right where each photo slides up over the last, the caption and a rolling
+   counter on the left, and a contact sheet along the foot that marks the photo in view. */
 
 .gallery {
-  --gallery-grade: saturate(0.68) sepia(0.26) contrast(1.1) brightness(0.9);
-  display: grid;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  /* One warm grade over every frame, so phone shots from different rooms read as one series. */
+  --gallery-grade: saturate(0.66) sepia(0.18) contrast(1.08) brightness(0.94);
+  position: relative;
 }
 
-.galleryColumns {
-  display: grid;
-  gap: clamp(2rem, 5vw, 3rem);
-}
-
-.galleryColumn {
+.galleryList {
   display: grid;
   gap: clamp(2rem, 5vw, 3rem);
   list-style: none;
@@ -1173,6 +1251,10 @@
   margin: 0;
 }
 
+.galleryClip {
+  display: block;
+}
+
 .galleryFrame {
   background: var(--brand-ink-raised);
   border-radius: 6px;
@@ -1180,18 +1262,22 @@
   position: relative;
 }
 
-/* A warm multiply wash ties photos from different rooms and cameras into one roll of film. */
+/* A soft ink fall at the foot of each frame, which lifts away under a pointer. */
 .galleryFrame::after {
-  background: linear-gradient(160deg, rgba(150, 92, 52, 0.22), rgba(40, 22, 12, 0.26));
+  background: linear-gradient(180deg, transparent 55%, rgba(20, 12, 8, 0.3));
   content: '';
   inset: 0;
-  mix-blend-mode: multiply;
   pointer-events: none;
   position: absolute;
   transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.galleryFrame::before {
+  z-index: 1;
+}
+
 .galleryMedia,
+.galleryShift,
 .galleryMedia img {
   display: block;
   width: 100%;
@@ -1202,26 +1288,34 @@
   filter: var(--gallery-grade);
   height: auto;
   object-fit: cover;
-  transition:
-    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The photo underneath dims as the next one covers it (driven by the light table). */
+.galleryShade {
+  background: #120b07;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .galleryFigure:hover .galleryMedia img {
-    filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
+  .gallery:not([data-light-active]) .galleryFigure:hover .galleryMedia img,
+  .gallery:not([data-light-active]) .galleryFigure:focus-within .galleryMedia img {
     transform: scale(1.03);
   }
 
   .galleryFigure:hover .galleryFrame::after {
-    opacity: 0.35;
+    opacity: 0;
   }
 }
 
 .galleryFigure figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
+  color: color-mix(in srgb, var(--brand-paper) 86%, transparent);
   display: flex;
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   gap: 0.9rem;
   line-height: 1.5;
   padding: 0.95rem 0 0;
@@ -1236,22 +1330,31 @@
   color: var(--path-accent, var(--brand-paper));
   flex: none;
   font-family: var(--font-cormorant);
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-style: italic;
   line-height: 1.05;
 }
 
 .galleryKind {
+  align-items: center;
   color: var(--brand-paper);
+  display: flex;
   font-size: 0.875rem;
   font-weight: 700;
+  gap: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* Phones: every frame joins one swipe rail in reading order; the next frame peeks in from the edge. */
+/* The counter and the contact sheet only exist on the light table. */
+.lightCounter,
+.lightSheet {
+  display: none;
+}
+
+/* Phones: one swipe rail in reading order; the next frame peeks in from the edge. */
 @media (max-width: 639px) {
-  .gallery {
+  .galleryList {
     display: flex;
     gap: 1rem;
     margin-inline: calc(var(--brand-space-inline) * -1);
@@ -1263,72 +1366,278 @@
     scrollbar-width: none;
   }
 
-  .gallery::-webkit-scrollbar {
+  .galleryList::-webkit-scrollbar {
     display: none;
   }
 
-  .gallery::after {
+  .galleryList::after {
     content: '';
     flex: 0 0 1px;
   }
 
-  .galleryColumns,
-  .galleryColumn {
-    display: contents;
-  }
-
-  .galleryLead,
-  .galleryColumn > li {
+  .galleryItem {
     flex: 0 0 84vw;
     scroll-snap-align: start;
-  }
-
-  .galleryColumn > li {
-    order: var(--gallery-order, 0);
   }
 }
 
 @media (min-width: 640px) {
-  .galleryLead {
-    --gallery-ratio: 16 / 9;
-  }
-
-  .galleryColumns {
-    align-items: start;
+  .galleryList {
     column-gap: clamp(1.25rem, 3vw, 2.5rem);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* The lead spans the row, and so does a last photo that would otherwise stand alone. */
+  .galleryItem:first-child,
+  .galleryItem:nth-child(even):last-child {
+    --gallery-ratio: 16 / 9;
+    grid-column: 1 / -1;
+  }
 }
 
-/* Same breakpoint as the engine's DESKTOP, where the data-speed-wide column starts to drift. */
+/* Same breakpoint as the engine's WIDE, where lightTable takes over. */
 @media (min-width: 900px) {
-  .galleryLead {
-    --gallery-ratio: 21 / 9;
+  .gallery[data-light-active] {
+    --light-top: clamp(5.5rem, 13svh, 8rem);
+    --light-bottom: clamp(2rem, 7svh, 4rem);
+    --light-thumb: clamp(4.5rem, 5.4vw, 5.75rem);
+    --light-sheet: calc(var(--light-thumb) * 0.75 + 2.75rem);
+    --light-h: calc(100svh - var(--light-top) - var(--light-bottom) - var(--light-sheet));
+    --light-gap: clamp(2.5rem, 5vw, 5rem);
+    --light-side: calc((100% - var(--light-gap)) * 0.32);
+    height: 100svh;
   }
 
-  .galleryColumns {
-    column-gap: clamp(2rem, 4vw, 4.5rem);
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  /* A warm pool of light under the frame, as on a real light table. */
+  .gallery[data-light-active]::before {
+    background: radial-gradient(
+      ellipse 46% 52% at 68% 46%,
+      color-mix(in srgb, var(--path-accent) 16%, transparent),
+      transparent 72%
+    );
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
   }
 
-  .galleryColumn {
-    row-gap: clamp(2.5rem, 5vw, 4.5rem);
+  .gallery[data-light-active] .galleryList {
+    display: block;
+    inset: var(--light-top) 0 calc(var(--light-bottom) + var(--light-sheet));
+    position: absolute;
   }
 
-  /* Frame ratios keep the broad and narrow columns ending level; the narrow one starts lower,
-     so the two never line up even before they drift. */
-  .galleryColumn:nth-child(1) {
-    --gallery-ratio: 3 / 2;
+  .gallery[data-light-active] .galleryItem {
+    --gallery-ratio: 4 / 3;
+    inset: 0;
+    position: absolute;
   }
 
-  .galleryColumn:nth-child(2) {
-    --gallery-ratio: 6 / 5;
-    margin-top: clamp(4rem, 8vw, 7rem);
+  .gallery[data-light-active] .galleryFigure {
+    align-items: center;
+    column-gap: var(--light-gap);
+    display: grid;
+    grid-template-columns: var(--light-side) minmax(0, 1fr);
+    height: 100%;
+  }
+
+  .gallery[data-light-active] .galleryClip {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    width: min(100%, calc(var(--light-h) * 4 / 3));
+  }
+
+  .gallery[data-light-active] .galleryMedia img {
+    transition: none;
+  }
+
+  /* Captions sit under the counter and swap with the photo: the old one rises out, the new one
+     rises in after it. */
+  .gallery[data-light-active] .galleryFigure figcaption {
+    align-self: end;
+    color: var(--brand-paper);
+    flex-direction: column;
+    font-family: var(--font-cormorant);
+    font-size: clamp(1.75rem, 0.9rem + 1.3vw, 2.5rem);
+    font-weight: 400;
+    grid-column: 1;
+    grid-row: 1;
+    line-height: 1.12;
+    max-width: 14em;
+    opacity: 0;
+    padding: 0;
+    text-wrap: balance;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 360ms ease,
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 600ms;
+    visibility: hidden;
+  }
+
+  .gallery[data-light-active] .galleryItem[data-past] figcaption {
+    transform: translateY(-1.5rem);
+  }
+
+  .gallery[data-light-active] .galleryItem[data-current] figcaption {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 520ms ease 200ms,
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1) 200ms,
+      visibility 0s;
+    visibility: visible;
+  }
+
+  .gallery[data-light-active] .galleryIndex {
+    display: none;
+  }
+
+  .gallery[data-light-active] .galleryFigure figcaption > span:last-child {
+    gap: 1.1rem;
+  }
+
+  .gallery[data-light-active] .galleryKind {
+    font-family: var(--font-be-vietnam);
+    font-size: 0.9375rem;
+    font-style: normal;
+  }
+
+  .gallery[data-light-active] .lightCounter {
+    align-items: flex-end;
+    color: var(--brand-paper);
+    display: flex;
+    font-family: var(--font-cormorant);
+    font-style: italic;
+    gap: 0.6rem;
+    left: 0;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    top: calc(var(--light-top) + var(--light-head, 0px));
+    width: var(--light-side);
+  }
+
+  /* With a heading the table opens on its title, and the counter steps down beneath it. */
+  .gallery[data-light-active]:has(.lightHead) {
+    --light-head: clamp(8.5rem, 21svh, 12rem);
+  }
+
+  .gallery[data-light-active] .lightHead {
+    left: 0;
+    position: absolute;
+    top: var(--light-top);
+    width: var(--light-side);
+    z-index: 2;
+  }
+
+  .lightRoll {
+    display: block;
+    font-size: clamp(4.75rem, min(8vw, 15svh), 8.5rem);
+    font-variant-numeric: lining-nums;
+    height: 1em;
+    line-height: 1;
+    overflow: hidden;
+    padding-right: 0.1em;
+  }
+
+  .lightRoll > span {
+    display: block;
+    height: 1em;
+    transform: translateY(calc(var(--light-index, 0) * -100%));
+    transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lightTotal {
+    color: color-mix(in srgb, var(--brand-paper) 62%, transparent);
+    font-size: clamp(1.5rem, 1rem + 1vw, 2.2rem);
+    padding-bottom: 0.4em;
+  }
+
+  /* The contact sheet: every frame as a thumbnail, a rule that fills as the table advances, and
+     the photo in view lit in colour. A thumbnail glides the table to its photo. */
+  .gallery[data-light-active] .lightSheet {
+    bottom: var(--light-bottom);
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(var(--gallery-count), var(--light-thumb));
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0.9rem;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+
+  .lightSheet::before,
+  .lightSheet::after {
+    bottom: 0;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .lightSheet::before {
+    background: color-mix(in srgb, var(--brand-paper) 16%, transparent);
+  }
+
+  .lightSheet::after {
+    background: var(--path-accent);
+    transform: scaleX(var(--light-progress, 0));
+    transform-origin: left;
+  }
+
+  .lightThumb {
+    appearance: none;
+    background: var(--brand-ink-raised);
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: box-shadow 400ms ease;
+    width: 100%;
+  }
+
+  .lightThumb img {
+    aspect-ratio: 4 / 3;
+    display: block;
+    filter: grayscale(1) brightness(0.8);
+    height: auto;
+    object-fit: cover;
+    opacity: 0.6;
+    transition:
+      filter 500ms ease,
+      opacity 500ms ease;
+    width: 100%;
+  }
+
+  .lightThumb:hover img {
+    opacity: 0.9;
+  }
+
+  .lightThumb[aria-current='true'] {
+    box-shadow: 0 0 0 2px var(--path-accent);
+  }
+
+  .lightThumb[aria-current='true'] img {
+    filter: var(--gallery-grade);
+    opacity: 1;
+  }
+
+  .lightThumb:focus-visible {
+    outline: 2px solid var(--brand-paper);
+    outline-offset: 3px;
   }
 }
 
-/* Mentors: two portraits of equal weight, set in one black-and-white grade with a warm tint so
-   two different rooms read as one pair; colour returns under a pointer. */
+/* Mentors: two portraits of equal weight, set in the gallery's warm monochrome so two different
+   rooms read as one pair; colour returns as they cross the middle of the screen or under a pointer. */
 
 .mentors {
   display: grid;
@@ -1336,8 +1645,15 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
   margin: 0;
-  max-width: 720px;
+  max-width: 780px;
   padding: 0;
+}
+
+/* The second portrait steps down, so the pair reads as a spread rather than a row of tiles. */
+@media (min-width: 640px) {
+  .mentor:nth-child(2) {
+    margin-top: clamp(3rem, 9vw, 7.5rem);
+  }
 }
 
 .mentorFrame {
@@ -1348,10 +1664,9 @@
 }
 
 .mentorFrame::after {
-  background: linear-gradient(180deg, rgba(150, 92, 52, 0.16), rgba(40, 22, 12, 0.3));
+  background: linear-gradient(180deg, transparent 60%, rgba(20, 12, 8, 0.32));
   content: '';
   inset: 0;
-  mix-blend-mode: multiply;
   pointer-events: none;
   position: absolute;
   transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1365,7 +1680,7 @@
 
 .mentorPhoto {
   aspect-ratio: 4 / 5;
-  filter: grayscale(1) contrast(1.1) brightness(0.96);
+  filter: var(--brand-photo-grade);
   height: auto;
   object-fit: cover;
   transition:
@@ -1379,9 +1694,21 @@
   transform-origin: 50% 30%;
 }
 
+:global(html.motion) .mentorPhoto {
+  filter: var(--brand-photo-mono);
+}
+
+.mentor[data-in-focus] .mentorPhoto {
+  filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
+}
+
+.mentor[data-in-focus] .mentorFrame::after {
+  opacity: 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .mentor:hover .mentorPhoto {
-    filter: var(--brand-photo-grade);
+    filter: saturate(0.92) sepia(0.08) contrast(1.04) brightness(1);
   }
 
   .mentor:hover .mentorFrame::after {
@@ -1406,47 +1733,30 @@
 }
 
 
-/* Below 390px a half-width door cannot fit the mark and "Conan School" on one line; the arrow keeps the colour. */
-@media (max-width: 389px) {
-  .doorProduct {
-    letter-spacing: 0.08em;
-  }
-
-  .doorProduct::before {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .door,
-  .doorPhoto,
-  .doorArrow {
+  .doorFill,
+  .doorArrow,
+  .doorArrow svg {
     transition: none;
   }
 
-  .door:hover .doorPhoto,
-  .door:focus-visible .doorPhoto,
-  .door:hover .doorArrow,
-  .door:focus-visible .doorArrow {
+  .door:hover .doorArrow svg,
+  .door:focus-visible .doorArrow svg {
     transform: none;
   }
 
-  .doorGlare,
   .closingDoor,
-  .closingDoor::before,
-  .closingDoorArrow,
-  .closingDoorTarget {
+  .closingDoorPhoto,
+  .closingDoorPhoto img,
+  .closingDoorArrow {
     transition: none;
   }
 
-  .closingDoor:hover .closingDoorArrow,
-  .closingDoor:focus-visible .closingDoorArrow {
-    transform: none;
-  }
-
-  .closingDoor:hover .closingDoorTarget,
-  .closingDoor:focus-visible .closingDoorTarget {
-    translate: none;
+  .closingDoor:is(:hover, :focus-visible) .closingDoorArrow,
+  .closingDoor:is(:hover, :focus-visible) .closingDoorPhoto {
+    rotate: none;
+    scale: none;
   }
 
   /* Without scroll-linked motion the marquee is a still, cropped line of type. */
@@ -1545,7 +1855,7 @@
 
 .guideCaptionMark {
   font-family: var(--font-be-vietnam);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 600;
   letter-spacing: 0.24em;

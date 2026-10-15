@@ -1,6 +1,6 @@
 .page {
   --cinema-line: var(--brand-line-dark);
-  --cinema-muted: color-mix(in srgb, var(--brand-paper) 76%, transparent);
+  --cinema-muted: color-mix(in srgb, var(--brand-paper) 82%, transparent);
   --cinema-oxblood: var(--brand-lacquer-bright);
   background: var(--cinema-ink);
   color: var(--cinema-paper);
@@ -54,7 +54,7 @@
   align-items: center;
   color: var(--cinema-paper);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   gap: 0.6rem;
   letter-spacing: 0.16em;
@@ -73,7 +73,7 @@
 .folio {
   color: var(--cinema-muted);
   font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.18em;
 }
@@ -87,6 +87,27 @@
   line-height: 0.95;
   margin: 0;
   text-wrap: balance;
+}
+
+/* On wide screens the portrait leaves the grid and fills the right half of the screen to its edge,
+   fading into the ink from the left; the confession runs past its column into that fade (never as far
+   as the face), so the words and the man read as one image. */
+@media (min-width: 900px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroCopy {
+    max-width: min(54rem, 62%);
+    position: relative;
+    z-index: 2;
+  }
+
+  .title {
+    font-size: clamp(2.75rem, 0.9rem + 5.6vw, 7.25rem);
+    margin-right: calc(-1 * clamp(4rem, 9vw, 10rem));
+    text-shadow: 0 0.04em 0.5em rgba(10, 9, 8, 0.45);
+  }
 }
 
 .title em {
@@ -104,8 +125,8 @@
 }
 
 .lead {
-  color: var(--cinema-muted);
-  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.12rem);
+  color: color-mix(in srgb, var(--brand-paper) 90%, transparent);
+  font-size: clamp(1.0625rem, 0.98rem + 0.25vw, 1.25rem);
   line-height: 1.6;
   margin: 0;
 }
@@ -158,30 +179,96 @@
   background: var(--brand-ink-raised);
   border-radius: 10px;
   height: clamp(24rem, calc(100svh - 82px - 16rem), 46rem);
+  isolation: isolate;
   overflow: hidden;
   position: relative;
 }
 
+@media (min-width: 900px) {
+  /* The hero is centred at 1440px, so the right edge reaches past it to the screen's edge. */
+  .portrait {
+    display: block;
+    inset: 0 calc(50% - 50vw) 0 auto;
+    position: absolute;
+    width: 52vw;
+    z-index: 0;
+  }
+
+  /* Eased ramps (not straight lines), so neither fade shows a band where it starts. The bottom fade
+     is deep enough that the caption set over it reads on ink, not on the shirt. */
+  .portraitFrame {
+    --portrait-fade-x: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.06) 8%,
+      rgba(0, 0, 0, 0.22) 16%,
+      rgba(0, 0, 0, 0.48) 25%,
+      rgba(0, 0, 0, 0.76) 34%,
+      rgba(0, 0, 0, 0.94) 42%,
+      #000 50%
+    );
+    --portrait-fade-y: linear-gradient(
+      180deg,
+      #000 56%,
+      rgba(0, 0, 0, 0.82) 66%,
+      rgba(0, 0, 0, 0.5) 76%,
+      rgba(0, 0, 0, 0.18) 85%,
+      transparent 92%
+    );
+    -webkit-mask-composite: source-in;
+    -webkit-mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
+    border-radius: 0;
+    height: 100%;
+    mask-composite: intersect;
+    mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
+  }
+
+  /* The caption sits on the same rule as the eyebrow, at the right edge of the 1440px column. */
+  .portraitCaption {
+    gap: 2rem;
+    position: absolute;
+    /* Set low on the photo, where its fade has already turned to ink, so the line never cuts a face. */
+    bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+    right: max(var(--brand-space-inline), calc(50vw - 720px + var(--brand-space-inline)));
+    width: min(26rem, 60%);
+    z-index: 2;
+  }
+}
+
 /* Parallax pushes the photo down as the hero leaves, so it starts above the frame. The stage's teal
    backdrop fights the ink-and-lacquer palette, so the photo (and the WebGL copy drawn over it) is
-   graded to a warm monochrome with lifted shadows (a full duotone crushed the dark shirt into a
-   flat shape); colour comes back while the pointer rests on it. */
+   set in black and white with deep blacks, then multiplied with paper so the highlights turn warm
+   while the shadows stay ink; colour comes back while the pointer rests on it. */
 .portraitPhoto {
-  filter: grayscale(1) sepia(0.16) contrast(0.9) brightness(1.12);
+  filter: grayscale(1) contrast(1.24) brightness(0.96);
   inset: -28px 0 0;
   position: absolute;
   transition: filter 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portraitFrame::after {
-  background: var(--brand-lacquer);
+  background: #efe3cf;
   content: '';
   inset: 0;
-  mix-blend-mode: color;
-  opacity: 0.18;
+  mix-blend-mode: multiply;
   pointer-events: none;
   position: absolute;
   transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* A falloff from the left edge, where the headline crosses into the photo, and a lacquer glow from
+   the top right that stands in for the stage's rim light. */
+.portraitFrame::before {
+  background:
+    radial-gradient(120% 70% at 100% 0%, rgba(196, 68, 31, 0.28), transparent 60%),
+    linear-gradient(90deg, rgba(10, 9, 8, var(--portrait-falloff, 0)) 0%, rgba(10, 9, 8, 0) 46%),
+    linear-gradient(180deg, rgba(10, 9, 8, 0) 62%, rgba(10, 9, 8, 0.5) 100%);
+  content: '';
+  inset: 0;
+  mix-blend-mode: normal;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
 }
 
 @media (hover: hover) {
@@ -205,12 +292,16 @@
   border-top: 1px solid var(--cinema-line);
   color: var(--cinema-muted);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   justify-content: space-between;
   letter-spacing: 0.18em;
   padding-top: 0.8rem;
   text-transform: uppercase;
+}
+
+.portraitCaption span {
+  white-space: nowrap;
 }
 
 .portraitCaption span:first-child {
@@ -235,13 +326,40 @@
 .page .hero .actLink {
   align-items: start;
   color: var(--cinema-paper);
+  isolation: isolate;
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.4rem 0.75rem;
+  grid-template-areas:
+    'number arrow'
+    'title title';
+  grid-template-columns: minmax(0, 1fr) auto;
   min-height: 44px;
-  padding: 1.1rem 0 0.35rem;
+  padding: 1rem 0 0.5rem;
   position: relative;
   text-decoration: none;
+}
+
+/* A paper wash rises behind the whole entry, so the hovered act reads as a row, not a word. */
+.page .hero .actLink::before {
+  background: color-mix(in srgb, var(--cinema-paper) 7%, transparent);
+  border-radius: 0 0 6px 6px;
+  clip-path: inset(100% 0 0 0);
+  content: '';
+  inset: 0 -0.6rem -0.15rem;
+  pointer-events: none;
+  position: absolute;
+  transition: clip-path 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.page .hero .actLink:focus-visible::before {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (hover: hover) {
+  .page .hero .actLink:hover::before {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 .actRule {
@@ -261,28 +379,31 @@
   transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* The act's number is set larger than its title, as an index is read by number first. */
 .actNumber {
   color: var(--cinema-oxblood);
-  /* Digits are not tabular in this face, so a fixed width keeps every title on one edge. */
-  min-width: 2.1em;
-  font-size: 0.875rem;
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.75rem, 1.2rem + 1vw, 2.375rem);
+  font-style: italic;
   font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  padding-top: 0.35em;
+  font-weight: 500;
+  grid-area: number;
+  line-height: 1;
 }
 
 .actTitle {
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(1.05rem, 0.75rem + 0.55vw, 1.4rem);
+  font-size: clamp(1.125rem, 0.9rem + 0.45vw, 1.375rem);
   font-weight: 500;
-  line-height: 1.12;
+  grid-area: title;
+  line-height: 1.15;
   transition: translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .actArrow {
-  margin-top: 0.2rem;
-  opacity: 0.35;
+  grid-area: arrow;
+  margin-top: 0.4rem;
+  opacity: 0.6;
   transition:
     opacity 300ms ease,
     translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -333,6 +454,10 @@
     order: 1;
   }
 
+  .eyebrow {
+    white-space: nowrap;
+  }
+
   .title {
     order: 2;
   }
@@ -359,7 +484,20 @@
   }
 
   .page .hero .actLink {
+    align-items: baseline;
+    grid-template-areas: 'number title arrow';
+    grid-template-columns: 2.6rem minmax(0, 1fr) auto;
     padding-bottom: 1rem;
+  }
+
+  .actNumber {
+    font-size: 1.5rem;
   }
 }
 
+/* The folio is a flourish; on a phone it would push the eyebrow onto two lines. */
+@media (max-width: 479px) {
+  .folio {
+    display: none;
+  }
+}

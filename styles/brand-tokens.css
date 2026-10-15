@@ -12,6 +12,11 @@
   --brand-oxblood: #7b2d1c;
   /* One warm grade for every documentary photo so mixed light (teal walls, fluorescent rooms) reads as one set. */
   --brand-photo-grade: saturate(0.74) sepia(0.18) contrast(1.08) brightness(0.96);
+  /* The same functions at zero colour: a warm monochrome the series waits in until a photo is
+     looked at, so the two interpolate smoothly when it blooms. */
+  --brand-photo-mono: saturate(0) sepia(0.34) contrast(1.12) brightness(1);
+  /* Fine film grain laid over documentary photos (an inline SVG noise tile). */
+  --brand-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --brand-line-dark: rgba(232, 223, 207, 0.2);
   --brand-line-paper: rgba(23, 20, 16, 0.16);
 

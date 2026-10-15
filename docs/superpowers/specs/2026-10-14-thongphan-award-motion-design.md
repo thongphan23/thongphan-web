@@ -190,9 +190,12 @@ Bộ tham chiếu được chọn và ghi tại thư mục tạm (scratchpad) `a
 
 ### Lỗi đã biết, không do việc này gây ra
 
-- **Test 75 (ngân sách ảnh raster):** ảnh bìa ebook 772.312 byte vượt ngân sách 512.000 byte.
-- **Test 137 và 138:** do môi trường. Máy thiếu Playwright headless shell
+Số thứ tự test đổi khi thêm test, nên ghi theo nội dung (lần chạy 15/10: test 241, 242, 487, 488).
+
+- **2 test cần trình duyệt:** do môi trường. Máy thiếu Playwright headless shell
   `chromium_headless_shell-1208`, và chưa tải về.
+- **2 test consent ảnh:** ảnh Conan có khuôn mặt vẫn ở trạng thái `pending-owner-consent`. Hai test
+  này chỉ qua khi anh Thông đồng ý.
 
 ## 8. Cổng còn chờ anh Thông
 

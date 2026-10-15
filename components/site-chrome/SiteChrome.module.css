@@ -186,7 +186,7 @@
 
 .cinemaHeader {
   --header-fg: var(--brand-paper);
-  --header-muted: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  --header-muted: color-mix(in srgb, var(--brand-paper) 88%, transparent);
   --header-line: var(--brand-line-dark);
   --header-surface: var(--brand-ink-raised);
   -webkit-backdrop-filter: blur(16px) saturate(1.08);
@@ -273,17 +273,17 @@
   --header-muted: #5f574d;
   --header-line: var(--brand-line-paper);
   --header-surface: var(--brand-reading-paper);
-  background: var(--brand-reading-paper);
+  background: var(--header-ground, var(--brand-reading-paper));
   border-bottom: 1px solid var(--brand-line-paper);
   box-shadow: none;
 }
 
 .cinemaHeader[data-header-tone='dark'][data-header-scrolled] {
   --header-fg: var(--brand-paper);
-  --header-muted: color-mix(in srgb, var(--brand-paper) 74%, transparent);
+  --header-muted: color-mix(in srgb, var(--brand-paper) 88%, transparent);
   --header-line: var(--brand-line-dark);
   --header-surface: var(--brand-ink-raised);
-  background: rgba(7, 7, 6, 0.9);
+  background: var(--header-ground, rgba(7, 7, 6, 0.9));
   border-bottom: 1px solid var(--brand-line-dark);
   box-shadow: none;
 }
@@ -367,7 +367,7 @@
   align-items: center;
   border-radius: 999px;
   display: inline-flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   gap: 0.5rem;
   justify-content: center;
@@ -435,7 +435,8 @@
 .aboutLink {
   align-items: center;
   display: inline-flex;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
   min-height: 44px;
   text-decoration: none;
   white-space: nowrap;
@@ -469,7 +470,8 @@
   cursor: pointer;
   display: inline-flex;
   font: inherit;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
   gap: 0.3rem;
   min-height: 44px;
   min-width: 44px;
@@ -681,8 +683,13 @@
   z-index: 2;
 }
 
+/* On Tensai the ink rises over the lime closing on a rounded edge, the same way the page's paper
+   rises over its green; the closing leaves room for it (app/tensai/page.module.css). */
 .cinemaFooter[data-path-route='tensai'] {
   --footer-accent: #c3f331;
+  border-radius: clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0;
+  border-top: 0;
+  margin-top: calc(-1 * clamp(24px, 3vw, 40px));
 }
 
 .cinemaFooter[data-path-route='conan'] {

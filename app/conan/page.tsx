@@ -36,23 +36,24 @@ const BAND_REPEAT = 2
 
 export default function ConanPage() {
   const { principle, audiences, journey, gallery, mentors, closing } = conanContent
-  const bandHalf = Array.from({ length: BAND_REPEAT }, () => journey.stages.map((stage) => stage.name)).flat()
+  const bandHalf = Array.from({ length: BAND_REPEAT }, () => journey.stages.map((stage) => stage.gloss)).flat()
   return (
     <div className={`${twoPath.branch} ${styles.page}`} data-path="conan" data-motion-stage>
       <PathMemory path="conan" />
       <JsonLd data={buildBranchPageStructuredData({ name: 'Conan School', description, pathname: '/conan' })} />
 
-      <section className={styles.hero} aria-labelledby="conan-title">
+      <section className={styles.hero} aria-labelledby="conan-title" data-mask-flight>
         <div className={styles.heroMedia}>
           <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="2.4">
             <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
           </div>
           <div className={styles.heroShade} aria-hidden="true" />
-          {/* Load: the room is first seen through the letters of "Conan", then the camera flies
-              through the stem of the a and the ink falls away (page.module.css, heroMask). */}
-          <div className={styles.heroMask} aria-hidden="true" />
+          {/* The room is first seen through the letters of "Conan", then the camera flies through
+              the stem of the a and the ink falls away: by the reader's scroll on wide screens
+              (maskFlight in signatures.ts), on load elsewhere (page.module.css, heroMask). */}
+          <div className={styles.heroMask} aria-hidden="true" data-mask-sheet />
         </div>
-        <div className={styles.heroContent} data-scroll-out="22">
+        <div className={styles.heroContent} data-mask-out>
           <div>
             <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '1.35s' } as CSSProperties}>
               {conanContent.eyebrow}
@@ -110,7 +111,7 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="conan-audiences">
+      <section className={`${styles.section} ${styles.audiencesBand}`} aria-labelledby="conan-audiences">
         <div className={`${styles.inner} ${styles.audiencesGrid}`}>
           <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -155,7 +156,7 @@ export default function ConanPage() {
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
-        data-hscroll-pace="1.7"
+        data-hscroll-pace="1.35"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
         <div className={styles.journeyLayout}>
@@ -181,7 +182,7 @@ export default function ConanPage() {
               <span className={styles.meterName}>
                 <span className={styles.meterRoll}>
                   {journey.stages.map((stage) => (
-                    <span key={stage.number}>{stage.name}</span>
+                    <span key={stage.number}>{stage.gloss}</span>
                   ))}
                 </span>
               </span>
@@ -197,7 +198,12 @@ export default function ConanPage() {
                   <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
                     {stage.number}
                   </span>
-                  <h3 className={styles.stageName}>{stage.name}</h3>
+                  <h3 className={styles.stageName}>
+                    <span className={styles.stageGloss}>{stage.gloss}</span>
+                    <span className={styles.stageTerm} lang="en">
+                      ({stage.name})
+                    </span>
+                  </h3>
                   <ul className={styles.questions}>
                     {stage.questions.map((question) => (
                       <li key={question}>{question}</li>
@@ -210,17 +216,21 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="conan-gallery">
+      <section className={`${styles.section} ${styles.gallerySection}`} aria-labelledby="conan-gallery">
         <div className={styles.wideInner}>
-          <div className={styles.sectionHead}>
-            <p className={styles.sectionMark} data-motion-reveal="mask">
-              03 — Lớp học thật
-            </p>
-            <h2 id="conan-gallery" className={styles.sectionTitle} data-split>
-              {gallery.title}
-            </h2>
-          </div>
-          <PhotoGallery items={gallery.items} />
+          <PhotoGallery
+            items={gallery.items}
+            head={
+              <div className={`${styles.sectionHead} ${styles.galleryHead}`}>
+                <p className={styles.sectionMark} data-motion-reveal="mask">
+                  03 — Lớp học thật
+                </p>
+                <h2 id="conan-gallery" className={styles.sectionTitle} data-split>
+                  {gallery.title}
+                </h2>
+              </div>
+            }
+          />
         </div>
       </section>
 

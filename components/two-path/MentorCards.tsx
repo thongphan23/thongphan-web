@@ -18,6 +18,7 @@ export default function MentorCards({ people }: MentorCardsProps) {
         <li
           key={person.name}
           className={styles.mentor}
+          data-focus-bloom
           data-motion-surface
           data-face={WIDE_PORTRAITS.includes(person.photoId) ? 'close' : undefined}
         >

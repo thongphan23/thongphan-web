@@ -1,5 +1,5 @@
 // WebGL photo surface for [data-gl-photo]: the real photo is redrawn on a canvas so it can
-// bend under the pointer like a liquid lens, ripple slightly with scroll speed and carry a
+// bend under the pointer like a liquid lens (kept gentle: these are real faces), ripple slightly with scroll speed and carry a
 // fine film grain. The <img> stays in the DOM underneath as the fallback and for SEO and
 // assistive tech; the canvas only fades in once its texture is ready.
 import { gsap } from 'gsap'
@@ -53,20 +53,20 @@ void main() {
   vec2 d = uv - uMouse;
   d.x *= aspect;
   float dist = length(d);
-  float lens = smoothstep(0.34, 0.0, dist) * uHover;
+  float lens = smoothstep(0.26, 0.0, dist) * uHover;
   vec2 dir = dist > 0.0001 ? d / dist : vec2(0.0);
   dir.x /= aspect;
 
   // The photo breathes with a slow flow field, bulges toward the pointer and shears with scroll speed.
   float n = noise(uv * 2.6 + vec2(uTime * 0.04, uTime * 0.03));
   vec2 disp = (vec2(n, noise(uv * 2.6 - uTime * 0.035)) - 0.5) * 0.007;
-  disp -= dir * lens * 0.05;
+  disp -= dir * lens * 0.018;
   disp.x += sin(uv.y * 10.0 + uTime * 1.4) * 0.008 * uVel;
   // Entrance: a soft wave that settles as uReveal reaches 1.
   disp.y += (1.0 - uReveal) * sin(uv.x * 6.0 + uTime) * 0.03;
 
   vec2 p = uv + disp;
-  float split = 0.0035 * lens + 0.012 * uVel;
+  float split = 0.0012 * lens + 0.006 * uVel;
   vec3 col = vec3(
     texture2D(uTex, cover(p + vec2(split, 0.0))).r,
     texture2D(uTex, cover(p)).g,
@@ -74,8 +74,8 @@ void main() {
   );
 
   // A thin lit rim on the lens edge and a moving film grain.
-  float rim = smoothstep(0.30, 0.335, dist) * smoothstep(0.37, 0.335, dist);
-  col += rim * uHover * 0.05;
+  float rim = smoothstep(0.23, 0.255, dist) * smoothstep(0.28, 0.255, dist);
+  col += rim * uHover * 0.035;
   col += (hash(uv * uRes + fract(uTime * 7.0) * 61.0) - 0.5) * 0.045;
   gl_FragColor = vec4(col, uReveal);
 }

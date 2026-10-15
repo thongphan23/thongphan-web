@@ -46,6 +46,7 @@ export default function HomePage() {
         <div className={styles.stagePerson} data-stage-depth="1">
           <div className={styles.stagePersonInner} data-stage-person>
             <HeroPicture id={homeContent.hero.photoId} mobileId={homeContent.hero.mobilePhotoId} className={styles.stagePicture} />
+            <span className={styles.stageSpot} aria-hidden="true" />
             <span className={styles.stageLight} aria-hidden="true" />
           </div>
         </div>

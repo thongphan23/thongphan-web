@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { Fragment, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
@@ -40,16 +40,19 @@ const publicActs = originStoryPublic.acts.map((act) => {
 })
 
 // The low points (the leap, the debt, the system that came out of it) sit in the dark; the
-// openings sit on paper. Each act is a sheet laid over the last; with motion, the paper ones open
-// like a curtain as they arrive.
+// openings sit on paper. Each act is a sheet laid over the last.
 const toneOf = (index: number) => (index % 2 === 0 ? 'dark' : 'paper')
+
+// With motion, each act arrives its own way (see curtains in the motion signatures), so five
+// changes of tone never repeat one trick: the first dark act opens like an iris, the first paper
+// one turns over the act before it like a page, the cost sweeps in from the edge, the rebuilding
+// is laid over the held cost (data-sheet-over, below), and the system opens as a plain sheet.
+const ENTRANCES = ['iris', 'sheet', 'wipe', '', ''] as const
 
 const pad = (value: number) => String(value).padStart(2, '0')
 
-// Clippings lie a little crooked on the desk and drift at their own pace as the page passes.
-// A pair drifts apart as it enters (the upper one rises, the lower one sinks) so the pile opens up.
+// Clippings lie a little crooked on the desk.
 const CLIPPING_TILTS = ['-2.2deg', '1.6deg', '-1deg'] as const
-const CLIPPING_SPEEDS = ['0.05', '-0.05', '0.03'] as const
 
 function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
   const label = `${sourceTypeLabels[claim.sourceType]} · ${claim.sourceLabel}`
@@ -67,6 +70,21 @@ function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
   return <Link className={styles.sourceLink} href={claim.publicHref}>{label}</Link>
 }
 
+// The cost of the third act breaks out of the two-column rhythm: after the act's claims it is held
+// alone on the screen, the one line on the page that is allowed to be that large, until the next
+// act is laid over it.
+const VERDICT_CLAIM = 'hstl-debt'
+// The verdict's own ten years, counted off beside it while it is held; shown only while the
+// proof-backed line still names them, so the figure can never drift from its source.
+const VERDICT_YEARS = { phrase: 'Mười năm', count: '10' }
+
+// The verdict is set as its first sentence, very large, over the rest of the line; split on the
+// sentence break so a long line never wraps mid-phrase.
+const verdictLines = (text: string) => {
+  const at = text.search(/[.!?]\s/)
+  return at < 0 ? [text] : [text.slice(0, at + 1), text.slice(at + 2)]
+}
+
 // Where the original article lives, as a reader would type it.
 const hostOf = (href: string) => new URL(href).hostname.replace(/^www\./, '')
 
@@ -76,8 +94,7 @@ function PressCard({ asset, index }: { asset: PressArtifact; index: number }) {
   return (
     <div
       className={styles.clipping}
-      data-speed={CLIPPING_SPEEDS[index % CLIPPING_SPEEDS.length]}
-      data-speed-wide
+      data-header-ignore
       style={{ '--tilt': CLIPPING_TILTS[index % CLIPPING_TILTS.length] } as CSSProperties}
     >
       <a
@@ -107,7 +124,7 @@ function PressCard({ asset, index }: { asset: PressArtifact; index: number }) {
 
 function ImageCard({ asset }: { asset: ImageArtifact }) {
   return (
-    <figure className={styles.imageCard} data-motion-surface>
+    <figure className={styles.imageCard} data-motion-surface data-header-ignore data-focus-bloom>
       <div
         className={styles.imageFrame}
         data-img-reveal="up"
@@ -149,8 +166,8 @@ export default function OriginStory() {
           <blockquote className={styles.principle}>
             <p data-scrub-words>{PRINCIPLE}</p>
           </blockquote>
-          <div className={styles.seal} data-speed="0.12" data-speed-wide aria-hidden="true">
-            <Image src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" sizes="180px" />
+          <div className={styles.seal} data-speed="0.12" data-speed-wide data-spin="140" aria-hidden="true">
+            <Image src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" sizes="(min-width: 1024px) 360px, 180px" />
           </div>
         </figure>
       </section>
@@ -198,17 +215,22 @@ export default function OriginStory() {
           const tone = toneOf(index)
           const hasAssets = act.assets.length > 0
           const titleId = `origin-act-${act.id}-title`
+          const verdict = act.claims.find((claim) => claim.id === VERDICT_CLAIM)
+          const overVerdict = publicActs[index - 1]?.claims.some((claim) => claim.id === VERDICT_CLAIM)
+          const stacked = act.assets.length > 1
           return (
             <section
               key={act.id}
               className={styles.act}
               data-tone={tone}
-              data-curtain={tone === 'paper' ? '' : undefined}
+              data-curtain={overVerdict ? undefined : ENTRANCES[index % ENTRANCES.length]}
+              data-sheet-over={overVerdict ? '' : undefined}
+              data-has-verdict={verdict ? '' : undefined}
               data-chapter
               id={`origin-act-${act.id}`}
               aria-labelledby={titleId}
             >
-              <div className={styles.actGrid} data-origin-act={act.id} data-has-assets={hasAssets}>
+              <div className={styles.actGrid} data-origin-act={act.id} data-has-assets={hasAssets} data-stacked={stacked}>
                 <header className={styles.actHeader}>
                   <p className={styles.actLabel}>{act.label}</p>
                   <p className={styles.numeral} data-chapter-numeral aria-hidden="true">
@@ -222,26 +244,78 @@ export default function OriginStory() {
 
                 <div className={styles.actBody}>
                   <ol className={styles.claims}>
-                    {act.claims.map((claim) => {
-                      const consequence = claim.id === 'hstl-debt'
-                      return (
-                        <li key={claim.id} className={styles.claim} data-consequence={consequence ? 'true' : undefined}>
+                    {act.claims.map((claim) =>
+                      claim === verdict ? null : (
+                        <li key={claim.id} className={styles.claim}>
                           <span className={styles.claimRule} data-draw-line aria-hidden="true" />
-                          <p data-scrub-words={consequence ? '' : undefined}>{claim.text}</p>
+                          <p>{claim.text}</p>
                           <ClaimSource claim={claim} />
                         </li>
-                      )
-                    })}
+                      ),
+                    )}
                   </ol>
+                  {/* On wide screens the evidence holds its own column: each piece stays on screen
+                      while the act is read, and a second clipping slides up over the first. */}
                   {hasAssets ? (
-                    <div className={styles.assets} data-assets={act.assets.length}>
+                    <div
+                      className={styles.assets}
+                      data-assets={act.assets.length}
+                      data-stack={stacked ? '' : undefined}
+                      data-stack-media="(min-width: 1024px)"
+                      data-stack-scale="0.94"
+                      data-stack-opacity="0.55"
+                    >
                       {act.assets.map((asset, assetIndex) => (
-                        <OriginAsset key={asset.id} asset={asset} index={index + assetIndex} />
+                        <Fragment key={asset.id}>
+                          {assetIndex > 0 ? <span className={styles.stackMark} data-stack-mark aria-hidden="true" /> : null}
+                          <div
+                            className={styles.stackCard}
+                            data-stack-card
+                            style={{ '--stack-i': assetIndex } as CSSProperties}
+                          >
+                            <OriginAsset asset={asset} index={index + assetIndex} />
+                          </div>
+                        </Fragment>
                       ))}
                     </div>
                   ) : null}
                 </div>
               </div>
+              {verdict ? (
+                <div className={styles.verdictStage} data-scrub-stage>
+                  <div className={styles.verdictHold} data-sheet-under>
+                    <div className={`${styles.claim} ${styles.verdict}`}>
+                      <span className={styles.claimRule} data-draw-line aria-hidden="true" />
+                      {verdict.text.includes(VERDICT_YEARS.phrase) ? (
+                        <div
+                          className={styles.verdictClock}
+                          data-scroll-count
+                          data-count-from="1"
+                          data-count-start="top 45%"
+                          data-count-end="top -25%"
+                          aria-hidden="true"
+                        >
+                          <span className={styles.clockLabel}>
+                            Năm <span className={styles.clockValue} data-count-value>{VERDICT_YEARS.count}</span> / {VERDICT_YEARS.count}
+                          </span>
+                          <span className={styles.clockTrack}>
+                            <span className={styles.clockFill} />
+                          </span>
+                        </div>
+                      ) : null}
+                      <p data-scrub-words data-scrub-from="0.5" data-scrub-start="top 45%" data-scrub-end="top -25%">
+                        {verdictLines(verdict.text).map((line, lineIndex) => (
+                          <Fragment key={line}>
+                            {lineIndex ? ' ' : null}
+                            <span className={lineIndex ? styles.verdictRest : styles.verdictLead}>{line}</span>
+                          </Fragment>
+                        ))}
+                      </p>
+                      <ClaimSource claim={verdict} />
+                    </div>
+                  </div>
+                </div>
+              ) : null}
             </section>
           )
         })}
