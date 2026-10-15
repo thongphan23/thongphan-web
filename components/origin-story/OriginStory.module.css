@@ -26,6 +26,12 @@
 
 .act[data-tone='dark'] {
   background: var(--brand-ink);
+  /* A low lacquer glow in the corner the evidence sits in, so each act has its own light. */
+  background-image: radial-gradient(60% 46% at var(--glow-x, 88%) 24%, rgba(179, 35, 27, 0.14), transparent 70%);
+}
+
+.act[data-mirror] {
+  --glow-x: 12%;
 }
 
 /* Between two dark acts the seam is a hairline that follows the rounded top, not a change of ground. */
@@ -47,9 +53,9 @@
 .mark {
   color: var(--os-accent);
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   line-height: 1.4;
   margin: 0;
   text-transform: uppercase;
@@ -139,8 +145,9 @@
 }
 
 .act {
-  /* Kept short at the top, so an act's words are already on screen while it is still arriving. */
-  padding: clamp(5rem, 9vw, 8rem) var(--brand-space-inline);
+  /* Kept short at the top: a sheet is opaque and carries its words right under its edge, so any
+     frame that shows a sheet also shows what it says. */
+  padding: clamp(4rem, 9vw, 8rem) var(--brand-space-inline);
   position: relative;
   scroll-margin-top: 3rem;
 }
@@ -181,7 +188,7 @@
 
 .numeralOutline {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--os-muted);
+  -webkit-text-stroke: 2px var(--os-muted);
 }
 
 .numeralFill {
@@ -237,8 +244,8 @@
 .claim p {
   color: var(--os-fg);
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 1.08rem + 0.45vw, 1.5rem);
-  line-height: 1.5;
+  font-size: clamp(1.25rem, 1rem + 0.7vw, 1.6rem);
+  line-height: 1.48;
   margin: 0;
   max-width: 40rem;
   text-wrap: pretty;
@@ -246,8 +253,9 @@
 
 /* The cost of the third act: it leaves the columns and is set alone, centred, the one line on the
    page larger than any title. With motion it gets a beat of its own: the stage is taller than the
-   screen and the line holds in the middle of it (sticky) while it lights word by word, until the
-   next act is laid over it (data-sheet-over). */
+   screen and the line holds in the middle of it (sticky) while it lights word by word, then the
+   stage scrolls away and the next sheet follows it. Nothing here fades: the line is on screen at
+   full strength whenever the stage is, so no frame shows a ghost of it. */
 .verdictStage {
   margin: clamp(3.5rem, 7vw, 7rem) auto 0;
   max-width: 1320px;
@@ -289,6 +297,9 @@
 .story .claim.verdict .sourceLink,
 .verdict .sourceLabel {
   justify-self: center;
+  /* Centred as a block, but its own lines read from the rule, so the bar never floats away from the text. */
+  max-width: min(100%, 34rem);
+  text-align: left;
 }
 
 /* Ten years counted off while the line is held: the figure and its bar are scrubbed by the
@@ -308,7 +319,7 @@
   color: var(--os-muted);
   display: flex;
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
   gap: 0.6em;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -347,7 +358,8 @@
 }
 
 :global(html.motion) .verdictStage {
-  height: 170svh;
+  /* One screen for the line plus 40svh of scroll while it is held, lit and read. */
+  height: 140svh;
   margin-top: clamp(1rem, 3vw, 3rem);
 }
 
@@ -357,43 +369,26 @@
   min-height: 100svh;
   position: sticky;
   top: 0;
-  transform-origin: 50% 40%;
-}
-
-/* The act after the cost rises over it while it is still held, with a shadow on its leading edge. */
-:global(html.motion) .act[data-sheet-over] {
-  box-shadow:
-    inset 0 1px 0 var(--os-line),
-    0 -2.5rem 5rem -2rem rgba(0, 0, 0, 0.55);
-  margin-top: -42svh;
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  :global(html.motion) .verdictStage {
-    height: 175svh;
-  }
-
-  :global(html.motion) .act[data-sheet-over] {
-    margin-top: -44svh;
-  }
 }
 
 /* Provenance is the page's proof, so it is set as a citation: a lacquer rule on its left edge,
    light enough to read at a glance. */
 .sourceLabel,
-.story .claim .sourceLink {
+.story .claim .sourceLink,
+.story .noteCard .sourceLink {
   border-left: 2px solid color-mix(in srgb, var(--os-accent) 80%, transparent);
-  color: color-mix(in srgb, var(--os-fg) 86%, transparent);
+  color: color-mix(in srgb, var(--os-fg) 88%, transparent);
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
+  font-weight: 500;
   justify-self: start;
   letter-spacing: 0.02em;
   line-height: 1.5;
   padding: 0.1rem 0 0.1rem 0.85rem;
 }
 
-.story .claim .sourceLink {
+.story .claim .sourceLink,
+.story .noteCard .sourceLink {
   align-items: center;
   display: inline-flex;
   gap: 0.4rem;
@@ -407,12 +402,14 @@
     text-decoration-color 300ms ease;
 }
 
-.story .claim .sourceLink:hover {
+.story .claim .sourceLink:hover,
+.story .noteCard .sourceLink:hover {
   color: var(--os-fg);
   text-decoration-color: var(--os-accent);
 }
 
-.story .claim .sourceLink:focus-visible {
+.story .claim .sourceLink:focus-visible,
+.story .noteCard .sourceLink:focus-visible {
   outline: 2px solid var(--os-accent);
   outline-offset: 3px;
 }
@@ -446,7 +443,7 @@
 }
 
 /* Scoped three classes deep so the shell's `a { color: inherit }` (0,2,1) cannot win. */
-.story .clipping .pressCard {
+.story .clipping :is(.pressCard, .noteCard) {
   background:
     radial-gradient(120% 80% at 20% 0%, rgba(255, 252, 240, 0.55), transparent 60%),
     #ebe1cc;
@@ -470,7 +467,7 @@
 }
 
 /* A strip of tape holds each clipping to the page. */
-.story .clipping .pressCard::before {
+.story .clipping :is(.pressCard, .noteCard)::before {
   background: rgba(244, 238, 222, 0.62);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   content: '';
@@ -484,6 +481,7 @@
 }
 
 .story .clipping .pressCard:hover,
+.story .clipping .noteCard:hover,
 .story .clipping .pressCard:focus-visible {
   box-shadow:
     0 1px 0 rgba(23, 20, 16, 0.08),
@@ -519,7 +517,8 @@
 .kicker,
 .readOriginal {
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
 }
 
@@ -568,6 +567,24 @@
   letter-spacing: 0.02em;
 }
 
+/* The note for an act with no clipping: the act's own line, set large on the same paper, so the
+   column is never empty. The source rules inside it are ink on paper, not cream on ink. */
+.noteCard {
+  --os-accent: #9b1f18;
+  --os-fg: #1b1712;
+}
+
+.noteText {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.75rem, 1rem + 1.75vw, 2.65rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.16;
+  margin: 0;
+  text-wrap: pretty;
+}
+
 /* The stage photo is pinned in like a print: a paper border, a slight tilt and a strip of tape.
    The picture itself still wipes up inside the border, as if it were developing. */
 .imageCard {
@@ -600,11 +617,30 @@
   z-index: 1;
 }
 
-.imageFrame {
-  background: var(--brand-ink-raised);
+/* The slot is the unexposed print: dark and warm from the first paint, with the picture opening
+   inside it. */
+.imageSlot {
+  background: radial-gradient(90% 80% at 50% 40%, #3a322a, #171310 75%);
   border-radius: 1px;
   overflow: hidden;
   position: relative;
+}
+
+/* An aged-print vignette closes the frame around the speaker, and the picture itself is masked to
+   him (below), so the slide and banner behind him fall into the dark rather than being cut off. */
+.imageSlot::after {
+  background: radial-gradient(ellipse 70% 76% at 54% 50%, transparent 52%, rgba(10, 9, 8, 0.7) 100%);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.imageFrame {
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
 }
 
 .imageMedia,
@@ -614,6 +650,31 @@
   width: 100%;
 }
 
+/* Only the speaker is kept: the mask opens on him and lets the stage backdrop (and the words on
+   it) dissolve into the print slot's dark. The latent copy shares the mask. */
+.imageMedia,
+.imageLatent {
+  --speaker-mask: radial-gradient(ellipse 28% 62% at 53% 68%, #000 56%, transparent 100%);
+  -webkit-mask-image: var(--speaker-mask);
+  mask-image: var(--speaker-mask);
+}
+
+.imageLatent {
+  display: none;
+  filter: grayscale(1) brightness(0.55) contrast(1.15) blur(5px);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0.7;
+  position: absolute;
+  scale: 1.38;
+  width: 100%;
+}
+
+:global(html.motion) .imageLatent {
+  display: block;
+}
+
 /* Like the class wall on the path pages, the print waits in warm monochrome and only takes on
    colour as it crosses the middle of the screen. The stage's teal backdrop is held well below full
    saturation even then, so it stays inside the ink-and-lacquer palette; without motion the
@@ -621,6 +682,9 @@
 .imageMedia img {
   filter: var(--brand-photo-grade);
   object-fit: cover;
+  /* Cropped in on the speaker (the origin is his focal point), so the print is a portrait of him
+     on a stage rather than a wide shot of a slide. */
+  scale: 1.38;
   transition: filter 1000ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -636,7 +700,7 @@
   color: rgba(27, 23, 18, 0.62);
   display: grid;
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   gap: 0.3rem;
   line-height: 1.5;
   padding-inline: 0.15rem;
@@ -655,7 +719,7 @@
    below its own top edge. */
 
 .rail {
-  --row: 1.25rem;
+  --row: 1.5rem;
   display: flex;
   height: 0;
   justify-content: center;
@@ -727,12 +791,14 @@
 }
 
 .railNumbers {
-  color: #ec5a4c;
+  color: #ff6f61;
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.1875rem;
   font-variant-numeric: tabular-nums;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .railTitleRoll {
@@ -741,19 +807,22 @@
 
 /* Phones have no room for the act title, so the pill counts instead: 02 / 05. */
 .railTotal {
-  color: rgba(243, 239, 230, 0.6);
+  color: rgba(243, 239, 230, 0.78);
   display: none;
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-variant-numeric: tabular-nums;
+  font-weight: 500;
   letter-spacing: 0.06em;
   /* Pulls in from the pill's gap so the space before the slash matches the one after it. */
   margin-left: -0.37rem;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .railTitles {
   font-family: var(--font-cormorant), serif;
-  font-size: 1.1875rem;
+  font-size: 1.4375rem;
   font-weight: 500;
 }
 
@@ -822,7 +891,7 @@
 .closingEyebrow {
   color: var(--brand-lacquer);
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   line-height: 1.4;
@@ -851,8 +920,8 @@
 
 .closingCopy p {
   color: rgba(23, 20, 16, 0.78);
-  font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.25rem);
-  line-height: 1.6;
+  font-size: clamp(1.1875rem, 1.05rem + 0.45vw, 1.45rem);
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -965,7 +1034,7 @@
   .rail {
     align-items: flex-start;
     justify-content: flex-end;
-    padding-right: max(0.75rem, calc((var(--brand-space-inline) - 2.75rem) / 2));
+    padding-right: max(0.75rem, calc((var(--brand-space-inline) - 3.25rem) / 2));
     top: calc(50svh - 8.75rem);
   }
 
@@ -975,7 +1044,8 @@
     height: auto;
     padding: 1rem 0 0.35rem;
     translate: 1.5rem 0;
-    width: 2.75rem;
+    /* Wide enough that "/ 05" sits on one line with air on both sides. */
+    width: 3.25rem;
   }
 
   /* The number roll clips its overflow, so in a column it would otherwise shrink to nothing. */
@@ -989,8 +1059,13 @@
 
   .railTotal {
     display: block;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0;
     margin: 0 0 0.35rem;
+  }
+
+  .railNumbers {
+    letter-spacing: 0;
   }
 
   .railSegments {
@@ -1025,7 +1100,7 @@
   .act {
     padding-bottom: clamp(3rem, 5vw, 5rem);
     padding-right: calc(var(--brand-space-inline) + 3rem);
-    padding-top: max(clamp(4.5rem, 7vw, 6.5rem), 50svh - 19rem);
+    padding-top: clamp(4.5rem, 7vw, 6.5rem);
   }
 
   .actGrid {
@@ -1043,8 +1118,26 @@
      each piece held mid-screen (sticky) while the act passes. */
   .actGrid[data-has-assets='true'] {
     align-items: stretch;
-    column-gap: clamp(2rem, 3.4vw, 3.5rem);
-    grid-template-columns: minmax(0, 3fr) minmax(0, 3.7fr) minmax(0, 5.3fr);
+    column-gap: clamp(1.75rem, 2.8vw, 3rem);
+    grid-template-columns: minmax(0, 2.9fr) minmax(0, 4.3fr) minmax(0, 4.8fr);
+  }
+
+  /* Every second act is mirrored: the evidence on the left, the claims in the middle and the
+     number and title on the right, so the page does not read as one layout five times. */
+  .actGrid[data-has-assets='true'][data-mirror-grid] {
+    grid-template-columns: minmax(0, 4.8fr) minmax(0, 4.3fr) minmax(0, 2.9fr);
+  }
+
+  .actGrid[data-mirror-grid] .actHeader {
+    order: 3;
+  }
+
+  .actGrid[data-mirror-grid] .claims {
+    order: 2;
+  }
+
+  .actGrid[data-mirror-grid] .assets {
+    order: 1;
   }
 
   .actGrid[data-has-assets='true'] .actBody {
@@ -1060,26 +1153,50 @@
     margin-top: 0;
   }
 
-  .stackCard {
+  /* Held and piled only while there is motion; without it every card sits in the flow with a gap,
+     so no clipping covers another's headline. */
+  :global(html.motion) .stackCard {
     position: sticky;
     top: calc(max(7rem, 50svh - 12.5rem) + var(--stack-i, 0) * 2.25rem);
   }
 
   .stackMark {
     display: block;
-    height: 0;
+    height: 2rem;
   }
 
   /* A pile: the second clipping starts most of a screen below the first and slides up over it,
      settling a little lower so the first one's masthead still shows. Its claim is spread to meet
      it, so each clipping arrives beside the line it proves. */
   :global(html.motion) .stackMark {
-    height: 38svh;
+    height: 33svh;
+  }
+
+  /* The cost act: its one claim and its note sit in the middle of the tall title beside them, and
+     the line's stage starts a little under the columns' last stretch, so the line comes up into
+     the screen while they leave it rather than after a void. The line starts well inside its own
+     stage, so the two never overlap. The stage is see-through, so it must not catch the pointer. */
+  .act[data-has-verdict] .actGrid[data-has-assets='true'] .claims {
+    align-content: center;
+  }
+
+  .act[data-has-verdict] .actGrid[data-has-assets='true'] .assets {
+    align-self: center;
+    padding-bottom: 0;
+  }
+
+  :global(html.motion) .verdictStage {
+    margin-top: -16svh;
+    pointer-events: none;
+  }
+
+  :global(html.motion) .verdictStage a {
+    pointer-events: auto;
   }
 
   :global(html.motion) .actGrid[data-stacked='true'] .assets,
   :global(html.motion) .actGrid[data-stacked='true'] .claims {
-    padding-bottom: 12svh;
+    padding-bottom: 8svh;
   }
 
   .actGrid[data-stacked='true'] .claims {
@@ -1093,6 +1210,17 @@
 }
 
 @media (max-width: 1023px) {
+  /* A shorter hold below the wide layout: the line is pinned a little above centre, so the
+     stretch of bare dark before the next chapter stays small on a tall, narrow screen. */
+  :global(html.motion) .verdictStage {
+    height: 118svh;
+  }
+
+  :global(html.motion) .verdictHold {
+    min-height: 76svh;
+    top: 12svh;
+  }
+
   .assets[data-assets='2'] > :last-child {
     margin: -0.75rem 0 0 clamp(1.5rem, 8vw, 4rem);
   }
@@ -1103,7 +1231,29 @@
     top: calc(100svh - 4.25rem);
   }
 
+  /* A scrim under the pill: lines of body text fade out before the bottom edge instead of
+     peeking out on either side of the count. It follows the pill's own visibility. */
+  .rail::before {
+    background: linear-gradient(to bottom, rgba(7, 7, 6, 0), rgba(7, 7, 6, 0.96) 42%);
+    content: '';
+    height: 6.25rem;
+    inset-inline: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: -1.75rem;
+    transition: opacity 500ms var(--os-ease);
+  }
+
+  .rail[data-visible]::before {
+    opacity: 1;
+  }
+
   .railPill {
+    /* Solid, not frosted: body text passes under the pill while it is read, and through glass it
+       would sit half-legible behind the count. A hairline in the page's own cream marks the edge. */
+    background: #0b0a08;
+    border-color: rgba(232, 223, 207, 0.3);
     gap: 0.6rem;
     height: 3rem;
     padding: 0 0.4rem 0 0.95rem;
@@ -1119,6 +1269,13 @@
 
   .railTotal {
     display: block;
+  }
+
+  /* On a phone the line's source wraps; narrowing it keeps the block (and its rule) centred under the line. */
+  .story .claim.verdict .sourceLink,
+  .verdict .sourceLabel {
+    max-width: min(100%, 19.5rem);
+    text-wrap: balance;
   }
 
   /* Below the quote rather than over its last words. */

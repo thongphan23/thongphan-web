@@ -120,25 +120,65 @@ function PressCard({ asset, index }: { asset: PressArtifact; index: number }) {
   )
 }
 
+// An act with no clipping or photograph still gets an artifact: its first claim is pinned up as a
+// note on the same paper, with its own source beneath it, so no act leaves an empty column.
+function NoteCard({ claim, label, index }: { claim: PublicOriginClaim; label: string; index: number }) {
+  return (
+    <div
+      className={styles.clipping}
+      data-header-ignore
+      style={{ '--tilt': CLIPPING_TILTS[index % CLIPPING_TILTS.length] } as CSSProperties}
+    >
+      <div className={styles.noteCard}>
+        <span className={styles.kicker}>Trích hồ sơ · {label}</span>
+        <p className={styles.noteText}>{claim.text}</p>
+        <ClaimSource claim={claim} />
+      </div>
+    </div>
+  )
+}
+
 function ImageCard({ asset }: { asset: ImageArtifact }) {
   return (
     <figure className={styles.imageCard} data-motion-surface data-header-ignore data-focus-bloom>
-      <div
-        className={styles.imageFrame}
-        data-img-reveal="up"
-        data-parallax-frame="6"
-        style={{ aspectRatio: `${asset.width} / ${asset.height}` }}
-      >
-        <div className={styles.imageMedia} data-reveal-media>
-          <Image
-            src={asset.imageUrl}
-            width={asset.width}
-            height={asset.height}
-            alt={asset.alt}
-            sizes="(max-width: 1023px) 92vw, 52vw"
-            loading="eager"
-            style={{ objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%` }}
-          />
+      {/* The print slot is dark from the first paint, so while the picture is still opening (or
+          decoding) the card shows an unexposed print, never a blank sheet of paper. */}
+      <div className={styles.imageSlot} style={{ aspectRatio: `${asset.width} / ${asset.height}` }}>
+        {/* The latent image: the same picture, dim and soft, already in the slot while the sharp one
+            wipes up over it, so the print is never an empty dark rectangle mid-reveal. */}
+        <Image
+          className={styles.imageLatent}
+          src={asset.imageUrl}
+          width={asset.width}
+          height={asset.height}
+          alt=""
+          aria-hidden="true"
+          sizes="(max-width: 1023px) 92vw, 52vw"
+          loading="eager"
+          style={{
+            objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
+            transformOrigin: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
+          }}
+        />
+        <div
+          className={styles.imageFrame}
+          data-img-reveal="up"
+          data-parallax-frame="6"
+        >
+          <div className={styles.imageMedia} data-reveal-media>
+            <Image
+              src={asset.imageUrl}
+              width={asset.width}
+              height={asset.height}
+              alt={asset.alt}
+              sizes="(max-width: 1023px) 92vw, 52vw"
+              loading="eager"
+              style={{
+                objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
+                transformOrigin: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
+              }}
+            />
+          </div>
         </div>
       </div>
       <figcaption>
@@ -211,25 +251,34 @@ export default function OriginStory() {
         </nav>
 
         {publicActs.map((act, index) => {
-          const hasAssets = act.assets.length > 0
-          const titleId = `origin-act-${act.id}-title`
           const verdict = act.claims.find((claim) => claim.id === VERDICT_CLAIM)
-          const overVerdict = publicActs[index - 1]?.claims.some((claim) => claim.id === VERDICT_CLAIM)
+          // The first claim of an act with nothing to show becomes its note (and leaves the list).
+          const note = act.assets.length === 0 ? act.claims.find((claim) => claim !== verdict) : undefined
+          const hasAssets = act.assets.length > 0 || Boolean(note)
+          const titleId = `origin-act-${act.id}-title`
           const stacked = act.assets.length > 1
+          // Every second act is mirrored on wide screens, so the evidence changes sides down the page.
+          const mirrored = index % 2 === 1
           return (
             <section
               key={act.id}
               className={styles.act}
               data-tone={ACT_TONE}
               data-curtain={index === 0 ? '' : undefined}
-              data-sheet-over={overVerdict ? '' : undefined}
               data-has-verdict={verdict ? '' : undefined}
+              data-mirror={mirrored ? '' : undefined}
               data-chapter
               id={`origin-act-${act.id}`}
               aria-labelledby={titleId}
             >
-              <div className={styles.actGrid} data-origin-act={act.id} data-has-assets={hasAssets} data-stacked={stacked}>
-                <header className={styles.actHeader} data-chapter-head>
+              <div
+                className={styles.actGrid}
+                data-origin-act={act.id}
+                data-has-assets={hasAssets}
+                data-stacked={stacked}
+                data-mirror-grid={mirrored ? '' : undefined}
+              >
+                <header className={styles.actHeader}>
                   <p className={styles.actLabel}>{act.label}</p>
                   <p className={styles.numeral} data-chapter-numeral aria-hidden="true">
                     <span className={styles.numeralOutline}>{pad(index + 1)}</span>
@@ -243,7 +292,7 @@ export default function OriginStory() {
                 <div className={styles.actBody}>
                   <ol className={styles.claims}>
                     {act.claims.map((claim) =>
-                      claim === verdict ? null : (
+                      claim === verdict || claim === note ? null : (
                         <li key={claim.id} className={styles.claim}>
                           <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                           <p>{claim.text}</p>
@@ -257,12 +306,11 @@ export default function OriginStory() {
                   {hasAssets ? (
                     <div
                       className={styles.assets}
-                      data-chapter-assets
-                      data-assets={act.assets.length}
+                      data-assets={act.assets.length || 1}
                       data-stack={stacked ? '' : undefined}
                       data-stack-media="(min-width: 1024px)"
                       data-stack-scale="0.94"
-                      data-stack-opacity="0.55"
+                      data-stack-opacity="0.72"
                     >
                       {act.assets.map((asset, assetIndex) => (
                         <Fragment key={asset.id}>
@@ -276,13 +324,18 @@ export default function OriginStory() {
                           </div>
                         </Fragment>
                       ))}
+                      {note ? (
+                        <div className={styles.stackCard}>
+                          <NoteCard claim={note} label={act.label} index={index} />
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
                 </div>
               </div>
               {verdict ? (
                 <div className={styles.verdictStage} data-scrub-stage>
-                  <div className={styles.verdictHold} data-sheet-under>
+                  <div className={styles.verdictHold}>
                     <div className={`${styles.claim} ${styles.verdict}`}>
                       <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                       {verdict.text.includes(VERDICT_YEARS.phrase) ? (

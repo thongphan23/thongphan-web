@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
+import HeroPointer from '@/components/origin-story/HeroPointer'
 import OriginStory from '@/components/origin-story/OriginStory'
 import JsonLd from '@/components/seo/JsonLd'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
@@ -26,6 +27,7 @@ export default function AboutPage() {
   return (
     <div className={styles.page} data-motion-stage>
       <section className={styles.hero} aria-labelledby="about-title">
+        <HeroPointer />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy} data-scroll-out="18">
             <div className={`${styles.heroMeta} intro-fade`}>
@@ -58,10 +60,16 @@ export default function AboutPage() {
           </div>
 
           <figure className={styles.portrait}>
-            <div className={`${styles.portraitFrame} intro-clip`}>
-              <div className={styles.portraitPhoto} data-motion-parallax data-parallax-max="10" data-gl-photo data-gl-delay="2.2">
-                <TwoPathPhoto id="founder-portrait" sizes="(max-width: 899px) 92vw, 52vw" className={styles.portraitImage} priority />
+            <div className={`${styles.portraitFrame} intro-clip`} data-hero-frame>
+              {/* The drift layer carries the pointer response; the photo inside it keeps its own
+                  parallax and lens, so the three never fight over one transform. */}
+              <div className={styles.portraitDrift}>
+                <div className={styles.portraitPhoto} data-motion-parallax data-parallax-max="10" data-gl-photo data-gl-delay="2.2">
+                  <TwoPathPhoto id="founder-portrait" sizes="(max-width: 899px) 92vw, 48vw" className={styles.portraitImage} priority />
+                </div>
               </div>
+              <span className={styles.portraitGrain} aria-hidden="true" />
+              <span className={styles.portraitTorch} aria-hidden="true" />
             </div>
             <figcaption className={`${styles.portraitCaption} intro-fade`}>
               <span>Thông Phan</span>
@@ -75,11 +83,14 @@ export default function AboutPage() {
             {originStoryPublic.acts.map((act, index) => (
               // The acts arrive with the first screen, one after another once the headline has risen.
               <li key={act.id} className="intro-fade" style={{ '--intro-delay': `${1.15 + index * 0.08}s` } as CSSProperties}>
-                <a className={styles.actLink} href={`#origin-act-${act.id}`}>
+                <a
+                  className={styles.actLink}
+                  href={`#origin-act-${act.id}`}
+                >
                   <span className={styles.actRule} aria-hidden="true" />
                   <span className={styles.actNumber}>{pad(index + 1)}</span>
                   <span className={styles.actTitle}>{act.title}</span>
-                  <ArrowUpRight className={styles.actArrow} aria-hidden="true" size={16} />
+                  <ArrowUpRight className={styles.actArrow} aria-hidden="true" size={22} />
                 </a>
               </li>
             ))}

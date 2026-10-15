@@ -1,4 +1,6 @@
 .page {
+  /* A brighter lacquer for small red type on ink: about 7:1, where the brand lacquer gives 5:1. */
+  --cinema-hot: #ff6f61;
   --cinema-line: var(--brand-line-dark);
   --cinema-muted: color-mix(in srgb, var(--brand-paper) 82%, transparent);
   --cinema-oxblood: var(--brand-lacquer-bright);
@@ -13,13 +15,14 @@
 .hero {
   box-sizing: border-box;
   display: grid;
-  gap: clamp(2.5rem, 4.5vw, 4rem);
+  gap: clamp(2.25rem, 4vw, 3.5rem);
   grid-template-rows: 1fr auto;
   margin: 0 auto;
   max-width: 1440px;
   /* The shell already pads the main element by the header height, so the hero fills the rest of the screen. */
   min-height: calc(100svh - 82px);
-  padding: clamp(1.25rem, 2.5vw, 2.25rem) var(--brand-space-inline) clamp(1.5rem, 2.5vw, 2.25rem);
+  /* The bottom pad keeps the index of acts well clear of the screen's edge. */
+  padding: clamp(1.25rem, 2.5vw, 2.25rem) var(--brand-space-inline) clamp(2rem, 3.4vw, 3rem);
   position: relative;
 }
 
@@ -36,7 +39,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3vw, 2.75rem);
+  gap: clamp(1.5rem, 2.6vw, 2.5rem);
 }
 
 .heroMeta {
@@ -54,60 +57,61 @@
   align-items: center;
   color: var(--cinema-paper);
   display: flex;
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 0.9rem + 0.28vw, 1.125rem);
   font-weight: 700;
-  gap: 0.6rem;
-  letter-spacing: 0.16em;
+  gap: 0.7rem;
+  letter-spacing: 0.14em;
   line-height: 1.3;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
-  background: var(--cinema-oxblood);
+  background: var(--cinema-hot);
   content: '';
   flex: none;
   height: 2px;
-  width: 1.4rem;
+  width: 1.75rem;
 }
 
 .folio {
-  color: color-mix(in srgb, var(--cinema-paper) 78%, transparent);
+  color: color-mix(in srgb, var(--cinema-paper) 84%, transparent);
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 0.9rem + 0.28vw, 1.125rem);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .title {
   color: var(--cinema-paper);
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(2.75rem, 0.9rem + 6.2vw, 8rem);
+  font-size: clamp(2.9rem, 12.2vw, 4.75rem);
   font-weight: 500;
   letter-spacing: -0.025em;
-  line-height: 0.95;
+  line-height: 0.94;
   margin: 0;
   text-wrap: balance;
 }
 
 /* On wide screens the portrait leaves the grid and fills the right half of the screen to its edge,
-   fading into the ink from the left; the confession runs past its column into that fade (never as far
-   as the face), so the words and the man read as one image. */
+   fading into the ink from the left. The headline is set as large as the first screen allows (it
+   also yields to the screen's height, so the index of acts always stays in view) and is held to the
+   left two thirds: it may reach into the fade (the comma after "đường" bleeds into it), never as far
+   as the face. */
 @media (min-width: 900px) {
   .heroGrid {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .heroCopy {
-    max-width: min(58rem, 66%);
+    max-width: 66%;
     position: relative;
     z-index: 2;
   }
 
   .title {
-    font-size: clamp(2.75rem, 0.9rem + 5.9vw, 7.75rem);
-    margin-right: calc(-1 * clamp(4rem, 9vw, 10rem));
-    text-shadow: 0 0.04em 0.5em rgba(10, 9, 8, 0.45);
+    font-size: clamp(3rem, min(7.4vw, 12svh), 6.75rem);
+    text-shadow: 0 0.04em 0.5em rgba(10, 9, 8, 0.5);
   }
 }
 
@@ -121,14 +125,14 @@
   align-items: end;
   display: grid;
   gap: 1.5rem 2.5rem;
-  grid-template-columns: minmax(0, 31rem) auto;
+  grid-template-columns: minmax(0, 34rem) auto;
   justify-content: space-between;
 }
 
 .lead {
-  color: color-mix(in srgb, var(--brand-paper) 90%, transparent);
-  font-size: clamp(1.0625rem, 0.98rem + 0.25vw, 1.25rem);
-  line-height: 1.6;
+  color: color-mix(in srgb, var(--brand-paper) 92%, transparent);
+  font-size: clamp(1.1875rem, 1rem + 0.5vw, 1.4375rem);
+  line-height: 1.55;
   margin: 0;
 }
 
@@ -140,11 +144,11 @@
   border-radius: 999px;
   color: var(--cinema-ink);
   display: inline-flex;
-  font-size: 1.0625rem;
+  font-size: clamp(1.125rem, 1.05rem + 0.2vw, 1.25rem);
   font-weight: 700;
   justify-content: center;
-  min-height: 60px;
-  padding: 0 1.9rem;
+  min-height: 64px;
+  padding: 0 2.1rem;
   text-decoration: none;
   transition:
     background-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -188,28 +192,29 @@
 }
 
 @media (min-width: 900px) {
-  /* The hero is centred at 1440px, so the right edge reaches past it to the screen's edge. */
+  /* The hero is centred at 1440px, so the right edge reaches past it to the screen's edge. The frame
+     is 48vw: the man fills it instead of sitting half-lost in a black field. */
   .portrait {
     display: block;
     inset: 0 calc(50% - 50vw) 0 auto;
     position: absolute;
-    width: 52vw;
+    width: 48vw;
     z-index: 0;
   }
 
-  /* Eased ramps (not straight lines), so no fade shows a band where it starts. A short top fade
-     keeps the photograph from ending on a hard line just under the header; the bottom fade is deep
-     enough that the caption set over it reads on ink, not on the shirt. */
+  /* Eased ramps (not straight lines), so no fade shows a band where it starts. The left fade is over
+     by a third of the frame, well before the face (which sits near the middle), so the face is never
+     dimmed. A short top fade keeps the photograph from ending on a hard line under the header; the
+     bottom fade is deep enough that the acts set over it read on ink, not on the shirt. */
   .portraitFrame {
     --portrait-fade-x: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.06) 8%,
-      rgba(0, 0, 0, 0.22) 16%,
-      rgba(0, 0, 0, 0.48) 25%,
-      rgba(0, 0, 0, 0.76) 34%,
-      rgba(0, 0, 0, 0.94) 42%,
-      #000 50%
+      rgba(0, 0, 0, 0.1) 6%,
+      rgba(0, 0, 0, 0.3) 12%,
+      rgba(0, 0, 0, 0.62) 19%,
+      rgba(0, 0, 0, 0.88) 26%,
+      #000 33%
     );
     --portrait-fade-y: linear-gradient(
       180deg,
@@ -217,11 +222,11 @@
       rgba(0, 0, 0, 0.35) 5%,
       rgba(0, 0, 0, 0.82) 11%,
       #000 17%,
-      #000 56%,
-      rgba(0, 0, 0, 0.82) 66%,
-      rgba(0, 0, 0, 0.5) 76%,
-      rgba(0, 0, 0, 0.18) 85%,
-      transparent 92%
+      #000 62%,
+      rgba(0, 0, 0, 0.82) 71%,
+      rgba(0, 0, 0, 0.5) 80%,
+      rgba(0, 0, 0, 0.18) 88%,
+      transparent 95%
     );
     -webkit-mask-composite: source-in;
     -webkit-mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
@@ -231,10 +236,10 @@
     mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
   }
 
-  /* The photo runs a little past the frame's faded left edge, which moves the face off the screen's
-     edge toward the middle of the frame. Two classes deep, as the base rule follows this one. */
+  /* The photo runs a little past the frame's faded left edge, so the face lands in the middle of the
+     frame, not at its right edge. Two classes deep, as the base rule follows this one. */
   .portraitFrame .portraitPhoto {
-    inset: -28px 0 0 -12%;
+    inset: 0 0 0 -4%;
   }
 
   /* The fade mask is the portrait's only edge, so the photograph arrives as light rather than
@@ -250,12 +255,18 @@
   }
 }
 
+/* The drift layer is what answers the pointer; at rest it is simply the frame's size. */
+.portraitDrift {
+  inset: 0;
+  position: absolute;
+}
+
 /* Parallax pushes the photo down as the hero leaves, so it starts above the frame. The stage's teal
    backdrop fights the ink-and-lacquer palette, so the photo (and the WebGL copy drawn over it) is
-   set in black and white with deep blacks, then multiplied with paper so the highlights turn warm
-   while the shadows stay ink; colour comes back while the pointer rests on it. */
+   set in black and white with deep blacks and lifted highlights, then multiplied with paper so the
+   highlights turn warm while the shadows stay ink; colour comes back while the pointer rests on it. */
 .portraitPhoto {
-  filter: grayscale(1) contrast(1.24) brightness(0.96);
+  filter: grayscale(1) contrast(1.34) brightness(1.04);
   inset: -28px 0 0;
   position: absolute;
   transition: filter 1100ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -271,11 +282,12 @@
   transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* A falloff from the left edge, where the headline crosses into the photo, and a lacquer glow from
-   the top right that stands in for the stage's rim light. */
+/* A vignette that closes the frame around the face, a falloff from the left edge where the headline
+   crosses into the photo, and ink under the shoulders. There is no coloured glow: the grade is warm
+   from the multiply above, and the pointer's torch brings the only extra light. */
 .portraitFrame::before {
   background:
-    radial-gradient(120% 70% at 100% 0%, rgba(196, 68, 31, 0.28), transparent 60%),
+    radial-gradient(85% 75% at 58% 34%, transparent 46%, rgba(7, 7, 6, 0.58) 100%),
     linear-gradient(90deg, rgba(10, 9, 8, var(--portrait-falloff, 0)) 0%, rgba(10, 9, 8, 0) 46%),
     linear-gradient(180deg, rgba(10, 9, 8, 0) 58%, rgba(10, 9, 8, 0.86) 90%);
   content: '';
@@ -284,6 +296,45 @@
   pointer-events: none;
   position: absolute;
   z-index: 1;
+}
+
+/* A halftone screen over the photograph: two offset dot grids, one light and one dark, blended as
+   overlay. It reads as print grain, and it hides the softness of a photograph that is enlarged to
+   fill the frame. */
+.portraitGrain {
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.55) 0.55px, transparent 0.95px),
+    radial-gradient(rgba(0, 0, 0, 0.7) 0.55px, transparent 0.95px);
+  background-position:
+    0 0,
+    1.5px 2px;
+  background-size:
+    3px 3px,
+    4px 4px;
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.34;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+/* The torch: a soft warm disc that follows the pointer. It moves by transform alone (HeroPointer
+   writes the position), so the pointer never causes a repaint of the photograph beneath it. */
+.portraitTorch {
+  background: radial-gradient(circle, rgba(255, 232, 200, 0.5), rgba(255, 214, 170, 0.18) 42%, transparent 70%);
+  border-radius: 50%;
+  display: none;
+  height: 34rem;
+  left: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: 34rem;
+  z-index: 2;
 }
 
 @media (hover: hover) {
@@ -296,10 +347,34 @@
   }
 }
 
+/* Pointer response, fine pointers on wide screens with motion allowed (HeroPointer sets the
+   properties and nothing else sets them). The photograph drifts against the pointer while the
+   headline leans with it, so the words and the man separate a little in depth; the torch follows. */
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+  :global(html.motion) .portraitDrift {
+    transform: translate3d(calc(var(--px, 0) * -16px), calc(var(--py, 0) * -11px), 0) scale(1.05);
+    will-change: transform;
+  }
+
+  :global(html.motion) .title {
+    translate: calc(var(--px, 0) * 7px) calc(var(--py, 0) * 5px);
+  }
+
+  :global(html.motion) .portraitTorch {
+    display: block;
+    transform: translate3d(calc(var(--tx, 0px) - 17rem), calc(var(--ty, 0px) - 17rem), 0);
+  }
+
+  :global(html.motion) .hero[data-pointer] .portraitTorch {
+    opacity: 1;
+  }
+}
+
 .portraitImage {
   display: block;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 24%;
   width: 100%;
 }
 
@@ -307,10 +382,10 @@
   border-top: 1px solid var(--cinema-line);
   color: var(--cinema-muted);
   display: flex;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
   justify-content: space-between;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   padding-top: 0.8rem;
   text-transform: uppercase;
 }
@@ -331,7 +406,8 @@
   }
 }
 
-/* The five acts double as a table of contents; each rule fills with lacquer on hover. */
+/* The five acts double as a table of contents. Hovering one draws its lacquer rule across, leans the
+   title and sends the arrow off its corner. */
 .acts {
   position: relative;
   z-index: 1;
@@ -349,40 +425,16 @@
 .page .hero .actLink {
   align-items: start;
   color: var(--cinema-paper);
-  isolation: isolate;
   display: grid;
-  gap: 0.4rem 0.75rem;
+  gap: 0.35rem 0.75rem;
   grid-template-areas:
     'number arrow'
     'title title';
   grid-template-columns: minmax(0, 1fr) auto;
   min-height: 44px;
-  padding: 1rem 0 0.5rem;
+  padding: 1.05rem 0 0.5rem;
   position: relative;
   text-decoration: none;
-}
-
-/* A lacquer wash rises behind the whole entry, so the hovered act reads as a row, not a word. */
-.page .hero .actLink::before {
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--brand-lacquer) 26%, transparent));
-  border-radius: 0 0 6px 6px;
-  clip-path: inset(100% 0 0 0);
-  content: '';
-  inset: 0 -0.6rem -0.15rem;
-  pointer-events: none;
-  position: absolute;
-  transition: clip-path 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-}
-
-.page .hero .actLink:focus-visible::before {
-  clip-path: inset(0 0 0 0);
-}
-
-@media (hover: hover) {
-  .page .hero .actLink:hover::before {
-    clip-path: inset(0 0 0 0);
-  }
 }
 
 .actRule {
@@ -393,9 +445,10 @@
 }
 
 .actRule::after {
-  background: var(--cinema-oxblood);
+  background: var(--cinema-hot);
   content: '';
-  inset: 0;
+  height: 3px;
+  inset: -1px 0 auto;
   position: absolute;
   transform: scaleX(0);
   transform-origin: 0 50%;
@@ -404,19 +457,20 @@
 
 /* The act's number is set larger than its title, as an index is read by number first. */
 .actNumber {
-  color: var(--cinema-oxblood);
+  color: var(--cinema-hot);
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(2rem, 1.3rem + 1.4vw, 2.875rem);
+  font-size: clamp(2.25rem, 1.4rem + 1.5vw, 3.25rem);
   font-style: italic;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   grid-area: number;
   line-height: 1;
+  transition: translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .actTitle {
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(1.1875rem, 0.85rem + 0.85vw, 1.75rem);
+  font-size: clamp(1.3125rem, 0.95rem + 0.7vw, 1.5rem);
   font-weight: 500;
   grid-area: title;
   line-height: 1.15;
@@ -425,8 +479,8 @@
 
 .actArrow {
   grid-area: arrow;
-  margin-top: 0.4rem;
-  opacity: 0.6;
+  margin-top: 0.3rem;
+  opacity: 0.75;
   transition:
     opacity 300ms ease,
     translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -437,15 +491,21 @@
   transform: scaleX(1);
 }
 
-.actLink:hover .actTitle {
-  translate: 0.35rem 0;
+.actLink:hover .actTitle,
+.actLink:focus-visible .actTitle {
+  translate: 0.4rem 0;
 }
 
-.actLink:hover .actArrow {
+.actLink:hover .actNumber,
+.actLink:focus-visible .actNumber {
+  translate: 0.2rem 0;
+}
+
+.actLink:hover .actArrow,
+.actLink:focus-visible .actArrow {
   opacity: 1;
-  translate: 3px -3px;
+  translate: 4px -4px;
 }
-
 
 @media (max-width: 1100px) {
   .actList {
@@ -509,12 +569,16 @@
   .page .hero .actLink {
     align-items: baseline;
     grid-template-areas: 'number title arrow';
-    grid-template-columns: 2.6rem minmax(0, 1fr) auto;
+    grid-template-columns: 3rem minmax(0, 1fr) auto;
     padding-bottom: 1rem;
   }
 
   .actNumber {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  .actTitle {
+    font-size: 1.375rem;
   }
 }
 
