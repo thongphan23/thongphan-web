@@ -243,6 +243,110 @@
   opacity: 0.55;
 }
 
+/* The idle loop's ghost pointer: it travels to an answer, the answer lifts as if hovered, a ring
+   spreads where it presses, and the app's own reply follows. Transform and opacity only. */
+.ghost {
+  --gx: 0px;
+  --gy: 0px;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate3d(var(--gx), var(--gy), 0);
+  transition:
+    transform 1100ms cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 360ms ease;
+  will-change: transform;
+  z-index: 5;
+}
+
+.ghost[data-ghost='on'] {
+  opacity: 1;
+}
+
+.ghost[data-snap] {
+  transition: none;
+}
+
+.ghostY {
+  display: block;
+  margin: -2px 0 0 -3px;
+  position: relative;
+}
+
+/* The arrow is a clipped block, not an image: the wrapper paints a paper outline (four 1px shadows)
+   and the soft drop shadow, because a clip-path would cut a filter set on the same element. */
+.ghostArrow {
+  display: block;
+  filter: drop-shadow(1px 0 0 #fbfaf5) drop-shadow(-1px 0 0 #fbfaf5) drop-shadow(0 1px 0 #fbfaf5)
+    drop-shadow(0 -1px 0 #fbfaf5) drop-shadow(0 4px 6px rgba(7, 59, 47, 0.38));
+  height: 30px;
+  position: relative;
+  transform-origin: 3px 2px;
+  width: 26px;
+  z-index: 1;
+}
+
+.ghostArrowShape {
+  background: var(--lesson-ink);
+  clip-path: polygon(
+    12.5% 7.9%,
+    12.5% 77.1%,
+    33.3% 61.4%,
+    47.5% 90%,
+    63.3% 83.9%,
+    49.2% 56.1%,
+    77.5% 55%
+  );
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.ghostRipple {
+  border: 2px solid var(--lesson-ink);
+  border-radius: 50%;
+  height: 46px;
+  left: 3px;
+  margin: -23px 0 0 -23px;
+  opacity: 0;
+  position: absolute;
+  top: 2px;
+  transform: scale(0.2);
+  width: 46px;
+}
+
+.ghost[data-press] .ghostRipple {
+  animation: ghost-ripple 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ghost[data-press] .ghostArrow {
+  animation: ghost-dip 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes ghost-ripple {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes ghost-dip {
+  45% {
+    transform: scale(0.82);
+  }
+}
+
+.option[data-ghost-hover] {
+  border-color: rgba(7, 59, 47, 0.42);
+  transform: translateY(-2px);
+}
+
 /* The scroll demo presses A the way a finger would. */
 .card[data-demo] .option[data-result='right'] {
   animation: lesson-press 520ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -558,39 +662,96 @@
   color: #9a6d17;
 }
 
-/* Roomy screens set the lesson a size up, so it reads at a glance beside the headline. */
+/* Roomy screens set the lesson a size up, so it reads at a glance beside the headline and still
+   reads when the page is seen shrunk to a thumbnail. One unit (--u) follows the window's height, so
+   the whole card grows with the room it has and never runs past the bottom of the screen. */
 @media (min-width: 960px) and (min-height: 821px) {
+  .card {
+    --u: clamp(0.9375rem, 0.1rem + 1.6svh, 1.25rem);
+    gap: calc(var(--u) * 0.62);
+    padding: calc(var(--u) * 0.95) calc(var(--u) * 1.35) calc(var(--u) * 1.15);
+  }
+
+  .bar {
+    margin: 0 calc(var(--u) * -1.35);
+    padding: 0 calc(var(--u) * 1.35) calc(var(--u) * 0.7);
+  }
+
+  .brand {
+    font-size: calc(var(--u) * 1.3);
+  }
+
   .context,
   .encourage,
   .verdict,
-  .remember {
-    font-size: 1.0625rem;
+  .remember,
+  .lead {
+    font-size: calc(var(--u) * 1.02);
   }
 
   .optionText {
-    font-size: 1.1875rem;
-    line-height: 1.32;
+    font-size: calc(var(--u) * 1.2);
+    line-height: 1.28;
   }
 
   .question {
-    font-size: clamp(1.5rem, 0.6rem + 1.5vw, 1.95rem);
+    font-size: calc(var(--u) * 1.72);
+    text-wrap: balance;
   }
 
   .progressLabel,
   .label,
   .path li {
-    font-size: 0.9375rem;
+    font-size: calc(var(--u) * 0.92);
   }
 
   .key {
-    font-size: 1.0625rem;
-    height: 2.4rem;
-    width: 2.4rem;
+    font-size: calc(var(--u) * 1.1);
+    height: calc(var(--u) * 2.2);
+    width: calc(var(--u) * 2.2);
   }
 
   .option {
-    grid-template-columns: 2.4rem minmax(0, 1fr);
-    min-height: 3.9rem;
+    gap: calc(var(--u) * 0.85);
+    grid-template-columns: calc(var(--u) * 2.2) minmax(0, 1fr);
+    min-height: calc(var(--u) * 3.5);
+    padding: 0.4rem calc(var(--u) * 0.9) 0.4rem calc(var(--u) * 0.6);
+  }
+
+  .right,
+  .wrong {
+    padding: calc(var(--u) * 1.1) calc(var(--u) * 1.35) calc(var(--u) * 1.25);
+  }
+}
+
+/* Short windows keep the card at the app's own size so the whole of it stays on screen. */
+@media (min-width: 960px) and (max-height: 820px) {
+  .card {
+    gap: 0.5rem;
+    padding: 0.7rem 1.15rem 0.85rem;
+  }
+
+  .bar {
+    margin: 0 -1.15rem;
+    padding: 0 1.15rem 0.55rem;
+  }
+
+  .context,
+  .lead {
+    line-height: 1.4;
+  }
+
+  .option {
+    min-height: 2.6rem;
+  }
+
+  .key {
+    height: 1.85rem;
+    width: 1.85rem;
+  }
+
+  .option {
+    grid-template-columns: 1.85rem minmax(0, 1fr);
   }
 }
 
@@ -622,5 +783,9 @@
   .card *::before {
     animation: none !important;
     transition: none !important;
+  }
+
+  .ghost {
+    display: none;
   }
 }

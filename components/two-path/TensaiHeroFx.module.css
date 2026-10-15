@@ -1,0 +1,58 @@
+/* The hero's dot field: faint dots always, and where a mouse is, a torch of bright ones. The field
+   is a full-width layer behind the hero's own content (the hero is an isolated stacking context). */
+.fx {
+  inset-block: 0;
+  left: calc(50% - 50vw);
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+}
+
+.base {
+  background-image: radial-gradient(circle, rgba(7, 59, 47, 0.2) 1.5px, transparent 2px);
+  background-size: 28px 28px;
+  inset: 0;
+  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 100%);
+  position: absolute;
+}
+
+/* The window is the torch: a soft round mask that moves with the pointer; the dots inside it are
+   moved back by the same amount so they stay on the page's grid. */
+.window {
+  height: 600px;
+  left: 0;
+  mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.65) 46%, transparent 100%);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 500ms ease;
+  width: 600px;
+  will-change: transform;
+}
+
+.window[data-on] {
+  opacity: 1;
+}
+
+.glow {
+  background: radial-gradient(closest-side, rgba(195, 243, 49, 0.5), rgba(195, 243, 49, 0) 100%);
+  inset: 0;
+  position: absolute;
+}
+
+.field {
+  background-image: radial-gradient(circle, rgba(7, 59, 47, 0.78) 2.3px, transparent 2.9px);
+  background-size: 28px 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window {
+    display: none;
+  }
+}

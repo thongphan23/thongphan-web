@@ -152,6 +152,7 @@ export const tensaiContent = {
     wrong: 'Chưa đúng.',
     rememberLabel: 'Ghi nhớ',
     retry: 'Chọn lại',
+    cursorPick: 'Chọn',
     encouragement: 'Cứ thử, sai cũng được. Mình nhìn kết quả rồi sửa tiếp.',
     tryTag: 'Thử ngay · bấm một đáp án',
     continue: 'Học tiếp bài này trên Tensai',

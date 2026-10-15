@@ -1,15 +1,17 @@
 import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Star } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import JsonLd from '@/components/seo/JsonLd'
 import PathLink from '@/components/two-path/PathLink'
 import PathMemory from '@/components/two-path/PathMemory'
+import TensaiHeroFx from '@/components/two-path/TensaiHeroFx'
 import TensaiLesson from '@/components/two-path/TensaiLesson'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import twoPath from '@/components/two-path/TwoPath.module.css'
 import { tensaiContent } from '@/lib/two-path-content'
 import { buildBranchPageStructuredData, createPageMetadata } from '@/lib/seo'
+import { TENSAI_URL } from '@/lib/two-path-links'
 import styles from './page.module.css'
 
 const description =
@@ -30,6 +32,50 @@ const accentAt = tensaiContent.title.indexOf(accent)
 const titleHead = tensaiContent.title.slice(0, accentAt).trimEnd()
 const titleTail = tensaiContent.title.slice(accentAt + accent.length).trimStart()
 
+// The words of each problem that a lime marker sweeps under as its card takes the top of the pile. They
+// only pick words out of the problem's own text (lib/two-path-content.ts); one that is not found there
+// is simply not marked.
+const problemHits = ['bằng tay', 'không chắc nó đúng', 'khác người'] as const
+
+function ProblemText({ text, hit }: { text: string; hit?: string }) {
+  const at = hit ? text.indexOf(hit) : -1
+  if (!hit || at < 0) return <>{text}</>
+  return (
+    <>
+      {text.slice(0, at)}
+      <span className={styles.hit} data-problem-hit>
+        {hit}
+      </span>
+      {text.slice(at + hit.length)}
+    </>
+  )
+}
+
+// How each real screen of the method sits in the device. A crop is a window on the 1120 x 1013 screen,
+// in the screen's own pixels: its left and top edge and its width (the height follows from the frame).
+// On wide screens each window is cut between the app's lines and cards, never through a word, and
+// `focus` (the ring) stays in lib/two-path-content.ts, in % of the screen. `d` is the wide frame (1120 x 900), `m` the
+// phone frame (1120 x 1013 in shape). On a phone the frame is about 330px wide, so each window is cut
+// deep onto the ringed part: the heading of the first screen, the answers of the second and the map's
+// callout of the third, all large enough to read there. Where a phone window cuts a line at
+// its right edge, the CSS fades it out.
+const SCREEN = { w: 1120, h: 1013 }
+const methodCrops = [
+  { d: { x: 0, y: 0, w: 1120 }, m: { x: 0, y: 0, w: 590 } },
+  { d: { x: 0, y: 108, w: 1120 }, m: { x: 0, y: 640, w: 590 } },
+  { d: { x: 620, y: 611, w: 500 }, m: { x: 700, y: 736, w: 300 } },
+] as const
+
+const cropVars = (crop: (typeof methodCrops)[number]) =>
+  ({
+    '--ds': SCREEN.w / crop.d.w,
+    '--dx': (crop.d.x / SCREEN.w) * 100,
+    '--dy': (crop.d.y / SCREEN.h) * 100,
+    '--ms': SCREEN.w / crop.m.w,
+    '--mx': (crop.m.x / SCREEN.w) * 100,
+    '--my': (crop.m.y / SCREEN.h) * 100,
+  }) as CSSProperties
+
 export default function TensaiPage() {
   const { situations, courses, method, closing } = tensaiContent
   return (
@@ -41,6 +87,7 @@ export default function TensaiPage() {
           screens the hero pins, the card moves to the centre and answers itself once as a demo, then
           opens into the green of the next band (lessonStage in signatures.ts). */}
       <section className={styles.hero} aria-labelledby="tensai-title" data-lesson-stage>
+        <TensaiHeroFx />
         <div className={styles.heroText} data-lesson-words>
           <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.1s' } as CSSProperties}>
             {tensaiContent.eyebrow}
@@ -83,11 +130,19 @@ export default function TensaiPage() {
         <div className={styles.lessonSlot}>
           <span className={styles.heroGlow} aria-hidden="true" data-lesson-glow />
           <div className={styles.lessonCard} data-lesson-card>
+            {/* Two more lessons wait behind the card, a lime sheet and a green one that lean the other
+                way as the pointer crosses the hero, so the card reads as the top of a course. */}
+            <span className={`${styles.plate} ${styles.plateLime}`} aria-hidden="true">
+              {tensaiContent.lesson.path[1]}
+            </span>
+            <span className={`${styles.plate} ${styles.plateGreen}`} aria-hidden="true">
+              {tensaiContent.lesson.path[2]}
+            </span>
             {/* A sticker on the card's corner says it can be played; it peels off once anyone answers. */}
             <span className={styles.tryTag} aria-hidden="true">
               {tensaiContent.lesson.tryTag}
             </span>
-            <div className={styles.lessonTilt} data-tilt="3.5">
+            <div className={styles.lessonTilt} data-tilt="6">
               <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
                 <TensaiLesson />
               </div>
@@ -97,10 +152,15 @@ export default function TensaiPage() {
         {/* 天才, the word Tensai comes from, grows with the sheet as it opens, so a stop mid-scroll
             shows a mark, not an empty panel. */}
         <div className={styles.portal} data-lesson-portal aria-hidden="true">
-          <span className={styles.portalMark} data-lesson-portal-mark>
-            <span className={styles.portalGlyph} data-kanji-write>{tensaiContent.portal.mark}</span>
-            <span className={styles.portalGloss}>{tensaiContent.portal.gloss}</span>
-          </span>
+          <div className={styles.portalRise} data-lesson-portal-rise>
+            <span className={styles.portalMark} data-lesson-portal-mark>
+              <span className={styles.portalGlyph} data-kanji-write>{tensaiContent.portal.mark}</span>
+              <span className={styles.portalGloss}>{tensaiContent.portal.gloss}</span>
+            </span>
+            <span className={styles.portalPromise} data-lesson-portal-promise>
+              {tensaiContent.title}
+            </span>
+          </div>
         </div>
       </section>
 
@@ -117,6 +177,26 @@ export default function TensaiPage() {
             <h2 id="tensai-situations" className={styles.sectionTitle} data-split>
               {situations.title}
             </h2>
+            {/* Where you are in the three: a numeral that rolls and a segment bar that fills as each
+                card takes the top of the pile. It reads the rail's data-current, so it only shows
+                where that is driven (html.motion). */}
+            <div className={styles.counter} aria-hidden="true">
+              <span className={styles.counterRoll}>
+                {situations.items.map((item, index) => (
+                  <span key={item.course} className={styles.counterNum}>
+                    {pad(index + 1)}
+                  </span>
+                ))}
+              </span>
+              <span className={styles.counterSide}>
+                <span className={styles.counterTotal}>/ {pad(situations.items.length)}</span>
+                <span className={styles.counterBar}>
+                  {situations.items.map((item) => (
+                    <i key={item.course} />
+                  ))}
+                </span>
+              </span>
+            </div>
             {/* The course each card leads to, lit in turn as its card takes the top of the pile, so
                 the held column keeps pace with the cards (stackCards marks data-current). */}
             <ol className={styles.situationRail} data-stack-rail aria-hidden="true">
@@ -150,13 +230,20 @@ export default function TensaiPage() {
                   <span className={styles.situationTotal}>/ {pad(situations.items.length)}</span>
                 </p>
                 <p className={styles.problem} data-scrub-words data-scrub-from="0.72" data-scrub-end="top 78%">
-                  {item.problem}
+                  <ProblemText text={item.problem} hit={problemHits[index]} />
                 </p>
                 <div className={styles.situationAnswer}>
                   <p className={styles.situationCourse}>Khóa {item.course}</p>
                   <ul className={styles.lessons}>
                     {item.lessons.map((lesson) => (
-                      <li key={lesson}>{lesson}</li>
+                      <li key={lesson}>
+                        {/* The app's own lesson node, a green disc with a star, so the row reads as a
+                            lesson of the course and not as a bullet. */}
+                        <span className={styles.lessonNode} aria-hidden="true">
+                          <Star size={14} strokeWidth={2.2} fill="currentColor" />
+                        </span>
+                        {lesson}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -241,49 +328,55 @@ export default function TensaiPage() {
             </ol>
           </div>
           <figure className={styles.methodFigure}>
-            <div className={styles.methodFrame} data-img-reveal="center">
-              <div className={styles.swapLayers} data-reveal-media>
-                {method.frames.map((frame, index) => (
-                  <div key={`${frame.photoId}-${index}`} className={styles.swapLayer} data-swap-layer>
-                    <div
-                      className={styles.swapCanvas}
-                      style={
-                        {
-                          '--zoom': frame.zoom,
-                          '--origin': frame.origin,
-                        } as CSSProperties
-                      }
-                    >
-                      <TwoPathPhoto
-                        id={frame.photoId}
-                        sizes="(max-width: 959px) 100vw, 820px"
-                      />
-                      <span
-                        className={styles.swapFocus}
-                        aria-hidden="true"
-                        style={{
-                          left: `${frame.focus.x}%`,
-                          top: `${frame.focus.y}%`,
-                          width: `${frame.focus.w}%`,
-                          height: `${frame.focus.h}%`,
-                        }}
-                      />
+            {/* The real screens sit in a dark device: a title bar, the screen with a ring and a callout
+                on the part each step is about, and a foot that holds the step marks, so nothing
+                floats loose beside the picture. */}
+            <div className={styles.device}>
+              <div className={styles.deviceBar} aria-hidden="true">
+                <span className={styles.deviceDots}>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span className={styles.deviceUrl}>{new URL(TENSAI_URL).host}</span>
+              </div>
+              <div className={styles.methodFrame} data-img-reveal="center">
+                <div className={styles.swapLayers} data-reveal-media>
+                  {method.frames.map((frame, index) => (
+                    <div key={`${frame.photoId}-${index}`} className={styles.swapLayer} data-swap-layer>
+                      <div className={styles.swapCanvas} style={cropVars(methodCrops[index])}>
+                        <TwoPathPhoto id={frame.photoId} sizes="(max-width: 959px) 100vw, 880px" />
+                        <span
+                          className={styles.swapFocus}
+                          aria-hidden="true"
+                          style={{
+                            left: `${frame.focus.x}%`,
+                            top: `${frame.focus.y}%`,
+                            width: `${frame.focus.w}%`,
+                            height: `${frame.focus.h}%`,
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+              <div className={styles.deviceFoot}>
+                <ol className={styles.swapProgress} aria-hidden="true">
+                  {method.steps.map((step, index) => (
+                    <li key={step.title} data-swap-dot>
+                      <span>{pad(index + 1)}</span>
+                    </li>
+                  ))}
+                </ol>
+                <span className={styles.swapNow} aria-hidden="true">
+                  {method.steps.map((step) => (
+                    <span key={step.title}>{step.title}</span>
+                  ))}
+                </span>
               </div>
             </div>
-            {/* The step marks sit under the screen, not on it, so they never cover the ring. */}
-            <figcaption className={styles.methodMeta}>
-              <ol className={styles.swapProgress} aria-hidden="true">
-                {method.steps.map((step, index) => (
-                  <li key={step.title} data-swap-dot>
-                    <span>{pad(index + 1)}</span>
-                  </li>
-                ))}
-              </ol>
-              <span className={styles.methodCaption}>{method.caption}</span>
-            </figcaption>
+            <figcaption className={styles.methodCaption}>{method.caption}</figcaption>
           </figure>
         </div>
       </section>
