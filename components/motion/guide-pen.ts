@@ -8,6 +8,8 @@
 //   data-pen-seed       integer; same seed, same hand (defaults to a hash of the anchor text)
 //   data-pen-trigger="load" + data-pen-delay (ms): drawn once after load instead of on scroll
 //   data-pen-duration   ms; how long a load-drawn mark takes (defaults per shape)
+//   data-pen-trigger="when" + data-pen-when="<selector>": drawn on a clock while the anchor matches the
+//     selector and wiped once it stops (the attributes the selector names are watched under the root)
 //   data-pen-width      stroke width in px (default scales with the anchor, 2.5-6px at 1440)
 //   data-pen-start / data-pen-end   ScrollTrigger positions (default "top 85%" / "top 45%")
 //   data-pen-side="start,end"       top|bottom|left|right|auto: where a connector leaves and lands
@@ -760,6 +762,30 @@ export function guidePen(root: HTMLElement, specs: PenSpec[]): Cleanup {
       const duration = shape === 'fork' ? 1.4 : shape === 'underline' ? 0.9 : shape === 'circle' ? 1.1 : 1.2
       tween = gsap.to(m.state, { t: 1, duration, delay, ease: 'power2.inOut', onUpdate: paint })
       if (el.dataset.penDuration) tween.duration(Number(el.dataset.penDuration) / 1000)
+    } else if (el.dataset.penTrigger === 'when' && el.dataset.penWhen) {
+      // A state mark, e.g. a ring around the step being played: it draws when the state arrives and
+      // wipes back quicker when it leaves, so moving on reads as the hand lifting to the next one.
+      const when = el.dataset.penWhen
+      const drawn = gsap.to(m.state, { t: 1, duration: 0.9, ease: 'power2.inOut', paused: true, onUpdate: paint, onReverseComplete: paint })
+      tween = drawn
+      let on = false
+      const check = () => {
+        let now = false
+        try {
+          now = el.matches(when)
+        } catch {
+          now = false
+        }
+        if (now === on) return
+        on = now
+        if (now) drawn.timeScale(1).play()
+        else drawn.timeScale(2.2).reverse()
+      }
+      const names = Array.from(when.matchAll(/\[([\w-]+)/g), (match) => match[1])
+      const watch = new MutationObserver(check)
+      if (names.length) watch.observe(root, { subtree: true, attributes: true, attributeFilter: names })
+      check()
+      killers.push(() => watch.disconnect())
     } else {
       // A sticky anchor would give ScrollTrigger a moving start, so the trigger is its
       // nearest ancestor that scrolls normally.

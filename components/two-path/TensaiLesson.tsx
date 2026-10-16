@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useId, useRef, useState } from 'react'
-import { ArrowRight, Check, X } from 'lucide-react'
+import { ArrowRight, Check, Star, X } from 'lucide-react'
 import PathLink from '@/components/two-path/PathLink'
 import { tensaiContent } from '@/lib/two-path-content'
 import styles from './TensaiLesson.module.css'
@@ -92,6 +92,8 @@ export default function TensaiLesson() {
     const hover = (name: string | null) => {
       el.querySelectorAll<HTMLElement>('[data-ghost-hover]').forEach((node) => node.removeAttribute('data-ghost-hover'))
       if (name) target(name)?.setAttribute('data-ghost-hover', '')
+      // The label only rides along while the pointer travels; on an answer it would cover the text.
+      pointer?.toggleAttribute('data-ghost-at', Boolean(name))
     }
     const tap = () => {
       if (!pointer) return
@@ -104,11 +106,28 @@ export default function TensaiLesson() {
       pointer?.setAttribute('data-ghost', 'off')
     }
 
+    // The first round starts early (its pick lands about two and a half seconds after the card is on
+    // screen), or at once when the visitor first moves the pointer, so the app's verdict is seen before
+    // anyone scrolls on.
+    let wake: (() => void) | null = null
+    const nap = (ms: number, signal: AbortSignal) =>
+      new Promise<void>((resolve, reject) => {
+        wake = resolve
+        sleep(ms, signal).then(resolve, reject)
+      }).finally(() => {
+        wake = null
+      })
+
     const run = async (signal: AbortSignal) => {
       if (!pointer) return
       try {
         for (;;) {
-          await sleep(cycle === 0 ? 2600 : 1600, signal)
+          if (live.current.demo) {
+            // A demo answer still on the card from before a pause stays a moment, then clears.
+            await sleep(1600, signal)
+            set({ picked: null, demo: false })
+            await sleep(500, signal)
+          } else await (cycle === 0 ? nap(500, signal) : sleep(1600, signal))
           // Enter from the card's lower right, snapped there while still invisible.
           pointer.setAttribute('data-snap', '')
           const start = place(el, { x: 0.86, y: 0.84 })
@@ -184,21 +203,27 @@ export default function TensaiLesson() {
         later(1800)
       }
     }
+    // A mouse over the card pauses the loop but leaves its answer and verdict up, so the reply can be
+    // read (and its button used) under the hand.
     const onEnter = (event: PointerEvent) => {
       if (event.pointerType !== 'mouse') return
       hovering = true
       stop()
-      clearGhostPick()
     }
     const onLeave = (event: PointerEvent) => {
       if (event.pointerType !== 'mouse') return
       hovering = false
       later(2200)
     }
+    // Touching, typing or focusing hands the card over for good; a demo answer on it becomes the
+    // visitor's own, so a press on the verdict's button is not lost to the sheet closing under it.
     const takeOver = () => {
       tookOver = true
       stop()
-      clearGhostPick()
+      if (live.current.demo) set({ picked: live.current.picked, demo: false })
+    }
+    const onMove = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && cycle === 0) wake?.()
     }
     const onVisibility = () => {
       if (document.visibilityState === 'visible') later(1200)
@@ -214,6 +239,7 @@ export default function TensaiLesson() {
       el.addEventListener('keydown', takeOver)
       el.addEventListener('focusin', takeOver)
       document.addEventListener('visibilitychange', onVisibility)
+      window.addEventListener('pointermove', onMove, { passive: true })
       observer = new IntersectionObserver(
         ([entry]) => {
           // Mostly in view: half of the card, or half of the screen's height when the card is taller.
@@ -240,6 +266,7 @@ export default function TensaiLesson() {
       el.removeEventListener('keydown', takeOver)
       el.removeEventListener('focusin', takeOver)
       document.removeEventListener('visibilitychange', onVisibility)
+      window.removeEventListener('pointermove', onMove)
     }
   }, [])
 
@@ -386,5 +413,127 @@ export default function TensaiLesson() {
         </span>
       </span>
     </article>
+  )
+}
+
+type ReplayStep = { readonly title: string; readonly body: string }
+
+const two = (value: number) => String(value).padStart(2, '0')
+
+// The method's three steps played in a lesson window of the same Định vị course, so each one is seen
+// happening rather than described: the lesson's one idea marked, an answer picked and the app's reply
+// sliding up, then the course's path walked to its gate. The screen shown follows the page's sticky
+// swap (data-swap-active on an ancestor; with none set, the answered exercise shows), and each screen
+// plays its short script in CSS as it comes in. A lime note beside the window moves to the part of the
+// screen its step is about. Decorative and inert: the hero holds the card a visitor can answer, and the
+// steps beside the window say the same in words. Without motion the three screens stand in a column.
+export function TensaiLessonReplay({ steps }: { steps: readonly ReplayStep[] }) {
+  const lesson = tensaiContent.lesson
+  const answer = lesson.options.find((option) => option.correct) ?? lesson.options[0]
+  const tag = (index: number) => `${two(index + 1)} · ${steps[index]?.title ?? ''}`
+  return (
+    <div className={styles.replay} data-replay aria-hidden="true" inert>
+      <div className={styles.bar}>
+        <span className={styles.brand}>
+          Tensai<span className={styles.spark}>✦</span>
+        </span>
+        <span className={styles.progress}>
+          <span className={styles.progressLabel}>{lesson.chip}</span>
+          <span className={styles.track}>
+            <span className={`${styles.fill} ${styles.replayFill}`} />
+          </span>
+        </span>
+        <span className={styles.label}>{lesson.label}</span>
+      </div>
+
+      <div className={styles.screens}>
+        {/* One idea: the case, then the line the lesson wants remembered, swept with the marker. */}
+        <div className={styles.screen} data-screen="0">
+          <p className={styles.screenTag}>{tag(0)}</p>
+          <p className={styles.context}>
+            {lesson.context.map((part) => ('strong' in part ? <strong key={part.text}>{part.text}</strong> : part.text))}
+          </p>
+          <div className={styles.idea}>
+            <p className={styles.ideaLabel}>{lesson.rememberLabel}</p>
+            <p className={styles.ideaText}>
+              <span className={styles.ideaMark}>
+                <span>{lesson.remember}</span>
+              </span>
+              <span className={styles.ideaInk}>{lesson.remember}</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Try it: the pointer comes to the right answer, presses, the answer turns green and the
+            app's reply rises from the foot. */}
+        <div className={styles.screen} data-screen="1">
+          <p className={styles.screenTag}>{tag(1)}</p>
+          <p className={styles.replayQuestion}>{lesson.question}</p>
+          <div className={styles.replayOptions}>
+            {lesson.options.map((option) => (
+              <div
+                key={option.key}
+                className={`${styles.option} ${option.key === answer.key ? styles.picked : styles.passed}`}
+              >
+                <span className={styles.key}>
+                  <span className={styles.keyLetter}>{option.key}</span>
+                  <Check className={styles.keyRight} size={18} strokeWidth={3} />
+                </span>
+                <span className={styles.optionText}>{option.text}</span>
+                {option.key === answer.key && (
+                  <span className={styles.replayCursor}>
+                    <span className={styles.ghostArrow}>
+                      <span className={styles.ghostArrowShape} />
+                    </span>
+                    <span className={styles.ghostRipple} />
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className={`${styles.reply} ${styles.right} ${styles.replayReply}`}>
+            <p className={styles.verdict}>
+              <span className={styles.badge}>
+                <Check size={20} strokeWidth={3.2} />
+              </span>
+              {lesson.right}
+            </p>
+            <p className={styles.feedback}>{answer.feedback}</p>
+          </div>
+        </div>
+
+        {/* Pass the gate: the course's lessons done one by one, then the gate the path leads to. */}
+        <div className={styles.screen} data-screen="2">
+          <p className={styles.screenTag}>{tag(2)}</p>
+          <ol className={styles.replayPath}>
+            {lesson.path.map((name) => (
+              <li key={name} className={styles.pathStop}>
+                <span className={styles.pathNode}>
+                  <Check size={22} strokeWidth={3.2} />
+                </span>
+                {name}
+              </li>
+            ))}
+            <li className={`${styles.pathStop} ${styles.pathGateStop}`}>
+              <span className={styles.pathGate}>
+                <Star size={26} strokeWidth={2.4} fill="currentColor" />
+              </span>
+              {lesson.gate}
+            </li>
+          </ol>
+          <p className={styles.pathNote}>{lesson.pathNote}</p>
+        </div>
+      </div>
+
+      {/* The note that travels down the window with the steps, each step's own title. */}
+      <div className={styles.callout}>
+        {steps.map((step, index) => (
+          <span key={step.title} className={styles.calloutText} data-callout={index}>
+            <b>{two(index + 1)}</b>
+            {step.title}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }

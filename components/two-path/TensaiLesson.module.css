@@ -360,7 +360,9 @@
   white-space: nowrap;
 }
 
-/* Once the answer is picked the label has said its word; it would only sit on the verdict sheet. */
+/* The label rides along only while the pointer travels: resting on an answer it would cover that
+   answer's text or the next one's, and once the answer is picked it would sit on the verdict sheet. */
+.ghost[data-ghost-at] .ghostTag,
 .card:not([data-state='idle']) .ghostTag {
   opacity: 0;
   transform: scale(0.8);
@@ -630,6 +632,48 @@
   white-space: nowrap;
   width: 1px;
 }
+/* A wide card (the hero's, beside the headline on large screens) sets the case, the question and the
+   answers a size up, so it reads as the page's main object rather than a widget. Short windows below
+   take the size back down. */
+@container tensai-lesson (min-width: 40rem) {
+  .card {
+    --pad: 2rem;
+    gap: 1.25rem;
+  }
+
+  .context {
+    font-size: 1.0625rem;
+  }
+
+  .question {
+    font-size: 2rem;
+  }
+
+  .option {
+    min-height: 4.25rem;
+  }
+
+  .optionText {
+    font-size: 1.25rem;
+  }
+}
+
+/* Laptop windows up to 960px tall close up the wide card's spacing a little, so its foot (where the
+   verdict and its button rise) stays on screen with room to spare. */
+@media (min-width: 960px) and (min-height: 821px) and (max-height: 960px) {
+  .card {
+    gap: 1rem;
+  }
+
+  .bar {
+    padding-bottom: 0.7rem;
+  }
+
+  .body {
+    gap: 0.8rem;
+  }
+}
+
 /* Short windows keep the card a step smaller so the whole of it stays on screen. */
 @media (min-width: 960px) and (max-height: 820px) {
   .card {
@@ -718,12 +762,701 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card *,
-  .card *::before {
+  .card *::before,
+  .replay *,
+  .replay *::before,
+  .replay *::after {
     animation: none !important;
     transition: none !important;
   }
 
   .ghost {
     display: none;
+  }
+}
+
+/* The method's lesson window (TensaiLessonReplay): the same app bar, then one screen per step. With
+   motion the screens share one window and cross-fade as the steps pass (data-swap-active on the
+   page's grid; with none set, the answered exercise shows), each playing its short script once the
+   window is on screen (data-replay-in, tensai-stage.ts). Without motion the three stand in a column,
+   each under its step's title. Every rule here draws the finished state; the scripts only run from
+   there back to it. */
+.replay {
+  --lesson-ink: #073b2f;
+  --lesson-lime: #c3f331;
+  --lesson-muted: #4b5a50;
+  --lesson-line: rgba(7, 59, 47, 0.14);
+  --lesson-right: #1f7a4d;
+  --pad: clamp(1rem, 2.2vw, 1.75rem);
+  background: #fbfaf5;
+  color: var(--lesson-ink);
+  display: grid;
+  font-family: var(--font-be-vietnam), var(--font-body, system-ui), sans-serif;
+  grid-template-columns: minmax(0, 1fr);
+  padding: 1rem var(--pad) 0;
+  pointer-events: none;
+  position: relative;
+}
+
+.replayFill {
+  transform: scaleX(0.34);
+}
+
+.screens {
+  display: grid;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.screen {
+  align-content: start;
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 0 1.5rem;
+  position: relative;
+}
+
+.screen + .screen {
+  border-top: 1px dashed var(--lesson-line);
+}
+
+.screenTag {
+  color: var(--lesson-right);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* One idea: the line to remember on a card, with the lime marker under it. */
+.idea {
+  background: #fff;
+  border: 2px solid var(--lesson-line);
+  border-bottom-width: 5px;
+  border-radius: 18px;
+  padding: 1rem 1.2rem 1.1rem;
+}
+
+.ideaLabel {
+  color: var(--lesson-right);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+}
+
+.ideaText {
+  display: grid;
+  font-size: clamp(1.25rem, 1rem + 0.7vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.ideaText > span {
+  grid-area: 1 / 1;
+}
+
+.ideaMark {
+  color: transparent;
+  clip-path: inset(0);
+}
+
+.ideaMark > span {
+  background: linear-gradient(transparent 56%, var(--lesson-lime) 56% 94%, transparent 94%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.ideaInk {
+  position: relative;
+}
+
+/* Try it: the question, the right answer picked and the app's reply. */
+.replayQuestion {
+  font-size: clamp(1.1875rem, 0.95rem + 0.6vw, 1.375rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.22;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.replayOptions {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.replay .option {
+  cursor: default;
+  gap: 0.8rem;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  min-height: 3.5rem;
+  padding: 0.45rem 1rem 0.45rem 0.6rem;
+}
+
+.replay .key {
+  height: 2.25rem;
+  width: 2.25rem;
+}
+
+.replay .optionText {
+  font-size: 1.0625rem;
+  line-height: 1.32;
+}
+
+.picked {
+  isolation: isolate;
+}
+
+.picked::before {
+  background: #eef8d6;
+  border: 2px solid var(--lesson-right);
+  border-bottom-width: 5px;
+  border-radius: 18px;
+  content: '';
+  inset: -2px -2px -5px;
+  position: absolute;
+  z-index: -1;
+}
+
+.picked .key::before {
+  background: var(--lesson-right);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.picked .key > * {
+  position: relative;
+}
+
+.picked .keyLetter {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.picked .keyRight {
+  color: #fff;
+  opacity: 1;
+  transform: none;
+}
+
+.passed {
+  opacity: 0.5;
+}
+
+.replayCursor {
+  display: none;
+  left: 72%;
+  position: absolute;
+  top: 56%;
+  z-index: 3;
+}
+
+.replayReply {
+  border-radius: 18px;
+  margin-top: 0.25rem;
+  position: relative;
+  transform: none;
+  transition: none;
+  visibility: visible;
+}
+
+/* Pass the gate: the course's lessons done, then its gate, on a path that swings like the app's. */
+.replayPath {
+  display: grid;
+  gap: 0.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pathStop {
+  align-items: center;
+  display: flex;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  gap: 0.85rem;
+}
+
+.pathStop:nth-child(1) {
+  margin-left: 4%;
+}
+
+.pathStop:nth-child(2) {
+  margin-left: 32%;
+}
+
+.pathStop:nth-child(3) {
+  margin-left: 14%;
+}
+
+.pathStop:nth-child(4) {
+  margin-left: 46%;
+}
+
+.pathNode,
+.pathGate {
+  border-radius: 50%;
+  display: grid;
+  flex: none;
+  place-items: center;
+  position: relative;
+}
+
+.pathNode {
+  background: var(--lesson-right);
+  box-shadow: 0 5px 0 #145c38;
+  color: #fff;
+  height: 3rem;
+  width: 3rem;
+}
+
+.pathGate {
+  background: var(--lesson-lime);
+  box-shadow:
+    inset 0 0 0 3px var(--lesson-ink),
+    0 5px 0 var(--lesson-ink);
+  color: var(--lesson-ink);
+  height: 3.75rem;
+  width: 3.75rem;
+}
+
+.pathGate::after {
+  border: 3px solid var(--lesson-ink);
+  border-radius: 50%;
+  content: '';
+  inset: -7px;
+  opacity: 0;
+  position: absolute;
+}
+
+.pathGateStop {
+  font-size: 1.1875rem;
+  font-weight: 800;
+}
+
+.pathNote {
+  color: var(--lesson-muted);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.4rem 0 0;
+}
+
+/* The travelling note: a lime tag with a leader towards the part of the screen its step is about. */
+.callout {
+  display: none;
+}
+
+.calloutText {
+  align-items: baseline;
+  align-self: start;
+  background: var(--lesson-lime);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px -14px rgba(7, 59, 47, 0.6);
+  color: var(--lesson-ink);
+  display: flex;
+  font-size: 1rem;
+  font-weight: 800;
+  gap: 0.5rem;
+  grid-area: 1 / 1;
+  line-height: 1.3;
+  opacity: 0;
+  padding: 0.55rem 0.8rem;
+  transition: opacity 300ms ease;
+}
+
+.calloutText b {
+  font-variant-numeric: tabular-nums;
+}
+
+.calloutText[data-callout='1'],
+:global([data-swap-active='0']) .calloutText[data-callout='0'],
+:global([data-swap-active='2']) .calloutText[data-callout='2'] {
+  opacity: 1;
+}
+
+:global([data-swap-active='0']) .calloutText[data-callout='1'],
+:global([data-swap-active='2']) .calloutText[data-callout='1'] {
+  opacity: 0;
+}
+
+:global(html.motion) .screenTag {
+  display: none;
+}
+
+:global(html.motion) .screens {
+  height: clamp(23rem, 54svh, 30rem);
+  position: relative;
+}
+
+:global(html.motion) .screen {
+  border: 0;
+  inset: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-right: var(--lane, 0px);
+  position: absolute;
+  transform: translateY(14px);
+  transition:
+    opacity 360ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 360ms;
+  visibility: hidden;
+}
+
+:global(html.motion) .screen[data-screen='0'],
+:global(html.motion) .screen[data-screen='2'] {
+  align-content: center;
+}
+
+:global(html.motion) .screen[data-screen='1'],
+:global(html.motion) :global([data-swap-active='0']) .screen[data-screen='0'],
+:global(html.motion) :global([data-swap-active='2']) .screen[data-screen='2'] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 420ms ease 120ms,
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1) 120ms,
+    visibility 0s;
+  visibility: visible;
+}
+
+:global(html.motion) :global([data-swap-active]:not([data-swap-active='1'])) .screen[data-screen='1'] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 360ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 360ms;
+  visibility: hidden;
+}
+
+:global(html.motion) :global([data-swap-active='0']) .replayFill {
+  transform: scaleX(0.12);
+}
+
+:global(html.motion) :global([data-swap-active='2']) .replayFill {
+  transform: scaleX(1);
+}
+
+:global(html.motion) .replayCursor {
+  display: block;
+}
+
+:global(html.motion) .replayReply {
+  border-radius: 18px;
+  bottom: 0.75rem;
+  left: 0;
+  margin: 0;
+  padding: 1rem 1.25rem 1.1rem;
+  position: absolute;
+  right: var(--lane, 0px);
+}
+
+:global(html.motion) .screen[data-screen='1'] {
+  gap: 0.75rem;
+}
+
+:global(html.motion) .callout {
+  display: grid;
+  grid-column: 1;
+  grid-row: 2;
+  justify-items: start;
+  padding-top: 0.75rem;
+  z-index: 4;
+}
+
+/* Phones: the note is a tag across the top of the window, the screens start under it. */
+@media (max-width: 959px) {
+  :global(html.motion) .screen {
+    padding-top: 3.6rem;
+  }
+}
+
+/* Wide screens: the screens keep a lane on the right, and the note glides down it to sit beside the
+   marked idea, the picked answer, then the gate. */
+@media (min-width: 960px) {
+  :global(html.motion) .replay {
+    --lane: 34%;
+  }
+
+  :global(html.motion) .replay .context {
+    font-size: clamp(1rem, 0.4rem + 0.85vw, 1.1875rem);
+  }
+
+  :global(html.motion) .ideaText {
+    font-size: clamp(1.25rem, 0.5rem + 1.5vw, 1.875rem);
+  }
+
+  :global(html.motion) .pathStop {
+    font-size: 1.1875rem;
+  }
+
+  :global(html.motion) .pathNode {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+
+  :global(html.motion) .pathGate {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  :global(html.motion) .callout {
+    align-self: stretch;
+    justify-self: end;
+    padding: 0 0 0 1.75rem;
+    transform: translateY(36%);
+    transition: transform 760ms cubic-bezier(0.65, 0, 0.35, 1);
+    width: calc(var(--lane) - 0.5rem);
+  }
+
+  :global(html.motion) :global([data-swap-active='0']) .callout {
+    transform: translateY(54%);
+  }
+
+  :global(html.motion) :global([data-swap-active='2']) .callout {
+    transform: translateY(68%);
+  }
+
+  :global(html.motion) .calloutText {
+    position: relative;
+  }
+
+  /* The leader: a short ink rule ending in a dot, pointing back into the screen. */
+  :global(html.motion) .calloutText::before {
+    background: var(--lesson-ink);
+    content: '';
+    height: 2px;
+    position: absolute;
+    right: 100%;
+    top: 1.2rem;
+    width: 1.25rem;
+  }
+
+  :global(html.motion) .calloutText::after {
+    background: var(--lesson-ink);
+    border-radius: 50%;
+    content: '';
+    height: 8px;
+    position: absolute;
+    right: calc(100% + 1.25rem);
+    top: calc(1.2rem - 3px);
+    width: 8px;
+  }
+}
+
+/* Short laptop windows: the try-it screen closes up so its verdict lands under the answers, not on them. */
+@media (min-width: 960px) and (max-height: 820px) {
+  :global(html.motion) .screen {
+    padding-top: 0.75rem;
+  }
+
+  :global(html.motion) .replayOptions {
+    gap: 0.45rem;
+  }
+
+  :global(html.motion) .replay .option {
+    min-height: 3rem;
+    padding-block: 0.3rem;
+  }
+
+  :global(html.motion) .replay .optionText,
+  :global(html.motion) .replayReply .feedback {
+    font-size: 0.9375rem;
+  }
+
+  :global(html.motion) .replayQuestion {
+    font-size: 1.1875rem;
+  }
+}
+
+/* The scripts, run each time a screen comes in on a window that is on screen. */
+@media (prefers-reduced-motion: no-preference) {
+  :global([data-swap-active='0']) .replay[data-replay-in] .screen[data-screen='0'] .context {
+    animation: replay-in 380ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+  }
+
+  :global([data-swap-active='0']) .replay[data-replay-in] .idea {
+    animation: replay-in 460ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+  }
+
+  :global([data-swap-active='0']) .replay[data-replay-in] .ideaMark {
+    animation: replay-sweep 640ms cubic-bezier(0.65, 0, 0.35, 1) 380ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayQuestion {
+    animation: replay-in 360ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .option {
+    animation: replay-in 360ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .option:nth-child(2) {
+    animation-delay: 110ms;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .option:nth-child(3) {
+    animation-delay: 160ms;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .picked {
+    animation:
+      replay-in 360ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both,
+      replay-press 420ms cubic-bezier(0.22, 1, 0.36, 1) 520ms;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayCursor {
+    animation: replay-cursor 460ms cubic-bezier(0.65, 0, 0.35, 1) 80ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayCursor .ghostArrow {
+    animation: ghost-dip 300ms cubic-bezier(0.22, 1, 0.36, 1) 540ms;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayCursor .ghostRipple {
+    animation: ghost-ripple 560ms cubic-bezier(0.22, 1, 0.36, 1) 560ms forwards;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .picked::before,
+  :global([data-swap-active='1']) .replay[data-replay-in] .picked .key::before {
+    animation: replay-fade 200ms ease 580ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .picked .keyLetter {
+    animation: replay-out 180ms ease 580ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .picked .keyRight {
+    animation: replay-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) 600ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .passed {
+    animation:
+      replay-in 360ms cubic-bezier(0.22, 1, 0.36, 1) 110ms both,
+      replay-dim 260ms ease 620ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .passed:nth-child(3) {
+    animation-delay: 160ms, 620ms;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayReply {
+    animation: replay-sheet 400ms cubic-bezier(0.22, 1, 0.36, 1) 620ms both;
+  }
+
+  :global([data-swap-active='1']) .replay[data-replay-in] .replayReply .badge {
+    animation: badge-pop 340ms cubic-bezier(0.34, 1.56, 0.64, 1) 760ms both;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathStop {
+    animation: replay-in 380ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathNode,
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathGate {
+    animation: replay-pop 420ms cubic-bezier(0.34, 1.56, 0.64, 1) 60ms both;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathStop:nth-child(2),
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathStop:nth-child(2) .pathNode {
+    animation-delay: 200ms;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathStop:nth-child(3),
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathStop:nth-child(3) .pathNode {
+    animation-delay: 340ms;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathGateStop,
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathGate {
+    animation-delay: 500ms;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathGate::after {
+    animation: replay-ring 1000ms ease-out 760ms 2 both;
+  }
+
+  :global([data-swap-active='2']) .replay[data-replay-in] .pathNote {
+    animation: replay-in 400ms cubic-bezier(0.22, 1, 0.36, 1) 700ms both;
+  }
+}
+
+@keyframes replay-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes replay-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes replay-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes replay-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes replay-dim {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes replay-sweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes replay-press {
+  40% {
+    transform: translateY(2px) scale(0.985);
+  }
+}
+
+@keyframes replay-cursor {
+  from {
+    opacity: 0;
+    transform: translate(5.5rem, 6.5rem);
+  }
+  25% {
+    opacity: 1;
+  }
+}
+
+@keyframes replay-sheet {
+  from {
+    transform: translateY(115%);
+  }
+}
+
+@keyframes replay-ring {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
   }
 }
