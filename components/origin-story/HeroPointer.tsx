@@ -17,7 +17,7 @@ const EASE = 0.085
 // the first screen is never the still state. The two periods (seconds) never line up, so the path
 // does not visibly repeat; the centre and reach are fractions of the frame. A 7s sweep is slow
 // enough to read as light, fast enough that two glances a second apart differ.
-const WANDER = { periodX: 7, periodY: 10.6, cx: 0.56, cy: 0.36, rx: 0.2, ry: 0.17 }
+const WANDER = { periodX: 7, periodY: 10.6, cx: 0.5, cy: 0.36, rx: 0.2, ry: 0.17 }
 // The wander starts once the portrait has faded in, and comes back after the pointer rests or leaves.
 const IDLE_FIRST = 1800
 const IDLE_AFTER_REST = 2600
@@ -58,11 +58,11 @@ export default function HeroPointer() {
     }
 
     // The torch stays on the photograph: a pointer over the headline or the index pulls the light
-    // toward its own side of the frame instead of carrying it off the picture.
+    // toward its own side of the frame instead of carrying it off the picture or into its fade.
     const aimAt = (clientX: number, clientY: number) => {
       if (!frame) return
       const f = frame.getBoundingClientRect()
-      aimX = Math.max(f.width * 0.18, Math.min(f.width * 0.94, clientX - f.left))
+      aimX = Math.max(f.width * 0.18, Math.min(f.width * 0.82, clientX - f.left))
       aimY = Math.max(f.height * 0.1, Math.min(f.height * 0.9, clientY - f.top))
     }
 

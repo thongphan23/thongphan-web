@@ -60,14 +60,16 @@ export default function AboutPage() {
 
           <figure className={styles.portrait}>
             <div className={`${styles.portraitFrame} intro-clip`} data-hero-frame>
-              {/* The drift layer carries the pointer response; the photo inside it keeps its own
-                  parallax and lens, so the three never fight over one transform. */}
+              {/* The cut-out stands in a pool of lacquer light; the frame's only edge is an
+                  elliptical fade, so no rectangle can show at any size or pointer position. The
+                  drift layer carries the pointer response; the photo inside it keeps its own
+                  parallax, so the two never fight over one transform. */}
+              <span className={styles.portraitGlow} aria-hidden="true" />
               <div className={styles.portraitDrift}>
-                <div className={styles.portraitPhoto} data-motion-parallax data-parallax-max="10" data-gl-photo data-gl-delay="2.2">
-                  <TwoPathPhoto id="founder-portrait" sizes="(max-width: 899px) 92vw, 48vw" className={styles.portraitImage} priority />
+                <div className={styles.portraitPhoto} data-motion-parallax data-parallax-max="10">
+                  <TwoPathPhoto id="home-stage-hero" sizes="(max-width: 899px) 92vw, 48vw" className={styles.portraitImage} priority />
                 </div>
               </div>
-              <span className={styles.portraitGrain} aria-hidden="true" />
               <span className={styles.portraitShade} aria-hidden="true" />
               <span className={styles.portraitTorch} aria-hidden="true" />
             </div>
@@ -82,9 +84,23 @@ export default function AboutPage() {
                 <a
                   className={styles.actLink}
                   href={`#origin-act-${act.id}`}
+                  data-cursor-tone="lacquer"
                 >
                   <span className={styles.actRule} aria-hidden="true" />
-                  <span className={styles.actNumber}>{pad(index + 1)}</span>
+                  {/* The third act is where the story turns, so the guide's pen rings its number
+                      once the first screen has settled. */}
+                  <span
+                    className={styles.actNumber}
+                    {...(index === 2
+                      ? { 'data-pen': 'circle', 'data-pen-tone': 'lacquer', 'data-pen-trigger': 'load', 'data-pen-delay': '2400' }
+                      : {})}
+                  >
+                    <span className={styles.actDigits}>
+                      <span className={styles.actRoll} data-n={pad(index + 1)}>
+                        {pad(index + 1)}
+                      </span>
+                    </span>
+                  </span>
                   <span className={styles.actTitle}>{act.title}</span>
                   <ArrowUpRight className={styles.actArrow} aria-hidden="true" size={22} />
                 </a>

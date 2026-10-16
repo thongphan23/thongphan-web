@@ -23,7 +23,11 @@
   --os-line: rgba(23, 20, 16, 0.18);
   --os-accent: #b3231b;
   background: var(--brand-reading-paper);
+  border-radius: var(--os-sheet) var(--os-sheet) 0 0;
   color: var(--os-fg);
+  /* 00: the principle, set large enough to read as a statement, sealed with the archive stamp. */
+  padding: clamp(7rem, 15vw, 13rem) var(--brand-space-inline) clamp(6rem, 12vw, 10rem);
+  position: relative;
 }
 
 .act[data-tone='dark'] {
@@ -32,8 +36,12 @@
   background-image: radial-gradient(60% 46% at var(--glow-x, 88%) 24%, rgba(179, 35, 27, 0.14), transparent 70%);
 }
 
-.act[data-mirror] {
-  --glow-x: 12%;
+.act[data-layout='records'] {
+  --glow-x: 14%;
+}
+
+.act[data-layout='print'] {
+  --glow-x: 50%;
 }
 
 /* Between two dark acts the seam is a hairline that follows the rounded top, not a change of ground. */
@@ -46,10 +54,6 @@
 .closing {
   border-radius: var(--os-sheet) var(--os-sheet) 0 0;
   margin-top: calc(var(--os-sheet) * -1);
-}
-
-.prologue {
-  border-radius: var(--os-sheet) var(--os-sheet) 0 0;
 }
 
 /* The curtain opens over the same stretch of scroll as the engine's (a CSS animation outranks its
@@ -75,22 +79,51 @@
   }
 }
 
+/* On wide screens the engine pins the principle under the acts' sheet and dims it from the sheet's
+   first edge; here it keeps its full strength until the sheet covers most of the screen (a CSS
+   animation outranks the engine's inline opacity). The scope also carries the closing's timeline,
+   which the pinned stage uses to see the last act off. */
+@media (min-width: 900px) {
+  @supports (animation-timeline: view()) and (timeline-scope: none) {
+    :global(html.motion) .story {
+      timeline-scope: --os-turn, --os-close;
+    }
+
+    :global(html.motion) .chapters {
+      view-timeline: --os-turn block;
+    }
+
+    :global(html.motion) .story .prologue[data-curtain] {
+      animation:
+        os-curtain linear both,
+        os-turn linear both;
+      animation-range:
+        cover 0% cover 70vh,
+        entry 60% entry 100%;
+      animation-timeline: view(), --os-turn;
+    }
+  }
+}
+
+@keyframes os-turn {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.28;
+  }
+}
+
 .mark {
   color: var(--os-accent);
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
+  font-size: clamp(1.125rem, 1rem + 0.3vw, 1.375rem);
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1.4;
   margin: 0;
   text-transform: uppercase;
-}
-
-/* 00 — the principle, set large enough to read as a statement, sealed with the archive stamp. */
-
-.prologue {
-  padding: clamp(7rem, 15vw, 13rem) var(--brand-space-inline) clamp(6rem, 12vw, 10rem);
-  position: relative;
 }
 
 .prologueInner {
@@ -139,6 +172,38 @@
   width: 100%;
 }
 
+/* From 900px the stage is laid over the principle as one sheet while the principle holds still
+   (the "sheet" curtain), so the principle is set as exactly one screen, centred: it is held whole,
+   never half-read. */
+@media (min-width: 900px) {
+  .prologue {
+    align-content: center;
+    display: grid;
+    min-height: 100svh;
+    padding-block: clamp(5rem, 9svh, 7rem) clamp(4rem, 8svh, 6rem);
+  }
+
+  .prologueInner {
+    width: 100%;
+  }
+
+  /* With motion the principle is pinned and the sheet only starts over it a fifth of a screen
+     later, so the sentence is set high on its screen and sized to it: whole while the page arrives
+     at it, and still whole, clear of the sheet's edge, through the first part of the hold. */
+  :global(html.motion) .prologue {
+    align-content: start;
+    padding-top: clamp(3.5rem, 7svh, 5rem);
+  }
+
+  :global(html.motion) .principle p {
+    font-size: min(clamp(2.4rem, 0.9rem + 5.2vw, 6.6rem), 8.6svh);
+  }
+
+  :global(html.motion) .chapters {
+    margin-top: calc(17.5svh - var(--os-sheet));
+  }
+}
+
 /* Wide screens: the quote takes the left, the seal stands large in the right half and turns as
    the page passes, so the statement is answered by its stamp rather than by empty paper. */
 @media (min-width: 1024px) {
@@ -165,13 +230,22 @@
 
 /* The five acts. */
 
+/* The acts arrive as one sheet: the chapters overlap the principle's foot (the curtain clips to
+   their own box, so the first act cannot reach out over it by itself). */
 .chapters {
+  margin-top: calc(var(--os-sheet) * -1);
   position: relative;
+}
+
+.chapters > .act:first-of-type {
+  margin-top: 0;
 }
 
 .act {
   /* Kept short at the top: a sheet is opaque and carries its words right under its edge, so any
-     frame that shows a sheet also shows what it says. */
+     frame that shows a sheet also shows what it says. The print's band runs to the screen edges
+     and stops there. */
+  overflow-x: clip;
   padding: clamp(4rem, 9vw, 8rem) var(--brand-space-inline);
   position: relative;
   scroll-margin-top: 3rem;
@@ -342,14 +416,13 @@
   translate: 0 calc((1 - var(--landed)) * 0.6em);
 }
 
-/* The debt itself is circled in lacquer, the way a reader marks a line in a file: two loose pen
-   loops, drawn round while the years are counted off (--count) and whole without motion. */
+/* The debt itself is circled in lacquer, the way a reader marks a line in a file: one loose pen
+   loop, drawn round while the years are counted off (--count) and whole without motion. */
 .verdictMark {
   position: relative;
 }
 
-.verdictMark::before,
-.verdictMark::after {
+.verdictMark::before {
   border: 0.032em solid var(--os-accent);
   border-radius: 50% 46% 52% 48% / 58% 50% 46% 52%;
   content: '';
@@ -362,17 +435,12 @@
   rotate: -6deg;
 }
 
-.verdictMark::after {
-  border-width: 0.018em;
-  /* Its foot stays above the line below, which the tilt would otherwise drop it into. */
-  inset: 0.08em -0.18em -0.03em -0.07em;
-  opacity: 0.75;
-  rotate: 4deg;
-}
-
-.story .claim.verdict .sourceLink,
-.verdict .sourceLabel {
+.story .claim.verdict .sourceLink {
+  /* Under the line the citation steps back, lighter and smaller, so the line stays the loud thing. */
+  font-size: 1.125rem;
+  font-weight: 400;
   justify-self: center;
+  letter-spacing: 0.02em;
   /* Centred as a block, but its own lines read from the rule, so the bar never floats away from the text. */
   max-width: min(100%, 34rem);
   text-align: left;
@@ -433,15 +501,15 @@
 .sourceLabel,
 .story .claim .sourceLink,
 .story .noteCard .sourceLink {
-  border-left: 2px solid color-mix(in srgb, var(--os-accent) 80%, transparent);
-  color: color-mix(in srgb, var(--os-fg) 88%, transparent);
+  border-left: 3px solid var(--os-accent);
+  color: var(--os-muted);
   font-family: var(--font-mono);
-  font-size: 1.125rem;
+  font-size: clamp(1.125rem, 0.95rem + 0.6vw, 1.4375rem);
   font-weight: 500;
   justify-self: start;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-  padding: 0.1rem 0 0.1rem 0.85rem;
+  letter-spacing: 0;
+  line-height: 1.45;
+  padding: 0.1rem 0 0.1rem 0.9rem;
 }
 
 .story .claim .sourceLink,
@@ -449,7 +517,6 @@
   align-items: center;
   display: inline-flex;
   gap: 0.4rem;
-  justify-self: start;
   min-height: 44px;
   text-decoration: underline;
   text-decoration-color: transparent;
@@ -515,12 +582,12 @@
   text-decoration: none;
   transition:
     rotate 700ms var(--os-ease),
-    translate 700ms var(--os-ease),
-    box-shadow 700ms var(--os-ease);
+    translate 700ms var(--os-ease);
 }
 
-/* A strip of tape holds each clipping to the page. */
-.story .clipping :is(.pressCard, .noteCard)::before {
+/* A strip of tape holds each clipping (and the print) to the page. */
+.story .clipping :is(.pressCard, .noteCard)::before,
+.imageCard::before {
   background: rgba(244, 238, 222, 0.62);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   content: '';
@@ -531,17 +598,6 @@
   top: -0.75rem;
   translate: -50% 0;
   width: 5.5rem;
-}
-
-.story .clipping .pressCard:hover,
-.story .clipping .noteCard:hover,
-.story .clipping .pressCard:focus-visible {
-  box-shadow:
-    0 1px 0 rgba(23, 20, 16, 0.08),
-    0 44px 70px -30px rgba(0, 0, 0, 0.62),
-    0 16px 26px -14px rgba(0, 0, 0, 0.32);
-  rotate: 0deg;
-  translate: 0 -6px;
 }
 
 .story .clipping .pressCard:focus-visible {
@@ -570,20 +626,19 @@
 .kicker,
 .readOriginal {
   font-family: var(--font-mono);
-  font-size: 1.125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: clamp(1.0625rem, 0.95rem + 0.45vw, 1.3125rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .pressDate {
-  color: rgba(27, 23, 18, 0.72);
+  color: rgba(27, 23, 18, 0.82);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .kicker {
   color: #9b1f18;
-  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -611,13 +666,12 @@
 .readLabel {
   align-items: center;
   display: inline-flex;
-  font-weight: 600;
   gap: 0.45rem;
 }
 
 .host {
-  color: rgba(27, 23, 18, 0.66);
-  letter-spacing: 0.02em;
+  color: rgba(27, 23, 18, 0.78);
+  letter-spacing: 0;
 }
 
 /* The note for an act with no clipping: the act's own line, set large on the same paper, so the
@@ -625,6 +679,7 @@
 .noteCard {
   --os-accent: #9b1f18;
   --os-fg: #1b1712;
+  --os-muted: rgba(27, 23, 18, 0.78);
 }
 
 .noteText {
@@ -658,16 +713,6 @@
 }
 
 .imageCard::before {
-  background: rgba(244, 238, 222, 0.7);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  content: '';
-  height: 1.5rem;
-  left: 50%;
-  position: absolute;
-  rotate: -3deg;
-  top: -0.75rem;
-  translate: -50% 0;
-  width: 6rem;
   z-index: 1;
 }
 
@@ -695,18 +740,28 @@
 .imageMedia img {
   filter: var(--photo-tone, var(--brand-photo-grade));
   object-fit: cover;
-  /* Square crop held hard to the speaker's side at the photo's native scale, so he stays sharp
-     and the hall opens to his left. The photo component sets a softer focal point inline. */
-  object-position: 100% 50% !important;
+}
+
+/* The portrait is printed no wider than its own pixels (368 across; half that on a phone's
+   doubled screen), so the print is always sharp; it never fills a column by being enlarged. */
+.imageCard[data-photo-bloom] {
+  max-width: calc(11.5rem + 2 * clamp(0.6rem, 1.1vw, 0.9rem));
+}
+
+@media (min-width: 700px) {
+  .imageCard[data-photo-bloom] {
+    max-width: calc(368px + 2 * clamp(0.6rem, 1.1vw, 0.9rem));
+  }
 }
 
 .imageCard figcaption {
-  color: rgba(27, 23, 18, 0.7);
+  color: rgba(27, 23, 18, 0.8);
   display: grid;
   font-family: var(--font-mono);
-  font-size: 1.0625rem;
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.1875rem);
+  font-weight: 500;
   gap: 0.3rem;
-  line-height: 1.5;
+  line-height: 1.45;
   padding-inline: 0.15rem;
 }
 
@@ -714,8 +769,174 @@
   color: #1b1712;
 }
 
-.imageCard small {
-  font-size: inherit;
+/* Each act is a different kind of document (data-layout). The broadsheet: its clipping runs the
+   full width of the screen as a band of newsprint, the headline set at display size. */
+.story .actGrid[data-layout='print'] .clipping .pressCard {
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+  max-width: none;
+  padding-inline: 0;
+  rotate: 0deg;
+}
+
+.story .actGrid[data-layout='print'] .clipping .pressCard::before {
+  background:
+    radial-gradient(60% 120% at 28% 0%, rgba(255, 252, 240, 0.55), transparent 60%),
+    #ebe1cc;
+  box-shadow:
+    0 1px 0 rgba(23, 20, 16, 0.08),
+    0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  height: auto;
+  inset: 0 -100vw;
+  rotate: none;
+  translate: none;
+  width: auto;
+  z-index: -1;
+}
+
+.story .actGrid[data-layout='print'] .masthead {
+  align-items: center;
+  border-top: 1px solid rgba(27, 23, 18, 0.72);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  padding: 0.55rem 0 0.7rem;
+  row-gap: 0.35rem;
+}
+
+.story .actGrid[data-layout='print'] .outlet {
+  font-size: clamp(1.75rem, 0.9rem + 3.2vw, 4.25rem);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-align: center;
+}
+
+.story .actGrid[data-layout='print'] :is(.kicker, .headline) {
+  justify-self: center;
+  text-align: center;
+}
+
+.story .actGrid[data-layout='print'] .headline {
+  font-size: clamp(2.25rem, 1.2rem + 3.6vw, 6rem);
+  max-width: 22ch;
+}
+
+@media (min-width: 700px) {
+  .story .actGrid[data-layout='print'] .masthead {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+
+  .story .actGrid[data-layout='print'] .outlet {
+    grid-area: 1 / 2;
+  }
+
+  .story .actGrid[data-layout='print'] .pressDate {
+    grid-area: 1 / 3;
+    justify-self: end;
+  }
+}
+
+/* The memo of the act that cost the most: its line set large, the archive's stamp in its corner. */
+.actGrid[data-layout='quote'] .assetCard {
+  position: relative;
+}
+
+.story .actGrid[data-layout='quote'] .noteCard {
+  max-width: none;
+  padding-right: clamp(4.75rem, 12vw, 10rem);
+}
+
+.story .actGrid[data-layout='quote'] .noteText {
+  font-size: clamp(1.875rem, 1.2rem + 2.2vw, 3.25rem);
+}
+
+.memoStamp {
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(-0.5rem, 1.5vw - 1rem, 1.25rem);
+  top: clamp(-1rem, 3vw - 2rem, 2rem);
+  width: clamp(4.5rem, 10vw, 9rem);
+  z-index: 1;
+}
+
+.memoStamp img {
+  display: block;
+  height: auto;
+  opacity: 0.9;
+  rotate: -12deg;
+  width: 100%;
+}
+
+/* The years of rebuilding: the claims hang from one line, a ring on it for each. The line runs
+   down the left edge here and across the act on wide screens. */
+.story .actGrid[data-layout='timeline'] .claims {
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.story .actGrid[data-layout='timeline'] .claims::before {
+  background: var(--os-line);
+  bottom: 0;
+  content: '';
+  left: 7px;
+  position: absolute;
+  top: 0;
+  width: 2px;
+}
+
+.actGrid:is([data-layout='timeline'], [data-layout='records']) .claimRule {
+  display: none;
+}
+
+.story .actGrid[data-layout='timeline'] .claims > .claim::before,
+.story .actGrid[data-layout='timeline'] .claims > .claim::after {
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+}
+
+.story .actGrid[data-layout='timeline'] .claims > .claim::before {
+  background: var(--brand-ink);
+  border: 2px solid var(--os-accent);
+  height: 16px;
+  left: -2.25rem;
+  top: calc(clamp(1.75rem, 3vw, 2.4rem) + 0.4rem);
+  width: 16px;
+}
+
+.story .actGrid[data-layout='timeline'] .claims > .claim::after {
+  background: var(--os-accent);
+  height: 8px;
+  left: calc(-2.25rem + 4px);
+  top: calc(clamp(1.75rem, 3vw, 2.4rem) + 0.4rem + 4px);
+  transform: scale(var(--lit, 1));
+  width: 8px;
+}
+
+/* The system: each claim is typed on its own index card, laid over the act's note, so
+   the act reads as a drawer of records opened on the desk. */
+.story .actGrid[data-layout='records'] .claims {
+  gap: 2.75rem;
+}
+
+.story .actGrid[data-layout='records'] .claims > .claim {
+  --os-fg: #1b1712;
+  --os-muted: rgba(27, 23, 18, 0.78);
+  --os-accent: #9b1f18;
+  --os-line: rgba(27, 23, 18, 0.2);
+  background: linear-gradient(180deg, #f7f2e6, #eee6d4);
+  border-radius: 6px;
+  box-shadow:
+    0 1px 0 rgba(23, 20, 16, 0.08),
+    0 36px 60px -30px rgba(0, 0, 0, 0.75),
+    0 12px 20px -12px rgba(0, 0, 0, 0.35);
+  margin-top: 1.4rem;
+  max-width: 36rem;
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  rotate: -1.2deg;
 }
 
 /* Reading progress, pinned near the bottom edge while the acts pass (centred on narrow screens,
@@ -739,10 +960,10 @@
 
 .railPill {
   align-items: center;
-  -webkit-backdrop-filter: blur(16px) saturate(1.1);
-  backdrop-filter: blur(16px) saturate(1.1);
-  background: rgba(7, 7, 6, 0.74);
-  border: 1px solid rgba(232, 223, 207, 0.16);
+  /* Solid, not frosted: body text passes under the pill while it is read, and through glass it
+     would sit half-legible behind the count. A hairline in the page's own cream marks the edge. */
+  background: #0b0a08;
+  border: 1px solid rgba(232, 223, 207, 0.3);
   border-radius: 999px;
   box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.6);
   box-sizing: border-box;
@@ -763,10 +984,7 @@
 
 .rail[data-visible] .railPill {
   opacity: 1;
-  transition:
-    opacity 500ms var(--os-ease),
-    translate 700ms var(--os-ease),
-    visibility 0s;
+  transition-delay: 0s;
   translate: 0 0;
   visibility: visible;
 }
@@ -802,7 +1020,6 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-align: center;
-  white-space: nowrap;
 }
 
 .railTitleRoll {
@@ -853,10 +1070,10 @@
 }
 
 .segmentTrack {
-  background: rgba(232, 223, 207, 0.24);
-  border-radius: 2px;
+  background: rgba(232, 223, 207, 0.4);
+  border-radius: 3px;
   display: block;
-  height: 3px;
+  height: 4px;
   overflow: hidden;
   transition: height 300ms var(--os-ease);
   width: calc(100% - 8px);
@@ -864,7 +1081,7 @@
 
 .rail .railSegments a:hover .segmentTrack,
 .rail .railSegments a[aria-current='step'] .segmentTrack {
-  height: 5px;
+  height: 6px;
 }
 
 .segmentFill {
@@ -876,16 +1093,48 @@
   width: 100%;
 }
 
-/* The closing: paper again, opening like a curtain onto the two paths. */
+/* The closing is a sealed dossier: a paper file whose eyebrow rides on a case-file tab at its top
+   left, the two paths filed inside as kraft folders, and the archive's seal pressed at its foot.
+   The file's body and tab are drawn behind the content, so the ground beside the tab stays the
+   stage's ink and the sheet arrives as the silhouette of a file laid on the desk. It stops short of
+   the footer, so the page ends on a band of ink rather than running paper into the footer's rule. */
 
 .closing {
   --closing-focus: var(--brand-text-on-paper);
   --closing-line: color-mix(in srgb, var(--brand-text-on-paper) 24%, transparent);
-  background: var(--brand-reading-paper-deep);
+  --dossier: var(--brand-reading-paper-deep);
+  --tab-h: 3.25rem;
+  --tab-w: 25rem;
+  --inner-x: max(var(--brand-space-inline), calc((100% - 1320px) / 2));
   color: var(--brand-text-on-paper);
-  /* A short top: the eyebrow rides near the sheet's edge, so the rising sheet is never blank. */
-  padding: clamp(2.25rem, 3.5vw, 3rem) var(--brand-space-inline) clamp(5rem, 9vw, 8rem);
+  isolation: isolate;
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+  padding: 0.95rem var(--brand-space-inline) clamp(5rem, 9vw, 8rem);
   position: relative;
+}
+
+.closing::before,
+.closing::after {
+  background: var(--dossier);
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.closing::before {
+  border-radius: 0 var(--os-sheet) var(--os-sheet) var(--os-sheet);
+  inset: var(--tab-h) 0 0;
+}
+
+/* The tab: as wide as the eyebrow it carries, cut away on a slant at its far end. */
+.closing::after {
+  border-radius: var(--os-sheet) 0 0;
+  clip-path: polygon(0 0, calc(100% - 2.25rem) 0, 100% var(--tab-h), 100% 100%, 0 100%);
+  height: calc(var(--tab-h) + var(--os-sheet) + 1px);
+  left: 0;
+  top: 0;
+  width: calc(min(100% - 3rem, var(--inner-x) + var(--tab-w)) + 2.25rem);
 }
 
 .closingInner {
@@ -896,11 +1145,11 @@
 .closingEyebrow {
   color: var(--brand-lacquer);
   font-family: var(--font-mono);
-  font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
+  font-size: clamp(0.9375rem, 0.85rem + 0.35vw, 1.25rem);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   line-height: 1.4;
-  margin: 0 0 1.25rem;
+  margin: 0 0 clamp(2.75rem, 5vw, 4rem);
   text-transform: uppercase;
 }
 
@@ -934,45 +1183,106 @@
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-/* At rest the two doors wait in the archive's ink with their prints in black and white, so the page
-   keeps its palette to the end; the door under the pointer or keyboard focus takes its path's own
-   colour. Touch screens have no hover, so there the doors keep their colours, and without motion
-   (reduced motion included) the prints stay in colour too. */
-@media (hover: hover) {
-  .story .closing a[data-path-door] {
-    --door-bg: var(--brand-ink);
-    --door-ink: #e8dfcf;
-    --door-accent: #efe6d6;
-    --door-on-accent: var(--brand-ink);
-    transition:
-      flex-grow 900ms cubic-bezier(0.16, 1, 0.3, 1),
-      background-color 700ms cubic-bezier(0.16, 1, 0.3, 1),
-      color 700ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+/* The two paths are filed in the dossier as kraft folders: the path's name on a strip of its own
+   colour in the folder's tab, its print clipped to the front in a white border, and a sheet of paper
+   standing out of the folder behind; the sheet rises when the pointer or focus opens the folder. */
+.story .closing a[data-path-door] {
+  --door-ink: #1b1712;
+  --door-on-accent: #f3efe6;
+  --door-tab-h: 2.75rem;
+  --door-tab-w: clamp(17.5rem, 46%, 22rem);
+  background: transparent;
+  border-radius: 0;
+  filter: drop-shadow(0 1px 0 rgba(23, 20, 16, 0.14)) drop-shadow(0 22px 26px rgba(40, 28, 10, 0.24));
+  overflow: visible;
+  padding-top: calc(var(--door-tab-h) + clamp(1.25rem, 5cqi, 2.25rem));
+}
 
-  :global(html.motion) .story .closing a[data-path-door] img {
-    filter: grayscale(1) contrast(1.12) brightness(0.92);
-    transition:
-      filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
-      scale 1200ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
+.story .closing a[data-path-door='tensai'] {
+  --door-accent: #073b2f;
+}
 
-  :global(html.motion) .story .closing a[data-path-door]:is(:hover, :focus-visible) img {
-    filter: var(--brand-photo-grade);
-  }
+.story .closing a[data-path-door='conan'] {
+  --door-accent: #9b1f18;
+}
 
-  .story .closing a[data-path-door='tensai']:is(:hover, :focus-visible) {
-    --door-bg: #073b2f;
-    --door-accent: #c3f331;
-    --door-on-accent: #073b2f;
-  }
+.story .closing a[data-path-door]::before,
+.story .closing a[data-path-door]::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+}
 
-  .story .closing a[data-path-door='conan']:is(:hover, :focus-visible) {
-    --door-bg: var(--brand-lacquer);
-    --door-ink: #fff6ec;
-    --door-accent: #fff6ec;
-    --door-on-accent: var(--brand-lacquer);
-  }
+.story .closing a[data-path-door]::before {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 235, 0.38), transparent 32%),
+    linear-gradient(160deg, #e2cfa6, #d5bf92);
+  border-radius: 10px;
+  clip-path: polygon(
+    0 0,
+    calc(var(--door-tab-w) - 1rem) 0,
+    var(--door-tab-w) var(--door-tab-h),
+    calc(100% - 0.6rem) var(--door-tab-h),
+    100% calc(var(--door-tab-h) + 0.6rem),
+    100% 100%,
+    0 100%
+  );
+  inset: 0;
+  z-index: -1;
+}
+
+.story .closing a[data-path-door]::after {
+  background: linear-gradient(#faf7f0, #efe8da);
+  border-radius: 3px;
+  bottom: 2rem;
+  left: calc(var(--door-tab-w) + 2rem);
+  right: 1.25rem;
+  rotate: 1.5deg;
+  top: calc(var(--door-tab-h) - 1.1rem);
+  z-index: -2;
+}
+
+:global(html.motion) .story .closing a[data-path-door]::after {
+  transition: translate 700ms var(--os-ease);
+}
+
+:global(html.motion) .story .closing a[data-path-door]:is(:hover, :focus-visible)::after {
+  translate: 0 -0.7rem;
+}
+
+.story .closing a[data-path-door] > span:first-child {
+  align-items: center;
+  background: var(--door-accent);
+  border-radius: 4px;
+  color: var(--door-on-accent);
+  height: calc(var(--door-tab-h) - 0.9rem);
+  left: 0.75rem;
+  padding-inline: 0.9rem;
+  position: absolute;
+  top: 0.5rem;
+}
+
+.story .closing a[data-path-door] > span:first-child > span {
+  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.125rem);
+  letter-spacing: 0.06em;
+  opacity: 1;
+}
+
+/* The print: square on the face, in a paper border with a deeper foot. */
+.story .closing a[data-path-door] > span:nth-child(2) {
+  aspect-ratio: auto;
+  background: #f7f3ea;
+  border-radius: 2px;
+  padding: 0.5rem 0.5rem 1.6rem;
+  width: clamp(7rem, 34cqi, 16rem);
+}
+
+.story .closing a[data-path-door] > span:nth-child(2) img {
+  aspect-ratio: 1;
+  height: auto;
+  /* The photo component sets its own focal point inline. */
+  object-position: 50% 20% !important;
+  scale: 1;
 }
 
 .story .closing .proofLink {
@@ -1021,60 +1331,79 @@
     max-width: 30rem;
   }
 
-  .story .closing .proofLink {
+  .closingFoot {
     grid-column: 1 / -1;
-    justify-self: start;
   }
 }
 
 
-/* The closing stops short of the footer as a rounded sheet of its own, so the page ends on a band
-   of the archive's ink rather than running the paper into the footer's rule. */
-.closing {
-  border-radius: var(--os-sheet);
-  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+/* The foot of the file: the proof link, and the archive's seal pressed over the folders' edge. */
+/* One row at every width: the link text may wrap, but the seal never drops onto it. */
+.closingFoot {
+  align-items: center;
+  display: flex;
+  gap: clamp(1rem, 4vw, 2rem);
+  justify-content: space-between;
 }
 
-/* The doors' prints: square, a little under half the door, framed on the face rather than the
-   hall around it, with labels large enough to read across the room. */
-.story .closing a[data-path-door] > span:nth-child(2) {
-  aspect-ratio: 1 / 1;
-  width: 45cqi;
+.closingSeal {
+  /* The guide's ring around it is drawn in the brand's own lacquer, the seal's ink. */
+  --pen-color: var(--brand-lacquer);
+  flex: none;
+  margin-top: calc(-1 * clamp(2.5rem, 5vw, 4.5rem));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  position: relative;
+  width: clamp(5.5rem, 10vw, 9.5rem);
+  z-index: 3;
 }
 
-.story .closing a[data-path-door] > span:nth-child(2) img {
-  /* The photo component sets its own focal point inline. */
-  object-position: 50% 20% !important;
+.closingSeal img {
+  display: block;
+  height: auto;
+  rotate: -9deg;
+  width: 100%;
 }
 
-.story .closing a[data-path-door] > span:first-child > span {
-  font-size: 1rem;
+/* With motion the seal is pressed in one timed stroke as the foot of the file comes up the screen
+   (the guide pen marks it entered), then ringed: never caught half-pressed by a reader who stops. */
+:global(html.motion) .closingSeal img {
+  opacity: 0;
+  scale: 1.5;
+  transition:
+    opacity 260ms ease-in,
+    scale 420ms cubic-bezier(0.55, 0, 0.85, 0.35);
 }
 
+:global(html.motion) .closingSeal[data-pen-entered] img {
+  opacity: 1;
+  scale: 1;
+}
 
-/* Wide screens, with or without motion: each act is one spread. The number and title over the
-   claims on one side, the evidence in a column of its own on the other; every second act is
-   mirrored, and an act with more claims than evidence gives the claims the full height instead. */
+/* Wide screens, with or without motion: each act is one spread on a twelve-column desk, composed
+   as its own kind of document (collage, broadsheet, memo, timeline, records), so no two acts in a
+   row are laid out alike. */
 @media (min-width: 1100px) {
   /* The rail stands in the right margin as a slim vertical index, so neither an act title nor
      the claims ever pass under it: the number rolls at the top, the count sits below it, and each
      act's segment fills downward as it is read. */
   /* align-items: the rail itself has no height, so a stretched pill would collapse to it. */
   .rail {
+    --row: 2.4rem;
     align-items: flex-start;
     justify-content: flex-end;
-    padding-right: max(0.75rem, calc((var(--brand-space-inline) - 3.5rem) / 2));
-    top: calc(50svh - 9.25rem);
+    padding-right: max(0.5rem, calc((var(--brand-space-inline) - 4.5rem) / 2));
+    top: calc(50svh - 11rem);
   }
 
   .railPill {
     flex-direction: column;
     gap: 0.35rem;
     height: auto;
-    padding: 1rem 0 0.35rem;
+    padding: 1.1rem 0 0.45rem;
     translate: 1.5rem 0;
     /* Wide enough that "/ 05" sits on one line with air on both sides. */
-    width: 3.5rem;
+    width: 4.5rem;
   }
 
   /* The number roll clips its overflow, so in a column it would otherwise shrink to nothing. */
@@ -1087,13 +1416,14 @@
   }
 
   .railTotal {
+    color: #f3efe6;
     display: block;
-    font-size: 1rem;
     letter-spacing: 0;
     margin: 0 0 0.35rem;
   }
 
   .railNumbers {
+    font-size: 2rem;
     letter-spacing: 0;
   }
 
@@ -1102,20 +1432,20 @@
   }
 
   .rail .railSegments a {
-    height: 2.75rem;
-    width: 2.75rem;
+    height: 3rem;
+    width: 3rem;
   }
 
   .segmentTrack {
     height: calc(100% - 10px);
     transition: width 300ms var(--os-ease);
-    width: 3px;
+    width: 5px;
   }
 
   .rail .railSegments a:hover .segmentTrack,
   .rail .railSegments a[aria-current='step'] .segmentTrack {
     height: calc(100% - 10px);
-    width: 5px;
+    width: 8px;
   }
 
   .segmentFill {
@@ -1129,55 +1459,146 @@
       var(--brand-space-inline);
   }
 
-  .actGrid[data-has-assets='true'] {
-    column-gap: clamp(3rem, 5vw, 6rem);
-    grid-template-areas:
-      'head assets'
-      'body assets';
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-    grid-template-rows: auto 1fr;
+  /* Twelve columns on one desk, and each act places its pieces its own way. */
+  .actGrid[data-layout] {
+    column-gap: clamp(1.5rem, 2.4vw, 2.5rem);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     row-gap: clamp(1.25rem, 2.5vw, 2.25rem);
   }
 
-  .actGrid[data-has-assets='true'][data-mirror-grid] {
-    grid-template-areas:
-      'assets head'
-      'assets body';
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  }
-
-  .actGrid[data-has-assets='true'][data-dense] {
-    grid-template-areas:
-      'head body'
-      'assets body';
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-
-  .actGrid[data-has-assets='true'] .actHeader {
-    grid-area: head;
-  }
-
-  .actGrid[data-has-assets='true'] .actBody {
+  .actGrid[data-layout] .actBody {
     display: contents;
   }
 
-  .actGrid[data-has-assets='true'] .claims {
-    align-content: start;
-    grid-area: body;
-  }
-
-  .actGrid[data-dense] .claims {
-    align-content: center;
-  }
-
-  .actGrid[data-has-assets='true'] .assets {
-    align-self: center;
-    grid-area: assets;
+  .actGrid[data-layout] .assets {
     margin-top: 0;
   }
 
-  .actGrid[data-dense] .assets {
-    align-self: start;
+  /* 01, a collage: header over claims on the left, two clippings piled crooked on the right. */
+  .actGrid[data-layout='collage'] .actHeader {
+    grid-area: 1 / 1 / 2 / 7;
+  }
+
+  .actGrid[data-layout='collage'] .claims {
+    align-content: start;
+    grid-area: 2 / 1 / 3 / 7;
+  }
+
+  .actGrid[data-layout='collage'] .assets {
+    align-self: center;
+    gap: 1.25rem;
+    grid-area: 1 / 7 / 3 / 13;
+  }
+
+  /* Off the stage the two clippings step down the column, neither covering the other; the pile is
+     the stage's alone. */
+  .actGrid[data-layout='collage'] .assetCard {
+    justify-self: start;
+    width: 82%;
+  }
+
+  .actGrid[data-layout='collage'] .assetCard:last-child {
+    justify-self: end;
+  }
+
+  /* 02, a broadsheet: header and claim share the top, the band of newsprint runs under them. */
+  .actGrid[data-layout='print'] .actHeader {
+    grid-area: 1 / 1 / 2 / 8;
+  }
+
+  .actGrid[data-layout='print'] .claims {
+    align-self: end;
+    grid-area: 1 / 8 / 2 / 13;
+  }
+
+  .actGrid[data-layout='print'] .assets {
+    grid-area: 2 / 1 / 3 / 13;
+  }
+
+  /* 03, a memo: the claim in a narrow column, the stamped memo across the rest. */
+  .actGrid[data-layout='quote'] .actHeader {
+    grid-area: 1 / 1 / 2 / 13;
+  }
+
+  .actGrid[data-layout='quote'] .claims {
+    align-self: end;
+    grid-area: 2 / 1 / 3 / 5;
+  }
+
+  .actGrid[data-layout='quote'] .assets {
+    grid-area: 2 / 5 / 3 / 13;
+  }
+
+  /* 04, a timeline: the claims hang from one line across the act, the print stands beside it. */
+  .actGrid[data-layout='timeline'] .actHeader {
+    grid-area: 1 / 1 / 2 / 9;
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims {
+    align-self: end;
+    column-gap: 2rem;
+    grid-area: 2 / 1 / 3 / 9;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
+    padding: 2.5rem 0 0;
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims::before,
+  .story .actGrid[data-layout='timeline'] .claims::after {
+    bottom: auto;
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: 1rem;
+    width: auto;
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims::after {
+    background: var(--os-accent);
+    content: '';
+    position: absolute;
+    transform: scaleX(calc(0.5 + 0.5 * var(--b, 1)));
+    transform-origin: 0 50%;
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims > .claim {
+    padding: 0;
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims > .claim::before {
+    left: 0;
+    top: calc(-1.5rem - 7px);
+  }
+
+  .story .actGrid[data-layout='timeline'] .claims > .claim::after {
+    left: 4px;
+    top: calc(-1.5rem - 3px);
+  }
+
+  .actGrid[data-layout='timeline'] .assets {
+    align-self: center;
+    grid-area: 1 / 9 / 3 / 13;
+  }
+
+  /* 05, records: the note on the left, the index card laid over its right edge. */
+  .actGrid[data-layout='records'] .actHeader {
+    grid-area: 1 / 1 / 2 / 13;
+  }
+
+  .actGrid[data-layout='records'] .assets {
+    grid-area: 2 / 1 / 3 / 8;
+  }
+
+  .story .actGrid[data-layout='records'] .noteCard {
+    max-width: none;
+    padding-right: clamp(5rem, 9vw, 8rem);
+  }
+
+  .actGrid[data-layout='records'] .claims {
+    grid-area: 2 / 7 / 3 / 13;
+    margin-top: clamp(3rem, 8svh, 5rem);
+    position: relative;
+    z-index: 4;
   }
 
   /* The number stands beside the title, so the header is one band rather than a tower. */
@@ -1190,23 +1611,6 @@
   .actTitleRow h2 {
     margin: 0 0 0.35em;
   }
-
-  /* Two clippings overlap like a pile on the desk: the second lies over the foot of the first,
-     set in from the other side. The overlap stays inside the second card's top margin, so its
-     masthead reads even while the first is lifted over it. */
-  .assets[data-assets='2'] {
-    gap: 0;
-  }
-
-  .assets[data-assets='2'] > :first-child {
-    margin: 0 16% calc(-1 * clamp(1.5rem, 3.4svh, 2.25rem)) 0;
-  }
-
-  .assets[data-assets='2'] > :last-child {
-    margin-left: 16%;
-    position: relative;
-    z-index: 1;
-  }
 }
 
 /* The pinned stage: wide, tall enough screens with motion. The five acts share one screen. Each
@@ -1215,36 +1619,67 @@
    (data-swap-active, set as each step crosses the reading line), and only the frame whose hold it
    is shows. Crossing into the next hold plays a short, timed cut: the old frame lifts away, then
    the new one's label, number, title, claims and evidence arrive one after another, so no frame is
-   ever half of one act and half of the next. --d is a frame's distance from the current one
-   (-1 before, 0 on, 1 after), --off whether it is away at all, --in whether it is on. */
+   ever half of one act and half of the next. Each hold is played in two beats (two steps per
+   frame, --s the current step): --d is a frame's distance from the current one (-1 before, 0 on,
+   1 after), --off whether it is away at all, --in whether it is on, and --b which beat it is on
+   (0 the first, 1 the second, and 1 once it has passed). */
 @media (min-width: 1100px) and (min-height: 760px) {
   :global(html.motion) .chapters {
-    --a: 0;
+    --s: 0;
     --hold: 80svh;
     --vhold: 80svh;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    margin-top: calc(var(--os-sheet) * -1);
+    z-index: 0;
+  }
+
+  /* The closing sheet is laid over the stage's last screen while the last act still holds. */
+  :global(html.motion) .chapters + .closing {
+    margin-top: calc(-100svh - var(--os-sheet));
   }
 
   :global(html.motion) .chapters[data-swap-active='1'] {
-    --a: 1;
+    --s: 1;
   }
 
   :global(html.motion) .chapters[data-swap-active='2'] {
-    --a: 2;
+    --s: 2;
   }
 
   :global(html.motion) .chapters[data-swap-active='3'] {
-    --a: 3;
+    --s: 3;
   }
 
   :global(html.motion) .chapters[data-swap-active='4'] {
-    --a: 4;
+    --s: 4;
   }
 
   :global(html.motion) .chapters[data-swap-active='5'] {
-    --a: 5;
+    --s: 5;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='6'] {
+    --s: 6;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='7'] {
+    --s: 7;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='8'] {
+    --s: 8;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='9'] {
+    --s: 9;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='10'] {
+    --s: 10;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='11'] {
+    --s: 11;
   }
 
   :global(html.motion) .chapters > * {
@@ -1286,18 +1721,21 @@
 
   /* Placed so that each crosses its reading line exactly when its hold begins. */
   :global(html.motion) .chapterMark {
-    top: calc(var(--at) + 55svh);
-  }
-
-  :global(html.motion) .stepMark {
     top: calc(var(--at) + 62svh);
   }
 
+  :global(html.motion) .stepMark {
+    top: calc(var(--at) + 69svh);
+  }
+
   :global(html.motion) .frame {
-    --d: clamp(-1, calc(var(--a) - var(--i)), 1);
+    --x: calc(var(--s) - 2 * var(--i));
+    --d: calc(clamp(0, var(--x) - 1, 1) + clamp(-1, var(--x), 0));
     --off: max(var(--d), calc(var(--d) * -1));
     --in: calc(1 - var(--off));
-    align-content: center;
+    --b: clamp(0, var(--x), 1);
+    /* safe: a frame taller than the screen starts at its top rather than losing it above. */
+    align-content: safe center;
     align-self: start;
     box-sizing: border-box;
     display: grid;
@@ -1307,25 +1745,16 @@
     margin: var(--at) 0 0;
     max-width: none;
     padding: max(6.5rem, 12svh) calc(var(--brand-space-inline) + 3rem) max(3rem, 6svh) var(--brand-space-inline);
-    pointer-events: none;
+    /* The frame that is on lies over the others, so it alone takes the pointer. */
+    pointer-events: auto;
     position: sticky;
     top: 0;
-  }
-
-  :global(html.motion) .chapters[data-swap-active='0'] [data-frame='0'],
-  :global(html.motion) .chapters:not([data-swap-active]) [data-frame='0'],
-  :global(html.motion) .chapters[data-swap-active='1'] [data-frame='1'],
-  :global(html.motion) .chapters[data-swap-active='2'] [data-frame='2'],
-  :global(html.motion) .chapters[data-swap-active='3'] [data-frame='3'],
-  :global(html.motion) .chapters[data-swap-active='4'] [data-frame='4'],
-  :global(html.motion) .chapters[data-swap-active='5'] [data-frame='5'] {
-    pointer-events: auto;
+    z-index: var(--in);
   }
 
   /* A keyboard reader tabbing into an act that is not on screen brings it on. */
   :global(html.motion) .frame:has(:focus-visible) {
     --d: 0;
-    pointer-events: auto;
   }
 
   :global(html.motion) .chapters:has(.frame :focus-visible) .frame:not(:has(:focus-visible)) {
@@ -1361,8 +1790,7 @@
       .assetCard,
       .verdictClock,
       .verdict p,
-      .verdict > .sourceLink,
-      .verdict > .sourceLabel
+      .verdict > .sourceLink
     ) {
     opacity: var(--in);
     transition-delay: calc(var(--in) * (0.08s + var(--delay, 0s)));
@@ -1372,16 +1800,22 @@
     translate: 0 calc(var(--d) * -1.75rem);
   }
 
+  /* Sized to the screen's height, so a whole act always fits its frame. */
   :global(html.motion) .frame .numeral {
     --delay: 0.03s;
+    font-size: clamp(7rem, 1rem + 17svh, 12.5rem);
   }
 
   :global(html.motion) .frame .actHeader h2 {
     --delay: 0.06s;
+    font-size: clamp(2.5rem, 1rem + 5svh, 4.5rem);
   }
 
   :global(html.motion) .frame .claims > .claim {
     --delay: calc(0.08s + var(--n, 0) * 0.05s);
+    --lit: clamp(0, calc((var(--n, 0) - var(--pivot, -0.5)) * (2 * var(--b) - 1) * 2), 1);
+    opacity: calc(var(--in) * (0.7 + 0.3 * var(--lit)));
+    transition-property: opacity, translate, rotate, scale;
   }
 
   :global(html.motion) .frame .assetCard {
@@ -1394,7 +1828,7 @@
     font-size: clamp(5rem, min(0.5rem + 13vw, 22svh), 14rem);
   }
 
-  :global(html.motion) .frame .verdict > :is(.sourceLink, .sourceLabel) {
+  :global(html.motion) .frame .verdict > .sourceLink {
     --delay: 0.14s;
   }
 
@@ -1419,15 +1853,6 @@
     transition: clip-path 800ms var(--os-ease) calc(var(--in) * 0.12s);
   }
 
-  /* Sized to the screen's height, so a whole act always fits its frame. */
-  :global(html.motion) .frame .numeral {
-    font-size: clamp(7rem, 1rem + 17svh, 12.5rem);
-  }
-
-  :global(html.motion) .frame .actHeader h2 {
-    font-size: clamp(2.5rem, 1rem + 5svh, 4.5rem);
-  }
-
   :global(html.motion) .frame .claims > .claim {
     gap: 0.75rem;
     padding: clamp(1.1rem, 2.2svh, 1.75rem) 0 clamp(1.25rem, 2.6svh, 2rem);
@@ -1447,41 +1872,173 @@
   }
 
   :global(html.motion) .frame .imageCard {
-    max-width: min(25rem, calc(100svh - 32.5rem));
+    max-width: min(calc(368px + 2 * clamp(0.6rem, 1.1vw, 0.9rem)), calc(80svh - 14.5rem));
   }
 
-  /* A dense act stacks its title over the print; a tighter gap keeps the print's foot clear of the
-     screen edge through its drift. */
-  :global(html.motion) .frame .actGrid[data-dense] {
-    row-gap: clamp(0.75rem, 1.6svh, 1.25rem);
+  /* The second beat of each act. The collage: the clipping the first claim cites (the later one
+     in the file) leads; on the second beat the other comes to the front and it falls back. */
+  :global(html.motion) .frame .actGrid[data-layout='collage'] {
+    --pivot: 0.5;
   }
 
-  /* On the stage the evidence takes the wider column: a held act is read beside its clipping. */
-  :global(html.motion) .frame .actGrid[data-has-assets='true']:not([data-dense]) {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  :global(html.motion) .frame .actGrid[data-layout='collage'] .assetCard {
+    --front: calc(var(--b) + var(--n, 0) * (1 - 2 * var(--b)));
+    --push: -1;
+    align-self: start;
+    grid-area: 1 / 1;
+    position: relative;
+    z-index: calc(1 + var(--front));
   }
 
-  :global(html.motion) .frame .actGrid[data-has-assets='true'][data-mirror-grid]:not([data-dense]) {
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  :global(html.motion) .frame .actGrid[data-layout='collage'] .assetCard:last-child {
+    --push: 1;
+    margin-top: clamp(7rem, 16svh, 11rem);
   }
 
-  /* While an act is held, its evidence drifts slowly with the scroll (each piece at its own rate),
-     so the hold reads as a camera still moving rather than a paused page. The timeline is the act's
-     own step marker, and the range is exactly its hold. */
+  :global(html.motion) .frame .actGrid[data-layout='collage'] .assetCard:focus-within {
+    z-index: 3;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='collage'] .clipping {
+    scale: calc(0.92 + 0.08 * var(--front));
+    transition:
+      scale 900ms var(--os-ease),
+      translate 900ms var(--os-ease);
+    translate: calc((1 - var(--front)) * var(--push) * 1.75rem) calc((1 - var(--front)) * var(--push) * 0.75rem);
+  }
+
+  /* The broadsheet: the band first, under the act's title; then the camera pushes in on the
+     headline, the paper rising over the title until it fills the screen, and the claim comes down
+     onto it as a dark slip laid across the page. A keyboard reader on the link gets the band back. */
+  :global(html.motion) .frame .actGrid:is([data-layout='print'], [data-layout='records']):has(:focus-visible) {
+    --b: 0;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .assets {
+    position: relative;
+    scale: calc(1 + 0.3 * var(--b));
+    transition:
+      scale 900ms var(--os-ease),
+      translate 900ms var(--os-ease);
+    /* Below 900px of height the paper rises further, so the slip below never reaches the headline. */
+    translate: 0 calc(var(--b) * (-19svh - max(0px, 900px - 100svh) * 0.4));
+    z-index: 1;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .pressCard {
+    rotate: calc(-1.2deg + 2.2deg * var(--b));
+    transition:
+      rotate 900ms var(--os-ease),
+      translate 700ms var(--os-ease);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] :is(.pressDate, .readOriginal) {
+    opacity: calc(1 - var(--b));
+    transition: opacity 400ms var(--os-ease);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .claims {
+    position: relative;
+    z-index: 2;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .claims > .claim {
+    rotate: calc(var(--b) * -1.5deg);
+    translate: calc(var(--b) * -2.5rem) calc(var(--d) * -1.75rem + var(--b) * 50svh);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .claims > .claim::before {
+    background: rgb(12 10 9 / 0.96);
+    box-shadow: 0 30px 50px -24px rgba(0, 0, 0, 0.7);
+    content: '';
+    inset: -1.25rem -1.5rem;
+    opacity: var(--b);
+    position: absolute;
+    transition: opacity 450ms var(--os-ease);
+    z-index: -1;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='print'] .headline {
+    font-size: clamp(2.5rem, 0.5rem + 5svh, 4.75rem);
+  }
+
+  /* The memo: its line lands, then the archive's stamp comes down on it. */
+  :global(html.motion) .frame .actGrid[data-layout='quote'] .noteText {
+    font-size: clamp(2.25rem, 0.9rem + 3.4svh, 3.5rem);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='quote'] .memoStamp {
+    opacity: var(--b);
+    scale: calc(1.6 - 0.6 * var(--b));
+    transition:
+      opacity 260ms ease-in,
+      scale 420ms cubic-bezier(0.55, 0, 0.85, 0.35);
+  }
+
+  /* The timeline: the line draws on to its later claims and the print steps forward. */
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .claims > .claim {
+    --lit: clamp(0, calc((1.5 + var(--b) - var(--n, 0)) * 2), 1);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .claims > .claim p {
+    font-size: 1.25rem;
+  }
+
+  /* The line hangs on the list itself, which the cut does not reach, so it follows its frame here. */
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .claims::before,
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .claims::after {
+    opacity: var(--in);
+    transition:
+      opacity 400ms var(--os-ease),
+      transform 900ms var(--os-ease);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .claims > .claim::after {
+    transition: transform 500ms var(--os-ease) 200ms;
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='timeline'] .imageCard {
+    rotate: calc((1 - var(--b)) * 1.4deg);
+    scale: calc(0.96 + 0.04 * var(--b));
+    transition:
+      rotate 900ms var(--os-ease),
+      scale 900ms var(--os-ease),
+      translate 900ms var(--os-ease);
+    translate: 0 calc(-0.75rem * var(--b));
+  }
+
+  /* The records: the note first, the card laid over its edge; then the card is slid across onto the
+     note and turned the other way, covering all of its text (only the note's header and paper edge
+     still show) while the note sinks back a little: the system's card now stands where the memo
+     was. -104% of the card's width lands it just inside the note's left edge from 1100px up. A
+     keyboard reader on a link gets the first beat back. */
+  :global(html.motion) .frame .actGrid[data-layout='records'] .claims > .claim {
+    opacity: var(--in);
+    rotate: calc(-1.2deg + 2.4deg * var(--b));
+    scale: calc(1 + 0.03 * var(--b));
+    translate: calc(var(--b) * -104%) calc(var(--d) * -1.75rem + var(--b) * 1rem);
+  }
+
+  :global(html.motion) .frame .actGrid[data-layout='records'] .clipping {
+    scale: calc(1 - 0.03 * var(--b));
+    transition:
+      scale 900ms var(--os-ease),
+      translate 900ms var(--os-ease);
+    translate: 0 calc(var(--b) * 1.5rem);
+  }
+
   @supports (animation-timeline: view()) and (timeline-scope: none) {
-    :global(html.motion) .act {
-      timeline-scope: --os-hold;
+    /* The closing sheet comes up over the last act only after its second beat has settled and
+       held, and the act fades out under it, so the hand-off is a settled act, then the file on an
+       empty desk, never cards cut by the sheet's edge. */
+    :global(html.motion) .closing {
+      view-timeline: --os-close block;
     }
 
-    :global(html.motion) .chapterMark + .stepMark {
-      view-timeline: --os-hold block;
-    }
-
-    :global(html.motion) .frame .assetCard {
-      --drift: calc(1rem + var(--n, 0) * 1.1rem);
-      animation: os-drift linear both;
-      animation-range: cover 38svh cover calc(38svh + var(--hold));
-      animation-timeline: --os-hold;
+    :global(html.motion) .act:last-of-type .frame {
+      animation: os-leave linear both;
+      animation-range: entry 0% entry 35%;
+      animation-timeline: --os-close;
     }
   }
 
@@ -1502,13 +2059,9 @@
   }
 }
 
-@keyframes os-drift {
-  from {
-    transform: translate3d(0, var(--drift), 0);
-  }
-
+@keyframes os-leave {
   to {
-    transform: translate3d(0, calc(var(--drift) * -1), 0);
+    opacity: 0;
   }
 }
 
@@ -1588,17 +2141,19 @@
   }
 
   .railPill {
-    /* Solid, not frosted: body text passes under the pill while it is read, and through glass it
-       would sit half-legible behind the count. A hairline in the page's own cream marks the edge. */
-    background: #0b0a08;
-    border-color: rgba(232, 223, 207, 0.3);
     gap: 0.6rem;
     height: 3rem;
     padding: 0 0.4rem 0 0.95rem;
   }
 
+  /* A full 44px to the finger; the negative margin keeps the pill's spacing and the bar stays slim. */
   .rail .railSegments a {
-    width: 1.75rem;
+    margin-inline: -0.5rem;
+    width: 2.75rem;
+  }
+
+  .segmentTrack {
+    width: 1.25rem;
   }
 
   .railTitleRoll {
@@ -1610,8 +2165,7 @@
   }
 
   /* On a phone the line's source wraps; narrowing it keeps the block (and its rule) centred under the line. */
-  .story .claim.verdict .sourceLink,
-  .verdict .sourceLabel {
+  .story .claim.verdict .sourceLink {
     max-width: min(100%, 19.5rem);
     text-wrap: balance;
   }
@@ -1623,5 +2177,23 @@
     margin-top: -0.5rem;
     position: relative;
     width: 6rem;
+  }
+}
+
+/* On the narrowest phones the folder's tab and its print would touch, so both give a little. */
+@media (max-width: 420px) {
+  .story .closing a[data-path-door] > span:first-child {
+    gap: 0.55rem;
+    left: 0.6rem;
+    padding-inline: 0.65rem;
+  }
+
+  .story .closing a[data-path-door] > span:first-child > span {
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+  }
+
+  .story .closing a[data-path-door] > span:nth-child(2) {
+    width: clamp(6.25rem, 30cqi, 16rem);
   }
 }

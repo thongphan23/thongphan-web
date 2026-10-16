@@ -2,7 +2,6 @@ import { Fragment, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
-import PenPhrase from '@/components/motion/PenPhrase'
 import PathDoors from '@/components/two-path/PathDoors'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import {
@@ -25,6 +24,8 @@ const sourceTypeLabels: Record<PublicOriginClaim['sourceType'], string> = {
 }
 
 const PRINCIPLE = '“AI không thay chuyên môn của bạn. Nó khuếch đại thứ bạn đã biết cách đóng gói.”'
+const PRINCIPLE_MARK = 'đóng gói'
+const PRINCIPLE_AT = PRINCIPLE.indexOf(PRINCIPLE_MARK)
 
 // Kept in the evidence file, hidden from the page: Conan now lives at conan.school,
 // and the site only shows real photographs, never AI-generated art.
@@ -44,19 +45,40 @@ const publicActs = originStoryPublic.acts.map((act) => {
 
 // The principle and the closing choice sit on paper; the five acts share one dark stage, so the
 // story reads as one place and the move from act to act is carried by the numerals and the rail,
-// not by flipping the ground. Only the first act needs an entrance: it is laid over the paper
-// principle as a rounded sheet (the default curtain in the motion signatures).
+// not by flipping the ground. The stage arrives as one rounded sheet laid over the principle,
+// which holds still and dims under it on wide screens (the "sheet" curtain in the signatures).
 const ACT_TONE = 'dark'
+
+// Each act is set as a different kind of document on the same twelve-column desk, so no two
+// frames in a row read alike: a collage of clippings, a full-bleed broadsheet, a stamped memo, a
+// timeline beside a print, and a file of records.
+const ACT_LAYOUT: Record<string, string> = {
+  difference: 'collage',
+  attention: 'print',
+  'core-product': 'quote',
+  rebuilding: 'timeline',
+  system: 'records',
+}
+
+const STAMP = '/images/homepage/evidence-cinema-stamp-v4.png'
 
 const pad = (value: number) => String(value).padStart(2, '0')
 
 // Clippings lie a little crooked on the desk.
 const CLIPPING_TILTS = ['-2.2deg', '1.6deg', '-1deg'] as const
 
-function ClaimSource({ claim }: { claim: PublicOriginClaim }) {
-  // A source label that already names its kind ("Lời kể cá nhân, …") is not prefixed with it again.
+// A source label that already names its kind ("Lời kể cá nhân, …") is not prefixed with it again.
+function sourceText(claim: PublicOriginClaim) {
   const kind = sourceTypeLabels[claim.sourceType]
-  const label = claim.sourceLabel.startsWith(kind) ? claim.sourceLabel : `${kind} · ${claim.sourceLabel}`
+  return claim.sourceLabel.startsWith(kind) ? claim.sourceLabel : `${kind} · ${claim.sourceLabel}`
+}
+
+// Two claims in a row from the same source name it once: the second points back to the first.
+function ClaimSource({ claim, after }: { claim: PublicOriginClaim; after?: PublicOriginClaim }) {
+  const label = sourceText(claim)
+  if (after && after.publicHref === claim.publicHref && sourceText(after) === label) {
+    return <span className={styles.sourceLabel}>Cùng nguồn với ý trước</span>
+  }
   if (!claim.publicHref) return <span className={styles.sourceLabel}>{label}</span>
   if (claim.publicHref.startsWith('https://')) {
     return (
@@ -156,10 +178,10 @@ function NoteCard({ claim, label, index }: { claim: PublicOriginClaim; label: st
 }
 
 // The evidence file's present-day print is cut from the same session as the hero portrait, so the
-// act would show the reader the first picture again. It is shown with the photo set's own
-// present-day hall instead, a different moment, printed square on the speaker (its focal point):
-// he stays sharp and large, and the hall, softened for the audience's privacy, falls behind him.
-const ASSET_PHOTO: Partial<Record<string, TwoPathPhotoId>> = { 'present-day-stage': 'home-hero' }
+// act would show the reader the first picture again. It is printed from the photo set's own
+// present-day portrait instead: a sharp, face-on picture, shown in its own 4:5 frame and never
+// wider than its native pixels, so the print is crisp at every size.
+const ASSET_PHOTO: Partial<Record<string, TwoPathPhotoId>> = { 'present-day-stage': 'mentor-thong-phan' }
 
 function ImageCard({ asset }: { asset: ImageArtifact }) {
   const photoId = ASSET_PHOTO[asset.id]
@@ -173,11 +195,11 @@ function ImageCard({ asset }: { asset: ImageArtifact }) {
     >
       {/* The print slot is dark from the first paint, so while the picture is still opening (or
           decoding) the card shows an unexposed print, never a blank sheet of paper. */}
-      <div className={styles.imageSlot} style={{ aspectRatio: photoId ? '1 / 1' : `${asset.width} / ${asset.height}` }}>
+      <div className={styles.imageSlot} style={{ aspectRatio: photoId ? '4 / 5' : `${asset.width} / ${asset.height}` }}>
         <div className={styles.imageFrame} data-img-reveal="up" data-parallax-frame="6">
           <div className={styles.imageMedia} data-reveal-media>
             {photoId ? (
-              <TwoPathPhoto id={photoId} sizes="(max-width: 1099px) 92vw, 44vw" eager />
+              <TwoPathPhoto id={photoId} sizes="368px" eager />
             ) : (
               <Image
                 src={asset.imageUrl}
@@ -209,8 +231,12 @@ function OriginAsset({ asset, index }: { asset: PublicOriginAsset; index: number
 // into frames, one per act plus one for the verdict. Each frame holds the screen for its stretch of
 // scroll and the next one only takes over once the reader has had all of it, so no frame ever
 // shows two acts at once. Lengths are counted in holds, which the CSS sets (an act frame holds for
-// one, the verdict for its own). The last act holds as long as the others, then scrolls away in the
-// flow with the closing sheet right behind it, so the sheet never lands on a half-read act.
+// one, the verdict for its own). The last act holds as long as the others plus half a hold more on
+// its second beat; then, still held, it is covered by the closing sheet, which the CSS lays over the
+// stage's last screen. The sheet only starts once that beat has settled and held for about a
+// screen, so it never lands on a half-read act or one that has only just changed.
+// Each hold is played in two beats (a step marker per half): the act settles once, then its
+// document moves on to its second still, so a held act is never one picture for a whole screen.
 type Span = { h: number; v: number }
 type Frame = { act: number; verdict: boolean; at: Span; len: Span }
 
@@ -227,8 +253,9 @@ const framesEnd = frames.reduce((at, frame) => {
   frame.at = at
   return add(at, frame.len)
 }, { h: 0, v: 0 } as Span)
-// The stage is one screen taller than its frames: the last one is still on screen while it leaves.
-const STAGE_STYLE = { '--stage': `calc(${span(framesEnd)} + 100svh)` } as CSSProperties
+// The stage is taller than its frames by the last act's extra half hold, the screen it stays held
+// under the closing sheet, and the stretch the sheet takes to come up over it.
+const STAGE_STYLE = { '--stage': `calc(${span(framesEnd)} + 0.5 * var(--hold) + 240svh)` } as CSSProperties
 
 const frameIndex = (act: number, verdict: boolean) => frames.findIndex((frame) => frame.act === act && frame.verdict === verdict)
 const frameStyle = (index: number) => ({ '--i': index, '--at': span(frames[index].at) }) as CSSProperties
@@ -247,8 +274,14 @@ export default function OriginStory() {
             00 — Nguyên tắc vận hành
           </figcaption>
           <blockquote className={styles.principle}>
-            <p data-scrub-words>
-              <PenPhrase text={PRINCIPLE} phrase="đóng gói" pen="underline" tone="lacquer" start="top 70%" end="top 35%" />
+            {/* The words light up with the scroll; the pen underlines the last of them in one stroke
+                once the whole line is in view, never half-drawn under a reader who has stopped. */}
+            <p data-scrub-words data-scrub-end="top 60%">
+              {PRINCIPLE.slice(0, PRINCIPLE_AT)}
+              <span data-pen="underline" data-pen-tone="lacquer" data-pen-trigger="enter" data-pen-start="top 88%" data-pen-delay="150">
+                {PRINCIPLE_MARK}
+              </span>
+              {PRINCIPLE.slice(PRINCIPLE_AT + PRINCIPLE_MARK.length)}
             </p>
           </blockquote>
           {/* The guide's pen rings the printed seal just outside its own printed border. */}
@@ -261,15 +294,15 @@ export default function OriginStory() {
             data-pen="circle"
             data-pen-tone="lacquer"
             data-pen-inset="3%"
-            data-pen-start="top 80%"
-            data-pen-end="top 40%"
+            data-pen-trigger="enter"
+            data-pen-start="top 85%"
           >
-            <Image src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" sizes="(min-width: 1024px) 360px, 180px" />
+            <Image src={STAMP} width={1024} height={1024} alt="" sizes="(min-width: 1024px) 360px, 180px" />
           </div>
         </figure>
       </section>
 
-      <div className={styles.chapters} data-chapters data-swap style={STAGE_STYLE}>
+      <div className={styles.chapters} data-chapters data-swap data-curtain="sheet" style={STAGE_STYLE}>
         {/* Reading progress: a pill pinned to the bottom of the screen while the acts pass (a slim
             index in the right margin on wide screens). The number and title roll to the act being
             read; each segment fills as it is read. */}
@@ -321,8 +354,7 @@ export default function OriginStory() {
           const hasAssets = act.assets.length > 0 || Boolean(note)
           const listed = act.claims.filter((claim) => claim !== verdict && claim !== note)
           const titleId = `origin-act-${act.id}-title`
-          // Every second act is mirrored on wide screens, so the evidence changes sides down the page.
-          const mirrored = index % 2 === 1
+          const layout = ACT_LAYOUT[act.id] ?? 'collage'
           const actFrame = frameIndex(index, false)
           const chapter = chapterSpan(index)
           return (
@@ -330,15 +362,14 @@ export default function OriginStory() {
               key={act.id}
               className={styles.act}
               data-tone={ACT_TONE}
-              data-curtain={index === 0 ? '' : undefined}
               data-has-verdict={verdict ? '' : undefined}
-              data-mirror={mirrored ? '' : undefined}
+              data-layout={layout}
               id={`origin-act-${act.id}`}
               aria-labelledby={titleId}
               style={{ '--at': span(frames[actFrame].at) } as CSSProperties}
             >
-              {/* Scroll markers: the chapter's stretch for the rail, and one step per frame for the
-                  stage. Without the pinned stage the chapter marker simply covers the section. */}
+              {/* Scroll markers: the chapter's stretch for the rail, and two steps per frame (one per
+                  beat) for the stage. Without the pinned stage the chapter marker covers the section. */}
               <span
                 className={styles.chapterMark}
                 data-chapter
@@ -346,25 +377,26 @@ export default function OriginStory() {
                 style={{ '--at': span(chapter.at), '--len': span(chapter.len) } as CSSProperties}
               />
               {frames.map((frame, k) =>
-                frame.act === index ? (
-                  <span
-                    key={k}
-                    className={styles.stepMark}
-                    data-swap-step
-                    aria-hidden="true"
-                    style={{ '--at': span(frame.at), '--len': span(frame.len) } as CSSProperties}
-                  />
-                ) : null,
+                frame.act === index
+                  ? [0, 1].map((beat) => (
+                      <span
+                        key={`${k}-${beat}`}
+                        className={styles.stepMark}
+                        data-swap-step
+                        aria-hidden="true"
+                        style={
+                          {
+                            '--at': span(add(frame.at, { h: (frame.len.h * beat) / 2, v: (frame.len.v * beat) / 2 })),
+                            '--len': span({ h: frame.len.h / 2, v: frame.len.v / 2 }),
+                          } as CSSProperties
+                        }
+                      />
+                    ))
+                  : null,
               )}
 
               <div className={styles.frame} data-frame={actFrame} style={frameStyle(actFrame)}>
-                <div
-                  className={styles.actGrid}
-                  data-origin-act={act.id}
-                  data-has-assets={hasAssets}
-                  data-dense={listed.length > 2 ? '' : undefined}
-                  data-mirror-grid={mirrored ? '' : undefined}
-                >
+                <div className={styles.actGrid} data-origin-act={act.id} data-has-assets={hasAssets} data-layout={layout}>
                   <header className={styles.actHeader} data-focus-bloom>
                     <p className={styles.actLabel}>{act.label}</p>
                     <div className={styles.actTitleRow}>
@@ -389,7 +421,7 @@ export default function OriginStory() {
                           >
                             <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                             <p>{claim.text}</p>
-                            <ClaimSource claim={claim} />
+                            <ClaimSource claim={claim} after={listed[listed.indexOf(claim) - 1]} />
                           </li>
                         ),
                       )}
@@ -408,6 +440,12 @@ export default function OriginStory() {
                         {note ? (
                           <div className={styles.assetCard}>
                             <NoteCard claim={note} label={act.label} index={index} />
+                            {/* The memo of the act that cost the most is stamped by the archive. */}
+                            {layout === 'quote' ? (
+                              <span className={styles.memoStamp} aria-hidden="true">
+                                <Image src={STAMP} width={1024} height={1024} alt="" sizes="160px" />
+                              </span>
+                            ) : null}
                           </div>
                         ) : null}
                       </div>
@@ -467,6 +505,8 @@ export default function OriginStory() {
         })}
       </div>
 
+      {/* The story ends as a sealed dossier: a paper file with its title on a case-file tab, the two
+          paths filed inside it as folders, and the archive's seal pressed at the foot. */}
       <section className={styles.closing} aria-labelledby="origin-story-closing" data-curtain>
         <div className={styles.closingInner}>
           <p className={styles.closingEyebrow} data-motion-reveal="mask">
@@ -480,8 +520,8 @@ export default function OriginStory() {
             data-pen-tone="lacquer"
             data-pen-to="[data-path-door]"
             data-pen-side="bottom,top"
-            data-pen-start="top 60%"
-            data-pen-end="top 25%"
+            data-pen-trigger="enter"
+            data-pen-start="top 75%"
             data-pen-media="(min-width: 1024px)"
           >
             {aboutPathContent.title}
@@ -492,10 +532,24 @@ export default function OriginStory() {
           <div className={styles.closingDoors}>
             <PathDoors variant="closing" placement="closing" />
           </div>
-          <Link className={styles.proofLink} href={aboutPathContent.proofLink.href} data-motion-action>
-            {aboutPathContent.proofLink.label}
-            <ArrowUpRight aria-hidden="true" size={16} />
-          </Link>
+          <div className={styles.closingFoot}>
+            <Link className={styles.proofLink} href={aboutPathContent.proofLink.href} data-motion-action>
+              {aboutPathContent.proofLink.label}
+              <ArrowUpRight aria-hidden="true" size={16} />
+            </Link>
+            <div
+              className={styles.closingSeal}
+              aria-hidden="true"
+              data-pen="circle"
+              data-pen-tone="lacquer"
+              data-pen-inset="4%"
+              data-pen-trigger="enter"
+              data-pen-start="top 90%"
+              data-pen-delay="250"
+            >
+              <Image src={STAMP} width={1024} height={1024} alt="" sizes="200px" />
+            </div>
+          </div>
         </div>
       </section>
     </div>

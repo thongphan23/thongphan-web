@@ -10,6 +10,8 @@
 //   data-pen-duration   ms; how long a load-drawn mark takes (defaults per shape)
 //   data-pen-trigger="when" + data-pen-when="<selector>": drawn on a clock while the anchor matches the
 //     selector and wiped once it stops (the attributes the selector names are watched under the root)
+//   data-pen-trigger="enter" + data-pen-delay (ms): drawn once, at a fixed pace, when the anchor
+//     crosses data-pen-start; sets data-pen-entered on the anchor so CSS can follow the stroke
 //   data-pen-width      stroke width in px (default scales with the anchor, 2.5-6px at 1440)
 //   data-pen-start / data-pen-end   ScrollTrigger positions (default "top 85%" / "top 45%")
 //   data-pen-side="start,end"       top|bottom|left|right|auto: where a connector leaves and lands
@@ -786,6 +788,26 @@ export function guidePen(root: HTMLElement, specs: PenSpec[]): Cleanup {
       if (names.length) watch.observe(root, { subtree: true, attributes: true, attributeFilter: names })
       check()
       killers.push(() => watch.disconnect())
+    } else if (el.dataset.penTrigger === 'enter') {
+      // Drawn whole at a fixed pace once the anchor reaches its start line, so a reader who
+      // stops scrolling never sees a mark caught half-drawn.
+      let trigger: HTMLElement = source
+      for (let n: HTMLElement | null = source; n && n !== root; n = n.parentElement) {
+        if (getComputedStyle(n).position === 'sticky') trigger = n.parentElement ?? trigger
+      }
+      const delay = Number(el.dataset.penDelay ?? 0) / 1000
+      tween = gsap.to(m.state, { t: 1, duration: 0.7, delay, ease: 'power2.inOut', paused: true, onUpdate: paint })
+      const enter = ScrollTrigger.create({
+        trigger,
+        start: el.dataset.penStart ?? 'top 85%',
+        end: 'max',
+        once: true,
+        onEnter: () => {
+          el.dataset.penEntered = ''
+          tween.play()
+        },
+      })
+      killers.push(() => enter.kill())
     } else {
       // A sticky anchor would give ScrollTrigger a moving start, so the trigger is its
       // nearest ancestor that scrolls normally.
