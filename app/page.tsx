@@ -38,6 +38,8 @@ export default function HomePage() {
         data-stage
         data-cursor={homeContent.hero.scrollCue}
         data-cursor-tone="light"
+        data-trail-scope="hero"
+        data-trail-under="sheet"
       >
         <HeroStageFx />
         <div className={styles.stage} aria-hidden="true">
@@ -62,24 +64,18 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.stageFloor} aria-hidden="true" />
+        {/* Out of the copy block, so on a wide stage it can stand on the left edge, off the microphone. */}
+        <p className={`${styles.eyebrow} intro-fade`}>{homeContent.eyebrow}</p>
         <div className={styles.heroContent}>
           <div className={styles.heroCopy} data-scroll-out="24">
-            <p className={`${styles.eyebrow} intro-fade`}>{homeContent.eyebrow}</p>
             <h1 id="home-title" className={styles.title}>
               <span className={styles.titleLead}>
                 <SplitWords text={titleLead} />
               </span>{' '}
-              {/* The guide's pen splits from the question into the two doors below it, a thick felt-tip
-                  Y that spans the stage; each arm lands on its door's anchor (PathDoors). */}
-              <em
-                data-pen="fork"
-                data-pen-tone="lacquer,lime,ember"
-                data-pen-to="[data-path-door='tensai'] [data-door-anchor],[data-path-door='conan'] [data-door-anchor]"
-                data-pen-trigger="load"
-                data-pen-delay="700"
-                data-pen-duration="900"
-                data-pen-width="10"
-              >
+              {/* The guide's trail (guide-trail.ts) starts under the question: a short stem that forks
+                  into the two doors below it on a clock after load, while the main line runs on
+                  down through the gap between the doors and down the page with the scroll. */}
+              <em data-trail-point="0|1" data-trail-at="0.5 1 0 10|0.5 1 0 48" data-trail-load>
                 <SplitWords text={titleQuestion} start={wordCount(titleLead)} />
               </em>
             </h1>
@@ -95,7 +91,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <div className={styles.afterHero} data-curtain="sheet">
+      <div className={styles.afterHero} data-curtain="sheet" data-trail-cover="sheet">
         <FounderLetter />
       </div>
 
@@ -107,12 +103,25 @@ export default function HomePage() {
 
       <RealWorkReel />
 
-      <section className={styles.closing} aria-labelledby="home-closing-title" data-curtain>
-        <div className={styles.closingInner}>
+      <section
+        id="hai-con-duong"
+        className={styles.closing}
+        aria-labelledby="home-closing-title"
+        data-curtain
+        data-trail-cover="closing"
+      >
+        <div className={styles.closingInner} data-trail-point="77" data-trail-at="1 0 -60 24">
           <p className={styles.closingEyebrow} data-motion-reveal="mask">
             {homeContent.closing.eyebrow}
           </p>
-          <h2 id="home-closing-title" className={styles.closingTitle} data-split>
+          <h2
+            id="home-closing-title"
+            className={styles.closingTitle}
+            data-split
+            data-trail-point="78"
+            data-trail-at="1 1 240 -30"
+            data-trail-mobile="off"
+          >
             {homeContent.closing.title}
           </h2>
           <PathDoors variant="closing" placement="closing" />

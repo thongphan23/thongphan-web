@@ -1,7 +1,5 @@
 import type { CSSProperties } from 'react'
 import { homeContent } from '@/lib/two-path-content'
-import { PATH_LABELS, type PathKey } from '@/lib/two-path-links'
-import PathLink from './PathLink'
 import TwoPathPhoto from './TwoPathPhoto'
 import home from './HomeSections.module.css'
 
@@ -10,21 +8,17 @@ import home from './HomeSections.module.css'
 //      screens it holds still and steps back while the next beat is laid over it,
 //   2. the number (a lacquer card that rises over beat 1, holds while the debt settles line by
 //      line, then steps back as the paper of the next beat slides up over it),
-//   3. what he lost (one large sentence) and why there are two paths,
-//   4. one decision: "Chọn một cửa." over two large rows, each with its own button, then the
-//      signature.
-// Without the motion engine (or under reduced motion) every beat is simply a tall, fully lit block.
-const PATH_ORDER: PathKey[] = ['tensai', 'conan']
-const pad = (value: number) => String(value).padStart(2, '0')
-
+//   3. what he lost (one large sentence), why there are two paths and what each one is,
+//   4. one sentence ("Chọn một cửa.") and one link down to the two doors that close the page, where
+//      the decision is made once, then the signature.
+// The guide's trail (guide-trail.ts) threads the margins of every beat through the data-trail-*
+// anchors. Without the motion engine (or under reduced motion) every beat is a tall, fully lit block.
 export default function FounderLetter() {
   const { letter } = homeContent
   const [lead, ...rest] = letter.paragraphs
   const [leadBefore, leadAfter] = lead.split(letter.pullQuote).map((part) => part.trim())
   const [stakes, paths] = rest.slice(0, -1)
   const last = rest[rest.length - 1]
-  // "Nếu bạn đi làm, ... . Nếu bạn đang hoặc muốn kinh doanh, ..." becomes one row per path.
-  const pathRows = (paths ?? '').split(/(?<=\.)\s+(?=Nếu)/).filter(Boolean)
   const closingLines = last.split(/(?<=\.)\s+/).filter(Boolean)
   // The debt is set as display lines: one per sentence, a long sentence halved at its middle word.
   const debtLines = letter.pullQuote
@@ -38,8 +32,21 @@ export default function FounderLetter() {
 
   return (
     <section className={home.letter} aria-labelledby="founder-letter-title">
-      <div className={home.letterOpen}>
-        <figure className={home.letterPortrait} data-img-reveal="up" data-parallax-frame="5" data-photo-bloom>
+      <div
+        className={home.letterOpen}
+        data-trail-scope="open"
+        data-trail-under="slab"
+        data-trail-point="9|12"
+        data-trail-at="0.5 0 0 6|0 1 40 -16"
+      >
+        <figure
+          className={home.letterPortrait}
+          data-img-reveal="up"
+          data-parallax-frame="5"
+          data-photo-bloom
+          data-trail-point="10|11"
+          data-trail-at="1 0 30 -40|1 1 30 14"
+        >
           <span className={home.letterPortraitMedia} data-reveal-media>
             <TwoPathPhoto id={letter.portraitId} eager sizes="(max-width: 899px) 86vw, 36rem" />
           </span>
@@ -54,14 +61,25 @@ export default function FounderLetter() {
         </div>
       </div>
 
-      <div className={home.debt}>
-        <div className={home.debtSticky}>
+      <div className={home.debt} data-trail-scope="slab" data-trail-under="sheet2">
+        {/* On the lacquer the trail turns paper white and runs above the rule, then down the
+            right gutter, so it never crosses the debt lines. */}
+        <div
+          className={home.debtSticky}
+          data-trail-cover="slab"
+          data-trail-point="20|23|24"
+          data-trail-at="0 0 40 22|1 0 -38 22|1 1 -38 -40"
+          data-trail-tone="paper"
+          data-trail-at-m="0 0 10 28|0 0 10 28|0 1 10 -20"
+        >
           <blockquote className={home.debtQuote}>
             <span className={home.debtRule} data-draw-line aria-hidden="true" />
             <p>
               {debtLines.map((line, index) => (
                 <span key={line} className={home.debtLine} style={{ '--line': index } as CSSProperties}>
-                  <span className={home.debtLineInner}>{line}</span>{' '}
+                  <span className={home.debtLineInner}>
+                    {line}
+                  </span>{' '}
                 </span>
               ))}
             </p>
@@ -69,58 +87,43 @@ export default function FounderLetter() {
         </div>
       </div>
 
-      <div className={home.letterSheet}>
+      <div
+        className={home.letterSheet}
+        data-trail-cover="sheet2"
+        data-trail-scope="sheet2"
+        data-trail-point="30|47"
+        data-trail-at="1 0 -38 10|1 1 -38 -10"
+      >
         <div className={home.letterClose}>
           <div className={home.closeLead}>
             <p className={home.afterLead}>{leadAfter}</p>
-            {stakes ? <p className={home.stakes}>{stakes}</p> : null}
+            <div className={home.closeBody} data-trail-point="31" data-trail-at="1 1 40 24" data-trail-mobile="off">
+              {stakes ? <p className={home.stakes}>{stakes}</p> : null}
+              {paths ? <p className={home.stakes}>{paths}</p> : null}
+            </div>
           </div>
-          {/* One decision: the question, then one row per path. The button is the row's link and
-              its hit area covers the whole row, so the row itself is the target on touch too. */}
-          <div className={home.decision} role="group" aria-labelledby="letter-choice">
-            <p id="letter-choice" className={home.choice}>
-              {/* The guide's pen underlines the question itself once the row below can be read. */}
+          {/* One sentence and one link: the trail underlines the question, then runs on to the
+              signature and down the page to the two doors. */}
+          <div className={home.decision} data-trail-point="32" data-trail-at="0 0 -30 -22">
+            <p className={home.choice} data-trail-point="46" data-trail-at="1 1 39 6" data-trail-mobile="off">
               {closingLines.map((line, index) => (
                 <span
                   key={line}
                   className={home.choiceLine}
-                  {...(index === 0 && closingLines.length > 1
-                    ? { 'data-pen': 'underline', 'data-pen-tone': 'lacquer', 'data-pen-start': 'top 78%', 'data-pen-end': 'top 52%' }
-                    : {})}
+                  {...(index === 0
+                    ? { 'data-trail-point': '44', 'data-trail-at': '0 1 -6 14' }
+                    : { 'data-trail-point': '45', 'data-trail-at': '1 1 10 16' })}
                 >
                   {line}
                 </span>
               ))}
             </p>
-            {pathRows.length ? (
-              <ol className={home.pathRows} data-reveal-children data-stagger="0.14">
-                {pathRows.map((row, index) => {
-                  const path = PATH_ORDER[index] ?? 'tensai'
-                  const door = homeContent.doors.find((item) => item.path === path)
-                  return (
-                    <li key={row} className={home.pathRow} data-path={path}>
-                      <span className={home.pathIndex} aria-hidden="true">
-                        {pad(index + 1)}
-                      </span>
-                      <h3 className={home.pathTitle}>{door?.label ?? PATH_LABELS[path]}</h3>
-                      <p className={home.pathText}>{row}</p>
-                      <PathLink
-                        path={path}
-                        kind="door"
-                        placement="door"
-                        className={home.pathCta}
-                        data-motion-action
-                      >
-                        <span>{letter.pathCta[path]}</span>
-                        <span className={home.pathCtaArrow} aria-hidden="true">
-                          →
-                        </span>
-                      </PathLink>
-                    </li>
-                  )
-                })}
-              </ol>
-            ) : null}
+            <a className={home.choiceLink} href="#hai-con-duong">
+              <span>{homeContent.closing.eyebrow}</span>
+              <span className={home.choiceLinkArrow} aria-hidden="true">
+                ↓
+              </span>
+            </a>
             <p className={home.signature} data-motion-reveal="drift">
               <span className={home.signatureLine} data-draw-line aria-hidden="true" />
               <span className={home.signatureName}>{letter.signature}</span>

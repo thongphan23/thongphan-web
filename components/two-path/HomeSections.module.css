@@ -254,13 +254,17 @@
       view-timeline: --debt block;
     }
 
-    /* Each line rises in its own window while the slab comes up the screen; the last is up while
-       the slab top is still a third of a screen below the top. */
+    /* Each line is uncovered from its foot up as it rises, one at a time, scrubbed by the slab
+       coming up the screen: the upright number first, then a beat, then the italic years. */
     :global(html.motion) .debtLineInner {
       animation: debtLineRise linear both;
-      animation-range: entry calc(16% + var(--line, 0) * 15%) entry calc(40% + var(--line, 0) * 15%);
+      animation-range: entry calc(14% + var(--line, 0) * 14% + var(--line-stage, 0%))
+        entry calc(36% + var(--line, 0) * 14% + var(--line-stage, 0%));
       animation-timeline: --debt;
-      transform-origin: 0 100%;
+    }
+
+    :global(html.motion) .debtLine + .debtLine .debtLineInner {
+      --line-stage: 9%;
     }
 
     /* The slab steps back only while the sheet covers it (it enters at 5% of the hold). */
@@ -312,14 +316,12 @@
 
 @keyframes debtLineRise {
   from {
-    opacity: 0;
-    rotate: 3deg;
-    translate: 0 120%;
+    clip-path: inset(100% -0.4em -0.3em -0.4em);
+    translate: 0 0.42em;
   }
 
   to {
-    opacity: 1;
-    rotate: 0deg;
+    clip-path: inset(-0.45em -0.4em -0.3em -0.4em);
     translate: 0 0;
   }
 }
@@ -346,8 +348,9 @@
   }
 }
 
-/* Beat 3: what he lost and why there are two paths, on a sheet of paper laid over the held slab;
-   then beat 4, one decision (pattern: Brilliant's goal picker, one large tappable row per answer). */
+/* Beat 3: what he lost, why there are two paths and what each one is, on a sheet of paper laid over
+   the held slab; then beat 4, one sentence and one link down to the two doors that close the page
+   (the decision is made once, there). */
 .letterSheet {
   background: var(--brand-reading-paper);
   position: relative;
@@ -357,13 +360,13 @@
 .letterClose {
   margin: 0 auto;
   max-width: 1400px;
-  padding: clamp(3rem, 8svh, 6rem) var(--brand-space-inline) clamp(3.5rem, 9svh, 6.5rem);
+  padding: clamp(3rem, 8svh, 6rem) var(--brand-space-inline) clamp(3rem, 7svh, 5rem);
 }
 
 .closeLead {
   display: grid;
   gap: clamp(1.5rem, 3svh, 2.5rem) clamp(3rem, 6vw, 7rem);
-  margin: 0 0 clamp(3rem, 8svh, 5.5rem);
+  margin: 0 0 clamp(2.5rem, 6svh, 4.5rem);
 }
 
 .afterLead {
@@ -378,28 +381,35 @@
   text-wrap: balance;
 }
 
+.closeBody {
+  display: grid;
+  gap: 1.1em;
+}
+
+/* Support copy in the lead tier: read from across the room, never a caption. */
 .stakes {
   color: #2b251f;
-  font-size: clamp(1.125rem, 0.98rem + 0.4vw, 1.3125rem);
+  font-size: var(--fs-lead);
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
-  max-width: 40ch;
+  max-width: 36ch;
   text-wrap: pretty;
 }
 
 @media (min-width: 1100px) {
   .closeLead {
-    align-items: end;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: start;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   }
 }
 
-/* The decision: the question, two rows, the signature. */
+/* The sentence, the link down to the doors, the signature. */
 .decision {
+  align-items: end;
   border-top: 2px solid var(--brand-text-on-paper);
   display: grid;
-  gap: clamp(1.75rem, 4svh, 2.75rem);
+  gap: clamp(1.25rem, 3svh, 2rem) clamp(2rem, 5vw, 5rem);
   padding-top: clamp(1.75rem, 4svh, 2.75rem);
 }
 
@@ -410,7 +420,7 @@
   font-family: var(--font-cormorant);
   font-size: clamp(2.75rem, 1rem + 4.4vw, 5.6rem);
   font-weight: 500;
-  /* Row gap: when the answer wraps under the question, the pen's underline needs air above it. */
+  /* Row gap: when the answer wraps under the question, the trail's underline needs air above it. */
   gap: 0.2em 0.28em;
   letter-spacing: -0.025em;
   line-height: 1;
@@ -422,158 +432,44 @@
   font-style: italic;
 }
 
-.pathRows {
-  display: grid;
-  gap: clamp(0.75rem, 1.6svh, 1rem);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.pathRow[data-path='tensai'] {
-  --row-accent: #c3f331;
-  --row-on-accent: #073b2f;
-  --row-tint: rgb(195 243 49 / 0.2);
-  --row-edge: #5d7a07;
-}
-
-.pathRow[data-path='conan'] {
-  --row-accent: #c4441f;
-  --row-on-accent: #ffffff;
-  --row-tint: rgb(196 68 31 / 0.08);
-  --row-edge: #c4441f;
-}
-
-/* A row is one large target: the button's hit area (::after) covers the whole row. */
-.pathRow {
+.choiceLink {
   align-items: center;
-  background: #fbf8f2;
-  border: 1.5px solid rgb(23 20 16 / 0.16);
-  border-radius: clamp(16px, 1.6vw, 24px);
+  border-bottom: 2px solid currentColor;
   color: var(--brand-text-on-paper);
-  column-gap: clamp(1rem, 2.4vw, 2.5rem);
-  display: grid;
-  grid-template-areas:
-    'index title'
-    'index text'
-    'index cta';
-  grid-template-columns: auto minmax(0, 1fr);
-  padding: clamp(1.25rem, 3svh, 1.9rem) clamp(1.1rem, 2.6vw, 2.25rem);
-  position: relative;
-  row-gap: 0.6rem;
-  transition:
-    background-color 260ms var(--brand-motion-ease),
-    border-color 260ms var(--brand-motion-ease);
-}
-
-.pathIndex {
-  align-self: start;
-  background: var(--row-accent);
-  border-radius: 999px;
-  color: var(--row-on-accent);
-  display: grid;
-  font-size: 1rem;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  grid-area: index;
-  height: 2.75rem;
-  place-items: center;
-  width: 2.75rem;
-}
-
-.pathTitle {
-  font-family: var(--font-cormorant);
-  font-size: clamp(2rem, 1.3rem + 1.3vw, 2.75rem);
-  font-weight: 600;
-  grid-area: title;
-  letter-spacing: -0.015em;
-  line-height: 1.04;
-  margin: 0;
-  text-wrap: balance;
-}
-
-.pathText {
-  color: #2b251f;
-  font-size: clamp(1.0625rem, 0.96rem + 0.3vw, 1.25rem);
-  font-weight: 400;
-  grid-area: text;
-  line-height: 1.55;
-  margin: 0;
-  max-width: 46ch;
-  text-wrap: pretty;
-}
-
-.pathCta {
-  align-items: center;
-  background: var(--row-accent);
-  border-radius: 999px;
-  color: var(--row-on-accent);
   display: inline-flex;
-  font-size: 1.0625rem;
+  font-size: var(--fs-body);
   font-weight: 700;
-  gap: 0.75rem;
-  grid-area: cta;
+  gap: 0.6rem;
   justify-self: start;
-  margin-top: 0.5rem;
-  min-height: 3.5rem;
-  padding: 0 1.6rem 0 1.75rem;
+  letter-spacing: 0.08em;
+  min-height: 48px;
   text-decoration: none;
-  white-space: nowrap;
+  text-transform: uppercase;
 }
 
-/* The site shell resets link colour to inherit (class + attribute + element); this outranks it so
-   the label keeps its on-accent ink (white on Conan's orange, deep green on Tensai's lime). */
-.pathRow a.pathCta {
-  color: var(--row-on-accent);
-}
-
-.pathCta::after {
-  border-radius: inherit;
-  content: '';
-  inset: 0;
-  position: absolute;
-}
-
-.pathCtaArrow {
-  display: inline-block;
-  font-size: 1.25rem;
-  line-height: 1;
-  transition: translate 260ms var(--brand-motion-ease);
-}
-
-.pathCta:focus-visible {
-  outline: var(--brand-focus-ring-paper);
-  outline-offset: var(--brand-focus-offset);
-}
-
-.pathRow:has(.pathCta:focus-visible) {
-  border-color: var(--row-edge);
+.choiceLinkArrow {
+  font-size: 1.25em;
+  transition: translate 400ms var(--brand-motion-ease);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .pathRow:hover {
-    background: var(--row-tint);
-    border-color: var(--row-edge);
-  }
-
-  .pathRow:hover .pathCtaArrow {
-    translate: 0.3rem 0;
+  .choiceLink:hover .choiceLinkArrow {
+    translate: 0 0.2rem;
   }
 }
 
-/* Wide: index, words, button on one line per row. */
+.choiceLink:focus-visible {
+  outline: 3px solid var(--brand-lacquer);
+  outline-offset: 4px;
+}
+
 @media (min-width: 900px) {
-  .pathRow {
-    grid-template-areas:
-      'index title cta'
-      'index text cta';
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    row-gap: 0.5rem;
+  .decision {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
-  .pathCta {
-    align-self: center;
-    margin-top: 0;
+  .choice {
+    grid-column: 1 / -1;
   }
 }
 
@@ -1033,11 +929,11 @@
 .statClaim {
   color: #ece6da;
   font-family: var(--font-be-vietnam);
-  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.3125rem);
+  font-size: var(--fs-lead);
   font-weight: 400;
-  line-height: 1.55;
-  margin: 0 0 0.75rem;
-  max-width: 40ch;
+  line-height: 1.45;
+  margin: 0 0 0.85rem;
+  max-width: 32ch;
 }
 
 .statBody a {
@@ -1135,19 +1031,20 @@
   width: 100%;
 }
 
-/* One surface for every phone snapshot: grain over the frame, a scrim under the caption. */
+/* No shade over the team: only a fine grain, so the phone snapshot shares the page's surface. */
 .statPhotoFrame::after {
   background-image: var(--brand-grain);
   content: '';
   inset: 0;
   mix-blend-mode: overlay;
-  opacity: 0.24;
+  opacity: 0.12;
   pointer-events: none;
   position: absolute;
 }
 
+/* The caption sits on its own low strip at the foot of the frame, not a scrim over the photo. */
 .statCaption {
-  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.76) 68%, rgb(7 7 6 / 0));
+  background: linear-gradient(to top, rgb(7 7 6 / 0.84) 0, rgb(7 7 6 / 0.6) 62%, rgb(7 7 6 / 0));
   bottom: 0;
   color: #fff;
   font-family: var(--font-be-vietnam);
@@ -1155,7 +1052,7 @@
   font-weight: 500;
   left: 0;
   line-height: 1.35;
-  padding: 3.5rem clamp(1rem, 2.4vw, 2rem) clamp(0.9rem, 2vw, 1.5rem);
+  padding: 2rem clamp(1rem, 2.4vw, 2rem) clamp(0.9rem, 2vw, 1.4rem);
   pointer-events: none;
   position: absolute;
   right: 0;
@@ -1191,7 +1088,11 @@
 }
 
 .reel.reel[data-hscroll-active='true'] {
-  --reel-w: min(64vw, calc((88svh - 18.5rem) * 1.6));
+  /* Every source is a 4:3 group shot, so every frame is 4:3: a portrait crop would cut people off
+     the ends of the table. The frame's height is what the screen leaves under the words, the
+     caption row and the dock, and the frame and its caption never stand taller than 100vh - 180px. */
+  --reel-caption: 3.75rem;
+  --reel-w: min(60vw, calc((88svh - 18.5rem - var(--reel-caption)) * 4 / 3), calc((100vh - 180px - var(--reel-caption)) * 4 / 3));
   padding-top: 5.5rem;
 }
 
@@ -1262,19 +1163,21 @@
 
 .reel.reel[data-hscroll-active='true'] [data-hscroll-prev],
 .reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
-  background: var(--brand-paper);
-  border-color: var(--brand-paper);
-  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.5);
-  color: var(--brand-ink);
+  background: transparent;
+  border: 1px solid rgb(244 239 228 / 0.42);
+  box-shadow: none;
+  color: var(--brand-paper);
   height: 3.5rem;
   pointer-events: auto;
   position: absolute;
-  top: calc((100% - var(--dock)) / 2);
+  top: auto;
   transition:
     background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
     opacity 400ms ease,
     scale 500ms var(--brand-motion-ease);
-  translate: 0 -50%;
+  translate: 0 0;
   width: 3.5rem;
   z-index: 3;
 }
@@ -1287,28 +1190,37 @@
   --reel-shift: calc(50% - var(--reel-w) / 2 - var(--brand-space-inline));
 }
 
+/* The arrows wait in the dock at the right margin, off every photo: two thin rings, like the
+   hero's pills, that fill when the pointer is on them. */
+.reel.reel[data-hscroll-active='true'] [data-hscroll-prev],
+.reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
+  bottom: clamp(0.5rem, 1.6svh, 1.1rem);
+  left: auto;
+}
+
 .reel.reel[data-hscroll-active='true'] [data-hscroll-prev] {
-  left: calc(50% - var(--reel-w) / 2 - 1.75rem + var(--reel-shift) * max(0, 1 - (1 - var(--hscroll-progress, 0)) * 3.5));
+  right: calc(var(--brand-space-inline) + 4.25rem);
 }
 
 .reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
-  right: calc(50% - var(--reel-w) / 2 - 1.75rem + var(--reel-shift) * max(0, 1 - var(--hscroll-progress, 0) * 3.5));
+  right: var(--brand-space-inline);
 }
 
 @media (hover: hover) {
   .reel.reel[data-hscroll-active='true'] [data-hscroll-prev]:hover:not(:disabled),
   .reel.reel[data-hscroll-active='true'] [data-hscroll-next]:hover:not(:disabled) {
-    background: #ffffff;
-    scale: 1.08;
+    background: var(--brand-paper);
+    border-color: var(--brand-paper);
+    color: var(--brand-ink);
+    scale: 1.06;
   }
 }
 
-/* At either end there is no neighbour on that side, so its arrow leaves instead of greying out. */
+/* At either end there is no neighbour on that side, so its ring dims and stops answering. */
 .reel.reel[data-hscroll-active='true'] [data-hscroll-prev]:disabled,
 .reel.reel[data-hscroll-active='true'] [data-hscroll-next]:disabled {
-  opacity: 0;
+  opacity: 0.3;
   pointer-events: none;
-  scale: 0.8;
 }
 
 /* The first photo starts on the page margin and the last one ends on it, so neither end of the run
@@ -1371,31 +1283,22 @@
   height: 6px;
 }
 
-/* The caption rides on the photo over a scrim, so it never competes with a busy background. */
+/* The caption has its own row under the photo: nothing is laid over a face, and it is never cut. */
 .reelItem.reelItem {
   position: relative;
 }
 
 .reelCaption.reelCaption {
   align-items: baseline;
-  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.76) 68%, rgb(7 7 6 / 0));
-  bottom: 0;
-  color: #fff;
+  color: #ece6da;
   display: flex;
   font-family: var(--font-be-vietnam);
-  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3rem);
+  font-size: var(--fs-body);
   font-weight: 500;
   gap: 0.9rem;
-  left: 0;
-  line-height: 1.35;
-  padding: 3rem clamp(1rem, 2vw, 1.75rem) clamp(0.9rem, 1.8vw, 1.4rem);
+  line-height: 1.4;
+  padding: 0.85rem 0.15rem 0;
   pointer-events: none;
-  position: absolute;
-  right: 0;
-  text-shadow:
-    0 1px 2px rgb(0 0 0 / 0.55),
-    0 2px 18px rgb(0 0 0 / 0.6);
-  z-index: 2;
 }
 
 .reelCaption .reelIndexHome {
@@ -1409,17 +1312,27 @@
   letter-spacing: 0.1em;
 }
 
-/* Pinned: the caption of the photo at rest lies on its own scrim (60% ink and more under the words)
-   across the foot of the frame, so it reads on any photo without darkening the rest of it. */
+/* Pinned: the row under each frame is reserved (--reel-caption), so a caption of two lines still
+   fits and the frames above never shift. */
 .reel.reel[data-hscroll-active='true'] .reelItem.reelItem .reelCaption {
-  background: linear-gradient(to top, rgb(7 7 6 / 0.86) 0, rgb(7 7 6 / 0.62) 58%, rgb(7 7 6 / 0));
-  border-radius: 0 0 6px 6px;
-  bottom: 0;
-  font-size: clamp(1.1875rem, 0.8rem + 0.55vw, 1.4rem);
-  left: 0;
+  color: #ece6da;
+  font-size: var(--fs-body);
   max-width: none;
-  padding: 4.5rem clamp(1.25rem, 2.6vw, 2.25rem) clamp(1.1rem, 2.2vw, 1.75rem);
-  right: 0;
+  min-height: var(--reel-caption);
+  opacity: 0.6;
+  padding: 0.85rem 0.15rem 0;
+  position: static;
+  text-shadow: none;
+  transform: none;
+}
+
+/* The photo at rest owns its caption at full strength; the neighbours' captions wait dimmer. */
+.reel.reel[data-hscroll-active='true'] .reelItem.reelItem[data-current] .reelCaption {
+  opacity: 1;
+}
+
+.reel.reel[data-hscroll-active='true'] .reelItem > :first-child {
+  aspect-ratio: 4 / 3;
 }
 
 /* As the closing sheet rises, the reel steps back: smaller, dimmer, never cut by a hard edge. The

@@ -15,7 +15,7 @@ export default function GuideZoom() {
   const item = photo(guide.photoId)
   return (
     <section className={`${styles.guide} ${home.guide}`} aria-labelledby="guide-title">
-      <div className={`${styles.guideStage} ${home.guideStage}`}>
+      <div className={`${styles.guideStage} ${home.guideStage}`} data-trail-point="50|51" data-trail-at="1 0 -38 40|1 1 -38 -40">
         <h2 id="guide-title" className={`${styles.guideTitle} ${home.guideTitle}`}>
           <span className={`${styles.guideWord} ${home.guideLeft}`}>{guide.lead}</span>{' '}
           <span className={`${styles.guideSlot} ${home.guideSlot}`} aria-hidden="true" />{' '}

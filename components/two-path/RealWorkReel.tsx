@@ -39,7 +39,7 @@ export default function RealWorkReel() {
       data-hscroll-snap
       style={{ '--reel-count': reel.photoIds.length } as CSSProperties}
     >
-      <div className={home.reelBody}>
+      <div className={home.reelBody} data-trail-scope="reel" data-trail-under="closing" data-trail-point="70|71" data-trail-at="1 0 -30 30|1 1 -30 -20">
         <header className={`${styles.reelIntro} ${home.reelIntro}`}>
           <p className={`${styles.reelEyebrow} ${home.reelEyebrow}`} data-motion-reveal="drift">
             {reel.eyebrow}
@@ -59,7 +59,7 @@ export default function RealWorkReel() {
             at rest, next to the neighbour they bring in, and the counter sits under the row. The
             controls stay outside the viewport, which is what the mouse drag listens on. */}
         <div className={home.reelStage}>
-          <div className={`${styles.reelViewport} ${home.reelViewportHome}`} data-cursor="Cuộn" data-cursor-tone="light">
+          <div className={`${styles.reelViewport} ${home.reelViewportHome}`} data-cursor="Kéo" data-cursor-tone="light" data-trail-behind>
             <div className={`${styles.reelTrack} ${home.reelTrackHome}`} data-hscroll-track>
               {reel.photoIds.map((id, index) => {
                 const item = photo(id)

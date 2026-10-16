@@ -18,7 +18,7 @@ export default function FieldNotes() {
         <h2 id="field-notes-title" className={`${styles.sectionTitle} ${home.statsTitle}`} data-split>
           {fieldNotes.title}
         </h2>
-        <div className={home.statRows}>
+        <div className={home.statRows} data-trail-point="60|61" data-trail-at="1 0 28 0|1 1 28 0">
           {fieldNotes.cards.map((card) => (
             <article key={card.claimId} className={home.statRow}>
               <span className={home.statRule} data-draw-line aria-hidden="true" />
@@ -41,7 +41,13 @@ export default function FieldNotes() {
           ))}
         </div>
       </div>
-      <figure className={home.statPhoto} data-motion-surface data-photo-bloom>
+      <figure
+        className={home.statPhoto}
+        data-motion-surface
+        data-photo-bloom
+        data-trail-point="62|63"
+        data-trail-at="1 0 62 -14|1 1 62 0"
+      >
         <div className={home.statPhotoFrame} data-img-reveal="left" data-parallax-frame="7">
           <span className={styles.revealMedia} data-reveal-media>
             <TwoPathPhoto id={fieldNotes.photoId} eager sizes="100vw" />

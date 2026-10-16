@@ -26,7 +26,9 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
     // Two panels in the path's own colour with a framed photo. In wide containers they stand side
     // by side and the one under the pointer (or keyboard focus) opens wider; narrow ones stack.
     return (
-      <div className={styles.closingDoors}>
+      // The home page's trail (guide-trail.ts) ends here: it splits above the two panels into an
+      // arrow into each. On pages without a trail this lone point is inert.
+      <div className={styles.closingDoors} data-trail-point="79" data-trail-at="0.5 0 0 -16">
         <div className={styles.closingList}>
           {homeContent.doors.map((door, index) => (
             <PathLink
@@ -40,6 +42,10 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
               data-cursor-tone={CURSOR[door.path].tone}
               data-magnetic="0.06"
               data-motion-action
+              data-trail-branch={`79 ${door.path === 'tensai' ? 'lime' : 'ember'}`}
+              data-trail-at={door.path === 'tensai' ? '0.92 0.5 0 0' : '0.08 0.5 0 0'}
+              data-trail-at-m="0 0 30 34"
+              data-trail-bend="down"
             >
               <span className={styles.closingDoorHead}>
                 <span className={styles.closingDoorIndex} aria-hidden="true">
@@ -54,7 +60,7 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
                 <span className={styles.closingDoorTarget}>{PATH_LABELS[door.path]}</span>
                 <span className={styles.closingDoorDescription}>{door.description}</span>
               </span>
-              <span className={styles.closingDoorArrow} aria-hidden="true">
+              <span className={styles.closingDoorArrow} aria-hidden="true" data-magnetic-inner>
                 <ArrowRight size={24} />
               </span>
             </PathLink>
@@ -65,7 +71,13 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
   }
 
   return (
-    <nav className={`${styles.doors} ${home.heroDoors}`} aria-label="Chọn con đường của bạn">
+    <nav
+      className={`${styles.doors} ${home.heroDoors}`}
+      aria-label="Chọn con đường của bạn"
+      data-trail-point="2"
+      data-trail-at="0.5 1 0 24"
+      data-trail-load
+    >
       {homeContent.doors.map((door) => (
         <PathLink
           key={door.path}
@@ -79,8 +91,16 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
           data-cursor-tone={CURSOR[door.path].tone}
         >
           <span className={styles.doorFill} aria-hidden="true" />
-          {/* Where the hero pen's fork lands on this door (page.tsx data-pen-to). */}
-          <span className={home.heroAnchor} data-door-anchor aria-hidden="true" />
+          {/* Where the trail's opening fork lands on this door (guide-trail.ts). */}
+          <span
+            className={home.heroAnchor}
+            data-door-anchor
+            data-trail-branch={`1 ${door.path === 'tensai' ? 'lime' : 'ember'}`}
+            data-trail-at="0 0 0 -7"
+            data-trail-load
+            data-trail-mobile="off"
+            aria-hidden="true"
+          />
           <TwoPathPhoto
             id={door.photoId}
             decorative

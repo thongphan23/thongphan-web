@@ -8,6 +8,7 @@ import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
 import { collectPens, guidePen } from './guide-pen'
+import { guideTrail } from './guide-trail'
 import { chapterRail, curtains, lessonStage, lightTable, maskFlight, scrollCount, scrollFill, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
@@ -1174,6 +1175,8 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     // Magnetic controls also live in the shared header and footer, outside the page's stage.
     if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
     extra.push(photoBloom(root), guidePen(root, pens))
+    // The home page's one continuous trail; a no-op on pages without data-trail-point anchors.
+    extra.push(guideTrail(root))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData

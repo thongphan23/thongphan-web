@@ -21,7 +21,9 @@
      from these two, so the first screen stays one poster on every shape. The cut-out is cropped
      tight (hair at 0.05 of its height, chin at 0.39), so his head and shoulders fill the stage
      and the rest sinks into the floor under the question. */
-  --person-h: min(106svh, 70vw);
+  /* Never taller than the cut-out's own 984px, so it is never upscaled on a 1x screen: drawn a
+     little smaller than the stage could take, it stays sharp. */
+  --person-h: min(98svh, 64vw, 900px);
   --person-top: clamp(40px, 5svh, 64px);
   /* No warm pool behind the head: against a lit backdrop the cut-out's edge read as a dark halo.
      The warmth sits low, behind the shoulders, and the rim light outlines him instead. */
@@ -114,7 +116,8 @@
 .mastheadPart[data-stage-part='left'] {
   grid-column: 1;
   justify-self: end;
-  margin-right: calc(var(--person-h) * -0.1);
+  /* Clear of his hair: the g of "Thông" stays whole. */
+  margin-right: calc(var(--person-h) * 0.01);
 }
 
 .mastheadPart[data-stage-part='right'] {
@@ -155,7 +158,8 @@
   /* Head, collar, microphone and the top of the jacket stay whole (chin 0.39 of the cut-out's
      height, microphone to 0.46), so he stands about two thirds of the screen tall; from the hands
      down he dissolves into the ink behind the question. */
-  mask-image: linear-gradient(180deg, #000 0%, #000 52%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.22) 64%, transparent 69%);
+  /* The top edge feathers into the dark, so the crop above his hair never reads as a cut. */
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.55) 2.5%, #000 6%, #000 52%, rgba(0, 0, 0, 0.62) 58%, rgba(0, 0, 0, 0.22) 64%, transparent 69%);
   position: relative;
   /* He leans towards the pointer and slides with it, his lights with him, a step behind the name
      (GSAP owns transform here, so this rides on translate and rotate). */
@@ -175,10 +179,23 @@
   /* The source is a low-key stage shot: lift it about a third so the face reads first, with
      barely a touch of the page's warm grade, so skin stays skin. The drop shadow falls only where
      there is something behind him, so it reads as his head's shadow on the name and nowhere else. */
-  filter: brightness(1.36) contrast(1.05) saturate(0.9) sepia(0.04)
+  filter: brightness(1.24) contrast(1.12) saturate(0.86) sepia(0.06)
     drop-shadow(0.5vw 0.7vw 1.1vw rgb(0 0 0 / 0.62));
   object-fit: contain;
   object-position: 50% 100%;
+}
+
+/* The page's film grain, cut to his silhouette, so the stage shot shares the documentary frames'
+   surface and the lift above reads as light, not as smoothing. */
+.stagePersonInner::after {
+  background-image: var(--brand-grain);
+  content: '';
+  inset: 0;
+  mask: url('/images/two-path/home-stage-hero.webp') center / 100% 100% no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.34;
+  pointer-events: none;
+  position: absolute;
 }
 
 /* Rim light: a pre-cut edge band of the silhouette (home-stage-rim.webp), warm like a stage
@@ -341,6 +358,10 @@
   align-items: center;
   color: var(--brand-paper);
   display: flex;
+  justify-content: center;
+  padding: 0 var(--stage-gutter);
+  position: relative;
+  z-index: 3;
   font-size: 1.25rem;
   font-weight: 700;
   gap: 0.85rem;
@@ -431,6 +452,33 @@
 @keyframes cueTravel {
   to {
     top: 100%;
+  }
+}
+
+/* On a wide stage the eyebrow leaves the microphone and stands on the left edge, in the dark,
+   mirroring the scroll cue on the right: it reads upwards, its rule above it. */
+@media (min-width: 900px) and (min-height: 600px) {
+  .eyebrow {
+    bottom: clamp(3.25rem, 8svh, 5.5rem);
+    font-size: 1rem;
+    gap: 1rem;
+    left: calc(var(--stage-gutter) * 0.42);
+    letter-spacing: 0.24em;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    rotate: 180deg;
+    text-shadow: 0 1px 12px rgba(10, 9, 8, 0.6);
+    writing-mode: vertical-rl;
+  }
+
+  .eyebrow::before {
+    display: none;
+  }
+
+  .eyebrow::after {
+    height: 6rem;
+    width: 1px;
   }
 }
 
@@ -644,7 +692,7 @@
   --closing-line: color-mix(in srgb, var(--brand-text-on-paper) 24%, transparent);
   background: var(--brand-reading-paper-deep);
   color: var(--brand-text-on-paper);
-  padding: clamp(2.5rem, 6svh, 4.5rem) var(--brand-space-inline) clamp(3.5rem, 7vw, 6.5rem);
+  padding: clamp(2.5rem, 6svh, 4.5rem) var(--brand-space-inline) clamp(2.5rem, 4.5vw, 4rem);
 }
 
 .closingInner {
@@ -706,6 +754,11 @@
   font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   font-weight: 400;
   max-width: 34ch;
+}
+
+/* The one decision on the page: a target of 56px or more, so the arrow is never the small thing. */
+.closing .closingInner [data-path-door] > :last-child {
+  width: clamp(3.5rem, 12cqi, 4.75rem);
 }
 
 /* The closing names the scroll timeline the reel above steps back on (HomeSections.module.css). */
