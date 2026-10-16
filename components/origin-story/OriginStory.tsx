@@ -473,7 +473,7 @@ export default function OriginStory() {
                       data-scroll-count={verdict.text.includes(VERDICT_YEARS.phrase) ? '' : undefined}
                       data-count-from="1"
                       data-count-start="top top"
-                      data-count-end="top -40%"
+                      data-count-end="top -25%"
                     >
                       <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                       {verdict.text.includes(VERDICT_YEARS.phrase) ? (
