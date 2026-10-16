@@ -1,5 +1,14 @@
 # thongphan.com — Unified Cinema status
 
+## Production: thongphan.com hai con đường (r17) — PASS (kiểm máy) — 2026-10-17
+
+- Anh Thông xác nhận ngày 17/10/2026 rằng mọi người trong 12 ảnh, gồm mentor Đắc Nguyên, đã đồng ý. Em đã ghi `consent-confirmed` và `consentNote` trong `lib/two-path-photos.ts` (commit 56bc3e2).
+- Test: 553 pass, 2 fail. Hai test 241/242 (probe trình duyệt) đã lỗi từ trước, không liên quan đến thay đổi này. 487/488 về consent đã xanh. Build static OK.
+- Deploy Pages lên nhánh production `main`: https://bcc2c54f.thongphan-com.pages.dev, đã chạy trên thongphan.com và www. Bản production trước là a4d23033 (bf65aae), dùng khi cần rollback.
+- Bìa ebook đang sửa dở trong working tree không được đưa lên. Trong `out/` dùng bản đã commit.
+- Đã kiểm: 11 route chính đều trả về 200, kể cả /test (Worker riêng). Mọi URL trong sitemap production cũ đều có trong bản build mới. Đã chụp màn hình desktop 1440 và mobile 390 cho trang chủ, /tensai, /conan, /about: không tràn ngang, không ảnh hỏng, không lỗi console.
+- Git: đã fast-forward `origin/master` và push `origin/feature/two-path-rebuild` lên 56bc3e2.
+
 ## Anh duyệt r17, chốt chuẩn gu, chờ cổng consent để lên production — BLOCKED (production) — 2026-10-16
 
 - Anh Thông duyệt bản preview r17 (https://preview-two-path.thongphan-com.pages.dev) và yêu cầu deploy thay thongphan.com.
