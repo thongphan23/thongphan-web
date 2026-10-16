@@ -74,16 +74,16 @@ export default function TensaiPage() {
           <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.1s' } as CSSProperties}>
             {tensaiContent.eyebrow}
           </p>
-          <h1 id="tensai-title" className={styles.title} style={{ '--intro-base': '0.18s' } as CSSProperties}>
+          <h1 id="tensai-title" className={styles.title} style={{ '--intro-base': '0.06s' } as CSSProperties}>
             <SplitWords text={titleHead} />{' '}
             {/* Where motion runs, the guide's pen rings the word once the title is in (in place of the marker). */}
-            <em data-pen="circle" data-pen-tone="lime" data-pen-width="6" data-pen-trigger="load" data-pen-delay="1450">
+            <em data-pen="circle" data-pen-tone="lime" data-pen-width="6" data-pen-trigger="load" data-pen-delay="950">
               <SplitWords text={accent} start={wordCount(titleHead)} />
             </em>{' '}
             <SplitWords text={titleTail} start={wordCount(titleHead) + wordCount(accent)} />
           </h1>
           {/* On wide screens the headline runs the full width above; the words under it and the card
-              share the row below, the card's top edge tucked under the headline's last line. */}
+              share the row below, a clear gap under the headline's last line. */}
           <div className={styles.heroBody}>
           <p className={`${styles.lead} intro-fade`} style={{ '--intro-delay': '0.55s' } as CSSProperties}>
             {tensaiContent.lead}
@@ -104,7 +104,12 @@ export default function TensaiPage() {
                 <ArrowRight aria-hidden="true" size={18} />
               </span>
             </PathLink>
-            <a href={tensaiContent.secondaryCta.href} className={styles.secondaryLink}>
+            <a
+              href={tensaiContent.secondaryCta.href}
+              className={styles.secondaryLink}
+              data-cursor="Xem"
+              data-cursor-tone="ink"
+            >
               {tensaiContent.secondaryCta.label}
             </a>
           </div>
@@ -125,7 +130,7 @@ export default function TensaiPage() {
             data-cursor-tone="ink"
           >
             <div className={styles.lessonTilt} data-tilt="6">
-              <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
+              <div className={styles.cardEnter}>
                 <TensaiLesson />
               </div>
             </div>
@@ -272,16 +277,22 @@ export default function TensaiPage() {
               {courses.title}
             </h2>
           </div>
-          {/* Each row carries its course's map inline, drawn from the lesson and gate counts, so the
-              row itself is the preview: nothing floats over the list, and touch reads it the same way. */}
+          {/* Each row carries its course's map inline as a segmented bar (a segment per lesson, a starred
+              gate after each run), drawn from the lesson and gate counts, so touch reads the same facts.
+              With a fine pointer the row opens a little and a preview card follows the pointer: the
+              course's path at full size and, where the repo holds a real screen of that course, that
+              screen (tensai-stage.ts sets --px/--py). */}
           <ul className={styles.courses} data-reveal-children data-stagger="0.12">
-            {courses.items.map((course, index) => (
+            {courses.items.map((course, index) => {
+              const previewPhoto = 'previewPhotoId' in course ? course.previewPhotoId : undefined
+              return (
               <li key={course.name} className={styles.course}>
                 <PathLink
                   path="tensai"
                   kind="outbound"
                   placement="page"
                   className={styles.courseLink}
+                  data-course-row
                   data-cursor="Vào học"
                   data-cursor-tone="ink"
                 >
@@ -293,30 +304,58 @@ export default function TensaiPage() {
                     <p className={styles.courseTagline}>{course.tagline}</p>
                   </div>
                   <div className={styles.courseMeta} data-course-meta>
-                    <span className={styles.courseStat}>
-                      <strong>{course.lessonCount}</strong> bài
+                    <p className={styles.courseCounts}>
+                      <span>
+                        <strong>{course.lessonCount}</strong> bài
+                      </span>
+                      <span>
+                        <strong>{course.gateCount}</strong> màn vượt ải
+                      </span>
+                    </p>
+                    {/* The segments fill in turn while the row is lit (--n staggers them). */}
+                    <span className={styles.segBar} aria-hidden="true">
+                      {courseMap(course.lessonCount, course.gateCount).map((kind, n) =>
+                        kind === 'gate' ? (
+                          <b key={n} className={styles.segGate} style={{ '--n': n } as CSSProperties}>
+                            <Star size={10} strokeWidth={2.4} fill="currentColor" />
+                          </b>
+                        ) : (
+                          <i key={n} className={styles.seg} style={{ '--n': n } as CSSProperties} />
+                        ),
+                      )}
                     </span>
-                    <span className={styles.courseStat}>
-                      <strong>{course.gateCount}</strong> màn vượt ải
-                    </span>
-                    {/* The nodes fill in turn while the row is lit (--n staggers them). */}
-                    <ol className={`${styles.mapTrack} ${styles.rowMap}`} aria-hidden="true">
-                      {courseMap(course.lessonCount, course.gateCount).map((kind, n) => (
-                        <li
-                          key={n}
-                          className={kind === 'gate' ? styles.mapGate : styles.mapNode}
-                          style={{ '--n': n } as CSSProperties}
-                        >
-                          {kind === 'gate' && <Star size={10} strokeWidth={2.4} fill="currentColor" />}
-                        </li>
-                      ))}
-                    </ol>
                     <span className={styles.courseOpens}>Mở từ {course.opensOn}</span>
                   </div>
                   <ArrowUpRight className={styles.courseArrow} aria-hidden="true" size={28} strokeWidth={2.25} />
+                  <span className={styles.coursePreview} aria-hidden="true" data-course-preview>
+                    {previewPhoto && (
+                      <span className={styles.previewShot}>
+                        <TwoPathPhoto id={previewPhoto} sizes="320px" decorative />
+                      </span>
+                    )}
+                    <span className={styles.previewHead}>
+                      <b>{course.name}</b>
+                      <span>Mở từ {course.opensOn}</span>
+                    </span>
+                    <span className={styles.previewPath}>
+                      {courseMap(course.lessonCount, course.gateCount).map((kind, n) =>
+                        kind === 'gate' ? (
+                          <b key={n} className={styles.previewGate}>
+                            <Star size={12} strokeWidth={2.4} fill="currentColor" />
+                          </b>
+                        ) : (
+                          <i key={n} className={styles.previewNode} />
+                        ),
+                      )}
+                    </span>
+                    <span className={styles.previewFoot}>
+                      {course.lessonCount} bài · {course.gateCount} màn vượt ải
+                    </span>
+                  </span>
                 </PathLink>
               </li>
-            ))}
+              )
+            })}
           </ul>
           <p className={styles.note}>{courses.note}</p>
         </div>
@@ -432,7 +471,15 @@ export default function TensaiPage() {
                 <ArrowRight aria-hidden="true" size={24} strokeWidth={2.75} />
               </span>
             </PathLink>
-            <PathLink path="conan" kind="door" placement="page" className={styles.crossLink}>
+            <PathLink
+              path="conan"
+              kind="door"
+              placement="page"
+              className={styles.crossLink}
+              data-magnetic="0.18"
+              data-cursor="Sang Conan"
+              data-cursor-tone="ink"
+            >
               {closing.crossLink.label}
             </PathLink>
           </div>

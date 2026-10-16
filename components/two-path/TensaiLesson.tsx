@@ -8,267 +8,17 @@ import styles from './TensaiLesson.module.css'
 
 type Key = (typeof tensaiContent.lesson.options)[number]['key']
 
-// The first exercise of the live Định vị course, playable on the page: pick an answer and the app's
-// own reply appears. On wide screens the hero's scroll sequence (lessonStage) can answer it once as
-// a demo through a `lesson:demo` event; a visitor's own pick is never undone by scrolling.
-//
-// While the card is on screen and nobody has touched it, a ghost pointer answers it by itself on a
-// slow loop (first a straight right answer, then the way the app teaches: a wrong pick, "Chọn lại",
-// then the right one). Hovering, touching, typing or scrolling into the pinned sequence hands the
-// card back; reduced motion gets no loop at all.
-//
-// One question, three answers, nothing else on the card until a pick: then the app's verdict rises
-// from the card's foot as a sheet (the way the app's own reply slides up), and the question slides up
-// just enough (--lift) to keep the picked answer in view above it.
-type Ghost = HTMLSpanElement
-
-const sleep = (ms: number, signal: AbortSignal) =>
-  new Promise<void>((resolve, reject) => {
-    if (signal.aborted) return reject(new DOMException('aborted', 'AbortError'))
-    const id = window.setTimeout(resolve, ms)
-    signal.addEventListener(
-      'abort',
-      () => {
-        window.clearTimeout(id)
-        reject(new DOMException('aborted', 'AbortError'))
-      },
-      { once: true },
-    )
-  })
-
+// The first exercise of the live Định vị course, playable on the page. It waits, unanswered, until
+// the visitor picks: nothing answers it for them. A pick raises the app's verdict from the card's
+// foot as a sheet (the way the app's own reply slides up), and the question slides up just enough
+// (--lift) to keep the picked answer in view above it.
 export default function TensaiLesson() {
   const lesson = tensaiContent.lesson
   const [picked, setPicked] = useState<Key | null>(null)
-  const [demo, setDemo] = useState(false)
   const root = useRef<HTMLElement>(null)
-  const ghost = useRef<Ghost>(null)
   const body = useRef<HTMLDivElement>(null)
   const firstOption = useRef<HTMLInputElement>(null)
-  // Mirrors the state for the event handler, written together with it so quick play/rewind pairs
-  // between renders still see the latest pick.
-  const live = useRef<{ picked: Key | null; demo: boolean }>({ picked: null, demo: false })
   const name = useId()
-
-  const set = (next: { picked: Key | null; demo: boolean }) => {
-    live.current = next
-    setPicked(next.picked)
-    setDemo(next.demo)
-  }
-
-  useEffect(() => {
-    const el = root.current
-    const pointer = ghost.current
-    if (!el) return
-
-    // Who owns the card right now: the ghost loop pauses for each of these and never resumes after
-    // a visitor has taken over for good.
-    let tookOver = false
-    let hovering = false
-    let scrolled = false
-    let onScreen = false
-    let cycle = 0
-    let loop: AbortController | null = null
-    let resume = 0
-    const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const target = (name: string) => el.querySelector<HTMLElement>(`[data-ghost-target="${name}"]`)
-    // A point inside the card's own box, in the card's coordinates (undoing any tilt scale).
-    const place = (node: HTMLElement | null, at: { x: number; y: number }) => {
-      if (!node || !pointer) return null
-      const card = el.getBoundingClientRect()
-      const box = node.getBoundingClientRect()
-      const scale = card.width / el.offsetWidth || 1
-      return {
-        x: (box.left - card.left + box.width * at.x) / scale,
-        y: (box.top - card.top + box.height * at.y) / scale,
-      }
-    }
-    const aim = (name: string, at = { x: 0.5, y: 0.55 }) => {
-      const point = place(target(name), at)
-      if (!point || !pointer) return
-      pointer.style.setProperty('--gx', `${point.x}px`)
-      pointer.style.setProperty('--gy', `${point.y}px`)
-    }
-    const hover = (name: string | null) => {
-      el.querySelectorAll<HTMLElement>('[data-ghost-hover]').forEach((node) => node.removeAttribute('data-ghost-hover'))
-      if (name) target(name)?.setAttribute('data-ghost-hover', '')
-      // The label only rides along while the pointer travels; on an answer it would cover the text.
-      pointer?.toggleAttribute('data-ghost-at', Boolean(name))
-    }
-    const tap = () => {
-      if (!pointer) return
-      pointer.removeAttribute('data-press')
-      void pointer.offsetWidth
-      pointer.setAttribute('data-press', '')
-    }
-    const hide = () => {
-      hover(null)
-      pointer?.setAttribute('data-ghost', 'off')
-    }
-
-    // The first round starts early (its pick lands about two and a half seconds after the card is on
-    // screen), or at once when the visitor first moves the pointer, so the app's verdict is seen before
-    // anyone scrolls on.
-    let wake: (() => void) | null = null
-    const nap = (ms: number, signal: AbortSignal) =>
-      new Promise<void>((resolve, reject) => {
-        wake = resolve
-        sleep(ms, signal).then(resolve, reject)
-      }).finally(() => {
-        wake = null
-      })
-
-    const run = async (signal: AbortSignal) => {
-      if (!pointer) return
-      try {
-        for (;;) {
-          if (live.current.demo) {
-            // A demo answer still on the card from before a pause stays a moment, then clears.
-            await sleep(1600, signal)
-            set({ picked: null, demo: false })
-            await sleep(500, signal)
-          } else await (cycle === 0 ? nap(500, signal) : sleep(1600, signal))
-          // Enter from the card's lower right, snapped there while still invisible.
-          pointer.setAttribute('data-snap', '')
-          const start = place(el, { x: 0.86, y: 0.84 })
-          if (start) {
-            pointer.style.setProperty('--gx', `${start.x}px`)
-            pointer.style.setProperty('--gy', `${start.y}px`)
-          }
-          void pointer.offsetWidth
-          pointer.removeAttribute('data-snap')
-          pointer.setAttribute('data-ghost', 'on')
-          const answer = async (key: Key) => {
-            aim(key, { x: 0.3, y: 0.55 })
-            await sleep(1050, signal)
-            hover(key)
-            await sleep(260, signal)
-            tap()
-            await sleep(140, signal)
-            set({ picked: key, demo: true })
-            hover(null)
-          }
-          if (cycle > 0) {
-            await answer('B')
-            await sleep(2100, signal)
-            aim('retry-B', { x: 0.5, y: 0.5 })
-            await sleep(1000, signal)
-            tap()
-            await sleep(160, signal)
-            set({ picked: null, demo: false })
-            await sleep(500, signal)
-          }
-          await answer('A')
-          await sleep(3600, signal)
-          pointer.setAttribute('data-ghost', 'off')
-          await sleep(500, signal)
-          set({ picked: null, demo: false })
-          cycle += 1
-        }
-      } catch {
-        // Aborted: whoever stopped the loop decides what the card shows next.
-      }
-    }
-
-    const stop = () => {
-      loop?.abort()
-      loop = null
-      window.clearTimeout(resume)
-      hide()
-    }
-    const clearGhostPick = () => {
-      if (live.current.demo) set({ picked: null, demo: false })
-    }
-    const start = () => {
-      if (!motionOk || !pointer || loop || tookOver || hovering || scrolled || !onScreen) return
-      if (document.visibilityState !== 'visible') return
-      loop = new AbortController()
-      void run(loop.signal)
-    }
-    const later = (ms: number) => {
-      window.clearTimeout(resume)
-      resume = window.setTimeout(start, ms)
-    }
-
-    const onDemo = (event: Event) => {
-      const play = (event as CustomEvent<{ play: boolean }>).detail?.play
-      if (play) {
-        scrolled = true
-        stop()
-      }
-      if (play && (!live.current.picked || live.current.demo)) set({ picked: 'A', demo: true })
-      if (!play && live.current.demo) set({ picked: null, demo: false })
-      if (!play) {
-        scrolled = false
-        later(1800)
-      }
-    }
-    // A mouse over the card pauses the loop but leaves its answer and verdict up, so the reply can be
-    // read (and its button used) under the hand.
-    const onEnter = (event: PointerEvent) => {
-      if (event.pointerType !== 'mouse') return
-      hovering = true
-      stop()
-    }
-    const onLeave = (event: PointerEvent) => {
-      if (event.pointerType !== 'mouse') return
-      hovering = false
-      later(2200)
-    }
-    // Touching, typing or focusing hands the card over for good; a demo answer on it becomes the
-    // visitor's own, so a press on the verdict's button is not lost to the sheet closing under it.
-    const takeOver = () => {
-      tookOver = true
-      stop()
-      if (live.current.demo) set({ picked: live.current.picked, demo: false })
-    }
-    const onMove = (event: PointerEvent) => {
-      if (event.pointerType === 'mouse' && cycle === 0) wake?.()
-    }
-    const onVisibility = () => {
-      if (document.visibilityState === 'visible') later(1200)
-      else stop()
-    }
-
-    el.addEventListener('lesson:demo', onDemo)
-    let observer: IntersectionObserver | null = null
-    if (motionOk && pointer) {
-      el.addEventListener('pointerenter', onEnter)
-      el.addEventListener('pointerleave', onLeave)
-      el.addEventListener('pointerdown', takeOver)
-      el.addEventListener('keydown', takeOver)
-      el.addEventListener('focusin', takeOver)
-      document.addEventListener('visibilitychange', onVisibility)
-      window.addEventListener('pointermove', onMove, { passive: true })
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          // Mostly in view: half of the card, or half of the screen's height when the card is taller.
-          onScreen =
-            entry.isIntersecting &&
-            (entry.intersectionRatio >= 0.5 || entry.intersectionRect.height >= window.innerHeight * 0.55)
-          if (onScreen) later(600)
-          else {
-            stop()
-            clearGhostPick()
-          }
-        },
-        { threshold: [0, 0.25, 0.5, 0.75, 1] },
-      )
-      observer.observe(el)
-    }
-    return () => {
-      stop()
-      observer?.disconnect()
-      el.removeEventListener('lesson:demo', onDemo)
-      el.removeEventListener('pointerenter', onEnter)
-      el.removeEventListener('pointerleave', onLeave)
-      el.removeEventListener('pointerdown', takeOver)
-      el.removeEventListener('keydown', takeOver)
-      el.removeEventListener('focusin', takeOver)
-      document.removeEventListener('visibilitychange', onVisibility)
-      window.removeEventListener('pointermove', onMove)
-    }
-  }, [])
 
   // How far the question has to slide up so the picked answer clears the verdict sheet. Layout
   // offsets ignore transforms, so the reading is the same mid-slide or under the stage's tilt.
@@ -277,7 +27,7 @@ export default function TensaiLesson() {
     const content = body.current
     if (!el || !content) return
     const measure = () => {
-      const option = picked ? el.querySelector<HTMLElement>(`[data-ghost-target="${picked}"]`) : null
+      const option = picked ? el.querySelector<HTMLElement>(`[data-option="${picked}"]`) : null
       const sheet = picked ? el.querySelector<HTMLElement>(`[data-reply="${picked}"]`) : null
       if (!option || !sheet) {
         content.style.setProperty('--lift', '0px')
@@ -301,9 +51,8 @@ export default function TensaiLesson() {
   }, [picked])
 
   const choice = lesson.options.find((option) => option.key === picked)
-  const pick = (key: Key) => set({ picked: key, demo: false })
   const retry = () => {
-    set({ picked: null, demo: false })
+    setPicked(null)
     firstOption.current?.focus()
   }
 
@@ -313,7 +62,6 @@ export default function TensaiLesson() {
       className={styles.card}
       data-lesson-root
       data-state={choice ? (choice.correct ? 'right' : 'wrong') : 'idle'}
-      data-demo={demo || undefined}
       aria-labelledby={`${name}-question`}
     >
       <header className={styles.bar}>
@@ -344,8 +92,8 @@ export default function TensaiLesson() {
                 key={option.key}
                 className={styles.option}
                 data-result={picked === option.key ? (option.correct ? 'right' : 'wrong') : undefined}
-                data-ghost-target={option.key}
-                data-cursor={lesson.cursorTry}
+                data-option={option.key}
+                data-cursor={lesson.cursorPick}
                 data-cursor-tone="ink"
               >
                 <input
@@ -354,7 +102,7 @@ export default function TensaiLesson() {
                   name={name}
                   value={option.key}
                   checked={picked === option.key}
-                  onChange={() => pick(option.key)}
+                  onChange={() => setPicked(option.key)}
                 />
                 <span className={styles.key} aria-hidden="true">
                   <span className={styles.keyLetter}>{option.key}</span>
@@ -390,7 +138,7 @@ export default function TensaiLesson() {
                 <ArrowRight aria-hidden="true" size={18} />
               </PathLink>
             ) : (
-              <button type="button" className={styles.retry} onClick={retry} data-ghost-target={`retry-${option.key}`}>
+              <button type="button" className={styles.retry} onClick={retry}>
                 {lesson.retry}
               </button>
             )}
@@ -401,17 +149,6 @@ export default function TensaiLesson() {
         </p>
       </div>
 
-      {/* The ghost pointer of the idle loop: decorative, never takes a click, gone for anyone who
-          touches the card. It wears the same label as the site's own cursor over the answers. */}
-      <span ref={ghost} className={styles.ghost} data-ghost="off" aria-hidden="true">
-        <span className={styles.ghostY}>
-          <span className={styles.ghostArrow}>
-            <span className={styles.ghostArrowShape} />
-          </span>
-          <span className={styles.ghostRipple} />
-          <span className={styles.ghostTag}>{lesson.cursorTry}</span>
-        </span>
-      </span>
     </article>
   )
 }
@@ -420,13 +157,15 @@ type ReplayStep = { readonly title: string; readonly body: string }
 
 const two = (value: number) => String(value).padStart(2, '0')
 
-// The method's three steps played in a lesson window of the same Định vị course, so each one is seen
-// happening rather than described: the lesson's one idea marked, an answer picked and the app's reply
-// sliding up, then the course's path walked to its gate. The screen shown follows the page's sticky
-// swap (data-swap-active on an ancestor; with none set, the answered exercise shows), and each screen
-// plays its short script in CSS as it comes in. A lime note beside the window moves to the part of the
-// screen its step is about. Decorative and inert: the hero holds the card a visitor can answer, and the
-// steps beside the window say the same in words. Without motion the three screens stand in a column.
+// The method's three steps played in one lesson window of the same Định vị course, so each one is
+// seen happening rather than described: the lesson's one idea marked, an answer picked and the app's
+// reply sliding up, then the course's path walked to its gate. On a page with motion the three
+// screens sit in one tall strip that scrolls through the window with the page (tensai-stage.ts
+// scrubs it, data-replay-* hooks), so every change is continuous: the marker sweeps, the strip moves
+// on, the pointer travels to the answer, the sheet rises, the bar fills, the path lights stop by stop.
+// A lime note beside the window rolls to each step's title. Decorative and inert: the hero holds the
+// card a visitor can answer, and the steps beside the window say the same in words. Without motion
+// the three screens stand finished in a column.
 export function TensaiLessonReplay({ steps }: { steps: readonly ReplayStep[] }) {
   const lesson = tensaiContent.lesson
   const answer = lesson.options.find((option) => option.correct) ?? lesson.options[0]
@@ -440,99 +179,106 @@ export function TensaiLessonReplay({ steps }: { steps: readonly ReplayStep[] }) 
         <span className={styles.progress}>
           <span className={styles.progressLabel}>{lesson.chip}</span>
           <span className={styles.track}>
-            <span className={`${styles.fill} ${styles.replayFill}`} />
+            <span className={`${styles.fill} ${styles.replayFill}`} data-replay-fill />
           </span>
         </span>
         <span className={styles.label}>{lesson.label}</span>
       </div>
 
       <div className={styles.screens}>
-        {/* One idea: the case, then the line the lesson wants remembered, swept with the marker. */}
-        <div className={styles.screen} data-screen="0">
-          <p className={styles.screenTag}>{tag(0)}</p>
-          <p className={styles.context}>
-            {lesson.context.map((part) => ('strong' in part ? <strong key={part.text}>{part.text}</strong> : part.text))}
-          </p>
-          <div className={styles.idea}>
-            <p className={styles.ideaLabel}>{lesson.rememberLabel}</p>
-            <p className={styles.ideaText}>
-              <span className={styles.ideaMark}>
-                <span>{lesson.remember}</span>
-              </span>
-              <span className={styles.ideaInk}>{lesson.remember}</span>
+        <div className={styles.strip} data-replay-strip>
+          {/* One idea: the case, then the line the lesson wants remembered, swept with the marker. */}
+          <div className={styles.screen} data-screen="0">
+            <p className={styles.screenTag}>{tag(0)}</p>
+            <p className={styles.context}>
+              {lesson.context.map((part) => ('strong' in part ? <strong key={part.text}>{part.text}</strong> : part.text))}
             </p>
-          </div>
-        </div>
-
-        {/* Try it: the pointer comes to the right answer, presses, the answer turns green and the
-            app's reply rises from the foot. */}
-        <div className={styles.screen} data-screen="1">
-          <p className={styles.screenTag}>{tag(1)}</p>
-          <p className={styles.replayQuestion}>{lesson.question}</p>
-          <div className={styles.replayOptions}>
-            {lesson.options.map((option) => (
-              <div
-                key={option.key}
-                className={`${styles.option} ${option.key === answer.key ? styles.picked : styles.passed}`}
-              >
-                <span className={styles.key}>
-                  <span className={styles.keyLetter}>{option.key}</span>
-                  <Check className={styles.keyRight} size={18} strokeWidth={3} />
+            <div className={styles.idea}>
+              <p className={styles.ideaLabel}>{lesson.rememberLabel}</p>
+              <p className={styles.ideaText}>
+                <span className={styles.ideaMark} data-replay-mark>
+                  <span>{lesson.remember}</span>
                 </span>
-                <span className={styles.optionText}>{option.text}</span>
-                {option.key === answer.key && (
-                  <span className={styles.replayCursor}>
-                    <span className={styles.ghostArrow}>
-                      <span className={styles.ghostArrowShape} />
-                    </span>
-                    <span className={styles.ghostRipple} />
+                <span className={styles.ideaInk}>{lesson.remember}</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Try it: the pointer comes to the right answer, presses, the answer turns green and the
+              app's reply rises from the foot. */}
+          <div className={styles.screen} data-screen="1">
+            <p className={styles.screenTag}>{tag(1)}</p>
+            <p className={styles.replayQuestion}>{lesson.question}</p>
+            <div className={styles.replayOptions}>
+              {lesson.options.map((option) => (
+                <div
+                  key={option.key}
+                  className={`${styles.option} ${option.key === answer.key ? styles.picked : styles.passed}`}
+                  data-replay-picked={option.key === answer.key || undefined}
+                >
+                  <span className={styles.key}>
+                    <span className={styles.keyLetter}>{option.key}</span>
+                    <Check className={styles.keyRight} size={18} strokeWidth={3} />
                   </span>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className={`${styles.reply} ${styles.right} ${styles.replayReply}`}>
-            <p className={styles.verdict}>
-              <span className={styles.badge}>
-                <Check size={20} strokeWidth={3.2} />
-              </span>
-              {lesson.right}
-            </p>
-            <p className={styles.feedback}>{answer.feedback}</p>
-          </div>
-        </div>
-
-        {/* Pass the gate: the course's lessons done one by one, then the gate the path leads to. */}
-        <div className={styles.screen} data-screen="2">
-          <p className={styles.screenTag}>{tag(2)}</p>
-          <ol className={styles.replayPath}>
-            {lesson.path.map((name) => (
-              <li key={name} className={styles.pathStop}>
-                <span className={styles.pathNode}>
-                  <Check size={22} strokeWidth={3.2} />
+                  <span className={styles.optionText}>{option.text}</span>
+                  {option.key === answer.key && (
+                    <span className={styles.replayCursor} data-replay-cursor>
+                      <span className={styles.ghostArrow} data-replay-press>
+                        <span className={styles.ghostArrowShape} />
+                      </span>
+                      <span className={styles.ghostRipple} data-replay-ripple />
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className={`${styles.reply} ${styles.right} ${styles.replayReply}`} data-replay-sheet>
+              <p className={styles.verdict}>
+                <span className={styles.badge}>
+                  <Check size={20} strokeWidth={3.2} />
                 </span>
-                {name}
+                {lesson.right}
+              </p>
+              <p className={styles.feedback}>{answer.feedback}</p>
+            </div>
+          </div>
+
+          {/* Pass the gate: the course's lessons done one by one, then the gate the path leads to. */}
+          <div className={styles.screen} data-screen="2">
+            <p className={styles.screenTag}>{tag(2)}</p>
+            <ol className={styles.replayPath}>
+              {lesson.path.map((name) => (
+                <li key={name} className={styles.pathStop} data-replay-stop>
+                  <span className={styles.pathNode}>
+                    <Check size={22} strokeWidth={3.2} />
+                  </span>
+                  {name}
+                </li>
+              ))}
+              <li className={`${styles.pathStop} ${styles.pathGateStop}`} data-replay-stop>
+                <span className={styles.pathGate} data-replay-gate>
+                  <Star size={26} strokeWidth={2.4} fill="currentColor" />
+                </span>
+                {lesson.gate}
               </li>
-            ))}
-            <li className={`${styles.pathStop} ${styles.pathGateStop}`}>
-              <span className={styles.pathGate}>
-                <Star size={26} strokeWidth={2.4} fill="currentColor" />
-              </span>
-              {lesson.gate}
-            </li>
-          </ol>
-          <p className={styles.pathNote}>{lesson.pathNote}</p>
+            </ol>
+            <p className={styles.pathNote} data-replay-note>
+              {lesson.pathNote}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* The note that travels down the window with the steps, each step's own title. */}
-      <div className={styles.callout}>
-        {steps.map((step, index) => (
-          <span key={step.title} className={styles.calloutText} data-callout={index}>
-            <b>{two(index + 1)}</b>
-            {step.title}
-          </span>
-        ))}
+      {/* The note beside the window: each step's own title, rolled in from below as its screen comes. */}
+      <div className={styles.callout} data-replay-callout>
+        <span className={styles.calloutRoll}>
+          {steps.map((step, index) => (
+            <span key={step.title} className={styles.calloutText} data-callout={index}>
+              <b>{two(index + 1)}</b>
+              {step.title}
+            </span>
+          ))}
+        </span>
       </div>
     </div>
   )
