@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import PenPhrase from '@/components/motion/PenPhrase'
 import JsonLd from '@/components/seo/JsonLd'
+import ConanHandoff from '@/components/two-path/ConanHandoff'
 import ConanLensAuto from '@/components/two-path/ConanLensAuto'
 import ConanStageNav from '@/components/two-path/ConanStageNav'
 import MentorCards from '@/components/two-path/MentorCards'
@@ -77,7 +78,9 @@ export default function ConanPage() {
               the stem of the a and the ink falls away: by the reader's scroll on wide screens
               (maskFlight in signatures.ts), on load elsewhere (page.module.css, heroMask). */}
           <div className={styles.heroMask} aria-hidden="true" data-mask-sheet />
-          <div className={styles.heroOutline} aria-hidden="true" data-mask-outline />
+          <div className={styles.heroOutline} aria-hidden="true" data-mask-outline>
+            <span className={styles.heroEdge} />
+          </div>
           {/* The tag names whichever room is showing: the cycle captions take turns with the
               letters' cross-fade and are only shown where that cycle runs. */}
           <p className={styles.heroTag}>
@@ -90,6 +93,7 @@ export default function ConanPage() {
           </p>
         </div>
         <ConanLensAuto />
+        <ConanHandoff />
         <div className={styles.heroContent} data-mask-out>
           <div>
             <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.15s' } as CSSProperties}>
@@ -129,7 +133,7 @@ export default function ConanPage() {
           the photo opens from the right edge and drifts inside its frame. */}
       <section className={styles.principle} aria-labelledby="conan-principle">
         <div className={`${styles.inner} ${styles.principleGrid}`}>
-          <figure className={styles.principleQuote}>
+          <figure className={styles.principleQuote} data-hand-in data-hand-out>
             <figcaption id="conan-principle" className={styles.sectionMark} data-motion-reveal="mask">
               {principle.source}
             </figcaption>
@@ -152,8 +156,8 @@ export default function ConanPage() {
 
       {/* The paper is laid over the principle as a sheet (data-curtain="sheet"): the ink spread holds
           and dims while the page turns, instead of the two tones meeting at a straight edge. */}
-      <section className={`${styles.section} ${styles.audiencesBand}`} aria-labelledby="conan-audiences" data-curtain="sheet">
-        <div className={`${styles.inner} ${styles.audiencesGrid}`}>
+      <section className={`${styles.section} ${styles.audiencesBand}`} aria-labelledby="conan-audiences" data-curtain="sheet" data-hand-sheet>
+        <div className={`${styles.inner} ${styles.audiencesGrid}`} data-hand-arrive>
           <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
               01 — Dành cho ai
@@ -185,7 +189,7 @@ export default function ConanPage() {
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
-        data-hscroll-pace="0.86"
+        data-hscroll-pace="0.52"
         data-hscroll-scrub="0.35"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >

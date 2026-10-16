@@ -19,8 +19,8 @@ type PhotoGalleryProps = {
 const pad = (value: number) => String(value).padStart(2, '0')
 
 // A light table of real class photos. On wide screens with motion, lightTable (signatures.ts) pins
-// it: each photo slides up over the last inside one large frame while the counter rolls, the
-// caption swaps and the contact sheet marks the photo in view; a thumbnail glides to its photo.
+// it: each photo slides up over the last inside one large frame, its caption on the frame's foot,
+// while the counter rolls and the contact sheet marks the photo in view; a thumbnail glides to it.
 // Otherwise the photos stand in sequence: a swipe rail on phones, a lead over a grid above that.
 export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
   return (
@@ -61,7 +61,7 @@ export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
       </ol>
 
       {/* Light table only: the rolling counter and the contact sheet. */}
-      <p className={styles.lightCounter} aria-hidden="true">
+      <p className={`${styles.lightCounter} ${show.counter}`} aria-hidden="true">
         <span className={`${styles.lightRoll} ${show.roll}`}>
           {items.map((item, index) => (
             <span key={item.photoId} style={{ '--i': index } as CSSProperties}>

@@ -13,11 +13,11 @@ const START_S = 1.6
 const OPEN = 0.88
 const PROPS = ['--lens-x', '--lens-y', '--lens-on', '--pan-x', '--pan-y']
 // Wide screens hang the word 16px below the top of the room (page.module.css, --word-y). Its
-// letters reach 0.98 of the outline's height, which is 0.2991 of its width; a 12px gap is kept
-// above the first line of the words below.
+// letters, with their cream rim, reach 0.99 of the outline's height, which is 0.2991 of its width;
+// a 12px gap is kept above the first line of the words below.
 const WORD_TOP = 16
 const WORD_GAP = 12
-const WORD_DEPTH = 0.98 * 0.2991
+const WORD_DEPTH = 0.99 * 0.2991
 
 export default function ConanLensAuto() {
   // The lens path in percent of the media box: centre and swing in x and y, kept to the word.

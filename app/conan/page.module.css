@@ -64,17 +64,16 @@
 
 /* The other classes in the letters are framed on their rows of faces, a little closer than the room.
    Both rooms are paler than the first (a glass front, a white ceiling), so each is cut below its
-   light, where the faces are, and taken down a stop, so the letters keep their shape instead of
-   washing out into the light: the café at the band of faces round its tables (above it are the
+   light, where the faces are: the café at the band of faces round its tables (above it are the
    bright windows, below it a white marble floor), the meeting room at the foot of the frame, its
-   wooden table and the faces along it. */
+   wooden table and the faces along it. They are never taken below the page's light: the cream
+   rim holds the letters' shape, so a darker room only has to be lit, not dimmed. */
 .heroCycle {
   scale: 1.1;
   translate: calc(var(--pan-x, 0) * -4%) calc(var(--pan-y, 0) * -3.2%);
 }
 
 .heroCycle > img {
-  filter: brightness(0.84);
   height: 100%;
   object-fit: cover;
   object-position: 50% 100%;
@@ -91,9 +90,13 @@
    letters the room is lit a touch above the page and its colour pushed, so the word reads as a
    lit window onto the class, not as a dim print of it. */
 @media (min-width: 900px) {
-  .heroPhoto,
-  .heroCycle {
+  .heroPhoto {
     filter: saturate(1.25) contrast(1.12);
+  }
+
+  /* A floor under the cycling rooms: lit a little above the page, never under it. */
+  .heroCycle {
+    filter: saturate(1.18) contrast(1.04) brightness(1.1);
   }
 
   .heroFrame {
@@ -156,14 +159,18 @@
   position: absolute;
 }
 
-/* The word is drawn with a round stroke around its fill, a weight heavier than the face itself,
-   so every stroke of the italic is wide enough to hold a face and no hairline reads as a crack. */
+/* The word is drawn with a heavy round stroke around its fill, near twice the weight of the face,
+   so every stroke of the italic is wide enough to hold a face and no hairline reads as a crack.
+   The path is scaled 0.97 about the stem of the a, so the stroke stays inside the viewBox and the
+   flight origin below is unchanged. --word-edge is the same word a little heavier: the band
+   between the two is the thin cream rim (.heroEdge) that keeps the letters' shape on a dark room. */
 .heroMedia {
   --mask-w: min(92vw, 156svh, 1880px);
   --word-y: 34%;
   /* The stem of the a: placed at 34% down, its point is 34% + 0.0137 of the word width. */
   --word-oy: calc(34% + var(--mask-w) * 0.0137);
-  --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='30' stroke-linejoin='round' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
+  --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='58' stroke-linejoin='round' transform='matrix(.97 0 0 .97 40.68 -10.44)' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
+  --word-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='66' stroke-linejoin='round' transform='matrix(.97 0 0 .97 40.68 -10.44)' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
 }
 
 /* Wide screens hang the word from the top of the room and size it to the space above the
@@ -200,6 +207,15 @@
   inset: 0;
   -webkit-mask: var(--word);
   mask: var(--word);
+  position: absolute;
+}
+
+.heroEdge {
+  background: rgb(250 238 220 / 0.92);
+  inset: 0;
+  -webkit-mask: var(--word-edge), var(--word);
+  -webkit-mask-composite: xor;
+  mask: var(--word-edge) exclude, var(--word);
   position: absolute;
 }
 
@@ -261,29 +277,40 @@
       animation-name: cycleOut;
     }
 
-    /* The lens: a soft hole in the ink that shows the whole room in colour beneath it (--lens-x/-y
-       in percent of the sheet, --lens-on from 0 to 1). A mouse steers it (maskFlight in
-       signatures.ts); left alone, or on a touch screen, it takes its own slow path across the
-       word (ConanLensAuto). A faint ring on the outline layer marks its edge. */
-    :global(html.motion) .heroMask {
+    /* The lens: a clean round hole in the ink that shows the whole room in colour beneath it
+       (--lens-x/-y in percent of the sheet, --lens-on from 0 to 1). A mouse steers it (maskFlight
+       in signatures.ts); left alone, or on a touch screen, it takes its own slow path across the
+       word (ConanLensAuto). Its edge is cut sharp and rimmed in cream like the letters, and the
+       warm lift of the letters reaches into it, so opening the lens only ever adds light. A pointer
+       up by the header holds the lens whole under the top edge, never cut flat by it. */
+    :global(html.motion) .heroMedia {
       --lens-reach: calc((0.45 + var(--lens-on, 0) * 0.55) * var(--lens-r));
+      --lens-at: calc(var(--lens-x, 50) * 1%) max(calc(var(--lens-reach) + 2px), calc(var(--lens-y, 50) * 1%));
+    }
+
+    :global(html.motion) .heroMask {
       --lens: radial-gradient(
-        circle at calc(var(--lens-x, 50) * 1%) calc(var(--lens-y, 50) * 1%),
+        circle at var(--lens-at),
         rgb(0 0 0 / calc(1 - var(--lens-on, 0))) var(--lens-reach),
-        #000 calc(var(--lens-reach) + 4.5rem)
+        #000 calc(var(--lens-reach) + 1.5px)
       );
       -webkit-mask: var(--lens), var(--word), linear-gradient(#000 0 0);
       -webkit-mask-composite: source-in, xor;
       mask: var(--lens) intersect, var(--word) exclude, linear-gradient(#000 0 0);
     }
 
+    :global(html.motion) .heroOutline::before {
+      -webkit-mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-on, 0)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
+      mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-on, 0)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
+    }
+
     :global(html.motion) .heroOutline::after {
-      --ring: calc((0.45 + var(--lens-on, 0) * 0.55) * var(--lens-r) + 2.2rem);
       background: radial-gradient(
-        circle at calc(var(--lens-x, 50) * 1%) calc(var(--lens-y, 50) * 1%),
-        transparent calc(var(--ring) - 1px),
-        rgb(255 236 214 / calc(var(--lens-on, 0) * 0.55)) var(--ring),
-        transparent calc(var(--ring) + 1.5px)
+        circle at var(--lens-at),
+        transparent calc(var(--lens-reach) - 1.5px),
+        rgb(250 238 220 / calc(var(--lens-on, 0) * 0.92)) calc(var(--lens-reach) - 1px),
+        rgb(250 238 220 / calc(var(--lens-on, 0) * 0.92)) calc(var(--lens-reach) + 1px),
+        transparent calc(var(--lens-reach) + 1.5px)
       );
       content: '';
       inset: 0;
@@ -487,18 +514,19 @@
   }
 }
 
+/* One caption at a time: each is gone before the next starts, so two never overprint. */
 @keyframes tagRoom {
   0%,
   33% {
     opacity: 1;
   }
 
-  35%,
-  96% {
+  34%,
+  97.3% {
     opacity: 0;
   }
 
-  98%,
+  98.8%,
   100% {
     opacity: 1;
   }
@@ -506,16 +534,16 @@
 
 @keyframes tagIn {
   0%,
-  33% {
+  34.3% {
     opacity: 0;
   }
 
-  35%,
+  35.8%,
   65% {
     opacity: 1;
   }
 
-  67%,
+  66%,
   100% {
     opacity: 0;
   }
@@ -523,16 +551,16 @@
 
 @keyframes tagOut {
   0%,
-  65% {
+  66.3% {
     opacity: 0;
   }
 
-  67%,
+  67.8%,
   96% {
     opacity: 1;
   }
 
-  98%,
+  97%,
   100% {
     opacity: 0;
   }
@@ -566,9 +594,11 @@
   width: 100%;
 }
 
-/* Each block of the words is gone before the window's top edge reaches it (ConanLensAuto.tsx). */
+/* Each block of the words is gone before the window's top edge reaches it (--keep,
+   ConanLensAuto.tsx), and on wide screens all of them before the principle enters (--hand,
+   ConanHandoff.tsx). */
 :global(html.motion) .heroContent > div {
-  opacity: var(--keep, 1);
+  opacity: calc(var(--keep, 1) * var(--hand, 1));
 }
 
 .eyebrow,
@@ -892,6 +922,18 @@
   margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
 }
 
+/* While the paper rises over the pinned spread, the statement fades and lifts away before the
+   sheet's edge can cut it, and the sheet's own words rise in only after it (ConanHandoff.tsx). */
+:global(html.motion) .principleQuote {
+  opacity: var(--hand, 1);
+  translate: 0 calc((var(--hand, 1) - 1) * 3rem);
+}
+
+:global(html.motion) .audiencesGrid {
+  opacity: var(--arrive, 1);
+  translate: 0 calc((1 - var(--arrive, 1)) * 2.5rem);
+}
+
 .quote p {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
@@ -1201,7 +1243,7 @@
 
 /* Each stage is a lesson card, after Brilliant's course cards and Duolingo's unit banners: a banner
    with the stage's number and how many questions it holds, its name, and its questions as numbered
-   nodes on a line; the stage's numeral stands behind them, outlined, as the card's picture. */
+   nodes on a line; the stage's numeral stands whole behind them, outlined, as the card's picture. */
 .stage {
   --card-pad: 1.25rem;
   background: color-mix(in srgb, var(--brand-paper) 7%, var(--brand-ink-raised));
@@ -1241,7 +1283,7 @@
 
 .stageNumber {
   -webkit-text-stroke: 1.5px color-mix(in srgb, var(--brand-paper) 34%, transparent);
-  bottom: -0.2em;
+  bottom: 0.1em;
   color: transparent;
   font-family: var(--font-cormorant);
   font-size: 11rem;
@@ -1252,7 +1294,8 @@
   line-height: 0.8;
   pointer-events: none;
   position: absolute;
-  right: 0.04em;
+  /* Clear of the card's edge by the italic's overhang, so the last digit is never cut. */
+  right: 0.14em;
   transition:
     color 600ms cubic-bezier(0.16, 1, 0.3, 1),
     -webkit-text-stroke-color 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1290,8 +1333,8 @@
   text-transform: uppercase;
 }
 
-/* The questions are nodes on a line, as on a course path. Every card sets them at one size, right
-   under the name; the foot keeps the bottom of the card, so a card with one question shows its
+/* The questions are nodes on a line, as on a course path. Every card but the last sets them at one
+   size, right under the name; the foot keeps the bottom of the card, so a card with one question shows its
    room below the list, not a gap above it. */
 .questions {
   align-content: start;
@@ -1339,6 +1382,20 @@
 .stage[data-current] .questions li::before {
   background: var(--path-accent);
   color: var(--brand-ink);
+}
+
+/* The last stage is the payoff of the path: the same card, its one question set as large as a
+   headline, so it fills its card with the argument rather than leaving it half bare. */
+.stage:last-child .questions li {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.stage:last-child .questions li::before {
+  font-family: var(--font-be-vietnam);
+  margin-top: 0.2rem;
 }
 
 /* The card's foot, after the pager under a course card: five pips for the five stages, filled up to
@@ -1427,7 +1484,7 @@
 
 .journey[data-hscroll-active='true'] .journeyLayout {
   gap: 0;
-  grid-template-columns: minmax(0, 36vw) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 34vw) minmax(0, 1fr);
   height: 100%;
 }
 
@@ -1437,10 +1494,9 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  /* The mark is level with the top of the card beside it (the window's top room plus half its
-     spare height, .journeyWindow below), and the counter stands at the foot (.journeyMeter). */
-  padding: calc(4.75rem + (100svh - 4.75rem - clamp(1.25rem, 3.5svh, 2.25rem) - min(80svh, 46rem)) / 2)
-    clamp(1.5rem, 3vw, 3rem) max(2.5rem, 6svh) var(--brand-space-inline);
+  /* The column stands on the same middle line as the row of cards beside it (.journeyWindow),
+     with the counter right under the lead. */
+  padding: 4.75rem clamp(1.5rem, 3vw, 3rem) clamp(1.25rem, 3.5svh, 2.25rem) var(--brand-space-inline);
 }
 
 .journey[data-hscroll-active='true'] .journeyTitle {
@@ -1454,16 +1510,14 @@
   margin: 1.25rem 0 clamp(1.25rem, 4svh, 3rem);
 }
 
-/* The counter: the stage number and name change with the stage in view. It stands at the foot of
-   the column with the level path under it (the lead's bottom margin keeps the least gap above), so
-   when the section scrolls away the reader's next stop shows it whole above the card's foot. */
+/* The counter: the stage number and name change with the stage in view, with the level path
+   under it. */
 .journey[data-hscroll-active='true'] .journeyMeter {
   align-items: baseline;
   column-gap: 0.75rem;
   display: grid;
   grid-template-areas: 'count total' 'name name';
   grid-template-columns: auto 1fr;
-  margin-top: auto;
 }
 
 .meterCount,
@@ -1522,10 +1576,11 @@
   letter-spacing: 0.1em;
 }
 
-/* The window has a hairline on the left that stages leave through and a long soft right edge
-   the next stage peeks through, so it reads as what comes next, not as a second card cut off. */
+/* The window has a hairline on the left that stages leave through. The next stage comes in at full
+   strength, a whole card to read before it is in hand; only its last few centimetres soften into
+   the window's right edge. */
 .journey[data-hscroll-active='true'] {
-  --stage-w: clamp(26rem, 40vw, 46rem);
+  --stage-w: clamp(26rem, 46vw, 50rem);
   --stage-gap: clamp(1rem, 1.6vw, 1.75rem);
   --stage-pad: clamp(2rem, 3vw, 3.5rem);
 }
@@ -1536,8 +1591,8 @@
   box-sizing: border-box;
   display: flex;
   height: 100%;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 13rem), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 13rem), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 4rem), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 4rem), transparent 100%);
   min-width: 0;
   overflow: hidden;
   /* The header takes the top; the foot room is short, so the last card leaves almost straight into
@@ -1564,35 +1619,60 @@
   flex-basis: calc(var(--stage-pad) - var(--stage-gap));
 }
 
-/* Pinned: each stage is a tall card, wide enough for its questions to be set large. A card that is
-   leaving is retired with its position (--hscroll-edge, set by horizontalScroll in engine.ts: 0
-   with its left edge on the window's edge, -1 when it is out): it fades as soon as it starts to
-   go and is gone before a fifth of it is out, so no ghost of it lingers beside the next card. */
+/* Pinned: each stage is a card wide enough for its questions to be set large, and as tall as the
+   fullest stage needs (the row stretches its cards to one height), so no card stands half empty.
+   The banner runs across the top; the name and the stage's numeral share the next row; the
+   questions, then the foot. A card that is leaving is retired with its position (--hscroll-edge,
+   set by horizontalScroll in engine.ts: 0 with its left edge on the window's edge, -1 when it is
+   out): it fades as soon as it starts to go and is gone before a fifth of it is out. */
 .journey[data-hscroll-active='true'] .stage {
   --card-pad: clamp(1.5rem, 2.2vw, 2.25rem);
   box-sizing: border-box;
+  column-gap: 1.5rem;
+  display: grid;
   flex: 0 0 var(--stage-w);
-  height: min(80svh, 46rem);
+  grid-template-areas: 'banner banner' 'name number' 'list list' 'foot foot';
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr auto;
   opacity: clamp(0, calc(1 + var(--hscroll-edge, 0) * 6), 1);
 }
 
-/* The numeral is the card's picture: large, outlined, standing whole in the card's lower right
-   corner below the last question (the three-question stage sets the height it needs). */
-.journey[data-hscroll-active='true'] .stageNumber {
-  -webkit-text-stroke-width: 2px;
-  bottom: 0.1em;
-  font-size: clamp(10rem, 14.5vw, 17rem);
-  right: 0.16em;
+.journey[data-hscroll-active='true'] .stageBanner {
+  grid-area: banner;
 }
 
-@media (max-height: 820px) {
-  .journey[data-hscroll-active='true'] .stage {
-    height: min(82svh, 44rem);
-  }
+.journey[data-hscroll-active='true'] .questions {
+  grid-area: list;
+}
 
-  .journey[data-hscroll-active='true'] .stageNumber {
-    font-size: clamp(9rem, 12vw, 13rem);
-  }
+.journey[data-hscroll-active='true'] .stageFoot {
+  grid-area: foot;
+  max-width: none;
+}
+
+/* The numeral stands whole beside the name, outlined on the cards around and filled in the path
+   colour on the card in hand. */
+.journey[data-hscroll-active='true'] .stageNumber {
+  -webkit-text-stroke: 2px color-mix(in srgb, var(--brand-paper) 62%, transparent);
+  align-self: start;
+  font-size: clamp(6.5rem, 8.4vw, 9.5rem);
+  grid-area: number;
+  margin: 0.08em 0.06em 0 0;
+  position: static;
+  z-index: auto;
+}
+
+.journey[data-hscroll-active='true'] .stage[data-current] .stageNumber {
+  -webkit-text-stroke-color: transparent;
+  color: var(--path-accent);
+}
+
+/* Pinned, the payoff question is set larger still. (The card itself keeps the row's width: a wider
+   one would push the row's travel on and leave it resting half out of the window, as a box counts
+   whole in the track's scroll width, negative margin or not.) */
+.journey[data-hscroll-active='true'] .stage:last-child .questions li {
+  font-size: clamp(2.3rem, 3.4vw, 3.5rem);
+  line-height: 1.12;
 }
 
 /* The first node sits about 24px under the gloss: the card's gap less a little of the row's padding. */
@@ -1600,8 +1680,13 @@
   margin-top: -0.3rem;
 }
 
+.journey[data-hscroll-active='true'] .stageName {
+  align-self: end;
+  grid-area: name;
+}
+
 .journey[data-hscroll-active='true'] .questions li {
-  font-size: clamp(1.375rem, 1.95vw, 1.75rem);
+  font-size: clamp(1.3rem, 1.65vw, 1.6rem);
   grid-template-columns: 2.5rem minmax(0, 1fr);
   padding: 0.7rem 0;
 }
@@ -1631,22 +1716,6 @@
 .journey[data-hscroll-active='true'] .stage[data-current] .stageBanner {
   background: var(--path-accent);
   color: var(--brand-ink);
-}
-
-/* The cards beside the one in hand keep their words at a readable level (over 7:1 on the card),
-   whole, so a stage that is arriving is still a card with something to read; the card in hand is
-   at full strength. */
-.journey[data-hscroll-active='true'] .stageName,
-.journey[data-hscroll-active='true'] .questions,
-.journey[data-hscroll-active='true'] .stageFoot {
-  opacity: 0.84;
-  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.journey[data-hscroll-active='true'] .stage[data-current] .stageName,
-.journey[data-hscroll-active='true'] .stage[data-current] .questions,
-.journey[data-hscroll-active='true'] .stage[data-current] .stageFoot {
-  opacity: 1;
 }
 
 @media (max-height: 780px) {
@@ -1683,8 +1752,8 @@
   }
 }
 
-/* Mentors: the title on top, two large portraits under it, names below them; on wide screens the
-   band fits in one screen. After the long dark run of the journey the
+/* Mentors: the title on top, two portraits under it, names below them; on wide screens the title
+   and the pair share one screen side by side. After the long dark run of the journey the
    instructors come up into the light, and the gallery that follows goes back to ink. */
 .mentorsBand {
   background: var(--brand-paper);
@@ -1708,6 +1777,26 @@
 
 .mentorsInner .sectionHead {
   margin-bottom: clamp(1.5rem, 3.5svh, 2.5rem);
+}
+
+/* Wide screens: a spread, the title large on the left, the two portraits at their own size on the
+   right (ConanShowcase.module.css). */
+@media (min-width: 1000px) {
+  .mentorsInner {
+    align-items: center;
+    column-gap: clamp(2rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .mentorsInner .sectionHead {
+    margin-bottom: 0;
+  }
+
+  .mentorsInner .sectionTitle {
+    font-size: clamp(4rem, 7vw, 7.5rem);
+    max-width: 9ch;
+  }
 }
 
 /* Closing: the page ends on a field of Conan's own vermilion, laid over the ink (data-curtain).
