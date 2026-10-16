@@ -211,8 +211,10 @@
   position: absolute;
 }
 
+/* The rim is quieter at the top of the letters, where it meets the bright window light of the
+   room, and full where the letters sit on its dark floor. */
 .heroEdge {
-  background: rgb(250 238 220 / 0.72);
+  background: linear-gradient(180deg, rgb(250 238 220 / 0.36) 4%, rgb(250 238 220 / 0.72) 38%);
   inset: 0;
   -webkit-mask: var(--word-edge), var(--word);
   -webkit-mask-composite: xor;
@@ -729,24 +731,28 @@
     mask-image: linear-gradient(180deg, #000 0, #000 80%, transparent 100%);
   }
 
-  /* As the hero leaves (--exit, 0 to 1, ConanLensAuto) the room keeps leaning in and dims, so it
-     is still on screen as the principle rises over the hero's foot. */
-  /* While the sheet flies (--flight) the room grows from the top edge until it fills the frame,
-     so the pinned stretch never shows a half-screen of bare ink under it. */
+  /* While the sheet flies (--flight, ConanLensAuto) the room leans in a little from the faces'
+     line, never so far that a head leaves the frame. As the hero then scrolls away the room is held
+     in place (--hold) and the principle rises over it on a scrim, so the screen is never bare ink;
+     the room only fades (--cover, ConanHandoff) once the principle has covered most of it. */
   :global(html.motion) .hero {
     overflow: clip;
   }
 
   :global(html.motion) .heroMedia {
-    opacity: clamp(0, 1.3 - var(--exit, 0) * 1.7, 1);
-    scale: calc(1 + var(--flight, 0) * 0.55 + var(--exit, 0) * 0.1);
-    transform-origin: 50% 0;
+    opacity: var(--cover, 1);
+    scale: calc(1 + var(--flight, 0) * 0.12);
+    transform-origin: 50% 30%;
+    translate: 0 var(--hold, 0px);
   }
 
-  /* The principle overlaps the hero's ink foot, so the two spreads share the screen instead of
-     passing through a strip of bare ink. */
+  /* The principle overlaps the hero's foot by the depth of its scrim, so the hero's clipped edge
+     always falls where the scrim is already solid ink. While the paper rises over it, it dims only
+     in the sheet's last stretch (--dim, ConanHandoff), over the curtain's own fade. */
   :global(html.motion) .principle {
-    margin-top: -32svh;
+    background: linear-gradient(180deg, transparent 0, var(--brand-ink) 11svh);
+    margin-top: -11svh;
+    opacity: var(--dim, 1) !important;
     position: relative;
     z-index: 1;
   }
@@ -928,9 +934,15 @@
    section is in view, and the paper (data-curtain "sheet") holds the spread still at the top of
    the screen while it rises over it. */
 @media (min-width: 1000px) {
+  /* The spread sits high in its screen so that, held, the statement stays whole above the rising
+     paper while the paper's own heading arrives below it. */
+  .principle {
+    padding-top: 3.5rem;
+  }
+
   .principleFrame {
     aspect-ratio: 1;
-    max-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
+    max-height: calc(100svh - 16rem);
     width: 100%;
   }
 
@@ -940,7 +952,11 @@
     column-gap: clamp(3rem, 6vw, 6rem);
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     max-width: 1360px;
-    min-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
+  }
+
+  /* One screen tall only while the paper rides over it; still, the spread ends at its photo. */
+  :global(html.motion) .principleGrid {
+    min-height: calc(100svh - 3.5rem - clamp(3.5rem, 6vw, 5.25rem));
   }
 }
 
@@ -951,8 +967,8 @@
 /* While the paper rises over the pinned spread, the statement fades and lifts away before the
    sheet's edge can cut it, and the sheet's own words rise in only after it (ConanHandoff.tsx). */
 :global(html.motion) .principleQuote {
-  opacity: var(--hand, 1);
-  translate: 0 calc((var(--hand, 1) - 1) * 3rem);
+  opacity: calc(var(--hand, 1) * var(--enter, 1));
+  translate: 0 calc((var(--hand, 1) - 1) * 3rem + (1 - var(--enter, 1)) * 2rem);
 }
 
 :global(html.motion) .audiencesGrid {
@@ -1076,6 +1092,12 @@
     display: grid;
     padding-block: clamp(3.5rem, 5.5vw, 5rem);
   }
+
+  /* While the sheet rides over the held spread its top fifth passes behind the header, so the words
+     start below that fold and the sheet ends flush with the journey's ink instead of leaving a strip. */
+  :global(html.motion) .audiencesBand {
+    padding-block: calc(19svh + 2rem) 2rem;
+  }
 }
 
 @media (hover: hover) and (min-width: 1000px) {
@@ -1198,6 +1220,31 @@
 
 :global(html:not(.motion)) .bandWord {
   font-size: clamp(2.5rem, 1rem + 5vw, 6.5rem);
+}
+
+/* Still, the English gloss is set as one centred, balanced line of text: each name kept whole and
+   divided by a dot, so a narrow screen breaks it into even lines instead of a ragged stack. */
+:global(html:not(.motion)) .band {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:global(html:not(.motion)) .termRow .bandTrack {
+  display: block;
+  line-height: 1.7;
+  text-align: center;
+  text-wrap: balance;
+}
+
+:global(html:not(.motion)) .termWord {
+  /* Atomic boxes: the line may break between two names, never inside one. */
+  display: inline-block;
+  padding-inline: 0.3em;
+  white-space: nowrap;
+}
+
+:global(html:not(.motion)) .termWord:nth-child(-n + 4)::after {
+  content: '·';
+  margin-left: 0.6em;
 }
 
 /* The dot divides one word from the next; the last word of the turn has none to divide it from. */
@@ -1533,6 +1580,7 @@
 .journey[data-hscroll-active='true'] .journeyLead {
   font-size: clamp(1.25rem, 0.3rem + 1.45vw, 1.625rem);
   line-height: 1.55;
+  line-height: 1.55;
   margin: 1.25rem 0 clamp(1.25rem, 4svh, 3rem);
 }
 
@@ -1682,18 +1730,20 @@
 /* The numeral stands whole beside the name, outlined on the cards around and filled in the path
    colour on the card in hand. */
 .journey[data-hscroll-active='true'] .stageNumber {
-  -webkit-text-stroke: 2px color-mix(in srgb, var(--brand-paper) 62%, transparent);
-  /* Cut from a real class photo, in the page's grade; dimmed on the cards around, clear in hand. */
+  -webkit-text-stroke: 0;
+  /* Cut from a real class photo, in the page's grade and cropped on the faces: no dark wash and
+     no outline, so the numeral reads as photograph; the cards around are only quieter. */
   -webkit-background-clip: text;
   background-clip: text;
   background-image: var(--numeral-photo);
-  background-position: 50% 30%;
-  background-size: auto 180%;
-  color: rgb(7 7 6 / 0.55);
-  filter: var(--brand-photo-grade);
+  background-position: 50% 28%;
+  background-size: auto 150%;
+  color: transparent;
+  filter: var(--brand-photo-grade) brightness(1.18);
   font-weight: 700;
+  opacity: 0.62;
   align-self: start;
-  font-size: clamp(7.5rem, 10vw, 11.5rem);
+  font-size: clamp(9.5rem, 14vw, 15rem);
   grid-area: number;
   margin: 0.08em 0.06em 0 0;
   position: static;
@@ -1701,8 +1751,8 @@
 }
 
 .journey[data-hscroll-active='true'] .stage[data-current] .stageNumber {
-  -webkit-text-stroke-color: var(--path-accent);
   color: transparent;
+  opacity: 1;
 }
 
 /* Pinned, the payoff question is set larger still. (The card itself keeps the row's width: a wider

@@ -191,7 +191,7 @@ export default function ConanStageNav({ label, stages }: ConanStageNavProps) {
               data-cursor={stage.gloss}
               data-cursor-tone="lacquer"
               {...(index === 0
-                ? { 'data-pen': 'arrow', 'data-pen-tone': 'ember', 'data-pen-to': 'li:last-child > button', 'data-pen-side': 'bottom,bottom' }
+                ? { 'data-pen': 'arrow', 'data-pen-tone': 'ember', 'data-pen-to': 'li:last-child > button', 'data-pen-side': 'bottom,bottom', 'data-pen-width': '4' }
                 : {})}
               onClick={() => go(index)}
             >
