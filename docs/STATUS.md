@@ -1,5 +1,12 @@
 # thongphan.com — Unified Cinema status
 
+## Anh duyệt r17, chốt chuẩn gu, chờ cổng consent để lên production — BLOCKED (production) — 2026-10-16
+
+- Anh Thông duyệt bản preview r17 (https://preview-two-path.thongphan-com.pages.dev) và yêu cầu deploy thay thongphan.com.
+- Đã chốt gu r17 làm chuẩn chung cho mọi visual, ấn phẩm: Brain2 `00-System/branding-system-thongphan-visual-standard-2026.md`. Note gu cũ `thongphan-website-aesthetic-operating-protocol.md` có khối "Cập nhật gần nhất" trỏ sang, và `agent-context-index.md` đã thêm con trỏ.
+- Đồng bộ nội dung: site là static export. Link Tensai/Conan nằm ở `lib/two-path-links.ts`, nội dung khóa học hardcode ở `lib/two-path-content.ts`, và site không gọi API nào của learn hay conan. Nếu Tensai/Conan đổi nội dung thì site KHÔNG tự cập nhật. Đề xuất lấy catalog từ `api.thongphan.com` lúc build, kèm rebuild hook; phải đọc data-architecture.md trước khi thiết kế và chờ anh duyệt.
+- Production đang chặn vì test 487/488: 12 ảnh có mặt người vẫn ở trạng thái `pending-owner-consent` trong `lib/two-path-photos.ts`. Cần anh xác nhận consent, hoặc chọn làm mờ hay gỡ ảnh. Repo đang public nên việc push cũng chờ cổng này.
+
 ## Vòng r17 (lớp toàn cục + nâng cấp từng trang) — PARTIAL, dừng sớm theo yêu cầu — 2026-10-16
 
 - Đã gộp vào `feature/two-path-rebuild`:
