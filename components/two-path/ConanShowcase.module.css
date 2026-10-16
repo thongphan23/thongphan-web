@@ -2,31 +2,23 @@
    keeps the shared light-table rules (TwoPath.module.css) and only overrides what /conan changes:
    a deeper warm grade, rounder frames and a larger contact sheet. */
 
+/* Two portraits side by side at every width, each half the band wide; on wide screens the frame is
+   cut to a landscape as tall as the screen allows (.mentorPhoto below), so the title, both faces
+   and both names are seen together in one screen. */
 .mentors {
-  /* A portrait is at most 60svh tall, so the pair and its stagger always fit a screen. */
-  --portrait-h: min(60svh, 38rem);
   align-items: start;
   display: grid;
   gap: clamp(1rem, 3vw, 2.5rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* The site chrome lifts and shades a hovered [data-motion-surface]: the item is exactly as tall as
-   its frame, with the same corners, so that shadow follows the portrait and not a stretched cell. */
-.mentor {
+/* The site chrome lifts and shades a hovered [data-motion-surface]: the card is exactly as large
+   as its frame, with the same corners, so that shadow follows the portrait. */
+.mentorCard {
   border-radius: 18px;
-  width: min(100%, calc(var(--portrait-h) * 0.8));
-}
-
-/* The second portrait steps down, so the pair reads as a spread rather than a row of tiles. */
-@media (min-width: 640px) {
-  .mentor:nth-child(2) {
-    margin-top: clamp(1.5rem, 2.8vw, 2.5rem);
-  }
 }
 
 .mentorFrame {
@@ -36,49 +28,56 @@
   position: relative;
 }
 
-/* The name and role stand on an ink fall at the foot of the portrait. */
-.mentorFrame::after {
-  background: linear-gradient(180deg, transparent 42%, rgba(7, 7, 6, 0.9));
-  content: '';
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
 .mentorMedia,
 .mentorPhoto {
   display: block;
   width: 100%;
 }
 
+/* Both portraits share one square crop on narrow screens: the head fills the same band of the
+   frame (about 11% to 70% of its height) and the eyes sit on the same line. */
 .mentorPhoto {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   filter: var(--brand-photo-grade);
   height: auto;
   object-fit: cover;
-  transition:
-    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  object-position: 50% 66%;
+  transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* The two source portraits are framed differently; this brings the faces to the same size and height. */
-.mentor[data-face='close'] .mentorPhoto {
-  transform: translateY(4%) scale(1.18);
-  transform-origin: 50% 30%;
+/* The Thông Phan portrait is shot wider: it is cropped in from the top, by as much as makes his
+   head as tall and as wide in its square as Đắc Nguyễn's (within a few per cent). `scale`, not
+   `transform`, so the site chrome's hover zoom (a transform) adds to the crop instead of replacing it. */
+.mentor[data-face='wide'] .mentorPhoto {
+  object-position: 50% 0;
+  scale: 1.24;
+  transform-origin: 50% 41%;
+}
+
+/* Wide screens: the same faces in a landscape frame, the width kept and the height cut to what the
+   screen allows, so each head fills the frame from the crown to the chin with the eyes just above
+   the middle, on one line across the pair. */
+@media (min-width: 1000px) {
+  .mentorPhoto {
+    aspect-ratio: auto;
+    height: clamp(380px, 46svh, 520px);
+    object-position: 50% 40%;
+  }
+
+  .mentor[data-face='wide'] .mentorPhoto {
+    object-position: 50% 23%;
+    scale: 1.15;
+    transform-origin: 50% 0;
+  }
 }
 
 /* With motion the pair starts in the series' warm monochrome, one shared grade over two different
-   rooms, and warms into colour as the reader scrolls the band (--fill, 0 to 1 over the band; the
-   first portrait from 0.46, the second from 0.62), or at once under a pointer; on touch screens it
-   also takes colour as a portrait crosses the middle of the screen. Without motion the portraits
-   keep the colour grade of the rest of the page: nothing scrolls them awake, and a face should
-   not wait on a gesture to be seen. */
+   rooms, and both warm into colour together as the band comes up the screen (--fill, 0 to 1 over
+   the band), or at once under a pointer; on touch screens a portrait also takes colour as it
+   crosses the middle of the screen. Without motion the portraits keep the colour grade of the rest
+   of the page: nothing scrolls them awake, and a face should not wait on a gesture to be seen. */
 .mentor {
-  --bloom: clamp(0, calc((var(--fill, 0) - var(--bloom-at, 0.46)) * 5), 1);
-}
-
-.mentor:nth-child(2) {
-  --bloom-at: 0.62;
+  --bloom: clamp(0, calc((var(--fill, 0) - 0.1) * 4), 1);
 }
 
 :global(html.motion) .mentorPhoto {
@@ -102,29 +101,25 @@
   }
 }
 
+/* Name and role stand under the portrait, on the paper, not over the face. */
 .mentorCaption {
-  bottom: 0;
-  left: 0;
-  padding: clamp(0.9rem, 2vw, 1.75rem);
-  position: absolute;
-  right: 0;
-  z-index: 2;
+  padding-top: clamp(0.85rem, 1.6svh, 1.25rem);
 }
 
 .mentorName {
-  color: var(--brand-paper);
+  color: var(--brand-ink);
   font-family: var(--font-cormorant);
-  font-size: clamp(1.75rem, 0.9rem + 2vw, 3.1rem);
+  font-size: clamp(1.5rem, 0.9rem + 1.6vw, 2.5rem);
   font-weight: 500;
   line-height: 1.02;
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.4rem;
 }
 
 .mentorRole {
   align-items: center;
-  color: var(--brand-paper);
+  color: color-mix(in srgb, var(--brand-ink) 80%, var(--brand-paper));
   display: flex;
-  font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.125rem);
+  font-size: clamp(1rem, 0.85rem + 0.4vw, 1.25rem);
   font-weight: 600;
   gap: 0.6rem;
   letter-spacing: 0.04em;
@@ -138,6 +133,105 @@
   flex: none;
   height: 2px;
   width: 1.2rem;
+}
+
+/* The journey's level path (ConanStageNav.tsx), after Brilliant's course path: stages done are
+   filled, the one in hand is lit and larger, the ones ahead are open rings on a rail that fills
+   as the reader goes. */
+.stageNav {
+  margin-top: clamp(1.25rem, 3svh, 2rem);
+}
+
+.stageNavList {
+  display: flex;
+  gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: max-content;
+}
+
+.stageNavList::before,
+.stageNavList::after {
+  content: '';
+  height: 2px;
+  left: 22px;
+  position: absolute;
+  right: 22px;
+  top: calc(50% - 1px);
+}
+
+.stageNavList::before {
+  background: color-mix(in srgb, var(--brand-paper) 22%, transparent);
+}
+
+.stageNavList::after {
+  background: var(--path-accent);
+  transform: scaleX(var(--nav-at, 0));
+  transform-origin: 0 50%;
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stageNavList li {
+  position: relative;
+  z-index: 1;
+}
+
+.stageNavNode {
+  align-items: center;
+  background: var(--brand-ink-raised);
+  border: 2px solid color-mix(in srgb, var(--brand-paper) 42%, transparent);
+  border-radius: 50%;
+  color: var(--brand-paper);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-be-vietnam);
+  font-size: 1rem;
+  font-weight: 700;
+  height: 44px;
+  justify-content: center;
+  padding: 0;
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    color 300ms ease,
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: 44px;
+}
+
+.stageNavNode[data-done] {
+  background: var(--brand-paper);
+  border-color: var(--brand-paper);
+  color: var(--brand-ink);
+}
+
+.stageNavNode[aria-current] {
+  background: var(--path-accent);
+  border-color: var(--path-accent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--path-accent) 28%, transparent);
+  color: var(--brand-ink);
+  transform: scale(1.18);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stageNavNode:not([aria-current]):hover {
+    border-color: var(--path-accent);
+  }
+}
+
+.stageNavNode:focus-visible {
+  outline: var(--brand-focus-ring-dark);
+  outline-offset: 4px;
+}
+
+/* The pinned journey shows one stage at a time: there the path is how to jump. On the swipe row
+   below 900px it stays too, as a step indicator the reader can tap. */
+@media (min-width: 900px) {
+  :global([data-hscroll]:not([data-hscroll-active='true'])) .stageNav {
+    display: none;
+  }
 }
 
 /* Gallery overrides. */
@@ -157,6 +251,42 @@
 
 .table .thumb {
   border-radius: 9px;
+}
+
+/* The counter changes in place instead of rolling: every figure sits in the same cell and only the
+   one for the photo in view is shown (--i is its place, --light-index the photo in view). The change
+   is a cut, so a fast scroll through the stack never leaves the window empty or a digit half cut. */
+.table[data-light-active] .roll {
+  display: grid;
+}
+
+.table[data-light-active] .roll > span {
+  --away: max(var(--light-index, 0) - var(--i, 0), var(--i, 0) - var(--light-index, 0));
+  grid-area: 1 / 1;
+  opacity: clamp(0, calc(1 - var(--away)), 1);
+  transform: none;
+  transition: none;
+}
+
+/* The photo's kind label is set a step larger than the shared one, to read on a reduced view. */
+.table[data-light-table] figcaption .kind {
+  font-size: 1.125rem;
+}
+
+/* Captions change quickly: the one leaving is gone at once and the arriving one lands within the
+   photo's cut, so a fast pass through the stack never stacks two half-faded captions. */
+.table[data-light-table][data-light-active] [data-light-item] figcaption {
+  transition:
+    opacity 120ms linear,
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 120ms;
+}
+
+.table[data-light-table][data-light-active] [data-light-item][data-current] figcaption {
+  transition:
+    opacity 240ms ease,
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s;
 }
 
 @media (min-width: 900px) {

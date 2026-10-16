@@ -51,7 +51,7 @@ export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
               <figcaption>
                 <span className={styles.galleryIndex}>{pad(index + 1)}</span>
                 <span>
-                  <span className={styles.galleryKind}>{item.kind}</span>
+                  <span className={`${styles.galleryKind} ${show.kind}`}>{item.kind}</span>
                   {photo(item.photoId).caption}
                 </span>
               </figcaption>
@@ -62,9 +62,11 @@ export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
 
       {/* Light table only: the rolling counter and the contact sheet. */}
       <p className={styles.lightCounter} aria-hidden="true">
-        <span className={styles.lightRoll}>
+        <span className={`${styles.lightRoll} ${show.roll}`}>
           {items.map((item, index) => (
-            <span key={item.photoId}>{pad(index + 1)}</span>
+            <span key={item.photoId} style={{ '--i': index } as CSSProperties}>
+              {pad(index + 1)}
+            </span>
           ))}
         </span>
         <span className={styles.lightTotal}>/ {pad(items.length)}</span>

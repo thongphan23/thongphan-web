@@ -45,40 +45,68 @@
   position: absolute;
 }
 
+/* Closer on the rows of faces, which sit in the upper-middle of the frame. */
+.heroFrame {
+  inset: 0;
+  position: absolute;
+  scale: 1.14;
+  transform-origin: 50% 30%;
+  translate: calc(var(--pan-x, 0) * -4%) calc(var(--pan-y, 0) * -3.2%);
+}
+
 .heroPhoto {
   /* The group photo is shot against white office walls: a warm cast and a stop under the page's
      light keep them from glaring, while the saturation stays up so the faces are not muddy. */
   filter: saturate(1.12) sepia(0.12) contrast(1.14) brightness(0.92);
   inset: -12px 0 0;
   position: absolute;
-  /* Closer on the rows of faces, which sit in the upper-middle of the frame. */
-  scale: 1.14;
-  transform-origin: 50% 30%;
+}
+
+/* The other classes in the letters are framed on their rows of faces, a little closer than the room.
+   Both rooms are paler than the first (a glass front, a white ceiling), so each is cut below its
+   light, where the faces are, and taken down a stop, so the letters keep their shape instead of
+   washing out into the light: the café at the band of faces round its tables (above it are the
+   bright windows, below it a white marble floor), the meeting room at the foot of the frame, its
+   wooden table and the faces along it. */
+.heroCycle {
+  scale: 1.1;
   translate: calc(var(--pan-x, 0) * -4%) calc(var(--pan-y, 0) * -3.2%);
+}
+
+.heroCycle > img {
+  filter: brightness(0.84);
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  width: 100%;
+}
+
+.heroCycle > img:first-child {
+  object-position: 50% 40%;
 }
 
 /* Wide screens: close enough that each letter of the word holds a face, not a patch of wall.
    The origin sits over the right of the room, at the top edge, so the standing men land in the
-   curve of the C and the faces behind them in the o, the n, the a and the last n. The grade is
-   darker and richer than the narrow one: the walls are white, and a pale wall inside a letter
-   reads as a hole in the word. */
+   curve of the C and the faces behind them in the o, the n, the a and the last n. Inside the
+   letters the room is lit a touch above the page and its colour pushed, so the word reads as a
+   lit window onto the class, not as a dim print of it. */
 @media (min-width: 900px) {
-  .heroPhoto {
-    filter: saturate(1.28) sepia(0.08) contrast(1.22) brightness(0.74);
+  .heroPhoto,
+  .heroCycle {
+    filter: saturate(1.25) contrast(1.12);
+  }
+
+  .heroFrame {
     scale: 1.32;
     transform-origin: 67.7% 0;
   }
 
-  /* Over the photo, under the sheet: the wall in the corners of the letters is pulled down a
-     further stop, so each stroke ends on a darker edge than the faces inside it. */
-  :global(html.motion) .heroDrift::after {
-    background:
-      linear-gradient(180deg, rgba(7, 7, 6, 0.6) 0%, rgba(7, 7, 6, 0.34) 30%, transparent 58%),
-      radial-gradient(ellipse 70% 100% at 50% 52%, transparent 50%, rgba(7, 7, 6, 0.4) 100%);
+  /* The white wall at the top of the room is taken down a stop, so the top of the C keeps its
+     faces instead of burning out. */
+  .heroFrame::after {
+    background: linear-gradient(180deg, rgba(7, 7, 6, 0.45) 0, rgba(7, 7, 6, 0.2) 16%, rgba(7, 7, 6, 0) 32%);
     content: '';
     inset: 0;
-    mix-blend-mode: multiply;
-    pointer-events: none;
     position: absolute;
   }
 }
@@ -95,10 +123,11 @@
   object-position: 50% 40%;
 }
 
-/* Wide screens frame from the top edge of the photo (see the scale and origin above). */
+/* Wide screens frame on the middle of the photo, where the GL layer (gl-photo.ts, which reads
+   only percentages) frames it too, so a still page shows the same faces in the letters. */
 @media (min-width: 900px) {
   .heroPicture img {
-    object-position: 50% 0;
+    object-position: 50% 50%;
   }
 }
 
@@ -119,34 +148,79 @@
    measured from the centre of a word var(--mask-w) wide. */
 .heroSheen,
 .heroMask,
-.heroOutline {
+.heroOutline,
+.heroCycle {
   display: none;
   inset: 0;
   pointer-events: none;
   position: absolute;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  :global(html.motion) .heroMask {
-    --mask-w: min(88vw, 150svh, 1800px);
-    --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E");
-    background: var(--brand-ink);
+/* The word is drawn with a round stroke around its fill, a weight heavier than the face itself,
+   so every stroke of the italic is wide enough to hold a face and no hairline reads as a crack. */
+.heroMedia {
+  --mask-w: min(92vw, 156svh, 1880px);
+  --word-y: 34%;
+  /* The stem of the a: placed at 34% down, its point is 34% + 0.0137 of the word width. */
+  --word-oy: calc(34% + var(--mask-w) * 0.0137);
+  --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='30' stroke-linejoin='round' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
+}
+
+/* Wide screens hang the word from the top of the room and size it to the space above the
+   headline (--mask-fit, measured by ConanLensAuto; the calc is its first-paint estimate), so the
+   letters never run under the words below them. The stem point is then 0.1154 of the width down. */
+@media (min-width: 900px) {
+  .heroMedia {
+    --mask-w: min(92vw, var(--mask-fit, calc((min(100svh - 82px, 920px) - 15.15rem - 13.3vw) * 3.41)), 1880px);
+    --word-y: 16px;
+    --word-oy: calc(16px + var(--mask-w) * 0.1154);
+    /* The lens keeps to the size of the word, so on a short screen it never opens under the headline. */
+    --lens-r: min(clamp(7rem, 11vw, 12rem), calc(var(--mask-w) * 0.12));
+  }
+}
+
+.heroMask {
+  background: var(--brand-ink);
+  -webkit-mask: var(--word), linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: var(--word) exclude, linear-gradient(#000 0 0);
+  transform-origin: calc(50% + var(--mask-w) * 0.0624) var(--word-oy);
+}
+
+/* Inside the letters the blacks of each room are lifted a little: a warm screen layer cut to the
+   word rides on the outline, which flies with the sheet. A dark coat or a shadow in a photo then
+   still reads as part of a letter against the ink, never as a gap in the word. */
+.heroOutline {
+  mix-blend-mode: screen;
+}
+
+.heroOutline::before {
+  background: #46372d;
+  content: '';
+  inset: 0;
+  -webkit-mask: var(--word);
+  mask: var(--word);
+  position: absolute;
+}
+
+/* Without motion the word stays up as a still window onto the room, lit and whole: the shade
+   under the sheet is eased off, so the letters hold the room at full light. */
+@media (min-width: 1000px) {
+  :global(html:not(.motion)) .heroMask,
+  :global(html:not(.motion)) .heroOutline {
     display: block;
-    -webkit-mask: var(--word) 50% 34% / var(--mask-w) auto no-repeat, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: var(--word) 50% 34% / var(--mask-w) auto no-repeat exclude, linear-gradient(#000 0 0);
-    /* The stem of the a: the word is placed at 34% down, so its point is 34% + 0.0137 of the word width. */
-    transform-origin: calc(50% + var(--mask-w) * 0.0624) calc(34% + var(--mask-w) * 0.0137);
-    will-change: transform;
   }
 
-  /* A fine warm line traced on the letters' edge holds the italic hairlines, so thin strokes of
-     the photo read as letters, not as stray slivers. It flies with the sheet. */
+  :global(html:not(.motion)) .heroShade {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .heroMask,
   :global(html.motion) .heroOutline {
-    --mask-w: min(88vw, 150svh, 1800px);
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath fill='none' stroke='rgba(255,236,214,0.55)' stroke-width='7' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% 34% / var(--mask-w) auto no-repeat;
     display: block;
-    transform-origin: calc(50% + var(--mask-w) * 0.0624) calc(34% + var(--mask-w) * 0.0137);
+    transform-origin: calc(50% + var(--mask-w) * 0.0624) var(--word-oy);
     will-change: transform;
   }
 
@@ -167,36 +241,48 @@
       animation: sheenSweep 7s cubic-bezier(0.45, 0, 0.2, 1) 0.9s infinite;
       background: linear-gradient(105deg, transparent 38%, rgba(255, 236, 214, 0.5) 48%, rgba(255, 236, 214, 0.08) 54%, transparent 62%) 130% 0 / 260% 100% no-repeat;
       display: block;
-      inset: 0;
       mix-blend-mode: soft-light;
-      pointer-events: none;
+    }
+
+    /* Two more classes take turns inside the letters, each held for about four seconds, over the
+       room that opens the page (which stays beneath as the first and last of the three). */
+    :global(html.motion) .heroCycle {
+      display: block;
+    }
+
+    .heroCycle > * {
+      animation: cycleIn 13.5s linear 2.2s infinite;
+      inset: 0;
+      opacity: 0;
       position: absolute;
     }
-  }
 
-  /* A mouse opens a lens in the ink: a soft hole that follows the pointer and shows the whole
-     room in colour beneath it (--lens-x/-y in percent of the sheet, --lens-on from 0 to 1, driven
-     by maskFlight in signatures.ts). A faint ring on the outline layer marks its edge. */
-  @media (min-width: 900px) and (hover: hover) and (pointer: fine) {
+    .heroCycle > img + img {
+      animation-name: cycleOut;
+    }
+
+    /* The lens: a soft hole in the ink that shows the whole room in colour beneath it (--lens-x/-y
+       in percent of the sheet, --lens-on from 0 to 1). A mouse steers it (maskFlight in
+       signatures.ts); left alone, or on a touch screen, it takes its own slow path across the
+       word (ConanLensAuto). A faint ring on the outline layer marks its edge. */
     :global(html.motion) .heroMask {
-      --lens-r: clamp(7rem, 11vw, 12rem);
       --lens-reach: calc((0.45 + var(--lens-on, 0) * 0.55) * var(--lens-r));
       --lens: radial-gradient(
         circle at calc(var(--lens-x, 50) * 1%) calc(var(--lens-y, 50) * 1%),
         rgb(0 0 0 / calc(1 - var(--lens-on, 0))) var(--lens-reach),
         #000 calc(var(--lens-reach) + 4.5rem)
       );
-      -webkit-mask: var(--lens), var(--word) 50% 34% / var(--mask-w) auto no-repeat, linear-gradient(#000 0 0);
+      -webkit-mask: var(--lens), var(--word), linear-gradient(#000 0 0);
       -webkit-mask-composite: source-in, xor;
-      mask: var(--lens) intersect, var(--word) 50% 34% / var(--mask-w) auto no-repeat exclude, linear-gradient(#000 0 0);
+      mask: var(--lens) intersect, var(--word) exclude, linear-gradient(#000 0 0);
     }
 
     :global(html.motion) .heroOutline::after {
-      --ring: calc((0.45 + var(--lens-on, 0) * 0.55) * clamp(7rem, 11vw, 12rem) + 2.2rem);
+      --ring: calc((0.45 + var(--lens-on, 0) * 0.55) * var(--lens-r) + 2.2rem);
       background: radial-gradient(
         circle at calc(var(--lens-x, 50) * 1%) calc(var(--lens-y, 50) * 1%),
         transparent calc(var(--ring) - 1px),
-        rgb(255 236 214 / calc(var(--lens-on, 0) * 0.5)) var(--ring),
+        rgb(255 236 214 / calc(var(--lens-on, 0) * 0.55)) var(--ring),
         transparent calc(var(--ring) + 1.5px)
       );
       content: '';
@@ -280,6 +366,41 @@
   }
 }
 
+/* 13.5s: the opening room for 4.5s, then the first class over it, then the second over that,
+   which then lifts off the opening room again. */
+@keyframes cycleIn {
+  0%,
+  31% {
+    opacity: 0;
+  }
+
+  37%,
+  70% {
+    opacity: 1;
+  }
+
+  71%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes cycleOut {
+  0%,
+  63% {
+    opacity: 0;
+  }
+
+  69%,
+  94% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes photoSettle {
   from {
     scale: 1.08;
@@ -292,25 +413,36 @@
   }
 }
 
-/* The caption of the real photograph, as a tag on its top edge. */
+/* The caption of the real photograph, as a tag on its top edge. The tag is solid rather than
+   blurred so it reads over the lens and the wall alike, and the captions of the cycling rooms
+   share its cell, one at a time. */
 .heroTag {
-  backdrop-filter: blur(10px);
-  background: rgba(7, 7, 6, 0.66);
-  border-radius: 14px;
   color: var(--brand-paper);
-  font-size: 0.875rem;
+  display: grid;
+  font-size: clamp(1rem, 0.6rem + 0.85vw, 1.3125rem);
   font-weight: 600;
+  justify-items: start;
   left: max(var(--brand-space-inline), calc((100% - 1360px) / 2 + var(--brand-space-inline)));
   line-height: 1.4;
   margin: 0;
   max-width: calc(100% - 2 * var(--brand-space-inline));
-  padding: 0.55rem 1rem 0.55rem 0.9rem;
   position: absolute;
   top: 1.1rem;
   z-index: 1;
 }
 
-.heroTag::before {
+.heroTag > span {
+  background: rgba(7, 7, 6, 0.72);
+  border-radius: 14px;
+  grid-area: 1 / 1;
+  padding: 0.55rem 1rem 0.55rem 0.9rem;
+}
+
+.heroTag > span + span {
+  display: none;
+}
+
+.heroTag > span::before {
   background: var(--path-accent);
   border-radius: 50%;
   content: '';
@@ -319,6 +451,91 @@
   margin-right: 0.6rem;
   vertical-align: 0.08em;
   width: 0.5rem;
+}
+
+/* Wide screens: a small pill in the top right corner, clear of the C and above the lowercase. */
+@media (min-width: 900px) {
+  .heroTag {
+    font-size: clamp(0.9375rem, 0.75rem + 0.35vw, 1.0625rem);
+    justify-items: end;
+    left: auto;
+    right: max(var(--brand-space-inline), calc((100% - 1360px) / 2 + var(--brand-space-inline)));
+    top: 1rem;
+  }
+
+  .heroTag > span {
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem 0.4rem 0.75rem;
+  }
+}
+
+/* While the rooms cycle inside the word, the tag names the one showing (timed with cycleIn and
+   cycleOut). */
+@media (prefers-reduced-motion: no-preference) and (min-width: 900px) {
+  :global(html.motion) .heroTag > span {
+    animation: tagRoom 13.5s linear 2.2s infinite;
+  }
+
+  :global(html.motion) .heroTag > span + span {
+    animation-name: tagIn;
+    display: block;
+    opacity: 0;
+  }
+
+  :global(html.motion) .heroTag > span:last-child {
+    animation-name: tagOut;
+  }
+}
+
+@keyframes tagRoom {
+  0%,
+  33% {
+    opacity: 1;
+  }
+
+  35%,
+  96% {
+    opacity: 0;
+  }
+
+  98%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tagIn {
+  0%,
+  33% {
+    opacity: 0;
+  }
+
+  35%,
+  65% {
+    opacity: 1;
+  }
+
+  67%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tagOut {
+  0%,
+  65% {
+    opacity: 0;
+  }
+
+  67%,
+  96% {
+    opacity: 1;
+  }
+
+  98%,
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -349,15 +566,20 @@
   width: 100%;
 }
 
+/* Each block of the words is gone before the window's top edge reaches it (ConanLensAuto.tsx). */
+:global(html.motion) .heroContent > div {
+  opacity: var(--keep, 1);
+}
+
 .eyebrow,
 .sectionMark {
   align-items: center;
   color: var(--brand-paper);
   display: flex;
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 0.7rem + 0.9vw, 1.25rem);
   font-weight: 700;
-  gap: 0.6rem;
-  letter-spacing: 0.16em;
+  gap: 0.75rem;
+  letter-spacing: 0.12em;
   line-height: 1.3;
   margin: 0 0 1.1rem;
   text-transform: uppercase;
@@ -369,13 +591,11 @@
   content: '';
   flex: none;
   height: 2px;
-  width: 1.4rem;
+  width: 1.75rem;
 }
 
 /* Balanced so a narrow column breaks it into two even lines instead of orphaning its last word. */
 .eyebrow {
-  font-size: 1rem;
-  letter-spacing: 0.13em;
   text-wrap: balance;
 }
 
@@ -398,7 +618,7 @@
 
 .lead {
   color: var(--conan-soft);
-  font-size: clamp(1.02rem, 1.2vw, 1.14rem);
+  font-size: clamp(1.1875rem, 0.9rem + 0.9vw, 1.5rem);
   line-height: 1.7;
   margin: 1.3rem 0 0;
   max-width: 38rem;
@@ -452,6 +672,7 @@
   align-items: center;
   color: var(--brand-paper);
   display: inline-flex;
+  font-size: 1.125rem;
   font-weight: 700;
   min-height: 44px;
   text-decoration: underline;
@@ -508,8 +729,8 @@
   }
 
   .heroAside .lead {
-    font-size: clamp(1.1875rem, 0.6rem + 0.72vw, 1.375rem);
-    line-height: 1.6;
+    font-size: clamp(1.375rem, 0.7rem + 1.05vw, 1.75rem);
+    line-height: 1.5;
   }
 }
 
@@ -608,30 +829,62 @@
   width: 100%;
 }
 
+.principlePhoto {
+  position: relative;
+}
+
+/* The caption is a tag on the photo's foot, like the hero's, on a scrim that keeps it legible. */
 .principleCaption {
-  color: var(--conan-muted);
-  font-size: 1rem;
-  line-height: 1.55;
-  margin-top: 1rem;
-  max-width: 44ch;
+  backdrop-filter: blur(10px);
+  background: rgba(7, 7, 6, 0.72);
+  border-radius: 10px;
+  bottom: 0.85rem;
+  color: var(--brand-paper);
+  font-size: clamp(1rem, 0.8rem + 0.6vw, 1.25rem);
+  font-weight: 600;
+  left: 0.85rem;
+  line-height: 1.35;
+  max-width: calc(100% - 1.7rem);
+  padding: 0.55rem 1rem 0.55rem 0.9rem;
+  position: absolute;
+  z-index: 1;
+}
+
+.principleCaption::before {
+  background: var(--path-accent);
+  border-radius: 50%;
+  content: '';
+  display: inline-block;
+  height: 0.5rem;
+  margin-right: 0.6rem;
+  vertical-align: 0.1em;
+  width: 0.5rem;
 }
 
 @media (max-width: 999px) {
   .principlePhoto {
-    max-width: 26rem;
+    max-width: 30rem;
   }
 }
 
+/* Wide screens: the photo is the larger column, near half the screen, square and whole. The
+   section is one screen tall with the spread at its top, so the statement is whole as soon as the
+   section is in view, and the paper (data-curtain "sheet") holds the spread still at the top of
+   the screen while it rises over it. */
 @media (min-width: 1000px) {
   .principleFrame {
-    max-height: 36rem;
+    aspect-ratio: 1;
+    max-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
+    width: 100%;
   }
 
   .principleGrid {
-    align-items: center;
+    align-content: start;
+    align-items: start;
     column-gap: clamp(3rem, 6vw, 6rem);
-    /* The quote only needs ~17ch, so the photo takes a near-equal column and reads as a scene. */
-    grid-template-columns: minmax(0, 6fr) minmax(0, 5.4fr);
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    max-width: 1360px;
+    min-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
   }
 }
 
@@ -642,7 +895,7 @@
 .quote p {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.4rem, 1rem + 4.6vw, 6.4rem);
+  font-size: clamp(2.4rem, 0.5rem + 4vw, 5.25rem);
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.02;
@@ -703,7 +956,7 @@
 
 .audience p {
   color: var(--conan-soft);
-  font-size: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
+  font-size: clamp(1.1875rem, 0.9rem + 0.95vw, 1.625rem);
   line-height: 1.7;
   margin: 0;
   max-width: 34rem;
@@ -765,10 +1018,13 @@
 }
 
 /* The audiences are set on a sheet of paper between two ink spreads, so the page turns once
-   before the long dark run of journey and class photos. */
+   before the long dark run of journey and class photos. The sheet rides over the principle while
+   that holds (data-curtain="sheet"), so it stacks above it. */
 .audiencesBand {
   background: var(--brand-paper);
   color: var(--brand-ink);
+  position: relative;
+  z-index: 1;
 }
 
 .audiencesBand .sectionMark,
@@ -787,8 +1043,8 @@
 
 /* Band: the five stage names as moving type, leaning with scroll speed. */
 
-/* A full-bleed field of vermilion between the paper above and the ink below, the page's one colour
-   break at a different scale. */
+/* A full-bleed field of vermilion between the ink of the journey above and the paper of the mentors
+   below, the page's one colour break at a different scale. */
 .band {
   background: var(--path-accent);
   color: var(--brand-ink);
@@ -804,22 +1060,21 @@
   white-space: nowrap;
 }
 
+/* The English names are the gloss, not a second headline: half the size, one colour, set wide. */
 .termWord {
-  -webkit-text-stroke: 2px var(--brand-ink);
-  color: transparent;
+  color: var(--brand-ink);
   flex: none;
   font-family: var(--font-be-vietnam), system-ui, sans-serif;
-  font-size: clamp(1.6rem, 0.8rem + 3vw, 4.25rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-size: clamp(1rem, 0.5rem + 1.5vw, 2.125rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
   line-height: 1.1;
-  padding-inline: 0.6em;
+  padding-inline: 1em;
   text-transform: uppercase;
 }
 
-.termWord:nth-child(odd) {
-  -webkit-text-stroke: 0;
-  color: var(--brand-ink);
+.bandWord:nth-child(even) {
+  color: var(--brand-paper);
 }
 
 .bandTrack {
@@ -836,6 +1091,7 @@
   font-family: var(--font-cormorant);
   font-size: clamp(3.2rem, 1.6rem + 7.5vw, 10.5rem);
   font-style: italic;
+  color: var(--brand-ink);
   font-weight: 500;
   gap: 0.45em;
   letter-spacing: -0.02em;
@@ -843,17 +1099,8 @@
   padding-inline: 0.22em;
 }
 
-.bandWord:nth-child(odd) {
-  color: var(--brand-ink);
-}
-
-.bandWord:nth-child(even) {
-  -webkit-text-stroke: 2.5px var(--brand-ink);
-  color: transparent;
-}
-
 .bandWord::after {
-  background: var(--brand-paper);
+  background: var(--brand-ink);
   border-radius: 999px;
   content: '';
   flex: none;
@@ -921,8 +1168,8 @@
 }
 
 .journeyLead {
-  color: var(--conan-muted);
-  font-size: clamp(1.0625rem, 0.95rem + 0.3vw, 1.1875rem);
+  color: var(--conan-soft);
+  font-size: clamp(1.1875rem, 0.9rem + 0.9vw, 1.5rem);
   line-height: 1.7;
   margin: 1.5rem 0 0;
   max-width: 38rem;
@@ -979,11 +1226,11 @@
   background: color-mix(in srgb, var(--brand-paper) 14%, transparent);
   color: var(--brand-paper);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 1.125rem;
   font-weight: 700;
   gap: 1rem;
   justify-content: space-between;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   margin: 0 calc(var(--card-pad) * -1);
   padding: 0.9rem var(--card-pad);
   text-transform: uppercase;
@@ -999,6 +1246,7 @@
   font-family: var(--font-cormorant);
   font-size: 11rem;
   font-style: italic;
+  font-variant-numeric: lining-nums;
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 0.8;
@@ -1034,18 +1282,22 @@
   color: var(--conan-soft);
   display: block;
   font-family: var(--font-be-vietnam);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   line-height: 1.3;
   margin-top: 0.7rem;
   text-transform: uppercase;
 }
 
-/* The questions are nodes on a line, as on a course path. */
+/* The questions are nodes on a line, as on a course path. Every card sets them at one size, right
+   under the name; the foot keeps the bottom of the card, so a card with one question shows its
+   room below the list, not a gap above it. */
 .questions {
+  align-content: start;
   counter-reset: question;
   display: grid;
+  flex: 1 1 auto;
 }
 
 .questions li {
@@ -1067,7 +1319,7 @@
   box-sizing: border-box;
   content: counter(question);
   display: flex;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
   height: 2.1rem;
   justify-content: center;
@@ -1123,10 +1375,10 @@
 .stageNext {
   color: var(--conan-soft);
   display: grid;
-  font-size: 0.8125rem;
+  font-size: 1.125rem;
   font-weight: 700;
   gap: 0.2rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   line-height: 1.3;
   text-transform: uppercase;
 }
@@ -1134,7 +1386,7 @@
 .stageNext strong {
   color: var(--brand-paper);
   font-family: var(--font-cormorant);
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.1;
@@ -1175,7 +1427,7 @@
 
 .journey[data-hscroll-active='true'] .journeyLayout {
   gap: 0;
-  grid-template-columns: minmax(0, 31vw) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 36vw) minmax(0, 1fr);
   height: 100%;
 }
 
@@ -1185,7 +1437,10 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  padding: 5rem clamp(1.5rem, 3vw, 3rem) max(2.5rem, 6svh) var(--brand-space-inline);
+  /* The mark is level with the top of the card beside it (the window's top room plus half its
+     spare height, .journeyWindow below), and the counter stands at the foot (.journeyMeter). */
+  padding: calc(4.75rem + (100svh - 4.75rem - clamp(1.25rem, 3.5svh, 2.25rem) - min(80svh, 46rem)) / 2)
+    clamp(1.5rem, 3vw, 3rem) max(2.5rem, 6svh) var(--brand-space-inline);
 }
 
 .journey[data-hscroll-active='true'] .journeyTitle {
@@ -1194,39 +1449,41 @@
 }
 
 .journey[data-hscroll-active='true'] .journeyLead {
-  font-size: 1.1875rem;
-  line-height: 1.6;
-  margin-top: 1.25rem;
+  font-size: clamp(1.25rem, 0.3rem + 1.45vw, 1.625rem);
+  line-height: 1.55;
+  margin: 1.25rem 0 clamp(1.25rem, 4svh, 3rem);
 }
 
-/* The counter: the stage number and name roll up a line at a time as the stages pass. */
+/* The counter: the stage number and name change with the stage in view. It stands at the foot of
+   the column with the level path under it (the lead's bottom margin keeps the least gap above), so
+   when the section scrolls away the reader's next stop shows it whole above the card's foot. */
 .journey[data-hscroll-active='true'] .journeyMeter {
   align-items: baseline;
   column-gap: 0.75rem;
   display: grid;
-  grid-template-areas: 'count total' 'name name' 'bar bar';
+  grid-template-areas: 'count total' 'name name';
   grid-template-columns: auto 1fr;
-  margin-top: clamp(1.5rem, 5svh, 3.5rem);
+  margin-top: auto;
 }
 
 .meterCount,
 .meterName {
-  --roll-line: 1em;
+  --roll-line: 1.12em;
   display: block;
   height: var(--roll-line);
   line-height: var(--roll-line);
-  /* Mid-roll, the leaving and arriving lines fade at the window's lips instead of showing as two
-     half-words stacked. */
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
   overflow: hidden;
+  /* The italic leans past its box; the window is widened by that lean so no digit is cut. */
+  padding-inline-end: 0.14em;
 }
 
 .meterCount {
   color: var(--path-accent);
   font-family: var(--font-cormorant);
-  font-size: clamp(4.5rem, 7vw, 7.5rem);
+  font-size: clamp(4rem, 5.6vw, 6rem);
   font-style: italic;
+  /* Lining figures: the old-style 3, 4 and 5 drop below the line and would be cut by the window. */
+  font-variant-numeric: lining-nums;
   font-weight: 500;
   grid-area: count;
   letter-spacing: -0.03em;
@@ -1242,53 +1499,45 @@
   margin-top: 0.35rem;
 }
 
+/* Every line sits in the same cell and only the current stage's is shown. The change is a cut, not
+   a roll, so a fast scroll never leaves the window empty or a line half out of it. */
 .meterRoll {
-  display: flex;
-  flex-direction: column;
-  transform: translateY(calc(var(--hscroll-index, 0) * var(--roll-line) * -1));
-  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: grid;
 }
 
 .meterRoll span {
+  --on: clamp(0, calc(1 - max(var(--hscroll-index, 0) - var(--i, 0), var(--i, 0) - var(--hscroll-index, 0))), 1);
   display: block;
+  grid-area: 1 / 1;
   height: var(--roll-line);
+  opacity: var(--on);
   white-space: nowrap;
 }
 
 .meterTotal {
   color: var(--conan-soft);
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 700;
   grid-area: total;
   letter-spacing: 0.14em;
 }
 
-.journeyProgress {
-  background: var(--brand-line-dark);
-  display: block;
-  grid-area: bar;
-  height: 3px;
-  margin-top: 1.25rem;
+/* The window has a hairline on the left that stages leave through and a long soft right edge
+   the next stage peeks through, so it reads as what comes next, not as a second card cut off. */
+.journey[data-hscroll-active='true'] {
+  --stage-w: clamp(26rem, 40vw, 46rem);
+  --stage-gap: clamp(1rem, 1.6vw, 1.75rem);
+  --stage-pad: clamp(2rem, 3vw, 3.5rem);
 }
 
-.journeyProgress span {
-  background: var(--path-accent);
-  display: block;
-  height: 100%;
-  transform: scaleX(var(--hscroll-progress, 0));
-  transform-origin: 0 50%;
-}
-
-/* The window has a hairline on the left that stages leave through and a soft right edge they
-   arrive from; both edges fade the whole card, words included, over a short lip. */
 .journey[data-hscroll-active='true'] .journeyWindow {
   align-items: center;
   border-left: 1px solid var(--brand-line-dark);
   box-sizing: border-box;
   display: flex;
   height: 100%;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 2rem), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 2rem), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 13rem), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 13rem), transparent 100%);
   min-width: 0;
   overflow: hidden;
   /* The header takes the top; the foot room is short, so the last card leaves almost straight into
@@ -1296,37 +1545,44 @@
   padding: 4.75rem 0 clamp(1.25rem, 3.5svh, 2.25rem);
 }
 
+/* The track is one card wide (with its inset either side) and the other cards overflow it into
+   the window. horizontalScroll (engine.ts) rests each card with its centre on the track's centre,
+   so every card, the last as well, comes to rest at the same place: whole, on the left of the
+   window, with the next one peeking in at the soft edge. */
 .journey[data-hscroll-active='true'] .stages {
-  flex: 1 1 auto;
-  gap: clamp(1rem, 1.6vw, 1.75rem);
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  gap: var(--stage-gap);
   min-width: 0;
   overflow: visible;
-  padding: 0 0 0 clamp(2rem, 3vw, 3.5rem);
+  padding: 0 0 0 var(--stage-pad);
   scroll-snap-type: none;
+  width: calc(var(--stage-w) + 2 * var(--stage-pad));
 }
 
 .journey[data-hscroll-active='true'] .stages::after {
-  flex-basis: 3rem;
+  flex-basis: calc(var(--stage-pad) - var(--stage-gap));
 }
 
 /* Pinned: each stage is a tall card, wide enough for its questions to be set large. A card that is
    leaving is retired with its position (--hscroll-edge, set by horizontalScroll in engine.ts: 0
-   with its left edge on the window's edge, -1 when it is out): whole until it is half out, then
-   fading, so no half-words are left cut at the window's edge while the numbers beside it roll. */
+   with its left edge on the window's edge, -1 when it is out): it fades as soon as it starts to
+   go and is gone before a fifth of it is out, so no ghost of it lingers beside the next card. */
 .journey[data-hscroll-active='true'] .stage {
   --card-pad: clamp(1.5rem, 2.2vw, 2.25rem);
   box-sizing: border-box;
-  flex: 0 0 clamp(26rem, 40vw, 46rem);
+  flex: 0 0 var(--stage-w);
   height: min(80svh, 46rem);
-  opacity: clamp(0, calc((1 + var(--hscroll-edge, 0)) / 0.5), 1);
+  opacity: clamp(0, calc(1 + var(--hscroll-edge, 0) * 6), 1);
 }
 
-/* The numeral is the card's picture: large, outlined, bleeding off the card's floor below the
-   last question (the three-question stage sets the height it needs). */
+/* The numeral is the card's picture: large, outlined, standing whole in the card's lower right
+   corner below the last question (the three-question stage sets the height it needs). */
 .journey[data-hscroll-active='true'] .stageNumber {
   -webkit-text-stroke-width: 2px;
-  bottom: -0.12em;
-  font-size: clamp(14rem, 22vw, 26rem);
+  bottom: 0.1em;
+  font-size: clamp(10rem, 14.5vw, 17rem);
+  right: 0.16em;
 }
 
 @media (max-height: 820px) {
@@ -1335,8 +1591,13 @@
   }
 
   .journey[data-hscroll-active='true'] .stageNumber {
-    font-size: clamp(11rem, 17vw, 18rem);
+    font-size: clamp(9rem, 12vw, 13rem);
   }
+}
+
+/* The first node sits about 24px under the gloss: the card's gap less a little of the row's padding. */
+.journey[data-hscroll-active='true'] .questions {
+  margin-top: -0.3rem;
 }
 
 .journey[data-hscroll-active='true'] .questions li {
@@ -1357,17 +1618,6 @@
   top: 3.2rem;
 }
 
-/* A two-question stage has room to spare, so its questions are set a size larger. */
-.journey[data-hscroll-active='true'] .stage[data-asks='2'] .questions li {
-  font-size: clamp(1.5rem, 2.3vw, 2.15rem);
-  padding: 0.85rem 0;
-}
-
-.journey[data-hscroll-active='true'] .stage[data-asks='2'] .questions li:not(:last-child)::after {
-  bottom: -0.85rem;
-  top: 3.35rem;
-}
-
 .journey[data-hscroll-active='true'] .stageName {
   font-size: clamp(2.25rem, 3.2vw, 3.6rem);
 }
@@ -1383,13 +1633,13 @@
   color: var(--brand-ink);
 }
 
-/* The cards beside the one in hand keep their words at a readable level, whole, so a stage that is
-   leaving or arriving is still a card with something to read (the window's edge fades it); the
-   card in hand is at full strength. */
+/* The cards beside the one in hand keep their words at a readable level (over 7:1 on the card),
+   whole, so a stage that is arriving is still a card with something to read; the card in hand is
+   at full strength. */
 .journey[data-hscroll-active='true'] .stageName,
 .journey[data-hscroll-active='true'] .questions,
 .journey[data-hscroll-active='true'] .stageFoot {
-  opacity: 0.62;
+  opacity: 0.84;
   transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1399,33 +1649,13 @@
   opacity: 1;
 }
 
-/* A stage with a single question sets it large, as the card's one line, instead of leaving the
-   card mostly empty. */
-.stage[data-asks='1'] .questions li {
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.9rem, 3.1vw, 3.1rem);
-  font-style: italic;
-  font-weight: 500;
-  grid-template-columns: 2.5rem minmax(0, 1fr);
-  line-height: 1.14;
-  padding-top: 0.9rem;
-}
-
-/* The counter keeps the sans of the other cards, not the italic of the question it numbers. */
-.stage[data-asks='1'] .questions li::before {
-  font-family: var(--font-be-vietnam), system-ui, sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  margin-top: 0.35rem;
-}
-
 @media (max-height: 780px) {
   .journey[data-hscroll-active='true'] .journeyLead {
-    font-size: 1.0625rem;
+    font-size: 1.1875rem;
   }
 
   .meterCount {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 
@@ -1448,14 +1678,18 @@
   }
 }
 
-/* Mentors: the title holds a narrow left column, two large portraits take the rest. */
-
-/* After the long dark run of the journey the instructors come up into the light, and the gallery
-   that follows goes back to ink. */
+/* Mentors: the title on top, two large portraits under it, names below them; on wide screens the
+   band fits in one screen. After the long dark run of the journey the
+   instructors come up into the light, and the gallery that follows goes back to ink. */
 .mentorsBand {
   background: var(--brand-paper);
+  /* A sheet of paper laid on the ink, with the same rounded corners as the audiences' sheet, so
+     the change of ground reads as a page turning, not as a straight seam across the screen. */
+  border-radius: clamp(20px, 2.4vw, 32px);
   color: var(--brand-ink);
-  padding-block: clamp(3.5rem, 6vw, 5.5rem) clamp(2rem, 3.5vw, 3rem);
+  /* A strip of ink between the ribbon and the sheet, so the sheet's rounded corners sit on ink. */
+  margin-top: clamp(3rem, 8svh, 4.5rem);
+  padding-block: clamp(2.5rem, 5.5svh, 4rem) clamp(2.25rem, 5svh, 3.5rem);
 }
 
 .mentorsBand .sectionMark,
@@ -1463,47 +1697,12 @@
   color: var(--brand-ink);
 }
 
-@media (min-width: 1000px) {
-  .mentorsInner {
-    align-items: start;
-    column-gap: clamp(3rem, 5vw, 5rem);
-    display: grid;
-    grid-template-columns: minmax(0, 3.2fr) minmax(0, 8.8fr);
-    max-width: 1360px;
-  }
-
-  .mentorsInner .sectionHead {
-    margin-bottom: 0;
-    position: sticky;
-    top: 18svh;
-  }
+.mentorsInner {
+  max-width: 1360px;
 }
 
-/* Wide screens with motion: the band holds the screen for a beat, whole, while its portraits warm
-   into colour (ConanShowcase.module.css reads --fill from data-scroll-fill). The panel is one
-   screen tall and sticks to the top for the extra 60svh the band is given, so every caption is in
-   view and still at once, with the page's scroll as the only thing moving. */
-@media (min-width: 1000px) and (min-height: 640px) {
-  :global(html.motion) .mentorsBand {
-    height: calc(100svh + 60svh);
-    padding-block: 0;
-  }
-
-  /* The pair sits in the upper part of the screen (above its optical middle), so a visitor who
-     meets the band as it rises already sees the faces, not only the wall behind them. */
-  :global(html.motion) .mentorsInner {
-    align-content: start;
-    align-items: center;
-    box-sizing: border-box;
-    height: 100svh;
-    padding-top: clamp(5.5rem, 14svh, 9rem);
-    position: sticky;
-    top: 0;
-  }
-
-  :global(html.motion) .mentorsInner .sectionHead {
-    position: static;
-  }
+.mentorsInner .sectionHead {
+  margin-bottom: clamp(1.5rem, 3.5svh, 2.5rem);
 }
 
 /* Closing: the page ends on a field of Conan's own vermilion, laid over the ink (data-curtain).
@@ -1515,8 +1714,9 @@
   background: var(--path-accent);
   color: var(--brand-ink);
   overflow: hidden;
-  /* The footer's rounded edge overlaps the last stretch of colour. */
-  padding: var(--brand-space-section) var(--brand-space-inline) calc(clamp(1rem, 2vw, 2rem) + clamp(24px, 3vw, 40px));
+  /* The footer's rounded edge overlaps the last stretch of colour. The call starts near the top,
+     so the field is never a bare sheet of colour. */
+  padding: clamp(3rem, 8svh, 5rem) var(--brand-space-inline) calc(clamp(1rem, 2vw, 2rem) + clamp(24px, 3vw, 40px));
   position: relative;
 }
 
@@ -1554,7 +1754,7 @@
 
 .closingCaption {
   color: var(--brand-ink);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
   margin-top: 0.85rem;
   max-width: 44ch;
@@ -1581,10 +1781,17 @@
 }
 
 @media (min-width: 900px) {
+  /* The call sits close under the field's top edge and is set a step smaller than the narrow
+     screens' scale, so the field's first stop on the way down already shows it with its buttons. */
   .closing {
     align-content: space-between;
     display: grid;
     min-height: 100svh;
+    padding-top: clamp(2.25rem, 5svh, 3.5rem);
+  }
+
+  .closing .closingTitle {
+    font-size: clamp(3rem, 1rem + 5.4vw, 6.75rem);
   }
 
   .closing .closingMark {
@@ -1655,15 +1862,15 @@
 }
 
 .closingMarkFill {
-  /* The fill is done at four fifths of --fill, so the last stretch of the scroll shows the whole
-     word. The edge runs 0.25em past the box at the end, so the italic tail of the last letter,
-     which overhangs the box, is never cut. */
-  --done: clamp(0, calc(var(--fill, 1) * 1.25), 1);
+  /* --fill runs over the whole field's rise and the word is done a little past half of it, as the
+     name comes fully into view. The edge runs 0.25em past the box at the end, so the italic tail of
+     the last letter, which overhangs the box, is never cut. */
+  --done: clamp(0, calc(var(--fill, 1) * 1.8), 1);
   clip-path: inset(0 calc((1 - var(--done)) * (100% + 0.25em) - 0.25em) 0 0);
   color: var(--brand-ink);
 }
 
-:global(html.motion) .closingMark {
+:global(html.motion) .closing {
   --fill: 0;
 }
 

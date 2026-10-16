@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
 import JsonLd from '@/components/seo/JsonLd'
+import ConanLensAuto from '@/components/two-path/ConanLensAuto'
+import ConanStageNav from '@/components/two-path/ConanStageNav'
 import MentorCards from '@/components/two-path/MentorCards'
 import PathLink from '@/components/two-path/PathLink'
 import PathMemory from '@/components/two-path/PathMemory'
@@ -37,6 +39,8 @@ const BAND_REPEAT = 2
 const TERM_REPEAT = 4
 // The class that opens the page closes it too, beside the call; none of the gallery's photos repeats.
 const closingPhotoId = 'conan-hero'
+// Two more classes take turns inside the letters of the hero; neither is a course thumbnail.
+const heroCycleIds = ['gallery-katinat', 'gallery-content-flow-haus'] as const
 
 export default function ConanPage() {
   const { principle, audiences, journey, gallery, mentors, closing } = conanContent
@@ -48,12 +52,22 @@ export default function ConanPage() {
       <JsonLd data={buildBranchPageStructuredData({ name: 'Conan School', description, pathname: '/conan' })} />
 
       <section className={styles.hero} aria-labelledby="conan-title" data-mask-flight>
-        <div className={styles.heroMedia} data-cursor="Cuộn" data-cursor-tone="lacquer">
+        <div className={styles.heroMedia} data-cursor="Cuộn" data-cursor-tone="lacquer" data-lens-auto>
           {/* The drift wraps the photo, not the photo itself: the GL layer paints over the picture
               and would hide any motion given to it. */}
           <div className={styles.heroDrift}>
-            <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="1.1">
-              <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
+            {/* The frame holds the crop and the pointer pan: the parallax writes its own scale and
+                translate on the photo inline, which would wipe any framing set there. */}
+            <div className={styles.heroFrame}>
+              <div className={styles.heroPhoto} data-motion-parallax data-parallax-max="12" data-gl-photo data-gl-delay="1.1">
+                <HeroPicture id={conanContent.heroPhotoId} mobileId={conanContent.heroMobilePhotoId} className={styles.heroPicture} />
+              </div>
+            </div>
+            {/* Wide screens only: the rooms inside the word cross-fade every few seconds. */}
+            <div className={styles.heroCycle} aria-hidden="true">
+              {heroCycleIds.map((id) => (
+                <TwoPathPhoto key={id} id={id} sizes="100vw" decorative />
+              ))}
             </div>
           </div>
           <div className={styles.heroShade} aria-hidden="true" data-mask-shade />
@@ -63,8 +77,18 @@ export default function ConanPage() {
               (maskFlight in signatures.ts), on load elsewhere (page.module.css, heroMask). */}
           <div className={styles.heroMask} aria-hidden="true" data-mask-sheet />
           <div className={styles.heroOutline} aria-hidden="true" data-mask-outline />
-          <p className={styles.heroTag}>{photo(conanContent.heroPhotoId).caption}</p>
+          {/* The tag names whichever room is showing: the cycle captions take turns with the
+              letters' cross-fade and are only shown where that cycle runs. */}
+          <p className={styles.heroTag}>
+            <span>{photo(conanContent.heroPhotoId).caption}</span>
+            {heroCycleIds.map((id) => (
+              <span key={id} aria-hidden="true">
+                {photo(id).caption}
+              </span>
+            ))}
+          </p>
         </div>
+        <ConanLensAuto />
         <div className={styles.heroContent} data-mask-out>
           <div>
             <p className={`${styles.eyebrow} intro-fade`} style={{ '--intro-delay': '0.15s' } as CSSProperties}>
@@ -109,7 +133,9 @@ export default function ConanPage() {
               {principle.source}
             </figcaption>
             <blockquote className={styles.quote}>
-              <p data-scrub-words>{principle.text}</p>
+              <p data-scrub-words data-scrub-from="0.6" data-scrub-start="top bottom" data-scrub-end="top 85%">
+                {principle.text}
+              </p>
             </blockquote>
           </figure>
           <figure className={styles.principlePhoto} data-motion-surface>
@@ -123,7 +149,9 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.audiencesBand}`} aria-labelledby="conan-audiences">
+      {/* The paper is laid over the principle as a sheet (data-curtain="sheet"): the ink spread holds
+          and dims while the page turns, instead of the two tones meeting at a straight edge. */}
+      <section className={`${styles.section} ${styles.audiencesBand}`} aria-labelledby="conan-audiences" data-curtain="sheet">
         <div className={`${styles.inner} ${styles.audiencesGrid}`}>
           <div className={`${styles.sectionHead} ${styles.stickyHead}`}>
             <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -150,34 +178,13 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <div className={styles.band} aria-hidden="true">
-        <div className={styles.bandRow} data-marquee data-marquee-duration="40" data-velocity-skew>
-          <div className={styles.bandTrack} data-marquee-track>
-            {[...bandHalf, ...bandHalf].map((name, index) => (
-              <span key={index} className={styles.bandWord}>
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className={styles.termRow} data-marquee="reverse" data-marquee-duration="56" lang="en">
-          <div className={styles.bandTrack} data-marquee-track>
-            {[...termHalf, ...termHalf].map((name, index) => (
-              <span key={index} className={styles.termWord}>
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Wide screens: the intro holds still on the left with a rolling stage counter while the
           five stages travel through the window on the right (data-hscroll on the stage list). */}
       <section
         className={styles.journey}
         aria-labelledby="conan-journey"
         data-hscroll
-        data-hscroll-pace="0.75"
+        data-hscroll-pace="0.86"
         data-hscroll-scrub="0.35"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
@@ -195,28 +202,33 @@ export default function ConanPage() {
             <div className={styles.journeyMeter} aria-hidden="true">
               <span className={styles.meterCount}>
                 <span className={styles.meterRoll}>
-                  {journey.stages.map((stage) => (
-                    <span key={stage.number}>{stage.number}</span>
+                  {journey.stages.map((stage, index) => (
+                    <span key={stage.number} style={{ '--i': index } as CSSProperties}>
+                      {stage.number}
+                    </span>
                   ))}
                 </span>
               </span>
               <span className={styles.meterTotal}>/ {pad(journey.stages.length)}</span>
               <span className={styles.meterName}>
                 <span className={styles.meterRoll}>
-                  {journey.stages.map((stage) => (
-                    <span key={stage.number}>{stage.gloss}</span>
+                  {journey.stages.map((stage, index) => (
+                    <span key={stage.number} style={{ '--i': index } as CSSProperties}>
+                      {stage.gloss}
+                    </span>
                   ))}
                 </span>
               </span>
-              <span className={styles.journeyProgress}>
-                <span />
-              </span>
             </div>
+            <ConanStageNav
+              label="Các giai đoạn của hành trình"
+              stages={journey.stages.map((stage) => ({ number: stage.number, gloss: stage.gloss, label: `Giai đoạn ${stage.number}: ${stage.gloss}` }))}
+            />
           </header>
           <div className={styles.journeyWindow} data-cursor="Kéo" data-cursor-tone="light">
             <ol className={styles.stages} data-hscroll-track>
               {journey.stages.map((stage, index) => (
-                <li key={stage.number} className={styles.stage} data-hscroll-item data-asks={stage.questions.length}>
+                <li key={stage.number} className={styles.stage} data-hscroll-item>
                   <span className={styles.stageBanner}>
                     <span>Giai đoạn {stage.number}</span>
                     <span className={styles.stageCount}>{stage.questions.length} câu hỏi</span>
@@ -261,6 +273,29 @@ export default function ConanPage() {
         </div>
       </section>
 
+      {/* The five stage names roll by once more as the journey lets go, a coda in the path colour
+          between the ink of the journey and the paper of the mentors. */}
+      <div className={styles.band} aria-hidden="true">
+        <div className={styles.bandRow} data-marquee data-marquee-duration="40" data-velocity-skew>
+          <div className={styles.bandTrack} data-marquee-track>
+            {[...bandHalf, ...bandHalf].map((name, index) => (
+              <span key={index} className={styles.bandWord}>
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className={styles.termRow} data-marquee="reverse" data-marquee-duration="56" lang="en">
+          <div className={styles.bandTrack} data-marquee-track>
+            {[...termHalf, ...termHalf].map((name, index) => (
+              <span key={index} className={styles.termWord}>
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* data-scroll-fill: --fill runs 0 to 1 over the band, and the portraits warm into colour on it. */}
       <section className={`${styles.section} ${styles.mentorsBand}`} aria-labelledby="conan-mentors" data-scroll-fill>
         <div className={`${styles.inner} ${styles.mentorsInner}`}>
@@ -280,7 +315,7 @@ export default function ConanPage() {
         <div className={styles.wideInner}>
           <PhotoGallery
             items={gallery.items}
-            pace={0.24}
+            pace={0.12}
             head={
               <div className={`${styles.sectionHead} ${styles.galleryHead}`}>
                 <p className={styles.sectionMark} data-motion-reveal="mask">
@@ -295,10 +330,14 @@ export default function ConanPage() {
         </div>
       </section>
 
-      <section className={styles.closing} aria-labelledby="conan-closing" data-curtain>
+      {/* data-scroll-fill on the whole field: the name fills while the field rises, so it reads whole
+          by the time the reader reaches the foot of the page. */}
+      <section className={styles.closing} aria-labelledby="conan-closing" data-curtain data-scroll-fill>
         <div className={`${styles.inner} ${styles.closingInner}`}>
           <div className={styles.closingCopy}>
-            <h2 id="conan-closing" className={styles.closingTitle} data-split>
+            {/* No line reveal here: the field arrives through its curtain, and the call must be on it
+                from the first strip of colour, never an empty block of vermilion. */}
+            <h2 id="conan-closing" className={styles.closingTitle}>
               {closing.title}
             </h2>
             <div className={styles.actions}>
@@ -330,7 +369,7 @@ export default function ConanPage() {
             <figcaption className={styles.closingCaption}>{photo(closingPhotoId).caption}</figcaption>
           </figure>
         </div>
-        <p className={styles.closingMark} aria-hidden="true" data-scroll-fill>
+        <p className={styles.closingMark} aria-hidden="true">
           <span className={styles.closingMarkLine}>Conan</span>
           <span className={styles.closingMarkFill}>Conan</span>
         </p>
