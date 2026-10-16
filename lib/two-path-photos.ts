@@ -99,7 +99,8 @@ const records = [
     alt: 'Học viên ngồi quanh bàn dài, mở laptop làm bài trong lớp AI Factory',
     caption: 'Lớp học AI Factory tại Hà Nội',
     source: `${CONAN_ALBUM}589d3613-9eb2-4f6d-b6e5-b5f2d46670f5.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 140 * KB,
   },
   {
@@ -110,7 +111,8 @@ const records = [
     alt: 'Nhóm học viên quanh bàn họp có laptop, cười và giơ tay chào máy ảnh sau buổi học viết content',
     caption: 'Offline Hà Nội 2026 · Cùng học viết Content · Flow Haus',
     source: `${CONAN_ALBUM}239f4131-3be4-4489-aaa9-fcfdc5b45a09.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 140 * KB,
   },
   {
@@ -180,7 +182,8 @@ const records = [
     alt: 'Khoảng hai mươi học viên Conan School quây quanh bàn họp, cùng bắn tim về phía máy ảnh',
     caption: 'Offline Sài Gòn 2026 · Second Brain và Business',
     source: `${CONAN_ALBUM}98a49e1f-6729-4974-96ae-f4938db9aab4.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 180 * KB,
   },
   {
@@ -190,7 +193,8 @@ const records = [
     alt: 'Khoảng hai mươi học viên Conan School quây quanh bàn họp, cùng bắn tim về phía máy ảnh',
     caption: 'Offline Sài Gòn 2026 · Second Brain và Business',
     source: `${CONAN_ALBUM}98a49e1f-6729-4974-96ae-f4938db9aab4.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 180 * KB,
   },
   {
@@ -200,7 +204,8 @@ const records = [
     alt: 'Hai dãy học viên làm bài trên laptop, phía cuối phòng có người đứng hướng dẫn',
     caption: 'Lớp học AI Factory tại Hà Nội',
     source: `${CONAN_ALBUM}589d3613-9eb2-4f6d-b6e5-b5f2d46670f5.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -211,7 +216,8 @@ const records = [
     alt: 'Học viên trao đổi quanh bàn làm việc, màn hình laptop mở tài liệu, bảng trắng ghi sơ đồ phía sau',
     caption: 'Lớp AI Factory Design · Hà Nội · 2025',
     source: `${CONAN_ALBUM}bce04c9f-a9d2-4fdb-be7f-db8d07a6c5cb.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -222,7 +228,8 @@ const records = [
     alt: 'Nhóm học viên ngồi quanh bàn tròn trong quán cà phê, chụp ảnh chung',
     caption: 'Offline Hà Nội 2026 · Trao đổi về Decision Making',
     source: `${CONAN_ALBUM}a6c20418-a615-4cb3-b460-cb361663e73e.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -233,7 +240,8 @@ const records = [
     alt: 'Nhóm học viên trong phòng họp tường xanh, bàn đầy laptop, cùng giơ tay chào máy ảnh',
     caption: 'Offline Hà Nội 2026 · Cùng học viết Content · Flow Haus',
     source: `${CONAN_ALBUM}239f4131-3be4-4489-aaa9-fcfdc5b45a09.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -244,7 +252,8 @@ const records = [
     alt: 'Học viên ngồi quanh các bàn nhỏ trong quán KATINAT, cầm ly nước và laptop, cười với máy ảnh',
     caption: 'Offline Hà Nội 2026 · KATINAT Kim Mã',
     source: `${CONAN_ALBUM}52eb03ee-a360-474b-ae62-41fd9983dbf2.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -255,7 +264,8 @@ const records = [
     alt: 'Tám người đứng thành hàng trong phòng họp doanh nghiệp, cầm túi quà và chụp ảnh chung',
     caption: 'Training Content cho các MDRT tại Manulife · TECOS Building',
     source: `${CONAN_ALBUM}1f236f14-ec53-41ea-b6e8-6c46e6d4b2f7.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -266,7 +276,8 @@ const records = [
     alt: 'Nhóm học viên ngồi quanh bàn lẩu trong một quán ăn nhỏ sau buổi học',
     caption: 'Đi ăn sau những giờ học căng thẳng',
     source: `${CONAN_ALBUM}22cbf614-ba02-46c8-81a9-2300091de13b.webp`,
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 120 * KB,
   },
   {
@@ -275,7 +286,8 @@ const records = [
     height: 480,
     alt: 'Chân dung Đắc Nguyễn, đeo kính, mặc áo đen, giơ tay chữ V',
     source: 'https://image.conan.school/mentors/dac-nguyen.jpg',
-    faces: 'pending-owner-consent',
+    faces: 'consent-confirmed',
+    consentNote: 'Thông xác nhận ngày 17/10/2026: mọi người trong ảnh, gồm mentor Đắc Nguyên, đã đồng ý cho dùng ảnh công khai trên thongphan.com.',
     budgetBytes: 60 * KB,
   },
   {
