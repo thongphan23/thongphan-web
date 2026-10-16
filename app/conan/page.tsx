@@ -43,6 +43,8 @@ const TERM_REPEAT = 4
 const closingPhotoId = 'conan-hero'
 // Two more classes take turns inside the letters of the hero; neither is a course thumbnail.
 const heroCycleIds = ['gallery-katinat', 'gallery-content-flow-haus'] as const
+// On the pinned journey each stage's numeral is cut from a real class photo (background-clip: text).
+const numeralPhotoIds = ['gallery-decision-making', 'gallery-ai-factory', 'gallery-content-flow-haus', 'gallery-katinat', 'gallery-manulife'] as const
 
 export default function ConanPage() {
   const { principle, audiences, journey, gallery, mentors, closing } = conanContent
@@ -125,7 +127,7 @@ export default function ConanPage() {
                 className={styles.primaryCta}
                 data-motion-action
                 data-magnetic="0.22"
-                data-cursor="Mở"
+                data-cursor="Vào lớp"
               >
                 <span className={styles.ctaInner} data-magnetic-inner>
                   {conanContent.primaryCta}
@@ -199,6 +201,7 @@ export default function ConanPage() {
         data-hscroll
         data-hscroll-pace="0.52"
         data-hscroll-scrub="0.35"
+        data-hscroll-hold="0.18"
         style={{ '--stage-count': journey.stages.length } as CSSProperties}
       >
         <div className={styles.journeyLayout}>
@@ -246,7 +249,12 @@ export default function ConanPage() {
                     <span>Giai đoạn {stage.number}</span>
                     <span className={styles.stageCount}>{stage.questions.length} câu hỏi</span>
                   </span>
-                  <span className={styles.stageNumber} aria-hidden="true" data-hscroll-media>
+                  <span
+                    className={styles.stageNumber}
+                    aria-hidden="true"
+                    data-hscroll-media
+                    style={{ '--numeral-photo': `url(${photo(numeralPhotoIds[index % numeralPhotoIds.length]).src})` } as CSSProperties}
+                  >
                     {stage.number}
                   </span>
                   <h3 className={styles.stageName}>
@@ -317,7 +325,7 @@ export default function ConanPage() {
               03 — Đi cùng bạn
             </p>
             <h2 id="conan-mentors" className={styles.sectionTitle} data-split>
-              {mentors.title}
+              <PenPhrase text={mentors.title} phrase="dẫn đường" pen="underline" tone="ember" start="top 80%" end="top 45%" />
             </h2>
           </div>
           <MentorCards people={mentors.people} />
@@ -335,7 +343,7 @@ export default function ConanPage() {
                   04 — Lớp học thật
                 </p>
                 <h2 id="conan-gallery" className={styles.sectionTitle} data-split>
-                  {gallery.title}
+                  <PenPhrase text={gallery.title} phrase="như thế này" pen="underline" tone="ember" start="top 80%" end="top 45%" />
                 </h2>
               </div>
             }
@@ -361,7 +369,7 @@ export default function ConanPage() {
                 className={styles.primaryCta}
                 data-motion-action
                 data-magnetic="0.3"
-                data-cursor="Mở"
+                data-cursor="Vào lớp"
               >
                 <span className={styles.ctaInner} data-magnetic-inner>
                   {conanContent.primaryCta}

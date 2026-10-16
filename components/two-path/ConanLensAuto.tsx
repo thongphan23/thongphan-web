@@ -157,6 +157,9 @@ export default function ConanLensAuto() {
     if (!hero || !words || !document.documentElement.classList.contains('motion')) return
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const blocks = Array.from(words.children) as HTMLElement[]
+    // The room's flight (--flight, 0 to 1 over the pinned stretch, 0.7 of a window as in maskFlight)
+    // and exit (--exit, 0 to 1 as the hero's top then climbs a window out), for its scrubbed drift.
+    const media = hero.querySelector<HTMLElement>('[data-lens-auto]')
     let frame = 0
     // Where a block's top sits in the window at the top of the page: its offset in the hero plus
     // the hero's place in the document (its pin spacer's, while ScrollTrigger pins it).
@@ -172,6 +175,10 @@ export default function ConanLensAuto() {
       frame = 0
       const height = window.innerHeight
       const end = height * 0.06
+      const spacer = hero.parentElement?.classList.contains('pin-spacer') ? hero.parentElement : hero
+      const clamp01 = (value: number) => Math.min(1, Math.max(0, value)).toFixed(3)
+      media?.style.setProperty('--flight', clamp01(-spacer.getBoundingClientRect().top / (height * 0.7)))
+      media?.style.setProperty('--exit', clamp01(-hero.getBoundingClientRect().top / height))
       blocks.forEach((block) => {
         const start = Math.max(end + 40, Math.min(height * 0.4, restTop(block) - 1))
         const keep = (block.getBoundingClientRect().top - end) / (start - end)
@@ -189,6 +196,8 @@ export default function ConanLensAuto() {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
       blocks.forEach((block) => block.style.removeProperty('--keep'))
+      media?.style.removeProperty('--exit')
+      media?.style.removeProperty('--flight')
     }
   }, [])
   return null

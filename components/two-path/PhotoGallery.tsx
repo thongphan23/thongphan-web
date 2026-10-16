@@ -78,6 +78,7 @@ export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
               type="button"
               className={`${styles.lightThumb} ${show.thumb}`}
               data-light-thumb={index}
+              data-cursor="Xem"
               aria-label={`Ảnh ${pad(index + 1)}: ${photo(item.photoId).caption}`}
             >
               <TwoPathPhoto id={item.photoId} sizes="96px" decorative />
