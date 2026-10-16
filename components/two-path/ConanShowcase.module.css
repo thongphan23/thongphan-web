@@ -77,33 +77,22 @@
   }
 }
 
-/* With motion the pair starts in the series' warm monochrome, one shared grade over two different
-   rooms, and both warm into colour together as the band comes up the screen (--fill, 0 to 1 over
-   the band), or at once under a pointer; on touch screens a portrait also takes colour as it
-   crosses the middle of the screen. Without motion the portraits keep the colour grade of the rest
-   of the page: nothing scrolls them awake, and a face should not wait on a gesture to be seen. */
-.mentor {
-  --bloom: clamp(0, calc((var(--fill, 0) - 0.1) * 4), 1);
-}
-
-:global(html.motion) .mentorPhoto {
-  filter: saturate(calc(var(--bloom) * 0.84)) sepia(calc(0.34 - var(--bloom) * 0.14)) contrast(calc(1.12 - var(--bloom) * 0.04))
-    brightness(calc(1 + var(--bloom) * 0.04));
-}
-
-.mentor:focus-within .mentorPhoto {
-  filter: saturate(0.84) sepia(0.2) contrast(1.08) brightness(1.04);
+/* The pair rests in the site's shared grade and lifts together with the other documentary photos
+   under a pointer or keyboard focus; on touch screens a portrait also lifts as it crosses the
+   middle of the screen. */
+.mentor:focus-within {
+  --photo-state: var(--brand-photo-lift);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .mentor:hover .mentorPhoto {
-    filter: saturate(0.84) sepia(0.2) contrast(1.08) brightness(1.04);
+  .mentor:hover {
+    --photo-state: var(--brand-photo-lift);
   }
 }
 
 @media (hover: none) {
-  .mentor[data-in-focus] .mentorPhoto {
-    filter: saturate(0.84) sepia(0.2) contrast(1.08) brightness(1.04);
+  .mentor[data-in-focus] {
+    --photo-state: var(--brand-photo-lift);
   }
 }
 
@@ -242,10 +231,6 @@
 
 /* Gallery overrides. */
 
-.table[data-light-table] {
-  --gallery-grade: saturate(0.84) sepia(0.24) contrast(1.1) brightness(1.03);
-}
-
 .table .frame {
   border-radius: 18px;
   box-shadow: 0 34px 80px -34px rgba(0, 0, 0, 0.75);
@@ -308,7 +293,7 @@
      middle line), its words at the foot on the frame's own scrim, which no longer lifts under a
      pointer. Paper on at least 70% ink clears 4.5:1 over any photo. */
   .table[data-light-table][data-light-active] .frame::after {
-    background: linear-gradient(180deg, transparent 46%, rgba(7, 7, 6, 0.52) 66%, rgba(7, 7, 6, 0.88));
+    background: linear-gradient(180deg, transparent 34%, rgba(7, 7, 6, 0.74) 58%, rgba(7, 7, 6, 0.9));
     opacity: 1;
   }
 

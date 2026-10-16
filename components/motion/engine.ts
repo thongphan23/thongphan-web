@@ -704,24 +704,33 @@ function velocitySkew(root: HTMLElement): Cleanup {
   return () => gsap.ticker.remove(update)
 }
 
-// Buttons and doors lean toward the pointer, with the label travelling further than the frame.
+// Buttons and doors lean toward the pointer, never more than MAGNETIC_MAX px, and spring back
+// on leave; the label inside travels a little further than the frame. The soft elastic below
+// overshoots by about 7%, so the goal is held short of the limit to keep the peak inside it.
+const MAGNETIC_MAX = 8
+const MAGNETIC_GOAL = MAGNETIC_MAX / 1.08
+
 function magnetic(root: HTMLElement): Cleanup {
   const cleanups: Cleanup[] = []
-  root.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
+  // The whole shell, so the header's path pills and CTA lean too, not only the stage.
+  const scope = root.closest<HTMLElement>('[data-site-shell]') ?? root
+  scope.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
     const strength = numberAttr(el, 'magnetic', 0.32)
     const inner = el.querySelector<HTMLElement>('[data-magnetic-inner]')
-    const x = gsap.quickTo(el, 'x', { duration: 0.7, ease: 'elastic.out(1, 0.4)' })
-    const y = gsap.quickTo(el, 'y', { duration: 0.7, ease: 'elastic.out(1, 0.4)' })
+    const x = gsap.quickTo(el, 'x', { duration: 0.7, ease: 'elastic.out(1, 0.75)' })
+    const y = gsap.quickTo(el, 'y', { duration: 0.7, ease: 'elastic.out(1, 0.75)' })
     const ix = inner ? gsap.quickTo(inner, 'x', { duration: 0.5, ease: 'power3.out' }) : null
     const iy = inner ? gsap.quickTo(inner, 'y', { duration: 0.5, ease: 'power3.out' }) : null
     const move = (event: PointerEvent) => {
+      // Measure from the resting centre, so the lean itself does not feed back into the pull.
       const box = el.getBoundingClientRect()
-      const dx = event.clientX - (box.left + box.width / 2)
-      const dy = event.clientY - (box.top + box.height / 2)
-      x(dx * strength)
-      y(dy * strength)
-      ix?.(dx * strength * 0.6)
-      iy?.(dy * strength * 0.6)
+      const dx = event.clientX - (box.left + box.width / 2 - Number(gsap.getProperty(el, 'x')))
+      const dy = event.clientY - (box.top + box.height / 2 - Number(gsap.getProperty(el, 'y')))
+      const pull = Math.min(1, MAGNETIC_GOAL / (Math.hypot(dx, dy) * strength || 1))
+      x(dx * strength * pull)
+      y(dy * strength * pull)
+      ix?.(dx * strength * pull * 0.35)
+      iy?.(dy * strength * pull * 0.35)
     }
     const leave = () => {
       x(0)
@@ -864,118 +873,207 @@ function hoverReveal(root: HTMLElement): Cleanup {
   return () => cleanups.forEach((fn) => fn())
 }
 
-// The cursor lives for the whole session: a dot that tracks the pointer exactly and a
-// ring that trails it, grows over links and shows a short label over [data-cursor] targets.
-// Over a magnetic button that already says what it does, the ring wraps the button's outline
-// instead, so it never covers the label.
+// The cursor lives for the whole session: a dot that tracks the pointer exactly, a ring that
+// trails it (lerp) and a tag that carries a short Vietnamese verb over anything that acts.
+// Its colours follow the ground under the pointer (ink on paper, paper on ink and photos), so it
+// reads on every background without a blend mode. Over a magnetic control the ring lets go of
+// the pointer and settles round the control's own outline, centred on it.
 let cursorCleanup: Cleanup | null = null
+
+const CURSOR_LERP = 0.18
+// Controls taller than this (the closing door panels) keep the plain ring: a frame that size
+// would read as a selection box, not a cursor.
+const STICK_MAX_HEIGHT = 140
+
+type Ground = 'light' | 'dark'
+
+// 0–1 channels for a mostly opaque background colour (rgb() or color(srgb)).
+function opaqueRgb(value: string): [number, number, number] | null {
+  const legacy = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/.exec(value)
+  const modern = /color\(srgb ([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+))?/.exec(value)
+  const match = legacy ?? modern
+  if (!match || (match[4] !== undefined && Number(match[4]) < 0.5)) return null
+  const scale = legacy ? 255 : 1
+  return [Number(match[1]) / scale, Number(match[2]) / scale, Number(match[3]) / scale]
+}
+
+function groundAt(x: number, y: number): Ground {
+  for (const node of document.elementsFromPoint(x, y)) {
+    // A photo or film frame: the paper cursor (with its ink edge) carries best over pictures.
+    if (node instanceof HTMLImageElement || node instanceof HTMLVideoElement || node instanceof HTMLCanvasElement) return 'dark'
+    const rgb = opaqueRgb(getComputedStyle(node).backgroundColor)
+    if (rgb) return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2] > 0.45 ? 'light' : 'dark'
+  }
+  return document.documentElement.dataset.ground === 'paper' ? 'light' : 'dark'
+}
+
+// What the tag says: the target's own data-cursor, else a plain verb for what a click does.
+// Header and footer links keep a bare ring unless they ask for a label.
+function cursorLabel(target: HTMLElement): string {
+  if (target.dataset.cursor) return target.dataset.cursor
+  if (!target.closest('[data-motion-stage]')) return ''
+  if (target.matches('a[href^="#"]')) return 'Xem'
+  if (target.matches('a')) return 'Mở'
+  return 'Chọn'
+}
 
 function startCursor() {
   if (cursorCleanup) return
-  const ring = document.createElement('div')
-  ring.className = 'motion-cursor'
-  ring.setAttribute('aria-hidden', 'true')
-  ring.innerHTML = '<span class="motion-cursor__dot"></span><span class="motion-cursor__ring"><span class="motion-cursor__label"></span></span>'
-  document.body.appendChild(ring)
-  const label = ring.querySelector<HTMLElement>('.motion-cursor__label')!
-  const dot = ring.querySelector<HTMLElement>('.motion-cursor__dot')!
-  const halo = ring.querySelector<HTMLElement>('.motion-cursor__ring')!
-  const dx = gsap.quickSetter(dot, 'x', 'px')
-  const dy = gsap.quickSetter(dot, 'y', 'px')
-  const hx = gsap.quickTo(halo, 'x', { duration: 0.24, ease: 'power3.out' })
-  const hy = gsap.quickTo(halo, 'y', { duration: 0.24, ease: 'power3.out' })
+  const root = document.createElement('div')
+  root.className = 'motion-cursor'
+  root.setAttribute('aria-hidden', 'true')
+  root.innerHTML =
+    '<span class="motion-cursor__ring"></span><span class="motion-cursor__dot"></span><span class="motion-cursor__tag"><span class="motion-cursor__label"></span></span>'
+  document.body.appendChild(root)
+  const ring = root.querySelector<HTMLElement>('.motion-cursor__ring')!
+  const dot = root.querySelector<HTMLElement>('.motion-cursor__dot')!
+  const tag = root.querySelector<HTMLElement>('.motion-cursor__tag')!
+  const label = root.querySelector<HTMLElement>('.motion-cursor__label')!
+  const setDot = { x: gsap.quickSetter(dot, 'x', 'px'), y: gsap.quickSetter(dot, 'y', 'px') }
+  const setRing = { x: gsap.quickSetter(ring, 'x', 'px'), y: gsap.quickSetter(ring, 'y', 'px') }
+  const setTag = { x: gsap.quickSetter(tag, 'x', 'px'), y: gsap.quickSetter(tag, 'y', 'px') }
   document.documentElement.dataset.cursorMode = 'custom'
+  root.dataset.state = 'idle'
+
+  const pointer = { x: -100, y: -100 }
+  const ringAt = { x: -100, y: -100 }
+  const tagAt = { x: -100, y: -100 }
+  let tagWidth = 0
   let stuck: HTMLElement | null = null
+  let sampledAt = 0
+
+  const sample = (force = false) => {
+    const now = performance.now()
+    if (!force && now - sampledAt < 90) return
+    sampledAt = now
+    root.dataset.ground = groundAt(pointer.x, pointer.y)
+  }
+
   const unstick = () => {
     if (!stuck) return
     stuck = null
-    halo.style.removeProperty('width')
-    halo.style.removeProperty('height')
-    halo.style.removeProperty('margin')
+    ring.style.removeProperty('--cursor-w')
+    ring.style.removeProperty('--cursor-h')
+    ring.style.removeProperty('--cursor-r')
   }
+
+  // One ticker step: the ring eases towards the pointer (or the stuck control's centre) and the
+  // tag towards its seat below-right of the pointer, flipping left near the window's edge.
+  const follow = () => {
+    const f = 1 - Math.pow(1 - CURSOR_LERP, gsap.ticker.deltaRatio(60))
+    let goalX = pointer.x
+    let goalY = pointer.y
+    if (stuck) {
+      const box = stuck.getBoundingClientRect()
+      goalX = box.left + box.width / 2
+      goalY = box.top + box.height / 2
+      ring.style.setProperty('--cursor-w', `${box.width + 14}px`)
+      ring.style.setProperty('--cursor-h', `${box.height + 14}px`)
+    }
+    ringAt.x += (goalX - ringAt.x) * f
+    ringAt.y += (goalY - ringAt.y) * f
+    const flip = pointer.x + 18 + tagWidth > window.innerWidth - 8
+    tagAt.x += ((flip ? pointer.x - 14 - tagWidth : pointer.x + 18) - tagAt.x) * f
+    tagAt.y += (pointer.y + 20 - tagAt.y) * f
+    setRing.x(ringAt.x)
+    setRing.y(ringAt.y)
+    setTag.x(tagAt.x)
+    setTag.y(tagAt.y)
+  }
+  gsap.ticker.add(follow)
 
   // Scrolling under a still mouse makes the browser fire pointerover on whatever slides beneath
   // it, which would pop a label over the content being read. Labels stay folded until the mouse
   // itself moves again.
-  const quiet = () => {
-    ring.dataset.quiet = 'true'
+  const scrolled = () => {
+    root.dataset.quiet = 'true'
+    sample()
   }
-  // A mouse left still is set down: after a short rest the cursor fades, so it never sits on
+  // A mouse left still is set down: after a short rest the bare cursor fades, so it never sits on
   // top of the words the reader is scrolling through. The next move brings it straight back.
   let restTimer = 0
   const rest = () => {
-    ring.dataset.rest = 'true'
+    root.dataset.rest = 'true'
   }
   const move = (event: PointerEvent) => {
     if (event.pointerType !== 'mouse') return
-    ring.dataset.visible = 'true'
-    delete ring.dataset.quiet
-    delete ring.dataset.rest
+    const first = root.dataset.visible !== 'true'
+    pointer.x = event.clientX
+    pointer.y = event.clientY
+    if (first) {
+      ringAt.x = tagAt.x = pointer.x
+      ringAt.y = tagAt.y = pointer.y
+    }
+    root.dataset.visible = 'true'
+    delete root.dataset.quiet
+    delete root.dataset.rest
     window.clearTimeout(restTimer)
     restTimer = window.setTimeout(rest, 1600)
-    dx(event.clientX)
-    dy(event.clientY)
-    if (stuck) {
-      // The button itself leans toward the pointer, so its box is read fresh on every move.
-      const box = stuck.getBoundingClientRect()
-      const cx = box.left + box.width / 2
-      const cy = box.top + box.height / 2
-      const w = box.width + 16
-      const h = box.height + 16
-      halo.style.width = `${w}px`
-      halo.style.height = `${h}px`
-      halo.style.margin = `${-h / 2}px 0 0 ${-w / 2}px`
-      hx(cx + (event.clientX - cx) * 0.1)
-      hy(cy + (event.clientY - cy) * 0.1)
-      return
-    }
-    hx(event.clientX)
-    hy(event.clientY)
+    setDot.x(pointer.x)
+    setDot.y(pointer.y)
+    sample(first)
   }
   const over = (event: PointerEvent) => {
     const target = (event.target as Element | null)?.closest<HTMLElement>('[data-cursor], a, button, [role="button"], summary')
+    if (event.pointerType === 'mouse') {
+      pointer.x = event.clientX
+      pointer.y = event.clientY
+      sample(true)
+    }
     if (!target) {
       unstick()
-      ring.dataset.state = 'idle'
-      label.textContent = ''
+      root.dataset.state = 'idle'
+      delete root.dataset.tagged
+      delete root.dataset.tone
       return
     }
-    if (!target.dataset.cursor && target.matches('[data-magnetic]')) {
-      stuck = target
-      ring.dataset.state = 'stick'
-      label.textContent = ''
+    const text = cursorLabel(target)
+    label.textContent = text
+    tagWidth = text ? label.offsetWidth : 0
+    if (text) root.dataset.tagged = 'true'
+    else delete root.dataset.tagged
+    const tone = target.closest<HTMLElement>('[data-cursor-tone]')?.dataset.cursorTone
+    if (tone) root.dataset.tone = tone
+    else delete root.dataset.tone
+    const box = target.getBoundingClientRect()
+    if (target.matches('[data-magnetic]') && box.height <= STICK_MAX_HEIGHT) {
+      if (stuck !== target) {
+        unstick()
+        stuck = target
+        const radius = parseFloat(getComputedStyle(target).borderTopLeftRadius) || 0
+        ring.style.setProperty('--cursor-r', `${Math.min(radius + 7, (box.height + 14) / 2)}px`)
+      }
+      root.dataset.state = 'stick'
       return
     }
     unstick()
-    const text = target.dataset.cursor
-    ring.dataset.state = text ? 'label' : 'link'
-    ring.dataset.tone = target.closest<HTMLElement>('[data-cursor-tone]')?.dataset.cursorTone ?? 'light'
-    label.textContent = text ?? ''
+    root.dataset.state = text && target.dataset.cursor !== undefined ? 'label' : 'link'
   }
   const leaveWindow = () => {
-    ring.dataset.visible = 'false'
+    root.dataset.visible = 'false'
   }
   const press = () => {
-    ring.dataset.pressed = 'true'
+    root.dataset.pressed = 'true'
   }
   const release = () => {
-    ring.dataset.pressed = 'false'
+    root.dataset.pressed = 'false'
   }
   window.addEventListener('pointermove', move, { passive: true })
-  window.addEventListener('scroll', quiet, { passive: true })
+  window.addEventListener('scroll', scrolled, { passive: true })
   document.addEventListener('pointerover', over, { passive: true })
   document.documentElement.addEventListener('pointerleave', leaveWindow)
   window.addEventListener('pointerdown', press, { passive: true })
   window.addEventListener('pointerup', release, { passive: true })
   cursorCleanup = () => {
     window.clearTimeout(restTimer)
+    gsap.ticker.remove(follow)
     window.removeEventListener('pointermove', move)
-    window.removeEventListener('scroll', quiet)
+    window.removeEventListener('scroll', scrolled)
     document.removeEventListener('pointerover', over)
     document.documentElement.removeEventListener('pointerleave', leaveWindow)
     window.removeEventListener('pointerdown', press)
     window.removeEventListener('pointerup', release)
-    ring.remove()
+    root.remove()
     delete document.documentElement.dataset.cursorMode
     cursorCleanup = null
   }
@@ -983,6 +1081,59 @@ function startCursor() {
 
 function stopCursor() {
   cursorCleanup?.()
+}
+
+// A pinned hero is moved into its pin-spacer when the trigger is built and again on every
+// refresh, and a moved element restarts its CSS animations: the headline would blink out and
+// play its intro again. The clock of every running CSS animation is read before any pin exists;
+// after each move, the restarted ones inside a pin are put back on that clock, or at their end
+// once they have played out. Endless loops simply restart.
+const INTRO_PARTS = '.intro-word > span, .intro-fade, .intro-clip, .intro-clip img'
+const ANY_INTRO = '*'
+
+function cssAnimations(): CSSAnimation[] {
+  return document.getAnimations().filter((a): a is CSSAnimation => a instanceof CSSAnimation)
+}
+
+function introKey(anim: CSSAnimation): [Element | null, string] {
+  const effect = anim.effect as KeyframeEffect | null
+  return [effect?.target ?? null, `${effect?.pseudoElement ?? ''}|${anim.animationName}`]
+}
+
+function keepIntroClock(): { restore: Cleanup; stop: Cleanup } {
+  const now = () => Number(document.timeline.currentTime ?? performance.now())
+  // Per element: animation key -> virtual start on the document timeline, or null once played out.
+  const clocks = new Map<Element, Map<string, number | null>>()
+  const clockOf = (el: Element) => clocks.get(el) ?? clocks.set(el, new Map()).get(el)!
+  // Shared intro parts that have already played out (or never ran) must not replay either.
+  document.querySelectorAll(INTRO_PARTS).forEach((el) => clockOf(el).set(ANY_INTRO, null))
+  cssAnimations().forEach((anim) => {
+    const [el, key] = introKey(anim)
+    const timing = anim.effect?.getComputedTiming()
+    if (!el || !timing || timing.iterations === Infinity) return
+    clockOf(el).set(key, now() - Number(anim.currentTime ?? 0))
+  })
+  const restore = () =>
+    cssAnimations().forEach((anim) => {
+      const [el, key] = introKey(anim)
+      if (!el?.closest('.pin-spacer') || anim.playState === 'paused') return
+      const clock = clocks.get(el)
+      const start = clock?.has(key) ? clock.get(key) : anim.animationName.startsWith('intro-') ? clock?.get(ANY_INTRO) : undefined
+      if (start === undefined) return
+      try {
+        const end = Number(anim.effect?.getComputedTiming().endTime ?? 0)
+        if (start === null || now() - start >= end) {
+          anim.finish()
+          clock?.set(key, null)
+        } else {
+          anim.currentTime = now() - start
+        }
+      } catch {
+        // Endless or detached: leave it to CSS.
+      }
+    })
+  ScrollTrigger.addEventListener('refresh', restore)
+  return { restore, stop: () => ScrollTrigger.removeEventListener('refresh', restore) }
 }
 
 export type MountOptions = { stage: boolean }
@@ -1002,6 +1153,7 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
 
   const mm = gsap.matchMedia()
   const extra: Cleanup[] = []
+  const introClock = keepIntroClock()
   const ctx = gsap.context(() => {
     // Pen anchors are read before SplitText rewrites the headings they sit in.
     const pens = collectPens(root)
@@ -1019,6 +1171,7 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     // The light table glides with Lenis where it runs, so a settle eases like the reader's own scroll.
     const glide = lenis ? (y: number, duration: number) => lenis?.scrollTo(y, { duration }) : null
     extra.push(marquees(root), velocitySkew(root), stageHero(root), maskFlight(root), lessonStage(root), stickySwap(root), chapterRail(root), lightTable(root, glide), curtains(root), scrollFill(root), scrollCount(root))
+    // Magnetic controls also live in the shared header and footer, outside the page's stage.
     if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
     extra.push(photoBloom(root), guidePen(root, pens))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
@@ -1027,6 +1180,8 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     if (finePointer && !saveData && window.matchMedia(DESKTOP).matches) extra.push(glPhotos(root, () => velocity))
   }, root)
 
+  // The triggers above have just moved any pinned hero into its spacer.
+  introClock.restore()
   document.documentElement.dataset.motionReady = 'true'
   // Fonts and lazy images change section heights after first layout.
   const refresh = () => ScrollTrigger.refresh()
@@ -1035,6 +1190,7 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
 
   return () => {
     window.removeEventListener('load', refresh)
+    introClock.stop()
     extra.forEach((fn) => fn())
     mm.revert()
     ctx.revert()

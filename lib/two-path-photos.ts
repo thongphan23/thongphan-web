@@ -20,6 +20,9 @@ export type TwoPathPhoto = {
   consentNote?: string
   budgetBytes: number
   focal?: { x: number; y: number } // object-position hint for responsive crops
+  // Per-photo correction on top of the shared documentary grade (--brand-photo-grade).
+  // exposure and contrast multiply (1 = base), warmth adds to the sepia amount (0 = base).
+  grade?: { exposure?: number; warmth?: number; contrast?: number }
 }
 
 const KB = 1024
@@ -69,6 +72,7 @@ const records = [
   },
   {
     id: 'founder-portrait',
+    grade: { warmth: 0.1 },
     width: 736,
     height: 920,
     alt: 'Thông Phan cầm micro, đang nói trước khán giả trong một buổi chia sẻ',
@@ -79,6 +83,7 @@ const records = [
   },
   {
     id: 'door-tensai',
+    grade: { exposure: 0.95 },
     width: 640,
     height: 800,
     alt: 'Thông Phan ôm cuốn sách Thần thoại Hy Lạp trong một hiệu sách',
@@ -99,6 +104,7 @@ const records = [
   },
   {
     id: 'field-content-class',
+    grade: { warmth: 0.16 },
     width: 1200,
     height: 800,
     alt: 'Nhóm học viên quanh bàn họp có laptop, cười và giơ tay chào máy ảnh sau buổi học viết content',
@@ -199,6 +205,7 @@ const records = [
   },
   {
     id: 'gallery-ai-factory-design',
+    grade: { exposure: 1.07 },
     width: 1200,
     height: 900,
     alt: 'Học viên trao đổi quanh bàn làm việc, màn hình laptop mở tài liệu, bảng trắng ghi sơ đồ phía sau',
@@ -209,6 +216,7 @@ const records = [
   },
   {
     id: 'gallery-decision-making',
+    grade: { exposure: 0.98, warmth: -0.06 },
     width: 1200,
     height: 900,
     alt: 'Nhóm học viên ngồi quanh bàn tròn trong quán cà phê, chụp ảnh chung',
@@ -219,6 +227,7 @@ const records = [
   },
   {
     id: 'gallery-content-flow-haus',
+    grade: { warmth: 0.16 },
     width: 1200,
     height: 900,
     alt: 'Nhóm học viên trong phòng họp tường xanh, bàn đầy laptop, cùng giơ tay chào máy ảnh',
@@ -229,6 +238,7 @@ const records = [
   },
   {
     id: 'gallery-katinat',
+    grade: { exposure: 0.96, warmth: 0.06 },
     width: 1200,
     height: 900,
     alt: 'Học viên ngồi quanh các bàn nhỏ trong quán KATINAT, cầm ly nước và laptop, cười với máy ảnh',
@@ -239,6 +249,7 @@ const records = [
   },
   {
     id: 'gallery-manulife',
+    grade: { exposure: 0.93, contrast: 1.06 },
     width: 1200,
     height: 900,
     alt: 'Tám người đứng thành hàng trong phòng họp doanh nghiệp, cầm túi quà và chụp ảnh chung',
@@ -249,6 +260,7 @@ const records = [
   },
   {
     id: 'gallery-after-class',
+    grade: { warmth: -0.08 },
     width: 1200,
     height: 900,
     alt: 'Nhóm học viên ngồi quanh bàn lẩu trong một quán ăn nhỏ sau buổi học',

@@ -93,6 +93,12 @@
   z-index: 1;
 }
 
+.legacyMain {
+  overflow-x: clip;
+  position: relative;
+  z-index: 1;
+}
+
 .motionAtmosphere {
   --motion-ambient-opacity: 1;
   --motion-pointer-opacity: 0;
@@ -215,7 +221,7 @@
     border-color 220ms var(--brand-motion-ease),
     box-shadow 220ms var(--brand-motion-ease),
     color 220ms var(--brand-motion-ease),
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 400;
 }
 
@@ -272,7 +278,7 @@
 .cinemaHeader[data-path-route='tensai'],
 .cinemaHeader[data-path-route='tensai'][data-header-scrolled='true'] {
   --header-fg: var(--brand-text-on-paper);
-  --header-muted: #5f574d;
+  --header-muted: var(--brand-text-secondary-paper);
   --header-line: var(--brand-line-paper);
   --header-surface: var(--brand-reading-paper);
   /* Opaque: any translucency lets the ink shell behind it grey the paper. */
@@ -288,7 +294,7 @@
    paper over paper or lime, ink over ink and the footer, whatever the route's resting tone. */
 .cinemaHeader[data-header-tone='light'][data-header-scrolled] {
   --header-fg: var(--brand-text-on-paper);
-  --header-muted: #5f574d;
+  --header-muted: var(--brand-text-secondary-paper);
   --header-line: var(--brand-line-paper);
   --header-surface: var(--brand-reading-paper);
   background: var(--header-ground, var(--brand-reading-paper));
@@ -309,7 +315,9 @@
 /* The tone flips at once as a boundary passes under the header: a cross-fade from ink to paper
    would show a grey bar for a few frames. */
 .cinemaHeader[data-header-tone] {
-  transition: box-shadow 220ms var(--brand-motion-ease);
+  transition:
+    box-shadow 220ms var(--brand-motion-ease),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* At the very top of the dark pages the header stays a veil over the hero, not a bar. */
@@ -360,7 +368,7 @@
   font-family: var(--font-be-vietnam), sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
 }
 
 .libraryWordmark strong {
@@ -474,6 +482,42 @@
   text-decoration-color: var(--brand-lacquer-bright);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.45em;
+}
+
+/* The branch page's own way in, in its colour (SiteHeader HEADER_CTA). */
+.headerCta {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 1.15rem;
+  text-decoration: none;
+  transition:
+    background-color var(--brand-motion-fast) var(--brand-motion-ease),
+    color var(--brand-motion-fast) var(--brand-motion-ease);
+  white-space: nowrap;
+}
+
+.cinemaHeader .desktopNav .headerCta[data-header-cta='tensai'] {
+  background: #c3f331;
+  color: #073b2f;
+}
+
+.cinemaHeader .desktopNav .headerCta[data-header-cta='tensai']:hover {
+  background: #073b2f;
+  color: #c3f331;
+}
+
+.cinemaHeader .desktopNav .headerCta[data-header-cta='conan'] {
+  background: #c4441f;
+  color: #ffffff;
+}
+
+.cinemaHeader .desktopNav .headerCta[data-header-cta='conan']:hover {
+  background: #9e3416;
 }
 
 .more {
@@ -649,7 +693,7 @@
 }
 
 .mobilePathNav a span:first-child {
-  font-size: 0.75rem;
+  font-size: var(--fs-meta);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -793,9 +837,9 @@
 }
 
 .footerHeading {
-  color: color-mix(in srgb, var(--brand-paper) 58%, transparent);
+  color: var(--brand-text-secondary-dark);
   font-family: var(--font-be-vietnam), sans-serif;
-  font-size: 0.8125rem;
+  font-size: max(var(--fs-meta), 0.8125rem);
   font-weight: 600;
   letter-spacing: 0.1em;
   line-height: 1.3;

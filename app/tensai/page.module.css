@@ -1,5 +1,5 @@
 .page {
-  --tensai-muted: #5f574d;
+  --tensai-muted: var(--brand-text-secondary-paper);
   --tensai-rule: rgba(23, 20, 16, 0.22);
   background: var(--brand-reading-paper);
   color: var(--brand-text-on-paper);
@@ -14,6 +14,7 @@
 /* Split first screen: words on the left, the real app on the right (below on phones). */
 
 .hero {
+  --intro-pace: 0.35;
   align-items: center;
   display: grid;
   gap: clamp(2.25rem, 4vw, 4rem);
@@ -577,7 +578,7 @@
 }
 
 .situationTotal {
-  color: rgba(7, 59, 47, 0.74);
+  color: rgba(7, 59, 47, 0.86);
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -1270,7 +1271,7 @@
 .deviceUrl {
   background: rgba(243, 240, 230, 0.1);
   border-radius: 999px;
-  color: rgba(243, 240, 230, 0.86);
+  color: rgba(243, 240, 230, 0.95);
   font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 0.8125rem;
   letter-spacing: 0.04em;
@@ -1332,8 +1333,8 @@
 .proofNum {
   background: rgba(7, 59, 47, 0.88);
   border-radius: 6px;
-  color: rgba(243, 240, 230, 0.92);
-  font-size: 0.75rem;
+  color: #f3f0e6;
+  font-size: var(--fs-meta);
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   left: 0.3rem;
@@ -1394,12 +1395,10 @@
   opacity: 1;
 }
 
-.methodCaption {
-  color: #3d3428;
+/* Beats .methodFigure figcaption (type and spacing come from there); dark enough over the grey band. */
+.methodFigure .methodCaption {
+  color: #241e17;
   display: block;
-  font-size: 1rem;
-  line-height: 1.45;
-  margin-top: 0.75rem;
 }
 
 /* The spacers that set how long each step holds; only laid out where the swap runs. The first holds

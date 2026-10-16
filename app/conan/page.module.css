@@ -24,6 +24,7 @@
 /* First screen: the offline class as a wide band across the top, the words on ink beneath it. */
 
 .hero {
+  --intro-pace: 0.4;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -853,7 +854,7 @@
 
 .principleFrame img {
   display: block;
-  filter: var(--photo-tone, var(--brand-photo-grade));
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -1840,7 +1841,7 @@
 
 .closingFrame img {
   display: block;
-  filter: var(--photo-tone, var(--brand-photo-grade));
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;

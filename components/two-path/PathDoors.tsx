@@ -12,11 +12,11 @@ type PathDoorsProps = {
   placement: Placement
 }
 
-// Cursor labels for the closing panels, in the path's own colour. The hero pills carry no label:
-// the magnetic ring wraps them instead, so nothing ever sits over the pill's own words.
+// Cursor tags in the path's own colour. The tag rides below-right of the pointer, so it never
+// sits over a door's own words; on the hero pills the ring also wraps the pill (magnetic).
 const CURSOR: Record<PathKey, { label: string; tone: string }> = {
-  tensai: { label: 'Vào Tensai', tone: 'lime' },
-  conan: { label: 'Vào Conan', tone: 'lacquer' },
+  tensai: { label: 'Tensai', tone: 'lime' },
+  conan: { label: 'Conan', tone: 'lacquer' },
 }
 
 const pad = (value: number) => String(value).padStart(2, '0')
@@ -38,6 +38,7 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
               data-path-door={door.path}
               data-cursor={CURSOR[door.path].label}
               data-cursor-tone={CURSOR[door.path].tone}
+              data-magnetic="0.06"
               data-motion-action
             >
               <span className={styles.closingDoorHead}>
@@ -74,6 +75,8 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
           className={`${styles.door} ${home.heroDoor}`}
           data-path-door={door.path}
           data-magnetic="0.3"
+          data-cursor={CURSOR[door.path].label}
+          data-cursor-tone={CURSOR[door.path].tone}
         >
           <span className={styles.doorFill} aria-hidden="true" />
           {/* Where the hero pen's fork lands on this door (page.tsx data-pen-to). */}

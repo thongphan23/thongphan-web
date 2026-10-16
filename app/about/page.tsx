@@ -26,7 +26,7 @@ const pad = (value: number) => String(value).padStart(2, '0')
 export default function AboutPage() {
   return (
     <div className={styles.page} data-motion-stage>
-      <section className={styles.hero} aria-labelledby="about-title">
+      <section className={styles.hero} aria-labelledby="about-title" data-cursor="Cuộn" data-cursor-tone="light">
         <HeroPointer />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy} data-scroll-out="18">
@@ -87,14 +87,7 @@ export default function AboutPage() {
                   data-cursor-tone="lacquer"
                 >
                   <span className={styles.actRule} aria-hidden="true" />
-                  {/* The third act is where the story turns, so the guide's pen rings its number
-                      once the first screen has settled. */}
-                  <span
-                    className={styles.actNumber}
-                    {...(index === 2
-                      ? { 'data-pen': 'circle', 'data-pen-tone': 'lacquer', 'data-pen-trigger': 'load', 'data-pen-delay': '2400' }
-                      : {})}
-                  >
+                  <span className={styles.actNumber}>
                     <span className={styles.actDigits}>
                       <span className={styles.actRoll} data-n={pad(index + 1)}>
                         {pad(index + 1)}

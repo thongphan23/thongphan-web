@@ -738,7 +738,7 @@
 }
 
 .imageMedia img {
-  filter: var(--photo-tone, var(--brand-photo-grade));
+  filter: var(--brand-photo-grade);
   object-fit: cover;
 }
 

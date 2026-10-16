@@ -156,19 +156,6 @@
   color: var(--cinema-paper);
 }
 
-/* Over the way in, the cursor's label hangs below the pointer as a small tag rather than a disc
-   laid over the link's own words. The act index carries only the tone: its own words say where
-   it goes, and a tag there would sit over the next link. */
-@media (hover: hover) and (pointer: fine) {
-  :global(html):has(.startCta:hover)
-    :global(.motion-cursor)[data-state='label']:not([data-quiet='true'])
-    :global(.motion-cursor__ring) {
-    height: 34px;
-    margin: 36px 0 0 6px;
-    width: 72px;
-  }
-}
-
 .page .hero .startCta:focus-visible,
 .page .hero .actLink:focus-visible {
   outline: 3px solid var(--cinema-hot);

@@ -7,6 +7,17 @@ html:has([data-site-shell='unified'][data-route-mode='cinema-dark']) body {
   background: var(--brand-ink);
 }
 
+/* Page tone stamped by SiteChrome (data-ground); the static HTML carries the same tone inline. */
+html[data-ground='ink'],
+html[data-ground='ink'] body {
+  background: var(--brand-ink);
+}
+
+html[data-ground='paper'],
+html[data-ground='paper'] body {
+  background: var(--brand-reading-paper);
+}
+
 /* Wide screens: the stage pages let their type grow with the window (16px at 1280, 18px from
    1600), so a laptop reads them like a spread rather than a narrow layout left at phone size. */
 @media (min-width: 1280px) {
@@ -66,21 +77,18 @@ html.motion:not([data-motion-ready]) [data-motion-stage] [data-motion-reveal] {
   width: 100%;
 }
 
-/* Documentary photos ([data-photo-bloom]) rest in the archive tone while motion runs and take
-   their colour on hover, keyboard focus, or while the engine marks them data-lit in the middle of
-   the screen. Each photo's own rule reads var(--photo-tone); a frame may set --photo-lit to bloom
-   into its own grade. Without motion (reduced motion included) photos simply stay in colour. */
-[data-photo-bloom] {
-  --photo-tone: var(--photo-lit, var(--brand-photo-grade));
-}
-
-html.motion [data-photo-bloom]:not([data-lit], :focus-within) {
-  --photo-tone: var(--brand-photo-mono);
+/* Documentary photos ([data-photo-bloom]) rest in the shared colour grade (--brand-photo-grade)
+   and lift a little on hover, keyboard focus, or while the engine marks them data-lit in the
+   middle of the screen. The lift only ever brightens: a photo is never darker than at rest.
+   Without motion (reduced motion included) photos stay at the rest grade. */
+[data-photo-bloom][data-lit],
+[data-photo-bloom]:focus-within {
+  --photo-state: var(--brand-photo-lift);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html.motion [data-photo-bloom]:hover {
-    --photo-tone: var(--photo-lit, var(--brand-photo-grade));
+  [data-photo-bloom]:hover {
+    --photo-state: var(--brand-photo-lift);
   }
 }
 
@@ -88,14 +96,26 @@ html.motion [data-photo-bloom]:not([data-lit], :focus-within) {
   transition: filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Custom cursor: fine pointers only, never under reduced motion. */
-html[data-cursor-mode='custom'] [data-motion-stage],
-html[data-cursor-mode='custom'] [data-motion-stage] a,
-html[data-cursor-mode='custom'] [data-motion-stage] button {
+@media (prefers-reduced-motion: reduce) {
+  [data-photo-bloom] img {
+    transition: none;
+  }
+}
+
+/* Custom cursor: fine pointers only, never under reduced motion (the engine does not mount it). */
+html[data-cursor-mode='custom'] [data-site-shell],
+html[data-cursor-mode='custom'] [data-site-shell] a,
+html[data-cursor-mode='custom'] [data-site-shell] button {
   cursor: none;
 }
 
+/* Colours follow the ground under the pointer (engine: groundAt): paper on ink and photos, ink
+   on paper. A hairline in the opposite tone keeps the ring legible over mid-tones. */
 .motion-cursor {
+  --cursor-fg: #f4efe4;
+  --cursor-edge: rgba(7, 7, 6, 0.4);
+  --cursor-tag-bg: #f4efe4;
+  --cursor-tag-fg: #070706;
   position: fixed;
   inset: 0;
   z-index: 2147483000;
@@ -104,153 +124,137 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
   transition: opacity 240ms var(--brand-motion-ease);
 }
 
+.motion-cursor[data-ground='light'] {
+  --cursor-fg: #171410;
+  --cursor-edge: rgba(244, 239, 228, 0.55);
+  --cursor-tag-bg: #171410;
+  --cursor-tag-fg: #f4efe4;
+}
+
+.motion-cursor[data-tone='lime'] { --cursor-tag-bg: #c3f331; --cursor-tag-fg: #073b2f; }
+.motion-cursor[data-tone='lacquer'] { --cursor-tag-bg: #c4441f; --cursor-tag-fg: #fff; }
+.motion-cursor[data-tone='ink'] { --cursor-tag-bg: #073b2f; --cursor-tag-fg: #c3f331; }
+.motion-cursor[data-tone='light'] { --cursor-tag-bg: #f4efe4; --cursor-tag-fg: #070706; }
+
 .motion-cursor[data-visible='true'] {
   opacity: 1;
 }
 
-/* Resting: the mouse has not moved for a moment. A ring wrapped round a button or carrying a
-   label still says something, so only the bare pointer fades. */
-.motion-cursor[data-visible='true'][data-rest='true']:not([data-state='stick']):not([data-state='label']) {
+/* Resting: the mouse has not moved for a moment. A ring wrapped round a control or a tag still
+   says something, so only the bare pointer fades. */
+.motion-cursor[data-visible='true'][data-rest='true']:not([data-state='stick']):not([data-tagged]) {
   opacity: 0;
   transition-duration: 600ms;
 }
 
+/* Ring, dot and tag are points the engine moves; what shows is drawn around each point. */
+.motion-cursor__ring,
 .motion-cursor__dot,
-.motion-cursor__ring {
+.motion-cursor__tag {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 999px;
   will-change: transform;
 }
 
-.motion-cursor__dot {
-  width: 6px;
-  height: 6px;
-  margin: -3px 0 0 -3px;
-  background: #f4efe4;
-  mix-blend-mode: difference;
-}
-
-.motion-cursor__ring {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  place-items: center;
-  border: 1.5px solid rgba(244, 239, 228, 0.7);
-  mix-blend-mode: difference;
+.motion-cursor__ring::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--cursor-w, 30px);
+  height: var(--cursor-h, 30px);
+  border: 2px solid var(--cursor-fg);
+  border-radius: var(--cursor-r, 999px);
+  box-shadow: 0 0 0 1px var(--cursor-edge), inset 0 0 0 1px var(--cursor-edge);
+  content: '';
+  translate: -50% -50%;
   transition:
-    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    margin 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 300ms ease,
-    border-color 300ms ease;
+    width 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    background-color 200ms ease,
+    opacity 200ms ease,
+    scale 200ms ease;
 }
 
-.motion-cursor[data-state='link'] .motion-cursor__ring {
-  width: 64px;
-  height: 64px;
-  margin: -32px 0 0 -32px;
-  border-color: rgba(244, 239, 228, 0.9);
+.motion-cursor__dot::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cursor-fg);
+  box-shadow: 0 0 0 1px var(--cursor-edge);
+  content: '';
+  translate: -50% -50%;
+  transition: background-color 200ms ease, scale 200ms ease;
 }
 
-/* Wrapped round a magnetic button: the engine sizes the ring to the button's box. */
-.motion-cursor[data-state='stick'] .motion-cursor__ring {
-  border-color: rgba(244, 239, 228, 0.95);
+.motion-cursor[data-state='link'] .motion-cursor__ring::before {
+  --cursor-w: 52px;
+  --cursor-h: 52px;
+  background: color-mix(in srgb, var(--cursor-fg) 10%, transparent);
 }
 
-.motion-cursor[data-state='stick'] .motion-cursor__dot {
-  scale: 0.6;
+/* Wrapped round a magnetic control: the engine sizes the ring to the control's box. */
+.motion-cursor[data-state='stick'] .motion-cursor__dot::before {
+  scale: 0.7;
 }
 
-.motion-cursor[data-state='label'] .motion-cursor__ring {
-  width: 104px;
-  height: 104px;
-  margin: -52px 0 0 -52px;
-  border-color: transparent;
-  background: #f4efe4;
-  mix-blend-mode: normal;
-}
-
-.motion-cursor[data-state='label'][data-tone='lime'] .motion-cursor__ring {
-  background: #c3f331;
-}
-
-.motion-cursor[data-state='label'][data-tone='lacquer'] .motion-cursor__ring {
-  background: #c4441f;
-}
-
-/* Over a surface that itself turns lime (Tensai's course rows), the label goes dark and rides
-   below-right of the pointer, so the course name under the pointer stays readable. */
-.motion-cursor[data-state='label'][data-tone='ink'] .motion-cursor__ring {
-  width: 92px;
-  height: 92px;
-  margin: 18px 0 0 18px;
-  background: #073b2f;
-}
-
-.motion-cursor[data-state='label'] .motion-cursor__dot {
+/* A labelled target: the ring folds away and the tag speaks for the pointer. */
+.motion-cursor[data-state='label'] .motion-cursor__ring::before {
   opacity: 0;
+  scale: 0.4;
 }
 
-.motion-cursor[data-pressed='true'] .motion-cursor__ring {
-  transform-origin: center;
+.motion-cursor[data-pressed='true'] .motion-cursor__ring::before {
   scale: 0.86;
 }
 
+/* The tag: a pill riding below-right of the pointer (left near the edge), so whatever sits under
+   the pointer stays readable. */
 .motion-cursor__label {
-  color: #070706;
-  font: 700 0.8125rem/1.1 var(--font-be-vietnam), system-ui, sans-serif;
-  letter-spacing: 0.06em;
-  text-align: center;
-  text-transform: uppercase;
+  display: block;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: var(--cursor-tag-bg);
+  box-shadow: 0 6px 18px rgba(7, 7, 6, 0.22);
+  color: var(--cursor-tag-fg);
+  font: 600 0.875rem/1.2 var(--font-be-vietnam), system-ui, sans-serif;
   opacity: 0;
-  transition: opacity 200ms ease 80ms;
+  scale: 0.6;
+  transform-origin: 0 0;
+  transition: opacity 160ms ease, scale 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
 }
 
-.motion-cursor[data-state='label'][data-tone='lacquer'] .motion-cursor__label {
-  color: #fff;
-}
-
-.motion-cursor[data-state='label'][data-tone='ink'] .motion-cursor__label {
-  color: #c3f331;
-}
-
-.motion-cursor[data-state='label'] .motion-cursor__label {
+.motion-cursor[data-tagged] .motion-cursor__label {
   opacity: 1;
+  scale: 1;
 }
 
-/* Folded while the page scrolls under a still mouse (see startCursor): back to the plain ring. */
-.motion-cursor[data-quiet='true'][data-state='label'] .motion-cursor__ring {
-  width: 38px;
-  height: 38px;
-  margin: -19px 0 0 -19px;
-  border-color: rgba(244, 239, 228, 0.7);
-  background: transparent;
-  mix-blend-mode: difference;
-}
-
-.motion-cursor[data-quiet='true'][data-state='label'] .motion-cursor__dot {
-  opacity: 1;
-}
-
+/* Folded while the page scrolls under a still mouse (see startCursor). */
 .motion-cursor[data-quiet='true'] .motion-cursor__label {
   opacity: 0;
-  transition-delay: 0ms;
+  scale: 0.6;
+}
+
+.motion-cursor[data-quiet='true'][data-state='label'] .motion-cursor__ring::before {
+  opacity: 1;
+  scale: 1;
 }
 
 /* Over a dark photographic stage (a page sets data-zone, see HeroStageFx) the bare ring grows
    and carries a faint fill, so it reads against the picture. */
-.motion-cursor[data-zone='stage']:not([data-state='link']):not([data-state='stick']):not([data-state='label']) .motion-cursor__ring {
-  width: 52px;
-  height: 52px;
-  margin: -26px 0 0 -26px;
-  border: 2px solid #f4efe4;
+.motion-cursor[data-zone='stage'][data-state='idle'] .motion-cursor__ring::before {
+  --cursor-w: 46px;
+  --cursor-h: 46px;
   background: rgba(244, 239, 228, 0.12);
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .motion-cursor {
     display: none;
   }
@@ -271,14 +275,16 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
   display: inline-block;
 }
 
+/* --intro-pace compresses a hero's whole schedule (delays and stagger) so its headline and
+   lead are already readable a beat after first paint; 1 keeps the authored timings. */
 @media (prefers-reduced-motion: no-preference) {
   html.motion .intro-word > span {
     animation: intro-word-rise 1.25s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    animation-delay: calc(var(--i, 0) * 0.055s + var(--intro-base, 0.45s));
+    animation-delay: calc((var(--i, 0) * 0.055s + var(--intro-base, 0.45s)) * var(--intro-pace, 1));
   }
 
   html.motion .intro-fade {
-    animation: intro-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) var(--intro-delay, 0.3s) backwards;
+    animation: intro-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--intro-delay, 0.3s) * var(--intro-pace, 1)) backwards;
   }
 
   /* A first-screen photo opens from a smaller window while the image settles. */

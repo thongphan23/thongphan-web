@@ -51,8 +51,8 @@
 
 .letterPortrait img {
   display: block;
-  /* Every photo on the page takes the site's one grade; each adds only its own exposure step. */
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.02);
+  /* Every photo on the page takes the site's one grade; a photo's own correction lives in the manifest. */
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -620,7 +620,7 @@
    a real line height on the small caps line above it. Doubled class names beat the shared guide
    rules (one class and an attribute). */
 .guide.guide .guideScrim {
-  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.62) 24%, rgb(7 7 6 / 0) 52%);
+  background: linear-gradient(to top, rgb(7 7 6 / 0.9) 0, rgb(7 7 6 / 0.74) 36%, rgb(7 7 6 / 0) 64%);
 }
 
 .guide.guide .guideCaption {
@@ -1129,7 +1129,7 @@
 
 .statPhotoFrame img {
   display: block;
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -1147,7 +1147,7 @@
 }
 
 .statCaption {
-  background: linear-gradient(to top, rgb(7 7 6 / 0.84) 0, rgb(7 7 6 / 0.6) 50%, rgb(7 7 6 / 0));
+  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.76) 68%, rgb(7 7 6 / 0));
   bottom: 0;
   color: #fff;
   font-family: var(--font-be-vietnam);
@@ -1325,7 +1325,7 @@
 }
 
 .reel.reel .reelMediaHome img {
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
+  filter: var(--brand-photo-grade);
 }
 
 /* Pinned: the body is the column under the section's padding (it steps back as the closing arrives). */
@@ -1355,10 +1355,6 @@
   transform: scale(0.94);
 }
 
-.reel.reel[data-hscroll-active='true'] .reelItem .reelMediaHome img {
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
-}
-
 /* The edge fades open as the row leaves its first photo and close again as it reaches its last, so
    an end photo resting on the margin is never dimmed. */
 .reel.reel[data-hscroll-active='true'] .reelViewportHome.reelViewportHome {
@@ -1382,7 +1378,7 @@
 
 .reelCaption.reelCaption {
   align-items: baseline;
-  background: linear-gradient(to top, rgb(7 7 6 / 0.84) 0, rgb(7 7 6 / 0.6) 50%, rgb(7 7 6 / 0));
+  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.76) 68%, rgb(7 7 6 / 0));
   bottom: 0;
   color: #fff;
   display: flex;

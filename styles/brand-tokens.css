@@ -10,13 +10,25 @@
   --brand-lacquer: #b3231b;
   --brand-lacquer-bright: #e04b43;
   --brand-oxblood: #7b2d1c;
-  /* One warm grade for every documentary photo so mixed light (teal walls, fluorescent rooms) reads as one set. */
-  --brand-photo-grade: saturate(0.74) sepia(0.18) contrast(1.08) brightness(0.96);
-  /* The same functions at zero colour: a warm monochrome the series waits in until a photo is
-     looked at, so the two interpolate smoothly when it blooms. */
+  /* Documentary photos: the lift a photo takes on hover, keyboard focus or while it crosses the
+     middle of the screen (never darker than its rest grade). The rest grade itself,
+     --brand-photo-grade, is resolved per photo below. */
+  --brand-photo-lift: brightness(1.07) saturate(1.08);
+  /* A warm monochrome, kept only for the About hero portrait. */
   --brand-photo-mono: saturate(0) sepia(0.34) contrast(1.12) brightness(1);
-  /* Fine film grain laid over documentary photos (an inline SVG noise tile). */
-  --brand-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Fine film grain over documentary photo frames: a noise tile drawn on a canvas at runtime
+     (see FilmGrain.tsx). Without JavaScript there is no grain. */
+  --brand-grain: none;
+
+  /* Type tiers for the showcase routes and the site chrome. */
+  --fs-meta: clamp(13px, 0.95vw, 14px);
+  --fs-small: clamp(14px, 1vw, 15px);
+  --fs-body: clamp(16px, 1.2vw, 18px);
+  --fs-lead: clamp(20px, 1.75vw, 26px);
+  --measure: 62ch;
+  /* Secondary text: 13.5:1 on the ink, 8.5:1 on the reading paper (7.3:1 on its deep tone). */
+  --brand-text-secondary-dark: #d9d2c8;
+  --brand-text-secondary-paper: #4a433a;
   --brand-line-dark: rgba(232, 223, 207, 0.2);
   --brand-line-paper: rgba(23, 20, 16, 0.16);
 
@@ -29,6 +41,18 @@
 
   --brand-motion-fast: 180ms;
   --brand-motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* One warm, contrasty, slightly desaturated grade for every documentary photo, so mixed light
+   (teal walls, fluorescent rooms) reads as one set. Resolved on each photo, so the manifest's
+   per-photo correction (--photo-exposure, --photo-warmth, --photo-contrast, written by
+   TwoPathPhoto) and the bloom state of its frame (--photo-state) apply to that photo alone. The
+   function list never changes, so rest and lift interpolate smoothly. */
+:root,
+img,
+[data-photo-bloom] {
+  --brand-photo-grade: brightness(calc(1.02 * var(--photo-exposure, 1))) sepia(calc(0.16 + var(--photo-warmth, 0)))
+    contrast(calc(1.14 * var(--photo-contrast, 1))) saturate(0.84) var(--photo-state, brightness(1) saturate(1));
 }
 
 @media (prefers-reduced-motion: reduce) {

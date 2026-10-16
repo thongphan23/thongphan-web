@@ -2,8 +2,14 @@ import Image from 'next/image'
 import type { CSSProperties } from 'react'
 import { photo, type TwoPathPhoto as Photo, type TwoPathPhotoId } from '@/lib/two-path-photos'
 
-function focalStyle(item: Photo): CSSProperties | undefined {
-  return item.focal ? { objectPosition: `${item.focal.x * 100}% ${item.focal.y * 100}%` } : undefined
+// Focal crop plus the per-photo grade correction, read by --brand-photo-grade on the <img>.
+function photoStyle(item: Photo): CSSProperties | undefined {
+  const style: Record<string, string> = {}
+  if (item.focal) style.objectPosition = `${item.focal.x * 100}% ${item.focal.y * 100}%`
+  if (item.grade?.exposure !== undefined) style['--photo-exposure'] = String(item.grade.exposure)
+  if (item.grade?.warmth !== undefined) style['--photo-warmth'] = String(item.grade.warmth)
+  if (item.grade?.contrast !== undefined) style['--photo-contrast'] = String(item.grade.contrast)
+  return Object.keys(style).length ? (style as CSSProperties) : undefined
 }
 
 type TwoPathPhotoProps = {
@@ -30,7 +36,7 @@ export default function TwoPathPhoto({ id, sizes, className, priority = false, e
       className={className}
       priority={priority}
       {...(eager && !priority ? { loading: 'eager' as const, fetchPriority: 'low' as const } : {})}
-      style={focalStyle(item)}
+      style={photoStyle(item)}
     />
   )
 }

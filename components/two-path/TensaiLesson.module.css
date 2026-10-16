@@ -5,7 +5,7 @@
 .card {
   --lesson-ink: #073b2f;
   --lesson-lime: #c3f331;
-  --lesson-muted: #4b5a50;
+  --lesson-muted: #475650;
   --lesson-line: rgba(7, 59, 47, 0.14);
   --lesson-right: #1f7a4d;
   --lesson-wrong: #b5452d;
@@ -784,7 +784,7 @@
 .replay {
   --lesson-ink: #073b2f;
   --lesson-lime: #c3f331;
-  --lesson-muted: #4b5a50;
+  --lesson-muted: #475650;
   --lesson-line: rgba(7, 59, 47, 0.14);
   --lesson-right: #1f7a4d;
   --pad: clamp(1rem, 2.2vw, 1.75rem);
@@ -820,8 +820,9 @@
   border-top: 1px dashed var(--lesson-line);
 }
 
+/* Small caps labels take a deeper cut of the answer green (7.8:1 on the card) than the marks do. */
 .screenTag {
-  color: var(--lesson-right);
+  color: #135a3e;
   font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -839,7 +840,7 @@
 }
 
 .ideaLabel {
-  color: var(--lesson-right);
+  color: #135a3e;
   font-size: 0.875rem;
   font-weight: 800;
   letter-spacing: 0.08em;

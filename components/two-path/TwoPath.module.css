@@ -485,180 +485,11 @@
   }
 }
 
-/* Founder letter on reading paper. */
-
-.letter {
-  background: var(--brand-reading-paper);
-  color: var(--brand-text-on-paper);
-  padding: var(--brand-space-section) var(--brand-space-inline);
-}
-
-.letterInner {
-  display: grid;
-  gap: clamp(2.25rem, 5vw, 5rem);
-  margin: 0 auto;
-  max-width: 1240px;
-}
-
-.letterPortrait {
-  aspect-ratio: 4 / 5;
-  background: var(--brand-reading-paper-deep);
-  border-radius: 4px;
-  margin: 0;
-  max-width: min(86vw, 520px);
-  overflow: hidden;
-  position: relative;
-}
-
-/* The portrait keeps its warm colour under the shared brand grade; a soft ink fall at the foot
-   settles it onto the paper the letter is written on. */
-.letterPortrait::after {
-  background: linear-gradient(180deg, transparent 58%, rgba(40, 22, 12, 0.32));
-  content: '';
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-}
-
 /* Wrapper for the settle zoom of an image reveal; the image inside keeps its parallax. */
 .revealMedia {
   display: block;
   height: 100%;
   width: 100%;
-}
-
-.letterPortrait img {
-  display: block;
-  /* A step deeper than the shared grade: the bookstore shot is brighter and warmer than the stage
-     above, and at the shared grade the two read as different shoots. */
-  filter: saturate(0.6) sepia(0.2) contrast(1.1) brightness(0.95);
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.letterBody {
-  max-width: 46rem;
-}
-
-.letterTitle {
-  color: var(--brand-text-on-paper);
-  font-family: var(--font-cormorant);
-  font-size: clamp(2.6rem, 1.4rem + 4.6vw, 5.6rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 0.98;
-  margin: 0 0 clamp(1.75rem, 3.5vw, 3rem);
-  max-width: 11ch;
-}
-
-.letterLead {
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.45rem, 1rem + 1.5vw, 2.15rem);
-  font-weight: 500;
-  line-height: 1.3;
-  margin: 0 0 clamp(1.75rem, 3vw, 2.5rem);
-  text-wrap: balance;
-}
-
-.letterLead + .letterLead,
-.letterPull + .letterLead {
-  margin-bottom: clamp(2rem, 4vw, 3.25rem);
-}
-
-/* The debt breaks out of the opening paragraph: the one line in the letter set large, in lacquer
-   on the paper, under a short rule that draws in. */
-.letterPull {
-  margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1.75rem, 3.5vw, 2.75rem);
-}
-
-.letterPullRule {
-  background: var(--brand-lacquer);
-  display: block;
-  height: 2px;
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  width: 4rem;
-}
-
-.letterPull p {
-  color: var(--brand-lacquer);
-  font-family: var(--font-cormorant);
-  font-size: clamp(2.75rem, 1rem + 4.6vw, 5.75rem);
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  line-height: 1;
-  margin: 0;
-  max-width: 16ch;
-  text-wrap: balance;
-}
-
-.letterRest {
-  color: #241f1b;
-  font-size: clamp(1.25rem, 1.04rem + 0.52vw, 1.5rem);
-  max-width: 32em;
-}
-
-.letterRest p {
-  line-height: 1.62;
-  margin: 0 0 1.1em;
-  text-wrap: pretty;
-}
-
-.letterLast {
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 1.1rem + 1.6vw, 2.4rem);
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.15;
-  margin: clamp(0.75rem, 2vw, 1.5rem) 0 0;
-}
-
-.signature {
-  display: grid;
-  gap: 0.35rem;
-  margin: clamp(2rem, 4vw, 3rem) 0 0;
-  max-width: 22rem;
-}
-
-.signatureLine {
-  background: currentColor;
-  display: block;
-  height: 1px;
-  margin-bottom: 1rem;
-  opacity: 0.3;
-}
-
-.signatureName {
-  font-family: var(--font-cormorant);
-  font-size: 2.4rem;
-  font-style: italic;
-  font-weight: 500;
-  line-height: 1.05;
-}
-
-.signatureRole {
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  opacity: 0.84;
-  text-transform: uppercase;
-}
-
-@media (min-width: 1024px) {
-  .letterInner {
-    align-items: start;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  }
-
-  .letterAside {
-    position: sticky;
-    top: 7rem;
-  }
-
-  .letterBody {
-    padding-top: 0.4rem;
-  }
 }
 
 /* Section frame shared by the dark bands. */
@@ -716,194 +547,6 @@
     /* Clear air under the marquee, so the title never shares a frame with the moving type. */
     padding-top: clamp(5rem, 16svh, 11rem);
   }
-}
-
-.fieldGrid {
-  display: grid;
-  gap: clamp(3rem, 7vw, 6.5rem);
-}
-
-.fieldPhoto {
-  margin: 0;
-  position: relative;
-}
-
-.fieldPhotoFrame {
-  aspect-ratio: 4 / 3;
-  background: var(--brand-ink-raised);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-.fieldPhotoFrame img {
-  display: block;
-  filter: var(--brand-photo-grade);
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-}
-
-.fieldPhoto figcaption {
-  color: color-mix(in srgb, var(--brand-paper) 84%, transparent);
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  padding-top: 0.9rem;
-}
-
-.fieldCards {
-  border-top: 1px solid var(--brand-line-dark);
-  display: grid;
-}
-
-.fieldCard {
-  border-bottom: 1px solid var(--brand-line-dark);
-  min-width: 0;
-  padding: clamp(2rem, 6vw, 3rem) 0;
-}
-
-.fieldStat {
-  align-items: baseline;
-  column-gap: 0.08em;
-  display: flex;
-  flex-wrap: wrap;
-  font-family: var(--font-cormorant);
-  font-size: clamp(5rem, 3rem + 9vw, 13rem);
-  font-variant-numeric: lining-nums tabular-nums;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 0.82;
-  margin: 0;
-}
-
-.fieldStatLabel {
-  flex-basis: 100%;
-  font-family: var(--font-be-vietnam);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  line-height: 1.3;
-  margin-top: 1.25rem;
-  opacity: 0.86;
-  text-transform: uppercase;
-}
-
-.fieldRule {
-  background: var(--brand-lacquer-bright);
-  display: block;
-  height: 2px;
-  margin: 1.5rem 0 1.25rem;
-  width: 3.5rem;
-}
-
-.fieldClaim {
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.5rem, 1.05rem + 1.1vw, 2.1rem);
-  font-weight: 500;
-  line-height: 1.2;
-  margin: 0 0 0.9rem;
-  max-width: 26ch;
-}
-
-@media (min-width: 900px) {
-  /* The two numbers share one ruled band, split by a hairline. */
-  .fieldCards {
-    border-bottom: 1px solid var(--brand-line-dark);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .fieldCard {
-    border-bottom: 0;
-    padding: clamp(2.5rem, 5svh, 4rem) clamp(1.5rem, 4vw, 4rem) clamp(2.5rem, 5svh, 4rem) 0;
-  }
-
-  .fieldCard + .fieldCard {
-    border-left: 1px solid var(--brand-line-dark);
-    padding-left: clamp(1.5rem, 4vw, 4rem);
-  }
-
-  /* A cinema-wide frame; the caption sits on the photo over a soft scrim. */
-  .fieldPhotoFrame {
-    aspect-ratio: 21 / 9;
-  }
-
-  .fieldPhoto figcaption {
-    background: linear-gradient(to top, rgb(7 7 6 / 0.82), rgb(7 7 6 / 0));
-    border-radius: 0 0 6px 6px;
-    bottom: 0;
-    color: var(--brand-paper);
-    left: 0;
-    padding: 4rem clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-  }
-}
-
-/* Marquee: the two doors as moving type, one band per path. */
-
-.marquee {
-  background: var(--brand-ink);
-  color: var(--brand-paper);
-  display: grid;
-  overflow: hidden;
-  padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(1.5rem, 4vw, 3.5rem);
-}
-
-.marqueeRow[data-path='tensai'] {
-  --marquee-accent: #c3f331;
-}
-
-.marqueeRow[data-path='conan'] {
-  --marquee-accent: #ef5b33;
-}
-
-.marqueeRow {
-  display: flex;
-  white-space: nowrap;
-}
-
-.marqueeTrack {
-  align-items: center;
-  display: flex;
-  flex: none;
-  will-change: transform;
-}
-
-.marqueeWord,
-.marqueeProduct {
-  align-items: center;
-  display: inline-flex;
-  flex: none;
-  font-family: var(--font-cormorant);
-  font-size: clamp(2.6rem, 1.2rem + 4.4vw, 6rem);
-  gap: 0.5em;
-  line-height: 1.1;
-  padding-inline: 0.25em;
-}
-
-.marqueeWord {
-  color: color-mix(in srgb, var(--brand-paper) 72%, transparent);
-  font-style: italic;
-  font-weight: 400;
-}
-
-/* The product names carry the band in the same serif, set upright in full paper; the path's own
-   colour is kept to the dot after each name, so the band reads as two tones, not four. */
-.marqueeProduct {
-  color: var(--brand-paper);
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-}
-
-.marqueeProduct::after {
-  background: var(--marquee-accent);
-  border-radius: 999px;
-  content: '';
-  flex: none;
-  height: 0.12em;
-  width: 0.12em;
 }
 
 /* Reel: real class photos. Words on top and a swipe row by default; on wide screens with motion
@@ -1099,7 +742,7 @@
 /* Phone snapshots from different rooms share the site's one photo grade. */
 .reelMedia img {
   display: block;
-  filter: var(--photo-tone, var(--brand-photo-grade));
+  filter: var(--brand-photo-grade);
   height: 100%;
   object-fit: cover;
   transition: filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1258,10 +901,6 @@
   transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reel[data-hscroll-active='true'] .reelMedia img {
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(0.86);
-}
-
 .reel[data-hscroll-active='true'] .reelItem[data-current] {
   opacity: 1;
 }
@@ -1312,10 +951,6 @@
   transform: none;
 }
 
-.reel[data-hscroll-active='true'] .reelItem[data-current] .reelMedia img {
-  filter: var(--photo-tone, var(--brand-photo-grade));
-}
-
 /* Gallery: a light table of class photos. Without the engine they stand in sequence: a swipe rail
    on phones, a wide lead over a two-column grid above that, all in the series' warm grade. On wide
    screens with motion, lightTable (signatures.ts) sets data-light-active and pins the table: one
@@ -1323,9 +958,6 @@
    counter on the left, and a contact sheet along the foot that marks the photo in view. */
 
 .gallery {
-  /* One warm grade over every frame, so phone shots from different rooms read as one series. */
-  --gallery-grade: saturate(0.74) sepia(0.2) contrast(1.06) brightness(1.06);
-  --photo-lit: var(--gallery-grade);
   position: relative;
 }
 
@@ -1375,7 +1007,7 @@
 
 .galleryMedia img {
   aspect-ratio: var(--gallery-ratio, 4 / 3);
-  filter: var(--photo-tone, var(--gallery-grade));
+  filter: var(--brand-photo-grade);
   height: auto;
   object-fit: cover;
   transition:
@@ -1699,14 +1331,12 @@
   .lightThumb img {
     aspect-ratio: 4 / 3;
     display: block;
-    /* The sheet keeps the series' colour, a stop darker, so each frame is recognisable before it is chosen. */
-    filter: var(--gallery-grade) brightness(0.72);
+    /* The sheet keeps the series' grade; frames not on the table stand back by opacity alone. */
+    filter: var(--brand-photo-grade);
     height: auto;
     object-fit: cover;
-    opacity: 0.85;
-    transition:
-      filter 500ms ease,
-      opacity 500ms ease;
+    opacity: 0.62;
+    transition: opacity 500ms ease;
     width: 100%;
   }
 
@@ -1719,7 +1349,6 @@
   }
 
   .lightThumb[aria-current='true'] img {
-    filter: var(--gallery-grade);
     opacity: 1;
   }
 
@@ -1728,105 +1357,6 @@
     outline-offset: 3px;
   }
 }
-
-/* Mentors: two portraits of equal weight, set in the gallery's warm monochrome so two different
-   rooms read as one pair; colour returns as they cross the middle of the screen or under a pointer. */
-
-.mentors {
-  display: grid;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  list-style: none;
-  margin: 0;
-  max-width: 780px;
-  padding: 0;
-}
-
-/* The second portrait steps down, so the pair reads as a spread rather than a row of tiles. */
-@media (min-width: 640px) {
-  .mentor:nth-child(2) {
-    margin-top: clamp(2.5rem, 6vw, 5rem);
-  }
-}
-
-.mentorFrame {
-  background: var(--brand-ink-raised);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-.mentorFrame::after {
-  background: linear-gradient(180deg, transparent 60%, rgba(20, 12, 8, 0.32));
-  content: '';
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.mentorMedia,
-.mentorPhoto {
-  display: block;
-  width: 100%;
-}
-
-.mentorPhoto {
-  aspect-ratio: 4 / 5;
-  filter: var(--brand-photo-grade);
-  height: auto;
-  object-fit: cover;
-  transition:
-    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* The two source portraits are framed differently; this brings the faces to the same size and height. */
-.mentor[data-face='close'] .mentorPhoto {
-  transform: translateY(4%) scale(1.18);
-  transform-origin: 50% 30%;
-}
-
-:global(html.motion) .mentorPhoto {
-  filter: var(--brand-photo-mono);
-}
-
-/* In colour the pair still shares one warm grade, so two rooms shot under different light read
-   as one spread. */
-.mentor[data-in-focus] .mentorPhoto {
-  filter: saturate(0.78) sepia(0.2) contrast(1.06) brightness(1.04);
-}
-
-.mentor[data-in-focus] .mentorFrame::after {
-  opacity: 0;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .mentor:hover .mentorPhoto {
-    filter: saturate(0.78) sepia(0.2) contrast(1.06) brightness(1.04);
-  }
-
-  .mentor:hover .mentorFrame::after {
-    opacity: 0;
-  }
-}
-
-.mentorName {
-  color: var(--brand-paper);
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 0.9rem + 1.9vw, 2.9rem);
-  font-weight: 500;
-  line-height: 1.05;
-  margin: 1.1rem 0 0.35rem;
-}
-
-.mentorRole {
-  color: color-mix(in srgb, var(--brand-paper) 86%, transparent);
-  font-size: clamp(1rem, 0.85rem + 0.4vw, 1.25rem);
-  letter-spacing: 0.03em;
-  margin: 0;
-}
-
 
 @media (prefers-reduced-motion: reduce) {
   .door,
@@ -1852,11 +1382,6 @@
   .closingDoor:is(:hover, :focus-visible) .closingDoorPhoto {
     rotate: none;
     scale: none;
-  }
-
-  /* Without scroll-linked motion the marquee is a still, cropped line of type. */
-  .marqueeTrack {
-    will-change: auto;
   }
 }
 
@@ -1922,7 +1447,7 @@
 }
 
 .guideImage img {
-  filter: var(--photo-tone, var(--brand-photo-grade));
+  filter: var(--brand-photo-grade);
   object-fit: cover;
 }
 

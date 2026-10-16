@@ -5,6 +5,7 @@ import { ChevronDown, Menu } from 'lucide-react'
 import { useEffect, useRef, useState, type CSSProperties, type FocusEvent } from 'react'
 import PathLink from '@/components/two-path/PathLink'
 import type { SiteRouteMode } from '@/lib/site-route-mode'
+import { conanContent, tensaiContent } from '@/lib/two-path-content'
 import MobileMenu from './MobileMenu'
 import { aboutNavigation, moreNavigation, pathNavigation, pathRouteFor } from './site-navigation'
 import styles from './SiteChrome.module.css'
@@ -17,11 +18,23 @@ type HeaderTone = 'dark' | 'light'
 // reads the ground beneath them, not the paper card passing under it.
 const toneRoutes = new Set(['/', '/tensai', '/conan', '/about'])
 
+// On those pages the bar slides away once the reader is this far down and moving down, and
+// comes back on any upward scroll, however slow (Lenis eases a wheel flick into many sub-6px
+// frames, so a per-frame threshold would leave the bar gone for good).
+const HIDE_AFTER = 120
+const HIDE_STEP = 2
+const SHOW_STEP = 0.5
+
+// Each branch page keeps its own way in on the bar's right (wide screens; the menu carries it
+// on phones).
+const HEADER_CTA = { tensai: tensaiContent.primaryCta, conan: conanContent.primaryCta } as const
+
 // The header also takes the ground's colour (ink, Tensai's deep green, a darker paper band), so no
 // bar of another shade sits across a section; a saturated light ground (the lime course row) keeps
 // the reading paper instead of turning the whole header lime.
 function sampleTone(header: HTMLElement): { tone: HeaderTone; ground?: string } | undefined {
-  const y = header.getBoundingClientRect().bottom + 2
+  // Sample where the bar sits when shown: on the frame it comes back it is still translated out of view.
+  const y = header.offsetHeight + 2
   const under = document
     .elementsFromPoint(window.innerWidth / 2, y)
     .find((node) => !header.contains(node) && !node.closest('[data-header-ignore]'))
@@ -70,6 +83,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
   const moreTriggerRef = useRef<HTMLButtonElement>(null)
   const isLibrary = pathname.startsWith('/library')
   const moreOpen = moreOpenFor === pathname
+  const pathRoute = pathRouteFor(pathname)
 
   useEffect(() => {
     let frame = 0
@@ -78,10 +92,11 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
     const update = () => {
       frame = 0
       const y = window.scrollY
+      const dy = y - lastY
       setScrolled(y > 24)
       if (toneRoutes.has(pathname)) {
-        if (y < 160 || lastY - y > 6) setHidden(false)
-        else if (y - lastY > 6) setHidden(true)
+        if (y < HIDE_AFTER || dy < -SHOW_STEP) setHidden(false)
+        else if (dy > HIDE_STEP) setHidden(true)
       }
       lastY = y
       if (toneRoutes.has(pathname) && headerRef.current) {
@@ -138,7 +153,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
       ref={headerRef}
       className={styles.cinemaHeader}
       data-route-mode={mode}
-      data-path-route={pathRouteFor(pathname)}
+      data-path-route={pathRoute}
       data-header-scrolled={scrolled}
       data-header-hidden={hidden && !menuOpen && !moreOpen ? 'true' : undefined}
       data-header-tone={toneRoutes.has(pathname) ? tone : undefined}
@@ -149,6 +164,7 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
           href={isLibrary ? '/library' : '/'}
           className={`${styles.cinemaWordmark} ${isLibrary ? styles.libraryWordmark : ''}`}
           aria-label={isLibrary ? 'Thư viện Thông Phan' : 'Thông Phan — Trang chủ'}
+          data-cursor={isLibrary ? 'Thư viện' : 'Trang chủ'}
         >
           {isLibrary ? (
             <>
@@ -168,6 +184,8 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
               className={styles.pathLink}
               aria-current={pathname === link.href ? 'page' : undefined}
               data-path={link.path}
+              data-magnetic="0.2"
+              data-cursor={link.path === 'tensai' ? 'Tensai' : 'Conan'}
             >
               {link.label}
             </PathLink>
@@ -209,6 +227,20 @@ export default function SiteHeader({ mode, pathname }: SiteHeaderProps) {
               ))}
             </ul>
           </div>
+
+          {pathRoute ? (
+            <PathLink
+              path={pathRoute}
+              kind="outbound"
+              placement="nav"
+              className={styles.headerCta}
+              data-header-cta={pathRoute}
+              data-magnetic="0.2"
+              data-cursor="Mở"
+            >
+              {HEADER_CTA[pathRoute]}
+            </PathLink>
+          ) : null}
         </nav>
 
         <button

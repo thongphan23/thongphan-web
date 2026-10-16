@@ -53,8 +53,15 @@ export default function ConanPage() {
       <PathMemory path="conan" />
       <JsonLd data={buildBranchPageStructuredData({ name: 'Conan School', description, pathname: '/conan' })} />
 
-      <section className={styles.hero} aria-labelledby="conan-title" data-mask-flight>
-        <div className={styles.heroMedia} data-cursor="Cuộn" data-cursor-tone="lacquer" data-lens-auto>
+      {/* The scroll cue covers the whole hero (word and copy), as on the home and about heroes. */}
+      <section
+        className={styles.hero}
+        aria-labelledby="conan-title"
+        data-mask-flight
+        data-cursor="Cuộn"
+        data-cursor-tone="lacquer"
+      >
+        <div className={styles.heroMedia} data-lens-auto>
           {/* The drift wraps the photo, not the photo itself: the GL layer paints over the picture
               and would hide any motion given to it. */}
           <div className={styles.heroDrift}>
@@ -118,6 +125,7 @@ export default function ConanPage() {
                 className={styles.primaryCta}
                 data-motion-action
                 data-magnetic="0.22"
+                data-cursor="Mở"
               >
                 <span className={styles.ctaInner} data-magnetic-inner>
                   {conanContent.primaryCta}
@@ -353,6 +361,7 @@ export default function ConanPage() {
                 className={styles.primaryCta}
                 data-motion-action
                 data-magnetic="0.3"
+                data-cursor="Mở"
               >
                 <span className={styles.ctaInner} data-magnetic-inner>
                   {conanContent.primaryCta}

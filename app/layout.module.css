@@ -50,12 +50,6 @@
   display: none;
 }
 
-.mainSurface {
-  position: relative;
-  z-index: 1;
-  overflow-x: clip;
-}
-
 .navbar {
   position: sticky;
   top: 0;

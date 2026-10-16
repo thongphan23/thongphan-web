@@ -1,79 +1,28 @@
 'use client'
 
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { usePathname } from 'next/navigation'
-import type { ReactNode } from 'react'
-import defaultStyles from '@/app/layout.module.css'
-import { isUnifiedRouteEnabled, routeModeForPath } from '@/lib/site-route-mode'
+import { useEffect, type ReactNode } from 'react'
+import { isUnifiedRouteEnabled, routeModeForPath, type SiteRouteMode } from '@/lib/site-route-mode'
 import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import MotionAtmosphere from './MotionAtmosphere'
+import FilmGrain from './FilmGrain'
 import MotionKernel from '@/components/motion/MotionKernel'
 import RouteCurtain from '@/components/motion/RouteCurtain'
 import styles from './SiteChrome.module.css'
 
-function DefaultHeader() {
-  return (
-    <nav className={defaultStyles.navbar}>
-      <div className={defaultStyles.navInner}>
-        <Link href="/" className={defaultStyles.logo}><span className={defaultStyles.logoMark} aria-hidden="true" /> THÔNG PHAN</Link>
-        <ul className={defaultStyles.navLinks}>
-          <li><Link href="/diagnostic">Chẩn đoán AI</Link></li>
-          <li><Link href="/blog">Bài viết</Link></li>
-          <li><Link href="/library">Thư viện</Link></li>
-          <li><Link href="/assets">Kho tài sản nhỏ</Link></li>
-          <li><Link href="/brain2/21-ngay">21 ngày Brain2</Link></li>
-          <li><Link href="/about">Về tui</Link></li>
-          <li><Link href="/diagnostic" className={defaultStyles.navCta}>Tự chẩn đoán</Link></li>
-        </ul>
-      </div>
-    </nav>
-  )
-}
+// The legacy shell and its stylesheet load only on the routes that use it.
+const DefaultHeader = dynamic(() => import('./LegacyChrome').then((m) => m.DefaultHeader))
+const DefaultFooter = dynamic(() => import('./LegacyChrome').then((m) => m.DefaultFooter))
+const LegacyBackdrop = dynamic(() => import('./LegacyChrome').then((m) => m.LegacyBackdrop))
 
-function DefaultFooter() {
-  return (
-    <footer className={defaultStyles.footer}>
-      <div className={defaultStyles.footerInner}>
-        <div className={defaultStyles.footerBrand}>
-          <Link href="/" className={defaultStyles.footerLogo}><span className={defaultStyles.logoMark} aria-hidden="true" /> THÔNG PHAN</Link>
-          <p className={defaultStyles.footerTagline}>
-            Nếu bạn có chuyên môn thật nhưng chưa được nhìn thấy đúng, hãy bắt đầu biến kinh nghiệm của mình thành nội dung, tài sản số và cơ hội xứng đáng.
-          </p>
-        </div>
-
-        <div className={defaultStyles.footerCol}>
-          <h4>Khám phá</h4>
-          <Link href="/diagnostic">Làm bài chẩn đoán</Link>
-          <Link href="/blog">Bài viết</Link>
-          <Link href="/library">Thư viện sống</Link>
-          <Link href="/assets">Kho tài sản nhỏ</Link>
-          <Link href="/brain2/21-ngay">21 ngày Brain2</Link>
-          <Link href="/chat">Bàn hỏi</Link>
-          <Link href="/about">Về tui</Link>
-        </div>
-
-        <div className={defaultStyles.footerCol}>
-          <h4>Hệ sinh thái</h4>
-          <a href="https://com.conan.school" target="_blank" rel="noopener">Conan</a>
-          <a href="https://conan.school" target="_blank" rel="noopener">Conan School</a>
-        </div>
-
-        <div className={defaultStyles.footerCol}>
-          <h4>Kết nối</h4>
-          <a href="https://facebook.com/thongphan23" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://linkedin.com/in/thongphan" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://m.me/thongphan.88" target="_blank" rel="noopener">Messenger</a>
-        </div>
-      </div>
-
-      <div className={defaultStyles.footerBottom}>
-        <span>© 2026 Thông Phan. Chuyên môn không tự tạo cơ hội. Hệ thống mới giúp người khác nhìn thấy và tin bạn.</span>
-        <span>Đồng sáng lập & giám đốc marketing (CMO) · <a href="https://conan.school" target="_blank" rel="noopener">Conan School</a></span>
-      </div>
-    </footer>
-  )
-}
+// First-paint ground. Each route's static HTML carries its page tone in a hoisted <style>, so the
+// frame before stylesheets and hydration is cream on /tensai and ink on the dark routes, never
+// white. Once SiteChrome runs it stamps data-ground on <html>, which retires every hoisted copy
+// (client navigations leave old ones in <head>) and lets the global data-ground rules take over.
+const GROUNDS: Partial<Record<SiteRouteMode, 'paper' | 'ink'>> = { 'editorial-light': 'paper', 'cinema-dark': 'ink' }
+const GROUND_COLORS = { paper: '#f3efe6', ink: '#070706' } as const
 
 type SiteChromeProps = {
   children: ReactNode
@@ -86,6 +35,11 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
   const pathname = pathnameOverride ?? detectedPathname
   const mode = routeModeForPath(pathname)
   const isUnified = isUnifiedRouteEnabled(pathname)
+  const ground = isUnified ? GROUNDS[mode] : undefined
+
+  useEffect(() => {
+    document.documentElement.dataset.ground = ground ?? 'none'
+  }, [ground])
 
   if (mode === 'standalone') {
     return <>{children}</>
@@ -98,23 +52,18 @@ export default function SiteChrome({ children, legacyFontClassName, pathnameOver
       data-site-shell={isUnified ? 'unified' : 'legacy'}
       data-homepage={pathname === '/'}
     >
-      <div
-        className={isUnified ? styles.cinemaProgress : defaultStyles.scrollProgress}
-        data-scroll-progress
-        aria-hidden="true"
-      />
-      {!isUnified ? (
-        <div className={defaultStyles.siteAtmosphere} aria-hidden="true">
-          <span className={defaultStyles.siteGrid} />
-          <span className={defaultStyles.siteGlow} />
-          <span className={defaultStyles.siteScanline} />
-        </div>
+      {ground ? (
+        <style href={`ground-${ground}`} precedence="ground">
+          {`html:not([data-ground]),html:not([data-ground]) body{background:${GROUND_COLORS[ground]}}`}
+        </style>
       ) : null}
+      {isUnified ? <div className={styles.cinemaProgress} data-scroll-progress aria-hidden="true" /> : <LegacyBackdrop />}
       {isUnified ? <MotionAtmosphere pathname={pathname} mode={mode} /> : null}
+      {isUnified ? <FilmGrain /> : null}
       <MotionKernel pathname={pathname} />
       {isUnified ? <RouteCurtain pathname={pathname} /> : null}
       {isUnified ? <SiteHeader mode={mode} pathname={pathname} /> : <DefaultHeader />}
-      <main className={isUnified ? styles.cinemaMain : defaultStyles.mainSurface}>{children}</main>
+      <main className={isUnified ? styles.cinemaMain : styles.legacyMain}>{children}</main>
       {isUnified ? <SiteFooter mode={mode} pathname={pathname} /> : <DefaultFooter />}
     </div>
   )

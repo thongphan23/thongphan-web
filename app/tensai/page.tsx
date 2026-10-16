@@ -96,6 +96,8 @@ export default function TensaiPage() {
               className={styles.primaryCta}
               data-motion-action
               data-magnetic="0.22"
+              data-cursor="Mở"
+              data-cursor-tone="ink"
             >
               <span className={styles.ctaInner} data-magnetic-inner>
                 {tensaiContent.primaryCta}
@@ -116,7 +118,12 @@ export default function TensaiPage() {
             follows it across the face. */}
         <div className={styles.lessonSlot}>
           <span className={styles.heroGlow} aria-hidden="true" data-lesson-glow />
-          <div className={styles.lessonCard} data-lesson-card>
+          <div
+            className={styles.lessonCard}
+            data-lesson-card
+            data-cursor={tensaiContent.lesson.cursorTry}
+            data-cursor-tone="ink"
+          >
             <div className={styles.lessonTilt} data-tilt="6">
               <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
                 <TensaiLesson />
@@ -417,6 +424,8 @@ export default function TensaiPage() {
               className={styles.primaryCta}
               data-motion-action
               data-magnetic="0.3"
+              data-cursor="Mở"
+              data-cursor-tone="ink"
             >
               <span className={styles.ctaInner} data-magnetic-inner>
                 {tensaiContent.primaryCta}

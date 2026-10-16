@@ -31,7 +31,14 @@ export default function HomePage() {
     <div className={styles.page} data-motion-stage>
       {/* The stage: Thông stands in front of his own name. The engine (signatures.ts) moves the
           layers and the light with the pointer and parts the name as the reader scrolls away. */}
-      <section className={styles.hero} aria-labelledby="home-title" data-stage>
+      {/* Away from the doors the cursor carries the same scroll cue as the edge marker. */}
+      <section
+        className={styles.hero}
+        aria-labelledby="home-title"
+        data-stage
+        data-cursor={homeContent.hero.scrollCue}
+        data-cursor-tone="light"
+      >
         <HeroStageFx />
         <div className={styles.stage} aria-hidden="true">
           <span className={styles.stageAura} data-stage-aura="tensai" />
