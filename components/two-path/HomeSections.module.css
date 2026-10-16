@@ -122,7 +122,8 @@
 
 .debtQuote {
   margin: 0 auto;
-  max-width: 1360px;
+  /* The same left edge as the letter's other blocks (1400px boxes with the inline gutter). */
+  max-width: calc(1400px - 2 * var(--brand-space-inline));
   width: 100%;
 }
 
@@ -165,12 +166,6 @@
   font-weight: 600;
 }
 
-@media (min-width: 900px) {
-  .debtLine:last-child {
-    padding-left: 0.9em;
-  }
-}
-
 /* Phones: the sentence is set as large as its longest line allows. */
 @media (max-width: 899px) {
   .debtQuote p {
@@ -179,14 +174,22 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* 200svh: the slab is held for one screen, and for all of it the sheet travels from the foot of
-     the screen to the top, so the hold is never dead scroll. The sentence therefore rises while the
-     slab is still coming up the screen, and it hangs from the top of the held screen, where the
-     rising sheet reaches it last. */
+  /* The letter is a pile of three layers on wide screens: beat 1 holds still under the slab, the
+     slab rises over it as a lacquer card, holds a moment once its last line has settled, and then
+     the paper of beat 3 slides up over it. 205svh: one screen for the slab to come up, a short
+     hold, one screen for the sheet. Each layer steps back (smaller, dimmer, its corners rounding
+     off) while the next one covers it, so a covered line is never read as a collision. */
   :global(html.motion) .debt {
-    height: 200vh;
-    height: 200svh;
+    background: none;
+    height: 205vh;
+    height: 205svh;
+    isolation: auto;
     padding: 0;
+    z-index: 1;
+  }
+
+  :global(html.motion) .debt::before {
+    content: none;
   }
 
   :global(html.motion) .letterSheet {
@@ -196,33 +199,63 @@
     margin-top: -100svh;
   }
 
-  /* On a phone the sentence fills only the top third of the screen, so the sheet follows the slab
-     half a screen behind instead of a whole one, and the red never stands empty under the words. */
+  /* On a phone the sentence fills only the top third of the screen, so the hold is shorter and the
+     sheet comes up as the last line settles. */
   @media (max-width: 899px) {
     :global(html.motion) .debt {
-      height: 150vh;
-      height: 150svh;
+      height: 170vh;
+      height: 170svh;
     }
   }
 
   :global(html.motion) .debtSticky {
     align-content: start;
+    background: var(--brand-lacquer);
+    clip-path: inset(0 round clamp(20px, 3vw, 40px) clamp(20px, 3vw, 40px) 0 0);
     height: 100vh;
     height: 100svh;
+    isolation: isolate;
     overflow: hidden;
-    padding: clamp(4.5rem, 11svh, 7.5rem) var(--brand-space-inline) 0;
+    padding: clamp(4.5rem, 13svh, 8.5rem) var(--brand-space-inline) 0;
     position: sticky;
     top: 0;
+    transform-origin: 50% 30%;
+  }
+
+  :global(html.motion) .debtSticky::before {
+    background-image: var(--brand-grain);
+    content: '';
+    inset: 0;
+    mix-blend-mode: overlay;
+    opacity: 0.22;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+
+  /* Beat 1 holds still on wide screens (it fits one screen there), so the slab is laid over a
+     whole face instead of a portrait cut at the chest. */
+  @media (min-width: 900px) {
+    :global(html.motion) .letterOpen {
+      align-content: center;
+      min-height: 100vh;
+      min-height: 100svh;
+      position: sticky;
+      top: 0;
+    }
   }
 
   @supports (animation-timeline: view()) {
+    :global(html.motion) .letter {
+      timeline-scope: --debt;
+    }
+
     :global(html.motion) .debt {
       view-timeline: --debt block;
     }
 
-    /* Each line rises in its own window while the slab comes up the screen, starting as the line
-       clears the fold; the last is up while the slab top is still a quarter of a screen below the
-       top, so no settled frame ever shows the red without its words. */
+    /* Each line rises in its own window while the slab comes up the screen; the last is up while
+       the slab top is still a third of a screen below the top. */
     :global(html.motion) .debtLineInner {
       animation: debtLineRise linear both;
       animation-range: entry calc(16% + var(--line, 0) * 15%) entry calc(40% + var(--line, 0) * 15%);
@@ -230,11 +263,49 @@
       transform-origin: 0 100%;
     }
 
-    /* As the sheet covers it, the held type steps back a little (scale and lift only, never dimmed). */
-    :global(html.motion) .debtQuote {
+    /* The slab steps back only while the sheet covers it (it enters at 5% of the hold). */
+    :global(html.motion) .debtSticky {
       animation: debtStepBack linear both;
-      animation-range: contain 0% contain 100%;
+      animation-range: contain 5% contain 100%;
       animation-timeline: --debt;
+    }
+
+    @media (max-width: 899px) {
+      :global(html.motion) .debtSticky {
+        animation-range: contain 0% contain 100%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      :global(html.motion) .letterOpen {
+        animation: letterStepBack linear both;
+        animation-range: entry 0% entry 100%;
+        animation-timeline: --debt;
+        transform-origin: 50% 20%;
+      }
+    }
+
+    /* The paper's words ride in on the paper: they rise as soon as its top edge clears the bottom
+       tenth of the screen and are still by the time it covers two thirds, so it is never a blank
+       page and never read mid-slide. */
+    :global(html.motion) .letterSheet {
+      view-timeline: --sheet block;
+    }
+
+    :global(html.motion) .afterLead,
+    :global(html.motion) .stakes,
+    :global(html.motion) .choice {
+      animation: sheetWordsIn linear both;
+      animation-range: entry 8% entry 46%;
+      animation-timeline: --sheet;
+    }
+
+    :global(html.motion) .stakes {
+      animation-range: entry 16% entry 54%;
+    }
+
+    :global(html.motion) .choice {
+      animation-range: entry 28% entry 66%;
     }
   }
 }
@@ -255,12 +326,28 @@
 
 @keyframes debtStepBack {
   to {
+    clip-path: inset(0 round clamp(20px, 3vw, 40px));
+    filter: brightness(0.55);
     scale: 0.94;
-    translate: 0 -8svh;
   }
 }
 
-/* Beat 3: what he lost and what he chose, on a sheet of paper that is laid over the held slab. */
+@keyframes letterStepBack {
+  to {
+    opacity: 0.2;
+    scale: 0.94;
+  }
+}
+
+@keyframes sheetWordsIn {
+  from {
+    opacity: 0;
+    translate: 0 2.5rem;
+  }
+}
+
+/* Beat 3: what he lost and why there are two paths, on a sheet of paper laid over the held slab;
+   then beat 4, one decision (pattern: Brilliant's goal picker, one large tappable row per answer). */
 .letterSheet {
   background: var(--brand-reading-paper);
   position: relative;
@@ -270,98 +357,63 @@
 .letterClose {
   margin: 0 auto;
   max-width: 1400px;
-  padding: clamp(3rem, 6.5svh, 5rem) var(--brand-space-inline) clamp(3rem, 7svh, 5rem);
+  padding: clamp(3rem, 8svh, 6rem) var(--brand-space-inline) clamp(3.5rem, 9svh, 6.5rem);
+}
+
+.closeLead {
+  display: grid;
+  gap: clamp(1.5rem, 3svh, 2.5rem) clamp(3rem, 6vw, 7rem);
+  margin: 0 0 clamp(3rem, 8svh, 5.5rem);
 }
 
 .afterLead {
   color: var(--brand-text-on-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(2.1rem, 1rem + 3vw, 4.4rem);
+  font-size: clamp(2.1rem, 1rem + 3vw, 4.2rem);
   font-style: italic;
   font-weight: 500;
-  line-height: 1.1;
-  margin: 0 0 clamp(2rem, 4.5svh, 3.25rem);
-  max-width: 26ch;
+  line-height: 1.08;
+  margin: 0;
+  max-width: 22ch;
   text-wrap: balance;
 }
 
 .stakes {
-  color: #241f1b;
-  font-size: clamp(1.125rem, 0.92rem + 0.6vw, 1.4375rem);
+  color: #2b251f;
+  font-size: clamp(1.125rem, 0.98rem + 0.4vw, 1.3125rem);
+  font-weight: 400;
   line-height: 1.6;
-  margin: 0 0 clamp(2rem, 4.5svh, 3.25rem);
-  max-width: 52ch;
-  text-wrap: pretty;
-}
-
-/* The two paths as two ruled rows: the name in its own colour, then what it is for. */
-.pathRows {
-  border-top: 1px solid rgb(23 20 16 / 0.28);
-  display: grid;
-  margin: 0 0 clamp(2.5rem, 6svh, 4.5rem);
-}
-
-.pathRow {
-  align-items: baseline;
-  border-bottom: 1px solid rgb(23 20 16 / 0.28);
-  color: #241f1b;
-  display: grid;
-  gap: 0.9rem clamp(1.5rem, 4vw, 4rem);
-  grid-template-columns: minmax(0, 1fr);
   margin: 0;
-  padding: clamp(1.25rem, 3.4svh, 2rem) 0;
-}
-
-.pathRow[data-path='tensai'] {
-  --tag-bg: #c3f331;
-  --tag-fg: #073b2f;
-}
-
-.pathRow[data-path='conan'] {
-  --tag-bg: #c4441f;
-  --tag-fg: #ffffff;
-}
-
-.pathTag {
-  background: var(--tag-bg);
-  border-radius: 999px;
-  color: var(--tag-fg);
-  font-family: var(--font-be-vietnam);
-  font-size: clamp(0.9375rem, 0.82rem + 0.3vw, 1.125rem);
-  font-weight: 700;
-  justify-self: start;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  padding: 0.85em 1.3em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.pathText {
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.7rem, 1rem + 1.9vw, 2.9rem);
-  font-weight: 500;
-  line-height: 1.16;
-  max-width: 28em;
+  max-width: 40ch;
   text-wrap: pretty;
 }
 
-@media (min-width: 900px) {
-  .pathRow {
-    align-items: center;
-    grid-template-columns: clamp(11rem, 17vw, 16rem) minmax(0, 1fr);
+@media (min-width: 1100px) {
+  .closeLead {
+    align-items: end;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   }
+}
+
+/* The decision: the question, two rows, the signature. */
+.decision {
+  border-top: 2px solid var(--brand-text-on-paper);
+  display: grid;
+  gap: clamp(1.75rem, 4svh, 2.75rem);
+  padding-top: clamp(1.75rem, 4svh, 2.75rem);
 }
 
 .choice {
   color: var(--brand-text-on-paper);
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   font-family: var(--font-cormorant);
-  font-size: clamp(3rem, 1rem + 5.2vw, 6.9rem);
+  font-size: clamp(2.75rem, 1rem + 4.4vw, 5.6rem);
   font-weight: 500;
-  gap: 0.02em;
+  /* Row gap: when the answer wraps under the question, the pen's underline needs air above it. */
+  gap: 0.2em 0.28em;
   letter-spacing: -0.025em;
-  line-height: 0.98;
+  line-height: 1;
   margin: 0;
 }
 
@@ -370,11 +422,167 @@
   font-style: italic;
 }
 
+.pathRows {
+  display: grid;
+  gap: clamp(0.75rem, 1.6svh, 1rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pathRow[data-path='tensai'] {
+  --row-accent: #c3f331;
+  --row-on-accent: #073b2f;
+  --row-tint: rgb(195 243 49 / 0.2);
+  --row-edge: #5d7a07;
+}
+
+.pathRow[data-path='conan'] {
+  --row-accent: #c4441f;
+  --row-on-accent: #ffffff;
+  --row-tint: rgb(196 68 31 / 0.08);
+  --row-edge: #c4441f;
+}
+
+/* A row is one large target: the button's hit area (::after) covers the whole row. */
+.pathRow {
+  align-items: center;
+  background: #fbf8f2;
+  border: 1.5px solid rgb(23 20 16 / 0.16);
+  border-radius: clamp(16px, 1.6vw, 24px);
+  color: var(--brand-text-on-paper);
+  column-gap: clamp(1rem, 2.4vw, 2.5rem);
+  display: grid;
+  grid-template-areas:
+    'index title'
+    'index text'
+    'index cta';
+  grid-template-columns: auto minmax(0, 1fr);
+  padding: clamp(1.25rem, 3svh, 1.9rem) clamp(1.1rem, 2.6vw, 2.25rem);
+  position: relative;
+  row-gap: 0.6rem;
+  transition:
+    background-color 260ms var(--brand-motion-ease),
+    border-color 260ms var(--brand-motion-ease);
+}
+
+.pathIndex {
+  align-self: start;
+  background: var(--row-accent);
+  border-radius: 999px;
+  color: var(--row-on-accent);
+  display: grid;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  grid-area: index;
+  height: 2.75rem;
+  place-items: center;
+  width: 2.75rem;
+}
+
+.pathTitle {
+  font-family: var(--font-cormorant);
+  font-size: clamp(2rem, 1.3rem + 1.3vw, 2.75rem);
+  font-weight: 600;
+  grid-area: title;
+  letter-spacing: -0.015em;
+  line-height: 1.04;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.pathText {
+  color: #2b251f;
+  font-size: clamp(1.0625rem, 0.96rem + 0.3vw, 1.25rem);
+  font-weight: 400;
+  grid-area: text;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.pathCta {
+  align-items: center;
+  background: var(--row-accent);
+  border-radius: 999px;
+  color: var(--row-on-accent);
+  display: inline-flex;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  gap: 0.75rem;
+  grid-area: cta;
+  justify-self: start;
+  margin-top: 0.5rem;
+  min-height: 3.5rem;
+  padding: 0 1.6rem 0 1.75rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* The site shell resets link colour to inherit (class + attribute + element); this outranks it so
+   the label keeps its on-accent ink (white on Conan's orange, deep green on Tensai's lime). */
+.pathRow a.pathCta {
+  color: var(--row-on-accent);
+}
+
+.pathCta::after {
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.pathCtaArrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: translate 260ms var(--brand-motion-ease);
+}
+
+.pathCta:focus-visible {
+  outline: var(--brand-focus-ring-paper);
+  outline-offset: var(--brand-focus-offset);
+}
+
+.pathRow:has(.pathCta:focus-visible) {
+  border-color: var(--row-edge);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pathRow:hover {
+    background: var(--row-tint);
+    border-color: var(--row-edge);
+  }
+
+  .pathRow:hover .pathCtaArrow {
+    translate: 0.3rem 0;
+  }
+}
+
+/* Wide: index, words, button on one line per row. */
+@media (min-width: 900px) {
+  .pathRow {
+    grid-template-areas:
+      'index title cta'
+      'index text cta';
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    row-gap: 0.5rem;
+  }
+
+  .pathCta {
+    align-self: center;
+    margin-top: 0;
+  }
+}
+
 .signature {
   display: grid;
   gap: 0.4rem;
-  margin: clamp(2rem, 4.5svh, 3rem) 0 0;
-  max-width: 22rem;
+  justify-self: end;
+  margin: clamp(0.5rem, 2svh, 1.5rem) 0 0;
+  width: min(100%, 18rem);
 }
 
 .signatureLine {
@@ -399,52 +607,6 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-/* Wide screens read the sheet across, not down one column with an empty half: the sentence and
-   the stakes on the left, the two paths beside them, then the closing line with the signature
-   standing at its right. */
-@media (min-width: 1100px) {
-  .letterClose {
-    column-gap: clamp(3.5rem, 6vw, 7rem);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-  }
-
-  .afterLead,
-  .stakes {
-    grid-column: 1;
-  }
-
-  .pathRows {
-    align-self: start;
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    margin-top: 0.75rem;
-  }
-
-  .pathRow {
-    align-items: start;
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .pathText {
-    font-size: clamp(1.7rem, 0.9rem + 1.25vw, 2.4rem);
-  }
-
-  .choice {
-    grid-column: 1 / -1;
-    grid-row: 3;
-  }
-
-  .signature {
-    align-self: end;
-    grid-column: 2;
-    grid-row: 3;
-    justify-self: end;
-    margin: 0;
-    width: min(100%, 17rem);
-  }
 }
 
 /* ------------------------------------------------------------------ guide ("Người [photo] dẫn đường") */
@@ -484,12 +646,12 @@
 /* Scroll-driven version. The section is one screen plus a short run; its stage sticks for that run
    (sticky, not pinned by script) and one timeline drives the whole opening: the slot widens to the
    frame, the image settles from the faces to the room, the words part and go, then the caption comes
-   up. The opening already starts while the stage is still arriving (entry 75%), so the run itself is
-   only 30svh, and on the way out the stage steps back and dims instead of sliding off unchanged. */
+   up. The opening waits for the stage to stick, so it always starts from the line set on the middle
+   of the screen, and on the way out the stage steps back and dims instead of sliding off unchanged. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     :global(html.motion) .guide.guide {
-      --guide-run: 30svh;
+      --guide-run: 40svh;
       --slot-w: clamp(10rem, 24vw, 26rem);
       --slot-h: calc(var(--slot-w) * 0.75);
       --frame-top: max(76px, 10svh);
@@ -506,6 +668,9 @@
       --part-x: 34vw;
       --part-y: 0px;
       height: calc(100svh + var(--guide-run));
+      /* The stage's empty top slides in under the paper above (.afterHero sits higher), so the line
+         is already on the middle of the screen while the paper lifts away, never below a black band. */
+      margin-top: -28svh;
       overflow: visible;
       padding: 0;
       view-timeline: --guide block;
@@ -548,21 +713,21 @@
 
     :global(html.motion) .guide.guide .guideLeft {
       animation: guidePartLeft cubic-bezier(0.5, 0, 0.9, 0.4) both;
-      animation-range: entry 75% contain 100%;
+      animation-range: contain 0% contain 100%;
       animation-timeline: --guide;
       justify-self: end;
     }
 
     :global(html.motion) .guide.guide .guideRight {
       animation: guidePartRight cubic-bezier(0.5, 0, 0.9, 0.4) both;
-      animation-range: entry 75% contain 100%;
+      animation-range: contain 0% contain 100%;
       animation-timeline: --guide;
       justify-self: start;
     }
 
     :global(html.motion) .guide.guide .guideMedia {
       animation: guideOpen linear both;
-      animation-range: entry 75% contain 100%;
+      animation-range: contain 0% contain 100%;
       animation-timeline: --guide;
       aspect-ratio: auto;
       border-radius: 0;
@@ -574,7 +739,7 @@
 
     :global(html.motion) .guide.guide .guideImage {
       animation: guideLayer linear both;
-      animation-range: entry 75% contain 100%;
+      animation-range: contain 0% contain 100%;
       animation-timeline: --guide;
       inset: 0;
       position: absolute;
@@ -586,7 +751,7 @@
     :global(html.motion) .guide.guide .guideScrim,
     :global(html.motion) .guide.guide .guideCaption {
       animation: guideAfter linear both;
-      animation-range: entry 75% contain 100%;
+      animation-range: contain 0% contain 100%;
       animation-timeline: --guide;
     }
 
@@ -598,7 +763,8 @@
 
     @media (max-width: 899px) {
       :global(html.motion) .guide.guide {
-        --guide-run: 30svh;
+        --guide-run: 56svh;
+        margin-top: -18svh;
         --slot-w: min(66vw, 17rem);
         --frame-top: 0px;
         --frame-side: 0px;
@@ -708,71 +874,51 @@
 
 /* ------------------------------------------------------------------ tapes (the two paths as moving type) */
 
-/* The tapes tilt 1.6deg against each other, so they close in by about 3vw towards the right
-   edge; the gap leaves them a clear band of ink even there. The column is held to the page width:
-   left to size itself it took the width of the whole doubled track (about 11,000px), which put the
-   tilt's pivot far off screen and crossed the two strips inside the window. */
+/* One ticker band: cream type on ink between two hairlines, with only the path names in their
+   accent (lime for Tensai, orange for Conan, one of each per pass). It leans 1.5deg and runs past
+   both edges of the frame, so its ends are never seen; the padding keeps the guide caption above
+   clear of it and hands over to the field notes title without an empty screen between. */
 .tapes {
   background: var(--brand-ink);
-  display: grid;
-  gap: clamp(1.5rem, 4.8vw, 4.5rem);
-  grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
-  padding: clamp(3rem, 6.5svh, 5rem) 0 clamp(2.5rem, 5svh, 3.5rem);
+  padding: clamp(4rem, 9svh, 6rem) 0 clamp(1.5rem, 3svh, 2.25rem);
   position: relative;
 }
 
-/* With the sticky guide the band starts inside the frame's foot margin (5svh), right under the photo.
-   The top padding keeps the raised end of the tilted tape about 85px under the caption's last line. */
-@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    :global(html.motion) .tapes {
-      margin-top: -5svh;
-      padding-top: 4rem;
-    }
-  }
-}
-
-/* Each strip is a little wider than the page, so its tilted ends never leave a gap at the edges. */
 .tape {
+  border-block: 1px solid rgba(244, 239, 228, 0.18);
   display: flex;
-  margin-inline: -5%;
+  margin-inline: -3vw;
+  rotate: -1.5deg;
   white-space: nowrap;
-  width: 110%;
-}
-
-.tape[data-path='tensai'] {
-  --tape-bg: #c3f331;
-  --tape-fg: #073b2f;
-  rotate: -1.6deg;
-}
-
-.tape[data-path='conan'] {
-  --tape-bg: #c4441f;
-  --tape-fg: #ffffff;
-  rotate: 1.6deg;
 }
 
 .tapeTrack {
   align-items: center;
-  background: var(--tape-bg);
-  color: var(--tape-fg);
+  color: #f4efe4;
   display: flex;
   flex: none;
-  padding-block: 0.1em;
+  padding-block: 0.16em 0.2em;
   will-change: transform;
 }
 
-.tapeWord,
-.tapeProduct {
-  align-items: center;
+.tapePair {
+  align-items: baseline;
   display: inline-flex;
   flex: none;
   font-family: var(--font-cormorant);
-  font-size: clamp(3.2rem, 1.2rem + 5.8vw, 8rem);
-  gap: 0.45em;
-  line-height: 1.12;
-  padding-inline: 0.28em;
+  font-size: clamp(4.5rem, 1rem + 5.4vw, 7.5rem);
+  gap: 0.32em;
+  line-height: 1.1;
+  padding-inline: 0.36em;
+}
+
+.tapePair[data-path='tensai'] {
+  --tape-accent: #c3f331;
+}
+
+.tapePair[data-path='conan'] {
+  --tape-accent: #ef6a42;
 }
 
 .tapeWord {
@@ -780,26 +926,36 @@
   font-weight: 500;
 }
 
+.tapeArrow {
+  color: rgba(244, 239, 228, 0.55);
+  font-family: var(--font-body);
+  font-size: 0.5em;
+  translate: 0 -0.18em;
+}
+
 .tapeProduct {
+  align-items: center;
+  color: var(--tape-accent);
+  display: inline-flex;
   font-style: normal;
   font-weight: 600;
   letter-spacing: -0.03em;
 }
 
 .tapeProduct::after {
-  background: currentColor;
+  background: rgba(244, 239, 228, 0.4);
   border-radius: 999px;
   content: '';
   flex: none;
-  height: 0.14em;
-  margin-left: 0.2em;
-  width: 0.14em;
+  height: 0.12em;
+  margin-left: 0.62em;
+  width: 0.12em;
 }
 
 /* ------------------------------------------------------------------ stats (field notes) */
 
 .stats.stats {
-  padding: clamp(4.5rem, 10svh, 7rem) 0 0;
+  padding: clamp(2.5rem, 5svh, 3.5rem) 0 0;
 }
 
 .statsInner {
@@ -873,17 +1029,28 @@
   max-width: 30rem;
 }
 
+/* The claim reads as body copy (sans, 400, bright ink), so the hairline serif stays for the figure. */
 .statClaim {
-  color: var(--brand-paper);
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.6rem, 1rem + 1.35vw, 2.4rem);
-  font-weight: 500;
-  line-height: 1.2;
-  margin: 0 0 1.1rem;
+  color: #ece6da;
+  font-family: var(--font-be-vietnam);
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.3125rem);
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+  max-width: 40ch;
 }
 
 .statBody a {
+  color: #f4efe4;
   font-size: 1.0625rem;
+  text-decoration-color: rgb(244 239 228 / 0.55);
+  text-decoration-thickness: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .statBody a:hover {
+    text-decoration-color: var(--brand-lacquer-bright);
+  }
 }
 
 @media (min-width: 900px) {
@@ -1013,8 +1180,9 @@
 
 /* ------------------------------------------------------------------ reel */
 
-/* Captions get a size you can read, a lighter edge mask and a hint that the row can be pulled. The
-   rules are doubled (`.x.x`) to win over the shared reel rules without touching them. */
+/* Captions get a size you can read on their own scrim, every frame keeps one size and grade, and the
+   window's edges fade the neighbours. The rules are doubled (`.x.x`) to win over the shared reel
+   rules without touching them. */
 .reel.reel {
   /* Nothing here is pinned by a clipping box: the engine pins this section, and a pinned node with
      overflow hidden shifts the whole page when it goes fixed. The row clips itself instead. */
@@ -1079,7 +1247,7 @@
   --dock: clamp(3.75rem, 9svh, 5rem);
   align-content: end;
   bottom: calc(var(--dock) * -1);
-  grid-template-columns: auto minmax(6rem, 14rem);
+  grid-template-columns: auto minmax(12rem, 24rem);
   justify-content: center;
   left: 0;
   margin: 0;
@@ -1111,12 +1279,20 @@
   z-index: 3;
 }
 
+/* The row's two ends rest on the page margin rather than centred (see the track below), so on the
+   first photo the next arrow slides out to that photo's right edge, and on the last photo the
+   previous arrow to its left edge; one step in (about 29% of the run) both are back on the centred
+   photo's edges. --reel-shift is how far an end photo sits from centre. */
+.reel.reel[data-hscroll-active='true'] .reelStage {
+  --reel-shift: calc(50% - var(--reel-w) / 2 - var(--brand-space-inline));
+}
+
 .reel.reel[data-hscroll-active='true'] [data-hscroll-prev] {
-  left: calc(50% - var(--reel-w) / 2 - 1.75rem);
+  left: calc(50% - var(--reel-w) / 2 - 1.75rem + var(--reel-shift) * max(0, 1 - (1 - var(--hscroll-progress, 0)) * 3.5));
 }
 
 .reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
-  right: calc(50% - var(--reel-w) / 2 - 1.75rem);
+  right: calc(50% - var(--reel-w) / 2 - 1.75rem + var(--reel-shift) * max(0, 1 - var(--hscroll-progress, 0) * 3.5));
 }
 
 @media (hover: hover) {
@@ -1135,10 +1311,16 @@
   scale: 0.8;
 }
 
-/* The shared spacer after the last photo is an empty box with no height, and a box with no height
-   adds nothing to the row's scroll width, so the row stopped with the last photo off centre and
-   cut by the right edge. One pixel of height makes it count: the last photo rests in the middle. */
+/* The first photo starts on the page margin and the last one ends on it, so neither end of the run
+   opens on an empty band of ink; the photos between still come to rest in the middle. The shared
+   spacer after the last photo shrinks to the margin less the row's gap, and keeps one pixel of
+   height: a box with no height adds nothing to the row's scroll width. */
+.reel.reel[data-hscroll-active='true'] .reelTrackHome {
+  padding-left: var(--brand-space-inline);
+}
+
 .reel.reel[data-hscroll-active='true'] .reelTrackHome::after {
+  flex-basis: max(0px, calc(var(--brand-space-inline) - clamp(1rem, 2.4vw, 2.25rem)));
   height: 1px;
 }
 
@@ -1146,14 +1328,51 @@
   filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
 }
 
-/* Pinned: the photo at rest takes the same grade as every other photo on the page, the neighbours
-   the same grade a step darker. */
-.reel.reel[data-hscroll-active='true'] .reelItem .reelMediaHome img {
-  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(0.88);
+/* Pinned: the body is the column under the section's padding (it steps back as the closing arrives). */
+.reel.reel[data-hscroll-active='true'] .reelBody {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
 }
 
-.reel.reel[data-hscroll-active='true'] .reelItem[data-current] .reelMediaHome img {
+/* Pinned: every frame keeps one size, full opacity and the page's one grade (the bloom still turns the
+   photo in the middle to colour); no shade is laid over a photo, and the window's edge masks fade
+   the neighbours into the ink instead. The frame is the figure's first child. */
+.reel.reel[data-hscroll-active='true'] .reelItem.reelItem {
+  opacity: 1;
+}
+
+.reel.reel[data-hscroll-active='true'] .reelItem > :first-child {
+  transform: none;
+}
+
+.reel.reel[data-hscroll-active='true'] .reelItem > :first-child::before {
+  content: none;
+}
+
+.reel.reel[data-hscroll-dragging='true'] .reelItem > :first-child {
+  transform: scale(0.94);
+}
+
+.reel.reel[data-hscroll-active='true'] .reelItem .reelMediaHome img {
   filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
+}
+
+/* The edge fades open as the row leaves its first photo and close again as it reaches its last, so
+   an end photo resting on the margin is never dimmed. */
+.reel.reel[data-hscroll-active='true'] .reelViewportHome.reelViewportHome {
+  --reel-fade-l: calc((50% - var(--reel-w) / 2) * min(1, var(--hscroll-progress, 0) * 3.5));
+  --reel-fade-r: calc((50% - var(--reel-w) / 2) * min(1, (1 - var(--hscroll-progress, 0)) * 3.5));
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgb(0 0 0 / 0.3) min(3vw, var(--reel-fade-l)), #000 var(--reel-fade-l), #000 calc(100% - var(--reel-fade-r)), rgb(0 0 0 / 0.3) calc(100% - min(3vw, var(--reel-fade-r))), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, rgb(0 0 0 / 0.3) min(3vw, var(--reel-fade-l)), #000 var(--reel-fade-l), #000 calc(100% - var(--reel-fade-r)), rgb(0 0 0 / 0.3) calc(100% - min(3vw, var(--reel-fade-r))), transparent 100%);
+}
+
+/* The progress bar is the reel's map: a brighter track and a thicker fill (counter, then bar). */
+.reelStage > :last-child > p + span {
+  background: rgb(244 239 228 / 0.24);
+  border-radius: 6px;
+  height: 6px;
 }
 
 /* The caption rides on the photo over a scrim, so it never competes with a busy background. */
@@ -1194,86 +1413,41 @@
   letter-spacing: 0.1em;
 }
 
-/* Pinned: the shared shade already darkens the foot of the photo at rest, so the caption sits on that
-   instead of a box of its own and takes the desktop size. */
+/* Pinned: the caption of the photo at rest lies on its own scrim (60% ink and more under the words)
+   across the foot of the frame, so it reads on any photo without darkening the rest of it. */
 .reel.reel[data-hscroll-active='true'] .reelItem.reelItem .reelCaption {
-  background: none;
+  background: linear-gradient(to top, rgb(7 7 6 / 0.86) 0, rgb(7 7 6 / 0.62) 58%, rgb(7 7 6 / 0));
+  border-radius: 0 0 6px 6px;
+  bottom: 0;
   font-size: clamp(1.1875rem, 0.8rem + 0.55vw, 1.4rem);
-  max-width: 46rem;
+  left: 0;
+  max-width: none;
+  padding: 4.5rem clamp(1.25rem, 2.6vw, 2.25rem) clamp(1.1rem, 2.2vw, 1.75rem);
+  right: 0;
 }
 
-.reelHint {
-  align-items: center;
-  background: rgb(232 223 207 / 0.1);
-  border: 1px solid rgb(232 223 207 / 0.36);
-  border-radius: 999px;
-  color: var(--brand-paper);
-  display: none;
-  font-size: 1rem;
-  font-weight: 600;
-  gap: 0.7rem;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  padding: 0.7rem 1.15rem;
-}
-
-.reelHintArrows {
-  animation: reelNudge 2.4s var(--brand-motion-ease) infinite;
-  display: inline-flex;
-}
-
-@keyframes reelNudge {
-  0%,
-  100% {
-    transform: translateX(-3px);
-  }
-
-  50% {
-    transform: translateX(5px);
+/* As the closing sheet rises, the reel steps back: smaller, dimmer, never cut by a hard edge. The
+   closing section names the timeline (home.module.css). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    :global(html.motion) .reelBody {
+      animation: reelStepBack linear both;
+      animation-range: entry 0% entry 100%;
+      animation-timeline: --closing;
+      transform-origin: 50% 0%;
+    }
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .reelHintArrows {
-    animation: none;
-  }
-}
-
-.reelHintFine {
-  display: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .reelHintFine {
-    display: inline;
-  }
-
-  .reelHintTouch {
-    display: none;
-  }
-}
-
-/* Where the row can be moved by hand the hint sits at the foot of the screen, next to the counter. */
-.reel.reel[data-hscroll-active='true'] .reelHint {
-  bottom: clamp(0.9rem, 2.2svh, 1.5rem);
-  display: inline-flex;
-  position: absolute;
-  right: var(--brand-space-inline);
-  z-index: 3;
-}
-
-@media (max-width: 899px) {
-  .reel.reel .reelHint {
-    display: inline-flex;
-    margin: 1.25rem var(--brand-space-inline) 0;
+@keyframes reelStepBack {
+  to {
+    filter: brightness(0.5);
+    opacity: 0.5;
+    scale: 0.94;
   }
 }
 
 @media (min-width: 900px) {
-  .reel.reel:not([data-hscroll-active='true']) .reelHint {
-    display: none;
-  }
-
   /* Without the pinned row (reduced motion) the four photos sit as a 2 x 2 grid, never three and an orphan. */
   .reel.reel:not([data-hscroll-active='true']) .reelTrackHome.reelTrackHome {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1284,10 +1458,14 @@
    mostly black. */
 @media (max-width: 767px) {
   .tapes {
-    padding: 4.5rem 0 3.25rem;
+    padding: 4rem 0 1.75rem;
+  }
+
+  .tapePair {
+    font-size: 3.5rem;
   }
 
   .stats.stats {
-    padding-top: 3.25rem;
+    padding-top: 2.5rem;
   }
 }

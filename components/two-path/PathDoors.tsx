@@ -73,9 +73,11 @@ export default function PathDoors({ variant, placement }: PathDoorsProps) {
           placement={placement}
           className={`${styles.door} ${home.heroDoor}`}
           data-path-door={door.path}
-          data-magnetic="0.14"
+          data-magnetic="0.3"
         >
           <span className={styles.doorFill} aria-hidden="true" />
+          {/* Where the hero pen's fork lands on this door (page.tsx data-pen-to). */}
+          <span className={home.heroAnchor} data-door-anchor aria-hidden="true" />
           <TwoPathPhoto
             id={door.photoId}
             decorative

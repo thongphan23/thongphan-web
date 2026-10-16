@@ -50,6 +50,8 @@ export const homeContent = {
     pullQuote: claimText('hstl-debt'),
     signature: 'Thông Phan',
     signatureRole: 'Người dẫn đường',
+    // The button on each path row of the closing decision (the rows lead to the branch pages).
+    pathCta: { tensai: 'Vào Tensai', conan: 'Vào Conan School' },
     // A letter is signed face to face: the sharp bookshop portrait, not the stage seen from behind,
     // whose blurred audience read as an image that never finished loading.
     portraitId: 'door-tensai',
@@ -88,7 +90,6 @@ export const homeContent = {
     title: 'Hình thật. Người thật. Việc thật.',
     lead: 'Không có ảnh dựng. Đây là những buổi học, buổi offline và những bữa ăn sau giờ học đã diễn ra.',
     link: { label: 'Xem Conan School', href: '/conan' },
-    hint: { fine: 'Kéo ngang hoặc dùng mũi tên', touch: 'Vuốt ngang để xem tiếp' },
     photoIds: [
       'gallery-decision-making',
       'gallery-manulife',

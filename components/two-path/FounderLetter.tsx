@@ -1,17 +1,21 @@
 import type { CSSProperties } from 'react'
 import { homeContent } from '@/lib/two-path-content'
 import { PATH_LABELS, type PathKey } from '@/lib/two-path-links'
+import PathLink from './PathLink'
 import TwoPathPhoto from './TwoPathPhoto'
 import home from './HomeSections.module.css'
 
 // The letter is told in four beats, one idea per screen:
-//   1. who is writing (the portrait, the title and the first sentence, lit word by word),
-//   2. the number (a lacquer band that holds the screen while the debt rises line by line, then the
-//      paper of the next beat slides up over it like a sheet laid on the stack),
-//   3. what he lost (one large sentence),
-//   4. what he chose: the two paths as two ruled rows, the closing line, the signature.
+//   1. who is writing (the portrait, the title and the first sentence, lit word by word); on wide
+//      screens it holds still and steps back while the next beat is laid over it,
+//   2. the number (a lacquer card that rises over beat 1, holds while the debt settles line by
+//      line, then steps back as the paper of the next beat slides up over it),
+//   3. what he lost (one large sentence) and why there are two paths,
+//   4. one decision: "Chọn một cửa." over two large rows, each with its own button, then the
+//      signature.
 // Without the motion engine (or under reduced motion) every beat is simply a tall, fully lit block.
 const PATH_ORDER: PathKey[] = ['tensai', 'conan']
+const pad = (value: number) => String(value).padStart(2, '0')
 
 export default function FounderLetter() {
   const { letter } = homeContent
@@ -67,41 +71,62 @@ export default function FounderLetter() {
 
       <div className={home.letterSheet}>
         <div className={home.letterClose}>
-          <p className={home.afterLead} data-motion-reveal="drift">
-            {leadAfter}
-          </p>
-          {stakes ? (
-            <p className={home.stakes} data-motion-reveal="drift">
-              {stakes}
+          <div className={home.closeLead}>
+            <p className={home.afterLead}>{leadAfter}</p>
+            {stakes ? <p className={home.stakes}>{stakes}</p> : null}
+          </div>
+          {/* One decision: the question, then one row per path. The button is the row's link and
+              its hit area covers the whole row, so the row itself is the target on touch too. */}
+          <div className={home.decision} role="group" aria-labelledby="letter-choice">
+            <p id="letter-choice" className={home.choice}>
+              {/* The guide's pen underlines the question itself once the row below can be read. */}
+              {closingLines.map((line, index) => (
+                <span
+                  key={line}
+                  className={home.choiceLine}
+                  {...(index === 0 && closingLines.length > 1
+                    ? { 'data-pen': 'underline', 'data-pen-tone': 'lacquer', 'data-pen-start': 'top 78%', 'data-pen-end': 'top 52%' }
+                    : {})}
+                >
+                  {line}
+                </span>
+              ))}
             </p>
-          ) : null}
-          {pathRows.length ? (
-            <div className={home.pathRows} data-reveal-children data-stagger="0.16">
-              {pathRows.map((row, index) => {
-                const path = PATH_ORDER[index] ?? 'tensai'
-                return (
-                  <p key={row} className={home.pathRow} data-path={path}>
-                    <span className={home.pathTag} aria-hidden="true">
-                      {PATH_LABELS[path]}
-                    </span>
-                    <span className={home.pathText}>{row}</span>
-                  </p>
-                )
-              })}
-            </div>
-          ) : null}
-          <p className={home.choice} data-motion-reveal="drift">
-            {closingLines.map((line) => (
-              <span key={line} className={home.choiceLine}>
-                {line}
-              </span>
-            ))}
-          </p>
-          <p className={home.signature} data-motion-reveal="drift">
-            <span className={home.signatureLine} data-draw-line aria-hidden="true" />
-            <span className={home.signatureName}>{letter.signature}</span>
-            <span className={home.signatureRole}>{letter.signatureRole}</span>
-          </p>
+            {pathRows.length ? (
+              <ol className={home.pathRows} data-reveal-children data-stagger="0.14">
+                {pathRows.map((row, index) => {
+                  const path = PATH_ORDER[index] ?? 'tensai'
+                  const door = homeContent.doors.find((item) => item.path === path)
+                  return (
+                    <li key={row} className={home.pathRow} data-path={path}>
+                      <span className={home.pathIndex} aria-hidden="true">
+                        {pad(index + 1)}
+                      </span>
+                      <h3 className={home.pathTitle}>{door?.label ?? PATH_LABELS[path]}</h3>
+                      <p className={home.pathText}>{row}</p>
+                      <PathLink
+                        path={path}
+                        kind="door"
+                        placement="door"
+                        className={home.pathCta}
+                        data-motion-action
+                      >
+                        <span>{letter.pathCta[path]}</span>
+                        <span className={home.pathCtaArrow} aria-hidden="true">
+                          →
+                        </span>
+                      </PathLink>
+                    </li>
+                  )
+                })}
+              </ol>
+            ) : null}
+            <p className={home.signature} data-motion-reveal="drift">
+              <span className={home.signatureLine} data-draw-line aria-hidden="true" />
+              <span className={home.signatureName}>{letter.signature}</span>
+              <span className={home.signatureRole}>{letter.signatureRole}</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

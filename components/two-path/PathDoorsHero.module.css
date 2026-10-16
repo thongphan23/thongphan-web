@@ -11,7 +11,30 @@
 /* Where motion runs, the guide's pen draws a fork from the question into the doors (guide-pen.ts),
    so the doors stand a little lower to leave it room. */
 :global(html.motion) .heroDoors {
-  margin-top: clamp(2.75rem, 7.5svh, 4.5rem);
+  margin-top: clamp(3.25rem, 9.5svh, 5.5rem);
+}
+
+/* Where the fork's arms land (guide-pen measures this box, not the door). By default it is the
+   whole door, so the stacked phone fork reads the doors' own boxes; side by side it is a thin
+   strip placed so the two arms span about two fifths of the stage and meet each pill near its
+   middle. It moves with the door, so the arm heads ride the door's rise. */
+.heroAnchor {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+@media (min-width: 900px) {
+  .heroDoors .heroAnchor {
+    height: 1px;
+    inset: 0 auto auto 35.6%;
+    width: 2px;
+  }
+
+  .heroDoors .heroDoor[data-path-door='conan'] .heroAnchor {
+    left: auto;
+    right: 35.6%;
+  }
 }
 
 .heroDoors .heroDoor {

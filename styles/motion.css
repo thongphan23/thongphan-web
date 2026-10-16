@@ -240,6 +240,16 @@ html[data-cursor-mode='custom'] [data-motion-stage] button {
   transition-delay: 0ms;
 }
 
+/* Over a dark photographic stage (a page sets data-zone, see HeroStageFx) the bare ring grows
+   and carries a faint fill, so it reads against the picture. */
+.motion-cursor[data-zone='stage']:not([data-state='link']):not([data-state='stick']):not([data-state='label']) .motion-cursor__ring {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border: 2px solid #f4efe4;
+  background: rgba(244, 239, 228, 0.12);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-cursor {
     display: none;

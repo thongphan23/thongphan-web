@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className={styles.stage} aria-hidden="true">
           <span className={styles.stageAura} data-stage-aura="tensai" />
           <span className={styles.stageAura} data-stage-aura="conan" />
-          <p className={styles.masthead} data-stage-depth="-0.5">
+          <p className={styles.masthead} data-stage-depth="-0.3">
             <span className={styles.mastheadPart} data-stage-part="left">
               <span className={styles.mastheadWord}>Thông</span>
             </span>
@@ -44,8 +44,9 @@ export default function HomePage() {
               <span className={styles.mastheadWord}>Phan</span>
             </span>
           </p>
+          <span className={styles.stageTorch} />
         </div>
-        <div className={styles.stagePerson} data-stage-depth="1">
+        <div className={styles.stagePerson} data-stage-depth="0.7">
           <div className={styles.stagePersonInner} data-stage-person>
             <HeroPicture id={homeContent.hero.photoId} mobileId={homeContent.hero.mobilePhotoId} className={styles.stagePicture} />
             <span className={styles.stageSpot} aria-hidden="true" />
@@ -61,13 +62,16 @@ export default function HomePage() {
               <span className={styles.titleLead}>
                 <SplitWords text={titleLead} />
               </span>{' '}
-              {/* The guide's pen splits from the question into the two doors below it. */}
+              {/* The guide's pen splits from the question into the two doors below it, a thick felt-tip
+                  Y that spans the stage; each arm lands on its door's anchor (PathDoors). */}
               <em
                 data-pen="fork"
                 data-pen-tone="lacquer,lime,ember"
-                data-pen-to="[data-path-door='tensai'],[data-path-door='conan']"
+                data-pen-to="[data-path-door='tensai'] [data-door-anchor],[data-path-door='conan'] [data-door-anchor]"
                 data-pen-trigger="load"
-                data-pen-delay="1200"
+                data-pen-delay="700"
+                data-pen-duration="900"
+                data-pen-width="10"
               >
                 <SplitWords text={titleQuestion} start={wordCount(titleLead)} />
               </em>

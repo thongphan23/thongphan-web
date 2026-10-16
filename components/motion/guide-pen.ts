@@ -7,6 +7,7 @@
 //     Each selector resolves to the match nearest the anchor in the DOM.
 //   data-pen-seed       integer; same seed, same hand (defaults to a hash of the anchor text)
 //   data-pen-trigger="load" + data-pen-delay (ms): drawn once after load instead of on scroll
+//   data-pen-duration   ms; how long a load-drawn mark takes (defaults per shape)
 //   data-pen-width      stroke width in px (default scales with the anchor, 2.5-6px at 1440)
 //   data-pen-start / data-pen-end   ScrollTrigger positions (default "top 85%" / "top 45%")
 //   data-pen-side="start,end"       top|bottom|left|right|auto: where a connector leaves and lands
@@ -605,6 +606,21 @@ export function guidePen(root: HTMLElement, specs: PenSpec[]): Cleanup {
           return a.playState === 'running' && typeof end === 'number' && Number.isFinite(end)
         })
       }
+      // A connector also follows its targets while they are still animating in (a door rising
+      // under the arm's head), so its heads settle where the targets settle.
+      if (!follow && m.targets.length) {
+        follow = m.targets.some((target) => {
+          for (let n: HTMLElement | null = target; n && n !== host; n = n.parentElement) {
+            if (typeof n.getAnimations !== 'function') break
+            const moving = n.getAnimations().some((a) => {
+              const end = a.effect?.getComputedTiming().endTime
+              return a.playState === 'running' && typeof end === 'number' && Number.isFinite(end)
+            })
+            if (moving) return true
+          }
+          return false
+        })
+      }
     }
     const clipMin = (0 - ox) / sx
     const clipMax = (document.documentElement.clientWidth - ox) / sx
@@ -743,6 +759,7 @@ export function guidePen(root: HTMLElement, specs: PenSpec[]): Cleanup {
       const delay = Number(el.dataset.penDelay ?? 0) / 1000
       const duration = shape === 'fork' ? 1.4 : shape === 'underline' ? 0.9 : shape === 'circle' ? 1.1 : 1.2
       tween = gsap.to(m.state, { t: 1, duration, delay, ease: 'power2.inOut', onUpdate: paint })
+      if (el.dataset.penDuration) tween.duration(Number(el.dataset.penDuration) / 1000)
     } else {
       // A sticky anchor would give ScrollTrigger a moving start, so the trigger is its
       // nearest ancestor that scrolls normally.
