@@ -39,29 +39,24 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 2.6vw, 2.5rem);
+  gap: clamp(1.25rem, 1.8vw, 1.75rem);
 }
 
-.heroMeta {
+/* One label, on a rule that lines up with the top of the portrait; the confession sits on the
+   baseline below it. */
+.eyebrow {
+  --intro-delay: 0.05s;
   align-items: center;
   border-top: 1px solid var(--cinema-line);
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  /* The rule lines up with the top of the portrait; the confession sits on the baseline below. */
-  margin-bottom: auto;
-  padding-top: 1rem;
-}
-
-.eyebrow {
-  align-items: center;
   color: var(--cinema-paper);
   display: flex;
-  font-size: clamp(1rem, 0.9rem + 0.28vw, 1.125rem);
+  font-size: clamp(1.125rem, 1rem + 0.3vw, 1.3125rem);
   font-weight: 700;
-  gap: 0.7rem;
+  gap: 0.8rem;
   letter-spacing: 0.14em;
   line-height: 1.3;
+  margin: 0 0 auto;
+  padding-top: 1.1rem;
   text-transform: uppercase;
 }
 
@@ -70,19 +65,13 @@
   content: '';
   flex: none;
   height: 2px;
-  width: 1.75rem;
+  width: 2rem;
 }
 
-.folio {
-  color: color-mix(in srgb, var(--cinema-paper) 84%, transparent);
-  font-family: var(--font-mono);
-  font-size: clamp(1rem, 0.9rem + 0.28vw, 1.125rem);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
+/* The headline's words rise from first paint and have all but landed by 0.7s; the lead and the way
+   in follow behind its last words, so the confession reads first and no rising line meets the lead. */
 .title {
+  --intro-base: 0s;
   color: var(--cinema-paper);
   font-family: var(--font-cormorant), serif;
   font-size: clamp(2.9rem, 12.2vw, 4.75rem);
@@ -110,7 +99,7 @@
   }
 
   .title {
-    font-size: clamp(3rem, min(7.4vw, 12svh), 6.75rem);
+    font-size: clamp(3rem, min(7.4vw, 10.8svh), 6.75rem);
     text-shadow: 0 0.04em 0.5em rgba(10, 9, 8, 0.5);
   }
 }
@@ -121,18 +110,27 @@
   font-weight: 400;
 }
 
+/* A quicker rise than the shared first-screen default, with a tighter stagger. */
+@media (prefers-reduced-motion: no-preference) {
+  :global(html.motion) .title :global(.intro-word) > span {
+    animation-delay: calc(var(--i, 0) * 0.028s + var(--intro-base));
+    animation-duration: 0.75s;
+  }
+}
+
+/* The way in sits on the text column, under the lead, where the eye finishes the confession. */
 .heroFoot {
-  align-items: end;
+  --intro-delay: 0.45s;
   display: grid;
-  gap: 1.5rem 2.5rem;
-  grid-template-columns: minmax(0, 34rem) auto;
-  justify-content: space-between;
+  gap: 1.25rem;
+  justify-items: start;
+  max-width: 36rem;
 }
 
 .lead {
   color: color-mix(in srgb, var(--brand-paper) 92%, transparent);
-  font-size: clamp(1.1875rem, 1rem + 0.5vw, 1.4375rem);
-  line-height: 1.55;
+  font-size: clamp(1.1875rem, 1rem + 0.4vw, 1.3125rem);
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -147,8 +145,8 @@
   font-size: clamp(1.125rem, 1.05rem + 0.2vw, 1.25rem);
   font-weight: 700;
   justify-content: center;
-  min-height: 64px;
-  padding: 0 2.1rem;
+  min-height: 60px;
+  padding: 0 2rem;
   text-decoration: none;
   transition:
     background-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -164,9 +162,21 @@
   color: var(--cinema-paper);
 }
 
+/* Over the way in, the cursor's label hangs below the pointer as a small tag rather than a disc
+   laid over the button's own words. */
+@media (hover: hover) and (pointer: fine) {
+  :global(html):has(.startCta:hover)
+    :global(.motion-cursor)[data-state='label']:not([data-quiet='true'])
+    :global(.motion-cursor__ring) {
+    height: 34px;
+    margin: 36px 0 0 6px;
+    width: 72px;
+  }
+}
+
 .page .hero .startCta:focus-visible,
 .page .hero .actLink:focus-visible {
-  outline: 3px solid var(--brand-focus);
+  outline: 3px solid var(--cinema-hot);
   outline-offset: 4px;
 }
 
@@ -193,47 +203,57 @@
 
 @media (min-width: 900px) {
   /* The hero is centred at 1440px, so the right edge reaches past it to the screen's edge. The frame
-     is 48vw: the man fills it instead of sitting half-lost in a black field. */
+     is 48vw: the man fills it instead of sitting half-lost in a black field. It reaches down through
+     the gap above the act index, so the bottom fade spends that gap rather than the photograph. */
   .portrait {
     display: block;
-    inset: 0 calc(50% - 50vw) 0 auto;
+    inset: 0 calc(50% - 50vw) calc(-1 * clamp(2.25rem, 4vw, 3.5rem)) auto;
     position: absolute;
     width: 48vw;
     z-index: 0;
   }
 
-  /* Eased ramps (not straight lines), so no fade shows a band where it starts. The left fade is over
-     by a third of the frame, well before the face (which sits near the middle), so the face is never
-     dimmed. A short top fade keeps the photograph from ending on a hard line under the header; the
-     bottom fade is deep enough that the acts set over it read on ink, not on the shirt. */
+  /* The portrait is lit, not boxed: an oval of light centred just under the face fades softly to
+     the ink on every side (no corner ever reads as a rectangle), a short ramp from the left lets the
+     headline cross into it, and a vertical ramp keeps it off the header's edge and dissolves it into
+     the ink above the act index (no flat bottom edge). Eased stops, so no fade shows a band. */
   .portraitFrame {
     --portrait-fade-x: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.1) 6%,
-      rgba(0, 0, 0, 0.3) 12%,
-      rgba(0, 0, 0, 0.62) 19%,
-      rgba(0, 0, 0, 0.88) 26%,
-      #000 33%
+      rgba(0, 0, 0, 0.12) 6%,
+      rgba(0, 0, 0, 0.36) 12%,
+      rgba(0, 0, 0, 0.7) 19%,
+      #000 28%
     );
     --portrait-fade-y: linear-gradient(
       180deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.35) 5%,
-      rgba(0, 0, 0, 0.82) 11%,
-      #000 17%,
-      #000 62%,
-      rgba(0, 0, 0, 0.82) 71%,
-      rgba(0, 0, 0, 0.5) 80%,
-      rgba(0, 0, 0, 0.18) 88%,
-      transparent 95%
+      rgba(0, 0, 0, 0.1) 3%,
+      rgba(0, 0, 0, 0.32) 7%,
+      rgba(0, 0, 0, 0.62) 12%,
+      rgba(0, 0, 0, 0.86) 17%,
+      #000 23%,
+      #000 60%,
+      rgba(0, 0, 0, 0.8) 72%,
+      rgba(0, 0, 0, 0.46) 84%,
+      rgba(0, 0, 0, 0.16) 93%,
+      transparent 100%
     );
-    -webkit-mask-composite: source-in;
-    -webkit-mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
+    --portrait-oval: radial-gradient(
+      ellipse 74% 82% at 56% 40%,
+      #000 50%,
+      rgba(0, 0, 0, 0.86) 61%,
+      rgba(0, 0, 0, 0.56) 73%,
+      rgba(0, 0, 0, 0.22) 86%,
+      transparent 100%
+    );
+    -webkit-mask-composite: source-in, source-in;
+    -webkit-mask-image: var(--portrait-fade-x), var(--portrait-fade-y), var(--portrait-oval);
     border-radius: 0;
     height: 100%;
     mask-composite: intersect;
-    mask-image: var(--portrait-fade-x), var(--portrait-fade-y);
+    mask-image: var(--portrait-fade-x), var(--portrait-fade-y), var(--portrait-oval);
   }
 
   /* The photo runs a little past the frame's faded left edge, so the face lands in the middle of the
@@ -245,7 +265,7 @@
   /* The fade mask is the portrait's only edge, so the photograph arrives as light rather than
      through an opening window: no clipped rectangle ever shows inside the fade. */
   :global(html.motion) .portraitFrame:global(.intro-clip) {
-    animation: portrait-light 1.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+    animation: portrait-light 1.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 }
 
@@ -263,44 +283,26 @@
 
 /* Parallax pushes the photo down as the hero leaves, so it starts above the frame. The stage's teal
    backdrop fights the ink-and-lacquer palette, so the photo (and the WebGL copy drawn over it) is
-   set in black and white with deep blacks and lifted highlights, then multiplied with paper so the
-   highlights turn warm while the shadows stay ink; colour comes back while the pointer rests on it. */
+   set in black and white, opened up so the face and the hand on the mic read at a glance, then
+   multiplied with paper so the highlights turn warm while the shadows stay ink. */
 .portraitPhoto {
-  filter: grayscale(1) contrast(1.34) brightness(1.04);
+  filter: grayscale(1) contrast(1.16) brightness(1.2);
   inset: -28px 0 0;
   position: absolute;
-  transition: filter 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portraitFrame::after {
-  background: #efe3cf;
+  background: #f1e6d3;
   content: '';
   inset: 0;
   mix-blend-mode: multiply;
   pointer-events: none;
   position: absolute;
-  transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* A vignette that closes the frame around the face, a falloff from the left edge where the headline
-   crosses into the photo, and ink under the shoulders. There is no coloured glow: the grade is warm
-   from the multiply above, and the pointer's torch brings the only extra light. */
-.portraitFrame::before {
-  background:
-    radial-gradient(85% 75% at 58% 34%, transparent 46%, rgba(7, 7, 6, 0.58) 100%),
-    linear-gradient(90deg, rgba(10, 9, 8, var(--portrait-falloff, 0)) 0%, rgba(10, 9, 8, 0) 46%),
-    linear-gradient(180deg, rgba(10, 9, 8, 0) 58%, rgba(10, 9, 8, 0.86) 90%);
-  content: '';
-  inset: 0;
-  mix-blend-mode: normal;
-  pointer-events: none;
-  position: absolute;
-  z-index: 1;
-}
-
-/* A halftone screen over the photograph: two offset dot grids, one light and one dark, blended as
-   overlay. It reads as print grain, and it hides the softness of a photograph that is enlarged to
-   fill the frame. */
+/* A fine halftone screen over the photograph: two offset dot grids, one light and one dark,
+   blended as overlay. It reads as print grain and hides the softness of an enlarged photograph,
+   without dimming it. */
 .portraitGrain {
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.55) 0.55px, transparent 0.95px),
@@ -313,38 +315,52 @@
     4px 4px;
   inset: 0;
   mix-blend-mode: overlay;
-  opacity: 0.34;
+  opacity: 0.2;
   pointer-events: none;
   position: absolute;
   z-index: 2;
 }
 
-/* The torch: a soft warm disc that follows the pointer. It moves by transform alone (HeroPointer
-   writes the position), so the pointer never causes a repaint of the photograph beneath it. */
-.portraitTorch {
-  background: radial-gradient(circle, rgba(255, 232, 200, 0.5), rgba(255, 214, 170, 0.18) 42%, transparent 70%);
-  border-radius: 50%;
+/* The torch: a warm disc of light that follows the pointer, or wanders slowly around the face when
+   no pointer is on the hero, with a wide shade that dims the rest of the portrait so the lit patch
+   reads as light rather than a tint. Both move by transform alone (HeroPointer writes the position),
+   so the light never causes a repaint of the photograph beneath it. The shade is a square far wider
+   than the frame and flat past its falloff, so no edge of it can show from any aim point. */
+.portraitTorch,
+.portraitShade {
   display: none;
-  height: 34rem;
   left: 0;
-  mix-blend-mode: soft-light;
   opacity: 0;
   pointer-events: none;
   position: absolute;
   top: 0;
-  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  width: 34rem;
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 2;
 }
 
-@media (hover: hover) {
-  .portraitFrame:hover .portraitPhoto {
-    filter: none;
-  }
+.portraitTorch {
+  background: radial-gradient(
+    circle closest-side,
+    rgba(255, 194, 128, 0.36),
+    rgba(255, 178, 110, 0.17) 46%,
+    rgba(255, 170, 100, 0.05) 76%,
+    transparent
+  );
+  height: 44rem;
+  mix-blend-mode: screen;
+  width: 44rem;
+}
 
-  .portraitFrame:hover::after {
-    opacity: 0;
-  }
+.portraitShade {
+  background: radial-gradient(
+    circle closest-side,
+    transparent 14%,
+    rgba(7, 7, 6, 0.12) 28%,
+    rgba(7, 7, 6, 0.28) 50%,
+    rgba(7, 7, 6, 0.34) 64%
+  );
+  height: 130rem;
+  width: 130rem;
 }
 
 /* Pointer response, fine pointers on wide screens with motion allowed (HeroPointer sets the
@@ -360,12 +376,20 @@
     translate: calc(var(--px, 0) * 7px) calc(var(--py, 0) * 5px);
   }
 
-  :global(html.motion) .portraitTorch {
+  :global(html.motion) .portraitTorch,
+  :global(html.motion) .portraitShade {
     display: block;
-    transform: translate3d(calc(var(--tx, 0px) - 17rem), calc(var(--ty, 0px) - 17rem), 0);
   }
 
-  :global(html.motion) .hero[data-pointer] .portraitTorch {
+  :global(html.motion) .portraitTorch {
+    transform: translate3d(calc(var(--tx, 0px) - 22rem), calc(var(--ty, 0px) - 22rem), 0);
+  }
+
+  :global(html.motion) .portraitShade {
+    transform: translate3d(calc(var(--tx, 0px) - 65rem), calc(var(--ty, 0px) - 65rem), 0);
+  }
+
+  :global(html.motion) .hero:is([data-pointer], [data-idle]) :is(.portraitTorch, .portraitShade) {
     opacity: 1;
   }
 }
@@ -376,34 +400,6 @@
   object-fit: cover;
   object-position: 50% 24%;
   width: 100%;
-}
-
-.portraitCaption {
-  border-top: 1px solid var(--cinema-line);
-  color: var(--cinema-muted);
-  display: flex;
-  font-size: 1rem;
-  font-weight: 600;
-  justify-content: space-between;
-  letter-spacing: 0.16em;
-  padding-top: 0.8rem;
-  text-transform: uppercase;
-}
-
-.portraitCaption span {
-  white-space: nowrap;
-}
-
-.portraitCaption span:first-child {
-  color: var(--cinema-paper);
-}
-
-/* Wide, the name already runs in the folio on the eyebrow's rule, so nothing is set under the
-   photograph. This follows the base rule so it wins the cascade. */
-@media (min-width: 900px) {
-  .portraitCaption {
-    display: none;
-  }
 }
 
 /* The five acts double as a table of contents. Hovering one draws its lacquer rule across, leans the
@@ -459,7 +455,7 @@
 .actNumber {
   color: var(--cinema-hot);
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(2.25rem, 1.4rem + 1.5vw, 3.25rem);
+  font-size: clamp(2.5rem, 1.5rem + 1.4vw, 3rem);
   font-style: italic;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
@@ -470,8 +466,8 @@
 
 .actTitle {
   font-family: var(--font-cormorant), serif;
-  font-size: clamp(1.3125rem, 0.95rem + 0.7vw, 1.5rem);
-  font-weight: 500;
+  font-size: clamp(1.4375rem, 1rem + 0.6vw, 1.625rem);
+  font-weight: 600;
   grid-area: title;
   line-height: 1.15;
   transition: translate 600ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -533,11 +529,8 @@
     display: contents;
   }
 
-  .heroMeta {
-    order: 1;
-  }
-
   .eyebrow {
+    order: 1;
     white-space: nowrap;
   }
 
@@ -574,17 +567,10 @@
   }
 
   .actNumber {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .actTitle {
-    font-size: 1.375rem;
-  }
-}
-
-/* Stacked, the caption under the photograph carries the name, so the folio would only repeat it. */
-@media (max-width: 899px) {
-  .folio {
-    display: none;
+    font-size: 1.5rem;
   }
 }

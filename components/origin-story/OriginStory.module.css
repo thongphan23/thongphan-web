@@ -1,7 +1,9 @@
 /* The origin story: a principle on paper, five acts on one dark stage, and a paper closing that
    opens onto the two paths. Every section is laid over the one before it like a sheet, rounded at
    the top; the ground changes only twice (into the acts and out of them), and with motion those
-   two sheets open like a curtain as they arrive (data-curtain), so a change of tone is an edge. */
+   two sheets open like a curtain as they arrive (data-curtain), so a change of tone is an edge.
+   On wide, tall screens with motion the acts become one pinned stage: one screen, one frame per
+   act (and one for the verdict), each held for its own stretch of scroll and cut to the next. */
 
 .story {
   --os-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -48,6 +50,29 @@
 
 .prologue {
   border-radius: var(--os-sheet) var(--os-sheet) 0 0;
+}
+
+/* The curtain opens over the same stretch of scroll as the engine's (a CSS animation outranks its
+   inline clip), but its sides never close in past the text's gutter less 1rem: a sheet's first
+   lines arrive while it is still opening, and an edge run through them reads as a crop. On a
+   phone gutter that leaves only the corners easing square. */
+@supports (animation-timeline: view()) {
+  :global(html.motion) .story [data-curtain] {
+    --curtain: clamp(0px, calc(var(--brand-space-inline) - 1rem), 6vw);
+    animation: os-curtain linear both;
+    animation-range: cover 0% cover 70vh;
+    animation-timeline: view();
+  }
+}
+
+@keyframes os-curtain {
+  from {
+    clip-path: inset(0 var(--curtain) 0 var(--curtain) round 28px);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0 round 0);
+  }
 }
 
 .mark {
@@ -152,6 +177,20 @@
   scroll-margin-top: 3rem;
 }
 
+/* Scroll markers for the motion engine, never seen: the chapter's stretch for the rail and one
+   step per frame for the pinned stage. Without the stage the chapter marker covers its section. */
+.chapterMark,
+.stepMark {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.stepMark {
+  display: none;
+}
+
 .actGrid {
   display: grid;
   gap: clamp(2.5rem, 5vw, 5rem);
@@ -169,7 +208,12 @@
   composes: mark;
 }
 
-/* The act number: an outline that fills with lacquer from the bottom while the act is read. */
+.actTitleRow {
+  display: grid;
+  justify-items: start;
+}
+
+/* The act number: an outline that fills with lacquer from the bottom when the act is reached. */
 .numeral {
   display: inline-grid;
   font-family: var(--font-cormorant), serif;
@@ -192,12 +236,7 @@
 }
 
 .numeralFill {
-  clip-path: inset(calc((1 - var(--fill, 1)) * 100%) 0 0 0);
   color: var(--os-accent);
-}
-
-:global(html.motion) .numeral {
-  --fill: 0;
 }
 
 .actHeader h2 {
@@ -252,10 +291,8 @@
 }
 
 /* The cost of the third act: it leaves the columns and is set alone, centred, the one line on the
-   page larger than any title. With motion it gets a beat of its own: the stage is taller than the
-   screen and the line holds in the middle of it (sticky) while it lights word by word, then the
-   stage scrolls away and the next sheet follows it. Nothing here fades: the line is on screen at
-   full strength whenever the stage is, so no frame shows a ghost of it. */
+   page larger than any title. With motion it is held on the screen while ten years are counted
+   off beside it, and the rest of the line lands only once the count has reached them. */
 .verdictStage {
   margin: clamp(3.5rem, 7vw, 7rem) auto 0;
   max-width: 1320px;
@@ -294,6 +331,45 @@
   margin-top: 0.3em;
 }
 
+/* The count (0 to 1) is set on the line by the scroll; the rest of the line waits for its end.
+   Without motion there is no count and the line reads whole. */
+:global(html.motion) .verdictRest {
+  --landed: clamp(0, calc((var(--count, 1) - 0.94) * 1000), 1);
+  opacity: var(--landed);
+  transition:
+    opacity 600ms var(--os-ease),
+    translate 900ms var(--os-ease);
+  translate: 0 calc((1 - var(--landed)) * 0.6em);
+}
+
+/* The debt itself is circled in lacquer, the way a reader marks a line in a file: two loose pen
+   loops, drawn round while the years are counted off (--count) and whole without motion. */
+.verdictMark {
+  position: relative;
+}
+
+.verdictMark::before,
+.verdictMark::after {
+  border: 0.032em solid var(--os-accent);
+  border-radius: 50% 46% 52% 48% / 58% 50% 46% 52%;
+  content: '';
+  /* Weighted to the right, so the loops pass through the word gap and clear the tail of the word before. */
+  inset: 0.02em -0.24em 0.01em -0.11em;
+  -webkit-mask: conic-gradient(from 210deg, #000 calc(var(--count, 1) * 360deg), transparent 0);
+  mask: conic-gradient(from 210deg, #000 calc(var(--count, 1) * 360deg), transparent 0);
+  pointer-events: none;
+  position: absolute;
+  rotate: -6deg;
+}
+
+.verdictMark::after {
+  border-width: 0.018em;
+  /* Its foot stays above the line below, which the tilt would otherwise drop it into. */
+  inset: 0.08em -0.18em -0.03em -0.07em;
+  opacity: 0.75;
+  rotate: 4deg;
+}
+
 .story .claim.verdict .sourceLink,
 .verdict .sourceLabel {
   justify-self: center;
@@ -305,7 +381,6 @@
 /* Ten years counted off while the line is held: the figure and its bar are scrubbed by the
    scroll (data-scroll-count); the markup already reads "10 / 10" and a full bar without motion. */
 .verdictClock {
-  --count: 1;
   display: grid;
   gap: 0.75rem;
   justify-items: center;
@@ -349,26 +424,8 @@
   background: var(--os-accent);
   display: block;
   height: 100%;
-  transform: scaleX(var(--count));
+  transform: scaleX(var(--count, 1));
   transform-origin: 0 50%;
-}
-
-:global(html.motion) .act[data-has-verdict] {
-  padding-bottom: 0;
-}
-
-:global(html.motion) .verdictStage {
-  /* One screen for the line plus 40svh of scroll while it is held, lit and read. */
-  height: 140svh;
-  margin-top: clamp(1rem, 3vw, 3rem);
-}
-
-:global(html.motion) .verdictHold {
-  align-content: center;
-  display: grid;
-  min-height: 100svh;
-  position: sticky;
-  top: 0;
 }
 
 /* Provenance is the page's proof, so it is set as a citation: a lacquer rule on its left edge,
@@ -422,24 +479,20 @@
   margin-top: clamp(2.5rem, 5vw, 4.5rem);
 }
 
-/* A spacer before a later card in a pile; only the wide layout gives it height. */
-.stackMark {
-  display: none;
+.assetCard {
+  min-width: 0;
 }
 
-.stackCard {
-  min-width: 0;
+/* The piece under the pointer or keyboard focus comes to the top of the pile. */
+.assetCard:hover,
+.assetCard:focus-within {
+  position: relative;
+  z-index: 3;
 }
 
 .clipping {
   align-self: start;
   position: relative;
-}
-
-/* The clipping under the pointer comes to the top of the pile. */
-.clipping:hover,
-.clipping:focus-within {
-  z-index: 3;
 }
 
 /* Scoped three classes deep so the shell's `a { color: inherit }` (0,2,1) cannot win. */
@@ -563,7 +616,7 @@
 }
 
 .host {
-  color: rgba(27, 23, 18, 0.62);
+  color: rgba(27, 23, 18, 0.66);
   letter-spacing: 0.02em;
 }
 
@@ -585,8 +638,9 @@
   text-wrap: pretty;
 }
 
-/* The stage photo is pinned in like a print: a paper border, a slight tilt and a strip of tape.
-   The picture itself still wipes up inside the border, as if it were developing. */
+/* The present-day photograph is pinned in like a print: a paper border, a slight tilt and a strip
+   of tape. It is printed square on its subject, in the site's warm grade, and centred in its
+   column; the picture still wipes up inside the border, as if it were developing. */
 .imageCard {
   background: #f7f3ea;
   border-radius: 2px;
@@ -596,8 +650,8 @@
     0 10px 18px -12px rgba(0, 0, 0, 0.24);
   display: grid;
   gap: 0.9rem;
-  margin: 0;
-  max-width: 46rem;
+  margin: 0 auto;
+  max-width: 34rem;
   padding: clamp(0.6rem, 1.1vw, 0.9rem) clamp(0.6rem, 1.1vw, 0.9rem) clamp(1rem, 1.6vw, 1.35rem);
   position: relative;
   rotate: 1.4deg;
@@ -617,24 +671,12 @@
   z-index: 1;
 }
 
-/* The slot is the unexposed print: dark and warm from the first paint, with the picture opening
-   inside it. */
+/* The slot is the unexposed print: dark from the first paint, with the picture opening inside it. */
 .imageSlot {
-  background: radial-gradient(90% 80% at 50% 40%, #3a322a, #171310 75%);
+  background: #171310;
   border-radius: 1px;
   overflow: hidden;
   position: relative;
-}
-
-/* An aged-print vignette closes the frame around the speaker, and the picture itself is masked to
-   him (below), so the slide and banner behind him fall into the dark rather than being cut off. */
-.imageSlot::after {
-  background: radial-gradient(ellipse 70% 76% at 54% 50%, transparent 52%, rgba(10, 9, 8, 0.7) 100%);
-  content: '';
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 1;
 }
 
 .imageFrame {
@@ -650,54 +692,16 @@
   width: 100%;
 }
 
-/* Only the speaker is kept: the mask opens on him and lets the stage backdrop (and the words on
-   it) dissolve into the print slot's dark. The latent copy shares the mask. */
-.imageMedia,
-.imageLatent {
-  --speaker-mask: radial-gradient(ellipse 28% 62% at 53% 68%, #000 56%, transparent 100%);
-  -webkit-mask-image: var(--speaker-mask);
-  mask-image: var(--speaker-mask);
-}
-
-.imageLatent {
-  display: none;
-  filter: grayscale(1) brightness(0.55) contrast(1.15) blur(5px);
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
-  opacity: 0.7;
-  position: absolute;
-  scale: 1.38;
-  width: 100%;
-}
-
-:global(html.motion) .imageLatent {
-  display: block;
-}
-
-/* Like the class wall on the path pages, the print waits in warm monochrome and only takes on
-   colour as it crosses the middle of the screen. The stage's teal backdrop is held well below full
-   saturation even then, so it stays inside the ink-and-lacquer palette; without motion the
-   standard warm grade stays. */
 .imageMedia img {
   filter: var(--brand-photo-grade);
   object-fit: cover;
-  /* Cropped in on the speaker (the origin is his focal point), so the print is a portrait of him
-     on a stage rather than a wide shot of a slide. */
-  scale: 1.38;
-  transition: filter 1000ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-:global(html.motion) .imageMedia img {
-  filter: var(--brand-photo-mono);
-}
-
-:global(html.motion) .imageCard[data-in-focus] .imageMedia img {
-  filter: saturate(0.26) sepia(0.36) contrast(1.08) brightness(0.98);
+  /* Square crop held hard to the speaker's side at the photo's native scale, so he stays sharp
+     and the hall opens to his left. The photo component sets a softer focal point inline. */
+  object-position: 100% 50% !important;
 }
 
 .imageCard figcaption {
-  color: rgba(27, 23, 18, 0.62);
+  color: rgba(27, 23, 18, 0.7);
   display: grid;
   font-family: var(--font-mono);
   font-size: 1.0625rem;
@@ -715,11 +719,11 @@
 }
 
 /* Reading progress, pinned near the bottom edge while the acts pass (centred on narrow screens,
-   under the act title on wide ones). Zero height, so it takes no room in the flow; the pill hangs
-   below its own top edge. */
+   a slim index in the right margin on wide ones). Zero height, so it takes no room in the flow;
+   the pill hangs below its own top edge. */
 
 .rail {
-  --row: 1.5rem;
+  --row: 1.75rem;
   display: flex;
   height: 0;
   justify-content: center;
@@ -793,7 +797,7 @@
 .railNumbers {
   color: #ff6f61;
   font-family: var(--font-mono);
-  font-size: 1.1875rem;
+  font-size: 1.375rem;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -810,7 +814,7 @@
   color: rgba(243, 239, 230, 0.78);
   display: none;
   font-family: var(--font-mono);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -822,7 +826,7 @@
 
 .railTitles {
   font-family: var(--font-cormorant), serif;
-  font-size: 1.4375rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
@@ -879,7 +883,8 @@
   --closing-line: color-mix(in srgb, var(--brand-text-on-paper) 24%, transparent);
   background: var(--brand-reading-paper-deep);
   color: var(--brand-text-on-paper);
-  padding: clamp(6rem, 12vw, 10rem) var(--brand-space-inline) clamp(5rem, 9vw, 8rem);
+  /* A short top: the eyebrow rides near the sheet's edge, so the rising sheet is never blank. */
+  padding: clamp(2.25rem, 3.5vw, 3rem) var(--brand-space-inline) clamp(5rem, 9vw, 8rem);
   position: relative;
 }
 
@@ -895,7 +900,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   line-height: 1.4;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
   text-transform: uppercase;
 }
 
@@ -994,10 +999,6 @@
 /* Wide screens: the title holds the left of the closing and the copy answers it on the right, so
    the panel reads as one spread before the doors; the doors and the proof link run full width. */
 @media (min-width: 1024px) {
-  .closing {
-    padding-top: clamp(5rem, 9vw, 8rem);
-  }
-
   .closingInner {
     align-items: start;
     column-gap: clamp(3rem, 6vw, 7rem);
@@ -1025,17 +1026,44 @@
   }
 }
 
-/* Wide screens: the act number and title stay put while the claims scroll past. */
-@media (min-width: 1024px) {
-  /* The rail stands in the right margin as a slim vertical index, so neither an act title
-     scrolling in nor the claims ever pass under it: the number rolls at the top, the count sits
-     below it, and each act's segment fills downward as it is read. */
+
+/* The closing stops short of the footer as a rounded sheet of its own, so the page ends on a band
+   of the archive's ink rather than running the paper into the footer's rule. */
+.closing {
+  border-radius: var(--os-sheet);
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+/* The doors' prints: square, a little under half the door, framed on the face rather than the
+   hall around it, with labels large enough to read across the room. */
+.story .closing a[data-path-door] > span:nth-child(2) {
+  aspect-ratio: 1 / 1;
+  width: 45cqi;
+}
+
+.story .closing a[data-path-door] > span:nth-child(2) img {
+  /* The photo component sets its own focal point inline. */
+  object-position: 50% 20% !important;
+}
+
+.story .closing a[data-path-door] > span:first-child > span {
+  font-size: 1rem;
+}
+
+
+/* Wide screens, with or without motion: each act is one spread. The number and title over the
+   claims on one side, the evidence in a column of its own on the other; every second act is
+   mirrored, and an act with more claims than evidence gives the claims the full height instead. */
+@media (min-width: 1100px) {
+  /* The rail stands in the right margin as a slim vertical index, so neither an act title nor
+     the claims ever pass under it: the number rolls at the top, the count sits below it, and each
+     act's segment fills downward as it is read. */
   /* align-items: the rail itself has no height, so a stretched pill would collapse to it. */
   .rail {
     align-items: flex-start;
     justify-content: flex-end;
-    padding-right: max(0.75rem, calc((var(--brand-space-inline) - 3.25rem) / 2));
-    top: calc(50svh - 8.75rem);
+    padding-right: max(0.75rem, calc((var(--brand-space-inline) - 3.5rem) / 2));
+    top: calc(50svh - 9.25rem);
   }
 
   .railPill {
@@ -1045,7 +1073,7 @@
     padding: 1rem 0 0.35rem;
     translate: 1.5rem 0;
     /* Wide enough that "/ 05" sits on one line with air on both sides. */
-    width: 3.25rem;
+    width: 3.5rem;
   }
 
   /* The number roll clips its overflow, so in a column it would otherwise shrink to nothing. */
@@ -1059,7 +1087,7 @@
 
   .railTotal {
     display: block;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     letter-spacing: 0;
     margin: 0 0 0.35rem;
   }
@@ -1073,7 +1101,7 @@
   }
 
   .rail .railSegments a {
-    height: 2.5rem;
+    height: 2.75rem;
     width: 2.75rem;
   }
 
@@ -1094,50 +1122,38 @@
     transform-origin: 50% 0;
   }
 
-  /* The right column gives the rail its own lane. Each act opens with its header, claims and
-     clipping on the screen's middle band rather than hugging the top, and the header holds there
-     while the act is read. */
+  /* The right margin is the rail's own lane. */
   .act {
-    padding-bottom: clamp(3rem, 5vw, 5rem);
-    padding-right: calc(var(--brand-space-inline) + 3rem);
-    padding-top: clamp(4.5rem, 7vw, 6.5rem);
+    padding: clamp(4.5rem, 7vw, 6.5rem) calc(var(--brand-space-inline) + 3rem) clamp(4rem, 6vw, 6rem)
+      var(--brand-space-inline);
   }
 
-  .actGrid {
-    align-items: start;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  }
-
-  .actHeader {
-    position: sticky;
-    top: max(6.5rem, 50svh - 12rem);
-  }
-
-  /* An act with evidence reads in three columns: the number and title held on the left, the
-     claims in the middle, and the clippings or photograph in a column of their own on the right,
-     each piece held mid-screen (sticky) while the act passes. */
   .actGrid[data-has-assets='true'] {
-    align-items: stretch;
-    column-gap: clamp(1.75rem, 2.8vw, 3rem);
-    grid-template-columns: minmax(0, 2.9fr) minmax(0, 4.3fr) minmax(0, 4.8fr);
+    column-gap: clamp(3rem, 5vw, 6rem);
+    grid-template-areas:
+      'head assets'
+      'body assets';
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    grid-template-rows: auto 1fr;
+    row-gap: clamp(1.25rem, 2.5vw, 2.25rem);
   }
 
-  /* Every second act is mirrored: the evidence on the left, the claims in the middle and the
-     number and title on the right, so the page does not read as one layout five times. */
   .actGrid[data-has-assets='true'][data-mirror-grid] {
-    grid-template-columns: minmax(0, 4.8fr) minmax(0, 4.3fr) minmax(0, 2.9fr);
+    grid-template-areas:
+      'assets head'
+      'assets body';
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
   }
 
-  .actGrid[data-mirror-grid] .actHeader {
-    order: 3;
+  .actGrid[data-has-assets='true'][data-dense] {
+    grid-template-areas:
+      'head body'
+      'assets body';
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .actGrid[data-mirror-grid] .claims {
-    order: 2;
-  }
-
-  .actGrid[data-mirror-grid] .assets {
-    order: 1;
+  .actGrid[data-has-assets='true'] .actHeader {
+    grid-area: head;
   }
 
   .actGrid[data-has-assets='true'] .actBody {
@@ -1146,81 +1162,387 @@
 
   .actGrid[data-has-assets='true'] .claims {
     align-content: start;
+    grid-area: body;
   }
 
-  .actGrid[data-has-assets='true'] .assets {
-    display: block;
-    margin-top: 0;
-  }
-
-  /* Held and piled only while there is motion; without it every card sits in the flow with a gap,
-     so no clipping covers another's headline. */
-  :global(html.motion) .stackCard {
-    position: sticky;
-    top: calc(max(7rem, 50svh - 12.5rem) + var(--stack-i, 0) * 2.25rem);
-  }
-
-  .stackMark {
-    display: block;
-    height: 2rem;
-  }
-
-  /* A pile: the second clipping starts most of a screen below the first and slides up over it,
-     settling a little lower so the first one's masthead still shows. Its claim is spread to meet
-     it, so each clipping arrives beside the line it proves. */
-  :global(html.motion) .stackMark {
-    height: 33svh;
-  }
-
-  /* The cost act: its one claim and its note sit in the middle of the tall title beside them, and
-     the line's stage starts a little under the columns' last stretch, so the line comes up into
-     the screen while they leave it rather than after a void. The line starts well inside its own
-     stage, so the two never overlap. The stage is see-through, so it must not catch the pointer. */
-  .act[data-has-verdict] .actGrid[data-has-assets='true'] .claims {
+  .actGrid[data-dense] .claims {
     align-content: center;
   }
 
-  .act[data-has-verdict] .actGrid[data-has-assets='true'] .assets {
+  .actGrid[data-has-assets='true'] .assets {
     align-self: center;
+    grid-area: assets;
+    margin-top: 0;
+  }
+
+  .actGrid[data-dense] .assets {
+    align-self: start;
+  }
+
+  /* The number stands beside the title, so the header is one band rather than a tower. */
+  .actTitleRow {
+    align-items: end;
+    column-gap: clamp(1rem, 2vw, 2rem);
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .actTitleRow h2 {
+    margin: 0 0 0.35em;
+  }
+
+  /* Two clippings overlap like a pile on the desk: the second lies over the foot of the first,
+     set in from the other side. The overlap stays inside the second card's top margin, so its
+     masthead reads even while the first is lifted over it. */
+  .assets[data-assets='2'] {
+    gap: 0;
+  }
+
+  .assets[data-assets='2'] > :first-child {
+    margin: 0 16% calc(-1 * clamp(1.5rem, 3.4svh, 2.25rem)) 0;
+  }
+
+  .assets[data-assets='2'] > :last-child {
+    margin-left: 16%;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* The pinned stage: wide, tall enough screens with motion. The five acts share one screen. Each
+   act is laid over the same stretch of scroll and its frame (one per act, plus one for the
+   verdict) is held at the top of the screen; the scroll is cut into one hold per frame
+   (data-swap-active, set as each step crosses the reading line), and only the frame whose hold it
+   is shows. Crossing into the next hold plays a short, timed cut: the old frame lifts away, then
+   the new one's label, number, title, claims and evidence arrive one after another, so no frame is
+   ever half of one act and half of the next. --d is a frame's distance from the current one
+   (-1 before, 0 on, 1 after), --off whether it is away at all, --in whether it is on. */
+@media (min-width: 1100px) and (min-height: 760px) {
+  :global(html.motion) .chapters {
+    --a: 0;
+    --hold: 80svh;
+    --vhold: 80svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: calc(var(--os-sheet) * -1);
+  }
+
+  :global(html.motion) .chapters[data-swap-active='1'] {
+    --a: 1;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='2'] {
+    --a: 2;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='3'] {
+    --a: 3;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='4'] {
+    --a: 4;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='5'] {
+    --a: 5;
+  }
+
+  :global(html.motion) .chapters > * {
+    grid-area: 1 / 1;
+  }
+
+  :global(html.motion) .rail {
+    align-self: start;
+  }
+
+  /* Every act spans the whole stage, so the ground is the first act's alone and the others are
+     glass laid over it. An anchor lands a little inside its act's hold. */
+  :global(html.motion) .act {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    height: var(--stage);
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    scroll-margin-top: calc(-1 * var(--at) - 6rem);
+  }
+
+  :global(html.motion) .act[data-tone='dark'] {
+    background-image: none;
+  }
+
+  :global(html.motion) .act[data-tone] + .act[data-tone] {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  :global(html.motion) .chapterMark,
+  :global(html.motion) .stepMark {
+    bottom: auto;
+    display: block;
+    height: var(--len);
+  }
+
+  /* Placed so that each crosses its reading line exactly when its hold begins. */
+  :global(html.motion) .chapterMark {
+    top: calc(var(--at) + 55svh);
+  }
+
+  :global(html.motion) .stepMark {
+    top: calc(var(--at) + 62svh);
+  }
+
+  :global(html.motion) .frame {
+    --d: clamp(-1, calc(var(--a) - var(--i)), 1);
+    --off: max(var(--d), calc(var(--d) * -1));
+    --in: calc(1 - var(--off));
+    align-content: center;
+    align-self: start;
+    box-sizing: border-box;
+    display: grid;
+    grid-area: 1 / 1;
+    height: 100svh;
+    isolation: isolate;
+    margin: var(--at) 0 0;
+    max-width: none;
+    padding: max(6.5rem, 12svh) calc(var(--brand-space-inline) + 3rem) max(3rem, 6svh) var(--brand-space-inline);
+    pointer-events: none;
+    position: sticky;
+    top: 0;
+  }
+
+  :global(html.motion) .chapters[data-swap-active='0'] [data-frame='0'],
+  :global(html.motion) .chapters:not([data-swap-active]) [data-frame='0'],
+  :global(html.motion) .chapters[data-swap-active='1'] [data-frame='1'],
+  :global(html.motion) .chapters[data-swap-active='2'] [data-frame='2'],
+  :global(html.motion) .chapters[data-swap-active='3'] [data-frame='3'],
+  :global(html.motion) .chapters[data-swap-active='4'] [data-frame='4'],
+  :global(html.motion) .chapters[data-swap-active='5'] [data-frame='5'] {
+    pointer-events: auto;
+  }
+
+  /* A keyboard reader tabbing into an act that is not on screen brings it on. */
+  :global(html.motion) .frame:has(:focus-visible) {
+    --d: 0;
+    pointer-events: auto;
+  }
+
+  :global(html.motion) .chapters:has(.frame :focus-visible) .frame:not(:has(:focus-visible)) {
+    --d: 1;
+  }
+
+  /* Each frame brings its own low lacquer light, on the side its evidence sits. */
+  :global(html.motion) .frame::before {
+    background: radial-gradient(56% 50% at var(--glow-x, 84%) 30%, rgba(179, 35, 27, 0.16), transparent 70%);
+    content: '';
+    inset: 0;
+    opacity: var(--in);
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 600ms var(--os-ease);
+    z-index: -1;
+  }
+
+  :global(html.motion) .verdictStage {
+    --glow-x: 50%;
+  }
+
+  /* The cut: away pieces leave fast and at once; arriving ones wait for the old frame to clear,
+     then come in one after another (--delay). The whole act is on within about 0.9s, so a reader
+     who stops scrolling never waits on a half-built frame. */
+  :global(html.motion)
+    .frame
+    :is(
+      .actLabel,
+      .numeral,
+      .actHeader h2,
+      .claims > .claim,
+      .assetCard,
+      .verdictClock,
+      .verdict p,
+      .verdict > .sourceLink,
+      .verdict > .sourceLabel
+    ) {
+    opacity: var(--in);
+    transition-delay: calc(var(--in) * (0.08s + var(--delay, 0s)));
+    transition-duration: calc(200ms + var(--in) * 250ms), calc(360ms + var(--in) * 340ms), 700ms;
+    transition-property: opacity, translate, rotate;
+    transition-timing-function: var(--os-ease);
+    translate: 0 calc(var(--d) * -1.75rem);
+  }
+
+  :global(html.motion) .frame .numeral {
+    --delay: 0.03s;
+  }
+
+  :global(html.motion) .frame .actHeader h2 {
+    --delay: 0.06s;
+  }
+
+  :global(html.motion) .frame .claims > .claim {
+    --delay: calc(0.08s + var(--n, 0) * 0.05s);
+  }
+
+  :global(html.motion) .frame .assetCard {
+    --delay: calc(0.06s + var(--n, 0) * 0.07s);
+    rotate: calc(var(--off) * 3deg);
+  }
+
+  :global(html.motion) .frame .verdict p {
+    --delay: 0.05s;
+    font-size: clamp(5rem, min(0.5rem + 13vw, 22svh), 14rem);
+  }
+
+  :global(html.motion) .frame .verdict > :is(.sourceLink, .sourceLabel) {
+    --delay: 0.14s;
+  }
+
+  /* The number fills from the foot as its act comes on, the rule above each claim draws out, and
+     the print develops upward inside its border. */
+  :global(html.motion) .frame .numeralFill {
+    clip-path: inset(calc(var(--off) * 100%) 0 0 0);
+    transition: clip-path 700ms var(--os-ease) calc(var(--in) * 0.12s);
+  }
+
+  /* The rule's own draw (scaleX) belongs to the motion engine, so the cut redraws it with a clip. */
+  :global(html.motion) .frame .claimRule {
+    clip-path: inset(0 calc(var(--off) * 100%) 0 0);
+    opacity: var(--in);
+    transition:
+      clip-path 600ms var(--os-ease) calc(var(--in) * (0.1s + var(--n, 0) * 0.05s)),
+      opacity 250ms linear calc(var(--in) * 0.1s);
+  }
+
+  :global(html.motion) .frame .imageSlot {
+    clip-path: inset(calc(var(--off) * 100%) 0 0 0);
+    transition: clip-path 800ms var(--os-ease) calc(var(--in) * 0.12s);
+  }
+
+  /* Sized to the screen's height, so a whole act always fits its frame. */
+  :global(html.motion) .frame .numeral {
+    font-size: clamp(7rem, 1rem + 17svh, 12.5rem);
+  }
+
+  :global(html.motion) .frame .actHeader h2 {
+    font-size: clamp(2.5rem, 1rem + 5svh, 4.5rem);
+  }
+
+  :global(html.motion) .frame .claims > .claim {
+    gap: 0.75rem;
+    padding: clamp(1.1rem, 2.2svh, 1.75rem) 0 clamp(1.25rem, 2.6svh, 2rem);
+  }
+
+  :global(html.motion) .frame .claims > .claim p {
+    font-size: clamp(1.25rem, 0.6rem + 1.6svh, 1.5rem);
+    line-height: 1.42;
+  }
+
+  :global(html.motion) .frame .headline {
+    font-size: clamp(1.7rem, 0.7rem + 2.5svh, 2.6rem);
+  }
+
+  :global(html.motion) .frame .noteText {
+    font-size: clamp(2rem, 0.9rem + 2.75svh, 2.85rem);
+  }
+
+  :global(html.motion) .frame .imageCard {
+    max-width: min(25rem, calc(100svh - 32.5rem));
+  }
+
+  /* A dense act stacks its title over the print; a tighter gap keeps the print's foot clear of the
+     screen edge through its drift. */
+  :global(html.motion) .frame .actGrid[data-dense] {
+    row-gap: clamp(0.75rem, 1.6svh, 1.25rem);
+  }
+
+  /* On the stage the evidence takes the wider column: a held act is read beside its clipping. */
+  :global(html.motion) .frame .actGrid[data-has-assets='true']:not([data-dense]) {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  :global(html.motion) .frame .actGrid[data-has-assets='true'][data-mirror-grid]:not([data-dense]) {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+
+  /* While an act is held, its evidence drifts slowly with the scroll (each piece at its own rate),
+     so the hold reads as a camera still moving rather than a paused page. The timeline is the act's
+     own step marker, and the range is exactly its hold. */
+  @supports (animation-timeline: view()) and (timeline-scope: none) {
+    :global(html.motion) .act {
+      timeline-scope: --os-hold;
+    }
+
+    :global(html.motion) .chapterMark + .stepMark {
+      view-timeline: --os-hold block;
+    }
+
+    :global(html.motion) .frame .assetCard {
+      --drift: calc(1rem + var(--n, 0) * 1.1rem);
+      animation: os-drift linear both;
+      animation-range: cover 38svh cover calc(38svh + var(--hold));
+      animation-timeline: --os-hold;
+    }
+  }
+
+  /* The verdict has the screen to itself, centred. */
+  :global(html.motion) .verdictHold {
+    align-content: center;
+    display: grid;
+    height: 100%;
+    justify-items: center;
+  }
+
+  :global(html.motion) .verdict {
+    padding-top: 0;
+  }
+
+  :global(html.motion) .clockValue {
+    font-size: clamp(4rem, 1rem + 8svh, 7rem);
+  }
+}
+
+@keyframes os-drift {
+  from {
+    transform: translate3d(0, var(--drift), 0);
+  }
+
+  to {
+    transform: translate3d(0, calc(var(--drift) * -1), 0);
+  }
+}
+
+/* Motion without the pinned stage (narrow or short screens): the acts run in the flow, the verdict
+   is held on the screen while its years are counted, and each number fills as its header crosses
+   the middle of the screen. */
+@media not all and (min-width: 1100px) and (min-height: 760px) {
+  :global(html.motion) .act[data-has-verdict] {
     padding-bottom: 0;
   }
 
   :global(html.motion) .verdictStage {
-    margin-top: -16svh;
-    pointer-events: none;
-  }
-
-  :global(html.motion) .verdictStage a {
-    pointer-events: auto;
-  }
-
-  :global(html.motion) .actGrid[data-stacked='true'] .assets,
-  :global(html.motion) .actGrid[data-stacked='true'] .claims {
-    padding-bottom: 8svh;
-  }
-
-  .actGrid[data-stacked='true'] .claims {
-    align-content: space-between;
-  }
-
-  /* One piece of evidence still holds for a while beside the claims. */
-  :global(html.motion) .actGrid[data-stacked='false'] .assets {
-    padding-bottom: 6svh;
-  }
-}
-
-@media (max-width: 1023px) {
-  /* A shorter hold below the wide layout: the line is pinned a little above centre, so the
-     stretch of bare dark before the next chapter stays small on a tall, narrow screen. */
-  :global(html.motion) .verdictStage {
-    height: 118svh;
+    height: 140svh;
+    margin-top: clamp(1rem, 3vw, 3rem);
   }
 
   :global(html.motion) .verdictHold {
+    align-content: center;
+    display: grid;
     min-height: 76svh;
+    position: sticky;
     top: 12svh;
   }
 
+  :global(html.motion) .numeralFill {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 800ms var(--os-ease);
+  }
+
+  :global(html.motion) .actHeader:not([data-in-focus]) .numeralFill {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@media (max-width: 1099px) {
   .assets[data-assets='2'] > :last-child {
     margin: -0.75rem 0 0 clamp(1.5rem, 8vw, 4rem);
   }
@@ -1229,6 +1551,21 @@
 @media (max-width: 640px) {
   .rail {
     top: calc(100svh - 4.25rem);
+  }
+
+  /* The last lines of each act clear the pill and its scrim before the next sheet arrives. */
+  .act {
+    padding-bottom: 6rem;
+  }
+
+  /* A shorter hold for the verdict on a phone: the count still finishes while the line is held. */
+  :global(html.motion) .verdictStage {
+    height: 116svh;
+  }
+
+  :global(html.motion) .verdictHold {
+    min-height: 64svh;
+    top: 18svh;
   }
 
   /* A scrim under the pill: lines of body text fade out before the bottom edge instead of

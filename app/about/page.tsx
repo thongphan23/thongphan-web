@@ -30,10 +30,7 @@ export default function AboutPage() {
         <HeroPointer />
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy} data-scroll-out="18">
-            <div className={`${styles.heroMeta} intro-fade`}>
-              <span className={styles.eyebrow}>Hồ sơ nguồn gốc</span>
-              <span className={styles.folio}>Thông Phan · Người dẫn đường</span>
-            </div>
+            <p className={`${styles.eyebrow} intro-fade`}>Hồ sơ nguồn gốc</p>
             <h1 id="about-title" className={styles.title}>
               <SplitWords text={titleHead} />{' '}
               <em>
@@ -50,6 +47,8 @@ export default function AboutPage() {
                 href="#origin-story"
                 data-motion-action
                 data-magnetic="0.25"
+                data-cursor="Đọc"
+                data-cursor-tone="lacquer"
               >
                 <span className={styles.startInner} data-magnetic-inner>
                   Bắt đầu câu chuyện
@@ -69,12 +68,9 @@ export default function AboutPage() {
                 </div>
               </div>
               <span className={styles.portraitGrain} aria-hidden="true" />
+              <span className={styles.portraitShade} aria-hidden="true" />
               <span className={styles.portraitTorch} aria-hidden="true" />
             </div>
-            <figcaption className={`${styles.portraitCaption} intro-fade`}>
-              <span>Thông Phan</span>
-              <span>Người dẫn đường</span>
-            </figcaption>
           </figure>
         </div>
 
@@ -82,7 +78,7 @@ export default function AboutPage() {
           <ol className={styles.actList}>
             {originStoryPublic.acts.map((act, index) => (
               // The acts arrive with the first screen, one after another once the headline has risen.
-              <li key={act.id} className="intro-fade" style={{ '--intro-delay': `${1.15 + index * 0.08}s` } as CSSProperties}>
+              <li key={act.id} className="intro-fade" style={{ '--intro-delay': `${0.55 + index * 0.06}s` } as CSSProperties}>
                 <a
                   className={styles.actLink}
                   href={`#origin-act-${act.id}`}

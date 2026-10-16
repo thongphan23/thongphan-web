@@ -3,12 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import PathDoors from '@/components/two-path/PathDoors'
+import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import {
   originStoryPublic,
   type PublicOriginAsset,
   type PublicOriginClaim,
 } from '@/lib/origin-story-evidence'
 import { aboutPathContent } from '@/lib/two-path-content'
+import type { TwoPathPhotoId } from '@/lib/two-path-photos'
 import styles from './OriginStory.module.css'
 
 type PressArtifact = Extract<PublicOriginAsset, { kind: 'press-card' }>
@@ -83,6 +85,20 @@ const verdictLines = (text: string) => {
   return at < 0 ? [text] : [text.slice(0, at + 1), text.slice(at + 2)]
 }
 
+// The lead's last word (the debt itself) is circled in lacquer; it is split off here so the line
+// still comes whole from the evidence file.
+function VerdictLead({ line }: { line: string }) {
+  const parts = line.match(/^(.*\s)(\S+?)([.!?…]*)$/)
+  if (!parts) return <span className={styles.verdictLead}>{line}</span>
+  return (
+    <span className={styles.verdictLead}>
+      {parts[1]}
+      <span className={styles.verdictMark}>{parts[2]}</span>
+      {parts[3]}
+    </span>
+  )
+}
+
 // Where the original article lives, as a reader would type it.
 const hostOf = (href: string) => new URL(href).hostname.replace(/^www\./, '')
 
@@ -138,46 +154,34 @@ function NoteCard({ claim, label, index }: { claim: PublicOriginClaim; label: st
   )
 }
 
+// The evidence file's present-day print is cut from the same session as the hero portrait, so the
+// act would show the reader the first picture again. It is shown with the photo set's own
+// present-day hall instead, a different moment, printed square on the speaker (its focal point):
+// he stays sharp and large, and the hall, softened for the audience's privacy, falls behind him.
+const ASSET_PHOTO: Partial<Record<string, TwoPathPhotoId>> = { 'present-day-stage': 'home-hero' }
+
 function ImageCard({ asset }: { asset: ImageArtifact }) {
+  const photoId = ASSET_PHOTO[asset.id]
   return (
     <figure className={styles.imageCard} data-motion-surface data-header-ignore data-focus-bloom>
       {/* The print slot is dark from the first paint, so while the picture is still opening (or
           decoding) the card shows an unexposed print, never a blank sheet of paper. */}
-      <div className={styles.imageSlot} style={{ aspectRatio: `${asset.width} / ${asset.height}` }}>
-        {/* The latent image: the same picture, dim and soft, already in the slot while the sharp one
-            wipes up over it, so the print is never an empty dark rectangle mid-reveal. */}
-        <Image
-          className={styles.imageLatent}
-          src={asset.imageUrl}
-          width={asset.width}
-          height={asset.height}
-          alt=""
-          aria-hidden="true"
-          sizes="(max-width: 1023px) 92vw, 52vw"
-          loading="eager"
-          style={{
-            objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
-            transformOrigin: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
-          }}
-        />
-        <div
-          className={styles.imageFrame}
-          data-img-reveal="up"
-          data-parallax-frame="6"
-        >
+      <div className={styles.imageSlot} style={{ aspectRatio: photoId ? '1 / 1' : `${asset.width} / ${asset.height}` }}>
+        <div className={styles.imageFrame} data-img-reveal="up" data-parallax-frame="6">
           <div className={styles.imageMedia} data-reveal-media>
-            <Image
-              src={asset.imageUrl}
-              width={asset.width}
-              height={asset.height}
-              alt={asset.alt}
-              sizes="(max-width: 1023px) 92vw, 52vw"
-              loading="eager"
-              style={{
-                objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
-                transformOrigin: `${asset.focalPoint.x}% ${asset.focalPoint.y}%`,
-              }}
-            />
+            {photoId ? (
+              <TwoPathPhoto id={photoId} sizes="(max-width: 1099px) 92vw, 44vw" eager />
+            ) : (
+              <Image
+                src={asset.imageUrl}
+                width={asset.width}
+                height={asset.height}
+                alt={asset.alt}
+                sizes="(max-width: 1099px) 92vw, 44vw"
+                loading="eager"
+                style={{ objectPosition: `${asset.focalPoint.x}% ${asset.focalPoint.y}%` }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -192,6 +196,39 @@ function ImageCard({ asset }: { asset: ImageArtifact }) {
 function OriginAsset({ asset, index }: { asset: PublicOriginAsset; index: number }) {
   if (asset.kind === 'press-card') return <PressCard asset={asset} index={index} />
   return <ImageCard asset={asset} />
+}
+
+// The pinned stage (wide screens with motion): the acts share one screen and the scroll is cut
+// into frames, one per act plus one for the verdict. Each frame holds the screen for its stretch of
+// scroll and the next one only takes over once the reader has had all of it, so no frame ever
+// shows two acts at once. Lengths are counted in holds, which the CSS sets (an act frame holds for
+// one, the verdict for its own). The last act holds as long as the others, then scrolls away in the
+// flow with the closing sheet right behind it, so the sheet never lands on a half-read act.
+type Span = { h: number; v: number }
+type Frame = { act: number; verdict: boolean; at: Span; len: Span }
+
+const round = (value: number) => Math.round(value * 100) / 100
+const span = ({ h, v }: Span) => `calc(${round(h)} * var(--hold) + ${round(v)} * var(--vhold))`
+const add = (a: Span, b: Span): Span => ({ h: a.h + b.h, v: a.v + b.v })
+
+const frames: Frame[] = []
+publicActs.forEach((act, index) => {
+  const parts = act.claims.some((claim) => claim.id === VERDICT_CLAIM) ? [false, true] : [false]
+  for (const verdict of parts) frames.push({ act: index, verdict, at: { h: 0, v: 0 }, len: { h: verdict ? 0 : 1, v: verdict ? 1 : 0 } })
+})
+const framesEnd = frames.reduce((at, frame) => {
+  frame.at = at
+  return add(at, frame.len)
+}, { h: 0, v: 0 } as Span)
+// The stage is one screen taller than its frames: the last one is still on screen while it leaves.
+const STAGE_STYLE = { '--stage': `calc(${span(framesEnd)} + 100svh)` } as CSSProperties
+
+const frameIndex = (act: number, verdict: boolean) => frames.findIndex((frame) => frame.act === act && frame.verdict === verdict)
+const frameStyle = (index: number) => ({ '--i': index, '--at': span(frames[index].at) }) as CSSProperties
+// A chapter runs from its first frame to the end of its last.
+const chapterSpan = (act: number) => {
+  const own = frames.filter((frame) => frame.act === act)
+  return { at: own[0].at, len: own.reduce((total, frame) => add(total, frame.len), { h: 0, v: 0 } as Span) }
 }
 
 export default function OriginStory() {
@@ -211,9 +248,10 @@ export default function OriginStory() {
         </figure>
       </section>
 
-      <div className={styles.chapters} data-chapters>
-        {/* Reading progress: a pill pinned to the bottom of the screen while the acts pass.
-            The number and title roll to the act being read; each segment fills as it is read. */}
+      <div className={styles.chapters} data-chapters data-swap style={STAGE_STYLE}>
+        {/* Reading progress: a pill pinned to the bottom of the screen while the acts pass (a slim
+            index in the right margin on wide screens). The number and title roll to the act being
+            read; each segment fills as it is read. */}
         <nav
           className={styles.rail}
           data-chapter-rail
@@ -239,7 +277,12 @@ export default function OriginStory() {
             <ol className={styles.railSegments}>
               {publicActs.map((act) => (
                 <li key={act.id}>
-                  <a href={`#origin-act-${act.id}`} data-chapter-link aria-label={`${act.label}: ${act.title}`}>
+                  <a
+                    href={`#origin-act-${act.id}`}
+                    data-chapter-link
+                    data-cursor="Đến hồi"
+                    aria-label={`${act.label}: ${act.title}`}
+                  >
                     <span className={styles.segmentTrack}>
                       <span className={styles.segmentFill} />
                     </span>
@@ -255,10 +298,12 @@ export default function OriginStory() {
           // The first claim of an act with nothing to show becomes its note (and leaves the list).
           const note = act.assets.length === 0 ? act.claims.find((claim) => claim !== verdict) : undefined
           const hasAssets = act.assets.length > 0 || Boolean(note)
+          const listed = act.claims.filter((claim) => claim !== verdict && claim !== note)
           const titleId = `origin-act-${act.id}-title`
-          const stacked = act.assets.length > 1
           // Every second act is mirrored on wide screens, so the evidence changes sides down the page.
           const mirrored = index % 2 === 1
+          const actFrame = frameIndex(index, false)
+          const chapter = chapterSpan(index)
           return (
             <section
               key={act.id}
@@ -267,86 +312,109 @@ export default function OriginStory() {
               data-curtain={index === 0 ? '' : undefined}
               data-has-verdict={verdict ? '' : undefined}
               data-mirror={mirrored ? '' : undefined}
-              data-chapter
               id={`origin-act-${act.id}`}
               aria-labelledby={titleId}
+              style={{ '--at': span(frames[actFrame].at) } as CSSProperties}
             >
-              <div
-                className={styles.actGrid}
-                data-origin-act={act.id}
-                data-has-assets={hasAssets}
-                data-stacked={stacked}
-                data-mirror-grid={mirrored ? '' : undefined}
-              >
-                <header className={styles.actHeader}>
-                  <p className={styles.actLabel}>{act.label}</p>
-                  <p className={styles.numeral} data-chapter-numeral aria-hidden="true">
-                    <span className={styles.numeralOutline}>{pad(index + 1)}</span>
-                    <span className={styles.numeralFill}>{pad(index + 1)}</span>
-                  </p>
-                  <h2 id={titleId} data-split>
-                    {act.title}
-                  </h2>
-                </header>
+              {/* Scroll markers: the chapter's stretch for the rail, and one step per frame for the
+                  stage. Without the pinned stage the chapter marker simply covers the section. */}
+              <span
+                className={styles.chapterMark}
+                data-chapter
+                aria-hidden="true"
+                style={{ '--at': span(chapter.at), '--len': span(chapter.len) } as CSSProperties}
+              />
+              {frames.map((frame, k) =>
+                frame.act === index ? (
+                  <span
+                    key={k}
+                    className={styles.stepMark}
+                    data-swap-step
+                    aria-hidden="true"
+                    style={{ '--at': span(frame.at), '--len': span(frame.len) } as CSSProperties}
+                  />
+                ) : null,
+              )}
 
-                <div className={styles.actBody}>
-                  <ol className={styles.claims}>
-                    {act.claims.map((claim) =>
-                      claim === verdict || claim === note ? null : (
-                        <li key={claim.id} className={styles.claim}>
-                          <span className={styles.claimRule} data-draw-line aria-hidden="true" />
-                          <p>{claim.text}</p>
-                          <ClaimSource claim={claim} />
-                        </li>
-                      ),
-                    )}
-                  </ol>
-                  {/* On wide screens the evidence holds its own column: each piece stays on screen
-                      while the act is read, and a second clipping slides up over the first. */}
-                  {hasAssets ? (
-                    <div
-                      className={styles.assets}
-                      data-assets={act.assets.length || 1}
-                      data-stack={stacked ? '' : undefined}
-                      data-stack-media="(min-width: 1024px)"
-                      data-stack-scale="0.94"
-                      data-stack-opacity="0.72"
-                    >
-                      {act.assets.map((asset, assetIndex) => (
-                        <Fragment key={asset.id}>
-                          {assetIndex > 0 ? <span className={styles.stackMark} data-stack-mark aria-hidden="true" /> : null}
+              <div className={styles.frame} data-frame={actFrame} style={frameStyle(actFrame)}>
+                <div
+                  className={styles.actGrid}
+                  data-origin-act={act.id}
+                  data-has-assets={hasAssets}
+                  data-dense={listed.length > 2 ? '' : undefined}
+                  data-mirror-grid={mirrored ? '' : undefined}
+                >
+                  <header className={styles.actHeader} data-focus-bloom>
+                    <p className={styles.actLabel}>{act.label}</p>
+                    <div className={styles.actTitleRow}>
+                      <p className={styles.numeral} data-chapter-numeral aria-hidden="true">
+                        <span className={styles.numeralOutline}>{pad(index + 1)}</span>
+                        <span className={styles.numeralFill}>{pad(index + 1)}</span>
+                      </p>
+                      <h2 id={titleId} data-split>
+                        {act.title}
+                      </h2>
+                    </div>
+                  </header>
+
+                  <div className={styles.actBody}>
+                    <ol className={styles.claims}>
+                      {act.claims.map((claim) =>
+                        claim === verdict || claim === note ? null : (
+                          <li
+                            key={claim.id}
+                            className={styles.claim}
+                            style={{ '--n': listed.indexOf(claim) } as CSSProperties}
+                          >
+                            <span className={styles.claimRule} data-draw-line aria-hidden="true" />
+                            <p>{claim.text}</p>
+                            <ClaimSource claim={claim} />
+                          </li>
+                        ),
+                      )}
+                    </ol>
+                    {hasAssets ? (
+                      <div className={styles.assets} data-assets={act.assets.length || 1}>
+                        {act.assets.map((asset, assetIndex) => (
                           <div
-                            className={styles.stackCard}
-                            data-stack-card
-                            style={{ '--stack-i': assetIndex } as CSSProperties}
+                            key={asset.id}
+                            className={styles.assetCard}
+                            style={{ '--n': assetIndex } as CSSProperties}
                           >
                             <OriginAsset asset={asset} index={index + assetIndex} />
                           </div>
-                        </Fragment>
-                      ))}
-                      {note ? (
-                        <div className={styles.stackCard}>
-                          <NoteCard claim={note} label={act.label} index={index} />
-                        </div>
-                      ) : null}
-                    </div>
-                  ) : null}
+                        ))}
+                        {note ? (
+                          <div className={styles.assetCard}>
+                            <NoteCard claim={note} label={act.label} index={index} />
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
+
               {verdict ? (
-                <div className={styles.verdictStage} data-scrub-stage>
+                <div
+                  className={`${styles.frame} ${styles.verdictStage}`}
+                  data-frame={frameIndex(index, true)}
+                  data-scrub-stage
+                  style={frameStyle(frameIndex(index, true))}
+                >
                   <div className={styles.verdictHold}>
-                    <div className={`${styles.claim} ${styles.verdict}`}>
+                    {/* Ten years are counted off while the line is held; the rest of the line only
+                        lands once the count has reached them. */}
+                    <div
+                      className={`${styles.claim} ${styles.verdict}`}
+                      data-scroll-count={verdict.text.includes(VERDICT_YEARS.phrase) ? '' : undefined}
+                      data-count-from="1"
+                      data-count-start="top top"
+                      data-count-end="top -40%"
+                    >
                       <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                       {verdict.text.includes(VERDICT_YEARS.phrase) ? (
-                        <div
-                          className={styles.verdictClock}
-                          data-scroll-count
-                          data-count-from="1"
-                          data-count-start="top 70%"
-                          data-count-end="top 10%"
-                          aria-hidden="true"
-                        >
+                        <div className={styles.verdictClock} aria-hidden="true">
                           <span className={styles.clockLabel}>
                             Năm <span className={styles.clockValue} data-count-value>{VERDICT_YEARS.count}</span> / {VERDICT_YEARS.count}
                           </span>
@@ -355,11 +423,16 @@ export default function OriginStory() {
                           </span>
                         </div>
                       ) : null}
-                      <p data-scrub-words data-scrub-from="0.5" data-scrub-start="top 70%" data-scrub-end="top 10%">
+                      <p>
+                        {/* Keyed by position, so the sentence itself is not repeated in the payload. */}
                         {verdictLines(verdict.text).map((line, lineIndex) => (
-                          <Fragment key={line}>
+                          <Fragment key={lineIndex}>
                             {lineIndex ? ' ' : null}
-                            <span className={lineIndex ? styles.verdictRest : styles.verdictLead}>{line}</span>
+                            {lineIndex ? (
+                              <span className={styles.verdictRest}>{line}</span>
+                            ) : (
+                              <VerdictLead line={line} />
+                            )}
                           </Fragment>
                         ))}
                       </p>
