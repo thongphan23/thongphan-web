@@ -1,5 +1,23 @@
 # thongphan.com — Unified Cinema status
 
+## Vòng r17 (lớp toàn cục + nâng cấp từng trang) — PARTIAL, dừng sớm theo yêu cầu — 2026-10-16
+
+- Đã gộp vào `feature/two-path-rebuild`:
+  - lớp toàn cục `709029a`: thang cỡ chữ và tương phản ≥ 7:1, một grade ảnh chung kèm hạt phim từ canvas, nền đúng màu ngay lần vẽ đầu, header ẩn/hiện theo hướng cuộn, con trỏ có nhãn và hút về nút, xoá CSS chết khoảng 2,7 KiB mỗi route
+  - home `07f84a3`: nét bút đường dẫn vẽ theo cuộn, tách hai nhánh lime/ember
+  - tensai `510a457`
+  - conan `2da22ef`
+  - about `54507e7`
+- Phần sửa dở chưa commit của vòng repair home trong worktree r17-home **không** gộp.
+- Kiểm chứng:
+  - build OK
+  - test 551 pass / 4 fail (đúng baseline)
+  - CSS gzip: index 29.45, tensai 31.07, conan 31.60, about 31.96 KiB
+  - ảnh chụp 1440 và 390 không có lỗi console
+- Chưa chấm lại điểm critic (v24). Anh Thông chưa duyệt thẩm mỹ.
+- Preview: https://preview-two-path.thongphan-com.pages.dev
+- Vẫn chặn: push (repo public, chờ face consent) và deploy production.
+
 ## Nâng cấp tương tác cuộn mức đoạt giải — đang làm (PARTIAL) — 2026-10-15
 
 - **Phạm vi:** `/`, `/tensai`, `/conan`, `/about`, header và footer; trên nhánh `feature/two-path-rebuild`. Spec: `docs/superpowers/specs/2026-10-14-thongphan-award-motion-design.md`.
