@@ -50,7 +50,8 @@
   border-top: 1px solid var(--cinema-line);
   color: var(--cinema-paper);
   display: flex;
-  font-size: clamp(1.125rem, 1rem + 0.3vw, 1.3125rem);
+  /* A step above body: the file's label has to read at a glance, not as a footnote. */
+  font-size: clamp(16px, 1.45vw, 21px);
   font-weight: 700;
   gap: 0.8rem;
   letter-spacing: 0.1em;
@@ -124,10 +125,11 @@
 }
 
 .lead {
-  color: color-mix(in srgb, var(--brand-paper) 92%, transparent);
-  font-size: clamp(1.1875rem, 1rem + 0.4vw, 1.3125rem);
+  color: var(--brand-text-secondary-dark);
+  font-size: var(--fs-lead);
   line-height: 1.5;
   margin: 0;
+  max-width: 34ch;
 }
 
 /* Colour rules sit at (0,3,0) so the shell's `a { color: inherit }` cannot win. */
@@ -200,9 +202,9 @@
      that gap rather than the man. */
   .portrait {
     display: block;
-    inset: 0 calc(50% - 50vw) calc(-1 * clamp(2.25rem, 4vw, 3.5rem)) auto;
+    inset: calc(-1 * clamp(1.25rem, 2.5vw, 2.25rem) - 2rem) calc(50% - 50vw) calc(-1 * clamp(2.25rem, 4vw, 3.5rem)) auto;
     position: absolute;
-    width: 48vw;
+    width: 56vw;
     z-index: 0;
   }
 
@@ -228,13 +230,9 @@
 /* The backlight: a lacquer pool behind the head, fully transparent well inside the frame. With
    motion allowed it breathes slowly, so even an untouched first screen is never a still. */
 .portraitGlow {
-  background: radial-gradient(
-    ellipse 40% 36% at 50% 40%,
-    rgba(224, 75, 67, 0.48),
-    rgba(179, 35, 27, 0.25) 46%,
-    rgba(120, 22, 18, 0.08) 76%,
-    transparent
-  );
+  background:
+    radial-gradient(ellipse 34% 30% at 44% 30%, rgba(255, 226, 186, 0.34), rgba(255, 196, 140, 0.12) 55%, transparent),
+    radial-gradient(ellipse 46% 40% at 62% 46%, rgba(179, 35, 27, 0.2), rgba(120, 22, 18, 0.06) 70%, transparent);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -267,7 +265,7 @@
    glance, and stands on the frame's lower fade so the body has no cut edge. Shown at or under its
    native size, so it stays sharp. */
 .portraitPhoto {
-  filter: var(--brand-photo-mono) brightness(1.1);
+  filter: var(--brand-photo-mono) brightness(1.36) contrast(1.02);
   inset: 2% 3% -6%;
   position: absolute;
 }
@@ -278,6 +276,19 @@
   object-fit: contain;
   object-position: 50% 100%;
   width: 100%;
+}
+
+/* The key light: a warm wash aimed at the face, laid over the photograph in screen blend, with a
+   wider, fainter lift under it, so the forehead and both cheeks come out of the shadow. */
+.portraitPhoto::after {
+  background:
+    radial-gradient(ellipse 18% 15% at 52% 24%, rgba(255, 236, 210, 0.42), transparent 74%),
+    radial-gradient(ellipse 34% 30% at 52% 30%, rgba(255, 228, 196, 0.14), transparent 78%);
+  content: '';
+  inset: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  position: absolute;
 }
 
 /* The torch: a warm disc of light that follows the pointer, or wanders slowly around the face when
@@ -300,14 +311,14 @@
 .portraitTorch {
   background: radial-gradient(
     circle closest-side,
-    rgba(255, 194, 128, 0.36),
-    rgba(255, 178, 110, 0.17) 46%,
-    rgba(255, 170, 100, 0.05) 76%,
+    rgba(255, 214, 160, 0.3),
+    rgba(255, 190, 126, 0.12) 46%,
+    rgba(255, 170, 100, 0.03) 76%,
     transparent
   );
-  height: 44rem;
-  mix-blend-mode: screen;
-  width: 44rem;
+  height: 34rem;
+  mix-blend-mode: soft-light;
+  width: 34rem;
 }
 
 .portraitShade {
@@ -328,7 +339,7 @@
    in depth; the torch follows. */
 @media (min-width: 900px) and (hover: hover) and (pointer: fine) {
   :global(html.motion) .portraitDrift {
-    transform: translate3d(calc(var(--px, 0) * -16px), calc(var(--py, 0) * -11px), 0) scale(1.04);
+    transform: translate3d(calc(var(--px, 0) * -22px), calc(var(--py, 0) * -14px), 0) scale(1.04);
     will-change: transform;
   }
 
@@ -342,7 +353,7 @@
   }
 
   :global(html.motion) .portraitTorch {
-    transform: translate3d(calc(var(--tx, 0px) - 22rem), calc(var(--ty, 0px) - 22rem), 0);
+    transform: translate3d(calc(var(--tx, 0px) - 17rem), calc(var(--ty, 0px) - 17rem), 0);
   }
 
   :global(html.motion) .portraitShade {
@@ -459,8 +470,8 @@
 }
 
 .actTitle {
-  font-size: clamp(1.125rem, 0.9rem + 0.4vw, 1.3125rem);
-  font-weight: 600;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 700;
   grid-area: title;
   line-height: 1.3;
   text-wrap: balance;
@@ -491,6 +502,12 @@
 .actLink:is(:hover, :focus-visible) .actArrow {
   opacity: 1;
   translate: 4px -4px;
+}
+
+/* The slip that rises behind a chip already says where it leads, so the cursor's tag folds away
+   there instead of sitting on the chip's own title. */
+:global(html):has(.actLink:hover) :global(.motion-cursor__tag) {
+  visibility: hidden;
 }
 
 @media (max-width: 1100px) {
@@ -552,7 +569,5 @@
     font-size: 2.125rem;
   }
 
-  .actTitle {
-    font-size: 1.1875rem;
-  }
+
 }

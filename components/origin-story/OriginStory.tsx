@@ -230,32 +230,36 @@ function OriginAsset({ asset, index }: { asset: PublicOriginAsset; index: number
 // The pinned stage (wide screens with motion): the acts share one screen and the scroll is cut
 // into frames, one per act plus one for the verdict. Each frame holds the screen for its stretch of
 // scroll and the next one only takes over once the reader has had all of it, so no frame ever
-// shows two acts at once. Lengths are counted in holds, which the CSS sets (an act frame holds for
-// one, the verdict for its own). The last act holds as long as the others plus half a hold more on
-// its second beat; then, still held, it is covered by the closing sheet, which the CSS lays over the
-// stage's last screen. The sheet only starts once that beat has settled and held for about a
-// screen, so it never lands on a half-read act or one that has only just changed.
+// shows two acts at once. Lengths are counted in holds, which the CSS sets (80svh for an act, the
+// verdict its own), and differ by document: the broadsheet's push-in is held longest, the memo and
+// the records shortest, so the acts do not all beat at one tempo. The last act stays held under the
+// closing sheet, which the CSS lays over the stage's last screen, but only for as long as the sheet
+// takes to come up, so the story never stalls on its final card.
 // Each hold is played in two beats (a step marker per half): the act settles once, then its
 // document moves on to its second still, so a held act is never one picture for a whole screen.
 type Span = { h: number; v: number }
 type Frame = { act: number; verdict: boolean; at: Span; len: Span }
 
-const round = (value: number) => Math.round(value * 100) / 100
+const FRAME_HOLDS: Record<string, number> = { collage: 1, print: 1.725, quote: 0.8875, timeline: 1.1375, records: 0.875 }
+const VERDICT_HOLDS = 1.05
+
+const round = (value: number) => Math.round(value * 10000) / 10000
 const span = ({ h, v }: Span) => `calc(${round(h)} * var(--hold) + ${round(v)} * var(--vhold))`
 const add = (a: Span, b: Span): Span => ({ h: a.h + b.h, v: a.v + b.v })
 
 const frames: Frame[] = []
 publicActs.forEach((act, index) => {
   const parts = act.claims.some((claim) => claim.id === VERDICT_CLAIM) ? [false, true] : [false]
-  for (const verdict of parts) frames.push({ act: index, verdict, at: { h: 0, v: 0 }, len: { h: verdict ? 0 : 1, v: verdict ? 1 : 0 } })
+  const holds = FRAME_HOLDS[ACT_LAYOUT[act.id] ?? 'collage'] ?? 1
+  for (const verdict of parts) frames.push({ act: index, verdict, at: { h: 0, v: 0 }, len: { h: verdict ? 0 : holds, v: verdict ? VERDICT_HOLDS : 0 } })
 })
 const framesEnd = frames.reduce((at, frame) => {
   frame.at = at
   return add(at, frame.len)
 }, { h: 0, v: 0 } as Span)
-// The stage is taller than its frames by the last act's extra half hold, the screen it stays held
-// under the closing sheet, and the stretch the sheet takes to come up over it.
-const STAGE_STYLE = { '--stage': `calc(${span(framesEnd)} + 0.5 * var(--hold) + 240svh)` } as CSSProperties
+// The stage is taller than its frames by the screen the last act stays held under the closing
+// sheet and the stretch the sheet takes to come up over it.
+const STAGE_STYLE = { '--stage': `calc(${span(framesEnd)} + 232svh)` } as CSSProperties
 
 const frameIndex = (act: number, verdict: boolean) => frames.findIndex((frame) => frame.act === act && frame.verdict === verdict)
 const frameStyle = (index: number) => ({ '--i': index, '--at': span(frames[index].at) }) as CSSProperties
@@ -469,7 +473,7 @@ export default function OriginStory() {
                       data-scroll-count={verdict.text.includes(VERDICT_YEARS.phrase) ? '' : undefined}
                       data-count-from="1"
                       data-count-start="top top"
-                      data-count-end="top -40%"
+                      data-count-end="top -25%"
                     >
                       <span className={styles.claimRule} data-draw-line aria-hidden="true" />
                       {verdict.text.includes(VERDICT_YEARS.phrase) ? (
