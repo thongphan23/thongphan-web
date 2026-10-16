@@ -9,9 +9,8 @@ type Cleanup = () => void
 const FINE_POINTER = '(hover: hover) and (pointer: fine)'
 
 // Tensai stage ([data-lesson-stage]): the hero holds a real lesson card ([data-lesson-card]).
-// - Wide screens pin the hero. A little way in, the card answers itself once as a demo (the
-//   `lesson:demo` event on [data-lesson-root]; a visitor's own pick is never undone). The words and
-//   天才 step back while the card moves to the centre; then a sheet of the band's green
+// - Wide screens pin the hero. The card is never answered for the visitor: a little way in, the words
+//   step back while the card moves to the centre; then a sheet of the band's green
 //   ([data-lesson-portal]) settles over the whole card, matching its box and corners, and opens out to
 //   fill the screen, and the band that follows ([data-lesson-next]) rises over it with its content,
 //   so the card itself becomes the page. The opening runs on a clock the moment the scroll passes a
@@ -37,7 +36,7 @@ export function lessonStage(root: HTMLElement): Cleanup {
     // The stage sits just under the fixed header; pinning from where it rests starts the sequence with
     // the first scroll.
     const restTop = Math.max(0, stage.getBoundingClientRect().top + window.scrollY)
-    const length = 1.25
+    const length = 1.5
     // Offsets from layout boxes, so they ignore this timeline's own transforms and read the same
     // whether or not the stage is pinned.
     const within = (el: HTMLElement, ancestor: HTMLElement) => {
@@ -98,7 +97,7 @@ export function lessonStage(root: HTMLElement): Cleanup {
     // stands at (1 - pull * length - gain) of the screen's height, where the mark parks (see `rise`).
     // The sheet fills the whole screen, up over the band the header leaves when it hides on the way
     // down, so 天才 is written in the middle of a screen that is all green.
-    const pull = 0.37
+    const pull = 0.4625 / length
     // Over that last stretch the band also catches up by this much of the screen (see `catchUp` below),
     // so it is laid out that much higher.
     const gain = 0.29
@@ -154,13 +153,6 @@ export function lessonStage(root: HTMLElement): Cleanup {
       else open.timeScale(1.8).reverse()
     }
 
-    let played = false
-    const demo = (play: boolean) => {
-      if (played === play) return
-      played = play
-      lesson?.dispatchEvent(new CustomEvent('lesson:demo', { detail: { play } }))
-    }
-
     const timeline = gsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -175,12 +167,10 @@ export function lessonStage(root: HTMLElement): Cleanup {
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          if (self.progress > 0.02) demo(true)
-          else if (self.progress < 0.01) demo(false)
           // The sheet opens on a clock, not on the scrub, with a little slack either side of the
           // threshold so a hand resting on it does not make it flutter.
-          if (self.progress >= 0.18) settle(true)
-          else if (self.progress < 0.16) settle(false)
+          if (self.progress >= 0.133) settle(true)
+          else if (self.progress < 0.113) settle(false)
         },
         // Once the pin lets go the parked mark would ride up into the top edge with the page, so it
         // fades out as the band takes over, and comes back on the way up.
@@ -192,9 +182,9 @@ export function lessonStage(root: HTMLElement): Cleanup {
         },
       },
     })
-    if (words) timeline.to(words, { x: () => -window.innerWidth * 0.06, opacity: 0, duration: 0.12 }, 0.03)
-    if (aside) timeline.to(aside, { x: () => window.innerWidth * 0.04, opacity: 0, duration: 0.12 }, 0.03)
-    if (glow) timeline.to(glow, { opacity: 0, duration: 0.12 }, 0.03)
+    if (words) timeline.to(words, { x: () => -window.innerWidth * 0.06, opacity: 0, duration: 0.1 }, 0.027)
+    if (aside) timeline.to(aside, { x: () => window.innerWidth * 0.04, opacity: 0, duration: 0.1 }, 0.027)
+    if (glow) timeline.to(glow, { opacity: 0, duration: 0.1 }, 0.027)
     // At rest the card stands a little back and turned towards the words, an object on the page
     // rather than a panel in a grid; it squares up to the reader as it comes forward to the middle.
     gsap.set(card, { transformPerspective: 1600, rotationY: -5, rotationX: 2, rotation: 0.4, scale: 0.97 })
@@ -207,16 +197,16 @@ export function lessonStage(root: HTMLElement): Cleanup {
         rotationY: 0,
         rotationX: 0,
         rotation: 0,
-        duration: 0.12,
+        duration: 0.1,
         ease: 'power2.inOut',
       },
-      0.03,
+      0.027,
     )
     // The brush writes 天才 stroke by stroke under the scroll, from just before the sheet opens to just
     // before the band's edge comes up (1 - pull), while the mark grows a little from its foot: the
     // writing is the scroll, so a slower hand writes slower and a stop shows the stroke in progress.
     // It ends whole a beat early, so the mark is finished when the first card starts to slide in.
-    const write = { from: 0.16, to: 1 - pull - 0.06 }
+    const write = { from: 0.173, to: 1 - pull - 0.06 }
     if (writer) {
       const hand = { progress: 0 }
       timeline.fromTo(
@@ -237,7 +227,7 @@ export function lessonStage(root: HTMLElement): Cleanup {
       // it, so no stop shows an empty green field; after the pin it scrolls on with the page. The
       // opening itself is on `open`.
       const promise = rise?.querySelector<HTMLElement>('[data-lesson-portal-promise]')
-      if (promise) timeline.to(promise, { opacity: 0, y: -12, duration: 0.07, ease: 'power1.in' }, 0.6)
+      if (promise) timeline.to(promise, { opacity: 0, y: -12, duration: 0.058, ease: 'power1.in' }, write.to + 0.001)
       if (rise && portalMark) {
         const park = () => {
           const height = window.innerHeight
@@ -253,10 +243,10 @@ export function lessonStage(root: HTMLElement): Cleanup {
           const centre = top + tall / 2 - rise.offsetHeight / 2
           return { y: edge / 2 - height / 2 - centre * scale, scale }
         }
-        timeline.to(rise, { y: () => park().y, scale: () => park().scale, duration: 0.31, ease: 'power1.inOut' }, 0.64)
+        timeline.to(rise, { y: () => park().y, scale: () => park().scale, duration: 0.267, ease: 'power1.inOut' }, 1 - pull)
       }
     }
-    timeline.to({}, { duration: 0.36 }, 0.64)
+    timeline.to({}, { duration: pull }, 1 - pull)
 
     // The band rises faster than the scroll from the moment its edge comes up until the pin lets go:
     // it waits `gain` of the screen below its laid-out place (dropped there while still off screen),
@@ -327,7 +317,6 @@ export function lessonStage(root: HTMLElement): Cleanup {
         portal.style.width = ''
         portal.style.height = ''
       }
-      demo(false)
     }
   })
 
@@ -433,10 +422,9 @@ export function lessonStage(root: HTMLElement): Cleanup {
       )
     }
 
-    // The method's lesson window plays each screen's script as that screen comes in (CSS, keyed on
-    // [data-replay-in]); it only arms once the window is on screen, so the first screen's script is not
-    // over before anyone sees it, and it replays on the way back. The window is sticky, so it stays
-    // armed until the grid that holds it scrolls away, not its own resting box.
+    // The method's lesson window is in view from when it comes up until the grid that holds it scrolls
+    // away (it is sticky); [data-replay-in] lets the step list's pen ring the step being played only
+    // while the window can be seen.
     const replay = root.querySelector<HTMLElement>('[data-replay]')
     if (replay) {
       ScrollTrigger.create({
@@ -447,13 +435,117 @@ export function lessonStage(root: HTMLElement): Cleanup {
         onToggle: (self) => replay.toggleAttribute('data-replay-in', self.isActive),
       })
     }
+    const unreplay = replay ? replayScrub(replay) : () => {}
+    const unpreview = coursePreview(root)
     return () => {
       unpile()
+      unreplay()
+      unpreview()
       replay?.removeAttribute('data-replay-in')
     }
   })
 
   return () => mm.revert()
+}
+
+// The method's lesson window ([data-replay]), scrubbed by the same track of spacers that moves the
+// step list (stickySwap's [data-swap-step], 'top 62%' to 'bottom 62%'), so the window and the steps
+// beside it change together and every change is one continuous move, never a cross-fade: the marker
+// sweeps under the idea, the strip slides on to the next screen, the pointer travels to the answer and
+// presses, the answer turns green, the reply sheet rises from the foot, the bar fills, and the path
+// lights stop by stop up to its gate. The lime note beside the window rolls to each step's title (and,
+// on wide screens, glides down the lane to sit level with what it names). Transform, opacity,
+// clip-path and one custom property (--pick, read only by the picked answer's own paint).
+function replayScrub(replay: HTMLElement): Cleanup {
+  const grid = replay.closest<HTMLElement>('[data-swap]')
+  const track = grid?.querySelector<HTMLElement>('[data-swap-step]')?.parentElement
+  const strip = replay.querySelector<HTMLElement>('[data-replay-strip]')
+  if (!track || !strip) return () => {}
+  const q = (selector: string) => Array.from(replay.querySelectorAll<HTMLElement>(selector))
+  const [fill] = q('[data-replay-fill]')
+  const [mark] = q('[data-replay-mark]')
+  const [cursor] = q('[data-replay-cursor]')
+  const [press] = q('[data-replay-press]')
+  const [ripple] = q('[data-replay-ripple]')
+  const [sheet] = q('[data-replay-sheet]')
+  const [gate] = q('[data-replay-gate]')
+  const [note] = q('[data-replay-note]')
+  const [callout] = q('[data-replay-callout]')
+  const stops = q('[data-replay-stop]')
+  const labels = q('[data-callout]')
+  // Only wide screens give the note a lane to glide down (see the CSS); read again on each refresh.
+  const lane = (at: number) => () => (window.matchMedia('(min-width: 960px)').matches ? at : 0)
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: { trigger: track, start: 'top 62%', end: 'bottom 62%', scrub: 0.6, invalidateOnRefresh: true },
+  })
+  // A spacer at the end keeps the timeline exactly 1 long, so positions read as scroll progress.
+  tl.to({}, { duration: 1 }, 0)
+  if (fill) tl.fromTo(fill, { scaleX: 0.06 }, { scaleX: 0.12, duration: 0.28 }, 0)
+  // 01 · The idea: the marker sweeps under the line to remember.
+  if (mark) tl.fromTo(mark, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.14, ease: 'power1.inOut' }, 0.13)
+  // 02 · Try it: the strip slides on, the note rolls, the pointer comes in and presses the answer.
+  tl.fromTo(strip, { yPercent: 0 }, { yPercent: -100 / 3, duration: 0.1, ease: 'power2.inOut' }, 0.3)
+  if (labels[0]) tl.fromTo(labels[0], { y: 0, yPercent: 0 }, { yPercent: -240, duration: 0.08, ease: 'power2.in' }, 0.3)
+  if (labels[1]) tl.fromTo(labels[1], { y: 0, yPercent: 240 }, { yPercent: 0, duration: 0.08, ease: 'power2.out' }, 0.33)
+  if (callout) tl.fromTo(callout, { y: 0, yPercent: lane(54) }, { yPercent: lane(36), duration: 0.1, ease: 'power2.inOut' }, 0.3)
+  if (cursor) {
+    tl.fromTo(cursor, { x: 96, y: 112, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.1, ease: 'power2.out' }, 0.4)
+    if (press) tl.fromTo(press, { scale: 1 }, { scale: 0.82, duration: 0.015, ease: 'power1.in', yoyo: true, repeat: 1 }, 0.5)
+    if (ripple) tl.fromTo(ripple, { scale: 0.2, opacity: 0.7 }, { scale: 1.15, opacity: 0, duration: 0.05, ease: 'power1.out' }, 0.51)
+  }
+  tl.fromTo(replay, { '--pick': 0 }, { '--pick': 1, duration: 0.04 }, 0.51)
+  if (sheet) tl.fromTo(sheet, { yPercent: 118 }, { yPercent: 0, duration: 0.08, ease: 'power2.out' }, 0.54)
+  if (fill) tl.to(fill, { scaleX: 0.34, duration: 0.08, ease: 'power2.out' }, 0.54)
+  // 03 · Pass the gate: on to the path, which lights stop by stop, then the gate rings.
+  tl.to(strip, { yPercent: (-200) / 3, duration: 0.1, ease: 'power2.inOut' }, 0.65)
+  if (cursor) tl.to(cursor, { opacity: 0, duration: 0.04 }, 0.65)
+  if (labels[1]) tl.to(labels[1], { yPercent: -240, duration: 0.08, ease: 'power2.in' }, 0.65)
+  if (labels[2]) tl.fromTo(labels[2], { y: 0, yPercent: 240 }, { yPercent: 0, duration: 0.08, ease: 'power2.out' }, 0.68)
+  if (callout) tl.to(callout, { yPercent: lane(68), duration: 0.1, ease: 'power2.inOut' }, 0.65)
+  stops.forEach((stop, i) => {
+    tl.fromTo(stop, { opacity: 0.45, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.05, ease: 'back.out(2.4)' }, 0.72 + i * 0.04)
+  })
+  if (fill) tl.to(fill, { scaleX: 1, duration: 0.16 }, 0.76)
+  if (gate) tl.fromTo(gate, { '--ring': 0 }, { '--ring': 1, duration: 0.06 }, 0.92)
+  if (note) tl.fromTo(note, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.06, ease: 'power2.out' }, 0.92)
+
+  return () => {
+    tl.revert()
+  }
+}
+
+// The course rows' preview card ([data-course-preview]) rides beside a fine pointer over its row:
+// the row's --px/--py follow the pointer through quickTo, kept inside the row so the card never
+// crosses the row edge (it sits 6rem right of the pointer, clear of the cursor label). Touch and coarse pointers never get it (the CSS hides the card there too).
+function coursePreview(root: HTMLElement): Cleanup {
+  if (!window.matchMedia(FINE_POINTER).matches) return () => {}
+  const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-course-row]'))
+  const offs = rows.map((row) => {
+    const card = row.querySelector<HTMLElement>('[data-course-preview]')
+    if (!card) return () => {}
+    const toX = gsap.quickTo(row, '--px', { duration: 0.5, ease: 'power3.out' })
+    const toY = gsap.quickTo(row, '--py', { duration: 0.5, ease: 'power3.out' })
+    const move = (event: PointerEvent) => {
+      const box = row.getBoundingClientRect()
+      const room = box.width - card.offsetWidth - 112
+      toX(Math.max(0, Math.min(event.clientX - box.left, room)))
+      toY(Math.max(card.offsetHeight / 2, Math.min(event.clientY - box.top, box.height)))
+    }
+    const enter = (event: PointerEvent) => {
+      const box = row.getBoundingClientRect()
+      gsap.set(row, { '--px': Math.min(event.clientX - box.left, box.width - card.offsetWidth - 112), '--py': event.clientY - box.top })
+      move(event)
+    }
+    row.addEventListener('pointerenter', enter)
+    row.addEventListener('pointermove', move)
+    return () => {
+      row.removeEventListener('pointerenter', enter)
+      row.removeEventListener('pointermove', move)
+    }
+  })
+  return () => offs.forEach((off) => off())
 }
 
 // Situations pile ([data-situation-track] around [data-situation-stack], cards [data-stack-card]): the

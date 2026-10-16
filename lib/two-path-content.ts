@@ -206,6 +206,8 @@ export const tensaiContent = {
         lessonCount: 12,
         gateCount: 4,
         opensOn: '01/10/2026',
+        // The real map screen of this course (lib/two-path-photos.ts), shown in its row's hover preview.
+        previewPhotoId: 'tensai-map',
       },
     ],
     note: 'Danh sách đối chiếu ngày 13/10/2026.',
