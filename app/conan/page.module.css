@@ -92,12 +92,12 @@
    lit window onto the class, not as a dim print of it. */
 @media (min-width: 900px) {
   .heroPhoto {
-    filter: saturate(1.25) contrast(1.12);
+    filter: saturate(1.25) contrast(1.12) brightness(1.15);
   }
 
   /* A floor under the cycling rooms: lit a little above the page, never under it. */
   .heroCycle {
-    filter: saturate(1.18) contrast(1.04) brightness(1.1);
+    filter: saturate(1.18) contrast(1.04) brightness(1.15);
   }
 
   .heroFrame {
@@ -131,7 +131,7 @@
    only percentages) frames it too, so a still page shows the same faces in the letters. */
 @media (min-width: 900px) {
   .heroPicture img {
-    object-position: 50% 50%;
+    object-position: 50% 30%;
   }
 }
 
@@ -171,7 +171,7 @@
   /* The stem of the a: placed at 34% down, its point is 34% + 0.0137 of the word width. */
   --word-oy: calc(34% + var(--mask-w) * 0.0137);
   --word: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='58' stroke-linejoin='round' transform='matrix(.97 0 0 .97 40.68 -10.44)' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
-  --word-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='66' stroke-linejoin='round' transform='matrix(.97 0 0 .97 40.68 -10.44)' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
+  --word-edge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 -660 2340 700'%3E%3Cpath stroke='%23000' stroke-width='70' stroke-linejoin='round' transform='matrix(.97 0 0 .97 40.68 -10.44)' d='M318.9 12.3Q231.3 12.3 176 -17.2Q120.7 -46.7 92.8 -95Q64.9 -143.3 58.6 -200.7Q52.2 -258.1 62.2 -314.7Q75.9 -390 112.2 -449.4Q148.4 -508.9 200.1 -550.5Q251.8 -592.2 312.4 -614.1Q373 -636 435.2 -636Q476.2 -636 518 -627.2Q559.8 -618.4 582.8 -604.8Q589.8 -600.5 590.8 -596.5Q591.8 -592.5 590.8 -581.5L577 -455.5Q576.7 -452.2 571.7 -452.2Q566.7 -452.2 566 -455.5Q552.3 -531.4 507.3 -571Q462.2 -610.7 395.3 -610.7Q335.5 -610.7 286.5 -578.6Q237.6 -546.6 205.1 -487.5Q172.7 -428.4 160.2 -346Q149.3 -276.9 156 -215.3Q162.7 -153.8 184.4 -106.7Q206 -59.5 241.7 -32.5Q277.4 -5.5 324.9 -5.5Q377.1 -5.5 429.9 -42.5Q482.8 -79.5 535.8 -157Q538.5 -160.7 543.2 -158.3Q547.8 -156 546.5 -153.7L518.7 -41.2Q515.4 -28.9 512.6 -24.5Q509.7 -20.2 500.7 -17.9Q451.5 -1.4 404.6 5.4Q357.6 12.3 318.9 12.3ZM743.6 14Q691.1 14 659.2 -14.6Q627.2 -43.2 616.8 -90.2Q606.4 -137.2 616.7 -193Q628.4 -253.2 660 -299.7Q691.6 -346.2 736.9 -372.6Q782.2 -399 834.1 -399Q888.7 -399 921.1 -371.2Q953.6 -343.4 964.3 -296.8Q975 -250.2 963.3 -193Q950.6 -126.7 915.8 -80Q881 -33.4 835.5 -9.7Q790.1 14 743.6 14ZM777.9 -11Q813.2 -11 840.4 -48.1Q867.6 -85.2 878.9 -149Q886.6 -191.2 885.6 -231.3Q884.5 -271.4 874.6 -304.1Q864.6 -336.8 846.5 -355.9Q828.5 -375 802.2 -375Q769.5 -375 741.8 -339.9Q714.1 -304.8 701.1 -236Q693.1 -193.2 694.6 -152.8Q696.2 -112.3 706 -80.5Q715.9 -48.7 734.3 -29.8Q752.6 -11 777.9 -11ZM1330.2 9Q1299.7 9 1291.3 -15Q1282.9 -39.1 1292.1 -89L1321.1 -248Q1340.8 -348.3 1290.8 -348.3Q1261.4 -348.3 1228.9 -309.2Q1196.4 -270.1 1167.9 -194.7Q1139.4 -119.3 1120.6 -10.3L1104.5 -11.3Q1124.8 -129.5 1159.4 -216.6Q1194 -303.6 1239.5 -351.3Q1285 -399 1335.5 -399Q1377.8 -399 1393.9 -367.4Q1410.1 -335.8 1397.6 -267L1364.6 -89Q1359.6 -60.2 1364.2 -49.2Q1368.8 -38.1 1378.9 -38.1Q1389.9 -38.1 1404.3 -49.1Q1418.7 -60.1 1436.3 -77Q1439.3 -81 1443.5 -77Q1447.6 -73 1444.3 -69Q1412.8 -32 1385.9 -11.5Q1359.1 9 1330.2 9ZM1072.8 8Q1055.5 8 1049.3 5.8Q1043.1 3.6 1043.1 0.6Q1043.1 -3.2 1048.6 -25.6Q1054.1 -48 1058.1 -74L1099.1 -297Q1108.4 -349.3 1083.6 -349.3Q1073 -349.3 1057.3 -338.8Q1041.6 -328.2 1021.7 -307.4Q1018.7 -303.4 1014.6 -307.9Q1010.4 -312.4 1013.7 -316.1Q1048.9 -357.7 1077.8 -376.4Q1106.6 -395 1133.8 -395Q1163.3 -395 1172.1 -372.8Q1180.8 -350.6 1172.3 -305.7L1120.6 -10.3Q1116.4 8 1072.8 8ZM1546.2 13Q1512.7 13 1494.1 -11.4Q1475.4 -35.7 1483.1 -91Q1490.4 -143.1 1517.6 -196.9Q1544.8 -250.7 1584.5 -296.7Q1624.2 -342.8 1668.8 -370.9Q1713.5 -399 1754.7 -399Q1774.1 -399 1794 -391.8Q1813.9 -384.6 1828.5 -368.5Q1843 -352.4 1845 -326.2L1791.1 -357Q1806.4 -359 1824.2 -373.1Q1842 -387.3 1852.3 -407Q1854.3 -410 1859.8 -408.3Q1865.3 -406.6 1864.3 -404.6L1806.3 -89Q1797 -38.1 1818.7 -38.1Q1829.2 -38.1 1844.3 -48.7Q1859.4 -59.3 1877.1 -77Q1880.1 -80 1884.1 -76Q1888.1 -72 1885.1 -69Q1853.5 -32 1826.3 -11.5Q1799.1 9 1773.1 9Q1743.6 9 1733.7 -13.9Q1723.9 -36.9 1732.4 -89L1757.1 -229L1776.8 -246Q1750.8 -166.2 1712.1 -107.9Q1673.4 -49.7 1630.3 -18.3Q1587.2 13 1546.2 13ZM1600.5 -51.7Q1625.9 -51.7 1652 -71.7Q1678 -91.7 1701 -123.6Q1724 -155.5 1740.6 -192.2Q1757.1 -228.9 1763.2 -261.3Q1771.2 -303.5 1756.8 -329.2Q1742.4 -355 1709.9 -354.7Q1679.7 -354.4 1649.6 -328.9Q1619.4 -303.4 1596.1 -259.7Q1572.7 -216 1563.4 -159.6Q1554.3 -101 1565.4 -76.4Q1576.6 -51.7 1600.5 -51.7ZM2243.2 9Q2212.7 9 2204.3 -15Q2195.9 -39.1 2205.1 -89L2234.1 -248Q2253.8 -348.3 2203.8 -348.3Q2174.4 -348.3 2141.9 -309.2Q2109.4 -270.1 2080.9 -194.7Q2052.4 -119.3 2033.6 -10.3L2017.5 -11.3Q2037.8 -129.5 2072.4 -216.6Q2107 -303.6 2152.5 -351.3Q2198 -399 2248.5 -399Q2290.8 -399 2306.9 -367.4Q2323.1 -335.8 2310.6 -267L2277.6 -89Q2272.6 -60.2 2277.2 -49.2Q2281.8 -38.1 2291.9 -38.1Q2302.9 -38.1 2317.3 -49.1Q2331.7 -60.1 2349.3 -77Q2352.3 -81 2356.5 -77Q2360.6 -73 2357.3 -69Q2325.8 -32 2298.9 -11.5Q2272.1 9 2243.2 9ZM1985.8 8Q1968.5 8 1962.3 5.8Q1956.1 3.6 1956.1 0.6Q1956.1 -3.2 1961.6 -25.6Q1967.1 -48 1971.1 -74L2012.1 -297Q2021.4 -349.3 1996.6 -349.3Q1986 -349.3 1970.3 -338.8Q1954.6 -328.2 1934.7 -307.4Q1931.7 -303.4 1927.6 -307.9Q1923.4 -312.4 1926.7 -316.1Q1961.9 -357.7 1990.8 -376.4Q2019.6 -395 2046.8 -395Q2076.3 -395 2085.1 -372.8Q2093.8 -350.6 2085.3 -305.7L2033.6 -10.3Q2029.4 8 1985.8 8Z'/%3E%3C/svg%3E") 50% var(--word-y) / var(--mask-w) auto no-repeat;
 }
 
 /* Wide screens hang the word from the top of the room and size it to the space above the
@@ -203,7 +203,7 @@
 }
 
 .heroOutline::before {
-  background: #46372d;
+  background: #4f3d31;
   content: '';
   inset: 0;
   -webkit-mask: var(--word);
@@ -211,8 +211,10 @@
   position: absolute;
 }
 
+/* The rim is quieter at the top of the letters, where it meets the bright window light of the
+   room, and full where the letters sit on its dark floor. */
 .heroEdge {
-  background: rgb(250 238 220 / 0.92);
+  background: linear-gradient(180deg, rgb(250 238 220 / 0.36) 4%, rgb(250 238 220 / 0.72) 38%);
   inset: 0;
   -webkit-mask: var(--word-edge), var(--word);
   -webkit-mask-composite: xor;
@@ -284,15 +286,18 @@
        word (ConanLensAuto). Its edge is cut sharp and rimmed in cream like the letters, and the
        warm lift of the letters reaches into it, so opening the lens only ever adds light. A pointer
        up by the header holds the lens whole under the top edge, never cut flat by it. */
+    /* Over the C the lens stays shut (--lens-open): its round rim on the letter's open curve would
+       close it into an O. It opens as it passes on to the o and the rest of the word. */
     :global(html.motion) .heroMedia {
-      --lens-reach: calc((0.45 + var(--lens-on, 0) * 0.55) * var(--lens-r));
+      --lens-open: calc(var(--lens-on, 0) * clamp(0, (var(--lens-x, 50) - 30) / 8, 1));
+      --lens-reach: calc((0.45 + var(--lens-open) * 0.55) * var(--lens-r));
       --lens-at: calc(var(--lens-x, 50) * 1%) max(calc(var(--lens-reach) + 2px), calc(var(--lens-y, 50) * 1%));
     }
 
     :global(html.motion) .heroMask {
       --lens: radial-gradient(
         circle at var(--lens-at),
-        rgb(0 0 0 / calc(1 - var(--lens-on, 0))) var(--lens-reach),
+        rgb(0 0 0 / calc(1 - var(--lens-open))) var(--lens-reach),
         #000 calc(var(--lens-reach) + 1.5px)
       );
       -webkit-mask: var(--lens), var(--word), linear-gradient(#000 0 0);
@@ -301,16 +306,16 @@
     }
 
     :global(html.motion) .heroOutline::before {
-      -webkit-mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-on, 0)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
-      mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-on, 0)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
+      -webkit-mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-open)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
+      mask: var(--word), radial-gradient(circle at var(--lens-at), rgb(0 0 0 / var(--lens-open)) var(--lens-reach), transparent calc(var(--lens-reach) + 1.5px));
     }
 
     :global(html.motion) .heroOutline::after {
       background: radial-gradient(
         circle at var(--lens-at),
         transparent calc(var(--lens-reach) - 1.5px),
-        rgb(250 238 220 / calc(var(--lens-on, 0) * 0.92)) calc(var(--lens-reach) - 1px),
-        rgb(250 238 220 / calc(var(--lens-on, 0) * 0.92)) calc(var(--lens-reach) + 1px),
+        rgb(250 238 220 / calc(var(--lens-open) * 0.72)) calc(var(--lens-reach) - 1px),
+        rgb(250 238 220 / calc(var(--lens-open) * 0.72)) calc(var(--lens-reach) + 1px),
         transparent calc(var(--lens-reach) + 1.5px)
       );
       content: '';
@@ -726,6 +731,32 @@
     mask-image: linear-gradient(180deg, #000 0, #000 80%, transparent 100%);
   }
 
+  /* While the sheet flies (--flight, ConanLensAuto) the room leans in a little from the faces'
+     line, never so far that a head leaves the frame. As the hero then scrolls away the room is held
+     in place (--hold) and the principle rises over it on a scrim, so the screen is never bare ink;
+     the room only fades (--cover, ConanHandoff) once the principle has covered most of it. */
+  :global(html.motion) .hero {
+    overflow: clip;
+  }
+
+  :global(html.motion) .heroMedia {
+    opacity: var(--cover, 1);
+    scale: calc(1 + var(--flight, 0) * 0.12);
+    transform-origin: 50% 30%;
+    translate: 0 var(--hold, 0px);
+  }
+
+  /* The principle overlaps the hero's foot by the depth of its scrim, so the hero's clipped edge
+     always falls where the scrim is already solid ink. While the paper rises over it, it dims only
+     in the sheet's last stretch (--dim, ConanHandoff), over the curtain's own fade. */
+  :global(html.motion) .principle {
+    background: linear-gradient(180deg, transparent 0, var(--brand-ink) 11svh);
+    margin-top: -11svh;
+    opacity: var(--dim, 1) !important;
+    position: relative;
+    z-index: 1;
+  }
+
   .heroShade {
     background: linear-gradient(
       180deg,
@@ -903,9 +934,15 @@
    section is in view, and the paper (data-curtain "sheet") holds the spread still at the top of
    the screen while it rises over it. */
 @media (min-width: 1000px) {
+  /* The spread sits high in its screen so that, held, the statement stays whole above the rising
+     paper while the paper's own heading arrives below it. */
+  .principle {
+    padding-top: 3.5rem;
+  }
+
   .principleFrame {
     aspect-ratio: 1;
-    max-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
+    max-height: calc(100svh - 16rem);
     width: 100%;
   }
 
@@ -915,7 +952,11 @@
     column-gap: clamp(3rem, 6vw, 6rem);
     grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     max-width: 1360px;
-    min-height: calc(100svh - 2 * clamp(3.5rem, 6vw, 5.25rem));
+  }
+
+  /* One screen tall only while the paper rides over it; still, the spread ends at its photo. */
+  :global(html.motion) .principleGrid {
+    min-height: calc(100svh - 3.5rem - clamp(3.5rem, 6vw, 5.25rem));
   }
 }
 
@@ -926,8 +967,8 @@
 /* While the paper rises over the pinned spread, the statement fades and lifts away before the
    sheet's edge can cut it, and the sheet's own words rise in only after it (ConanHandoff.tsx). */
 :global(html.motion) .principleQuote {
-  opacity: var(--hand, 1);
-  translate: 0 calc((var(--hand, 1) - 1) * 3rem);
+  opacity: calc(var(--hand, 1) * var(--enter, 1));
+  translate: 0 calc((var(--hand, 1) - 1) * 3rem + (1 - var(--enter, 1)) * 2rem);
 }
 
 :global(html.motion) .audiencesGrid {
@@ -1051,6 +1092,12 @@
     display: grid;
     padding-block: clamp(3.5rem, 5.5vw, 5rem);
   }
+
+  /* While the sheet rides over the held spread its top fifth passes behind the header, so the words
+     start below that fold and the sheet ends flush with the journey's ink instead of leaving a strip. */
+  :global(html.motion) .audiencesBand {
+    padding-block: calc(19svh + 2rem) 2rem;
+  }
 }
 
 @media (hover: hover) and (min-width: 1000px) {
@@ -1173,6 +1220,31 @@
 
 :global(html:not(.motion)) .bandWord {
   font-size: clamp(2.5rem, 1rem + 5vw, 6.5rem);
+}
+
+/* Still, the English gloss is set as one centred, balanced line of text: each name kept whole and
+   divided by a dot, so a narrow screen breaks it into even lines instead of a ragged stack. */
+:global(html:not(.motion)) .band {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:global(html:not(.motion)) .termRow .bandTrack {
+  display: block;
+  line-height: 1.7;
+  text-align: center;
+  text-wrap: balance;
+}
+
+:global(html:not(.motion)) .termWord {
+  /* Atomic boxes: the line may break between two names, never inside one. */
+  display: inline-block;
+  padding-inline: 0.3em;
+  white-space: nowrap;
+}
+
+:global(html:not(.motion)) .termWord:nth-child(-n + 4)::after {
+  content: '·';
+  margin-left: 0.6em;
 }
 
 /* The dot divides one word from the next; the last word of the turn has none to divide it from. */
@@ -1508,6 +1580,7 @@
 .journey[data-hscroll-active='true'] .journeyLead {
   font-size: clamp(1.25rem, 0.3rem + 1.45vw, 1.625rem);
   line-height: 1.55;
+  line-height: 1.55;
   margin: 1.25rem 0 clamp(1.25rem, 4svh, 3rem);
 }
 
@@ -1592,8 +1665,11 @@
   box-sizing: border-box;
   display: flex;
   height: 100%;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 4rem), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(100% - 4rem), transparent 100%);
+  /* The card in hand is whole; past its right edge the next card fades out into the window's edge,
+     a soft promise of what comes, never a hard-clipped slab. */
+  --peek: linear-gradient(90deg, transparent 0, #000 2.5rem, #000 calc(var(--stage-pad) + var(--stage-w) + 0.5rem), rgb(0 0 0 / 0.3) calc(var(--stage-pad) + var(--stage-w) + 9rem), transparent 100%);
+  -webkit-mask-image: var(--peek);
+  mask-image: var(--peek);
   min-width: 0;
   overflow: hidden;
   /* The header takes the top; the foot room is short, so the last card leaves almost straight into
@@ -1654,9 +1730,20 @@
 /* The numeral stands whole beside the name, outlined on the cards around and filled in the path
    colour on the card in hand. */
 .journey[data-hscroll-active='true'] .stageNumber {
-  -webkit-text-stroke: 2px color-mix(in srgb, var(--brand-paper) 62%, transparent);
+  -webkit-text-stroke: 0;
+  /* Cut from a real class photo, in the page's grade and cropped on the faces: no dark wash and
+     no outline, so the numeral reads as photograph; the cards around are only quieter. */
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: var(--numeral-photo);
+  background-position: 50% 28%;
+  background-size: auto 150%;
+  color: transparent;
+  filter: var(--brand-photo-grade) brightness(1.18);
+  font-weight: 700;
+  opacity: 0.62;
   align-self: start;
-  font-size: clamp(6.5rem, 8.4vw, 9.5rem);
+  font-size: clamp(9.5rem, 14vw, 15rem);
   grid-area: number;
   margin: 0.08em 0.06em 0 0;
   position: static;
@@ -1664,8 +1751,8 @@
 }
 
 .journey[data-hscroll-active='true'] .stage[data-current] .stageNumber {
-  -webkit-text-stroke-color: transparent;
-  color: var(--path-accent);
+  color: transparent;
+  opacity: 1;
 }
 
 /* Pinned, the payoff question is set larger still. (The card itself keeps the row's width: a wider

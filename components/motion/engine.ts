@@ -355,6 +355,10 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
     const pace = Number(section.dataset.hscrollPace ?? 1) || 1
     // data-hscroll-scrub sets how many seconds the row trails the scrollbar (default 0.8).
     const scrub = Number(section.dataset.hscrollScrub ?? 0.8) || 0.8
+    // data-hscroll-hold keeps the pin that many screens past the last item's arrival, so it settles
+    // before the section lets go. `share` is the part of the pinned scroll that moves the row.
+    const hold = Number(section.dataset.hscrollHold ?? 0) || 0
+    let share = 1
     const items = Array.from(track.querySelectorAll<HTMLElement>('[data-hscroll-item]'))
     const counter = section.querySelector<HTMLElement>('[data-hscroll-current]')
     const prev = section.querySelector<HTMLButtonElement>('[data-hscroll-prev]')
@@ -367,7 +371,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
       const measure = () => {
         const room = distance()
         points = items.map((item) =>
-          room > 0 ? gsap.utils.clamp(0, 1, (item.offsetLeft + item.offsetWidth / 2 - track.clientWidth / 2) / room) : 0,
+          room > 0 ? share * gsap.utils.clamp(0, 1, (item.offsetLeft + item.offsetWidth / 2 - track.clientWidth / 2) / room) : 0,
         )
         // Rect difference, so the track's own transform and offsetParent drop out.
         const origin = track.getBoundingClientRect().left
@@ -417,7 +421,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
         window.clearTimeout(settleTimer)
         if (settling || !lenis) return
         settleTimer = window.setTimeout(() => {
-          if (!self.isActive || self.progress <= 0 || self.progress >= 1) return
+          if (!self.isActive || self.progress <= 0 || self.progress >= share) return
           const index = nearest(self.progress)
           if (Math.abs(points[index] - self.progress) * (self.end - self.start) < 6) return
           settling = true
@@ -443,7 +447,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           aimedAt = now
           return
         }
-        if (now - aimedAt < 110 || progress <= 0 || progress >= 1) return
+        if (now - aimedAt < 110 || progress <= 0 || progress >= share) return
         let index = nearest(progress)
         // One notch of the wheel is shorter than half the gap between photos: rather than spring
         // back to the photo the reader just left, take one step in the direction they scrolled.
@@ -456,12 +460,17 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
       }
       const tween = gsap.to(track, {
         x: () => -distance(),
-        ease: 'none',
+        ease: hold ? (p: number) => Math.min(1, p / share) : 'none',
         onUpdate: edges,
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: () => `+=${distance() * pace}`,
+          end: () => {
+            const run = distance() * pace
+            const rest = hold * window.innerHeight
+            share = run > 0 ? run / (run + rest) : 1
+            return `+=${run + rest}`
+          },
           pin: true,
           scrub,
           invalidateOnRefresh: true,
