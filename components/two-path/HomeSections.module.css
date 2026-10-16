@@ -51,8 +51,8 @@
 
 .letterPortrait img {
   display: block;
-  /* The bookshop shot is brighter and warmer than the stage above; one step deeper keeps them one shoot. */
-  filter: saturate(0.62) sepia(0.2) contrast(1.1) brightness(0.96);
+  /* Every photo on the page takes the site's one grade; each adds only its own exposure step. */
+  filter: var(--brand-photo-grade) brightness(1.02);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -91,8 +91,9 @@
   }
 }
 
-/* Beat 2: the number. A full-screen lacquer band that holds still while the debt lights up word
-   by word. Without the engine it is one calm block. */
+/* Beat 2: the number. A full-screen lacquer band that holds still while the debt rises line by
+   line from behind a hairline mask, then the paper of beat 3 slides up over it (.letterSheet).
+   Without the engine, or where scroll timelines are missing, it is one calm, fully lit block. */
 .debt {
   background: var(--brand-lacquer);
   color: var(--brand-reading-paper);
@@ -136,76 +137,136 @@
 .debtQuote p {
   color: var(--brand-reading-paper);
   font-family: var(--font-cormorant);
-  font-size: clamp(3.5rem, 0.8rem + 13vw, 15rem);
+  font-size: clamp(3.2rem, 0.6rem + 10.5vw, 12rem);
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.028em;
   line-height: 0.95;
   margin: 0;
-  max-width: 16ch;
+}
+
+/* One display line per span. The padding keeps descenders and stacked Vietnamese marks inside the
+   mask, which only ever hides the line while it is still below its own baseline. */
+.debtLine {
+  clip-path: inset(-0.35em -0.6em 0 -0.6em);
+  display: block;
+  margin-bottom: -0.16em;
+  padding-bottom: 0.16em;
   text-wrap: balance;
 }
 
-.debtProgress {
-  display: none;
+.debtLineInner {
+  display: block;
+}
+
+/* The number itself stands upright; the years after it lean. */
+.debtLine:first-child {
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .debtLine:last-child {
+    padding-left: 0.9em;
+  }
+}
+
+/* Phones: the sentence is set as large as its longest line allows. */
+@media (max-width: 899px) {
+  .debtQuote p {
+    font-size: clamp(3.2rem, 15vw, 5.5rem);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* 200svh: the slab is held for one screen, and for all of it the sheet travels from the foot of
+     the screen to the top, so the hold is never dead scroll. The sentence therefore rises while the
+     slab is still coming up the screen, and it hangs from the top of the held screen, where the
+     rising sheet reaches it last. */
   :global(html.motion) .debt {
-    height: 112vh;
-    height: 112svh;
+    height: 200vh;
+    height: 200svh;
     padding: 0;
   }
 
+  :global(html.motion) .letterSheet {
+    border-radius: clamp(20px, 3vw, 40px) clamp(20px, 3vw, 40px) 0 0;
+    box-shadow: 0 -1.5rem 4rem rgb(36 12 6 / 0.4);
+    margin-top: -100vh;
+    margin-top: -100svh;
+  }
+
+  /* On a phone the sentence fills only the top third of the screen, so the sheet follows the slab
+     half a screen behind instead of a whole one, and the red never stands empty under the words. */
+  @media (max-width: 899px) {
+    :global(html.motion) .debt {
+      height: 150vh;
+      height: 150svh;
+    }
+  }
+
   :global(html.motion) .debtSticky {
+    align-content: start;
     height: 100vh;
     height: 100svh;
     overflow: hidden;
-    padding: 0 var(--brand-space-inline);
+    padding: clamp(4.5rem, 11svh, 7.5rem) var(--brand-space-inline) 0;
     position: sticky;
     top: 0;
   }
 
-  /* Progress hairline along the foot of the held screen, where the browser can scrub it by scroll. */
   @supports (animation-timeline: view()) {
     :global(html.motion) .debt {
       view-timeline: --debt block;
     }
 
-    :global(html.motion) .debtProgress {
-      background: rgb(243 239 230 / 0.28);
-      bottom: clamp(1.5rem, 5svh, 3.25rem);
-      display: block;
-      height: 2px;
-      left: var(--brand-space-inline);
-      position: absolute;
-      right: var(--brand-space-inline);
+    /* Each line rises in its own window while the slab comes up the screen, starting as the line
+       clears the fold; the last is up while the slab top is still a quarter of a screen below the
+       top, so no settled frame ever shows the red without its words. */
+    :global(html.motion) .debtLineInner {
+      animation: debtLineRise linear both;
+      animation-range: entry calc(16% + var(--line, 0) * 15%) entry calc(40% + var(--line, 0) * 15%);
+      animation-timeline: --debt;
+      transform-origin: 0 100%;
     }
 
-    :global(html.motion) .debtProgress::after {
-      animation: debtFill linear both;
+    /* As the sheet covers it, the held type steps back a little (scale and lift only, never dimmed). */
+    :global(html.motion) .debtQuote {
+      animation: debtStepBack linear both;
       animation-range: contain 0% contain 100%;
       animation-timeline: --debt;
-      background: var(--brand-reading-paper);
-      content: '';
-      inset: 0;
-      position: absolute;
-      transform-origin: 0 50%;
     }
   }
 }
 
-@keyframes debtFill {
+@keyframes debtLineRise {
   from {
-    transform: scaleX(0);
+    opacity: 0;
+    rotate: 3deg;
+    translate: 0 120%;
   }
 
   to {
-    transform: scaleX(1);
+    opacity: 1;
+    rotate: 0deg;
+    translate: 0 0;
   }
 }
 
-/* Beat 3: what he lost and what he chose. */
+@keyframes debtStepBack {
+  to {
+    scale: 0.94;
+    translate: 0 -8svh;
+  }
+}
+
+/* Beat 3: what he lost and what he chose, on a sheet of paper that is laid over the held slab. */
+.letterSheet {
+  background: var(--brand-reading-paper);
+  position: relative;
+  z-index: 1;
+}
+
 .letterClose {
   margin: 0 auto;
   max-width: 1400px;
@@ -226,10 +287,10 @@
 
 .stakes {
   color: #241f1b;
-  font-size: clamp(1.375rem, 0.9rem + 1.1vw, 2.05rem);
-  line-height: 1.5;
+  font-size: clamp(1.125rem, 0.92rem + 0.6vw, 1.4375rem);
+  line-height: 1.6;
   margin: 0 0 clamp(2rem, 4.5svh, 3.25rem);
-  max-width: 34em;
+  max-width: 52ch;
   text-wrap: pretty;
 }
 
@@ -339,6 +400,52 @@
   text-transform: uppercase;
 }
 
+/* Wide screens read the sheet across, not down one column with an empty half: the sentence and
+   the stakes on the left, the two paths beside them, then the closing line with the signature
+   standing at its right. */
+@media (min-width: 1100px) {
+  .letterClose {
+    column-gap: clamp(3.5rem, 6vw, 7rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  }
+
+  .afterLead,
+  .stakes {
+    grid-column: 1;
+  }
+
+  .pathRows {
+    align-self: start;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0.75rem;
+  }
+
+  .pathRow {
+    align-items: start;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pathText {
+    font-size: clamp(1.7rem, 0.9rem + 1.25vw, 2.4rem);
+  }
+
+  .choice {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .signature {
+    align-self: end;
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: end;
+    margin: 0;
+    width: min(100%, 17rem);
+  }
+}
+
 /* ------------------------------------------------------------------ guide ("Người [photo] dẫn đường") */
 
 /* The room's faces sit in the upper left of the class photo; the crop keeps them in frame at every size. */
@@ -346,10 +453,11 @@
   object-position: 36% 20%;
 }
 
-/* The caption over the photo reads at a glance: a deep scrim under it and a real line height on the
-   small caps line above it. Doubled class names beat the shared guide rules (one class and an attribute). */
+/* The caption over the photo reads at a glance: a deep scrim rising from the foot of the photo and
+   a real line height on the small caps line above it. Doubled class names beat the shared guide
+   rules (one class and an attribute). */
 .guide.guide .guideScrim {
-  background: linear-gradient(180deg, rgb(0 0 0 / 0) 46%, rgb(0 0 0 / 0.5) 72%, rgb(0 0 0 / 0.82));
+  background: linear-gradient(to top, rgb(7 7 6 / 0.88) 0, rgb(7 7 6 / 0.62) 24%, rgb(7 7 6 / 0) 52%);
 }
 
 .guide.guide .guideCaption {
@@ -363,7 +471,7 @@
 .guide.guide .guideCaptionMark {
   font-size: clamp(0.9375rem, 0.85rem + 0.3vw, 1.1875rem);
   line-height: 1.35;
-  opacity: 0.96;
+  opacity: 1;
 }
 
 @media (max-width: 899px) {
@@ -372,15 +480,15 @@
   }
 }
 
-/* Scroll-driven version. The section is one screen plus the run the photo needs; its stage sticks for
-   that run (sticky, not pinned by script) and one timeline over the run drives the whole opening:
-   the slot widens to the frame, the image settles from the faces to the room, the words part and
-   go, then the caption comes up. It starts on the first frame of the pin and holds only briefly at
-   the end. */
+/* Scroll-driven version. The section is one screen plus a short run; its stage sticks for that run
+   (sticky, not pinned by script) and one timeline drives the whole opening: the slot widens to the
+   frame, the image settles from the faces to the room, the words part and go, then the caption comes
+   up. The opening already starts while the stage is still arriving (entry 75%), so the run itself is
+   only 30svh, and on the way out the stage steps back and dims instead of sliding off unchanged. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
     :global(html.motion) .guide.guide {
-      --guide-run: 50svh;
+      --guide-run: 30svh;
       --slot-w: clamp(10rem, 24vw, 26rem);
       --slot-h: calc(var(--slot-w) * 0.75);
       --frame-top: max(76px, 10svh);
@@ -403,11 +511,15 @@
     }
 
     :global(html.motion) .guide.guide .guideStage {
+      animation: guideLeave linear both;
+      animation-range: exit 0% exit 70%;
+      animation-timeline: --guide;
       display: block;
       height: 100svh;
       max-width: none;
       position: sticky;
       top: 0;
+      transform-origin: 50% 0;
     }
 
     /* Three columns with the slot in the middle one keep the slot on the middle of the stage, which
@@ -435,21 +547,21 @@
 
     :global(html.motion) .guide.guide .guideLeft {
       animation: guidePartLeft cubic-bezier(0.5, 0, 0.9, 0.4) both;
-      animation-range: contain 0% contain 100%;
+      animation-range: entry 75% contain 100%;
       animation-timeline: --guide;
       justify-self: end;
     }
 
     :global(html.motion) .guide.guide .guideRight {
       animation: guidePartRight cubic-bezier(0.5, 0, 0.9, 0.4) both;
-      animation-range: contain 0% contain 100%;
+      animation-range: entry 75% contain 100%;
       animation-timeline: --guide;
       justify-self: start;
     }
 
     :global(html.motion) .guide.guide .guideMedia {
       animation: guideOpen linear both;
-      animation-range: contain 0% contain 100%;
+      animation-range: entry 75% contain 100%;
       animation-timeline: --guide;
       aspect-ratio: auto;
       border-radius: 0;
@@ -461,7 +573,7 @@
 
     :global(html.motion) .guide.guide .guideImage {
       animation: guideLayer linear both;
-      animation-range: contain 0% contain 100%;
+      animation-range: entry 75% contain 100%;
       animation-timeline: --guide;
       inset: 0;
       position: absolute;
@@ -473,7 +585,7 @@
     :global(html.motion) .guide.guide .guideScrim,
     :global(html.motion) .guide.guide .guideCaption {
       animation: guideAfter linear both;
-      animation-range: contain 0% contain 100%;
+      animation-range: entry 75% contain 100%;
       animation-timeline: --guide;
     }
 
@@ -485,7 +597,7 @@
 
     @media (max-width: 899px) {
       :global(html.motion) .guide.guide {
-        --guide-run: 48svh;
+        --guide-run: 30svh;
         --slot-w: min(66vw, 17rem);
         --frame-top: 0px;
         --frame-side: 0px;
@@ -570,6 +682,13 @@
       }
     }
 
+    @keyframes guideLeave {
+      to {
+        opacity: 0.45;
+        scale: 0.94;
+      }
+    }
+
     @keyframes guideAfter {
       0%,
       54% {
@@ -588,12 +707,29 @@
 
 /* ------------------------------------------------------------------ tapes (the two paths as moving type) */
 
+/* The tapes tilt 1.6deg against each other, so they close in by about 3vw towards the right
+   edge; the gap leaves them a clear band of ink even there. The column is held to the page width:
+   left to size itself it took the width of the whole doubled track (about 11,000px), which put the
+   tilt's pivot far off screen and crossed the two strips inside the window. */
 .tapes {
   background: var(--brand-ink);
   display: grid;
-  gap: clamp(0.9rem, 3.4vw, 3rem);
+  gap: clamp(1.5rem, 4.8vw, 4.5rem);
+  grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
-  padding: clamp(3rem, 6.5svh, 5rem) 0;
+  padding: clamp(3rem, 6.5svh, 5rem) 0 clamp(2.5rem, 5svh, 3.5rem);
+  position: relative;
+}
+
+/* With the sticky guide the band starts inside the frame's foot margin (5svh), right under the photo.
+   The top padding keeps the raised end of the tilted tape about 85px under the caption's last line. */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    :global(html.motion) .tapes {
+      margin-top: -5svh;
+      padding-top: 4rem;
+    }
+  }
 }
 
 /* Each strip is a little wider than the page, so its tilted ends never leave a gap at the edges. */
@@ -825,7 +961,7 @@
 
 .statPhotoFrame img {
   display: block;
-  filter: saturate(0.8) sepia(0.2) contrast(1.1) brightness(1.02);
+  filter: var(--brand-photo-grade) brightness(1.06);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -843,18 +979,21 @@
 }
 
 .statCaption {
-  background: linear-gradient(to top, rgb(7 7 6 / 0.88), rgb(7 7 6 / 0));
+  background: linear-gradient(to top, rgb(7 7 6 / 0.84) 0, rgb(7 7 6 / 0.6) 50%, rgb(7 7 6 / 0));
   bottom: 0;
-  color: var(--brand-paper);
-  font-family: var(--font-cormorant);
-  font-size: clamp(1.4rem, 1rem + 1vw, 2.1rem);
-  font-style: italic;
+  color: #fff;
+  font-family: var(--font-be-vietnam);
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  font-weight: 500;
   left: 0;
-  line-height: 1.2;
-  padding: 4rem var(--brand-space-inline) clamp(1.1rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  padding: 3.5rem clamp(1rem, 2.4vw, 2rem) clamp(0.9rem, 2vw, 1.5rem);
   pointer-events: none;
   position: absolute;
   right: 0;
+  text-shadow:
+    0 1px 2px rgb(0 0 0 / 0.55),
+    0 2px 18px rgb(0 0 0 / 0.6);
 }
 
 @media (min-width: 900px) {
@@ -915,8 +1054,105 @@
   mask-image: linear-gradient(90deg, transparent 0, #000 1.6vw, #000 calc(100% - 1.6vw), transparent 100%);
 }
 
+.reelStage {
+  position: relative;
+}
+
+/* Swipe row (phones): counter, bar and arrows sit under the photos, aligned with the words. */
+.reelStage > :last-child {
+  margin-inline: var(--brand-space-inline);
+}
+
+/* Pinned: the stage takes the room under the words. Its controls layer covers the row and reaches
+   down into the section's foot (--dock, the section's bottom padding); it lets every press through
+   to the row except on the arrows. The counter and bar sit centred in the foot, and the two arrows
+   straddle the edges of the photo at rest, so each clipped neighbour has a button beside it. */
+.reel.reel[data-hscroll-active='true'] .reelStage {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.reel.reel[data-hscroll-active='true'] .reelStage > :last-child {
+  --dock: clamp(3.75rem, 9svh, 5rem);
+  align-content: end;
+  bottom: calc(var(--dock) * -1);
+  grid-template-columns: auto minmax(6rem, 14rem);
+  justify-content: center;
+  left: 0;
+  margin: 0;
+  max-width: none;
+  padding-bottom: clamp(1.25rem, 3svh, 1.9rem);
+  pointer-events: none;
+  right: 0;
+  top: 0;
+  transform: none;
+  width: auto;
+}
+
+.reel.reel[data-hscroll-active='true'] [data-hscroll-prev],
+.reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
+  background: var(--brand-paper);
+  border-color: var(--brand-paper);
+  box-shadow: 0 0.75rem 2rem rgb(0 0 0 / 0.5);
+  color: var(--brand-ink);
+  height: 3.5rem;
+  pointer-events: auto;
+  position: absolute;
+  top: calc((100% - var(--dock)) / 2);
+  transition:
+    background-color 300ms ease,
+    opacity 400ms ease,
+    scale 500ms var(--brand-motion-ease);
+  translate: 0 -50%;
+  width: 3.5rem;
+  z-index: 3;
+}
+
+.reel.reel[data-hscroll-active='true'] [data-hscroll-prev] {
+  left: calc(50% - var(--reel-w) / 2 - 1.75rem);
+}
+
+.reel.reel[data-hscroll-active='true'] [data-hscroll-next] {
+  right: calc(50% - var(--reel-w) / 2 - 1.75rem);
+}
+
+@media (hover: hover) {
+  .reel.reel[data-hscroll-active='true'] [data-hscroll-prev]:hover:not(:disabled),
+  .reel.reel[data-hscroll-active='true'] [data-hscroll-next]:hover:not(:disabled) {
+    background: #ffffff;
+    scale: 1.08;
+  }
+}
+
+/* At either end there is no neighbour on that side, so its arrow leaves instead of greying out. */
+.reel.reel[data-hscroll-active='true'] [data-hscroll-prev]:disabled,
+.reel.reel[data-hscroll-active='true'] [data-hscroll-next]:disabled {
+  opacity: 0;
+  pointer-events: none;
+  scale: 0.8;
+}
+
+/* The shared spacer after the last photo is an empty box with no height, and a box with no height
+   adds nothing to the row's scroll width, so the row stopped with the last photo off centre and
+   cut by the right edge. One pixel of height makes it count: the last photo rests in the middle. */
+.reel.reel[data-hscroll-active='true'] .reelTrackHome::after {
+  height: 1px;
+}
+
 .reel.reel .reelMediaHome img {
-  filter: saturate(0.82) sepia(0.2) contrast(1.1) brightness(1.04);
+  filter: var(--brand-photo-grade) brightness(1.06);
+}
+
+/* Pinned: the photo at rest takes the same grade as every other photo on the page, the neighbours
+   the same grade a step darker. */
+.reel.reel[data-hscroll-active='true'] .reelItem .reelMediaHome img {
+  filter: var(--brand-photo-grade) brightness(0.88);
+}
+
+.reel.reel[data-hscroll-active='true'] .reelItem[data-current] .reelMediaHome img {
+  filter: var(--brand-photo-grade) brightness(1.06);
 }
 
 /* The caption rides on the photo over a scrim, so it never competes with a busy background. */

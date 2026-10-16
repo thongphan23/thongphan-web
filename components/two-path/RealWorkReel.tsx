@@ -19,8 +19,11 @@ const keepSentences = (text: string) =>
 
 // A reel of real class photos. On wide screens the section pins: the words hold still on the left
 // while the photos travel past them with the scroll and settle one at a time in the middle. On
-// phones it is a native swipe row with snap points under the words. The pace keeps the pinned
-// stretch to well under the track's width, so the later photos are not buried under a long hold.
+// phones it is a native swipe row with snap points under the words. The pace gives each photo
+// some 400px of scroll, under one flick of the wheel, so a flick always reaches the next photo;
+// data-hscroll-snap then aims the glide at that photo's resting point, so it lands centred in one
+// movement (a single notch of the wheel steps one photo), and the short scrub keeps the row
+// arriving with the scroll instead of trailing it.
 export default function RealWorkReel() {
   const { reel } = homeContent
   return (
@@ -28,7 +31,9 @@ export default function RealWorkReel() {
       className={`${styles.reel} ${home.reel}`}
       aria-labelledby="real-work-title"
       data-hscroll
-      data-hscroll-pace="0.42"
+      data-hscroll-pace="0.5"
+      data-hscroll-scrub="0.4"
+      data-hscroll-snap
       style={{ '--reel-count': reel.photoIds.length } as CSSProperties}
     >
       <header className={`${styles.reelIntro} ${home.reelIntro}`}>
@@ -45,27 +50,32 @@ export default function RealWorkReel() {
           {reel.link.label}
           <ArrowRight aria-hidden="true" size={16} />
         </Link>
-        <ReelControls count={reel.photoIds.length} />
       </header>
-      <div className={`${styles.reelViewport} ${home.reelViewportHome}`} data-cursor="Kéo" data-cursor-tone="light">
-        <div className={`${styles.reelTrack} ${home.reelTrackHome}`} data-hscroll-track>
-          {reel.photoIds.map((id, index) => {
-            const item = photo(id)
-            return (
-              <figure key={id} className={`${styles.reelItem} ${home.reelItem}`} data-hscroll-item>
-                <div className={styles.reelFrame}>
-                  <div className={`${styles.reelMedia} ${home.reelMediaHome}`} data-hscroll-media>
-                    <TwoPathPhoto id={id} eager sizes="(max-width: 899px) 82vw, 64vw" />
+      {/* The row and its controls share one box: pinned, the arrows sit on either side of the photo
+          at rest, next to the neighbour they bring in, and the counter sits under the row. The
+          controls stay outside the viewport, which is what the mouse drag listens on. */}
+      <div className={home.reelStage}>
+        <div className={`${styles.reelViewport} ${home.reelViewportHome}`} data-cursor="Kéo" data-cursor-tone="light">
+          <div className={`${styles.reelTrack} ${home.reelTrackHome}`} data-hscroll-track>
+            {reel.photoIds.map((id, index) => {
+              const item = photo(id)
+              return (
+                <figure key={id} className={`${styles.reelItem} ${home.reelItem}`} data-hscroll-item>
+                  <div className={styles.reelFrame}>
+                    <div className={`${styles.reelMedia} ${home.reelMediaHome}`} data-hscroll-media>
+                      <TwoPathPhoto id={id} eager sizes="(max-width: 899px) 82vw, 64vw" />
+                    </div>
                   </div>
-                </div>
-                <figcaption className={`${home.reelCaption}`}>
-                  <span className={`${styles.reelIndex} ${home.reelIndexHome}`}>{pad(index + 1)}</span>
-                  {item.caption ?? item.alt}
-                </figcaption>
-              </figure>
-            )
-          })}
+                  <figcaption className={`${home.reelCaption}`}>
+                    <span className={`${styles.reelIndex} ${home.reelIndexHome}`}>{pad(index + 1)}</span>
+                    {item.caption ?? item.alt}
+                  </figcaption>
+                </figure>
+              )
+            })}
+          </div>
         </div>
+        <ReelControls count={reel.photoIds.length} />
       </div>
       {/* The row can be pulled; say so, once, in words the reader's device understands. */}
       <p className={home.reelHint} aria-hidden="true">

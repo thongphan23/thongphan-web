@@ -12,8 +12,8 @@ type PathDoorsProps = {
   placement: Placement
 }
 
-// Cursor labels for the closing panels only; on the hero pills a label would sit over the pill's
-// own words, and the colour flood already says where the button goes.
+// Cursor labels for the closing panels, in the path's own colour. The hero pills carry no label:
+// the magnetic ring wraps them instead, so nothing ever sits over the pill's own words.
 const CURSOR: Record<PathKey, { label: string; tone: string }> = {
   tensai: { label: 'Vào Tensai', tone: 'lime' },
   conan: { label: 'Vào Conan', tone: 'lacquer' },

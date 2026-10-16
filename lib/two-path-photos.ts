@@ -49,21 +49,21 @@ const records = [
   {
     // Transparent cut-out: the stage hero sets Thông in front of his name, so only he is kept.
     id: 'home-stage-hero',
-    width: 1098,
-    height: 1200,
+    width: 920,
+    height: 984,
     alt: 'Thông Phan cầm micro, đang nói trên sân khấu tối',
     source:
-      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền làm mềm 1.2px',
+      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền siết lại (ngưỡng mặt nạ 0.45–0.9, co 1px, làm mềm 0.8px), cắt sát người',
     faces: 'thong-only',
     budgetBytes: 180 * KB,
   },
   {
     id: 'home-stage-hero-mobile',
-    width: 787,
-    height: 860,
+    width: 700,
+    height: 749,
     alt: 'Thông Phan cầm micro, đang nói trên sân khấu tối',
     source:
-      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền làm mềm 1.2px',
+      'public/images/homepage/evidence-cinema-hero-v3.webp; tách nền bằng scripts/photos/person-mask.swift (Vision), viền siết lại (ngưỡng mặt nạ 0.45–0.9, co 1px, làm mềm 0.8px), cắt sát người',
     faces: 'thong-only',
     budgetBytes: 180 * KB,
   },

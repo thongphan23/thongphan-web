@@ -399,9 +399,12 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
         if (next) next.disabled = index === items.length - 1
       }
       let trigger: ScrollTrigger | undefined
+      // The resting point the row last glided to, for data-hscroll-snap (NaN once the reader leaves).
+      let rest = Number.NaN
       const scrollToPoint = (index: number, duration: number) => {
         if (!trigger) return
         const y = trigger.start + (trigger.end - trigger.start) * points[index]
+        rest = y
         if (lenis) lenis.scrollTo(y, { duration })
         else window.scrollTo({ top: y, behavior: 'smooth' })
       }
@@ -420,6 +423,35 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           window.setTimeout(() => (settling = false), 760)
         }, 180)
       }
+      // data-hscroll-snap: once the wheel stops feeding Lenis, aim the glide still under way at the
+      // resting point nearest to where it was heading, so the row lands in one movement instead of
+      // gliding to a stop and then settling.
+      const snap = 'hscrollSnap' in section.dataset
+      let aimed = Number.NaN
+      let aimedAt = 0
+      const snapAhead = (self: ScrollTrigger) => {
+        if (!snap || !lenis || settling || section.dataset.hscrollDragging) return
+        const target = lenis.targetScroll
+        const span = self.end - self.start
+        const progress = (target - self.start) / span
+        if (progress < 0 || progress > 1) rest = Number.NaN
+        const now = performance.now()
+        if (target !== aimed) {
+          aimed = target
+          aimedAt = now
+          return
+        }
+        if (now - aimedAt < 110 || progress <= 0 || progress >= 1) return
+        let index = nearest(progress)
+        // One notch of the wheel is shorter than half the gap between photos: rather than spring
+        // back to the photo the reader just left, take one step in the direction they scrolled.
+        if (Math.abs(target - rest) > 40 && index === nearest((rest - self.start) / span))
+          index = gsap.utils.clamp(0, items.length - 1, index + Math.sign(target - rest))
+        if (Math.abs(self.start + span * points[index] - target) < 6) return
+        settling = true
+        scrollToPoint(index, 0.65)
+        window.setTimeout(() => (settling = false), 720)
+      }
       const tween = gsap.to(track, {
         x: () => -distance(),
         ease: 'none',
@@ -434,6 +466,7 @@ function horizontalScroll(root: HTMLElement, mm: gsap.MatchMedia) {
           anticipatePin: 1,
           onUpdate: (self) => {
             mark(self.progress)
+            snapAhead(self)
             settleSoon(self)
           },
           onRefresh: (self) => {
