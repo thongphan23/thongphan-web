@@ -576,10 +576,10 @@
   align-items: center;
   color: var(--brand-paper);
   display: flex;
-  font-size: clamp(1rem, 0.7rem + 0.9vw, 1.25rem);
+  font-size: clamp(0.875rem, 0.62rem + 1vw, 1.25rem);
   font-weight: 700;
   gap: 0.75rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   line-height: 1.3;
   margin: 0 0 1.1rem;
   text-transform: uppercase;
@@ -823,7 +823,7 @@
 
 .principleFrame img {
   display: block;
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -1519,7 +1519,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   grid-area: total;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
 }
 
 /* The window has a hairline on the left that stages leave through and a long soft right edge
@@ -1671,6 +1671,11 @@
     margin: 0;
   }
 
+  /* The left column is narrow just above 900px; the mark eases down there so it stays on one line. */
+  [data-light-active] .galleryHead .sectionMark {
+    font-size: min(1.25rem, 1.85vw);
+  }
+
   [data-light-active] .galleryHead .sectionTitle {
     font-size: clamp(2.1rem, 1rem + 1.9vw, 3rem);
     line-height: 1.04;
@@ -1746,7 +1751,7 @@
 
 .closingFrame img {
   display: block;
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
   height: 100%;
   object-fit: cover;
   width: 100%;

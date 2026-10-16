@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
 import SplitWords, { wordCount } from '@/components/motion/SplitWords'
+import PenPhrase from '@/components/motion/PenPhrase'
 import JsonLd from '@/components/seo/JsonLd'
 import ConanLensAuto from '@/components/two-path/ConanLensAuto'
 import ConanStageNav from '@/components/two-path/ConanStageNav'
@@ -134,12 +135,12 @@ export default function ConanPage() {
             </figcaption>
             <blockquote className={styles.quote}>
               <p data-scrub-words data-scrub-from="0.6" data-scrub-start="top bottom" data-scrub-end="top 85%">
-                {principle.text}
+                <PenPhrase text={principle.text} phrase="không hứa" pen="underline" tone="ember" start="top 75%" end="top 40%" />
               </p>
             </blockquote>
           </figure>
           <figure className={styles.principlePhoto} data-motion-surface>
-            <div className={styles.principleFrame} data-img-reveal="right" data-parallax-frame="7">
+            <div className={styles.principleFrame} data-img-reveal="right" data-parallax-frame="7" data-photo-bloom>
               <div data-reveal-media>
                 <TwoPathPhoto id={principle.photoId} sizes="(max-width: 999px) 80vw, 600px" />
               </div>
@@ -194,7 +195,7 @@ export default function ConanPage() {
               02 — Hành trình
             </p>
             <h2 id="conan-journey" className={styles.journeyTitle} data-split>
-              {journey.title}
+              <PenPhrase text={journey.title} phrase="Builder" pen="circle" tone="ember" start="top 75%" end="top 35%" />
             </h2>
             <p className={styles.journeyLead} data-motion-reveal="drift">
               {journey.lead}
@@ -361,7 +362,7 @@ export default function ConanPage() {
           </div>
           {/* The same people who open the page close it. */}
           <figure className={styles.closingPhoto} data-motion-surface>
-            <div className={styles.closingFrame} data-img-reveal="left" data-parallax-frame="6">
+            <div className={styles.closingFrame} data-img-reveal="left" data-parallax-frame="6" data-photo-bloom>
               <div data-reveal-media>
                 <TwoPathPhoto id={closingPhotoId} sizes="(max-width: 999px) 92vw, 560px" />
               </div>

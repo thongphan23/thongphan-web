@@ -2,6 +2,7 @@ import { Fragment, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
+import PenPhrase from '@/components/motion/PenPhrase'
 import PathDoors from '@/components/two-path/PathDoors'
 import TwoPathPhoto from '@/components/two-path/TwoPathPhoto'
 import {
@@ -163,7 +164,13 @@ const ASSET_PHOTO: Partial<Record<string, TwoPathPhotoId>> = { 'present-day-stag
 function ImageCard({ asset }: { asset: ImageArtifact }) {
   const photoId = ASSET_PHOTO[asset.id]
   return (
-    <figure className={styles.imageCard} data-motion-surface data-header-ignore data-focus-bloom>
+    <figure
+      className={styles.imageCard}
+      data-motion-surface
+      data-header-ignore
+      data-focus-bloom
+      data-photo-bloom={photoId ? '' : undefined}
+    >
       {/* The print slot is dark from the first paint, so while the picture is still opening (or
           decoding) the card shows an unexposed print, never a blank sheet of paper. */}
       <div className={styles.imageSlot} style={{ aspectRatio: photoId ? '1 / 1' : `${asset.width} / ${asset.height}` }}>
@@ -240,9 +247,23 @@ export default function OriginStory() {
             00 — Nguyên tắc vận hành
           </figcaption>
           <blockquote className={styles.principle}>
-            <p data-scrub-words>{PRINCIPLE}</p>
+            <p data-scrub-words>
+              <PenPhrase text={PRINCIPLE} phrase="đóng gói" pen="underline" tone="lacquer" start="top 70%" end="top 35%" />
+            </p>
           </blockquote>
-          <div className={styles.seal} data-speed="0.12" data-speed-wide data-spin="140" aria-hidden="true">
+          {/* The guide's pen rings the printed seal just outside its own printed border. */}
+          <div
+            className={styles.seal}
+            data-speed="0.12"
+            data-speed-wide
+            data-spin="140"
+            aria-hidden="true"
+            data-pen="circle"
+            data-pen-tone="lacquer"
+            data-pen-inset="3%"
+            data-pen-start="top 80%"
+            data-pen-end="top 40%"
+          >
             <Image src="/images/homepage/evidence-cinema-stamp-v4.png" width={1024} height={1024} alt="" sizes="(min-width: 1024px) 360px, 180px" />
           </div>
         </figure>
@@ -451,7 +472,18 @@ export default function OriginStory() {
           <p className={styles.closingEyebrow} data-motion-reveal="mask">
             Hồi tiếp theo thuộc về bạn
           </p>
-          <h2 id="origin-story-closing" className={styles.closingTitle} data-split>
+          <h2
+            id="origin-story-closing"
+            className={styles.closingTitle}
+            data-split
+            data-pen="arrow"
+            data-pen-tone="lacquer"
+            data-pen-to="[data-path-door]"
+            data-pen-side="bottom,top"
+            data-pen-start="top 60%"
+            data-pen-end="top 25%"
+            data-pen-media="(min-width: 1024px)"
+          >
             {aboutPathContent.title}
           </h2>
           <div className={styles.closingCopy} data-reveal-children>

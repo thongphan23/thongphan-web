@@ -41,7 +41,7 @@ export default function FieldNotes() {
           ))}
         </div>
       </div>
-      <figure className={home.statPhoto} data-motion-surface>
+      <figure className={home.statPhoto} data-motion-surface data-photo-bloom>
         <div className={home.statPhotoFrame} data-img-reveal="left" data-parallax-frame="7">
           <span className={styles.revealMedia} data-reveal-media>
             <TwoPathPhoto id={fieldNotes.photoId} eager sizes="100vw" />

@@ -61,7 +61,14 @@ export default function HomePage() {
               <span className={styles.titleLead}>
                 <SplitWords text={titleLead} />
               </span>{' '}
-              <em>
+              {/* The guide's pen splits from the question into the two doors below it. */}
+              <em
+                data-pen="fork"
+                data-pen-tone="lacquer,lime,ember"
+                data-pen-to="[data-path-door='tensai'],[data-path-door='conan']"
+                data-pen-trigger="load"
+                data-pen-delay="1200"
+              >
                 <SplitWords text={titleQuestion} start={wordCount(titleLead)} />
               </em>
             </h1>

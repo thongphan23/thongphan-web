@@ -35,7 +35,7 @@ export default function FounderLetter() {
   return (
     <section className={home.letter} aria-labelledby="founder-letter-title">
       <div className={home.letterOpen}>
-        <figure className={home.letterPortrait} data-img-reveal="up" data-parallax-frame="5">
+        <figure className={home.letterPortrait} data-img-reveal="up" data-parallax-frame="5" data-photo-bloom>
           <span className={home.letterPortraitMedia} data-reveal-media>
             <TwoPathPhoto id={letter.portraitId} eager sizes="(max-width: 899px) 86vw, 36rem" />
           </span>

@@ -8,6 +8,12 @@
   margin-top: clamp(1.25rem, 3svh, 2rem);
 }
 
+/* Where motion runs, the guide's pen draws a fork from the question into the doors (guide-pen.ts),
+   so the doors stand a little lower to leave it room. */
+:global(html.motion) .heroDoors {
+  margin-top: clamp(2.75rem, 7.5svh, 4.5rem);
+}
+
 .heroDoors .heroDoor {
   background: rgb(12 11 10 / 0.8);
   box-shadow:
@@ -31,7 +37,7 @@
 
 .heroDoors .heroProduct {
   font-size: 1.0625rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
 }
 
 .heroDoors .heroLabel {

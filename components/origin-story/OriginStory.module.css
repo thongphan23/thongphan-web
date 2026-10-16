@@ -80,7 +80,7 @@
   font-family: var(--font-mono);
   font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   line-height: 1.4;
   margin: 0;
   text-transform: uppercase;
@@ -396,7 +396,7 @@
   font-family: var(--font-mono);
   font-size: 1.125rem;
   gap: 0.6em;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -693,7 +693,7 @@
 }
 
 .imageMedia img {
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
   object-fit: cover;
   /* Square crop held hard to the speaker's side at the photo's native scale, so he stays sharp
      and the hall opens to his left. The photo component sets a softer focal point inline. */
@@ -898,7 +898,7 @@
   font-family: var(--font-mono);
   font-size: clamp(1rem, 0.94rem + 0.2vw, 1.125rem);
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   line-height: 1.4;
   margin: 0 0 1.25rem;
   text-transform: uppercase;
@@ -936,7 +936,8 @@
 
 /* At rest the two doors wait in the archive's ink with their prints in black and white, so the page
    keeps its palette to the end; the door under the pointer or keyboard focus takes its path's own
-   colour. Touch screens have no hover, so there the doors keep their colours. */
+   colour. Touch screens have no hover, so there the doors keep their colours, and without motion
+   (reduced motion included) the prints stay in colour too. */
 @media (hover: hover) {
   .story .closing a[data-path-door] {
     --door-bg: var(--brand-ink);
@@ -949,14 +950,14 @@
       color 700ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .story .closing a[data-path-door] img {
+  :global(html.motion) .story .closing a[data-path-door] img {
     filter: grayscale(1) contrast(1.12) brightness(0.92);
     transition:
       filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
       scale 1200ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .story .closing a[data-path-door]:is(:hover, :focus-visible) img {
+  :global(html.motion) .story .closing a[data-path-door]:is(:hover, :focus-visible) img {
     filter: var(--brand-photo-grade);
   }
 

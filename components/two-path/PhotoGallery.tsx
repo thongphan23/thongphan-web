@@ -34,7 +34,7 @@ export default function PhotoGallery({ items, head, pace }: PhotoGalleryProps) {
       <ol className={styles.galleryList}>
         {items.map((item, index) => (
           <li key={item.photoId} className={styles.galleryItem} data-light-item>
-            <figure className={styles.galleryFigure} data-motion-surface>
+            <figure className={styles.galleryFigure} data-motion-surface data-photo-bloom>
               <div className={styles.galleryClip} data-light-clip>
                 <div className={`${styles.galleryFrame} ${show.frame}`} data-img-reveal={index === 0 ? 'center' : 'up'}>
                   <div className={styles.galleryMedia} data-reveal-media>

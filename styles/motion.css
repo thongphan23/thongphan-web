@@ -66,6 +66,28 @@ html.motion:not([data-motion-ready]) [data-motion-stage] [data-motion-reveal] {
   width: 100%;
 }
 
+/* Documentary photos ([data-photo-bloom]) rest in the archive tone while motion runs and take
+   their colour on hover, keyboard focus, or while the engine marks them data-lit in the middle of
+   the screen. Each photo's own rule reads var(--photo-tone); a frame may set --photo-lit to bloom
+   into its own grade. Without motion (reduced motion included) photos simply stay in colour. */
+[data-photo-bloom] {
+  --photo-tone: var(--photo-lit, var(--brand-photo-grade));
+}
+
+html.motion [data-photo-bloom]:not([data-lit], :focus-within) {
+  --photo-tone: var(--brand-photo-mono);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.motion [data-photo-bloom]:hover {
+    --photo-tone: var(--photo-lit, var(--brand-photo-grade));
+  }
+}
+
+[data-photo-bloom] img {
+  transition: filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Custom cursor: fine pointers only, never under reduced motion. */
 html[data-cursor-mode='custom'] [data-motion-stage],
 html[data-cursor-mode='custom'] [data-motion-stage] a,

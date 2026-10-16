@@ -104,7 +104,8 @@ export default function TensaiPage() {
           </p>
           <h1 id="tensai-title" className={styles.title} style={{ '--intro-base': '0.18s' } as CSSProperties}>
             <SplitWords text={titleHead} />{' '}
-            <em>
+            {/* Where motion runs, the guide's pen rings the word once the title is in (in place of the marker). */}
+            <em data-pen="circle" data-pen-tone="lime" data-pen-width="6" data-pen-trigger="load" data-pen-delay="1450">
               <SplitWords text={accent} start={wordCount(titleHead)} />
             </em>{' '}
             <SplitWords text={titleTail} start={wordCount(titleHead) + wordCount(accent)} />
@@ -199,7 +200,12 @@ export default function TensaiPage() {
                 the held column keeps pace with the cards (stackCards marks data-current). */}
             <ol className={styles.situationRail} data-stack-rail aria-hidden="true">
               {situations.items.map((item, index) => (
-                <li key={item.course}>
+                <li
+                  key={item.course}
+                  {...(index === 0
+                    ? { 'data-pen': 'arrow', 'data-pen-tone': 'lime', 'data-pen-to': '[data-stack-card]', 'data-pen-start': 'top 60%', 'data-pen-end': 'top 20%' }
+                    : {})}
+                >
                   <span>{pad(index + 1)}</span>
                   Khóa {item.course}
                 </li>
@@ -398,7 +404,7 @@ export default function TensaiPage() {
       <section className={styles.closing} aria-labelledby="tensai-closing" data-curtain>
         {/* The call arrives with the band rather than after it, rising a little as the band opens. */}
         <div className={`${styles.inner} ${styles.closingInner}`} data-closing-rise>
-          <h2 id="tensai-closing" className={styles.closingTitle}>
+          <h2 id="tensai-closing" className={styles.closingTitle} data-pen="underline" data-pen-tone="ink" data-pen-start="top 90%" data-pen-end="top 55%">
             {closing.title}
           </h2>
           <div className={styles.actions}>

@@ -118,7 +118,7 @@
   font-family: var(--font-be-vietnam);
   font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -338,9 +338,10 @@
   font-family: var(--font-be-vietnam);
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   line-height: 1.3;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .closingDoorIndex {
@@ -639,7 +640,7 @@
 .signatureRole {
   font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   opacity: 0.84;
   text-transform: uppercase;
 }
@@ -780,7 +781,7 @@
   font-family: var(--font-be-vietnam);
   font-size: 0.9375rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   line-height: 1.3;
   margin-top: 1.25rem;
   opacity: 0.86;
@@ -929,7 +930,7 @@
   color: color-mix(in srgb, var(--brand-paper) 78%, transparent);
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
   line-height: 1.3;
   margin: 0;
   text-transform: uppercase;
@@ -1098,10 +1099,10 @@
 /* Phone snapshots from different rooms share the site's one photo grade. */
 .reelMedia img {
   display: block;
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
   height: 100%;
   object-fit: cover;
-  transition: filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
   width: 100%;
 }
 
@@ -1258,7 +1259,7 @@
 }
 
 .reel[data-hscroll-active='true'] .reelMedia img {
-  filter: var(--brand-photo-grade) brightness(0.86);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(0.86);
 }
 
 .reel[data-hscroll-active='true'] .reelItem[data-current] {
@@ -1312,7 +1313,7 @@
 }
 
 .reel[data-hscroll-active='true'] .reelItem[data-current] .reelMedia img {
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
 }
 
 /* Gallery: a light table of class photos. Without the engine they stand in sequence: a swipe rail
@@ -1324,6 +1325,7 @@
 .gallery {
   /* One warm grade over every frame, so phone shots from different rooms read as one series. */
   --gallery-grade: saturate(0.74) sepia(0.2) contrast(1.06) brightness(1.06);
+  --photo-lit: var(--gallery-grade);
   position: relative;
 }
 
@@ -1373,10 +1375,12 @@
 
 .galleryMedia img {
   aspect-ratio: var(--gallery-ratio, 4 / 3);
-  filter: var(--gallery-grade);
+  filter: var(--photo-tone, var(--gallery-grade));
   height: auto;
   object-fit: cover;
-  transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* The photo underneath dims as the next one covers it (driven by the light table). */
@@ -1430,7 +1434,7 @@
   font-size: 0.875rem;
   font-weight: 700;
   gap: 0.6rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -1918,7 +1922,7 @@
 }
 
 .guideImage img {
-  filter: var(--brand-photo-grade);
+  filter: var(--photo-tone, var(--brand-photo-grade));
   object-fit: cover;
 }
 
@@ -1949,7 +1953,7 @@
   font-size: 0.9375rem;
   font-style: normal;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.12em;
   opacity: 0.78;
   text-transform: uppercase;
 }

@@ -60,7 +60,7 @@ export default function RealWorkReel() {
             {reel.photoIds.map((id, index) => {
               const item = photo(id)
               return (
-                <figure key={id} className={`${styles.reelItem} ${home.reelItem}`} data-hscroll-item>
+                <figure key={id} className={`${styles.reelItem} ${home.reelItem}`} data-hscroll-item data-photo-bloom>
                   <div className={styles.reelFrame}>
                     <div className={`${styles.reelMedia} ${home.reelMediaHome}`} data-hscroll-media>
                       <TwoPathPhoto id={id} eager sizes="(max-width: 899px) 82vw, 64vw" />

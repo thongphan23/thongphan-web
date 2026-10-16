@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 import Lenis from 'lenis'
 import { glPhotos } from './gl-photo'
+import { collectPens, guidePen } from './guide-pen'
 import { chapterRail, curtains, lessonStage, lightTable, maskFlight, scrollCount, scrollFill, stageHero, stickySwap } from './signatures'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
@@ -628,6 +629,22 @@ function focusBloom(root: HTMLElement) {
   })
 }
 
+// Documentary photos rest in the archive tone and take their colour while they cross the
+// middle of the screen; hover and keyboard focus are handled in CSS ([data-photo-bloom]).
+function photoBloom(root: HTMLElement): Cleanup {
+  const photos = root.querySelectorAll<HTMLElement>('[data-photo-bloom]')
+  if (!photos.length) return () => {}
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => e.target.toggleAttribute('data-lit', e.isIntersecting)),
+    { rootMargin: '-40% -20% -40% -20%' },
+  )
+  photos.forEach((el) => observer.observe(el))
+  return () => {
+    observer.disconnect()
+    photos.forEach((el) => el.removeAttribute('data-lit'))
+  }
+}
+
 function counters(root: HTMLElement) {
   const formatter = new Intl.NumberFormat('vi-VN')
   root.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
@@ -986,6 +1003,8 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
   const mm = gsap.matchMedia()
   const extra: Cleanup[] = []
   const ctx = gsap.context(() => {
+    // Pen anchors are read before SplitText rewrites the headings they sit in.
+    const pens = collectPens(root)
     splitHeadlines(root)
     scrubWords(root)
     scrollOut(root)
@@ -1001,6 +1020,7 @@ export function mountMotion(root: HTMLElement, { stage }: MountOptions): Cleanup
     const glide = lenis ? (y: number, duration: number) => lenis?.scrollTo(y, { duration }) : null
     extra.push(marquees(root), velocitySkew(root), stageHero(root), maskFlight(root), lessonStage(root), stickySwap(root), chapterRail(root), lightTable(root, glide), curtains(root), scrollFill(root), scrollCount(root))
     if (finePointer) extra.push(magnetic(root), tilt(root), depth(root), hoverReveal(root))
+    extra.push(photoBloom(root), guidePen(root, pens))
     // The WebGL photo surface is a desktop treat: it needs a mouse, a wide screen and a
     // connection that has not asked to save data.
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData

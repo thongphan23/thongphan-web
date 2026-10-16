@@ -19,9 +19,17 @@ export default function GuideZoom() {
         <h2 id="guide-title" className={`${styles.guideTitle} ${home.guideTitle}`}>
           <span className={`${styles.guideWord} ${home.guideLeft}`}>{guide.lead}</span>{' '}
           <span className={`${styles.guideSlot} ${home.guideSlot}`} aria-hidden="true" />{' '}
-          <em className={`${styles.guideWord} ${home.guideRight}`}>{guide.tail}</em>
+          <em
+            className={`${styles.guideWord} ${home.guideRight}`}
+            data-pen="underline"
+            data-pen-tone="lacquer"
+            data-pen-start="top 90%"
+            data-pen-end="top 30%"
+          >
+            {guide.tail}
+          </em>
         </h2>
-        <figure className={`${styles.guideMedia} ${home.guideMedia}`}>
+        <figure className={`${styles.guideMedia} ${home.guideMedia}`} data-photo-bloom>
           <span className={`${styles.guideImage} ${home.guideImage}`}>
             <TwoPathPhoto id={guide.photoId} eager sizes="100vw" />
           </span>

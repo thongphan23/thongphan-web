@@ -52,7 +52,7 @@
 .letterPortrait img {
   display: block;
   /* Every photo on the page takes the site's one grade; each adds only its own exposure step. */
-  filter: var(--brand-photo-grade) brightness(1.02);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.02);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -330,10 +330,11 @@
   font-size: clamp(0.9375rem, 0.82rem + 0.3vw, 1.125rem);
   font-weight: 700;
   justify-self: start;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   line-height: 1;
   padding: 0.85em 1.3em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .pathText {
@@ -396,7 +397,7 @@
   color: #4a4038;
   font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -961,7 +962,7 @@
 
 .statPhotoFrame img {
   display: block;
-  filter: var(--brand-photo-grade) brightness(1.06);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -1142,17 +1143,17 @@
 }
 
 .reel.reel .reelMediaHome img {
-  filter: var(--brand-photo-grade) brightness(1.06);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
 }
 
 /* Pinned: the photo at rest takes the same grade as every other photo on the page, the neighbours
    the same grade a step darker. */
 .reel.reel[data-hscroll-active='true'] .reelItem .reelMediaHome img {
-  filter: var(--brand-photo-grade) brightness(0.88);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(0.88);
 }
 
 .reel.reel[data-hscroll-active='true'] .reelItem[data-current] .reelMediaHome img {
-  filter: var(--brand-photo-grade) brightness(1.06);
+  filter: var(--photo-tone, var(--brand-photo-grade)) brightness(1.06);
 }
 
 /* The caption rides on the photo over a scrim, so it never competes with a busy background. */
