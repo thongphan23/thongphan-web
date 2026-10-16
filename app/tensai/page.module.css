@@ -90,7 +90,8 @@
 }
 
 .lead {
-  font-size: clamp(1.0625rem, 0.55rem + 0.95vw, 1.375rem);
+  color: #3f5446;
+  font-size: clamp(1.0625rem, 0.8rem + 0.4vw, 1.1875rem);
   line-height: 1.6;
   margin: 1.8rem 0 0;
   max-width: 36rem;
@@ -172,6 +173,7 @@
   align-items: center;
   color: inherit;
   display: inline-flex;
+  font-size: 1.0625rem;
   font-weight: 700;
   min-height: 44px;
   text-decoration: underline;
@@ -186,12 +188,12 @@
   outline-offset: 2px;
 }
 
-/* The date is news, so it reads in the page's ink with a lime mark, not as a footnote. */
+/* The date is news, so it reads at body size with a lime mark, not as a footnote. */
 .launchNote {
   align-items: center;
-  color: var(--brand-text-on-paper);
+  color: #3f5446;
   display: flex;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   gap: 0.65rem;
   line-height: 1.45;
@@ -208,8 +210,7 @@
   width: 0.55rem;
 }
 
-/* The lesson card floats in a soft lime bloom that opens with it, and carries a sticker that says it
-   can be played. */
+/* The lesson card floats in a soft lime bloom that opens with it. */
 .lessonSlot {
   display: grid;
   justify-items: center;
@@ -230,66 +231,10 @@
   z-index: -1;
 }
 
-/* The sticker: lime on a fine ink edge, tilted off the card's top-left corner. */
-.tryTag {
-  background: var(--path-cta-bg);
-  border: 1.5px solid var(--path-accent);
-  border-radius: 999px;
-  box-shadow: 0 12px 24px -14px rgba(7, 59, 47, 0.7);
-  color: var(--path-accent);
-  font-size: 0.9375rem;
-  font-weight: 800;
-  left: -1.5rem;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  padding: 0.6rem 1rem;
-  pointer-events: none;
-  position: absolute;
-  rotate: -6deg;
-  top: -1.4rem;
-  transition:
-    opacity 260ms ease,
-    scale 420ms cubic-bezier(0.22, 1, 0.36, 1);
-  white-space: nowrap;
-  z-index: 3;
-}
-
-.lessonCard:has([data-state='right'], [data-state='wrong']) .tryTag {
-  opacity: 0;
-  scale: 0.7;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   /* The bloom opens with the card instead of waiting for it as an empty shape. */
   :global(html.motion) .heroGlow {
     animation: glow-bloom 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s backwards;
-  }
-
-  /* The sticker lands after the card, then breathes a little while nobody has answered. */
-  :global(html.motion) .tryTag {
-    animation:
-      tag-land 700ms cubic-bezier(0.34, 1.56, 0.64, 1) 1.05s backwards,
-      tag-bob 3.2s ease-in-out 2s infinite;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* The two waiting lessons slide out from behind the card once it has landed, so there is never a
-     lone shape on screen before the card. */
-  :global(html.motion) .plate {
-    animation: plate-fan 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s backwards;
-  }
-
-  :global(html.motion) .plateGreen {
-    animation-delay: 0.95s;
-  }
-}
-
-@keyframes plate-fan {
-  from {
-    opacity: 0;
-    rotate: 0deg;
-    translate: 0 0;
   }
 }
 
@@ -300,63 +245,10 @@
   }
 }
 
-@keyframes tag-land {
-  from {
-    opacity: 0;
-    scale: 1.5;
-  }
-}
-
-@keyframes tag-bob {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -4px;
-  }
-}
-
 .lessonCard {
-  max-width: 41rem;
+  max-width: 36rem;
   position: relative;
   width: 100%;
-}
-
-/* Two more lessons wait behind the card: a lime sheet and a green one fanned out to its right. Each
-   leans against the pointer's place across the hero (--px/--py from TensaiHeroFx), so the card
-   floats in front of them. Translate and rotate only. */
-.plate {
-  align-items: flex-start;
-  border-radius: 24px;
-  display: flex;
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  inset: 0;
-  justify-content: flex-start;
-  letter-spacing: 0.22em;
-  padding: 1.6rem 0.6rem;
-  pointer-events: none;
-  position: absolute;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  z-index: -1;
-}
-
-.plateLime {
-  background: var(--path-cta-bg);
-  border: 1.5px solid var(--path-accent);
-  color: var(--path-accent);
-  rotate: 3.2deg;
-  translate: calc(22px + var(--px, 0) * -7px) calc(10px + var(--py, 0) * -5px);
-}
-
-.plateGreen {
-  background: var(--path-accent);
-  color: var(--path-cta-bg);
-  rotate: 6.4deg;
-  translate: calc(44px + var(--px, 0) * -13px) calc(18px + var(--py, 0) * -9px);
 }
 
 /* A soft light under the pointer (tilt sets --tilt-x/--tilt-y), shown only to a hovering mouse. */
@@ -461,35 +353,12 @@
   margin-top: 0.85rem;
 }
 
-/* On phones the bloom and the sticker stay inside the page gutter. */
+/* On phones the bloom stays inside the page gutter. */
 @media (max-width: 959px) {
   .heroGlow {
     inset: -6% -4%;
   }
-
-  /* Sits wholly above the card's top edge so it never covers the lesson's own wordmark. */
-  .tryTag {
-    font-size: 0.875rem;
-    left: 0.5rem;
-    top: -1.85rem;
-  }
-
-  .plate {
-    font-size: 0.8125rem;
-    padding: 1.2rem 0.3rem;
-  }
-
-  .plateLime {
-    rotate: 2.4deg;
-    translate: calc(8px + var(--px, 0) * -3px) 6px;
-  }
-
-  .plateGreen {
-    rotate: 4.4deg;
-    translate: calc(15px + var(--px, 0) * -5px) 10px;
-  }
 }
-
 /* Phones and reduced motion: nothing pins or opens, so the green sheet with 天才 is a band in the flow
    under the card. On phones the script writes the mark and fades its line in as the band rises. */
 @media (max-width: 959px), (prefers-reduced-motion: reduce) {
@@ -524,7 +393,7 @@
   .hero {
     align-content: center;
     column-gap: clamp(2rem, 4vw, 4.5rem);
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     min-height: calc(100svh - 96px);
     padding-block: clamp(1.5rem, 3vh, 2.5rem);
   }
@@ -537,15 +406,7 @@
   .lessonSlot {
     grid-column: 2;
     grid-row: 1;
-    padding-right: clamp(0.75rem, 2.4vw, 2.25rem);
-    padding-top: 1.5rem;
-  }
-
-  /* The sticker sits wholly above the card's top edge, clear of the lesson's own wordmark and of the
-     header's rule above it. */
-  .tryTag {
-    left: 0.75rem;
-    top: -2.3rem;
+    padding-right: clamp(0.5rem, 1vw, 1rem);
   }
 
   .title {
@@ -627,6 +488,14 @@
 }
 
 .situationTop {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: space-between;
+}
+
+.situationCount {
   align-items: baseline;
   display: flex;
   gap: 0.5rem;
@@ -643,26 +512,26 @@
 }
 
 .situationsBand .situationIndex {
-  font-size: clamp(3.4rem, 1rem + 4.6vw, 6.5rem);
+  font-size: clamp(2.4rem, 1rem + 2.4vw, 3.6rem);
   letter-spacing: -0.03em;
   line-height: 0.8;
 }
 
 .situationTotal {
-  color: rgba(7, 59, 47, 0.62);
-  font-size: 0.9375rem;
+  color: rgba(7, 59, 47, 0.74);
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
 
 .problem {
   font-family: var(--font-cormorant);
-  font-size: clamp(2.1rem, 0.9rem + 2.9vw, 3.9rem);
+  font-size: clamp(2rem, 1rem + 2.2vw, 3.2rem);
   font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 1.04;
+  line-height: 1.06;
   margin: 0;
-  max-width: 17ch;
+  max-width: 22ch;
   text-wrap: balance;
 }
 
@@ -687,6 +556,14 @@
   padding: 0.45rem 0.85rem;
 }
 
+/* On a phone the longest course name still fits the chip on one line. */
+@media (max-width: 559px) {
+  .situationsBand .situationCourse {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+  }
+}
+
 /* The rail under the held heading: the three courses, the one whose card is on top lit in paper
    with a lime bar; until motion marks one, all three read at full strength. Wide screens only. */
 .situationRail {
@@ -701,6 +578,56 @@
   gap: 0.75rem;
   line-height: 1.5;
   padding: 0.5rem 0;
+}
+
+/* The course as the app draws its path: one node per lesson, a lime star at every gate (màn vượt
+   ải), counted from the course data. The nodes pop in along the track as the card arrives
+   (tensai-stage.ts); without motion they are simply there. */
+.situationMap {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.mapTrack {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mapNode,
+.mapGate {
+  border-radius: 50%;
+  flex: none;
+}
+
+.mapNode {
+  border: 2px solid var(--path-accent);
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+.mapGate {
+  align-items: center;
+  background: var(--path-cta-bg);
+  box-shadow: inset 0 0 0 2px var(--path-accent);
+  color: var(--path-accent);
+  display: inline-flex;
+  height: 1.75rem;
+  justify-content: center;
+  width: 1.75rem;
+}
+
+.mapMeta {
+  color: rgba(7, 59, 47, 0.82);
+  font-size: 1.0625rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 600;
+  margin: 0;
 }
 
 /* The app's own lesson node: a green disc with a lime star, so a row reads as a lesson of the course. */
@@ -872,7 +799,7 @@
     display: grid;
     list-style: none;
     margin: clamp(2rem, 4svh, 3.25rem) 0 0;
-    max-width: 22rem;
+    max-width: 24rem;
     padding: 0;
   }
 
@@ -881,7 +808,7 @@
     border-bottom: 1px solid var(--tensai-rule);
     color: var(--brand-paper);
     display: flex;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     font-weight: 600;
     gap: 1rem;
     padding: 1.05rem 0 1.05rem 1.25rem;
@@ -927,14 +854,12 @@
 
   /* The cards hold a little lower each time, so the edge of every earlier card still shows. */
   .situation {
-    min-height: min(62svh, 34rem);
     position: sticky;
     top: calc(16svh + var(--stack-i, 0) * 1.6rem);
-    grid-template-rows: auto 1fr auto;
   }
 
   .situation + .situation {
-    margin-top: 7svh;
+    margin-top: 4svh;
   }
 
   .situations {
@@ -946,19 +871,7 @@
      end of the list (padding or a margin would not count). */
   .situations::after {
     content: '';
-    height: 70svh;
-  }
-
-  .situationAnswer {
-    align-items: baseline;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  }
-}
-
-/* With room to spare, the course chip keeps its name on one line and the lessons take the rest. */
-@media (min-width: 1200px) {
-  .situationAnswer {
-    grid-template-columns: max-content minmax(0, 1fr);
+    height: 12svh;
   }
 
   .situationsBand .situationCourse {
@@ -974,6 +887,7 @@
   background: var(--brand-reading-paper-deep);
   border-radius: clamp(24px, 3vw, 40px) clamp(24px, 3vw, 40px) 0 0;
   margin-top: calc(-1 * clamp(24px, 3vw, 40px));
+  padding-bottom: clamp(4rem, 7vw, 6.5rem);
   padding-top: clamp(3.5rem, 7vw, 6.5rem);
   position: relative;
   z-index: 3;
@@ -1011,9 +925,27 @@
   z-index: -1;
 }
 
-.courseLink:hover::before,
+/* Lime only for a real pointer on the row or for keyboard focus; a touch screen never keeps it lit. */
 .courseLink:focus-visible::before {
   transform: scaleY(1);
+}
+
+@media (hover: hover) {
+  .courseLink:hover::before {
+    transform: scaleY(1);
+  }
+
+  .courseLink:hover .courseName {
+    transform: translateX(0.6rem);
+  }
+
+  .courseLink:hover .courseMeta {
+    color: var(--path-accent);
+  }
+
+  .courseLink:hover .courseArrow {
+    transform: rotate(45deg);
+  }
 }
 
 .courseLink:focus-visible {
@@ -1032,10 +964,6 @@
   transition: transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.courseLink:hover .courseName {
-  transform: translateX(0.6rem);
-}
-
 .courseTagline {
   font-size: clamp(1.0625rem, 0.9rem + 0.3vw, 1.25rem);
   line-height: 1.5;
@@ -1045,18 +973,20 @@
 
 .courseMeta {
   align-items: baseline;
-  color: var(--tensai-muted);
+  color: #5f5443;
   display: flex;
   flex-wrap: wrap;
-  font-size: 1.0625rem;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums lining-nums;
   gap: 0.4rem 1.4rem;
+  letter-spacing: 0.01em;
 }
 
 .courseStat strong {
   color: var(--brand-text-on-paper);
   font-family: var(--font-cormorant);
   font-size: 2.6rem;
-  font-variant-numeric: lining-nums proportional-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 600;
   line-height: 1;
   margin-right: 0.15rem;
@@ -1064,10 +994,6 @@
 
 .courseOpens {
   flex-basis: 100%;
-}
-
-.courseLink:hover .courseMeta {
-  color: var(--path-accent);
 }
 
 .courseArrow {
@@ -1078,8 +1004,20 @@
   transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.courseLink:hover .courseArrow {
-  transform: rotate(45deg);
+/* A row lights only for a pointer that is really on it: while the page scrolls under a resting
+   mouse (the cursor goes quiet), hover does not paint the lime, so no row stays lit by accident.
+   Keyboard focus always lights it. */
+:global(body:has(> .motion-cursor[data-quiet='true'])) .courseLink:not(:focus-visible):hover::before {
+  transform: scaleY(0);
+}
+
+:global(body:has(> .motion-cursor[data-quiet='true'])) .courseLink:not(:focus-visible):hover .courseName,
+:global(body:has(> .motion-cursor[data-quiet='true'])) .courseLink:not(:focus-visible):hover .courseArrow {
+  transform: none;
+}
+
+:global(body:has(> .motion-cursor[data-quiet='true'])) .courseLink:not(:focus-visible):hover .courseMeta {
+  color: #5f5443;
 }
 
 @media (min-width: 900px) {
@@ -1112,12 +1050,15 @@
 
 .step {
   border-top: 1px solid var(--tensai-rule);
-  column-gap: 1.25rem;
-  display: grid;
-  align-content: start;
-  grid-template-columns: 3.5rem minmax(0, 1fr);
   padding: clamp(1.5rem, 3vw, 2.25rem) 0;
   transition: opacity 600ms ease;
+}
+
+.stepCard {
+  align-content: start;
+  column-gap: 1.25rem;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
 }
 
 [data-swap-active] .step {
@@ -1157,8 +1098,9 @@
 
 .methodFigure {
   --device-top: max(7rem, 11svh);
-  /* The frame is 1120 x 900 of the 1120 x 1013 screen; phones show the whole screen (see below). */
-  --frame: 1120 / 900;
+  /* The frame is a 1120 x 700 window on the 1120 x 1013 screen, so the device can be wide and the
+     app's words read at nearly their own size; phones show the whole screen (see below). */
+  --frame: 1120 / 700;
   margin: 0;
 }
 
@@ -1210,7 +1152,7 @@
 }
 
 .methodFrame {
-  background: #f7f9f3;
+  background: #f8fbf3;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -1223,7 +1165,7 @@
 
 /* Later screens wait below a closed clip; reaching a step wipes its screen up over the last one. */
 .swapLayer {
-  background: #f7f9f3;
+  background: #f8fbf3;
   clip-path: inset(100% 0% 0% 0%);
   inset: 0;
   overflow: hidden;
@@ -1239,8 +1181,7 @@
 
 /* The screen is laid at its own proportions and the frame is a window on it: --s is how far it is
    zoomed (1120 over the window's width) and --cx / --cy the window's top-left corner, in % of the
-   screen. The windows are set in page.tsx, cut between the app's lines so no word is lost at an edge.
-   The ring rides inside the canvas, so it stays on the part it marks as the screen settles in. */
+   screen. The windows are set in page.tsx, cut between the app's lines so no word is lost at an edge. */
 .swapCanvas {
   --s: var(--ds, 1);
   --cx: var(--dx, 0);
@@ -1260,37 +1201,11 @@
   width: 100%;
 }
 
-/* A ring around the part of the screen the step is about; the screen itself stays at full light.
-   Its weight is divided by the zoom so it stays one weight on screen at any crop. */
-.swapFocus {
-  border-radius: calc(14px / var(--s, 1));
-  box-shadow:
-    0 0 0 calc(3px / var(--s, 1)) var(--path-accent),
-    0 0 0 calc(10px / var(--s, 1)) rgba(195, 243, 49, 0.55),
-    0 calc(18px / var(--s, 1)) calc(40px / var(--s, 1)) calc(-18px / var(--s, 1)) rgba(7, 59, 47, 0.45);
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  transform: scale(1.08);
-  transition:
-    opacity 420ms ease,
-    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 [data-swap-active='0'] .swapLayer:nth-child(1) .swapCanvas,
 [data-swap-active='1'] .swapLayer:nth-child(2) .swapCanvas,
 [data-swap-active='2'] .swapLayer:nth-child(3) .swapCanvas,
 [data-swap]:not([data-swap-active]) .swapLayer:first-child .swapCanvas {
   transform: scale(var(--s)) translate(calc(var(--cx) * -1%), calc(var(--cy) * -1%));
-}
-
-[data-swap-active='0'] .swapLayer:nth-child(1) .swapFocus,
-[data-swap-active='1'] .swapLayer:nth-child(2) .swapFocus,
-[data-swap-active='2'] .swapLayer:nth-child(3) .swapFocus,
-[data-swap]:not([data-swap-active]) .swapLayer:first-child .swapFocus {
-  opacity: 1;
-  transform: scale(1);
-  transition-delay: 480ms;
 }
 
 /* The device's foot: the step marks on the left, the step you are on written out on the right. */
@@ -1437,10 +1352,10 @@
     display: none;
   }
 
-  /* The first two windows are cut deep onto the ringed part and so cut a line at their right edge:
-     it fades into the frame's own paper instead of ending on a half word. */
+  /* The first two windows are cut deep into the screen and so cut a line at their right edge: it
+     fades into the frame's own paper instead of ending on a half word. */
   .swapLayer:nth-child(-n + 2)::after {
-    background: linear-gradient(90deg, transparent, #f7f9f3);
+    background: linear-gradient(90deg, transparent, #f8fbf3);
     content: '';
     inset: 0 0 0 auto;
     pointer-events: none;
@@ -1460,14 +1375,15 @@
     padding: 1.25rem 0;
   }
 
+  /* Full bleed across the gutters, so the fade has no side edges against the device's shadow. */
   .methodFigure::after {
     background: linear-gradient(var(--brand-reading-paper), transparent);
     content: '';
     height: 1.5rem;
-    left: 0;
+    left: calc(var(--brand-space-inline) * -1);
     pointer-events: none;
     position: absolute;
-    right: 0;
+    right: calc(var(--brand-space-inline) * -1);
     top: 100%;
   }
 }
@@ -1475,17 +1391,24 @@
 @media (min-width: 960px) {
   .methodGrid {
     align-items: start;
-    grid-template-columns: minmax(0, 3.6fr) minmax(0, 7.4fr);
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
   }
 
+  /* Each step owns most of a screen of scroll, so every screen holds while its words are read; the
+     words ride along beside the device (sticky) until the next step takes over. */
   .step {
-    min-height: 34svh;
+    min-height: 78svh;
+  }
+
+  .stepCard {
+    position: sticky;
+    top: calc(var(--device-top) + 3rem);
   }
 
   /* The last step switches on at 62% of the screen, where the grid would already end and push the
      held screen away; the run-out keeps the map held while its step is read. */
   .steps {
-    padding-bottom: 40svh;
+    padding-bottom: 28svh;
   }
 
   .methodFigure {
@@ -1494,9 +1417,9 @@
   }
 
   /* From the height left under the header: device chrome (bar, foot) and the caption take 9.5rem, the
-     screen inside is 1120 x 900, so the whole device always fits a 900px or a 720px window. */
+     screen inside is 1120 x 700, so the whole device always fits a 900px or a 720px window. */
   .device {
-    width: min(100%, max(24rem, calc((100svh - var(--device-top) - 9.5rem) * 1.2444 + 1.4rem)));
+    width: min(100%, max(24rem, calc((100svh - var(--device-top) - 9.5rem) * 1.6 + 1.4rem)));
   }
 }
 
@@ -1524,6 +1447,7 @@
     align-content: space-between;
     display: grid;
     min-height: 100svh;
+    padding-top: clamp(3.5rem, 6vw, 5.5rem);
   }
 
   .closing .closingMark {
@@ -1615,7 +1539,7 @@
 
 /* Reduced motion: nothing pins, wipes or opens, so every part is simply there. The green interlude
    with 天才 is a band in the flow, the situations lie one under another, and the three real screens
-   sit in the device one after another, each already carrying its ring, with the steps beside them. */
+   sit in the device one after another, with the steps beside them. */
 @media (prefers-reduced-motion: reduce) {
   .situation {
     min-height: 0;
@@ -1664,14 +1588,12 @@
     transition: none;
   }
 
-  .swapFocus {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .step {
     min-height: 0;
+  }
+
+  .stepCard {
+    position: static;
   }
 
   .steps {

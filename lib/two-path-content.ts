@@ -153,6 +153,7 @@ export const tensaiContent = {
     rememberLabel: 'Ghi nhớ',
     retry: 'Chọn lại',
     cursorPick: 'Chọn',
+    cursorTry: 'Thử',
     encouragement: 'Cứ thử, sai cũng được. Mình nhìn kết quả rồi sửa tiếp.',
     tryTag: 'Thử ngay · bấm một đáp án',
     continue: 'Học tiếp bài này trên Tensai',

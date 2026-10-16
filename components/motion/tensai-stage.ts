@@ -195,7 +195,7 @@ export function lessonStage(root: HTMLElement): Cleanup {
     if (glow) timeline.to(glow, { opacity: 0, duration: 0.18 }, 0.12)
     // At rest the card stands a little back and turned towards the words, an object on the page
     // rather than a panel in a grid; it squares up to the reader as it comes forward to the middle.
-    gsap.set(card, { transformPerspective: 1600, rotationY: -8, rotationX: 3, rotation: 0.6, scale: 0.94 })
+    gsap.set(card, { transformPerspective: 1600, rotationY: -5, rotationX: 2, rotation: 0.4, scale: 0.97 })
     timeline.to(
       card,
       {
@@ -333,6 +333,38 @@ export function lessonStage(root: HTMLElement): Cleanup {
         },
       )
     })
+
+    // Each situation's course path draws itself node by node, lessons and gates popping in along the
+    // track as the card comes up. Transform and opacity only.
+    root.querySelectorAll<HTMLElement>('[data-situation-map]').forEach((track) => {
+      gsap.fromTo(
+        track.children,
+        { scale: 0.3, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          ease: 'back.out(2)',
+          stagger: 0.06,
+          scrollTrigger: { trigger: track, start: 'top 92%', end: 'top 52%', scrub: 0.6 },
+        },
+      )
+    })
+
+    // The closing words ride the lime's leading edge as it comes up, then settle into place, so the
+    // band never enters as an empty field of colour.
+    const rise = root.querySelector<HTMLElement>('[data-closing-rise]')
+    const band = rise?.closest<HTMLElement>('[data-curtain]')
+    if (rise && band) {
+      gsap.fromTo(
+        rise,
+        { y: () => -0.07 * window.innerHeight },
+        {
+          y: 0,
+          ease: 'none',
+          scrollTrigger: { trigger: band, start: 'top bottom', end: 'top 25%', scrub: true, invalidateOnRefresh: true },
+        },
+      )
+    }
   })
 
   return () => mm.revert()

@@ -1,6 +1,7 @@
-/* The live exercise screen, condensed to a card: the app's cream sheet, its green ink, lettered
-   answers with a pressed lower edge, and the course path waiting where the reply will land. Body
-   text stays at 15px and up; the question is set like the app's own heading. */
+/* The live exercise screen, condensed to a card the way Brilliant and Duolingo set a question: the
+   app bar, the case, one question and three lettered answers with a pressed lower edge. Nothing else
+   waits on the card; the app's verdict rises from its foot as a sheet once an answer is picked. Body
+   text stays at 16px and up; the question is set like the app's own heading. */
 .card {
   --lesson-ink: #073b2f;
   --lesson-lime: #c3f331;
@@ -8,9 +9,10 @@
   --lesson-line: rgba(7, 59, 47, 0.14);
   --lesson-right: #1f7a4d;
   --lesson-wrong: #b5452d;
+  --pad: 1.6rem;
   background: #fbfaf5;
   border: 1px solid var(--lesson-line);
-  border-radius: 24px;
+  border-radius: 26px;
   box-shadow:
     0 60px 110px -50px rgba(7, 59, 47, 0.6),
     0 22px 44px -30px rgba(7, 59, 47, 0.45),
@@ -18,9 +20,10 @@
   color: var(--lesson-ink);
   display: grid;
   font-family: var(--font-be-vietnam), var(--font-body, system-ui), sans-serif;
-  gap: 0.9rem;
+  gap: 1.1rem;
   margin: 0;
-  padding: 1.05rem 1.4rem 1.3rem;
+  overflow: clip;
+  padding: 1.15rem var(--pad) 1.7rem;
   position: relative;
 }
 
@@ -31,12 +34,12 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  margin: 0 -1.4rem;
-  padding: 0 1.4rem 0.85rem;
+  margin: 0 calc(var(--pad) * -1);
+  padding: 0 var(--pad) 0.95rem;
 }
 
 .brand {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -63,7 +66,7 @@
   background: rgba(7, 59, 47, 0.1);
   border-radius: 999px;
   display: block;
-  height: 6px;
+  height: 7px;
   overflow: hidden;
 }
 
@@ -90,11 +93,28 @@
   padding: 0.3rem 0.7rem;
 }
 
+/* The question's window: the question slides up inside it (--lift) to keep a picked answer clear of
+   the verdict sheet. The bleed leaves room for the answers' focus ring. */
+.view {
+  margin: -0.5rem;
+  overflow: hidden;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.body {
+  display: grid;
+  gap: 1.1rem;
+  transform: translateY(calc(var(--lift, 0px) * -1));
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .context {
   color: var(--lesson-muted);
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
   margin: 0;
+  transition: opacity 320ms ease;
 }
 
 .context strong {
@@ -102,10 +122,16 @@
   font-weight: 700;
 }
 
+/* Answered and lifted: the case has done its work, and the lift would cut its first line at the
+   window's top edge; it fades out instead of being sliced. */
+.body[data-lifted] .context {
+  opacity: 0;
+}
+
 .choices {
   border: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.7rem;
   margin: 0;
   min-width: 0;
   padding: 0;
@@ -114,35 +140,29 @@
 .question {
   color: var(--lesson-ink);
   float: left;
-  font-size: clamp(1.25rem, 0.85rem + 0.6vw, 1.45rem);
+  font-size: 1.625rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.18;
-  margin: 0;
+  letter-spacing: -0.022em;
+  line-height: 1.2;
+  margin: 0 0 0.35rem;
   padding: 0;
+  text-wrap: balance;
   width: 100%;
-}
-
-.lead {
-  clear: both;
-  color: var(--lesson-muted);
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  margin: 0 0 0.2rem;
 }
 
 .option {
   align-items: center;
   background: #fff;
-  border: 1.5px solid rgba(7, 59, 47, 0.18);
-  border-bottom-width: 4px;
-  border-radius: 16px;
+  border: 2px solid rgba(7, 59, 47, 0.16);
+  border-bottom-width: 5px;
+  border-radius: 18px;
+  clear: both;
   cursor: pointer;
   display: grid;
-  gap: 0.85rem;
-  grid-template-columns: 2rem minmax(0, 1fr);
-  min-height: 3.25rem;
-  padding: 0.45rem 0.9rem 0.45rem 0.65rem;
+  gap: 0.95rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  min-height: 4rem;
+  padding: 0.55rem 1.1rem 0.55rem 0.75rem;
   position: relative;
   transition:
     background-color 220ms ease,
@@ -153,15 +173,20 @@
 
 .option input {
   appearance: none;
+  cursor: pointer;
   inset: 0;
   margin: 0;
   position: absolute;
 }
 
 @media (hover: hover) {
-  .option:hover {
-    border-color: rgba(7, 59, 47, 0.42);
+  .card[data-state='idle'] .option:hover {
+    border-color: rgba(7, 59, 47, 0.45);
     transform: translateY(-2px);
+  }
+
+  .card[data-state='idle'] .option:hover .key {
+    background: var(--lesson-lime);
   }
 }
 
@@ -172,22 +197,22 @@
 
 .option:active {
   border-bottom-width: 2px;
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 
 .key {
   align-items: center;
   background: rgba(7, 59, 47, 0.07);
-  border-radius: 10px;
+  border-radius: 12px;
   color: var(--lesson-ink);
   display: grid;
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 800;
-  height: 2rem;
+  height: 2.5rem;
   place-items: center;
   position: relative;
   transition: background-color 220ms ease, color 220ms ease;
-  width: 2rem;
+  width: 2.5rem;
 }
 
 .key > * {
@@ -202,9 +227,9 @@
 }
 
 .optionText {
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
   font-weight: 600;
-  line-height: 1.38;
+  line-height: 1.36;
 }
 
 .option[data-result='right'] {
@@ -240,7 +265,7 @@
 
 /* Answered: the other choices step back so the verdict reads first. */
 .card:not([data-state='idle']) .option:not([data-result]) {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 /* The idle loop's ghost pointer: it travels to an answer, the answer lifts as if hovered, a ring
@@ -317,6 +342,30 @@
   width: 46px;
 }
 
+/* The label the site's cursor shows over the answers, riding below-right of the arrow. */
+.ghostTag {
+  background: var(--lesson-ink);
+  border-radius: 999px;
+  color: var(--lesson-lime);
+  font-size: 0.875rem;
+  font-weight: 700;
+  left: 20px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 0.42rem 0.7rem;
+  position: absolute;
+  text-transform: uppercase;
+  top: 26px;
+  transition: opacity 200ms ease, transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+
+/* Once the answer is picked the label has said its word; it would only sit on the verdict sheet. */
+.card:not([data-state='idle']) .ghostTag {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
 .ghost[data-press] .ghostRipple {
   animation: ghost-ripple 620ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -343,8 +392,12 @@
 }
 
 .option[data-ghost-hover] {
-  border-color: rgba(7, 59, 47, 0.42);
+  border-color: rgba(7, 59, 47, 0.45);
   transform: translateY(-2px);
+}
+
+.option[data-ghost-hover] .key {
+  background: var(--lesson-lime);
 }
 
 /* The scroll demo presses A the way a finger would. */
@@ -368,7 +421,7 @@
 /* While nobody has answered, the keys light up A → B → C in a slow wave so the card reads as
    something to press, not a picture of one. Hovering the choices hands control back. */
 @media (prefers-reduced-motion: no-preference) {
-  .card[data-state='idle']:not([data-demo]) .option .key {
+  .card[data-state='idle']:not([data-demo]) .option:not([data-ghost-hover]) .key {
     animation: key-invite 3.6s ease-in-out infinite;
   }
 
@@ -405,77 +458,43 @@
     transform: none;
   }
 }
-
-/* Before an answer the card ends on the course path. The app's verdict then rises from the card's
-   foot as a sheet over the lower answers, the way the app's own reply slides up, so the card keeps
-   its height and needs no empty room held for the longest reply. */
+/* The verdict sheets. Each rests just below the card's foot (the card clips it) and slides up over
+   the lower answers when its answer is picked, so the card keeps its height and holds no empty room
+   for the longest reply. The card's own corners round the sheet's foot. */
 .replies {
-  display: grid;
+  display: contents;
 }
 
 .reply {
-  border-radius: 16px;
-  grid-area: 1 / 1;
+  border-radius: 22px 22px 0 0;
+  bottom: 0;
+  box-shadow: 0 -20px 40px -26px rgba(7, 59, 47, 0.55);
+  display: grid;
+  gap: 0.75rem;
+  left: 0;
   margin: 0;
-  opacity: 0;
-  transform: translateY(8px);
+  padding: 1.3rem var(--pad) 1.5rem;
+  position: absolute;
+  right: 0;
+  transform: translateY(104%);
   transition:
-    opacity 260ms ease,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 260ms;
+    transform 380ms cubic-bezier(0.55, 0, 0.75, 0.2),
+    visibility 0s linear 380ms;
   visibility: hidden;
+  z-index: 2;
 }
 
 .reply[data-on] {
-  opacity: 1;
   transform: none;
   transition:
-    opacity 320ms ease 60ms,
-    transform 480ms cubic-bezier(0.22, 1, 0.36, 1) 60ms,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1) 80ms,
     visibility 0s;
   visibility: visible;
 }
 
-.idle {
-  align-content: center;
-  background: rgba(195, 243, 49, 0.16);
-  border: 1.5px dashed rgba(7, 59, 47, 0.18);
-  display: grid;
-  gap: 0.9rem;
-  padding: 0.85rem 1.1rem 0.95rem;
-}
-
-.encourage {
-  color: var(--lesson-ink);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* The verdict sheet rises from the card's lower edge. It drops the stacking cell: on an
-   absolutely placed box inside a grid card, line 1 is the content edge while 'auto' is the
-   padding edge, which would leave the sheet hanging off-centre. */
-.right,
-.wrong {
-  align-content: start;
-  border-radius: 20px 20px 23px 23px;
-  bottom: 0;
-  box-shadow: 0 -18px 34px -22px rgba(7, 59, 47, 0.55);
-  display: grid;
-  gap: 0.6rem;
-  grid-area: auto;
-  left: 0;
-  padding: 1.15rem 1.4rem 1.3rem;
-  position: absolute;
-  right: 0;
-  transform: translateY(22px);
-  z-index: 2;
-}
-
 .right {
   background: var(--lesson-ink);
-  color: #f3f0e6;
+  color: #eef1e8;
 }
 
 .wrong {
@@ -484,56 +503,104 @@
 }
 
 .verdict {
-  font-size: 0.9375rem;
+  align-items: center;
+  display: flex;
+  font-size: 1.625rem;
   font-weight: 800;
-  line-height: 1.5;
+  gap: 0.7rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin: 0;
 }
 
-.verdict span {
-  font-weight: 500;
+.badge {
+  border-radius: 50%;
+  display: grid;
+  flex: none;
+  height: 2.5rem;
+  place-items: center;
+  width: 2.5rem;
 }
 
 .right .verdict {
   color: var(--lesson-lime);
 }
 
-.right .verdict span {
-  color: #f3f0e6;
+.right .badge {
+  background: var(--lesson-lime);
+  color: var(--lesson-ink);
 }
 
-.remember {
-  border-top: 1px solid rgba(243, 240, 230, 0.18);
-  font-size: 0.9375rem;
+.wrong .verdict {
+  color: #9c3a25;
+}
+
+.wrong .badge {
+  background: var(--lesson-wrong);
+  color: #fff;
+}
+
+/* The badge lands a beat after the sheet, the way the app stamps its verdict. */
+.reply[data-on] .badge {
+  animation: badge-pop 520ms cubic-bezier(0.34, 1.56, 0.64, 1) 260ms both;
+}
+
+@keyframes badge-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-18deg);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.feedback {
+  font-size: 1rem;
   line-height: 1.5;
   margin: 0;
-  padding-top: 0.6rem;
 }
 
-.remember strong {
-  color: var(--lesson-lime);
-  display: block;
-  font-size: 0.8125rem;
-  letter-spacing: 0.14em;
-  margin-bottom: 0.15rem;
-  text-transform: uppercase;
-}
-
-/* Scoped past the site shell's `a { color: inherit }` so the label keeps its ink on lime. */
+/* Full-width buttons with a pressed lower edge, as the app ends its verdict sheet. Scoped past the
+   site shell's `a { color: inherit }` so the label keeps its ink on lime. */
 .card .reply a.next,
-.card .reply a.next:hover {
+.card .reply a.next:hover,
+.retry {
   align-items: center;
-  background: var(--lesson-lime);
-  border-radius: 999px;
-  color: var(--lesson-ink);
-  display: inline-flex;
-  font-size: 0.9375rem;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--edge);
+  cursor: pointer;
+  display: flex;
+  font: inherit;
+  font-size: 1.0625rem;
   font-weight: 800;
-  gap: 0.5rem;
-  justify-self: start;
-  min-height: 44px;
-  padding: 0 1.15rem;
+  gap: 0.55rem;
+  justify-content: center;
+  margin: 0.25rem 0 4px;
+  min-height: 3.25rem;
+  padding: 0 1.25rem;
   text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.card .reply a.next {
+  --edge: #8fb51c;
+  background: var(--lesson-lime);
+  color: var(--lesson-ink);
+}
+
+.retry {
+  --edge: #7f2e1d;
+  background: var(--lesson-wrong);
+  color: #fff;
+}
+
+.card .reply a.next:active,
+.retry:active {
+  box-shadow: 0 1px 0 var(--edge);
+  transform: translateY(3px);
 }
 
 .next svg {
@@ -541,31 +608,17 @@
 }
 
 .next:hover svg {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
-.next:focus-visible,
-.retry:focus-visible {
+.next:focus-visible {
   outline: 3px solid var(--lesson-lime);
   outline-offset: 3px;
 }
 
-.retry {
-  background: transparent;
-  border: 1.5px solid currentColor;
-  border-radius: 999px;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  justify-self: start;
-  min-height: 44px;
-  padding: 0 1.1rem;
-}
-
 .retry:focus-visible {
-  outline-color: var(--lesson-wrong);
+  outline: 3px solid var(--lesson-ink);
+  outline-offset: 3px;
 }
 
 .srOnly {
@@ -577,204 +630,89 @@
   white-space: nowrap;
   width: 1px;
 }
-
-/* The course path: three lessons, then a gate. */
-.path {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.path::before {
-  background: repeating-linear-gradient(90deg, rgba(7, 59, 47, 0.28) 0 6px, transparent 6px 11px);
-  content: '';
-  height: 2px;
-  left: 12.5%;
-  position: absolute;
-  right: 12.5%;
-  top: 0.9rem;
-}
-
-.path li {
-  align-items: center;
-  color: var(--lesson-muted);
-  display: grid;
-  font-size: 0.875rem;
-  font-weight: 700;
-  gap: 0.35rem;
-  justify-items: center;
-  position: relative;
-}
-
-.node {
-  align-items: center;
-  background: #fbfaf5;
-  border: 2px solid rgba(7, 59, 47, 0.26);
-  border-radius: 50%;
-  color: var(--lesson-muted);
-  display: inline-grid;
-  font-size: 0.8125rem;
-  font-weight: 800;
-  height: 1.8rem;
-  place-items: center;
-  transition:
-    background-color 300ms ease,
-    border-color 300ms ease,
-    color 300ms ease,
-    transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  width: 1.8rem;
-}
-
-.path li[data-step='current'] {
-  color: var(--lesson-ink);
-}
-
-.path li[data-step='current'] .node {
-  background: var(--lesson-lime);
-  border-color: var(--lesson-ink);
-  box-shadow: 0 0 0 4px rgba(195, 243, 49, 0.45);
-  color: var(--lesson-ink);
-}
-
-/* The lesson you are on breathes, the way the app marks the next step on its map. */
-@media (prefers-reduced-motion: no-preference) {
-  .card[data-state='idle'] .path li[data-step='current'] .node {
-    animation: node-breathe 2.4s ease-in-out infinite;
-  }
-}
-
-@keyframes node-breathe {
-  0%,
-  100% {
-    box-shadow: 0 0 0 4px rgba(195, 243, 49, 0.45);
-  }
-  50% {
-    box-shadow: 0 0 0 9px rgba(195, 243, 49, 0.18);
-  }
-}
-
-.gate .node {
-  background: #fff6dc;
-  border-color: #c99a3b;
-  color: #9a6d17;
-}
-
-/* Roomy screens set the lesson a size up, so it reads at a glance beside the headline and still
-   reads when the page is seen shrunk to a thumbnail. One unit (--u) follows the window's height, so
-   the whole card grows with the room it has and never runs past the bottom of the screen. */
-@media (min-width: 960px) and (min-height: 821px) {
+/* Short windows keep the card a step smaller so the whole of it stays on screen. */
+@media (min-width: 960px) and (max-height: 820px) {
   .card {
-    --u: clamp(0.9375rem, 0.1rem + 1.6svh, 1.25rem);
-    gap: calc(var(--u) * 0.62);
-    padding: calc(var(--u) * 0.95) calc(var(--u) * 1.35) calc(var(--u) * 1.15);
+    --pad: 1.35rem;
+    gap: 0.8rem;
+    padding-bottom: 1.35rem;
+    padding-top: 0.9rem;
   }
 
   .bar {
-    margin: 0 calc(var(--u) * -1.35);
-    padding: 0 calc(var(--u) * 1.35) calc(var(--u) * 0.7);
+    padding-bottom: 0.75rem;
   }
 
-  .brand {
-    font-size: calc(var(--u) * 1.3);
+  .body {
+    gap: 0.8rem;
   }
 
-  .context,
-  .encourage,
-  .verdict,
-  .remember,
-  .lead {
-    font-size: calc(var(--u) * 1.02);
-  }
-
-  .optionText {
-    font-size: calc(var(--u) * 1.2);
-    line-height: 1.28;
+  .context {
+    font-size: 0.9375rem;
+    line-height: 1.45;
   }
 
   .question {
-    font-size: calc(var(--u) * 1.72);
-    text-wrap: balance;
+    font-size: 1.375rem;
   }
 
-  .progressLabel,
-  .label,
-  .path li {
-    font-size: calc(var(--u) * 0.92);
-  }
-
-  .key {
-    font-size: calc(var(--u) * 1.1);
-    height: calc(var(--u) * 2.2);
-    width: calc(var(--u) * 2.2);
+  .choices {
+    gap: 0.55rem;
   }
 
   .option {
-    gap: calc(var(--u) * 0.85);
-    grid-template-columns: calc(var(--u) * 2.2) minmax(0, 1fr);
-    min-height: calc(var(--u) * 3.5);
-    padding: 0.4rem calc(var(--u) * 0.9) 0.4rem calc(var(--u) * 0.6);
+    min-height: 3.35rem;
   }
 
-  .right,
-  .wrong {
-    padding: calc(var(--u) * 1.1) calc(var(--u) * 1.35) calc(var(--u) * 1.25);
-  }
-}
-
-/* Short windows keep the card at the app's own size so the whole of it stays on screen. */
-@media (min-width: 960px) and (max-height: 820px) {
-  .card {
-    gap: 0.5rem;
-    padding: 0.7rem 1.15rem 0.85rem;
-  }
-
-  .bar {
-    margin: 0 -1.15rem;
-    padding: 0 1.15rem 0.55rem;
-  }
-
-  .context,
-  .lead {
-    line-height: 1.4;
-  }
-
-  .option {
-    min-height: 2.6rem;
-  }
-
-  .key {
-    height: 1.85rem;
-    width: 1.85rem;
-  }
-
-  .option {
-    grid-template-columns: 1.85rem minmax(0, 1fr);
+  .optionText {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 520px) {
   .card {
-    border-radius: 20px;
-    padding: 1.05rem 1.1rem 1.15rem;
+    --pad: 1.15rem;
+    border-radius: 22px;
+    gap: 0.95rem;
+    padding-bottom: 1.25rem;
+    padding-top: 1rem;
   }
 
   .bar {
     gap: 0.75rem;
-    margin: 0 -1.1rem;
-    padding: 0 1.1rem 0.85rem;
-  }
-
-  .right,
-  .wrong {
-    border-radius: 18px 18px 19px 19px;
-    padding: 1rem 1.1rem 1.15rem;
   }
 
   .label {
     display: none;
+  }
+
+  .question {
+    font-size: 1.375rem;
+  }
+
+  .option {
+    gap: 0.75rem;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    min-height: 3.5rem;
+    padding: 0.5rem 0.85rem 0.5rem 0.6rem;
+  }
+
+  .key {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .optionText {
+    font-size: 1rem;
+  }
+
+  .verdict {
+    font-size: 1.375rem;
+  }
+
+  .reply {
+    padding-bottom: 1.25rem;
+    padding-top: 1.1rem;
   }
 }
 

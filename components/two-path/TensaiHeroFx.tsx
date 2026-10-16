@@ -8,8 +8,7 @@ const MOTION_OK = '(prefers-reduced-motion: no-preference)'
 // The lit window is this many px square; keep it in step with `.window` in the stylesheet.
 const SIZE = 600
 
-// A dot field behind the hero that the pointer lights up like a torch, and the source of --px/--py
-// (the pointer's place across the hero, -1 to 1) that the card's plates lean on for depth.
+// A dot field behind the hero that the pointer lights up like a torch.
 //
 // The lit dots are two layers: a window that follows the pointer (translate only) and, inside it, the
 // bright dot pattern moved the opposite way by the same whole pixels, so the dots stay pinned to the
@@ -32,10 +31,6 @@ export default function TensaiHeroFx() {
     let cy = 0
     let x = 0
     let y = 0
-    let nx = 0
-    let ny = 0
-    let tx = 0
-    let ty = 0
     let seen = false
     let inside = false
     let visible = true
@@ -57,22 +52,16 @@ export default function TensaiHeroFx() {
         y = py
         seen = true
       }
-      // The window eases after the pointer; the lean (-1..1 over the hero) returns to rest when it leaves.
+      // The window eases after the pointer.
       x += (px - x) * 0.18
       y += (py - y) * 0.18
-      tx = over ? ((cx - hbox.left) / hbox.width - 0.5) * 2 : 0
-      ty = over ? ((cy - hbox.top) / hbox.height - 0.5) * 2 : 0
-      nx += (tx - nx) * 0.08
-      ny += (ty - ny) * 0.08
       const wx = Math.round(x - SIZE / 2)
       const wy = Math.round(y - SIZE / 2)
       win.style.transform = `translate3d(${wx}px, ${wy}px, 0)`
       dots.style.transform = `translate3d(${-wx}px, ${-wy}px, 0)`
       dots.style.width = `${Math.ceil(box.width)}px`
       dots.style.height = `${Math.ceil(box.height)}px`
-      hero.style.setProperty('--px', nx.toFixed(3))
-      hero.style.setProperty('--py', ny.toFixed(3))
-      const settled = Math.abs(px - x) < 0.4 && Math.abs(py - y) < 0.4 && Math.abs(tx - nx) < 0.002 && Math.abs(ty - ny) < 0.002
+      const settled = Math.abs(px - x) < 0.4 && Math.abs(py - y) < 0.4
       if (visible && (!settled || over)) raf = requestAnimationFrame(frame)
     }
     const wake = () => {
@@ -100,8 +89,6 @@ export default function TensaiHeroFx() {
       observer.disconnect()
       window.removeEventListener('pointermove', onMove)
       document.documentElement.removeEventListener('pointerleave', onLeave)
-      hero.style.removeProperty('--px')
-      hero.style.removeProperty('--py')
     }
   }, [])
 

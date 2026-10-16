@@ -26,6 +26,13 @@ export const metadata: Metadata = createPageMetadata({
 
 const pad = (value: number) => String(value).padStart(2, '0')
 
+// A course's map, flattened into one row the way the app draws it: a node per lesson and a gate
+// after every run of lessons, from the course's own counts (lib/two-path-content.ts).
+const courseMap = (lessons: number, gates: number) => {
+  const run = Math.max(1, Math.round(lessons / Math.max(1, gates)))
+  return Array.from({ length: lessons }, (_, n) => ((n + 1) % run === 0 ? ['lesson', 'gate'] : ['lesson'])).flat()
+}
+
 // "Thiên tài" is what Tensai means, so the headline sets it apart in italics.
 const accent = 'thiên tài'
 const accentAt = tensaiContent.title.indexOf(accent)
@@ -53,17 +60,20 @@ function ProblemText({ text, hit }: { text: string; hit?: string }) {
 
 // How each real screen of the method sits in the device. A crop is a window on the 1120 x 1013 screen,
 // in the screen's own pixels: its left and top edge and its width (the height follows from the frame).
-// On wide screens each window is cut between the app's lines and cards, never through a word, and
-// `focus` (the ring) stays in lib/two-path-content.ts, in % of the screen. `d` is the wide frame (1120 x 900), `m` the
-// phone frame (1120 x 1013 in shape). On a phone the frame is about 330px wide, so each window is cut
-// deep onto the ringed part: the heading of the first screen, the answers of the second and the map's
-// callout of the third, all large enough to read there. Where a phone window cuts a line at
-// its right edge, the CSS fades it out.
+// `d` is the wide frame (1120 x 700 in shape, about 900px wide), `m` the phone frame (1120 x 1013 in
+// shape). Every wide window is cut in the gaps between the app's lines, never through a word: the
+// lesson's heading, explanation and its three questions; the exercise's question, case and both
+// answers; the map's next-lesson card, the three-star note and "Cứ 3 bài, một màn vượt ải." On a
+// phone the frame is about 330px wide, so each window is cut deeper still: the heading of the first
+// screen, the case and both answers of the second (the screen ends below them) and the map's note of
+// the third. Where a window cuts a line at its
+// side, the CSS fades that side out. The map's wide window starts right of the mascot's line and runs
+// past the screen's right edge into the frame's paper, which is the screen's own paper colour.
 const SCREEN = { w: 1120, h: 1013 }
 const methodCrops = [
   { d: { x: 0, y: 0, w: 1120 }, m: { x: 0, y: 0, w: 590 } },
-  { d: { x: 0, y: 108, w: 1120 }, m: { x: 0, y: 640, w: 590 } },
-  { d: { x: 620, y: 611, w: 500 }, m: { x: 700, y: 736, w: 300 } },
+  { d: { x: 0, y: 182, w: 1120 }, m: { x: 0, y: 416, w: 590 } },
+  { d: { x: 624, y: 606, w: 560 }, m: { x: 700, y: 736, w: 300 } },
 ] as const
 
 const cropVars = (crop: (typeof methodCrops)[number]) =>
@@ -130,18 +140,6 @@ export default function TensaiPage() {
         <div className={styles.lessonSlot}>
           <span className={styles.heroGlow} aria-hidden="true" data-lesson-glow />
           <div className={styles.lessonCard} data-lesson-card>
-            {/* Two more lessons wait behind the card, a lime sheet and a green one that lean the other
-                way as the pointer crosses the hero, so the card reads as the top of a course. */}
-            <span className={`${styles.plate} ${styles.plateLime}`} aria-hidden="true">
-              {tensaiContent.lesson.path[1]}
-            </span>
-            <span className={`${styles.plate} ${styles.plateGreen}`} aria-hidden="true">
-              {tensaiContent.lesson.path[2]}
-            </span>
-            {/* A sticker on the card's corner says it can be played; it peels off once anyone answers. */}
-            <span className={styles.tryTag} aria-hidden="true">
-              {tensaiContent.lesson.tryTag}
-            </span>
             <div className={styles.lessonTilt} data-tilt="6">
               <div className="intro-fade" style={{ '--intro-delay': '0.35s' } as CSSProperties}>
                 <TensaiLesson />
@@ -218,22 +216,26 @@ export default function TensaiPage() {
             data-stack-dim="0.9"
             data-stack-start="top 55%"
           >
-            {situations.items.map((item, index) => (
+            {situations.items.map((item, index) => {
+              const course = courses.items.find((entry) => entry.name === item.course)
+              return (
               <li
                 key={item.course}
                 className={styles.situation}
                 data-stack-card
                 style={{ '--stack-i': index } as CSSProperties}
               >
-                <p className={styles.situationTop} aria-hidden="true">
-                  <span className={styles.situationIndex}>{pad(index + 1)}</span>
-                  <span className={styles.situationTotal}>/ {pad(situations.items.length)}</span>
-                </p>
+                <div className={styles.situationTop}>
+                  <p className={styles.situationCount} aria-hidden="true">
+                    <span className={styles.situationIndex}>{pad(index + 1)}</span>
+                    <span className={styles.situationTotal}>/ {pad(situations.items.length)}</span>
+                  </p>
+                  <p className={styles.situationCourse}>Khóa {item.course}</p>
+                </div>
                 <p className={styles.problem} data-scrub-words data-scrub-from="0.72" data-scrub-end="top 78%">
                   <ProblemText text={item.problem} hit={problemHits[index]} />
                 </p>
                 <div className={styles.situationAnswer}>
-                  <p className={styles.situationCourse}>Khóa {item.course}</p>
                   <ul className={styles.lessons}>
                     {item.lessons.map((lesson) => (
                       <li key={lesson}>
@@ -246,9 +248,27 @@ export default function TensaiPage() {
                       </li>
                     ))}
                   </ul>
+                  {/* The course behind the card, drawn as its map: every lesson a node, a starred gate
+                      after each run, then the same counts in words. The nodes light in turn as the card
+                      comes up (tensai-stage.ts). */}
+                  {course && (
+                    <div className={styles.situationMap}>
+                      <ol className={styles.mapTrack} aria-hidden="true" data-situation-map>
+                        {courseMap(course.lessonCount, course.gateCount).map((kind, n) => (
+                          <li key={n} className={kind === 'gate' ? styles.mapGate : styles.mapNode}>
+                            {kind === 'gate' && <Star size={12} strokeWidth={2.4} fill="currentColor" />}
+                          </li>
+                        ))}
+                      </ol>
+                      <p className={styles.mapMeta}>
+                        {course.lessonCount} bài · {course.gateCount} màn vượt ải · Mở từ {course.opensOn}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </li>
-            ))}
+            )
+            })}
           </ol>
         </div>
       </section>
@@ -287,10 +307,10 @@ export default function TensaiPage() {
                   </div>
                   <span className={styles.courseMeta}>
                     <span className={styles.courseStat}>
-                      <strong data-count={course.lessonCount}>{course.lessonCount}</strong> bài
+                      <strong>{course.lessonCount}</strong> bài
                     </span>
                     <span className={styles.courseStat}>
-                      <strong data-count={course.gateCount}>{course.gateCount}</strong> màn vượt ải
+                      <strong>{course.gateCount}</strong> màn vượt ải
                     </span>
                     <span className={styles.courseOpens}>Mở từ {course.opensOn}</span>
                   </span>
@@ -318,11 +338,15 @@ export default function TensaiPage() {
             <ol className={styles.steps}>
               {method.steps.map((step, index) => (
                 <li key={step.title} className={styles.step} data-swap-step>
-                  <span className={styles.stepNumber} aria-hidden="true">
-                    {pad(index + 1)}
-                  </span>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepBody}>{step.body}</p>
+                  {/* On wide screens the words hold beside the screen for as long as their step is on,
+                      then slide up as the next step's words arrive. */}
+                  <div className={styles.stepCard}>
+                    <span className={styles.stepNumber} aria-hidden="true">
+                      {pad(index + 1)}
+                    </span>
+                    <p className={styles.stepTitle}>{step.title}</p>
+                    <p className={styles.stepBody}>{step.body}</p>
+                  </div>
                 </li>
               ))}
             </ol>
@@ -345,17 +369,7 @@ export default function TensaiPage() {
                   {method.frames.map((frame, index) => (
                     <div key={`${frame.photoId}-${index}`} className={styles.swapLayer} data-swap-layer>
                       <div className={styles.swapCanvas} style={cropVars(methodCrops[index])}>
-                        <TwoPathPhoto id={frame.photoId} sizes="(max-width: 959px) 100vw, 880px" />
-                        <span
-                          className={styles.swapFocus}
-                          aria-hidden="true"
-                          style={{
-                            left: `${frame.focus.x}%`,
-                            top: `${frame.focus.y}%`,
-                            width: `${frame.focus.w}%`,
-                            height: `${frame.focus.h}%`,
-                          }}
-                        />
+                        <TwoPathPhoto id={frame.photoId} sizes="(max-width: 959px) 100vw, 900px" />
                       </div>
                     </div>
                   ))}
@@ -382,8 +396,9 @@ export default function TensaiPage() {
       </section>
 
       <section className={styles.closing} aria-labelledby="tensai-closing" data-curtain>
-        <div className={`${styles.inner} ${styles.closingInner}`}>
-          <h2 id="tensai-closing" className={styles.closingTitle} data-split>
+        {/* The call arrives with the band rather than after it, rising a little as the band opens. */}
+        <div className={`${styles.inner} ${styles.closingInner}`} data-closing-rise>
+          <h2 id="tensai-closing" className={styles.closingTitle}>
             {closing.title}
           </h2>
           <div className={styles.actions}>

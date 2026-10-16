@@ -51,6 +51,20 @@
   will-change: transform;
 }
 
+/* The dots stay faint behind the words (a quarter strength over the text column) and come up to
+   full only around the card, so no letter of the copy sits on a dot. */
+@media (min-width: 960px) {
+  .fx {
+    mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0 47%, #000 57%);
+  }
+}
+
+@media (max-width: 959px) {
+  .base {
+    opacity: 0.5;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .window {
     display: none;
